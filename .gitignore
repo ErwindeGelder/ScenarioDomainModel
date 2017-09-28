@@ -1,0 +1,9 @@
+# Ignore stuff that is automatically created
+*.bib.sav
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.pdf
+*.synctex.gz
