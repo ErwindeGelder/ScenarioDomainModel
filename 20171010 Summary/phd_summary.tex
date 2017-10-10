@@ -1,0 +1,83 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage[noadjust]{cite}                     %% citations; noadjust removes leading spaces
+%\usepackage[round]{natbib}                     %% Author-year citations (remove package cite)
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+
+\graphicspath{{figures/}}
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{1}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{12 Oktober 2017}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Summary of PhD Research topic}            %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author}                                  %% similar
+\fancyfoot[C]{}                                         %% define footer
+
+\begin{document}
+
+\section*{Summary of PhD research topic}
+
+In the recent years, much research is conducted towards the Automated Driving Systems (ADSs) and Automated Vehicles (AVs). It is generally accepted that testing of ADSs and AVs will become more and more important and complex. In order to investigate how the to-be-assessed system would perform in real-life traffic, real-life driving data can be used. This work focusses on the methodology for the assessment of ADSs and AVs using real-life driving data.
+
+Figure \ref{fig:scheme} presents a schematic overview of the process from going to real-life driving data towards the assessment of an ADS or an AV. The starting point of the research is preprocessed data, i.e. the output of the second block in Figure \ref{fig:scheme}. The data preprocessing involves for example the fusion of different sensors and the tracking of surrounding object. The goal of the research is to provide the methodology for the generation of the test cases using the preprocessed data, presented by the green blocks in Figure \ref{fig:scheme}. This would enable simulations for assessing and evaluating ADSs and AVs. Even though the simulation and evaluation (presented by the red blocks in Figure \ref{fig:scheme}) are essential for the assessment of ADSs and AVs, it is not the focus of the research.
+
+\begin{figure}[b]
+	\begin{center}
+		\includegraphics[width=\linewidth]{streetwise_pipeline.pdf}
+		\caption{Schematic overview from the process of real-life data to the assessment of an Automated Driving System or an Autonomous Vehicle.}
+		\label{fig:scheme}
+	\end{center}
+\end{figure}
+
+Roughly five different topics will be addressed in the research:
+\begin{enumerate}
+	\item Events are actions by a single actor (e.g. a car). The first topic focusses on the detection of the events. A proper definition of `event' is required for this topic.
+	\item The next topic is about defining and detecting scenarios. Scenario are to be `build' from events. 
+	\item Parametrizing events is essential for enabling the generation of test cases. It needs to be investigated how the events can be parametrized such that probability density functions could be estimated that describes the underlying distribution.
+	\item The fourth topic is about the generation of test cases. The estimated probability density functions could be used for this, but it is important to take into account that specific parameters of different events within a scenario might be correlated.
+	\item The fifth topic is about the notion of completeness. In order to draw conclusions on how the to-be-assessed ADSs or AVs would perform in real-life traffic, it is necessary to know how representative the real-life driving dataset is. Therefore it is valuable to know how complete the data set is, i.e. how many of the possible events/scenarios are recorded? Is that enough, or is more data required? How much more data?
+\end{enumerate}
+
+In summary, the PhD research will focus on the methodology for the generation of real-life test cases for the assessment ADSs and AVs using recorded driving data. This includes the definition and detection of events and scenarios. The events and scenarios need to be parametrized to enable the generation of new test cases. An important aspect of the research is to provide quantitative measures for the completeness of the data, the collected events, the collected scenarios and the generated test cases.
+
+%\bibliographystyle{ieeetr}
+%\bibliography{../progress_reports_bib}
+
+\end{document}
