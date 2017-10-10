@@ -60,9 +60,40 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 
 \section*{Previous meeting minutes}
 
+This is the first progress meeting. There was another meeting though, with Jeroen Ploeg (TNO), Bart Vuijk (TNO) and Niels de Boer (NTU). It has been discussed that the first topics to focus on are the following:
+\begin{itemize}
+	\item It should be clarified what the requirements are of the to-be-provided data [by BMW].
+	\item The notions of events and scenarios need to be clarified.
+\end{itemize}
+
 \section*{Summary of work}
 
-\section*{Future work}
+\begin{itemize}
+	\item I wrote a summary to describe the topic of the PhD research.
+	\item A document is written that states the requirements of the data \cite{data_requirements}.
+	\item An event is an action by a single actor in a traffic scenario. For example, braking by a vehicle is seen as an event. The question is: how should we define \emph{action}? Two ideas are:
+	\begin{itemize}
+		\item \emph{The action starts and ends with a change of a state of an actor.}
+		For example with braking, at the start of the action, the state `longitudinal acceleration' \emph{changes} from approximately 0 to negative. At the end of the action, the state `longitudinal acceleration' \emph{changes} from negative to approximately 0. \\
+		Problem: What does `change' actually mean. 
+		\item \emph{The action is defined as the transition of an equilibrium to another equilibrium.}
+		For example, before and after the braking action, the longitudinal velocity was approximately constant (which is regarded as an equilibrium).
+	\end{itemize}
+	\item I am not really happy with either of these definitions (see also at the questions sections further in this document). I did a literature search about this and the word `action' is mentioned, but they do not provide any details about what an action actually is \cite{scenario_ontology,ulbrich2015}.
+	\item We had a discussion about the definition of the type of scenarios. The question is whether we want to have many types of scenarios (e.g. cut-in on motorway is a different type of scenario then a cut-in on a rural road) or not too many (meaning that there is more variation within a single type of scenario, i.e. the type of scenario is more generic). That is why I think we don't want to fix the determine how generic a scenario should be. I want to detail more about this is the meeting. More information is in a small report I wrote \cite{categorizationScenarios}.
+\end{itemize}
+
+\section*{Future plans}
+\begin{itemize}
+	\item Hopefully we soon get access to data of CETRAN (Singapore). First step would be to extract events from the data.
+	\item I want to finalize our definition of events and scenarios. This enables us to explain the notion of completeness on different levels (i.e. completeness of type of events/scenarios and completeness regarding the variability of a specific event/scenario). We (Jan-Pieter and I) want to write a paper about this. I want to make a start on this (have scope and structure clear).
+	\item I am working on a small example scenario where I want to show the steps from extracting events, parameterize them and be able to `replay' the scenario. I want to finish this soon.
+\end{itemize}
+
+\section*{Questions}
+\begin{itemize}
+	\item What would be a good formal description of an event? Do we really need a formal definition (I think yes)? An event can be: a lane change, braking, accelerating, loss of WiFi, etc.
+\end{itemize}
 
 \bibliographystyle{ieeetr}
 \bibliography{../progress_reports_bib}
