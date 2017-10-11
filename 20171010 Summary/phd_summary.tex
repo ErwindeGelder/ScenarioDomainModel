@@ -54,28 +54,28 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 
 \section*{Summary of PhD research topic}
 
-In the recent years, much research is conducted towards the Automated Driving Systems (ADSs) and Automated Vehicles (AVs). It is generally accepted that testing of ADSs and AVs will become more and more important and complex. In order to investigate how the to-be-assessed system would perform in real-life traffic, real-life driving data can be used. This work focusses on the methodology for the assessment of ADSs and AVs using real-life driving data.
+In the recent years, much research is conducted towards automated vehicles. It is generally accepted that testing of automated vehicles will become more and more important and complex. In order to investigate how the automated vehicle would perform in real-life traffic, real-life driving data can be used. This work focusses on the methodology for the assessment of automated vehicles using real-life driving data.
 
-Figure \ref{fig:scheme} presents a schematic overview of the process from going to real-life driving data towards the assessment of an ADS or an AV. The starting point of the research is preprocessed data, i.e. the output of the second block in Figure \ref{fig:scheme}. The data preprocessing involves for example the fusion of different sensors and the tracking of surrounding object. The goal of the research is to provide the methodology for the generation of the test cases using the preprocessed data, presented by the green blocks in Figure \ref{fig:scheme}. This would enable simulations for assessing and evaluating ADSs and AVs. Even though the simulation and evaluation (presented by the red blocks in Figure \ref{fig:scheme}) are essential for the assessment of ADSs and AVs, it is not the focus of the research.
+Figure \ref{fig:scheme} presents a schematic overview of the process from going to real-life driving data towards the assessment of an automated vehicle. The starting point of the research is preprocessed data, i.e. the output of the second block in Figure \ref{fig:scheme}. The data preprocessing contains the transformation of the sensor output to a reconstruction of the world (i.e. a World Model), including the surrounding traffic objects. The goal of the research is to provide the methodology for the generation of the test cases using the preprocessed data, presented by the green blocks in Figure \ref{fig:scheme}. This would enable simulations for assessing and evaluating automated vehicles. The simulation and evaluation (presented by the red blocks in Figure \ref{fig:scheme}) are not the focus of the research, as it is expected that these tasks are mostly performed by developers of automated vehicles (e.g. OEMs).
 
 \begin{figure}[b]
 	\begin{center}
 		\includegraphics[width=\linewidth]{streetwise_pipeline.pdf}
-		\caption{Schematic overview from the process of real-life data to the assessment of an Automated Driving System or an Autonomous Vehicle.}
+		\caption{Schematic overview of the process of the assessment of an automated vehicle using real-life data.}
 		\label{fig:scheme}
 	\end{center}
 \end{figure}
 
 Roughly five different topics will be addressed in the research:
 \begin{enumerate}
-	\item Events are actions by a single actor (e.g. a car). The first topic focusses on the detection of the events. A proper definition of `event' is required for this topic.
-	\item The next topic is about defining and detecting scenarios. Scenario are to be `build' from events. 
-	\item Parametrizing events is essential for enabling the generation of test cases. It needs to be investigated how the events can be parametrized such that probability density functions could be estimated that describes the underlying distribution.
-	\item The fourth topic is about the generation of test cases. The estimated probability density functions could be used for this, but it is important to take into account that specific parameters of different events within a scenario might be correlated.
-	\item The fifth topic is about the notion of completeness. In order to draw conclusions on how the to-be-assessed ADSs or AVs would perform in real-life traffic, it is necessary to know how representative the real-life driving dataset is. Therefore it is valuable to know how complete the data set is, i.e. how many of the possible events/scenarios are recorded? Is that enough, or is more data required? How much more data?
+	\item Events are actions by a single actor (e.g. a car). The first topic focusses on the detection of the events. An adequate definition of \emph{event} is required for this topic.
+	\item The next topic is about defining and detecting scenarios. Scenarios are to be built from events. This topic addresses the ontology regarding a \emph{scenario}.
+	\item Parametrizing events is essential for enabling the generation of test cases. It needs to be investigated how the events can be parametrized such that the events can be reconstructed using the parameters while enabling the estimation of probability density functions that describe the underlying distribution of the parameters.
+	\item The fourth topic involves the generation of test cases. The estimated probability density functions of the event parameters could be used for this, but it is important to take into account that specific parameters of different events within a scenario might be correlated.
+	\item The fifth topic deals with the notion of completeness. In order to draw conclusions on how the automated vehicle would perform in real-life traffic, it is necessary to know how representative the real-life driving dataset is. Therefore it is valuable to quantify how complete the dataset is. Is more data required? How much more data?
 \end{enumerate}
 
-In summary, the PhD research will focus on the methodology for the generation of real-life test cases for the assessment ADSs and AVs using recorded driving data. This includes the definition and detection of events and scenarios. The events and scenarios need to be parametrized to enable the generation of new test cases. An important aspect of the research is to provide quantitative measures for the completeness of the data, the collected events, the collected scenarios and the generated test cases.
+In summary, the PhD research will focus on the methodology for the generation of real-life test cases for the assessment of automated vehicles using recorded driving data. This includes the ontology regarding and detection of events and scenarios. The events and scenarios need to be parametrized to enable the generation of new test cases. An important aspect of the research is to provide quantitative measures for the completeness of the data, the collected events, the collected scenarios and the generated test cases.
 
 %\bibliographystyle{ieeetr}
 %\bibliography{../progress_reports_bib}
