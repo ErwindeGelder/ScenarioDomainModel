@@ -1,0 +1,98 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+\usepackage{graphicx} % for pdf, bitmapped graphics files
+\usepackage{epstopdf}
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{backgrounds}
+\usepackage{multirow}
+\usepackage[keeplastbox]{flushend}
+
+% Table stuff
+\usepackage{booktabs}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false}
+
+%Images path 
+\graphicspath{ {Pictures/} }
+
+
+\title{\LARGE \bf
+Assessment of Automated Driving Systems Using Real-Life Scenarios
+%Real-world scenario based assessment method for autonomous driving functions
+}
+
+
+\author{Erwin de Gelder$^{1}$, \thanks{$^{1}$TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands, \newline {\tt\small erwin.degelder@tno.nl}, \newline {\tt\small jan-pieter.paardekooper@tno.nl}}%
+Jan-Pieter Paardekooper$^{1}$, Jeroen Ploeg$^{1}$, Hala Elrofai$^{1}$, Olaf Op den Camp$^{1}$, \\Arash Khabbaz Sabeni$^{1}$ and Bart De Schutter$^{2}$ \thanks{$^{2}$Delft University of Technology}%
+%\thanks{*This work was not supported by any organization}% <-this % stops a space
+%\thanks{$^{1}$Albert Author is with Faculty of Electrical Engineering, Mathematics and Computer Science,
+%        University of Twente, 7500 AE Enschede, The Netherlands
+%        {\tt\small albert.author@papercept.net}}%
+%\thanks{$^{2}$Bernard D. Researcheris with the Department of Electrical Engineering, Wright State University,
+%        Dayton, OH 45435, USA
+%        {\tt\small b.d.researcher@ieee.org}}%
+}
+
+%\renewcommand{\baselinestretch}{0.995}
+%\newcommand{\spacebeforecaption}{-1em}
+%\newcommand{\spaceaftercaption}{-2em}
+
+
+\begin{document}
+
+
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{sections/abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{sections/introduction}
+%\input{sections/conclusion}
+%\input{sections/acknowledgement}
+
+
+
+%\addtolength{\textheight}{-12cm}  % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%\bibliographystyle{ieeetr}
+%\bibliography{../bib}
+
+
+
+\end{document}
