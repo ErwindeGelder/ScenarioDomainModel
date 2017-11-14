@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1507015615166_agmyeromeamk7hj01q4gy8h2" project="15EE11F388758T36YQT824BR7X3E7TTF2DWX" project_last_home="file:/C:/Users/geldered/OneDrive%20-%20TNO/Documents/literatuur/">
+<map version="docear 1.1" project="15EE11F388758T36YQT824BR7X3E7TTF2DWX" project_last_home="file:/C:/Users/geldered/OneDrive%20-%20TNO/Documents/literatuur/" dcr_id="1507015615166_agmyeromeamk7hj01q4gy8h2">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="Events &amp; Scenarios" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1507097917689"><hook NAME="MapStyle">
@@ -340,6 +340,12 @@
 <attribute NAME="title" VALUE="An introduction to event-triggered and self-triggered control"/>
 <attribute NAME="authors" VALUE="W. P. M. H. Heemels and K. H. Johansson and P. Tabuada"/>
 </node>
+<node TEXT="In philosophy: &quot;The term event ordinarily implies change&quot;" ID="ID_58366766" CREATED="1510564529789" MODIFIED="1510564544339">
+<attribute NAME="key" VALUE="kim1993supervenience"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Supervenience and mind: Selected philosophical essays"/>
+<attribute NAME="authors" VALUE="Kim, Jaegwon"/>
+</node>
 </node>
 </node>
 <node TEXT="List of scenarios (to show that people use it for almost everything)" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_175737845" CREATED="1507099450463" MODIFIED="1507165056109" HGAP="-330" VSHIFT="80">
@@ -469,6 +475,24 @@
 <attribute NAME="authors" VALUE="J. E. Stellet and M. R. Zofka and J. Schumacher and T. Schamm and F. Niewels and J. M. Z&#xf6;llner"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C2E634F82B895F5EDE73B4AA6CD5782A8FFA595B9FB6ECDDED19193E598592">
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="AdaptIVe conference paper at IV2017" ID="ID_1057835923" CREATED="1510630510294" MODIFIED="1510630702971" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<attribute NAME="key" VALUE="deGelder2017assessment"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Assessment of Automated Driving Systems using real-life scenarios"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
+    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Review on different methods for effectiveness assessment of ADAS (P.E.A.R.S.)" ID="ID_1895491912" CREATED="1510633058460" MODIFIED="1510633103879" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
+<attribute NAME="key" VALUE="alvarez2017prospective"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Prospective Effectiveness Assessment of ADAS and Active Safety Systems via Virtual Simulation: A Review of the Current Practices"/>
+<attribute NAME="authors" VALUE="Alvarez, Stephanie and Page, Yves and Sander, Ulrich and Fahrenkrog, Felix and Helmer, Thomas and Jung, Olaf and Hermitte, Thierry and D{\&quot;u}ering, Michael and D{\&quot;o}ering, Sebastian and Op den Camp, Olaf"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0F25C26F9AEAF3AB8217DEB6C0928BA380CB54E6503665B6D7652A889B9">
+    <pdf_title>Alvarez 1</pdf_title>
 </pdf_annotation>
 </node>
 </node>
