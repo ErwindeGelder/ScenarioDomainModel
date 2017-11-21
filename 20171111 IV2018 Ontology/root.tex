@@ -2,14 +2,12 @@
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 %        1         2         3         4         5         6         7         8
 
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+\documentclass[letterpaper, 10 pt, conference]{IEEEtran}  % Comment this line out if you need a4paper
 
 %\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
 
 \IEEEoverridecommandlockouts                              % This command is only needed if 
                                                           % you want to use the \thanks command
-
-\overrideIEEEmargins                                      % Needed to meet printer requirements.
 
 % See the \addtolength command later in the file to balance the column lengths
 % on the last page of the document
@@ -29,22 +27,25 @@
 \usetikzlibrary{backgrounds}
 \usepackage{multirow}
 \usepackage[keeplastbox]{flushend}
+\usepackage[caption=false]{subfig}
+\usepackage{cite}  % Make sure that citation appear as [1]-[3] instead of [1], [2], [3]
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}  % Prevent warning, pgf running in backwards compatibility mode anyway
 
 % Table stuff
-\usepackage{booktabs}
-\setlength{\heavyrulewidth}{0.1em}
-\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+%\usepackage{booktabs}
+%\setlength{\heavyrulewidth}{0.1em}
+%\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
-\pgfplotsset{compat=newest} 
-\pgfplotsset{plot coordinates/math parser=false}
+%\pgfplotsset{compat=newest} 
+%\pgfplotsset{plot coordinates/math parser=false}
 
 %Images path 
-\graphicspath{ {Pictures/} }
+\graphicspath{ {figures/} }
 
 
 \title{\LARGE \bf
-Assessment of Automated Driving Systems Using Real-Life Scenarios
-%Real-world scenario based assessment method for autonomous driving functions
+	On ontology of real-life scenario for automotive applications
 }
 
 
@@ -63,6 +64,9 @@ Jan-Pieter Paardekooper$^{1}$, Jeroen Ploeg$^{1}$, Hala Elrofai$^{1}$, Olaf Op d
 %\newcommand{\spacebeforecaption}{-1em}
 %\newcommand{\spaceaftercaption}{-2em}
 
+\newlength\figurewidth
+\newlength\figureheight
+
 
 \begin{document}
 
@@ -74,10 +78,13 @@ Jan-Pieter Paardekooper$^{1}$, Jeroen Ploeg$^{1}$, Hala Elrofai$^{1}$, Olaf Op d
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{sections/abstract}
+\input{sections/abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\input{sections/introduction}
+\input{sections/introduction}
+\input{sections/ontology}
+\input{sections/example}
+%\input{sections/discussion}
 %\input{sections/conclusion}
 %\input{sections/acknowledgement}
 
@@ -90,8 +97,8 @@ Jan-Pieter Paardekooper$^{1}$, Jeroen Ploeg$^{1}$, Hala Elrofai$^{1}$, Olaf Op d
                                   % so it should come on the page before the last. Make
                                   % sure that you do not shorten the textheight too much.
 
-%\bibliographystyle{ieeetr}
-%\bibliography{../bib}
+\bibliographystyle{ieeetran}
+\bibliography{../bib}
 
 
 
