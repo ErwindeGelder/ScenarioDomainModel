@@ -56,9 +56,20 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 
 In recent years, much research has been conducted towards automated vehicles. It is generally accepted that testing of automated vehicles will become more and more important and complex. In order to investigate how an automated vehicle would perform in real-life traffic, real-life driving data can be used. This work focusses on developing a methodology for the assessment of automated vehicles using real-life driving data.
 
-Figure \ref{fig:scheme} presents a schematic overview of the process from going to real-life driving data towards the assessment of an automated vehicle. The starting point of the research is preprocessed data, i.e.\ the output of the second block in Figure \ref{fig:scheme}. The data preprocessing step includes the transformation of the sensor outputs to a reconstruction of the world (i.e.\ a World Model), including the surrounding traffic objects. The primary goal of the research is to develop a methodology for the generation of the test cases using the preprocessed data, presented by the green blocks in Figure \ref{fig:scheme}. This would enable simulations, hardware-in-the-loop tests and real-life tests for assessing and evaluating automated vehicles. The simulation and evaluation (presented by the red blocks in Figure \ref{fig:scheme}) are not the focus of the research, as it is expected that these tasks are mostly performed by developers of automated vehicles (e.g.\ OEMs).
+Figure \ref{fig:scheme} presents a schematic overview of the process of the assessment of an automated vehicle using real-life driving data. The starting point of the research is preprocessed data, i.e.\ the output of the second block in Figure \ref{fig:scheme}. The data preprocessing step includes the transformation of the sensor outputs into a reconstruction of the world, including the surrounding traffic objects. The primary goal of the research is to develop a methodology for the generation of the test cases using the preprocessed data, presented by the green blocks in Figure \ref{fig:scheme}. This will enable simulations, hardware-in-the-loop tests and real-life tests for assessing and evaluating automated vehicles. The simulation and evaluation (presented by the red blocks in Figure \ref{fig:scheme}) are not the focus of the research, as it is expected that these tasks are mostly performed by developers of automated vehicles (e.g.\ OEMs).
 
-\begin{figure}[b]
+Five different topics will be addressed in the research:
+\begin{enumerate}
+	\item \emph{Event detection:}\,\,The first topic focusses on the detection of the events. The research, including the detection of events, require an adequate definition of \emph{event}.
+	\item \emph{Parametrization:}\,\,Parametrizing events is essential for enabling the generation of test cases. It needs to be investigated how the events can be parametrized such that the events can be reconstructed using the parameters while enabling the estimation of probability density functions that describe the underlying distribution of the parameters.
+	\item \emph{Scenario mining:}\,\,The next topic involves defining and detecting scenarios. Scenarios are built using events. Furthermore, the scenarios describe the scenery, e.g.\ road layout and weather conditions. This topic addresses the ontology regarding a \emph{scenario} and the scenario mining.
+	\item \emph{Test case generation:}\,\,The estimated probability density functions of the event parameters could be used for the generation of test cases. It is important that the generated test cases are realistic and that they resemble the variation found in real-life traffic.
+	\item \emph{Completeness:}\,\,In order to draw conclusions on how the automated vehicle would perform in real-life traffic, it is necessary to know how representative the real-life driving dataset is. Therefore it is important to quantify how complete the dataset is. Is more data required? How much more data?
+\end{enumerate}
+
+In addition, several case studies, each involving one or more of these five topics, will be conducted.
+
+\begin{figure}[h!]
 	\begin{center}
 		\tikzstyle{block}=[node distance=5em, text width=4.3em, minimum height=7em, align=center, rounded corners=8pt, font=\small]
 		\tikzstyle{my brace}=[decorate, decoration={brace, amplitude=10pt}]
@@ -71,7 +82,7 @@ Figure \ref{fig:scheme} presents a schematic overview of the process from going 
 			\node[block, fill=green!30, right of=dp](ed){\includegraphics[width=4.2em]{event_detection.png} \\ Event detection};
 			\node[block, fill=green!30, right of=ed](p){\includegraphics[width=3em]{parametrisation.png} \\ Parame-trization};
 			\node[block, fill=green!30, right of=p](s){\includegraphics[width=3em]{scenarios.png} \\ Scenario mining};
-			\node[block, fill=green!30, right of=s](tc){\includegraphics[width=4.2em]{test_cases.png} \\ Test-case genera-tion};
+			\node[block, fill=green!30, right of=s](tc){\includegraphics[width=4.2em]{test_cases.png} \\ Test case genera-tion};
 			\node[block, fill=red!30, right of=tc](sim){\includegraphics[width=4em]{simulation.png} \\ Simulation};
 			\node[block, fill=red!30, right of=sim](eval){\includegraphics[width=3em]{evaluation.png} \\ Evaluation};
 			
@@ -87,21 +98,5 @@ Figure \ref{fig:scheme} presents a schematic overview of the process from going 
 		\label{fig:scheme}
 	\end{center}
 \end{figure}
-
-Roughly five different topics will be addressed in the research:
-\begin{enumerate}
-	\item \emph{Event detection:}\,\,The first topic focusses on the detection of the events, i.e., actions by single actors (e.g.\ a car). An adequate definition of \emph{event} is required for this topic.
-	\item \emph{Parametrization:}\,\,Parametrizing events is essential for enabling the generation of test cases. It needs to be investigated how the events can be parametrized such that the events can be reconstructed using the parameters while enabling the estimation of probability density functions that describe the underlying distribution of the parameters.
-	\item \emph{Scenario mining:}\,\,The next topic is about defining and detecting scenarios. Scenarios are to be built from events. Furthermore, the scenarios describe the scenery, e.g.\ road layout and weather conditions. This topic addresses the ontology regarding a \emph{scenario}.
-	\item \emph{Test-case generation:}\,\,The fourth topic involves the generation of test cases. The estimated probability density functions of the event parameters could be used for this, but it is important to take into account that specific parameters of different events within a scenario might be correlated.
-	\item \emph{Completeness:}\,\,The fifth topic deals with the notion of completeness. In order to draw conclusions on how the automated vehicle would perform in real-life traffic, it is necessary to know how representative the real-life driving dataset is. Therefore it is valuable to quantify how complete the dataset is. Is more data required? How much more data?
-\end{enumerate}
-
-In addition, a case study involving these five topics will be conducted.
-
-%In summary, the PhD research will focus on developing a methodology for the generation of real-life test cases for the assessment of automated vehicles using recorded driving data. This includes the ontology regarding and detection of events and scenarios. The events and scenarios need to be parametrized to enable the generation of new test cases. An important aspect of the research is to provide quantitative measures for the completeness of the data, the collected events, the collected scenarios and the generated test cases.
-
-%\bibliographystyle{ieeetr}
-%\bibliography{../progress_reports_bib}
 
 \end{document}
