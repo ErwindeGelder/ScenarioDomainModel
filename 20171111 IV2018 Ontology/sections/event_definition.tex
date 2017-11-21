@@ -22,7 +22,7 @@ Before providing the definition of an event, the following items need to be take
 	
 	% Event should mark transition of a state from one set to another - mention relation with hybrid control
 	\item An event marks the transition of a state.\\
-	During a traffic scenario, the so-called state is continuously evolving. For example, when a vehicle moves from A to B, the position changes. For the assessment methodology, it is required to parametrize the way the state evolves over time [REF?]. Therefore, specific models\footnote{\label{note:model}In this context, a model describes the dynamics of the state. Let the state be denoted by $x$, then the state could be described by a parametrized function, i.e. $x = f_{\theta}(t)$ with parameters $\theta$ and time $t$. Another possibility is that the a parametrized differential equation is used, i.e. $\dot{x} = f_{\theta}(x, t)$.} will be employed to describe this. These models, each with a fixed number of parameters, will only be valid for a certain time interval. Therefore, events should mark the transition from one model that is describing the state to another model describing the state. In some way, this is analogous to the way event is described in hybrid control \cite{deschutter2003hybrid}. Here, an event describes the transition from one mode of operation to another mode of operation, where the behaviour of the system in each mode can be described by a system of difference or differential equations. In our application, i.e. events in traffic scenarios, ``mode of operation'' is described by a certain model with parameters assigned to it.
+	During a traffic scenario, the so-called state is continuously evolving. For example, when a vehicle moves from A to B, the position changes. For the assessment methodology, it is required to parametrize the way the state evolves over time [REF?]. Therefore, specific models will be employed to describe this. These models, each with a fixed number of parameters, will only be valid for a certain time interval. Therefore, events should mark the transition from one model that is describing the state to another model describing the state. In some way, this is analogous to the way event is described in hybrid control \cite{deschutter2003hybrid}. Here, an event describes the transition from one mode of operation to another mode of operation, where the behaviour of the system in each mode can be described by a system of difference or differential equations. In our application, i.e. events in traffic scenarios, ``mode of operation'' is described by a certain model with parameters assigned to it.
 	
 	% also semantically different
 	\item An event should mark the start and end of a time interval that can be qualitatively described.\\
@@ -30,30 +30,4 @@ Before providing the definition of an event, the following items need to be take
 \end{itemize}
 
 % Give definition
-An event is defined as follows: \emph{An event marks the time instant at which a transition of a state occurs, such that before and after an event, the state is described by a different model\footnote{See footnote \ref{note:model}}. Furthermore, it marks the start and end of a time interval that can be qualitatively described.}
-
-% Name examples
-An example of an event is a start of braking of a vehicle. In this case, the state refers to the longitudinal acceleration. At the event, the longitudinal braking changes from e.g. 0 to a negative acceleration. The next event is when the longitudinal acceleration changes from negative to e.g. 0. This marks the end of the braking action of the vehicle.
-
-Another example is a start of a lane change. Here, the state refers to the lateral velocity (lateral direction indicates the direction perpendicular to the road, i.e. according to the road coordinate system \cite{zofka2015datadrivetrafficscenarios}). At this event, which is the start of a lane change, the lateral velocity changes from 0 to e.g. positive. Another event occurs at the end of the lane-change. Here, the lateral velocity changes from e.g. positive to 0. For other examples, see Figure \ref{fig:lon and lat events}.
-
-\begin{figure}[b]
-	\begin{center}
-		\subfloat{\includegraphics[width=.5\linewidth]{speed.png}}
-		\subfloat{\includegraphics[width=.5\linewidth]{lateral.png}}
-		\caption{Example of different events. Each vertical black line marks an event. The time intervals between two events are described by semantics.}
-		\label{fig:lon and lat events}
-	\end{center}
-\end{figure}
-
-% Events in parallel + reasoning
-Different events happen in parallel. Figure \ref{fig:lon and lat events} shows two `channels'. When applicable, more `channels' can be added, see for example Figure \ref{fig:events}. 
-%This has the advantage that an event is only recorded when applicable. For example, the WiFi quality does not necessarily have to be stored for a longitudinal event. 
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=.8\linewidth]{events.png}
-		\caption{Example of different events. Each vertical black line marks an event.}
-		\label{fig:events}
-	\end{center}
-\end{figure}
+An event is defined as follows: \emph{An event marks the time instant at which a transition of a state occurs, such that before and after an event, the state is described by a different model. Furthermore, it marks the start and end of a time interval that can be qualitatively described.}
