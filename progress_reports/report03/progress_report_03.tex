@@ -1,0 +1,95 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage[noadjust]{cite}                     %% citations; noadjust removes leading spaces
+%\usepackage[round]{natbib}                     %% Author-year citations (remove package cite)
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{3}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{18 December 2017}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-life driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item TNO is processing the contract between TU Delft and TNO. To be continued.
+	\item Main purpose of the meeting was to discuss the definitions of scenario and event.
+	\item Regarding the definition of scenario: the fact that it is possible to describe the scenario (which is quantitative) can be described in qualitative manners should not be part of the definition. It should be a result of the definition.
+	\item For the definition of event, it was stated that the time interval between two consecutive events could be semantically described. This should not be part of the definition, but a result from the definition.
+	\item There was some debate about the word `model'. It is stated that $x=f_\theta(t)$ ($x$ being the state, $\theta$ begin a parameter vector) is a model, though is would actually be a solution of, e.g., the `model' $\dot{x}=f_\theta(x, t)$.
+	\item We agreed that it would be good to write a conference paper regarding the ontology of real-life scenario for automotive application. Paper will be submitted to IV2018, deadline 15th of January, 2018.
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Questions}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\bibliographystyle{ieeetr}
+\bibliography{../../bib}
+
+\end{document}
