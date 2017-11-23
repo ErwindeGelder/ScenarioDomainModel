@@ -21,28 +21,27 @@ Ulbrich et al.\ \cite{ulbrich2015} define a scenario in the context of automated
 Another definition of a scenario in the context of automated driving is given by Elrofai et al.\ \cite{elrofai2016scenario}. They define scenario as ``the combination of actions and manoeuvres of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and manoeuvres of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
 
 % "Requirements"
-Based on the aforementioned references, the following is concluded about a scenario:
-\begin{itemize}
-	% Order of seconds
-	\item A scenario corresponds to a time interval. \\
-	Van Notten et al.\ \cite{vannotten2003updated} call such a scenario a chain scenario (``like movies''), as opposed to a snapshot scenario, i.e. a scenario that describes the state at a time instant (``like photos''). The definitions mentioned above mention that a scenario corresponds to a time interval \cite{go2004blind, geyer2014, ulbrich2015, elrofai2016scenario}. The duration of a scenario is in the order of seconds, as explicitly mentioned by Elrofai et al.\ \cite{elrofai2016scenario}. Though the duration is not mentioned by Ulbrich et al.\ \cite{ulbrich2015}, the presented example is in the order of seconds. Furthermore, other scenarios regarding (automated) driving are also in the order of seconds, e.g., see \cite{gietelink2006development, zofka2015datadrivetrafficscenarios, roesener2017comprehensive, karaduman2013interactivebehavior, hulshof2013autonomous, englund2016grand}.
+Based on the aforementioned references, the following is concluded about a scenario.
+
+% Order of seconds
+\subsubsection{A scenario corresponds to a time interval}
+Van Notten et al.\ \cite{vannotten2003updated} call such a scenario a chain scenario (``like movies''), as opposed to a snapshot scenario, i.e. a scenario that describes the state at a time instant (``like photos''). The definitions mentioned above mention that a scenario corresponds to a time interval \cite{go2004blind, geyer2014, ulbrich2015, elrofai2016scenario}. The duration of a scenario is in the order of seconds, as explicitly mentioned by Elrofai et al.\ \cite{elrofai2016scenario}. Though the duration is not mentioned by Ulbrich et al.\ \cite{ulbrich2015}, the presented example is in the order of seconds. Furthermore, other scenarios regarding (automated) driving are also in the order of seconds, e.g., see \cite{gietelink2006development, zofka2015datadrivetrafficscenarios, roesener2017comprehensive, karaduman2013interactivebehavior, hulshof2013autonomous, englund2016grand}.
+
+% Scenarios consists of one or several events
+\subsubsection{A scenario consists of one or several events \cite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962, englund2016grand, schoemaker1993multiple, cuppens2002alert}}
+As already stated by Bishop et al.\ \cite{bishop2007scentechniques}, it can be helpful to develop scenarios using events. Thus, a scenario could be defined as a particular sequence of events.  Kahn writes that ``a scenario results from an attempt to describe in more or less detail some hypothetical sequence of events'' \cite{kahn1962}. Geyer et al.\ \cite{geyer2014} and Ulbrich et al.\ \cite{ulbrich2015} use the term event (``course of events'' and ``events \& actions'', respectively), although they do not provide a definition of the term \emph{event}. In the next section, we will elaborate on the notion of \emph{event}.
+
+% Semantically described
+\subsubsection{Real-life traffic scenarios are quantitative scenarios}
+Regarding the nature of the data, a scenario can be either qualitative or quantitative \cite{vannotten2003updated}. Real-life traffic scenarios are quantitative scenarios, such that it is, e.g., suitable for simulation purposes. A scenario, however, can be qualitatively described, such that it is readable and understandable for human experts. This has become known as a Story-and-Simulation approach \cite{alcamo2001scenarios}. Note that several quantitative scenarios might have the same qualitative description, thus a qualitative description of a scenario does not uniquely define a quantitative scenario. A qualitative description can be regarded as an abstraction of the quantitative scenario.
 	
-	% Events
-	\item A scenario consists of one or several events \cite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962, englund2016grand, schoemaker1993multiple, cuppens2002alert}. \\
-	As already stated by Bishop et al.\ \cite{bishop2007scentechniques}, it can be helpful to develop scenarios using events. Thus, a scenario could be defined as a particular sequence of events.  Kahn writes that ``a scenario results from an attempt to describe in more or less detail some hypothetical sequence of events'' \cite{kahn1962}. Geyer et al.\ \cite{geyer2014} and Ulbrich et al.\ \cite{ulbrich2015} use the term event (``course of events'' and ``events \& actions'', respectively), although they do not provide a definition of the term \emph{event}. In the next section, we will elaborate on the notion of \emph{event}.
+% Some relevance between events
+\subsubsection{The time interval of a scenario contains all relevant events}
+According to Geyer et al.\ \cite{geyer2014}, ``the end of a scenario is defined by the first irrelevant situation with respect to the scenario''. In a similar manner, we require that the time interval of a scenario should contain all relevant events. For practical reasons, the term `relevant' must be detailed. First of all, it is important to note that `relevant' is subjective. Therefore, an event is considered to be relevant for the scenario, if it is relevant for the ego vehicle. Next to that, an event is regarded as irrelevant, if it is independent of the relevant events.
 	
-	% Semantically described
-	\item Real-life traffic scenarios are quantitative scenarios. \\
-	Regarding the nature of the data, a scenario can be either qualitative or quantitative \cite{vannotten2003updated}. Real-life traffic scenarios are quantitative scenarios, such that it is, e.g., suitable for simulation purposes. A scenario, however, can be qualitatively described, such that it is readable and understandable for human experts. This has become known as a Story-and-Simulation approach \cite{alcamo2001scenarios}. Note that several quantitative scenarios might have the same qualitative description, thus a qualitative description of a scenario does not uniquely define a quantitative scenario. A qualitative description can be regarded as an abstraction of the quantitative scenario.
-	
-	% Some relevance between events	
-	\item The time interval of a scenario contains all relevant events. \\
-	According to Geyer et al.\ \cite{geyer2014}, ``the end of a scenario is defined by the first irrelevant situation with respect to the scenario''. In a similar manner, we require that the time interval of a scenario should contain all relevant events. For practical reasons, the term `relevant' must be detailed. First of all, it is important to note that `relevant' is subjective. Therefore, an event is considered to be relevant for the scenario, if it is relevant for the ego vehicle. Next to that, an event is regarded as irrelevant, if it is independent of the relevant events.
-	
-	% Description of static environment
-	\item A scenario includes the description of the static environment. \\
-	A scenario should include the description of the static environment, e.g., road layout and weather information. It is assumed that the static environment does not change during a scenario. Although this is not a general prerequisite of a scenario, the description of the static environment is often included when speaking about traffic scenarios \cite{geyer2014, ulbrich2015, elrofai2016scenario, hulshof2013autonomous, ebner2011identifying, schuldt2013effiziente}.
-\end{itemize}
+% Description of static environment
+\subsubsection{A scenario includes the description of the static environment}
+A scenario should include the description of the static environment, e.g., road layout and weather information. It is assumed that the static environment does not change during a scenario. Although this is not a general prerequisite of a scenario, the description of the static environment is often included when speaking about traffic scenarios \cite{geyer2014, ulbrich2015, elrofai2016scenario, hulshof2013autonomous, ebner2011identifying, schuldt2013effiziente}.
 
 % Definition
-A scenario is defined as follows: \emph{A scenario is a quantitative description of the activity of the ego vehicle, the dynamic environment of the ego vehicle and the static environment of the ego vehicle. From the perspective of the ego vehicle, it contains the relevant events. The scenario can be described by qualitative manners.}
+A scenario is defined as follows: \emph{A scenario is a quantitative description of the activity of the ego vehicle, the dynamic environment of the ego vehicle and the static environment of the ego vehicle. From the perspective of the ego vehicle, it contains the relevant events.}
