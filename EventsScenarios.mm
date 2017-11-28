@@ -1,7 +1,9 @@
-<map version="docear 1.1" project="15EE11F388758T36YQT824BR7X3E7TTF2DWX" project_last_home="file:/C:/Users/geldered/OneDrive%20-%20TNO/Documents/literatuur/" dcr_id="1507015615166_agmyeromeamk7hj01q4gy8h2">
+<map version="docear 1.1" dcr_id="1507015615166_agmyeromeamk7hj01q4gy8h2" project="15EE11F388758T36YQT824BR7X3E7TTF2DWX" project_last_home="file:/C:/Users/geldered/OneDrive%20-%20TNO/Documents/literatuur/">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
-<node TEXT="PhD" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1510634679730"><hook NAME="MapStyle">
+<node TEXT="PhD" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511405672366" COLOR="#0000ff" BACKGROUND_COLOR="#ccffff">
+<font BOLD="true" ITALIC="false"/>
+<hook NAME="MapStyle" zoom="1.003">
     <properties show_icon_for_attributes="true" show_note_icons="true"/>
 
 <map_styles>
@@ -51,7 +53,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="1"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="6"/>
 <node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1510633830538" HGAP="50" VSHIFT="-160">
 <edge COLOR="#ff0000"/>
 <node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1510634679727" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
@@ -75,7 +77,7 @@
     <pdf_title>How Much Data Are Enough? A Statistical Approach With Case Study on Longitudinal Driving Behavior</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Papers that address completeness issue" ID="ID_1149339259" CREATED="1510111962578" MODIFIED="1510192914852" HGAP="40">
+<node TEXT="Papers that address completeness issue" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1149339259" CREATED="1510111962578" MODIFIED="1511519222945" HGAP="40">
 <node TEXT="Geyer et al." ID="ID_614965474" CREATED="1510111977891" MODIFIED="1510634679721" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
@@ -86,11 +88,11 @@
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Stellet et al." ID="ID_589599656" CREATED="1510111997082" MODIFIED="1510634679718" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<node TEXT="Stellet et al." ID="ID_589599656" CREATED="1510111997082" MODIFIED="1511519224216" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
-<attribute NAME="authors" VALUE="J. E. Stellet and M. R. Zofka and J. Schumacher and T. Schamm and F. Niewels and J. M. Z&#xf6;llner"/>
+<attribute NAME="authors" VALUE="J. E. Stellet and M. R. Zofka and J. Schumacher and T. Schamm and F. Niewels and J. M. Z\&quot;{o}llner"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C2E634F82B895F5EDE73B4AA6CD5782A8FFA595B9FB6ECDDED19193E598592">
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
 </pdf_annotation>
@@ -106,9 +108,9 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1510634679571" HGAP="40" VSHIFT="10">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1510634679571" HGAP="40" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
-<node TEXT="Scenario Model Tree: categorize using tree based on infrastructure&#xa;For example: Highway -&gt; {entrance, exit, merging, etc.}" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1510634679712" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
+<node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1511432999123" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
 <attribute NAME="journal" VALUE="Intelligent Transportation Systems, IEEE Transactions on"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -119,7 +121,7 @@
 </pdf_annotation>
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="Ontology for test and use-case (also includes a scenario definition)&#xa;A traffic scenario is like a script of a movie scene." ID="ID_723136257" CREATED="1507090482013" MODIFIED="1510634679707" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="Geyer et al.: Ontology for test and use-case (also includes a scenario definition)" ID="ID_723136257" CREATED="1507090482013" MODIFIED="1511433008440" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -129,7 +131,7 @@
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Defining terms scene, situation and scenario. Kind of follow up on&#xa;previous one (the one from Geyer et al.)" ID="ID_233985176" CREATED="1507599979556" MODIFIED="1510634679702" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<node TEXT="Ulbrich et al: defining terms scene, situation and scenario." ID="ID_233985176" CREATED="1507599979556" MODIFIED="1511433020355" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
@@ -147,16 +149,16 @@
     <pdf_title>Simulation environment architecture development using the DoDAF</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Definition of Hala&apos;s AMAA paper" ID="ID_1062103920" CREATED="1509704190708" MODIFIED="1510634679694" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/039%20Scenario%20Identification%20for%20Validation%20of%20ADF%20-%20Hala%20Elrofai.pdf">
+<node TEXT="Definition of Hala&apos;s AMAA paper" ID="ID_1062103920" CREATED="1509704190708" MODIFIED="1511326649921" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/039%20Scenario%20Identification%20for%20Validation%20of%20ADF%20-%20Hala%20Elrofai.pdf">
 <attribute NAME="key" VALUE="elrofai2016scenario"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Scenario Identification for Validation of Automated Driving Functions"/>
-<attribute NAME="authors" VALUE="Elrofai, Hala and Worm, Dani{\&quot;e}l and den Camp, Olaf Op"/>
+<attribute NAME="authors" VALUE="Elrofai, Hala and Worm, Dani{\&quot;e}l and Op den Camp, Olaf"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="96D3AB2AF8ECCE378EB5AF272932F26714F2E46AD51FCAF17A9580DFE2D24B6">
     <pdf_title>Advanced Microsystems for Automotive Applications 2016</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="CommonRoad: 1) road network, 2) static and dynamic obstacles, 3) planning problem ego vehicle" ID="ID_1881248975" CREATED="1510633429764" MODIFIED="1510634679691" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/052%20CommonRoad.pdf">
+<node TEXT="CommonRoad: 1) road network, 2) static and dynamic obstacles, 3) planning problem ego" ID="ID_1881248975" CREATED="1510633429764" MODIFIED="1511409820783" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/052%20CommonRoad.pdf">
 <attribute NAME="key" VALUE="althoff2017CommonRoad"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="CommonRoad: Composable benchmarks for motion planning on roads"/>
@@ -165,10 +167,10 @@
     <pdf_title>CommonRoad: Composable Benchmarks for Motion Planning on Roads</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Scenarios in general (not per se related to automotive)" ID="ID_657869850" CREATED="1510118247632" MODIFIED="1510198188636">
-<node TEXT="It emphasizes the different views on scenarios from different fields." ID="ID_628194309" CREATED="1510118287811" MODIFIED="1510634679687" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/033%20Views%20of%20scenario-based%20system%20design.pdf">
+<node TEXT="Scenarios in general (not per se related to automotive)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_657869850" CREATED="1510118247632" MODIFIED="1511405450754">
+<node TEXT="It emphasizes the different views on scenarios from different fields." ID="ID_628194309" CREATED="1510118287811" MODIFIED="1511326649945" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/033%20Views%20of%20scenario-based%20system%20design.pdf">
 <attribute NAME="key" VALUE="go2004blind"/>
-<attribute NAME="journal" VALUE="interactions"/>
+<attribute NAME="journal" VALUE="Interactions"/>
 <attribute NAME="year" VALUE="2004"/>
 <attribute NAME="title" VALUE="The blind men and the elephant: Views of scenario-based system design"/>
 <attribute NAME="authors" VALUE="Go, Kentaro and Carroll, John M"/>
@@ -186,9 +188,9 @@
     <pdf_title>An updated scenario typology</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Techniques to come up with scenarios. One technique is using events." ID="ID_695479916" CREATED="1510193888346" MODIFIED="1510634679682" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/041%20Scenario%20techniques.pdf">
+<node TEXT="Techniques to come up with scenarios. One technique is using events." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_695479916" CREATED="1510193888346" MODIFIED="1511405500811" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/041%20Scenario%20techniques.pdf">
 <attribute NAME="key" VALUE="bishop2007scentechniques"/>
-<attribute NAME="journal" VALUE="foresight"/>
+<attribute NAME="journal" VALUE="Foresight"/>
 <attribute NAME="year" VALUE="2007"/>
 <attribute NAME="title" VALUE="The current state of scenario development: an overview of techniques"/>
 <attribute NAME="authors" VALUE="Bishop, Peter and Hines, Andy and Collins, Terry"/>
@@ -215,11 +217,14 @@
 <attribute NAME="authors" VALUE="Saltelli, Andrea and Ratto, Marco and Andres, Terry and Campolongo, Francesca and Cariboni, Jessica and Gatelli, Debora and Saisana, Michaela and Tarantola, Stefano"/>
 </node>
 </node>
-<node TEXT="In this book, a tool is discussed that adopts qualitative and quantitative scenarios" ID="ID_622954737" CREATED="1510280283487" MODIFIED="1510634679677">
+<node TEXT="In this book, a tool is discussed that adopts qualitative and quantitative scenarios" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_622954737" CREATED="1510280283487" MODIFIED="1511405506981" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/055%20Scenarios%20as%20tools%20for%20international%20environmental%20assessment.pdf">
 <attribute NAME="key" VALUE="alcamo2001scenarios"/>
 <attribute NAME="year" VALUE="2001"/>
 <attribute NAME="title" VALUE="Scenarios as tools for international environmental assessment"/>
 <attribute NAME="authors" VALUE="Alcamo, Joseph"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6FCECC94259A051514D86CC4D9EA83CDF1AC1FF3364A8BCF44919BF2CF135">
+    <pdf_title>Scenarios as tools for international environmental assessments</pdf_title>
+</pdf_annotation>
 <node TEXT="Example" ID="ID_1422624806" CREATED="1510280633670" MODIFIED="1510634679674" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/045%20Visions%20for%20a%20sustainable%20Europe.pdf">
 <attribute NAME="key" VALUE="rotmans2000visions"/>
 <attribute NAME="journal" VALUE="Futures"/>
@@ -232,10 +237,10 @@
 </node>
 </node>
 </node>
-<node TEXT="Automotive scenarios where &apos;static environment&apos; is mentioned" ID="ID_1521500661" CREATED="1510303353449" MODIFIED="1510303373762">
-<node TEXT="Schuldt et al." ID="ID_190252876" CREATED="1510303376465" MODIFIED="1510634679671" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/046%20Effiziente%20systematische%20Testgenerierung%20f&#xfc;r%20Fahrerassistenzsysteme%20in%20virtuellen%20Umgebungen.pdf">
+<node TEXT="Automotive scenarios where &apos;static environment&apos; is mentioned" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1521500661" CREATED="1510303353449" MODIFIED="1511405456105">
+<node TEXT="Schuldt et al." ID="ID_190252876" CREATED="1510303376465" MODIFIED="1511326649958" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/046%20Effiziente%20systematische%20Testgenerierung%20f&#xfc;r%20Fahrerassistenzsysteme%20in%20virtuellen%20Umgebungen.pdf">
 <attribute NAME="key" VALUE="schuldt2013effiziente"/>
-<attribute NAME="journal" VALUE="Automatisierungssysteme, Assistenzsysteme und Eingebettete Systeme F{\&quot;u}r Transportmittel"/>
+<attribute NAME="journal" VALUE="Automatisierungssysteme, Assistenzsysteme und Eingebettete Systeme f{\&quot;u}r Transportmittel"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Effiziente systematische Testgenerierung f{\&quot;u}r Fahrerassistenzsysteme in virtuellen Umgebungen"/>
 <attribute NAME="authors" VALUE="Schuldt, Fabian and Saust, Falko and Lichte, Bernd and Maurer, Markus and Scholz, S"/>
@@ -263,7 +268,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Papers that mention that scenarios (might) exist of events" ID="ID_216823371" CREATED="1510198203643" MODIFIED="1510202397037">
+<node TEXT="Papers that mention that scenarios (might) exist of events" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_216823371" CREATED="1510198203643" MODIFIED="1511405456115">
 <node TEXT="Van Notten et al." ID="ID_717680905" CREATED="1510198235612" MODIFIED="1510634679663" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/040%20Updated%20Scenario%20Topology.pdf">
 <attribute NAME="key" VALUE="vannotten2003updated"/>
 <attribute NAME="journal" VALUE="Futures"/>
@@ -283,12 +288,15 @@
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Geyer et al. (course of events)" ID="ID_561266417" CREATED="1510198447652" MODIFIED="1510634679657" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/../../gitlab/PhD/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="Geyer et al. (course of events)" ID="ID_561266417" CREATED="1510198447652" MODIFIED="1511407737876" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance"/>
 <attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
+    <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
+</pdf_annotation>
 </node>
 <node TEXT="Schoemaker (combination of events)" ID="ID_1168246157" CREATED="1510201747123" MODIFIED="1510634679653" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/042%20Multiple%20scenario%20development.pdf">
 <attribute NAME="key" VALUE="schoemaker1993multiple"/>
@@ -309,9 +317,9 @@
     <pdf_title>Alert Correlation in a Cooperative Intrusion Detection Framework</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Go and Carroll (sequence of actions and events)" ID="ID_1685181985" CREATED="1510205317556" MODIFIED="1510634679648" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/033%20Views%20of%20scenario-based%20system%20design.pdf">
+<node TEXT="Go and Carroll (sequence of actions and events)" ID="ID_1685181985" CREATED="1510205317556" MODIFIED="1511326649939" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/033%20Views%20of%20scenario-based%20system%20design.pdf">
 <attribute NAME="key" VALUE="go2004blind"/>
-<attribute NAME="journal" VALUE="interactions"/>
+<attribute NAME="journal" VALUE="Interactions"/>
 <attribute NAME="year" VALUE="2004"/>
 <attribute NAME="title" VALUE="The blind men and the elephant: Views of scenario-based system design"/>
 <attribute NAME="authors" VALUE="Go, Kentaro and Carroll, John M"/>
@@ -329,8 +337,17 @@
     <pdf_title>T G C d C 2016: B i C a v</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Back et al." ID="ID_309203620" CREATED="1511435956269" MODIFIED="1511435962502" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/060%20Model%20based%20scenario%20specification.pdf">
+<attribute NAME="key" VALUE="back2016modelbased"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Model based scenario specification for development and test of automated driving functions"/>
+<attribute NAME="authors" VALUE="J. Bach and S. Otten and E. Sax"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="566816BCDA2EC01963B5BB8EE11A1238E83D357E6B86B5BEA1338C08D58FFC">
+    <pdf_title>Model based scenario specification for development and test of automated driving functions</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="Events in hybrid control" ID="ID_8438282" CREATED="1508311936834" MODIFIED="1508311943219">
+</node>
+<node TEXT="Events in hybrid control" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_8438282" CREATED="1508311936834" MODIFIED="1511405456123">
 <node TEXT="When a continuous state hits a certain prescribed set" ID="ID_1948824813" CREATED="1508311946229" MODIFIED="1510634679641" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/034%20Hybrid%20control%20theory.pdf">
 <attribute NAME="key" VALUE="branicky1998hybridcontrol"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Automatic Control"/>
@@ -351,7 +368,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="More on events" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1510113158868">
+<node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
 <node TEXT="In probability: the outcome of an experiment. For example coin lands with &quot;tail&quot; up" ID="ID_431203968" CREATED="1508810134759" MODIFIED="1510634679636">
 <attribute NAME="key" VALUE="pfeiffer2013concepts"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -387,8 +404,8 @@
 <attribute NAME="authors" VALUE="Kim, Jaegwon"/>
 </node>
 </node>
-<node TEXT="List of scenarios (to show that people use it for almost everything)" LOCALIZED_STYLE_REF="styles.topic" ID="ID_175737845" CREATED="1507099450463" MODIFIED="1510633989321">
-<node TEXT="Gietelink et al." ID="ID_1325672689" CREATED="1510112584305" MODIFIED="1510634679599" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/028%20Development%20of%20advanced%20driver%20assistance%20systems%20with%20vehicle%20hardware%20in%20the%20loop%20simulations.pdf">
+<node TEXT="List of scenarios (to show that people use it for almost everything)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_175737845" CREATED="1507099450463" MODIFIED="1511405430207">
+<node TEXT="Gietelink et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1325672689" CREATED="1510112584305" MODIFIED="1511405469542" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/028%20Development%20of%20advanced%20driver%20assistance%20systems%20with%20vehicle%20hardware%20in%20the%20loop%20simulations.pdf">
 <attribute NAME="key" VALUE="gietelink2006development"/>
 <attribute NAME="journal" VALUE="Vehicle System Dynamics"/>
 <attribute NAME="year" VALUE="2006"/>
@@ -402,17 +419,17 @@
 <node TEXT="Collision" ID="ID_1299562162" CREATED="1510112659775" MODIFIED="1510633897573"/>
 <node TEXT="Safety-critical" ID="ID_1340270968" CREATED="1510112665711" MODIFIED="1510112669571"/>
 </node>
-<node TEXT="Zofka et al." ID="ID_892977111" CREATED="1510112683295" MODIFIED="1510634679596" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<node TEXT="Zofka et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_892977111" CREATED="1510112683295" MODIFIED="1511405469555" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Data-driven simulation and parametrization of traffic scenarios for the development of advanced driver assistance systems"/>
-<attribute NAME="authors" VALUE="M. R. Zofka and F. Kuhnt and R. Kohlhaas and C. Rist and T. Schamm and J. M. Z&#xf6;llner"/>
+<attribute NAME="authors" VALUE="M. R. Zofka and F. Kuhnt and R. Kohlhaas and C. Rist and T. Schamm and J. M. Z\&quot;{o}llner"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F91B4B237B607197EFC2BD5C7A836F87F289E47CFAF66BFE19F3A3F8DFFB694">
     <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 <node TEXT="Urban" ID="ID_1534002459" CREATED="1510112700133" MODIFIED="1510112702336"/>
 </node>
-<node TEXT="Roesener et al." ID="ID_1959714444" CREATED="1510112868187" MODIFIED="1510634679592" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/029%20Summary%20AdaptIVe%20ESV2017.pdf">
+<node TEXT="Roesener et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1959714444" CREATED="1510112868187" MODIFIED="1511405469529" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/029%20Summary%20AdaptIVe%20ESV2017.pdf">
 <attribute NAME="key" VALUE="roesener2017comprehensive"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="A Comprehensive Evaluation Approach for Highly Automated Driving"/>
@@ -429,11 +446,11 @@
 <node TEXT="Obstacle in the lane" ID="ID_1075716021" CREATED="1510112954057" MODIFIED="1510112960091"/>
 <node TEXT="Approaching traffic jam" ID="ID_653624569" CREATED="1510112960537" MODIFIED="1510112967850"/>
 </node>
-<node TEXT="Xu et al." ID="ID_1996382281" CREATED="1510371528992" MODIFIED="1510371531636">
+<node TEXT="Xu et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1996382281" CREATED="1510371528992" MODIFIED="1511405469515">
 <node TEXT="Cut-in" ID="ID_1796108771" CREATED="1510371534667" MODIFIED="1510371536645"/>
 <node TEXT="Braking" ID="ID_1147648617" CREATED="1510371620505" MODIFIED="1510371622124"/>
 </node>
-<node TEXT="Karaduman et al." ID="ID_48004566" CREATED="1510113361344" MODIFIED="1510634679589" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/001%20Interactive%20Risky%20behavior%20overtaking%20scenario%20using%20Joint%20Bayesian%20Network.pdf">
+<node TEXT="Karaduman et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_48004566" CREATED="1510113361344" MODIFIED="1511405469565" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/001%20Interactive%20Risky%20behavior%20overtaking%20scenario%20using%20Joint%20Bayesian%20Network.pdf">
 <attribute NAME="key" VALUE="karaduman2013interactivebehavior"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Interactive risky behavior model for 3-car overtaking scenario using joint Bayesian network"/>
@@ -443,7 +460,7 @@
 </pdf_annotation>
 <node TEXT="Overtaking" ID="ID_656222618" CREATED="1510113365476" MODIFIED="1510633906997"/>
 </node>
-<node TEXT="Englund et al." ID="ID_555930403" CREATED="1510205695901" MODIFIED="1510634679586" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/044%20GCDC%202016.pdf">
+<node TEXT="Englund et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_555930403" CREATED="1510205695901" MODIFIED="1511405469574" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/044%20GCDC%202016.pdf">
 <attribute NAME="key" VALUE="englund2016grand"/>
 <attribute NAME="journal" VALUE="IEEE Wireless Communications"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -455,7 +472,7 @@
 <node TEXT="platoon merge" ID="ID_1119439800" CREATED="1510205705037" MODIFIED="1510205710910"/>
 <node TEXT="intersection passing" ID="ID_1764489752" CREATED="1510205711597" MODIFIED="1510205716927"/>
 </node>
-<node TEXT="Ebner et al." ID="ID_620506819" CREATED="1510303811132" MODIFIED="1510634679583" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/047%20Identifying%20and%20Analyzing%20Reference%20Scenarios.pdf">
+<node TEXT="Ebner et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_620506819" CREATED="1510303811132" MODIFIED="1511405469583" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/047%20Identifying%20and%20Analyzing%20Reference%20Scenarios.pdf">
 <attribute NAME="key" VALUE="ebner2011identifying"/>
 <attribute NAME="journal" VALUE="International Journal of Intelligent Transportation Systems Research"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -468,7 +485,7 @@
 <node TEXT="critical" ID="ID_658639354" CREATED="1510303848740" MODIFIED="1510303850807"/>
 <node TEXT="accident" ID="ID_1045366321" CREATED="1510303851364" MODIFIED="1510303852974"/>
 </node>
-<node TEXT="Hulshof et al." ID="ID_54693992" CREATED="1510304122182" MODIFIED="1510634679580" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/048%20Autonomous%20emergency%20braking%20test%20results.pdf">
+<node TEXT="Hulshof et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_54693992" CREATED="1510304122182" MODIFIED="1511405469591" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/048%20Autonomous%20emergency%20braking%20test%20results.pdf">
 <attribute NAME="key" VALUE="hulshof2013autonomous"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Autonomous emergency braking test results"/>
@@ -476,14 +493,14 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="DADF57675EBC6C8C741D34C1BD43FED9DEEE8ADB8538D4C49BC86864A2324D5">
     <pdf_title>AUTONOMOUS EMERGENCY BRAKING TEST RESULTS</pdf_title>
 </pdf_annotation>
-<node TEXT="Car drives into stationary vehicle" ID="ID_197053455" CREATED="1510304135074" MODIFIED="1510304145008">
+<node TEXT="Car drives into stationary vehicle" FOLDED="true" ID="ID_197053455" CREATED="1510304135074" MODIFIED="1510304145008">
 <node TEXT="low speed" ID="ID_1143699897" CREATED="1510304158501" MODIFIED="1510304162280"/>
 <node TEXT="high speed" ID="ID_1733985864" CREATED="1510304162694" MODIFIED="1510304164863"/>
 </node>
 <node TEXT="car drives into slower moving vehicle" ID="ID_1737562608" CREATED="1510304166142" MODIFIED="1510304176160"/>
 <node TEXT="car drives into braking vehicle" ID="ID_829821400" CREATED="1510304183302" MODIFIED="1510304188504"/>
 </node>
-<node TEXT="Weather type" ID="ID_270628748" CREATED="1507168660640" MODIFIED="1507168667875">
+<node TEXT="Weather type" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_270628748" CREATED="1507168660640" MODIFIED="1511405469599">
 <node TEXT="Clear, Rain (light, moderate, heavy), Snow (light, moderate, heavy)&#xa;See Table 5-2" ID="ID_1899518772" CREATED="1507168669698" MODIFIED="1510634679574" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/030%20Data%20for%20weather%20responsive%20Traffic%20Management.pdf">
 <attribute NAME="key" VALUE="mahmassani2012use"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -495,23 +512,116 @@
 </node>
 </node>
 </node>
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
+<node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1511407694804" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
+<attribute NAME="key" VALUE="Bonnin2014"/>
+<attribute NAME="journal" VALUE="Intelligent Transportation Systems, IEEE Transactions on"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="General Behavior Prediction by a Combination of Scenario-Specific Models"/>
+<attribute NAME="authors" VALUE="Bonnin, S. and Weisswange, T.H. and Kummert, F. and Schmuedderich, J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FA31C11615E2E5F4FC6456AFE19A3EBFE68B7290C638FC71069ED69A02AF36">
+    <pdf_title>General Behavior Prediction by a Combination of Scenario-Specific Models</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1507097935009" MOVED="1510633728393">
+<node TEXT="Vehicle for which motion planning is conducted" ID="ID_433516311" CREATED="1511409783534" MODIFIED="1511409804751" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/052%20CommonRoad.pdf">
+<attribute NAME="key" VALUE="althoff2017CommonRoad"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="CommonRoad: Composable benchmarks for motion planning on roads"/>
+<attribute NAME="authors" VALUE="M. Althoff and M. Koschi and S. Manzinger"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C5E641807BDD31456D1C3AF09CCD2AACF3703788B424A0689D493D994BD483">
+    <pdf_title>CommonRoad: Composable Benchmarks for Motion Planning on Roads</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="&quot;The ontology is described from the ego-vehicle&#x2019;s point of view&quot;" ID="ID_557989001" CREATED="1511411942167" MODIFIED="1511411960565" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/026%20Ontology%20test%20and%20use-case.pdf">
+<attribute NAME="key" VALUE="geyer2014"/>
+<attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance"/>
+<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
+    <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1170266770" CREATED="1511433240314" MODIFIED="1511433246065">
+<node TEXT="Ulbrich: &quot;scenery subsumes all geo-spatially stationary elements&quot; (nothing about static env.)" ID="ID_99760855" CREATED="1511433247948" MODIFIED="1511433295115" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<attribute NAME="key" VALUE="ulbrich2015"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
+<attribute NAME="authors" VALUE="S. Ulbrich and T. Menzel and A. Reschka and F. Schuldt and M. Maurer"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
+    <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Geyer says that weather, light conditions are dynamic elements that belong to a scene" ID="ID_1167387996" CREATED="1511433380166" MODIFIED="1511490176517" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/026%20Ontology%20test%20and%20use-case.pdf">
+<attribute NAME="key" VALUE="geyer2014"/>
+<attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance"/>
+<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
+    <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Bach says that weather is part of scenery" ID="ID_309640951" CREATED="1511433749693" MODIFIED="1511489809248" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/060%20Model%20based%20scenario%20specification.pdf">
+<attribute NAME="key" VALUE="bach2016modelbased"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Model based scenario specification for development and test of automated driving functions"/>
+<attribute NAME="authors" VALUE="J. Bach and S. Otten and E. Sax"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="566816BCDA2EC01963B5BB8EE11A1238E83D357E6B86B5BEA1338C08D58FFC">
+    <pdf_title>Model based scenario specification for development and test of automated driving functions</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Model/State" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1511497875699">
+<node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1511498110954" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/058%20Control_System_Engineering_Norman.pdf">
+<attribute NAME="key" VALUE="norman2011control"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Control Systems Engineering"/>
+<attribute NAME="authors" VALUE="Norman, S. Nise"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+</node>
+<node TEXT="Actor" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1417461108" CREATED="1511841805284" MODIFIED="1511841809578">
+<node TEXT="Geyer: actor can be the driver, the automation, or both of them" ID="ID_1119876727" CREATED="1511841811733" MODIFIED="1511841826270" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/026%20Ontology%20test%20and%20use-case.pdf">
+<attribute NAME="key" VALUE="geyer2014"/>
+<attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance"/>
+<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
+    <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Ulbrich: an actor is an element of a scene acting on its own behalf" ID="ID_150150579" CREATED="1511841875665" MODIFIED="1511841888522" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<attribute NAME="key" VALUE="ulbrich2015"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
+<attribute NAME="authors" VALUE="S. Ulbrich and T. Menzel and A. Reschka and F. Schuldt and M. Maurer"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
+    <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1511520590699" MOVED="1510633728393" VSHIFT="-4">
 <edge COLOR="#007c00"/>
-<node TEXT="Data-driven simulation and parametrization of traffic scenario&#xa;They adjust the scenarios encountered on the road, such that they become critical scenarios&#xa;However, you might end up in an unrealistic scenario, although this is not mentioned!" ID="ID_1028680362" CREATED="1507091082672" MODIFIED="1510634679610" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<node TEXT="Data-driven simulation and parametrization of traffic scenario" ID="ID_1028680362" CREATED="1507091082672" MODIFIED="1511519238261" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Data-driven simulation and parametrization of traffic scenarios for the development of advanced driver assistance systems"/>
-<attribute NAME="authors" VALUE="M. R. Zofka and F. Kuhnt and R. Kohlhaas and C. Rist and T. Schamm and J. M. Z&#xf6;llner"/>
+<attribute NAME="authors" VALUE="M. R. Zofka and F. Kuhnt and R. Kohlhaas and C. Rist and T. Schamm and J. M. Z\&quot;{o}llner"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F91B4B237B607197EFC2BD5C7A836F87F289E47CFAF66BFE19F3A3F8DFFB694">
     <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Taxonomy regarding test scenarios. &apos;Famous&apos; Bosch paper." ID="ID_1394606892" CREATED="1507692581524" MODIFIED="1510634679608" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<node TEXT="Taxonomy regarding test scenarios. &apos;Famous&apos; Bosch paper." ID="ID_1394606892" CREATED="1507692581524" MODIFIED="1511326649976" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
-<attribute NAME="authors" VALUE="J. E. Stellet and M. R. Zofka and J. Schumacher and T. Schamm and F. Niewels and J. M. Z&#xf6;llner"/>
+<attribute NAME="authors" VALUE="J. E. Stellet and M. R. Zofka and J. Schumacher and T. Schamm and F. Niewels and J. M. Z\&quot;{o}llner"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C2E634F82B895F5EDE73B4AA6CD5782A8FFA595B9FB6ECDDED19193E598592">
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
 </pdf_annotation>
@@ -534,8 +644,30 @@
     <pdf_title>Alvarez 1</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Ex-ante assessment of the safety effects of intelligent transport systems" ID="ID_1214203810" CREATED="1511347293839" MODIFIED="1511347314092" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/056%20Ex-ante%20assessment%20of%20the%20safety%20effects%20of%20intelligent%20transport%20systems.pdf">
+<attribute NAME="key" VALUE="kulmala2010exanteassessment"/>
+<attribute NAME="journal" VALUE="Accident Analysis \&amp; Prevention"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Ex-ante assessment of the safety effects of intelligent transport systems"/>
+<attribute NAME="authors" VALUE="Kulmala, Risto"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D998574AE8A37F935E6B7E946269CC43A912CBDD2AE26E72A7362D7DD8854">
+    <pdf_title>Accident Analysis and Prevention</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="Data" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1510642771797" HGAP="30" VSHIFT="140">
+</node>
+<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1511519265862" HGAP="77" VSHIFT="110">
+<edge COLOR="#ffff00"/>
+<node TEXT="Overpass" ID="ID_522788377" CREATED="1511518432024" MODIFIED="1511519023893">
+<attribute NAME="key" VALUE="openstreetmaps"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Overpass {API} - {O}pen{S}treet{M}ap {W}iki"/>
+</node>
+<node TEXT="ROS" ID="ID_667089157" CREATED="1511519113522" MODIFIED="1511519118932" LINK="http://wiki.ros.org/">
+<attribute NAME="key" VALUE="roswiki"/>
+<attribute NAME="title" VALUE="{ROS}.org"/>
+</node>
+</node>
+<node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1511519278286" HGAP="83" VSHIFT="-10">
 <edge COLOR="#ff0000"/>
 <node TEXT="The SHRP 2 Naturalistic Driving Study" ID="ID_682322192" CREATED="1510642780423" MODIFIED="1510643120248" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/053%20The%20SHRP%202%20Naturalistic%20Driving%20Study.pdf">
 <attribute NAME="key" VALUE="campbell2012shrp"/>
@@ -545,6 +677,66 @@
 <attribute NAME="authors" VALUE="Campbell, Kenneth L"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="DD75F6FAD8D1BF9B56E55BA4297493F858B17606AB2F57CE58F597E8C66BBA7">
     <pdf_title>u u</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1511405440722" VSHIFT="-10">
+<edge COLOR="#0000ff"/>
+<node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
+<node TEXT="GCDC2016" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1511348256814" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/054%20GCDC%202016%20Ploeg%20paper.pdf">
+<attribute NAME="key" VALUE="ploeg2017GCDC"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Cooperative Automated Maneuvering at the 2016 Grand Cooperative Driving Challenge"/>
+<attribute NAME="authors" VALUE="J. Ploeg and E. Semsar-Kazerooni and A. I. Morales Medina and J. F. C. M. de Jongh and J. van de Sluis and A. Voronov and C. Englund and R. J. Bril and H. Salunkhe and \&apos;{A}. Arr\&apos;{u} and A. Ruano and L. Garc&#xed;-Sol and E. van Nunen and N. van de Wouw"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F0A9446DBEC9FF1E37EB6BBB6DFDAE94E4051BA9B75256C74FE3D86728FF7B4">
+    <pdf_title>Cooperative Automated Maneuvering at the 2016 Grand Cooperative Driving Challenge</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Waymo" ID="ID_302182765" CREATED="1511417632834" MODIFIED="1511417646825" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/059%20Waymo%20Safety%20Report.pdf">
+<attribute NAME="key" VALUE="waymo2017"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Waymo Safety Report, On The Road to Fully Self-Driving"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="93AFD8683EEE86FB6646878A96C06696878566D9BBB2DCD379BDF27F0EF986">
+    <pdf_title>on the road to fully self-driving</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="DARPA" ID="ID_150057063" CREATED="1511842346868" MODIFIED="1511842352436" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/063%20DARPA%20Stanley%20the%20robot%20that%20won.pdf">
+<attribute NAME="key" VALUE="thrun2006stanley:"/>
+<attribute NAME="journal" VALUE="Journal of Field Robotics"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="Stanley: The robot that won the DARPA Grand Challenge"/>
+<attribute NAME="authors" VALUE="Thrun, Sebastian and Montemerlo, Mike and Dahlkamp, Hendrik and Stavens, David and Aron, Andrei and Diebel, James and Fong, Philip and Gale, John and Halpenny, Morgan and Hoffmann, Gabriel and Lau, Kenny and Oakley, Celia and Palatucci, Mark and Pratt, Vaughan and Stang, Pascal and Strohband, Sven and Dupont, Cedric and Jendrossek, Lars&#x2010;Erik and Koelen, Christian and Markey, Charles and Rummel, Carlo and Niekerk, Joe van and Jensen, Eric and Alessandrini, Philippe and Bradski, Gary and Davies, Bob and Ettinger, Scott and Kaehler, Adrian and Nefian, Ara and Mahoney, Pamela"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4A78981314DDC857F42DCE5859F26E86584C4427FE310A227706C2692E5252C">
+    <pdf_title>Stanley: The Robot that Won the DARPA Grand Challenge</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="AV: Guide for policymakers" ID="ID_1427027601" CREATED="1511348288860" MODIFIED="1511348343162" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/057%20Autonomous%20Vehicle%20Technology%20a%20Guide%20for%20Policymakers.pdf">
+<attribute NAME="key" VALUE="anderson2014autonomous"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Autonomous vehicle technology: A guide for policymakers"/>
+<attribute NAME="authors" VALUE="Anderson, James M and Nidhi, Kalra and Stanley, Karlyn D and Sorensen, Paul and Samaras, Constantine and Oluwatola, Oluwatobi A"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DE17AC186B9A98FE2FB73441AE0E291D0E6CA35BA4A677D34392F0C2F54243">
+    <pdf_title>Autonomous Vehicle Technology</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Use cases for Autonomous Vehicles" ID="ID_1344172445" CREATED="1511519822579" MODIFIED="1511519960589" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/061%20Use%20Cases%20for%20Autonomous%20Driving.pdf">
+<attribute NAME="key" VALUE="wachenfeld2016usecases"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Use {C}ases for {A}utonomous {D}riving"/>
+<attribute NAME="authors" VALUE="Wachenfeld, Walther and Winner, Hermann and Gerdes, J Chris and Lenz, Barbara and Maurer, Markus and Beiker, Sven and Fraedrich, Eva and Winkle, Thomas"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7A8A1D6DB7A98E0FDD96683939C28198A923B8C0A9C04E801157249633ACB7">
+    <pdf_title>Use Cases for Autonomous Driving</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Till 2020: intro AV controlled env., 2020-2040: AV mainstream, 2040-beyond: AV commonplace" ID="ID_330146770" CREATED="1511520232345" MODIFIED="1511520425799" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/062%20Autonomous%20System-of-Systems.pdf">
+<attribute NAME="key" VALUE="madni2018autonomous"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Autonomous {S}ystem-of-{S}ystems"/>
+<attribute NAME="authors" VALUE="Madni, Azad M"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="617C3AEB436E644F9F6BAE42B97F2C6637B40FAE1233B20AC14D0CC9853E065">
+    <pdf_title>Autonomous System-of-Systems</pdf_title>
 </pdf_annotation>
 </node>
 </node>
