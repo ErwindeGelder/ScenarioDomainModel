@@ -254,6 +254,54 @@
 </node>
 </node>
 <node TEXT="Automotive scenarios where &apos;static environment&apos; is mentioned" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1521500661" CREATED="1510303353449" MODIFIED="1511405456105">
+<node TEXT="Althoff et al." ID="ID_1062024217" CREATED="1510633406234" MODIFIED="1510634679666" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/052%20CommonRoad.pdf" MOVED="1512638149808">
+<attribute NAME="key" VALUE="althoff2017CommonRoad"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="CommonRoad: Composable benchmarks for motion planning on roads"/>
+<attribute NAME="authors" VALUE="M. Althoff and M. Koschi and S. Manzinger"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C5E641807BDD31456D1C3AF09CCD2AACF3703788B424A0689D493D994BD483">
+    <pdf_title>CommonRoad: Composable Benchmarks for Motion Planning on Roads</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Bagschik et al." ID="ID_1681269749" CREATED="1512638114716" MODIFIED="1512638121380" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf" MOVED="1512638158791">
+<attribute NAME="key" VALUE="bagschik2017ontology"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Ontology based Scene Creation for the Development of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0EC3A9A0EE5222DF61BEBAAE5CA6FEC5D01ECEC0D4FBC22B8437F9A7D4FC99">
+    <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Ebner et al." ID="ID_1254735938" CREATED="1510303916946" MODIFIED="1510634679668" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/047%20Identifying%20and%20Analyzing%20Reference%20Scenarios.pdf" MOVED="1512638144940">
+<attribute NAME="key" VALUE="ebner2011identifying"/>
+<attribute NAME="journal" VALUE="International Journal of Intelligent Transportation Systems Research"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Identifying and analyzing reference scenarios for the development and evaluation of active safety: application to preventive pedestrian safety"/>
+<attribute NAME="authors" VALUE="Ebner, Adrian and Helmer, Thomas and Samaha, Randa Radwan and Scullion, Paul"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BFB5F4AD729E9B5E5394050136EA4E8B215E8574C519EB9B029C31ADF78B40">
+    <pdf_title>Identifying and Analyzing Reference Scenarios for the Development and Evaluation of Active Safety: Application to Preventive Pedestrian Safety</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Elrofai et al." ID="ID_1255921911" CREATED="1512637956240" MODIFIED="1512637964968" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/039%20Scenario%20Identification%20for%20Validation%20of%20ADF%20-%20Hala%20Elrofai.pdf" MOVED="1512638152727">
+<attribute NAME="key" VALUE="elrofai2016scenario"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Scenario Identification for Validation of Automated Driving Functions"/>
+<attribute NAME="authors" VALUE="Elrofai, Hala and Worm, Dani{\&quot;e}l and Op den Camp, Olaf"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="96D3AB2AF8ECCE378EB5AF272932F26714F2E46AD51FCAF17A9580DFE2D24B6">
+    <pdf_title>Advanced Microsystems for Automotive Applications 2016</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Geyer et al." ID="ID_1977858210" CREATED="1512638073388" MODIFIED="1512638086392" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/026%20Ontology%20test%20and%20use-case.pdf" MOVED="1512638154801">
+<attribute NAME="key" VALUE="geyer2014"/>
+<attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance"/>
+<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
+    <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="Schuldt et al." ID="ID_190252876" CREATED="1510303376465" MODIFIED="1511326649958" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/046%20Effiziente%20systematische%20Testgenerierung%20f&#xfc;r%20Fahrerassistenzsysteme%20in%20virtuellen%20Umgebungen.pdf">
 <attribute NAME="key" VALUE="schuldt2013effiziente"/>
 <attribute NAME="journal" VALUE="Automatisierungssysteme, Assistenzsysteme und Eingebettete Systeme f{\&quot;u}r Transportmittel"/>
@@ -264,23 +312,13 @@
     <pdf_title>Effiziente systematische Testgenerierung f&#xfc;r</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ebner et al." ID="ID_1254735938" CREATED="1510303916946" MODIFIED="1510634679668" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/047%20Identifying%20and%20Analyzing%20Reference%20Scenarios.pdf">
-<attribute NAME="key" VALUE="ebner2011identifying"/>
-<attribute NAME="journal" VALUE="International Journal of Intelligent Transportation Systems Research"/>
-<attribute NAME="year" VALUE="2011"/>
-<attribute NAME="title" VALUE="Identifying and analyzing reference scenarios for the development and evaluation of active safety: application to preventive pedestrian safety"/>
-<attribute NAME="authors" VALUE="Ebner, Adrian and Helmer, Thomas and Samaha, Randa Radwan and Scullion, Paul"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BFB5F4AD729E9B5E5394050136EA4E8B215E8574C519EB9B029C31ADF78B40">
-    <pdf_title>Identifying and Analyzing Reference Scenarios for the Development and Evaluation of Active Safety: Application to Preventive Pedestrian Safety</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="Althoff et al." ID="ID_1062024217" CREATED="1510633406234" MODIFIED="1510634679666" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/052%20CommonRoad.pdf">
-<attribute NAME="key" VALUE="althoff2017CommonRoad"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="CommonRoad: Composable benchmarks for motion planning on roads"/>
-<attribute NAME="authors" VALUE="M. Althoff and M. Koschi and S. Manzinger"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C5E641807BDD31456D1C3AF09CCD2AACF3703788B424A0689D493D994BD483">
-    <pdf_title>CommonRoad: Composable Benchmarks for Motion Planning on Roads</pdf_title>
+<node TEXT="Ulbrich et al." ID="ID_1854876318" CREATED="1512638077373" MODIFIED="1512638094529" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<attribute NAME="key" VALUE="ulbrich2015"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
+<attribute NAME="authors" VALUE="S. Ulbrich and T. Menzel and A. Reschka and F. Schuldt and M. Maurer"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
+    <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -758,6 +796,17 @@
 <attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
     <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
+<node TEXT="Testing of high level components of automated driving" ID="ID_565029269" CREATED="1512630169330" MODIFIED="1512630206511" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
+<attribute NAME="key" VALUE="zofka2016testing"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Testing and validating high level components for automated driving: simulation framework for traffic scenarios"/>
+<attribute NAME="authors" VALUE="Zofka, Marc Ren{\&apos;e} and Klemm, Sebastian and Kuhnt, Florian and Schamm, Thomas and Z{\&quot;o}llner, J Marius"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6A8F4FFC63FCCDC88EE2EB2BC9BC2DCAA54BE11AB1FCB1B1192DA1606445D3">
+    <pdf_title>Testing and Validating High Level Components for Automated Driving: Simulation Framework for Traffic Scenarios</pdf_title>
 </pdf_annotation>
 </node>
 </node>
