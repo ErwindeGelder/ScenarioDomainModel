@@ -53,7 +53,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="6"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="7"/>
 <node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6">
 <edge COLOR="#ff0000"/>
 <node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1510634679727" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
@@ -138,6 +138,16 @@
 <attribute NAME="authors" VALUE="S. Ulbrich and T. Menzel and A. Reschka and F. Schuldt and M. Maurer"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Ontology based scene (see Ulbrich for scene) creation for development of AV" ID="ID_1236926158" CREATED="1512622274267" MODIFIED="1512622297572" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
+<attribute NAME="key" VALUE="bagschik2017ontology"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Ontology based Scene Creation for the Development of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0EC3A9A0EE5222DF61BEBAAE5CA6FEC5D01ECEC0D4FBC22B8437F9A7D4FC99">
+    <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="Definitions in military field (from TNO)" ID="ID_1922268023" CREATED="1509502001489" MODIFIED="1510634679698" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/038%20Simulation%20environment%20architecture%20development%20using%20the%20DoDAF.pdf">
@@ -236,8 +246,14 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Another promising method [to generate requirements] is to analyze scenarios" ID="ID_1256652653" CREATED="1512620235276" MODIFIED="1512620262277">
+<attribute NAME="key" VALUE="hooper1982scenario"/>
+<attribute NAME="year" VALUE="1982"/>
+<attribute NAME="title" VALUE="Scenario-based prototyping for requirements identification"/>
+<attribute NAME="authors" VALUE="Hooper, James W and Hsia, Pei"/>
 </node>
-<node TEXT="Automotive scenarios where &apos;static environment&apos; is mentioned" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1521500661" CREATED="1510303353449" MODIFIED="1511405456105">
+</node>
+<node TEXT="Automotive scenarios where &apos;static environment&apos; is mentioned" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1521500661" CREATED="1510303353449" MODIFIED="1511405456105">
 <node TEXT="Schuldt et al." ID="ID_190252876" CREATED="1510303376465" MODIFIED="1511326649958" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/046%20Effiziente%20systematische%20Testgenerierung%20f&#xfc;r%20Fahrerassistenzsysteme%20in%20virtuellen%20Umgebungen.pdf">
 <attribute NAME="key" VALUE="schuldt2013effiziente"/>
 <attribute NAME="journal" VALUE="Automatisierungssysteme, Assistenzsysteme und Eingebettete Systeme f{\&quot;u}r Transportmittel"/>
@@ -433,7 +449,7 @@
 <attribute NAME="key" VALUE="roesener2017comprehensive"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="A Comprehensive Evaluation Approach for Highly Automated Driving"/>
-<attribute NAME="authors" VALUE="Roesener, Christian and Sauerbier, Jan and Zlocki, Adrian and Fahrenkrog, Felix and Wang, Lei and V{\&apos;a}rhelyi, Andr{\&apos;a}s and de Gelder, Erwin and Dufils, Joris and Breunig, Sandra and Mejuto, Pablo and others"/>
+<attribute NAME="authors" VALUE="Roesener, Christian and Sauerbier, Jan and Zlocki, Adrian and Fahrenkrog, Felix and Wang, Lei and V{\&apos;a}rhelyi, Andr{\&apos;a}s and de Gelder, Erwin and Dufils, Joris and Breunig, Sandra and Mejuto, Pablo and Tango, Fabio and Lanati, Jessica"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="46DD5F650E813E3C5A6702C5290AABE244B309E85C66B387FC7BD6077BAB32">
     <pdf_title>A Comprehensive Evaluation Approach for Highly Automated Driving</pdf_title>
 </pdf_annotation>
@@ -670,12 +686,62 @@
     <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Lesemann et al." ID="ID_415824940" CREATED="1512555360738" MODIFIED="1512555377269" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/072%20eVALUE%20project.pdf">
+<attribute NAME="key" VALUE="lesemann2011test"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="A {T}est {P}rogramme for {A}ctive {V}ehicle {S}afety-{D}etailed {D}iscussion of the e{VALUE} {T}esting {P}rotocols for {L}ongitudinal and {S}tability {F}unctionality"/>
+<attribute NAME="authors" VALUE="Lesemann, Micha and Zlocki, Adrian and Dalmau, Josep Maria and Vesco, Mauro and Hjort, Mattias and Isasi, Luc{\&apos;i}a and Eriksson, Henrik and Jacobson, Jan and Nordstr{\&quot;o}m, Lars and Westhoff, Daniel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A63DF4CB25A4918D8B9A94801270F32E3B1B6B94FCE4ABCAEA51C842C2CEB12">
+    <pdf_title>A TEST PROGRAMME FOR ACTIVE VEHICLE SAFETY &#x2013; DETAILED DISCUSSION OF THE EVALUE TESTING PROTOCOLS FOR LONGITUDINAL AND STABILITY FUNCTIONALITY</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Putz et al." ID="ID_513898822" CREATED="1512615137961" MODIFIED="1512615145749" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
+<attribute NAME="key" VALUE="putz2017pegasus"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="System validation of highly automated vehicles with a database of relevant traffic scenarios"/>
+<attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
+    <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Scenarios can be knowledge based or data-driven" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1010042086" CREATED="1512626864047" MODIFIED="1512626889948" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<attribute NAME="key" VALUE="stellet2015taxonomy"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
+<attribute NAME="authors" VALUE="J. E. Stellet and M. R. Zofka and J. Schumacher and T. Schamm and F. Niewels and J. M. Z\&quot;{o}llner"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C2E634F82B895F5EDE73B4AA6CD5782A8FFA595B9FB6ECDDED19193E598592">
+    <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
+</pdf_annotation>
+<node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
+<node TEXT="Bagschik et al." ID="ID_1750936302" CREATED="1512626946796" MODIFIED="1512626956584" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
+<attribute NAME="key" VALUE="bagschik2017ontology"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Ontology based Scene Creation for the Development of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0EC3A9A0EE5222DF61BEBAAE5CA6FEC5D01ECEC0D4FBC22B8437F9A7D4FC99">
+    <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Data-driven" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_58029598" CREATED="1512626897438" MODIFIED="1512626910548">
+<node TEXT="de Gelder et al." ID="ID_1971359552" CREATED="1512626963745" MODIFIED="1512626981411" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<attribute NAME="key" VALUE="deGelder2017assessment"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Assessment of Automated Driving Systems using real-life scenarios"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
+    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1511520590699" MOVED="1510633728393" VSHIFT="-4">
 <edge COLOR="#007c00"/>
 <node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
-<node TEXT="To not delay the development of ADS, the assessment methods need to develop as well" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1512370339848" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">
+<node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1512622478240" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">
 <attribute NAME="key" VALUE="bengler2014threedecades"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -683,6 +749,15 @@
 <attribute NAME="authors" VALUE="K. Bengler and K. Dietmayer and B. Farber and M. Maurer and C. Stiller and H. Winner"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="E0F9912CC1292D5367FEEB2BCEE0604ABC9FBFB99D18F9474E080869DC155FC">
     <pdf_title>Three Decades of Driver Assistance Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="&quot;Signing off highly automated vehicles is a key challenge for the automotive industry&quot;" ID="ID_908177044" CREATED="1512615585023" MODIFIED="1512622474218" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
+<attribute NAME="key" VALUE="putz2017pegasus"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="System validation of highly automated vehicles with a database of relevant traffic scenarios"/>
+<attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
+    <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -741,8 +816,35 @@
     <pdf_title>Safety Performance Assessment of Assisted and Automated Driving in Traffic: Simulation as Knowledge Synthesis</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="eVALUE: Test Programme for Active Vehicle Safety-Detailed Discussion" ID="ID_1066674668" CREATED="1512555157446" MODIFIED="1512555288358" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/072%20eVALUE%20project.pdf">
+<attribute NAME="key" VALUE="lesemann2011test"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="A {T}est {P}rogramme for {A}ctive {V}ehicle {S}afety-{D}etailed {D}iscussion of the e{VALUE} {T}esting {P}rotocols for {L}ongitudinal and {S}tability {F}unctionality"/>
+<attribute NAME="authors" VALUE="Lesemann, Micha and Zlocki, Adrian and Dalmau, Josep Maria and Vesco, Mauro and Hjort, Mattias and Isasi, Luc{\&apos;i}a and Eriksson, Henrik and Jacobson, Jan and Nordstr{\&quot;o}m, Lars and Westhoff, Daniel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A63DF4CB25A4918D8B9A94801270F32E3B1B6B94FCE4ABCAEA51C842C2CEB12">
+    <pdf_title>A TEST PROGRAMME FOR ACTIVE VEHICLE SAFETY &#x2013; DETAILED DISCUSSION OF THE EVALUE TESTING PROTOCOLS FOR LONGITUDINAL AND STABILITY FUNCTIONALITY</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1512369805983" HGAP="149" VSHIFT="-1">
+<node TEXT="PEGASUS: Database with traffic scenarios" ID="ID_1531496623" CREATED="1512615525217" MODIFIED="1512629700366" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
+<attribute NAME="key" VALUE="putz2017pegasus"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="System validation of highly automated vehicles with a database of relevant traffic scenarios"/>
+<attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
+    <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="The release of AV (more general about what has to be done before AVs can be released)" ID="ID_208176436" CREATED="1512629701827" MODIFIED="1512629731700" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
+<attribute NAME="key" VALUE="wachenfeld2016release"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="The release of autonomous vehicles"/>
+<attribute NAME="authors" VALUE="Wachenfeld, Walther and Winner, Hermann"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AD2E246D97E43D87D1AF3FB7E8A13D5E3D34FD83C99CCA2694FD9C6286686">
+    <pdf_title>The Release of Autonomous Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1512615876820" HGAP="146" VSHIFT="-1">
 <edge COLOR="#ffff00"/>
 <node TEXT="Overpass" ID="ID_522788377" CREATED="1511518432024" MODIFIED="1511519023893">
 <attribute NAME="key" VALUE="openstreetmaps"/>
@@ -795,7 +897,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1511405440722" VSHIFT="-10">
+<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1512555342354" HGAP="42" VSHIFT="-12">
 <edge COLOR="#0000ff"/>
 <node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
 <node TEXT="GCDC2016" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1511348256814" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/054%20GCDC%202016%20Ploeg%20paper.pdf">
@@ -852,6 +954,15 @@
 <attribute NAME="authors" VALUE="Madni, Azad M"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="617C3AEB436E644F9F6BAE42B97F2C6637B40FAE1233B20AC14D0CC9853E065">
     <pdf_title>Autonomous System-of-Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="The Netherlands: 1%-11% penetration conditionally AVs in 2030, 7%-61% highly AVs in 2050" ID="ID_1106176958" CREATED="1512622736817" MODIFIED="1512622936613" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/076%20Future%20scenarios%20with%20AVs%20in%20the%20Netherlands.pdf">
+<attribute NAME="key" VALUE="milakis2016scenarios"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Scenarios about development and implications of automated vehicles in the Netherlands"/>
+<attribute NAME="authors" VALUE="Milakis, Dimitris and Snelder, Maaike and Van Arem, Bart and Van Wee, GP and Homem De Almeida Rodriguez Correia, G"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FDD731FD7748365A739D930E8E477AEFE4D51759058665863624A8EE63CD08C">
+    <pdf_title>Scenariosaboutdevelopmentandimplications ofautomatedvehiclesintheNetherlands</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="Overview of all kinds of developments regarding assistance systems" ID="ID_477533569" CREATED="1512370199453" MODIFIED="1512370344891" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">

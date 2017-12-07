@@ -19,6 +19,7 @@
 %\usepackage{mathptmx} % assumes new font selection scheme installed
 %\usepackage{times} % assumes new font selection scheme installed
 \usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amsthm}  % For special theorem style
 %\usepackage{amssymb}  % assumes amsmath package installed
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
@@ -31,6 +32,9 @@
 \usepackage{cite}  % Make sure that citation appear as [1]-[3] instead of [1], [2], [3]
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.14}  % Prevent warning, pgf running in backwards compatibility mode anyway
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}
 
 % Table stuff
 %\usepackage{booktabs}
@@ -45,12 +49,12 @@
 
 
 \title{\LARGE \bf
-	On ontology of real-life scenario for automated driving
+	Ontology of scenario for the assessment of automated vehicles
 }
 
 
-\author{Erwin de Gelder$^{1}$, \thanks{$^{1}$TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands, \newline {\tt\small erwin.degelder@tno.nl}, \newline {\tt\small jan-pieter.paardekooper@tno.nl}}%
-Jan-Pieter Paardekooper$^{1}$, Jeroen Ploeg$^{1}$, Hala Elrofai$^{1}$, Olaf Op den Camp$^{1}$, \\Arash Khabbaz Sabeni$^{1}$ and Bart De Schutter$^{2}$ \thanks{$^{2}$Delft University of Technology}%
+\author{Erwin de Gelder$^{1}$, \thanks{$^{1}$TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands, \newline {\tt\small erwin.degelder@tno.nl}, \newline {\tt\small jan-pieter.paardekooper@tno.nl}, \newline {\ttfamily\small jeroen.ploeg@tno.nl}, {\ttfamily\small hala.elrofai@tno.nl}, \newline {\ttfamily\small olaf.opdencamp@tno.nl}, \newline {\ttfamily\small arash.khabbazsabeni@tno.nl},}%
+Jan-Pieter Paardekooper$^{1}$, Jeroen Ploeg$^{1}$, Hala Elrofai$^{1}$, Olaf Op den Camp$^{1}$, \\Arash Khabbaz Sabeni$^{1}$ and Bart De Schutter$^{2}$ \thanks{$^{2}$Delft University of Technology {\color{red}...?}}%
 %\thanks{*This work was not supported by any organization}% <-this % stops a space
 %\thanks{$^{1}$Albert Author is with Faculty of Electrical Engineering, Mathematics and Computer Science,
 %        University of Twente, 7500 AE Enschede, The Netherlands
