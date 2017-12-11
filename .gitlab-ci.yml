@@ -1,0 +1,7 @@
+compile_pdf:
+  image: aergus/latex
+  script:
+    - latexmk -pdf "20171111 IV2018 Ontology/root.tex"
+  artifacts:
+    paths:
+      - "20171111 IV2018 Ontology/root.pdf"
