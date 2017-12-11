@@ -9,3 +9,7 @@
 *.synctex.gz
 *.bib.bak
 _data/
+*.ipynb_checkpoints*
+
+# Other files to be ignored
+20171126 Parametrization/df.p

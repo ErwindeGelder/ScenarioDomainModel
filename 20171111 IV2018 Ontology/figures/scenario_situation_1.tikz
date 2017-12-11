@@ -462,13 +462,13 @@ table {%
 \addplot [semithick, red, dashed, forget plot]
 table {%
 2.75 1.75
-0.75 1.75
+-0.25 1.75
 };
 \addplot [semithick, red, forget plot]
 table {%
-1.5 2.5
-0.75 1.75
-1.5 1
+0.5 2.5
+-0.25 1.75
+0.5 1
 };
 \addplot [semithick, blue, dashed, forget plot]
 table {%

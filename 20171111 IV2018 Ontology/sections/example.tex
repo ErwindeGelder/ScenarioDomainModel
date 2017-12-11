@@ -1,17 +1,27 @@
 \section{Application example}
 \label{sec:example}
 
-\color{red}
-
-We present an example.
+To illustrate the ontology, an real-life example is presented. A schematic overview of the example is shown in Figure~\ref{fig:example schematic}. Three vehicles are present in the example, a pickup truck, a sedan, and a station wagon, see Figure~\ref{fig:example schematic}a from left to right, respectively. The ego vehicle, i.e., the sedan, is displayed in red. The example can be described in words as follows. The ego vehicle accelerate towards its predecessor (i.e., the pickup truck), such that it ends up following it with an approximately constant distance. In the meantime, the car behind the ego vehicle (i.e., the station wagon) accelerates and takes over both other vehicles (i.e., the ego vehicle and the pickup truck). When the station wagon passed both vehicles, the ego vehicle accelerates and performs a lane change after which it overtakes the pickup truck.
 
 \begin{figure}
 	\centering
 	\setlength\figureheight{100pt}
 	\setlength\figurewidth{260pt}
 	\subfloat[Last vehicle overtakes other vehicles.]{\input{figures/scenario_situation_1.tikz}}\\
-	\subfloat[Another overtaking.]{\input{figures/scenario_situation_2.tikz}}	
-	\caption{Schematic overview of the traffic scenarios.}
+	\subfloat[Another overtaking.]{\input{figures/scenario_situation_2.tikz}}
+	\caption{Schematic overview of the traffic scenarios. The red car (the middle car in (a)) is the defined as the ego vehicle. First, the last car overtakes both vehicle (a). Next, the ego vehicle overtakes its predecessor (b).}
+	\label{fig:example schematic}
+\end{figure}
+
+Two different scenarios can be identified. The first scenario starts at the beginning of the example and ends when the lane change start. When the first scenario ends, the second scenario starts until. The second scenario ends when the ego vehicle completes the overtaking of the pickup truck.
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{150pt}
+	\setlength\figurewidth{248pt}
+	\subfloat[Longitudinal velocity ego vehicle.]{\input{figures/lon_vel.tikz}}\\
+	\subfloat[Lateral position ego vehicle.]{\input{figures/lat_pos.tikz}}
+	\caption{States of the ego vehicle. The blue line shows the measured data and the orange dashed line shows the output of the model fitted to the data.}
 \end{figure}
 
 \color{black}
