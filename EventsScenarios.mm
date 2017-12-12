@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="15EE11F388758T36YQT824BR7X3E7TTF2DWX" project_last_home="file:/C:/Users/geldered/OneDrive%20-%20TNO/Documents/literatuur/" dcr_id="1507015615166_agmyeromeamk7hj01q4gy8h2">
+<map version="docear 1.1" dcr_id="1507015615166_agmyeromeamk7hj01q4gy8h2" project="15EE11F388758T36YQT824BR7X3E7TTF2DWX" project_last_home="file:/C:/Users/geldered/OneDrive%20-%20TNO/Documents/literatuur/">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1511405672366" COLOR="#0000ff" BACKGROUND_COLOR="#ccffff">
@@ -53,7 +53,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="7"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="8"/>
 <node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6">
 <edge COLOR="#ff0000"/>
 <node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1510634679727" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
@@ -105,6 +105,49 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0F25C26F9AEAF3AB8217DEB6C0928BA380CB54E6503665B6D7652A889B9">
     <pdf_title>Alvarez 1</pdf_title>
 </pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
+<edge COLOR="#00007c"/>
+<node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
+<node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
+<node TEXT="Object-Oriented Bayesian Networks for Detection of Lane Change Maneuvers" ID="ID_809676015" CREATED="1513049590036" MODIFIED="1513049689477" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
+<attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
+<attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Object-Oriented Bayesian Networks for Detection of Lane Change Maneuvers"/>
+<attribute NAME="authors" VALUE="D. Kasper and G. Weidl and T. Dang and G. Breuel and A. Tamke and A. Wedel and W. Rosenstiel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D5BBC4566DCABF87326E6A1995FECABD59E3A2771120F5CBC38A1FC1A2F6">
+    <pdf_title>Dietmar Kasper, Galia Weidl, Thao Dang, Gabi Breuel, Andreas Tamke, and Andreas Wedel</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_930564985" CREATED="1513061263150" MODIFIED="1513061275832">
+<node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_728268315" CREATED="1513061279856" MODIFIED="1513061297633" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/004%20Tutorial%20HMM.pdf">
+<attribute NAME="key" VALUE="HMM_Rabiner"/>
+<attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
+<attribute NAME="year" VALUE="1989"/>
+<attribute NAME="title" VALUE="A tutorial on hidden Markov models and selected applications in speech recognition"/>
+<attribute NAME="authors" VALUE="Rabiner, L."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D480C1F64BC9E22E50509312675C46ABE8EA6C0A25C5ACD52A7B732CA4B5792">
+    <pdf_title>A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="Applications with traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1528361068" CREATED="1513049599509" MODIFIED="1513049693187">
+<node TEXT="Lane Changes" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1183548072" CREATED="1513049616151" MODIFIED="1513049695649">
+<node TEXT="Kasper et al." ID="ID_1219262019" CREATED="1513049679878" MODIFIED="1513049685489" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
+<attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
+<attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Object-Oriented Bayesian Networks for Detection of Lane Change Maneuvers"/>
+<attribute NAME="authors" VALUE="D. Kasper and G. Weidl and T. Dang and G. Breuel and A. Tamke and A. Wedel and W. Rosenstiel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D5BBC4566DCABF87326E6A1995FECABD59E3A2771120F5CBC38A1FC1A2F6">
+    <pdf_title>Dietmar Kasper, Galia Weidl, Thao Dang, Gabi Breuel, Andreas Tamke, and Andreas Wedel</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 </node>
@@ -235,7 +278,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="6FCECC94259A051514D86CC4D9EA83CDF1AC1FF3364A8BCF44919BF2CF135">
     <pdf_title>Scenarios as tools for international environmental assessments</pdf_title>
 </pdf_annotation>
-<node TEXT="Example" ID="ID_1422624806" CREATED="1510280633670" MODIFIED="1510634679674" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/045%20Visions%20for%20a%20sustainable%20Europe.pdf">
+<node TEXT="Example" ID="ID_1422624806" CREATED="1510280633670" MODIFIED="1513049740585" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/045%20Visions%20for%20a%20sustainable%20Europe.pdf">
 <attribute NAME="key" VALUE="rotmans2000visions"/>
 <attribute NAME="journal" VALUE="Futures"/>
 <attribute NAME="year" VALUE="2000"/>
@@ -253,7 +296,7 @@
 <attribute NAME="authors" VALUE="Hooper, James W and Hsia, Pei"/>
 </node>
 </node>
-<node TEXT="Automotive scenarios where &apos;static environment&apos; is mentioned" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1521500661" CREATED="1510303353449" MODIFIED="1511405456105">
+<node TEXT="Automotive scenarios where &apos;static environment&apos; is mentioned" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1521500661" CREATED="1510303353449" MODIFIED="1511405456105">
 <node TEXT="Althoff et al." ID="ID_1062024217" CREATED="1510633406234" MODIFIED="1510634679666" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/052%20CommonRoad.pdf" MOVED="1512638149808">
 <attribute NAME="key" VALUE="althoff2017CommonRoad"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -668,7 +711,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
+<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
 <node TEXT="Alvarez et al." ID="ID_747880869" CREATED="1512448020922" MODIFIED="1512448027779" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -752,7 +795,7 @@
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
 </pdf_annotation>
 <node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
-<node TEXT="Bagschik et al." ID="ID_1750936302" CREATED="1512626946796" MODIFIED="1512626956584" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
+<node TEXT="Bagschik et al. (declined paper)" ID="ID_1750936302" CREATED="1512626946796" MODIFIED="1513049759940" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -760,6 +803,15 @@
 <attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0EC3A9A0EE5222DF61BEBAAE5CA6FEC5D01ECEC0D4FBC22B8437F9A7D4FC99">
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Gietelink et al." ID="ID_1969083540" CREATED="1513049049155" MODIFIED="1513049056607" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/079%20PreCrash%20System%20Validation%20with%20PRESCAN%20and%20VEHIL.pdf">
+<attribute NAME="key" VALUE="gietelink2004systemvalidation"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Pre-crash system validation with PRESCAN and VEHIL"/>
+<attribute NAME="authors" VALUE="O. J. Gietelink and D. J. Verburg and K. Labibes and A. F. Oostendorp"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B5765F389F167BC7752B165D3514EA7D23B9998958699CD1A75A14E1BEEE6DA1">
+    <pdf_title>Pre-Crash System Validation with PRESCAN and VEHIL</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -904,6 +956,15 @@
 <attribute NAME="key" VALUE="roswiki"/>
 <attribute NAME="title" VALUE="{ROS}.org"/>
 </node>
+<node TEXT="PreScan" ID="ID_1285995919" CREATED="1513048686655" MODIFIED="1513048691659" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/078%20PreScan%20Simulation%20Tool%20Suite%20for%20Developing%20Connected%20Vehicle%20Systems.pdf">
+<attribute NAME="key" VALUE="tideman2013PreScan"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="A simulation tool suite for developing connected vehicle systems"/>
+<attribute NAME="authors" VALUE="M. Tideman and M. van Noort"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BEFF55659F915968D88B2D3F6C019C17116DF2A5CEE3A35CE8430217030DAA5">
+    <pdf_title>A Simulation Tool Suite for Developing Connected Vehicle Systems</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1512369809994" HGAP="147" VSHIFT="-10">
 <edge COLOR="#ff0000"/>
@@ -946,7 +1007,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1512555342354" HGAP="42" VSHIFT="-12">
+<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1513049398668" HGAP="42" VSHIFT="-27">
 <edge COLOR="#0000ff"/>
 <node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
 <node TEXT="GCDC2016" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1511348256814" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/054%20GCDC%202016%20Ploeg%20paper.pdf">

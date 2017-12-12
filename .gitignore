@@ -1,6 +1,7 @@
 # Ignore stuff that is automatically created
 *.bib.sav
 *.aux
+*.auxlock
 *.bbl
 *.blg
 *.log
@@ -10,6 +11,7 @@
 *.bib.bak
 _data/
 *.ipynb_checkpoints*
+*/tikz/*
 
 # Other files to be ignored
 20171126 Parametrization/df.p
