@@ -2,7 +2,7 @@
 \begin{tikzpicture}
 
 \begin{axis}[
-xlabel={Time [s]},
+xlabel={$t$ [s]},
 xmin=-7, xmax=42.325,
 ymin=0, ymax=6,
 width=\figurewidth,
@@ -298,28 +298,28 @@ Lateral state};
   text=black,
   rotate=0.0,
   align=center
-]{ Target 1,\\
+]{ Station wagon,\\
 Longitudinal state};
 \node at (axis cs:-3.5,3.5)[
   scale=0.75,
   text=black,
   rotate=0.0,
   align=center
-]{ Target 1,\\
+]{ Station wagon,\\
 Lateral state};
 \node at (axis cs:-3.5,4.5)[
   scale=0.75,
   text=black,
   rotate=0.0,
   align=center
-]{ Target 2,\\
+]{ Pickup truck,\\
 Longitudinal state};
 \node at (axis cs:-3.5,5.5)[
   scale=0.75,
   text=black,
   rotate=0.0,
   align=center
-]{ Target 2,\\
+]{ Pickup truck,\\
 Lateral state};
 \end{axis}
 

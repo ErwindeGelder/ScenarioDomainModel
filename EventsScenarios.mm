@@ -53,7 +53,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="8"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="10"/>
 <node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6">
 <edge COLOR="#ff0000"/>
 <node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1510634679727" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
@@ -77,7 +77,7 @@
     <pdf_title>How Much Data Are Enough? A Statistical Approach With Case Study on Longitudinal Driving Behavior</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Papers that address completeness issue" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1149339259" CREATED="1510111962578" MODIFIED="1511519222945" HGAP="40">
+<node TEXT="Papers that address completeness issue" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1149339259" CREATED="1510111962578" MODIFIED="1511519222945" HGAP="40">
 <node TEXT="Geyer et al." ID="ID_614965474" CREATED="1510111977891" MODIFIED="1510634679721" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
@@ -110,8 +110,8 @@
 </node>
 <node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
-<node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
-<node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
+<node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
+<node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
 <node TEXT="Object-Oriented Bayesian Networks for Detection of Lane Change Maneuvers" ID="ID_809676015" CREATED="1513049590036" MODIFIED="1513049689477" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
@@ -123,7 +123,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_930564985" CREATED="1513061263150" MODIFIED="1513061275832">
+<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_930564985" CREATED="1513061263150" MODIFIED="1513061275832">
 <node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_728268315" CREATED="1513061279856" MODIFIED="1513061297633" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/004%20Tutorial%20HMM.pdf">
 <attribute NAME="key" VALUE="HMM_Rabiner"/>
 <attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
@@ -136,8 +136,8 @@
 </node>
 </node>
 </node>
-<node TEXT="Applications with traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1528361068" CREATED="1513049599509" MODIFIED="1513049693187">
-<node TEXT="Lane Changes" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1183548072" CREATED="1513049616151" MODIFIED="1513049695649">
+<node TEXT="Applications with traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1528361068" CREATED="1513049599509" MODIFIED="1513049693187">
+<node TEXT="Lane Changes" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1183548072" CREATED="1513049616151" MODIFIED="1513049695649">
 <node TEXT="Kasper et al." ID="ID_1219262019" CREATED="1513049679878" MODIFIED="1513049685489" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
@@ -609,7 +609,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
 <node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
 <node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1511407694804" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -786,7 +786,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Scenarios can be knowledge based or data-driven" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1010042086" CREATED="1512626864047" MODIFIED="1512626889948" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<node TEXT="Scenarios can be knowledge based or data-driven" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1010042086" CREATED="1512626864047" MODIFIED="1512626889948" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
@@ -794,7 +794,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C2E634F82B895F5EDE73B4AA6CD5782A8FFA595B9FB6ECDDED19193E598592">
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
 </pdf_annotation>
-<node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
+<node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
 <node TEXT="Bagschik et al. (declined paper)" ID="ID_1750936302" CREATED="1512626946796" MODIFIED="1513049759940" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
@@ -815,7 +815,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data-driven" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_58029598" CREATED="1512626897438" MODIFIED="1512626910548">
+<node TEXT="Data-driven" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_58029598" CREATED="1512626897438" MODIFIED="1512626910548">
 <node TEXT="de Gelder et al." ID="ID_1971359552" CREATED="1512626963745" MODIFIED="1512626981411" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -828,9 +828,56 @@
 </node>
 </node>
 </node>
+<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1513218356955" HGAP="106">
+<edge COLOR="#007c00"/>
+<node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
+<node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1513219483479" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
+<attribute NAME="key" VALUE="cha2007surveyPDFmeasures"/>
+<attribute NAME="journal" VALUE="City"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Comprehensive survey on distance/similarity measures between probability density functions"/>
+<attribute NAME="authors" VALUE="Cha, Sung-Hyuk"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3213309EFEAE572DCDF9FACCCB7885871CA216BD259BD28C81599423EB75F">
+    <pdf_title>Comprehensive Survey on Distance/Similarity Measures between Probability Density Functions</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Wasserstein distance, EMD is the first Wasserstein distance" ID="ID_1960182517" CREATED="1513218380810" MODIFIED="1513218514523" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/081%20The%20Wasserstein%20Distance%20and%20Approximation%20Theorems.pdf">
+<attribute NAME="key" VALUE="ruschendorf1985wasserstein"/>
+<attribute NAME="journal" VALUE="Probability Theory and Related Fields"/>
+<attribute NAME="year" VALUE="1985"/>
+<attribute NAME="title" VALUE="The Wasserstein distance and approximation theorems"/>
+<attribute NAME="authors" VALUE="R{\&quot;u}schendorf, Ludger"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="401BE47213AA9B29C8B100DEAA9D2BB378ACFA57BD7462779E787F17E66DCB">
+    <pdf_title>The Wasserstein Distance and Approximation Theorems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Kullback-Leibler divergence" ID="ID_1644600260" CREATED="1513218914941" MODIFIED="1513218925329" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/082%20On%20information%20and%20sufficiency%20-%20Kullback%20Leibler%20divergence.pdf">
+<attribute NAME="key" VALUE="kullback1951"/>
+<attribute NAME="journal" VALUE="Ann. Math. Statist."/>
+<attribute NAME="year" VALUE="1951"/>
+<attribute NAME="title" VALUE="On Information and Sufficiency"/>
+<attribute NAME="authors" VALUE="Kullback, S. and Leibler, R. A."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC845B2D75EB751B4DE9CD0E37C8CE7ED1F91B3DF863A54608CD26CCAB6CD">
+    <pdf_title>The Annals of Mathematical Statistics.</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_593392902" CREATED="1513218556148" MODIFIED="1513218626695" HGAP="56" VSHIFT="6">
+<edge COLOR="#7c007c"/>
+<node TEXT="Pattern Recognition and Machine Learning" ID="ID_1162060378" CREATED="1513218641717" MODIFIED="1513218647777" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/003%20Bishop%20-%20Pattern%20Recognition%20and%20Machine%20Learning.pdf">
+<attribute NAME="key" VALUE="Learningsystem_Bishop"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="Pattern Recognition and Machine Learning"/>
+<attribute NAME="authors" VALUE="Christopher M. Bishop"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FEE7C711A79E918E9491622FCAD3E1C3DE98167F4519CB687B678D9BD887718">
+    <pdf_title>Information Science and Statistics</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1511520590699" MOVED="1510633728393" VSHIFT="-4">
 <edge COLOR="#007c00"/>
-<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
+<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1512622478240" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">
 <attribute NAME="key" VALUE="bengler2014threedecades"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
@@ -851,7 +898,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
+<node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
 <node TEXT="Testing of high level components of automated driving" ID="ID_565029269" CREATED="1512630169330" MODIFIED="1512630206511" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2016testing"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -1009,7 +1056,7 @@
 </node>
 <node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1513049398668" HGAP="42" VSHIFT="-27">
 <edge COLOR="#0000ff"/>
-<node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
+<node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
 <node TEXT="GCDC2016" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1511348256814" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/054%20GCDC%202016%20Ploeg%20paper.pdf">
 <attribute NAME="key" VALUE="ploeg2017GCDC"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
@@ -1039,6 +1086,17 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">
+<node TEXT="Design and Evaluation of Automated MoD in Singapore" ID="ID_639563276" CREATED="1513224335345" MODIFIED="1513224344705" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/084%20Design%20and%20Evaluation%20of%20Automated%20Mobility%20on%20Demand%20in%20Singapore.pdf">
+<attribute NAME="key" VALUE="spieser2014toward"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Toward a systematic approach to the design and evaluation of automated mobility-on-demand systems: A case study in Singapore"/>
+<attribute NAME="authors" VALUE="Spieser, Kevin and Treleaven, Kyle and Zhang, Rick and Frazzoli, Emilio and Morton, Daniel and Pavone, Marco"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9C98B7841599718CE5A124954259926EDC722C7BFB386E64DA9857DA38A">
+    <pdf_title>Toward a Systematic Approach to the Design and Evaluation of Automated Mobility-on-Demand Systems: A Case Study in Singapore</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="AV: Guide for policymakers" ID="ID_1427027601" CREATED="1511348288860" MODIFIED="1511348343162" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/057%20Autonomous%20Vehicle%20Technology%20a%20Guide%20for%20Policymakers.pdf">
 <attribute NAME="key" VALUE="anderson2014autonomous"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -1057,7 +1115,7 @@
     <pdf_title>Use Cases for Autonomous Driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Till 2020: intro AV controlled env., 2020-2040: AV mainstream, 2040-beyond: AV commonplace" ID="ID_330146770" CREATED="1511520232345" MODIFIED="1511520425799" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/062%20Autonomous%20System-of-Systems.pdf">
+<node TEXT="Till 2020: intro AV controlled env., 2020-2040: AV mainstream, 2040+: AV commonplace" ID="ID_330146770" CREATED="1511520232345" MODIFIED="1513224180674" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/062%20Autonomous%20System-of-Systems.pdf">
 <attribute NAME="key" VALUE="madni2018autonomous"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Autonomous {S}ystem-of-{S}ystems"/>
