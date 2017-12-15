@@ -31,6 +31,7 @@
 \usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
 bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 %\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
 
 %%==========================================================================
 %% Define header/title stuff
@@ -74,22 +75,38 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \section{Summary of work}
 
 \begin{itemize}
-	\item 
+	\item Regarding my PhD, I focussed on writing the paper. 
 \end{itemize}
 
 \section{Future plans}
 
 \begin{itemize}
-	\item 
+	\item Short term: submit paper for IV2018.
+	\item Long term: finally, it looks like as if I will have access to real-life driving data soon. I have two activities in mind that I want to carry out as soon as I have access to the data:
+	\begin{itemize}
+		\item Detect a very simple and frequent scenario (e.g., braking of the ego vehicle). I want to see whether the variety of this simple and frequent scenario can be useful for a case study on \emph{completeness}.
+		\item There should be annotations of ``challenging scenarios'', so it should be possible to have multiple `challenging scenarios'' of a specific scenario class. For example, scenarios in which a pedestrian crosses the road while the ego vehicle is approaching. I want to see if it is possible to generate the same type of scenarios using the parametrization of the recorded scenarios.
+	\end{itemize}
 \end{itemize}
 
 \section{Questions}
 
 \begin{itemize}
-	\item 
+	\item Attached is the draft paper. I welcome any feedback, but particularly on the following I would appreciate feedback:
+	\begin{itemize}
+		\item The overall structure of the paper.
+		\item Section~I (the introduction).
+		\item Section~II-A (the context of this paper).
+		\item Section~II-B (definition of scenario).
+		\item Section~II-D (definition of event).
+	\end{itemize}
+	Note that I want to add a figure for Section~II-B which should summarize the details written in this section. I still have to finish this. If this is finished before the meeting, I will share it with you.
+	\item What would be an appropriate name for the time interval between two events. For example, the moment a vehicle starts braking is an event and the moment the vehicle stops braking is also an event. As a result, within the time interval between these two events, the particular vehicle is braking. In this particular case, we can refer to this time interval with the term `braking', but I wonder if there is a more general term for this. 
 \end{itemize}
 
-\bibliographystyle{ieeetr}
-\bibliography{../../bib}
+%\bibliographystyle{ieeetr}
+%\bibliography{../../bib}
+
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20171111 IV2018 Ontology"/root.pdf}
 
 \end{document}
