@@ -107,6 +107,26 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Estimating number of species" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1995372175" CREATED="1513318000249" MODIFIED="1513318020945" HGAP="40">
+<node TEXT="A review by Bunge and Fitzpatrick (1993)" ID="ID_770072296" CREATED="1513318119920" MODIFIED="1513318150918" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/089%20Estimating%20the%20Number%20of%20Species%20A%20Review.pdf">
+<attribute NAME="key" VALUE="bunge1993estimating"/>
+<attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Estimating the number of species: a review"/>
+<attribute NAME="authors" VALUE="Bunge, John and Fitzpatrick, M"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B5E951FAF288F1E055A39A0B19C2BECB9C1F762612955B064FE7FD252AC7FB"/>
+</node>
+<node TEXT="Nonparametric Estimations about Species Not Observed in a Random Sample" ID="ID_1033891614" CREATED="1513318252459" MODIFIED="1513318297452" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/090%20Nonparametric%20Estimations%20about%20Species%20Not%20Observed%20in%20a%20Random%20Sample.pdf">
+<attribute NAME="key" VALUE="Gandolfi2004"/>
+<attribute NAME="journal" VALUE="Milan Journal of Mathematics"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Nonparametric Estimations about Species Not Observed in a Random Sample"/>
+<attribute NAME="authors" VALUE="Gandolfi, Alberto and Sastri, C. C. A."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1DD12F8A6ACCA6BCB0D4A1EDFCCDADDD99E165A78CD2E588A3C66D6BD475DC1B">
+    <pdf_title>Nonparametric Estimations about Species Not Observed in a Random Sample</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
@@ -851,6 +871,16 @@
     <pdf_title>The Wasserstein Distance and Approximation Theorems</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Earth Mover&apos;s Distance" ID="ID_1099823323" CREATED="1513307442647" MODIFIED="1513307491581" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/085%20The%20Earth%20Mover&#x2019;s%20Distance%20as%20a%20Metric%20for%20Image%20Retrieval.pdf">
+<attribute NAME="key" VALUE="Rubner2000"/>
+<attribute NAME="journal" VALUE="International Journal of Computer Vision"/>
+<attribute NAME="year" VALUE="2000"/>
+<attribute NAME="title" VALUE="The Earth Mover&apos;s Distance as a Metric for Image Retrieval"/>
+<attribute NAME="authors" VALUE="Rubner, Yossi and Tomasi, Carlo and Guibas, Leonidas J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1FC162BCE5A9E53497C7CB435F07480A6131D2184BD2841B745F5E9538D5">
+    <pdf_title>The Earth Mover&#x2019;s Distance as a Metric for Image Retrieval</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="Kullback-Leibler divergence" ID="ID_1644600260" CREATED="1513218914941" MODIFIED="1513218925329" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/082%20On%20information%20and%20sufficiency%20-%20Kullback%20Leibler%20divergence.pdf">
 <attribute NAME="key" VALUE="kullback1951"/>
 <attribute NAME="journal" VALUE="Ann. Math. Statist."/>
@@ -859,6 +889,37 @@
 <attribute NAME="authors" VALUE="Kullback, S. and Leibler, R. A."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC845B2D75EB751B4DE9CD0E37C8CE7ED1F91B3DF863A54608CD26CCAB6CD">
     <pdf_title>The Annals of Mathematical Statistics.</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Kernel Density Estimation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_500468896" CREATED="1513311876271" MODIFIED="1513311886206">
+<node TEXT="Invention of KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_754407193" CREATED="1513312193327" MODIFIED="1513312239799">
+<node TEXT="Rosenblatt (1956)" ID="ID_245750230" CREATED="1513312276939" MODIFIED="1513312411667" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/087%20Kernel%20Density%20Estimation%20-%20Rosenblatt.pdf">
+<attribute NAME="key" VALUE="rosenblatt1956remarks"/>
+<attribute NAME="journal" VALUE="The Annals of Mathematical Statistics"/>
+<attribute NAME="year" VALUE="1956"/>
+<attribute NAME="title" VALUE="Remarks on some nonparametric estimates of a density function"/>
+<attribute NAME="authors" VALUE="Rosenblatt, Murray"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC845B2D75EB751B4DE9CD0E37C8CE7ED1F91B3DF863A54608CD26CCAB6CD">
+    <pdf_title>The Annals of Mathematical Statistics.</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Parzen (1962)" ID="ID_1119766300" CREATED="1513312398426" MODIFIED="1513312421597" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/088%20Kernel%20Density%20Estimation%20-%20Parzen.pdf">
+<attribute NAME="key" VALUE="parzen1962estimation"/>
+<attribute NAME="journal" VALUE="The annals of mathematical statistics"/>
+<attribute NAME="year" VALUE="1962"/>
+<attribute NAME="title" VALUE="On estimation of a probability density function and mode"/>
+<attribute NAME="authors" VALUE="Parzen, Emanuel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E5C660C7C1F11B7653E1623B17B68202A3CECDB42F96CF7C56F2815DA7CDA69"/>
+</node>
+</node>
+<node TEXT="Book of Silverman - rule of thumb for bandwidth selection" ID="ID_529098711" CREATED="1513311887634" MODIFIED="1513312058786" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/086%20First%20chapters%20of%20book%20Silverman%20Kernel%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="silverman1986density"/>
+<attribute NAME="year" VALUE="1986"/>
+<attribute NAME="title" VALUE="Density estimation for statistics and data analysis"/>
+<attribute NAME="authors" VALUE="Silverman, Bernard W"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C4B52DA236B566C4DA4CB6989A4679E38661D4876BB5C27504FFCD27AC0817C">
+    <pdf_title>DENSITY ESTIMATION FOR STATISTICS AND DATA ANALYSIS</pdf_title>
 </pdf_annotation>
 </node>
 </node>
