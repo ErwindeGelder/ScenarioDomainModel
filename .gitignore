@@ -10,8 +10,10 @@
 *.synctex.gz
 *.bib.bak
 _data/
-*.ipynb_checkpoints*
+*/.ipynb_checkpoints/*
+*/.idea/*
 */tikz/*
+*/__pycache__/*
 
 # Other files to be ignored
 20171126 Parametrization/df.p
