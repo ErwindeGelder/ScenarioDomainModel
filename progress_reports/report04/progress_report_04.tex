@@ -1,0 +1,99 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage[noadjust]{cite}                     %% citations; noadjust removes leading spaces
+%\usepackage[round]{natbib}                     %% Author-year citations (remove package cite)
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{4}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{9 January 2018}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-life driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item TNO has contract which has to be signed by me and TU Delft.
+	\item As stated in the future plans of the previous progress report, data will be soon provided. Some time need to be taken into account for the preprocessing of the data.
+	\item Regarding the structure of the IV2018 paper, the nomenclature (which was Section~II-E) should become a separate section (i.e., Section~II). This prevents forward references. Furthermore, there is no innovation on this part (purely taken from literature).
+	\item In order to be an ontology, there should be a clear story. As a reference, work from Van Dam could be used \cite{vanDamPhDThesis2009}.
+	\item UK and US English language should not be mixed. For paper, US English will be used.
+	\item Regarding the definition of an event, the word `model' should probably be changed by `mode'. An event would then be (a cause of) a mode transition, which is either a change of input, parameter or state. 
+	\item The page limit is 6, although the paper can be extended to 8 pages, for 100\$ per each page more than 6. The goal is to stay within 6 pages. A benefit of staying within 6 pages, and therefore limit the content of the paper, would be that it is easier to go for a journal.
+	\item The time interval between two events is called `inter-event time interval'. In the paper, we can refer to this time interval with `activity', as we actually want to refer to what is going on during the interval and not necessarily the interval itself.
+	\item Regarding the environment of the ego vehicle during a scenario, not only should the static environment be explicitly mentioned, also the dynamic environment should be mentioned. 
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Questions}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\bibliographystyle{ieeetr}
+\bibliography{../../bib}
+
+\end{document}

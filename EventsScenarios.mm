@@ -116,7 +116,7 @@
 <attribute NAME="authors" VALUE="Bunge, John and Fitzpatrick, M"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B5E951FAF288F1E055A39A0B19C2BECB9C1F762612955B064FE7FD252AC7FB"/>
 </node>
-<node TEXT="Nonparametric Estimations about Species Not Observed in a Random Sample" ID="ID_1033891614" CREATED="1513318252459" MODIFIED="1513318297452" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/090%20Nonparametric%20Estimations%20about%20Species%20Not%20Observed%20in%20a%20Random%20Sample.pdf">
+<node TEXT="Nonparametric Estimations about Species Not Observed in a Random Sample (2004)" ID="ID_1033891614" CREATED="1513318252459" MODIFIED="1513318342365" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/090%20Nonparametric%20Estimations%20about%20Species%20Not%20Observed%20in%20a%20Random%20Sample.pdf">
 <attribute NAME="key" VALUE="Gandolfi2004"/>
 <attribute NAME="journal" VALUE="Milan Journal of Mathematics"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -691,7 +691,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
+<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
 <node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1511498110954" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/058%20Control_System_Engineering_Norman.pdf">
 <attribute NAME="key" VALUE="norman2011control"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -846,6 +846,13 @@
 </pdf_annotation>
 </node>
 </node>
+</node>
+<node TEXT="Ontology -- work on ontology, this can be used as reference of what an ontology should look like" ID="ID_907836772" CREATED="1513590794613" MODIFIED="1513591064537" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
+<attribute NAME="key" VALUE="vanDamPhDThesis2009"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Capturing socio-technical systems with agent-based modelling"/>
+<attribute NAME="authors" VALUE="van Dam, Koen Hazi\&quot;{e}l"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
 <node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1513218356955" HGAP="106">
