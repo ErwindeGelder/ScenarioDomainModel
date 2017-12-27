@@ -53,7 +53,41 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="10"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="11"/>
+<node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1513736398690" HGAP="60" VSHIFT="8">
+<edge COLOR="#007c7c"/>
+<node TEXT="General literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1488737728" CREATED="1513736407885" MODIFIED="1513736423051">
+<node TEXT="Pattern Recognition and Machine Learning" ID="ID_567315421" CREATED="1513736426477" MODIFIED="1513736437778" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/003%20Bishop%20-%20Pattern%20Recognition%20and%20Machine%20Learning.pdf">
+<attribute NAME="key" VALUE="Learningsystem_Bishop"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="Pattern Recognition and Machine Learning"/>
+<attribute NAME="authors" VALUE="Christopher M. Bishop"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FEE7C711A79E918E9491622FCAD3E1C3DE98167F4519CB687B678D9BD887718">
+    <pdf_title>Information Science and Statistics</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_828177775" CREATED="1513736456056" MODIFIED="1513736494459">
+<node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_500921361" CREATED="1513736483833" MODIFIED="1513736520454" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/004%20Tutorial%20HMM.pdf">
+<attribute NAME="key" VALUE="HMM_Rabiner"/>
+<attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
+<attribute NAME="year" VALUE="1989"/>
+<attribute NAME="title" VALUE="A tutorial on hidden Markov models and selected applications in speech recognition"/>
+<attribute NAME="authors" VALUE="Rabiner, L."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D480C1F64BC9E22E50509312675C46ABE8EA6C0A25C5ACD52A7B732CA4B5792">
+    <pdf_title>A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Neural Networks" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1659271931" CREATED="1513736495967" MODIFIED="1513736523780">
+<node TEXT="Neural Networks and Deep Learning" ID="ID_1531829695" CREATED="1513736512279" MODIFIED="1513736517104" LINK="http://neuralnetworksanddeeplearning.com/">
+<attribute NAME="key" VALUE="Neural_Nielsen"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Neural Networks and Deep Learning"/>
+<attribute NAME="authors" VALUE="Michael A. Nielsen"/>
+</node>
+</node>
+</node>
 <node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6">
 <edge COLOR="#ff0000"/>
 <node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1510634679727" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
@@ -100,7 +134,7 @@
 <node TEXT="Alvarez et al." ID="ID_1680080988" CREATED="1510634030654" MODIFIED="1510634679577" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Prospective Effectiveness Assessment of ADAS and Active Safety Systems via Virtual Simulation: A Review of the Current Practices"/>
+<attribute NAME="title" VALUE="Prospective {E}ffectiveness {A}ssessment of {ADAS} and {A}ctive {S}afety {S}ystems via {V}irtual {S}imulation: {A} {R}eview of the {C}urrent {P}ractices"/>
 <attribute NAME="authors" VALUE="Alvarez, Stephanie and Page, Yves and Sander, Ulrich and Fahrenkrog, Felix and Helmer, Thomas and Jung, Olaf and Hermitte, Thierry and D{\&quot;u}ering, Michael and D{\&quot;o}ering, Sebastian and Op den Camp, Olaf"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0F25C26F9AEAF3AB8217DEB6C0928BA380CB54E6503665B6D7652A889B9">
     <pdf_title>Alvarez 1</pdf_title>
@@ -130,8 +164,8 @@
 </node>
 <node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
-<node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
-<node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
+<node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
+<node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
 <node TEXT="Object-Oriented Bayesian Networks for Detection of Lane Change Maneuvers" ID="ID_809676015" CREATED="1513049590036" MODIFIED="1513049689477" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
@@ -143,7 +177,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_930564985" CREATED="1513061263150" MODIFIED="1513061275832">
+<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_930564985" CREATED="1513061263150" MODIFIED="1513061275832">
 <node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_728268315" CREATED="1513061279856" MODIFIED="1513061297633" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/004%20Tutorial%20HMM.pdf">
 <attribute NAME="key" VALUE="HMM_Rabiner"/>
 <attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
@@ -156,8 +190,8 @@
 </node>
 </node>
 </node>
-<node TEXT="Applications with traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1528361068" CREATED="1513049599509" MODIFIED="1513049693187">
-<node TEXT="Lane Changes" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1183548072" CREATED="1513049616151" MODIFIED="1513049695649">
+<node TEXT="Applications with traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1528361068" CREATED="1513049599509" MODIFIED="1513049693187">
+<node TEXT="Lane Changes" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1183548072" CREATED="1513049616151" MODIFIED="1513049695649">
 <node TEXT="Kasper et al." ID="ID_1219262019" CREATED="1513049679878" MODIFIED="1513049685489" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
@@ -369,7 +403,7 @@
 <attribute NAME="key" VALUE="schuldt2013effiziente"/>
 <attribute NAME="journal" VALUE="Automatisierungssysteme, Assistenzsysteme und Eingebettete Systeme f{\&quot;u}r Transportmittel"/>
 <attribute NAME="year" VALUE="2013"/>
-<attribute NAME="title" VALUE="Effiziente systematische Testgenerierung f{\&quot;u}r Fahrerassistenzsysteme in virtuellen Umgebungen"/>
+<attribute NAME="title" VALUE="Effiziente systematische {T}estgenerierung f{\&quot;u}r {F}ahrerassistenzsysteme in virtuellen {U}mgebungen"/>
 <attribute NAME="authors" VALUE="Schuldt, Fabian and Saust, Falko and Lichte, Bernd and Maurer, Markus and Scholz, S"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1475157FB5897842DBFF7A24353BDBE29C968198DD5E6CC7D953A47763E4B064">
     <pdf_title>Effiziente systematische Testgenerierung f&#xfc;r</pdf_title>
@@ -417,7 +451,7 @@
 </node>
 <node TEXT="Schoemaker (combination of events)" ID="ID_1168246157" CREATED="1510201747123" MODIFIED="1510634679653" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/042%20Multiple%20scenario%20development.pdf">
 <attribute NAME="key" VALUE="schoemaker1993multiple"/>
-<attribute NAME="journal" VALUE="Strategic management journal"/>
+<attribute NAME="journal" VALUE="Strategic Management Journal"/>
 <attribute NAME="year" VALUE="1993"/>
 <attribute NAME="title" VALUE="Multiple scenario development: Its conceptual and behavioral foundation"/>
 <attribute NAME="authors" VALUE="Schoemaker, Paul JH"/>
@@ -695,7 +729,7 @@
 <node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1511498110954" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/058%20Control_System_Engineering_Norman.pdf">
 <attribute NAME="key" VALUE="norman2011control"/>
 <attribute NAME="year" VALUE="2011"/>
-<attribute NAME="title" VALUE="Control Systems Engineering"/>
+<attribute NAME="title" VALUE="Control {S}ystems {E}ngineering"/>
 <attribute NAME="authors" VALUE="Norman, S. Nise"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
@@ -735,7 +769,7 @@
 <node TEXT="Alvarez et al." ID="ID_747880869" CREATED="1512448020922" MODIFIED="1512448027779" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Prospective Effectiveness Assessment of ADAS and Active Safety Systems via Virtual Simulation: A Review of the Current Practices"/>
+<attribute NAME="title" VALUE="Prospective {E}ffectiveness {A}ssessment of {ADAS} and {A}ctive {S}afety {S}ystems via {V}irtual {S}imulation: {A} {R}eview of the {C}urrent {P}ractices"/>
 <attribute NAME="authors" VALUE="Alvarez, Stephanie and Page, Yves and Sander, Ulrich and Fahrenkrog, Felix and Helmer, Thomas and Jung, Olaf and Hermitte, Thierry and D{\&quot;u}ering, Michael and D{\&quot;o}ering, Sebastian and Op den Camp, Olaf"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0F25C26F9AEAF3AB8217DEB6C0928BA380CB54E6503665B6D7652A889B9">
     <pdf_title>Alvarez 1</pdf_title>
@@ -929,18 +963,116 @@
     <pdf_title>DENSITY ESTIMATION FOR STATISTICS AND DATA ANALYSIS</pdf_title>
 </pdf_annotation>
 </node>
-</node>
-</node>
-<node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_593392902" CREATED="1513218556148" MODIFIED="1513218626695" HGAP="56" VSHIFT="6">
-<edge COLOR="#7c007c"/>
-<node TEXT="Pattern Recognition and Machine Learning" ID="ID_1162060378" CREATED="1513218641717" MODIFIED="1513218647777" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/003%20Bishop%20-%20Pattern%20Recognition%20and%20Machine%20Learning.pdf">
-<attribute NAME="key" VALUE="Learningsystem_Bishop"/>
-<attribute NAME="year" VALUE="2006"/>
-<attribute NAME="title" VALUE="Pattern Recognition and Machine Learning"/>
-<attribute NAME="authors" VALUE="Christopher M. Bishop"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FEE7C711A79E918E9491622FCAD3E1C3DE98167F4519CB687B678D9BD887718">
-    <pdf_title>Information Science and Statistics</pdf_title>
+<node TEXT="Scott rule for bandwidth: On optimal and data-based histograms" ID="ID_551784586" CREATED="1513908872666" MODIFIED="1513908961115" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/100%20Scott%20Bandwidth.pdf">
+<attribute NAME="key" VALUE="scott1979optimal"/>
+<attribute NAME="journal" VALUE="Biometrika"/>
+<attribute NAME="year" VALUE="1979"/>
+<attribute NAME="title" VALUE="On optimal and data-based histograms"/>
+<attribute NAME="authors" VALUE="Scott, David W"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AFF88C81C64232475801063A99C387C71AC2611A49CE9AC88BE95C524B047">
+    <pdf_title>On Optimal and Data-Based Histograms Author(s): David W. Scott Source: Biometrika, Vol. 66, No. 3 (Dec., 1979), pp. 605-610 Published by: Stable URL: Accessed: 26/08/2010 16:51</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="Bandwidth Selection in Kernel Density Estimation: A Review" ID="ID_561229745" CREATED="1513908246714" MODIFIED="1513908591464" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/099%20Bandwidth%20Selection%20in%20Kernel%20Density%20Estimation%20A%20Review.pdf">
+<attribute NAME="key" VALUE="turlach1993bandwidthselection"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Bandwidth Selection in Kernel Density Estimation: A Review"/>
+<attribute NAME="authors" VALUE="Berwin A. Turlach"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="40F9A34E24E03D74DDE25D6651FCFE1A37274D17210F57F75C9AD52BEBB5173"/>
+</node>
+<node TEXT="FastKDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1513917929034">
+<node TEXT="A fast and objective multidimensional kernel density estimation method" ID="ID_187819930" CREATED="1513917431887" MODIFIED="1513917813377" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/101%20FastKDE%20A%20fast%20and%20objective%20multidimensional%20kernel%20density%20estimation%20method.pdf">
+<attribute NAME="key" VALUE="obrien2016fastkde"/>
+<attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="A fast and objective multidimensional kernel density estimation method: fast{KDE}"/>
+<attribute NAME="authors" VALUE="O&apos;Brien, Travis A. and Kashinath, Karthik and Cavanaugh, Nicholas R. and Collins, William D. and O&apos;Brien, John P."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D2D32EB7EDA3E605C4A9DEBD9B193467BE9AAE5B0B937C6C8A81064D33C7F3D">
+    <pdf_title>Computational Statistics and Data Analysis</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Reducing the computational cost of the ECF using a nuFFT" ID="ID_738327837" CREATED="1513917480382" MODIFIED="1513917921022" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/102%20FastKDE%20Reducing%20the%20computational%20cost%20of%20the%20ECF%20using%20a%20nuFFT.pdf">
+<attribute NAME="key" VALUE="obrien2014fastkde"/>
+<attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Reducing the computational cost of the {ECF} using a nu{FFT}: A fast and objective probability density estimation method"/>
+<attribute NAME="authors" VALUE="O&apos;Brien, Travis A. and Collins, William D. and Rauscher, Sara A. and Ringler, Todd D."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="68B280B2277A1C525EBE3E74EF77EACB8E634A6E77EE221771B62C2BEABDE5D">
+    <pdf_title>Computational Statistics and Data Analysis</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Evading the curse of dimensionality in multivariate kernel density estimation with simplified vines" ID="ID_688422034" CREATED="1513918183261" MODIFIED="1513918245697" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/103%20Evading%20the%20curse%20of%20dimensionality%20in%20multivariate%20kernel%20density%20estimation%20with%20simplified%20vines.pdf">
+<attribute NAME="key" VALUE="NAGLER201669"/>
+<attribute NAME="journal" VALUE="Journal of Multivariate Analysis"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Evading the curse of dimensionality in nonparametric density estimation with simplified vine copulas"/>
+<attribute NAME="authors" VALUE="Nagler, Thomas and Czado, Claudia"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F8D02A2F7B5768C319C99A46CB3BC656AA63A2A666AE9BB4F66C1EC735AE619">
+    <pdf_title>Journal of Multivariate Analysis</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
+<node TEXT="Explanation of what copula&apos;s are" ID="ID_1206112239" CREATED="1513683703860" MODIFIED="1513683805104" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/092%20Coping%20with%20Copulas.pdf">
+<attribute NAME="key" VALUE="Schmidt2007"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Copulas - {F}rom {T}heory to {A}pplication in {F}inance"/>
+<attribute NAME="authors" VALUE="Schmidt, T."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E3631D873FDEB9BF5814DADDC924D2D22FF38414DA19FE05CF81D2655274F16">
+    <pdf_title>Coping with Copulas</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="The Estimation of Copulas: Theory and Practice" ID="ID_1545640869" CREATED="1513735661305" MODIFIED="1513735993878" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/096%20The%20Estimation%20of%20Copulas%20Theory%20and%20Practice.pdf">
+<attribute NAME="key" VALUE="scaillet2007estimationcopulas"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Copulas - {F}rom {T}heory to {A}pplication in {F}inance"/>
+<attribute NAME="authors" VALUE="Scaillet, Olivier and Charpentier, Arthur and Fermanian, Jean-David"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AABD27CA6F232B3815010B01F1AAC282EC79CB0E1967BFBBAE2FEB2CE36C">
+    <pdf_title>Copulas: from theory to application in finance</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Modelling Dependence with Copulas and Applications to Risk Management" ID="ID_261470647" CREATED="1513736257663" MODIFIED="1513736261221" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/097%20Modelling%20Dependence%20with%20Copulas%20and%20Applications%20to%20Risk%20Management.pdf">
+<attribute NAME="key" VALUE="Embrechts01modellingdependence"/>
+<attribute NAME="year" VALUE="2001"/>
+<attribute NAME="title" VALUE="Modelling Dependence with Copulas and Applications to Risk Management"/>
+<attribute NAME="authors" VALUE="Paul Embrechts and Filip Lindskog and Alexander McNeil"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F8A0AB38259937A99FD88238CD5334579D7B7866B9374CC5499CAEE7C71BFF">
+    <pdf_title>Modelling Dependence with Copulas</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Copula vines" ID="ID_480585567" CREATED="1513918549215" MODIFIED="1513918554609">
+<node TEXT="Pair-copula constructions of multiple dependence" ID="ID_779708528" CREATED="1513918589982" MODIFIED="1513918941153" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/104%20Pair-copula%20constructions%20of%20multiple%20dependence.pdf">
+<attribute NAME="key" VALUE="aas2009paircopula"/>
+<attribute NAME="journal" VALUE="Insurance: Mathematics and Economics"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Pair-copula constructions of multiple dependence"/>
+<attribute NAME="authors" VALUE="Aas, Kjersti and Czado, Claudia and Frigessi, Arnoldo and Bakken, Henrik"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B8D79355BEFFCC6D4D403F2DFAEDEF763CB935A3F6AE546D166986B15D7265">
+    <pdf_title>Pair-copula constructions of multiple dependence</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Pair-Copula Constructions of Multivariate Copulas" ID="ID_1522203937" CREATED="1513920646136" MODIFIED="1513920651641" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/105%20Pair-Copula%20Constructions%20of%20Multivariate%20Copulas.pdf">
+<attribute NAME="key" VALUE="Czado2010"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Copula {T}heory and {I}ts {A}pplications"/>
+<attribute NAME="authors" VALUE="Czado, Claudia"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2CA4B9EC42A7C1CFE15B4554A1FFEBF5831F64DFED071E8C22D1081E8D7C6">
+    <pdf_title>Pair-Copula Constructions of Multivariate Copulas</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="Econometrics" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_414293478" CREATED="1513739564824" MODIFIED="1513739574221">
+<node TEXT="Introductory econometrics for finance" ID="ID_86705271" CREATED="1513739586343" MODIFIED="1513739589882" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/098%20Introductory%20Econometrics%20for%20Finance.pdf">
+<attribute NAME="key" VALUE="brooks2014introductory"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Introductory econometrics for finance"/>
+<attribute NAME="authors" VALUE="Brooks, Chris"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F6AAEBED06BF122665784714A793BA7174F91BF3E1C8F79862955BE71E8B6F">
+    <pdf_title>Introductory Econometrics for Finance</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1511520590699" MOVED="1510633728393" VSHIFT="-4">
@@ -1004,10 +1136,10 @@
     <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Review on different methods for effectiveness assessment of ADAS (P.E.A.R.S.)" ID="ID_1895491912" CREATED="1510633058460" MODIFIED="1510634679602" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
+<node TEXT="Review on different methods for effectiveness assessment of ADAS (P.E.A.R.S.)" ID="ID_1895491912" CREATED="1510633058460" MODIFIED="1513670645291" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Prospective Effectiveness Assessment of ADAS and Active Safety Systems via Virtual Simulation: A Review of the Current Practices"/>
+<attribute NAME="title" VALUE="Prospective {E}ffectiveness {A}ssessment of {ADAS} and {A}ctive {S}afety {S}ystems via {V}irtual {S}imulation: {A} {R}eview of the {C}urrent {P}ractices"/>
 <attribute NAME="authors" VALUE="Alvarez, Stephanie and Page, Yves and Sander, Ulrich and Fahrenkrog, Felix and Helmer, Thomas and Jung, Olaf and Hermitte, Thierry and D{\&quot;u}ering, Michael and D{\&quot;o}ering, Sebastian and Op den Camp, Olaf"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0F25C26F9AEAF3AB8217DEB6C0928BA380CB54E6503665B6D7652A889B9">
     <pdf_title>Alvarez 1</pdf_title>
@@ -1080,6 +1212,36 @@
     <pdf_title>A Simulation Tool Suite for Developing Connected Vehicle Systems</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="SUMO" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1956012801" CREATED="1513684093019" MODIFIED="1513684104206">
+<node TEXT="An overview" ID="ID_1181630665" CREATED="1513684097226" MODIFIED="1513684108021" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/093%20SUMO%20-%20Simulation%20of%20Urban%20MObility%20-%20an%20Overview.pdf">
+<attribute NAME="key" VALUE="behrisch2011sumo"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="SUMO--simulation of urban mobility: an overview"/>
+<attribute NAME="authors" VALUE="Behrisch, Michael and Bieker, Laura and Erdmann, Jakob and Krajzewicz, Daniel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8849FDD4092A2D2C1AB516B96E596D3FAD786C2159A48ADF12010D0F544F24">
+    <pdf_title>SUMO &#x2013; Simulation of Urban MObility</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Traffic Simulation with SUMO &#x2013; Simulation of Urban Mobility" ID="ID_29113616" CREATED="1513684345492" MODIFIED="1513684380105" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/094%20Traffic%20Simulation%20with%20SUMO%20&#x2013;%20Simulation%20of%20Urban%20Mobility.pdf">
+<attribute NAME="key" VALUE="krajzewicz2010traffic"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Traffic simulation with SUMO--simulation of urban mobility"/>
+<attribute NAME="authors" VALUE="Krajzewicz, Daniel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5F8475E32FC6A8C3A4153918366FECD907C4F2373BA8106F7095F56BADD80">
+    <pdf_title>Traffic Simulation with SUMO &#x2013; Simulation of Urban Mobility</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Recent Development and Applications of SUMO" ID="ID_1621194437" CREATED="1513684470626" MODIFIED="1513684474457" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/095%20Recent%20Development%20and%20Applications%20of%20SUMO.pdf">
+<attribute NAME="key" VALUE="krajzewicz2012recent"/>
+<attribute NAME="journal" VALUE="International Journal On Advances in Systems and Measurements"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Recent development and applications of SUMO-Simulation of Urban MObility"/>
+<attribute NAME="authors" VALUE="Krajzewicz, Daniel and Erdmann, Jakob and Behrisch, Michael and Bieker, Laura"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AB56DF3CD01F1B2B134ABCB9BE87FC7CA459B8126D1979B87D21D876EF8A7222">
+    <pdf_title>Recent Development and Applications of SUMO &#x2013; Simulation of Urban MObility</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1512369809994" HGAP="147" VSHIFT="-10">
 <edge COLOR="#ff0000"/>
@@ -1111,11 +1273,11 @@
     <pdf_title>UDRIVE: the European naturalistic driving study</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The Oxford RobotCar Dataset" ID="ID_634217329" CREATED="1512466566329" MODIFIED="1512466627835" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/070%20The%20Oxford%20RobotCar%20Dataset.pdf">
+<node TEXT="The Oxford RobotCar Dataset" ID="ID_634217329" CREATED="1512466566329" MODIFIED="1513684529665" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/070%20The%20Oxford%20RobotCar%20Dataset.pdf">
 <attribute NAME="key" VALUE="oxford2017dataset"/>
 <attribute NAME="journal" VALUE="The International Journal of Robotics Research (IJRR)"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="{1 Year, 1000km: The Oxford RobotCar Dataset}"/>
+<attribute NAME="title" VALUE="1 {Y}ear, 1000km: {T}he {O}xford {R}obot{C}ar {D}ataset"/>
 <attribute NAME="authors" VALUE="Will Maddern and Geoff Pascoe and Chris Linegar and Paul Newman"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="A26DF0178118B5E067279EA454321B4589FB69893E6C11333280C2223CB99025">
     <pdf_title>1 Year, 1000km: The Oxford RobotCar Dataset</pdf_title>
@@ -1129,7 +1291,7 @@
 <attribute NAME="key" VALUE="ploeg2017GCDC"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Cooperative Automated Maneuvering at the 2016 Grand Cooperative Driving Challenge"/>
+<attribute NAME="title" VALUE="Cooperative {A}utomated {M}aneuvering at the 2016 {G}rand {C}ooperative {D}riving {C}hallenge"/>
 <attribute NAME="authors" VALUE="J. Ploeg and E. Semsar-Kazerooni and A. I. Morales Medina and J. F. C. M. de Jongh and J. van de Sluis and A. Voronov and C. Englund and R. J. Bril and H. Salunkhe and \&apos;{A}. Arr\&apos;{u} and A. Ruano and L. Garc&#xed;-Sol and E. van Nunen and N. van de Wouw"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F0A9446DBEC9FF1E37EB6BBB6DFDAE94E4051BA9B75256C74FE3D86728FF7B4">
     <pdf_title>Cooperative Automated Maneuvering at the 2016 Grand Cooperative Driving Challenge</pdf_title>
