@@ -1,17 +1,26 @@
 \section{Nomenclature}
 \label{sec:nomenclature}
 
-For the definition of \emph{scenario} and \emph{event}, several notions are adopted. In this section, the notions of \emph{ego vehicle}, \emph{activity}, \emph{static environment}, \emph{dynamic environment}, \emph{model}, \emph{actor} and \emph{state} are explained. 
+For the definition of \emph{scenario} and \emph{event}, several notions are adopted. In this section, the notions of \emph{ego vehicle}, \emph{actor}, \emph{model}, \emph{state}, \emph{static environment}, \emph{dynamic environment}, and \emph{activity} are explained. 
 
 \subsubsection{Ego vehicle}
 \label{sec:ego vehicle}
-Literally, `ego' means `I'. Thus, the ego vehicle refers to the perspective from which the world is seen. Usually, the ego vehicle refers to the vehicle which is perceiving the world through its sensors (see e.g.~\cite{Bonnin2014}) or the vehicle which has to perform a specific task (see e.g.~\cite{althoff2017CommonRoad}). The ontology presented by Geyer~et~al.\ ``is described from the ego-vehicle’s point of view'' \cite{geyer2014}. In this paper, the ego vehicle determines which events are `relevant'. Thus, the ego vehicle is responsible for determining the start and end time of the scenario. Furthermore, the tags assigned to the scenario may depend on the ego vehicle. For example, the `target in front' refers to the vehicle in front of the ego vehicle. 
+Literally, `ego' means `I'. Thus, the ego vehicle refers to the perspective from which the world is seen. Usually, the ego vehicle refers to the vehicle that is perceiving the world through its sensors (see e.g.~\cite{Bonnin2014}) or the vehicle which has to perform a specific task (see e.g.~\cite{althoff2017CommonRoad}). The ontology presented by Geyer~et~al.\ ``is described from the ego-vehicle's point of view'' \cite{geyer2014}. In the current paper, the ego vehicle determines which events are `relevant'. Thus, the ego vehicle is responsible for determining the start and end time of the scenario. Furthermore, the tags assigned to the scenario may depend on the ego vehicle. For example, the `target in front' refers to the vehicle in front of the ego vehicle. 
 
-Note that in case a sensor-equipped vehicle is used to extract scenarios from real-life driving, the ego vehicle in an extracted scenario does not necessarily correspond to the sensor-equipped vehicle which is used to acquire the real-life data.
+%Note that in case a sensor-equipped vehicle is used to extract scenarios from real-life driving, the ego vehicle in an extracted scenario does not necessarily have to correspond to the sensor-equipped vehicle that is used to acquire the real-life data.
 
-\subsubsection{Activity}
-\label{sec:activity}
-A scenario contains the quantitative description of the activity of the ego vehicle. Here, the description refers to the changing states of the ego vehicle which are relevant for the scenario, e.g., acceleration and velocity. The activity is described using the models (see section \ref{sec:model}) that describe the way the state evolves over time.
+\subsubsection{Actor}
+\label{sec:actor}
+An actor is an element of a scenario acting on its own behalf \cite{ulbrich2015}. In practice, this can be a driver of e.g., a car or bike, an automation system, or a combination of a driver and an automation system \cite{geyer2014}.
+
+\subsubsection{Model}
+\label{sec:model}
+Typically, a system is modeled using a differential equation of the form $\dot{x}=f(x,u,t)$, where $x$ represents the state, $u$ represents an external input, and $t$ denotes the time \cite{norman2011control}. The input $u$ is a function of time, that needs to be quantified. For this purpose, a parametrized function can be used, i.e. $u=g_{\theta}(t)$ with parameter vector $\theta$, such that the differential equation can be rewritten to $\dot{x}=h_{\theta}(x,t)$.
+% In the context of this paper, model refers to a parametrized function, such as $h_{\theta}(x,t)$. It might be more practical to directly model the state (i.e., the result of the differential equation) using a function $x=k_{\theta}(t)$, such that no explicit information is required about the system dynamics. For example, see \cite{deGelder2017assessment}.
+
+\subsubsection{State}
+\label{sec:state}
+The values assumed at a given instant by the variables that define the characteristics of a system, component, or simulation \cite{ieee1990glossary}. Typically, a state could be the acceleration of an actor.
 
 \subsubsection{Static environment}
 \label{sec:static environment}
@@ -19,16 +28,8 @@ The static environment refers to the part of a scenario that does not change dur
 
 \subsubsection{Dynamic environment}
 \label{sec:dynamic environment}
-As opposed to the static environment, the dynamic environment refers to the part of a scenario that changes during the time frame of a scenario. The dynamic environment is described using the models (see section \ref{sec:model}) that describe the way the state evolves over time. In practice, the dynamic environment consists of the moving actors (other than the ego vehicle) which are relevant for the ego vehicle.
+As opposed to the static environment, the dynamic environment refers to the part of a scenario that changes during the time frame of a scenario. The dynamic environment is described using the models (see section \ref{sec:model}) that describe the way the state evolves over time. In practice, the dynamic environment consists of the moving actors (other than the ego vehicle) that are relevant to the ego vehicle.
 
-\subsubsection{Model}
-\label{sec:model}
-Typically, a system is modelled using a differential equation of the form $\dot{x}=f(x,u,t)$, where $x$ represents the state, $u$ represents an external input and $t$ denotes the time \cite{norman2011control}. The input $u$ is a function of time, which needs to be quantified. For this purpose, a parametrized function can be used, i.e. $u=g_{\theta}(t)$ with parameter vector $\theta$, such that the differential equation can be rewritten to $\dot{x}=h_{\theta}(x,t)$. In the context of this paper, model refers to a parametrized function, such as $h_{\theta}(x,t)$. It might be more practical to directly model the state (i.e., the result of the differential equation) using a function $x=k_{\theta}(t)$, such that no explicit information is required about the system dynamics. For example, see \cite{deGelder2017assessment}.
-
-\subsubsection{State}
-\label{sec:state}
-A state refers to a quantity. The only restriction is that all states must be linearly independent \cite{norman2011control}.
-
-\subsubsection{Actor}
-\label{sec:actor}
-An actor is an element of a scenario acting on its own behalf \cite{ulbrich2015}. In practice, this can be a driver of e.g., a car or bike, an automation system or a combination of a driver and an automation system \cite{geyer2014}.
+\subsubsection{Activity}
+\label{sec:activity}
+A scenario contains the quantitative description of the ongoing activity of the ego vehicle and its dynamic environment. Here, the description refers to the changing states that are relevant for the scenario, e.g., acceleration and velocity. The activity is described using the models that describe the way the state evolves over time.
