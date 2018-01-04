@@ -1,20 +1,20 @@
 \subsection{Definition of events}
 \label{sec:events}
 % Introduction of this section
-A scenario, for which the definition is proposed in section \ref{sec:scenario definition}, consists of events. Events can be seen as the `building blocks' of a scenario. The notion of event is extensively used in literature. In this section, a selected number of descriptions are presented. Next, a definition of event is given such that it suits our context.
+A scenario, for which the definition is proposed in Section~\ref{sec:scenario definition}, consists of events. Events can be seen as the `building blocks' of a scenario. The notion of event is extensively used in literature. In this section, a selected number of descriptions is presented. Next, a definition of event is given such that it suits our context.
 
 % Literature review
 The term event is used in many different fields, e.g.:
 \begin{itemize}
 	\item In computing, an event is an action or occurrence recognized by software. A common source of events are its users. An event may trigger a state transition \cite{breu1997towards}.
-	\item Jeagwon Kim, a philosopher, writes: ``The term event ordinarily implies change'' \cite{kim1993supervenience}. Kim states that an event is composed of three things: Objects ($x$), a property ($P$) and a time or a temporal interval ($t$). 
+	\item Jeagwon Kim, a philosopher, writes: ``The term event ordinarily implies change'' \cite{kim1993supervenience}. Kim states that an event is composed of three elements: Objects, a property and a time or a temporal interval. 
 	\item In probability theory, an event is an outcome or a set of outcomes of an experiment \cite{pfeiffer2013concepts}. For example, a thrown coin landing on its tail is an event.
 	\item ``In relativity, an event is any occurrence with which a definite time and a definite location are associated; it is an idealization in the sense that any actual event is bound to have a finite extent both in time and in space'' \cite{sartori1996understanding}.
-	\item In the field of hybrid control theory, ``the continuous and discrete dynamics interact at `event' or `trigger' times when the continuous state hits certain prescribed sets in the continuous state space'' \cite{branicky1998hybridcontrol}. ``A hybrid system can be in one of several modes of operation, whereby in each mode the behaviour of the system can be described by a system of difference or differential equations, and that the system switches from one mode to another due to the occurrence of events.'' \cite{deschutter2003hybrid}.
+	\item In the field of hybrid theory, ``the continuous and discrete dynamics interact at `event' or `trigger' times when the continuous state hits certain prescribed sets in the continuous state space'' \cite{branicky1998hybridcontrol}. ``A hybrid system can be in one of several modes of operation, [...], and the system switches from one mode to another due to the occurrence of events.'' \cite{boel1999hybridcontrol}.
 	\item In event-based control, a control action is computed when an event is triggered, as opposed to the more traditional approach where a control action is periodically computed \cite{heemels2012eventcontrol}. 
 \end{itemize}
 
-Before providing the definition of an event, the following need to be taken into account.
+Before providing the definition of an event, the following is concluded about an event:
 
 % It is a time instant
 \subsubsection{An event corresponds to a time instant}
@@ -22,10 +22,13 @@ Whether it is regarding computing \cite{breu1997towards}, philosophy \cite{kim19
 
 % Event should mark transition of a state from one set to another - mention relation with hybrid control
 \subsubsection{An event marks the transition of a state}
-During a traffic scenario, the so-called state (see section \ref{sec:state} for a description of state) is continuously evolving. For example, when a vehicle moves from $A$ to $B$, the position changes. For the assessment methodology, it is required to parametrize the way the state evolves over time (e.g., see \cite{deGelder2017assessment}). Therefore, specific models will be employed to describe this (see section \ref{sec:model} for a description of model). These models, each with a fixed number of parameters, will only be valid for a certain time interval. Therefore, events should mark the transition from one model that is describing the state to another model describing the state. In some way, this is analogous to the way event is described in hybrid control \cite{deschutter2003hybrid}. Here, an event describes the transition from one mode of operation to another mode of operation, where the behaviour of the system in each mode can be described by a system of difference or differential equations. In our application, i.e. events in traffic scenarios, ``mode of operation'' is described by a certain model with parameters assigned to it.
+During a traffic scenario, the states (see Section~\ref{sec:state} for a description of state) are continuously evolving. For example, when a vehicle moves from $A$ to $B$, the position changes. For the assessment methodology, it is required to parametrize the way the state evolves over time (e.g., see \cite{deGelder2017assessment}). Therefore, specific models will be employed to describe this (see Section~\ref{sec:model} for a description of model). These models, each with a fixed number of parameters, will only be valid for a certain time interval. Therefore, events mark the transition from one model that is describing the state to another model describing the state. In some way, this is analogous to the way event is described in hybrid control \cite{boel1999hybridcontrol} for which an event is (the cause of) a mode transition, which is either a change in an input, a parameter or a state. In our application, i.e. events in traffic scenarios, ``mode of operation'' is described by a certain model with parameters assigned to it.
 
 % Give definition
-An event is defined as follows.
+Hence, we define an event as follows.
 \begin{definition}[Event]
 	An event marks the time instant at which a transition of a state occurs, such that before and after an event, the state is described by a different model. Furthermore, it marks the start and end of a time interval that can be qualitatively described.
 \end{definition}
+
+% Compare definition with literature
+

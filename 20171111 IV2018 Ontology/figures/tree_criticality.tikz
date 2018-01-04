@@ -5,7 +5,7 @@
 \tikzstyle{helper2}=[coordinate, node distance=4.0em]%
 \begin{tikzpicture}
 	% Place the nodes
-	\node[tag](critic){\footnotesize Criticallity};
+	\node[tag](critic){\footnotesize Criticality};
 	\node[tag, below of=critic](critical){\footnotesize Critical};
 	\node[tag, left of=critical, node distance=7em](uncritical){\footnotesize Uncritical};
 	\node[tag, right of=critical, node distance=7em](accident){\footnotesize Accident};
