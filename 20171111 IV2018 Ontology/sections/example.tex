@@ -1,7 +1,7 @@
 \section{Application example}
 \label{sec:example}
 
-To illustrate the ontology, an real-life example is presented. A schematic overview of the example is shown in Figure~\ref{fig:example schematic}. Three vehicles are present in the example, a pickup truck, a sedan, and a station wagon, see Figure~\ref{fig:example schematic}a from left to right, respectively. The ego vehicle, i.e., the sedan, is displayed in red. The example can be described in words as follows. The ego vehicle accelerate towards its predecessor (i.e., the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. In the meantime, the car behind the ego vehicle (i.e., the station wagon) accelerates and takes over both other vehicles (i.e., the ego vehicle and the pickup truck). When the station wagon passed both vehicles, the ego vehicle accelerates and performs a lane change after which it overtakes the pickup truck.
+To illustrate the ontology, a real-life example is presented. A schematic overview of the example is shown in Figure~\ref{fig:example schematic}. Three vehicles are present in the example: a pickup truck, a sedan, and a station wagon, see Figure~\ref{fig:example schematic}a from left to right, respectively. The ego vehicle, i.e., the sedan, is displayed in red. The example can be described in words as follows. The ego vehicle accelerates towards its predecessor (i.e., the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. In the meantime, the car behind the ego vehicle (i.e., the station wagon) accelerates and takes over both other vehicles (i.e., the ego vehicle and the pickup truck). When the station wagon has passed both vehicles, the ego vehicle accelerates and performs a lane change after which it overtakes the pickup truck.
 
 \begin{figure}
 	\centering
@@ -14,17 +14,17 @@ To illustrate the ontology, an real-life example is presented. A schematic overv
 	\label{fig:example schematic}
 \end{figure}
 
-Two different scenarios can be identified. The first scenario starts at the beginning of the example and ends when the lane change start. When the first scenario ends, the second scenario starts until. The second scenario ends when the ego vehicle completes the overtaking of the pickup truck.
+Two different scenarios can be identified. The first scenario starts at the beginning of the example and ends when the lane change starts. When the first scenario ends, the second scenario starts. The second scenario ends when the ego vehicle completes the overtaking of the pickup truck.
 
-The activity of the ego vehicle is shown in Figure~\ref{fig:example ego states}, in which the longitudinal velocity and lateral position are shown with respect to time $t$. Here, the longitudinal and lateral positions are expressed in the Road Coordinate System \cite{zofka2015datadrivetrafficscenarios}. Regarding the longitudinal velocity, four events are identified. At the first event, the ego vehicle's longitudinal acceleration transits from being positive to negative, i.e., the ego vehicle starts braking. As there are four events identified regarding the longitudinal velocity, five different time intervals are to be modelled, denoted by A, B, C, D and E in Figure~\ref{fig:example ego states}a. During the time intervals A, B, C, D and E, the ego vehicle accelerates, brakes, cruises, accelerates and cruises, respectively. Regarding the lateral position, see Figure~\ref{fig:example ego states}b, also four events are identified, such that at each event the ego vehicle starts or completes a lane change. During the second and fourth time interval (i.e., time intervals G and I in Figure~\ref{fig:example ego states}b) the ego vehicle performs the lane change, while in the remaining time (i.e., time intervals F, H and J in Figure~\ref{fig:example ego states}b) the ego vehicles drives straight. An complete overview of the events is presented in Figure~\ref{fig:example events}.
+The activities of the ego vehicle are shown in Figure~\ref{fig:example ego states}, in which the longitudinal velocity and lateral position are shown with respect to time $t$. Here, the longitudinal and lateral positions are expressed in the Road Coordinate System \cite{zofka2015datadrivetrafficscenarios}. Regarding the longitudinal velocity, four events are identified. At the first event, the ego vehicle's longitudinal acceleration transits from being positive to negative, i.e., the ego vehicle starts braking. As there are four events identified regarding the longitudinal velocity, five different activities are to be modeled, denoted by A, B, C, D, and E in Figure~\ref{fig:example ego states}a. During the time intervals A, B, C, D, and E, the ego vehicle accelerates, brakes, cruises, accelerates, and cruises, respectively. Regarding the lateral position, see Figure~\ref{fig:example ego states}b, also four events are identified, such that at each event time the ego vehicle starts or completes a lane change. During the second and fourth activity (i.e., time intervals G and I in Figure~\ref{fig:example ego states}b) the ego vehicle performs the lane change, while in the remaining time (i.e., time intervals F, H and J in Figure~\ref{fig:example ego states}b) the ego vehicles drives straight ahead. An complete overview of the events is presented in Figure~\ref{fig:example events}.
 
 \begin{figure}
 	\centering
 	\setlength\figureheight{150pt}
 	\setlength\figurewidth{248pt}
-	\subfloat[Longitudinal velocity ego vehicle. At the time intervals A and D, the ego vehicle accelerates, at the time interval B, the ego vehicle brakes and at the time intervals C and E, the ego vehicles cruises.]{\input{figures/lon_vel.tikz}}\\
-	\subfloat[Lateral position ego vehicle. At the time intervals F, H and J, the ego vehicles drives straight while at the time intervals G and I, the ego vehicle performs a lane change.]{\input{figures/lat_pos.tikz}}
-	\caption{States of the ego vehicle. The blue line shows the measured data and the orange dashed line shows the output of the model fitted to the data. The black vertical lines indicate the events.}
+	\subfloat[Longitudinal velocity ego vehicle. During the time intervals A and D, the ego vehicle accelerates, during the time interval B, the ego vehicle brakes and during the time intervals C and E, the ego vehicles cruises.]{\input{figures/lon_vel.tikz}}\\
+	\subfloat[Lateral position ego vehicle. During the time intervals F, H and J, the ego vehicles drives straight ahead while during the time intervals G and I, the ego vehicle performs a lane change.]{\input{figures/lat_pos.tikz}}
+	\caption{Activities of the ego vehicle. The blue line shows the measured data and the orange dashed line shows the output of the model fitted to the data. The black vertical lines indicate the events.}
 	\label{fig:example ego states}
 \end{figure}
 
@@ -48,5 +48,3 @@ Figure~\ref{fig:example dynamic environment} shows the longitudinal and lateral 
 	\caption{Complete overview of the events of the example. Every vertical black line represents an event. The end of the first scenario and the start of the second scenario is at the moment the ego vehicle starts the first lane change, i.e., at $17\ \textup{s}$.}
 	\label{fig:example events}
 \end{figure*}
-
-\color{black}
