@@ -8,6 +8,7 @@
 *.out
 *.pdf
 *.synctex.gz
+*.toc
 *.bib.bak
 _data/
 */.ipynb_checkpoints/*

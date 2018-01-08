@@ -47,10 +47,14 @@ A scenario should include the description of the static and dynamic environment.
 
 % Definition
 Hence, we define a scenario as follows.
-\begin{definition}[Scenario]
-	A scenario is a quantitative description of the ego vehicle, its activity, its static environment and its dynamic environment. From the perspective of the ego vehicle, it contains the relevant events.
+\begin{definition}[Scenario]\label{def:scenario}
+	A scenario is a quantitative description of the ego vehicle, its activity, its static environment, and its dynamic environment. From the perspective of the ego vehicle, it contains the relevant events.
 \end{definition}
 
 % Describe difference from literature
 % - quantitative --> to avoid ambiguous situation and to serve assessment
 % - notion of scene not used. Scene follows from description, but is not explicitely used
+Definition~\ref{def:scenario} deviates from existing definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} from the fact that it explicitly mentions that a scenario if quantitative. Therefore, one scenario - according to Definition~\ref{def:scenario} - can only be interpreted in one way. The qualitative description of a scenario, however, allows for multiple interpretations. Hence, the qualitative description can be regarded as an abstraction of the quantitative scenarios. A \emph{scenario class} refers to the qualitative description, see Section~\ref{sec:scenario classes}.
+
+Geyer~et~al.~\cite{geyer2014} and Ulbrich~et~al.\cite{ulbrich2015} use the term \emph{scene} to define a scenario while Definition~\ref{def:scenario} does not use this term. The quantitative description of the ego vehicle, its activity, its static environment, and its dynamic environment fully define the scenario. The scenes follow from this description and thus the scenes do not have to be described explicitly.
+
