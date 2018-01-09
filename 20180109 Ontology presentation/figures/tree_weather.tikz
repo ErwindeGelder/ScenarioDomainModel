@@ -1,0 +1,30 @@
+\definecolor{TNOlightgray}{RGB}{222,222,231}%
+\tikzstyle{tag}=[font=\sffamily, text height=.8em, text depth=.1em, fill=TNOlightgray, rounded corners=0.2em]%
+\tikzstyle{helper}=[coordinate, node distance=1.4em]%
+\begin{tikzpicture}
+	% Place the nodes
+	\node[tag](weather){Weather};
+	\node[tag, below of=weather](rain){Rain};
+	\node[tag, left of=rain, node distance=10em](clear){Clear};
+	\node[tag, right of=rain, node distance=13em](snow){Snow};
+	\node[tag, below of=rain](mod rain){Moderate};
+	\node[tag, left of=mod rain, node distance=4.5em](light rain){Light};
+	\node[tag, right of=mod rain, node distance=4.6em](heavy rain){Heavy};
+	\node[tag, below of=snow](mod snow){Moderate};
+	\node[tag, left of=mod snow, node distance=4.5em](light snow){Light};
+	\node[tag, right of=mod snow, node distance=4.6em](heavy snow){Heavy};
+	
+	% Place the lines
+	\node[helper, below of=weather](weather helper){};
+	\node[helper, below of=rain](rain helper){};
+	\node[helper, below of=snow](snow helper){};
+	\draw (weather) -- (rain);
+	\draw (weather) -- (weather helper) -| (clear);
+	\draw (weather) -- (weather helper) -| (snow);
+	\draw (rain) -- (mod rain);
+	\draw (rain) -- (rain helper) -| (light rain);
+	\draw (rain) -- (rain helper) -| (heavy rain);
+	\draw (snow) -- (mod snow);
+	\draw (snow) -- (snow helper) -| (light snow);
+	\draw (snow) -- (snow helper) -| (heavy snow);
+\end{tikzpicture}%

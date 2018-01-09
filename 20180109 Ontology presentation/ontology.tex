@@ -36,6 +36,8 @@
 \usepackage{pgfplots}                   %% support for TikZ figures (Matlab)
 \usepackage{hyperref}                   %% implement hyperlinks
 \usepackage{booktabs}					%% Use for tables
+\usepackage{tabularx}					%% Use for tables
+\usepackage{ifthen}						%% For usage of ifthenelse
 \usetikzlibrary{shapes.callouts,shapes.misc} 
 
 
@@ -122,7 +124,22 @@
 %%==========================================================================
 %% Newcommands for this specific presentation
 %%==========================================================================
-
+\newcommand{\ontologytable}[1]{%
+	\begin{table}
+		\begin{center}
+			\footnotesize
+			\begin{tabularx}{\linewidth}{p{3em} X X}
+				\toprule
+				Term & Characteristics & ``has'' \\ \otoprule
+				\ifthenelse{\equal{#1}{2}}{\leavevmode\color{red}}{} Scenario class & \ifthenelse{\equal{#1}{2}}{\leavevmode\color{red}}{} Qualitative description of scenario & \ifthenelse{\equal{#1}{2}}{\leavevmode\color{red}}{} Scenarios \newline Other (less generic) scenario classes \newline One or multiple tags \\
+				\ifthenelse{\equal{#1}{1}}{\leavevmode\color{red}}{} Scenario & \ifthenelse{\equal{#1}{1}}{\leavevmode\color{red}}{} Quantitative description \newline Time interval & \ifthenelse{\equal{#1}{1}}{\leavevmode\color{red}}{} One or multiple events \newline One or multiple activities \newline Ego vehicle \newline Static environment \newline Dynamic environment \\
+				\ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Event & \ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Time instant \newline State transition & \\
+				\ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Activity & \ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Inter-event time interval \newline Quantitative description of (changing) state & \ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Model that describes the way the state evolves \\
+				\bottomrule
+			\end{tabularx}
+		\end{center}
+	\end{table}
+}
 
 %%==========================================================================
 %% Document meta data
@@ -179,7 +196,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Why use an ontology for the assessment of}{automated vehicles?}
+\begin{frame}{Why use an ontology for the assessment of AVs}
 	Some useful definitions already exists:
 	\begin{itemize}
 		\item Geyer et al. \cite{geyer2014}.
@@ -192,6 +209,197 @@
 		\item A more concrete definition is needed to ``translate definition to code''.
 		\item The presented ontology is more applicable for \textbf{scenario mining} and \textbf{scenario-based assessment}.
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Warning}
+	\visible<2>{%
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=\linewidth]{boring.jpg}
+			\end{center}
+		\end{figure}	
+	}
+\end{frame}
+
+\section{Scenario}
+\stepcounter{subsection}
+\begin{frame}{Ontology}
+	\ontologytable{0}
+\end{frame}
+\begin{frame}{Scenario}
+	\ontologytable{1}
+\end{frame}
+
+\begin{frame}{Relevant definitions}
+	\begin{itemize}
+		\item Geyer et al. \cite{geyer2014}: A scenario includes at least one situation within a scene including the scenery and dynamic elements. However, [a] scenario further includes the ongoing activity of one or both actors.
+		\item Ulbrich et al. \cite{ulbrich2015}: A scenario is the temporal development between several scenes in a sequence of scenes. Every scenario starts with an initial scene. Actions \& events as well as goals \& values may be specified to characterize this temporal development in a scenario. Other than a scene, a scenario spans a certain amount of time.
+		\item Elrofai et al. \cite{elrofai2016scenario}: A scenario is the combination of actions and manoeuvres of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and manoeuvres of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Scenario characteristics}
+	\begin{itemize}
+		\item A scenario corresponds to a time interval.
+		\item A Scenario consists of one or several events.
+		\item Real-life traffic scenarios are quantitative scenarios.
+		\item The time interval of a scenario contains all relevant events.
+		\item A scenario includes the description of the static and dynamic environment.
+	\end{itemize}
+	\begin{definition}[Scenario]
+		A scenario is a quantitative description of the ego vehicle, its activity and/or goals, its static environment, and its dynamic environment. From the perspective of the ego vehicle, it contains the relevant events.
+	\end{definition}
+\end{frame}
+
+\begin{frame}{Scenario definition vs. literature}
+	We do not use the term \emph{scene}, as opposed to Geyer et al. \cite{geyer2014} and Ulbrich et al. \cite{ulbrich2015}. \emph{Scene follow from scenario description.}
+	
+	Scenarios are quantitative descriptions. For qualitative descriptions, see \emph{scenario classes}.
+\end{frame}
+
+\section{Scenario class}
+\stepcounter{subsection}
+\begin{frame}{Scenario class}
+	\ontologytable{2}
+\end{frame}
+
+\begin{frame}{Example scenario class}
+	\begin{example}[Scenario class]
+		Cut-in of vehicle in front on a merging on the highway with moderate rain.
+	\end{example}
+
+	Tags:
+	\begin{itemize}
+		\item Cut-in of vehicle in front
+		\item Merging on the highway
+		\item Moderate rain
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Scenario class}{Tags}
+	\begin{figure}
+		\begin{center}
+			\input{figures/tree_road.tikz}
+			\caption{Tags for the type of road \cite{Bonnin2014}.}
+		\end{center}
+	\end{figure}
+
+	More generic scenario class: Cut-in of vehicle in front on the highway with moderate rain.
+\end{frame}
+
+\begin{frame}{Scenario class}{Notes}
+	\begin{itemize}
+		\item Scenario class can contain other scenario classes.
+		\item Single scenario class contains multiple scenarios.
+		\item Single scenario belongs to multiple scenario classes (depending on its tags).
+	\end{itemize}
+\end{frame}
+
+\section{Event and activity}
+\stepcounter{subsection}
+\begin{frame}{Event and activity}
+	\ontologytable{3}
+\end{frame}
+
+\begin{frame}{Event}
+	\begin{itemize}
+		\item An event corresponds to a time instant \cite{breu1997towards, kim1993supervenience, sartori1996understanding, branicky1998hybridcontrol, boel1999hybridcontrol, heemels2012eventcontrol}.
+		\item An event marks the transition of a state \cite{deGelder2017assessment}.
+	\end{itemize}
+	\begin{definition}[Event]
+		An event marks the time instant at which a transition of a state occurs, such that before and after an event, the state is described by a different model.
+	\end{definition}
+\end{frame}
+
+\begin{frame}{Activity}
+	\begin{itemize}
+		\item During the inter-event time interval, the state is quantitatively described.
+		\item Activity refers to the way the state evolves during the inter-event time interval.
+	\end{itemize}
+\end{frame}
+
+\section{Example}
+\stepcounter{subsection}
+\begin{frame}{Example}
+	\vspace{-1em}
+	\begin{figure}
+		\centering
+		\setlength\figureheight{106pt}
+		\setlength\figurewidth{260pt}
+		\subfloat[Last vehicle overtakes other vehicles.]{\input{figures/scenario_situation_1.tikz}}\\
+		\setlength\figureheight{100pt}
+		\subfloat[Another overtaking.]{\input{figures/scenario_situation_2.tikz}}
+		\caption{Schematic overview of the traffic scenarios. The red car is the ego-vehicle.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Example}
+	\vspace{-1em}
+	\begin{figure}
+		\centering
+		\setlength\figureheight{150pt}
+		\setlength\figurewidth{248pt}
+		\input{figures/lon_vel.tikz}
+		\caption{Activities of the ego vehicle. The blue line shows the measured data and the orange dashed line shows the output of the model fitted to the data. The black vertical lines indicate the events.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Example}
+	\vspace{-1em}
+	\begin{figure}
+		\centering
+		\setlength\figureheight{150pt}
+		\setlength\figurewidth{248pt}
+		\input{figures/lat_pos.tikz}
+		\caption{Activities of the ego vehicle. The blue line shows the measured data and the orange dashed line shows the output of the model fitted to the data. The black vertical lines indicate the events.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Example}
+	\vspace{-1em}
+	\begin{figure}
+		\centering
+		\setlength\figureheight{150pt}
+		\setlength\figurewidth{248pt}
+		\input{figures/rel_lon_pos.tikz}
+		\caption{States of the dynamic environment.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Example}
+	\vspace{-1em}
+	\begin{figure}
+		\centering
+		\setlength\figureheight{150pt}
+		\setlength\figurewidth{248pt}
+		\input{figures/rel_lat_pos.tikz}
+		\caption{States of the dynamic environment.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Example}
+	\vspace{-1em}
+	\begin{figure}
+		\centering
+		\setlength\figureheight{160pt}
+		\setlength\figurewidth{450pt}
+		\input{figures/events.tikz}
+		\vspace{-1em}
+		\caption{Complete overview of the events and activities of the example. Every vertical black line represents an event. The end of the first scenario and the start of the second scenario is at the moment the ego vehicle starts the first lane change, i.e., at $t=17\ \textup{s}$.}
+	\end{figure}
+\end{frame}
+
+\section{Final remarks}
+\stepcounter{subsection}
+\begin{frame}{Discussion}
+	\begin{itemize}
+		\item Start and end of a scenario is still ambiguous.
+		\item This definition provides a step towards a \emph{completeness measure}, which is until now an open issue \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}. The number of scenario classes is a combinatorial problem \cite{geyer2014}, for which solutions exists (cf.\ \cite{yang2012estimating, bunge1993estimating}). Other measures are required to quantify the variety of the scenarios that belong to a specific scenario class (cf.~\cite{wang2017much}).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+	Ontology presented that is more applicable for scenario mining and scenario-based assessment.
 \end{frame}
 
 \section{References}
