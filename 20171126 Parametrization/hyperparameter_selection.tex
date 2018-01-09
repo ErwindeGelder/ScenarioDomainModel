@@ -1,0 +1,282 @@
+%%==========================================================================
+%% This is the very first version of a Streetwise LaTeX template. By
+%% chosing the document class, it is easily convertible to a two-column IEEE
+%% paper format, provided any conflicting packages and (new)commmands are
+%% removed.
+%%
+%% Erwin de Gelder, January 6, 2018
+%%==========================================================================
+
+%%==========================================================================
+%% Title:
+%% Author(s):
+%% To be published in:
+%% Date of submission:
+%% Date of submission R1:
+%% Date of submission R2:
+%% Date of final submission:
+%%==========================================================================
+
+
+%% Generic
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%% IEEE
+%% Document class options: replace "draftcls" by "final" for final document.
+%% All other options may just as well be omitted because they are the default values.
+%\documentclass[10pt,final,journal,letterpaper,twoside,twocolumn]{IEEEtran}
+
+
+%%==========================================================================
+%% Document automation
+%%==========================================================================
+
+\def\reptitle{Hyperparameter selection for scenario generation}
+\def\repauthor{Erwin de Gelder, etc.}
+
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage[noadjust]{cite}                     %% citations; noadjust removes leading spaces
+%\usepackage[round]{natbib}                     %% Author-year citations (remove package cite)
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+%\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+            bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage{lmodern} 
+\usepackage{etoolbox}							%% Needed for apptocmd later
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{\includegraphics[width=15mm]{Streetwise}} %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\small\emph{\reptitle}}                   %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+\setlength{\headheight}{18pt}                           %% increase head height to accommodate an oversized picture in the header
+\renewcommand*{\headrulewidth}{0.25pt}                  %% header line width
+\renewcommand*{\footrulewidth}{0pt}                     %% footer line width
+%% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
+\fancypagestyle{plain}{\fancyhf{}
+                       \fancyhead[C]{\includegraphics[width=30mm]{Streetwise}}
+                       \renewcommand{\headrulewidth}{0pt}
+                       \renewcommand{\footrulewidth}{0pt}
+                       \setlength{\headheight}{36pt}}
+
+
+%%==========================================================================
+%% TikZ figures
+%%==========================================================================
+
+\newlength\figurewidth
+\setlength\figurewidth{0.35\textwidth}              %% set figure height
+\newlength\figureheight
+\setlength\figureheight{0.3\textwidth}              %% set figure width
+\pgfplotsset{every axis/.append style={
+    scaled y ticks=false,
+    scaled x ticks=false,
+    y tick label style={/pgf/number format/fixed},
+    x tick label style={/pgf/number format/fixed},
+    legend style={font=\small}},
+    compat=1.9}                                     %% PGFPlots package options
+\usetikzlibrary{arrows}                             %% plot arrows
+\usetikzlibrary{external}                           %% Create pdf figures from TikZ. Use PDFTeXify ...
+\tikzexternalize[prefix=./tikz/]                    %% ... with --tex-option=--shell-escape switch.
+%\tikzset{external/force remake}                    %% force pdf figure update
+
+
+%%==========================================================================
+%% User-defined commands
+%%==========================================================================
+
+\newcommand*{\mat}[1]{\mathbf{#1}}                              %% matrix/vector notation
+\newcommand*{\matsym}[1]{\boldsymbol{#1}}                       %% matrix/vector notation for Greek letters
+\newcommand*{\T}{^{\scriptscriptstyle\mathsf{T}}}               %% transpose operator
+\newcommand*{\Hr}{^{\scriptscriptstyle\mathsf{H}}}              %% conjugate transpose operator
+\newcommand*{\ud}{\mathrm{\,d}}                                 %% differential operator (upright d)
+\newcommand*{\defeq}{\mathrel{\mathop:}=}                       %% definition sign :=
+\newcommand*{\eqdef}{=\mathrel{\mathop:}}                       %% definition sign =:
+\newcommand*{\ip}[2]{\left\langle#1\,{,}\,#2\right\rangle}      %% inner product
+\newcommand*{\real}[1]{\mathrm{Re}(#1)}                         %% real part
+\newcommand*{\imag}[1]{\mathrm{Im}(#1)}                         %% imaginary part
+\newcommand*{\lsup}[1]{{}^{#1}\!}                               %% left superscript
+\newcommand*{\hi}[1]{$^\text{#1}$}                              %% superscript in normal text
+\newcommand*{\lo}[1]{$_\text{#1}$}                              %% subscript in normal text
+\newcommand*{\w}[1]{\mathrm{#1}}                                %% multiple character super-/subscript in math mode
+\newcommand*{\Ln}{{\ensuremath{\mathcal{L}}}\xspace}            %% L norm
+\newcommand*{\Lone}{{\ensuremath{\mathcal{L}_1}}\xspace}        %% L_1 norm
+\newcommand*{\Ltwo}{{\ensuremath{\mathcal{L}_2}}\xspace}        %% L_2 norm
+\newcommand*{\Linf}{{\ensuremath{\mathcal{L}_\infty}}\xspace}   %% L_inf norm
+\newcommand*{\Lp}{{\ensuremath{\mathcal{L}_p}}\xspace}          %% L_p norm
+\newcommand*{\Htwo}{{\ensuremath{\mathcal{H}_2}}\xspace}        %% H_2 norm
+\newcommand*{\Hinf}{{\ensuremath{\mathcal{H}_\infty}}\xspace}   %% H_inf norm
+\newcommand*{\Hp}{{\ensuremath{\mathcal{H}_p}}\xspace}          %% H_p norm
+\newcommand*{\capskip}{\vspace{-12pt}}                          %% caption skip for figures with subfloats
+\newcommand*{\etal}{et al.}                                     %% may be required for Natbib bibliography styles
+\renewcommand*{\qedsymbol}{$\blacksquare$}                      %% redefine the end-of-proof symbol
+\renewcommand*{\labelitemi}{$\bullet$}                          %% first level item list bullet
+\renewcommand*{\labelitemii}{$-$}                               %% second level item list bullet
+%\renewcommand*{\theenumi}{\textit{\roman{enumi}}}               %% first level enumerator
+\renewcommand*{\labelenumi}{\theenumi.}
+\renewcommand*{\theenumii}{\textit{\alph{enumii}}}              %% second level enumerator
+\renewcommand*{\labelenumii}{\theenumii.}
+\DeclareMathOperator{\tr}{tr}                                   %% trace of a matrix
+\DeclareMathOperator{\sgn}{sgn}                                 %% signum function
+\DeclareMathOperator{\atan}{atan}                               %% arc tangent
+
+
+%%==========================================================================
+%% User-defined environments
+%%==========================================================================
+
+\theoremstyle{plain}\newtheorem{definition}{Definition}[section]    %% definition
+                    \newtheorem{theorem}{Theorem}[section]          %% theorem
+                    \newtheorem{lemma}[theorem]{Lemma}              %% lemma
+                    \newtheorem{corollary}[theorem]{Corollary}      %% corollary
+                    \newtheorem{assumption}{Assumption}[section]    %% assumption
+                    \newtheorem{condition}{Condition}[section]      %% condition
+\theoremstyle{definition}\newtheorem{example}{Example}[section]     %% examples
+\theoremstyle{remark}\newtheorem{remarkenv}{Remark}[section]        %% remarks
+\newenvironment{remark}{\begin{remarkenv}}%
+                       {\hfill$\blacklozenge$\end{remarkenv}}       %% end remark with a lozenge
+\newenvironment{reviewer}{\itshape}{\upshape}                       %% environment for reviewer's comments
+
+
+%%==========================================================================
+%% Miscellaneous
+%%==========================================================================
+
+\graphicspath{{./../}{./figures/}{./more_figures/}} %% (graphicx) directory path for figures
+%\setlength{\parindent}{0pt}                        %% no paragraph indentation
+%\setlength{\parskip}{2ex}                          %% create empty line between paragraphs
+%\interdisplaylinepenalty=2500                      %% (amsmath) allow for page breaks within multiline equations
+%\numberwithin{equation}{section}                   %% (amsmath) include section number in equation numbering
+%\numberwithin{figure}{section}                     %% (amsmath) include section number in figure numbering
+%\numberwithin{table}{section}                      %% (amsmath) include section number in table numbering
+\addtolength{\arraycolsep}{-0.5mm}                  %% squeeze matrix columns a little
+\fnbelowfloat                                       %% (stfloats) put footnote below a float at the page bottom
+\urlstyle{same}                                     %% (hyperref) use current font for URLs
+\hypersetup{pdftitle={\reptitle},
+            pdfauthor={\repauthor}}                 %% (hyperref) pdf properties title and author
+%\raggedbottom                                      %% don't add inter-paragraph spacing to achieve \textheight
+%\setlength\subfigcapskip{-3pt}                     %% (subfigure) distance between subfloat and subcaption
+%\setlength\subfigbottomskip{-3pt}                  %% (subfigure) distance between subcaption and caption
+%\renewcommand*{\subcapsize}{\small}                %% (subfigure) subcaption font size
+\renewcommand*{\thesubfigure}{(\alph{subfigure})}   %% (subfig) implement 1(a) instead of 1a ...as subfigure reference
+\captionsetup[subfloat]{labelformat=simple}        %% ... as subfigure reference
+%\captionsetup[subfloat]{
+%    farskip=0pt,
+%    nearskip=8pt,
+%    captionskip=1.5pt,
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig) subfloat caption format
+%\captionsetup[figure]{
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig/caption) figure caption format
+%\captionsetup[table]{
+%    aboveskip=2pt,
+%    labelfont={small,bf},
+%    textfont={small,sc}}                           %% (subfig/caption) table caption format
+\bibliographystyle{IEEEtran}                        %% (BibTeX) references style, e.g., IEEEtran, plainnat, abbrvnat, unsrtnat, or thesisnat
+\apptocmd{\thebibliography}{\raggedright}{}{}		%% Suppress badness warnings in bibliography
+
+
+%%==========================================================================
+%% Begin document
+%%==========================================================================
+
+\begin{document}
+
+\selectlanguage{USenglish}
+
+\title{\textbf{\reptitle}}
+\author{\repauthor}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+
+For the generation of test scenarios for the performance assessment of Automated Vehicles (AVs), it is important to generate realistic trajectories of vehicles. Real-life data could be used to generate realistic trajectories \cite{deGelder2017assessment}. In Figure~\ref{fig:velocity example}a, an example of a velocity profile from real-life driving data is shown. The recorded trajectories from the real-life data need to be parametrized, such that probability density functions (PDFs) can be estimated. From these estimation PDFs, new parameters can be generated. These generated parameters are then used to generate a trajectory. 
+
+\begin{figure}[b]
+	\begin{center}
+		\setlength\figureheight{150pt}
+		\setlength\figurewidth{0.49\linewidth}
+		\subfloat[Original]{\input{figures/velocity_profile_example.tikz}}
+		\subfloat[Normalized]{\input{figures/velocity_profile_example_normalized.tikz}}
+		\caption{Example of a velocity profile from real-life driving data.}
+		\label{fig:velocity example}
+	\end{center}
+\end{figure}
+
+In the process of going from real-life driving data to the generation of new trajectories, there are many choices to be made. For example, how should the parametrization be performed? How should the PDFs be estimated? To answer these questions, it would be useful to have a measure that objectively measures how good these choices are. This document describes such a method.
+
+\section{Method}
+
+When tuning the hyperparameters for a specific model, often the data is split into a training and a test set, such that the training set is used to fit a model, while the test set is used to ``measure'' how good the fitted model fits the test data. One approach for measuring how good the model fits the test data, is by determining the likelihood that the test data would have been generated by the model. The higher the likelihood, the better the model fits to the test data. In case of the trajectories, there is a problem with this method, because the recorded trajectories cannot be exactly reproduces due to the parametrization. 
+
+Because the likelihood cannot be used, another method is introduced. The first step is to normalize the time and velocity, such that they are on the domain $[0, 1]$. See Figure~\ref{fig:velocity example} for an example. Let $y_i$ with $i=\{1,\ldots,n\}$ be the test samples. Next, $z$ is a sample from the PDF $p(Z)$. The score $J$ is defined as follows:
+\begin{equation}
+	J = \prod_{i=1}^n \int f(z,y_i)p(z)dz = \prod_{i=1}^n E[f(z,y_i)].
+\end{equation}
+
+Here, $f(z,y_i)$ is the so-called error function and $E[\cdot]$ denotes the expectation. The main question is how to define $f(z,y_i)$, because it is not obvious how $z$ and $y_i$ should be compared. There is one case, however, when it 
+
+\section{Simple case}
+
+\begin{figure}
+	\begin{center}
+		\setlength\figureheight{200pt}
+		\setlength\figurewidth{300pt}
+		\input{figures/simple_case_overview.tikz}
+		\caption{Simple example. The goal is to generate new curves using the two training curves, such that there is a chance of generated a curve that closely ``matches'' the test curve.}
+	\end{center}
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+		\setlength\figureheight{100pt}
+		\setlength\figurewidth{0.3\linewidth}
+		\subfloat[$h=0.01$]{\input{figures/simple_case_test_h1.tikz}}
+		\subfloat[$h=0.1$]{\input{figures/simple_case_test_h2.tikz}}
+		\subfloat[$h=0.2$]{\input{figures/simple_case_test_h3.tikz}}\\
+		\subfloat[$h=0.5$]{\input{figures/simple_case_test_h4.tikz}}
+		\subfloat[$h=1$]{\input{figures/simple_case_test_h5.tikz}}
+		\subfloat[$h=2$]{\input{figures/simple_case_test_h6.tikz}}
+	\end{center}
+\end{figure}
+
+\bibliography{../bib}
+
+\end{document} 

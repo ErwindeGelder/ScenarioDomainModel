@@ -1,4 +1,5 @@
 import numpy as np
+from fastkde import fastKDE
 
 
 class SplineInter1D:

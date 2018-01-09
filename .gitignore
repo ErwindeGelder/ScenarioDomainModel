@@ -16,6 +16,7 @@ _data/
 */tikz/*
 */__pycache__/*
 */pickles/*
+*.mp4
 
 # Other files to be ignored
 20171126 Parametrization/df.p
