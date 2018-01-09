@@ -117,6 +117,7 @@
 %    textfont={small,sc}}                       %% (subfig/caption) table caption format
 \usetheme{TNO}                                  %% TNO presentation theme
 \newif\ifshow\showfalse                         %% allow to skip slides using an if-then(-else) construct
+\setbeamertemplate{bibliography item}{\insertbiblabel}
 
 %%==========================================================================
 %% Newcommands for this specific presentation
@@ -126,8 +127,8 @@
 %%==========================================================================
 %% Document meta data
 %%==========================================================================
-\title[Ontology  | \insertsubtitle]{Streetwise}
-\subtitle{TNO}
+\title[Ontology of Scenario | \insertsubtitle]{Ontology of Scenario}
+\subtitle{for the Assessment of Automated Vehicles}
 \author[deGelder]{Erwin de Gelder \texttt{erwin.degelder@tno.nl}}
 \date[11th of January]{Streetwise workshop}
 
@@ -148,26 +149,60 @@
     \titlepage
     \begin{tikzpicture}[overlay, remember picture]
 	    \useasboundingbox (current page.north west) rectangle (current page.south east);
-	    \node at (-3.3, 6) {\includegraphics[scale=0.6]{Streetwise.pdf}};
+	    \node at (-3.3, 4.7) {\includegraphics[scale=0.55]{Streetwise.pdf}};
     \end{tikzpicture}
 \end{frame}}
 
 \begin{frame}{Table of contents}
 	\tableofcontents
-	\begin{tikzpicture}[overlay, remember picture]
-		\useasboundingbox (current page.north west) rectangle (current page.south east);
-		\node at (9.3, 3.5) {\includegraphics[scale=0.9]{Streetwise.pdf}};
-	\end{tikzpicture}
+	%\begin{tikzpicture}[overlay, remember picture]
+	%	\useasboundingbox (current page.north west) rectangle (current page.south east);
+	%	\node at (9.3, 3.5) {\includegraphics[scale=0.9]{Streetwise.pdf}};
+	%\end{tikzpicture}
 \end{frame}
 
 \section{Introduction}
 \stepcounter{subsection}
-\begin{frame}{Introduction}
-	\textbf{Question:}\\
-	How does the Automated Vehicle operate in real-life traffic?\\
-	\bigskip
-	\textbf{Solution proposal:}\\
-	Go on the road and see what happens.
+\begin{frame}{What is an ontology?}
+	\begin{itemize}
+		\item An explicit specification of a conceptualization \cite{gruber1993ontology}.
+		\item Detailed explanation of objects \cite{vanDamPhDThesis2009}.
+		\item Explanation of relations between different objects \cite{vanDamPhDThesis2009}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Why use an ontology?}
+	\begin{itemize}
+		\item Sharing knowledge between domain experts \cite{vanDamPhDThesis2009}.
+		\item Interface definition between objects \cite{vanDamPhDThesis2009}.
+		\item Class structure (for object-oriented software implementations) \cite{vanDamPhDThesis2009}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Why use an ontology for the assessment of}{automated vehicles?}
+	Some useful definitions already exists:
+	\begin{itemize}
+		\item Geyer et al. \cite{geyer2014}.
+		\item Ulbrich et al. \cite{ulbrich2015} (PEGASUS).
+		\item Elrofai et al. \cite{elrofai2016scenario}.
+		\item Bagschik et al. \cite{bagschik2017ontology} (PEGASUS, preprint, to be published).
+	\end{itemize}
+	But...
+	\begin{itemize}
+		\item A more concrete definition is needed to ``translate definition to code''.
+		\item The presented ontology is more applicable for \textbf{scenario mining} and \textbf{scenario-based assessment}.
+	\end{itemize}
+\end{frame}
+
+\section{References}
+\stepcounter{subsection}
+\begin{frame}{References}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	%\frametitle{References}  % This gives an error...
+	\scriptsize{\bibliographystyle{ieeetran}}
+	\bibliography{../bib}
 \end{frame}
 
 \end{document}
