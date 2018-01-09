@@ -883,7 +883,7 @@
 <node TEXT="de Gelder et al." ID="ID_1971359552" CREATED="1512626963745" MODIFIED="1512626981411" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems using real-life scenarios"/>
+<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
     <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
@@ -891,12 +891,24 @@
 </node>
 </node>
 </node>
-<node TEXT="Ontology -- work on ontology, this can be used as reference of what an ontology should look like" ID="ID_907836772" CREATED="1513590794613" MODIFIED="1515061370072" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="Portable Ontology Specifications" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1515430921119" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
+<attribute NAME="key" VALUE="gruber1993ontology"/>
+<attribute NAME="journal" VALUE="Knowledge Acquisition"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="A Translation Approach to Portable Ontology Specifications"/>
+<attribute NAME="authors" VALUE="Gruber, Thomas R"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4D56FEEA30453125BA33B65EEE5C034728E1FAFDAEDA39E1B9478F433A48F">
+    <pdf_title>A Translation Approach to Portable Ontology Specifications</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Ontology -- work on ontology, this can be used as reference of what an ontology should look like" ID="ID_913218395" CREATED="1515430889468" MODIFIED="1515430944395" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
 <attribute NAME="key" VALUE="vanDamPhDThesis2009"/>
 <attribute NAME="year" VALUE="2009"/>
 <attribute NAME="title" VALUE="Capturing Socio-Technical Systems with Agent-Based Modelling"/>
 <attribute NAME="authors" VALUE="van Dam, Koen Hazi\&quot;{e}l"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
 </node>
 </node>
 <node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1513218356955" HGAP="106">
@@ -1137,10 +1149,10 @@
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="AdaptIVe conference paper at IV2017" ID="ID_1057835923" CREATED="1510630510294" MODIFIED="1510634679605" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<node TEXT="AdaptIVe conference paper at IV2017" ID="ID_1057835923" CREATED="1510630510294" MODIFIED="1515330268121" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems using real-life scenarios"/>
+<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
     <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
