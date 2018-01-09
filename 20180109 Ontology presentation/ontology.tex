@@ -1,0 +1,173 @@
+%%==========================================================================
+%% Title: There Is No Largest Prime Number
+%% Author: Euclid of Alexandria
+%% Published: 27th International Symposium of Prime Numbers, 1980
+%%==========================================================================
+
+\def\AspectR{169} %% Uncomment for 16:9 aspect ratio
+%\def\AspectR{43} %% Uncomment for 4:3 aspect ratio
+
+\documentclass[aspectratio=\AspectR,10pt,compress,t]{beamer} %% use option 'handout' for printable output, 
+														     %% Use option 'compress' to get navigation dots horizontally
+														     %% Use option 't' to align text on top of the slides
+
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage{lmodern}                    %% Use Latin Modern font type
+%\usepackage{helvet}                    %% Use Helvetica font type
+\usepackage[T1]{fontenc}                %% support for special characters (e.g., accented)
+\usepackage{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                    %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                     %% theorem styles
+\usepackage{dsfont}                     %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                   %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage{array}                      %% array functionality (array, tabular)
+\usepackage{upgreek}                    %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                   %% improved handling of floats
+\usepackage{multirow}                   %% cells spanning multiple rows in tables
+\usepackage[caption=false]{subfig}      %% subfigures
+\usepackage{xspace}                     %% add space after macro depending on context
+\usepackage{verbatim}                   %% provides the comment environment
+\usepackage[UKenglish]{babel}     %% language support
+\usepackage{multimedia}                 %% include movies
+\usepackage{wrapfig}                    %% wrapping text around figures
+\usepackage{pgfplots}                   %% support for TikZ figures (Matlab)
+\usepackage{hyperref}                   %% implement hyperlinks
+\usepackage{booktabs}					%% Use for tables
+\usetikzlibrary{shapes.callouts,shapes.misc} 
+
+
+%%==========================================================================
+%% TikZ figures
+%%==========================================================================
+\newlength\figurewidth
+\setlength\figurewidth{0.25\linewidth}  %% set figure height
+\newlength\figureheight
+\setlength\figureheight{0.2\linewidth}  %% set figure width
+\pgfplotsset{every axis/.append style={
+    scaled y ticks=false,
+    scaled x ticks=false,
+    y tick label style={/pgf/number format/fixed},
+    x tick label style={/pgf/number format/fixed},
+    legend style={font=\small}},
+    compat=1.9}                         %% PGFPlots package options
+\usetikzlibrary{calc}                   %% coordinate calculations
+%% Note: The TikZ overlay option does not work with external TikZ!
+%\usetikzlibrary{external}              %% Create pdf figures from TikZ. Use PDFTeXify ...
+%\tikzexternalize[prefix=./tikz/]       %% ... with --tex-option=--shell-escape switch.
+%\tikzset{external/force remake}        %% Force pdf figure update
+
+
+%%==========================================================================
+%% User-defined commands
+%%==========================================================================
+\newcommand*{\mat}[1]{\mathbf{#1}}                              %% matrix/vector notation
+\newcommand*{\matsym}[1]{\boldsymbol{#1}}                       %% matrix/vector notation for Greek letters
+\newcommand*{\T}{^{\scriptscriptstyle{\mathrm{T}}}}             %% transpose operator
+\newcommand*{\Hr}{^{\scriptscriptstyle{\mathrm{H}}}}            %% conjugate transpose operator
+\newcommand*{\ud}{\mathrm{\,d}}                                 %% differential operator (upright d)
+\newcommand*{\defeq}{\mathrel{\mathop:}=}                       %% definition sign :=
+\newcommand*{\eqdef}{=\mathrel{\mathop:}}                       %% definition sign =:
+\newcommand*{\ip}[2]{\left\langle#1\,{,}\,#2\right\rangle}      %% inner product
+\newcommand*{\real}[1]{\mathrm{Re}(#1)}                         %% real part
+\newcommand*{\imag}[1]{\mathrm{Im}(#1)}                         %% imaginary part
+\newcommand*{\lsup}[1]{{}^{#1}\!}                               %% left superscript
+\newcommand*{\hi}[1]{$^\text{#1}$}                              %% superscript in normal text
+\newcommand*{\w}[1]{\mathrm{#1}}                                %% multiple character super-/subscript in math mode
+\newcommand*{\Ln}{{\ensuremath{\mathcal{L}}}\xspace}            %% L norm
+\newcommand*{\Lone}{{\ensuremath{\mathcal{L}_1}}\xspace}        %% L_1 norm
+\newcommand*{\Ltwo}{{\ensuremath{\mathcal{L}_2}}\xspace}        %% L_2 norm
+\newcommand*{\Linf}{{\ensuremath{\mathcal{L}_\infty}}\xspace}   %% L_inf norm
+\newcommand*{\Lp}{{\ensuremath{\mathcal{L}_p}}\xspace}          %% L_p norm
+\newcommand*{\Htwo}{{\ensuremath{\mathcal{H}_2}}\xspace}        %% H_2 norm
+\newcommand*{\Hinf}{{\ensuremath{\mathcal{H}_\infty}}\xspace}   %% H_inf norm
+\newcommand*{\Hp}{{\ensuremath{\mathcal{H}_p}}\xspace}          %% H_p norm
+\renewcommand*{\qedsymbol}{$\blacksquare$}                      %% redefine the end-of-proof symbol
+\DeclareMathOperator{\tr}{tr}                                   %% trace of a matrix
+\DeclareMathOperator{\sgn}{sgn}                                 %% signum function
+\DeclareMathOperator{\atan}{atan}                               %% arc tangent
+\setlength{\heavyrulewidth}{0.1em}								%% Table stuff
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}				%% Table stuff
+
+
+%%==========================================================================
+%% Miscellaneous
+%%==========================================================================
+\graphicspath{{figures/}{more_figures/}}        %% (graphicx) directory path for figures
+\addtolength{\arraycolsep}{-0.5mm}              %% squeeze matrix columns a little
+\fnbelowfloat                                   %% (stfloats) put footnote below a float at the page bottom
+\urlstyle{same}                                 %% (hyperref) use current font for URLs
+\hypersetup{pdftitle={Title},
+            pdfauthor={Author},
+            colorlinks=true,linkcolor=black}  %% (hyperref) pdf properties title and author
+%\captionsetup[subfloat]{
+%    farskip=0pt,
+%    nearskip=0pt,
+%    captionskip=0pt,
+%    textfont=normalsize,
+%    labelformat=empty}                         %% (subfig) subfloat caption format
+%\captionsetup[figure]{
+%    textfont=normalsize,
+%    labelformat=empty}                         %% (subfig/caption) figure caption format
+%\captionsetup[table]{
+%    aboveskip=2pt,
+%    labelfont={small,bf},
+%    textfont={small,sc}}                       %% (subfig/caption) table caption format
+\usetheme{TNO}                                  %% TNO presentation theme
+\newif\ifshow\showfalse                         %% allow to skip slides using an if-then(-else) construct
+
+%%==========================================================================
+%% Newcommands for this specific presentation
+%%==========================================================================
+
+
+%%==========================================================================
+%% Document meta data
+%%==========================================================================
+\title[Ontology  | \insertsubtitle]{Streetwise}
+\subtitle{TNO}
+\author[deGelder]{Erwin de Gelder \texttt{erwin.degelder@tno.nl}}
+\date[11th of January]{Streetwise workshop}
+
+%%==========================================================================
+%% Begin document
+%%
+%% In case of colored elements, please use the standard TNO colors TNOred,
+%% TNOgreen, TNOblue, TNOdarkblue, TNOorange, TNOyellow, TNOgray, and
+%% TNOlightgray.
+%%==========================================================================
+
+\begin{document}
+
+{\setbeamertemplate{footline}{} %% no footer on title page
+%\titlebackground{Streetwise.pdf}  %% custom background (comment for default background)
+\blacktitle                     %% black text & banner on title page (comment for white text & banner)
+\begin{frame}
+    \titlepage
+    \begin{tikzpicture}[overlay, remember picture]
+	    \useasboundingbox (current page.north west) rectangle (current page.south east);
+	    \node at (-3.3, 6) {\includegraphics[scale=0.6]{Streetwise.pdf}};
+    \end{tikzpicture}
+\end{frame}}
+
+\begin{frame}{Table of contents}
+	\tableofcontents
+	\begin{tikzpicture}[overlay, remember picture]
+		\useasboundingbox (current page.north west) rectangle (current page.south east);
+		\node at (9.3, 3.5) {\includegraphics[scale=0.9]{Streetwise.pdf}};
+	\end{tikzpicture}
+\end{frame}
+
+\section{Introduction}
+\stepcounter{subsection}
+\begin{frame}{Introduction}
+	\textbf{Question:}\\
+	How does the Automated Vehicle operate in real-life traffic?\\
+	\bigskip
+	\textbf{Solution proposal:}\\
+	Go on the road and see what happens.
+\end{frame}
+
+\end{document}
