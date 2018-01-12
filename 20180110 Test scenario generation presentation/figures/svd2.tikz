@@ -1,0 +1,64 @@
+% This file was created by matplotlib2tikz v0.6.14.
+\begin{tikzpicture}
+
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+
+\begin{axis}[
+title={Number of interior knots: 2},
+xlabel={Bandwidth},
+ylabel={Score},
+xmin=0.000630957344480194, xmax=15.8489319246111,
+ymin=-224.189971573679, ymax=-144.782638312349,
+xmode=log,
+width=200pt,
+height=160pt,
+tick align=outside,
+tick pos=left,
+xmajorgrids,
+x grid style={white!69.019607843137251!black},
+ymajorgrids,
+y grid style={white!69.019607843137251!black},
+legend entries={{orig, max=-161.0},{svd, max=-156.0}},
+legend cell align={left},
+legend style={at={(0.03,0.03)}, anchor=south west, draw=white!80.0!black}
+]
+\addlegendimage{ultra thick, no markers, color0}
+\addlegendimage{ultra thick, no markers, color1}
+\addplot [ultra thick, color0]
+table {%
+0.001 -162.788480806602
+0.00215443469003188 -165.20908464927
+0.00464158883361278 -162.328839700755
+0.01 -162.894086028145
+0.0215443469003188 -163.048235338592
+0.0464158883361278 -161.725459550645
+0.1 -161.028188209683
+0.215443469003188 -167.464121758257
+0.464158883361278 -179.302600897359
+1 -224.189971573679
+};
+\addplot [ultra thick, color0, mark=x, mark size=5, mark options={solid}, only marks, forget plot]
+table {%
+0.1 -161.028188209683
+};
+\addplot [ultra thick, color1]
+table {%
+0.01 -162.579092135606
+0.0215443469003188 -161.101296218654
+0.0464158883361278 -162.181949646304
+0.1 -160.5240500964
+0.215443469003188 -155.983015894602
+0.464158883361278 -157.977551112033
+1 -165.279039388593
+2.15443469003188 -191.966290817474
+4.64158883361278 -265.208066719389
+10 -379.990567539667
+};
+\addplot [ultra thick, color1, mark=x, mark size=5, mark options={solid}, only marks, forget plot]
+table {%
+0.215443469003188 -155.983015894602
+};
+\end{axis}
+
+\end{tikzpicture}

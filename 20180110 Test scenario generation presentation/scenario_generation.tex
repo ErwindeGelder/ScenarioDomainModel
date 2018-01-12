@@ -178,6 +178,174 @@
 	%\end{tikzpicture}
 \end{frame}
 
+\section{Introduction}
+\stepcounter{subsection}
+\begin{frame}{Introduction}
+	Why generating new test scenarios?
+	\begin{itemize}
+		\item Probabilistic results
+		\item Emphasize critical scenarios
+		\item Prevent repetition
+		\item Test scenarios that are not yet encountered on the road
+	\end{itemize}
+	\pause
+	The following approach is used:
+	\begin{itemize}
+		\item Parametrize recorded real-life scenarios
+		\item Estimate probability density function (PDF) of parameters
+		\item Draw samples from the PDF
+		\item Turn parameters into a real-life test scenario
+	\end{itemize}
+\end{frame}
+
+\section{Current status}
+\stepcounter{subsection}
+\begin{frame}{Braking predecessor}{Parametrization}
+	\begin{figure}
+		\centering
+		\input{figures/BrakingProfileDefinition.tikz}
+		\vspace{-0.5em}
+		\caption{Velocity profile of predecessor is modeled with three parameters: $\Delta v$, $t_{\textup{brake}}$, and $v_{\textup{end}}$.}
+	\end{figure}
+	\vspace{-0.5em}
+	\begin{flushright}
+		For more details, see \cite{deGelder2017assessment}.
+	\end{flushright}
+\end{frame}
+
+\begin{frame}{Braking predecessor}{PDF estimation using Kernel Density Estimation}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			PDF is estimated using Kernel Density Estimation (KDE):
+			\begin{equation}
+				f_h(x) = \frac{1}{nh} \sum_{i=1}^n K\left( \frac{x-x_i}{h} \right)
+			\end{equation}
+			\begin{itemize}
+				\item Bandwidth $h$ determined with cross validation.
+				\item A Gaussian kernel $K(\cdot)$ is used.
+				\item $x_i$ represent parameter vectors from recorded scenarios.
+			\end{itemize}
+			Right figure shows marginal distributions (red lines) and histogram of data.
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\vspace{-1em}
+				\includegraphics[width=\linewidth]{KDE_regular.pdf}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Braking predecessor}{Test results}
+	\begin{figure}
+		\centering
+		\input{figures/parameter_plot.tikz}
+		\vspace{-0.5em}
+		\caption{Result of Crude Monte Carlo.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Braking predecessor}{Importance sampling}
+	\begin{figure}
+		\centering
+		\input{figures/parameter_plot_is.tikz}
+		\vspace{-0.5em}
+		\caption{Result of Monte Carlo with Importance Sampling.}
+	\end{figure}
+\end{frame}
+
+\section{Exploration}
+\stepcounter{subsection}
+\begin{frame}{Challenges}
+	How should we do the parametrization?
+	\begin{itemize}
+		\item Less parameters means high loss of information.
+		\item Many parameters results in problems with estimation the PDF (curse of dimensionality).
+	\end{itemize}
+	How to estimate the PDF?
+	\pause
+	\begin{figure}
+		\centering
+		\input{figures/velocity_profile_example_normalized.tikz}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Measure performance}
+	We can use the following performance measure:
+	\begin{equation}
+		J = \prod_{i=1}^n \int f(z,y_i) p(z) dz = \prod_{i=1}^n E[f(z,y_i)]
+	\end{equation}
+	\begin{itemize}
+		\item $y_i$ denotes a normalized test curve (from real-life data).
+		\item $z$ denotes generated (spline) parameters.
+		\item $f(z,y_i)$ is a \emph{similarity function} that \emph{measures} how well the generated curve (using $z$) looks like the test curve $y_i$.
+	\end{itemize}
+	\pause
+	Why such a strange function? Consider $f(z,y_i) = \delta(z-y_i)$ (assume we can subtract $y_i$ from $z$, $\delta(\cdot)$ represents Dirac function) and we get `just' cross-validation with likelihood:
+	\begin{equation}
+		J = \prod_{i=1}^n p(y_i)
+	\end{equation}
+\end{frame}
+
+
+\begin{frame}{Measure performance}
+	We can estimate $J$ using a Monte Carlo approach with large $N$:
+	\begin{equation}
+		J \approx \prod_{i=1}^n \sum_{j=1}^N f(z_j, y_i), \quad z_j \sim p(Z)
+	\end{equation}
+	How to define $f(z,y)$? \pause One approach involves the product integral ($g_z(t)$ is the spline generated with parameters $z$):
+	\begin{equation}
+		f(z, y) = \prod_{t=0}^1 \left( \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left\{ -\frac{\left(y(t) - g_z(t)\right)^2}{2\sigma^2} \right\} \right)^{dt}
+	\end{equation}
+	The intuition behind this function is that the generated curve should match everywhere, not at only one time instant (then a normal integral would suffice).
+\end{frame}
+
+\begin{frame}{Simple case example}
+	\begin{figure}
+		\centering
+		\input{figures/simple_case_scores.tikz}
+		\vspace{-0.5em}
+		\caption{Normalized score versus the bandwidth for a simple case study with different values for $\sigma$.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Future work}
+	\begin{columns}
+		\begin{column}{0.46\textwidth}
+			Use Singular Value Decomposition (SVD) to
+			\begin{itemize}
+				\item lower the number of parameters;
+				\item effectively change kernel.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.55\textwidth}
+			\begin{figure}
+				\vspace{-2em}
+				\input{figures/svd2.tikz}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Future work}
+	Use of copulas \cite{Schmidt2007, scaillet2007estimationcopulas, aas2009paircopula}
+	\begin{itemize}
+		\item Copulas are well-known for being good in estimating the tails of PDFs.
+		\item Work in progress...
+		\item Theory is promising, but no good working example so far.
+	\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\stepcounter{subsection}
+\begin{frame}{Conclusion}
+	\begin{itemize}
+		\item Parametrization and PDF estimation are crucial for the scenario generation.
+		\item We need a good measure to quantify how good the parametrization and PDF estimation are.
+		\item Lots of future work...
+	\end{itemize}
+\end{frame}
 
 \section{References}
 \stepcounter{subsection}
