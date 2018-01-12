@@ -19,7 +19,7 @@ Geyer~et~al.~\cite{geyer2014} describe a scenario within the context of automate
 Ulbrich~et~al.~\cite{ulbrich2015} define a scenario in the context of automated driving. They define a scenario as ``the temporal development between several scenes in a sequence of scenes. Every scenario starts with an initial scene. Actions \& events as well as goals \& values may be specified to characterize this temporal development in a scenario. Other than a scene, a scenario spans a certain amount of time.'' They state that actions and events link the different scenes. A further description of actions and events is not given.
 
 % Definition according to Elrofai et al.
-Another definition of a scenario in the context of automated driving is given by Elrofai~et~al.~\cite{elrofai2016scenario}. They define scenario as ``the combination of actions and manoeuvres of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and manoeuvres of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
+Another definition of a scenario in the context of automated driving is given by Elrofai~et~al.~\cite{elrofai2016scenario}. They define scenario as ``the combination of actions and maneuvers of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and maneuvers of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
 
 % "Requirements"
 Based on the aforementioned references, the following is concluded about a scenario:
@@ -40,6 +40,10 @@ Regarding the nature of the data, a scenario can be either qualitative or quanti
 \subsubsection{The time interval of a scenario contains all relevant events}
 According to Geyer~et~al.~\cite{geyer2014}, ``the end of a scenario is defined by the first irrelevant situation with respect to the scenario''. In a similar manner, we require that the time interval of a scenario should contain all relevant events. For practical reasons, the term `relevant' must be detailed. First of all, it is important to note that `relevant' is subjective. Therefore, an event is considered to be relevant for the scenario, if it is relevant for the ego vehicle (see Section~\ref{sec:ego vehicle} for a description of the ego vehicle).
 % Next to that, an event is regarded as irrelevant, if it is independent of the relevant events.
+
+% Goals (instead of activities)
+\subsubsection{A scenario can contain goal(s) of one or multiple actors}
+For describing a scenario encountered in real-life data, it is not necessary to describe the goals and as such, Elrofai~et~al.~\cite{elrofai2016scenario} do not mention this. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \cite{geyer2014}) could be specified rather than its activities \cite{ulbrich2015}. The same holds for other actors within the scenario.
 	
 % Description of static environment
 \subsubsection{A scenario includes the description of the environment}
@@ -48,7 +52,7 @@ A scenario should include the description of the static and dynamic environment.
 % Definition
 Hence, we define a scenario as follows.
 \begin{definition}[Scenario]\label{def:scenario}
-	A scenario is a quantitative description of the ego vehicle, its activity, its static environment, and its dynamic environment. From the perspective of the ego vehicle, it contains the relevant events.
+	A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment. From the perspective of the ego vehicle, it contains the relevant events.
 \end{definition}
 
 % Describe difference from literature
