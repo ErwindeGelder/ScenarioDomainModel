@@ -53,7 +53,13 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="11"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="12"/>
+<node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1515764436716" HGAP="60">
+<edge COLOR="#7c7c00"/>
+<node TEXT="Splines" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_747864614" CREATED="1515764442338" MODIFIED="1515764451997">
+<node TEXT="Curve and Surface Fitting with Splines (Jan-Pieter heeft hardcopy)" ID="ID_101601068" CREATED="1515764454745" MODIFIED="1515764471051"/>
+</node>
+</node>
 <node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1513736398690" HGAP="60" VSHIFT="8">
 <edge COLOR="#007c7c"/>
 <node TEXT="General literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1488737728" CREATED="1513736407885" MODIFIED="1513736423051">
@@ -101,11 +107,11 @@
 </pdf_annotation>
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="Estimating completeness for longitudinal driving scenarios. Using KL divergence" ID="ID_1797339468" CREATED="1509704361125" MODIFIED="1510634679724" HGAP="40" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/024%20How%20much%20data%20are%20enough,%20longitudinal%20driving.pdf">
+<node TEXT="Estimating completeness for longitudinal driving scenarios. Using KL divergence" ID="ID_1797339468" CREATED="1509704361125" MODIFIED="1515751017086" HGAP="40" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/024%20How%20much%20data%20are%20enough,%20longitudinal%20driving.pdf">
 <attribute NAME="key" VALUE="wang2017much"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Vehicles"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="How much data are enough? A statistical approach with case study on longitudinal driving behavior"/>
+<attribute NAME="title" VALUE="How Much Data Are Enough? A Statistical Approach with Case Study on Longitudinal Driving Behavior"/>
 <attribute NAME="authors" VALUE="Wang, Wenshuo and Liu, Chang and Zhao, Ding"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D6DADA50907342DE9D992557851C251A18AFD4B7AC2645063B97337BAAED">
     <pdf_title>How Much Data Are Enough? A Statistical Approach With Case Study on Longitudinal Driving Behavior</pdf_title>
@@ -565,7 +571,7 @@
 <attribute NAME="authors" VALUE="Kim, Jaegwon"/>
 </node>
 </node>
-<node TEXT="List of scenarios (to show that people use it for almost everything)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_175737845" CREATED="1507099450463" MODIFIED="1511405430207">
+<node TEXT="List of scenarios (to show that people use it for almost everything)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_175737845" CREATED="1507099450463" MODIFIED="1511405430207" MOVED="1515750497719">
 <node TEXT="Gietelink et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1325672689" CREATED="1510112584305" MODIFIED="1511405469542" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/028%20Development%20of%20advanced%20driver%20assistance%20systems%20with%20vehicle%20hardware%20in%20the%20loop%20simulations.pdf">
 <attribute NAME="key" VALUE="gietelink2006development"/>
 <attribute NAME="journal" VALUE="Vehicle System Dynamics"/>
@@ -735,7 +741,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
+<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
 <node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1511498110954" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/058%20Control_System_Engineering_Norman.pdf">
 <attribute NAME="key" VALUE="norman2011control"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -892,7 +898,7 @@
 </node>
 </node>
 <node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
-<node TEXT="Portable Ontology Specifications" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1515430921119" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
+<node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1515485665714" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
 <attribute NAME="year" VALUE="1993"/>
@@ -902,7 +908,7 @@
     <pdf_title>A Translation Approach to Portable Ontology Specifications</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ontology -- work on ontology, this can be used as reference of what an ontology should look like" ID="ID_913218395" CREATED="1515430889468" MODIFIED="1515430944395" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
+<node TEXT="Work on ontology, this can be used as reference of what an ontology should look like" ID="ID_913218395" CREATED="1515430889468" MODIFIED="1515485676534" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
 <attribute NAME="key" VALUE="vanDamPhDThesis2009"/>
 <attribute NAME="year" VALUE="2009"/>
 <attribute NAME="title" VALUE="Capturing Socio-Technical Systems with Agent-Based Modelling"/>
@@ -1074,8 +1080,8 @@
     <pdf_title>Pair-copula constructions of multiple dependence</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Pair-Copula Constructions of Multivariate Copulas" ID="ID_1522203937" CREATED="1513920646136" MODIFIED="1515061353162" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/105%20Pair-Copula%20Constructions%20of%20Multivariate%20Copulas.pdf">
-<attribute NAME="key" VALUE="Czado2010"/>
+<node TEXT="Pair-Copula Constructions of Multivariate Copulas" ID="ID_1522203937" CREATED="1513920646136" MODIFIED="1516035835873" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/105%20Pair-Copula%20Constructions%20of%20Multivariate%20Copulas.pdf">
+<attribute NAME="key" VALUE="czado2010paircopula"/>
 <attribute NAME="year" VALUE="2010"/>
 <attribute NAME="title" VALUE="Copula Theory and Its Applications"/>
 <attribute NAME="authors" VALUE="Czado, Claudia"/>

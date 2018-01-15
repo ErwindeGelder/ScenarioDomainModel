@@ -77,15 +77,15 @@
 
 \pagestyle{fancy}                                       %% set page style
 \fancyhf{}                                              %% clear all header & footer fields
-\fancyhead[L]{\includegraphics[width=15mm]{Streetwise}} %% define headers (LE: left field/even pages, etc.)
-\fancyhead[R]{\small\emph{\reptitle}}                   %% similar
-\fancyfoot[C]{\thepage}                                 %% define footer
+\fancyhead[L]{}%\includegraphics[width=15mm]{Streetwise}} %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{}%\small\emph{\reptitle}}                   %% similar
+\fancyfoot[C]{}%\thepage}                                 %% define footer
 \setlength{\headheight}{18pt}                           %% increase head height to accommodate an oversized picture in the header
-\renewcommand*{\headrulewidth}{0.25pt}                  %% header line width
+\renewcommand*{\headrulewidth}{0pt}                  %% header line width
 \renewcommand*{\footrulewidth}{0pt}                     %% footer line width
 %% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
 \fancypagestyle{plain}{\fancyhf{}
-                       \fancyhead[C]{\includegraphics[width=30mm]{Streetwise}}
+                       \fancyhead[C]{}%\includegraphics[width=30mm]{Streetwise}}
                        \renewcommand{\headrulewidth}{0pt}
                        \renewcommand{\footrulewidth}{0pt}
                        \setlength{\headheight}{36pt}}
@@ -257,18 +257,18 @@ When tuning the hyper-parameters for a specific model, often the data is split i
 
 The probability $p(y_i)$ can be rewritten as follows:
 \begin{equation} \label{eq:probability with dirac}
-	p(y_i) = \int \delta(z-y_i) p(z) dz,
+	p(y_i) = \int \delta(z-y_i) p(z) \,dz,
 \end{equation}
 where $\delta(\cdot)$ denotes the Dirac function. When substituting Eq.~\eqref{eq:probability with dirac} into Eq.~\eqref{eq:likelihood}, we obtain
 \begin{equation} \label{eq:likelihood in complicated way}
-	P = \prod_{i=1}^n \int \delta(z - y_i) p(z) dz.
+	P = \prod_{i=1}^n \int \delta(z - y_i) p(z) \,dz.
 \end{equation}
 
 A problem arises when using the likelihood of Eq.~\eqref{eq:likelihood} for generating the normalized velocity profiles. In this case, $y_i$ refers to the test profiles, for which an example is shown in Figure~\ref{fig:velocity example}b. Note that, therefore, $y_i$ depends on the normalized time $t \in [0,1]$, so we can write it as $y_i(t)$ to emphasize the dependence on $t$. Furthermore, $z$ refers to the (generated) parameters of the velocity profile. Hence, $y_i(t)$ cannot be subtracted from $z$. Even if we consider the profile generated with parameters $z$, denoted by $g_z(t)$, the use of the likelihood of Eq.~\eqref{eq:likelihood}, or similar Eq.~\eqref{eq:likelihood in complicated way}, is problematic, because the generated profile will never be exactly equal to a test profile, due to the parametrization. Therefore, an alternative approach is required.
 
 Now, let us define a ``score'' which is very similar to Eq.~\eqref{eq:likelihood in complicated way}, but with a so-called similarity measure $f(z,y)$:
 \begin{equation} \label{eq:score}
-	J = \prod_{i=1}^n \int f(z,y_i)p(z)dz.
+	J = \prod_{i=1}^n \int f(z,y_i)p(z) \,dz.
 \end{equation}
 Note that Eq.~\eqref{eq:score} can be estimated using a Monte Carlo approach, i.e.
 \begin{equation} \label{eq:score monte carlo}
@@ -297,8 +297,8 @@ Here, $\prod (\cdot)^{dt}$ denotes the product integral. For the distance functi
 
 For practical reasons, it might be helpful to consider the logarithm of Eq.~\eqref{eq:similarity measure normal function}, such that the equation can be written using the conventional sum integral instead of the product integral:
 \begin{align}
-	\ln f(z,y) &= \int_{t=0}^{1} \ln \left( \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left\{ -\frac{(g_z(t)-y(t))^2}{2\sigma^2} \right\} \right) dt \\
-	&= -\frac{1}{2} \ln (2\pi) - \ln \sigma - \frac{1}{2\sigma^2} \int_{t=0}^{1} (g_z(t) - y(t))^2 dt.
+	\ln f(z,y) &= \int_{t=0}^{1} \ln \left( \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left\{ -\frac{(g_z(t)-y(t))^2}{2\sigma^2} \right\} \right) \,dt \\
+	&= -\frac{1}{2} \ln (2\pi) - \ln \sigma - \frac{1}{2\sigma^2} \int_{t=0}^{1} (g_z(t) - y(t))^2 \,dt.
 \end{align}
 
 
@@ -371,14 +371,14 @@ It is easy to verify that the bandwidth that maximizes $p_h(\beta_3)$ equals $h=
 	\label{fig:simple case likelihood}
 \end{figure}
 
-To demonstrate the use of the score of Eq.~\eqref{eq:score}, we will estimate the bandwidth $h$ by maximizing the score. The Monte Carlo approach of Eq.~\eqref{eq:score monte carlo} is used with $N=10000$. For the similarity measure, Eq.~\eqref{eq:similarity measure normal function} is used. The resulting scores are shown in Figure~\ref{fig:simple case scores} for various values of $\sigma$. For $\sigma \geq 0.05$, the score is maximized for $h=\sqrt{2}$, which corresponds to the value found using the maximum likelihood. Furthermore, the smaller the value of $\sigma$, the more the scores look like the likelihood of Figure~\ref{fig:simple case likelihood}. For example, consider the curves with $\sigma=0.005$ and $\sigma=0.01$.
+To demonstrate the use of the score of Eq.~\eqref{eq:score}, we will estimate the bandwidth $h$ by maximizing the score. The Monte Carlo approach of Eq.~\eqref{eq:score monte carlo} is used with $N=10000$. For the similarity measure, Eq.~\eqref{eq:similarity measure normal function} is used. The resulting scores are shown in Figure~\ref{fig:simple case scores} for various values of $\sigma$. For $\sigma \geq 0.05$, the score is maximized for $h \approx \sqrt{2}$, which corresponds to the value found using the maximum likelihood. Furthermore, the smaller the value of $\sigma$, the more the scores look like a scaled version of the likelihood of Figure~\ref{fig:simple case likelihood}. For example, consider the curves with $\sigma=0.005$ and $\sigma=0.01$.
 
 \begin{figure}
 	\centering
 	\setlength\figureheight{200pt}
 	\setlength\figurewidth{300pt}
 	\input{figures/simple_case_scores.tikz}
-	\caption{Normalized score of Eq.~\eqref{eq:similarity measure normal function} for the simple example for different values of $\sigma$.}
+	\caption{Score of Eq.~\eqref{eq:similarity measure normal function} for the simple example for different values of $\sigma$.}
 	\label{fig:simple case scores}
 \end{figure}
 
@@ -386,7 +386,7 @@ To demonstrate the use of the score of Eq.~\eqref{eq:score}, we will estimate th
 \section{Generating velocity profiles}
 \label{sec:generating profiles}
 
-In the previous section, it is shown that the score of Eq.~\eqref{eq:score} with similarity measure of Eq.~\eqref{eq:similarity measure normal function} provides an alternative for the likelihood of Eq.~\eqref{eq:likelihood} for estimating the optimal bandwidth. In this section, it is demonstrated that the score of Eq.~\eqref{eq:score} can also be used to determine other hyper-parameters of the parametrization and PDF. For the similarity measure, $\sigma=0.001$ is used.
+In the previous section, it is shown that the score of Eq.~\eqref{eq:score} with similarity measure of Eq.~\eqref{eq:similarity measure normal function} provides an alternative for the likelihood of Eq.~\eqref{eq:likelihood} for estimating the optimal bandwidth. In this section, it is demonstrated that the score of Eq.~\eqref{eq:score} can also be used to determine other hyper-parameters of the parametrization and PDF. For the similarity measure, $\sigma=0.005$ is used.
 
 Consider 400 normalized velocity profiles of which 200 are shown in Figure~\ref{fig:velocity profiles}. The score of Eq.~\eqref{eq:score} is determined using one leave-out cross-validation.
 
@@ -399,7 +399,7 @@ Consider 400 normalized velocity profiles of which 200 are shown in Figure~\ref{
 	\label{fig:velocity profiles}
 \end{figure}
 
-The parametrization is performed using third order splines. Because third order splines are used, the fitted function is continuous up to the second derivative. Furthermore, the boundary conditions $y(0)=1$ and $y(1)=0$ are applied. Let the number of interior knots be denoted by $\nknots$, such that there are $4(\nknots+1)$ spline parameters, denoted by $\theta \in \mathcal{R}^{4(\nknots+1)}$. Because of the continuity requirements, there are $3$ constraints per interior knots. Together with the boundary conditions, there are $3\nknots+2$ linear constraints. Because of the linear constraints, the splines parameters $\theta$ can be represented as follows:
+The parametrization is performed using third order splines \cite{dierckx1993splines}. Because third order splines are used, the fitted function is continuous up to the second derivative. Furthermore, the boundary conditions $y(0)=1$ and $y(1)=0$ are applied. Let the number of interior knots be denoted by $\nknots$, such that there are $4(\nknots+1)$ spline parameters, denoted by $\theta \in \mathcal{R}^{4(\nknots+1)}$. Because of the continuity requirements, there are $3$ constraints per interior knots. Together with the boundary conditions, there are $3\nknots+2$ linear constraints. Because of the linear constraints, the splines parameters $\theta$ can be represented as follows:
 \begin{equation}
 	\theta = \bar{\theta} + V \tilde{\theta},
 \end{equation}

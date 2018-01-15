@@ -38,7 +38,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 %%==========================================================================
 \newcommand{\progressreportnumber}{4}
 \renewcommand{\author}{Erwin de Gelder}
-\renewcommand{\date}{9 January 2018}
+\renewcommand{\date}{18 January 2018}
 \renewcommand{\title}{Performance assessment of automated vehicles using real-life driving scenarios}
 
 %%==========================================================================
@@ -62,7 +62,6 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \end{center}
 
 \section{Previous meeting minutes}
-
 \begin{itemize}
 	\item TNO has contract which has to be signed by me and TU Delft.
 	\item As stated in the future plans of the previous progress report, data will be soon provided. Some time need to be taken into account for the preprocessing of the data.
@@ -76,24 +75,50 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \end{itemize}
 
 \section{Summary of work}
-
 \begin{itemize}
-	\item 
+	\item I worked on the paper. I finished a first version of the paper. Paper is currently being reviewed within TNO. The deadline is extended until the January 29.
+	\item Part of my research will focus on the generation of test cases. As these test cases might be very complex, I started this research for a simpler case, i.e., the generation of (normalized) velocity profiles. I wrote a small report for my work regarding this. This report is attached to this progress report.
 \end{itemize}
 
 \section{Future plans}
-
 \begin{itemize}
-	\item 
+	\item Submit paper for IV2018.
+	\item When I am back in Singapore, I will have access to some data. I will have a look at this data and `play' with it to see what use it might have. Some time might be needed for preprocessing the data.
+	\item I would like to continue the work I did on the generation of scenarios. I am very much interested in the use of copulas \cite{Schmidt2007, scaillet2007estimationcopulas}, which are used to describe the correlation between different parameters. Copulas are well-known for being well-capable of estimating the tails of a probability density function. Furthermore, the use of copula vines \cite{aas2009paircopula, czado2010paircopula} might be very helpful to deal with the \emph{curse of dimensionality}.
 \end{itemize}
 
 \section{Questions}
-
 \begin{itemize}
-	\item 
+	\item Is it possible for Bart De Schutter to have a final review for the paper before January the 29th?
+	\item As explained in the attached document, the likelihood $P=\prod_{i=1}^n p(y_i)$ is not directly applicable. The likelihood can be rewritten as
+	\begin{equation*}
+		P = \prod_{i=1}^n \int \delta(z - y_i) p(z) \,dz.
+	\end{equation*}
+	By substituting a \emph{similarity measure} $f(z,y)$ for the Dirac impulse $\delta(z - y_i)$, I came to the following \emph{score}:
+	\begin{equation*}
+		J = \prod_{i=1}^n \int f(z,y_i)p(z) \,dz.
+	\end{equation*}
+	I have some questions regarding this score:
+	\begin{itemize}
+		\item Does it make sense?
+		\item I could not find the alternative formulation of the likelihood $P$ anywhere in literature. Furthermore, I could not find anything that looks like the score $J$. Perhaps I used to wrong search keywords. Is there some literature known that is related to this?
+	\end{itemize}
+	\item I came up with a similarity measure that involves the product integral. Although it gives the desired result (see Figure~6 of the attached report), I have few questions regarding this similarity function:
+	\begin{itemize}
+		\item Does it make sense to construct a similarity measure of the shape
+		\begin{equation*}
+			f(z,y) = \prod_{t=0}^{1} d(g_z(t), y(t))^{dt}?
+		\end{equation*}
+		\item Is there anything known that is similar to this approach?
+		\item What would be appropriate \emph{distance measures} $d(g_z(t), y(t))$?
+		\item Are there other similarity measures that might be useful?
+	\end{itemize}
 \end{itemize}
 
 \bibliographystyle{ieeetr}
 \bibliography{../../bib}
+
+
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20171126 Parametrization"/hyperparameter_selection.pdf}
 
 \end{document}
