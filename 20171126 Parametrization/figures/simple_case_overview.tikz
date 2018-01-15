@@ -14,9 +14,9 @@ xmajorgrids,
 x grid style={white!69.019607843137251!black},
 ymajorgrids,
 y grid style={white!69.019607843137251!black},
-legend style={draw=white!80.0!black},
 legend entries={{Training curve},{Test curve}},
-legend cell align={left}
+legend cell align={left},
+legend style={draw=white!80.0!black}
 ]
 \addlegendimage{no markers, blue}
 \addlegendimage{no markers, red}
