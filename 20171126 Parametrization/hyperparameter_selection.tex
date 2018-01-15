@@ -207,6 +207,7 @@
 \bibliographystyle{IEEEtran}                        %% (BibTeX) references style, e.g., IEEEtran, plainnat, abbrvnat, unsrtnat, or thesisnat
 \apptocmd{\thebibliography}{\raggedright}{}{}		%% Suppress badness warnings in bibliography
 
+\newcommand{\nknots}{n_{\textup{knots}}}
 
 %%==========================================================================
 %% Begin document
@@ -303,6 +304,7 @@ For practical reasons, it might be helpful to consider the logarithm of Eq.~\eqr
 
 
 \section{Simple case}
+\label{sec:simple case}
 
 An example is presented to compare the score of Eq.~\eqref{eq:score} with the likelihood of Eq.~\eqref{eq:likelihood}. Figure~\ref{fig:simple example profiles} shows an example with two training profiles in blue and one test curve in red. The training profiles are described by 
 \begin{align}
@@ -379,6 +381,52 @@ To demonstrate the use of the score of Eq.~\eqref{eq:score}, we will estimate th
 	\caption{Normalized score of Eq.~\eqref{eq:similarity measure normal function} for the simple example for different values of $\sigma$.}
 	\label{fig:simple case scores}
 \end{figure}
+
+
+\section{Generating velocity profiles}
+\label{sec:generating profiles}
+
+In the previous section, it is shown that the score of Eq.~\eqref{eq:score} with similarity measure of Eq.~\eqref{eq:similarity measure normal function} provides an alternative for the likelihood of Eq.~\eqref{eq:likelihood} for estimating the optimal bandwidth. In this section, it is demonstrated that the score of Eq.~\eqref{eq:score} can also be used to determine other hyper-parameters of the parametrization and PDF. For the similarity measure, $\sigma=0.001$ is used.
+
+Consider 400 normalized velocity profiles of which 200 are shown in Figure~\ref{fig:velocity profiles}. The score of Eq.~\eqref{eq:score} is determined using one leave-out cross-validation.
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{200pt}
+	\setlength\figurewidth{300pt}
+	\input{figures/profiles.tikz}
+	\caption{200 normalized velocity profiles.}
+	\label{fig:velocity profiles}
+\end{figure}
+
+The parametrization is performed using third order splines. Because third order splines are used, the fitted function is continuous up to the second derivative. Furthermore, the boundary conditions $y(0)=1$ and $y(1)=0$ are applied. Let the number of interior knots be denoted by $\nknots$, such that there are $4(\nknots+1)$ spline parameters, denoted by $\theta \in \mathcal{R}^{4(\nknots+1)}$. Because of the continuity requirements, there are $3$ constraints per interior knots. Together with the boundary conditions, there are $3\nknots+2$ linear constraints. Because of the linear constraints, the splines parameters $\theta$ can be represented as follows:
+\begin{equation}
+	\theta = \bar{\theta} + V \tilde{\theta},
+\end{equation}
+with $\bar{\theta} \in \mathcal{R}^{4(\nknots+1)}$ being a fixed parameter vector. The reduced parameter vector $\tilde{\theta} \in \mathcal{R}^{\nknots+2}$ is not subject to any constraint. The matrix $V \in \mathcal{R}^{4(\nknots+1) \times (\nknots+2)}$ can be obtained using a Singular Value Decomposition (SVD). Because $V$ is orthogonal, we can write
+\begin{equation}
+	\tilde{\theta} = V^T \left( \theta - \bar{\theta} \right).
+\end{equation}
+
+The PDF of the reduced parameter vector $\tilde{\theta}$ is estimated using KDE, i.e.,
+\begin{equation}
+	p(z) = \frac{1}{n} \sum_{i=1}^{n} K \left( \frac{ z - \tilde{\theta}_i }{h} \right),
+\end{equation}
+where $K(\cdot)$ is a Gaussian kernel with bandwidth $h$.
+
+An important parameter for the parametrization is the number of interior knots. Figure~\ref{fig:number of knots} shows the score for different bandwidths $h$ and number of interior knots $\nknots$. It clearly shows that one or more interior knots are preferred over no interior knots. The difference, however, between the results of one, two, three, or four interior knots is not large. 
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{200pt}
+	\setlength\figurewidth{300pt}
+	\input{figures/score_nknots.tikz}
+	\caption{The log of the score of Eq.~\eqref{eq:score} for different bandwidths and number of interior knots.}
+	\label{fig:number of knots}
+\end{figure}
+
+According to the result in Figure~\ref{fig:number of knots}, a small bandwidth seems about as good as the bandwidth that resulted in the highest score. In case of an extremely small bandwidth, i.e., $h \rightarrow 0$, the generated profiles correspond to smoothed profiles that are used for constructing the PDF. The profiles are smoothed using the splines. 
+
 
 \bibliography{../bib}
 
