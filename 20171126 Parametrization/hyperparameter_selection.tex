@@ -77,15 +77,15 @@
 
 \pagestyle{fancy}                                       %% set page style
 \fancyhf{}                                              %% clear all header & footer fields
-\fancyhead[L]{}%\includegraphics[width=15mm]{Streetwise}} %% define headers (LE: left field/even pages, etc.)
-\fancyhead[R]{}%\small\emph{\reptitle}}                   %% similar
-\fancyfoot[C]{}%\thepage}                                 %% define footer
+\fancyhead[L]{\includegraphics[width=15mm]{Streetwise}} %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\small\emph{\reptitle}}                   %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
 \setlength{\headheight}{18pt}                           %% increase head height to accommodate an oversized picture in the header
-\renewcommand*{\headrulewidth}{0pt}                  %% header line width
+\renewcommand*{\headrulewidth}{0.25pt}                  %% header line width
 \renewcommand*{\footrulewidth}{0pt}                     %% footer line width
 %% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
 \fancypagestyle{plain}{\fancyhf{}
-                       \fancyhead[C]{}%\includegraphics[width=30mm]{Streetwise}}
+                       \fancyhead[C]{\includegraphics[width=30mm]{Streetwise}}
                        \renewcommand{\headrulewidth}{0pt}
                        \renewcommand{\footrulewidth}{0pt}
                        \setlength{\headheight}{36pt}}
