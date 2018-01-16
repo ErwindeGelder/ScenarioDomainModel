@@ -16,7 +16,7 @@ Geyer~et~al.~\cite{geyer2014} describe a scenario within the context of automate
 %In an example of a so-called crossway scenario, they mention that the course of events might be different. For example, when a car keeps constant speed and then turns right, the scenario consists of one situation. The car might also first decelerate, accelerate and decelerate before turning right. In this case, the scenario consists of four situations.
 
 % Definition according to Ulbrich et al.
-Ulbrich~et~al.~\cite{ulbrich2015} define a scenario in the context of automated driving. They define a scenario as ``the temporal development between several scenes in a sequence of scenes. Every scenario starts with an initial scene. Actions \& events as well as goals \& values may be specified to characterize this temporal development in a scenario. Other than a scene, a scenario spans a certain amount of time.'' They state that actions and events link the different scenes. A further description of actions and events is not given.
+Ulbrich~et~al.~\cite{ulbrich2015} also define a scenario in the context of automated driving. They define a scenario as ``the temporal development between several scenes in a sequence of scenes. Every scenario starts with an initial scene. Actions \& events as well as goals \& values may be specified to characterize this temporal development in a scenario. Other than a scene, a scenario spans a certain amount of time.'' They state that actions and events link the different scenes. A further description of actions and events is not given.
 
 % Definition according to Elrofai et al.
 Another definition of a scenario in the context of automated driving is given by Elrofai~et~al.~\cite{elrofai2016scenario}. They define scenario as ``the combination of actions and maneuvers of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and maneuvers of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
@@ -43,7 +43,7 @@ According to Geyer~et~al.~\cite{geyer2014}, ``the end of a scenario is defined b
 
 % Goals (instead of activities)
 \subsubsection{A scenario can contain goal(s) of one or multiple actors}
-For describing a scenario encountered in real-life data, it is not necessary to describe the goals and as such, Elrofai~et~al.~\cite{elrofai2016scenario} do not mention this. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \cite{geyer2014}) could be specified rather than its activities \cite{ulbrich2015}. The same holds for other actors within the scenario.
+For describing a scenario in real-life data, it is not necessary to describe the goals and as such, Elrofai~et~al.~\cite{elrofai2016scenario} do not mention this. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \cite{geyer2014}) could be specified rather than its activities \cite{ulbrich2015}. The same holds for other actors within the scenario.
 	
 % Description of static environment
 \subsubsection{A scenario includes the description of the environment}
@@ -52,13 +52,13 @@ A scenario should include the description of the static and dynamic environment.
 % Definition
 Hence, we define a scenario as follows.
 \begin{definition}[Scenario]\label{def:scenario}
-	A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment. From the perspective of the ego vehicle, it contains the relevant events.
+	A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment. From the perspective of the ego vehicle, it contains all relevant events.
 \end{definition}
 
 % Describe difference from literature
 % - quantitative --> to avoid ambiguous situation and to serve assessment
 % - notion of scene not used. Scene follows from description, but is not explicitely used
-Definition~\ref{def:scenario} deviates from existing definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} from the fact that it explicitly mentions that a scenario if quantitative. Therefore, one scenario - according to Definition~\ref{def:scenario} - can only be interpreted in one way. The qualitative description of a scenario, however, allows for multiple interpretations. Hence, the qualitative description can be regarded as an abstraction of the quantitative scenarios. A \emph{scenario class} refers to the qualitative description, see Section~\ref{sec:scenario classes}.
+Definition~\ref{def:scenario} deviates from existing definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} from the fact that it explicitly mentions that a scenario is quantitative. Therefore, one scenario - according to Definition~\ref{def:scenario} - can only be interpreted in one way. The qualitative description of a scenario, however, allows for multiple interpretations. Hence, the qualitative description can be regarded as an abstraction of the quantitative scenarios. A \emph{scenario class} refers to the qualitative description, see Section~\ref{sec:scenario classes}.
 
 Geyer~et~al.~\cite{geyer2014} and Ulbrich~et~al.\cite{ulbrich2015} use the term \emph{scene} to define a scenario while Definition~\ref{def:scenario} does not use this term. The quantitative description of the ego vehicle, its activity, its static environment, and its dynamic environment fully define the scenario. The scenes follow from this description and thus the scenes do not have to be described explicitly.
 
