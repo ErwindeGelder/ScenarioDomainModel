@@ -14,9 +14,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 xmajorgrids,
-x grid style={lightgray!92.026143790849673!black},
+x grid style={white!69.019607843137251!black},
 ymajorgrids,
-y grid style={lightgray!92.026143790849673!black},
+y grid style={white!69.019607843137251!black},
 clip marker paths
 ]
 \addplot [semithick, color0, mark=*, mark size=1, mark options={solid}, only marks, forget plot]

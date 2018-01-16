@@ -7,8 +7,8 @@
 \begin{axis}[
 xlabel={$t$ [s]},
 ylabel={Longitudinal velocity [km/h]},
-xmin=0, xmax=40,
-ymin=35, ymax=75,
+xmin=0, xmax=17.5,
+ymin=35, ymax=70,
 width=\figurewidth,
 height=\figureheight,
 tick align=outside,
@@ -3416,48 +3416,35 @@ table {%
 \addplot [ultra thick, black, forget plot]
 table {%
 9 35
-9 75
+9 70
 };
 \addplot [ultra thick, black, forget plot]
 table {%
 11 35
-11 75
+11 70
 };
 \addplot [ultra thick, black, forget plot]
 table {%
 18 35
-18 75
+18 70
 };
-\addplot [ultra thick, black, forget plot]
-table {%
-23 35
-23 75
-};
-\node at (axis cs:4.5,40)[
+\node at (axis cs:4.5,42)[
   anchor=base,
   text=black,
   rotate=0.0
-]{ A};
-\node at (axis cs:10,40)[
+]{ Accelerating};
+\node at (axis cs:10,42)[
+  anchor=base,
+  text=black,
+  rotate=0.0,
+  align=center
+]{ Bra-\\
+king};
+\node at (axis cs:14.5,42)[
   anchor=base,
   text=black,
   rotate=0.0
-]{ B};
-\node at (axis cs:14.5,40)[
-  anchor=base,
-  text=black,
-  rotate=0.0
-]{ C};
-\node at (axis cs:20.5,40)[
-  anchor=base,
-  text=black,
-  rotate=0.0
-]{ D};
-\node at (axis cs:31.5,40)[
-  anchor=base,
-  text=black,
-  rotate=0.0
-]{ E};
+]{ Cruising};
 \end{axis}
 
 \end{tikzpicture}
