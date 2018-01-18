@@ -6,7 +6,7 @@ A scenario, for which the definition is proposed in Section~\ref{sec:scenario de
 % Literature review
 The term event is used in many different fields, e.g.:
 \begin{itemize}
-	\item In computing, an event is an action or occurrence recognized by software. A common source of events are its users. An event may trigger a state transition \cite{breu1997towards}.
+	\item In computing, an event is an action or occurrence recognized by software. A common source of events are inputs by the software users. An event may trigger a state transition \cite{breu1997towards}.
 	\item Jeagwon Kim, a philosopher, writes: ``The term event ordinarily implies change'' \cite{kim1993supervenience}. Kim states that an event is composed of three elements: Objects, a property and a time or a temporal interval. 
 	\item In probability theory, an event is an outcome or a set of outcomes of an experiment \cite{pfeiffer2013concepts}. For example, a thrown coin landing on its tail is an event.
 	\item ``In relativity, an event is any occurrence with which a definite time and a definite location are associated; it is an idealization in the sense that any actual event is bound to have a finite extent both in time and in space'' \cite{sartori1996understanding}.
@@ -22,7 +22,7 @@ Whether it is regarding computing \cite{breu1997towards}, philosophy \cite{kim19
 
 % Event should mark transition of a state from one set to another - mention relation with hybrid control
 \subsubsection{An event marks the transition of a state}
-During a traffic scenario, the states (see Section~\ref{sec:state} for a description of state) are continuously evolving. For example, when a vehicle moves from $A$ to $B$, the position changes. For the assessment methodology, it is required to parametrize the way the state evolves over time (e.g., see \cite{deGelder2017assessment}). Therefore, specific models will be employed to describe this (see Section~\ref{sec:model} for a description of model). These models, each with a fixed number of parameters, will only be valid for a certain time interval. Therefore, events mark the transition from one model that is describing the state to another model describing the state.
+During a traffic scenario, the states (see Section~\ref{sec:state} for a description of state) are continuously evolving. For example, when a vehicle moves from $A$ to $B$, the position changes. For the assessment methodology, it is required to parametrize the way the state evolves over time (e.g., see \cite{deGelder2017assessment}). Therefore, specific models will be employed to describe this (see Section~\ref{sec:model} for a description of model). These models, each with a fixed number of parameters, will only be valid for a certain time interval. Therefore, events mark the transition from one model that is describing the state to another model describing the same state.
 
 \subsubsection{The inter-event time interval corresponds to an activity}
 The inter-event time interval represents the time in between two events in which a certain activity occurs, e.g., `braking' or `cruising'.

@@ -280,7 +280,7 @@
     <pdf_title>CommonRoad: Composable Benchmarks for Motion Planning on Roads</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Scenarios in general (not per se related to automotive)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_657869850" CREATED="1510118247632" MODIFIED="1511405450754">
+<node TEXT="Scenarios in general (not per se related to automotive)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_657869850" CREATED="1510118247632" MODIFIED="1511405450754">
 <node TEXT="It emphasizes the different views on scenarios from different fields." ID="ID_628194309" CREATED="1510118287811" MODIFIED="1511326649945" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/033%20Views%20of%20scenario-based%20system%20design.pdf">
 <attribute NAME="key" VALUE="go2004blind"/>
 <attribute NAME="journal" VALUE="Interactions"/>
@@ -1217,6 +1217,15 @@
 <attribute NAME="authors" VALUE="Wachenfeld, Walther and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="AD2E246D97E43D87D1AF3FB7E8A13D5E3D34FD83C99CCA2694FD9C6286686">
     <pdf_title>The Release of Autonomous Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Design and validation of ADAS, PhD thesis from Olaf Gietelink" ID="ID_589283699" CREATED="1516270041671" MODIFIED="1516270177741" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/108%20Design%20and%20Validation%20ADAS%20Olaf%20Gietelink%20PhdThesis.pdf">
+<attribute NAME="key" VALUE="gietelink2007design"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Design and Validation of Advanced Driver Assistance Systems"/>
+<attribute NAME="authors" VALUE="Gietelink, Olaf Jeroen"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2B1A94744C2FADDB2D4A1B5A37D26122092201C3214AC10A13DE865BB8D50B2">
+    <pdf_title>Design and Validation of</pdf_title>
 </pdf_annotation>
 </node>
 </node>

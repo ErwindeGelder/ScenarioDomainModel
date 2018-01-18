@@ -6,7 +6,7 @@
 % Techniques for scenario development
 %Where the contribution of Van Notten et al.\ \cite{vannotten2003updated} relate more to the overall scenario project, Bishop et al.\ \cite{bishop2007scentechniques} focus more on the techniques to produce scenarios, i.e.\ the process of creating scenarios. These scenario development techniques vary from genius forecasting \cite{kahn1962}, event sequences with probability trees \cite{covaliu1995representation} and sensitivity analysis \cite{saltelli2008global}.
 
-% How to apply to real-life traffic scenarios
+% How to apply to real-world traffic scenarios
 %If it was not clear yet, the contributions of Van Notten et al.\ \cite{vannotten2003updated} and Bishop et al.\ \cite{bishop2007scentechniques} point out that the notion of scenario is very broad. We are interested in scenarios that can be used in the context of road traffic, which limits the scope of what a scenario is. The description of a scenario by Go and Carroll \cite{go2004blind} is more suited to our needs.
 % Definition according to Go and Carroll
 Go~and~Carroll~\cite{go2004blind} describe a scenario within the field of system design. They define a scenario as ``a description that contains (1) actors, (2) background information on the actors and assumptions about their environment, (3) actors' goals or objectives, and (4) sequences of actions and events. Some applications may omit one of the elements or they may simply or implicitly express it. Although, in general, the elements of scenarios are the same in any field, the use of scenarios is quite different.'' 
@@ -33,7 +33,7 @@ The aforementioned definitions state that a scenario corresponds to a time inter
 It can be helpful to develop scenarios using events \cite{bishop2007scentechniques}. Thus, a scenario could be defined as a particular sequence of events or, as Kahn \cite{kahn1962} writes, ``a scenario results from an attempt to describe in more or less detail some hypothetical sequence of events''. Furthermore, Geyer~et~al.~\cite{geyer2014} and Ulbrich~et~al.~\cite{ulbrich2015} use the notion of event for describing a scenario, although they do not provide a definition of the term \emph{event}. In Section~\ref{sec:events}, we will elaborate on the notion of \emph{event}.
 
 % Semantically described
-\subsubsection{Real-life traffic scenarios are quantitative scenarios}
+\subsubsection{Real-world traffic scenarios are quantitative scenarios}
 Regarding the nature of the data, a scenario can be either qualitative or quantitative \cite{vannotten2003updated}. Real-life traffic scenarios are quantitative scenarios, such that they are, e.g., suitable for simulation purposes. A scenario, however, can be described qualitatively, such that it is readable and understandable for human experts. This has become known as a Story-and-Simulation approach \cite{alcamo2001scenarios}. Note that several quantitative scenarios might have the same qualitative description; thus a qualitative description of a scenario does not uniquely define a quantitative scenario. A qualitative description can be regarded as an abstraction of the quantitative scenario.
 	
 % Some relevance between events
@@ -43,7 +43,7 @@ According to Geyer~et~al.~\cite{geyer2014}, ``the end of a scenario is defined b
 
 % Goals (instead of activities)
 \subsubsection{A scenario can contain goal(s) of one or multiple actors}
-For describing a scenario in real-life data, it is not necessary to describe the goals and as such, Elrofai~et~al.~\cite{elrofai2016scenario} do not mention this. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \cite{geyer2014}) could be specified rather than its activities \cite{ulbrich2015}. The same holds for other actors within the scenario.
+For describing a scenario in real-world data, it is not necessary to describe the goals and as such, Elrofai~et~al.~\cite{elrofai2016scenario} do not mention this. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \cite{geyer2014}) could be specified rather than its activities \cite{ulbrich2015}. The same holds for other actors within the scenario.
 	
 % Description of static environment
 \subsubsection{A scenario includes the description of the environment}
@@ -58,7 +58,6 @@ Hence, we define a scenario as follows.
 % Describe difference from literature
 % - quantitative --> to avoid ambiguous situation and to serve assessment
 % - notion of scene not used. Scene follows from description, but is not explicitely used
-Definition~\ref{def:scenario} deviates from existing definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} from the fact that it explicitly mentions that a scenario is quantitative. Therefore, one scenario - according to Definition~\ref{def:scenario} - can only be interpreted in one way. The qualitative description of a scenario, however, allows for multiple interpretations. Hence, the qualitative description can be regarded as an abstraction of the quantitative scenarios. A \emph{scenario class} refers to the qualitative description, see Section~\ref{sec:scenario classes}.
+Definition~\ref{def:scenario} deviates from existing definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} from the fact that it explicitly mentions that a scenario is quantitative. As a result, a qualitative description of a scenario refers to multiple scenarios. Hence, the qualitative description can be regarded as an abstraction of the quantitative scenarios. A \emph{scenario class} refers to the qualitative description, see Section~\ref{sec:scenario classes}.
 
-Geyer~et~al.~\cite{geyer2014} and Ulbrich~et~al.\cite{ulbrich2015} use the term \emph{scene} to define a scenario while Definition~\ref{def:scenario} does not use this term. The quantitative description of the ego vehicle, its activity, its static environment, and its dynamic environment fully define the scenario. The scenes follow from this description and thus the scenes do not have to be described explicitly.
-
+Geyer~et~al.~\cite{geyer2014} and Ulbrich~et~al.\cite{ulbrich2015} use the term \emph{scene} to define a scenario, while Definition~\ref{def:scenario} describe the scenes implicitly. Thus the scenes do not have to be described explicitly.

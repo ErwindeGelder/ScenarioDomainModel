@@ -1,25 +1,27 @@
 \section{Nomenclature}
 \label{sec:nomenclature}
 
-For the definition of \emph{scenario} and \emph{event}, several notions are adopted. In this section, the concepts of \emph{ego vehicle}, \emph{actor}, \emph{model}, \emph{state}, \emph{activity}, \emph{static environment}, and \emph{dynamic environment} are detailed. 
+For the definition of \emph{scenario} and \emph{event}, several notions are adopted from literature. In this section, the concepts of \emph{ego vehicle}, \emph{actor}, \emph{state}, \emph{model}, \emph{activity}, \emph{static environment}, and \emph{dynamic environment} are detailed. 
 
 \subsubsection{Ego vehicle}
 \label{sec:ego vehicle}
-Literally, `ego' means `I'. Thus, the ego vehicle refers to the perspective from which the world is seen. Usually, the ego vehicle refers to the vehicle that is perceiving the world through its sensors (see e.g.~\cite{Bonnin2014}) or the vehicle which has to perform a specific task (see e.g.~\cite{althoff2017CommonRoad}). The ontology presented by Geyer~et~al.\ ``is described from the ego-vehicle's point of view'' \cite{geyer2014}.  
-%Note that in case a sensor-equipped vehicle is used to extract scenarios from real-life driving, the ego vehicle in an extracted scenario does not necessarily have to correspond to the sensor-equipped vehicle that is used to acquire the real-life data.
+Literally, `ego' means `I'. Thus, the ego vehicle refers to the perspective from which the world is seen. Usually, the ego vehicle refers to the vehicle that is perceiving the world through its sensors (see e.g.~\cite{Bonnin2014}) or the vehicle which has to perform a specific task (see e.g.~\cite{althoff2017CommonRoad}). In the latter case, the ego vehicle is often referred to as the system under test \cite{stellet2015taxonomy} or the vehicle under test \cite{gietelink2006development}.
+%The ontology presented by Geyer~et~al.\ ``is described from the ego-vehicle's point of view'' \cite{geyer2014}. 
+%Note that in case a sensor-equipped vehicle is used to extract scenarios from real-world driving, the ego vehicle in an extracted scenario does not necessarily have to correspond to the sensor-equipped vehicle that is used to acquire the real-world data.
 
 \subsubsection{Actor}
 \label{sec:actor}
-An actor is an element of a scenario acting on its own behalf \cite{ulbrich2015}. In practice, this can be a driver of e.g., a car or bike, an automation system, or a combination of a driver and an automation system \cite{geyer2014}.
+An actor is an element of a scenario acting on its own behalf \cite{ulbrich2015}. In practice, this can be a driver of a car, a bicyclist, a pedestrian, an automation system, or a combination of a driver and an automation system \cite{geyer2014}.
+% Traffic light?
+
+\subsubsection{State}
+\label{sec:state}
+According to the IEEE Standard Glossary of Software Engineering Terminology \cite{ieee1990glossary}, states are ``the values assumed at a given instant by the variables that define the characteristics of a system, component, or simulation''. For example, a state could be the acceleration of an actor.
 
 \subsubsection{Model}
 \label{sec:model}
 Typically, a system is modeled using a differential equation of the form $\dot{x}=f(x,u,t)$, where $x$ represents the state vector, $u$ represents an external input vector, and $t$ denotes the time \cite{norman2011control}. The input $u$ is a function of time, that needs to be quantified. For this purpose, a parametrized function can be used, i.e. $u=g_{\theta}(t)$ with parameter vector $\theta$, such that the differential equation can be rewritten to $\dot{x}=h_{\theta}(x,t)$.
 % In the context of this paper, model refers to a parametrized function, such as $h_{\theta}(x,t)$. It might be more practical to directly model the state (i.e., the result of the differential equation) using a function $x=k_{\theta}(t)$, such that no explicit information is required about the system dynamics. For example, see \cite{deGelder2017assessment}.
-
-\subsubsection{State}
-\label{sec:state}
-According to the IEEE Standard Glossary of Software Engineering Terminology \cite{ieee1990glossary}, states are ``the values assumed at a given instant by the variables that define the characteristics of a system, component, or simulation''. For example, a state could be the acceleration of an actor.
 
 \subsubsection{Activity}
 \label{sec:activity}
@@ -33,3 +35,5 @@ The static environment refers to the part of a scenario that does not change dur
 \subsubsection{Dynamic environment}
 \label{sec:dynamic environment}
 As opposed to the static environment, the dynamic environment refers to the part of a scenario that changes during the time frame of a scenario. The dynamic environment is described using the activities - and its models, see Section~\ref{sec:activity} - which describe the way the state evolves over time. In practice, the dynamic environment consists of the moving actors (other than the ego vehicle) that are relevant to the ego vehicle.
+
+Note that it might not always be obvious if a part of a scenario belongs to the static or dynamic environment. For example, the post of a traffic light can be considered as part of the static environment, while the signal of the traffic light can be considered as part of the dynamic environment. Most important, however, is that all parts of the environment that are relevant to the assessment are described in either the static or the dynamic environment.
