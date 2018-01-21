@@ -97,6 +97,8 @@
 	% Ego vehicle
 	\node[color ego, block, larger distance, left of=target](ego){Ego vehicle};
 	\draw[ultra thick, ->] (scenario) --(helper scenario) -| (ego);
+	\node[length dashed arrow, below of=ego](ego arrow){};
+	\draw[dashed arrow] (ego) -- (ego arrow);
 	
 	% Static environment
 	\node[color stat, block, right of=otherdyn, larger distance](road){Road};
