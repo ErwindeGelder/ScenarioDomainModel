@@ -22,20 +22,8 @@ Whether it is regarding computing, philosophy, % relativity \cite{sartori1996und
 hybrid or event-based control, an event is happening at a time instant.
 
 % Event should mark transition of a state from one set to another - mention relation with hybrid control
-\deleted{%
-\subsubsection{An event marks the transition of a state}
-During a traffic scenario, the states (see Section~\ref{sec:state} for a description of state) are continuously evolving. For example, when a vehicle moves from A to B, the position changes. For the assessment methodology, it is required to parametrize the way the state evolves over time (e.g., see \cite{deGelder2017assessment}). Therefore, specific models will be employed to describe this (see Section~\ref{sec:model} for a description of model). These models, each with a fixed number of parameters, will only be valid for a certain time interval. Therefore, events mark the transition from one model that is describing the state to another model describing the same state.
-}
-
-\added{%
 \subsubsection{An event marks a mode transition}
 A mode transition may be caused by a change of either an input signal, a parameter, or a state. For example, pushing the brake pedal may cause a mode transition and therefore, this may be regarded as an event. 
-}
-
-\deleted{%
-\subsubsection{The inter-event time interval corresponds to an activity}
-The inter-event time interval represents the time in between two events in which a certain activity occurs, e.g., `braking' or `cruising'.
-}
 
 %\subsubsection{An event marks (a cause of) a mode transition}
 %Events mark the transition of mode, which is either a change of input, parameter or state. This is analogous to the way event is described in hybrid control \cite{boel1999hybridcontrol}.
@@ -43,11 +31,7 @@ The inter-event time interval represents the time in between two events in which
 % Give definition
 Hence, we define an event as follows.
 \begin{definition}[Event] \label{def:event}
-	\deleted{%
-	An event marks the time instant at which a transition of a state occurs, such that before and after an event, the state corresponds to two different activities.  %Furthermore, it marks the start and end of a time interval that can be qualitatively described.
-	}
-
-	\added{An event marks the time instant at which mode transition occurs, such that before and after an event, the state corresponds to two different modes. }
+	An event marks the time instant at which mode transition occurs, such that before and after an event, the state corresponds to two different modes.
 \end{definition}
 
 % Compare definition with literature and other remarks
@@ -55,6 +39,4 @@ Hence, we define an event as follows.
 % - Mention that before and after, different qualitative description
 An event according to Definition~\ref{def:event} is related to an event described in hybrid control \cite{deschutter2000optimal}, where an event describes the transition from one mode of operation to another mode of operation. In our application, i.e. events in traffic scenarios, ``mode of operation'' is described by a certain model with parameters assigned to it.
 
-\added{The inter-event time interval represents the time in between two events in which a certain activity occurs. For example, when the longitudinal acceleration is negative during such an inter-event time interval, the activity can be described by the word `braking'. Another example is when at the event, the head lights are turned on. In that case, the activities before and after the event can be described as `lights off' and `lights on', respectively.}
-
-\deleted{During the time interval between two events, or, in short, the inter-event time interval, a state is quantitatively described by a model. It is, however, possible to describe the way the state evolves during the inter-event time interval, i.e., the activity, in a qualitative manner. For example, when the longitudinal acceleration is negative during such an inter-event time interval, the activity can be described by the word `braking'. Another example is when at the event, the head lights are turned on. In that case, the activities before and after the event can be described as `lights off' and `lights on', respectively.}
+The inter-event time interval represents the time in between two events in which a certain activity occurs. For example, when the longitudinal acceleration is negative during such an inter-event time interval, the activity can be described by the word `braking'. Another example is when at the event, the head lights are turned on. In that case, the activities before and after the event can be described as `lights off' and `lights on', respectively.
