@@ -15,12 +15,13 @@
 _data/
 */.ipynb_checkpoints/*
 */.idea/*
-*/tikz/*
 */__pycache__/*
 */pickles/*
 *.mp4
 *.nav
 *.snm
+*.dpth
+*.md5
 
 # Other files to be ignored
 20171126 Parametrization/df.p
