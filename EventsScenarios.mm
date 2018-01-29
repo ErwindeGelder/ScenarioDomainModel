@@ -907,7 +907,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
 <node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
 <node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1511407694804" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -969,7 +969,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
+<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
 <node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1511498110954" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/058%20Control_System_Engineering_Norman.pdf">
 <attribute NAME="key" VALUE="norman2011control"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -1034,7 +1034,7 @@
 <attribute NAME="key" VALUE="aparicio2013pre"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Pre-crash Performance of Collision Mitigation and Avoidance Systems: Results from the Assess Project"/>
-<attribute NAME="authors" VALUE="Aparicio, Andr{\&apos;e}s and Baur{\`e}s, S{\&apos;e}bastien and Bargall{\&apos;o}, Jordi and Rodarius, Carmen and Vissers, John and Bartels, Oliver and Seiniger, Patrick and Lemmen, Paul and Unselt, Thomas and Ranovona, Maminirina and others"/>
+<attribute NAME="authors" VALUE="Aparicio, Andr{\&apos;e}s and Baur{\`e}s, S{\&apos;e}bastien and Bargall{\&apos;o}, Jordi and Rodarius, Carmen and Vissers, John and Bartels, Oliver and Seiniger, Patrick and Lemmen, Paul and Unselt, Thomas and Ranovona, Maminirina and Okawa, Tatsuhiro and Schaub, Swen"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="A975864978BD9AD1595688728FF7D7E9D04C48EBAC19A6F82123CBADB57D4292">
     <pdf_title>Pre-Crash Performance of Collision Mitigation and Avoidance Systems: Results from the Assess Project</pdf_title>
 </pdf_annotation>
@@ -1393,6 +1393,18 @@
 <attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
 <attribute NAME="authors" VALUE="{International Organization for Standardization (ISO)}"/>
 </node>
+<node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1517195633891"/>
+</node>
+<node TEXT="Scenario-based methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1555930360" CREATED="1517043981271" MODIFIED="1517043988742">
+<node TEXT="Scenario-Based Assessment by Using Time Series Classification of Human-Driving Behaviour" ID="ID_507707419" CREATED="1517043996475" MODIFIED="1517044017437" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/134%20A%20Scenario-Based%20Assessment%20Approach%20for%20Automated%20Driving.pdf">
+<attribute NAME="key" VALUE="roesener2016scenariobased"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="A Scenario-Based Assessment Approach for Automated Driving by Using Time Series Classification of Human-Driving Behaviour"/>
+<attribute NAME="authors" VALUE="Roesener, Christian and Fahrenkrog, Felix and Uhlig, Axel and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A7AEDF43B62CD4D33525AEDB7C88A9EB50B72F88FCE43C3C52D92BDBBD717BB">
+    <pdf_title>A Scenario-Based Assessment Approach for Automated Driving by Using Time Series Classification of Human-Driving Behaviour</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Data-driven simulation and parametrization of traffic scenario" ID="ID_1028680362" CREATED="1507091082672" MODIFIED="1516764262140" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
@@ -1598,6 +1610,12 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="4FA3F3AB60FE3FA5A3FC4874A1C2CAD8D56A051284EA16CB874D8D9CE5E9A">
     <pdf_title>Classification for safety-critical car-cyclist scenarios using machine learning</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="Observation Dtudy into the Influence of a View-Blocking Obstruction at an Intersection ..." ID="ID_829632029" CREATED="1517118455799" MODIFIED="1517118469995">
+<attribute NAME="key" VALUE="CATS2015"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Observation Dtudy into the Influence of a View-Blocking Obstruction at an Intersection on Bicycle and Passenger Car Velocity Profiles"/>
+<attribute NAME="authors" VALUE="Op den Camp, Olaf and de Hair, Stefanie and de Gelder, Erwin and Cara, Irene"/>
 </node>
 <node TEXT="2016 Personalised Automated Driving: Prediction of Preferred ACC Based on Manual Driving" ID="ID_1120861986" CREATED="1516861518218" MODIFIED="1516865554002" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/124%20Towards%20Personalised%20Automated%20Driving%20ACC.pdf">
 <attribute NAME="key" VALUE="gelder2016pacc"/>
