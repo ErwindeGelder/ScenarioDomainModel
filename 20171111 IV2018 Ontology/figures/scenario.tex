@@ -44,44 +44,40 @@
 \definecolor{colorActivities}{RGB}{210, 255, 191}
 \definecolor{colorActivitiesBlock}{RGB}{118, 255, 45}
 \definecolor{colorActivitiesBlock2}{RGB}{87, 249, 0}
-
-\begin{document}
-%	\setlength\figureheight{150pt}
-%	\setlength\figurewidth{248pt}
-%	\input{rel_lat_pos.tikz}
+\definecolor{colorScen}{RGB}{255, 252, 204}
+\definecolor{colorEgo}{RGB}{255, 204, 204}
+\definecolor{colorStat}{RGB}{128, 128, 255}
+\definecolor{colorLineStat}{RGB}{51, 51, 173}
+\definecolor{colorLineDyn}{RGB}{51, 173, 51}
 
 % Define main parts
-\tikzstyle{block distance}=[node distance=5.5em]
-\tikzstyle{block}=[draw, text width=4.5em, align=center, block distance, minimum height=2.8em, text depth=1.1em]
+\tikzstyle{block distance}=[node distance=6em]
+\tikzstyle{block}=[draw, text width=5em, align=center, block distance, minimum height=2.8em, text depth=1.1em]
+\tikzstyle{block one row}=[text depth=-0.1em]
 \tikzstyle{dashed arrow}=[->, dashed, ultra thick]
 
 % Define all kinds of distances
-\tikzstyle{in between}=[coordinate, node distance=2.75em]
+\tikzstyle{in between}=[coordinate, node distance=3em]
 \tikzstyle{larger distance}=[node distance=6.5em]
 \tikzstyle{environment text}=[coordinate, node distance=3.5em]
 \tikzstyle{environment text b}=[node distance=0.2em, minimum width=6.5em, align=right]
 \tikzstyle{entrance environment}=[coordinate, node distance=4.8em]
 \tikzstyle{helper arrow}=[coordinate, node distance=2em]
-\tikzstyle{top env box hwidth}=[coordinate, node distance=5.75em]
+\tikzstyle{top env box hwidth}=[coordinate, node distance=6.1em]
 \tikzstyle{length dashed arrow}=[coordinate, node distance=2.5em]
 \tikzstyle{distance heading}=[node distance=3em]
 \tikzstyle{entrance states}=[coordinate, node distance=3.5em]
-\tikzstyle{state below}=[coordinate, node distance=2em]
-\tikzstyle{distance activities}=[node distance=6em]
+\tikzstyle{state below}=[coordinate, node distance=3em]
+\tikzstyle{distance activities}=[node distance=7em]
 \tikzstyle{entrance activities}=[coordinate, node distance=3.5em]
 \tikzstyle{distance activities 2}=[node distance=5em]
 \tikzstyle{margin dyn box}=[coordinate, node distance=0.3em]
+\tikzstyle{activities below}=[coordinate, node distance=2em]
 
-% Define all the colors
-\tikzstyle{color scen}=[fill=yellow!20]
-\tikzstyle{color ego}=[fill=red!20]
-\tikzstyle{color stat}=[fill=blue!50]
-\tikzstyle{line color dyn}=[black!40!green!80]
-\tikzstyle{line color stat}=[black!40!blue!80]
+\begin{document}
 
-\hspace{-8em} % For some strange reason, there is some white space on left side
 \begin{tikzpicture}
-	\node[color scen, block](scenario){Scenario};
+	\node[block, fill=colorScen, block one row](scenario){Scenario};
 	\node[coordinate, below of=scenario, node distance=2em](helper scenario){};
 	
 	% Create dynamic environment
@@ -89,7 +85,7 @@
 	\node[fill=colorDynBlock, block, left of=below scenario, node distance=0em](otherdyn){Other road user};
 	\node[length dashed arrow, below of=otherdyn](otherdyn arrow){};
 	\draw[dashed arrow] (otherdyn) -- (otherdyn arrow);
-	\node[fill=colorDynBlock, block, left of=otherdyn](target){Target vehicle};
+	\node[fill=colorDynBlock, block, left of=otherdyn](target){Vehicle in front};
 	\node[above of=otherdyn, environment text](helper1){};
 	\node[right of=helper1, environment text b]{Dynamic\\environment};
 	\node[left of=otherdyn, in between](helper2){};
@@ -100,14 +96,14 @@
 	\draw[->] (entrance dyn) -- (helper dyn) -| (otherdyn);
 	
 	% Ego vehicle
-	\node[color ego, block, larger distance, left of=target](ego){Ego vehicle};
+	\node[block, larger distance, left of=target, fill=colorEgo](ego){Ego vehicle};
 	\draw[ultra thick, ->] (scenario) --(helper scenario) -| (ego);
 	\node[length dashed arrow, below of=ego](ego arrow){};
 	\draw[dashed arrow] (ego) -- (ego arrow);
 	
 	% Static environment
-	\node[color stat, block, right of=otherdyn, larger distance](road){Road};
-	\node[color stat, block, right of=road](weather){Weather};
+	\node[block, right of=otherdyn, larger distance, fill=colorStat, block one row](road){Road};
+	\node[block, right of=road, fill=colorStat, block one row](weather){Weather};
 	\node[above of=weather, environment text](helper3){};
 	\node[right of=helper3, environment text b]{Static\\environment};
 	\node[left of=weather, in between](helper4){};
@@ -123,9 +119,10 @@
 	
 	% States
 	\node[coordinate, below of=target, node distance=7.4em](below target){};
-	\node[fill=colorStateBlock, block, left of=below target, distance heading](heading){Heading};
-	\node[fill=colorStateBlock, block, right of=below target, node distance=14em](speed){Speed};
-	\node[coordinate, above of=speed, node distance=2.8em](helper10){};
+	\node[fill=colorStateBlock, block, left of=below target, distance heading, block one row](heading){Heading};
+	\node[fill=colorStateBlock, block, right of=below target, node distance=15em, block one row](speed){Speed};
+	\node[fill=colorStateBlock, block, right of=speed, block one row](other states){$\ldots$};
+	\node[coordinate, above of=other states, node distance=2.8em](helper10){};
 	\node[right of=helper10, node distance=1.4em, minimum width=4em, align=right]{States};
 	\node[above of=heading, entrance states](helper17){};
 	\node[coordinate, right of=helper17, distance heading](entrance states){};
@@ -133,10 +130,13 @@
 	\draw[ultra thick] (target) -- (entrance states);
 	\draw[->] (entrance states) -- (helper states) -| (heading);
 	\draw[->] (entrance states) -- (helper states) -| (speed);
+	\draw[->] (entrance states) -- (helper states) -| (other states);
+	\node[length dashed arrow, below of=other states](other states arrow){};
+	\draw[dashed arrow] (other states) -- (other states arrow);
 	
 	% Activities for heading
 	\node[fill=colorActivitiesBlock, block, below of=heading, distance activities](lane following){Lane following};
-	\node[fill=colorActivitiesBlock, block, left of=lane following](left){Turn left};
+	\node[fill=colorActivitiesBlock, block, left of=lane following, block one row](left){Turn left};
 	\node[fill=colorActivitiesBlock, block, right of=lane following](right){Turn right};
 	\node[entrance activities, above of=lane following](entrance heading){};
 	\node[helper arrow, above of=lane following](helper heading){};
@@ -167,7 +167,7 @@
 	% Possibilities for turning left
 	\node[fill=colorActivitiesBlock2, block, below of=left, distance activities 2](crossing){Turn left crossing};
 	\node[fill=colorActivitiesBlock2, block, right of=crossing](lane change){Lane change};
-	\node[fill=colorActivitiesBlock2, block, right of=lane change](other left){$\ldots$};
+	\node[fill=colorActivitiesBlock2, block, right of=lane change, block one row](other left){$\ldots$};
 	\node[helper arrow, above of=crossing](helper left){};
 	\draw[->] (left) -- (crossing);
 	\draw[->] (left) -- (helper left) -| (lane change);
@@ -176,7 +176,7 @@
 	% Possibilities for decelerating
 	\node[fill=colorActivitiesBlock2, block, below of=decelerating, distance activities 2](release){Release throttle};
 	\node[fill=colorActivitiesBlock2, block, right of=release](emergency){Emergency braking};
-	\node[fill=colorActivitiesBlock2, block, right of=emergency](other decelerating){$\ldots$};
+	\node[fill=colorActivitiesBlock2, block, right of=emergency, block one row](other decelerating){$\ldots$};
 	\node[helper arrow, above of=release](helper decelerating){};
 	\draw[->] (decelerating) -- (release);
 	\draw[->] (decelerating) -- (helper decelerating) -| (emergency);
@@ -192,7 +192,7 @@
 	
 	% Dashed box around states (this is done in a strange manner, but this way
 	% we make sure the margins are similar as for the environment blocks)
-	\node[below of=speed, state below](helper13){};
+	\node[below of=other states, state below](helper13){};
 	\node[left of=helper13, in between](helper11){};
 	\node[right of=helper11, top env box hwidth](helper12){};
 	\node[below of=heading, state below](helper16){};
@@ -200,7 +200,7 @@
 	\node[left of=helper14, top env box hwidth, red](helper15){};
 	\node[right of=helper17, in between](helper18){};
 	\node[left of=helper18, top env box hwidth](helper19){};
-	\node[above of=speed, entrance states](helper20){};
+	\node[above of=other states, entrance states](helper20){};
 	\node[left of=helper20, in between](helper21){};
 	\node[right of=helper21, top env box hwidth](helper22){};
 	
@@ -211,10 +211,10 @@
 	\node[entrance activities, above of=accelerating](helper26){};
 	\node[left of=helper26, in between](helper27){};
 	\node[right of=helper27, top env box hwidth](helper28){};
-	\node[below of=other decelerating, state below](helper29){};
+	\node[below of=other decelerating, activities below](helper29){};
 	\node[left of=helper29, in between](helper30){};
 	\node[right of=helper30, top env box hwidth](helper31){};
-	\node[below of=crossing, state below](helper32){};
+	\node[below of=crossing, activities below](helper32){};
 	\node[right of=helper32, in between](helper33){};
 	\node[left of=helper33, top env box hwidth](helper34){};
 	\node[coordinate, above of=accelerating, node distance=2.8em](helper35){};
@@ -234,19 +234,19 @@
 	
 	% Draw the boxes
 	% Static environment
-	\draw[dashed, line color stat] (helper5) -- (helper6) -- (helper9) -- (helper8) -- (helper5);
+	\draw[dashed, color=colorLineStat] (helper5) -- (helper6) -- (helper9) -- (helper8) -- (helper5);
 	\fill[fill=blue!10, on layer=background] (helper5) -- (helper6) -- (helper9) -- (helper8) -- (helper5);
 	
 	% Dynamic environment
-	\draw[dashed, line color dyn] (helper36) -- (helper37) -- (helper41) -| (helper43) -- (helper45) |- (helper40) -- (helper36);
+	\draw[dashed, color=colorLineDyn] (helper36) -- (helper37) -- (helper41) -| (helper43) -- (helper45) |- (helper40) -- (helper36);
 	\fill[fill=colorDyn, on layer=background] (helper36) -- (helper37) -- (helper41) -| (helper43) -- (helper45) |- (helper40) -- (helper36);
 	
 	% States
-	\draw[dashed, line color dyn] (helper22) -- (helper12) -- (helper15) -- (helper19) -- (helper22);
+	\draw[dashed, color=colorLineDyn] (helper22) -- (helper12) -- (helper15) -- (helper19) -- (helper22);
 	\fill[fill=colorState, on layer=background] (helper22) |- (helper12) -- (helper15) -- (helper19) -- (helper22);
 	
 	% Activities
-	\draw[dashed, line color dyn] (helper25) -- (helper28) -- (helper31) -- (helper34) -- (helper25);
+	\draw[dashed, color=colorLineDyn] (helper25) -- (helper28) -- (helper31) -- (helper34) -- (helper25);
 	\fill[fill=colorActivities, on layer=background] (helper25) |- (helper28) -- (helper31) -- (helper34) -- (helper25);
 \end{tikzpicture}
 	

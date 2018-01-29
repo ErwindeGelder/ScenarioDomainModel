@@ -53,9 +53,30 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="1"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="3"/>
 <node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1515764436716" HGAP="60">
 <edge COLOR="#7c7c00"/>
+<node TEXT="Curve fitting" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1288097973" CREATED="1516866158372" MODIFIED="1516866168325">
+<node TEXT="General" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1015917001" CREATED="1516866172981" MODIFIED="1516866180627">
+<node TEXT="Comparison of splines with other step-wise regressions" ID="ID_1640740336" CREATED="1516866181671" MODIFIED="1516866344300" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/130%20Stepwise%20regression%20is%20an%20alternative%20to%20splines%20for%20fitting%20noisy%20data.pdf">
+<attribute NAME="key" VALUE="BURKHOLDER1996235"/>
+<attribute NAME="journal" VALUE="Journal of Biomechanics"/>
+<attribute NAME="year" VALUE="1996"/>
+<attribute NAME="title" VALUE="Stepwise Regression Is an Alternative to Splines for Fitting Noisy Data"/>
+<attribute NAME="authors" VALUE="Burkholder, Thomas J. and Lieber, Richard L."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CAA7886D11CF5EFE653575728FAED755E168FC931323C530641F5B96BAD2C4">
+    <pdf_title>TECHNICAL NOTE</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Comparison of Alternative Smoothing Methods - Fitting Exposure-Response Relationships" ID="ID_21009205" CREATED="1516866410047" MODIFIED="1516866563824" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/131%20The%20Comparison%20of%20Alternative%20Smoothing%20Methods%20for%20Fitting%20Non-Linear%20Exposure-Response%20Relationships.pdf">
+<attribute NAME="key" VALUE="govindarajulu2009comparison"/>
+<attribute NAME="journal" VALUE="The international journal of biostatistics"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="The Comparison of Alternative Smoothing Methods for Fitting Non-Linear Exposure-Response Relationships with {C}ox Models in a Simulation Study"/>
+<attribute NAME="authors" VALUE="Govindarajulu, Usha S and Malloy, Elizabeth J and Ganguli, Bhaswati and Spiegelman, Donna and Eisen, Ellen A"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+</node>
 <node TEXT="Splines" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_747864614" CREATED="1515764442338" MODIFIED="1515764451997">
 <node TEXT="Curve and Surface Fitting with Splines (Jan-Pieter heeft hardcopy)" ID="ID_101601068" CREATED="1515764454745" MODIFIED="1516678708660">
 <attribute NAME="key" VALUE="dierckx1993splines"/>
@@ -78,6 +99,31 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5CD35BB8534432F9A283205E9D6858791E9DE635AB332E32C6DC3366C908B85">
     <pdf_title>Flexible Smoothing with -splines and Penalties</pdf_title>
 </pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="Parametrization of traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1780649506" CREATED="1516862848880" MODIFIED="1516862859449">
+<node TEXT="Braking Profile of car" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_587119167" CREATED="1516862871076" MODIFIED="1516862891064">
+<node TEXT="AdaptIVe paper" ID="ID_621567854" CREATED="1516862892563" MODIFIED="1516862902145" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<attribute NAME="key" VALUE="deGelder2017assessment"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
+    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Cut-in/lane change" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1477678152" CREATED="1516862975614" MODIFIED="1516862982372">
+<node TEXT="Applying spatial and temporal offset" ID="ID_1450503818" CREATED="1516863090042" MODIFIED="1516863114755" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Data-driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems"/>
+<attribute NAME="authors" VALUE="M. R. Zofka and F. Kuhnt and R. Kohlhaas and C. Rist and T. Schamm and J. M. Z\&quot;{o}llner"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F91B4B237B607197EFC2BD5C7A836F87F289E47CFAF66BFE19F3A3F8DFFB694">
+    <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 </node>
@@ -131,6 +177,27 @@
 <attribute NAME="authors" VALUE="Hinton, Geoffrey E and Srivastava, Nitish and Krizhevsky, Alex and Sutskever, Ilya and Salakhutdinov, Ruslan R"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1D2F777231EA4F6507A2A6D9094466EE48462FA9853CA74770FC44EE19F">
     <pdf_title>Improving neural networks by preventing co-adaptation of feature detectors</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Support Vector Machines" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_843885667" CREATED="1516861995018" MODIFIED="1516862005324">
+<node TEXT="First paper about SVM" ID="ID_177634036" CREATED="1516862007224" MODIFIED="1516862017600" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/125%20Support%20Vector%20Machines.pdf">
+<attribute NAME="key" VALUE="cortes1995svm"/>
+<attribute NAME="journal" VALUE="Machine Learning"/>
+<attribute NAME="year" VALUE="1995"/>
+<attribute NAME="title" VALUE="Support-Vector Networks"/>
+<attribute NAME="authors" VALUE="Cortes, Corinna and Vapnik, Vladimir"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9353E688D922DE59AC62E44BE6C811DDAECC0A5F877165AE149A605F38FE0">
+    <pdf_title>Support-Vector Networks</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Even earlier paper which already uses a similar technique" ID="ID_557122590" CREATED="1516862379630" MODIFIED="1516862393408" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/126%20A%20Training%20Algorithm%20for%20Optimal%20Margin%20Classifiers.pdf">
+<attribute NAME="key" VALUE="boser1992training"/>
+<attribute NAME="year" VALUE="1992"/>
+<attribute NAME="title" VALUE="A Training Algorithm for Optimal Margin Classifiers"/>
+<attribute NAME="authors" VALUE="Boser, Bernhard E and Guyon, Isabelle M and Vapnik, Vladimir N"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="EEFC745BC0FA52B2C8DA71AD91D6E63867F2ACC83EFB8AFDFDF876F717CA31B5">
+    <pdf_title>A T r a i n i n g A l g o r i t h m f o r</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -273,6 +340,37 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="using reference data (open-loop)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1767777743" CREATED="1516863517341" MODIFIED="1516863545359">
+<node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good paper)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1516863671784" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/127%20Scenario%20Generation%20Based%20on%20Laserscanner%20Reference%20Data.pdf">
+<attribute NAME="key" VALUE="lages2013automatic"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Automatic Scenario Generation Based on Laserscanner Reference Data and Advanced Offline Processing"/>
+<attribute NAME="authors" VALUE="Lages, Ulrich and Spencer, Martin and Katz, Roman"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6B806CA93E6774D28A5D7C41582B0F5E6A34C8A56B7F2523EA883A982">
+    <pdf_title>Automatic Scenario Generation based on Laserscanner Reference Data and Advanced Offline Processing</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Transforming GIS data into functional road models" ID="ID_7532915" CREATED="1516864315370" MODIFIED="1516864514842" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/128%20Transforming%20GIS%20data%20into%20functional%20road%20models.pdf">
+<attribute NAME="key" VALUE="wilkie2012transforming"/>
+<attribute NAME="journal" VALUE="IEEE transactions on visualization and computer graphics"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Transforming {GIS} Data into Functional Road Models for Large-Scale Traffic Simulation"/>
+<attribute NAME="authors" VALUE="Wilkie, David and Sewall, Jason and Lin, Ming C"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D837FF6190BD5B1273AA14524BD4D281B396E3A49691A577409E9171363822">
+    <pdf_title>Transforming GIS Data into Functional Road Models for Large-Scale Traffic Simulation</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="3D Traffic Scene Understanding From Movable Platforms" ID="ID_1523877032" CREATED="1516865613984" MODIFIED="1516865632284" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/129%203D%20Traffic%20Scene%20Understanding%20from%20Movable%20Platforms.pdf">
+<attribute NAME="key" VALUE="geiger2014scenunderstanding"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Pattern Analysis and Machine Intelligence"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="3{D} Traffic Scene Understanding From Movable Platforms"/>
+<attribute NAME="authors" VALUE="Geiger, Andreas and Lauer, Martin and Wojek, Christian and Stiller, Christoph and Urtasun, Raquel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BCFB3162C7E0FE96D93D8E389255A3DB777195522F7B3FF1CE324A54791D7C">
+    <pdf_title>3D Traffic Scene Understanding from Movable Platforms</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
@@ -316,6 +414,17 @@
 </node>
 </node>
 </node>
+<node TEXT="Scene understanding" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1078234634" CREATED="1516851525657" MODIFIED="1516851536013">
+<node TEXT="Segmentation-Based Urban Traffic Scene Understanding -&gt; using first semantic labeling of pixels" ID="ID_258658" CREATED="1516851538081" MODIFIED="1516851558787" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/121%20Segmentation-Based%20Urban%20Traffic%20Scene%20Understanding.pdf">
+<attribute NAME="key" VALUE="ess2009sceneunderstanding"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Segmentation-Based Urban Traffic Scene Understanding"/>
+<attribute NAME="authors" VALUE="Ess, Andreas and M{\&quot;u}ller, Tobias and Grabner, Helmut and Van Gool, Luc J"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6C5BCF7BA5C95624E7CB63CDF047D1D82FEF52B80D7E1C06E6125550B9DF1B">
+    <pdf_title>Segmentation-Based Urban Traffic Scene Understanding</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1516594143422" HGAP="40" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
@@ -340,11 +449,11 @@
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ulbrich et al: defining terms scene, situation and scenario." ID="ID_233985176" CREATED="1507599979556" MODIFIED="1511433020355" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<node TEXT="Ulbrich et al: defining terms scene, situation and scenario." ID="ID_233985176" CREATED="1507599979556" MODIFIED="1516851500921" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
-<attribute NAME="authors" VALUE="S. Ulbrich and T. Menzel and A. Reschka and F. Schuldt and M. Maurer"/>
+<attribute NAME="authors" VALUE="Ulbrich, Simon and Menzel, Till and Reschka, Andreas and Schuldt, Fabian and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
@@ -525,7 +634,7 @@
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
-<attribute NAME="authors" VALUE="S. Ulbrich and T. Menzel and A. Reschka and F. Schuldt and M. Maurer"/>
+<attribute NAME="authors" VALUE="Ulbrich, Simon and Menzel, Till and Reschka, Andreas and Schuldt, Fabian and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
@@ -546,7 +655,7 @@
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
-<attribute NAME="authors" VALUE="S. Ulbrich and T. Menzel and A. Reschka and F. Schuldt and M. Maurer"/>
+<attribute NAME="authors" VALUE="Ulbrich, Simon and Menzel, Till and Reschka, Andreas and Schuldt, Fabian and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
@@ -674,11 +783,14 @@
     <pdf_title>Towards a Formalization of the Unified Modeling Language*</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="In event-based control, a control action is computed when an event is triggered" ID="ID_1579063261" CREATED="1508819023047" MODIFIED="1510634679627">
+<node TEXT="In event-based control, a control action is computed when an event is triggered" ID="ID_1579063261" CREATED="1508819023047" MODIFIED="1516851500935" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/120%20An%20Introduction%20to%20Event-Triggered%20and%20Self-Triggered%20Control.pdf">
 <attribute NAME="key" VALUE="heemels2012eventcontrol"/>
 <attribute NAME="year" VALUE="2012"/>
 <attribute NAME="title" VALUE="An Introduction to Event-Triggered and Self-Triggered Control"/>
 <attribute NAME="authors" VALUE="W. P. M. H. Heemels and K. H. Johansson and P. Tabuada"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9F755389F5B93DE478321B968AD1E2D74F78CE4DAE6C3C5E93D97ECB1A3C2C">
+    <pdf_title>An Introduction to Event-triggered and Self-triggered Control</pdf_title>
+</pdf_annotation>
 </node>
 <node TEXT="In philosophy: &quot;The term event ordinarily implies change&quot;" ID="ID_58366766" CREATED="1510564529789" MODIFIED="1516514901140">
 <attribute NAME="key" VALUE="kim1993supervenience"/>
@@ -795,7 +907,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
 <node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
 <node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1511407694804" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -832,7 +944,7 @@
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
-<attribute NAME="authors" VALUE="S. Ulbrich and T. Menzel and A. Reschka and F. Schuldt and M. Maurer"/>
+<attribute NAME="authors" VALUE="Ulbrich, Simon and Menzel, Till and Reschka, Andreas and Schuldt, Fabian and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
@@ -857,7 +969,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
+<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
 <node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1511498110954" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/058%20Control_System_Engineering_Norman.pdf">
 <attribute NAME="key" VALUE="norman2011control"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -890,9 +1002,20 @@
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
-<attribute NAME="authors" VALUE="S. Ulbrich and T. Menzel and A. Reschka and F. Schuldt and M. Maurer"/>
+<attribute NAME="authors" VALUE="Ulbrich, Simon and Menzel, Till and Reschka, Andreas and Schuldt, Fabian and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Mode" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1413348842" CREATED="1517036488478" MODIFIED="1517036492075">
+<node TEXT="Survey of modeling analysis and control of hybrid systems" ID="ID_507276086" CREATED="1517036499734" MODIFIED="1517036577691" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/132%20Survey%20of%20modeling%20analysis%20and%20control%20of%20hybrid%20systems.pdf">
+<attribute NAME="key" VALUE="deschutter2009survey"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Survey of Modeling, Analysis, and Control of Hybrid Systems"/>
+<attribute NAME="authors" VALUE="De Schutter, Bart and Heemels, W. P. M. H. and Lunze, J. and Prieur, C."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4518F6442FB451C57EAD55B55E1D989DCAADB41D922CE8B9B9D16925FCD85">
+    <pdf_title>Survey of modeling, analysis, and control of hybrid systems</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1253,6 +1376,24 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Traditional methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_212387236" CREATED="1517041168552" MODIFIED="1517041183565">
+<node TEXT="Code of Practice for the Design and Evaluation of ADAS" ID="ID_1744658253" CREATED="1517041192918" MODIFIED="1517041201838" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/133%20Code%20of%20practice%20for%20the%20design%20and%20evaluation%20of%20adas.pdf">
+<attribute NAME="key" VALUE="response2006code"/>
+<attribute NAME="journal" VALUE="RESPOSNE III: a PReVENT Project"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Code of Practice for the Design and Evaluation of {ADAS}"/>
+<attribute NAME="authors" VALUE="Knapp, Andreas and Neumann, Markus and Brockmann, Martin and Walz, Rainer and Winkle, Thomas"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A860787D5687DECA71D92DBAD3875FA2854BAD562FA6ADFC3A2C179289157B8">
+    <pdf_title>Code of Practice</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="ISO26262" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1517041968506">
+<attribute NAME="key" VALUE="ISO13586"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
+<attribute NAME="authors" VALUE="{International Organization for Standardization (ISO)}"/>
+</node>
+</node>
 <node TEXT="Data-driven simulation and parametrization of traffic scenario" ID="ID_1028680362" CREATED="1507091082672" MODIFIED="1516764262140" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
 <attribute NAME="year" VALUE="2015"/>
@@ -1434,6 +1575,55 @@
 <attribute NAME="authors" VALUE="Will Maddern and Geoff Pascoe and Chris Linegar and Paul Newman"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="A26DF0178118B5E067279EA454321B4589FB69893E6C11333280C2223CB99025">
     <pdf_title>1 Year, 1000km: The Oxford RobotCar Dataset</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Own papers" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1038442194" CREATED="1516860598580" MODIFIED="1516860882158" HGAP="112" VSHIFT="-8">
+<edge COLOR="#00ff00"/>
+<node TEXT="2015 Filtering and Identification for SABRE from Gradient Measurements in Adaptive Optics" ID="ID_748118504" CREATED="1516860892717" MODIFIED="1516861341539" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/123%20Filtering%20and%20Identification%20for%20SABRE%20from%20Gradient%20Measurements%20in%20AO.pdf">
+<attribute NAME="key" VALUE="deGelder2015sabre"/>
+<attribute NAME="journal" VALUE="Imaging and Applied Optics 2015"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Filtering and Identification for Spline based Wavefront Reconstruction from Gradient Measurements in Adaptive Optics"/>
+<attribute NAME="authors" VALUE="Erwin de Gelder and Elisabeth Brunner and Cornelis C. de Visser and Michel Verhaegen"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="94432EA55C99A816345964D388D9A37B483D83FDFBFB37B4ECD999050DA70">
+    <pdf_title>Filtering and Identification for Spline based Wavefront Reconstruction from Gradient Measurements in Adaptive Optics</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="2015 Classification for safety-critical car-cyclist scenarios using machine learning" ID="ID_55591120" CREATED="1516860940091" MODIFIED="1516861345091" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/122%20Classification%20for%20Safety-Critical%20Car-Cyclist%20Scenarios%20Using%20Machine%20Learning.pdf">
+<attribute NAME="key" VALUE="cara2015carcyclist"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Classification for Safety-Critical Car-Cyclist Scenarios Using Machine Learning"/>
+<attribute NAME="authors" VALUE="Cara, Irene and de Gelder, Erwin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4FA3F3AB60FE3FA5A3FC4874A1C2CAD8D56A051284EA16CB874D8D9CE5E9A">
+    <pdf_title>Classification for safety-critical car-cyclist scenarios using machine learning</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="2016 Personalised Automated Driving: Prediction of Preferred ACC Based on Manual Driving" ID="ID_1120861986" CREATED="1516861518218" MODIFIED="1516865554002" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/124%20Towards%20Personalised%20Automated%20Driving%20ACC.pdf">
+<attribute NAME="key" VALUE="gelder2016pacc"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Towards Personalised Automated Driving: Prediction of Preferred {ACC} Behaviour Based on Manual Driving"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Cara, Irene and Uittenbogaard, Jeroen and Kroon, Liselotte and van Iersel, Sven and Hogema, Jeroen"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E9A72640A5477E918E6247E32EB1C18716C6A28070C579DDD07580F3BF6976">
+    <pdf_title>Towards Personalised Automated Driving: prediction of preferred ACC behaviour based on manual driving</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="2017 A Comprehensive Evaluation Approach for Highly Automated Driving" ID="ID_201087810" CREATED="1516861585400" MODIFIED="1516861614837" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/029%20Summary%20AdaptIVe%20ESV2017.pdf">
+<attribute NAME="key" VALUE="roesener2017comprehensive"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="A Comprehensive Evaluation Approach for Highly Automated Driving"/>
+<attribute NAME="authors" VALUE="Roesener, Christian and Sauerbier, Jan and Zlocki, Adrian and Fahrenkrog, Felix and Wang, Lei and V{\&apos;a}rhelyi, Andr{\&apos;a}s and de Gelder, Erwin and Dufils, Joris and Breunig, Sandra and Mejuto, Pablo and Tango, Fabio and Lanati, Jessica"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="46DD5F650E813E3C5A6702C5290AABE244B309E85C66B387FC7BD6077BAB32">
+    <pdf_title>A Comprehensive Evaluation Approach for Highly Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="2017 Assessment of Automated Driving Systems Using Real-Life Scenarios" ID="ID_144067600" CREATED="1516861680548" MODIFIED="1516861685497" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<attribute NAME="key" VALUE="deGelder2017assessment"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
+    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
 </pdf_annotation>
 </node>
 </node>

@@ -278,11 +278,13 @@ table {%
 -10.5 1
 };
 \node at (axis cs:10,5.3)[
+  scale=0.8,
   anchor=north,
   text=black,
   rotate=0.0
 ]{ Sedan};
 \node at (axis cs:-5,5.3)[
+  scale=0.8,
   anchor=north,
   text=black,
   rotate=0.0
