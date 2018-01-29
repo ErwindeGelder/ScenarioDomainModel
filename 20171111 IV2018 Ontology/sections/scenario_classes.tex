@@ -21,23 +21,22 @@ The trees provide the possibility to define specific tags, while these specific 
 %Note that the tags assigned to the scenario may depend on the ego vehicle. For example, the `target in front' refers to the vehicle in front of the ego vehicle.
 
 \begin{figure}
-	\begin{center}
-		\tikzstyle{tag}=[text height=.8em, text depth=.1em, fill=gray!20, rounded corners=0.2em]
-		\tikzstyle{helper}=[coordinate, node distance=1.4em]
-		\subfloat[Tags for weather condition, see \cite{mahmassani2012use}.]{
-			\input{figures/tree_weather.tikz}
-		} \\
-		\subfloat[Tags for target description.]{
-			\input{figures/tree_target.tikz}
-		}\\
-		\subfloat[Tags for type of road, inspired by \cite{Bonnin2014}.]{
-			\input{figures/tree_road.tikz}
-		}% \\
-		%\subfloat[Tags for the criticality, see \cite{ebner2011identifying}.]{
-		%	\input{figures/tree_criticality.tikz}
-		%}
-		\caption{Examples of tree structures with \emph{tags} for a scenario.}
-		\label{fig:tag trees}
-		\vspace{\spaceaftercaption}
-	\end{center}
+	\centering
+	\tikzstyle{tag}=[text height=.8em, text depth=.1em, fill=gray!20, rounded corners=0.2em]
+	\tikzstyle{helper}=[coordinate, node distance=1.4em]
+	\subfloat[Tags for weather condition, see \cite{mahmassani2012use}.]{
+		\input{figures/tree_weather.tikz}
+	} \\
+	\subfloat[Tags for target description.]{
+		\input{figures/tree_target.tikz}
+	}\\
+	\subfloat[Tags for type of road, inspired by \cite{Bonnin2014}.]{
+		\input{figures/tree_road.tikz}
+	}% \\
+	%\subfloat[Tags for the criticality, see \cite{ebner2011identifying}.]{
+	%	\input{figures/tree_criticality.tikz}
+	%}
+	\caption{Examples of tree structures with \emph{tags} for a scenario.}
+	\label{fig:tag trees}
+	%\vspace{\spaceaftercaption}
 \end{figure}

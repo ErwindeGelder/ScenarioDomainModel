@@ -2,7 +2,7 @@
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 %        1         2         3         4         5         6         7         8
 
-\documentclass[letterpaper, conference]{IEEEtran}  % Comment this line out if you need a4paper
+\documentclass[letterpaper, conference]{ieeeconf}  % Comment this line out if you need a4paper
 
 %\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
 
@@ -18,6 +18,8 @@
 %\usepackage{epsfig} % for postscript graphics files
 %\usepackage{mathptmx} % assumes new font selection scheme installed
 %\usepackage{times} % assumes new font selection scheme installed
+\let\proof\relax
+\let\endproof\relax
 \usepackage{amsmath} % assumes amsmath package installed
 \usepackage{amsthm}  % For special theorem style
 %\usepackage{amssymb}  % assumes amsmath package installed
@@ -75,14 +77,10 @@ Jan-Pieter Paardekooper$^{1}$, Jeroen Ploeg$^{1}$, Hala Elrofai$^{1}$, Olaf Op d
 
 \renewcommand{\baselinestretch}{0.99}
 %\newcommand{\spacebeforecaption}{-0.5em}
-\newcommand{\spaceaftercaption}{-1.5em}
+%\newcommand{\spaceaftercaption}{-1.5em}
 
 \newlength\figurewidth
 \newlength\figureheight
-
-\newcommand{\deleted}[1]{{\color{red} #1}}
-\newcommand{\added}[1]{{\color{blue} #1}}
-
 
 \begin{document}
 

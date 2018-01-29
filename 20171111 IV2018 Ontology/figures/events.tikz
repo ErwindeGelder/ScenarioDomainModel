@@ -3,7 +3,7 @@
 
 \begin{axis}[
 xlabel={$t$ [s]},
-xmin=-7, xmax=42.325,
+xmin=-7, xmax=31,
 ymin=0, ymax=6,
 width=\figurewidth,
 height=\figureheight,
@@ -51,6 +51,11 @@ y axis line style={draw opacity=0}
 --(axis cs:0.800000190734863,6)
 --cycle;
 
+\addplot [line width=2.0pt, red, forget plot]
+table {%
+17 -0.5
+17 6
+};
 \addplot [semithick, black, forget plot]
 table {%
 0 0
@@ -208,7 +213,7 @@ king};
   text=black,
   rotate=0.0
 ]{ Accelerating};
-\node at (axis cs:32.6625,0.5)[
+\node at (axis cs:27,0.5)[
   scale=0.75,
   text=black,
   rotate=0.0
@@ -225,19 +230,7 @@ king};
   align=center
 ]{ Lane\\
 Change};
-\node at (axis cs:27.1125,1.5)[
-  scale=0.75,
-  text=black,
-  rotate=0.0
-]{ Straight};
-\node at (axis cs:33.7375,1.5)[
-  scale=0.75,
-  text=black,
-  rotate=0.0,
-  align=center
-]{ Lane\\
-Change};
-\node at (axis cs:39.2875,1.5)[
+\node at (axis cs:27,1.5)[
   scale=0.75,
   text=black,
   rotate=0.0
