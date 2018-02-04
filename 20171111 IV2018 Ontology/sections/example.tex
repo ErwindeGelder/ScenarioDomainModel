@@ -1,7 +1,7 @@
 \section{Application example}
 \label{sec:example}
 
-To illustrate the ontology, a real-world example is presented. A schematic overview of the example is shown in Fig.~\ref{fig:example schematic}. Two vehicles are considered: a pickup truck and a sedan, see Fig.~\ref{fig:example schematic}. The example can be described in words as follows. The ego vehicle accelerates towards its predecessor (i.e., the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. At some point, the ego vehicle brakes, such that is reaches approximately the same speed as the pickup truck's speed. From then on, the ego vehicle cruises, such that the distance between the two vehicles remains approximately constant. The pickup truck drives at a constant speed.
+To illustrate the ontology, a real-world example is presented. A schematic overview of the example is shown in Fig.~\ref{fig:example schematic}. Two vehicles are considered: a pickup truck and a sedan. The example can be described in words as follows. The ego vehicle (i.e., the sedan) accelerates towards its predecessor (i.e., the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. At some point, the ego vehicle brakes, such that it reaches approximately the same speed as the pickup truck's speed. From then on, the ego vehicle cruises, such that the distance between the two vehicles remains approximately constant. The pickup truck drives at a constant speed.
 
 \begin{figure}
 	\centering
@@ -15,7 +15,7 @@ To illustrate the ontology, a real-world example is presented. A schematic overv
 In the presented example, two scenarios are identified. The scenarios can be qualitatively described as `gap-closing on rural road with clear weather' and `cruising behind target vehicle on rural road with clear weather', respectively. The first scenario ends when the ego vehicle starts cruising. 
 % Note that, when testing an AV, the first scenario might end later in case it takes longer for the AV to start the cruising activity.
 
-The activities of the ego vehicle are shown in Figure~\ref{fig:example ego states}, in which the longitudinal velocity is shown with respect to time $t$. Here, the longitudinal position is expressed in the Road Coordinate System \cite{zofka2015datadrivetrafficscenarios}. Regarding the longitudinal velocity, two events are identified. At the first event, the ego vehicle's longitudinal acceleration transits from being positive to negative, i.e., the ego vehicle starts braking. As there are two events identified regarding the longitudinal velocity, three different activities are to be modeled, qualitatively described as `accelerating', `braking', and `cruising', respectively. 
+The activities of the ego vehicle are shown in Figure~\ref{fig:example ego states}, in which the speed is shown with respect to time $t$. Regarding the speed, two events are identified. At the first event, the ego vehicle's longitudinal acceleration transits from being positive to negative, i.e., the ego vehicle starts braking. As there are two events identified regarding the speed, three different activities are to be modeled, qualitatively described as `accelerating', `braking', and `cruising', respectively. 
 
 \begin{figure}
 	\centering

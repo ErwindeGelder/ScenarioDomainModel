@@ -1738,6 +1738,15 @@
     <pdf_title>Three Decades of Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Autonomous Cars: Past, Present and Future a Review of the Developments" ID="ID_1407016115" CREATED="1517371946542" MODIFIED="1517371949686" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/136%20Autonomous%20cars%20past%20present%20future.pdf">
+<attribute NAME="key" VALUE="bimbraw2015autonomous"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Autonomous Cars: Past, Present and Future a Review of the Developments in the Last Century, the Present Scenario and the Expected Future of Autonomous Vehicle Technology"/>
+<attribute NAME="authors" VALUE="Bimbraw, Keshav"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F2DE1880F22A3B1F82673403F8A701B8CA36B21B281CC2DFD7B4CA72D2BD">
+    <pdf_title>Autonomous Cars: Past, Present and Future</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 </map>
