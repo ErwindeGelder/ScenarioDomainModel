@@ -51,6 +51,7 @@
 \usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
 
 
+\usepackage[utf8]{inputenc}    % utf8 support
 \usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=6,maxbibnames=15,backend=biber]{biblatex}
 %\renewcommand*{\bibfont}{\footnotesize}
 \setlength{\biblabelsep}{\labelsep}
@@ -78,6 +79,7 @@
 \usepackage{etoolbox}							%% Needed for apptocmd later
 \usepackage[capitalize]{cleveref}
 \crefname{figure}{Figure}{Figures}
+\usepackage{units}
 
 %%==========================================================================
 %% Fancy headers and footers
@@ -115,6 +117,7 @@
     legend style={font=\small}},
     compat=1.9}                                     %% PGFPlots package options
 \usetikzlibrary{shapes.geometric, arrows, arrows.meta}
+\usepgfplotslibrary{groupplots}
 %\usetikzlibrary{external}                           %% Create pdf figures from TikZ. Use PDFTeXify ...
 %\tikzexternalize[prefix=./tikz/]                    %% ... with --tex-option=--shell-escape switch.
 %\tikzset{external/force remake}                    %% force pdf figure update
@@ -275,6 +278,63 @@ The first use of a (dis)similarity measure is for quantifying the so-called \emp
 
 % Use of a measure for scenario generation
 The second use of a (dis)similarity measure is for the generation of test scenarios. Using collected real-world scenarios, one might want to generate an additional set of scenarios to be used for the scenario-based assessment in order to emphasize safety-critical or performance-critical scenarios (cf. \cite{zofka2015datadrivetrafficscenarios, deGelder2017assessment}). Although the generated scenarios are different from the collected scenarios, it is still desirable that the generated scenarios are reflecting what might be encountered in real-life. For this purpose, a (dis)similarity measure can be used. For example, if the generated scenarios is similar to one or several encountered scenarios, it is more conceivable that this scenario is a realistic scenario compared to a scenario that does not show high similarities with any of the collected scenarios. 
+
+
+\section{Dissimilarity measures}
+\label{sec:dissimilarity}
+
+In this section, several dissimilarity measures are presented. They can be divided into four different categories \cite{serra2014empirical}: lock-step measures, feature-based measures, model-based measures, and elastic measures. Before discussing these different categories, some necessary notation details are described.
+
+\subsection{Notation and example}
+\label{sec:dissimilarity notation}
+
+It is assumed that the scenario is described by means of a time series. Therefore, the dissimilarity measures compare the time series $\textbf{x}$ and $\textbf{y}$. The i-th element of $\textbf{x}$ and $\textbf{y}$ are denoted by $x_i$ and $y_i$, respectively. For the sake of simplicity, $x_i$ and $y_i$ are scalars. The length of the time series $\textbf{x}$ and $\textbf{y}$ is $N$ and $M$, respectively. Note that the time series do not necessarily have the same length, i.e., $N$ might be different than $M$. It is assumed, however, that the sample time is constant and similar for both time series.
+
+To illustrate the dissimilarity measures, three different velocity profiles are considered, see \cref{fig:example time series}. All three velocity profiles describe the velocity of a vehicle while braking. The average deceleration is $\unit[3.19]{m/s^2}$, $\unit[1.72]{m/s^2}$, and $\unit[1.63]{m/s^2}$, respectively. We will refer to the the profiles with $\textbf{v}_1$, $\textbf{v}_2$, and $\textbf{v}_3$, respectively. 
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{0.4\linewidth}
+	\setlength\figurewidth{0.7\linewidth}
+	\input{figures/velocity_profile_example.tikz}
+	\caption{Three examples of time series which will be used to illustrate the dissimilarity measures. The velocity is sampled with $\unit[10]{Hz}$.}
+	\label{fig:example time series}
+\end{figure}
+
+\subsection{Lock-step measures}
+\label{sec:lock step}
+
+A straightforward way to estimate the dissimilarity between two time series is to use an $L_p$ norm. This, however, does only work if the two time series have equal length. In case that the time series $\textbf{x}$ and $\textbf{y}$ do not have the same length, one of the time series can be re-sampled. This works well for a number of data sources \cite{keogh2003survey}. Let the time series $\bar{\textbf{y}}$ denote the re-sampled time series $\textbf{y}$, such that $\bar{\textbf{y}}$ contains $N$ samples, e.g., using linear interpolation. As a consequence, the elements $\bar{y}_i$ of $\bar{\textbf{y}}$ are not sampled with the same frequency as the time series $\textbf{x}$ and $\textbf{y}$. The $L_p$ norm is as follows:
+\begin{equation} \label{eq:lp norm}
+	d_{L_p}(\textbf{x}, \bar{\textbf{y}}) = \left( \sum_{i=1}^N |x_i - \bar{y}_i|^p \right)^{\frac{1}{p}},
+\end{equation}
+where $p \geq 0$. Not that with $p=2$, we obtain the Euclidean distance:
+\begin{equation} \label{eq:euclidian}
+	d_{\textup{Euclidian}}(\textbf{x}, \bar{\textbf{y}}) = \sqrt{\sum_{i=1}^N |x_i - \bar{y}_i|^p}.
+\end{equation}
+The Euclidean distance is often applied due to its computational simplicity \cite{xing2010survey}. Even if there might be better dissimilarity measures for certain applications, the Euclidean distance serves as a good benchmark \cite{keogh2003survey}.
+
+For our purposes, the Euclidean distances is not suitable. Because, in general, we have $N \ne M$, we need to re-sample one time series. Because of this, a strong braking action might look `similar' to very smooth braking, see \cref{fig:resampled profiles}. In \cref{fig:resampled profiles}, $\textbf{v}_1$ and $\textbf{v}_3$ are re-sample, such that they have the same amount of samples as $\textbf{v}_2$, resulting in $\bar{\textbf{v}}_1$ and $\bar{\textbf{v}}_3$, respectively. This results in $d_{\textup{Euclidian}}(\textbf{v}_2, \bar{\textbf{v}}_1)=\unit[13.3]{m/s}$ and $d_{\textup{Euclidian}}(\textbf{v}_2, \bar{\textbf{v}}_3)=\unit[14.7]{m/s}$. So even though $\textbf{v}_3$ looks more similar to $\textbf{v}_2$ than $\textbf{v}_1$, the Euclidean distance \cref{eq:euclidian} gives a higher score for $d_{\textup{Euclidian}}(\textbf{v}_2, \bar{\textbf{v}}_3)$ compared to $d_{\textup{Euclidian}}(\textbf{v}_2, \bar{\textbf{v}}_1)$.
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{0.4\linewidth}
+	\setlength\figurewidth{0.48\linewidth}
+	\subfloat[$\textbf{v}_2$ (blue) and $\bar{\textbf{v}}_1$ (orange).]{\input{figures/velocity_profiles_resampled21.tikz}}
+	\hspace{0.04\linewidth}
+	\subfloat[$\textbf{v}_2$ (blue) and $\bar{\textbf{v}}_3$ (orange).]{\input{figures/velocity_profiles_resampled23.tikz}}
+	\caption{Comparison of the different profiles, where one of the two profiles is re-sampled.}
+	\label{fig:resampled profiles}
+\end{figure}
+
+\subsection{Feature-based measures}
+\label{sec:feature based}
+
+The Euclidean distance of \cref{eq:euclidian} is not of direct use for our application. An simple extension, however, is useful. This extension is to compute the Euclidean distance not directly using the (re-sampled) time series, but using features extracted from it \cite{serra2014empirical}. Let $\hat{x}_k$ and $\hat{y}_k$ with $k \in \{1, \ldots, \theta\}$ denote features extracted from the time series $\textbf{x}$ and $\textbf{y}$, respectively. The dissimilarity can be formulated as follows:
+
+\begin{equation}\label{eq:eucl features}
+	d_{\textup{F}}(\textbf{x}, \textbf{y}) = \sqrt{ \sum_{k=1}^{\theta} \left( \hat{x}_k - \hat{y}_k \right)^2 }.
+\end{equation}
 
 \printbibliography
 
