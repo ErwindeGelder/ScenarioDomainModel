@@ -31,7 +31,7 @@
 %% Document automation
 %%==========================================================================
 
-\def\reptitle{Hyperparameter selection for scenario generation}
+\def\reptitle{Similarity measures for traffic scenarios}
 \def\repauthor{Erwin de Gelder, etc.}
 
 
@@ -49,7 +49,13 @@
 \usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
 \usepackage{array}                              %% array functionality (array, tabular)
 \usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
-\usepackage[noadjust]{cite}                     %% citations; noadjust removes leading spaces
+
+
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=6,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../bib}
+
 %\usepackage[round]{natbib}                     %% Author-year citations (remove package cite)
 \usepackage{stfloats}                           %% improved handling of floats
 \usepackage{multirow}                           %% cells spanning multiple rows in tables
@@ -70,6 +76,8 @@
 %\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
 \usepackage{lmodern} 
 \usepackage{etoolbox}							%% Needed for apptocmd later
+\usepackage[capitalize]{cleveref}
+\crefname{figure}{Figure}{Figures}
 
 %%==========================================================================
 %% Fancy headers and footers
@@ -106,9 +114,9 @@
     x tick label style={/pgf/number format/fixed},
     legend style={font=\small}},
     compat=1.9}                                     %% PGFPlots package options
-\usetikzlibrary{arrows}                             %% plot arrows
-\usetikzlibrary{external}                           %% Create pdf figures from TikZ. Use PDFTeXify ...
-\tikzexternalize[prefix=./tikz/]                    %% ... with --tex-option=--shell-escape switch.
+\usetikzlibrary{shapes.geometric, arrows, arrows.meta}
+%\usetikzlibrary{external}                           %% Create pdf figures from TikZ. Use PDFTeXify ...
+%\tikzexternalize[prefix=./tikz/]                    %% ... with --tex-option=--shell-escape switch.
 %\tikzset{external/force remake}                    %% force pdf figure update
 
 
@@ -204,10 +212,7 @@
 %    aboveskip=2pt,
 %    labelfont={small,bf},
 %    textfont={small,sc}}                           %% (subfig/caption) table caption format
-\bibliographystyle{IEEEtran}                        %% (BibTeX) references style, e.g., IEEEtran, plainnat, abbrvnat, unsrtnat, or thesisnat
 \apptocmd{\thebibliography}{\raggedright}{}{}		%% Suppress badness warnings in bibliography
-
-\newcommand{\nknots}{n_{\textup{knots}}}
 
 %%==========================================================================
 %% Begin document
@@ -227,9 +232,50 @@
 \newpage
 
 \section{Introduction}
+\label{sec:introduction}
+% Scenario-based approach for assessment of AVs -> this scenarios are important
+An important aspect in the development of automated vehicles (AVs) is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \cite{bengler2014threedecades, stellet2015taxonomy, putz2017pegasus, roesener2016scenariobased, wachenfeld2016release, kompass2015sicherheitsveranderung}. 
+For legal and public acceptance, it is important that there is a clear definition of system performance and that there are quantitative measures for the system quality. 
+The more traditional methods \cite{response2006code, ISO26262}, used for evaluation of driver assistance systems, are no longer valid for the assessment of quality and performance aspects of an AV \cite{wachenfeld2016release}. 
+Therefore, a scenario-based approach is proposed \cite{roesener2016scenariobased, putz2017pegasus, kompass2015sicherheitsveranderung}. 
+For the scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in test cases used for scenario-based assessment \cite{stellet2015taxonomy}.
 
+% Purpose of document
+To structure the variety of scenarios, the notion of scenarios classes is introduced \cite{degelder2018ontology}. Whereas a scenario is a quantitative description, a scenario class is a qualitative description \cite{degelder2018ontology}. This document describes different measures to quantify the (dis)similarity between two different scenarios that belong to the same scenario class. An appropriate (dis)similarity measure for scenarios would be useful for at least two reasons.
 
+% Use of a measure for completeness
+The first use of a (dis)similarity measure is for quantifying the so-called \emph{completeness}. In order to draw conclusions on how an automated vehicle would perform in real-world traffic, it is necessary to know how representative the scenario catalog, which is used for the scenario-based assessment of the automated vehicle, is. Therefore it is important to quantify how complete the scenario catalog is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}. A (dis)similarity measure of scenarios is useful for quantifying the completeness. For example, if newly collected scenarios are not similar to earlier collected scenarios, it is an indicated that the set of collected scenarios is not \emph{complete}. To achieve a complete set of scenarios, this process could be repeated until the newly collected scenarios are - to a certain extent - similar to the early collected scenarios. This process of achieving a complete set of scenarios is visualized in \cref{fig:completeness collection}.
 
-\bibliography{../bib}
+\begin{figure}[b]
+	\centering
+	\tikzstyle{startstop}=[rectangle, rounded corners, minimum width=4em, minimum height=4em, text centered, draw=black, fill=red!30, text width=4em]
+	\tikzstyle{process} = [rectangle, minimum width=9em, text width=8.5em, minimum height=4em, text centered, draw=black, fill=orange!30, node distance=10em]
+	\tikzstyle{decision} = [diamond, minimum width=4em, text width=4em, minimum height=4em, text centered, draw=black, fill=green!30, node distance=10em]
+	\tikzstyle{arrow} = [-{Triangle[width=2mm, length=3mm, round]}, line width=0.6mm] % rounded corners=0.4em
+	\begin{tikzpicture}
+		% Draw the blocks
+		\node[startstop](start){Start};
+		\node[process, right of=start, node distance=7em, text width=5em, minimum width=5.5em](collect){Collect new scenarios};
+		\node[process, right of=collect, node distance=9em](compare){Compare new scenarios with scenario database};
+		\node[decision, right of=compare](similar){New scenarios similar?};
+		\node[startstop, right of=similar, node distance=9em](stop){Scenario database complete};
+		\node[process, below of=compare, node distance=7em](add){Add collected scenarios to scenario database};
+		
+		% Arrows
+		\draw[arrow] (start) -- (collect);
+		\draw[arrow] (collect) -- (compare);
+		\draw[arrow] (compare) -- (similar);
+		\draw[arrow] (similar) -- node[anchor=south]{Yes} (stop);
+		\draw[arrow] (similar) |- node[anchor=north]{No} (add);
+		\draw[arrow] (add) -| (collect);
+	\end{tikzpicture}
+	\caption{Schematic process of collecting scenarios of a specific \emph{scenario class} until a certain completeness is reached.}
+	\label{fig:completeness collection}
+\end{figure}
+
+% Use of a measure for scenario generation
+The second use of a (dis)similarity measure is for the generation of test scenarios. Using collected real-world scenarios, one might want to generate an additional set of scenarios to be used for the scenario-based assessment in order to emphasize safety-critical or performance-critical scenarios (cf. \cite{zofka2015datadrivetrafficscenarios, deGelder2017assessment}). Although the generated scenarios are different from the collected scenarios, it is still desirable that the generated scenarios are reflecting what might be encountered in real-life. For this purpose, a (dis)similarity measure can be used. For example, if the generated scenarios is similar to one or several encountered scenarios, it is more conceivable that this scenario is a realistic scenario compared to a scenario that does not show high similarities with any of the collected scenarios. 
+
+\printbibliography
 
 \end{document} 

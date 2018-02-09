@@ -1342,7 +1342,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1518000991919" MOVED="1510633728393" HGAP="85" VSHIFT="-4">
+<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1518000991919" MOVED="1510633728393" HGAP="85" VSHIFT="-4">
 <edge COLOR="#007c00"/>
 <node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1517998846806" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">
@@ -1600,7 +1600,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Own papers" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_1038442194" CREATED="1516860598580" MODIFIED="1516860882158" HGAP="112" VSHIFT="-8">
+<node TEXT="Own papers" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1038442194" CREATED="1516860598580" MODIFIED="1516860882158" HGAP="112" VSHIFT="-8">
 <edge COLOR="#00ff00"/>
 <node TEXT="2015 Filtering and Identification for SABRE from Gradient Measurements in Adaptive Optics" ID="ID_748118504" CREATED="1516860892717" MODIFIED="1516861341539" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/123%20Filtering%20and%20Identification%20for%20SABRE%20from%20Gradient%20Measurements%20in%20AO.pdf">
 <attribute NAME="key" VALUE="deGelder2015sabre"/>
@@ -1656,6 +1656,11 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
     <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="2018 Ontology of scenarios for the assessment of automated vehicles" ID="ID_176436300" CREATED="1518065217613" MODIFIED="1518065239751">
+<attribute NAME="key" VALUE="Gelder2018"/>
+<attribute NAME="title" VALUE="Ontology of Scenarios for the Assessment of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and J.-P. Paardekooper and J. Ploeg and H. Elrofai and Op den Camp, Olaf and Khabbaz Saberi, Arash and De Schutter, Bart"/>
 </node>
 </node>
 <node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1513049398668" HGAP="42" VSHIFT="-27">
@@ -1781,14 +1786,26 @@
     <pdf_title>An Empirical Evaluation of Similarity Measures for Time Series Classication</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Experimental comparison of representation methods and distance measures for time series data" ID="ID_1798612645" CREATED="1518003222983" MODIFIED="1518003474351" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/140%20Comparison%20of%20representation%20methods%20and%20distance%20measures%20for%20time%20series.pdf">
-<attribute NAME="key" VALUE="Wang2013"/>
+<node TEXT="Experimental comparison of representation methods and distance measures for time series data" ID="ID_1798612645" CREATED="1518003222983" MODIFIED="1518003475796" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/140%20Comparison%20of%20representation%20methods%20and%20distance%20measures%20for%20time%20series.pdf">
+<attribute NAME="key" VALUE="Wang2013distancemeasures"/>
 <attribute NAME="journal" VALUE="Data Mining and Knowledge Discovery"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Experimental Comparison of Representation Methods and Distance Measures for Time Series Data"/>
 <attribute NAME="authors" VALUE="Wang, Xiaoyue and Mueen, Abdullah and Ding, Hui and Trajcevski, Goce and Scheuermann, Peter and Keogh, Eamonn"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="2A4649CB3732F4139AD2CD97F4267A047A2FE1BB312A03319D41314AD633543">
     <pdf_title>Experimental comparison of representation methods and distance measures for time series data</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484">
+<node TEXT="Dynamic programming algorithm optimization for spoken Word Recognition (original paper)" ID="ID_1407935713" CREATED="1518104424971" MODIFIED="1518104567830" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/141%20Dynamic%20programming%20algorithm%20optimization%20for%20spoken%20Word%20Recognition.pdf">
+<attribute NAME="key" VALUE="sakoe1978dynamic"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Acoustics, Speech, and Signal Processing"/>
+<attribute NAME="year" VALUE="1978"/>
+<attribute NAME="title" VALUE="Dynamic Programming Algorithm Optimization for Spoken Word Recognition"/>
+<attribute NAME="authors" VALUE="Sakoe, Hiroaki and Chiba, Seibi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7810E7E9C77881623F5FC1BF3A65BF9CE2F6E45BE260AF44CDCE69EFB6F3F">
+    <pdf_title>Dynamic Programming Algorithm Optimization for Spoken Word Recognition</pdf_title>
 </pdf_annotation>
 </node>
 </node>
