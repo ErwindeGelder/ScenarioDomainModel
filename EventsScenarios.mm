@@ -1796,9 +1796,59 @@
     <pdf_title>Experimental comparison of representation methods and distance measures for time series data</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="On the need for time series data mining benchmarks" ID="ID_39850436" CREATED="1518156681181" MODIFIED="1518156824292" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/144%20On%20the%20need%20for%20time%20series%20data%20mining%20benchmarks.pdf">
+<attribute NAME="key" VALUE="keogh2003survey"/>
+<attribute NAME="journal" VALUE="Data Mining and Knowledge Discovery"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="On the Need for Time Series Data Mining Benchmarks: A Survey and Empirical Demonstration"/>
+<attribute NAME="authors" VALUE="Keogh, Eamonn and Kasetty, Shruti"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="11AA8D84791E6DFBE0D8FBD1ED3AB4059728826C6F90B6AF7056DB59988CC">
+    <pdf_title>On the Need for Time Series Data Mining Benchmarks: A Survey and Empirical Demonstration</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484">
-<node TEXT="Dynamic programming algorithm optimization for spoken Word Recognition (original paper)" ID="ID_1407935713" CREATED="1518104424971" MODIFIED="1518104567830" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/141%20Dynamic%20programming%20algorithm%20optimization%20for%20spoken%20Word%20Recognition.pdf">
+</node>
+<node TEXT="Euclidian distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_11157457" CREATED="1518157328265" MODIFIED="1518157343019">
+<node TEXT="re-sample data so that it has equal length" ID="ID_1686113559" CREATED="1518157344748" MODIFIED="1518157363786" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/144%20On%20the%20need%20for%20time%20series%20data%20mining%20benchmarks.pdf">
+<attribute NAME="key" VALUE="keogh2003survey"/>
+<attribute NAME="journal" VALUE="Data Mining and Knowledge Discovery"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="On the Need for Time Series Data Mining Benchmarks: A Survey and Empirical Demonstration"/>
+<attribute NAME="authors" VALUE="Keogh, Eamonn and Kasetty, Shruti"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="11AA8D84791E6DFBE0D8FBD1ED3AB4059728826C6F90B6AF7056DB59988CC">
+    <pdf_title>On the Need for Time Series Data Mining Benchmarks: A Survey and Empirical Demonstration</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Early classification of time series" ID="ID_189274529" CREATED="1518158265188" MODIFIED="1518158384768" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/145%20A%20Brief%20Survey%20on%20Sequence%20Classification.pdf">
+<attribute NAME="key" VALUE="xing2010survey"/>
+<attribute NAME="journal" VALUE="ACM SIGKDD Explorations Newsletter"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="A Brief Survey on Sequence Classification"/>
+<attribute NAME="authors" VALUE="Xing, Zhengzheng and Pei, Jian and Keogh, Eamonn"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1443EEA7B88A66484DACC833226EE2196C82AF7653B82C3D67EB7F8F9B9377">
+    <pdf_title>A Brief Survey on Sequence Classification</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Feature based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1643428776" CREATED="1518168788173" MODIFIED="1518168798853">
+<node TEXT="Fourier transform, see book &quot;Discrete-Time Signal Processing&quot;" ID="ID_422840287" CREATED="1518168800416" MODIFIED="1518168823532" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/146%20Discrete%20time%20signal%20processing.pdf">
+<attribute NAME="key" VALUE="oppenheim1999discrete"/>
+<attribute NAME="year" VALUE="1999"/>
+<attribute NAME="title" VALUE="Discrete-Time Signal Processing"/>
+<attribute NAME="authors" VALUE="Oppenheim, Alan V. and Schafer, Ronald W. and Buck, John R."/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+<node TEXT="Use of Discrete Fourier Transform" ID="ID_276450451" CREATED="1518168984904" MODIFIED="1518169175624" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/147%20Efficient%20similarity%20search%20in%20Sequence%20Databases.pdf">
+<attribute NAME="key" VALUE="agrawal1993similarity"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Efficient Similarity Search in Sequence Databases"/>
+<attribute NAME="authors" VALUE="Agrawal, Rakesh and Faloutsos, Christos and Swami, Arun"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4FEAF228D4FA754E9F696DD83CAA96FEB9BE38E2FB8DCD515A558E844FF92D">
+    <pdf_title>&#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; ! &quot;</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484" MOVED="1518157326491">
+<node TEXT="Dynamic programming optimization (original paper, but DTW not explicitly mentioned)" ID="ID_1407935713" CREATED="1518104424971" MODIFIED="1518104888772" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/141%20Dynamic%20programming%20algorithm%20optimization%20for%20spoken%20Word%20Recognition.pdf">
 <attribute NAME="key" VALUE="sakoe1978dynamic"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Acoustics, Speech, and Signal Processing"/>
 <attribute NAME="year" VALUE="1978"/>
@@ -1806,6 +1856,25 @@
 <attribute NAME="authors" VALUE="Sakoe, Hiroaki and Chiba, Seibi"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="7810E7E9C77881623F5FC1BF3A65BF9CE2F6E45BE260AF44CDCE69EFB6F3F">
     <pdf_title>Dynamic Programming Algorithm Optimization for Spoken Word Recognition</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Using dynamic time warping to find patterns in time series (DTW mentioned)" ID="ID_455804195" CREATED="1518104826749" MODIFIED="1518105021220" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/142%20Using%20dynamic%20time%20warping%20to%20find%20patterns%20in%20time%20series.pdf">
+<attribute NAME="key" VALUE="berndt1994using"/>
+<attribute NAME="year" VALUE="1994"/>
+<attribute NAME="title" VALUE="Using Dynamic Time Warping to Find Patterns in Time Series"/>
+<attribute NAME="authors" VALUE="Berndt, Donald J and Clifford, James"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="843F173F424169E2CB1160303D48C4A32822696D872D6961932B7C8C947BB3">
+    <pdf_title>.... Using Dynamic Time Warping to</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Exact indexing of dynamic time warping" ID="ID_1987491204" CREATED="1518105100240" MODIFIED="1518158876320" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/143%20Exact%20indexing%20of%20dynamic%20time%20warping.pdf">
+<attribute NAME="key" VALUE="keogh2005exactDTW"/>
+<attribute NAME="journal" VALUE="Knowledge and information systems"/>
+<attribute NAME="year" VALUE="2005"/>
+<attribute NAME="title" VALUE="Exact Indexing of Dynamic Time Warping"/>
+<attribute NAME="authors" VALUE="Keogh, Eamonn and Ratanamahatana, Chotirat Ann"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="ED85E391C6D1F8F585DC40D7B6A5F97A28F3556F4930AB715DDD69851499343">
+    <pdf_title>Exact indexing of dynamic time warping</pdf_title>
 </pdf_annotation>
 </node>
 </node>

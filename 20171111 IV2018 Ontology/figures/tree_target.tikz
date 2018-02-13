@@ -1,24 +1,26 @@
 \definecolor{TNOlightgray}{RGB}{222,222,231}%
 \tikzstyle{tag}=[font=\sffamily, text height=.8em, text depth=.1em, fill=TNOlightgray, rounded corners=0.2em]%
 \tikzstyle{diffheighttag}=[node distance=2.5em]%
+\tikzstyle{diffheighttag2}=[node distance=2em]%
 \tikzstyle{helper}=[coordinate, node distance=1.5em]%
 \tikzstyle{helper2}=[coordinate, node distance=4.0em]%
+\tikzstyle{helper3}=[coordinate, node distance=3.5em]%
 \begin{tikzpicture}
 	% Place the nodes
 	\node[tag](target){\footnotesize Target in front};
 	\node[coordinate, below of=target](below target){};
 	\node[coordinate, left of=below target, node distance=3.4em](following){};
-	\node[tag, diffheighttag, below of=following](following2){\footnotesize Vehicle following};
+	\node[tag, diffheighttag2, below of=following](following2){\footnotesize Vehicle following};
 	\node[tag, left of=following, node distance=3.5em](free){\footnotesize No target};
 	\node[tag, right of=below target, node distance=4.4em](appearing){\footnotesize Target appearing};
 	\node[coordinate, right of=appearing, node distance=4.5em](disappearing){};
-	\node[tag, diffheighttag, below of=disappearing](disappearing2){\footnotesize Target disappearing};
+	\node[tag, diffheighttag2, below of=disappearing](disappearing2){\footnotesize Target disappearing};
 	\node[coordinate, below of=following2, node distance=2.8em](braking){};
 	\node[tag, diffheighttag, below of=braking](braking2){\footnotesize Braking};
 	\node[tag, left of=braking2, node distance=3.7em](cruising){\footnotesize Cruising};
 	\node[tag, right of=braking2, node distance=4.4em](accelerating){\footnotesize Accelerating};
 	\node[coordinate, below of=appearing](below appearing){};
-	\node[coordinate, diffheighttag, below of=below appearing](below appearing2){};
+	\node[coordinate, diffheighttag2, below of=below appearing](below appearing2){};
 	\node[tag, left of=below appearing2, node distance=2.6em](cutin){\footnotesize Cut-in};
 	\node[tag, right of=below appearing2, node distance=1.5em](gapclosing){\footnotesize Gap-closing};
 	\node[coordinate, below of=disappearing2](below disappearing){};
@@ -29,7 +31,7 @@
 	% Place the lines
 	\node[helper, below of=target](target helper){};
 	\node[helper2, below of=following2](following helper){};
-	\node[helper2, below of=appearing](appearing helper){};
+	\node[helper3, below of=appearing](appearing helper){};
 	\node[helper2, below of=disappearing2](disappearing helper){};
 	\draw (target) -- (target helper) -| (free);
 	\draw (target) -- (target helper) -| (following2);
