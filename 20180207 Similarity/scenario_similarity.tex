@@ -61,7 +61,7 @@
 \usepackage{stfloats}                           %% improved handling of floats
 \usepackage{multirow}                           %% cells spanning multiple rows in tables
 %\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
-\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+%\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
 \usepackage{fancyhdr}                           %% page headers and footers
 \usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
 \usepackage{appendix}                           %% appendix layout
@@ -79,7 +79,9 @@
 \usepackage{etoolbox}							%% Needed for apptocmd later
 \usepackage[capitalize]{cleveref}
 \crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
 \usepackage{units}
+\usepackage{subcaption}
 
 %%==========================================================================
 %% Fancy headers and footers
@@ -162,6 +164,11 @@
 \DeclareMathOperator{\sgn}{sgn}                                 %% signum function
 \DeclareMathOperator{\atan}{atan}                               %% arc tangent
 
+\newcommand{\deuclid}{d_{\textup{Euclidian}}}
+\newcommand{\imagi}{\textbf{j}}
+\newcommand{\profile}[1]{\textbf{v}_{#1}}
+\newcommand{\barprofile}[1]{\bar{\textbf{v}}_{#1}}
+
 
 %%==========================================================================
 %% User-defined environments
@@ -216,6 +223,13 @@
 %    labelfont={small,bf},
 %    textfont={small,sc}}                           %% (subfig/caption) table caption format
 \apptocmd{\thebibliography}{\raggedright}{}{}		%% Suppress badness warnings in bibliography
+
+
+% Table stuff
+\usepackage{booktabs}
+\usepackage{tabularx}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
 %%==========================================================================
 %% Begin document
@@ -290,39 +304,48 @@ In this section, several dissimilarity measures are presented. They can be divid
 
 It is assumed that the scenario is described by means of a time series. Therefore, the dissimilarity measures compare the time series $\textbf{x}$ and $\textbf{y}$. The i-th element of $\textbf{x}$ and $\textbf{y}$ are denoted by $x_i$ and $y_i$, respectively. For the sake of simplicity, $x_i$ and $y_i$ are scalars. The length of the time series $\textbf{x}$ and $\textbf{y}$ is $N$ and $M$, respectively. Note that the time series do not necessarily have the same length, i.e., $N$ might be different than $M$. It is assumed, however, that the sample time is constant and similar for both time series.
 
-To illustrate the dissimilarity measures, three different velocity profiles are considered, see \cref{fig:example time series}. All three velocity profiles describe the velocity of a vehicle while braking. The average deceleration is $\unit[3.19]{m/s^2}$, $\unit[1.72]{m/s^2}$, and $\unit[1.63]{m/s^2}$, respectively. We will refer to the the profiles with $\textbf{v}_1$, $\textbf{v}_2$, and $\textbf{v}_3$, respectively. 
+To illustrate the dissimilarity measures, four different velocity profiles are considered, see \cref{fig:example time series}. All four velocity profiles describe the velocity of a vehicle while braking. The average deceleration is $\unit[3.19]{m/s^2}$, $\unit[1.72]{m/s^2}$, $\unit[1.63]{m/s^2}$, and $\unit[1.64]{m/s^2}$ respectively. We will refer to the the profiles with $\profile{1}$, $\profile{2}$, $\profile{3}$, and $\profile{4}$, respectively. 
 
 \begin{figure}
 	\centering
 	\setlength\figureheight{0.4\linewidth}
 	\setlength\figurewidth{0.7\linewidth}
 	\input{figures/velocity_profile_example.tikz}
-	\caption{Three examples of time series which will be used to illustrate the dissimilarity measures. The velocity is sampled with $\unit[10]{Hz}$.}
+	\caption{Four examples of time series which will be used to illustrate the dissimilarity measures. The velocity is sampled with $\unit[10]{Hz}$.}
 	\label{fig:example time series}
 \end{figure}
 
 \subsection{Lock-step measures}
 \label{sec:lock step}
 
-A straightforward way to estimate the dissimilarity between two time series is to use an $L_p$ norm. This, however, does only work if the two time series have equal length. In case that the time series $\textbf{x}$ and $\textbf{y}$ do not have the same length, one of the time series can be re-sampled. This works well for a number of data sources \cite{keogh2003survey}. Let the time series $\bar{\textbf{y}}$ denote the re-sampled time series $\textbf{y}$, such that $\bar{\textbf{y}}$ contains $N$ samples, e.g., using linear interpolation. As a consequence, the elements $\bar{y}_i$ of $\bar{\textbf{y}}$ are not sampled with the same frequency as the time series $\textbf{x}$ and $\textbf{y}$. The $L_p$ norm is as follows:
+Lock-step measures estimate the dissimilarity between two time series by comparing each time instant. This, however, does only work if the two time series have equal length. In case that the time series $\textbf{x}$ and $\textbf{y}$ do not have the same length, one of the time series can be re-sampled. This works well for a number of data sources \cite{keogh2003survey}. Let the time series $\bar{\textbf{y}}$ denote the re-sampled time series $\textbf{y}$, such that $\bar{\textbf{y}}$ contains $N$ samples, e.g., using linear interpolation. As a consequence, the elements $\bar{y}[i]$ of $\bar{\textbf{y}}$ are not sampled with the same frequency as the time series $\textbf{x}$ and $\textbf{y}$. 
+
+A straightforward way to estimate the dissimilarity between two time series is to use an $L_p$ norm. The $L_p$ norm is as follows:
 \begin{equation} \label{eq:lp norm}
-	d_{L_p}(\textbf{x}, \bar{\textbf{y}}) = \left( \sum_{i=1}^N |x_i - \bar{y}_i|^p \right)^{\frac{1}{p}},
+	d_{L_p}(\textbf{x}, \bar{\textbf{y}}) = \left( \sum_{i=0}^{N-1} |x[i] - \bar{y}[i]|^p \right)^{\frac{1}{p}},
 \end{equation}
 where $p \geq 0$. Not that with $p=2$, we obtain the Euclidean distance:
 \begin{equation} \label{eq:euclidian}
-	d_{\textup{Euclidian}}(\textbf{x}, \bar{\textbf{y}}) = \sqrt{\sum_{i=1}^N |x_i - \bar{y}_i|^p}.
+	\deuclid(\textbf{x}, \bar{\textbf{y}}) = \sqrt{\sum_{i=0}^{N-1} |x[i] - \bar{y}[i]|^p}.
 \end{equation}
 The Euclidean distance is often applied due to its computational simplicity \cite{xing2010survey}. Even if there might be better dissimilarity measures for certain applications, the Euclidean distance serves as a good benchmark \cite{keogh2003survey}.
 
-For our purposes, the Euclidean distances is not suitable. Because, in general, we have $N \ne M$, we need to re-sample one time series. Because of this, a strong braking action might look `similar' to very smooth braking, see \cref{fig:resampled profiles}. In \cref{fig:resampled profiles}, $\textbf{v}_1$ and $\textbf{v}_3$ are re-sample, such that they have the same amount of samples as $\textbf{v}_2$, resulting in $\bar{\textbf{v}}_1$ and $\bar{\textbf{v}}_3$, respectively. This results in $d_{\textup{Euclidian}}(\textbf{v}_2, \bar{\textbf{v}}_1)=\unit[13.3]{m/s}$ and $d_{\textup{Euclidian}}(\textbf{v}_2, \bar{\textbf{v}}_3)=\unit[14.7]{m/s}$. So even though $\textbf{v}_3$ looks more similar to $\textbf{v}_2$ than $\textbf{v}_1$, the Euclidean distance \cref{eq:euclidian} gives a higher score for $d_{\textup{Euclidian}}(\textbf{v}_2, \bar{\textbf{v}}_3)$ compared to $d_{\textup{Euclidian}}(\textbf{v}_2, \bar{\textbf{v}}_1)$.
+For our purposes, the Euclidean distances is not suitable. Because, in general, we have $N \ne M$, we need to re-sample one time series. Because of this, a strong braking action might look `similar' to very smooth braking, see \cref{fig:resampled profiles}. In \cref{fig:resampled profiles}, $\textbf{v}_1$ and $\textbf{v}_3$ are re-sample, such that they have the same amount of samples as $\profile{2}$, resulting in $\barprofile{1}$ and $\barprofile{3}$, respectively. This results in $\deuclid(\profile{2}, \barprofile{1})=\unit[13.3]{m/s}$ and $\deuclid(\profile{2}, \barprofile{3})=\unit[14.7]{m/s}$. So even though $\profile{3}$ looks more similar to $\profile{2}$ than $\profile{1}$, the Euclidean distance \cref{eq:euclidian} gives a higher score for $\deuclid(\profile{2}, \barprofile{3})$ compared to $\deuclid(\profile{2}, \barprofile{1})$.
 
 \begin{figure}
 	\centering
 	\setlength\figureheight{0.4\linewidth}
-	\setlength\figurewidth{0.48\linewidth}
-	\subfloat[$\textbf{v}_2$ (blue) and $\bar{\textbf{v}}_1$ (orange).]{\input{figures/velocity_profiles_resampled21.tikz}}
+	\setlength\figurewidth{0.46\linewidth}
+	\begin{minipage}{0.46\linewidth}
+		\centering
+		\input{figures/velocity_profiles_resampled21.tikz}
+		\subcaption{$\deuclid(\textbf{v}_2, \bar{\textbf{v}}_1)=\unit[13.3]{m/s}$, $\textbf{v}_2$ in blue and $\bar{\textbf{v}}_1$ in orange.}
+	\end{minipage}
 	\hspace{0.04\linewidth}
-	\subfloat[$\textbf{v}_2$ (blue) and $\bar{\textbf{v}}_3$ (orange).]{\input{figures/velocity_profiles_resampled23.tikz}}
+	\begin{minipage}{0.46\linewidth}
+		\input{figures/velocity_profiles_resampled23.tikz}
+		\subcaption{$\deuclid(\textbf{v}_2, \bar{\textbf{v}}_3)=\unit[14.7]{m/s}$, $\textbf{v}_2$ in blue and $\bar{\textbf{v}}_3$ in orange.}
+	\end{minipage}
 	\caption{Comparison of the different profiles, where one of the two profiles is re-sampled.}
 	\label{fig:resampled profiles}
 \end{figure}
@@ -333,8 +356,52 @@ For our purposes, the Euclidean distances is not suitable. Because, in general, 
 The Euclidean distance of \cref{eq:euclidian} is not of direct use for our application. An simple extension, however, is useful. This extension is to compute the Euclidean distance not directly using the (re-sampled) time series, but using features extracted from it \cite{serra2014empirical}. Let $\hat{x}_k$ and $\hat{y}_k$ with $k \in \{1, \ldots, \theta\}$ denote features extracted from the time series $\textbf{x}$ and $\textbf{y}$, respectively. The dissimilarity can be formulated as follows:
 
 \begin{equation}\label{eq:eucl features}
-	d_{\textup{F}}(\textbf{x}, \textbf{y}) = \sqrt{ \sum_{k=1}^{\theta} \left( \hat{x}_k - \hat{y}_k \right)^2 }.
+	d_{\textup{F}}(\textbf{x}, \textbf{y}) = \sqrt{ \sum_{k=1}^{\theta} w_k \left( \hat{x}_k - \hat{y}_k \right)^2 }.
 \end{equation}
+Here, $w_k$ denote weights that can be chosen to emphasize the $k$-th parameter less or more. 
+
+\subsubsection{Fourier coefficients}
+\label{sec:fourier coefficient}
+One possibility is to use the Fourier coefficients as parameters \cite{agrawal1993similarity, faloutsos1994fast}. The Fourier coefficients are obtained with the Discrete Fourier Transform \cite{oppenheim1999discrete}. The $n$-th Fourier coefficient, i.e.,
+\begin{equation}
+	X[n] = \sum_{i=0}^{N-1} x[i] e^{-\imagi\frac{2\pi i n}{N}},
+\end{equation}
+correspond to a frequency of $f_n = n/Nt_s$, where $N$ is the total number of samples and $t_s$ is the sample time. When only the Fourier coefficients corresponding to the lower frequencies are used as parameters, this automatically has the effect of removing rapidly-fluctuating components of the time series \cite{serra2014empirical}.
+
+Note that the Fourier coefficients of different time series correspond to different frequencies, due to the dependency of the number of samples. In order to compare the different time series of \cref{fig:example time series}, linear interpolation is used to retrieve the Fourier coefficients at $\unit[1]{Hz}$, $\unit[2]{Hz}$, and $\unit[3]{Hz}$. Furthermore, the resulting coefficients are divided over the number of samples, see \cref{tab:fourier coefficients}.
+
+\begin{table}
+	\centering
+	\caption{Interpolated Fourier coefficients for the different time series (see \cref{fig:example time series}) divided over the number of samples.}
+	\label{tab:fourier coefficients}
+	\input{tabular/fourier_coefficients}
+\end{table}
+
+\subsubsection{Auto-regression coefficients}
+\label{sec:auto regression coefficients}
+Instead of using the Fourier coefficients as parameters, one could use the coefficients from an auto-regressive (AR) model. An AR model approximates the time series using the model 
+\begin{equation}
+	\label{eq:auto-regression}
+	\hat{x}[i] = a_0 + \sum_{j=1}^{\eta-1} a_j \hat{x}[i-j],
+\end{equation}
+where $\eta$ denotes the number of coefficients. 
+
+\begin{table}
+	\centering
+	\caption{Coefficients of auto-regression model \cref{eq:auto-regression} with $\eta=3$ for the three time series of \cref{fig:example time series}.}
+	\label{tab:ar coefficients}
+	\input{tabular/ar_coefficients}
+\end{table}
+
+\subsubsection{Custom scenario features}
+\label{sec:custom features}
+
+\begin{table}
+	\centering
+	\caption{Feature-based dissimilarity measures, according to \cref{eq:eucl features}, with Fourier coefficients (see \cref{sec:fourier coefficient}), auto-regression coefficients (see \cref{sec:auto regression coefficients}), and custom scenario features (see \cref{sec:custom features}).}
+	\label{tab:feature based dissimilarity}
+	\input{tabular/feature_based}
+\end{table}
 
 \printbibliography
 

@@ -146,7 +146,7 @@
 <attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
 <attribute NAME="year" VALUE="1989"/>
 <attribute NAME="title" VALUE="A Tutorial on Hidden {M}arkov Models and Selected Applications in Speech Recognition"/>
-<attribute NAME="authors" VALUE="Rabiner, L."/>
+<attribute NAME="authors" VALUE="Rabiner, Lawrence R."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D480C1F64BC9E22E50509312675C46ABE8EA6C0A25C5ACD52A7B732CA4B5792">
     <pdf_title>A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition</pdf_title>
 </pdf_annotation>
@@ -393,7 +393,7 @@
 <attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
 <attribute NAME="year" VALUE="1989"/>
 <attribute NAME="title" VALUE="A Tutorial on Hidden {M}arkov Models and Selected Applications in Speech Recognition"/>
-<attribute NAME="authors" VALUE="Rabiner, L."/>
+<attribute NAME="authors" VALUE="Rabiner, Lawrence R."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D480C1F64BC9E22E50509312675C46ABE8EA6C0A25C5ACD52A7B732CA4B5792">
     <pdf_title>A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition</pdf_title>
 </pdf_annotation>
@@ -426,7 +426,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1516594143422" HGAP="40" VSHIFT="10" MOVED="1511405573941">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
 <node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1517999147684" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -1663,7 +1663,7 @@
 <attribute NAME="authors" VALUE="de Gelder, Erwin and J.-P. Paardekooper and J. Ploeg and H. Elrofai and Op den Camp, Olaf and Khabbaz Saberi, Arash and De Schutter, Bart"/>
 </node>
 </node>
-<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1513049398668" HGAP="42" VSHIFT="-27">
+<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1518673341857" HGAP="54" VSHIFT="-27">
 <edge COLOR="#0000ff"/>
 <node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
 <node TEXT="GCDC2016" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1516513706946" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/054%20GCDC%202016%20Ploeg%20paper.pdf">
@@ -1846,6 +1846,30 @@
     <pdf_title>&#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; ! &quot;</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Fast subsequence matching in time-series databases using Discrete Fourier Transform" ID="ID_1798522537" CREATED="1518575264486" MODIFIED="1518575580176" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/149%20Fast%20subsequence%20matching%20in%20time-series%20databases.pdf">
+<attribute NAME="key" VALUE="faloutsos1994fast"/>
+<attribute NAME="year" VALUE="1994"/>
+<attribute NAME="title" VALUE="Fast Subsequence Matching in Time-Series Databases"/>
+<attribute NAME="authors" VALUE="Faloutsos, Christos and Ranganathan, Mudumbai and Manolopoulos, Yannis"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B029A7781C2411CCC5FA85953958D788A143ECFF4391E7C9BB608AC5DD7AC1"/>
+</node>
+<node TEXT="Using auto-regression model coefficients (original paper)" ID="ID_118891723" CREATED="1518502176763" MODIFIED="1518502230604">
+<attribute NAME="key" VALUE="piccolo1990distance"/>
+<attribute NAME="journal" VALUE="Journal of Time Series Analysis"/>
+<attribute NAME="year" VALUE="1990"/>
+<attribute NAME="title" VALUE="A distance measure for classifying ARIMA models"/>
+<attribute NAME="authors" VALUE="Piccolo, Domenico"/>
+<node TEXT="Another paper with explanation" ID="ID_1786201095" CREATED="1518502237545" MODIFIED="1518502449078" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/148%20Time%20series%20clustering%20and%20classification%20by%20the%20autoregressive%20metric.pdf">
+<attribute NAME="key" VALUE="corduas2008autoregressive"/>
+<attribute NAME="journal" VALUE="Computational Statistics &amp; Data Analysis"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="Time Series Clustering and Classification by the Autoregressive Metric"/>
+<attribute NAME="authors" VALUE="Corduas, Marcella and Piccolo, Domenico"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2E87DDF1112AF02447F725229110FC285EB09F191F41E92971B2C781FE3271">
+    <pdf_title>Time series clustering and classification by the autoregressive metric</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484" MOVED="1518157326491">
 <node TEXT="Dynamic programming optimization (original paper, but DTW not explicitly mentioned)" ID="ID_1407935713" CREATED="1518104424971" MODIFIED="1518104888772" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/141%20Dynamic%20programming%20algorithm%20optimization%20for%20spoken%20Word%20Recognition.pdf">
@@ -1875,6 +1899,81 @@
 <attribute NAME="authors" VALUE="Keogh, Eamonn and Ratanamahatana, Chotirat Ann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="ED85E391C6D1F8F585DC40D7B6A5F97A28F3556F4930AB715DDD69851499343">
     <pdf_title>Exact indexing of dynamic time warping</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Dynamic Time Warping Algorithm Review" ID="ID_1783215725" CREATED="1518671600893" MODIFIED="1518671720406" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/150%20Dynamic%20Time%20Warping%20Algorithm%20Review.pdf">
+<attribute NAME="key" VALUE="senin2008dynamic"/>
+<attribute NAME="journal" VALUE="Information and Computer Science Department University of Hawaii at Manoa Honolulu, USA"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="Dynamic Time Warping Algorithm Review"/>
+<attribute NAME="authors" VALUE="Senin, Pavel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="19B6BB76BB5964A7DCEEBC75D179ECB58DA52DCE713D0C873193293CB9C69B">
+    <pdf_title>Dynamic Time Warping Algorithm Review</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="DTW is very fast, CPUs concern is non-issue" ID="ID_1775447715" CREATED="1518672482680" MODIFIED="1518672493315" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/151%20Three%20Myths%20about%20Dynamic%20Time%20Warping%20Data%20Mining.pdf">
+<attribute NAME="key" VALUE="ratanamahatana2005myths"/>
+<attribute NAME="year" VALUE="2005"/>
+<attribute NAME="title" VALUE="Three Myths about Dynamic Time Warping Data Mining"/>
+<attribute NAME="authors" VALUE="Ratanamahatana, Chotirat Ann and Keogh, Eamonn"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FAEFC28A9569CAE07C3A0ED41A9F54A74E8DD81D654B785F515BD22E9F18AB">
+    <pdf_title>ThreeMythsaboutDynamicTimeWarpingData Mining</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Change of cost function - take warping into account (stronger warping leads to higher cost)" ID="ID_1543523048" CREATED="1518672949323" MODIFIED="1518673242265" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/152%20Enhancement%20and%20Dynanic%20Time%20Warping.pdf">
+<attribute NAME="key" VALUE="roberts1987enhancements"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Biomedical Engineering"/>
+<attribute NAME="year" VALUE="1987"/>
+<attribute NAME="title" VALUE="Enhancement and Dynamic Time Warping of Somatosensory Evoked Potential Components Applied to Patients with Multiple Sclerosis"/>
+<attribute NAME="authors" VALUE="Roberts, Kim and Lawrence, Peter and Eisen, Andrew and Hoirch, Maureen"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1319EBACD4EBC59D8DEF7CC2D647CB760961856FD25C86B97F4AF41AD43A332">
+    <pdf_title>Components</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Also change of cost function" ID="ID_738015824" CREATED="1518673106695" MODIFIED="1518673191115" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/153%20ALIGNMENT%20OF%20CURVES%20BY%20DYNAMIC%20TIME%20WARPING.pdf">
+<attribute NAME="key" VALUE="wang1997alignment"/>
+<attribute NAME="journal" VALUE="The Annals of Statistics"/>
+<attribute NAME="year" VALUE="1997"/>
+<attribute NAME="title" VALUE="Alignment of Curves by Dynamic Time Warping"/>
+<attribute NAME="authors" VALUE="Wang, Kongming and Gasser, Theo"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F6E0CBD158E8591889C73AEFDFCE39678E4CE6DC192CD6A293CE8CD4247426">
+    <pdf_title>w x</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Implementation for Python: fastDTW" ID="ID_1645648296" CREATED="1518674368937" MODIFIED="1518674458394" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/154%20FastDTW.pdf">
+<attribute NAME="key" VALUE="salvador2007fastDTW"/>
+<attribute NAME="journal" VALUE="Intelligent Data Analysis"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="{FastDTW}: Toward Accurate Dynamic Time Warping in Linear Time and Space"/>
+<attribute NAME="authors" VALUE="Salvador, Stan and Chan, Philip"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C7A47E944D4B58F015316EC429FEA5657122E5FECB13B78ED7EA60C9AC70">
+    <pdf_title>FastDTW: Toward Accurate Dynamic Time Warping in Linear Time and Space</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="More on DTW in &quot;Fundamentals of Speech Recognition&quot; (Rabiner)" ID="ID_445189125" CREATED="1518750829404" MODIFIED="1518751039519" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/157%20Fundamentals%20of%20Speech%20Recognition.pdf">
+<attribute NAME="key" VALUE="rabiner1993speech"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Fundamentals of Speech Recognition"/>
+<attribute NAME="authors" VALUE="Rabiner, Lawrence R and Juang, Biing-Hwang"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="536B6C8DD8542E54524F9DC413F831FE93C5B14DBB331DB1C857B21B122D2"/>
+</node>
+<node TEXT="More on DTW in &quot;Information Retrieval for Music and Motion&quot;" ID="ID_1785147880" CREATED="1518749656952" MODIFIED="1518749780575" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/155%20Information%20Retrieval%20for%20Music%20and%20Motion.pdf">
+<attribute NAME="key" VALUE="muller2007information"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Information Retrieval for Music and Motion"/>
+<attribute NAME="authors" VALUE="M{\&quot;u}ller, Meinard"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1B85BC4C3E54EABDDA3A654AF24D45974D6AF5CD2938AE549553979380BDAC">
+    <pdf_title>Information Retrieval for Music and Motion</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Itakura parallelogram" ID="ID_1930099220" CREATED="1518750696178" MODIFIED="1518750797273" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/156%20Itakura%20parallelogram.pdf">
+<attribute NAME="key" VALUE="itakura1975minimum"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Acoustics, Speech, and Signal Processing"/>
+<attribute NAME="year" VALUE="1975"/>
+<attribute NAME="title" VALUE="Minimum Prediction Residual Principle Applied to Speech Recognition"/>
+<attribute NAME="authors" VALUE="Itakura, Fumitada"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D5D973F4BA01CB92BA8BFEDDDAED3323CC99DF993DA6677A3B951DD390">
+    <pdf_title>Minimum Prediction Residual Principle Applied to Speech Recognition</pdf_title>
 </pdf_annotation>
 </node>
 </node>
