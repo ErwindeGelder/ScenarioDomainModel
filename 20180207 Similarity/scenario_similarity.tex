@@ -168,6 +168,10 @@
 \newcommand{\imagi}{\textbf{j}}
 \newcommand{\profile}[1]{\textbf{v}_{#1}}
 \newcommand{\barprofile}[1]{\bar{\textbf{v}}_{#1}}
+\newcommand{\parvstart}{v_{\textup{start}}}
+\newcommand{\parvend}{v_{\textup{end}}}
+\newcommand{\pardv}{v_{\Delta}}
+\newcommand{\pardt}{t_{\textup{duration}}}
 
 
 %%==========================================================================
@@ -350,15 +354,17 @@ For our purposes, the Euclidean distances is not suitable. Because, in general, 
 	\label{fig:resampled profiles}
 \end{figure}
 
+
 \subsection{Feature-based measures}
 \label{sec:feature based}
 
 The Euclidean distance of \cref{eq:euclidian} is not of direct use for our application. An simple extension, however, is useful. This extension is to compute the Euclidean distance not directly using the (re-sampled) time series, but using features extracted from it \cite{serra2014empirical}. Let $\hat{x}_k$ and $\hat{y}_k$ with $k \in \{1, \ldots, \theta\}$ denote features extracted from the time series $\textbf{x}$ and $\textbf{y}$, respectively. The dissimilarity can be formulated as follows:
 
 \begin{equation}\label{eq:eucl features}
-	d_{\textup{F}}(\textbf{x}, \textbf{y}) = \sqrt{ \sum_{k=1}^{\theta} w_k \left( \hat{x}_k - \hat{y}_k \right)^2 }.
+	d_{\textup{F}}(\textbf{x}, \textbf{y}) = \sqrt{ \sum_{k=0}^{\theta-1} w_k \left( \hat{x}_k - \hat{y}_k \right)^2 }.
 \end{equation}
 Here, $w_k$ denote weights that can be chosen to emphasize the $k$-th parameter less or more. 
+
 
 \subsubsection{Fourier coefficients}
 \label{sec:fourier coefficient}
@@ -368,7 +374,7 @@ One possibility is to use the Fourier coefficients as parameters \cite{agrawal19
 \end{equation}
 correspond to a frequency of $f_n = n/Nt_s$, where $N$ is the total number of samples and $t_s$ is the sample time. When only the Fourier coefficients corresponding to the lower frequencies are used as parameters, this automatically has the effect of removing rapidly-fluctuating components of the time series \cite{serra2014empirical}.
 
-Note that the Fourier coefficients of different time series correspond to different frequencies, due to the dependency of the number of samples. In order to compare the different time series of \cref{fig:example time series}, linear interpolation is used to retrieve the Fourier coefficients at $\unit[1]{Hz}$, $\unit[2]{Hz}$, and $\unit[3]{Hz}$. Furthermore, the resulting coefficients are divided over the number of samples, see \cref{tab:fourier coefficients}.
+Note that the Fourier coefficients of different time series correspond to different frequencies, due to the dependency of the number of samples. In order to compare the different time series of \cref{fig:example time series}, linear interpolation is used to retrieve the Fourier coefficients at $\unit[0]{Hz}$, $\unit[0.5]{Hz}$, $\unit[1]{Hz}$, and $\unit[1.5]{Hz}$. Furthermore, the resulting coefficients are divided over the number of samples, see \cref{tab:fourier coefficients}.
 
 \begin{table}
 	\centering
@@ -376,6 +382,31 @@ Note that the Fourier coefficients of different time series correspond to differ
 	\label{tab:fourier coefficients}
 	\input{tabular/fourier_coefficients}
 \end{table}
+
+\Cref{tab:dissimilarities} shows resulting feature-based distance of \cref{eq:eucl features} using the Fourier coefficients of \cref{tab:fourier coefficients} and weights 
+\input{tex/FC_weights} 
+The weights are the reciprocal of variance of the different coefficients. The variation is based on all time series (around 3000). 
+Based on this, it can be seen that $\profile{1}$ differs quite a bit from the other time series. The time series $\profile{2}$ and $\profile{3}$ show the lowest dissimilarity, which matches the (subjective) observation when examining \cref{fig:example time series}. However, although $\profile{4}$ differs significantly from the other time series, it also gets a relatively low dissimilarity score when comparing with $\profile{2}$ and $\profile{3}$. This shows the disadvantage of this method in that it does not take the differences of the time series' length into account.
+
+
+\subsubsection{Custom scenario features}
+\label{sec:custom features}
+
+Instead of using the Fourier coefficients, it is possible to use scenario parameters. Using custom parameters provides a freedom in choosing parameters that matter. A disadvantage is that these parameters need to be determined for every scenario class, as the parameters are specific for a certain scenario class. For example, the total reduced speed is only relevant when an braking activity is involved. In \cref{tab:custom parameters}, four parameters are listed for describing the time series of \cref{fig:example time series}, namely the starting speed $\parvstart$, the final speed $\parvend$, the reduced speed $\pardv=\parvstart-\parvend$, and the total time $\pardt$ of the time series.
+
+\begin{table}
+	\centering
+	\caption{Custom parameters for describing the time series of \cref{fig:example time series}.}
+	\label{tab:custom parameters}
+	\input{tabular/scenario_parameters}
+\end{table}
+
+For comparing the different time series, the parameters $\parvend$, $\pardv$, and $\pardt$ are used. The associated weights are \input{tex/custom_par_weights}
+The weights are the reciprocal of the variance of the different parameters based on all time series. The resulting dissimilarity measure is shown in \cref{tab:dissimilarities}. Note that using the aforementioned parameters, only the starting speed, end speed, and total time determines the dissimilarity between two time series. In order to take the `shape' of the time series into account, other parameters are needed. One possibility is to combine the custom parameters with the Fourier coefficients. 
+
+\subsection{Model based measures}
+\label{sec:model based}
+
 
 \subsubsection{Auto-regression coefficients}
 \label{sec:auto regression coefficients}
@@ -393,13 +424,10 @@ where $\eta$ denotes the number of coefficients.
 	\input{tabular/ar_coefficients}
 \end{table}
 
-\subsubsection{Custom scenario features}
-\label{sec:custom features}
-
 \begin{table}
 	\centering
-	\caption{Feature-based dissimilarity measures, according to \cref{eq:eucl features}, with Fourier coefficients (see \cref{sec:fourier coefficient}), auto-regression coefficients (see \cref{sec:auto regression coefficients}), and custom scenario features (see \cref{sec:custom features}).}
-	\label{tab:feature based dissimilarity}
+	\caption{Dissimilarity measures, according to \cref{eq:eucl features}, with Fourier coefficients (see \cref{sec:fourier coefficient}), custom scenario features (see \cref{sec:custom features}).}
+	\label{tab:dissimilarities}
 	\input{tabular/feature_based}
 \end{table}
 

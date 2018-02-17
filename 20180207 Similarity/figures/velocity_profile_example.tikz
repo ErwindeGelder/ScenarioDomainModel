@@ -9,19 +9,19 @@
 \begin{axis}[
 xlabel={Time [s]},
 ylabel={Velocity [km/h]},
-xmin=-0.405, xmax=8.505,
-ymin=-0.128527297559858, ymax=50.9958346332171,
+xmin=-0.415, xmax=8.715,
+ymin=-2.4336, ymax=51.1056,
 width=\figurewidth,
 height=\figureheight,
 tick align=outside,
 tick pos=left,
 xmajorgrids,
-x grid style={white!69.019607843137251!black},
+x grid style={lightgray!92.026143790849673!black},
 ymajorgrids,
-y grid style={white!69.019607843137251!black},
+y grid style={lightgray!92.026143790849673!black},
 legend cell align={left},
-legend entries={{Profile 1},{Profile 2},{Profile 3},{Profile 4}},
-legend style={draw=white!80.0!black}
+legend style={draw=white!80.0!black},
+legend entries={{Profile 1},{Profile 2},{Profile 3},{Profile 4}}
 ]
 \addlegendimage{no markers, color0}
 \addlegendimage{no markers, color1}
@@ -71,6 +71,8 @@ table {%
 3.9 3.83293169244461
 4 2.98698956843009
 4.1 2.19530733565728
+4.2 1.50827911787245
+4.3 0
 };
 \addplot [semithick, color1, mark=*, mark size=1, mark options={solid}, only marks]
 table {%
@@ -149,6 +151,8 @@ table {%
 7.2 3.92181861892924
 7.3 3.2390168543433
 7.4 2.51875579065799
+7.5 1.94143128682471
+7.6 0
 };
 \addplot [semithick, color2, mark=*, mark size=1, mark options={solid}, only marks]
 table {%
@@ -234,6 +238,8 @@ table {%
 7.9 3.90339952431368
 8 3.20136591431246
 8.1 2.37502992884368
+8.2 1.87003539466784
+8.3 0
 };
 \addplot [semithick, color3, mark=*, mark size=1, mark options={solid}, only marks]
 table {%
@@ -260,6 +266,8 @@ table {%
 2 18.3954052464323
 2.1 17.6397227325662
 2.2 17.0278549000257
+2.3 16.5595453013048
+2.4 16.38
 };
 \end{axis}
 
