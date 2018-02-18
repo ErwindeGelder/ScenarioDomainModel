@@ -1,12 +1,12 @@
-\begin{tabular}{ccll}
+\begin{tabular}{cccccc}
     \toprule
-    \multicolumn{2}{c}{Time series} & \multicolumn{2}{c}{Features based} \\
-    \textbf{x} & \textbf{y} & Fourier coefficients & Custom features \\ \otoprule
-    $\profile{1}$ & $\profile{2}$ & $5.9 \cdot 10^{-2}$ & $1.1$ \\
-    $\profile{1}$ & $\profile{3}$ & $6.2 \cdot 10^{-2}$ & $1.2$ \\
-    $\profile{1}$ & $\profile{4}$ & $5.4 \cdot 10^{-2}$ & $8.4$ \\
-    $\profile{2}$ & $\profile{3}$ & $2.9 \cdot 10^{-3}$ & $4.2 \cdot 10^{-1}$ \\
-    $\profile{2}$ & $\profile{4}$ & $8.6 \cdot 10^{-3}$ & $8.2$ \\
-    $\profile{3}$ & $\profile{4}$ & $1.0 \cdot 10^{-2}$ & $8.6$ \\
+    \multicolumn{2}{c}{Time series} & \multicolumn{2}{c}{Features based} & \multicolumn{2}{c}{Model based} \\
+    \textbf{x} & \textbf{y} & Fourier coefficients & Custom features & Auto regression & Splines \\ \otoprule
+    $\profile{1}$ & $\profile{2}$ & $5.22$ & $1.01$ & $0.53$ & $0.23$ \\
+    $\profile{1}$ & $\profile{3}$ & $5.49$ & $1.22$ & $1.13$ & $0.25$ \\
+    $\profile{1}$ & $\profile{4}$ & $5.03$ & $2.41$ & $2.67$ & $2.86$ \\
+    $\profile{2}$ & $\profile{3}$ & $0.30$ & $0.24$ & $1.52$ & $0.07$ \\
+    $\profile{2}$ & $\profile{4}$ & $0.46$ & $2.75$ & $2.16$ & $2.46$ \\
+    $\profile{3}$ & $\profile{4}$ & $0.63$ & $2.95$ & $3.64$ & $2.60$ \\
     \bottomrule
 \end{tabular}

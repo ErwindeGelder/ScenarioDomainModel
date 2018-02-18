@@ -52,7 +52,7 @@
 
 
 \usepackage[utf8]{inputenc}    % utf8 support
-\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=6,maxbibnames=15,backend=biber]{biblatex}
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
 %\renewcommand*{\bibfont}{\footnotesize}
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
@@ -310,6 +310,8 @@ It is assumed that the scenario is described by means of a time series. Therefor
 
 To illustrate the dissimilarity measures, four different velocity profiles are considered, see \cref{fig:example time series}. All four velocity profiles describe the velocity of a vehicle while braking. The average deceleration is $\unit[3.19]{m/s^2}$, $\unit[1.72]{m/s^2}$, $\unit[1.63]{m/s^2}$, and $\unit[1.64]{m/s^2}$ respectively. We will refer to the the profiles with $\profile{1}$, $\profile{2}$, $\profile{3}$, and $\profile{4}$, respectively. 
 
+The time series are chosen for the sake of illustrating the features of the dissimilarity measures. Time series $\profile{1}$ has the same start and end speed as the time series $\profile{2}$ and $\profile{3}$, but the end speed is earlier achieved, i.e., the deceleration is stronger. The time series $\profile{2}$ and $\profile{3}$ are reasonably similar, so a low dissimilarity score is to be expected when comparing $\profile{2}$ and $\profile{3}$. The fourth time series, i.e., $\profile{4}$, is chosen because its average deceleration almost equals the average deceleration of $\profile{3}$, but the number of samples of $\profile{4}$ is much less.
+
 \begin{figure}
 	\centering
 	\setlength\figureheight{0.4\linewidth}
@@ -334,7 +336,7 @@ where $p \geq 0$. Not that with $p=2$, we obtain the Euclidean distance:
 \end{equation}
 The Euclidean distance is often applied due to its computational simplicity \cite{xing2010survey}. Even if there might be better dissimilarity measures for certain applications, the Euclidean distance serves as a good benchmark \cite{keogh2003survey}.
 
-For our purposes, the Euclidean distances is not suitable. Because, in general, we have $N \ne M$, we need to re-sample one time series. Because of this, a strong braking action might look `similar' to very smooth braking, see \cref{fig:resampled profiles}. In \cref{fig:resampled profiles}, $\textbf{v}_1$ and $\textbf{v}_3$ are re-sample, such that they have the same amount of samples as $\profile{2}$, resulting in $\barprofile{1}$ and $\barprofile{3}$, respectively. This results in $\deuclid(\profile{2}, \barprofile{1})=\unit[13.3]{m/s}$ and $\deuclid(\profile{2}, \barprofile{3})=\unit[14.7]{m/s}$. So even though $\profile{3}$ looks more similar to $\profile{2}$ than $\profile{1}$, the Euclidean distance \cref{eq:euclidian} gives a higher score for $\deuclid(\profile{2}, \barprofile{3})$ compared to $\deuclid(\profile{2}, \barprofile{1})$.
+For our purposes, the Euclidean distances is not suitable. Because, in general, we have $N \ne M$, we need to re-sample one time series. Because of this, a strong braking action might look `similar' to very smooth braking, see \cref{fig:resampled profiles}. In \cref{fig:resampled profiles}, $\textbf{v}_1$ and $\textbf{v}_3$ are re-sample, such that they have the same amount of samples as $\profile{2}$, resulting in $\barprofile{1}$ and $\barprofile{3}$, respectively. This results in $\deuclid(\profile{2}, \barprofile{1})=\unit[4.7]{m/s}$ and $\deuclid(\profile{2}, \barprofile{3})=\unit[4.2]{m/s}$. So even though $\profile{3}$ looks much more similar to $\profile{2}$ than $\profile{1}$, the Euclidean distance \cref{eq:euclidian} gives not a significant difference between $\deuclid(\profile{2}, \barprofile{3})$ and $\deuclid(\profile{2}, \barprofile{1})$.
 
 \begin{figure}
 	\centering
@@ -358,7 +360,7 @@ For our purposes, the Euclidean distances is not suitable. Because, in general, 
 \subsection{Feature-based measures}
 \label{sec:feature based}
 
-The Euclidean distance of \cref{eq:euclidian} is not of direct use for our application. An simple extension, however, is useful. This extension is to compute the Euclidean distance not directly using the (re-sampled) time series, but using features extracted from it \cite{serra2014empirical}. Let $\hat{x}_k$ and $\hat{y}_k$ with $k \in \{1, \ldots, \theta\}$ denote features extracted from the time series $\textbf{x}$ and $\textbf{y}$, respectively. The dissimilarity can be formulated as follows:
+The Euclidean distance of \cref{eq:euclidian} is not of direct use for our application. An simple extension, however, is useful. This extension is to compute the Euclidean distance not directly using the (re-sampled) time series, but using features extracted from it \cite{serra2014empirical}. Let $\hat{x}_k$ and $\hat{y}_k$ with $k \in \{0, \ldots, \theta-1\}$ denote features extracted from the time series $\textbf{x}$ and $\textbf{y}$, respectively. The dissimilarity can be formulated as follows:
 
 \begin{equation}\label{eq:eucl features}
 	d_{\textup{F}}(\textbf{x}, \textbf{y}) = \sqrt{ \sum_{k=0}^{\theta-1} w_k \left( \hat{x}_k - \hat{y}_k \right)^2 }.
@@ -388,6 +390,13 @@ Note that the Fourier coefficients of different time series correspond to differ
 The weights are the reciprocal of variance of the different coefficients. The variation is based on all time series (around 3000). 
 Based on this, it can be seen that $\profile{1}$ differs quite a bit from the other time series. The time series $\profile{2}$ and $\profile{3}$ show the lowest dissimilarity, which matches the (subjective) observation when examining \cref{fig:example time series}. However, although $\profile{4}$ differs significantly from the other time series, it also gets a relatively low dissimilarity score when comparing with $\profile{2}$ and $\profile{3}$. This shows the disadvantage of this method in that it does not take the differences of the time series' length into account.
 
+\begin{table}
+	\centering
+	\caption{Dissimilarity measures, according to \cref{eq:eucl features}, with Fourier coefficients (see \cref{sec:fourier coefficient}), custom scenario features (see \cref{sec:custom features}), parameters of an auto-regression model fit (see \cref{sec:auto regression models}), and splines parameters (see \cref{sec:spline models}).}
+	\label{tab:dissimilarities}
+	\input{tabular/feature_based}
+\end{table}
+
 
 \subsubsection{Custom scenario features}
 \label{sec:custom features}
@@ -404,18 +413,21 @@ Instead of using the Fourier coefficients, it is possible to use scenario parame
 For comparing the different time series, the parameters $\parvend$, $\pardv$, and $\pardt$ are used. The associated weights are \input{tex/custom_par_weights}
 The weights are the reciprocal of the variance of the different parameters based on all time series. The resulting dissimilarity measure is shown in \cref{tab:dissimilarities}. Note that using the aforementioned parameters, only the starting speed, end speed, and total time determines the dissimilarity between two time series. In order to take the `shape' of the time series into account, other parameters are needed. One possibility is to combine the custom parameters with the Fourier coefficients. 
 
-\subsection{Model based measures}
+
+\subsection{Model-based measures}
 \label{sec:model based}
 
+With model-based measures, time series models are employed. The idea is to compare the parameters obtained from learning a model of the two time series. For the comparison, we will use the Euclidean distance of \cref{eq:eucl features} \cite{serra2014empirical}. It is shown that this method works well for auto-regression (AR) models \cite{piccolo1990distance, corduas2008autoregressive}, which is demonstrated in the next section. The use of spline models is explained in \cref{sec:spline models}.
 
-\subsubsection{Auto-regression coefficients}
-\label{sec:auto regression coefficients}
-Instead of using the Fourier coefficients as parameters, one could use the coefficients from an auto-regressive (AR) model. An AR model approximates the time series using the model 
+
+\subsubsection{Auto-regression models}
+\label{sec:auto regression models}
+An AR model approximates the time series using the model 
 \begin{equation}
 	\label{eq:auto-regression}
 	\hat{x}[i] = a_0 + \sum_{j=1}^{\eta-1} a_j \hat{x}[i-j],
 \end{equation}
-where $\eta$ denotes the number of coefficients. 
+where $\eta$ denotes the number of parameters. \Cref{tab:ar coefficients} lists the parameters of the AR model with $\eta=3$ for the time series of \cref{fig:example time series}. The parameters are computed using ordinary least squares (an alternative would be to use the Yule-Walker equations, see \cite{gardner1988spectral}). As with the previous measures, the weights are the reciprocal of the variance of the parameters, based on the model fits of all available time series. The weights are \input{tex/ar_weights}
 
 \begin{table}
 	\centering
@@ -424,12 +436,27 @@ where $\eta$ denotes the number of coefficients.
 	\input{tabular/ar_coefficients}
 \end{table}
 
+\Cref{tab:dissimilarities} shows the dissimilarity measures based on the AR parameters. It does not match with the expectation that the dissimilarity score between the time series $\profile{2}$ and $\profile{3}$ would be low. For example, the dissimilarity score between the time series $\profile{1}$ and $\profile{2}$ is lower. Hence, the AR parameters seem to be inappropriate for measuring the dissimilarity between two time series for this application.
+
+\subsubsection{Spline models}
+\label{sec:spline models}
+
+Splines can be employed to model and/or smooth time series data \cite{dierckx1993splines, deboor1978practical}. In its most general definition, a spline is a piece-wise polynomial function. It is defined by a degree $d$, which is the maximal degree of the polynomial functions, a set of contiguous intervals with knots $k_0 < k_1 < \ldots < k_n$ as start and end points, and polynomials on each of these intervals. In addition to the basic elements, continuity conditions can be set at the points where the polynomials are stitched together. 
+
+For modeling the time series of the velocity, B-splines are used. B-splines are splines written as a linear combination of $n+d$ basis functions, such that the spline is continuous up to the $(d-1)$-th derivative. Efficient algorithms for the computation of the optimal representation of a curve by B-splines are described in \cite{dierckx1993splines}. We use $d=3$ and $n=2$. The knots are evenly distributed.
+
+The spline parameters, denoted by $c_1$ through $c_5$, of the time series of \cref{fig:example time series} are shown in \cref{tab:spline coefficients}. Because the time series have different length, the knots are placed at different locations for each time series. As a result, the spline coefficients are invariant regarding the length of the time series. Therefore, the length of the time series is added as a parameter when using the euclidean distance of \cref{eq:eucl features} between the parameters. For completeness, the length of the time series is shown in \cref{tab:spline coefficients}. 
+\input{tex/spl_weights}
+
 \begin{table}
 	\centering
-	\caption{Dissimilarity measures, according to \cref{eq:eucl features}, with Fourier coefficients (see \cref{sec:fourier coefficient}), custom scenario features (see \cref{sec:custom features}).}
-	\label{tab:dissimilarities}
-	\input{tabular/feature_based}
+	\caption{Coefficients of the B-splines of the time series of \cref{fig:example time series}. Because the length of the time series is not reflected by the spline coefficients, the duration of the time series is added to the table.}
+	\label{tab:spline coefficients}
+	\input{tabular/spline_parameters}
 \end{table}
+
+The resulting dissimilarity measures using the length of the time series and the spline coefficients, as shown in \cref{tab:spline coefficients}, is shown in \cref{tab:dissimilarities}.
+
 
 \printbibliography
 

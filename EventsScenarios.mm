@@ -54,7 +54,7 @@
 </map_styles>
 </hook>
 <hook NAME="AutomaticEdgeColor" COUNTER="4"/>
-<node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1515764436716" HGAP="60">
+<node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1515764436716" HGAP="60">
 <edge COLOR="#7c7c00"/>
 <node TEXT="Curve fitting" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1288097973" CREATED="1516866158372" MODIFIED="1516866168325">
 <node TEXT="General" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1015917001" CREATED="1516866172981" MODIFIED="1516866180627">
@@ -84,15 +84,15 @@
 <attribute NAME="title" VALUE="Curve and Surface Fitting with Splines"/>
 <attribute NAME="authors" VALUE="Dierckx, Paul"/>
 </node>
-<node TEXT="A Practical Guide to Splines" ID="ID_617031633" CREATED="1516689958332" MODIFIED="1516689961269">
-<attribute NAME="key" VALUE="deboor1978splines"/>
+<node TEXT="A Practical Guide to Splines" ID="ID_617031633" CREATED="1516689958332" MODIFIED="1518949294833">
+<attribute NAME="key" VALUE="deboor1978practical"/>
 <attribute NAME="year" VALUE="1978"/>
 <attribute NAME="title" VALUE="A Practical Guide to Splines"/>
-<attribute NAME="authors" VALUE="De Boor, Carl and De Boor, Carl and Math{\&apos;e}maticien, Etats-Unis and De Boor, Carl and De Boor, Carl"/>
+<attribute NAME="authors" VALUE="de Boor, Carl"/>
 </node>
-<node TEXT="Flexible Smoothing with B-splines and Penalties" ID="ID_427188803" CREATED="1516690015547" MODIFIED="1516690179524" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/118%20Flexible%20Smoothing%20with%20B-splines%20and%20Penalties.pdf">
-<attribute NAME="key" VALUE="eilers1996bsplines"/>
-<attribute NAME="journal" VALUE="Statistical science"/>
+<node TEXT="Flexible Smoothing with B-splines and Penalties" ID="ID_427188803" CREATED="1516690015547" MODIFIED="1518949166953" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/118%20Flexible%20Smoothing%20with%20B-splines%20and%20Penalties.pdf">
+<attribute NAME="key" VALUE="eilers1996flexible"/>
+<attribute NAME="journal" VALUE="Statistical Science"/>
 <attribute NAME="year" VALUE="1996"/>
 <attribute NAME="title" VALUE="Flexible Smoothing with B-splines and Penalties"/>
 <attribute NAME="authors" VALUE="Eilers, Paul H. C. and Marx, Brian D."/>
@@ -1829,7 +1829,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Feature based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1643428776" CREATED="1518168788173" MODIFIED="1518168798853">
+<node TEXT="Feature-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1643428776" CREATED="1518168788173" MODIFIED="1518920914141">
 <node TEXT="Fourier transform, see book &quot;Discrete-Time Signal Processing&quot;" ID="ID_422840287" CREATED="1518168800416" MODIFIED="1518168823532" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/146%20Discrete%20time%20signal%20processing.pdf">
 <attribute NAME="key" VALUE="oppenheim1999discrete"/>
 <attribute NAME="year" VALUE="1999"/>
@@ -1853,6 +1853,8 @@
 <attribute NAME="authors" VALUE="Faloutsos, Christos and Ranganathan, Mudumbai and Manolopoulos, Yannis"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B029A7781C2411CCC5FA85953958D788A143ECFF4391E7C9BB608AC5DD7AC1"/>
 </node>
+</node>
+<node TEXT="Model-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1061375636" CREATED="1518920893299" MODIFIED="1518920910671">
 <node TEXT="Using auto-regression model coefficients (original paper)" ID="ID_118891723" CREATED="1518502176763" MODIFIED="1518502230604">
 <attribute NAME="key" VALUE="piccolo1990distance"/>
 <attribute NAME="journal" VALUE="Journal of Time Series Analysis"/>
@@ -1869,6 +1871,13 @@
     <pdf_title>Time series clustering and classification by the autoregressive metric</pdf_title>
 </pdf_annotation>
 </node>
+</node>
+<node TEXT="Auto-regression model computation with Yule-Walker equations (page 256 (page 281 of pdf))" ID="ID_1934183657" CREATED="1518942500496" MODIFIED="1518942591929" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/158%20Statistical%20spectral%20analysis%20Gardner%201988.pdf">
+<attribute NAME="key" VALUE="gardner1988spectral"/>
+<attribute NAME="year" VALUE="1988"/>
+<attribute NAME="title" VALUE="Statistical Spectral Analysis: A Nonprobabilistic Theory"/>
+<attribute NAME="authors" VALUE="Gardner, William A."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="48CBE523332E6B31EA4545204C5ECD8F601CB27E49B25DD918B41DCB7C38D65"/>
 </node>
 </node>
 <node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484" MOVED="1518157326491">
