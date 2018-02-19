@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class DynamicTimeWarping:
@@ -83,7 +84,7 @@ class DynamicTimeWarping:
         """
 
         # Initialize vectors for worst case length
-        wx = np.zeros(self.nx+self.ny-1)
+        wx = np.zeros(self.nx+self.ny-1, dtype=np.int)
         wy = np.zeros_like(wx)
 
         # We always start at the end!
@@ -111,3 +112,27 @@ class DynamicTimeWarping:
                     wx[i+1], wy[i+1] = wx[i]-1, wy[i]-1
                 else:
                     wx[i+1], wy[i+1] = wx[i], wy[i]-1
+            i += 1
+        wx = np.flipud(wx[:i+1])
+        wy = np.flipud(wy[:i+1])
+        return wx, wy
+
+    def plot_warping(self):
+        # Compute the warping first
+        wx, wy = self.compute_warpings()
+
+        # Make plot with grid
+        f, ax = plt.subplots(1, 1)
+        plt.xlim(0, self.nx)
+        plt.ylim(0, self.ny)
+        gridx = np.concatenate((np.array([[x, x] for x in range(0, self.nx+1)]),
+                                np.array([[0, self.nx] for _ in range(0, self.ny+1)]))).T
+        gridy = np.concatenate((np.array([[0, self.ny] for _ in range(0, self.nx+1)]),
+                                np.array([[y, y] for y in range(0, self.ny+1)]))).T
+        ax.plot(gridx, gridy, color=[.5, .5, .5], lw=.5)
+
+        # Fill all cells in (wx,wy)
+        for x, y in zip(wx, wy):
+            ax.fill([x, x+1, x+1, x, x], [y, y, y+1, y+1, y], color=[0, 0, 0])
+
+        return f

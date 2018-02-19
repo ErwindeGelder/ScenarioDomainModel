@@ -1786,8 +1786,8 @@
     <pdf_title>An Empirical Evaluation of Similarity Measures for Time Series Classication</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Experimental comparison of representation methods and distance measures for time series data" ID="ID_1798612645" CREATED="1518003222983" MODIFIED="1518003475796" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/140%20Comparison%20of%20representation%20methods%20and%20distance%20measures%20for%20time%20series.pdf">
-<attribute NAME="key" VALUE="Wang2013distancemeasures"/>
+<node TEXT="Experimental comparison of representation methods and distance measures for time series data" ID="ID_1798612645" CREATED="1518003222983" MODIFIED="1519005870224" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/140%20Comparison%20of%20representation%20methods%20and%20distance%20measures%20for%20time%20series.pdf">
+<attribute NAME="key" VALUE="wang2013distancemeasures"/>
 <attribute NAME="journal" VALUE="Data Mining and Knowledge Discovery"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Experimental Comparison of Representation Methods and Distance Measures for Time Series Data"/>
@@ -1861,9 +1861,9 @@
 <attribute NAME="year" VALUE="1990"/>
 <attribute NAME="title" VALUE="A distance measure for classifying ARIMA models"/>
 <attribute NAME="authors" VALUE="Piccolo, Domenico"/>
-<node TEXT="Another paper with explanation" ID="ID_1786201095" CREATED="1518502237545" MODIFIED="1518502449078" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/148%20Time%20series%20clustering%20and%20classification%20by%20the%20autoregressive%20metric.pdf">
+<node TEXT="Another paper with explanation" ID="ID_1786201095" CREATED="1518502237545" MODIFIED="1519005870164" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/148%20Time%20series%20clustering%20and%20classification%20by%20the%20autoregressive%20metric.pdf">
 <attribute NAME="key" VALUE="corduas2008autoregressive"/>
-<attribute NAME="journal" VALUE="Computational Statistics &amp; Data Analysis"/>
+<attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
 <attribute NAME="year" VALUE="2008"/>
 <attribute NAME="title" VALUE="Time Series Clustering and Classification by the Autoregressive Metric"/>
 <attribute NAME="authors" VALUE="Corduas, Marcella and Piccolo, Domenico"/>

@@ -165,6 +165,7 @@
 \DeclareMathOperator{\atan}{atan}                               %% arc tangent
 
 \newcommand{\deuclid}{d_{\textup{Euclidian}}}
+\newcommand{\ddtw}{d_{\textup{DTW}}}
 \newcommand{\imagi}{\textbf{j}}
 \newcommand{\profile}[1]{\textbf{v}_{#1}}
 \newcommand{\barprofile}[1]{\bar{\textbf{v}}_{#1}}
@@ -388,7 +389,7 @@ Note that the Fourier coefficients of different time series correspond to differ
 \Cref{tab:dissimilarities} shows resulting feature-based distance of \cref{eq:eucl features} using the Fourier coefficients of \cref{tab:fourier coefficients} and weights 
 \input{tex/FC_weights} 
 The weights are the reciprocal of variance of the different coefficients. The variation is based on all time series (around 3000). 
-Based on this, it can be seen that $\profile{1}$ differs quite a bit from the other time series. The time series $\profile{2}$ and $\profile{3}$ show the lowest dissimilarity, which matches the (subjective) observation when examining \cref{fig:example time series}. However, although $\profile{4}$ differs significantly from the other time series, it also gets a relatively low dissimilarity score when comparing with $\profile{2}$ and $\profile{3}$. This shows the disadvantage of this method in that it does not take the differences of the time series' length into account.
+Based on this, it can be seen that $\profile{1}$ differs quite a bit from the other time series. The time series $\profile{2}$ and $\profile{3}$ show the lowest dissimilarity, which matches the (subjective) observation when examining \cref{fig:example time series}. However, although $\profile{4}$ differs significantly from the other time series, it also gets a relatively low dissimilarity score. This shows the disadvantage of this method in that it does not take the differences of the time series' length into account.
 
 \begin{table}
 	\centering
@@ -438,6 +439,7 @@ where $\eta$ denotes the number of parameters. \Cref{tab:ar coefficients} lists 
 
 \Cref{tab:dissimilarities} shows the dissimilarity measures based on the AR parameters. It does not match with the expectation that the dissimilarity score between the time series $\profile{2}$ and $\profile{3}$ would be low. For example, the dissimilarity score between the time series $\profile{1}$ and $\profile{2}$ is lower. Hence, the AR parameters seem to be inappropriate for measuring the dissimilarity between two time series for this application.
 
+
 \subsubsection{Spline models}
 \label{sec:spline models}
 
@@ -455,7 +457,37 @@ The spline parameters, denoted by $c_1$ through $c_5$, of the time series of \cr
 	\input{tabular/spline_parameters}
 \end{table}
 
-The resulting dissimilarity measures using the length of the time series and the spline coefficients, as shown in \cref{tab:spline coefficients}, is shown in \cref{tab:dissimilarities}.
+The resulting dissimilarity measures using the length of the time series and the spline coefficients, as shown in \cref{tab:spline coefficients}, is shown in \cref{tab:dissimilarities}. The dissimilarity score between $\profile{2}$ and $\profile{3}$ is, as expected, low.
+
+
+\subsection{Elastic measures}
+
+Elastic measures allows an elastic shifting of the time axis, to accommodate sequences that are similar but out of phase \cite{keogh2005exactDTW}. Elastic measures have extensively been used for speech recognition \cite{rabiner1993speech, muller2007information}. Due to its success, it is nowadays used in many other applications \cite{serra2014empirical, wang2013distancemeasures}. Dynamic Time Warping (DTW) \cite{sakoe1978dynamic, berndt1994using} belongs to the group of elastic dissimilarity measures \cite{wang2013distancemeasures}.
+
+With DTW, a cost function $D(x[i], y[j])$ is used to compare samples $x[i]$ and $y[j]$, with $i \in \{0, \ldots, N-1\}$ and $j \in \{0, \ldots, M-1\}$. Usually, the cost function is simply the square difference, i.e. $D(x[i], y[j]) = (x[i]-y[j])^2$, or the absolute difference, i.e., $D(x[i], y[j])=|x[i] - y[j]|$ \cite{berndt1994using}. Next, a warping path $(\textbf{w}_x, \textbf{w}_y)$, with elements $(w_x[k], w_y[k]),\,k \in \{0, \ldots, K-1\}$, is defined, such that the dissimilarity measure between two time series is the accumulated sum of the cost function along the optimal warping path, i.e.,
+\begin{equation} \label{eq:dtw cost}
+	\ddtw(\textbf{x}, \textbf{y}) = \min_{\textbf{w}_x, \textbf{w}_y} \sum_{k=0}^{K-1} D(x[w_x[k]], y[w_y[k]]).
+\end{equation}
+
+The warping functions are typically subjected to the following constraints \cite{keogh2005exactDTW}:
+\begin{itemize}
+	\item \emph{Boundary conditions:} The warping functions are required to start at the first sample of both time series and end at the last sample of both time series, i.e. $w_x[0]=w_y[0]=0$, $w_x[K-1]=N-1$, and $w_y[K-1]=M-1$. 
+	\item \emph{Continuity:} To restrict the allowable steps in the warping path to adjacent cells (including diagonally adjacent cells), the constraints $w_x[k] - w_x[k-1] \leq 1$ and $w_y[k] - w_y[k-1] \leq 1$ are used with $k=1, \ldots, K-1$.
+	\item \emph{Monotonicity:} The points of the warping path are forces to be monotonically spaced in time using the constraints $w_x[k] - w_x[k-1] \geq 0$ and $w_y[k] - w_y[k-1] \geq 0$ for $k=1, \ldots, K-1$. 
+\end{itemize}
+
+To prevent pathological warping paths, the warping path is often constrained in a global sense by limiting how far it may stretch from the diagonal $w_x[k]=w_y[k]$ \cite{keogh2005exactDTW}. The Sakoe and Chiba band \cite{sakoe1978dynamic} and Itakura parallelogram \cite{itakura1975minimum} are most frequently used. Other ways to limit the warping is to add an extra cost for the total stretch from the diagonal, i.e., a cost as a function of $|w_x[k] - w_y[k]|$ to the minimization of \cref{eq:dtw cost}, cf., \cite{roberts1987enhancements, wang1997alignment}.
+
+\Cref{tab:dissimilarities} shows the total cost computed using \cref{eq:dtw cost} divided over $N+M$. It shows a low score for $\ddtw(\profile{2}, \profile{3})$, which is expected because $\profile{2}$ and $\profile{3}$ look very similar (see \cref{fig:example time series}). Furthermore, $\ddtw(\profile{1}, \profile{2})$ and $\ddtw(\profile{1}, \profile{3})$ have low scores. This is because the start and end speeds are similar. Therefore, when the warping is applied, the time series look very similar, see \cref{fig:example dtw}.
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{0.4\linewidth}
+	\setlength\figurewidth{0.7\linewidth}
+	\input{figures/dtw_warped_series.tikz}
+	\caption{The time series $\profile{1}$ and $\profile{3}$ look very similar after warping using Dynamic Time Warping.}
+	\label{fig:example dtw}
+\end{figure}
 
 
 \printbibliography
