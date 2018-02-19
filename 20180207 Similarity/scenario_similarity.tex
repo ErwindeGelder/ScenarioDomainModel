@@ -87,7 +87,7 @@
 \newtoggle{standalone}
 \toggletrue{standalone}
 % Uncomment next line when document should be included in Progress report
-%\togglefalse{standalone}								
+\togglefalse{standalone}								
 \pagestyle{fancy}                                       %% set page style
 \fancyhf{}                                              %% clear all header & footer fields
 \iftoggle{standalone}{%
@@ -475,7 +475,7 @@ The resulting dissimilarity measures using the length of the time series and the
 
 Elastic measures allows an elastic shifting of the time axis, to accommodate sequences that are similar but out of phase \cite{keogh2005exactDTW}. Elastic measures have extensively been used for speech recognition \cite{rabiner1993speech, muller2007information}. Due to its success, it is nowadays used in many other applications \cite{serra2014empirical, wang2013distancemeasures}. Dynamic Time Warping (DTW) \cite{sakoe1978dynamic, berndt1994using} belongs to the group of elastic dissimilarity measures \cite{wang2013distancemeasures}.
 
-With DTW, a cost function $D(x[i], y[j])$ is used to compare samples $x[i]$ and $y[j]$, with $i \in \{0, \ldots, N-1\}$ and $j \in \{0, \ldots, M-1\}$. Usually, the cost function is simply the square difference, i.e. $D(x[i], y[j]) = (x[i]-y[j])^2$, or the absolute difference, i.e., $D(x[i], y[j])=|x[i] - y[j]|$ \cite{berndt1994using}. Next, a warping path $(\textbf{w}_x, \textbf{w}_y)$, with elements $(w_x[k], w_y[k]),\,k \in \{0, \ldots, K-1\}$, is defined, such that the dissimilarity measure between two time series is the accumulated sum of the cost function along the optimal warping path, i.e.,
+With DTW, a cost function $D(x[i], y[j])$ is used to compare samples $x[i]$ and $y[j]$, with $i \in \{0, \ldots, N-1\}$ and $j \in \{0, \ldots, M-1\}$. Usually, the cost function is simply the square difference, i.e., $D(x[i], y[j]) = (x[i]-y[j])^2$, or the absolute difference, i.e., $D(x[i], y[j])=|x[i] - y[j]|$ \cite{berndt1994using}. Next, a warping path $(\textbf{w}_x, \textbf{w}_y)$, with elements $(w_x[k], w_y[k]),\,k \in \{0, \ldots, K-1\}$, is defined, such that the dissimilarity measure between two time series is the accumulated sum of the cost function along the optimal warping path, i.e.,
 \begin{equation} \label{eq:dtw cost}
 	\ddtw(\textbf{x}, \textbf{y}) = \min_{\textbf{w}_x, \textbf{w}_y} \sum_{k=0}^{K-1} D(x[w_x[k]], y[w_y[k]]).
 \end{equation}

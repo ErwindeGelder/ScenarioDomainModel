@@ -32,6 +32,14 @@
 bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 %\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
 \usepackage[final]{pdfpages}                    %% Include other pdfs
+\usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
+\usepackage{units}								%% Appropriate behavior of units
+
+%%==========================================================================
+%% Define reference stuff
+%%==========================================================================
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
 
 %%==========================================================================
 %% Define header/title stuff
@@ -68,7 +76,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 	\item For the graduate school, I need to obtain 45 Graduate School Credits (GSCs) are divided into three times 15 GSCs:
 	\begin{itemize}
 		\item \emph{Research skills}: These are Learning on-the-Job Activities, e.g., paper review, presentation, poster, paper. I assume that these GSCs will be automatically achieved during the PhD, so no special planning regarding this.
-		\item \emph{Discipline-related skills}: This relates to skills that improve knowledge related to the research. I will look if I can find some courses in Sinagpore.
+		\item \emph{Discipline-related skills}: This relates to skills that improve knowledge related to the research. I will look if I can find some courses in Singapore.
 		\item \emph{Transferable skills}: These skills will improve myself on a personal level. When I return from Singapore, I will look for useful courses.
 	\end{itemize}
 	\item We discussed about the report I wrote regarding the generation of test cases. A couple of remarks regarding the report:
@@ -82,13 +90,33 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 
 \section{Summary of work}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{bmw_example}
+	\caption{Example of a frame of the data. In the left plot, the detected objects are shown (different color means different ID). On the right, the image of the front view camera (top) and rear view camera (bottom) are shown.}
+	\label{fig:bmw example}
+\end{figure}
+
 \begin{itemize}
-	\item 
+	\item I got access to a very small piece of the data acquired by BMW in Singapore. See \cref{fig:bmw example} for an example of a frame. Some observations:
+	\begin{itemize}
+		\item Many objects are not detected. For example, the car on the left side (see \cref{fig:bmw example}) is not detected. It seems that the field of view is very limited.
+		\item The object data seems to be processed with a low pass filter with a very low bandwidth. For example, the car in front (see \cref{fig:bmw example}) already increased distance with approximately $\unit[5]{m}$, but this is only visible in the object data after few seconds.
+	\end{itemize}
+	\item I did some research regarding similarity measures for time series, because an appropriate similarity measure for comparing two different scenarios would be useful for at least two reasons:
+	\begin{itemize}
+		\item To quantify to what extent a certain set of scenario is complete, it would be useful to quantity the similarities among the scenarios. If each scenario is very different from all other scenarios, this is an indication that the set of scenarios does not reflect all possible variations. To quantify the `difference' between two scenarios, a (dis)similarity measure could be employed.
+		\item To quantify how realistic a generated scenario is, it could be compared with real-world scenarios. If the generation scenarios differs significantly from generated scenarios, it could be an indication that the generation scenario is not realistic.
+	\end{itemize}
+	A report is attached to this progress report\footnote{Note that the page numbers in the table of contents are not correct, as those page numbers refer to the original report (before it was included in this progress report)} that reflects my findings.
+	\item The paper for the Intelligent Vehicle Symposium (IV) 2018 is submitted. On the 31st of March we will receive a notification of acceptance. The paper is attached to this document (starting at page \pageref{ivpaper}).
 \end{itemize}
 
 \section{Future plans}
 
 \begin{itemize}
+	\item I wrote a document regarding similarity measures for time series. I want to apply one or several measures for quantifying the completeness of a set of real-world scenarios. I can use a small dataset with time series of the speed while the car is braking (approximately 3000 time series).
+	\item For my work in Singapore, I need to define 15 different scenarios classes and the way we want to parametrize these scenarios. Ideally, I want to show at least one real-world scenario for each scenario class.
 	\item 
 \end{itemize}
 
@@ -100,5 +128,10 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 
 \bibliographystyle{ieeetr}
 \bibliography{../../bib}
+
+\newpage
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20180207 Similarity"/scenario_similarity.pdf}
+\label{ivpaper}
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20171111 IV2018 Ontology"/root.pdf}
 
 \end{document}
