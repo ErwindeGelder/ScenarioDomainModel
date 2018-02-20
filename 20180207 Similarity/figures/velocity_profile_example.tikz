@@ -1,10 +1,10 @@
 % This file was created by matplotlib2tikz v0.6.14.
 \begin{tikzpicture}
 
-\definecolor{color3}{rgb}{0.83921568627451,0.152941176470588,0.156862745098039}
+\definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
 \definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
 \definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
-\definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
+\definecolor{color3}{rgb}{0.83921568627451,0.152941176470588,0.156862745098039}
 
 \begin{axis}[
 xlabel={Time [s]},
@@ -19,9 +19,9 @@ xmajorgrids,
 x grid style={lightgray!92.026143790849673!black},
 ymajorgrids,
 y grid style={lightgray!92.026143790849673!black},
-legend cell align={left},
 legend style={draw=white!80.0!black},
-legend entries={{$\textbf{v}_1$},{$\textbf{v}_2$},{$\textbf{v}_3$},{$\textbf{v}_4$}}
+legend entries={{$\textbf{v}_1$},{$\textbf{v}_2$},{$\textbf{v}_3$},{$\textbf{v}_4$}},
+legend cell align={left}
 ]
 \addlegendimage{no markers, color0}
 \addlegendimage{no markers, color1}

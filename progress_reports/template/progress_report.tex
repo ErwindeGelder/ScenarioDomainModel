@@ -13,8 +13,6 @@
 \usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
 \usepackage{array}                              %% array functionality (array, tabular)
 \usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
-\usepackage[noadjust]{cite}                     %% citations; noadjust removes leading spaces
-%\usepackage[round]{natbib}                     %% Author-year citations (remove package cite)
 \usepackage{stfloats}                           %% improved handling of floats
 \usepackage{multirow}                           %% cells spanning multiple rows in tables
 %\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
@@ -27,13 +25,20 @@
 \usepackage[dutch,USenglish]{babel}             %% language support
 \usepackage{wrapfig}                            %% wrapping text around figures
 \usepackage{longtable}                          %% tables spanning multiple pages
-\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab/Python)
+\pgfplotsset{compat=1.14}						%% Run in backwards compatibility mode
 \usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
 bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 %\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
 \usepackage[final]{pdfpages}                    %% Include other pdfs
 \usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
 \usepackage{units}								%% Appropriate behavior of units
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../../bib}
 
 %%==========================================================================
 %% Define reference stuff
@@ -93,7 +98,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 	\item 
 \end{itemize}
 
-\bibliographystyle{ieeetr}
-\bibliography{../../bib}
+
+\printbibliography
 
 \end{document}

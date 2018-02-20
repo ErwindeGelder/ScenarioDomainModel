@@ -17,8 +17,8 @@ xmajorgrids,
 x grid style={lightgray!92.026143790849673!black},
 ymajorgrids,
 y grid style={lightgray!92.026143790849673!black},
-legend cell align={left},
 legend style={draw=white!80.0!black},
+legend cell align={left},
 legend entries={{$\textbf{v}_1$},{$\textbf{v}_3$}}
 ]
 \addlegendimage{no markers, color0}
