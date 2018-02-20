@@ -81,10 +81,10 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \section{Previous meeting minutes}
 
 \begin{itemize}
-	\item The paper ``Ontology of scenario for the assessment of automated vehicles'' for the Intelligent Vehicles Symposium 2018 is almost finished. Has to be reviewed by Jeroen and Bart. Deadline is the 29th of January.
-	\item For the graduate school, I need to obtain 45 Graduate School Credits (GSCs) are divided into three times 15 GSCs:
+	\item The paper ``Ontology of scenario for the assessment of automated vehicles'' for the Intelligent Vehicles Symposium 2018 is almost finished. The paper has to be reviewed by Jeroen and Bart. Deadline is the 29th of January.
+	\item For the graduate school, I need to obtain 45 Graduate School Credits (GSCs) that are divided into three parts of 15 GSCs:
 	\begin{itemize}
-		\item \emph{Research skills}: These are Learning on-the-Job Activities, e.g., paper review, presentation, poster, paper. I assume that these GSCs will be automatically achieved during the PhD, so no special planning regarding this.
+		\item \emph{Research skills}: These are Learning-on-the-Job Activities, e.g., paper review, presentation, poster, paper writing. I assume that these GSCs will be automatically achieved during the PhD, so no special planning regarding this is needed.
 		\item \emph{Discipline-related skills}: This relates to skills that improve knowledge related to the research. I will look if I can find some courses in Singapore.
 		\item \emph{Transferable skills}: These skills will improve myself on a personal level. When I return from Singapore, I will look for useful courses.
 	\end{itemize}
@@ -92,7 +92,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 	\begin{itemize}
 		\item The problem formulation was at best very vague.
 		\item Possibilities for the use of copulas should be shortly summarized.
-		\item Most parts where not properly explained and notation of variables were mixed up.
+		\item Most parts were not properly explained and notation of variables was confusing.
 		\item For a similarity measure that quantifies the similarity between two profiles, it would make sense to normalize it, such that it is between $0$ and $1$.
 	\end{itemize}
 \end{itemize}
@@ -102,12 +102,12 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{bmw_example}
-	\caption{Example of a frame of the data. In the left plot, the detected objects are shown (different color means different ID). On the right, the image of the front view camera (top) and rear view camera (bottom) are shown.}
+	\caption{Example of a frame of the data. In the left plot, the detected objects are shown (different color means different ID). On the right, the images of the front view camera (top) and rear view camera (bottom) are shown.}
 	\label{fig:bmw example}
 \end{figure}
 
 \begin{itemize}
-	\item I got access to a very small piece of the data acquired by BMW in Singapore. See \cref{fig:bmw example} for an example of a frame. Some observations:
+	\item I got access to a very small piece of the data acquired by BMW in Singapore. See \cref{fig:bmw example} for an example of a sample. Some observations:
 	\begin{itemize}
 		\item Many objects are not detected. For example, the car on the left side (see \cref{fig:bmw example}) is not detected. It seems that the field of view is very limited.
 		\item The object data seems to be processed with a low pass filter with a very low bandwidth. For example, the car in front (see \cref{fig:bmw example}) already increased distance with approximately $\unit[5]{m}$, but this is only visible in the object data after few seconds.
@@ -115,10 +115,10 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 	\item I did some research regarding similarity measures for time series, because an appropriate similarity measure for comparing two different scenarios would be useful for at least two reasons:
 	\begin{itemize}
 		\item To quantify to what extent a certain set of scenario is complete, it would be useful to quantity the similarities among the scenarios. If each scenario is very different from all other scenarios, this is an indication that the set of scenarios does not reflect all possible variations. To quantify the `difference' between two scenarios, a (dis)similarity measure could be employed.
-		\item To quantify how realistic a generated scenario is, it could be compared with real-world scenarios. If the generation scenarios differs significantly from generated scenarios, it could be an indication that the generation scenario is not realistic.
+		\item To quantify how realistic a generated scenario is, it could be compared with real-world scenarios. If the generation scenario differs significantly from the real-world scenarios, it could be an indication that the generation scenario is not realistic.
 	\end{itemize}
-	A report is attached to this progress report\footnote{Note that the page numbers in the table of contents are not correct, as those page numbers refer to the original report (before it was included in this progress report)} that reflects my findings.
-	\item The paper for the Intelligent Vehicle Symposium (IV) 2018 is submitted. On the 31st of March we will receive a notification of acceptance. The paper is attached to this document (starting at page \pageref{ivpaper}).
+	A report is attached to this progress report\footnote{Note that the page numbers in the table of contents of the attached report are not correct, as those page numbers refer to the original report (before it was included in this progress report).} that reflects my findings.
+	\item The paper for the Intelligent Vehicle Symposium (IV) 2018 is submitted. On the 31st of March we will receive a notification of acceptance. For your information, the paper is attached to this document (starting at page \pageref{ivpaper}).
 \end{itemize}
 
 \section{Future plans}
@@ -126,7 +126,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \begin{itemize}
 	\item I wrote a document regarding similarity measures for time series. I want to apply one or several measures for quantifying the completeness of a set of real-world scenarios. As a start, I can use a small dataset with time series of the speed while the car is braking (approximately 3000 time series). Eventually, if we want to write a paper on this subject, we need more scenario classes, as one example is too limited.
 	\item For my work in Singapore, I need to define 15 different scenarios classes and the way we want to parametrize these scenarios. Ideally, I want to show at least one real-world scenario for each scenario class.
-	\item Before applying the dissimilarity measure for estimating the \emph{completeness}, I want to search for more relevant literature for this subject. Wang et al.~\cite{wang2017much} claims to be the first paper to study \emph{completeness} with respect to naturalistic driving data, but I think there should be more relevant literature (including other applications).
+	\item Before applying the dissimilarity measure for estimating the \emph{completeness}, I want to search for more relevant literature on this subject. Wang et al.~\cite{wang2017much} claim to be the to write a paper about \emph{completeness} with respect to naturalistic driving data, but I think there should be more relevant literature (including other applications).
 \end{itemize}
 
 \section{Questions}
@@ -134,8 +134,8 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \begin{itemize}
 	\item I reviewed several dissimilarity measures and I see two possible candidates for further usage:
 	\begin{itemize}
-		\item Using custom parameters as this gives high freedom in what makes scenario distinctive. The disadvantage is that there is not a general recipe for choosing the parameters, while the choice of the parameters highly influence the resulting dissimilarity measures.
-		\item Dynamic Time Warping (DTW) looks promising, because it corrects for time shifts and this might be a useful feature. For example, consider the two scenarios in \cref{fig:early detection}. With DTW, the dissimilarity score between these two time series would be very low, because the time series $\textbf{v}_2$ will be `warped' such that it looks exactly similar to the `early detection'.
+		\item Using custom parameters as this gives high freedom in what makes scenarios distinctive. The disadvantage is that there is not a general recipe for choosing the parameters, while the choice of the parameters highly influence the resulting dissimilarity measures.
+		\item Dynamic Time Warping (DTW) looks promising, because it corrects for time shifts and this might be a useful feature. For example, consider the two scenarios in \cref{fig:early detection}. With DTW, the dissimilarity score between these two time series would be very low, because the time series $\textbf{v}_2$ will be `warped' such that it looks exactly similar to the `early detection'. In most cases, this will be useful.
 	\end{itemize}
 	What measure is or what measures are the most promising to continue with?
 \end{itemize}
