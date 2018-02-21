@@ -124,11 +124,13 @@
 %%==========================================================================
 %% Newcommands for this specific presentation
 %%==========================================================================
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcommand{\ontologytable}[1]{%
 	\begin{table}
 		\begin{center}
 			\footnotesize
-			\begin{tabularx}{\linewidth}{p{3em} X X}
+			\begin{tabularx}{\linewidth}{>{\raggedright}p{3.5em} Y Y}
 				\toprule
 				Term & Characteristics & ``has'' \\ \otoprule
 				\ifthenelse{\equal{#1}{2}}{\leavevmode\color{red}}{} Scenario class & \ifthenelse{\equal{#1}{2}}{\leavevmode\color{red}}{} Qualitative description of scenario & \ifthenelse{\equal{#1}{2}}{\leavevmode\color{red}}{} Scenarios \newline Other (less generic) scenario classes \newline One or multiple tags \\
@@ -324,10 +326,10 @@
 	\vspace{-1em}
 	\begin{figure}
 		\centering
-		\setlength\figureheight{106pt}
-		\setlength\figurewidth{260pt}
-		\subfloat[Last vehicle overtakes other vehicles.]{\input{figures/scenario_situation_1.tikz}}\\
 		\setlength\figureheight{100pt}
+		\setlength\figurewidth{247pt}
+		\subfloat[Last vehicle overtakes other vehicles.]{\input{figures/scenario_situation_1.tikz}}\\
+		\setlength\figureheight{95pt}
 		\subfloat[Another overtaking.]{\input{figures/scenario_situation_2.tikz}}
 		\caption{Schematic overview of the traffic scenarios. The red car is the ego-vehicle.}
 	\end{figure}
@@ -337,7 +339,7 @@
 	\vspace{-1em}
 	\begin{figure}
 		\centering
-		\setlength\figureheight{150pt}
+		\setlength\figureheight{140pt}
 		\setlength\figurewidth{248pt}
 		\input{figures/lon_vel.tikz}
 		\caption{Activities of the ego vehicle. The blue line shows the measured data and the orange dashed line shows the output of the model fitted to the data. The black vertical lines indicate the events.}
@@ -348,7 +350,7 @@
 	\vspace{-1em}
 	\begin{figure}
 		\centering
-		\setlength\figureheight{150pt}
+		\setlength\figureheight{140pt}
 		\setlength\figurewidth{248pt}
 		\input{figures/lat_pos.tikz}
 		\caption{Activities of the ego vehicle. The blue line shows the measured data and the orange dashed line shows the output of the model fitted to the data. The black vertical lines indicate the events.}
@@ -359,7 +361,7 @@
 	\vspace{-1em}
 	\begin{figure}
 		\centering
-		\setlength\figureheight{150pt}
+		\setlength\figureheight{140pt}
 		\setlength\figurewidth{248pt}
 		\input{figures/rel_lon_pos.tikz}
 		\caption{States of the dynamic environment.}
@@ -370,7 +372,7 @@
 	\vspace{-1em}
 	\begin{figure}
 		\centering
-		\setlength\figureheight{150pt}
+		\setlength\figureheight{140pt}
 		\setlength\figurewidth{248pt}
 		\input{figures/rel_lat_pos.tikz}
 		\caption{States of the dynamic environment.}
@@ -381,7 +383,7 @@
 	\vspace{-1em}
 	\begin{figure}
 		\centering
-		\setlength\figureheight{160pt}
+		\setlength\figureheight{155pt}
 		\setlength\figurewidth{450pt}
 		\input{figures/events.tikz}
 		\vspace{-1em}

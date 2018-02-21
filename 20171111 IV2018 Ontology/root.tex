@@ -30,7 +30,7 @@
 \usetikzlibrary{backgrounds}
 \usepackage{multirow}
 \usepackage[keeplastbox]{flushend}
-\usepackage[caption=false]{subfig}
+\usepackage{subfigure}
 %\usepackage{cite}  % Make sure that citation appear as [1]-[3] instead of [1], [2], [3]
 \usepackage[utf8]{inputenc}    % utf8 support
 \usepackage[T1]{fontenc}       % code for pdf file
@@ -49,6 +49,7 @@
 % Table stuff
 \usepackage{booktabs}
 \usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \setlength{\heavyrulewidth}{0.1em}
 \newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 

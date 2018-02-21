@@ -6,7 +6,7 @@
 
 \begin{axis}[
 xlabel={$t$ [s]},
-ylabel={Longitudinal velocity [km/h]},
+ylabel={Longitudinal speed [km/h]},
 xmin=0, xmax=40,
 ymin=35, ymax=75,
 width=\figurewidth,

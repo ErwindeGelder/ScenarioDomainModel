@@ -1,93 +1,71 @@
-##########################################################
+####################################################################
 Processing file "..\20171010 Summary\phd_summary"
 0 warnings
 0 badboxes
- 1: hbox (0.55121pt too wide) in paragraph at lines 87--87
- 2: hbox (1.22977pt too wide) in paragraph at lines 95--97
 
-##########################################################
+####################################################################
+Processing file "..\progress_reports\template\progress_report"
+1 warnings
+ 1: LaTeX Warning: Empty bibliography on input line 102.
+0 badboxes
+
+####################################################################
 Processing file "..\progress_reports\report01\progress_report_01"
 0 warnings
 0 badboxes
 
-##########################################################
+####################################################################
 Processing file "..\progress_reports\report02\progress_report_02"
 0 warnings
 0 badboxes
 
-##########################################################
+####################################################################
 Processing file "..\20171111 IV2018 Ontology\root"
 0 warnings
 0 badboxes
- 1: hbox (3.99171pt too wide) in paragraph at lines 19--19
- 2: hbox (3.99171pt too wide) in paragraph at lines 19--19
- 3: hbox (2.02362pt too wide) in paragraph at lines 19--19
 
-##########################################################
+####################################################################
 Processing file "..\progress_reports\report03\progress_report_03"
 0 warnings
 0 badboxes
 
-##########################################################
+####################################################################
 Processing file "..\20180109 Ontology presentation\ontology"
-1 warnings
- 1: Label(s) may have changed. Rerun to get cross-references right.
+0 warnings
 1 badboxes
- 1: vbox (12.3521pt too high) detected at line 171
- 2: hbox (4.19516pt too wide) in paragraph at lines 228--228
- 3: hbox (4.19516pt too wide) in paragraph at lines 228--228
- 4: hbox (1.50073pt too wide) in paragraph at lines 228--228
- 5: hbox (4.19516pt too wide) in paragraph at lines 231--231
- 6: hbox (4.19516pt too wide) in paragraph at lines 231--231
- 7: hbox (1.50073pt too wide) in paragraph at lines 231--231
- 8: hbox (4.19516pt too wide) in paragraph at lines 264--264
- 9: hbox (4.19516pt too wide) in paragraph at lines 264--264
-10: hbox (1.50073pt too wide) in paragraph at lines 264--264
-11: hbox (4.19516pt too wide) in paragraph at lines 302--302
-12: hbox (4.19516pt too wide) in paragraph at lines 302--302
-13: hbox (1.50073pt too wide) in paragraph at lines 302--302
-14: vbox (0.33252pt too high) detected at line 334
-15: vbox (0.39392pt too high) detected at line 345
-16: vbox (0.77634pt too high) detected at line 367
-17: vbox (1.45511pt too high) detected at line 390
+ 1: Overfull \vbox (12.3521pt too high) detected at line 173
+    <TNObannerBlack.pdf, id=77, 722.7pt x 30.03601pt> <use TNObannerBlack.pdf>
 
-##########################################################
+####################################################################
 Processing file "..\20180110 Test scenario generation presentation\scenario_generation"
 0 warnings
-0 badboxes
- 1: vbox (12.3521pt too high) detected at line 171
- 2: vbox (0.37924pt too high) detected at line 247
- 3: vbox (0.37927pt too high) detected at line 256
+3 badboxes
+ 1: Overfull \vbox (12.3521pt too high) detected at line 171
+    <TNObannerBlack.pdf, id=54, 722.7pt x 30.03601pt> <use TNObannerBlack.pdf>
+ 2: Overfull \vbox (0.37924pt too high) detected at line 247
+    <use TNObannerWhite.pdf> [7] (figures/parameter_plot_is.tikz)
+ 3: Overfull \vbox (0.37927pt too high) detected at line 256
+    <use TNObannerWhite.pdf> [8] (figures/velocity_profile_example_normalized.tikz)
 
-##########################################################
-Processing file "..\20171126 Parametrization\hyperparameter_selection"
-0 warnings
-0 badboxes
-
-##########################################################
+####################################################################
 Processing file "..\progress_reports\report04\progress_report_04"
 0 warnings
 0 badboxes
 
-##########################################################
+####################################################################
 Processing file "..\20171126 Parametrization\hyperparameter_selection"
 0 warnings
 0 badboxes
 
-##########################################################
-Processing file "..\20180207 Similarity\scenario_similarity"
-0 warnings
-0 badboxes
- 1: hbox (14.22806pt too wide) in paragraph at lines 517--517
-
-##########################################################
+####################################################################
 Processing file "..\progress_reports\report05\progress_report_05"
 0 warnings
 0 badboxes
 
-##########################################################
+####################################################################
 Processing file "..\20180207 Similarity\scenario_similarity"
 0 warnings
-0 badboxes
- 1: hbox (14.22806pt too wide) in paragraph at lines 517--517
+1 badboxes
+ 1: Overfull \hbox (14.22786pt too wide) in paragraph at lines 518--518
+    []\T1/lmr/m/n/10 R. Agrawal, C. Falout-sos, and A. Swami,   Ef-fi-cient sim-i-
 

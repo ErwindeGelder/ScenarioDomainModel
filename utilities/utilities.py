@@ -75,7 +75,7 @@ def biber(folder, texfile):
     call(cmd, cwd=folder)
 
 
-def pdf(folder, texfile, usebibtex=False, usebiber=False, clean=True):
+def pdf(folder, texfile, usebibtex=False, usebiber=False, clean=True, log=True):
     if clean:
         clean_folder(folder)
     pdf_latex(folder, texfile)
@@ -85,35 +85,56 @@ def pdf(folder, texfile, usebibtex=False, usebiber=False, clean=True):
     if usebiber:
         biber(folder, texfile)
         pdf_latex(folder, texfile)
-    out = pdf_latex(folder, texfile, output=True)
-    # Check for warning
+    runpdflatex = True
     badboxes = []
     warning = []
-    for line in out:
-        if len(line) >= 13:
-            if line[:13] == "LaTeX Warning":
-                warning.append(line[15:])
-        if len(line) >= 8:
-            if line[:8] == "Overfull":
-                badboxes.append(line[10:])
-    with open("log.txt", "a") as f:
-        f.write("##########################################################\n")
-        f.write('Processing file "{:s}"\n'.format(os.path.join(folder, texfile)))
-        f.write("{:d} warnings\n".format(len(warning)))
-        for i, w in enumerate(warning):
-            f.write("{:2d}: {:s}\n".format(i+1, w))
-        f.write("{:d} badboxes\n".format(len(badboxes)))
-        for i, w in enumerate(badboxes):
-            f.write("{:2d}: {:s}\n".format(i+1, w))
-        f.write("\n")
+    while runpdflatex:
+        badboxes = []
+        warning = []
+        out = pdf_latex(folder, texfile, output=True)
+        for i in range(len(out)):
+            line = out[i]
+            if line.find("Warning:") >= 0:
+                w = [line]
+                i += 1
+                while not out[i] == "":
+                    w.append(out[i])
+                    i += 1
+                warning.append(w)
+            if len(line) >= 9:
+                if line[:8] == "Overfull" or line[:9] == "Underfull":
+                    badboxes.append([line, out[i+1]])
+        runpdflatex = False  # Check if labels changed --> if so, rerun
+        for w in warning:
+            if w[0].find('Label(s) may have changed') >= 0:
+                runpdflatex = True
+                print("RERUN BECAUSE LABELS CHANGED !!!")
+                break
+    if log:
+        with open("log.txt", "a") as f:
+            f.write("####################################################################\n")
+            f.write('Processing file "{:s}"\n'.format(os.path.join(folder, texfile)))
+            f.write("{:d} warnings\n".format(len(warning)))
+            for i, w in enumerate(warning):
+                f.write("{:2d}: {:s}\n".format(i+1, w[0]))
+                for l in w[1:]:
+                    f.write("    {:s}\n".format(l))
+            f.write("{:d} badboxes\n".format(len(badboxes)))
+            for i, w in enumerate(badboxes):
+                f.write("{:2d}: {:s}\n".format(i+1, w[0]))
+                for l in w[1:]:
+                    f.write("    {:s}\n".format(l))
+            f.write("\n")
 
     if clean:
         clean_folder(folder)
 
 
 if __name__ == '__main__':
-    os.remove("log.txt")  # Empty log
+    if os.path.exists('log.txt'):
+        os.remove("log.txt")  # Empty log
     pdf(os.path.join('..', '20171010 Summary'), 'phd_summary')
+    pdf(os.path.join('..', 'progress_reports', 'template'), 'progress_report')
     pdf(os.path.join('..', 'progress_reports', 'report01'), 'progress_report_01', usebibtex=True)
     pdf(os.path.join('..', 'progress_reports', 'report02'), 'progress_report_02', usebibtex=True)
     pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebiber=True)
@@ -121,12 +142,12 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180109 Ontology presentation'), 'ontology', usebibtex=True)
     pdf(os.path.join('..', '20180110 Test scenario generation presentation'), 'scenario_generation', usebibtex=True)
     settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'), 'standalone', False)
-    pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True)
+    pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report04'), 'progress_report_04', usebibtex=True)
     settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'), 'standalone', True)
     pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True)
     settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'), 'standalone', False)
-    pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True)
+    pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report05'), 'progress_report_05', usebiber=True)
     settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'), 'standalone', True)
     pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True)
