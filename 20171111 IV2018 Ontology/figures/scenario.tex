@@ -96,7 +96,7 @@
 	\draw[->] (entrance dyn) -- (helper dyn) -| (otherdyn);
 	
 	% Ego vehicle
-	\node[block, larger distance, left of=target, fill=colorEgo](ego){Ego vehicle};
+	\node[block, larger distance, left of=target, fill=colorEgo, block one row](ego){Ego vehicle};
 	\draw[ultra thick, ->] (scenario) --(helper scenario) -| (ego);
 	\node[length dashed arrow, below of=ego](ego arrow){};
 	\draw[dashed arrow] (ego) -- (ego arrow);
@@ -137,7 +137,7 @@
 	% Activities for heading
 	\node[fill=colorActivitiesBlock, block, below of=heading, distance activities](lane following){Lane following};
 	\node[fill=colorActivitiesBlock, block, left of=lane following, block one row](left){Turn left};
-	\node[fill=colorActivitiesBlock, block, right of=lane following](right){Turn right};
+	\node[fill=colorActivitiesBlock, block, right of=lane following, block one row](right){Turn right};
 	\node[entrance activities, above of=lane following](entrance heading){};
 	\node[helper arrow, above of=lane following](helper heading){};
 	\draw[ultra thick] (heading) -- (entrance heading);
