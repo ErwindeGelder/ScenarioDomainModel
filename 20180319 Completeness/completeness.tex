@@ -1,0 +1,313 @@
+%%==========================================================================
+%% This is the very first version of a Streetwise LaTeX template. By
+%% chosing the document class, it is easily convertible to a two-column IEEE
+%% paper format, provided any conflicting packages and (new)commmands are
+%% removed.
+%%
+%% Erwin de Gelder, January 6, 2018
+%%==========================================================================
+
+%%==========================================================================
+%% Title:
+%% Author(s):
+%% To be published in:
+%% Date of submission:
+%% Date of submission R1:
+%% Date of submission R2:
+%% Date of final submission:
+%%==========================================================================
+
+
+%% Generic
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%% IEEE
+%% Document class options: replace "draftcls" by "final" for final document.
+%% All other options may just as well be omitted because they are the default values.
+%\documentclass[10pt,final,journal,letterpaper,twoside,twocolumn]{IEEEtran}
+
+
+%%==========================================================================
+%% Document automation
+%%==========================================================================
+
+\def\reptitle{Completeness of real-world driving data}
+\def\repauthor{Erwin de Gelder, etc.}
+
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../bib}
+
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+%\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+            bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage{lmodern} 
+\usepackage{etoolbox}							%% Needed for apptocmd later
+\usepackage[capitalize]{cleveref}
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+\usepackage{units}
+\usepackage{subcaption}
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+
+\newtoggle{standalone}
+\toggletrue{standalone}
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\iftoggle{standalone}{%
+	\fancyhead[L]{\includegraphics[width=15mm]{Streetwise}} %% define headers (LE: left field/even pages, etc.)
+	\fancyhead[R]{\small\emph{\reptitle}}                   %% similar
+	\fancyfoot[C]{\thepage}                                 %% define footer
+	\setlength{\headheight}{18pt}                           %% increase head height to accommodate an oversized picture in the header
+	\renewcommand*{\headrulewidth}{0.25pt}                  %% header line width
+	%% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
+	\fancypagestyle{plain}{%
+		\fancyhf{}
+		\fancyhead[C]{\includegraphics[width=30mm]{Streetwise}}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+		\setlength{\headheight}{36pt}
+	}
+}{%
+	\renewcommand*{\headrulewidth}{0pt}                  	%% No line in this case
+	%% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
+	\fancypagestyle{plain}{%
+		\fancyhf{}
+	}
+}
+\renewcommand*{\footrulewidth}{0pt}                     %% footer line width
+
+
+%%==========================================================================
+%% TikZ figures
+%%==========================================================================
+
+\newlength\figurewidth
+\setlength\figurewidth{0.35\textwidth}              %% set figure width
+\newlength\figureheight
+\setlength\figureheight{0.3\textwidth}              %% set figure height
+\pgfplotsset{every axis/.append style={
+    scaled y ticks=false,
+    scaled x ticks=false,
+    y tick label style={/pgf/number format/fixed},
+    x tick label style={/pgf/number format/fixed},
+    legend style={font=\small}},
+    compat=1.9}                                     %% PGFPlots package options
+\usetikzlibrary{shapes.geometric, arrows, arrows.meta}
+\usepgfplotslibrary{groupplots}
+%\usetikzlibrary{external}                           %% Create pdf figures from TikZ. Use PDFTeXify ...
+%\tikzexternalize[prefix=./tikz/]                    %% ... with --tex-option=--shell-escape switch.
+%\tikzset{external/force remake}                    %% force pdf figure update
+
+
+%%==========================================================================
+%% User-defined commands
+%%==========================================================================
+
+\newcommand*{\mat}[1]{\mathbf{#1}}                              %% matrix/vector notation
+\newcommand*{\matsym}[1]{\boldsymbol{#1}}                       %% matrix/vector notation for Greek letters
+\newcommand*{\T}{^{\scriptscriptstyle\mathsf{T}}}               %% transpose operator
+\newcommand*{\Hr}{^{\scriptscriptstyle\mathsf{H}}}              %% conjugate transpose operator
+\newcommand*{\ud}{\mathrm{\,d}}                                 %% differential operator (upright d)
+\newcommand*{\defeq}{\mathrel{\mathop:}=}                       %% definition sign :=
+\newcommand*{\eqdef}{=\mathrel{\mathop:}}                       %% definition sign =:
+\newcommand*{\ip}[2]{\left\langle#1\,{,}\,#2\right\rangle}      %% inner product
+\newcommand*{\real}[1]{\mathrm{Re}(#1)}                         %% real part
+\newcommand*{\imag}[1]{\mathrm{Im}(#1)}                         %% imaginary part
+\newcommand*{\lsup}[1]{{}^{#1}\!}                               %% left superscript
+\newcommand*{\hi}[1]{$^\text{#1}$}                              %% superscript in normal text
+\newcommand*{\lo}[1]{$_\text{#1}$}                              %% subscript in normal text
+\newcommand*{\w}[1]{\mathrm{#1}}                                %% multiple character super-/subscript in math mode
+\newcommand*{\capskip}{\vspace{-12pt}}                          %% caption skip for figures with subfloats
+\newcommand*{\etal}{et al.}                                     %% may be required for Natbib bibliography styles
+\renewcommand*{\qedsymbol}{$\blacksquare$}                      %% redefine the end-of-proof symbol
+\renewcommand*{\labelitemi}{$\bullet$}                          %% first level item list bullet
+\renewcommand*{\labelitemii}{$-$}                               %% second level item list bullet
+%\renewcommand*{\theenumi}{\textit{\roman{enumi}}}               %% first level enumerator
+\renewcommand*{\labelenumi}{\theenumi.}
+\renewcommand*{\theenumii}{\textit{\alph{enumii}}}              %% second level enumerator
+\renewcommand*{\labelenumii}{\theenumii.}
+\DeclareMathOperator{\tr}{tr}                                   %% trace of a matrix
+\DeclareMathOperator{\sgn}{sgn}                                 %% signum function
+\DeclareMathOperator{\atan}{atan}                               %% arc tangent
+
+\newcommand{\deuclid}{d_{\textup{Euclidian}}}
+\newcommand{\ddtw}{d_{\textup{DTW}}}
+\newcommand{\imagi}{\textbf{j}}
+\newcommand{\profile}[1]{\textbf{v}_{#1}}
+\newcommand{\barprofile}[1]{\bar{\textbf{v}}_{#1}}
+\newcommand{\parvstart}{v_{\textup{start}}}
+\newcommand{\parvend}{v_{\textup{end}}}
+\newcommand{\pardv}{v_{\Delta}}
+\newcommand{\pardt}{t_{\textup{duration}}}
+
+
+%%==========================================================================
+%% User-defined environments
+%%==========================================================================
+
+\theoremstyle{plain}\newtheorem{definition}{Definition}[section]    %% definition
+                    \newtheorem{theorem}{Theorem}[section]          %% theorem
+                    \newtheorem{lemma}[theorem]{Lemma}              %% lemma
+                    \newtheorem{corollary}[theorem]{Corollary}      %% corollary
+                    \newtheorem{assumption}{Assumption}[section]    %% assumption
+                    \newtheorem{condition}{Condition}[section]      %% condition
+\theoremstyle{definition}\newtheorem{example}{Example}[section]     %% examples
+\theoremstyle{remark}\newtheorem{remarkenv}{Remark}[section]        %% remarks
+\newenvironment{remark}{\begin{remarkenv}}%
+                       {\hfill$\blacklozenge$\end{remarkenv}}       %% end remark with a lozenge
+\newenvironment{reviewer}{\itshape}{\upshape}                       %% environment for reviewer's comments
+
+
+%%==========================================================================
+%% Miscellaneous
+%%==========================================================================
+
+\graphicspath{{./../}{./figures/}{./more_figures/}} %% (graphicx) directory path for figures
+%\setlength{\parindent}{0pt}                        %% no paragraph indentation
+%\setlength{\parskip}{2ex}                          %% create empty line between paragraphs
+%\interdisplaylinepenalty=2500                      %% (amsmath) allow for page breaks within multiline equations
+%\numberwithin{equation}{section}                   %% (amsmath) include section number in equation numbering
+%\numberwithin{figure}{section}                     %% (amsmath) include section number in figure numbering
+%\numberwithin{table}{section}                      %% (amsmath) include section number in table numbering
+\addtolength{\arraycolsep}{-0.5mm}                  %% squeeze matrix columns a little
+\fnbelowfloat                                       %% (stfloats) put footnote below a float at the page bottom
+\urlstyle{same}                                     %% (hyperref) use current font for URLs
+\hypersetup{pdftitle={\reptitle},
+            pdfauthor={\repauthor}}                 %% (hyperref) pdf properties title and author
+%\raggedbottom                                      %% don't add inter-paragraph spacing to achieve \textheight
+%\setlength\subfigcapskip{-3pt}                     %% (subfigure) distance between subfloat and subcaption
+%\setlength\subfigbottomskip{-3pt}                  %% (subfigure) distance between subcaption and caption
+%\renewcommand*{\subcapsize}{\small}                %% (subfigure) subcaption font size
+\renewcommand*{\thesubfigure}{(\alph{subfigure})}   %% (subfig) implement 1(a) instead of 1a ...as subfigure reference
+\captionsetup[subfloat]{labelformat=simple}        %% ... as subfigure reference
+%\captionsetup[subfloat]{
+%    farskip=0pt,
+%    nearskip=8pt,
+%    captionskip=1.5pt,
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig) subfloat caption format
+%\captionsetup[figure]{
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig/caption) figure caption format
+%\captionsetup[table]{
+%    aboveskip=2pt,
+%    labelfont={small,bf},
+%    textfont={small,sc}}                           %% (subfig/caption) table caption format
+\apptocmd{\thebibliography}{\raggedright}{}{}		%% Suppress badness warnings in bibliography
+
+
+% Table stuff
+\usepackage{booktabs}
+\usepackage{tabularx}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+%%==========================================================================
+%% Begin document
+%%==========================================================================
+
+\begin{document}
+
+\selectlanguage{USenglish}
+
+\title{\textbf{\reptitle}}
+\author{\repauthor}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+\label{sec:introduction}
+
+% Scenario-based approach for assessment of AVs -> this scenarios are important
+An important aspect in the development of automated vehicles (AVs) is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \cite{bengler2014threedecades, stellet2015taxonomy, wachenfeld2016release, putz2017pegasus, roesener2016scenariobased, kompass2015sicherheitsveranderung}. 
+For legal and public acceptance, it is important that there is a clear definition of system performance and that there are quantitative measures for the system quality. 
+The more traditional methods \cite{response2006code, ISO26262}, used for evaluation of driver assistance systems, are no longer valid for the assessment of quality and performance aspects of an AV \cite{wachenfeld2016release}. 
+Therefore, a scenario-based approach is proposed \cite{roesener2016scenariobased, putz2017pegasus, kompass2015sicherheitsveranderung}. 
+For the scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in test cases used for scenario-based assessment \cite{stellet2015taxonomy}.
+
+% Completeness
+In order to draw conclusions on how an automated vehicle would perform in real-world traffic, it is necessary to know how representative the scenario database, which is used for the scenario-based assessment of the automated vehicle, is. Therefore it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}.
+
+% Purpose of this document
+This document describes different methods for quantifying the completeness of a dataset. To illustrate the different methods, use is made of artificial data. The advantage of using artificial data is that it is easy to obtain a huge amount of data. The data consists of the speed of a vehicle sampled at $\unit[10]{Hz}$. Furthermore, the acceleration is estimated by filtering the derivative of the speed. A portion of the data is shown in \cref{fig:artificial data}. Note that the data is not very realistic, because in real-life the relative time a vehicle is cruising, i.e., driving at a constant speed, will be higher. However, for the purpose of illustrating the different methods, the artificial data suffices.
+
+\setlength\figurewidth{0.8\linewidth}              %% set figure width
+\setlength\figureheight{0.3\textwidth}              %% set figure height
+\begin{figure}[b]
+	\centering
+	\input{figures/artificial_data.tikz}
+	\caption{Artificial data of the speed of a vehicle.}
+	\label{fig:artificial data}
+\end{figure}
+
+% Structure of document
+
+
+\section{Sample-based methods}
+\label{sec:sample based}
+
+
+\subsection{Comparing probability density functions}
+\label{sec:sample based pdf}
+
+According to Wang~et~al.~\cite{wang2017much}, the question of ``how much driving data is sufficient to address problems such as the cause of accidents, distraction and inattention, eco-driving styles, modeling driver behavior, and the effects of driver assistance systems on driver behavior'' has not been fully studied. Therefore, Wang~et~al.~\cite{wang2017much} present a method for quantifying the completeness regarding naturalistic driving data. 
+
+Wang~et~al.~\cite{wang2017much} use a statistical method for determining the appropriate amount of data. Based on the data, a probability density function (PDF) is estimated. The point at which the PDF converges determines the amount of appropriate data. 
+
+Let the PDF of a certain state $x \in \mathds{R}^D$ be denoted by $f(x)$. Based on the $n$ data points $\textbf{x}=\{x_i\}_{i=1}^n$, the PDF $f(x)$ can be estimated. This estimation is denoted by $\hat{f}(x;n)$. For estimating $f(x)$, Kernel Density Estimation (KDE) is employed, i.e.,
+\begin{equation}
+	\hat{f}(x;n) = \sum_{i=1}^n \frac{1}{h^D n} K \left( \frac{x - x_i}{h} \right),
+\end{equation}
+where $h$ denotes the so-called bandwidth and $K(\cdot)$ represents the kernel. A Gaussian kernel is used, i.e.,
+\begin{equation}
+	K(x) = \frac{1}{\sqrt{2\pi}} \exp \left\{ -\frac{||x||^2}{2}\right\}.
+\end{equation}
+
+The distribution $f(x;n)$ will change as $n$ increases. It is expected, however, that the change will decrease as $n$ increases. Therefore, the distribution $\hat{f}(x;n+m)$ with $m \in \mathds{R}^+$ is compared with $\hat{f}(x;n)$. For the comparison of two PDFs, the Kullback-Leibler divergence is employed \cite{bishop2006pattern}. For the two distributions $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$, the Kullback-Leibler divergence is as follows:
+\begin{equation}
+	KL\left( \hat{f}(x;n+m) || \hat{f}(x;n) \right) = \int \hat{f}(x;n+m) \ln \left( \frac{\hat{f}(x;n+m)}{\hat{f}(x;n)} \right) \ud x.
+\end{equation}
+
+\printbibliography
+
+\end{document} 

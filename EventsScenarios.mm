@@ -215,11 +215,11 @@
 </pdf_annotation>
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="Estimating completeness for longitudinal driving scenarios. Using KL divergence" ID="ID_1797339468" CREATED="1509704361125" MODIFIED="1515751017086" HGAP="40" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/024%20How%20much%20data%20are%20enough,%20longitudinal%20driving.pdf">
+<node TEXT="Estimating completeness for longitudinal driving scenarios. Using KL divergence" ID="ID_1797339468" CREATED="1509704361125" MODIFIED="1519094400337" HGAP="40" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/024%20How%20much%20data%20are%20enough,%20longitudinal%20driving.pdf">
 <attribute NAME="key" VALUE="wang2017much"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Vehicles"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="How Much Data Are Enough? A Statistical Approach with Case Study on Longitudinal Driving Behavior"/>
+<attribute NAME="title" VALUE="How Much Data Are Enough? {A} Statistical Approach with Case Study on Longitudinal Driving Behavior"/>
 <attribute NAME="authors" VALUE="Wang, Wenshuo and Liu, Chang and Zhao, Ding"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D6DADA50907342DE9D992557851C251A18AFD4B7AC2645063B97337BAAED">
     <pdf_title>How Much Data Are Enough? A Statistical Approach With Case Study on Longitudinal Driving Behavior</pdf_title>
@@ -255,7 +255,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Estimating number of species" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1995372175" CREATED="1513318000249" MODIFIED="1513318020945" HGAP="40">
+<node TEXT="Estimating number of species" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1995372175" CREATED="1513318000249" MODIFIED="1513318020945" HGAP="40">
 <node TEXT="A review by Bunge and Fitzpatrick (1993)" ID="ID_770072296" CREATED="1513318119920" MODIFIED="1514536731511" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/089%20Estimating%20the%20Number%20of%20Species%20A%20Review.pdf">
 <attribute NAME="key" VALUE="bunge1993estimating"/>
 <attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
@@ -272,6 +272,106 @@
 <attribute NAME="authors" VALUE="Gandolfi, Alberto and Sastri, C. C. A."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1DD12F8A6ACCA6BCB0D4A1EDFCCDADDD99E165A78CD2E588A3C66D6BD475DC1B">
     <pdf_title>Nonparametric Estimations about Species Not Observed in a Random Sample</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Discrete case" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_710753940" CREATED="1519207355432" MODIFIED="1519207367864" HGAP="40" VSHIFT="-4">
+<node TEXT="Estimating completeness of event logs" ID="ID_1337739868" CREATED="1519207952501" MODIFIED="1519207983163" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf">
+<attribute NAME="key" VALUE="yang2012estimating"/>
+<attribute NAME="journal" VALUE="BPM Center Report"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Estimating Completeness of Event Logs"/>
+<attribute NAME="authors" VALUE="Yang, Hedong and Van Dongen, B and Ter Hofstede, A and Wynn, M and Wang, Jianmin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="58E49B4BD7F4EFABD2DA074E78897E961BAF035B9D37D7069FBD7F7DB9DC8">
+    <pdf_title>Estimating Completeness of Event Logs</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Boender and Rinnooy Kan&apos;s estimator" ID="ID_1168068068" CREATED="1519207961429" MODIFIED="1519207974421" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/159%20Bayesian%20Analysis%20of%20the%20Number%20of%20Cells%20of%20a%20Multinomial%20Distribution.pdf">
+<attribute NAME="key" VALUE="boender1983bayesian"/>
+<attribute NAME="journal" VALUE="The Statistician"/>
+<attribute NAME="year" VALUE="1983"/>
+<attribute NAME="title" VALUE="A Bayesian Analysis of the Number of Cells of a Multinomial Distribution"/>
+<attribute NAME="authors" VALUE="Boender, C. G. E. and Rinnooy Kan, A. H. G."/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+<node TEXT="Turing and Good&apos;s estimator" ID="ID_333013182" CREATED="1519208260524" MODIFIED="1519208269141" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/160%20The%20Population%20Frequencies%20of%20Species%20and%20the%20Estimation%20of%20Population%20Parameters.pdf">
+<attribute NAME="key" VALUE="good1953population"/>
+<attribute NAME="journal" VALUE="Biometrika"/>
+<attribute NAME="year" VALUE="1953"/>
+<attribute NAME="title" VALUE="The Population Frequencies of Species and the Estimation of Population Parameters"/>
+<attribute NAME="authors" VALUE="Good, Irving J"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B48D5CFE5FC389D5FDC4B681559E51572FFF288AB3DBDD4B7417158DC2FC9A">
+    <pdf_title>The Population Frequencies of Species and the Estimation of Population Parameters</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Maximum Likelihood (Lewontin and Prout) Estimation" ID="ID_224352249" CREATED="1519208766044" MODIFIED="1519208786958" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/161%20Estimation%20of%20the%20Number%20of%20Different%20Classes%20in%20a%20Population.pdf">
+<attribute NAME="key" VALUE="lewontin1956estimation"/>
+<attribute NAME="journal" VALUE="Biometrics"/>
+<attribute NAME="year" VALUE="1956"/>
+<attribute NAME="title" VALUE="Estimation of the Number of Different Classes in a Population"/>
+<attribute NAME="authors" VALUE="Lewontin, Richard C and Prout, Timothy"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+<node TEXT="Jackknife: Estimation of the size of a closed population ..." ID="ID_1378561483" CREATED="1519209625027" MODIFIED="1519209652377" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/162%20Estimation%20of%20the%20Size%20of%20a%20Closed%20Population.pdf">
+<attribute NAME="key" VALUE="burnham1978estimation"/>
+<attribute NAME="journal" VALUE="Biometrika"/>
+<attribute NAME="year" VALUE="1978"/>
+<attribute NAME="title" VALUE="Estimation of the Size of a Closed Population when Capture Probabilities Vary Among Animals"/>
+<attribute NAME="authors" VALUE="Burnham, Kenneth P and Overton, Walter Scott"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1774475E972D8EFB5BEDA2C9FDB8C13EB7F110BDC1FBA998202FAA6604A"/>
+</node>
+<node TEXT="Jackknife: review (jackknife amongst others), Bunge and Fitzpatrick" ID="ID_123601625" CREATED="1519262483756" MODIFIED="1519262507242" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/089%20Estimating%20the%20Number%20of%20Species%20A%20Review.pdf">
+<attribute NAME="key" VALUE="bunge1993estimating"/>
+<attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Estimating the Number of Species: A Review"/>
+<attribute NAME="authors" VALUE="Bunge, John and Fitzpatrick, M."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B5E951FAF288F1E055A39A0B19C2BECB9C1F762612955B064FE7FD252AC7FB"/>
+</node>
+<node TEXT="Gandolfi and Sastri&apos;s estimator" ID="ID_1988552869" CREATED="1519262699838" MODIFIED="1519262711305" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/163%20Nonparametric%20Estimations%20about%20not%20observerd%20in%20a%20random%20sample.pdf">
+<attribute NAME="key" VALUE="gandolfi2004nonparametric"/>
+<attribute NAME="journal" VALUE="Milan Journal of Mathematics"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Nonparametric Estimations about Species Not Observed in a Random Sample"/>
+<attribute NAME="authors" VALUE="Gandolfi, Alberto and Sastri, Chelluri C. A."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1DD12F8A6ACCA6BCB0D4A1EDFCCDADDD99E165A78CD2E588A3C66D6BD475DC1B">
+    <pdf_title>Nonparametric Estimations about Species Not Observed in a Random Sample</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="First estimator of Chao" ID="ID_1263244443" CREATED="1519263473849" MODIFIED="1519263632620" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/164%20Nonparametric%20Estimation%20of%20the%20Number%20of%20Classes%20in%20a%20Population.pdf">
+<attribute NAME="key" VALUE="chao1984nonparametric"/>
+<attribute NAME="journal" VALUE="Scandinavian Journal of Statistics"/>
+<attribute NAME="year" VALUE="1984"/>
+<attribute NAME="title" VALUE="Nonparametric Estimation of the Number of Classes in a Population"/>
+<attribute NAME="authors" VALUE="Chao, Anne"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6093F14937CC4C4D6A9857553528E18E89EAEBF05D8D96E12D89C4F72CB4">
+    <pdf_title>Nonparametric Estimation of the Number of Classes in a Population Author(s): Anne Chao Source: Scandinavian Journal of Statistics, Vol. 11, No. 4 (1984), pp. 265-270 Published by: on behalf of Stable URL: Accessed: 22/10/2013 10:31</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Variation on first estimation of Chao" ID="ID_368850462" CREATED="1519263617610" MODIFIED="1519263768330" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/165%20Estimating%20the%20Population%20Size%20for%20Capture-Recapture%20Data%20with%20Unequal%20Catchability.pdf">
+<attribute NAME="key" VALUE="chao1987estimating"/>
+<attribute NAME="journal" VALUE="Biometrics"/>
+<attribute NAME="year" VALUE="1987"/>
+<attribute NAME="title" VALUE="Estimating the Population Size for Capture-Recapture Data with Unequal Catchability"/>
+<attribute NAME="authors" VALUE="Chao, Anne"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DFCFD241BC7D4FA178DA12E5F9C487D3E22BD1985BB7CD33EEBFC9FB6997"/>
+</node>
+<node TEXT="Chao and Lee&apos;s estimators" ID="ID_308951155" CREATED="1519264644418" MODIFIED="1519264659181" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/166%20Estimating%20the%20Number%20of%20Classes%20via%20Sample%20Coverage.pdf">
+<attribute NAME="key" VALUE="chao1992estimating"/>
+<attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
+<attribute NAME="year" VALUE="1992"/>
+<attribute NAME="title" VALUE="Estimating the Number of Classes via Sample Coverage"/>
+<attribute NAME="authors" VALUE="Chao, Anne and Lee, Shen-Ming"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="16946A81A208DCFF2937816FC8AB9CCA02AEADC12275790AC2ABC25D63BA58"/>
+</node>
+<node TEXT="Abundance-based coverage estimator (ACE)" ID="ID_1372100444" CREATED="1519265268741" MODIFIED="1519265287396" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/167%20Stopping%20Rules%20and%20Estimation%20for%20Recapture%20Debugging%20with%20Unequal%20Failure%20Rates.pdf">
+<attribute NAME="key" VALUE="chao1993stopping"/>
+<attribute NAME="journal" VALUE="Biometrika"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Stopping Rules and Estimation for Recapture Debugging with Unequal Failure Rates"/>
+<attribute NAME="authors" VALUE="Chao, Anne and Yang, Mark C. K."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="876D8C63131CA0AE3D63E06349C13FC8A6486564D9C8F43A6323F87824B9DE">
+    <pdf_title>167 Stopping Rules and Estimation for Recapture Debugging with Unequal Failure Rates.pdf</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1342,7 +1442,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1518000991919" MOVED="1510633728393" HGAP="85" VSHIFT="-4">
+<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1510633728393" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
 <node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1517998846806" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">
@@ -1362,6 +1462,18 @@
 <attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
     <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
+<node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1521510243146" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
+<attribute NAME="key" VALUE="kalra2016driving"/>
+<attribute NAME="journal" VALUE="Transportation Research Part A: Policy and Practice"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Driving to Safety: How Many Miles of Driving Would It Take to Demonstrate Autonomous Vehicle Reliability?"/>
+<attribute NAME="authors" VALUE="Kalra, Nidhi and Paddock, Susan M"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CAA8A9DCCEF61ECF01AC276399F95C449B896424E52DF5217955549FEDEE454">
+    <pdf_title>Transportation Research Part A</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1431,6 +1543,16 @@
 <attribute NAME="authors" VALUE="Beglerovic, Halil and Stolz, Michael and Horn, Martin"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9C4A3620126DADC88FB32F1B6B510F9489AF6C839F585B4868340908275C89">
     <pdf_title>TestingofAutonomousVehiclesUsingSurrogate ModelsandStochasticOptimization</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Accelerated Evaluation of AVs in Car-Following Maneuvers" ID="ID_75095416" CREATED="1520993706207" MODIFIED="1520993721713" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/168%20Accelerated%20evaluation%20of%20AVs%20for%20car-following.pdf">
+<attribute NAME="key" VALUE="zhao2018evaluation"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers"/>
+<attribute NAME="authors" VALUE="Zhao, Ding and Huang, Xianan and Peng, Huei and Lam, Henry and LeBlanc, David J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="834F4AABA922F39FF39B994BA5ACC8E56FEB33A4E555B66EBE33AA6AEDAD">
+    <pdf_title>Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1508,7 +1630,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1512615876820" HGAP="146" VSHIFT="-1">
+<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1519207397039" HGAP="80" VSHIFT="8">
 <edge COLOR="#ffff00"/>
 <node TEXT="Overpass" ID="ID_522788377" CREATED="1511518432024" MODIFIED="1511519023893">
 <attribute NAME="key" VALUE="openstreetmaps"/>
@@ -1559,7 +1681,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1512369809994" HGAP="147" VSHIFT="-10">
+<node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1519207393458" HGAP="81" VSHIFT="-9">
 <edge COLOR="#ff0000"/>
 <node TEXT="The SHRP 2 Naturalistic Driving Study" ID="ID_682322192" CREATED="1510642780423" MODIFIED="1514536757888" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/053%20The%20SHRP%202%20Naturalistic%20Driving%20Study.pdf">
 <attribute NAME="key" VALUE="campbell2012shrp"/>
@@ -1600,7 +1722,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Own papers" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1038442194" CREATED="1516860598580" MODIFIED="1516860882158" HGAP="112" VSHIFT="-8">
+<node TEXT="Own papers" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1038442194" CREATED="1516860598580" MODIFIED="1519207391474" HGAP="70" VSHIFT="-8">
 <edge COLOR="#00ff00"/>
 <node TEXT="2015 Filtering and Identification for SABRE from Gradient Measurements in Adaptive Optics" ID="ID_748118504" CREATED="1516860892717" MODIFIED="1516861341539" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/123%20Filtering%20and%20Identification%20for%20SABRE%20from%20Gradient%20Measurements%20in%20AO.pdf">
 <attribute NAME="key" VALUE="deGelder2015sabre"/>
@@ -1663,10 +1785,10 @@
 <attribute NAME="authors" VALUE="de Gelder, Erwin and J.-P. Paardekooper and J. Ploeg and H. Elrofai and Op den Camp, Olaf and Khabbaz Saberi, Arash and De Schutter, Bart"/>
 </node>
 </node>
-<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1518673341857" HGAP="54" VSHIFT="-27">
+<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1518673341857" HGAP="54" VSHIFT="-27">
 <edge COLOR="#0000ff"/>
 <node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
-<node TEXT="GCDC2016" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1516513706946" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/054%20GCDC%202016%20Ploeg%20paper.pdf">
+<node TEXT="GCDC2016" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1521426704527" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/054%20GCDC%202016%20Ploeg%20paper.pdf">
 <attribute NAME="key" VALUE="ploeg2017GCDC"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1675,6 +1797,16 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F0A9446DBEC9FF1E37EB6BBB6DFDAE94E4051BA9B75256C74FE3D86728FF7B4">
     <pdf_title>Cooperative Automated Maneuvering at the 2016 Grand Cooperative Driving Challenge</pdf_title>
 </pdf_annotation>
+<node TEXT="Cooperative Intersection Contol Based on Virtual Platooning" ID="ID_785943988" CREATED="1521426699088" MODIFIED="1521426843835" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/169%20Cooperative%20Intersection%20Contol%20Based%20on%20Virtual%20Platooning.pdf">
+<attribute NAME="key" VALUE="morales2017cooperativeintersection"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Cooperative Intersection Control Based on Virtual Platooning"/>
+<attribute NAME="authors" VALUE="Morales Medina, Alejandro Ivan and van de Wouw, Nathan and Nijmeijer, Henk"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9B4DD5DBD54CE686442528F65AB2DB4AC37C6E56E36E2E859B58E91768705D">
+    <pdf_title>Cooperative Intersection Control Based on Virtual Platooning</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Waymo" ID="ID_302182765" CREATED="1511417632834" MODIFIED="1511417646825" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/059%20Waymo%20Safety%20Report.pdf">
 <attribute NAME="key" VALUE="waymo2017"/>
@@ -1774,7 +1906,7 @@
 </node>
 <node TEXT="Scenario similarity" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_241166301" CREATED="1518000690565" MODIFIED="1518000924227">
 <edge COLOR="#ff00ff"/>
-<node TEXT="Similarity measures for time series" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1080321734" CREATED="1518000705702" MODIFIED="1518000929563">
+<node TEXT="Similarity measures for time series" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1080321734" CREATED="1518000705702" MODIFIED="1518000929563">
 <node TEXT="Surveys" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1108172693" CREATED="1518000949311" MODIFIED="1518001009771">
 <node TEXT="An Empirical Evaluation of Similarity Measures for Time Series Classification" ID="ID_1585992208" CREATED="1518000721561" MODIFIED="1518002463366" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/138%20An%20Empirical%20Evaluation%20of%20Similarity%20Measures%20for%20Time%20Series%20Classification.pdf">
 <attribute NAME="key" VALUE="serra2014empirical"/>
@@ -1855,11 +1987,11 @@
 </node>
 </node>
 <node TEXT="Model-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1061375636" CREATED="1518920893299" MODIFIED="1518920910671">
-<node TEXT="Using auto-regression model coefficients (original paper)" ID="ID_118891723" CREATED="1518502176763" MODIFIED="1518502230604">
+<node TEXT="Using auto-regression model coefficients (original paper)" ID="ID_118891723" CREATED="1518502176763" MODIFIED="1519100203383">
 <attribute NAME="key" VALUE="piccolo1990distance"/>
 <attribute NAME="journal" VALUE="Journal of Time Series Analysis"/>
 <attribute NAME="year" VALUE="1990"/>
-<attribute NAME="title" VALUE="A distance measure for classifying ARIMA models"/>
+<attribute NAME="title" VALUE="A Distance Measure for Classifying {ARIMA} Models"/>
 <attribute NAME="authors" VALUE="Piccolo, Domenico"/>
 <node TEXT="Another paper with explanation" ID="ID_1786201095" CREATED="1518502237545" MODIFIED="1519005870164" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/148%20Time%20series%20clustering%20and%20classification%20by%20the%20autoregressive%20metric.pdf">
 <attribute NAME="key" VALUE="corduas2008autoregressive"/>
