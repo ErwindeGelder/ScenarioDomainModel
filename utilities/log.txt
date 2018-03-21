@@ -69,3 +69,14 @@ Processing file "..\20180207 Similarity\scenario_similarity"
  1: Overfull \hbox (14.22786pt too wide) in paragraph at lines 518--518
     []\T1/lmr/m/n/10 R. Agrawal, C. Falout-sos, and A. Swami,   Ef-fi-cient sim-i-
 
+####################################################################
+Processing file "..\20180320 Detailed scenario description\scenario_description"
+0 warnings
+3 badboxes
+ 1: Overfull \hbox (1.32808pt too wide) in paragraph at lines 2--307
+     [][] 
+ 2: Overfull \hbox (6.32777pt too wide) in paragraph at lines 2--467
+     [][] 
+ 3: Overfull \hbox (4.74486pt too wide) in paragraph at lines 2--474
+     [][] 
+

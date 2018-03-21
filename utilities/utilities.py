@@ -30,7 +30,8 @@ def remove_files(extension, folder):
 
 def clean_folder(folder):
     # Remove files that might be generated when compiling a .tex file
-    exts = ['aux', 'auxlock', 'bbl', 'bcf', 'blg', 'log', 'nav', 'out', 'run.xml', 'snm', 'synctex.gz', 'toc']
+    exts = ['aux', 'auxlock', 'bbl', 'bcf', 'blg', 'hst', 'log', 'nav', 'out', 'run.xml', 'snm', 'synctex.gz', 'toc',
+            'ver']
     for ext in exts:
         remove_files(ext, folder)
 
@@ -151,3 +152,4 @@ if __name__ == '__main__':
     pdf(os.path.join('..', 'progress_reports', 'report05'), 'progress_report_05', usebiber=True)
     settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'), 'standalone', True)
     pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True)
+    pdf(os.path.join('..', '20180320 Detailed scenario description'), 'scenario_description', usebiber=True)
