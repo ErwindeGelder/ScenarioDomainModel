@@ -1,10 +1,10 @@
 % This file was created by matplotlib2tikz v0.6.14.
 \begin{tikzpicture}
 
-\definecolor{color1}{rgb}{0.83921568627451,0.152941176470588,0.156862745098039}
-\definecolor{color2}{rgb}{0.580392156862745,0.403921568627451,0.741176470588235}
-\definecolor{color0}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
 \definecolor{color3}{rgb}{0.549019607843137,0.337254901960784,0.294117647058824}
+\definecolor{color0}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
+\definecolor{color2}{rgb}{0.580392156862745,0.403921568627451,0.741176470588235}
+\definecolor{color1}{rgb}{0.83921568627451,0.152941176470588,0.156862745098039}
 
 \begin{axis}[
 xlabel={$t$ [s]},
@@ -16,9 +16,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 xmajorgrids,
-x grid style={white!69.019607843137251!black},
+x grid style={lightgray!92.026143790849673!black},
 ymajorgrids,
-y grid style={white!69.019607843137251!black},
+y grid style={lightgray!92.026143790849673!black},
 clip marker paths
 ]
 \addplot [semithick, color0, mark=*, mark size=1, mark options={solid}, only marks, forget plot]

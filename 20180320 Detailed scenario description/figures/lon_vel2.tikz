@@ -13,9 +13,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 xmajorgrids,
-x grid style={white!69.019607843137251!black},
+x grid style={lightgray!92.026143790849673!black},
 ymajorgrids,
-y grid style={white!69.019607843137251!black},
+y grid style={lightgray!92.026143790849673!black},
 clip marker paths
 ]
 \addplot [line width=2.4000000000000004pt, color0, forget plot]

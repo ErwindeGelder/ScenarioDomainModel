@@ -9,7 +9,7 @@ width=\figurewidth,
 height=\figureheight,
 tick align=outside,
 tick pos=left,
-x grid style={white!69.019607843137251!black},
+x grid style={lightgray!92.026143790849673!black},
 clip marker paths,
 ytick=\empty,
 xtick={0,5,10,15,20,25,30,35,40},
@@ -21,7 +21,7 @@ y axis line style={draw opacity=0}
 --(axis cs:0,1)
 --cycle;
 
-\path [draw=white!70.0!black, fill=white!70.0!black] (axis cs:0,1)
+\path [draw=lightgray!93.333333333333329!black, fill=lightgray!93.333333333333329!black] (axis cs:0,1)
 --(axis cs:42.325,1)
 --(axis cs:42.325,2)
 --(axis cs:0,2)
@@ -33,7 +33,7 @@ y axis line style={draw opacity=0}
 --(axis cs:0,3)
 --cycle;
 
-\path [draw=white!70.0!black, fill=white!70.0!black] (axis cs:0,3)
+\path [draw=lightgray!93.333333333333329!black, fill=lightgray!93.333333333333329!black] (axis cs:0,3)
 --(axis cs:17.7200000286102,3)
 --(axis cs:17.7200000286102,4)
 --(axis cs:0,4)
@@ -45,7 +45,7 @@ y axis line style={draw opacity=0}
 --(axis cs:0.800000190734863,5)
 --cycle;
 
-\path [draw=white!70.0!black, fill=white!70.0!black] (axis cs:0.800000190734863,5)
+\path [draw=lightgray!93.333333333333329!black, fill=lightgray!93.333333333333329!black] (axis cs:0.800000190734863,5)
 --(axis cs:34.1600000858307,5)
 --(axis cs:34.1600000858307,6)
 --(axis cs:0.800000190734863,6)
