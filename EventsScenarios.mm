@@ -472,7 +472,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
+<node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
 <node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
 <node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
@@ -522,6 +522,18 @@
 <attribute NAME="authors" VALUE="Ess, Andreas and M{\&quot;u}ller, Tobias and Grabner, Helmut and Van Gool, Luc J"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="6C5BCF7BA5C95624E7CB63CDF047D1D82FEF52B80D7E1C06E6125550B9DF1B">
     <pdf_title>Segmentation-Based Urban Traffic Scene Understanding</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Data compression" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_203974535" CREATED="1521868113174" MODIFIED="1521868120954">
+<node TEXT="based on temporal correlation" ID="ID_924446852" CREATED="1521868123486" MODIFIED="1521868138306" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/171%20Compression%20algorithm%20of%20road%20traffic%20data.pdf">
+<attribute NAME="key" VALUE="wang2018compression"/>
+<attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Compression Algorithm of Road Traffic Data in Time Series Based on Temporal Correlation"/>
+<attribute NAME="authors" VALUE="Wang, Yong-dong and Xu, Dong-wei and Lu, Yun and Shen, Jun-Yan and Zhang, Gui-jun"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B1EDD9D0D21FC758B6CB7AC92D3E77B44FB121DCF0CEBC13906EA2B13DAFAC1B">
+    <pdf_title>Compression algorithm of road traffic data in time series based on temporal correlation</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1256,9 +1268,9 @@
 </node>
 </node>
 </node>
-<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
+<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
 <edge COLOR="#007c00"/>
-<node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
+<node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
 <node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1514536780218" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
 <attribute NAME="key" VALUE="cha2007surveyPDFmeasures"/>
 <attribute NAME="journal" VALUE="City"/>
@@ -1279,8 +1291,8 @@
     <pdf_title>The Wasserstein Distance and Approximation Theorems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Earth Mover&apos;s Distance" ID="ID_1099823323" CREATED="1513307442647" MODIFIED="1513307491581" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/085%20The%20Earth%20Mover&#x2019;s%20Distance%20as%20a%20Metric%20for%20Image%20Retrieval.pdf">
-<attribute NAME="key" VALUE="Rubner2000"/>
+<node TEXT="Earth Mover&apos;s Distance" ID="ID_1099823323" CREATED="1513307442647" MODIFIED="1522035195189" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/085%20The%20Earth%20Mover&#x2019;s%20Distance%20as%20a%20Metric%20for%20Image%20Retrieval.pdf">
+<attribute NAME="key" VALUE="rubner2000emd"/>
 <attribute NAME="journal" VALUE="International Journal of Computer Vision"/>
 <attribute NAME="year" VALUE="2000"/>
 <attribute NAME="title" VALUE="The Earth Mover&apos;s Distance as a Metric for Image Retrieval"/>
@@ -1289,12 +1301,12 @@
     <pdf_title>The Earth Mover&#x2019;s Distance as a Metric for Image Retrieval</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Kullback-Leibler divergence" ID="ID_1644600260" CREATED="1513218914941" MODIFIED="1513218925329" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/082%20On%20information%20and%20sufficiency%20-%20Kullback%20Leibler%20divergence.pdf">
+<node TEXT="Kullback-Leibler divergence" ID="ID_1644600260" CREATED="1513218914941" MODIFIED="1522035348054" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/082%20On%20information%20and%20sufficiency%20-%20Kullback%20Leibler%20divergence.pdf">
 <attribute NAME="key" VALUE="kullback1951"/>
-<attribute NAME="journal" VALUE="Ann. Math. Statist."/>
+<attribute NAME="journal" VALUE="The Annals of Mathematical Statistics"/>
 <attribute NAME="year" VALUE="1951"/>
 <attribute NAME="title" VALUE="On Information and Sufficiency"/>
-<attribute NAME="authors" VALUE="Kullback, S. and Leibler, R. A."/>
+<attribute NAME="authors" VALUE="Kullback, Solomon and Leibler, Richard A."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC845B2D75EB751B4DE9CD0E37C8CE7ED1F91B3DF863A54608CD26CCAB6CD">
     <pdf_title>The Annals of Mathematical Statistics.</pdf_title>
 </pdf_annotation>
@@ -1439,6 +1451,15 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F6AAEBED06BF122665784714A793BA7174F91BF3E1C8F79862955BE71E8B6F">
     <pdf_title>Introductory Econometrics for Finance</pdf_title>
 </pdf_annotation>
+</node>
+</node>
+<node TEXT="Bootstrapping" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_469412419" CREATED="1522047643493" MODIFIED="1522047650543">
+<node TEXT="Introduction to the bootstrap" ID="ID_602115159" CREATED="1522047651477" MODIFIED="1522047661938" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/172%20Bootstrapping.pdf">
+<attribute NAME="key" VALUE="efron1994bootstrap"/>
+<attribute NAME="year" VALUE="1994"/>
+<attribute NAME="title" VALUE="An Introduction to the Bootstrap"/>
+<attribute NAME="authors" VALUE="Efron, Bradley and Tibshirani, Robert J"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="65B771CFCD76B67ABB893B29A4CA53A3AD6B4E346B31B78FA125C6B659A9F5"/>
 </node>
 </node>
 </node>
@@ -1630,7 +1651,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1519207397039" HGAP="80" VSHIFT="8">
+<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1519207397039" HGAP="80" VSHIFT="8">
 <edge COLOR="#ffff00"/>
 <node TEXT="Overpass" ID="ID_522788377" CREATED="1511518432024" MODIFIED="1511519023893">
 <attribute NAME="key" VALUE="openstreetmaps"/>

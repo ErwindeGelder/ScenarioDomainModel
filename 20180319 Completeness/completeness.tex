@@ -75,8 +75,6 @@
 \usepackage{lmodern} 
 \usepackage{etoolbox}							%% Needed for apptocmd later
 \usepackage[capitalize]{cleveref}
-\crefname{figure}{Figure}{Figures}
-\crefname{equation}{}{}
 \usepackage{units}
 \usepackage{subcaption}
 \usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
@@ -176,6 +174,9 @@
 \newcommand{\pardv}{v_{\Delta}}
 \newcommand{\pardt}{t_{\textup{duration}}}
 
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
 
 %%==========================================================================
 %% User-defined environments
@@ -290,11 +291,11 @@ This document describes different methods for quantifying the completeness of a 
 \subsection{Comparing probability density functions}
 \label{sec:sample based pdf}
 
-According to Wang~et~al.~\cite{wang2017much}, the question of ``how much driving data is sufficient to address problems such as the cause of accidents, distraction and inattention, eco-driving styles, modeling driver behavior, and the effects of driver assistance systems on driver behavior'' has not been fully studied. Therefore, Wang~et~al.~\cite{wang2017much} present a method for quantifying the completeness regarding naturalistic driving data. 
+According to Wang \etal\ \cite{wang2017much}, the question of ``how much driving data is sufficient to address problems such as the cause of accidents, distraction and inattention, eco-driving styles, modeling driver behavior, and the effects of driver assistance systems on driver behavior'' has not been fully studied. Therefore, Wang \etal\ \cite{wang2017much} present a method for quantifying the completeness regarding naturalistic driving data. 
 
-Wang~et~al.~\cite{wang2017much} use a statistical method for determining the appropriate amount of data. Based on the data, a probability density function (PDF) is estimated. The point at which the PDF converges determines the amount of appropriate data. 
+Wang \etal\ \cite{wang2017much} use a statistical method for determining the appropriate amount of data. Based on the data, a probability density function (PDF) is estimated. The point at which the PDF converges determines the amount of appropriate data. 
 
-Let the PDF of a certain state $x \in \mathds{R}^D$ be denoted by $f(x)$. Based on the $n$ data points $\textbf{x}=\{x_i\}_{i=1}^n$, the PDF $f(x)$ can be estimated. This estimation is denoted by $\hat{f}(x;n)$. For estimating $f(x)$, Kernel Density Estimation (KDE) is employed, i.e.,
+Let the PDF of a certain state $x \in \mathds{R}^D$ be denoted by $f(x)$. Based on the $n$ data points $\textbf{x}=\{x_i\}_{i=1}^n$, the PDF $f(x)$ can be estimated. This estimation is denoted by $\hat{f}(x;n)$. For estimating $f(x)$, Kernel Density Estimation (KDE) \cite{rosenblatt1956remarks, parzen1962estimation} is employed, i.e.,
 \begin{equation}
 	\hat{f}(x;n) = \sum_{i=1}^n \frac{1}{h^D n} K \left( \frac{x - x_i}{h} \right),
 \end{equation}
@@ -302,11 +303,68 @@ where $h$ denotes the so-called bandwidth and $K(\cdot)$ represents the kernel. 
 \begin{equation}
 	K(x) = \frac{1}{\sqrt{2\pi}} \exp \left\{ -\frac{||x||^2}{2}\right\}.
 \end{equation}
+For the bandwidth, the Silverman rule is used, i.e. $h=1.06\cdot\hat{\sigma}\cdot n^{-1/5}$ \cite{silverman1986density}, where $\hat{\sigma}$ is the standard deviation of the data $\{x_i\}_{i=1}^n$.
 
-The distribution $f(x;n)$ will change as $n$ increases. It is expected, however, that the change will decrease as $n$ increases. Therefore, the distribution $\hat{f}(x;n+m)$ with $m \in \mathds{R}^+$ is compared with $\hat{f}(x;n)$. For the comparison of two PDFs, the Kullback-Leibler divergence is employed \cite{bishop2006pattern}. For the two distributions $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$, the Kullback-Leibler divergence is as follows:
+\begin{remark}
+	The power of the Silverman rule is in its simplicity. The disadvantage, however, is that it tends to oversmooth the density when it is used for multimodal and highly skewed densities \cite{silverman1986density}. When comparing two estimated PDFs, they will be more similar when both are oversmoothed. As the comparison of two estimated PDFs leads to the quantification of completeness, the use of the Silverman rule might lead to an overestimation of the degree of completeness.
+\end{remark}
+
+The distribution $f(x;n)$ will change as $n$ increases. It is expected, however, that the change will decrease as $n$ increases. Therefore, the distribution $\hat{f}(x;n+m)$ with $m \in \mathds{R}^+$ is compared with $\hat{f}(x;n)$. For the comparison of two PDFs, the Kullback-Leibler divergence is employed \cite{kullback1951, bishop2006pattern}. For the two distributions $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$, the Kullback-Leibler divergence is as follows:
 \begin{equation}
 	KL\left( \hat{f}(x;n+m) || \hat{f}(x;n) \right) = \int \hat{f}(x;n+m) \ln \left( \frac{\hat{f}(x;n+m)}{\hat{f}(x;n)} \right) \ud x.
 \end{equation}
+
+The Kullback-Leibler divergence is always positive and zero if and only if $\hat{f}(x;n+m) = \hat{f}(x;n)$. Wang~\etal\ determine the proper amount of driving data so that $KL(\hat{f}(x;n+m)||\hat{f}(x;n)$ changes very slightly if more data samples are to be added, i.e.,
+\begin{equation} \label{eq:completeness wang}
+	\left| KL\left(\hat{f}(x;n+m)||\hat{f}(x;n)\right) - KL\left(\hat{f}(x;n+2m)||\hat{f}(x;n+m)\right) \right| \leq \epsilon,
+\end{equation}
+for a small value of $\epsilon\in\mathds{R}^+$. The proper number of data-points $n$ equals the minimum value of $n$ for which \cref{eq:completeness wang} is satisfied.
+
+\begin{remark}
+	Although Wang~\etal\ use \cref{eq:completeness wang} to determine the appropriate number of data points $n$, it seems a bad choice as \cref{eq:completeness wang} is satisfied if the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$ is almost similar to the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n+2m)$. A better should would be to use
+	\begin{equation}
+		KL\left(\hat{f}(x;n+m) || \hat{f}(x;n) \right) \leq \epsilon,
+	\end{equation}
+	for a small value of $\epsilon\in\mathds{R}^+$.
+\end{remark}
+
+\begin{example}
+	\Cref{eq:completeness wang} is applied for the artificial data as shown in \cref{fig:artificial data}. When using similar values for $m$ and $\epsilon$ as in \cite{wang2017much}, i.e., $m=2000$ and $\epsilon=10^{-4}$, and the velocity as the feature $x$, it appears that 27 minutes of data suffices. 
+	
+	The result depends on the choice of $m$ and on the feature that is used. \Cref{tab:wang result} lists the results for different values of $m$, where both the speed and the acceleration are considered as features. Considering the estimations regarding the different features, Wang \etal\ use the maximum as final estimation of the appropriate amount of data. The maximum required time is shown in the last column of \cref{tab:wang result}. \Cref{tab:wang result} shows that the final estimated of the required data heavily depends on $m$.
+		
+	\begin{table}
+		\centering
+		\caption{Appropriate data according to \cref{eq:completeness wang}.}
+		\label{tab:wang result}
+		\begin{tabular}{rrrr}
+			\toprule
+			& \multicolumn{2}{c}{Feature} & \\
+			$m$ & Speed & Acceleration & Maximum \\ \otoprule
+			500 & $\unit[7]{min}$ & $\unit[5]{min}$ & $\unit[7]{min}$ \\
+			100 & $\unit[7]{min}$ & $\unit[12]{min}$ & $\unit[12]{min}$ \\
+			2000 & $\unit[27]{min}$ & $\unit[23]{min}$ & $\unit[27]{min}$ \\
+			4000 & $\unit[67]{min}$ & $\unit[27]{min}$ & $\unit[67]{min}$ \\
+			6000 & $\unit[50]{min}$ & $\unit[40]{min}$ & $\unit[50]{min}$ \\
+			8000 & $\unit[93]{min}$ & $\unit[40]{min}$ & $\unit[93]{min}$ \\
+			10000 & $\unit[100]{min}$ & $\unit[33]{min}$ & $\unit[100]{min}$ \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+\end{example}
+
+\subsection{Likelihood of new samples}
+
+This method is similar to the previous method in that a PDF is estimated using $n$ samples, i.e., $\hat{f}(x;n)$. But instead of comparing $\hat{f}(x;n)$ with $\hat{f}(x;n+m)$, the $m$ new samples are directly compared with first $n$ samples by determining the likelihood of the new $m$ samples based on the estimated PDF $\hat{f}(x;n)$. 
+
+Assuming that the samples are independent, the likelihood is simply the product of $\hat{f}(x_i;n)$ with $i=\{n+1, \ldots, n+m\}$. To get a value that is less dependent on the choice of $m$, the following value is used:
+\begin{equation}
+	J(n) = \left( \prod_{i=n+1}^{n+m} \hat{f}(x_i;n) \right)^{\frac{1}{m}}.
+\end{equation}
+
+\begin{remark}
+	Obviously, consecutive samples are not independent.
+\end{remark}
 
 \printbibliography
 
