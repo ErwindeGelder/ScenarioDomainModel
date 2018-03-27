@@ -13,9 +13,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 xmajorgrids,
-x grid style={white!69.019607843137251!black},
+x grid style={lightgray!92.026143790849673!black},
 ymajorgrids,
-y grid style={white!69.019607843137251!black}
+y grid style={lightgray!92.026143790849673!black}
 ]
 \addplot [line width=2.0pt, color0, forget plot]
 table {%
@@ -519,6 +519,141 @@ table {%
 497 0
 498 0
 499 0
+};
+\addplot [semithick, black, forget plot]
+table {%
+10.9 -1.3007710998959
+10.9 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+25.8 -1.3007710998959
+25.8 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+67.9 -1.3007710998959
+67.9 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+102.8 -1.3007710998959
+102.8 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+115 -1.3007710998959
+115 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+125.2 -1.3007710998959
+125.2 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+139.1 -1.3007710998959
+139.1 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+169 -1.3007710998959
+169 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+174.5 -1.3007710998959
+174.5 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+187.3 -1.3007710998959
+187.3 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+193.5 -1.3007710998959
+193.5 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+207 -1.3007710998959
+207 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+218.6 -1.3007710998959
+218.6 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+230.8 -1.3007710998959
+230.8 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+239.7 -1.3007710998959
+239.7 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+256.3 -1.3007710998959
+256.3 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+264.2 -1.3007710998959
+264.2 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+336 -1.3007710998959
+336 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+386.8 -1.3007710998959
+386.8 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+417.4 -1.3007710998959
+417.4 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+421.8 -1.3007710998959
+421.8 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+434.7 -1.3007710998959
+434.7 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+442.4 -1.3007710998959
+442.4 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+457.3 -1.3007710998959
+457.3 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+464.2 -1.3007710998959
+464.2 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+468.8 -1.3007710998959
+468.8 27.3161930978138
+};
+\addplot [semithick, black, forget plot]
+table {%
+479.1 -1.3007710998959
+479.1 27.3161930978138
 };
 \end{axis}
 

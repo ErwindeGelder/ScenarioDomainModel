@@ -84,7 +84,7 @@
 %%==========================================================================
 
 \newtoggle{standalone}
-\toggletrue{standalone}
+\togglefalse{standalone}
 \pagestyle{fancy}                                       %% set page style
 \fancyhf{}                                              %% clear all header & footer fields
 \iftoggle{standalone}{%
@@ -173,6 +173,9 @@
 \newcommand{\parvend}{v_{\textup{end}}}
 \newcommand{\pardv}{v_{\Delta}}
 \newcommand{\pardt}{t_{\textup{duration}}}
+\newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
+\newcommand{\entropy}[1]{\textup{H} \left[ #1 \right]}
+\newcommand{\hatentropy}[1]{\hat{\textup{H}} \left[ #1 \right]}
 
 \crefname{figure}{Figure}{Figures}
 \crefname{equation}{}{}
@@ -277,7 +280,7 @@ This document describes different methods for quantifying the completeness of a 
 \begin{figure}[b]
 	\centering
 	\input{figures/artificial_data.tikz}
-	\caption{Artificial data of the speed of a vehicle.}
+	\caption{Artificial data of the speed of a vehicle. The black vertical lines indicate the events. In between two events, the vehicle is either acceleration, cruising, or braking.}
 	\label{fig:artificial data}
 \end{figure}
 
@@ -296,7 +299,7 @@ According to Wang \etal\ \cite{wang2017much}, the question of ``how much driving
 Wang \etal\ \cite{wang2017much} use a statistical method for determining the appropriate amount of data. Based on the data, a probability density function (PDF) is estimated. The point at which the PDF converges determines the amount of appropriate data. 
 
 Let the PDF of a certain state $x \in \mathds{R}^D$ be denoted by $f(x)$. Based on the $n$ data points $\textbf{x}=\{x_i\}_{i=1}^n$, the PDF $f(x)$ can be estimated. This estimation is denoted by $\hat{f}(x;n)$. For estimating $f(x)$, Kernel Density Estimation (KDE) \cite{rosenblatt1956remarks, parzen1962estimation} is employed, i.e.,
-\begin{equation}
+\begin{equation} \label{eq:kde}
 	\hat{f}(x;n) = \sum_{i=1}^n \frac{1}{h^D n} K \left( \frac{x - x_i}{h} \right),
 \end{equation}
 where $h$ denotes the so-called bandwidth and $K(\cdot)$ represents the kernel. A Gaussian kernel is used, i.e.,
@@ -310,7 +313,7 @@ For the bandwidth, the Silverman rule is used, i.e. $h=1.06\cdot\hat{\sigma}\cdo
 \end{remark}
 
 The distribution $f(x;n)$ will change as $n$ increases. It is expected, however, that the change will decrease as $n$ increases. Therefore, the distribution $\hat{f}(x;n+m)$ with $m \in \mathds{R}^+$ is compared with $\hat{f}(x;n)$. For the comparison of two PDFs, the Kullback-Leibler divergence is employed \cite{kullback1951, bishop2006pattern}. For the two distributions $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$, the Kullback-Leibler divergence is as follows:
-\begin{equation}
+\begin{equation} \label{eq:KL divergence}
 	KL\left( \hat{f}(x;n+m) || \hat{f}(x;n) \right) = \int \hat{f}(x;n+m) \ln \left( \frac{\hat{f}(x;n+m)}{\hat{f}(x;n)} \right) \ud x.
 \end{equation}
 
@@ -322,14 +325,23 @@ for a small value of $\epsilon\in\mathds{R}^+$. The proper number of data-points
 
 \begin{remark}
 	Although Wang~\etal\ use \cref{eq:completeness wang} to determine the appropriate number of data points $n$, it seems a bad choice as \cref{eq:completeness wang} is satisfied if the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$ is almost similar to the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n+2m)$. A better should would be to use
-	\begin{equation}
+	\begin{equation} \label{eq:kl epsilon}
 		KL\left(\hat{f}(x;n+m) || \hat{f}(x;n) \right) \leq \epsilon,
 	\end{equation}
 	for a small value of $\epsilon\in\mathds{R}^+$.
 \end{remark}
 
 \begin{example}
-	\Cref{eq:completeness wang} is applied for the artificial data as shown in \cref{fig:artificial data}. When using similar values for $m$ and $\epsilon$ as in \cite{wang2017much}, i.e., $m=2000$ and $\epsilon=10^{-4}$, and the velocity as the feature $x$, it appears that 27 minutes of data suffices. 
+	\Cref{eq:completeness wang} is applied for the artificial data as shown in \cref{fig:artificial data}. When using similar values for $m$ and $\epsilon$ as in \cite{wang2017much}, i.e., $m=2000$ and $\epsilon=10^{-4}$, and the velocity as the feature $x$, it appears that 27 minutes of data suffices. The Kullback-Leibler divergence \cref{eq:KL divergence} is shown in \cref{fig:kl sample based} for different amount of data. \Cref{fig:kl sample based} shows that as $n$ increases, the Kullback-Leibler divergence becomes less. 
+	
+	\setlength\figurewidth{0.6\linewidth}
+	\setlength\figureheight{0.7\figurewidth}
+	\begin{figure}
+		\centering
+		\input{figures/kl_sample_based.tikz}%
+		\caption{Kullback-Leibler divergence according to \cref{eq:KL divergence} with $m=2000$.}
+		\label{fig:kl sample based}
+	\end{figure}
 	
 	The result depends on the choice of $m$ and on the feature that is used. \Cref{tab:wang result} lists the results for different values of $m$, where both the speed and the acceleration are considered as features. Considering the estimations regarding the different features, Wang \etal\ use the maximum as final estimation of the appropriate amount of data. The maximum required time is shown in the last column of \cref{tab:wang result}. \Cref{tab:wang result} shows that the final estimated of the required data heavily depends on $m$.
 		
@@ -353,18 +365,119 @@ for a small value of $\epsilon\in\mathds{R}^+$. The proper number of data-points
 	\end{table}
 \end{example}
 
+
 \subsection{Likelihood of new samples}
+\label{sec:likelihood sample based}
 
 This method is similar to the previous method in that a PDF is estimated using $n$ samples, i.e., $\hat{f}(x;n)$. But instead of comparing $\hat{f}(x;n)$ with $\hat{f}(x;n+m)$, the $m$ new samples are directly compared with first $n$ samples by determining the likelihood of the new $m$ samples based on the estimated PDF $\hat{f}(x;n)$. 
 
 Assuming that the samples are independent, the likelihood is simply the product of $\hat{f}(x_i;n)$ with $i=\{n+1, \ldots, n+m\}$. To get a value that is less dependent on the choice of $m$, the following value is used:
-\begin{equation}
+\begin{equation} \label{eq:likelihood estimation}
 	J(n) = \left( \prod_{i=n+1}^{n+m} \hat{f}(x_i;n) \right)^{\frac{1}{m}}.
+\end{equation}
+To make the computations easier, the log of \cref{eq:likelihood estimation} is considered:
+\begin{equation} \label{eq:loglikelihood estimation}
+	\ln J(n) = \frac{1}{m} \sum_{i=n+1}^{n+m} \ln \hat{f}(x_i;n).
 \end{equation}
 
 \begin{remark}
 	Obviously, consecutive samples are not independent.
 \end{remark}
+
+An important choice is when $J(n)$ is good enough. The goal is to estimate the underlying distribution $f(x)$ as accurately as possible. Therefore, when the true distribution $f(x)$ is used instead of $\hat{f}(x_i;n)$ in \cref{eq:loglikelihood estimation}, the expected value is
+\begin{equation} \label{eq:minus entropy}
+	\ln J^* = \expectation{ \ln f(x) }.
+\end{equation}
+Notice that \cref{eq:minus entropy} equals the negative entropy of the $f(x)$. The entropy $\entropy{x}$ is defined as follows \cite{bishop2006pattern}:
+\begin{equation} \label{eq:entropy}
+	\entropy{x} = -\int f(x) \ln f(x) \ud x,
+\end{equation}
+where use is made of $f(x) \ln f(x) = 0$ if $f(x)=0$. Since the distribution $f(x)$ is unknown, the entropy can be estimated using $\hat{f}(x_i;n)$:
+\begin{equation} \label{eq:entropy estimation}
+	\hatentropy{x; n} = -\int \hat{f}(x;n) \ln \hat{f}(x;n) \ud x.
+\end{equation}
+The estimated entropy \cref{eq:entropy estimation} can be used to determine the desired value of the log-likelihood \eqref{eq:loglikelihood estimation}.
+
+\begin{remark}
+	Using the estimated entropy \eqref{eq:entropy estimation} promotes the use of high values of the bandwidth $h$, as this will result in higher values of the entropy. As a result, even though the estimation PDF $\hat{f}(x_i;n)$ might be worse with a higher value of $h$, the log-likelihood \cref{eq:loglikelihood estimation} might be closer to the estimated entropy \eqref{eq:entropy estimation}.
+	
+	A work-around could be to determine the log-likelihood of the first $n$ samples, i.e.,
+	\begin{equation}
+		\frac{1}{n} \sum_{i=1}^n \ln \hat{f} (x_i; n).
+	\end{equation}
+	If this value is significantly higher than $-\hatentropy{x;n}$, this might be an indication that $\hat{f}(x_i; n)$ is an inaccurate estimation of $f(x)$.
+\end{remark}
+
+\begin{example} \label{example:likelihood sample based}
+	Based on the artificial data shown in \cref{fig:artificial data}, the log-likelihood \eqref{eq:loglikelihood estimation} is computed with $m=2000$, see \cref{fig:likelihood sample based}. It can be seen that the log-likelihood $\ln J(n)$ is on average the same as the negative entropy $-\hatentropy{x;n}$. However, there is not a clear trend visible regarding the log-likelihood and the amount of data.
+	
+	\setlength\figurewidth{0.6\linewidth}
+	\setlength\figureheight{0.7\figurewidth}
+	\begin{figure}
+		\centering
+		\input{figures/likelihood_samplebased.tikz}%
+		\caption{Log-likelihood \cref{eq:loglikelihood estimation} with $m=2000$ and the estimated entropy \cref{eq:entropy estimation}.}
+		\label{fig:likelihood sample based}
+	\end{figure}
+\end{example}
+
+
+\section{Activity-based methods}
+\label{sec:activity based methods}
+
+
+\subsection{Comparing probability density functions}
+\label{sec:comparing pdf activities}
+
+Instead of considering the PDFs of the time samples (see \cref{sec:sample based pdf}), the PDFs of the activities' features will be considered in this section. An activity refers to the behavior of the vehicle between two events. For illustrating the methods, three features that describe an activity are considered:
+\begin{itemize}
+	\item $v_{\textup{end}}$: The end speed of the activity.
+	\item $\Delta v$: The difference between the end and start speed.
+	\item $\Delta t$: The duration of the activity.
+\end{itemize}
+
+For each feature, a univariate PDF is estimated using Kernel Density Estimation (KDE), see \cref{eq:kde}. For each feature, the appropriate number of activities is estimated using the Kullback-Leibler divergence, according to \cref{eq:kl epsilon}, resulting in $n_{v_{\textup{end}}}$, $n_{\Delta v}$, and $n_{\Delta t}$. The total number of activities is simply the maximum of $n_{v_{\textup{end}}}$, $n_{\Delta v}$, and $n_{\Delta t}$.
+
+\begin{example}
+	Based on the artificial data, the KL divergence \cref{eq:KL divergence} is computed. \Cref{fig:kl activity based} shows the result for $m=10$. Using $\epsilon = 10^{-3}$ results in $n_{v_{\textup{end}}}=150$, $n_{\Delta v}=80$, and $n_{\Delta t}=20$ which correspond to $\unit[46]{min}$, $\unit[25]{min}$, and $\unit[7]{min}$, respectively. Therefore, according to this method, the appropriate amount of data is $\unit[46]{min}$. 
+	
+	\setlength\figurewidth{0.6\linewidth}
+	\setlength\figureheight{0.7\figurewidth}
+	\begin{figure}
+		\centering
+		\input{figures/KL_activity_based.tikz}%
+		\caption{Kullback-Leibler divergence \cref{eq:KL divergence} using the features from the activities with $m=10$.}
+		\label{fig:kl activity based}
+	\end{figure}
+
+	The result depends hugely on the choice of $m$. Obviously, when more data is added, the difference between the two PDFs $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$ is likely to be higher. For example, when $m=5$ is used, the estimated amount of appropriate data is $\unit[21]{min}$ instead of $\unit[46]{min}$. When $m=15$, this is $\unit[74]{min}$.
+\end{example}
+
+
+\subsection{Likelihood of new activities}
+\label{sec:likelihood new activities}
+
+This method is similar to the method presented in \cref{sec:likelihood sample based}, but instead of computing the likelihood of the samples, the likelihood of the activities is computed using the features of the activities. 
+
+\begin{example}
+	Based on the artificial data, the likelihood of the feature $\Delta v$ is computed, see \cref{fig:likelihood activity based}. Similarly when applying this method for the samples (see \cref{example:likelihood sample based}), there is not a clear trend visible regarding the log-likelihood and the amount of data.
+	
+	\setlength\figurewidth{0.6\linewidth}
+	\setlength\figureheight{0.7\figurewidth}
+	\begin{figure}
+		\centering
+		\input{figures/likelihood_activitybased.tikz}%
+		\caption{Log-likelihood \cref{eq:loglikelihood estimation} with $m=10$ and the estimated entropy \cref{eq:entropy estimation} using the feature $\Delta v$.}
+		\label{fig:likelihood activity based}
+	\end{figure}
+\end{example}
+
+
+\subsection{Dissimilarity of new activities}
+\label{sec:dissimilarity new activities}
+
+Blabla.
+
 
 \printbibliography
 
