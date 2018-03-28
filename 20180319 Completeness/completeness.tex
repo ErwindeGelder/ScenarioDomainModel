@@ -272,8 +272,38 @@ For the scenario-based assessment, proper specification of scenarios is crucial 
 % Completeness
 In order to draw conclusions on how an automated vehicle would perform in real-world traffic, it is necessary to know how representative the scenario database, which is used for the scenario-based assessment of the automated vehicle, is. Therefore it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}.
 
+% Approach
+To achieve a complete database, the process shown in \cref{fig:completeness collection} is adopted. Newly collected data is compared with an existing database. If the data is not ``similar'', the data is added and the process is repeated. If, at some point, the data is ``similar'', it is concluded that the database is complete. This document describes different ways to determine to what degree the newly collected data is ``similar'' to the earlier collected data.
+
+\tikzstyle{startstop}=[rectangle, rounded corners, minimum width=4em, minimum height=4em, text centered, draw=black, fill=red!30, text width=4em]
+\tikzstyle{process} = [rectangle, minimum width=9em, text width=8.5em, minimum height=4em, text centered, draw=black, fill=orange!30, node distance=10em]
+\tikzstyle{decision} = [diamond, minimum width=4em, text width=4em, minimum height=4em, text centered, draw=black, fill=green!30, node distance=10em]
+\tikzstyle{arrow} = [-{Triangle[width=2mm, length=3mm, round]}, line width=0.6mm] % rounded corners=0.4em
+\begin{figure}[b]
+	\centering
+	\begin{tikzpicture}
+		% Draw the blocks
+		\node[startstop](start){Start};
+		\node[process, right of=start, node distance=7em, text width=5em, minimum width=5.5em](collect){Collect new data};
+		\node[process, right of=collect, node distance=9em](compare){Compare new data with database};
+		\node[decision, right of=compare](similar){New data similar?};
+		\node[startstop, right of=similar, node distance=9em](stop){Database complete};
+		\node[process, below of=compare, node distance=7em](add){Add collected data to database};
+		
+		% Arrows
+		\draw[arrow] (start) -- (collect);
+		\draw[arrow] (collect) -- (compare);
+		\draw[arrow] (compare) -- (similar);
+		\draw[arrow] (similar) -- node[anchor=south]{Yes} (stop);
+		\draw[arrow] (similar) |- node[anchor=north]{No} (add);
+		\draw[arrow] (add) -| (collect);
+	\end{tikzpicture}
+	\caption{Schematic process of collecting data until a certain level of completeness is reached.}
+	\label{fig:completeness collection}
+\end{figure}
+
 % Purpose of this document
-This document describes different methods for quantifying the completeness of a dataset. To illustrate the different methods, use is made of artificial data. The advantage of using artificial data is that it is easy to obtain a huge amount of data. The data consists of the speed of a vehicle sampled at $\unit[10]{Hz}$. Furthermore, the acceleration is estimated by filtering the derivative of the speed. A portion of the data is shown in \cref{fig:artificial data}. Note that the data is not very realistic, because in real-life the relative time a vehicle is cruising, i.e., driving at a constant speed, will be higher. However, for the purpose of illustrating the different methods, the artificial data suffices.
+This document describes different methods for quantifying the completeness of a dataset. To illustrate the different methods, use is made of artificial data. The advantage of using artificial data is that it is easy to obtain a huge amount of data. The data consists of the speed of a vehicle sampled at $\unit[10]{Hz}$. Furthermore, the acceleration is estimated by filtering the derivative of the speed. A portion of the data is shown in \cref{fig:artificial data}. Note that the data is not very realistic, because in real life the relative time a vehicle is cruising, i.e., driving at a constant speed, will be higher. However, for the purpose of illustrating the different methods, the artificial data suffices.
 
 \setlength\figurewidth{0.8\linewidth}              %% set figure width
 \setlength\figureheight{0.3\textwidth}              %% set figure height
@@ -285,6 +315,7 @@ This document describes different methods for quantifying the completeness of a 
 \end{figure}
 
 % Structure of document
+The methods can be divided into two groups, i.e., the sample-based methods and the activity-based methods. The sample-based methods are discussed in \cref{sec:sample based} and the activity-based methods are discussed in \cref{sec:activity based methods}.
 
 
 \section{Sample-based methods}
@@ -306,7 +337,11 @@ where $h$ denotes the so-called bandwidth and $K(\cdot)$ represents the kernel. 
 \begin{equation}
 	K(x) = \frac{1}{\sqrt{2\pi}} \exp \left\{ -\frac{||x||^2}{2}\right\}.
 \end{equation}
-For the bandwidth, the Silverman rule is used, i.e. $h=1.06\cdot\hat{\sigma}\cdot n^{-1/5}$ \cite{silverman1986density}, where $\hat{\sigma}$ is the standard deviation of the data $\{x_i\}_{i=1}^n$.
+For the bandwidth, the Silverman rule \cite{silverman1986density} is used, i.e., 
+\begin{equation}
+	h=1.06\cdot\hat{\sigma}\cdot n^{-1/5},
+\end{equation}
+where $\hat{\sigma}$ is the standard deviation of the data $\{x_i\}_{i=1}^n$.
 
 \begin{remark}
 	The power of the Silverman rule is in its simplicity. The disadvantage, however, is that it tends to oversmooth the density when it is used for multimodal and highly skewed densities \cite{silverman1986density}. When comparing two estimated PDFs, they will be more similar when both are oversmoothed. As the comparison of two estimated PDFs leads to the quantification of completeness, the use of the Silverman rule might lead to an overestimation of the degree of completeness.
@@ -429,7 +464,9 @@ The estimated entropy \cref{eq:entropy estimation} can be used to determine the 
 \subsection{Comparing probability density functions}
 \label{sec:comparing pdf activities}
 
-Instead of considering the PDFs of the time samples (see \cref{sec:sample based pdf}), the PDFs of the activities' features will be considered in this section. An activity refers to the behavior of the vehicle between two events. For illustrating the methods, three features that describe an activity are considered:
+Instead of considering the PDFs of the time samples (see \cref{sec:sample based pdf}), the PDFs of the activities' features will be considered in this section. An activity refers to the behavior of the vehicle between two events. As the number of activities is much less than the number of samples, the analysis using the activities is much less computationally intensive.
+
+For illustrating the methods, three features that describe an activity are considered:
 \begin{itemize}
 	\item $v_{\textup{end}}$: The end speed of the activity.
 	\item $\Delta v$: The difference between the end and start speed.
@@ -470,14 +507,60 @@ This method is similar to the method presented in \cref{sec:likelihood sample ba
 		\caption{Log-likelihood \cref{eq:loglikelihood estimation} with $m=10$ and the estimated entropy \cref{eq:entropy estimation} using the feature $\Delta v$.}
 		\label{fig:likelihood activity based}
 	\end{figure}
+
+	A possible reason why the result in \cref{fig:likelihood activity based} is inconclusive could be the fact that the chosen bandwidth $h$ is too large and therefore the estimated PDF $\hat{f}(x;n)$ is oversmoothed. When using pseudo likelihood cross-validation \cite{turlach1993bandwidthselection} to determine the optimal bandwidth, a smaller bandwidth is obtained, see \cref{fig:bandwidth}. This results in a different log-likelihood, see \cref{fig:loglikelihood activities small bandwidth}.
+	
+	\setlength\figureheight{0.4\linewidth}
+	\setlength\figurewidth{0.48\linewidth}
+	\begin{figure}
+		\centering
+		\begin{minipage}{0.48\linewidth}
+			\centering
+			\input{figures/likelihood_activitybased_small_bandwidth.tikz}%
+			\subcaption{Log-likelihood.}
+			\label{fig:loglikelihood activities small bandwidth}
+		\end{minipage}%
+		\begin{minipage}{0.48\linewidth}
+			\centering
+			\input{figures/bandwidth.tikz}%
+			\subcaption{Bandwidth $h$.}
+			\label{fig:bandwidth}
+		\end{minipage}
+		\caption{Left: The log-likelihood \cref{eq:loglikelihood estimation} with $m=10$ and the estimated entropy \cref{eq:entropy estimation} using the features $\Delta v$ and a bandwidth estimated using cross validation. Right: comparison of the bandwidth computed using the Silverman rule (for which the resulting log-likelihood is shown in \cref{fig:likelihood activity based}) and using cross validation (for which the result is shown in the left figure).}
+		\label{fig:loglikelihood and bandwidth}
+	\end{figure}
 \end{example}
 
 
 \subsection{Dissimilarity of new activities}
 \label{sec:dissimilarity new activities}
 
-Blabla.
+This method compares the newly collected activities with all earlier collected activities. If the newly collected activities are very ``similar'' to the earlier collected activities, it is concluded that the dataset is complete. The main difference with the previous methods is that this method focuses on having distinct activities, while the distribution of the activities (i.e., the PDFs) are not taken into account. 
 
+For determining the dissimilarity between two activities, the features of the activity are used. The feature vector is denoted as $\theta$. For this study, $\theta = \begin{bmatrix} v_{\textup{end}} & \Delta v & \Delta t \end{bmatrix}^T$, where $v_{\textup{end}}$, $\Delta v$, and $\Delta t$ are defined in \cref{sec:comparing pdf activities}.
+
+A max-minimum method is used to determine to what degree the newly collected activities differ from the earlier collected activities, i.e., 
+\begin{equation} \label{eq:maxmin dissimilarity}
+	J_d(n, m) = \max_{n+1 \leq j \leq n+m} \min_{1 \leq i \leq n} g(\theta_i, \theta_j),
+\end{equation}
+where $g(\theta_i, \theta_j)$ denotes the dissimilarity measure that is defined as follows:
+\begin{equation}
+	g(\theta_i, \theta_j) = \sqrt{ \left( \theta_i - \theta_j \right)^T W \left( \theta_i - \theta_j \right)},
+\end{equation}
+where $W$ is a positive definite weighting matrix. For this study, $W$ is chosen to be a diagonal matrix with the $(k,k)$-th element equal to the reciprocal of the variance of the $k$-th feature, based on the $n$ activities.
+
+\begin{example}
+	Based on the artificial data, the max-minimum of the dissimilarity between the $m=10$ new activities and the earlier activities is computed, see \cref{fig:jd}. Although it is not clearly visible, there is a trend visible where $J_d(n,m)$ decreases as more data is added. There are, however, still some high values near the end. Furthermore, there is not a clear point in time where \emph{completeness} is reached.
+	
+	\setlength\figurewidth{0.6\linewidth}
+	\setlength\figureheight{0.7\figurewidth}
+	\begin{figure}
+		\centering
+		\input{figures/dissimilarity.tikz}%
+		\caption{Dissimilarity \cref{eq:maxmin dissimilarity} of the $m=10$ new activities compared to the earlier recorded activities.}
+		\label{fig:jd}
+	\end{figure}
+\end{example}
 
 \printbibliography
 

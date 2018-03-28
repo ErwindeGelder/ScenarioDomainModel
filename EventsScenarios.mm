@@ -134,7 +134,7 @@
 <attribute NAME="key" VALUE="Learningsystem_Bishop"/>
 <attribute NAME="year" VALUE="2006"/>
 <attribute NAME="title" VALUE="Pattern Recognition and Machine Learning"/>
-<attribute NAME="authors" VALUE="Christopher M. Bishop"/>
+<attribute NAME="authors" VALUE="Bishop, Christopher M."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="FEE7C711A79E918E9491622FCAD3E1C3DE98167F4519CB687B678D9BD887718">
     <pdf_title>Information Science and Statistics</pdf_title>
 </pdf_annotation>
@@ -1271,9 +1271,9 @@
 <node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
 <edge COLOR="#007c00"/>
 <node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
-<node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1514536780218" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
+<node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1522214060203" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
 <attribute NAME="key" VALUE="cha2007surveyPDFmeasures"/>
-<attribute NAME="journal" VALUE="City"/>
+<attribute NAME="journal" VALUE="International Journal of Mathematical Models and Methods in Applied Sciences"/>
 <attribute NAME="year" VALUE="2007"/>
 <attribute NAME="title" VALUE="Comprehensive Survey on Distance/Similarity Measures between Probability Density Functions"/>
 <attribute NAME="authors" VALUE="Cha, Sung-Hyuk"/>
@@ -1356,7 +1356,7 @@
 <attribute NAME="key" VALUE="turlach1993bandwidthselection"/>
 <attribute NAME="year" VALUE="1993"/>
 <attribute NAME="title" VALUE="Bandwidth Selection in Kernel Density Estimation: A Review"/>
-<attribute NAME="authors" VALUE="Berwin A. Turlach"/>
+<attribute NAME="authors" VALUE="Turlach, Berwin A."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="40F9A34E24E03D74DDE25D6651FCFE1A37274D17210F57F75C9AD52BEBB5173"/>
 </node>
 <node TEXT="FastKDE" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1513917929034">
