@@ -83,7 +83,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \begin{itemize}
 	\item Jeroen Ploeg will leave TNO on the first of April. Therefore, Olaf Op den Camp is asked to replace Jeroen Ploeg as a supervisor for my PhD. Olaf agreed, so he is now part of the team.
 	\item I might also use additional data that is obtained for a TNO project. I don't know the current status for this.
-	\item We discussed different (dis)similarity measures for time series. These measures can be used to compare different activities. We concluded that it would be best to simply use custom features extracted from the time series, as this gives the most freedom in choosing what features are relevant.
+	\item We discussed different (dis)similarity measures for time series. These measures can be used to compare different activities. We concluded that it would be best to simply use custom features extracted from the time series, as this gives the most freedom in defining when time series are ``similar''. As this might change from application to application, a high degree of freedom regarding the definition of a (dis)similarity measure would be useful.
 \end{itemize}
 
 \section{Summary of work}
@@ -91,20 +91,20 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \begin{itemize}
 	\item I created a document describing 15 different scenarios classes as this was required for my work in Singapore. The idea is to also define trees of tags, but this is not yet done. The document will be reviewed by others in Singapore, so I did not attach it this progress report.
 	\item I did some research regarding the quantification of the \emph{completeness}. Attached is a report that reflects my findings.
-	\item The work of Wang et al.\ \cite{wang2017much} is interesting, because it is the only work I found that deals with the same problem. However, I think there are several shortcomings:
+	\item The work of Wang et al.\ \cite{wang2017much} is interesting, because it is the only work I found that deals with the completeness problem. However, I think there are several shortcomings:
 	\begin{itemize}
-		\item The method heavily depends on the chosen parameters. As they do not give any argumentation for their choices of $m$ and $\epsilon$, I think the result is arbitrary. 
-		\item The equation they use, in order to determine whether the acquired data is enough, seems inappropriate. See Remark~2.2 in the attached report.
+		\item The method heavily depends on the chosen parameters. As they do not give any argumentation for their choices of (e.g., the values of $m$ and $\epsilon$), I think the results are arbitrary. 
+		\item The equation they use to determine whether the acquired data is enough seems inappropriate. See Remark~2.2 in the attached report.
 	\end{itemize}
-	\item Currently, the likelihood methods (see Section~2.2 and Section~3.2 of the attached report) give inconclusive results. I think, however, that this is mainly due to the oversmoothing of the estimated probability density functions (see Remark~2.4 of the report).
 \end{itemize}
 
 \section{Future plans}
 
 \begin{itemize}
 	\item Currently, I used univariate distributions. To model the dependencies, however, multivariate distributions would be more appropriate. Therefore, I want to apply the methods using multivariate distributions.
+	\item Currently, the likelihood methods (see Section~2.2 and Section~3.2 of the attached report) give inconclusive results. I think, however, that this is mainly due to the oversmoothing of the estimated probability density functions (see Remark~2.4 of the report). Therefore, I want to look for other methods to (quickly) define the bandwidth of the Kernel Density Estimation.
 	\item I quickly chose three features to describe the activities (i.e., $v_{\textup{end}}$, $\Delta v$, and $\Delta t$). As this might not be the best choice, I want to see whether the results are different when other features are used.
-	\item The Kullback-Leibler divergence \cite{kullback1951} is used to ``measure'' the difference between to probability density functions. There are, however, many more similarity measures \cite{cha2007surveyPDFmeasures}. For example, when using the Kolmogorov-Smirnov test or the Earth Mover's Distance \cite{cha2007surveyPDFmeasures}, we can directly work with the cumulative density functions, so there is no need to estimate the density itself (which is very time consuming). I want to investigate whether other measures are useful or not.
+	\item The Kullback-Leibler divergence \cite{kullback1951} is used to ``measure'' the difference between to probability density functions. There are, however, many more similarity measures \cite{cha2007surveyPDFmeasures}. For example, when using the Kolmogorov-Smirnov test or the Earth Mover's Distance \cite{cha2007surveyPDFmeasures}, we can directly work with the cumulative density functions, so there is no need to estimate the density itself (which is very time consuming). I want to investigate whether these other measures are useful or not.
 \end{itemize}
 
 \section{Questions}
@@ -132,7 +132,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 			\input{figures/example2.tikz}
 			\subcaption{Another simple example.}
 		\end{minipage}
-		\caption{Two simple examples of the speed of an vehicle. When only considering the individual samples, these example will be considered to be similar.}
+		\caption{Two simple examples of the speed of a vehicle. When only considering the individual samples, these examples will be considered to be similar.}
 		\label{fig:speed example}
 	\end{figure}
 	\item Regarding the likelihood methods (see Section~2.2 and Section~3.2 of the report), what would be a good way to determine the threshold? As explained in the document, the estimated entropy might be a good candidate. 

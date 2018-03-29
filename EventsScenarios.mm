@@ -1462,6 +1462,18 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="65B771CFCD76B67ABB893B29A4CA53A3AD6B4E346B31B78FA125C6B659A9F5"/>
 </node>
 </node>
+<node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_410836587" CREATED="1522285999005" MODIFIED="1522286009782">
+<node TEXT="1955 A mathematical theory of communication: ENTROPY defined" ID="ID_31946635" CREATED="1522286012922" MODIFIED="1522286819511" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/173%20A%20mathematical%20theory%20of%20communication.pdf">
+<attribute NAME="key" VALUE="shannon1948communication"/>
+<attribute NAME="journal" VALUE="The Bell System Technical Journal"/>
+<attribute NAME="year" VALUE="1948"/>
+<attribute NAME="title" VALUE="A Mathematical Theory of Communication"/>
+<attribute NAME="authors" VALUE="Shannon, Claude E."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6585544D982E7E9348AC8FF2C712FBD5BB46F34E5579121745499C901">
+    <pdf_title>THE MATHEMATICAL THEORY OF COMMUNICATION</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1510633728393" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>

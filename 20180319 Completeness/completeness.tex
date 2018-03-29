@@ -84,7 +84,7 @@
 %%==========================================================================
 
 \newtoggle{standalone}
-\togglefalse{standalone}
+\toggletrue{standalone}
 \pagestyle{fancy}                                       %% set page style
 \fancyhf{}                                              %% clear all header & footer fields
 \iftoggle{standalone}{%
@@ -270,48 +270,57 @@ Therefore, a scenario-based approach is proposed \cite{roesener2016scenariobased
 For the scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in test cases used for scenario-based assessment \cite{stellet2015taxonomy}.
 
 % Completeness
-In order to draw conclusions on how an automated vehicle would perform in real-world traffic, it is necessary to know how representative the scenario database, which is used for the scenario-based assessment of the automated vehicle, is. Therefore it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}.
+To draw conclusions on how an automated vehicle would perform in real-world traffic, it is necessary to know how representative the scenario database, that is used for the scenario-based assessment of the automated vehicle, is. Therefore it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}.
 
 % Approach
-To achieve a complete database, the process shown in \cref{fig:completeness collection} is adopted. Newly collected data is compared with an existing database. If the data is not ``similar'', the data is added and the process is repeated. If, at some point, the data is ``similar'', it is concluded that the database is complete. This document describes different ways to determine to what degree the newly collected data is ``similar'' to the earlier collected data.
+%To achieve a complete database, the process shown in \cref{fig:completeness collection} is adopted. Newly collected data is compared with an existing database. If the data is not ``similar'', the data is added and the process is repeated. If, at some point, the data is ``similar'', it is concluded that the database is complete. This document describes different ways to determine to what degree the newly collected data is ``similar'' to the earlier collected data.
 
-\tikzstyle{startstop}=[rectangle, rounded corners, minimum width=4em, minimum height=4em, text centered, draw=black, fill=red!30, text width=4em]
-\tikzstyle{process} = [rectangle, minimum width=9em, text width=8.5em, minimum height=4em, text centered, draw=black, fill=orange!30, node distance=10em]
-\tikzstyle{decision} = [diamond, minimum width=4em, text width=4em, minimum height=4em, text centered, draw=black, fill=green!30, node distance=10em]
-\tikzstyle{arrow} = [-{Triangle[width=2mm, length=3mm, round]}, line width=0.6mm] % rounded corners=0.4em
-\begin{figure}[b]
-	\centering
-	\begin{tikzpicture}
-		% Draw the blocks
-		\node[startstop](start){Start};
-		\node[process, right of=start, node distance=7em, text width=5em, minimum width=5.5em](collect){Collect new data};
-		\node[process, right of=collect, node distance=9em](compare){Compare new data with database};
-		\node[decision, right of=compare](similar){New data similar?};
-		\node[startstop, right of=similar, node distance=9em](stop){Database complete};
-		\node[process, below of=compare, node distance=7em](add){Add collected data to database};
-		
-		% Arrows
-		\draw[arrow] (start) -- (collect);
-		\draw[arrow] (collect) -- (compare);
-		\draw[arrow] (compare) -- (similar);
-		\draw[arrow] (similar) -- node[anchor=south]{Yes} (stop);
-		\draw[arrow] (similar) |- node[anchor=north]{No} (add);
-		\draw[arrow] (add) -| (collect);
-	\end{tikzpicture}
-	\caption{Schematic process of collecting data until a certain level of completeness is reached.}
-	\label{fig:completeness collection}
-\end{figure}
+%\tikzstyle{startstop}=[rectangle, rounded corners, minimum width=4em, minimum height=4em, text centered, draw=black, fill=red!30, text width=4em]
+%\tikzstyle{process} = [rectangle, minimum width=9em, text width=8.5em, minimum height=4em, text centered, draw=black, fill=orange!30, node distance=10em]
+%\tikzstyle{decision} = [diamond, minimum width=4em, text width=4em, minimum height=4em, text centered, draw=black, fill=green!30, node distance=10em]
+%\tikzstyle{arrow} = [-{Triangle[width=2mm, length=3mm, round]}, line width=0.6mm] % rounded corners=0.4em
+%\begin{figure}[b]
+%	\centering
+%	\begin{tikzpicture}
+%		% Draw the blocks
+%		\node[startstop](start){Start};
+%		\node[process, right of=start, node distance=7em, text width=5em, minimum width=5.5em](collect){Collect new data};
+%		\node[process, right of=collect, node distance=9em](compare){Compare new data with database};
+%		\node[decision, right of=compare](similar){New data similar?};
+%		\node[startstop, right of=similar, node distance=9em](stop){Database complete};
+%		\node[process, below of=compare, node distance=7em](add){Add collected data to database};
+%		
+%		% Arrows
+%		\draw[arrow] (start) -- (collect);
+%		\draw[arrow] (collect) -- (compare);
+%		\draw[arrow] (compare) -- (similar);
+%		\draw[arrow] (similar) -- node[anchor=south]{Yes} (stop);
+%		\draw[arrow] (similar) |- node[anchor=north]{No} (add);
+%		\draw[arrow] (add) -| (collect);
+%	\end{tikzpicture}
+%	\caption{Schematic process of collecting data until a certain level of completeness is reached.}
+%	\label{fig:completeness collection}
+%\end{figure}
 
 % Purpose of this document
-This document describes different methods for quantifying the completeness of a dataset. To illustrate the different methods, use is made of artificial data. The advantage of using artificial data is that it is easy to obtain a huge amount of data. The data consists of the speed of a vehicle sampled at $\unit[10]{Hz}$. Furthermore, the acceleration is estimated by filtering the derivative of the speed. A portion of the data is shown in \cref{fig:artificial data}. Note that the data is not very realistic, because in real life the relative time a vehicle is cruising, i.e., driving at a constant speed, will be higher. However, for the purpose of illustrating the different methods, the artificial data suffices.
+This document describes different methods for quantifying the completeness of a dataset. To illustrate the different methods, use is made of artificial data. The advantage of using artificial data is that it is easy to obtain a huge amount of data. The data consists of the speed of a vehicle sampled at $\unit[10]{Hz}$. Furthermore, the acceleration is estimated by filtering the derivative of the speed. A portion of the data is shown in \cref{fig:artificial data}. Note that the data is not very realistic, because in real life, the relative time a vehicle is cruising, i.e., driving at a constant speed, will be higher. However, for the purpose of illustrating the different methods, the artificial data suffices.
 
 \setlength\figurewidth{0.8\linewidth}              %% set figure width
 \setlength\figureheight{0.3\textwidth}              %% set figure height
-\begin{figure}[b]
+\begin{figure}
 	\centering
-	\input{figures/artificial_data.tikz}
-	\caption{Artificial data of the speed of a vehicle. The black vertical lines indicate the events. In between two events, the vehicle is either acceleration, cruising, or braking.}
-	\label{fig:artificial data}
+	\begin{minipage}{\linewidth}
+		\centering
+		\input{figures/artificial_data.tikz}%
+		\subcaption{Speed.}	
+	\end{minipage}
+	\begin{minipage}{\linewidth}
+		\centering
+		\input{figures/artificial_data_acc.tikz}%
+		\subcaption{Acceleration.}	
+	\end{minipage}
+	\caption{Artificial data of the (a) speed and (b) acceleration of a vehicle. The black vertical lines indicate the events. In between two events, the vehicle is either acceleration, cruising, or braking.}
+	\label{fig:artificial data}	
 \end{figure}
 
 % Structure of document
@@ -338,7 +347,7 @@ where $h$ denotes the so-called bandwidth and $K(\cdot)$ represents the kernel. 
 	K(x) = \frac{1}{\sqrt{2\pi}} \exp \left\{ -\frac{||x||^2}{2}\right\}.
 \end{equation}
 For the bandwidth, the Silverman rule \cite{silverman1986density} is used, i.e., 
-\begin{equation}
+\begin{equation} \label{eq:silverman}
 	h=1.06\cdot\hat{\sigma}\cdot n^{-1/5},
 \end{equation}
 where $\hat{\sigma}$ is the standard deviation of the data $\{x_i\}_{i=1}^n$.
@@ -352,14 +361,14 @@ The distribution $f(x;n)$ will change as $n$ increases. It is expected, however,
 	KL\left( \hat{f}(x;n+m) || \hat{f}(x;n) \right) = \int \hat{f}(x;n+m) \ln \left( \frac{\hat{f}(x;n+m)}{\hat{f}(x;n)} \right) \ud x.
 \end{equation}
 
-The Kullback-Leibler divergence is always positive and zero if and only if $\hat{f}(x;n+m) = \hat{f}(x;n)$. Wang~\etal\ determine the proper amount of driving data so that $KL(\hat{f}(x;n+m)||\hat{f}(x;n)$ changes very slightly if more data samples are to be added, i.e.,
+The Kullback-Leibler divergence is always positive and zero if and only if $\hat{f}(x;n+m) = \hat{f}(x;n)$. Wang~\etal\ \cite{wang2017much} determine the proper amount of driving data such that $KL({\hat{f}(x;n+m)} || {\hat{f}(x;n)})$ changes very slightly if more data samples are to be added, i.e.,
 \begin{equation} \label{eq:completeness wang}
 	\left| KL\left(\hat{f}(x;n+m)||\hat{f}(x;n)\right) - KL\left(\hat{f}(x;n+2m)||\hat{f}(x;n+m)\right) \right| \leq \epsilon,
 \end{equation}
-for a small value of $\epsilon\in\mathds{R}^+$. The proper number of data-points $n$ equals the minimum value of $n$ for which \cref{eq:completeness wang} is satisfied.
+for a small value of $\epsilon\in\mathds{R}^+$. The proper number of samples $n$ equals the minimum value of $n$ for which \cref{eq:completeness wang} is satisfied.
 
 \begin{remark}
-	Although Wang~\etal\ use \cref{eq:completeness wang} to determine the appropriate number of data points $n$, it seems a bad choice as \cref{eq:completeness wang} is satisfied if the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$ is almost similar to the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n+2m)$. A better should would be to use
+	Although Wang~\etal\ use \cref{eq:completeness wang} to determine the appropriate number of samples $n$, it seems a bad choice as \cref{eq:completeness wang} is satisfied if the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$ is almost similar to the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n+2m)$. A better should would be to use
 	\begin{equation} \label{eq:kl epsilon}
 		KL\left(\hat{f}(x;n+m) || \hat{f}(x;n) \right) \leq \epsilon,
 	\end{equation}
@@ -367,7 +376,7 @@ for a small value of $\epsilon\in\mathds{R}^+$. The proper number of data-points
 \end{remark}
 
 \begin{example}
-	\Cref{eq:completeness wang} is applied for the artificial data as shown in \cref{fig:artificial data}. When using similar values for $m$ and $\epsilon$ as in \cite{wang2017much}, i.e., $m=2000$ and $\epsilon=10^{-4}$, and the velocity as the feature $x$, it appears that 27 minutes of data suffices. The Kullback-Leibler divergence \cref{eq:KL divergence} is shown in \cref{fig:kl sample based} for different amount of data. \Cref{fig:kl sample based} shows that as $n$ increases, the Kullback-Leibler divergence becomes less. 
+	\Cref{eq:completeness wang} is applied for the artificial data as shown in \cref{fig:artificial data}. When using similar values for $m$ and $\epsilon$ as in \cite{wang2017much}, i.e., $m=2000$ and $\epsilon=10^{-4}$, and the velocity as the feature $x$, it appears that 27 minutes of data suffices. The Kullback-Leibler divergence \cref{eq:KL divergence} is shown in \cref{fig:kl sample based} as a function of the amount of data. \Cref{fig:kl sample based} shows that as $n$ increases, the Kullback-Leibler divergence becomes less. 
 	
 	\setlength\figurewidth{0.6\linewidth}
 	\setlength\figureheight{0.7\figurewidth}
@@ -382,7 +391,7 @@ for a small value of $\epsilon\in\mathds{R}^+$. The proper number of data-points
 		
 	\begin{table}
 		\centering
-		\caption{Appropriate data according to \cref{eq:completeness wang}.}
+		\caption{Appropriate data according to \cref{eq:completeness wang} with $\epsilon=10^{-4}$.}
 		\label{tab:wang result}
 		\begin{tabular}{rrrr}
 			\toprule
@@ -434,7 +443,7 @@ where use is made of $f(x) \ln f(x) = 0$ if $f(x)=0$. Since the distribution $f(
 The estimated entropy \cref{eq:entropy estimation} can be used to determine the desired value of the log-likelihood \eqref{eq:loglikelihood estimation}.
 
 \begin{remark}
-	Using the estimated entropy \eqref{eq:entropy estimation} promotes the use of high values of the bandwidth $h$, as this will result in higher values of the entropy. As a result, even though the estimation PDF $\hat{f}(x_i;n)$ might be worse with a higher value of $h$, the log-likelihood \cref{eq:loglikelihood estimation} might be closer to the estimated entropy \eqref{eq:entropy estimation}.
+	Using the estimated entropy \eqref{eq:entropy estimation} promotes the use of high values of the bandwidth $h$, as this will result in higher values of the entropy. As a result, even though the estimated PDF $\hat{f}(x_i;n)$ might be worse with a higher value of $h$, the log-likelihood \cref{eq:loglikelihood estimation} might be closer to the estimated entropy \eqref{eq:entropy estimation}.
 	
 	A work-around could be to determine the log-likelihood of the first $n$ samples, i.e.,
 	\begin{equation}
@@ -473,7 +482,7 @@ For illustrating the methods, three features that describe an activity are consi
 	\item $\Delta t$: The duration of the activity.
 \end{itemize}
 
-For each feature, a univariate PDF is estimated using Kernel Density Estimation (KDE), see \cref{eq:kde}. For each feature, the appropriate number of activities is estimated using the Kullback-Leibler divergence, according to \cref{eq:kl epsilon}, resulting in $n_{v_{\textup{end}}}$, $n_{\Delta v}$, and $n_{\Delta t}$. The total number of activities is simply the maximum of $n_{v_{\textup{end}}}$, $n_{\Delta v}$, and $n_{\Delta t}$.
+For each feature, a univariate PDF is estimated using Kernel Density Estimation (KDE), see \cref{eq:kde}, with the bandwidth according to Silverman's rule, see \cref{eq:silverman}. For each feature, the appropriate number of activities is estimated using the Kullback-Leibler divergence, according to \cref{eq:kl epsilon}, resulting in $n_{v_{\textup{end}}}$, $n_{\Delta v}$, and $n_{\Delta t}$. The total number of activities is simply the maximum of $n_{v_{\textup{end}}}$, $n_{\Delta v}$, and $n_{\Delta t}$.
 
 \begin{example}
 	Based on the artificial data, the KL divergence \cref{eq:KL divergence} is computed. \Cref{fig:kl activity based} shows the result for $m=10$. Using $\epsilon = 10^{-3}$ results in $n_{v_{\textup{end}}}=150$, $n_{\Delta v}=80$, and $n_{\Delta t}=20$ which correspond to $\unit[46]{min}$, $\unit[25]{min}$, and $\unit[7]{min}$, respectively. Therefore, according to this method, the appropriate amount of data is $\unit[46]{min}$. 
@@ -535,7 +544,7 @@ This method is similar to the method presented in \cref{sec:likelihood sample ba
 \subsection{Dissimilarity of new activities}
 \label{sec:dissimilarity new activities}
 
-This method compares the newly collected activities with all earlier collected activities. If the newly collected activities are very ``similar'' to the earlier collected activities, it is concluded that the dataset is complete. The main difference with the previous methods is that this method focuses on having distinct activities, while the distribution of the activities (i.e., the PDFs) are not taken into account. 
+This method compares the newly collected activities with the earlier collected activities. If the newly collected activities are very ``similar'' to the earlier collected activities, it is concluded that the dataset is complete. The main difference with the previous methods is that this method focuses on having distinct activities, while the distribution of the activities (i.e., the PDFs) is not taken into account. 
 
 For determining the dissimilarity between two activities, the features of the activity are used. The feature vector is denoted as $\theta$. For this study, $\theta = \begin{bmatrix} v_{\textup{end}} & \Delta v & \Delta t \end{bmatrix}^T$, where $v_{\textup{end}}$, $\Delta v$, and $\Delta t$ are defined in \cref{sec:comparing pdf activities}.
 
@@ -550,7 +559,7 @@ where $g(\theta_i, \theta_j)$ denotes the dissimilarity measure that is defined 
 where $W$ is a positive definite weighting matrix. For this study, $W$ is chosen to be a diagonal matrix with the $(k,k)$-th element equal to the reciprocal of the variance of the $k$-th feature, based on the $n$ activities.
 
 \begin{example}
-	Based on the artificial data, the max-minimum of the dissimilarity between the $m=10$ new activities and the earlier activities is computed, see \cref{fig:jd}. Although it is not clearly visible, there is a trend visible where $J_d(n,m)$ decreases as more data is added. There are, however, still some high values near the end. Furthermore, there is not a clear point in time where \emph{completeness} is reached.
+	Based on the artificial data, the max-minimum of the dissimilarity between the $m=10$ new activities and the earlier activities is computed, see \cref{fig:jd}. Although it is not clearly visible, there is a trend where $J_d(n,m)$ decreases as more data is added. There are, however, still some high values of $J_d(n,m)$ near the end. Furthermore, there is not a clear point in time where \emph{completeness} is reached.
 	
 	\setlength\figurewidth{0.6\linewidth}
 	\setlength\figureheight{0.7\figurewidth}

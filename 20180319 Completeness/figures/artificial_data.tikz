@@ -13,9 +13,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 xmajorgrids,
-x grid style={lightgray!92.026143790849673!black},
+x grid style={white!69.019607843137251!black},
 ymajorgrids,
-y grid style={lightgray!92.026143790849673!black}
+y grid style={white!69.019607843137251!black}
 ]
 \addplot [line width=2.0pt, color0, forget plot]
 table {%
