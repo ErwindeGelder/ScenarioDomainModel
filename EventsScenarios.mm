@@ -1462,6 +1462,28 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="65B771CFCD76B67ABB893B29A4CA53A3AD6B4E346B31B78FA125C6B659A9F5"/>
 </node>
 </node>
+<node TEXT="Entropy" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_278372824" CREATED="1522301293611" MODIFIED="1522301298216">
+<node TEXT="Nonparametric entropy estimation: an overview" ID="ID_1964446420" CREATED="1522301299079" MODIFIED="1522301813915" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/174%20Nonparametric%20entropy%20estimation%20An%20overview.pdf">
+<attribute NAME="key" VALUE="beirlant1997nonparametric"/>
+<attribute NAME="journal" VALUE="International Journal of Mathematics and Statistics Sciences"/>
+<attribute NAME="year" VALUE="1997"/>
+<attribute NAME="title" VALUE="Nonparametric Entropy Estimation: An Overview"/>
+<attribute NAME="authors" VALUE="Beirlant, J. and Dudewicz and Gy{\&quot;o}rfi, L. and van der Meulen, E. C."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8557C4EDD34C1C44D1C39298E478427B47E91D9BF715177911E7B5F89E619">
+    <pdf_title>I Introduction</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Estimation of Entropy and Mutual Information (for nonparametric pdfs)" ID="ID_1227641079" CREATED="1522301875075" MODIFIED="1522301964302" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/175%20Estimation%20of%20Entropy%20and%20Mutual%20Information.pdf">
+<attribute NAME="key" VALUE="paninski2003estimation"/>
+<attribute NAME="journal" VALUE="Neural Computation"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="Estimation of Entropy and Mutual Information"/>
+<attribute NAME="authors" VALUE="Paninski, Liam"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="43256EF6B0D7A68DB57E64993DCF77A2F6119D1AC60263E9114527A68A17BE">
+    <pdf_title>Estimation of Entropy and Mutual Information</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_410836587" CREATED="1522285999005" MODIFIED="1522286009782">
 <node TEXT="1955 A mathematical theory of communication: ENTROPY defined" ID="ID_31946635" CREATED="1522286012922" MODIFIED="1522286819511" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/173%20A%20mathematical%20theory%20of%20communication.pdf">
 <attribute NAME="key" VALUE="shannon1948communication"/>
