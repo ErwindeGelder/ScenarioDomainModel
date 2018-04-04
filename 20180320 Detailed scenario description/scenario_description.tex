@@ -31,8 +31,8 @@
 %% Document automation
 %%==========================================================================
 
-\def\reptitle{Detailed scenario description}
-\def\repauthor{Erwin de Gelder}
+\def\reptitle{Storage of real-world scenarios}
+\def\repauthor{Erwin de Gelder, Jan-Pieter Paardekooper}
 
 
 %%==========================================================================
@@ -265,12 +265,12 @@
 \section{Introduction}
 \label{sec:introduction}
 
-This document describes how two consecutive scenarios can be parametrized.
+The goal of Streetwise is the storage of real-world scenarios mined from naturalistic driving data. This document provides an example (an extension of the example described in \cite{degelder2018ontology}) of several scenarios found in a approximately 40 seconds of naturalistic driving data.
 
 
 \section{Scenario description}
 
-A real-world example is presented. A schematic overview of the example is shown in \cref{fig:example schematic}. Three vehicles are present in the example: a pickup truck, a sedan, and a station wagon, see \cref{fig:example schematic}a from left to right, respectively. The ego vehicle, i.e., the sedan, is displayed in red. The example can be described in words as follows. The ego vehicle accelerates towards its predecessor (i.e., the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. In the meantime, the car behind the ego vehicle (i.e., the station wagon) accelerates and takes over both other vehicles (i.e., the ego vehicle and the pickup truck). When the station wagon has passed both vehicles, the ego vehicle accelerates and performs a lane change after which it overtakes the pickup truck.
+A schematic overview of the example is shown in \cref{fig:example schematic}. Three vehicles are present in the example: a pickup truck, a sedan, and a station wagon, see \cref{fig:example schematic}(a) from left to right, respectively. The ego vehicle (the sedan), is displayed in red. The example can be described in words as follows. The ego vehicle accelerates towards its predecessor (the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. In the meantime, the car behind the ego vehicle (the station wagon) accelerates and takes over both other vehicles (the ego vehicle and the pickup truck). When the station wagon has passed both vehicles, the ego vehicle accelerates and performs a lane change after which it overtakes the pickup truck.
 
 \setlength\figureheight{106pt}
 \setlength\figurewidth{260pt}
@@ -290,8 +290,18 @@ A real-world example is presented. A schematic overview of the example is shown 
 	\label{fig:example schematic}
 \end{figure}
 
-Two different scenarios can be identified. The first scenario starts at the beginning of the example and ends when the lane change starts. When the first scenario ends, the second scenario starts. The second scenario ends when the ego vehicle completes the overtaking of the pickup truck.
-
+Several different scenarios can be identified:
+\begin{itemize} 
+    \item \textbf{Ego gap closing}: Starts at the beginning of the example and ends when the lane change starts.
+    \item \textbf{Ego overtaking 1}: Starts at the lane change, ends when ego vehicle completes overtaking of the pickup truck.
+    \item \textbf{Ego overtaking 2}: Starts at the lane change of the station wagon, ends when ego vehicle completes overtaking of the pickup truck.
+    \item \textbf{Pickup free driving}: Starts at beginning of example, ends when the station wagon makes a cut-in.
+    \item \textbf{Pickup cut-in 1}: Starts either when the station wagon starts changing lane, or when the station wagon comes into sensor range of the pickup. Ends when the station wagon in the same lane in front of the pickup.
+    \item \textbf{Pickup cut-in 2}: Starts either when the sedan starts changing lane, or when the sedan comes into sensor range of the pickup. Ends when the sedan in the same lane in front of the pickup.
+    \item \textbf{Station car following}: Starts at the beginning of the example and ends when the lane change starts.
+    \item \textbf{Station overtaking}: Starts at the lane change, ends when the station completes overtaking both cars and is back in the right lane.
+\end{itemize}
+The scenarios include all 'relevant' events. In case of the 'ego overtaking' scenarios, it might be relevant that another car is already overtaking, because it means that the ego cannot change lane as long as it is occupied. In the end, during test case generation, what is 'relevant' depends on the system under test. In this particular example, suppose that we are testing an automatic lane change function. If the function needs to decide whether it is safe to overtake, the second scenario is the most relevant. If not, the first might be more relevant.
 
 \section{Ego vehicle}
 
@@ -323,7 +333,7 @@ The activities of the ego vehicle are shown in \cref{fig:example ego states}, in
 	\setlength\figureheight{170pt}
 	\setlength\figurewidth{\linewidth}
 	\input{figures/events.tikz}%
-	\caption{Complete overview of the events and activities of the example. Every vertical black line represents an event. The end of the first scenario and the start of the second scenario is at the moment the ego vehicle starts the first lane change, i.e., at $t=17\ \textup{s}$ as indicated by the red line.}
+	\caption{Complete overview of the events and activities of the example. Every vertical black line represents an event. The end of the 'ego gap closing' scenario and the start of the 'ego overtaking 1' scenario is at the moment the ego vehicle starts the first lane change, i.e., at $t=17\ \textup{s}$ as indicated by the red line.}
 	\label{fig:example events}
 \end{figure}
 
@@ -579,6 +589,11 @@ The station wagon starts with acceleration. The parameters for this activity are
 		\input{tabular/event50_normalization}%
 	\end{minipage}%
 \end{table}
+
+
+\section{Scenarios}
+
+Scenarios are constructed by combining the activities of all road users (ego + dynamic environment) with the static environment. Since currently we don't have enough reliable information on the static environment, we focus on the ego and its dynamic environment for constructing the first scenarios. As an example, we take the 'ego overtaking 1' scenario. The first relevant event is the start of the lane change of the ego vehicle, indicated by the red vertical line in \cref{fig:example events}. The scenario ends at the end of the second lane change. The relevant activities are therefore G,H,I for the lateral ego activities and accordingly C,D,E for the longitudinal ego activities. Similarly, the scenario contains the activities of the pickup (cruising + lane following). 
 
 \printbibliography
 
