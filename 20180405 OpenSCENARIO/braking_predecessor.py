@@ -4,12 +4,12 @@ import datetime
 
 
 # Parameters
-vinit = 50/3.6  # [m/s] Initial speed of both vehicles
-dinit = vinit * 1.5  # [s] Initial distance between both vehicles
-t0 = 5  # [s] Time before braking
-tbraking = 5  # [s] Duration of the braking
-tend = 20  # [s] End time of the scenario
-vend = 10/3.6  # [m/s] End speed of predecessor
+vinit = 50/3.6                  # [m/s] Initial speed of both vehicles
+dinit = vinit * 1.5             # [s] Initial distance between both vehicles
+t0 = 5                          # [s] Time before braking
+tbraking = 5                    # [s] Duration of the braking
+tend = 20                       # [s] End time of the scenario
+vend = 10/3.6                   # [m/s] End speed of predecessor
 ego_name = "Ego"
 target_name = "Predecessor"
 
@@ -56,13 +56,15 @@ cruising2 = e.Event(e.Action(e.Private(e.Longitudinal(e.Speed(e.Dynamics(shape="
                                                                                                 name="Braking",
                                                                                                 rule="end"))))),
                     name="Cruising2", priority="overwrite")
-storyboard.append(e.Story(e.Act(e.Sequence(e.Actors(e.Entity(name="$owner")),
+storyboard.append(e.Story(e.Owner(name=target_name),
+                          e.Act(e.Sequence(e.Actors(e.Entity(name=target_name)),
                                            e.Maneuver(cruising1, braking, cruising2,
                                                       name="BrakingPredecessorManeuver"),
                                            name="MySequence"),
                                 name="MyAct"),
-                          name="MyStory", owner=target_name))
+                          name="MyStory"))
 
+# Generate the .xosc file (and print it on the screen)
 doc = etree.tostring(doc, xml_declaration=True, encoding='utf-8', pretty_print=True)
 with open("braking_predecessor.xosc", "wb") as f:
     f.write(doc)
