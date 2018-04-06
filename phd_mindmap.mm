@@ -466,6 +466,9 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="For testing of AVs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_446913384" CREATED="1522996423752" MODIFIED="1522996430189">
+<node TEXT="Automated Scenario Generation of Regression Testing of AVs" ID="ID_164912009" CREATED="1522996504294" MODIFIED="1522996505122"/>
+</node>
 </node>
 <node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
@@ -541,6 +544,18 @@
 <attribute NAME="authors" VALUE="Wang, Wenshuo and Xi, Junqiang and Zhao, Ding"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="21F92F6E63E3AA8DA7FDEAF0DDC5A14F4CD1E87D3FF443E54B985DF18F8150">
     <pdf_title>Learning and Inferring a Driver&#x2019;s Braking Action in Car-Following Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Evaluation measure" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_925273535" CREATED="1522996306267" MODIFIED="1522996312499">
+<node TEXT="A New Model for Evaluating Range-Based Anomaly Detection Algorithms" ID="ID_1367017718" CREATED="1522996318461" MODIFIED="1522996330546" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/178%20A%20New%20Model%20for%20Evaluating%20Range-Based%20Anomaly%20Detection%20Algorithms.pdf">
+<attribute NAME="key" VALUE="tatbul2018new"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1803.03639"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A New Model for Evaluating Range-Based Anomaly Detection Algorithms"/>
+<attribute NAME="authors" VALUE="Tatbul, Nesime and Lee, Tae Jun and Zdonik, Stan and Gottschlich, Justin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="69C12CECE9EC8E306C943ED51F3BCDD43A197A8FE04D5E677C87EFDFDD54B8DF">
+    <pdf_title>X G</pdf_title>
 </pdf_annotation>
 </node>
 </node>
