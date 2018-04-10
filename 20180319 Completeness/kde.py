@@ -108,7 +108,7 @@ class KDE(object):
             print('      Computing the optimal bandwidth for the KDE using cross-validation')
 
         grid = GridSearchCV(self.kde, {'bandwidth': np.linspace(min_bandwidth, max_bandwidth, n_bandwidths)},
-                            cv=20)  # 20-fold cross-validation
+                            cv=10)  # 20-fold cross-validation
         if self.scale_data:
             grid.fit(self.data / self.std)
         else:

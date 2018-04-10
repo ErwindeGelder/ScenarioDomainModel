@@ -49,9 +49,9 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 %%==========================================================================
 %% Define header/title stuff
 %%==========================================================================
-\newcommand{\progressreportnumber}{\#}
+\newcommand{\progressreportnumber}{7}
 \renewcommand{\author}{Erwin de Gelder}
-\renewcommand{\date}{12 Oktober 2017}
+\renewcommand{\date}{16 May, 2018}
 \renewcommand{\title}{Performance assessment of automated vehicles using real-world driving scenarios}
 
 %%==========================================================================
@@ -77,7 +77,14 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \section{Previous meeting minutes}
 
 \begin{itemize}
-	\item 
+	\item We discussed about the quantification of the \emph{completeness} of the driving data. Completeness of the data can refer to different aspects. E.g., having recorded all the variety of one specific activity/scenario or having recorded all different types of scenarios. It would be good to write down these different aspects of \emph{completeness} in a more formal manner. 
+	\item We discussed the work of Wang et al.\ \cite{wang2017much}. Wang et al.\ quantify the completeness using the samples. We agreed that it would be more appropriate to use the activities instead of the individual samples for our application.
+	\item We agreed to improve the work regarding the completeness, i.e., 
+	\begin{itemize}
+		\item apply multivariate distributions (because data is not independent),
+		\item instead of using the Silverman rule for determination of the bandwidth, look at different methods,
+		\item and look at different methods for determining the difference between two probability distribution functions (instead of the Kullback-Leibler divergence).
+	\end{itemize}
 \end{itemize}
 
 \section{Summary of work}

@@ -1,0 +1,148 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+%\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab/Python)
+\pgfplotsset{compat=1.14}						%% Run in backwards compatibility mode
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+\usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
+\usepackage{units}								%% Appropriate behavior of units
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../../bib}
+\usepackage{subcaption}
+
+%%==========================================================================
+%% Define reference stuff
+%%==========================================================================
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{6}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{29 March, 2018}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-world driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\newlength\figurewidth
+\newlength\figureheight
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item Jeroen Ploeg will leave TNO on the first of April. Therefore, Olaf Op den Camp is asked to replace Jeroen Ploeg as a supervisor for my PhD. Olaf agreed, so he is now part of the team.
+	\item I might also use additional data that is obtained for a TNO project. I don't know the current status for this.
+	\item We discussed different (dis)similarity measures for time series. These measures can be used to compare different activities. We concluded that it would be best to simply use custom features extracted from the time series, as this gives the most freedom in defining when time series are ``similar''. As this might change from application to application, a high degree of freedom regarding the definition of a (dis)similarity measure would be useful.
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item I created a document describing 15 different scenarios classes as this was required for my work in Singapore. The idea is to also define trees of tags, but this is not yet done. The document will be reviewed by others in Singapore, so I did not attach it this progress report.
+	\item I did some research regarding the quantification of the \emph{completeness}. Attached is a report that reflects my findings.
+	\item The work of Wang et al.\ \cite{wang2017much} is interesting, because it is the only work I found that deals with the completeness problem. However, I think there are several shortcomings:
+	\begin{itemize}
+		\item The method heavily depends on the chosen parameters. As they do not give any argumentation for their choices of (e.g., the values of $m$ and $\epsilon$), I think the results are arbitrary. 
+		\item The equation they use to determine whether the acquired data is enough seems inappropriate. See Remark~2.2 in the attached report.
+	\end{itemize}
+\end{itemize}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item Currently, I used univariate distributions. To model the dependencies, however, multivariate distributions would be more appropriate. Therefore, I want to apply the methods using multivariate distributions.
+	\item Currently, the likelihood methods (see Section~2.2 and Section~3.2 of the attached report) give inconclusive results. I think, however, that this is mainly due to the oversmoothing of the estimated probability density functions (see Remark~2.4 of the report). Therefore, I want to look for other methods to (quickly) define the bandwidth of the Kernel Density Estimation.
+	\item I quickly chose three features to describe the activities (i.e., $v_{\textup{end}}$, $\Delta v$, and $\Delta t$). As this might not be the best choice, I want to see whether the results are different when other features are used.
+	\item The Kullback-Leibler divergence \cite{kullback1951} is used to ``measure'' the difference between to probability density functions. There are, however, many more similarity measures \cite{cha2007surveyPDFmeasures}. For example, when using the Kolmogorov-Smirnov test or the Earth Mover's Distance \cite{cha2007surveyPDFmeasures}, we can directly work with the cumulative density functions, so there is no need to estimate the density itself (which is very time consuming). I want to investigate whether these other measures are useful or not.
+\end{itemize}
+
+\section{Questions}
+
+\begin{itemize}
+	\item It is clear that different methods for quantifying the completeness result in different results. Furthermore, there are some choices regarding the parameters that have a large influence on the result (e.g., $m$ and $\epsilon$). However, I do not have a measure that indicates how good the \emph{completeness measure} is. In other words: I cannot conclude which method works best. What would be a good way to define such a measure?
+	\begin{itemize}
+		\item Perhaps a good option would be to use the estimated PDF and compare this with the true PDF. Of course, the true PDF is not known in real life. With the artificial data, however, the true PDF is known.
+	\end{itemize}
+	\item In the report, I made a distinction of sample-based methods (like the method of Wang et al.) and activity-based methods. What kind of method is preferred: sample based or activity based? (Technically, scenario-based methods could also be considered.)
+	\begin{itemize}
+		\item I prefer activity-based methods. Activity-based methods are much faster than sample-based methods, because there are more samples than activities. Furthermore, by only considering the samples, no temporal information is taken into account (i.e., how a signal progresses over time). For example, the two speed profiles of \cref{fig:speed example} are similar when only considering the samples while they are not similar when considering the activities.
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\setlength\figureheight{0.4\linewidth}
+		\setlength\figurewidth{0.46\linewidth}
+		\begin{minipage}{0.46\linewidth}
+			\centering
+			\input{figures/example1.tikz}
+			\subcaption{A simple example.}
+		\end{minipage}
+		\hspace{0.04\linewidth}
+		\begin{minipage}{0.46\linewidth}
+			\input{figures/example2.tikz}
+			\subcaption{Another simple example.}
+		\end{minipage}
+		\caption{Two simple examples of the speed of a vehicle. When only considering the individual samples, these examples will be considered to be similar.}
+		\label{fig:speed example}
+	\end{figure}
+	\item Regarding the likelihood methods (see Section~2.2 and Section~3.2 of the report), what would be a good way to determine the threshold? As explained in the document, the estimated entropy might be a good candidate. 
+\end{itemize}
+
+
+\printbibliography
+
+
+\newpage
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20180319 Completeness"/completeness.pdf}
+
+\end{document}

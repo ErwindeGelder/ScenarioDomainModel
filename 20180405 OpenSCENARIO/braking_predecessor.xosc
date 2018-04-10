@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<OpenSCENARIO>
+  <FileHeader description="Braking predecessor" date="2018-04-05T14:49:28" author="Erwin de Gelder" revMinor="1" revMajor="0"/>
+  <Entities>
+    <Object name="Ego"/>
+    <Object name="Predecessor"/>
+  </Entities>
+  <Storyboard>
+    <Init>
+      <Actions>
+        <Private object="Ego">
+          <Action>
+            <Longitudinal>
+              <Speed>
+                <Dynamics shape="step"/>
+                <Target>
+                  <Absolute value="13.9"/>
+                </Target>
+              </Speed>
+            </Longitudinal>
+          </Action>
+          <Action>
+            <Position>
+              <World z="0" p="0" y="0" h="0" x="0" r="0"/>
+            </Position>
+          </Action>
+        </Private>
+        <Private object="Predecessor">
+          <Action>
+            <Position>
+              <World z="0" p="0" y="0" h="0" x="20.8" r="0"/>
+            </Position>
+          </Action>
+        </Private>
+      </Actions>
+    </Init>
+    <Story name="MyStory">
+      <Owner name="Predecessor"/>
+      <Act name="MyAct">
+        <Sequence name="MySequence">
+          <Actors>
+            <Entity name="Predecessor"/>
+          </Actors>
+          <Maneuver name="BrakingPredecessorManeuver">
+            <Event name="Cruising1" priority="overwrite">
+              <Action>
+                <Private>
+                  <Longitudinal>
+                    <Speed>
+                      <Dynamics time="5.0" shape="linear"/>
+                      <Target>
+                        <Absolute value="13.9"/>
+                      </Target>
+                    </Speed>
+                  </Longitudinal>
+                </Private>
+              </Action>
+              <StartConditions>
+                <ConditionGroup>
+                  <Condition>
+                    <ByState>
+                      <AtStart type="story" name="MyStory"/>
+                    </ByState>
+                  </Condition>
+                </ConditionGroup>
+              </StartConditions>
+            </Event>
+            <Event name="Braking" priority="overwrite">
+              <Action>
+                <Private>
+                  <Longitudinal>
+                    <Speed>
+                      <Dynamics time="5.0" shape="sinusoidal"/>
+                      <Target>
+                        <Absolute value="2.8"/>
+                      </Target>
+                    </Speed>
+                  </Longitudinal>
+                </Private>
+              </Action>
+              <StartConditions>
+                <ConditionGroup>
+                  <Condition>
+                    <ByState>
+                      <AfterTermination rule="end" name="Cruising1" type="action"/>
+                    </ByState>
+                  </Condition>
+                </ConditionGroup>
+              </StartConditions>
+            </Event>
+            <Event name="Cruising2" priority="overwrite">
+              <Action>
+                <Private>
+                  <Longitudinal>
+                    <Speed>
+                      <Dynamics time="10.000000" shape="linear"/>
+                      <Target>
+                        <Absolute value="2.8"/>
+                      </Target>
+                    </Speed>
+                  </Longitudinal>
+                </Private>
+              </Action>
+              <StartConditions>
+                <ConditionGroup>
+                  <Condition>
+                    <ByState>
+                      <AfterTermination rule="end" name="Braking" type="action"/>
+                    </ByState>
+                  </Condition>
+                </ConditionGroup>
+              </StartConditions>
+            </Event>
+          </Maneuver>
+        </Sequence>
+      </Act>
+    </Story>
+  </Storyboard>
+</OpenSCENARIO>
