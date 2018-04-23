@@ -270,7 +270,7 @@ The goal of Streetwise is the storage of real-world scenarios mined from natural
 
 \section{Scenario description}
 
-A schematic overview of the example is shown in \cref{fig:example schematic}. Three vehicles are present in the example: a pickup truck, a sedan, and a station wagon, see \cref{fig:example schematic}(a) from left to right, respectively. The ego vehicle (the sedan), is displayed in red. The example can be described in words as follows. The ego vehicle accelerates towards its predecessor (the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. In the meantime, the car behind the ego vehicle (the station wagon) accelerates and takes over both other vehicles (the ego vehicle and the pickup truck). When the station wagon has passed both vehicles, the ego vehicle accelerates and performs a lane change after which it overtakes the pickup truck.
+A schematic overview of the example is shown in \cref{fig:example schematic}. Three vehicles are present in the example: a pickup truck, a sedan, and a station wagon, see \cref{fig:example schematic a} from left to right, respectively. The ego vehicle (the sedan), is displayed in red. The example can be described in words as follows. The ego vehicle accelerates towards its predecessor (the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. In the meantime, the car behind the ego vehicle (the station wagon) accelerates and takes over both other vehicles (the ego vehicle and the pickup truck). When the station wagon has passed both vehicles, the ego vehicle accelerates and performs a lane change after which it overtakes the pickup truck.
 
 \setlength\figureheight{106pt}
 \setlength\figurewidth{260pt}
@@ -279,12 +279,14 @@ A schematic overview of the example is shown in \cref{fig:example schematic}. Th
 		\centering
 		\input{figures/scenario_situation_1.tikz}%
 		\subcaption{Last vehicle overtakes other vehicles.}
+		\label{fig:example schematic a}
 	\end{minipage}
 	\setlength\figureheight{100pt}
 	\begin{minipage}[b]{\linewidth}
 		\centering
 		\input{figures/scenario_situation_2.tikz}%
 		\subcaption{Another overtaking.}
+		\label{fig:example schematic b}
 	\end{minipage}
 	\caption{Schematic overview of the traffic scenarios. The sedan (red, the middle car in (a)) is the defined as the ego vehicle. First, the station wagon (i.e., the last car in (a)) overtakes both vehicles. Next, the ego vehicle overtakes the pickup truck (first vehicle in (a)).}
 	\label{fig:example schematic}
@@ -301,7 +303,7 @@ Several different scenarios can be identified:
     \item \textbf{Station car following}: Starts at the beginning of the example and ends when the lane change starts.
     \item \textbf{Station overtaking}: Starts at the lane change, ends when the station completes overtaking both cars and is back in the right lane.
 \end{itemize}
-The scenarios include all 'relevant' events. In case of the 'ego overtaking' scenarios, it might be relevant that another car is already overtaking, because it means that the ego cannot change lane as long as it is occupied. In the end, during test case generation, what is 'relevant' depends on the system under test. In this particular example, suppose that we are testing an automatic lane change function. If the function needs to decide whether it is safe to overtake, the second scenario is the most relevant. If not, the first might be more relevant.
+The scenarios include all `relevant' events. In case of the `ego overtaking' scenarios, it might be relevant that another car is already overtaking, because it means that the ego cannot change lane as long as it is occupied. In the end, during test case generation, what is `relevant' depends on the system under test. In this particular example, suppose that we are testing an automatic lane change function. If the function needs to decide whether it is safe to overtake, the second scenario is the most relevant. If not, the first might be more relevant.
 
 \section{Ego vehicle}
 
