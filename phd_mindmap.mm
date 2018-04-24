@@ -370,7 +370,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
+<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
 <node TEXT="Generative Adversarial Nets (GANs)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1284675129" CREATED="1516590666097" MODIFIED="1516590687904">
 <node TEXT="Introduction of GANs" ID="ID_451182813" CREATED="1516591618309" MODIFIED="1522726472533" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/110%20Generative%20Adversarial%20Nets.pdf">
@@ -470,7 +470,7 @@
 <node TEXT="Automated Scenario Generation of Regression Testing of AVs" ID="ID_164912009" CREATED="1522996504294" MODIFIED="1522996505122"/>
 </node>
 </node>
-<node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
+<node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
 <node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
 <node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
@@ -560,7 +560,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
 <node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1522727274939" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -1283,8 +1283,89 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
+<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
+<node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
+<node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1524534460071" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
+<attribute NAME="key" VALUE="HighwayKeyOSM"/>
+<attribute NAME="title" VALUE="Key:highway"/>
+<attribute NAME="authors" VALUE="OpenStreetMaps"/>
 </node>
-<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
+<node TEXT="Speed limits in Singapore (30, 40, 50, 60, 70, 80, 90 km/h)" ID="ID_1600880452" CREATED="1524534485051" MODIFIED="1524534783867" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/181%20Road%20Traffic%20Act%20Singapore%20Chapter%20276%20Section%2063%20speed%20limits.pdf">
+<attribute NAME="key" VALUE="SingaporeSpeedLimits"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Road Traffic (Restriction of Speed on Roads) Notification"/>
+<attribute NAME="authors" VALUE="{Land Transport Authority of Singapore}"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="65DA9E26F47A66BE6F65E4965A524DCB69A64677313E424939ED63521FB8">
+    <pdf_title>ROAD TRAFFIC ACT (CHAPTER 276, SECTION 63(2))</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Road curvature - based on lateral acceleration?" ID="ID_1956106047" CREATED="1524535079636" MODIFIED="1524535091717"/>
+<node TEXT="Weather" ID="ID_1200050037" CREATED="1524552375307" MODIFIED="1524552428109" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/030%20Data%20for%20weather%20responsive%20Traffic%20Management.pdf">
+<attribute NAME="key" VALUE="mahmassani2012use"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Use of Mobile data for weather-responsive Traffic management models"/>
+<attribute NAME="authors" VALUE="Mahmassani, Hani and Mudge, Richard and Hou, Tian and Kim, Jiwon"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D2C2324345B37E03952CBCB4156DAA41EDF6255F8C91A7A4F1EB44ABD1697">
+    <pdf_title>Use of Mobile Data for Weather- Responsive Traffic Management Models</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Dynamic environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_985681073" CREATED="1524534298587" MODIFIED="1524534310967">
+<node TEXT="Idem as Ego vehicle, i.e., speed and heading" ID="ID_306883983" CREATED="1524559130646" MODIFIED="1524559140103"/>
+<node TEXT="Target in front/back of ego" ID="ID_422429209" CREATED="1524559176291" MODIFIED="1524559189654">
+<node TEXT="No target" ID="ID_622251175" CREATED="1524559190246" MODIFIED="1524559194373"/>
+<node TEXT="Target appearing" ID="ID_577645442" CREATED="1524559194931" MODIFIED="1524559198516">
+<node TEXT="Cut-in" ID="ID_245850417" CREATED="1524559198527" MODIFIED="1524559201605"/>
+<node TEXT="Gap-closing" ID="ID_343585746" CREATED="1524559202180" MODIFIED="1524559205493"/>
+</node>
+<node TEXT="Vehicle following" ID="ID_1209232466" CREATED="1524559206803" MODIFIED="1524559211318">
+<node TEXT="Decelerating" ID="ID_1685078160" CREATED="1524559211331" MODIFIED="1524559215893"/>
+<node TEXT="Cruising" ID="ID_1938190287" CREATED="1524559216259" MODIFIED="1524559217909"/>
+<node TEXT="Accelerating" ID="ID_1408560887" CREATED="1524559220355" MODIFIED="1524559222436"/>
+</node>
+<node TEXT="Target disappearing" ID="ID_234821103" CREATED="1524559225010" MODIFIED="1524559228260">
+<node TEXT="Cut-out" ID="ID_1634813483" CREATED="1524559229108" MODIFIED="1524559232452"/>
+<node TEXT="Gap making" ID="ID_1548186090" CREATED="1524559233043" MODIFIED="1524559237044"/>
+</node>
+</node>
+<node TEXT="Target left/right of ego" ID="ID_345132789" CREATED="1524559238498" MODIFIED="1524559243732">
+<node TEXT="Ego faster than target" ID="ID_1906954524" CREATED="1524559244262" MODIFIED="1524559252821"/>
+<node TEXT="Same speed" ID="ID_177750115" CREATED="1524559253426" MODIFIED="1524559257812"/>
+<node TEXT="Target faster than ego" ID="ID_1154773029" CREATED="1524559258226" MODIFIED="1524559262340"/>
+</node>
+</node>
+<node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_194709149" CREATED="1524534303419" MODIFIED="1524534310950">
+<node TEXT="Speed" ID="ID_965518741" CREATED="1524559020986" MODIFIED="1524559025533">
+<node TEXT="Decelerating" ID="ID_374277840" CREATED="1524559025557" MODIFIED="1524559033225">
+<node TEXT="Release throttle" ID="ID_921292788" CREATED="1524559039048" MODIFIED="1524559046265"/>
+<node TEXT="Emergency braking (i.e., a &lt; -6 m/s2)" ID="ID_692406412" CREATED="1524559046983" MODIFIED="1524559059945"/>
+<node TEXT="Other" ID="ID_1100787237" CREATED="1524559060581" MODIFIED="1524559066489"/>
+</node>
+<node TEXT="Cruising" ID="ID_1203154491" CREATED="1524559033607" MODIFIED="1524559034968">
+<node TEXT="Full stop" ID="ID_1147849575" CREATED="1524559068970" MODIFIED="1524559074823"/>
+<node TEXT="Driving" ID="ID_262098799" CREATED="1524559097525" MODIFIED="1524559099400"/>
+</node>
+<node TEXT="Accelerating" ID="ID_863468497" CREATED="1524559035110" MODIFIED="1524559037641">
+<node TEXT="Modest acceleration" ID="ID_993791479" CREATED="1524559101608" MODIFIED="1524559109399"/>
+<node TEXT="Heavy acceleration (i.e., ~full throttle)" ID="ID_860720210" CREATED="1524559110085" MODIFIED="1524559124919"/>
+</node>
+</node>
+<node TEXT="Heading" ID="ID_1170655609" CREATED="1524559142548" MODIFIED="1524559144503">
+<node TEXT="Turn left" ID="ID_342633074" CREATED="1524559145111" MODIFIED="1524559148264">
+<node TEXT="Left at crossing" ID="ID_859202554" CREATED="1524559148287" MODIFIED="1524559152870"/>
+<node TEXT="Lane change" ID="ID_479608977" CREATED="1524559153444" MODIFIED="1524559156630"/>
+</node>
+<node TEXT="Straight" ID="ID_1347971422" CREATED="1524559157620" MODIFIED="1524559162054"/>
+<node TEXT="Turn right" ID="ID_731162599" CREATED="1524559162325" MODIFIED="1524559164870">
+<node TEXT="Right at crossing" ID="ID_1168089609" CREATED="1524559164884" MODIFIED="1524559167958"/>
+<node TEXT="Lane change" ID="ID_1311152811" CREATED="1524559168612" MODIFIED="1524559172726"/>
+</node>
+</node>
+</node>
+<node TEXT="Scenario" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_574351628" CREATED="1524534319379" MODIFIED="1524534327135"/>
+</node>
+</node>
+<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
 <edge COLOR="#007c00"/>
 <node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
 <node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1522727479993" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
