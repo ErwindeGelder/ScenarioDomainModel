@@ -54,41 +54,57 @@
 <hook NAME="AutomaticEdgeColor" COUNTER="4"/>
 <node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1515764436716" HGAP="60">
 <edge COLOR="#7c7c00"/>
-<node TEXT="Curve fitting" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1288097973" CREATED="1516866158372" MODIFIED="1516866168325">
-<node TEXT="General" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1015917001" CREATED="1516866172981" MODIFIED="1516866180627">
-<node TEXT="Comparison of splines with other step-wise regressions" ID="ID_1640740336" CREATED="1516866181671" MODIFIED="1522727542859" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Curve fitting" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1288097973" CREATED="1516866158372" MODIFIED="1516866168325">
+<node TEXT="General" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1015917001" CREATED="1516866172981" MODIFIED="1516866180627">
+<node TEXT="Comparison of splines with other step-wise regressions" ID="ID_1640740336" CREATED="1516866181671" MODIFIED="1524722365730" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/130%20Stepwise%20regression%20is%20an%20alternative%20to%20splines%20for%20fitting%20noisy%20data.pdf">
+<attribute NAME="key" VALUE="BURKHOLDER1996235"/>
+<attribute NAME="journal" VALUE="Journal of Biomechanics"/>
+<attribute NAME="year" VALUE="1996"/>
+<attribute NAME="title" VALUE="Stepwise Regression Is an Alternative to Splines for Fitting Noisy Data"/>
+<attribute NAME="authors" VALUE="Burkholder, Thomas J. and Lieber, Richard L."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CAA7886D11CF5EFE653575728FAED755E168FC931323C530641F5B96BAD2C4">
+    <pdf_title>TECHNICAL NOTE</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Comparison of Alternative Smoothing Methods - Fitting Exposure-Response Relationships" ID="ID_21009205" CREATED="1516866410047" MODIFIED="1522727544889" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Comparison of Alternative Smoothing Methods - Fitting Exposure-Response Relationships" ID="ID_21009205" CREATED="1516866410047" MODIFIED="1524722468977" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/131%20The%20Comparison%20of%20Alternative%20Smoothing%20for%20Fitting%20Exposure-Response.pdf">
+<attribute NAME="key" VALUE="govindarajulu2009comparison"/>
+<attribute NAME="journal" VALUE="The international journal of biostatistics"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="The Comparison of Alternative Smoothing Methods for Fitting Non-Linear Exposure-Response Relationships with {C}ox Models in a Simulation Study"/>
+<attribute NAME="authors" VALUE="Govindarajulu, Usha S and Malloy, Elizabeth J and Ganguli, Bhaswati and Spiegelman, Donna and Eisen, Ellen A"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8CD8A9BC5C6D4F733D9ACF5EC3F548163E573E4211A7C3AEAC9DAA4B543A0A2">
+    <pdf_title>The International Journal of Biostatistics</pdf_title>
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Splines" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_747864614" CREATED="1515764442338" MODIFIED="1518000626724">
-<node TEXT="Curve and Surface Fitting with Splines (Jan-Pieter heeft hardcopy)" ID="ID_101601068" CREATED="1515764454745" MODIFIED="1516678708660">
+<node TEXT="Splines" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_747864614" CREATED="1515764442338" MODIFIED="1518000626724">
+<node TEXT="Curve and Surface Fitting with Splines (Jan-Pieter heeft hardcopy)" ID="ID_101601068" CREATED="1515764454745" MODIFIED="1524722320082">
 <attribute NAME="key" VALUE="dierckx1993splines"/>
 <attribute NAME="year" VALUE="1993"/>
 <attribute NAME="title" VALUE="Curve and Surface Fitting with Splines"/>
 <attribute NAME="authors" VALUE="Dierckx, Paul"/>
 </node>
-<node TEXT="A Practical Guide to Splines" ID="ID_617031633" CREATED="1516689958332" MODIFIED="1518949294833">
+<node TEXT="A Practical Guide to Splines" ID="ID_617031633" CREATED="1516689958332" MODIFIED="1524722526640">
 <attribute NAME="key" VALUE="deboor1978practical"/>
 <attribute NAME="year" VALUE="1978"/>
 <attribute NAME="title" VALUE="A Practical Guide to Splines"/>
 <attribute NAME="authors" VALUE="de Boor, Carl"/>
 </node>
-<node TEXT="Flexible Smoothing with B-splines and Penalties" ID="ID_427188803" CREATED="1516690015547" MODIFIED="1522727543316" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<node TEXT="Flexible Smoothing with B-splines and Penalties" ID="ID_427188803" CREATED="1516690015547" MODIFIED="1524722505773" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/118%20Flexible%20Smoothing%20with%20B-splines%20and%20Penalties.pdf">
+<attribute NAME="key" VALUE="eilers1996flexible"/>
+<attribute NAME="journal" VALUE="Statistical Science"/>
+<attribute NAME="year" VALUE="1996"/>
+<attribute NAME="title" VALUE="Flexible Smoothing with B-splines and Penalties"/>
+<attribute NAME="authors" VALUE="Eilers, Paul H. C. and Marx, Brian D."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5CD35BB8534432F9A283205E9D6858791E9DE635AB332E32C6DC3366C908B85">
+    <pdf_title>Flexible Smoothing with -splines and Penalties</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="Parametrization of traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1780649506" CREATED="1516862848880" MODIFIED="1516862859449">
+<node TEXT="Braking Profile of car" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_587119167" CREATED="1516862871076" MODIFIED="1516862891064">
+<node TEXT="AdaptIVe paper" ID="ID_621567854" CREATED="1516862892563" MODIFIED="1524722545350" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
@@ -98,102 +114,90 @@
 </pdf_annotation>
 </node>
 </node>
-</node>
-<node TEXT="Parametrization of traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1780649506" CREATED="1516862848880" MODIFIED="1516862859449">
-<node TEXT="Braking Profile of car" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_587119167" CREATED="1516862871076" MODIFIED="1516862891064">
-<node TEXT="AdaptIVe paper" ID="ID_621567854" CREATED="1516862892563" MODIFIED="1522727544593" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
-</pdf_annotation>
-</node>
-</node>
-<node TEXT="Cut-in/lane change" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1477678152" CREATED="1516862975614" MODIFIED="1516862982372">
-<node TEXT="Applying spatial and temporal offset" ID="ID_1450503818" CREATED="1516863090042" MODIFIED="1522727543599" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Cut-in/lane change" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1477678152" CREATED="1516862975614" MODIFIED="1516862982372">
+<node TEXT="Applying spatial and temporal offset" ID="ID_1450503818" CREATED="1516863090042" MODIFIED="1524722705523" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Data-driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems"/>
+<attribute NAME="authors" VALUE="Zofka, Marc Ren{\&apos;e} and Kuhnt, Florian and Kohlhaas, Ralf and Rist, Christoph and Schamm, Thomas and Z\&quot;{o}llner, J. Marius"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F91B4B237B607197EFC2BD5C7A836F87F289E47CFAF66BFE19F3A3F8DFFB694">
+    <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 </node>
 </node>
 </node>
 </node>
-<node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1513736398690" HGAP="60" VSHIFT="8">
+<node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1513736398690" HGAP="60" VSHIFT="8">
 <edge COLOR="#007c7c"/>
-<node TEXT="General literature" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1488737728" CREATED="1513736407885" MODIFIED="1513736423051">
-<node TEXT="Pattern Recognition and Machine Learning" ID="ID_567315421" CREATED="1513736426477" MODIFIED="1522727544308" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="General literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1488737728" CREATED="1513736407885" MODIFIED="1513736423051">
+<node TEXT="Pattern Recognition and Machine Learning" ID="ID_567315421" CREATED="1513736426477" MODIFIED="1524722714668" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/003%20Bishop%20-%20Pattern%20Recognition%20and%20Machine%20Learning.pdf">
+<attribute NAME="key" VALUE="bishop2006pattern"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="Pattern Recognition and Machine Learning"/>
+<attribute NAME="authors" VALUE="Bishop, Christopher M."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FEE7C711A79E918E9491622FCAD3E1C3DE98167F4519CB687B678D9BD887718">
+    <pdf_title>Information Science and Statistics</pdf_title>
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_828177775" CREATED="1513736456056" MODIFIED="1513736494459">
-<node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_500921361" CREATED="1513736483833" MODIFIED="1522727543202" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_828177775" CREATED="1513736456056" MODIFIED="1513736494459">
+<node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_500921361" CREATED="1513736483833" MODIFIED="1524722724386" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/004%20Tutorial%20HMM.pdf">
+<attribute NAME="key" VALUE="HMM_Rabiner"/>
+<attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
+<attribute NAME="year" VALUE="1989"/>
+<attribute NAME="title" VALUE="A Tutorial on Hidden {M}arkov Models and Selected Applications in Speech Recognition"/>
+<attribute NAME="authors" VALUE="Rabiner, Lawrence R."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D480C1F64BC9E22E50509312675C46ABE8EA6C0A25C5ACD52A7B732CA4B5792">
+    <pdf_title>A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition</pdf_title>
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Neural Networks" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1659271931" CREATED="1513736495967" MODIFIED="1513736523780">
-<node TEXT="Neural Networks and Deep Learning" ID="ID_1531829695" CREATED="1513736512279" MODIFIED="1522727543630" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Neural Networks" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1659271931" CREATED="1513736495967" MODIFIED="1513736523780">
+<node TEXT="Neural Networks and Deep Learning" ID="ID_1531829695" CREATED="1513736512279" MODIFIED="1524724193251" LINK="http://neuralnetworksanddeeplearning.com/">
+<attribute NAME="key" VALUE="Neural_Nielsen"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Neural Networks and Deep Learning"/>
+<attribute NAME="authors" VALUE="Michael A. Nielsen"/>
+</node>
+<node TEXT="Learning deep architectures for AI" ID="ID_1946524946" CREATED="1516610250646" MODIFIED="1524724462579" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/113%20Learning%20deep%20architectures%20for%20AI.pdf">
+<attribute NAME="key" VALUE="bengio2009learning"/>
+<attribute NAME="journal" VALUE="Foundations and Trends in Machine Learning"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Learning Deep Architectures for {AI}"/>
+<attribute NAME="authors" VALUE="Bengio, Yoshua"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3EC78A1F011D9D7F7E2BC875505F9DEE7071F3B8C85777A6C7231E50D1D1D6">
+    <pdf_title>Learning Deep Architectures for AI</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Learning deep architectures for AI" ID="ID_1946524946" CREATED="1516610250646" MODIFIED="1522727543875" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="Drop-out: Improving neural networks by preventing co-adaptation of feature detectors" ID="ID_1541990484" CREATED="1516610914407" MODIFIED="1522727544442" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Drop-out: Improving neural networks by preventing co-adaptation of feature detectors" ID="ID_1541990484" CREATED="1516610914407" MODIFIED="1524724556069" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/114%20Improving%20neural%20networks%20by%20preventing%20co-adaptation%20of%20feature%20detectors.pdf">
+<attribute NAME="key" VALUE="hinton2012improving"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1207.0580"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Improving Neural Networks by Preventing Co-Adaptation of Feature Detectors"/>
+<attribute NAME="authors" VALUE="Hinton, Geoffrey E. and Srivastava, Nitish and Krizhevsky, Alex and Sutskever, Ilya and Salakhutdinov, Ruslan R."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1D2F777231EA4F6507A2A6D9094466EE48462FA9853CA74770FC44EE19F">
+    <pdf_title>Improving neural networks by preventing co-adaptation of feature detectors</pdf_title>
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Support Vector Machines" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_843885667" CREATED="1516861995018" MODIFIED="1516862005324">
-<node TEXT="First paper about SVM" ID="ID_177634036" CREATED="1516862007224" MODIFIED="1522727542715" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Support Vector Machines" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_843885667" CREATED="1516861995018" MODIFIED="1516862005324">
+<node TEXT="First paper about SVM" ID="ID_177634036" CREATED="1516862007224" MODIFIED="1524724589958" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/125%20Support%20Vector%20Machines.pdf">
+<attribute NAME="key" VALUE="cortes1995svm"/>
+<attribute NAME="journal" VALUE="Machine Learning"/>
+<attribute NAME="year" VALUE="1995"/>
+<attribute NAME="title" VALUE="Support-Vector Networks"/>
+<attribute NAME="authors" VALUE="Cortes, Corinna and Vapnik, Vladimir"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9353E688D922DE59AC62E44BE6C811DDAECC0A5F877165AE149A605F38FE0">
+    <pdf_title>Support-Vector Networks</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Even earlier paper which already uses a similar technique" ID="ID_557122590" CREATED="1516862379630" MODIFIED="1522727543906" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Even earlier paper which already uses a similar technique" ID="ID_557122590" CREATED="1516862379630" MODIFIED="1524724609681" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/126%20A%20Training%20Algorithm%20for%20Optimal%20Margin%20Classifiers.pdf">
+<attribute NAME="key" VALUE="boser1992training"/>
+<attribute NAME="year" VALUE="1992"/>
+<attribute NAME="title" VALUE="A Training Algorithm for Optimal Margin Classifiers"/>
+<attribute NAME="authors" VALUE="Boser, Bernhard E and Guyon, Isabelle M and Vapnik, Vladimir N"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="EEFC745BC0FA52B2C8DA71AD91D6E63867F2ACC83EFB8AFDFDF876F717CA31B5">
+    <pdf_title>A T r a i n i n g A l g o r i t h m f o r</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1153,7 +1157,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
+<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
 <node TEXT="Alvarez et al." ID="ID_747880869" CREATED="1512448020922" MODIFIED="1522727480554" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1637,63 +1641,65 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
-<node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1522727542973" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
+<node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1524721253768" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
+<attribute NAME="key" VALUE="kalra2016driving"/>
+<attribute NAME="journal" VALUE="Transportation Research Part A: Policy and Practice"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Driving to Safety: How Many Miles of Driving Would It Take to Demonstrate Autonomous Vehicle Reliability?"/>
+<attribute NAME="authors" VALUE="Kalra, Nidhi and Paddock, Susan M"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CAA8A9DCCEF61ECF01AC276399F95C449B896424E52DF5217955549FEDEE454">
+    <pdf_title>Transportation Research Part A</pdf_title>
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
-<node TEXT="Testing of high level components of automated driving" ID="ID_565029269" CREATED="1512630169330" MODIFIED="1522727543122" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
+<node TEXT="Testing of high level components of automated driving" ID="ID_565029269" CREATED="1512630169330" MODIFIED="1524721643939" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
+<attribute NAME="key" VALUE="zofka2016testing"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Testing and Validating High Level Components for Automated Driving: Simulation Framework for Traffic Scenarios"/>
+<attribute NAME="authors" VALUE="Zofka, Marc Ren{\&apos;e} and Klemm, Sebastian and Kuhnt, Florian and Schamm, Thomas and Z{\&quot;o}llner, J Marius"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6A8F4FFC63FCCDC88EE2EB2BC9BC2DCAA54BE11AB1FCB1B1192DA1606445D3">
+    <pdf_title>Testing and Validating High Level Components for Automated Driving: Simulation Framework for Traffic Scenarios</pdf_title>
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Traditional methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_212387236" CREATED="1517041168552" MODIFIED="1517041183565">
-<node TEXT="Code of Practice for the Design and Evaluation of ADAS" ID="ID_1744658253" CREATED="1517041192918" MODIFIED="1522727544969" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Traditional methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_212387236" CREATED="1517041168552" MODIFIED="1517041183565">
+<node TEXT="Code of Practice for the Design and Evaluation of ADAS" ID="ID_1744658253" CREATED="1517041192918" MODIFIED="1524721347124" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/133%20Code%20of%20practice%20for%20the%20design%20and%20evaluation%20of%20adas.pdf">
+<attribute NAME="key" VALUE="response2006code"/>
+<attribute NAME="journal" VALUE="RESPOSNE III: a PReVENT Project"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Code of Practice for the Design and Evaluation of {ADAS}"/>
+<attribute NAME="authors" VALUE="Knapp, Andreas and Neumann, Markus and Brockmann, Martin and Walz, Rainer and Winkle, Thomas"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A860787D5687DECA71D92DBAD3875FA2854BAD562FA6ADFC3A2C179289157B8">
+    <pdf_title>Code of Practice</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="ISO26262" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1517041968506">
-<attribute NAME="key" VALUE="ISO13586"/>
+<node TEXT="ISO26262" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1524721213042">
+<attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
 <attribute NAME="authors" VALUE="{International Organization for Standardization (ISO)}"/>
 </node>
 <node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1517195633891"/>
 </node>
-<node TEXT="Scenario-based methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1555930360" CREATED="1517043981271" MODIFIED="1517043988742">
-<node TEXT="Scenario-Based Assessment by Using Time Series Classification of Human-Driving Behaviour" ID="ID_507707419" CREATED="1517043996475" MODIFIED="1522727542747" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Scenario-based methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1555930360" CREATED="1517043981271" MODIFIED="1517043988742">
+<node TEXT="Scenario-Based Assessment by Using Time Series Classification of Human-Driving Behaviour" ID="ID_507707419" CREATED="1517043996475" MODIFIED="1524721429269" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/134%20A%20Scenario-Based%20Assessment%20Approach%20for%20Automated%20Driving.pdf">
+<attribute NAME="key" VALUE="roesener2016scenariobased"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="A Scenario-Based Assessment Approach for Automated Driving by Using Time Series Classification of Human-Driving Behaviour"/>
+<attribute NAME="authors" VALUE="Roesener, Christian and Fahrenkrog, Felix and Uhlig, Axel and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A7AEDF43B62CD4D33525AEDB7C88A9EB50B72F88FCE43C3C52D92BDBBD717BB">
+    <pdf_title>A Scenario-Based Assessment Approach for Automated Driving by Using Time Series Classification of Human-Driving Behaviour</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="PEGASUS: Database with traffic scenarios" ID="ID_1531496623" CREATED="1512615525217" MODIFIED="1522727544659" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
+<node TEXT="PEGASUS: Database with traffic scenarios" ID="ID_1531496623" CREATED="1512615525217" MODIFIED="1524721327850" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
+<attribute NAME="key" VALUE="putz2017pegasus"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<attribute NAME="title" VALUE="System Validation of Highly Automated Vehicles with a Database of Relevant Traffic Scenarios"/>
+<attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
+    <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="AdaptIVe conference paper at IV2017" ID="ID_1057835923" CREATED="1510630510294" MODIFIED="1522727543705" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
@@ -1706,7 +1712,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Other methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1522896107890">
+<node TEXT="Other methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1522896107890">
 <node TEXT="Teaching Self-Driving Cars to Dream" ID="ID_1568568342" CREATED="1522896117493" MODIFIED="1524720992177" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/177%20Teaching%20Self-Driving%20Cars%20to%20Dream.pdf">
 <attribute NAME="key" VALUE="rocklage2017teaching"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1717,23 +1723,23 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Techniques for reducing test load" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1977166650" CREATED="1518001890791" MODIFIED="1518001906064">
-<node TEXT="Using Surrogate Models and Stochastic Optimization" ID="ID_1953096285" CREATED="1518001918988" MODIFIED="1522727543501" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<attribute NAME="year" VALUE="2017"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Techniques for reducing test load" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1977166650" CREATED="1518001890791" MODIFIED="1518001906064">
+<node TEXT="Using Surrogate Models and Stochastic Optimization" ID="ID_1953096285" CREATED="1518001918988" MODIFIED="1524721537090" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/139%20Testing%20of%20AV%20Using%20Surrogate%20Models%20and%20Stochastic%20Optimization.pdf">
+<attribute NAME="key" VALUE="beglerovictesting"/>
+<attribute NAME="title" VALUE="Testing of Autonomous Vehicles Using Surrogate Models and Stochastic Optimization"/>
+<attribute NAME="authors" VALUE="Beglerovic, Halil and Stolz, Michael and Horn, Martin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9C4A3620126DADC88FB32F1B6B510F9489AF6C839F585B4868340908275C89">
+    <pdf_title>TestingofAutonomousVehiclesUsingSurrogate ModelsandStochasticOptimization</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Accelerated Evaluation of AVs in Car-Following Maneuvers" ID="ID_75095416" CREATED="1520993706207" MODIFIED="1522727543160" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Accelerated Evaluation of AVs in Car-Following Maneuvers" ID="ID_75095416" CREATED="1520993706207" MODIFIED="1524721580927" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/168%20Accelerated%20evaluation%20of%20AVs%20for%20car-following.pdf">
+<attribute NAME="key" VALUE="zhao2018evaluation"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers"/>
+<attribute NAME="authors" VALUE="Zhao, Ding and Huang, Xianan and Peng, Huei and Lam, Henry and LeBlanc, David J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="834F4AABA922F39FF39B994BA5ACC8E56FEB33A4E555B66EBE33AA6AEDAD">
+    <pdf_title>Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1812,101 +1818,95 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1519207397039" HGAP="80" VSHIFT="8">
+<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1519207397039" HGAP="80" VSHIFT="8">
 <edge COLOR="#ffff00"/>
-<node TEXT="Overpass" ID="ID_522788377" CREATED="1511518432024" MODIFIED="1522727544037" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
+<node TEXT="Overpass" ID="ID_522788377" CREATED="1511518432024" MODIFIED="1524721797370">
+<attribute NAME="key" VALUE="overpass"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<attribute NAME="title" VALUE="Overpass {API} - {O}pen{S}treet{M}ap {W}iki"/>
+</node>
+<node TEXT="ROS" ID="ID_667089157" CREATED="1511519113522" MODIFIED="1524721825397" LINK="http://wiki.ros.org/">
+<attribute NAME="key" VALUE="roswiki"/>
+<attribute NAME="title" VALUE="{ROS}.org"/>
+</node>
+<node TEXT="PreScan" ID="ID_1285995919" CREATED="1513048686655" MODIFIED="1524721871555" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/078%20PreScan%20Simulation%20Tool%20Suite%20for%20Developing%20Connected%20Vehicle%20Systems.pdf">
+<attribute NAME="key" VALUE="tideman2013PreScan"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="A Simulation Tool Suite for Developing Connected Vehicle Systems"/>
+<attribute NAME="authors" VALUE="M. Tideman and M. van Noort"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BEFF55659F915968D88B2D3F6C019C17116DF2A5CEE3A35CE8430217030DAA5">
+    <pdf_title>A Simulation Tool Suite for Developing Connected Vehicle Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="ROS" ID="ID_667089157" CREATED="1511519113522" MODIFIED="1522727544146" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="SUMO" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1956012801" CREATED="1513684093019" MODIFIED="1513684104206">
+<node TEXT="An overview" ID="ID_1181630665" CREATED="1513684097226" MODIFIED="1524721944719" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/093%20SUMO%20-%20Simulation%20of%20Urban%20MObility%20-%20an%20Overview.pdf">
+<attribute NAME="key" VALUE="behrisch2011sumo"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="{SUMO} - {S}imulation of {U}rban {MO}bility: An Overview"/>
+<attribute NAME="authors" VALUE="Behrisch, Michael and Bieker, Laura and Erdmann, Jakob and Krajzewicz, Daniel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8849FDD4092A2D2C1AB516B96E596D3FAD786C2159A48ADF12010D0F544F24">
+    <pdf_title>SUMO &#x2013; Simulation of Urban MObility</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="PreScan" ID="ID_1285995919" CREATED="1513048686655" MODIFIED="1522727544586" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Traffic Simulation with SUMO &#x2013; Simulation of Urban Mobility" ID="ID_29113616" CREATED="1513684345492" MODIFIED="1524721964890" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/094%20Traffic%20Simulation%20with%20SUMO%20&#x2013;%20Simulation%20of%20Urban%20Mobility.pdf">
+<attribute NAME="key" VALUE="krajzewicz2010traffic"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Traffic Simulation with {SUMO}--{S}imulation of {U}rban {MO}bility"/>
+<attribute NAME="authors" VALUE="Krajzewicz, Daniel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5F8475E32FC6A8C3A4153918366FECD907C4F2373BA8106F7095F56BADD80">
+    <pdf_title>Traffic Simulation with SUMO &#x2013; Simulation of Urban Mobility</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="SUMO" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1956012801" CREATED="1513684093019" MODIFIED="1513684104206">
-<node TEXT="An overview" ID="ID_1181630665" CREATED="1513684097226" MODIFIED="1522727544242" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="Traffic Simulation with SUMO &#x2013; Simulation of Urban Mobility" ID="ID_29113616" CREATED="1513684345492" MODIFIED="1522727545000" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="Recent Development and Applications of SUMO" ID="ID_1621194437" CREATED="1513684470626" MODIFIED="1522727543399" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="Recent Development and Applications of SUMO" ID="ID_1621194437" CREATED="1513684470626" MODIFIED="1524721971603" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/095%20Recent%20Development%20and%20Applications%20of%20SUMO.pdf">
+<attribute NAME="key" VALUE="krajzewicz2012recent"/>
+<attribute NAME="journal" VALUE="International Journal On Advances in Systems and Measurements"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Recent Development and Applications of {SUMO}-{S}imulation of {U}rban {MO}bility"/>
+<attribute NAME="authors" VALUE="Krajzewicz, Daniel and Erdmann, Jakob and Behrisch, Michael and Bieker, Laura"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AB56DF3CD01F1B2B134ABCB9BE87FC7CA459B8126D1979B87D21D876EF8A7222">
+    <pdf_title>Recent Development and Applications of SUMO &#x2013; Simulation of Urban MObility</pdf_title>
 </pdf_annotation>
 </node>
 </node>
 </node>
-<node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1519207393458" HGAP="81" VSHIFT="-9">
+<node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1519207393458" HGAP="81" VSHIFT="-9">
 <edge COLOR="#ff0000"/>
-<node TEXT="The SHRP 2 Naturalistic Driving Study" ID="ID_682322192" CREATED="1510642780423" MODIFIED="1522727543536" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="The SHRP 2 Naturalistic Driving Study" ID="ID_682322192" CREATED="1510642780423" MODIFIED="1524722148119" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/053%20The%20SHRP%202%20Naturalistic%20Driving%20Study.pdf">
+<attribute NAME="key" VALUE="campbell2012shrp"/>
+<attribute NAME="journal" VALUE="TR News"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="The {SHRP} 2 Naturalistic Driving Study: Addressing Driver Performance and Behavior in Traffic Safety"/>
+<attribute NAME="authors" VALUE="Campbell, Kenneth L"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DD75F6FAD8D1BF9B56E55BA4297493F858B17606AB2F57CE58F597E8C66BBA7">
+    <pdf_title>u u</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="EuroFOT" ID="ID_1998125269" CREATED="1512445921789" MODIFIED="1522727544715" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="EuroFOT" ID="ID_1998125269" CREATED="1512445921789" MODIFIED="1524722179619" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/067%20EuroFOT.pdf">
+<attribute NAME="key" VALUE="benmimoun2013eurofot"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="{euroFOT}: Field Operational Test and Impact Assessment of Advanced Driver Assistance Systems: Final Results"/>
+<attribute NAME="authors" VALUE="Benmimoun, Mohamed and P{\&quot;u}tz, Andreas and Zlocki, Adrian and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B7E17149DCDC52F853D612E9530A0AF75434140DA454079BAA021F03696E63A">
+    <pdf_title>euroFOT: Field Operational Test and Impact Assessment of Advanced Driver Assistance Systems: Final Results</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="UDRIVE" ID="ID_1095481328" CREATED="1512465515517" MODIFIED="1522727543660" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<node TEXT="UDRIVE" ID="ID_1095481328" CREATED="1512465515517" MODIFIED="1524722196323" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/069%20UDRIVE%20the%20European%20Naturalistic%20Driving%20Study.pdf">
+<attribute NAME="key" VALUE="eenink2014udrive"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="UDRIVE: the {E}uropean Naturalistic Driving Study"/>
+<attribute NAME="authors" VALUE="Eenink, Rob and Barnard, Yvonne and Baumann, Martin and Augros, Xavier and Utesch, Fabian"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5024CBB1D627266F945BA7497D0D16C42192F22BDB075A65CFD727B8F1C8790">
+    <pdf_title>UDRIVE: the European naturalistic driving study</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The Oxford RobotCar Dataset" ID="ID_634217329" CREATED="1512466566329" MODIFIED="1522727543469" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
-<attribute NAME="key" VALUE="deGelder2017assessment"/>
+<node TEXT="The Oxford RobotCar Dataset" ID="ID_634217329" CREATED="1512466566329" MODIFIED="1524721986074" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/070%20The%20Oxford%20RobotCar%20Dataset.pdf">
+<attribute NAME="key" VALUE="oxford2017dataset"/>
+<attribute NAME="journal" VALUE="The International Journal of Robotics Research (IJRR)"/>
 <attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
-    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+<attribute NAME="title" VALUE="1 Year, 1000km: The {O}xford RobotCar Dataset"/>
+<attribute NAME="authors" VALUE="Will Maddern and Geoff Pascoe and Chris Linegar and Paul Newman"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A26DF0178118B5E067279EA454321B4589FB69893E6C11333280C2223CB99025">
+    <pdf_title>1 Year, 1000km: The Oxford RobotCar Dataset</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2094,8 +2094,8 @@
 </node>
 <node TEXT="Scenario similarity" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_241166301" CREATED="1518000690565" MODIFIED="1518000924227">
 <edge COLOR="#ff00ff"/>
-<node TEXT="Similarity measures for time series" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1080321734" CREATED="1518000705702" MODIFIED="1518000929563">
-<node TEXT="Surveys" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1108172693" CREATED="1518000949311" MODIFIED="1518001009771">
+<node TEXT="Similarity measures for time series" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1080321734" CREATED="1518000705702" MODIFIED="1518000929563">
+<node TEXT="Surveys" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1108172693" CREATED="1518000949311" MODIFIED="1518001009771">
 <node TEXT="An Empirical Evaluation of Similarity Measures for Time Series Classification" ID="ID_1585992208" CREATED="1518000721561" MODIFIED="1522727480374" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/138%20An%20Empirical%20Evaluation%20of%20Similarity%20Measures%20for%20Time%20Series%20Classification.pdf">
 <attribute NAME="key" VALUE="serra2014empirical"/>
 <attribute NAME="journal" VALUE="Knowledge-Based Systems"/>
@@ -2200,7 +2200,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="48CBE523332E6B31EA4545204C5ECD8F601CB27E49B25DD918B41DCB7C38D65"/>
 </node>
 </node>
-<node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484" MOVED="1518157326491">
+<node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484" MOVED="1518157326491">
 <node TEXT="Dynamic programming optimization (original paper, but DTW not explicitly mentioned)" ID="ID_1407935713" CREATED="1518104424971" MODIFIED="1522727480356" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/141%20Dynamic%20programming%20algorithm%20optimization%20for%20spoken%20Word%20Recognition.pdf">
 <attribute NAME="key" VALUE="sakoe1978dynamic"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Acoustics, Speech, and Signal Processing"/>
