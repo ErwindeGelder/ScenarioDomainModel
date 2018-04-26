@@ -1,8 +1,8 @@
-% This file was created by matplotlib2tikz v0.6.14.
+% This file was created by matplotlib2tikz v0.6.16.
 \begin{tikzpicture}
 
-\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
 \definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
 
 \begin{axis}[
 xlabel={Sample},
@@ -14,9 +14,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 xmajorgrids,
-x grid style={lightgray!92.026143790849673!black},
+x grid style={white!69.01960784313725!black},
 ymajorgrids,
-y grid style={lightgray!92.026143790849673!black},
+y grid style={white!69.01960784313725!black},
 legend style={draw=white!80.0!black},
 legend cell align={left},
 legend entries={{$\textbf{v}_{2}$},{Early detection}}
