@@ -142,7 +142,7 @@ if __name__ == '__main__':
 
     pdf(os.path.join('..', 'progress_reports', 'report02'), 'progress_report_02', usebibtex=True)
 
-    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebiber=True)
+    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'ontology', usebiber=True)
 
     pdf(os.path.join('..', 'progress_reports', 'report03'), 'progress_report_03', usebibtex=True)
 

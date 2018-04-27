@@ -20,7 +20,7 @@ Processing file "..\progress_reports\report02\progress_report_02"
 0 badboxes
 
 ####################################################################
-Processing file "..\20171111 IV2018 Ontology\root"
+Processing file "..\20171111 IV2018 Ontology\ontology"
 0 warnings
 0 badboxes
 
@@ -73,7 +73,7 @@ Processing file "..\20180207 Similarity\scenario_similarity"
 Processing file "..\20180320 Detailed scenario description\scenario_description"
 0 warnings
 1 badboxes
- 1: Overfull \hbox (1.32808pt too wide) in paragraph at lines 2--317
+ 1: Overfull \hbox (1.32808pt too wide) in paragraph at lines 2--319
      [][] 
 
 ####################################################################
