@@ -22,6 +22,7 @@ _data/
 *.snm
 *.dpth
 *.md5
+utilities/log.txt
 
 # Other files to be ignored
 20171126 Parametrization/df.p
