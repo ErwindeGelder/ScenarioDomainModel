@@ -112,7 +112,7 @@ def pdf(folder, texfile, usebibtex=False, usebiber=False, clean=True, log=True):
                 print("RERUN BECAUSE LABELS CHANGED !!!")
                 break
     if log:
-        with open("log.txt", "a") as f:
+        with open("log2.txt", "a") as f:
             f.write("####################################################################\n")
             f.write('Processing file "{:s}"\n'.format(os.path.join(folder, texfile)))
             f.write("{:d} warnings\n".format(len(warning)))
@@ -132,9 +132,9 @@ def pdf(folder, texfile, usebibtex=False, usebiber=False, clean=True, log=True):
 
 
 if __name__ == '__main__':
-    if os.path.exists('log.txt'):
-        os.remove("log.txt")  # Empty log
-    """
+    if os.path.exists('log2.txt'):
+        os.remove("log2.txt")  # Empty log
+
     pdf(os.path.join('..', '20171010 Summary'), 'phd_summary')
 
     # Do all the progress reports
@@ -144,7 +144,7 @@ if __name__ == '__main__':
     call_output('git checkout PR2')
     pdf(os.path.join('..', 'progress_reports', 'report02'), 'progress_report_02', usebibtex=True)
     call_output('git checkout PR3')
-    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebibtex=True)
+    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebibtex=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report03'), 'progress_report_03', usebibtex=True)
     os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Later renamed to ontology.pdf
     call_output('git checkout PR4')
@@ -152,11 +152,15 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report04'), 'progress_report_04', usebibtex=True)
     settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'), 'standalone', True)
-    """
     call_output('git checkout PR5')
+    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebiber=True, log=False)
     settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report05'), 'progress_report_05', usebiber=True)
+    os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Later renamed to ontology.pdf
+    call_output('git checkout ../"20180207 Similarity"/scenario_similarity.tex')
+    if os.path.exists('log.txt'):
+        os.remove('log.txt')  # To prevent complaining that log.txt will be overwritten by checkout
     call_output('git checkout PR6')
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
