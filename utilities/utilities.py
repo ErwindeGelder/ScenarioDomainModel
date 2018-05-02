@@ -134,6 +134,7 @@ def pdf(folder, texfile, usebibtex=False, usebiber=False, clean=True, log=True):
 if __name__ == '__main__':
     if os.path.exists('log.txt'):
         os.remove("log.txt")  # Empty log
+    """
     pdf(os.path.join('..', '20171010 Summary'), 'phd_summary')
 
     # Do all the progress reports
@@ -150,6 +151,8 @@ if __name__ == '__main__':
     settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'), 'standalone', False)
     pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report04'), 'progress_report_04', usebibtex=True)
+    settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'), 'standalone', True)
+    """
     call_output('git checkout PR5')
     settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True, log=False)
