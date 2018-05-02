@@ -136,36 +136,36 @@ if __name__ == '__main__':
         os.remove("log.txt")  # Empty log
     pdf(os.path.join('..', '20171010 Summary'), 'phd_summary')
 
+    # Do all the progress reports
     pdf(os.path.join('..', 'progress_reports', 'template'), 'progress_report')
-
+    call_output('git checkout PR1')
     pdf(os.path.join('..', 'progress_reports', 'report01'), 'progress_report_01', usebibtex=True)
-
+    call_output('git checkout PR2')
     pdf(os.path.join('..', 'progress_reports', 'report02'), 'progress_report_02', usebibtex=True)
-
-    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'ontology', usebiber=True)
-
+    call_output('git checkout PR3')
     pdf(os.path.join('..', 'progress_reports', 'report03'), 'progress_report_03', usebibtex=True)
-
-    pdf(os.path.join('..', '20180109 Ontology presentation'), 'ontology', usebibtex=True)
-
-    pdf(os.path.join('..', '20180110 Test scenario generation presentation'), 'scenario_generation', usebibtex=True)
-
+    call_output('git checkout PR4')
     settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'), 'standalone', False)
     pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report04'), 'progress_report_04', usebibtex=True)
-    settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'), 'standalone', True)
-    pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True)
-
+    call_output('git checkout PR5')
     settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report05'), 'progress_report_05', usebiber=True)
-    settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'), 'standalone', True)
-    pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True)
-
-    pdf(os.path.join('..', '20180320 Detailed scenario description'), 'scenario_description', usebiber=True)
-
+    call_output('git checkout PR6')
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report06'), 'progress_report_06', usebiber=True)
+    call_output('git checkout master')
+
+    # All other stuff
+    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'ontology', usebiber=True)
+    pdf(os.path.join('..', '20180109 Ontology presentation'), 'ontology', usebibtex=True)
+    pdf(os.path.join('..', '20180110 Test scenario generation presentation'), 'scenario_generation', usebibtex=True)
+    settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'), 'standalone', True)
+    pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True)
+    settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'), 'standalone', True)
+    pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True)
+    pdf(os.path.join('..', '20180320 Detailed scenario description'), 'scenario_description', usebiber=True)
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', True)
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=True)
