@@ -143,7 +143,9 @@ if __name__ == '__main__':
     call_output('git checkout PR2')
     pdf(os.path.join('..', 'progress_reports', 'report02'), 'progress_report_02', usebibtex=True)
     call_output('git checkout PR3')
+    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebibtex=True)
     pdf(os.path.join('..', 'progress_reports', 'report03'), 'progress_report_03', usebibtex=True)
+    os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Later renamed to ontology.pdf
     call_output('git checkout PR4')
     settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'), 'standalone', False)
     pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True, log=False)
