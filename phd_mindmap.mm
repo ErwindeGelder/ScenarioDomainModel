@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1522725797578_a9xpaeijeyyl4do3obueqbq45" project="16289831E40NEZ2DP35J7X82VH1EJ69TQTF" project_last_home="file:/C:/Users/geldered/Documents/gitlab/PhD/">
+<map version="docear 1.1" project="16289831E40NEZ2DP35J7X82VH1EJ69TQTF" project_last_home="file:/C:/Users/geldered/Documents/gitlab/PhD/" dcr_id="1522725797578_a9xpaeijeyyl4do3obueqbq45">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1522725983162"><hook NAME="MapStyle">
@@ -1157,7 +1157,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
+<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
 <node TEXT="Alvarez et al." ID="ID_747880869" CREATED="1512448020922" MODIFIED="1522727480554" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1232,12 +1232,15 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Scenarios can be knowledge based or data-driven" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1010042086" CREATED="1512626864047" MODIFIED="1516762269343" LINK="project://15EE11F388758T36YQT824BR7X3E7TTF2DWX/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<node TEXT="Scenarios can be knowledge based or data-driven" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1010042086" CREATED="1512626864047" MODIFIED="1526269324991" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
 <attribute NAME="authors" VALUE="J. E. Stellet and M. R. Zofka and J. Schumacher and T. Schamm and F. Niewels and J. M. Z\&quot;{o}llner"/>
-<node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C2E634F82B895F5EDE73B4AA6CD5782A8FFA595B9FB6ECDDED19193E598592">
+    <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
+</pdf_annotation>
+<node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
 <node TEXT="Bagschik et al. (declined paper)" ID="ID_1750936302" CREATED="1512626946796" MODIFIED="1522727480502" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
@@ -1258,7 +1261,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data-driven" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_58029598" CREATED="1512626897438" MODIFIED="1512626910548">
+<node TEXT="Data-driven" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_58029598" CREATED="1512626897438" MODIFIED="1512626910548">
 <node TEXT="de Gelder et al." ID="ID_1971359552" CREATED="1512626963745" MODIFIED="1522727480540" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1289,7 +1292,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
+<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
 <node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
 <node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1524534460071" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
 <attribute NAME="key" VALUE="HighwayKeyOSM"/>
@@ -1369,6 +1372,35 @@
 </node>
 </node>
 <node TEXT="Scenario" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_574351628" CREATED="1524534319379" MODIFIED="1524534327135"/>
+</node>
+<node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
+<node TEXT="Deliverable D7.3 AdaptIVe: Impact Analysis for Supervised Automated Driving Applications" ID="ID_1205070616" CREATED="1526269804012" MODIFIED="1526269827396" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/182%20AdaptIVe_SP7_D7_3_Impact%20analysis%20for%20supervised%20automated%20driving%20applications.pdf">
+<attribute NAME="key" VALUE="adaptive2017d73"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Deliverable {D}7.3 {I}mpact Analysis for Supervised Automated Driving Applications"/>
+<attribute NAME="authors" VALUE="Fahrenkrog, Felix and Wang, Lei and Roesener, Christian and Sauerbier, Jan and Breunig, Sandra"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="96A6CF62815B5FBA25456D3075681A1392268415A12AFD1DD86B3FEE7661D65">
+    <pdf_title>Impact analysis for supervised automated driving applications</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="CATS main accident scenarios" ID="ID_1238416109" CREATED="1526270122248" MODIFIED="1526270136096" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/183%20CATS%20Overview%20main%20accident%20scenarios.pdf">
+<attribute NAME="key" VALUE="opdencamp2014cats"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Overview of Main Accident Scenarios in Car-to-Cyclist Accidents for Use in {AEB}-System Test Protocol"/>
+<attribute NAME="authors" VALUE="Op den Camp, Olaf and Ranjbar, Arian and Uittenbogaard, Jeroen and Rosen, Erik and Fredriksson, Rikard and de Hair, Stefanie"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="66D0DCCD76AA9C375AD59A28D2A169633D64257AAADFA90F99C6C17C6747A7">
+    <pdf_title>IN CAR-TO-CYCLIST ACCIDENTS FOR</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="US Department of Transportation: Pre-Crash Scenario Typology for Crash Avoidance Research" ID="ID_894623070" CREATED="1526270449478" MODIFIED="1526270464438" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/184%20Pre-Crash%20Scenario%20Typology%20for%20Crash%20Avoidance%20Research.pdf">
+<attribute NAME="key" VALUE="USDoT2007precrashscenarios"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Pre-Crash Scenario Typology for Crash Avoidance Research"/>
+<attribute NAME="authors" VALUE="Najm, Wassim G. and Smith, John D. and Yanagisawa, Mikio"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C6BEAA545D9B77F33E81CFC7E63D54672DB32274C368D17A705F98CF5285C">
+    <pdf_title>Pre-Crash Scenario Typology for Crash Avoidance Research</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">

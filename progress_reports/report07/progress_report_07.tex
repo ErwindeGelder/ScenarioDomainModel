@@ -90,19 +90,59 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \section{Summary of work}
 
 \begin{itemize}
-	\item 
+	\item I hardly worked on the quantification of the completeness. As such, I propose to further discuss this in the next meeting.
+	
+	\item For my work at the NTU in Singapore, there is a need to define 30 \emph{scenario classes}. Originally, the plan was to define the 30 scenario classes based on the data gathered in Singapore. However, due to access limitations, a different approach is used. Literature (amongst others, \cite{USDoT2007precrashscenarios, opdencamp2014cats, adaptive2017d73}) is used to see which scenarios lead to traffic accidents. Though this is not optimal because scenarios classes that did not result in accidents might still be relevant when testing an automated vehicle, it provides at least a rationale for each scenario class. It is also useful for my research, as the scenario ontology is used to define the different scenario classes.
+	
+	The document regarding these 30 scenario classes will be extensively reviewed in Singapore, so I think no further review is required.
+	
+	\item Unfortunately, the paper ``Ontology of scenarios for the assessment of automated vehicles'' is rejected for the Intelligent Vehicles Symposium 2018. In summary, the following comments are made (in \textit{italics} my response with possible improvement of paper):
+	\begin{enumerate}
+		\item More elaboration is needed to demonstrate the usefulness.\\
+		\textit{Currently, the example only describes two simple scenarios. We can improve this section by describing what the benefits are of the presented ontology over other definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} when describing these scenarios.}
+		
+		\item It is not clear how the presented ontology can be of use regarding the assessment of automated vehicles (2 reviewers made this comment).\\
+		\textit{The ontology is of use regarding the assessment of automated vehicles because the assessment is based on scenarios. The fact that a scenario-based approach is adopted is already explained and references are provided \cite{stellet2015taxonomy, Helmer2017safety, putz2017pegasus, zofka2015datadrivetrafficscenarios, alvarez2017prospective, aparicio2013pre, lesemann2011test, geyer2014, ulbrich2015, deGelder2017assessment}, so I do not think we need to improve on that. However, regarding the application example, it might be useful to describe how the scenarios can be used to define test cases for the assessment. We can then also refer to OpenSCENARIO\footnote{OpenSCENARIO is a open file format for the description of the dynamic environment of scenarios for simulation purposes, see \url{http://www.openscenario.org/}. OpenSCENARIO is most likely going to be the standard that will be used by the majority of the automotive industry.}. OpenSCENARIO describes the dynamic environment by all the activities of each actor one by one, so this matches with our definition of a scenario.}
+		
+		\item The paper does not fully deliver what is mentioned in the	title of the article, namely in the assessment of AV	scenarios. For instance, the authors do not provide metrics, methodology or tools (e.g., simulation) for the	assessment of AVs. \\
+		\textit{The title of the paper is ``Ontology of scenarios for the assessment of automated vehicles'', so it is not an ontology regarding assessment itself, but regarding the scenarios only. Hence, I think the comment if not completely fair.\\
+		In the introduction of the paper, we provide a reference to the methodology for the assessment \cite{stellet2015taxonomy}. I definitely think we should not elaborate on this, as this is not the subject of the paper, but we can easily provide some references to metrics, methodologies and tools for the assessment of AVs to give a complete picture.}
+		
+		\item More scenario classes should be presented.\\
+		\textit{I think a paper is not suitable to describe a comprehensive list of tags. I plan to elaborate on this in the report regarding the 30 scenario classes. I am not yet sure, though, if we can refer to this report. Even if we can refer to this report, a final report will not be ready on short term. Therefore, I do not know how to address this comment on short term.}
+		
+		\item Scenarios should be of use to assess wide impact of autonomous vehicles (e.g., travel time, emissions), refer to WISE-ACT Cost.\\
+		\textit{I cannot find any documents regarding WISE-ACT Cost\footnote{See \url{http://www.cost.eu/COST_Actions/ca/CA16222}}, so I do not think we can refer to this in the paper. Furthermore, the assessment is about the performance of an automated vehicle itself, rather than the wider impact of autonomous vehicles. Perhaps we can emphasize this in the paper to prevent misunderstandings like this. Note that ``autonomous vehicles'' is not mentioned throughout the paper, so I find the comment a bit strange.}
+		
+		\item Road side infrastructure is not mentioned.\\
+		\textit{We can add a few sentences on this when describing the dynamic environment in Section~II of the paper.}
+		
+		\item How could different sensing capabilities (e.g., radar, lidar) be incorporated?\\
+		\textit{I do not understand this comment. The paper is about the scenarios itself. For assessing different sensing capabilities, one can simulate test cases with a radar or a lidar to see the difference. This comment gives me the feeling that the reviewer has no idea what he/she is talking about.}
+		
+		\item It is subjective. \\
+		\textit{I do not understand this comment either. We provided 45 references, so to me it seems a bit unfair to qualify the paper as subjective.}
+	\end{enumerate}
 \end{itemize}
 
 \section{Future plans}
 
 \begin{itemize}
-	\item 
+	\item In the beginning of June, I will travel to the Netherlands for a few weeks. I would like to go at least one day to the TU between the 11th of June and the 22nd of June (with exception of the 12th of June).
+	
+	\item The future plans from the previous progress report (see the minutes above) are still applicable. Due to holidays and other deadlines, I could hardly work on this the past weeks. To prevent that this will happen again, I dedicated several days to work on this the coming weeks.
 \end{itemize}
 
 \section{Questions}
 
 \begin{itemize}
-	\item 
+	\item Regarding the rejected paper, what could be the next step? Bart suggested to go directly for a journal. Jeroen and Jan-Pieter indicated that it would be good to have a conference paper before a journal paper. I think it should be possible to address most of the comments (as described above in \textit{italics}) in short time. Therefore, I am willing to submitting the paper to the 2018 IEEE International Conference on Vehicular Electronics and Safety (ICVES), September 12-14, 2018, Madrid, Spain, deadline 20th of May (no more extensions). I have no experience with rejected papers, so any advice is welcome.
+	\item After my first year, a Go/No Go review needs to be organized\footnote{See \url{https://intranet.tudelft.nl/fileadmin/Files/medewerkersportal/graduateschool/GoNoGo_procedure.pdf}}. The aim of this review is to explicitly state the expectation of successfully obtaining a PhD within four years and, on the basis of this, to decide whether to continue the program (Go) or terminate it prematurely (No Go).
+	\begin{itemize}
+		\item Could we already set a date for this review? The first two weeks of September (i.e., 3-14 September), I expect to be in the Netherlands. If we submit a paper to the ICVES, then 3-11 September would be suitable.
+		\item As already seven months passed (start date was the 1st of October), I would appreciate any feedback on what my expectations should be regarding the result of the Go/No Go review.
+		\item According to the Go/No Go procedure, I need to prepare a portfolio that may consist of (1) an overview of the results achieved, (2) a vision for the next three years, (3) an update of the PhD agreement, and (4) a self-reflection. What is exactly expected from me regarding the Go/No Go meeting?
+	\end{itemize}
 \end{itemize}
 
 
