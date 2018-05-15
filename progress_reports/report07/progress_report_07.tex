@@ -90,7 +90,15 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \section{Summary of work}
 
 \begin{itemize}
-	\item I hardly worked on the quantification of the completeness. As such, I propose to further discuss this in the next meeting.
+	\item Regarding the different aspects of \emph{completeness}, I wrote a few paragraphs to clarify the problem:
+	
+	To quantify how complete a scenario database is, a few assumptions are made. First, it is assumed that a scenario is a quantitative description, whereas a \emph{scenario class} refers to a qualitative description \cite{degelder2018ontology}. As such, a specific scenario class refers to multiple scenarios. The problem of quantifying the completeness can now be divided into two subproblems.
+	
+	The first subproblem deals with the quantification of the completeness regarding the scenario classes. To tackle this problem, each scenario class is described by a set of \emph{tags}. For example, the scenario class ``lead vehicle braking at straight road, in daylight, under clear weather conditions'' can be described by the tags ``lead vehicle braking'', ``straight road'', ``daylight'', and ``clear weather''. It is assumed that a scenario class is unambiguously defined by a set of tags. Therefore, the problem of quantifying the completeness regarding the scenario classes boils down to a combinatorial problem.
+	
+	The second subproblem deals with the quantification of the completeness regarding the scenarios of a specific scenario class. It is assumed that all scenarios of a specific scenario class can be parametrized in a similar manner. Though these parameters can be either discrete or continuous, is it expected that at least one parameter is continuous. As a result, there are infinite number of scenarios that belong to a specific scenario class. Therefore, it is expected that the problem of quantifying the completeness regarding the scenarios of a specific scenario class boils down to a statistical problem. 
+	
+	\item I hardly worked on the quantification of the completeness. As such, I propose to further discuss the technical details (except of what is written above) in the next meeting.
 	
 	\item For my work at the NTU in Singapore, there is a need to define 30 \emph{scenario classes}. Originally, the plan was to define the 30 scenario classes based on the data gathered in Singapore. However, due to access limitations, a different approach is used. Literature (amongst others, \cite{USDoT2007precrashscenarios, opdencamp2014cats, adaptive2017d73}) is used to see which scenarios lead to traffic accidents. Though this is not optimal because scenarios classes that did not result in accidents might still be relevant when testing an automated vehicle, it provides at least a rationale for each scenario class. It is also useful for my research, as the scenario ontology is used to define the different scenario classes.
 	

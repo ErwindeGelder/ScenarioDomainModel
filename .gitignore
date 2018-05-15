@@ -5,6 +5,8 @@
 *.bbl
 *.bcf
 *.blg
+*.cb
+*.cb2
 *.log
 *.out
 *.pdf

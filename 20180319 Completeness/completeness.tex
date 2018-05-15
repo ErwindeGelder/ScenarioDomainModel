@@ -176,6 +176,7 @@
 \newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
 \newcommand{\entropy}[1]{\textup{H} \left[ #1 \right]}
 \newcommand{\hatentropy}[1]{\hat{\textup{H}} \left[ #1 \right]}
+\newcommand{\kl}[2]{\textup{KL} \left( #1 || #2 \right)}
 
 \crefname{figure}{Figure}{Figures}
 \crefname{equation}{}{}
@@ -242,6 +243,8 @@
 \setlength{\heavyrulewidth}{0.1em}
 \newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
+\usepackage{changebar}  %% When including the package earlier, it does not work for some reason...
+
 %%==========================================================================
 %% Begin document
 %%==========================================================================
@@ -271,6 +274,14 @@ For the scenario-based assessment, proper specification of scenarios is crucial 
 
 % Completeness
 To draw conclusions on how an automated vehicle would perform in real-world traffic, it is necessary to know how representative the scenario database, that is used for the scenario-based assessment of the automated vehicle, is. Therefore it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}.
+
+\cbstart
+To quantify how complete a scenario database is, a few assumptions are made. First, it is assumed that a scenario is a quantitative description, whereas a \emph{scenario class} refers to a qualitative description \cite{degelder2018ontology}. As such, a specific scenario class refers to multiple scenarios. The problem of quantifying the completeness can now be divided into two subproblems.
+
+The first subproblem deals with the quantification of the completeness regarding the scenario classes. To tackle this problem, each scenario class is described by a set of \emph{tags}. For example, the scenario class ``lead vehicle braking at straight road, in daylight, under clear weather conditions'' can be described by the tags ``lead vehicle braking'', ``straight road'', ``daylight'', and ``clear weather''. It is assumed that a scenario class is unambiguously defined by a set of tags. Therefore, the problem of quantifying the completeness regarding the scenario classes boils down to a combinatorial problem.
+
+The second subproblem deals with the quantification of the completeness regarding the scenarios of a specific scenario class. It is assumed that all scenarios of a specific scenario class can be parametrized in a similar manner. Though these parameters can be either discrete or continuous, is it expected that at least one parameter is continuous. As a result, there are infinite number of scenarios that belong to a specific scenario class. Therefore, it is expected that the problem of quantifying the completeness regarding the scenarios of a specific scenario class boils down to a statistical problem. 
+\cbend
 
 % Approach
 %To achieve a complete database, the process shown in \cref{fig:completeness collection} is adopted. Newly collected data is compared with an existing database. If the data is not ``similar'', the data is added and the process is repeated. If, at some point, the data is ``similar'', it is concluded that the database is complete. This document describes different ways to determine to what degree the newly collected data is ``similar'' to the earlier collected data.
@@ -303,7 +314,7 @@ To draw conclusions on how an automated vehicle would perform in real-world traf
 %\end{figure}
 
 % Purpose of this document
-This document describes different methods for quantifying the completeness of a dataset. To illustrate the different methods, use is made of artificial data. The advantage of using artificial data is that it is easy to obtain a huge amount of data. The data consists of the speed of a vehicle sampled at $\unit[10]{Hz}$. Furthermore, the acceleration is estimated by filtering the derivative of the speed. A portion of the data is shown in \cref{fig:artificial data}. Note that the data is not very realistic, because in real life, the relative time a vehicle is cruising, i.e., driving at a constant speed, will be higher. However, for the purpose of illustrating the different methods, the artificial data suffices.
+This document describes different methods for quantifying the completeness of a dataset. To illustrate the different methods, use is made of artificial data. The advantage of using artificial data is that it is easy to obtain a huge amount of data. The data consists of the speed of a vehicle sampled at $\unit[10]{Hz}$. Furthermore, the acceleration is estimated by filtering the derivative of the speed. A portion of the data is shown in \cref{fig:artificial data}. Note that the data is not very realistic, because in real life, the relative time a vehicle is cruising, i.e., driving at a constant speed, will be higher. This is done for practical reasons, because fewer data needs to be generated to obtain a certain amount of braking and accelerating activities. Therefore, for the purpose of illustrating the different methods, the artificial data suffices.
 
 \setlength\figurewidth{0.8\linewidth}              %% set figure width
 \setlength\figureheight{0.3\textwidth}              %% set figure height
@@ -324,7 +335,7 @@ This document describes different methods for quantifying the completeness of a 
 \end{figure}
 
 % Structure of document
-The methods can be divided into two groups, i.e., the sample-based methods and the activity-based methods. The sample-based methods are discussed in \cref{sec:sample based} and the activity-based methods are discussed in \cref{sec:activity based methods}.
+The methods for estimating whether the amount of driving data is sufficient can be divided into two groups, i.e., the sample-based methods and the activity-based methods. The sample-based methods are discussed in \cref{sec:sample based} and the activity-based methods are discussed in \cref{sec:activity based methods}.
 
 
 \section{Sample-based methods}
@@ -356,27 +367,29 @@ where $\hat{\sigma}$ is the standard deviation of the data $\{x_i\}_{i=1}^n$.
 	The power of the Silverman rule is in its simplicity. The disadvantage, however, is that it tends to oversmooth the density when it is used for multimodal and highly skewed densities \cite{silverman1986density}. When comparing two estimated PDFs, they will be more similar when both are oversmoothed. As the comparison of two estimated PDFs leads to the quantification of completeness, the use of the Silverman rule might lead to an overestimation of the degree of completeness.
 \end{remark}
 
-The distribution $f(x;n)$ will change as $n$ increases. It is expected, however, that the change will decrease as $n$ increases. Therefore, the distribution $\hat{f}(x;n+m)$ with $m \in \mathds{R}^+$ is compared with $\hat{f}(x;n)$. For the comparison of two PDFs, the Kullback-Leibler divergence is employed \cite{kullback1951, bishop2006pattern}. For the two distributions $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$, the Kullback-Leibler divergence is as follows:
+The distribution $f(\cdot;n)$ will change as $n$ increases. It is expected, however, that the change will decrease as $n$ increases. Therefore, the distribution $\hat{f}(\cdot;n+m)$ with $m \in \mathds{R}^+$ is compared with $\hat{f}(\cdot;n)$. For the comparison of two PDFs, the Kullback-Leibler divergence is employed \cite{kullback1951, bishop2006pattern}. For the two distributions $\hat{f}(\cdot;n+m)$ and $\hat{f}(\cdot;n)$, the Kullback-Leibler divergence is as follows:
 \begin{equation} \label{eq:KL divergence}
-	KL\left( \hat{f}(x;n+m) || \hat{f}(x;n) \right) = \int \hat{f}(x;n+m) \ln \left( \frac{\hat{f}(x;n+m)}{\hat{f}(x;n)} \right) \ud x.
+	\kl{\hat{f}(x;n+m)}{\hat{f}(x;n)} = \int_{-\infty}^{\infty} \hat{f}(x;n+m) \ln \left( \frac{\hat{f}(x;n+m)}{\hat{f}(x;n)} \right) \ud x.
 \end{equation}
 
-The Kullback-Leibler divergence is always positive and zero if and only if $\hat{f}(x;n+m) = \hat{f}(x;n)$. Wang~\etal\ \cite{wang2017much} determine the proper amount of driving data such that $KL({\hat{f}(x;n+m)} || {\hat{f}(x;n)})$ changes very slightly if more data samples are to be added, i.e.,
+The Kullback-Leibler divergence is always positive and zero if and only if $\hat{f}(\cdot;n+m) = \hat{f}(\cdot;n)$. Wang~\etal\ \cite{wang2017much} determine the proper amount of driving data such that $\kl{\hat{f}(\cdot;n+m)}{\hat{f}(\cdot;n)}$ changes very slightly if more data samples are to be added, i.e.,
 \begin{equation} \label{eq:completeness wang}
-	\left| KL\left(\hat{f}(x;n+m)||\hat{f}(x;n)\right) - KL\left(\hat{f}(x;n+2m)||\hat{f}(x;n+m)\right) \right| \leq \epsilon,
+	\left| \kl{\hat{f}(\cdot;n+m)}{\hat{f}(\cdot;n)} - \kl{\hat{f}(\cdot;n+2m)}{\hat{f}(\cdot;n+m)} \right| \leq \epsilon,
 \end{equation}
 for a small value of $\epsilon\in\mathds{R}^+$. The proper number of samples $n$ equals the minimum value of $n$ for which \cref{eq:completeness wang} is satisfied.
 
 \begin{remark}
-	Although Wang~\etal\ use \cref{eq:completeness wang} to determine the appropriate number of samples $n$, it seems a bad choice as \cref{eq:completeness wang} is satisfied if the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n)$ is almost similar to the difference between $\hat{f}(x;n+m)$ and $\hat{f}(x;n+2m)$. A better should would be to use
+	Although Wang~\etal\ use \cref{eq:completeness wang} to determine the appropriate number of samples $n$, it seems a bad choice as \cref{eq:completeness wang} is satisfied if the difference between $\hat{f}(\cdot;n+m)$ and $\hat{f}(\cdot;n)$ is almost similar to the difference between $\hat{f}(\cdot;n+m)$ and $\hat{f}(\cdot;n+2m)$. It would be more appropriate to use
 	\begin{equation} \label{eq:kl epsilon}
-		KL\left(\hat{f}(x;n+m) || \hat{f}(x;n) \right) \leq \epsilon,
+		\kl{\hat{f}(\cdot;n+m)}{\hat{f}(\cdot;n)} \leq \epsilon,
 	\end{equation}
 	for a small value of $\epsilon\in\mathds{R}^+$.
+	
+	From the work of Wang~\etal, \cref{eq:kl epsilon} is not considered. Furthermore, no argumentation is provided for choosing \cref{eq:completeness wang} as condition for the completeness of the driving data.
 \end{remark}
 
 \begin{example}
-	\Cref{eq:completeness wang} is applied for the artificial data as shown in \cref{fig:artificial data}. When using similar values for $m$ and $\epsilon$ as in \cite{wang2017much}, i.e., $m=2000$ and $\epsilon=10^{-4}$, and the velocity as the feature $x$, it appears that 27 minutes of data suffices. The Kullback-Leibler divergence \cref{eq:KL divergence} is shown in \cref{fig:kl sample based} as a function of the amount of data. \Cref{fig:kl sample based} shows that as $n$ increases, the Kullback-Leibler divergence becomes less. 
+	\Cref{eq:completeness wang} is applied for the artificial data as shown in \cref{fig:artificial data}. When using similar values for $m$ and $\epsilon$ as in \cite{wang2017much}, i.e., $m=2000$ and $\epsilon=10^{-4}$, and the velocity as the feature $x$, it appears that 27 minutes of artificial data suffices. The Kullback-Leibler divergence \cref{eq:KL divergence} is shown in \cref{fig:kl sample based} as a function of the amount of data. \Cref{fig:kl sample based} shows that as $n$ increases, the Kullback-Leibler divergence becomes less. 
 	
 	\setlength\figurewidth{0.6\linewidth}
 	\setlength\figureheight{0.7\figurewidth}
@@ -398,7 +411,7 @@ for a small value of $\epsilon\in\mathds{R}^+$. The proper number of samples $n$
 			& \multicolumn{2}{c}{Feature} & \\
 			$m$ & Speed & Acceleration & Maximum \\ \otoprule
 			500 & $\unit[7]{min}$ & $\unit[5]{min}$ & $\unit[7]{min}$ \\
-			100 & $\unit[7]{min}$ & $\unit[12]{min}$ & $\unit[12]{min}$ \\
+			1000 & $\unit[7]{min}$ & $\unit[12]{min}$ & $\unit[12]{min}$ \\
 			2000 & $\unit[27]{min}$ & $\unit[23]{min}$ & $\unit[27]{min}$ \\
 			4000 & $\unit[67]{min}$ & $\unit[27]{min}$ & $\unit[67]{min}$ \\
 			6000 & $\unit[50]{min}$ & $\unit[40]{min}$ & $\unit[50]{min}$ \\
@@ -413,21 +426,17 @@ for a small value of $\epsilon\in\mathds{R}^+$. The proper number of samples $n$
 \subsection{Likelihood of new samples}
 \label{sec:likelihood sample based}
 
-This method is similar to the previous method in that a PDF is estimated using $n$ samples, i.e., $\hat{f}(x;n)$. But instead of comparing $\hat{f}(x;n)$ with $\hat{f}(x;n+m)$, the $m$ new samples are directly compared with first $n$ samples by determining the likelihood of the new $m$ samples based on the estimated PDF $\hat{f}(x;n)$. 
+This method is similar to the previous method in that a PDF is estimated using $n$ samples, i.e., $\hat{f}(\cdot;n)$. But instead of comparing $\hat{f}(\cdot;n)$ with $\hat{f}(\cdot;n+m)$, the $m$ new samples are directly compared with first $n$ samples by determining the likelihood of the new $m$ samples based on the estimated PDF $\hat{f}(\cdot;n)$. 
 
-Assuming that the samples are independent, the likelihood is simply the product of $\hat{f}(x_i;n)$ with $i=\{n+1, \ldots, n+m\}$. To get a value that is less dependent on the choice of $m$, the following value is used:
+Assuming that the samples are independent, the likelihood is simply the product of $\hat{f}(x_i;n)$ with $i\in \{n+1, \ldots, n+m\}$. To get a value that is less dependent on the choice of $m$, the following value is used:
 \begin{equation} \label{eq:likelihood estimation}
 	J(n) = \left( \prod_{i=n+1}^{n+m} \hat{f}(x_i;n) \right)^{\frac{1}{m}}.
 \end{equation}
-To make the computations easier, the log of \cref{eq:likelihood estimation} is considered:
+
+Let us consider the log of \cref{eq:likelihood estimation}:
 \begin{equation} \label{eq:loglikelihood estimation}
 	\ln J(n) = \frac{1}{m} \sum_{i=n+1}^{n+m} \ln \hat{f}(x_i;n).
 \end{equation}
-
-\begin{remark}
-	Obviously, consecutive samples are not independent.
-\end{remark}
-
 An important choice is when $J(n)$ is good enough. The goal is to estimate the underlying distribution $f(x)$ as accurately as possible. Therefore, when the true distribution $f(x)$ is used instead of $\hat{f}(x_i;n)$ in \cref{eq:loglikelihood estimation}, the expected value is
 \begin{equation} \label{eq:minus entropy}
 	\ln J^* = \expectation{ \ln f(x) }.
