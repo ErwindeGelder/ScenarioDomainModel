@@ -30,8 +30,8 @@ def remove_files(extension, folder):
 
 def clean_folder(folder):
     # Remove files that might be generated when compiling a .tex file
-    exts = ['aux', 'auxlock', 'bbl', 'bcf', 'blg', 'hst', 'log', 'nav', 'out', 'run.xml', 'snm', 'synctex.gz', 'toc',
-            'ver']
+    exts = ['aux', 'auxlock', 'bbl', 'bcf', 'blg', 'cb', 'cb2', 'hst', 'log', 'nav', 'out', 'run.xml', 'snm',
+            'synctex.gz', 'toc', 'ver']
     for ext in exts:
         remove_files(ext, folder)
 
@@ -165,6 +165,8 @@ if __name__ == '__main__':
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report06'), 'progress_report_06', usebiber=True)
+    call_output('git checkout PR7')
+    pdf(os.path.join('..', 'progress_reports', 'report07'), 'progress_report_07', usebiber=True)
     call_output('git checkout master')
 
     # All other stuff
