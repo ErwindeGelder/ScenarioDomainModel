@@ -165,6 +165,7 @@ if __name__ == '__main__':
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report06'), 'progress_report_06', usebiber=True)
+    call_output('git checkout ../"20180319 Completeness"/completeness.tex')
     call_output('git checkout PR7')
     pdf(os.path.join('..', 'progress_reports', 'report07'), 'progress_report_07', usebiber=True)
     call_output('git checkout master')
