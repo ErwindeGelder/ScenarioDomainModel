@@ -42,6 +42,7 @@
 \pgfplotsset{compat=1.9}  % Prevent warning, pgf running in backwards compatibility mode anyway
 \usetikzlibrary{external}                       %% Create pdf figures from TikZ. Use PDFTeXify ...
 \tikzexternalize[prefix=tikz/]                  %% ... with --tex-option=--shell-escape switch.
+\usepackage[capitalize]{cleveref}
 
 \theoremstyle{plain}
 \newtheorem{definition}{Definition}
@@ -61,7 +62,7 @@
 
 
 \title{\LARGE \bf
-	Ontology of scenarios for the assessment of automated vehicles
+	Definition of scenario in the context of the assessment of automated vehicles
 }
 
 
@@ -83,8 +84,9 @@ Jan-Pieter Paardekooper$^{1}$, Jeroen Ploeg$^{1}$, Hala Elrofai$^{1}$, Olaf Op d
 \newlength\figurewidth
 \newlength\figureheight
 
-\begin{document}
+\usepackage{changebar}
 
+\begin{document}
 
 
 \maketitle

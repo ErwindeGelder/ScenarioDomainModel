@@ -1044,7 +1044,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
 <node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
 <node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1522727480219" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -1153,6 +1153,28 @@
 <attribute NAME="authors" VALUE="De Schutter, Bart and Heemels, W. P. M. H. and Lunze, J. and Prieur, C."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="4518F6442FB451C57EAD55B55E1D989DCAADB41D922CE8B9B9D16925FCD85">
     <pdf_title>Survey of modeling, analysis, and control of hybrid systems</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Road side unit" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1612718498" CREATED="1526745423605" MODIFIED="1526745450210" MOVED="1526745445914">
+<node TEXT="Survey on Vehicular Ad Hoc Networks" ID="ID_1988670367" CREATED="1526745461318" MODIFIED="1526745482322" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/187%20A%20Tutorial%20Survey%20on%20Vehicular%20Ad%20Hoc%20Networks.pdf">
+<attribute NAME="key" VALUE="hartenstein2008tutorial"/>
+<attribute NAME="journal" VALUE="IEEE Communications magazine"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="A Tutorial Survey on Vehicular Ad Hoc Networks"/>
+<attribute NAME="authors" VALUE="Hartenstein, Hannes and Laberteaux, Kenneth P."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E2398373E79F2F1C185C74AF5E452A573E26D75C31832E0919F64321D83C1CA">
+    <pdf_title>A Tutorial Survey on Vehicular Ad Hoc Networks</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Extended Survey on Vehicular Ad Hoc Networks" ID="ID_1554905721" CREATED="1526745487415" MODIFIED="1526745643301" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/188%20A%20comprehensive%20survey%20on%20vehicular%20Ad%20Hoc%20network.pdf">
+<attribute NAME="key" VALUE="alsultan2014comprehensive"/>
+<attribute NAME="journal" VALUE="Journal of network and computer applications"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="A Comprehensive Survey on Vehicular Ad Hoc Network"/>
+<attribute NAME="authors" VALUE="Al-Sultan, Saif and Al-Doori, Moath M and Al-Bayatti, Ali H and Zedan, Hussien"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2E6F9750DDE741CD89E0984749B28D90D9E71CEF5246FBE4895F4ACBD90F03">
+    <pdf_title>Journal of Network and Computer Applications</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1388,8 +1410,8 @@
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Overview of Main Accident Scenarios in Car-to-Cyclist Accidents for Use in {AEB}-System Test Protocol"/>
 <attribute NAME="authors" VALUE="Op den Camp, Olaf and Ranjbar, Arian and Uittenbogaard, Jeroen and Rosen, Erik and Fredriksson, Rikard and de Hair, Stefanie"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="66D0DCCD76AA9C375AD59A28D2A169633D64257AAADFA90F99C6C17C6747A7">
-    <pdf_title>IN CAR-TO-CYCLIST ACCIDENTS FOR</pdf_title>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4058F7E4F31DAAA2D7E4EC3FECD0F0E816B8CD33AB882EA11D59E6BCC75C8CC3">
+    <pdf_title>Overview of main accident scenarios in car-to-cyclist accidents for use in AEB-system test protocol</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="US Department of Transportation: Pre-Crash Scenario Typology for Crash Avoidance Research" ID="ID_894623070" CREATED="1526270449478" MODIFIED="1526270464438" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/184%20Pre-Crash%20Scenario%20Typology%20for%20Crash%20Avoidance%20Research.pdf">
@@ -1399,6 +1421,15 @@
 <attribute NAME="authors" VALUE="Najm, Wassim G. and Smith, John D. and Yanagisawa, Mikio"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C6BEAA545D9B77F33E81CFC7E63D54672DB32274C368D17A705F98CF5285C">
     <pdf_title>Pre-Crash Scenario Typology for Crash Avoidance Research</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Typical Pedestrian Accident Scenarios for the Testing of AEB Systems (not used)" ID="ID_84185720" CREATED="1526445775438" MODIFIED="1526445798410" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/186%20Typical%20accident%20scenario%20pedestrians.pdf">
+<attribute NAME="key" VALUE="lenard2011typical"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Typical Pedestrian Accident Scenarios for the Testing of Autonomous Emergency Braking Systems"/>
+<attribute NAME="authors" VALUE="Lenard, James and Danton, Russell and Avery, Matthew and Weekes, Alix and Zuby, David and K{\&quot;u}hn, Matthias"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8AA7F6DC90525D1932564747409C9C85DF22B89E65CAEDA17CDDE106885">
+    <pdf_title>TYPICAL PEDESTRIAN ACCIDENT SCENARIOS FOR THE TESTING OF AUTONOMOUS EMERGENCY BRAKING SYSTEMS</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1744,7 +1775,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Other methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1522896107890">
+<node TEXT="Other methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1522896107890">
 <node TEXT="Teaching Self-Driving Cars to Dream" ID="ID_1568568342" CREATED="1522896117493" MODIFIED="1524720992177" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/177%20Teaching%20Self-Driving%20Cars%20to%20Dream.pdf">
 <attribute NAME="key" VALUE="rocklage2017teaching"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1847,6 +1878,15 @@
 <attribute NAME="authors" VALUE="Gietelink, Olaf and Ploeg, Jeroen and De Schutter, Bart and Verhaegen, Michel"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="727395F926B2C5F6CA7BCCC3EFB472D3840AB2D404741ABCCFFBC57A6A0F615">
     <pdf_title>Development of advanced driver assistance systems with vehicle hardware-in-the-loop simulations</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="CETRAN" ID="ID_191790954" CREATED="1526434317311" MODIFIED="1526434321316" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
+<attribute NAME="key" VALUE="ploeg2018cetran"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Scenario-Based Safety Assessment Framework for Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Ploeg, Jeroen and de Gelder, Erwin and Slav{\&apos;i}k, Martin and Querner, Eley and Webster, Thomas and de Boer, Niels"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6B31F33616AE27EBD54FD7549B19B0DFCC869DAB57C34B572167C3BE14A286">
+    <pdf_title>ITS AP Forum 2018 Fukuoka</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2003,6 +2043,15 @@
 <attribute NAME="key" VALUE="degelder2018ontology"/>
 <attribute NAME="title" VALUE="Ontology of Scenarios for the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and J.-P. Paardekooper and J. Ploeg and H. Elrofai and Op den Camp, Olaf and Khabbaz Saberi, Arash and De Schutter, Bart"/>
+</node>
+<node TEXT="2018 Scenario-Based Safety Assessment Framework for Automated Vehicles" ID="ID_110202670" CREATED="1526434328702" MODIFIED="1526434338216" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
+<attribute NAME="key" VALUE="ploeg2018cetran"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Scenario-Based Safety Assessment Framework for Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Ploeg, Jeroen and de Gelder, Erwin and Slav{\&apos;i}k, Martin and Querner, Eley and Webster, Thomas and de Boer, Niels"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6B31F33616AE27EBD54FD7549B19B0DFCC869DAB57C34B572167C3BE14A286">
+    <pdf_title>ITS AP Forum 2018 Fukuoka</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1518673341857" HGAP="54" VSHIFT="-27">

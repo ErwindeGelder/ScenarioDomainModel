@@ -14,9 +14,9 @@ In literature, many different types of traffic scenarios are considered, such as
 \end{enumerate}
 
 % Solution
-The proposed solution is to adopt tree structures of tags that describe the scenario. A tag could be a label that describes the weather, the type of road, or a specific activity of a target vehicle, etc. The tags are structured according to different trees, see Fig.~\ref{fig:tag trees} for three examples. Tags that are in the same layer of a branch are mutually exclusive. For example, regarding the weather (Fig.~\ref{fig:tag trees}a), it is not possible to have a scenario in which there is rain and snow at the same time. The different layers of the trees can be regarded as different abstraction levels \cite{Bonnin2014}. 
+The proposed solution is to adopt tree structures of tags that describe the scenario. A tag could be a label that describes the weather, the type of road, or a specific activity of a target vehicle, etc. The tags are structured according to different trees, see \cref{fig:tag trees} for three examples. Tags that are in the same layer of a branch are mutually exclusive. For example, regarding the weather (\cref{fig:tag trees}a), it is not possible to have a scenario in which there is rain and snow at the same time. The different layers of the trees can be regarded as different abstraction levels \cite{Bonnin2014}. 
 
-The trees provide the possibility to define specific tags, while these specific tags belong to a more generic tag. For example, when examining the following behavior of an AV, one might want to test for all vehicle-following scenarios (see Fig.~\ref{fig:tag trees}b), while in another case one might want to only test for the vehicle-following scenarios with braking involved.
+The trees provide the possibility to define specific tags, while these specific tags belong to a more generic tag. For example, when examining the following behavior of an AV, one might want to test for all vehicle-following scenarios (see \cref{fig:tag trees}b), while in another case one might want to only test for the vehicle-following scenarios with braking involved.
 
 %Note that the tags assigned to the scenario may depend on the ego vehicle. For example, the `target in front' refers to the vehicle in front of the ego vehicle.
 
