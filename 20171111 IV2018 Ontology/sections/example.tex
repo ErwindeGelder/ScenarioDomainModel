@@ -18,11 +18,9 @@ In the presented example, two scenarios are identified. The scenarios can be qua
 
 The activities of the ego vehicle are shown in \cref{fig:example ego states}, in which the speed is shown with respect to time $t$. Regarding the speed, two events are identified. At the first event, the ego vehicle's longitudinal acceleration transits from being positive to negative, i.e., the ego vehicle starts braking. As there are two events identified regarding the speed, three different activities are to be modeled, qualitatively described as `accelerating', `braking', and `cruising', respectively. 
 
-\cbstart
 Whereas the definitions from Geyer~et~al.~\cite{geyer2014}, Ulbrich~et~al.~\cite{ulbrich2015}, and Elrofai~et~al.~\cite{elrofai2016scenario} do not state when a scenario ends, \cref{def:scenario} states that a scenario contains all the relevant events. Therefore, it follows from \cref{def:scenario} that the first scenario ends at the second event.
 
 For a scenario-based assessment, test cases have to be defined. These test cases can be derived from real-world scenarios \cite{zofka2015datadrivetrafficscenarios,stellet2015taxonomy,deGelder2017assessment}. For example, based on the first scenario, a test case can be defined where the ego vehicle's objective is to follow the pickup truck while maintaining a safe distance and where the ego vehicle's initial speed is higher than the speed of the pickup truck. Other conditions can be applied for the test case, e.g., bad weather conditions that might cause a late detection, to assess the driving capabilities of the AV in different scenarios.
-\cbend
 
 \begin{figure}
 	\centering
