@@ -2039,9 +2039,9 @@
     <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2018 Ontology of scenarios for the assessment of automated vehicles" ID="ID_176436300" CREATED="1518065217613" MODIFIED="1524719791495">
+<node TEXT="2018 Ontology of scenarios for the assessment of automated vehicles" ID="ID_176436300" CREATED="1518065217613" MODIFIED="1526953310168">
 <attribute NAME="key" VALUE="degelder2018ontology"/>
-<attribute NAME="title" VALUE="Ontology of Scenarios for the Assessment of Automated Vehicles"/>
+<attribute NAME="title" VALUE="Definition of Scenario in the Context of the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and J.-P. Paardekooper and J. Ploeg and H. Elrofai and Op den Camp, Olaf and Khabbaz Saberi, Arash and De Schutter, Bart"/>
 </node>
 <node TEXT="2018 Scenario-Based Safety Assessment Framework for Automated Vehicles" ID="ID_110202670" CREATED="1526434328702" MODIFIED="1526434338216" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
