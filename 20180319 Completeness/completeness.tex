@@ -177,6 +177,7 @@
 \newcommand{\entropy}[1]{\textup{H} \left[ #1 \right]}
 \newcommand{\hatentropy}[1]{\hat{\textup{H}} \left[ #1 \right]}
 \newcommand{\kl}[2]{\textup{KL} \left( #1 || #2 \right)}
+\newcommand{\intinf}{\int_{-\infty}^{\infty}}
 
 \crefname{figure}{Figure}{Figures}
 \crefname{equation}{}{}
@@ -428,28 +429,33 @@ for a small value of $\epsilon\in\mathds{R}^+$. The proper number of samples $n$
 
 This method is similar to the previous method in that a PDF is estimated using $n$ samples, i.e., $\hat{f}(\cdot;n)$. But instead of comparing $\hat{f}(\cdot;n)$ with $\hat{f}(\cdot;n+m)$, the $m$ new samples are directly compared with first $n$ samples by determining the likelihood of the new $m$ samples based on the estimated PDF $\hat{f}(\cdot;n)$. 
 
-Assuming that the samples are independent, the likelihood is simply the product of $\hat{f}(x_i;n)$ with $i\in \{n+1, \ldots, n+m\}$. To get a value that is less dependent on the choice of $m$, the following value is used:
+Assuming that the samples are independent, the likelihood is simply the product of $\hat{f}(x_i;n)$ with $i \in \{n+1, \ldots, n+m\}$. To get a value that is less dependent on the choice of $m$, the following value is used:
 \begin{equation} \label{eq:likelihood estimation}
-	J(n) = \left( \prod_{i=n+1}^{n+m} \hat{f}(x_i;n) \right)^{\frac{1}{m}}.
+	J(n, m) = \left( \prod_{i=n+1}^{n+m} \hat{f}(x_i;n) \right)^{\frac{1}{m}}.
 \end{equation}
 
-Let us consider the log of \cref{eq:likelihood estimation}:
-\begin{equation} \label{eq:loglikelihood estimation}
-	\ln J(n) = \frac{1}{m} \sum_{i=n+1}^{n+m} \ln \hat{f}(x_i;n).
+\cbstart
+An important choice is when $J(n, m)$ is good enough. To this end, consider the likelihood when using the true distribution $f(\cdot)$:
+\begin{equation} \label{eq:likelihood true}
+	J^*(m) = \left( \prod_{i=n+1}^{n+m} f(x_i) \right)^{\frac{1}{m}}.
 \end{equation}
-An important choice is when $J(n)$ is good enough. The goal is to estimate the underlying distribution $f(x)$ as accurately as possible. Therefore, when the true distribution $f(x)$ is used instead of $\hat{f}(x_i;n)$ in \cref{eq:loglikelihood estimation}, the expected value is
+Next, consider the expectation of the log of \cref{eq:likelihood true}:
 \begin{equation} \label{eq:minus entropy}
-	\ln J^* = \expectation{ \ln f(x) }.
+	\expectation{\ln J^*(m)} = \expectation{ \frac{1}{m}\sum_{i=n+1}^{n+m} \ln f(x_i) } = \expectation{ \ln f(x) }.
 \end{equation}
-Notice that \cref{eq:minus entropy} equals the negative entropy of the $f(x)$. The entropy $\entropy{x}$ is defined as follows \cite{bishop2006pattern}:
+Note that \cref{eq:minus entropy} equals the negative entropy of the $f(\cdot)$. The entropy $\entropy{x}$ is defined as follows \cite{bishop2006pattern}:
 \begin{equation} \label{eq:entropy}
-	\entropy{x} = -\int f(x) \ln f(x) \ud x,
+	\entropy{x} = -\intinf f(x) \ln f(x) \ud x,
 \end{equation}
-where use is made of $f(x) \ln f(x) = 0$ if $f(x)=0$. Since the distribution $f(x)$ is unknown, the entropy can be estimated using $\hat{f}(x_i;n)$:
+where use is made of $f(x) \ln f(x) = 0$ if $f(x)=0$. Since the distribution $f(\cdot)$ is unknown, the entropy can be estimated using $\hat{f}(\cdot;n)$:
 \begin{equation} \label{eq:entropy estimation}
-	\hatentropy{x; n} = -\int \hat{f}(x;n) \ln \hat{f}(x;n) \ud x.
+	\hatentropy{x; n} = -\intinf \hat{f}(x;n) \ln \hat{f}(x;n) \ud x.
 \end{equation}
-The estimated entropy \cref{eq:entropy estimation} can be used to determine the desired value of the log-likelihood \eqref{eq:loglikelihood estimation}.
+The estimated entropy \cref{eq:entropy estimation} can be used to determine the desired value of the log-likelihood, i.e., the log of \cref{eq:likelihood estimation}:
+\begin{equation} \label{eq:loglikelihood estimation}
+	\ln J(n, m) = \frac{1}{m} \sum_{i=n+1}^{n+m} \ln \hat{f}(x_i; n)
+\end{equation}.
+\cbend
 
 \begin{remark}
 	Using the estimated entropy \eqref{eq:entropy estimation} promotes the use of high values of the bandwidth $h$, as this will result in higher values of the entropy. As a result, even though the estimated PDF $\hat{f}(x_i;n)$ might be worse with a higher value of $h$, the log-likelihood \cref{eq:loglikelihood estimation} might be closer to the estimated entropy \eqref{eq:entropy estimation}.
@@ -482,7 +488,9 @@ The estimated entropy \cref{eq:entropy estimation} can be used to determine the 
 \subsection{Comparing probability density functions}
 \label{sec:comparing pdf activities}
 
-Instead of considering the PDFs of the time samples (see \cref{sec:sample based pdf}), the PDFs of the activities' features will be considered in this section. An activity refers to the behavior of the vehicle between two events. As the number of activities is much less than the number of samples, the analysis using the activities is much less computationally intensive.
+Instead of considering the PDFs of the time samples (see \cref{sec:sample based pdf}), the PDFs of the activities' features will be considered in this section. 
+% EXPLAIN WHY!!!
+An activity refers to the behavior of the vehicle between two events. As the number of activities is much less than the number of samples, the analysis using the activities is much less computationally intensive.
 
 For illustrating the methods, three features that describe an activity are considered:
 \begin{itemize}
@@ -559,7 +567,7 @@ For determining the dissimilarity between two activities, the features of the ac
 
 A max-minimum method is used to determine to what degree the newly collected activities differ from the earlier collected activities, i.e., 
 \begin{equation} \label{eq:maxmin dissimilarity}
-	J_d(n, m) = \max_{n+1 \leq j \leq n+m} \min_{1 \leq i \leq n} g(\theta_i, \theta_j),
+	J_{\textup{d}}(n, m) = \max_{j=n+1, \ldots, n+m} \min_{i=1, \ldots, n} g(\theta_i, \theta_j),
 \end{equation}
 where $g(\theta_i, \theta_j)$ denotes the dissimilarity measure that is defined as follows:
 \begin{equation}
