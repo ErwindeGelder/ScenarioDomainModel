@@ -1,12 +1,13 @@
 import numpy as np
 import pickle
 import matplotlib.pyplot as plt
+import os
 
 
 class ProfileGeneration:
     def __init__(self):
         # Load the profiles
-        with open('df.p', 'rb') as f:
+        with open(os.path.join('pickles', 'df.p'), 'rb') as f:
             self.dfs, self.scaling = pickle.load(f)
 
         self.ts = 1 / 10  # [s]  Frequency
