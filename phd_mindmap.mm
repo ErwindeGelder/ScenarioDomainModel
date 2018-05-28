@@ -1434,7 +1434,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
+<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
 <edge COLOR="#007c00"/>
 <node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
 <node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1522727479993" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
@@ -1627,6 +1627,16 @@
 <attribute NAME="authors" VALUE="Efron, Bradley and Tibshirani, Robert J"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="65B771CFCD76B67ABB893B29A4CA53A3AD6B4E346B31B78FA125C6B659A9F5"/>
 </node>
+<node TEXT="Bootstrap methods for decision making and information flows" ID="ID_1932314841" CREATED="1527214000284" MODIFIED="1527214309382" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/189%20Bootstrap%20methods%20for%20decision%20making%20and%20information%20flows.pdf">
+<attribute NAME="key" VALUE="dedeo2013bootstrap"/>
+<attribute NAME="journal" VALUE="Entropy"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Bootstrap Methods for the Empirical Study of Decision-Making and Information Flows in Social Systems"/>
+<attribute NAME="authors" VALUE="DeDeo, Simon and Hawkins, Robert X. D. and Klingenstein, Sara and Hitchcock, Tim"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2E8E828668D095C2BF9EAB3FECFE972C4E332D4FC34E958ABD2E84BA8649A9DC">
+    <pdf_title>entropy</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Entropy" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_278372824" CREATED="1522301293611" MODIFIED="1522301298216">
 <node TEXT="Nonparametric entropy estimation: an overview" ID="ID_1964446420" CREATED="1522301299079" MODIFIED="1522727480602" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/174%20Nonparametric%20entropy%20estimation%20An%20overview.pdf">
@@ -1648,6 +1658,23 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="43256EF6B0D7A68DB57E64993DCF77A2F6119D1AC60263E9114527A68A17BE">
     <pdf_title>Estimation of Entropy and Mutual Information</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="Bootstrap methods for better estimating the entropy" ID="ID_1315443988" CREATED="1527214018807" MODIFIED="1527214312634" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/189%20Bootstrap%20methods%20for%20decision%20making%20and%20information%20flows.pdf">
+<attribute NAME="key" VALUE="dedeo2013bootstrap"/>
+<attribute NAME="journal" VALUE="Entropy"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Bootstrap Methods for the Empirical Study of Decision-Making and Information Flows in Social Systems"/>
+<attribute NAME="authors" VALUE="DeDeo, Simon and Hawkins, Robert X. D. and Klingenstein, Sara and Hitchcock, Tim"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2E8E828668D095C2BF9EAB3FECFE972C4E332D4FC34E958ABD2E84BA8649A9DC">
+    <pdf_title>entropy</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Book: Elements of information theory" ID="ID_547483199" CREATED="1527214930262" MODIFIED="1527215360458" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/190%20Elements%20of%20information%20theory.pdf">
+<attribute NAME="key" VALUE="cover2012elements"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="Elements of Information Theory"/>
+<attribute NAME="authors" VALUE="Cover, Thomas M. and Thomas, Joy A."/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
 <node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_410836587" CREATED="1522285999005" MODIFIED="1522286009782">
