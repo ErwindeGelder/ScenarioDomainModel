@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="16289831E40NEZ2DP35J7X82VH1EJ69TQTF" project_last_home="file:/C:/Users/geldered/Documents/gitlab/PhD/" dcr_id="1522725797578_a9xpaeijeyyl4do3obueqbq45">
+<map version="docear 1.1" dcr_id="1522725797578_a9xpaeijeyyl4do3obueqbq45" project="16289831E40NEZ2DP35J7X82VH1EJ69TQTF" project_last_home="file:/C:/Users/geldered/Documents/gitlab/PhD/">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1522725983162"><hook NAME="MapStyle">
@@ -1296,7 +1296,7 @@
 </node>
 </node>
 <node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
-<node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1522727480581" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
+<node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1527575114424" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
 <attribute NAME="year" VALUE="1993"/>
@@ -1314,7 +1314,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
+<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
 <node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
 <node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1524534460071" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
 <attribute NAME="key" VALUE="HighwayKeyOSM"/>
@@ -1338,6 +1338,16 @@
 <attribute NAME="authors" VALUE="Mahmassani, Hani and Mudge, Richard and Hou, Tian and Kim, Jiwon"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D2C2324345B37E03952CBCB4156DAA41EDF6255F8C91A7A4F1EB44ABD1697">
     <pdf_title>Use of Mobile Data for Weather- Responsive Traffic Management Models</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Lighting conditions" ID="ID_1269004624" CREATED="1527564303407" MODIFIED="1527568112004" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/191%20Relationships%20Among%20Urban%20Freeway%20Accidents%20Traffic%20Flow%20Weather%20and%20Lighting.pdf">
+<attribute NAME="key" VALUE="golob2003relationships"/>
+<attribute NAME="journal" VALUE="Journal of Transportation Engineering"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="Relationships Among Urban Freeway Accidents, Traffic Flow, Weather, and Lighting Conditions"/>
+<attribute NAME="authors" VALUE="Golob, Thomas F and Recker, Wilfred W"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1636B623882C8747F3848C159CDB98F85F9D924315A588B5B851B316797118">
+    <pdf_title>UC Berkeley</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1555,6 +1565,15 @@
 <attribute NAME="authors" VALUE="Nagler, Thomas and Czado, Claudia"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F8D02A2F7B5768C319C99A46CB3BC656AA63A2A666AE9BB4F66C1EC735AE619">
     <pdf_title>Journal of Multivariate Analysis</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Maximum-likelihood Kernel Density Estimation (PhD Thesis)" ID="ID_1806332425" CREATED="1528812767609" MODIFIED="1528812858649" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/192%20Maximum-likelihood%20Kernel%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="vanderwalt2014mlkde"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Maximum-Likelihood Kernel Density Estimation in High-Dimensional Feature Spaces"/>
+<attribute NAME="authors" VALUE="van der Walt, Christiaan Maarten"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C6C9B8596E0264A27FDCBF8C6022897E6F7E0851229A8D117DCF76DAC512">
+    <pdf_title>Maximum-likelihood Kernel Density</pdf_title>
 </pdf_annotation>
 </node>
 </node>

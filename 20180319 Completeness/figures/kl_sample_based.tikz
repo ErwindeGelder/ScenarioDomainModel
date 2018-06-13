@@ -14,9 +14,9 @@ xmajorgrids,
 x grid style={white!69.01960784313725!black},
 ymajorgrids,
 y grid style={white!69.01960784313725!black},
+legend entries={{Speed},{Acceleration}},
 legend cell align={left},
-legend style={draw=white!80.0!black},
-legend entries={{Speed},{Acceleration}}
+legend style={draw=white!80.0!black}
 ]
 \addlegendimage{no markers, blue}
 \addlegendimage{no markers, red}

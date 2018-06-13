@@ -84,7 +84,7 @@
 %%==========================================================================
 
 \newtoggle{standalone}
-\toggletrue{standalone}
+\togglefalse{standalone}
 \pagestyle{fancy}                                       %% set page style
 \fancyhf{}                                              %% clear all header & footer fields
 \iftoggle{standalone}{%
@@ -279,9 +279,9 @@ To draw conclusions on how an automated vehicle would perform in real-world traf
 \cbstart
 To quantify how complete a scenario database is, a few assumptions are made. First, it is assumed that a scenario is a quantitative description, whereas a \emph{scenario class} refers to a qualitative description \cite{degelder2018ontology}. As such, a specific scenario class refers to multiple scenarios. The problem of quantifying the completeness can now be divided into two subproblems.
 
-The first subproblem deals with the quantification of the completeness regarding the scenario classes. To tackle this problem, each scenario class is described by a set of \emph{tags}. For example, the scenario class ``lead vehicle braking at straight road, in daylight, under clear weather conditions'' can be described by the tags ``lead vehicle braking'', ``straight road'', ``daylight'', and ``clear weather''. It is assumed that a scenario class is unambiguously defined by a set of tags. Therefore, the problem of quantifying the completeness regarding the scenario classes boils down to a combinatorial problem.
+The first subproblem deals with the quantification of the completeness regarding the scenario classes. To tackle this problem, each scenario class is described by a set of \emph{tags}. For example, the scenario class ``lead vehicle braking at straight road, in daylight, under clear weather conditions'' can be described by the tags ``lead vehicle braking'', ``straight road'', ``daylight'', and ``clear weather''. It is assumed that a scenario class is unambiguously defined by a set of tags.
 
-The second subproblem deals with the quantification of the completeness regarding the scenarios of a specific scenario class. It is assumed that all scenarios of a specific scenario class can be parametrized in a similar manner. Though these parameters can be either discrete or continuous, is it expected that at least one parameter is continuous. As a result, there are infinite number of scenarios that belong to a specific scenario class. Therefore, it is expected that the problem of quantifying the completeness regarding the scenarios of a specific scenario class boils down to a statistical problem. 
+The second subproblem deals with the quantification of the completeness regarding the scenarios of a specific scenario class. It is assumed that all scenarios of a specific scenario class can be parametrized in a similar manner. Though these parameters can be either discrete or continuous, is it expected that at least one parameter is continuous. As a result, there are infinite number of scenarios that belong to a specific scenario class.  
 \cbend
 
 % Approach

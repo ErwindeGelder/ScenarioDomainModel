@@ -13,9 +13,9 @@ xmajorgrids,
 x grid style={white!69.01960784313725!black},
 ymajorgrids,
 y grid style={white!69.01960784313725!black},
-legend style={at={(0.97,0.03)}, anchor=south east, draw=white!80.0!black},
+legend entries={{$\ln J(n, m)$},{$-\hat{\textup{H}}[x;n]$}},
 legend cell align={left},
-legend entries={{$\ln J(n)$},{$-\hat{\textup{H}}[x;n]$}}
+legend style={at={(0.97,0.03)}, anchor=south east, draw=white!80.0!black}
 ]
 \addlegendimage{no markers, blue}
 \addlegendimage{no markers, red}

@@ -63,6 +63,11 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \fancyhead[R]{\author, \date}                           %% similar
 \fancyfoot[C]{\thepage}                                 %% define footer
 
+
+\newlength\venncircle\setlength{\venncircle}{10em} 
+\newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
+\newcommand{\mise}[1]{\textup{MISE} \left( #1 \right)}
+
 \begin{document}
 	
 \begin{center}
@@ -85,27 +90,107 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 		\item Make a rough layout of the journal paper regarding the ontology.
 	\end{itemize}
 	\item Regarding the different aspects of \emph{completeness}, I stated that one aspect if a combinatorial problem and the other aspect is a statistical problem. However, options should be kept open.
+	\item For the Go/No Go meeting, I need to prepare a small report (approximately 5 pages) that contains (1) an overview of the results achieved, (2) a vision for the next future, (3) an update of the PhD agreement, and (4) a self-reflection. I got an example of a report from Jeroen Fransman.
 \end{itemize}
 
 \section{Summary of work}
 
 \begin{itemize}
-	\item The rejected paper for IV2018 is slightly changed before submitted to ICVES2018. Notification of acceptance is the 30th of June.
+	\item The rejected paper for IV2018 is slightly changed before submitted to ICVES2018. Notification of acceptance is the 30th of June. I attached the paper in the email for reference. No review is required now.
+	
+	\item Some small changes are made to the report about the quantification of the \emph{completeness} of the data. The report is attached. Changes are marked by a gray bar on the right side of the page.
+	
+	\item With a few modifications, the paper with the definition of a scenario can be turned into a journal paper. I thought of the following changes:
+	\begin{itemize}
+		\item Add how the definition suits the assessment of automated vehicles. It should be enough to spend only a few paragraphs and at a reference to the white paper that TNO wants to publish (I will be a co-author of this white paper). The title of the white paper is ``StreetWise --- Towards scenario-based safety validation of connected and automated driving''.		
+		\item I want to give a more thorough explanation on the scenario classes. It should be made clear that a scenario class can be a subset of another scenario class and two scenario classes can be partially overlapping, as explained in \cref{fig:venn diagram scenario class}.
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}
+			\fill[red, fill opacity=0.5] (-\venncircle/2, 0) circle (\venncircle);
+			\fill[green, fill opacity=0.5] (\venncircle/2, 0) circle (\venncircle);
+			\draw (-\venncircle/2, 0) circle (\venncircle);
+			\draw (\venncircle/2, 0) circle (\venncircle);
+			
+			\node[anchor=east](daylight) at (-4/3*\venncircle, 3/4*\venncircle) {Day};
+			\draw (daylight) -- ({(-sqrt(3)/2-1/2)*\venncircle}, \venncircle/2);
+			\node[anchor=west](rain) at (4/3*\venncircle, 3/4*\venncircle) {Rain};
+			\draw (rain) -- ({(sqrt(3)/2+1/2)*\venncircle}, \venncircle/2);
+			
+			\node[text width=\venncircle, align=center] at (-\venncircle, 0) {Scenarios without rain during day};
+			\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during day};
+			\node[text width=\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain not during the day};
+			\end{tikzpicture}
+			\caption{Two different tags, i.e., ``day'' and ``rain'', lead to multiple scenario classes. Scenarios that have the tags ``day'' and ``rain'' belong to at least three scenario classes, namely the scenarios classes ``day'', ``rain'', and ``day and rain''.}
+			\label{fig:venn diagram scenario class}
+		\end{figure}
+		\item To explain the concept, a few scenario classes can be proposed. For more examples, I would like to refer to the document about the ``scenario classes'', which I am producing for CETRAN. I aim to make this document publicly, such that we are able to refer to this document. Also, this document contains many more ``tree of tags'', because the presented scenario classes will be differentiated using these tags.
+		\item A case study should be added. This case study should be about the process of obtaining the relevant test cases to assess a specific automated driving function, such as ``highway pilot'' (which is an SAE level 2 automation function that can be used to take over the longitudinal and lateral control of the vehicle when driving on the highway). By only specifying specific tags and parameter ranges, test cases should be obtained. 
+		\item I want to detail a bit more about the static environment as it sometimes led to confusion when I explain it to people. As written in the conference paper, the static environment refers to the environment of the ego vehicle that does not change during the timespan of a scenario. It would be helpful to further divide the static environment into geo-static infrastructure, i.e., the part of the static environment that is unlikely to change when driving at the same location, and environmental conditions, e.g., weather and lighting conditions.
+	\end{itemize}
+
+	\item As explained in previous progress reports, the \emph{completeness} of the data can be quantified by comparing two different probability density functions (PDFs). Let $\hat{f}(\cdot; n)$ be the estimated PDF using $n$ activities (i.e., $n$ parameter vectors). By comparing the PDFs $\hat{f}(\cdot; n)$ and $\hat{f}(\cdot; n+m)$, e.g., using the Kullback-Leibler divergence, a measure is obtained for quantifying the completeness. For example, with the Kullback-Leibler divergence, the smaller the value is, the more $\hat{f}(\cdot;n)$ and $\hat{f}(\cdot;n+m)$ look similar. \\
+	Although this is one approach to quantify the \emph{completeness}, what is needed in the end, is a measure for how similar the estimated PDF $\hat{f}(\cdot; n)$ looks like the unknown true PDF $f(\cdot)$. For example, the mean integrated squared error (MISE) \cite{turlach1993bandwidthselection} would be a good measure for quantifying the completeness:
+	\begin{equation} \label{eq:mise}
+		\mise{n} = \expectation{\int_{-\infty}^{\infty} \left( \hat{f}(x;n) - f(x) \right)^2 dx}.
+	\end{equation}
+	I have no idea, however, how to calculate the MISE. Probably bootstrapping \cite{efron1994bootstrap} could be used, but I am not sure how to proof that this leads to the desired result.
+	
+	\item In the work of Wang et al.\ \cite{wang2017much}, the PDFs are estimated using Kernel Density Estimation (KDE) where the bandwidth is estimated using Silverman's rule. The advantage of using the Silverman's rule is that is only depends on the standard deviation of the data and the number of samples. Therefore, the bandwidth is quickly computed. However, as mentioned in Remark~2.1 of the attached report, this rule tends to oversmooth the estimated PDF. \\
+	For better estimation of the PDF, cross-validation could be used. More specifically, when one-leave-out cross validation is used, the expected Kullback-Leibler divergence between the estimated PDF $\hat{f}(\cdot;n)$ and the true PDF $f(\cdot)$ \cite{turlach1993bandwidthselection}. With one-leave-out cross validation, the likelihood of the $i$-th sample equals
+	\begin{equation} \label{eq:sample likelihood}
+		p(x_i) = \frac{1}{n-1} \sum_{j \ne i} K_h(x_i - x_j),
+	\end{equation}
+	where $K_h(\cdot)$ denotes the Kernel function with bandwidth $h$ and the sum is taken for all $j\in \{1, \ldots, n\}$ except for $j=i$. 
+	
+%	The loglikelihood of all samples is defined as
+%	\begin{equation} \label{eq:loglikelihood}
+%		J(n) = \ln \prod_{i=1}^n p(x_i) = \sum_{i=1}^n \ln p(x_i).
+%	\end{equation}
+%	Substituting \cref{eq:sample likelihood} into \cref{eq:loglikelihood} gives:
+%	\begin{equation} \label{eq:loglikelihood inefficient}
+%		J(n) = \sum_{i=1}^{n} \ln \left( \frac{1}{n-1} \sum_{j \ne i} K_h(x_i - x_j) \right).
+%	\end{equation}
+%	When evaluating \cref{eq:loglikelihood inefficient}, the kernel function needs to be executed $n(n-1)$ times. However,  rewriting \cref{eq:sample likelihood} into
+%	\begin{equation} \label{eq:sample likelihood alternative}
+%		p(x_i) = \frac{1}{n-1} \left( \sum_{j=1}^{n} K_h(x_i - x_j) - K_h(0) \right),
+%	\end{equation}
+%	and substituting the result \cref{eq:sample likelihood alternative} into \cref{eq:loglikelihood} gives a summation that is independent of $i$. Therefore, we have
+%	\begin{align}
+%		J(n) &= \sum_{i=1}^{n} \ln \left( \frac{1}{n-1} \sum_{j=1}^{n} K_h(x_i - x_j) - \frac{K_h(0)}{n-1} \right) \\
+%		&= n \ln
+%	\end{align}
 \end{itemize}
 
 \section{Future plans}
 
 \begin{itemize}
-	\item 
+	\item I want to investigate different methods for estimating the uncertainty of the estimated PDF, e.g., using the mean integrated squared error \cref{eq:mise}. I will have a discussing about this with two mathematicians of TNO.
+	\item I read a lot about statistics and I realized that it might be useful to take a course on statistics. I want to apply for a master course on statistics.
+	\item I will continue with the report of the ``scenario classes''. 
+	\item When we agree on the contents of the journal paper, I want to make a start on this.
+	\item The aim is to publish three journal papers. The first paper is discussed above. The other papers can be about the following:
+	\begin{enumerate}
+		\item The quantification of the \emph{completeness} of the driving data.
+		\item The generation of test cases. Important questions regarding the generation of test cases are:
+		\begin{itemize}
+			\item How can we create test cases that reflect the variety that is found in real traffic?
+			\item How many test cases and which test cases are required for simulation to obtain a certain confidence in the safe performance of the system-under-test?
+		\end{itemize}
+	\end{enumerate}
 \end{itemize}
 
 \section{Questions}
 
 \begin{itemize}
-	\item 
+	\item How to estimate the uncertainty of an estimated PDF?
+	\item When is the Go/No Go meeting planned? When do I need to send the information, as discussed in the previous meeting, to the committee members of this Go/No Go meeting?
 \end{itemize}
 
 
 \printbibliography
+
+\newpage
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20180319 Completeness"/completeness.pdf}
 
 \end{document}
