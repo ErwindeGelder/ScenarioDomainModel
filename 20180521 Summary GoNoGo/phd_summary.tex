@@ -60,13 +60,13 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 
 In recent years, much research has been conducted towards automated vehicles. It is generally accepted that testing of automated vehicles will become more and more important and complex. My PhD research focuses on developing a methodology for the assessment of automated vehicles using real-world driving data.
 
-Instead of naively drive millions of kilometers, a scenario-based assessment approach is used. For this approach, the choice of scenarios is crucial. For my PhD research, a data-driven approach is adopted, see \cref{fig:scheme}. The primary goal of the research is to develop a methodology for the generation of the test cases using the preprocessed data, presented by the green blocks in \cref{fig:scheme}. This is achieved by detecting and parameterizing activities. Using the activities, the scenarios can be obtained, after which test cases can be generated for the assessment of the automated vehicle.
+Instead of naively driving millions of kilometers, a scenario-based assessment approach is used. For this approach, the choice of scenarios is crucial. For my PhD research, a data-driven approach is adopted, see \cref{fig:scheme}. The primary goal of the research is to develop a methodology for the generation of the test cases using the preprocessed data, represented by the green blocks in \cref{fig:scheme}. This is achieved by detecting and parameterizing activities. Using the activities and the static environment, the scenarios can be obtained, after which test cases can be generated for the assessment of the automated vehicle.
 
 First of all, a clear definition of scenario is required to avoid the ambiguity that often arises when talking about \emph{scenarios}. Therefore, my first activity regarding my PhD was to define the notion of \emph{scenario} \cite{degelder2018ontology}. The plan is to extend the current work \cite{degelder2018ontology} with a case study to make it suitable for a journal publication.
 
-On the one hand, the number of scenarios should be limited such that the test load remains feasible and, on the other hand, the scenarios should cover a large part of the variety that can be found in real-world traffic. For this reason, it is important to quantify to what extend the collected scenarios and the test cases are \emph{complete}. In \cref{fig:scheme}, this is indicated by the notion of \emph{completeness}. In the context of driving data, the completeness problem is an open issue, so therefore I am currently focusing on this problem. 
+On the one hand, the number of scenarios should be limited such that the test load remains feasible and, on the other hand, the scenarios should cover a large part of the variety of the actual scenarios that can be found in real-world traffic. For this reason, it is important to quantify to what extent the collected scenarios and the test cases are \emph{complete}. In \cref{fig:scheme}, this is indicated by the notion of \emph{completeness}. In the context of driving data, the completeness problem is an open issue, so therefore I am currently focusing on this problem. 
 
-Currently, I work on behalf of the dutch applied research organization (TNO) at the Nanyang Technological University (NTU) in Singapore to establish an assessment framework for automated vehicles that is very similar to the approach presented in \cref{fig:scheme} \cite{ploeg2018cetran}. To this end, I am describing so-called scenario classes, i.e., qualitative descriptions of the different scenarios, that are relevant for the assessment of an automated vehicle. Currently, expert knowledge and literature is used to come to a list of scenario classes. Future work is to acquire real-world driving data that enables a data-driven approach to obtain the scenarios and scenario classes, according to the process shown in \cref{fig:scheme}.
+Currently, I work on behalf of the Dutch applied research organization (TNO) at Nanyang Technological University (NTU) in Singapore to establish an assessment framework for automated vehicles that is very similar to the approach presented in \cref{fig:scheme} \cite{ploeg2018cetran}. To this end, I am describing so-called scenario classes, i.e., qualitative descriptions of the different scenarios, that are relevant for the assessment of an automated vehicle. Currently, expert knowledge and literature is used to obtain a list of scenario classes. Future work is to obtain the list of scenario classes and the scenarios with a data-driven approach using real-world driving data. To this end, real-world driving data needs to be acquired and the activity detection, parametrization, and scenario mining need to be automated. Other future work is to automate the generation of test cases using the obtained real-world scenarios, such that the test cases are realistic and reflect the more safety-critical scenarios of real-world traffic.
 
 \begin{figure}[h!]
 	\centering
@@ -92,9 +92,12 @@ Currently, I work on behalf of the dutch applied research organization (TNO) at 
 		\node[vert, below of=b3](b4){};
 		\draw[my brace](b4) -- (b2) node[midway, yshift=-2em, align=center]{Completeness};
 	\end{tikzpicture}
+	\vspace{-1em}
 	\caption{Schematic overview of the process of the assessment of an automated vehicle using real-world data. The green blocks are the focus of the PhD research.}
 	\label{fig:scheme}
 \end{figure}
+
+\vspace{-2em}
 
 \printbibliography
 
