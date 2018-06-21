@@ -376,7 +376,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
+<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
 <node TEXT="Generative Adversarial Nets (GANs)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1284675129" CREATED="1516590666097" MODIFIED="1516590687904">
 <node TEXT="Introduction of GANs" ID="ID_451182813" CREATED="1516591618309" MODIFIED="1522726472533" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/110%20Generative%20Adversarial%20Nets.pdf">
@@ -475,8 +475,30 @@
 <node TEXT="For testing of AVs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_446913384" CREATED="1522996423752" MODIFIED="1522996430189">
 <node TEXT="Automated Scenario Generation of Regression Testing of AVs" ID="ID_164912009" CREATED="1522996504294" MODIFIED="1522996505122"/>
 </node>
+<node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
+<node TEXT="Evaluation of scenario-generation methods for stochastic programming" ID="ID_1027960109" CREATED="1529493643125" MODIFIED="1529493895198" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/196%20Evaluation%20of%20scenario-generation%20methods%20for%20stochastic%20programming.pdf">
+<attribute NAME="key" VALUE="kaut2007evaluation"/>
+<attribute NAME="journal" VALUE="Pacific Journal of Optimization"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Evaluation of Scenario-Generation Methods for Stochastic Programming"/>
+<attribute NAME="authors" VALUE="Kaut, Michal and Wallace, Stein W."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7DEC8AB04A0986CF1657B6A3391E5DFAADFAF076BEA486ED5FD755214AD0BA">
+    <pdf_title>Evaluation of Scenario-Generation Methods for Stochastic Programming</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="Scenario mining" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1513049405976" HGAP="62" VSHIFT="8">
+<node TEXT="A Heuristic for Moment-Matching Scenario Generation" ID="ID_111057388" CREATED="1529493961704" MODIFIED="1529494072086" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/197%20A%20Heuristic%20for%20Moment-Matching%20Scenario%20Generation.pdf">
+<attribute NAME="key" VALUE="hoyland2003heuristic"/>
+<attribute NAME="journal" VALUE="Computational Optimization and Applications"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="A Heuristic for Moment-Matching Scenario Generation"/>
+<attribute NAME="authors" VALUE="H{\o}yland, Kjetil and Kaut, Michal and Wallace, Stein W"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="351DEB7A39A2DFCCF750A2152F35058FFEF27FE9E345899D686A4B9E48552">
+    <pdf_title>A Heuristic for Moment-Matching Scenario Generation</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
 <node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
 <node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
@@ -517,6 +539,16 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Driving Maneuver Classification: A Comparison of Feature Extraction Methods" ID="ID_1801389080" CREATED="1529494283347" MODIFIED="1529494409144" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/198%20Driving%20Maneuver%20Classification%20A%20Comparison%20of%20Feature%20Extraction%20Methods.pdf">
+<attribute NAME="key" VALUE="xie2017driving"/>
+<attribute NAME="journal" VALUE="IEEE Sensors Journal"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Driving Maneuver Classification: A Comparison of Feature Extraction Methods"/>
+<attribute NAME="authors" VALUE="Xie, Jie and Hilal, Allaa R and Kuli{\&apos;c}, Dana"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="15BDA5DEE56951349B15118A4AFD238FC59B953C60F677C1E62DFAF5FA47">
+    <pdf_title>Driving Maneuver Classification: A Comparison of Feature Extraction Methods</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Scene understanding" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1078234634" CREATED="1516851525657" MODIFIED="1516851536013">
 <node TEXT="Segmentation-Based Urban Traffic Scene Understanding -&gt; using first semantic labeling of pixels" ID="ID_258658" CREATED="1516851538081" MODIFIED="1522727223382" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/121%20Segmentation-Based%20Urban%20Traffic%20Scene%20Understanding.pdf">
@@ -529,7 +561,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data compression" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_203974535" CREATED="1521868113174" MODIFIED="1521868120954">
+<node TEXT="Data compression" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_203974535" CREATED="1521868113174" MODIFIED="1521868120954">
 <node TEXT="based on temporal correlation" ID="ID_924446852" CREATED="1521868123486" MODIFIED="1522727274743" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/171%20Compression%20algorithm%20of%20road%20traffic%20data.pdf">
 <attribute NAME="key" VALUE="wang2018compression"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
@@ -562,6 +594,18 @@
 <attribute NAME="authors" VALUE="Tatbul, Nesime and Lee, Tae Jun and Zdonik, Stan and Gottschlich, Justin"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="69C12CECE9EC8E306C943ED51F3BCDD43A197A8FE04D5E677C87EFDFDD54B8DF">
     <pdf_title>X G</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Scenario Libraries" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_28381863" CREATED="1529493235572" MODIFIED="1529493248164">
+<node TEXT="TrafficNet" ID="ID_1116865527" CREATED="1529493249499" MODIFIED="1529493255816" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/195%20TrafficNet%20An%20Open%20Naturalistic%20Driving%20Scenario%20Library.pdf">
+<attribute NAME="key" VALUE="zhao2017trafficnet"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1708.01872"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Trafficnet: An Open Naturalistic Driving Scenario Library"/>
+<attribute NAME="authors" VALUE="Zhao, Ding and Guo, Yaohui and Jia, Yunhan Jack"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="20D652C4E0BA7710D7573A586DD2540892349ED1B11C7F68E029C353586FF8">
+    <pdf_title>TrafficNet: An Open Naturalistic Driving Scenario Library</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1295,7 +1339,7 @@
 </node>
 </node>
 </node>
-<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
 <node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1527575114424" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
@@ -1314,7 +1358,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
+<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
 <node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
 <node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1524534460071" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
 <attribute NAME="key" VALUE="HighwayKeyOSM"/>
@@ -1440,6 +1484,14 @@
 <attribute NAME="authors" VALUE="Lenard, James and Danton, Russell and Avery, Matthew and Weekes, Alix and Zuby, David and K{\&quot;u}hn, Matthias"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="8AA7F6DC90525D1932564747409C9C85DF22B89E65CAEDA17CDDE106885">
     <pdf_title>TYPICAL PEDESTRIAN ACCIDENT SCENARIOS FOR THE TESTING OF AUTONOMOUS EMERGENCY BRAKING SYSTEMS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Taxonomy of Scenarios for Automated Driving" ID="ID_484843917" CREATED="1529494524703" MODIFIED="1529494664561" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/199%20Taxonomy%20of%20Scenarios%20for%20Automated%20Driving.pdf">
+<attribute NAME="key" VALUE="catapult2017taxonomy"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Taxonomy of Scenarios for Automated Driving"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DB5D41EA9F667A8E7897D85C9FE82921B2E88F9C01826E358D53B6075B4CC">
+    <pdf_title>Taxonomy of Scenarios for Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1576,6 +1628,15 @@
     <pdf_title>Maximum-likelihood Kernel Density</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Maximum Leave-one-out Likelihood for Kernel Density Estimation" ID="ID_624615584" CREATED="1529494717577" MODIFIED="1529495109108" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/200%20Maximum%20Leave-one-out%20Likelihood%20for%20Kernel%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="barnard2010maximum"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Maximum Leave-one-out Likelihood for Kernel Density Estimation"/>
+<attribute NAME="authors" VALUE="Barnard, Etienne"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6A8B9445C071C146F829B52D67484DA6FD16B740DBAF61241EAAF29D8A297484">
+    <pdf_title>Maximum Leave-one-out Likelihood for Kernel Density Estimation</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
 <node TEXT="Explanation of what copula&apos;s are" ID="ID_1206112239" CREATED="1513683703860" MODIFIED="1522727480149" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/092%20Coping%20with%20Copulas.pdf">
@@ -1707,6 +1768,33 @@
     <pdf_title>THE MATHEMATICAL THEORY OF COMMUNICATION</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="An Introduction to Statistical Learning" ID="ID_1663098703" CREATED="1529495478895" MODIFIED="1529495607404" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/201%20An%20Introduction%20to%20Statistical%20Learning.pdf">
+<attribute NAME="key" VALUE="james2013introduction"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="An Introduction to Statistical Learning"/>
+<attribute NAME="authors" VALUE="James, Gareth and Witten, Daniela and Hastie, Trevor and Tibshirani, Robert"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6A4FA661E9741215D9DC6982EF2916BB16A293AE084B35C8168B13B928BD2E">
+    <pdf_title>Springer Texts in Statistics</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="The Elements of Statistical Learning" ID="ID_166214202" CREATED="1529495649897" MODIFIED="1529503429767" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/202%20The%20Elements%20of%20Statistical%20Learning.pdf">
+<attribute NAME="key" VALUE="hastie2001elements"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="The Elements of Statistical Learning"/>
+<attribute NAME="authors" VALUE="Hastie, Trevor and Tibshirani, Robert and Friedman, Jerome"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="19DA2A699DFFB563DA71FC47CB8D7B31585EC11DC9B25952E8E3CA3F7C286D3E">
+    <pdf_title>The Elements of Statistical Learning</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Probability Theory: The Logic of Science" ID="ID_456569245" CREATED="1529507201304" MODIFIED="1529507289897" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/203%20Probability%20Theory%20The%20Logic%20Of%20Science.pdf">
+<attribute NAME="key" VALUE="jaynes2003probability"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="Probability theory: the logic of science"/>
+<attribute NAME="authors" VALUE="Jaynes, Edwin T"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="12641284CCB89F504C12EE6D5B283FEED1C138F2996C689FBBCCE86AA2757">
+    <pdf_title/>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1510633728393" HGAP="77" VSHIFT="-5">
@@ -1784,11 +1872,20 @@
     <pdf_title>Code of Practice</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="ISO26262" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1524721213042">
+<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
 <attribute NAME="authors" VALUE="{International Organization for Standardization (ISO)}"/>
+<node TEXT="How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles" ID="ID_1071919017" CREATED="1529470315799" MODIFIED="1529470320478" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/193%20How%20to%20reach%20complete%20safety%20requirement%20refinement%20for%20AVs.pdf">
+<attribute NAME="key" VALUE="bergenhem2015cars"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Bergenhem, Carl and Johansson, Rolf and S{\&quot;o}derberg, Andreas and Nilsson, Jonas and Tryggvesson, J{\&quot;o}rgen and T{\&quot;o}rngren, Martin and Ursing, Stig"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="32084524125C9C527E0788461A3F3D19CE97426F3508A9CFC919BDD42F8464D">
+    <pdf_title>How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1517195633891"/>
 </node>
@@ -1985,6 +2082,15 @@
     <pdf_title>Recent Development and Applications of SUMO &#x2013; Simulation of Urban MObility</pdf_title>
 </pdf_annotation>
 </node>
+</node>
+<node TEXT="gmaps" ID="ID_1050188079" CREATED="1529492733088" MODIFIED="1529492739735" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/194%20jupyter-gmaps.pdf">
+<attribute NAME="key" VALUE="bugnion2018gmaps"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="gmaps Documentation"/>
+<attribute NAME="authors" VALUE="Bugnion, Pascal"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6B3FDF611A148612365387BEA3A2527D3F3BA73A6EBADB7E2C39F2FC4B832">
+    <pdf_title>gmaps Documentation</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1519207393458" HGAP="81" VSHIFT="-9">
