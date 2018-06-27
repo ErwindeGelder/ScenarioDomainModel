@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1522725797578_a9xpaeijeyyl4do3obueqbq45" project="16289831E40NEZ2DP35J7X82VH1EJ69TQTF" project_last_home="file:/C:/Users/geldered/Documents/gitlab/PhD/">
+<map version="docear 1.1" project="16289831E40NEZ2DP35J7X82VH1EJ69TQTF" project_last_home="file:/C:/Users/geldered/Documents/gitlab/PhD/" dcr_id="1522725797578_a9xpaeijeyyl4do3obueqbq45">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1522725983162"><hook NAME="MapStyle">
@@ -1837,6 +1837,16 @@
     <pdf_title>Three Decades of Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="&quot;USDOT should assist in developing a framework and set of national guidelines for AV certification at the state level&quot;" ID="ID_426451611" CREATED="1530086499551" MODIFIED="1530086506953" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/204%20Preparing%20a%20nation%20for%20AVs.pdf">
+<attribute NAME="key" VALUE="fagnant2015preparing"/>
+<attribute NAME="journal" VALUE="Transportation Research Part A: Policy and Practice"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Preparing a Nation for Autonomous Vehicles: Opportunities, Barriers and Policy Recommendations"/>
+<attribute NAME="authors" VALUE="Fagnant, Daniel J and Kockelman, Kara"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DD14819CF4AE3521649E350E36B8022AEB2E7483B83BBE5BD6D09CD213484">
+    <pdf_title>Transportation Research Part A</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
 <node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1524721253768" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
@@ -2123,9 +2133,9 @@
     <pdf_title>UDRIVE: the European naturalistic driving study</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The Oxford RobotCar Dataset" ID="ID_634217329" CREATED="1512466566329" MODIFIED="1524721986074" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/070%20The%20Oxford%20RobotCar%20Dataset.pdf">
+<node TEXT="The Oxford RobotCar Dataset" ID="ID_634217329" CREATED="1512466566329" MODIFIED="1530086289947" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/070%20The%20Oxford%20RobotCar%20Dataset.pdf">
 <attribute NAME="key" VALUE="oxford2017dataset"/>
-<attribute NAME="journal" VALUE="The International Journal of Robotics Research (IJRR)"/>
+<attribute NAME="journal" VALUE="The International Journal of Robotics Research"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="1 Year, 1000km: The {O}xford RobotCar Dataset"/>
 <attribute NAME="authors" VALUE="Will Maddern and Geoff Pascoe and Chris Linegar and Paul Newman"/>

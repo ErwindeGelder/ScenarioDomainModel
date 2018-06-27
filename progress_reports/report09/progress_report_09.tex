@@ -40,6 +40,11 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../../bib}
 
+\usepackage{tabularx}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.2\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
 %%==========================================================================
 %% Define reference stuff
 %%==========================================================================
@@ -90,8 +95,23 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \section{Summary of work}
 
 \begin{itemize}
-	\item 
+	\item I looked at different journals that might be suitable for submitting the journal paper I want to write. \Cref{tab:journals} lists some suitable journals in alphabetical order.
 \end{itemize}
+
+\begin{table}[b]
+	\caption{Possible journals for submitting the journal paper in alphabetical order.}
+	\label{tab:journals}
+	\begin{tabularx}{\textwidth}{bs}
+		\hline
+		\heading{Journal name} & \heading{Relevant references} \\ \hline
+		IEEE Intelligent Transportation Systems Magazine & \cite{bengler2014threedecades, bertozzi2013vaic, kasper2012oobayesnetworks} \\
+		IEEE Transactions on Intelligent Transportation Systems & \cite{Bonnin2014, morales2017cooperativeintersection, ploeg2017GCDC, zhao2018evaluation} \\
+		IEEE Transactions on Intelligent Vehicles & \cite{wang2017much} \\
+		IET Intelligent Transport Systems & \cite{geyer2014, wang2018compression} \\
+		International Journal of Intelligent Transportation Systems Research & \cite{ebner2011identifying} \\
+		Transportation Research Part A: Policy and Practice & \cite{kalra2016driving, fagnant2015preparing} \\ \hline
+	\end{tabularx}
+\end{table}
 
 \section{Future plans}
 
