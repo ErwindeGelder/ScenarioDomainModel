@@ -91,7 +91,7 @@ class KDE(object):
         self.scale_data = scale_data
         self.std = np.empty(0)
 
-    def compute_bandwidth(self, min_bandwidth=0.01, max_bandwidth=0.3, n_bandwidths=30):
+    def compute_bandwidth(self, min_bandwidth=0.01, max_bandwidth=0.3, n_bandwidths=30, cv=10):
         """Compute the optimal bandwidth using cross validation
 
         Args
@@ -102,13 +102,15 @@ class KDE(object):
             Maximal bandwidth that will be tried
         n_bandwidths : int
             The number of bandwidth choices that will be tried using a grid search
+        cv : int
+            Number of folds
         """
 
         if self.verbose == 1:
             print('      Computing the optimal bandwidth for the KDE using cross-validation')
 
         grid = GridSearchCV(self.kde, {'bandwidth': np.linspace(min_bandwidth, max_bandwidth, n_bandwidths)},
-                            cv=10)  # 20-fold cross-validation
+                            cv=cv)  # 20-fold cross-validation
         if self.scale_data:
             grid.fit(self.data / self.std)
         else:
@@ -128,7 +130,7 @@ class KDE(object):
             print('      Best bandwidth is {:.3e}'.format(self.bandwidth))
             # print( '      Cross validation score is {:.3e}'.format(grid.best_score_) )
 
-    def compute_kde(self, min_bandwidth=0.01, max_bandwidth=0.3, n_bandwidths=30):
+    def compute_kde(self, min_bandwidth=0.01, max_bandwidth=0.3, n_bandwidths=30, cv=10):
         """Compute the kernel density estimation
 
         Args
@@ -139,6 +141,8 @@ class KDE(object):
             Maximal bandwidth that will be tried
         n_bandwidths : int
             The number of bandwidth choices that will be tried using a grid search
+        cv : int
+            Number of folds
         """
 
         # Compute the standard deviation which will be used to scale the data
@@ -149,7 +153,8 @@ class KDE(object):
             print('    Computing Kernel Density Estimation')
 
         if self.bandwidth is None:
-            self.compute_bandwidth(min_bandwidth=min_bandwidth, max_bandwidth=max_bandwidth, n_bandwidths=n_bandwidths)
+            self.compute_bandwidth(min_bandwidth=min_bandwidth, max_bandwidth=max_bandwidth, n_bandwidths=n_bandwidths,
+                                   cv=cv)
 
         if self.verbose == 1:
             print('      Computing KDE with optimal bandwidth')

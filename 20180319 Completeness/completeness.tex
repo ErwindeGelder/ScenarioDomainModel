@@ -84,7 +84,7 @@
 %%==========================================================================
 
 \newtoggle{standalone}
-\togglefalse{standalone}
+\toggletrue{standalone}
 \pagestyle{fancy}                                       %% set page style
 \fancyhf{}                                              %% clear all header & footer fields
 \iftoggle{standalone}{%
@@ -244,7 +244,7 @@
 \setlength{\heavyrulewidth}{0.1em}
 \newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
-\usepackage{changebar}  %% When including the package earlier, it does not work for some reason...
+%\usepackage{changebar}  %% When including the package earlier, it does not work for some reason...
 
 %%==========================================================================
 %% Begin document
@@ -276,13 +276,11 @@ For the scenario-based assessment, proper specification of scenarios is crucial 
 % Completeness
 To draw conclusions on how an automated vehicle would perform in real-world traffic, it is necessary to know how representative the scenario database, that is used for the scenario-based assessment of the automated vehicle, is. Therefore it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}.
 
-\cbstart
 To quantify how complete a scenario database is, a few assumptions are made. First, it is assumed that a scenario is a quantitative description, whereas a \emph{scenario class} refers to a qualitative description \cite{degelder2018ontology}. As such, a specific scenario class refers to multiple scenarios. The problem of quantifying the completeness can now be divided into two subproblems.
 
 The first subproblem deals with the quantification of the completeness regarding the scenario classes. To tackle this problem, each scenario class is described by a set of \emph{tags}. For example, the scenario class ``lead vehicle braking at straight road, in daylight, under clear weather conditions'' can be described by the tags ``lead vehicle braking'', ``straight road'', ``daylight'', and ``clear weather''. It is assumed that a scenario class is unambiguously defined by a set of tags.
 
 The second subproblem deals with the quantification of the completeness regarding the scenarios of a specific scenario class. It is assumed that all scenarios of a specific scenario class can be parametrized in a similar manner. Though these parameters can be either discrete or continuous, is it expected that at least one parameter is continuous. As a result, there are infinite number of scenarios that belong to a specific scenario class.  
-\cbend
 
 % Approach
 %To achieve a complete database, the process shown in \cref{fig:completeness collection} is adopted. Newly collected data is compared with an existing database. If the data is not ``similar'', the data is added and the process is repeated. If, at some point, the data is ``similar'', it is concluded that the database is complete. This document describes different ways to determine to what degree the newly collected data is ``similar'' to the earlier collected data.
@@ -434,7 +432,6 @@ Assuming that the samples are independent, the likelihood is simply the product 
 	J(n, m) = \left( \prod_{i=n+1}^{n+m} \hat{f}(x_i;n) \right)^{\frac{1}{m}}.
 \end{equation}
 
-\cbstart
 An important choice is when $J(n, m)$ is good enough. To this end, consider the likelihood when using the true distribution $f(\cdot)$:
 \begin{equation} \label{eq:likelihood true}
 	J^*(m) = \left( \prod_{i=n+1}^{n+m} f(x_i) \right)^{\frac{1}{m}}.
@@ -455,7 +452,6 @@ The estimated entropy \cref{eq:entropy estimation} can be used to determine the 
 \begin{equation} \label{eq:loglikelihood estimation}
 	\ln J(n, m) = \frac{1}{m} \sum_{i=n+1}^{n+m} \ln \hat{f}(x_i; n)
 \end{equation}.
-\cbend
 
 \begin{remark}
 	Using the estimated entropy \eqref{eq:entropy estimation} promotes the use of high values of the bandwidth $h$, as this will result in higher values of the entropy. As a result, even though the estimated PDF $\hat{f}(x_i;n)$ might be worse with a higher value of $h$, the log-likelihood \cref{eq:loglikelihood estimation} might be closer to the estimated entropy \eqref{eq:entropy estimation}.
