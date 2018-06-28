@@ -1848,6 +1848,28 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Safety" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1183001868" CREATED="1530151668822" MODIFIED="1530151674988">
+<node TEXT="Towards increased reliability by objectification of HARA of automated automotive systems" ID="ID_1947999662" CREATED="1530151676773" MODIFIED="1530151696969" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
+<attribute NAME="key" VALUE="khastgir2017towards"/>
+<attribute NAME="journal" VALUE="Safety Science"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Towards Increased Reliability by Objectification of {H}azard {A}nalysis and {R}isk {A}ssessment ({HARA}) of Automated Automotive Systems"/>
+<attribute NAME="authors" VALUE="Khastgir, Siddartha and Birrell, Stewart and Dhadyalla, Gunwant and Sivencrona, H{\aa}kan and Jennings, Paul"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E9C3D56EF13CDB75F8E99876BAE3E4D5F0447699AEC3793B10322850EC27FBDC">
+    <pdf_title>Safety Science</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Forecasts or fortune-telling: When are expert judgements of safety risk valid?" ID="ID_833487467" CREATED="1530152765709" MODIFIED="1530153296351" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/206%20When%20are%20expert%20judgements%20of%20safety%20risk%20valid.pdf">
+<attribute NAME="key" VALUE="rae2017forecast"/>
+<attribute NAME="journal" VALUE="Safety Science"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Forecasts or fortune-telling: When are expert judgements of safety risk valid?"/>
+<attribute NAME="authors" VALUE="Rae, Andrew and Alexander, Rob"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9748BC1557F22B19A4A34343B32408EFCD796A8AA60274BB9D14CFF98435398">
+    <pdf_title>Safety Science</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
 <node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1524721253768" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
 <attribute NAME="key" VALUE="kalra2016driving"/>
