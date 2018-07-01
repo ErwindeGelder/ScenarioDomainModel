@@ -1,0 +1,45 @@
+\subsection{Definition of events}
+\label{sec:events}
+% Introduction of this section
+A scenario, for which the definition is proposed in \cref{sec:scenario definition}, consists of events. Events can be seen as the building blocks of a scenario. The notion of event is extensively used in literature \cite{breu1997towards, 
+	kim1993supervenience, pfeiffer2013concepts, branicky1998hybridcontrol, %sartori1996understanding
+	deschutter2000optimal, heemels2012eventcontrol}. In this section, a selected number of descriptions is presented. Next, a definition of event is given that suits our context.
+
+% Literature review
+The term event is used in many different fields, e.g.:
+\begin{itemize}
+	\item In computing \cite{breu1997towards}, an event is an action or occurrence recognized by software. A common source of events are inputs by the software users. An event may trigger a state transition.
+	\item Jeagwon Kim, a philosopher, writes: ``The term event ordinarily implies change'' \cite{kim1993supervenience}. Kim states that an event is composed of three elements: objects, a property, and a time instant or a temporal interval. 
+	\item In probability theory, an event is an outcome or a set of outcomes of an experiment \cite{pfeiffer2013concepts}. For example, a thrown coin landing on its tail is an event.
+	%\item ``In relativity, an event is any occurrence with which a definite time and a definite location are associated; it is an idealization in the sense that any actual event is bound to have a finite extent both in time and in space'' \cite{sartori1996understanding}.
+	\item In the field of hybrid theory, ``the continuous and discrete dynamics interact at `event' or `trigger' times when the continuous state hits certain prescribed sets in the continuous state space'' \cite{branicky1998hybridcontrol}. ``A hybrid system can be in one of several modes, [...], and the system switches from one mode to another due to the occurrence of events'' \cite{deschutter2000optimal}.
+	\item In event-based control, a control action is computed when an event is triggered, as opposed to the more traditional approach where a control action is periodically computed \cite{heemels2012eventcontrol}. 
+\end{itemize}
+
+Before providing the definition of an event, the following is concluded about an event:
+
+% It is a time instant
+\subsubsection{An event corresponds to a time instant}
+Whether it is regarding computing, %relativity,
+hybrid control, or event-based control, an event is happening at a time instant.
+
+% Event should mark transition of a state from one set to another - mention relation with hybrid control
+\subsubsection{An event marks a mode transition}
+A mode transition may be caused by either an abrupt change of an input signal, a change of a parameter or a change in the model. For example, pushing the brake pedal may cause a mode transition and therefore, this may be regarded as an event. 
+
+%\subsubsection{An event marks (a cause of) a mode transition}
+%Events mark the transition of mode, which is either a change of input, parameter or state. This is analogous to the way event is described in hybrid control \cite{boel1999hybridcontrol}.
+
+% Give definition
+Hence, we define an event as follows.
+\begin{definition}[Event] \label{def:event}
+	An event marks the time instant at which a mode transition occurs, such that before and after an event, the state corresponds to two different modes.
+\end{definition}
+
+% Compare definition with literature and other remarks
+% - Mention that it is basically similar to the definition adopted with hybrid control theory
+% - Mention that before and after, different qualitative description
+An event according to \cref{def:event} is related to an event described in hybrid control \cite{deschutter2000optimal}, where an event describes the transition from one mode of operation to another mode of operation. In our application, i.e., events in traffic scenarios, ``mode of operation'' is described by a certain model with parameters assigned to it.
+
+The inter-event time interval, i.e., the time in between two events, corresponds to a certain activity. For example, when the longitudinal acceleration is negative during an inter-event time interval, the activity can be described by the label `braking'.
+%Another example of an event is the time instant at which the head lights are turned on. In that case, the activities before and after the event can be described as `lights off' and `lights on', respectively.
