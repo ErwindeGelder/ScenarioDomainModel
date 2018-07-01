@@ -13,6 +13,35 @@ The qualitative description can be regarded as an abstraction of the quantitativ
 % - 
 
 % Explain idea of a class
+% - Scenario is instance of scenario class
+% - Class can be subclass
+% - Instance can belong to none, one or more classes
+Scenarios are instances of scenario classes. A scenario class can contain multiple scenarios. On the other hand, a scenario may belong to none, one, or multiple scenario classes. As an example, consider the scenario class ``Day'' which contains all scenarios that occur during the day and the scenario class ``Rain'' which contains all scenarios with rain, see \cref{fig:venn diagram scenario class}. A scenario that occurs during the night without rain does not belong to any of the previously defined scenario classes. Likewise, a scenario that occurs during the day with rain belongs to both scenario classes ``Day'' and ``Rain''. 
 
+\setlength{\venncircle}{7em}
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\fill[red, fill opacity=0.5] (-\venncircle/2, 0) circle (\venncircle);
+		\fill[green, fill opacity=0.5] (\venncircle/2, 0) circle (\venncircle);
+		\draw (-\venncircle/2, 0) circle (\venncircle);
+		\draw (\venncircle/2, 0) circle (\venncircle);
+		
+		\node[anchor=east](daylight) at (-4/3*\venncircle, 3/4*\venncircle) {Day};
+		\draw (daylight) -- ({(-sqrt(3)/2-1/2)*\venncircle}, \venncircle/2);
+		\node[anchor=west](rain) at (4/3*\venncircle, 3/4*\venncircle) {Rain};
+		\draw (rain) -- ({(sqrt(3)/2+1/2)*\venncircle}, \venncircle/2);
+		
+		\node[text width=\venncircle, align=center] at (-\venncircle, 0) {Scenarios without rain during day};
+		\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during day};
+		\node[text width=\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain during night};
+	\end{tikzpicture}
+	\caption{The two circles correspond to the two scenario classes ``Day'' and ``Rain'', respectively. Scenarios that occur during the day with rain belong to both scenario classes ``Day'' and ``Rain''. The new scenario class ``Day and rain'' can be defined as the class that contains all scenarios that occur during the day with rain. The scenario class ``Day and rain'' is a subclass of the scenario classes ``Day'' and ``Rain''.}
+	\label{fig:venn diagram scenario class}
+\end{figure}
+
+A scenario class can be a subclass of another scenario class. For example, when we continue our previous example and consider the scenario class ``Day and rain'', this scenario class is a subclass of the scenario class ``Day'' and ``Rain''. Also, a scenario that occurs during the day with rain now belongs to three scenario classes: ``Day'', ``Rain'', and ``Day and rain''.
+
+A scenario class has two different types of properties. Firstly, a scenario class contains a human-readable description of all its instances. Secondly, it contains so-called tags that characterize the scenario class in a formal manner. 
 
 \cbend

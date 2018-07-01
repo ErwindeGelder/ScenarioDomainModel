@@ -1869,6 +1869,24 @@
     <pdf_title>Safety Science</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Using Rigorous Simulation to Support ISO 26262 HARA" ID="ID_1180522314" CREATED="1530238701102" MODIFIED="1530238876641" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/207%20Using%20Rigorous%20Simulation%20to%20Support%20ISO%2026262%20HARA.pdf">
+<attribute NAME="key" VALUE="duracz2015rigorous"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Using Rigorous Simulation to Support {ISO} 26262 Hazard Analysis and Risk Assessment"/>
+<attribute NAME="authors" VALUE="Duracz, Adam and Eriksson, Henrik and Bartha, Ferenc A. and Xu, Fei and Zeng, Yingfu and Taha, Walid"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7371D0E1B09A519839DE20235733CAE158B63A275072243765AC3625A6D59CF6">
+    <pdf_title>Using Rigorous Simulation to Support ISO 26262 Hazard Analysis and Risk Assessment</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="HARA for an Automated Unmanned Protective Vehicle" ID="ID_1928595384" CREATED="1530238931813" MODIFIED="1530239049743" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/208%20HARA%20for%20an%20Automated%20Unmanned%20Protective%20Vehicle.pdf">
+<attribute NAME="key" VALUE="stolte2017hara"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle"/>
+<attribute NAME="authors" VALUE="Stolte, Torben and Bagschik, Gerrit and Reschka, Andreas and Maurer, Markus"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A5FD229C259E3C70674158BAC8027958885C170E3FEE715C8A7562ECEC0ED82">
+    <pdf_title>Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle*</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
 <node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1524721253768" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
@@ -1916,6 +1934,24 @@
 <attribute NAME="authors" VALUE="Bergenhem, Carl and Johansson, Rolf and S{\&quot;o}derberg, Andreas and Nilsson, Jonas and Tryggvesson, J{\&quot;o}rgen and T{\&quot;o}rngren, Martin and Ursing, Stig"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="32084524125C9C527E0788461A3F3D19CE97426F3508A9CFC919BDD42F8464D">
     <pdf_title>How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Using Rigorous Simulation to Support ISO 26262 HARA" ID="ID_710804722" CREATED="1530238701102" MODIFIED="1530238876641" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/207%20Using%20Rigorous%20Simulation%20to%20Support%20ISO%2026262%20HARA.pdf">
+<attribute NAME="key" VALUE="duracz2015rigorous"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Using Rigorous Simulation to Support {ISO} 26262 Hazard Analysis and Risk Assessment"/>
+<attribute NAME="authors" VALUE="Duracz, Adam and Eriksson, Henrik and Bartha, Ferenc A. and Xu, Fei and Zeng, Yingfu and Taha, Walid"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7371D0E1B09A519839DE20235733CAE158B63A275072243765AC3625A6D59CF6">
+    <pdf_title>Using Rigorous Simulation to Support ISO 26262 Hazard Analysis and Risk Assessment</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="HARA for an Automated Unmanned Protective Vehicle" ID="ID_549860845" CREATED="1530238931813" MODIFIED="1530239049743" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/208%20HARA%20for%20an%20Automated%20Unmanned%20Protective%20Vehicle.pdf">
+<attribute NAME="key" VALUE="stolte2017hara"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle"/>
+<attribute NAME="authors" VALUE="Stolte, Torben and Bagschik, Gerrit and Reschka, Andreas and Maurer, Markus"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A5FD229C259E3C70674158BAC8027958885C170E3FEE715C8A7562ECEC0ED82">
+    <pdf_title>Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle*</pdf_title>
 </pdf_annotation>
 </node>
 </node>
