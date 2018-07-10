@@ -1,0 +1,111 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab/Python)
+\pgfplotsset{compat=1.14}						%% Run in backwards compatibility mode
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+\usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
+\usepackage{units}								%% Appropriate behavior of units
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../../bib}
+
+%%==========================================================================
+%% Define reference stuff
+%%==========================================================================
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{10}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{5 september, 2018}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-world driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item We discussed the take aways from a meeting I had with two TNO colleagues about the quantification of \emph{completeness}. They suggested to look into \emph{goodness of fits} methods, i.e., methods that describe how well a statistical model fits a set of observations. 
+	\begin{itemize}
+		\item Bart suggested that this might even be enough for the quantification of \emph{completeness}. I.e., does the method that Wang~et~al.\ \cite{wang2017much} use (comparing the estimated probability density function (PDF) using $n$ samples with the estimated PDF using $n+m$ samples) make sense?
+		\item Jan-Pieter argued that \emph{completeness} is more than only knowing how good an estimated PDF fits the data. For example, it might be possible that an estimated PDF using $n$ samples fits very well the obtained data, but that the PDF significantly changes when $n+m$ samples are used.
+	\end{itemize}
+	\item We discussed several journals for the publication of the \emph{ontology paper}. IET Intelligent Transport Systems is one possibility, because the paper of Geyer~et~al.\ \cite{geyer2014} is also published in this journal. Transportation Research Part A to E have a higher impact factor, so I will also look whether one of these is suitable (e.g., Transportation Research Part A: Policy and Practice \cite{kalra2016driving, fagnant2015preparing}). Bart suggested to look at recent issues and see whether papers have a similar scope as the paper we want to write.
+	\item For the \emph{ontology} paper, Bart suggested to look at other papers that present an ontology and/or a formalization in other applications (so not only traffic), e.g., see \cite{vanDamPhDThesis2009, vanDam2010model}.
+	\item Besides the work on the journal paper, it would be good to work on another topic in parallel. Therefore, I will continue working on the quantification of \emph{completeness}. Jan-Pieter and I aim to submit a conference paper on this topic this year or the beginning of next year.
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\section{Questions}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+
+\printbibliography
+
+\end{document}

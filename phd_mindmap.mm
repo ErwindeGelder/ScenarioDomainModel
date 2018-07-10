@@ -612,12 +612,12 @@
 </node>
 <node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
-<node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1522727274939" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
+<node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1530583127369" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="General Behavior Prediction by a Combination of Scenario-Specific Models"/>
-<attribute NAME="authors" VALUE="Bonnin, S. and Weisswange, Thomas H. and Kummert, F. and Schmuedderich, J."/>
+<attribute NAME="authors" VALUE="Bonnin, Sarah and Weisswange, Thomas H. and Kummert, Franz and Schmuedderich, Jens"/>
 <hook NAME="FirstGroupNode"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="FA31C11615E2E5F4FC6456AFE19A3EBFE68B7290C638FC71069ED69A02AF36">
     <pdf_title>General Behavior Prediction by a Combination of Scenario-Specific Models</pdf_title>
@@ -1095,7 +1095,7 @@
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="General Behavior Prediction by a Combination of Scenario-Specific Models"/>
-<attribute NAME="authors" VALUE="Bonnin, S. and Weisswange, Thomas H. and Kummert, F. and Schmuedderich, J."/>
+<attribute NAME="authors" VALUE="Bonnin, Sarah and Weisswange, Thomas H. and Kummert, Franz and Schmuedderich, Jens"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="FA31C11615E2E5F4FC6456AFE19A3EBFE68B7290C638FC71069ED69A02AF36">
     <pdf_title>General Behavior Prediction by a Combination of Scenario-Specific Models</pdf_title>
 </pdf_annotation>
@@ -1350,12 +1350,30 @@
     <pdf_title>A Translation Approach to Portable Ontology Specifications</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Work on ontology, this can be used as reference of what an ontology should look like" ID="ID_913218395" CREATED="1515430889468" MODIFIED="1522727480070" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
+<node TEXT="Work on ontology, this can be used as reference of what an ontology should look like" ID="ID_913218395" CREATED="1515430889468" MODIFIED="1531191202569" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
 <attribute NAME="key" VALUE="vanDamPhDThesis2009"/>
 <attribute NAME="year" VALUE="2009"/>
 <attribute NAME="title" VALUE="Capturing Socio-Technical Systems with Agent-Based Modelling"/>
-<attribute NAME="authors" VALUE="van Dam, Koen Hazi\&quot;{e}l"/>
+<attribute NAME="authors" VALUE="van Dam, Koen Hazi{\&quot;e}l"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+<node TEXT="Ontology Development 101: A Guide to Creating Your First Ontology" ID="ID_1036667149" CREATED="1531118094828" MODIFIED="1531190476893" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/210%20Ontology%20development.pdf">
+<attribute NAME="key" VALUE="noy2001ontology"/>
+<attribute NAME="year" VALUE="2001"/>
+<attribute NAME="title" VALUE="Ontology Development 101: A Guide to Creating Your First Ontology"/>
+<attribute NAME="authors" VALUE="Noy, Natalya F. and Mcguiness, Deborah L."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="28FD9696D168F7722FFA582A28A9B268F16ECED549F7DD17F9BE79896D2179">
+    <pdf_title>Ontology Development 101: A Guide to Creating Your First Ontology</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Model Factory for Socio-Technical Infrastructure Systems" ID="ID_244991483" CREATED="1531190480048" MODIFIED="1531191696825" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/211%20Model%20Factory%20for%20Socio-Technical%20Infrastructure%20Systems.pdf">
+<attribute NAME="key" VALUE="vanDam2010model"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="authors" VALUE="van Dam, Koen Hazi{\&quot;e}l and Lukszo, Z."/>
+<attribute NAME="title" VALUE="Model Factory for Socio-Technical Infrastructure Systems"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="401C8D512295C853466C915CDD30156ACC8F062BD665324C9833DE754FB5A6">
+    <pdf_title>Model Factory for Socio-Technical Infrastructure Systems</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
