@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="16289831E40NEZ2DP35J7X82VH1EJ69TQTF" project_last_home="file:/C:/Users/geldered/Documents/gitlab/PhD/" dcr_id="1522725797578_a9xpaeijeyyl4do3obueqbq45">
+<map version="docear 1.1" dcr_id="1522725797578_a9xpaeijeyyl4do3obueqbq45" project="16289831E40NEZ2DP35J7X82VH1EJ69TQTF" project_last_home="file:/C:/Users/geldered/Documents/gitlab/PhD/">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1522725983162"><hook NAME="MapStyle">
@@ -1867,6 +1867,28 @@
 </node>
 </node>
 <node TEXT="Safety" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1183001868" CREATED="1530151668822" MODIFIED="1530151674988">
+<node TEXT="Challenges" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_720959665" CREATED="1531278476883" MODIFIED="1531278483471">
+<node TEXT="Autonomous Vehicle Safety: An Interdisciplinary Challenge" ID="ID_32688539" CREATED="1531278488420" MODIFIED="1531278504798" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/212%20Autonomous%20Vehicle%20Safety%20An%20Interdisciplinary%20Challenge.pdf">
+<attribute NAME="key" VALUE="koopman2017interdisciplinary"/>
+<attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Autonomous Vehicle Safety: An Interdisciplinary Challenge"/>
+<attribute NAME="authors" VALUE="Koopman, Philip and Wagner, Michael"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2682DE9E56C67FA132593D6B4FECB99EA11C195EF367213A6F4F126A485CD4E">
+    <pdf_title>Autonomous Vehicle Safety: An Interdisciplinary Challenge</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Challenges in Autonomous Vehicle Testing and Validation" ID="ID_129854741" CREATED="1531278485117" MODIFIED="1531278501351" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/213%20Challenges%20in%20Autonomous%20Vehicle%20Testing%20and%20Validation.pdf">
+<attribute NAME="key" VALUE="koopman2016challenges"/>
+<attribute NAME="journal" VALUE="SAE International Journal of Transportation Safety"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Challenges in Autonomous Vehicle Testing and Validation"/>
+<attribute NAME="authors" VALUE="Koopman, Philip and Wagner, Michael"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6F28BE925CC24D606FFE4B4C5F91F37BA671A672B0454F2197BD8E847BEEC">
+    <pdf_title>Challenges in Autonomous Vehicle Testing and Validation</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Towards increased reliability by objectification of HARA of automated automotive systems" ID="ID_1947999662" CREATED="1530151676773" MODIFIED="1530151696969" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
 <attribute NAME="key" VALUE="khastgir2017towards"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
@@ -1915,6 +1937,16 @@
 <attribute NAME="authors" VALUE="Kalra, Nidhi and Paddock, Susan M"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="CAA8A9DCCEF61ECF01AC276399F95C449B896424E52DF5217955549FEDEE454">
     <pdf_title>Transportation Research Part A</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Autonomous Vehicle Safety: An Interdisciplinary Challenge" ID="ID_1712431850" CREATED="1531276807835" MODIFIED="1531276884763" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/212%20Autonomous%20Vehicle%20Safety%20An%20Interdisciplinary%20Challenge.pdf">
+<attribute NAME="key" VALUE="koopman2017interdisciplinary"/>
+<attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Autonomous Vehicle Safety: An Interdisciplinary Challenge"/>
+<attribute NAME="authors" VALUE="Koopman, Philip and Wagner, Michael"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2682DE9E56C67FA132593D6B4FECB99EA11C195EF367213A6F4F126A485CD4E">
+    <pdf_title>Autonomous Vehicle Safety: An Interdisciplinary Challenge</pdf_title>
 </pdf_annotation>
 </node>
 </node>
