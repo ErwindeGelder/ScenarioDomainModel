@@ -1375,6 +1375,102 @@
     <pdf_title>Model Factory for Socio-Technical Infrastructure Systems</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Ontology for applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1504253001" CREATED="1531293489079" MODIFIED="1531294181571">
+<node TEXT="Specifying domains of International Entrepreneurship research" ID="ID_1080604173" CREATED="1531293527245" MODIFIED="1531293844334" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/215%20International%20Entrepreneurship%20research%201989-2009%20domain%20ontology%20and%20thematic%20analysis.pdf">
+<attribute NAME="key" VALUE="jones2011international"/>
+<attribute NAME="journal" VALUE="Journal of Business Venturing"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="International Entrepreneurship Research (1989--2009): A Domain Ontology and Thematic Analysis"/>
+<attribute NAME="authors" VALUE="Jones, Marian V and Coviello, Nicole and Tang, Yee Kwan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BF5D1FBCD9D661D3F92B151873C109F8035C784C260F253FBCDBCF090583A">
+    <pdf_title>Journal of Business Venturing</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="For generation of test and use-case catalogue for automated vehicles" ID="ID_1631481662" CREATED="1531294184065" MODIFIED="1531294208318" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
+<attribute NAME="key" VALUE="geyer2014"/>
+<attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
+<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
+    <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Biology (for describing mouse phenotypes)" ID="ID_197464765" CREATED="1531294478859" MODIFIED="1531305850782" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/216%20Using%20ontologies%20to%20describe%20mouse%20phenotypes.pdf">
+<attribute NAME="key" VALUE="gkoutos2004mouse"/>
+<attribute NAME="journal" VALUE="Genome Biology"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Using Ontologies to Describe Mouse Phenotypes"/>
+<attribute NAME="authors" VALUE="Gkoutos, Georgios V. and Green, Eain C. J. and Mallon, Ann-Marie and Hancock, John M. and Davidson, Duncan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FF1E59447B255C6E4961D88FA172F02D419BD5E89030DDBE33C384C3D4BA">
+    <pdf_title>Georgios V Gkoutos, Eain CJ Green, Ann-Marie Mallon, John M Hancock and Duncan Davidson</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Security-related: express security requirements and capabilities." ID="ID_1585996560" CREATED="1531297664339" MODIFIED="1531298218551" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/217%20Security%20Ontology%20for%20Annotating%20Resources.pdf">
+<attribute NAME="key" VALUE="kim2005security"/>
+<attribute NAME="year" VALUE="2005"/>
+<attribute NAME="title" VALUE="Security Ontology for Annotating Resources"/>
+<attribute NAME="authors" VALUE="Kim, Anya and Luo, Jim and Kang, Myong"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CEC8F535968596FFE332C41F7119B177CDF2ED0B1F153476F572529F2DFCB17">
+    <pdf_title>Security Ontology for Annotating Resources</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Computing: SOUPA: Standard Ontology for Ubiquitous and Pervasive Applications" ID="ID_224953893" CREATED="1531298560216" MODIFIED="1531298718672" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/218%20SOUPA%20Standard%20Ontology%20for%20Ubiquitous%20and%20Pervasive%20Applications.pdf">
+<attribute NAME="key" VALUE="chen2004soupa"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="{SOUPA: Standard Ontology for Ubiquitous and Pervasive Applications}"/>
+<attribute NAME="authors" VALUE="Chen, Harry and Perich, Filip and Finin, Tim and Joshi, Anupam"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8E86E5F17ABD977CB7D477673FCDB991E1385083B57F1544657BA1A7C4C1E8C">
+    <pdf_title>SOUPA: Standard Ontology for Ubiquitous and Pervasive Applications</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Computing: An Ontology for Context-Aware Pervasive Computing Environments" ID="ID_1397839613" CREATED="1531299660032" MODIFIED="1531299746596" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/219%20An%20Ontology%20for%20Context-Aware%20Pervasive%20Computing%20Environments.pdf">
+<attribute NAME="key" VALUE="chen2003ontology"/>
+<attribute NAME="journal" VALUE="The Knowledge Engineering Review"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="An Ontology for Context-Aware Pervasive Computing Environments"/>
+<attribute NAME="authors" VALUE="Chen, Harry and Finin, Tim and Joshi, Anupam"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E71FC1CC1AD75BB3AC7C442C804138A05E1316AFE8F34DF2C9D465F68C748B">
+    <pdf_title>An Ontology for Context-Aware Pervasive Computing Environments</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="User profiling: Creating an Ontology for the User Profile: Method and Applications" ID="ID_117324600" CREATED="1531300320593" MODIFIED="1531300468617" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/221%20Creating%20an%20Ontology%20for%20the%20User%20Profile%20Method%20and%20Applications.pdf">
+<attribute NAME="key" VALUE="golemati2007creating"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Creating an Ontology for the User Profile: Method and Applications"/>
+<attribute NAME="authors" VALUE="Golemati, Maria and Katifori, Akrivi and Vassilakis, Costas and Lepouras, George and Halatsis, Constantin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3DF76CDADEAD66D27CF38775187EBFA1CEF69DDEB4323EB9B463CF2D35E05733">
+    <pdf_title>Creating an Ontology for the User Profile: Method and Applications</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Activites: indoor activities in a university context" ID="ID_1129926259" CREATED="1531302325806" MODIFIED="1531302427555" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/222%20Location%20based%20serive%20using%20ontology%20based%20semantic%20queries.pdf">
+<attribute NAME="key" VALUE="lee2017location"/>
+<attribute NAME="journal" VALUE="Computers, Environment and Urban Systems"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Location-Based Service Using Ontology-Based Semantic Queries: A Study with a Focus on Indoor Activities in a University Context"/>
+<attribute NAME="authors" VALUE="Lee, Kangjae and Lee, Jiyeong and Kwan, Mei-Po"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D9A23C8656B73E399496FD0D6DA4EE18CE184EE28D4C7E965A96BB296649E1">
+    <pdf_title>Computers, Environment and Urban Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Product lifecycle management (PLM): An Ontology-Based Approach for Closed-Loop PLM" ID="ID_1824909816" CREATED="1531299946315" MODIFIED="1531300250198" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/220%20An%20Ontology-Based%20Approach%20for%20Closed-Loop%20Product%20Lifecycle%20Management.pdf">
+<attribute NAME="key" VALUE="matsokis2010plm"/>
+<attribute NAME="journal" VALUE="Computers in Industry"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="An Ontology-Based Approach for Product Lifecycle Management"/>
+<attribute NAME="authors" VALUE="Matsokis, Aristeidis and Kiritsis, Dimitris"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="53FDB1C41EA6635EE0F37671F978FD52FF0945C84FE4DF89640D8C1A12531">
+    <pdf_title>Computers in Industry</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Capturing socio-technical systems" ID="ID_615943216" CREATED="1531304397309" MODIFIED="1531304423592" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
+<attribute NAME="key" VALUE="vanDamPhDThesis2009"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Capturing Socio-Technical Systems with Agent-Based Modelling"/>
+<attribute NAME="authors" VALUE="van Dam, Koen Hazi{\&quot;e}l"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+</node>
 </node>
 <node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
 <node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
@@ -1654,6 +1750,23 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="6A8B9445C071C146F829B52D67484DA6FD16B740DBAF61241EAAF29D8A297484">
     <pdf_title>Maximum Leave-one-out Likelihood for Kernel Density Estimation</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="A Tutorial on Kernel Density Estimation and Recent Advances" ID="ID_367486150" CREATED="1531384075707" MODIFIED="1531384079434" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/223%20Kernel%20Density%20Estimation%20and%20Recent%20Advancements.pdf">
+<attribute NAME="key" VALUE="chen2017tutorial"/>
+<attribute NAME="journal" VALUE="Biostatistics \&amp; Epidemiology"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="A Tutorial on Kernel Density Estimation and Recent Advances"/>
+<attribute NAME="authors" VALUE="Chen, Yen-Chi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9D6362631657526473AD4CF856E241943B3FF3F1E5173F912139DC82715C21">
+    <pdf_title>A Tutorial on Kernel Density Estimation and Recent Advances</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Multivariate Density Estimation: Theory, Practice, and Visualization" ID="ID_539778844" CREATED="1531451876440" MODIFIED="1531451885522" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/224%20Multivariate%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="scott1992multivariate"/>
+<attribute NAME="year" VALUE="1992"/>
+<attribute NAME="title" VALUE="Multivariate Density Estimation: Theory, Practice, and Visualization"/>
+<attribute NAME="authors" VALUE="Scott, David W."/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
 <node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
@@ -2005,7 +2118,24 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1517195633891"/>
+<node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1531279526037" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
+<attribute NAME="key" VALUE="wachenfeld2016release"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="The Release of Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Wachenfeld, Walther and Winner, Hermann"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AD2E246D97E43D87D1AF3FB7E8A13D5E3D34FD83C99CCA2694FD9C6286686">
+    <pdf_title>The Release of Autonomous Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="We should not find evidence that AVs are safe --&gt; find situations when they are unsafe" ID="ID_1551625640" CREATED="1531279159746" MODIFIED="1531279308576" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/214%20A%20Philosophy%20for%20Developing%20Trust%20in%20Self-Driving%20Cars.pdf">
+<attribute NAME="key" VALUE="wagner2015philosophy"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="A Philosophy for Developing Trust in Self-Driving Cars"/>
+<attribute NAME="authors" VALUE="Wagner, Michael and Koopman, Philip"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5C22DFAFE41E6A1C484CF7FF6D5B1B188AF59C9B734F43F9E99A5D2C23DE">
+    <pdf_title>A Philosophy for Developing Trust in Self-driving Cars</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Scenario-based methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1555930360" CREATED="1517043981271" MODIFIED="1517043988742">
 <node TEXT="Scenario-Based Assessment by Using Time Series Classification of Human-Driving Behaviour" ID="ID_507707419" CREATED="1517043996475" MODIFIED="1524721429269" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/134%20A%20Scenario-Based%20Assessment%20Approach%20for%20Automated%20Driving.pdf">
