@@ -1701,7 +1701,7 @@
 <attribute NAME="authors" VALUE="Turlach, Berwin A."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="40F9A34E24E03D74DDE25D6651FCFE1A37274D17210F57F75C9AD52BEBB5173"/>
 </node>
-<node TEXT="FastKDE" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1513917929034">
+<node TEXT="FastKDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1513917929034">
 <node TEXT="A fast and objective multidimensional kernel density estimation method" ID="ID_187819930" CREATED="1513917431887" MODIFIED="1522727480125" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/101%20FastKDE%20A%20fast%20and%20objective%20multidimensional%20kernel%20density%20estimation%20method.pdf">
 <attribute NAME="key" VALUE="obrien2016fastkde"/>
 <attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
@@ -1733,15 +1733,6 @@
     <pdf_title>Journal of Multivariate Analysis</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Maximum-likelihood Kernel Density Estimation (PhD Thesis)" ID="ID_1806332425" CREATED="1528812767609" MODIFIED="1528812858649" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/192%20Maximum-likelihood%20Kernel%20Density%20Estimation.pdf">
-<attribute NAME="key" VALUE="vanderwalt2014mlkde"/>
-<attribute NAME="year" VALUE="2014"/>
-<attribute NAME="title" VALUE="Maximum-Likelihood Kernel Density Estimation in High-Dimensional Feature Spaces"/>
-<attribute NAME="authors" VALUE="van der Walt, Christiaan Maarten"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C6C9B8596E0264A27FDCBF8C6022897E6F7E0851229A8D117DCF76DAC512">
-    <pdf_title>Maximum-likelihood Kernel Density</pdf_title>
-</pdf_annotation>
-</node>
 <node TEXT="Maximum Leave-one-out Likelihood for Kernel Density Estimation" ID="ID_624615584" CREATED="1529494717577" MODIFIED="1529495109108" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/200%20Maximum%20Leave-one-out%20Likelihood%20for%20Kernel%20Density%20Estimation.pdf">
 <attribute NAME="key" VALUE="barnard2010maximum"/>
 <attribute NAME="year" VALUE="2010"/>
@@ -1767,6 +1758,34 @@
 <attribute NAME="title" VALUE="Multivariate Density Estimation: Theory, Practice, and Visualization"/>
 <attribute NAME="authors" VALUE="Scott, David W."/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+<node TEXT="Kernel Density Estimation Using the Fast Fourier Transform" ID="ID_258148581" CREATED="1531796223169" MODIFIED="1531796336853" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/227%20Kernel%20Density%20Estimation%20Using%20the%20Fast%20Fourier%20Transform.pdf">
+<attribute NAME="key" VALUE="silverman1982fourier"/>
+<attribute NAME="journal" VALUE="Journal of the Royal Statistical Society. Series C (Applied Statistics)"/>
+<attribute NAME="year" VALUE="1982"/>
+<attribute NAME="title" VALUE="Algorithm AS 176: Kernel density estimation using the fast Fourier transform"/>
+<attribute NAME="authors" VALUE="Silverman, Bernhard W"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F25D55FF354EB0A654824BBA725FDE2BA2DB70ABA3BAA45E124CC2EE9EE63">
+    <pdf_title>Algorithm AS 176: Kernel Density Estimation Using the Fast Fourier Transform Author(s): B. W. Silverman Source: Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 31, No. 1 (1982), pp. 93-99 Published by: Wiley for the Royal Statistical Society Stable URL: http://www.jstor.org/stable/2347084 Accessed: 17-07-2018 01:41 UTC</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Books" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_116736876" CREATED="1531790817148" MODIFIED="1531790822476">
+<node TEXT="Maximum-likelihood Kernel Density Estimation (PhD Thesis)" ID="ID_1806332425" CREATED="1528812767609" MODIFIED="1528812858649" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/192%20Maximum-likelihood%20Kernel%20Density%20Estimation.pdf" MOVED="1531790863455">
+<attribute NAME="key" VALUE="vanderwalt2014mlkde"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Maximum-Likelihood Kernel Density Estimation in High-Dimensional Feature Spaces"/>
+<attribute NAME="authors" VALUE="van der Walt, Christiaan Maarten"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C6C9B8596E0264A27FDCBF8C6022897E6F7E0851229A8D117DCF76DAC512">
+    <pdf_title>Maximum-likelihood Kernel Density</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="All of Nonparamatric Statistics" ID="ID_1168995949" CREATED="1531790833888" MODIFIED="1531790840378" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/225%20All%20of%20Nonparametric%20Statistics.pdf">
+<attribute NAME="key" VALUE="wasserman2006nonparametric"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="All of Nonparamatric Statistics"/>
+<attribute NAME="authors" VALUE="Wasserman, Larry"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
 </node>
 </node>
 <node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
@@ -1924,6 +1943,15 @@
 <attribute NAME="authors" VALUE="Jaynes, Edwin T"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="12641284CCB89F504C12EE6D5B283FEED1C138F2996C689FBBCCE86AA2757">
     <pdf_title/>
+</pdf_annotation>
+</node>
+<node TEXT="All of Statistics: A Concise Course in Statistical Inference" ID="ID_832455186" CREATED="1531790847298" MODIFIED="1531790851360" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/226%20All%20of%20Statistics.pdf">
+<attribute NAME="key" VALUE="wasserman2004statistics"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="All of Statistics: A Concise Course in Statistical Inference"/>
+<attribute NAME="authors" VALUE="Wasserman, Larry"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5E8213E4E3E6C5ECE779E13A47FA7A2FCF662C5B0E5CD35B0BD421D275878">
+    <pdf_title>All of Statistics</pdf_title>
 </pdf_annotation>
 </node>
 </node>
