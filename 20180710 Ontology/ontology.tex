@@ -165,6 +165,7 @@
 \DeclareMathOperator{\sgn}{sgn}                                 %% signum function
 \DeclareMathOperator{\atan}{atan}                               %% arc tangent
 
+\newcommand{\class}[1]{\emph{#1}}
 
 \crefname{figure}{Figure}{Figures}
 \crefname{equation}{}{}
@@ -286,9 +287,18 @@ This document describes an ontology that can be used to describe and structure s
 \subsection{Literature review}
 \label{sec:ontology literature}
 
-According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization''. Here, a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some puppose'' \cite{gruber1993ontology}.
+According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization''. Here, a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some purpose'' \cite{gruber1993ontology}. 
 
-For the visualization of the classes of the ontology, a similar approach as given in \cite{vanDamPhDThesis2009} is used.
+Ontologies are widely applied in all kinds of research areas, e.g., biology \cite{gkoutos2004mouse}, security-related research \cite{kim2005security}, socio-technical systems \cite{vanDamPhDThesis2009}, and computing \cite{chen2004soupa,chen2003ontology}. Furthermore, ontologies are defined for various applications, e.g., for the specification of international entrepreneurship research domains \cite{jones2011international}, for the profiling of users \cite{golemati2007creating}, for the formalization of human activities \cite{lee2017location}, and for product life cycle management \cite{matsokis2010plm}.
+
+For the visualization of the classes of the ontology, a similar approach as given in \cite{vanDamPhDThesis2009} is used. The properties for each class are shown in the left column and for each property the allowed classes are listed in the right column, with the value type in the middle. If the value type in the middle column is singular, it means only one value is allowed for this property, while a value type in plural means that multiple values are possible in the class definition.
+
+The names of the classes start with a capital letter, whereas the first letter of a property is lower case. If the name of a class consists of more than one word, the so-called CamelCase notation is used. For properties, starting in lower case, the first letter of each next word is capitalized, when applicable. 
+
+\subsection{Scenario class}
+\label{sec:scenario class}
+
+
 
 \begin{figure}[h]
 	\centering
@@ -300,6 +310,8 @@ For the visualization of the classes of the ontology, a similar approach as give
 		tagsCombinations,Instances,TagCombination;
 		scenarios,Instances,Scenario
 	}
+	\caption{Description of the abstract class \class{ScenarioClass}.}
+	\label{fig:scerario class}
 \end{figure}
 
 \class{TagCombination}{tags,Instances,Tag}
