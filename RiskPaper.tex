@@ -1,0 +1,121 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+\usepackage{amsfonts}
+% The following packages can be found on http:\\www.ctan.org
+\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{multirow} % for tables
+%\usepackage{cite} % for bibliography with biblatex
+\usepackage{braket}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{bibRiskPaper}
+%\usepackage{subfig}
+%\usepackage{amsthm}
+%\usepackage{mathrsfs}
+\usepackage{epsfig} % for postscript graphics files
+\usepackage{nomencl}
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+\usepackage{times} % assumes new font selection scheme installed
+%\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+\graphicspath{ {figures/} }
+\usepackage[capitalize]{cleveref}
+\usepackage{color}
+\usepackage[USenglish]{babel}             %% language support
+
+\title{\LARGE \bf
+A Method for Scenario Risk Quantification for Automated Driving Applications
+}
+
+
+\author{Arash Khabbaz Saberi, Erwin de Gelder, Hala Elrofai}
+%\thanks{*This research has received funding from the European Unions Horizon 2020 research and innovation programme under ROADART Grant Agreement No 636565.}% <-this % stops a space
+%\thanks{$^{1}$E. van Nunen is with the Department of Integrated Vehicle Safety, TNO, P.O.
+%Box 756, 5700 AT Helmond, The Netherlands, and also with the Department of Mechanical Engineering, Eindhoven University of Technology, 5600 MB Eindhoven, The Netherlands
+
+
+\begin{document}
+
+
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+New developments in the automotive industry towards higher levels of automation is introducing new safety concerns for vehicles. 
+The role of scenario in defining the functionality and safety of the automated vehicles is becoming significant. 
+The state of art of risk assessment methods in the automotive domain (as described in Hazard Analysis and Risk Assessment (HARA) in ISO~26262:2018) have a qualitative nature and does not to capture the complexity of a driving scenario. 	
+In this paper we introduce a method for risk analysis and quantification of a driving scenario.
+
+\color{red}
+TODO: Explain how this risk estimation works. 
+
+We consider risk to be the product of severity of the outcome of a scenario and probability of that scenario.
+For severity, we adopt the same metric as in HARA, but we introduce a systematic method for calculating the probability. 
+In this method, we assume a causal relation between the activities and events that construct a scenario. 
+By making educated assumptions based on expert judgment, we breakdown the probability calculation for the dependent and independent activities/events as well as environmental conditions. 
+
+TODO: Explain the role of Monte Carlo simulation in this calculation. 
+
+The environmental conditions are considered static and therefore we only require knowledge on the probability density function of the conditions to calculate their probability. 
+On the other hand, the activities of a scenario are dynamic and have variations in the manner they happen. 
+Therefore, we use Monte Carlo simulations on the parameterized scenario to calculate the portability of a sequence of activities of the scenario.  
+\color{black}
+
+We perform a case study by applying our proposed method for risk analysis of a cut-in scenario, and show how the method can be used in practice. 
+Using our proposed method, we can compare safety criticality of various scenarios in an quantitative manner. 
+This can lead to stronger justification for design decisions and test coverage for developing automated vehicle functionalities. 
+
+\color{red}
+The challenge for applying this method is gathering enough data for quantification of scenario activities.
+\color{black}
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{sections/introduction}
+\input{sections/definitions}
+\input{sections/problem}
+\input{sections/method}
+\input{sections/example}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+
+
+
+
+\section*{Acknowledgment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% When using biber:
+\printbibliography
+
+%% When using BibLaTeX:
+%\bibliography{bibRiskPaper}
+%\bibliographystyle{ieeetr}
+
+
+\end{document}
