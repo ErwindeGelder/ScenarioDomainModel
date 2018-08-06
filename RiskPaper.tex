@@ -41,7 +41,7 @@
 \usepackage[USenglish]{babel}             %% language support
 
 \title{\LARGE \bf
-A Method for Scenario Risk Quantification for Automated Driving Applications
+A Method for Scenario Risk Quantification for Automated Driving Systems
 }
 
 
@@ -62,33 +62,21 @@ A Method for Scenario Risk Quantification for Automated Driving Applications
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-New developments in the automotive industry towards higher levels of automation is introducing new safety concerns for vehicles. 
-The role of scenario in defining the functionality and safety of the automated vehicles is becoming significant. 
-The state of art of risk assessment methods in the automotive domain (as described in Hazard Analysis and Risk Assessment (HARA) in ISO~26262:2018) have a qualitative nature and does not to capture the complexity of a driving scenario. 	
-In this paper we introduce a method for risk analysis and quantification of a driving scenario.
-
-\color{red}
-TODO: Explain how this risk estimation works. 
+	
+	
+New developments in the automotive industry towards higher levels of automation are introducing new safety concerns for vehicles. Test procedures and performance measures need to be adapted to evaluate vehicles with automated driving systems. To accommodate this, risk assessment methods in the automotive domain, such as described in the Hazard Analysis and Risk Assessment (HARA) in ISO~26262:2018, are developed. The state of the art of risk assessment methods, such as the aforementioned HARA, has a qualitative nature and does not capture the complexity of a driving scenario. In this paper, we introduce a method for risk analysis and quantification of a driving scenario.
 
 We consider risk to be the product of severity of the outcome of a scenario and probability of that scenario.
-For severity, we adopt the same metric as in HARA, but we introduce a systematic method for calculating the probability. 
-In this method, we assume a causal relation between the activities and events that construct a scenario. 
-By making educated assumptions based on expert judgment, we breakdown the probability calculation for the dependent and independent activities/events as well as environmental conditions. 
+For severity, we adopt the same metric as in HARA, but we introduce a systematic method for calculating the probability, where we assume a causal relation between the activities and events that constitute a scenario. 
+By making educated assumptions
+% , based on expert judgment, --> Don't need to say this, because "educated" implies the same, right?
+on the dependencies among the different activities, events, and environmental conditions, we simplify the calculation of the probability of a scenario. Finally, Monte Carlo simulations are employed for computing the probability of an outcome of a scenario.
 
-TODO: Explain the role of Monte Carlo simulation in this calculation. 
+Using our proposed method, we can compare safety criticality of various scenarios in an quantitative manner. This can lead to stronger justification for design decisions and test coverage for developing automated vehicle functionalities. 
+For illustrating how the proposed method can be used in practice, we perform a case study by applying our proposed method for risk analysis of a cut-in scenario.
 
-The environmental conditions are considered static and therefore we only require knowledge on the probability density function of the conditions to calculate their probability. 
-On the other hand, the activities of a scenario are dynamic and have variations in the manner they happen. 
-Therefore, we use Monte Carlo simulations on the parameterized scenario to calculate the portability of a sequence of activities of the scenario.  
-\color{black}
-
-We perform a case study by applying our proposed method for risk analysis of a cut-in scenario, and show how the method can be used in practice. 
-Using our proposed method, we can compare safety criticality of various scenarios in an quantitative manner. 
-This can lead to stronger justification for design decisions and test coverage for developing automated vehicle functionalities. 
-
-\color{red}
-The challenge for applying this method is gathering enough data for quantification of scenario activities.
-\color{black}
+%% No need to mention the challenges in the abstract
+% The challenge for applying this method is gathering enough data for quantification of scenario activities.
 \end{abstract}
 
 
