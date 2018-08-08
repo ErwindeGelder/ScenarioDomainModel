@@ -11,6 +11,7 @@ class KDE(object):
         self.kde = KernelDensity()
         self.bw = bw
         self.data, self.mindists, self.n, self.const_score, self.d, self.muk = None, None, 0, 0, 0, 0
+        self.xhist, self.yhist, self.fft = None, None, None
         self.fit(data)
         self.invgr = (np.sqrt(5) - 1) / 2  # Inverse of Golden Ratio
         self.invgr2 = (3 - np.sqrt(5)) / 2  # 1/gr^2
@@ -21,10 +22,41 @@ class KDE(object):
         else:
             self.data = data
         self.mindists = -dist.squareform(dist.pdist(self.data, metric='sqeuclidean')) / 2
-        self.n = len(self.data)
-        self.const_score = -self.n/2*np.log(2*np.pi) - self.n*np.log(self.n)
+        self.set_n(len(self.data))
         self.d = self.data.shape[1]
-        self.muk = 1 / (2**self.d * np.sqrt(np.pi**self.d))
+        self.muk = 1 / (2**self.d * np.sqrt(np.pi**self.d))  # muk = integral[ kernel(x)^2 ]
+
+        # # Build histogram (for using FFT for computing bandwidth)
+        # sigma = np.std(self.data)
+        # self.yhist, bin_edges = np.histogram(self.data, int((np.max(self.data) - np.min(self.data) / (sigma/100))),
+        #                                      range=(np.min(self.data) - 3*sigma, np.max(self.data) + 3*sigma),
+        #                                      density=True)
+        # self.xhist = (bin_edges[:-1] + bin_edges[1:]) / 2
+        # self.fft = np.fft.fft(self.yhist)
+
+    def set_n(self, n):
+        """
+        Set the number of datapoints. The constant term of the score for the one-leave-out cross validation is set.
+
+        :param n: Number of datapoints
+        """
+        self.n = n
+        self.const_score = -self.n/2*np.log(2*np.pi) - self.n*np.log(self.n)
+
+    def add_data(self, newdata):
+        if len(newdata.shape) == 1:
+            newdata = newdata[:, np.newaxis]
+        nnew = len(newdata)
+
+        # Expand the matrix with the distances
+        newmindists = -dist.squareform(dist.pdist(newdata, metric='sqeuclidean')) / 2
+        oldmindists = -dist.cdist(self.data, newdata, metric='sqeuclidean') / 2
+        self.mindists = np.concatenate((np.concatenate((self.mindists, oldmindists), axis=1),
+                                        np.concatenate((np.transpose(oldmindists), newmindists), axis=1)), axis=0)
+
+        # Update other stuff
+        self.data = np.concatenate((self.data, newdata), axis=0)
+        self.set_n(self.n + nnew)
 
     def compute_bw(self, **kwargs):
         self.compute_bw_gss(**kwargs)
@@ -42,7 +74,7 @@ class KDE(object):
         the interval [a,b], gss returns a subset interval                                                                                                       
         [c,d] that contains the minimum with d-c <= tol. 
     '''
-    def compute_bw_gss(self, min_bw=0.001, max_bw=1, max_iter=100, tol=1e-5):
+    def compute_bw_gss(self, min_bw=0.001, max_bw=1, max_iter=100, tol=1e-5, verbose=True):
         diff = max_bw - min_bw
         a, b = min_bw, max_bw
         c = a + self.invgr2 * diff
@@ -50,12 +82,15 @@ class KDE(object):
 
         # required steps to achieve tolerance
         n = int(np.ceil(np.log(tol / diff) / np.log(self.invgr)))
-        n = min(n, max_iter)
+        n = max(1, min(n, max_iter))
 
         yc = self.score_leave_one_out(bw=c)
         yd = self.score_leave_one_out(bw=d)
+        at_boundary_min = False  # Check if we only search at one side as this could indicate wrong values of min_bw
+        at_boundary_max = False  # Check if we only search at one side as this could indicate wrong values of min_bw
         for k in range(n):
             if yc > yd:
+                at_boundary_min = True
                 b = d
                 d = c
                 yd = yc
@@ -63,12 +98,20 @@ class KDE(object):
                 c = a + self.invgr2 * diff
                 yc = self.score_leave_one_out(bw=c)
             else:
+                at_boundary_max = True
                 a = c
                 c = d
                 yc = yd
                 diff = self.invgr * diff
                 d = a + self.invgr * diff
                 yd = self.score_leave_one_out(bw=d)
+
+        # Check if we only searched on one side
+        if verbose:
+            if not at_boundary_min:
+                print("Warning: only searched on right side. Might need to increase max_bw")
+            if not at_boundary_max:
+                print("Warning: only searched on right side. Might need to increase max_bw")
 
         if yc < yd:
             self.bw = (a + d) / 2
@@ -77,7 +120,8 @@ class KDE(object):
 
     def score_leave_one_out(self, bw=None):
         h = self.bw if bw is None else bw
-        return np.sum(np.log(np.sum(np.exp(self.mindists / h ** 2), axis=0) - 1)) - self.n*np.log(h) + self.const_score
+        return np.sum(np.log(np.sum(np.exp(self.mindists[:self.n, :self.n] / h ** 2), axis=0) - 1)) - \
+            self.n*np.log(h) + self.const_score
 
     def compute_kde(self, bw=None):
         if bw is None:
@@ -103,8 +147,20 @@ class KDE(object):
 
 if __name__ == '__main__':
     np.random.seed(0)
-    ndatapoints = [100, 500
-                   ]
+
+    xx = np.random.rand(200)
+    kde = KDE(data=xx)
+    kde.compute_bw()
+    print("Bandwidth n=200: {:.5f}".format(kde.bw))
+    nstart = 50
+    kde = KDE(data=xx[:nstart])
+    kde.compute_bw()
+    print("Bandwidth n={:d}: {:.5f}".format(nstart, kde.bw))
+    kde.add_data(xx[nstart:])
+    kde.compute_bw()
+    print("Bandwidth n=200: {:.5f}".format(kde.bw))
+
+    ndatapoints = [100, 500]
     f, axs = plt.subplots(1, len(ndatapoints), figsize=(12, 5))
 
     for ndatapoint, ax in zip(ndatapoints, axs):
@@ -125,5 +181,5 @@ if __name__ == '__main__':
         ax.fill_between(xpdf, low, up, facecolor=[0.5, 0.5, 1], alpha=0.5, label='95% Confidence')
         ax.legend()
         ax.set_title('{:d} datapoints'.format(ndatapoint))
-        ax.grid('on')
+        ax.grid(True)
     plt.show()
