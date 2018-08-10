@@ -41,7 +41,7 @@ class KDE(object):
         :param n: Number of datapoints
         """
         self.n = n
-        self.const_score = -self.n/2*np.log(2*np.pi) - self.n*np.log(self.n)
+        self.const_score = -self.n*self.d/2*np.log(2*np.pi) - self.n*np.log(self.n-1)
 
     def add_data(self, newdata):
         if len(newdata.shape) == 1:
@@ -121,7 +121,7 @@ class KDE(object):
     def score_leave_one_out(self, bw=None):
         h = self.bw if bw is None else bw
         return np.sum(np.log(np.sum(np.exp(self.mindists[:self.n, :self.n] / h ** 2), axis=0) - 1)) - \
-            self.n*np.log(h) + self.const_score
+            self.n*self.d*np.log(h) + self.const_score
 
     def compute_kde(self, bw=None):
         if bw is None:
@@ -132,7 +132,15 @@ class KDE(object):
     def score_samples(self, x):
         if len(x.shape) == 1:
             x = x[:, np.newaxis]
-        return np.exp(self.kde.score_samples(x))
+        if len(x.shape) == 2:
+            return np.exp(self.kde.score_samples(x))
+        else:
+            # It is assumed that the last dimension corresponds to the dimension of the data (i.e., a single datapoint)
+            # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is converted to input
+            # shape
+            newshape = x.shape[:-1]
+            scores = np.exp(self.kde.score_samples(x.reshape((np.prod(newshape), x.shape[-1]))))
+            return scores.reshape(newshape)
 
     def confidence_interval(self, x, confidence=0.95):
         if len(x.shape) == 1:
