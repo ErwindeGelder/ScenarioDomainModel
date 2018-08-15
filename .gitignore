@@ -24,6 +24,7 @@ _data/
 *.snm
 *.dpth
 *.md5
+*.hdf5
 utilities/log2.txt
 
 # Other files to be ignored
