@@ -1,8 +1,8 @@
 <map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
-<node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="0.622">
-    <properties show_note_icons="true" show_icon_for_attributes="true"/>
+<node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="0.91">
+    <properties show_icon_for_attributes="true" show_note_icons="true"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node">
@@ -54,9 +54,9 @@
 <hook NAME="AutomaticEdgeColor" COUNTER="0"/>
 <node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1534304349580" HGAP="80" VSHIFT="-10" MOVED="1534304305826">
 <edge COLOR="#7c7c00"/>
-<node TEXT="Curve fitting" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1288097973" CREATED="1516866158372" MODIFIED="1516866168325">
-<node TEXT="General" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1015917001" CREATED="1516866172981" MODIFIED="1516866180627">
-<node TEXT="Comparison of splines with other step-wise regressions" ID="ID_1640740336" CREATED="1516866181671" MODIFIED="1524722365730" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/130%20Stepwise%20regression%20is%20an%20alternative%20to%20splines%20for%20fitting%20noisy%20data.pdf">
+<node TEXT="Curve fitting" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1288097973" CREATED="1516866158372" MODIFIED="1516866168325">
+<node TEXT="General" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1015917001" CREATED="1516866172981" MODIFIED="1516866180627">
+<node TEXT="Comparison of splines with other step-wise regressions" ID="ID_1640740336" CREATED="1516866181671" MODIFIED="1534391856625" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/130%20Stepwise%20regression%20is%20an%20alternative%20to%20splines%20for%20fitting%20noisy%20data.pdf">
 <attribute NAME="key" VALUE="BURKHOLDER1996235"/>
 <attribute NAME="journal" VALUE="Journal of Biomechanics"/>
 <attribute NAME="year" VALUE="1996"/>
@@ -66,7 +66,7 @@
     <pdf_title>TECHNICAL NOTE</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Comparison of Alternative Smoothing Methods - Fitting Exposure-Response Relationships" ID="ID_21009205" CREATED="1516866410047" MODIFIED="1524722468977" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/131%20The%20Comparison%20of%20Alternative%20Smoothing%20for%20Fitting%20Exposure-Response.pdf">
+<node TEXT="Comparison of Alternative Smoothing Methods - Fitting Exposure-Response Relationships" ID="ID_21009205" CREATED="1516866410047" MODIFIED="1534391857012" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/131%20The%20Comparison%20of%20Alternative%20Smoothing%20for%20Fitting%20Exposure-Response.pdf">
 <attribute NAME="key" VALUE="govindarajulu2009comparison"/>
 <attribute NAME="journal" VALUE="The international journal of biostatistics"/>
 <attribute NAME="year" VALUE="2009"/>
@@ -77,7 +77,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Splines" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_747864614" CREATED="1515764442338" MODIFIED="1518000626724">
+<node TEXT="Splines" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_747864614" CREATED="1515764442338" MODIFIED="1518000626724">
 <node TEXT="Curve and Surface Fitting with Splines (Jan-Pieter heeft hardcopy)" ID="ID_101601068" CREATED="1515764454745" MODIFIED="1524722320082">
 <attribute NAME="key" VALUE="dierckx1993splines"/>
 <attribute NAME="year" VALUE="1993"/>
@@ -90,7 +90,7 @@
 <attribute NAME="title" VALUE="A Practical Guide to Splines"/>
 <attribute NAME="authors" VALUE="de Boor, Carl"/>
 </node>
-<node TEXT="Flexible Smoothing with B-splines and Penalties" ID="ID_427188803" CREATED="1516690015547" MODIFIED="1524722505773" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/118%20Flexible%20Smoothing%20with%20B-splines%20and%20Penalties.pdf">
+<node TEXT="Flexible Smoothing with B-splines and Penalties" ID="ID_427188803" CREATED="1516690015547" MODIFIED="1534391857059" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/118%20Flexible%20Smoothing%20with%20B-splines%20and%20Penalties.pdf">
 <attribute NAME="key" VALUE="eilers1996flexible"/>
 <attribute NAME="journal" VALUE="Statistical Science"/>
 <attribute NAME="year" VALUE="1996"/>
@@ -102,9 +102,9 @@
 </node>
 </node>
 </node>
-<node TEXT="Parametrization of traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1780649506" CREATED="1516862848880" MODIFIED="1516862859449">
-<node TEXT="Braking Profile of car" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_587119167" CREATED="1516862871076" MODIFIED="1516862891064">
-<node TEXT="AdaptIVe paper" ID="ID_621567854" CREATED="1516862892563" MODIFIED="1524722545350" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<node TEXT="Parametrization of traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1780649506" CREATED="1516862848880" MODIFIED="1516862859449">
+<node TEXT="Braking Profile of car" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_587119167" CREATED="1516862871076" MODIFIED="1516862891064">
+<node TEXT="AdaptIVe paper" ID="ID_621567854" CREATED="1516862892563" MODIFIED="1534391857012" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
@@ -114,8 +114,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Cut-in/lane change" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1477678152" CREATED="1516862975614" MODIFIED="1516862982372">
-<node TEXT="Applying spatial and temporal offset" ID="ID_1450503818" CREATED="1516863090042" MODIFIED="1524722705523" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<node TEXT="Cut-in/lane change" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1477678152" CREATED="1516862975614" MODIFIED="1516862982372">
+<node TEXT="Applying spatial and temporal offset" ID="ID_1450503818" CREATED="1516863090042" MODIFIED="1534391856903" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Data-driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems"/>
@@ -129,7 +129,7 @@
 </node>
 <node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6" MOVED="1534304323924">
 <edge COLOR="#ff0000"/>
-<node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1524719983228" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
+<node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1534391857090" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
 <attribute NAME="key" VALUE="yang2012estimating"/>
 <attribute NAME="journal" VALUE="BPM Center Report"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -140,7 +140,7 @@
     <pdf_title>Estimating Completeness of Event Logs</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Estimating completeness for longitudinal driving scenarios. Using KL divergence" ID="ID_1797339468" CREATED="1509704361125" MODIFIED="1524719989716" HGAP="40" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/024%20How%20much%20data%20are%20enough,%20longitudinal%20driving.pdf">
+<node TEXT="Estimating completeness for longitudinal driving scenarios. Using KL divergence" ID="ID_1797339468" CREATED="1509704361125" MODIFIED="1534391856996" HGAP="40" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/024%20How%20much%20data%20are%20enough,%20longitudinal%20driving.pdf">
 <attribute NAME="key" VALUE="wang2017much"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Vehicles"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -150,18 +150,18 @@
     <pdf_title>How Much Data Are Enough? A Statistical Approach With Case Study on Longitudinal Driving Behavior</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Papers that address completeness issue" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1149339259" CREATED="1510111962578" MODIFIED="1511519222945" HGAP="40">
-<node TEXT="Geyer et al." ID="ID_614965474" CREATED="1510111977891" MODIFIED="1524719995910" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="Papers that address completeness issue" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1149339259" CREATED="1510111962578" MODIFIED="1511519222945" HGAP="40">
+<node TEXT="Geyer et al." ID="ID_614965474" CREATED="1510111977891" MODIFIED="1534391857043" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
-<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Stellet et al." ID="ID_589599656" CREATED="1510111997082" MODIFIED="1524720008800" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<node TEXT="Stellet et al." ID="ID_589599656" CREATED="1510111997082" MODIFIED="1534391856918" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
@@ -170,7 +170,7 @@
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Alvarez et al." ID="ID_1680080988" CREATED="1510634030654" MODIFIED="1524720000672" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
+<node TEXT="Alvarez et al." ID="ID_1680080988" CREATED="1510634030654" MODIFIED="1534391857106" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Prospective Effectiveness Assessment of {ADAS} and Active Safety Systems via Virtual Simulation: A Review of the Current Practices"/>
@@ -180,8 +180,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Estimating number of species" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1995372175" CREATED="1513318000249" MODIFIED="1513318020945" HGAP="40">
-<node TEXT="A review by Bunge and Fitzpatrick (1993)" ID="ID_770072296" CREATED="1513318119920" MODIFIED="1524720018574" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/089%20Estimating%20the%20Number%20of%20Species%20A%20Review.pdf">
+<node TEXT="Estimating number of species" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1995372175" CREATED="1513318000249" MODIFIED="1513318020945" HGAP="40">
+<node TEXT="A review by Bunge and Fitzpatrick (1993)" ID="ID_770072296" CREATED="1513318119920" MODIFIED="1534391857043" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/089%20Estimating%20the%20Number%20of%20Species%20A%20Review.pdf">
 <attribute NAME="key" VALUE="bunge1993estimating"/>
 <attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
 <attribute NAME="year" VALUE="1993"/>
@@ -189,7 +189,7 @@
 <attribute NAME="authors" VALUE="Bunge, John and Fitzpatrick, M."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B5E951FAF288F1E055A39A0B19C2BECB9C1F762612955B064FE7FD252AC7FB"/>
 </node>
-<node TEXT="Nonparametric Estimations about Species Not Observed in a Random Sample (2004)" ID="ID_1033891614" CREATED="1513318252459" MODIFIED="1524720045730" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/163%20Nonparametric%20Estimations%20about%20not%20observerd%20in%20a%20random%20sample.pdf">
+<node TEXT="Nonparametric Estimations about Species Not Observed in a Random Sample (2004)" ID="ID_1033891614" CREATED="1513318252459" MODIFIED="1534391856934" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/163%20Nonparametric%20Estimations%20about%20not%20observerd%20in%20a%20random%20sample.pdf">
 <attribute NAME="key" VALUE="gandolfi2004nonparametric"/>
 <attribute NAME="journal" VALUE="Milan Journal of Mathematics"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -200,8 +200,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Discrete case" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_710753940" CREATED="1519207355432" MODIFIED="1519207367864" HGAP="40" VSHIFT="-4">
-<node TEXT="Estimating completeness of event logs" ID="ID_1337739868" CREATED="1519207952501" MODIFIED="1524720056832" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf">
+<node TEXT="Discrete case" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_710753940" CREATED="1519207355432" MODIFIED="1519207367864" HGAP="40" VSHIFT="-4">
+<node TEXT="Estimating completeness of event logs" ID="ID_1337739868" CREATED="1519207952501" MODIFIED="1534391857106" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf">
 <attribute NAME="key" VALUE="yang2012estimating"/>
 <attribute NAME="journal" VALUE="BPM Center Report"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -211,7 +211,7 @@
     <pdf_title>Estimating Completeness of Event Logs</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Boender and Rinnooy Kan&apos;s estimator" ID="ID_1168068068" CREATED="1519207961429" MODIFIED="1524720065458" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/159%20Bayesian%20Analysis%20of%20the%20Number%20of%20Cells%20of%20a%20Multinomial%20Distribution.pdf">
+<node TEXT="Boender and Rinnooy Kan&apos;s estimator" ID="ID_1168068068" CREATED="1519207961429" MODIFIED="1534391857074" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/159%20Bayesian%20Analysis%20of%20the%20Number%20of%20Cells%20of%20a%20Multinomial%20Distribution.pdf">
 <attribute NAME="key" VALUE="boender1983bayesian"/>
 <attribute NAME="journal" VALUE="The Statistician"/>
 <attribute NAME="year" VALUE="1983"/>
@@ -219,7 +219,7 @@
 <attribute NAME="authors" VALUE="Boender, C. G. E. and Rinnooy Kan, A. H. G."/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
-<node TEXT="Turing and Good&apos;s estimator" ID="ID_333013182" CREATED="1519208260524" MODIFIED="1524720115149" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/160%20The%20Population%20Frequencies%20of%20Species%20and%20the%20Estimation%20of%20Population%20Parameters.pdf">
+<node TEXT="Turing and Good&apos;s estimator" ID="ID_333013182" CREATED="1519208260524" MODIFIED="1534391856996" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/160%20The%20Population%20Frequencies%20of%20Species%20and%20the%20Estimation%20of%20Population%20Parameters.pdf">
 <attribute NAME="key" VALUE="good1953population"/>
 <attribute NAME="journal" VALUE="Biometrika"/>
 <attribute NAME="year" VALUE="1953"/>
@@ -229,7 +229,7 @@
     <pdf_title>The Population Frequencies of Species and the Estimation of Population Parameters</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Maximum Likelihood (Lewontin and Prout) Estimation" ID="ID_224352249" CREATED="1519208766044" MODIFIED="1524720120606" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/161%20Estimation%20of%20the%20Number%20of%20Different%20Classes%20in%20a%20Population.pdf">
+<node TEXT="Maximum Likelihood (Lewontin and Prout) Estimation" ID="ID_224352249" CREATED="1519208766044" MODIFIED="1534391857012" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/161%20Estimation%20of%20the%20Number%20of%20Different%20Classes%20in%20a%20Population.pdf">
 <attribute NAME="key" VALUE="lewontin1956estimation"/>
 <attribute NAME="journal" VALUE="Biometrics"/>
 <attribute NAME="year" VALUE="1956"/>
@@ -237,7 +237,7 @@
 <attribute NAME="authors" VALUE="Lewontin, Richard C and Prout, Timothy"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
-<node TEXT="Jackknife: Estimation of the size of a closed population ..." ID="ID_1378561483" CREATED="1519209625027" MODIFIED="1524720228637" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/162%20Estimation%20of%20the%20Size%20of%20a%20Closed%20Population.pdf">
+<node TEXT="Jackknife: Estimation of the size of a closed population ..." ID="ID_1378561483" CREATED="1519209625027" MODIFIED="1534391856965" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/162%20Estimation%20of%20the%20Size%20of%20a%20Closed%20Population.pdf">
 <attribute NAME="key" VALUE="burnham1978estimation"/>
 <attribute NAME="journal" VALUE="Biometrika"/>
 <attribute NAME="year" VALUE="1978"/>
@@ -245,7 +245,7 @@
 <attribute NAME="authors" VALUE="Burnham, Kenneth P and Overton, Walter Scott"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1774475E972D8EFB5BEDA2C9FDB8C13EB7F110BDC1FBA998202FAA6604A"/>
 </node>
-<node TEXT="Jackknife: review (jackknife amongst others), Bunge and Fitzpatrick" ID="ID_123601625" CREATED="1519262483756" MODIFIED="1524720236294" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/089%20Estimating%20the%20Number%20of%20Species%20A%20Review.pdf">
+<node TEXT="Jackknife: review (jackknife amongst others), Bunge and Fitzpatrick" ID="ID_123601625" CREATED="1519262483756" MODIFIED="1534391857059" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/089%20Estimating%20the%20Number%20of%20Species%20A%20Review.pdf">
 <attribute NAME="key" VALUE="bunge1993estimating"/>
 <attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
 <attribute NAME="year" VALUE="1993"/>
@@ -253,7 +253,7 @@
 <attribute NAME="authors" VALUE="Bunge, John and Fitzpatrick, M."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B5E951FAF288F1E055A39A0B19C2BECB9C1F762612955B064FE7FD252AC7FB"/>
 </node>
-<node TEXT="Gandolfi and Sastri&apos;s estimator" ID="ID_1988552869" CREATED="1519262699838" MODIFIED="1524720173893" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/163%20Nonparametric%20Estimations%20about%20not%20observerd%20in%20a%20random%20sample.pdf">
+<node TEXT="Gandolfi and Sastri&apos;s estimator" ID="ID_1988552869" CREATED="1519262699838" MODIFIED="1534391856934" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/163%20Nonparametric%20Estimations%20about%20not%20observerd%20in%20a%20random%20sample.pdf">
 <attribute NAME="key" VALUE="gandolfi2004nonparametric"/>
 <attribute NAME="journal" VALUE="Milan Journal of Mathematics"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -263,7 +263,7 @@
     <pdf_title>Nonparametric Estimations about Species Not Observed in a Random Sample</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="First estimator of Chao" ID="ID_1263244443" CREATED="1519263473849" MODIFIED="1524720265405" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/164%20Nonparametric%20Estimation%20of%20the%20Number%20of%20Classes%20in%20a%20Population.pdf">
+<node TEXT="First estimator of Chao" ID="ID_1263244443" CREATED="1519263473849" MODIFIED="1534391856965" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/164%20Nonparametric%20Estimation%20of%20the%20Number%20of%20Classes%20in%20a%20Population.pdf">
 <attribute NAME="key" VALUE="chao1984nonparametric"/>
 <attribute NAME="journal" VALUE="Scandinavian Journal of Statistics"/>
 <attribute NAME="year" VALUE="1984"/>
@@ -273,7 +273,7 @@
     <pdf_title>Nonparametric Estimation of the Number of Classes in a Population Author(s): Anne Chao Source: Scandinavian Journal of Statistics, Vol. 11, No. 4 (1984), pp. 265-270 Published by: on behalf of Stable URL: Accessed: 22/10/2013 10:31</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Variation on first estimation of Chao" ID="ID_368850462" CREATED="1519263617610" MODIFIED="1524720285069" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/165%20Estimating%20the%20Population%20Size%20for%20Capture-Recapture%20Data%20with%20Unequal%20Catchability.pdf">
+<node TEXT="Variation on first estimation of Chao" ID="ID_368850462" CREATED="1519263617610" MODIFIED="1534391856887" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/165%20Estimating%20the%20Population%20Size%20for%20Capture-Recapture%20Data%20with%20Unequal%20Catchability.pdf">
 <attribute NAME="key" VALUE="chao1987estimating"/>
 <attribute NAME="journal" VALUE="Biometrics"/>
 <attribute NAME="year" VALUE="1987"/>
@@ -281,7 +281,7 @@
 <attribute NAME="authors" VALUE="Chao, Anne"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="DFCFD241BC7D4FA178DA12E5F9C487D3E22BD1985BB7CD33EEBFC9FB6997"/>
 </node>
-<node TEXT="Chao and Lee&apos;s estimators" ID="ID_308951155" CREATED="1519264644418" MODIFIED="1524720277767" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/166%20Estimating%20the%20Number%20of%20Classes%20via%20Sample%20Coverage.pdf">
+<node TEXT="Chao and Lee&apos;s estimators" ID="ID_308951155" CREATED="1519264644418" MODIFIED="1534391856981" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/166%20Estimating%20the%20Number%20of%20Classes%20via%20Sample%20Coverage.pdf">
 <attribute NAME="key" VALUE="chao1992estimating"/>
 <attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
 <attribute NAME="year" VALUE="1992"/>
@@ -289,7 +289,7 @@
 <attribute NAME="authors" VALUE="Chao, Anne and Lee, Shen-Ming"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="16946A81A208DCFF2937816FC8AB9CCA02AEADC12275790AC2ABC25D63BA58"/>
 </node>
-<node TEXT="Abundance-based coverage estimator (ACE)" ID="ID_1372100444" CREATED="1519265268741" MODIFIED="1524720306168" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/167%20Stopping%20Rules%20and%20Estimation%20for%20Recapture%20Debugging%20with%20Unequal%20Failure%20Rates.pdf">
+<node TEXT="Abundance-based coverage estimator (ACE)" ID="ID_1372100444" CREATED="1519265268741" MODIFIED="1534391857074" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/167%20Stopping%20Rules%20and%20Estimation%20for%20Recapture%20Debugging%20with%20Unequal%20Failure%20Rates.pdf">
 <attribute NAME="key" VALUE="chao1993stopping"/>
 <attribute NAME="journal" VALUE="Biometrika"/>
 <attribute NAME="year" VALUE="1993"/>
@@ -303,8 +303,8 @@
 </node>
 <node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1534304369005" HGAP="70" VSHIFT="-2" MOVED="1534304332067">
 <edge COLOR="#007c7c"/>
-<node TEXT="General literature" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1488737728" CREATED="1513736407885" MODIFIED="1513736423051">
-<node TEXT="Pattern Recognition and Machine Learning" ID="ID_567315421" CREATED="1513736426477" MODIFIED="1524722714668" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/003%20Bishop%20-%20Pattern%20Recognition%20and%20Machine%20Learning.pdf">
+<node TEXT="General literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1488737728" CREATED="1513736407885" MODIFIED="1513736423051">
+<node TEXT="Pattern Recognition and Machine Learning" ID="ID_567315421" CREATED="1513736426477" MODIFIED="1534391906908" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/003%20Bishop%20-%20Pattern%20Recognition%20and%20Machine%20Learning.pdf">
 <attribute NAME="key" VALUE="bishop2006pattern"/>
 <attribute NAME="year" VALUE="2006"/>
 <attribute NAME="title" VALUE="Pattern Recognition and Machine Learning"/>
@@ -314,8 +314,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_828177775" CREATED="1513736456056" MODIFIED="1513736494459">
-<node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_500921361" CREATED="1513736483833" MODIFIED="1524722724386" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/004%20Tutorial%20HMM.pdf">
+<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_828177775" CREATED="1513736456056" MODIFIED="1513736494459">
+<node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_500921361" CREATED="1513736483833" MODIFIED="1534391906799" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/004%20Tutorial%20HMM.pdf">
 <attribute NAME="key" VALUE="HMM_Rabiner"/>
 <attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
 <attribute NAME="year" VALUE="1989"/>
@@ -326,14 +326,14 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Neural Networks" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1659271931" CREATED="1513736495967" MODIFIED="1513736523780">
-<node TEXT="Neural Networks and Deep Learning" ID="ID_1531829695" CREATED="1513736512279" MODIFIED="1524724193251" LINK="http://neuralnetworksanddeeplearning.com/">
+<node TEXT="Neural Networks" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1659271931" CREATED="1513736495967" MODIFIED="1513736523780">
+<node TEXT="Neural Networks and Deep Learning" ID="ID_1531829695" CREATED="1513736512279" MODIFIED="1534391906639" LINK="http://neuralnetworksanddeeplearning.com/">
 <attribute NAME="key" VALUE="Neural_Nielsen"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Neural Networks and Deep Learning"/>
 <attribute NAME="authors" VALUE="Michael A. Nielsen"/>
 </node>
-<node TEXT="Learning deep architectures for AI" ID="ID_1946524946" CREATED="1516610250646" MODIFIED="1524724462579" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/113%20Learning%20deep%20architectures%20for%20AI.pdf">
+<node TEXT="Learning deep architectures for AI" ID="ID_1946524946" CREATED="1516610250646" MODIFIED="1534391906783" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/113%20Learning%20deep%20architectures%20for%20AI.pdf">
 <attribute NAME="key" VALUE="bengio2009learning"/>
 <attribute NAME="journal" VALUE="Foundations and Trends in Machine Learning"/>
 <attribute NAME="year" VALUE="2009"/>
@@ -343,7 +343,7 @@
     <pdf_title>Learning Deep Architectures for AI</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Drop-out: Improving neural networks by preventing co-adaptation of feature detectors" ID="ID_1541990484" CREATED="1516610914407" MODIFIED="1524724556069" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/114%20Improving%20neural%20networks%20by%20preventing%20co-adaptation%20of%20feature%20detectors.pdf">
+<node TEXT="Drop-out: Improving neural networks by preventing co-adaptation of feature detectors" ID="ID_1541990484" CREATED="1516610914407" MODIFIED="1534391906908" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/114%20Improving%20neural%20networks%20by%20preventing%20co-adaptation%20of%20feature%20detectors.pdf">
 <attribute NAME="key" VALUE="hinton2012improving"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1207.0580"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -354,8 +354,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Support Vector Machines" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_843885667" CREATED="1516861995018" MODIFIED="1516862005324">
-<node TEXT="First paper about SVM" ID="ID_177634036" CREATED="1516862007224" MODIFIED="1524724589958" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/125%20Support%20Vector%20Machines.pdf">
+<node TEXT="Support Vector Machines" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_843885667" CREATED="1516861995018" MODIFIED="1516862005324">
+<node TEXT="First paper about SVM" ID="ID_177634036" CREATED="1516862007224" MODIFIED="1534391906893" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/125%20Support%20Vector%20Machines.pdf">
 <attribute NAME="key" VALUE="cortes1995svm"/>
 <attribute NAME="journal" VALUE="Machine Learning"/>
 <attribute NAME="year" VALUE="1995"/>
@@ -365,7 +365,7 @@
     <pdf_title>Support-Vector Networks</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Even earlier paper which already uses a similar technique" ID="ID_557122590" CREATED="1516862379630" MODIFIED="1524724609681" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/126%20A%20Training%20Algorithm%20for%20Optimal%20Margin%20Classifiers.pdf">
+<node TEXT="Even earlier paper which already uses a similar technique" ID="ID_557122590" CREATED="1516862379630" MODIFIED="1534391906924" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/126%20A%20Training%20Algorithm%20for%20Optimal%20Margin%20Classifiers.pdf">
 <attribute NAME="key" VALUE="boser1992training"/>
 <attribute NAME="year" VALUE="1992"/>
 <attribute NAME="title" VALUE="A Training Algorithm for Optimal Margin Classifiers"/>
@@ -378,8 +378,8 @@
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
-<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
-<node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1524720727537" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
+<node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1534391906453" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
@@ -388,7 +388,7 @@
     <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="&quot;Signing off highly automated vehicles is a key challenge for the automotive industry&quot;" ID="ID_908177044" CREATED="1512615585023" MODIFIED="1524720760745" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
+<node TEXT="&quot;Signing off highly automated vehicles is a key challenge for the automotive industry&quot;" ID="ID_908177044" CREATED="1512615585023" MODIFIED="1534391906862" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="putz2017pegasus"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="System Validation of Highly Automated Vehicles with a Database of Relevant Traffic Scenarios"/>
@@ -397,7 +397,7 @@
     <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="&quot;Validating [...], if not solved in a timely manner, might hinder the release of AVs.&quot;" ID="ID_319584362" CREATED="1522896034266" MODIFIED="1524721021673" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/177%20Teaching%20Self-Driving%20Cars%20to%20Dream.pdf">
+<node TEXT="&quot;Validating [...], if not solved in a timely manner, might hinder the release of AVs.&quot;" ID="ID_319584362" CREATED="1522896034266" MODIFIED="1534391906752" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/177%20Teaching%20Self-Driving%20Cars%20to%20Dream.pdf">
 <attribute NAME="key" VALUE="rocklage2017teaching"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Teaching Self-Driving Cars to Dream: A Deeply Integrated, Innovative Approach for Solving the Autonomous Vehicle Validation Problem"/>
@@ -406,7 +406,7 @@
     <pdf_title>Teaching Self-Driving Cars to Dream: A Deeply Integrated, Innovative Approach for Solving the Autonomous Vehicle Validation Problem</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="&quot;research on suitable assessment methods constitutes a part of the critical path to be taken in order to avoid DAS development being held up for decades&quot;" ID="ID_1506797203" CREATED="1524720708898" MODIFIED="1524720718084" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">
+<node TEXT="&quot;research on suitable assessment methods constitutes a part of the critical path to be taken in order to avoid DAS development being held up for decades&quot;" ID="ID_1506797203" CREATED="1524720708898" MODIFIED="1534391906830" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">
 <attribute NAME="key" VALUE="bengler2014threedecades"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -416,7 +416,7 @@
     <pdf_title>Three Decades of Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="&quot;USDOT should assist in developing a framework and set of national guidelines for AV certification at the state level&quot;" ID="ID_426451611" CREATED="1530086499551" MODIFIED="1530086506953" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/204%20Preparing%20a%20nation%20for%20AVs.pdf">
+<node TEXT="&quot;USDOT should assist in developing a framework and set of national guidelines for AV certification at the state level&quot;" ID="ID_426451611" CREATED="1530086499551" MODIFIED="1534391906893" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/204%20Preparing%20a%20nation%20for%20AVs.pdf">
 <attribute NAME="key" VALUE="fagnant2015preparing"/>
 <attribute NAME="journal" VALUE="Transportation Research Part A: Policy and Practice"/>
 <attribute NAME="year" VALUE="2015"/>
@@ -427,9 +427,9 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Safety" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1183001868" CREATED="1530151668822" MODIFIED="1530151674988">
-<node TEXT="Challenges" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_720959665" CREATED="1531278476883" MODIFIED="1531278483471">
-<node TEXT="Autonomous Vehicle Safety: An Interdisciplinary Challenge" ID="ID_32688539" CREATED="1531278488420" MODIFIED="1531278504798" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/212%20Autonomous%20Vehicle%20Safety%20An%20Interdisciplinary%20Challenge.pdf">
+<node TEXT="Safety" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1183001868" CREATED="1530151668822" MODIFIED="1530151674988">
+<node TEXT="Challenges" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_720959665" CREATED="1531278476883" MODIFIED="1531278483471">
+<node TEXT="Autonomous Vehicle Safety: An Interdisciplinary Challenge" ID="ID_32688539" CREATED="1531278488420" MODIFIED="1534391906684" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/212%20Autonomous%20Vehicle%20Safety%20An%20Interdisciplinary%20Challenge.pdf">
 <attribute NAME="key" VALUE="koopman2017interdisciplinary"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -439,7 +439,7 @@
     <pdf_title>Autonomous Vehicle Safety: An Interdisciplinary Challenge</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Challenges in Autonomous Vehicle Testing and Validation" ID="ID_129854741" CREATED="1531278485117" MODIFIED="1531278501351" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/213%20Challenges%20in%20Autonomous%20Vehicle%20Testing%20and%20Validation.pdf">
+<node TEXT="Challenges in Autonomous Vehicle Testing and Validation" ID="ID_129854741" CREATED="1531278485117" MODIFIED="1534391906815" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/213%20Challenges%20in%20Autonomous%20Vehicle%20Testing%20and%20Validation.pdf">
 <attribute NAME="key" VALUE="koopman2016challenges"/>
 <attribute NAME="journal" VALUE="SAE International Journal of Transportation Safety"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -450,7 +450,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Towards increased reliability by objectification of HARA of automated automotive systems" ID="ID_1947999662" CREATED="1530151676773" MODIFIED="1530151696969" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
+<node TEXT="Towards increased reliability by objectification of HARA of automated automotive systems" ID="ID_1947999662" CREATED="1530151676773" MODIFIED="1534391906815" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
 <attribute NAME="key" VALUE="khastgir2017towards"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -460,7 +460,7 @@
     <pdf_title>Safety Science</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Forecasts or fortune-telling: When are expert judgements of safety risk valid?" ID="ID_833487467" CREATED="1530152765709" MODIFIED="1530153296351" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/206%20When%20are%20expert%20judgements%20of%20safety%20risk%20valid.pdf">
+<node TEXT="Forecasts or fortune-telling: When are expert judgements of safety risk valid?" ID="ID_833487467" CREATED="1530152765709" MODIFIED="1534391906737" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/206%20When%20are%20expert%20judgements%20of%20safety%20risk%20valid.pdf">
 <attribute NAME="key" VALUE="rae2017forecast"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -470,7 +470,7 @@
     <pdf_title>Safety Science</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Using Rigorous Simulation to Support ISO 26262 HARA" ID="ID_1180522314" CREATED="1530238701102" MODIFIED="1530238876641" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/207%20Using%20Rigorous%20Simulation%20to%20Support%20ISO%2026262%20HARA.pdf">
+<node TEXT="Using Rigorous Simulation to Support ISO 26262 HARA" ID="ID_1180522314" CREATED="1530238701102" MODIFIED="1534391906654" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/207%20Using%20Rigorous%20Simulation%20to%20Support%20ISO%2026262%20HARA.pdf">
 <attribute NAME="key" VALUE="duracz2015rigorous"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Using Rigorous Simulation to Support {ISO} 26262 Hazard Analysis and Risk Assessment"/>
@@ -479,7 +479,7 @@
     <pdf_title>Using Rigorous Simulation to Support ISO 26262 Hazard Analysis and Risk Assessment</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="HARA for an Automated Unmanned Protective Vehicle" ID="ID_1928595384" CREATED="1530238931813" MODIFIED="1530239049743" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/208%20HARA%20for%20an%20Automated%20Unmanned%20Protective%20Vehicle.pdf">
+<node TEXT="HARA for an Automated Unmanned Protective Vehicle" ID="ID_1928595384" CREATED="1530238931813" MODIFIED="1534391906705" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/208%20HARA%20for%20an%20Automated%20Unmanned%20Protective%20Vehicle.pdf">
 <attribute NAME="key" VALUE="stolte2017hara"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle"/>
@@ -488,7 +488,7 @@
     <pdf_title>Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle*</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="On a Formal Model of Safe and Scalable Self-driving Cars&#xd; (MobilEye)" ID="ID_411721967" CREATED="1532394917144" MODIFIED="1532395483817" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/229%20On%20a%20Formal%20Model%20of%20Safe%20and%20Scalable%20Self-driving%20Cars.pdf">
+<node TEXT="On a Formal Model of Safe and Scalable Self-driving Cars&#xd; (MobilEye)" ID="ID_411721967" CREATED="1532394917144" MODIFIED="1534391906607" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/229%20On%20a%20Formal%20Model%20of%20Safe%20and%20Scalable%20Self-driving%20Cars.pdf">
 <attribute NAME="key" VALUE="shalev2017formal"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1708.06374"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -499,8 +499,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
-<node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1524721253768" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
+<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
+<node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1534391906877" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
 <attribute NAME="key" VALUE="kalra2016driving"/>
 <attribute NAME="journal" VALUE="Transportation Research Part A: Policy and Practice"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -510,7 +510,7 @@
     <pdf_title>Transportation Research Part A</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Autonomous Vehicle Safety: An Interdisciplinary Challenge" ID="ID_1712431850" CREATED="1531276807835" MODIFIED="1531276884763" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/212%20Autonomous%20Vehicle%20Safety%20An%20Interdisciplinary%20Challenge.pdf">
+<node TEXT="Autonomous Vehicle Safety: An Interdisciplinary Challenge" ID="ID_1712431850" CREATED="1531276807835" MODIFIED="1534391906677" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/212%20Autonomous%20Vehicle%20Safety%20An%20Interdisciplinary%20Challenge.pdf">
 <attribute NAME="key" VALUE="koopman2017interdisciplinary"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -521,8 +521,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
-<node TEXT="Testing of high level components of automated driving" ID="ID_565029269" CREATED="1512630169330" MODIFIED="1524721643939" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
+<node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
+<node TEXT="Testing of high level components of automated driving" ID="ID_565029269" CREATED="1512630169330" MODIFIED="1534391906721" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2016testing"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Testing and Validating High Level Components for Automated Driving: Simulation Framework for Traffic Scenarios"/>
@@ -532,8 +532,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Traditional methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_212387236" CREATED="1517041168552" MODIFIED="1517041183565">
-<node TEXT="Code of Practice for the Design and Evaluation of ADAS" ID="ID_1744658253" CREATED="1517041192918" MODIFIED="1524721347124" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/133%20Code%20of%20practice%20for%20the%20design%20and%20evaluation%20of%20adas.pdf">
+<node TEXT="Traditional methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_212387236" CREATED="1517041168552" MODIFIED="1517041183565">
+<node TEXT="Code of Practice for the Design and Evaluation of ADAS" ID="ID_1744658253" CREATED="1517041192918" MODIFIED="1534391906768" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/133%20Code%20of%20practice%20for%20the%20design%20and%20evaluation%20of%20adas.pdf">
 <attribute NAME="key" VALUE="response2006code"/>
 <attribute NAME="journal" VALUE="RESPOSNE III: a PReVENT Project"/>
 <attribute NAME="year" VALUE="2009"/>
@@ -543,12 +543,12 @@
     <pdf_title>Code of Practice</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
+<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
 <attribute NAME="authors" VALUE="{International Organization for Standardization (ISO)}"/>
-<node TEXT="How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles" ID="ID_1071919017" CREATED="1529470315799" MODIFIED="1529470320478" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/193%20How%20to%20reach%20complete%20safety%20requirement%20refinement%20for%20AVs.pdf">
+<node TEXT="How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles" ID="ID_1071919017" CREATED="1529470315799" MODIFIED="1534391906940" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/193%20How%20to%20reach%20complete%20safety%20requirement%20refinement%20for%20AVs.pdf">
 <attribute NAME="key" VALUE="bergenhem2015cars"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles"/>
@@ -557,7 +557,7 @@
     <pdf_title>How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Using Rigorous Simulation to Support ISO 26262 HARA" ID="ID_710804722" CREATED="1530238701102" MODIFIED="1530238876641" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/207%20Using%20Rigorous%20Simulation%20to%20Support%20ISO%2026262%20HARA.pdf">
+<node TEXT="Using Rigorous Simulation to Support ISO 26262 HARA" ID="ID_710804722" CREATED="1530238701102" MODIFIED="1534391906654" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/207%20Using%20Rigorous%20Simulation%20to%20Support%20ISO%2026262%20HARA.pdf">
 <attribute NAME="key" VALUE="duracz2015rigorous"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Using Rigorous Simulation to Support {ISO} 26262 Hazard Analysis and Risk Assessment"/>
@@ -566,7 +566,7 @@
     <pdf_title>Using Rigorous Simulation to Support ISO 26262 Hazard Analysis and Risk Assessment</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="HARA for an Automated Unmanned Protective Vehicle" ID="ID_549860845" CREATED="1530238931813" MODIFIED="1530239049743" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/208%20HARA%20for%20an%20Automated%20Unmanned%20Protective%20Vehicle.pdf">
+<node TEXT="HARA for an Automated Unmanned Protective Vehicle" ID="ID_549860845" CREATED="1530238931813" MODIFIED="1534391906721" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/208%20HARA%20for%20an%20Automated%20Unmanned%20Protective%20Vehicle.pdf">
 <attribute NAME="key" VALUE="stolte2017hara"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle"/>
@@ -576,7 +576,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1531279526037" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
+<node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1534391906691" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
 <attribute NAME="key" VALUE="wachenfeld2016release"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="The Release of Autonomous Vehicles"/>
@@ -585,7 +585,7 @@
     <pdf_title>The Release of Autonomous Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="We should not find evidence that AVs are safe --&gt; find situations when they are unsafe" ID="ID_1551625640" CREATED="1531279159746" MODIFIED="1531279308576" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/214%20A%20Philosophy%20for%20Developing%20Trust%20in%20Self-Driving%20Cars.pdf">
+<node TEXT="We should not find evidence that AVs are safe --&gt; find situations when they are unsafe" ID="ID_1551625640" CREATED="1531279159746" MODIFIED="1534391906705" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/214%20A%20Philosophy%20for%20Developing%20Trust%20in%20Self-Driving%20Cars.pdf">
 <attribute NAME="key" VALUE="wagner2015philosophy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="A Philosophy for Developing Trust in Self-Driving Cars"/>
@@ -595,8 +595,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Scenario-based methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1555930360" CREATED="1517043981271" MODIFIED="1517043988742">
-<node TEXT="Scenario-Based Assessment by Using Time Series Classification of Human-Driving Behaviour" ID="ID_507707419" CREATED="1517043996475" MODIFIED="1524721429269" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/134%20A%20Scenario-Based%20Assessment%20Approach%20for%20Automated%20Driving.pdf">
+<node TEXT="Scenario-based methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1555930360" CREATED="1517043981271" MODIFIED="1517043988742">
+<node TEXT="Scenario-Based Assessment by Using Time Series Classification of Human-Driving Behaviour" ID="ID_507707419" CREATED="1517043996475" MODIFIED="1534391955077" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/134%20A%20Scenario-Based%20Assessment%20Approach%20for%20Automated%20Driving.pdf">
 <attribute NAME="key" VALUE="roesener2016scenariobased"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="A Scenario-Based Assessment Approach for Automated Driving by Using Time Series Classification of Human-Driving Behaviour"/>
@@ -605,7 +605,7 @@
     <pdf_title>A Scenario-Based Assessment Approach for Automated Driving by Using Time Series Classification of Human-Driving Behaviour</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="PEGASUS: Database with traffic scenarios" ID="ID_1531496623" CREATED="1512615525217" MODIFIED="1524721327850" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
+<node TEXT="PEGASUS: Database with traffic scenarios" ID="ID_1531496623" CREATED="1512615525217" MODIFIED="1534391955311" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="putz2017pegasus"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="System Validation of Highly Automated Vehicles with a Database of Relevant Traffic Scenarios"/>
@@ -614,7 +614,7 @@
     <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="AdaptIVe conference paper at IV2017" ID="ID_1057835923" CREATED="1510630510294" MODIFIED="1522727543705" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<node TEXT="AdaptIVe conference paper at IV2017" ID="ID_1057835923" CREATED="1510630510294" MODIFIED="1534391955249" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
@@ -624,8 +624,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Other methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1522896107890">
-<node TEXT="Teaching Self-Driving Cars to Dream" ID="ID_1568568342" CREATED="1522896117493" MODIFIED="1524720992177" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/177%20Teaching%20Self-Driving%20Cars%20to%20Dream.pdf">
+<node TEXT="Other methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1522896107890">
+<node TEXT="Teaching Self-Driving Cars to Dream" ID="ID_1568568342" CREATED="1522896117493" MODIFIED="1534391955155" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/177%20Teaching%20Self-Driving%20Cars%20to%20Dream.pdf">
 <attribute NAME="key" VALUE="rocklage2017teaching"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Teaching Self-Driving Cars to Dream: A Deeply Integrated, Innovative Approach for Solving the Autonomous Vehicle Validation Problem"/>
@@ -635,8 +635,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Techniques for reducing test load" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1977166650" CREATED="1518001890791" MODIFIED="1518001906064">
-<node TEXT="Using Surrogate Models and Stochastic Optimization" ID="ID_1953096285" CREATED="1518001918988" MODIFIED="1524721537090" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/139%20Testing%20of%20AV%20Using%20Surrogate%20Models%20and%20Stochastic%20Optimization.pdf">
+<node TEXT="Techniques for reducing test load" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1977166650" CREATED="1518001890791" MODIFIED="1518001906064">
+<node TEXT="Using Surrogate Models and Stochastic Optimization" ID="ID_1953096285" CREATED="1518001918988" MODIFIED="1534391955046" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/139%20Testing%20of%20AV%20Using%20Surrogate%20Models%20and%20Stochastic%20Optimization.pdf">
 <attribute NAME="key" VALUE="beglerovictesting"/>
 <attribute NAME="title" VALUE="Testing of Autonomous Vehicles Using Surrogate Models and Stochastic Optimization"/>
 <attribute NAME="authors" VALUE="Beglerovic, Halil and Stolz, Michael and Horn, Martin"/>
@@ -644,7 +644,7 @@
     <pdf_title>TestingofAutonomousVehiclesUsingSurrogate ModelsandStochasticOptimization</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Accelerated Evaluation of AVs in Car-Following Maneuvers" ID="ID_75095416" CREATED="1520993706207" MODIFIED="1524721580927" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/168%20Accelerated%20evaluation%20of%20AVs%20for%20car-following.pdf">
+<node TEXT="Accelerated Evaluation of AVs in Car-Following Maneuvers" ID="ID_75095416" CREATED="1520993706207" MODIFIED="1534391955061" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/168%20Accelerated%20evaluation%20of%20AVs%20for%20car-following.pdf">
 <attribute NAME="key" VALUE="zhao2018evaluation"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -655,7 +655,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data-driven simulation and parametrization of traffic scenario" ID="ID_1028680362" CREATED="1507091082672" MODIFIED="1524719286434" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<node TEXT="Data-driven simulation and parametrization of traffic scenario" ID="ID_1028680362" CREATED="1507091082672" MODIFIED="1534391955108" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Data-driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems"/>
@@ -664,7 +664,7 @@
     <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Taxonomy regarding test scenarios. &apos;Famous&apos; Bosch paper." ID="ID_1394606892" CREATED="1507692581524" MODIFIED="1524719309582" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<node TEXT="Taxonomy regarding test scenarios. &apos;Famous&apos; Bosch paper." ID="ID_1394606892" CREATED="1507692581524" MODIFIED="1534391955124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
@@ -673,7 +673,7 @@
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Review on different methods for effectiveness assessment of ADAS (P.E.A.R.S.)" ID="ID_1895491912" CREATED="1510633058460" MODIFIED="1524719340493" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
+<node TEXT="Review on different methods for effectiveness assessment of ADAS (P.E.A.R.S.)" ID="ID_1895491912" CREATED="1510633058460" MODIFIED="1534391955358" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Prospective Effectiveness Assessment of {ADAS} and Active Safety Systems via Virtual Simulation: A Review of the Current Practices"/>
@@ -682,7 +682,7 @@
     <pdf_title>Alvarez 1</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ex-ante assessment of the safety effects of intelligent transport systems" ID="ID_1214203810" CREATED="1511347293839" MODIFIED="1524719356802" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/056%20Ex-ante%20assessment%20of%20the%20safety%20effects%20of%20intelligent%20transport%20systems.pdf">
+<node TEXT="Ex-ante assessment of the safety effects of intelligent transport systems" ID="ID_1214203810" CREATED="1511347293839" MODIFIED="1534391955327" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/056%20Ex-ante%20assessment%20of%20the%20safety%20effects%20of%20intelligent%20transport%20systems.pdf">
 <attribute NAME="key" VALUE="kulmala2010exanteassessment"/>
 <attribute NAME="journal" VALUE="Accident Analysis \&amp; Prevention"/>
 <attribute NAME="year" VALUE="2010"/>
@@ -692,7 +692,7 @@
     <pdf_title>Accident Analysis and Prevention</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Safety Performance Assessment of AD: Simulation as Knowledge Synthesis" ID="ID_1264696151" CREATED="1512378938517" MODIFIED="1524719366287" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/066%20Safety%20Performance%20Assessment%20of%20AD%20in%20Traffic.pdf">
+<node TEXT="Safety Performance Assessment of AD: Simulation as Knowledge Synthesis" ID="ID_1264696151" CREATED="1512378938517" MODIFIED="1534391955218" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/066%20Safety%20Performance%20Assessment%20of%20AD%20in%20Traffic.pdf">
 <attribute NAME="key" VALUE="Helmer2017safety"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Safety Performance Assessment of Assisted and Automated Driving in Traffic: Simulation as Knowledge Synthesis"/>
@@ -701,7 +701,7 @@
     <pdf_title>Safety Performance Assessment of Assisted and Automated Driving in Traffic: Simulation as Knowledge Synthesis</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="eVALUE: Test Programme for Active Vehicle Safety-Detailed Discussion" ID="ID_1066674668" CREATED="1512555157446" MODIFIED="1524719715840" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/072%20eVALUE%20project.pdf">
+<node TEXT="eVALUE: Test Programme for Active Vehicle Safety-Detailed Discussion" ID="ID_1066674668" CREATED="1512555157446" MODIFIED="1534391955015" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/072%20eVALUE%20project.pdf">
 <attribute NAME="key" VALUE="lesemann2011test"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="A Test Programme for Active Vehicle Safety-Detailed Discussion of the e{VALUE} Testing Protocols for Longitudinal and Stability Functionality"/>
@@ -710,7 +710,7 @@
     <pdf_title>A TEST PROGRAMME FOR ACTIVE VEHICLE SAFETY &#x2013; DETAILED DISCUSSION OF THE EVALUE TESTING PROTOCOLS FOR LONGITUDINAL AND STABILITY FUNCTIONALITY</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The release of AV (more general about what has to be done before AVs can be released)" ID="ID_208176436" CREATED="1512629701827" MODIFIED="1524719730854" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
+<node TEXT="The release of AV (more general about what has to be done before AVs can be released)" ID="ID_208176436" CREATED="1512629701827" MODIFIED="1534391955093" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
 <attribute NAME="key" VALUE="wachenfeld2016release"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="The Release of Autonomous Vehicles"/>
@@ -719,7 +719,7 @@
     <pdf_title>The Release of Autonomous Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Design and validation of ADAS, PhD thesis from Olaf Gietelink" ID="ID_589283699" CREATED="1516270041671" MODIFIED="1524719446413" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/028%20Development%20of%20advanced%20driver%20assistance%20systems%20with%20vehicle%20hardware%20in%20the%20loop%20simulations.pdf">
+<node TEXT="Design and validation of ADAS, PhD thesis from Olaf Gietelink" ID="ID_589283699" CREATED="1516270041671" MODIFIED="1534391955249" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/028%20Development%20of%20advanced%20driver%20assistance%20systems%20with%20vehicle%20hardware%20in%20the%20loop%20simulations.pdf">
 <attribute NAME="key" VALUE="gietelink2006development"/>
 <attribute NAME="journal" VALUE="Vehicle System Dynamics"/>
 <attribute NAME="year" VALUE="2006"/>
@@ -729,7 +729,7 @@
     <pdf_title>Development of advanced driver assistance systems with vehicle hardware-in-the-loop simulations</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="CETRAN" ID="ID_191790954" CREATED="1526434317311" MODIFIED="1526434321316" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
+<node TEXT="CETRAN" ID="ID_191790954" CREATED="1526434317311" MODIFIED="1534391955280" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
 <attribute NAME="key" VALUE="ploeg2018cetran"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Scenario-Based Safety Assessment Framework for Automated Vehicles"/>
@@ -746,11 +746,11 @@
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Overpass {API} - {O}pen{S}treet{M}ap {W}iki"/>
 </node>
-<node TEXT="ROS" ID="ID_667089157" CREATED="1511519113522" MODIFIED="1524721825397" LINK="http://wiki.ros.org/">
+<node TEXT="ROS" ID="ID_667089157" CREATED="1511519113522" MODIFIED="1534391955374" LINK="http://wiki.ros.org/">
 <attribute NAME="key" VALUE="roswiki"/>
 <attribute NAME="title" VALUE="{ROS}.org"/>
 </node>
-<node TEXT="PreScan" ID="ID_1285995919" CREATED="1513048686655" MODIFIED="1524721871555" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/078%20PreScan%20Simulation%20Tool%20Suite%20for%20Developing%20Connected%20Vehicle%20Systems.pdf">
+<node TEXT="PreScan" ID="ID_1285995919" CREATED="1513048686655" MODIFIED="1534391955186" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/078%20PreScan%20Simulation%20Tool%20Suite%20for%20Developing%20Connected%20Vehicle%20Systems.pdf">
 <attribute NAME="key" VALUE="tideman2013PreScan"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="A Simulation Tool Suite for Developing Connected Vehicle Systems"/>
@@ -759,8 +759,8 @@
     <pdf_title>A Simulation Tool Suite for Developing Connected Vehicle Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="SUMO" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1956012801" CREATED="1513684093019" MODIFIED="1513684104206">
-<node TEXT="An overview" ID="ID_1181630665" CREATED="1513684097226" MODIFIED="1524721944719" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/093%20SUMO%20-%20Simulation%20of%20Urban%20MObility%20-%20an%20Overview.pdf">
+<node TEXT="SUMO" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1956012801" CREATED="1513684093019" MODIFIED="1513684104206">
+<node TEXT="An overview" ID="ID_1181630665" CREATED="1513684097226" MODIFIED="1534391955343" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/093%20SUMO%20-%20Simulation%20of%20Urban%20MObility%20-%20an%20Overview.pdf">
 <attribute NAME="key" VALUE="behrisch2011sumo"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="{SUMO} - {S}imulation of {U}rban {MO}bility: An Overview"/>
@@ -769,7 +769,7 @@
     <pdf_title>SUMO &#x2013; Simulation of Urban MObility</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Traffic Simulation with SUMO &#x2013; Simulation of Urban Mobility" ID="ID_29113616" CREATED="1513684345492" MODIFIED="1524721964890" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/094%20Traffic%20Simulation%20with%20SUMO%20&#x2013;%20Simulation%20of%20Urban%20Mobility.pdf">
+<node TEXT="Traffic Simulation with SUMO &#x2013; Simulation of Urban Mobility" ID="ID_29113616" CREATED="1513684345492" MODIFIED="1534391955374" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/094%20Traffic%20Simulation%20with%20SUMO%20&#x2013;%20Simulation%20of%20Urban%20Mobility.pdf">
 <attribute NAME="key" VALUE="krajzewicz2010traffic"/>
 <attribute NAME="year" VALUE="2010"/>
 <attribute NAME="title" VALUE="Traffic Simulation with {SUMO}--{S}imulation of {U}rban {MO}bility"/>
@@ -778,7 +778,7 @@
     <pdf_title>Traffic Simulation with SUMO &#x2013; Simulation of Urban Mobility</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Recent Development and Applications of SUMO" ID="ID_1621194437" CREATED="1513684470626" MODIFIED="1524721971603" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/095%20Recent%20Development%20and%20Applications%20of%20SUMO.pdf">
+<node TEXT="Recent Development and Applications of SUMO" ID="ID_1621194437" CREATED="1513684470626" MODIFIED="1534391955171" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/095%20Recent%20Development%20and%20Applications%20of%20SUMO.pdf">
 <attribute NAME="key" VALUE="krajzewicz2012recent"/>
 <attribute NAME="journal" VALUE="International Journal On Advances in Systems and Measurements"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -789,7 +789,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="gmaps" ID="ID_1050188079" CREATED="1529492733088" MODIFIED="1529492739735" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/194%20jupyter-gmaps.pdf">
+<node TEXT="gmaps" ID="ID_1050188079" CREATED="1529492733088" MODIFIED="1534391955061" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/194%20jupyter-gmaps.pdf">
 <attribute NAME="key" VALUE="bugnion2018gmaps"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="gmaps Documentation"/>
@@ -801,7 +801,7 @@
 </node>
 <node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1534304359676" HGAP="71" VSHIFT="-19">
 <edge COLOR="#ff0000"/>
-<node TEXT="The SHRP 2 Naturalistic Driving Study" ID="ID_682322192" CREATED="1510642780423" MODIFIED="1534304170618" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/053%20The%20SHRP%202%20Naturalistic%20Driving%20Study.pdf">
+<node TEXT="The SHRP 2 Naturalistic Driving Study" ID="ID_682322192" CREATED="1510642780423" MODIFIED="1534391955265" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/053%20The%20SHRP%202%20Naturalistic%20Driving%20Study.pdf">
 <attribute NAME="key" VALUE="campbell2012shrp"/>
 <attribute NAME="journal" VALUE="TR News"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -811,7 +811,7 @@
     <pdf_title>u u</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="EuroFOT" ID="ID_1998125269" CREATED="1512445921789" MODIFIED="1534304170613" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/067%20EuroFOT.pdf">
+<node TEXT="EuroFOT" ID="ID_1998125269" CREATED="1512445921789" MODIFIED="1534391955140" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/067%20EuroFOT.pdf">
 <attribute NAME="key" VALUE="benmimoun2013eurofot"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="{euroFOT}: Field Operational Test and Impact Assessment of Advanced Driver Assistance Systems: Final Results"/>
@@ -820,7 +820,7 @@
     <pdf_title>euroFOT: Field Operational Test and Impact Assessment of Advanced Driver Assistance Systems: Final Results</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="UDRIVE" ID="ID_1095481328" CREATED="1512465515517" MODIFIED="1534304170607" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/069%20UDRIVE%20the%20European%20Naturalistic%20Driving%20Study.pdf">
+<node TEXT="UDRIVE" ID="ID_1095481328" CREATED="1512465515517" MODIFIED="1534391955202" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/069%20UDRIVE%20the%20European%20Naturalistic%20Driving%20Study.pdf">
 <attribute NAME="key" VALUE="eenink2014udrive"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="UDRIVE: the {E}uropean Naturalistic Driving Study"/>
@@ -829,7 +829,7 @@
     <pdf_title>UDRIVE: the European naturalistic driving study</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The Oxford RobotCar Dataset" FOLDED="true" ID="ID_634217329" CREATED="1512466566329" MODIFIED="1534304170602" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/070%20The%20Oxford%20RobotCar%20Dataset.pdf">
+<node TEXT="The Oxford RobotCar Dataset" ID="ID_634217329" CREATED="1512466566329" MODIFIED="1534391955218" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/070%20The%20Oxford%20RobotCar%20Dataset.pdf">
 <attribute NAME="key" VALUE="oxford2017dataset"/>
 <attribute NAME="journal" VALUE="The International Journal of Robotics Research"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -838,7 +838,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="A26DF0178118B5E067279EA454321B4589FB69893E6C11333280C2223CB99025">
     <pdf_title>1 Year, 1000km: The Oxford RobotCar Dataset</pdf_title>
 </pdf_annotation>
-<node TEXT="Action Detection" ID="ID_735189839" CREATED="1534297153255" MODIFIED="1534304170597" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/234%20Action%20Detection%20from%20a%20Robot-Car%20Perspective.pdf">
+<node TEXT="Action Detection" ID="ID_735189839" CREATED="1534297153255" MODIFIED="1534391955296" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/234%20Action%20Detection%20from%20a%20Robot-Car%20Perspective.pdf">
 <attribute NAME="key" VALUE="fontana2018action"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1807.11332"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -852,7 +852,7 @@
 </node>
 <node TEXT="Own papers" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1038442194" CREATED="1516860598580" MODIFIED="1534304366349" HGAP="70" VSHIFT="-18" MOVED="1534304239757">
 <edge COLOR="#00ff00"/>
-<node TEXT="2015 F&amp;I for SABRE from Gradient Measurements in AO" ID="ID_748118504" CREATED="1516860892717" MODIFIED="1532051496456" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/123%20Filtering%20and%20Identification%20for%20SABRE%20from%20Gradient%20Measurements%20in%20AO.pdf">
+<node TEXT="2015 F&amp;I for SABRE from Gradient Measurements in AO" ID="ID_748118504" CREATED="1516860892717" MODIFIED="1534391955186" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/123%20Filtering%20and%20Identification%20for%20SABRE%20from%20Gradient%20Measurements%20in%20AO.pdf">
 <attribute NAME="key" VALUE="deGelder2015sabre"/>
 <attribute NAME="journal" VALUE="Imaging and Applied Optics 2015"/>
 <attribute NAME="year" VALUE="2015"/>
@@ -862,7 +862,7 @@
     <pdf_title>Filtering and Identification for Spline based Wavefront Reconstruction from Gradient Measurements in Adaptive Optics</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2015 Classification for safety-critical car-cyclist scenarios using ML" ID="ID_55591120" CREATED="1516860940091" MODIFIED="1532051483931" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/122%20Classification%20for%20Safety-Critical%20Car-Cyclist%20Scenarios%20Using%20Machine%20Learning.pdf">
+<node TEXT="2015 Classification for safety-critical car-cyclist scenarios using ML" ID="ID_55591120" CREATED="1516860940091" MODIFIED="1534391955124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/122%20Classification%20for%20Safety-Critical%20Car-Cyclist%20Scenarios%20Using%20Machine%20Learning.pdf">
 <attribute NAME="key" VALUE="cara2015carcyclist"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Classification for Safety-Critical Car-Cyclist Scenarios Using Machine Learning"/>
@@ -871,7 +871,7 @@
     <pdf_title>Classification for safety-critical car-cyclist scenarios using machine learning</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Observation Study Influence of a View-Blocking Obstruction at Intersection" ID="ID_829632029" CREATED="1517118455799" MODIFIED="1532051476368" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/135%20Observation%20Study%20into%20the%20Influence%20of%20a%20View-Blocking%20Obstruction%20at%20an%20Intersection.pdf">
+<node TEXT="Observation Study Influence of a View-Blocking Obstruction at Intersection" ID="ID_829632029" CREATED="1517118455799" MODIFIED="1534391955358" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/135%20Observation%20Study%20into%20the%20Influence%20of%20a%20View-Blocking%20Obstruction%20at%20an%20Intersection.pdf">
 <attribute NAME="key" VALUE="CATS2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Observation Dtudy into the Influence of a View-Blocking Obstruction at an Intersection on Bicycle and Passenger Car Velocity Profiles"/>
@@ -880,7 +880,7 @@
     <pdf_title>Observation study into the influence of a view-blocking obstruction at an intersection on bicycle and passenger car velocity profiles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2016 Personalised AD: Prediction Preferred ACC Based on Manual Driving" ID="ID_1120861986" CREATED="1516861518218" MODIFIED="1532051510394" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/124%20Towards%20Personalised%20Automated%20Driving%20ACC.pdf">
+<node TEXT="2016 Personalised AD: Prediction Preferred ACC Based on Manual Driving" ID="ID_1120861986" CREATED="1516861518218" MODIFIED="1534391955077" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/124%20Towards%20Personalised%20Automated%20Driving%20ACC.pdf">
 <attribute NAME="key" VALUE="gelder2016pacc"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Towards Personalised Automated Driving: Prediction of Preferred {ACC} Behaviour Based on Manual Driving"/>
@@ -889,7 +889,7 @@
     <pdf_title>Towards Personalised Automated Driving: prediction of preferred ACC behaviour based on manual driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2017 A Comprehensive Evaluation Approach for Highly Automated Driving" ID="ID_201087810" CREATED="1516861585400" MODIFIED="1524719882898" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/029%20Summary%20AdaptIVe%20ESV2017.pdf">
+<node TEXT="2017 A Comprehensive Evaluation Approach for Highly Automated Driving" ID="ID_201087810" CREATED="1516861585400" MODIFIED="1534391955280" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/029%20Summary%20AdaptIVe%20ESV2017.pdf">
 <attribute NAME="key" VALUE="roesener2017comprehensive"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="A Comprehensive Evaluation Approach for Highly Automated Driving"/>
@@ -898,7 +898,7 @@
     <pdf_title>A Comprehensive Evaluation Approach for Highly Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2017 Assessment of Automated Driving Systems Using Real-Life Scenarios" ID="ID_144067600" CREATED="1516861680548" MODIFIED="1522727544012" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<node TEXT="2017 Assessment of Automated Driving Systems Using Real-Life Scenarios" ID="ID_144067600" CREATED="1516861680548" MODIFIED="1534391955233" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
@@ -912,7 +912,7 @@
 <attribute NAME="title" VALUE="Definition of Scenario in the Context of the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and J.-P. Paardekooper and J. Ploeg and H. Elrofai and Op den Camp, Olaf and Khabbaz Saberi, Arash and De Schutter, Bart"/>
 </node>
-<node TEXT="2018 Scenario-Based Safety Assessment Framework for AVs" ID="ID_110202670" CREATED="1526434328702" MODIFIED="1532051434632" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
+<node TEXT="2018 Scenario-Based Safety Assessment Framework for AVs" ID="ID_110202670" CREATED="1526434328702" MODIFIED="1534391955280" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
 <attribute NAME="key" VALUE="ploeg2018cetran"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Scenario-Based Safety Assessment Framework for Automated Vehicles"/>
@@ -921,7 +921,7 @@
     <pdf_title>ITS AP Forum 2018 Fukuoka</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2018 Scenario-based safety validation of connected and automated driving" ID="ID_1866815017" CREATED="1532051397659" MODIFIED="1533102339613" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/228%20Streetwise%20white%20paper.pdf">
+<node TEXT="2018 Scenario-based safety validation of connected and automated driving" ID="ID_1866815017" CREATED="1532051397659" MODIFIED="1534391954819" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/228%20Streetwise%20white%20paper.pdf">
 <attribute NAME="key" VALUE="elrofai2018scenario"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Scenario-Based Safety Validation of Connected and Automated Driving"/>
@@ -931,10 +931,10 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
+<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
-<node TEXT="Generative Adversarial Nets (GANs)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1284675129" CREATED="1516590666097" MODIFIED="1516590687904">
-<node TEXT="Introduction of GANs" ID="ID_451182813" CREATED="1516591618309" MODIFIED="1522726472533" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/110%20Generative%20Adversarial%20Nets.pdf">
+<node TEXT="Generative Adversarial Nets (GANs)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1284675129" CREATED="1516590666097" MODIFIED="1516590687904">
+<node TEXT="Introduction of GANs" ID="ID_451182813" CREATED="1516591618309" MODIFIED="1534391121959" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/110%20Generative%20Adversarial%20Nets.pdf">
 <attribute NAME="key" VALUE="goodfellow2014generative"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Generative Adversarial Nets"/>
@@ -943,7 +943,7 @@
     <pdf_title>Generative Adversarial Nets</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Adversarial Generation of Natural Language" ID="ID_1859876458" CREATED="1516591627797" MODIFIED="1522726687212" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/111%20Adversarial%20Generation%20of%20Natural%20Language.pdf">
+<node TEXT="Adversarial Generation of Natural Language" ID="ID_1859876458" CREATED="1516591627797" MODIFIED="1534391162928" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/111%20Adversarial%20Generation%20of%20Natural%20Language.pdf">
 <attribute NAME="key" VALUE="subramanian2017adversarial"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Adversarial Generation of Natural Language"/>
@@ -952,7 +952,7 @@
     <pdf_title>pling from these outputs to feed to the discrimi-</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="eCommerceGAN: A Generative Adversarial Network for E-commerce" ID="ID_1545234882" CREATED="1516592336164" MODIFIED="1522726791986" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/112%20eCommerceGAN%20A%20Generative%20Adversarial%20Network%20for%20E-commerce.pdf">
+<node TEXT="eCommerceGAN: A Generative Adversarial Network for E-commerce" ID="ID_1545234882" CREATED="1516592336164" MODIFIED="1534390767878" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/112%20eCommerceGAN%20A%20Generative%20Adversarial%20Network%20for%20E-commerce.pdf">
 <attribute NAME="key" VALUE="kumar2018ecommercegan"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1801.03244"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -963,8 +963,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Variational Auto-Encoders" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1221424051" CREATED="1516612900074" MODIFIED="1516612920703">
-<node TEXT="Auto-Encoding Variational Bayes" ID="ID_1649502321" CREATED="1516612922394" MODIFIED="1522726908972" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/115%20Auto-Encoding%20Variational%20Bayes.pdf">
+<node TEXT="Variational Auto-Encoders" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1221424051" CREATED="1516612900074" MODIFIED="1516612920703">
+<node TEXT="Auto-Encoding Variational Bayes" ID="ID_1649502321" CREATED="1516612922394" MODIFIED="1534391192514" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/115%20Auto-Encoding%20Variational%20Bayes.pdf">
 <attribute NAME="key" VALUE="kingma2013auto"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1312.6114"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -974,7 +974,7 @@
     <pdf_title>M M</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Stochastic backpropagation and approximate inference" ID="ID_251380153" CREATED="1516613691129" MODIFIED="1531982839266" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/116%20Stochastic%20Backpropagation%20and%20Approximate%20Inference%20in%20Deep%20Generative%20Models.pdf">
+<node TEXT="Stochastic backpropagation and approximate inference" ID="ID_251380153" CREATED="1516613691129" MODIFIED="1534391210043" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/116%20Stochastic%20Backpropagation%20and%20Approximate%20Inference%20in%20Deep%20Generative%20Models.pdf">
 <attribute NAME="key" VALUE="rezende2014stochastic"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1401.4082"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -984,7 +984,7 @@
     <pdf_title>M M</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Tutorial on Variational Autoencoders" ID="ID_42512431" CREATED="1516613752808" MODIFIED="1522727133414" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/117%20Tutorial%20on%20Variational%20Autoencoders.pdf">
+<node TEXT="Tutorial on Variational Autoencoders" ID="ID_42512431" CREATED="1516613752808" MODIFIED="1534391226423" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/117%20Tutorial%20on%20Variational%20Autoencoders.pdf">
 <attribute NAME="key" VALUE="doersch2016tutorial"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1606.05908"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -995,8 +995,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="using reference data (open-loop)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1767777743" CREATED="1516863517341" MODIFIED="1516863545359">
-<node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1531982846010" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
+<node TEXT="using reference data (open-loop)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1767777743" CREATED="1516863517341" MODIFIED="1516863545359">
+<node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1534390768470" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="year" VALUE="2012"/>
 <attribute NAME="title" VALUE="Object-Oriented Bayesian Networks for Detection of Lane Change Maneuvers"/>
@@ -1006,7 +1006,7 @@
     <pdf_title>Dietmar Kasper, Galia Weidl, Thao Dang, Gabi Breuel, Andreas Tamke, and Andreas Wedel</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Transforming GIS data into functional road models" ID="ID_7532915" CREATED="1516864315370" MODIFIED="1522727154601" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/128%20Transforming%20GIS%20data%20into%20functional%20road%20models.pdf">
+<node TEXT="Transforming GIS data into functional road models" ID="ID_7532915" CREATED="1516864315370" MODIFIED="1534390768485" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/128%20Transforming%20GIS%20data%20into%20functional%20road%20models.pdf">
 <attribute NAME="key" VALUE="wilkie2012transforming"/>
 <attribute NAME="journal" VALUE="IEEE transactions on visualization and computer graphics"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -1016,7 +1016,7 @@
     <pdf_title>Transforming GIS Data into Functional Road Models for Large-Scale Traffic Simulation</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="3D Traffic Scene Understanding From Movable Platforms" ID="ID_1523877032" CREATED="1516865613984" MODIFIED="1522727170920" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/129%203D%20Traffic%20Scene%20Understanding%20from%20Movable%20Platforms.pdf">
+<node TEXT="3D Traffic Scene Understanding From Movable Platforms" ID="ID_1523877032" CREATED="1516865613984" MODIFIED="1534390768282" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/129%203D%20Traffic%20Scene%20Understanding%20from%20Movable%20Platforms.pdf">
 <attribute NAME="key" VALUE="geiger2014scenunderstanding"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Pattern Analysis and Machine Intelligence"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -1027,11 +1027,11 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="For testing of AVs" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_446913384" CREATED="1522996423752" MODIFIED="1522996430189">
+<node TEXT="For testing of AVs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_446913384" CREATED="1522996423752" MODIFIED="1522996430189">
 <node TEXT="Automated Scenario Generation of Regression Testing of AVs" ID="ID_164912009" CREATED="1522996504294" MODIFIED="1522996505122"/>
 </node>
-<node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
-<node TEXT="Evaluation of scenario-generation methods for stochastic programming" ID="ID_1027960109" CREATED="1529493643125" MODIFIED="1529493895198" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/196%20Evaluation%20of%20scenario-generation%20methods%20for%20stochastic%20programming.pdf">
+<node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
+<node TEXT="Evaluation of scenario-generation methods for stochastic programming" ID="ID_1027960109" CREATED="1529493643125" MODIFIED="1534390768282" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/196%20Evaluation%20of%20scenario-generation%20methods%20for%20stochastic%20programming.pdf">
 <attribute NAME="key" VALUE="kaut2007evaluation"/>
 <attribute NAME="journal" VALUE="Pacific Journal of Optimization"/>
 <attribute NAME="year" VALUE="2007"/>
@@ -1041,7 +1041,7 @@
     <pdf_title>Evaluation of Scenario-Generation Methods for Stochastic Programming</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="A Heuristic for Moment-Matching Scenario Generation" ID="ID_111057388" CREATED="1529493961704" MODIFIED="1529494072086" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/197%20A%20Heuristic%20for%20Moment-Matching%20Scenario%20Generation.pdf">
+<node TEXT="A Heuristic for Moment-Matching Scenario Generation" ID="ID_111057388" CREATED="1529493961704" MODIFIED="1534390768345" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/197%20A%20Heuristic%20for%20Moment-Matching%20Scenario%20Generation.pdf">
 <attribute NAME="key" VALUE="hoyland2003heuristic"/>
 <attribute NAME="journal" VALUE="Computational Optimization and Applications"/>
 <attribute NAME="year" VALUE="2003"/>
@@ -1053,11 +1053,11 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
+<node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
-<node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
-<node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
-<node TEXT="Object-Oriented Bayesian Networks for Detection of Lane Change" ID="ID_809676015" CREATED="1513049590036" MODIFIED="1531982859535" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
+<node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
+<node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
+<node TEXT="Object-Oriented Bayesian Networks for Detection of Lane Change" ID="ID_809676015" CREATED="1513049590036" MODIFIED="1534390768454" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -1068,8 +1068,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_930564985" CREATED="1513061263150" MODIFIED="1513061275832">
-<node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_728268315" CREATED="1513061279856" MODIFIED="1522727202079" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/004%20Tutorial%20HMM.pdf">
+<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_930564985" CREATED="1513061263150" MODIFIED="1513061275832">
+<node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_728268315" CREATED="1513061279856" MODIFIED="1534390768391" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/004%20Tutorial%20HMM.pdf">
 <attribute NAME="key" VALUE="HMM_Rabiner"/>
 <attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
 <attribute NAME="year" VALUE="1989"/>
@@ -1081,9 +1081,9 @@
 </node>
 </node>
 </node>
-<node TEXT="Applications with traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1528361068" CREATED="1513049599509" MODIFIED="1513049693187">
-<node TEXT="Lane Changes" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1183548072" CREATED="1513049616151" MODIFIED="1513049695649">
-<node TEXT="Kasper et al." ID="ID_1219262019" CREATED="1513049679878" MODIFIED="1522726244718" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
+<node TEXT="Applications with traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1528361068" CREATED="1513049599509" MODIFIED="1513049693187">
+<node TEXT="Lane Changes" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1183548072" CREATED="1513049616151" MODIFIED="1513049695649">
+<node TEXT="Kasper et al." ID="ID_1219262019" CREATED="1513049679878" MODIFIED="1534390768454" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -1094,7 +1094,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Driving Maneuver Classification: Comparison of Feature Extraction Methods" ID="ID_1801389080" CREATED="1529494283347" MODIFIED="1531982878266" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/198%20Driving%20Maneuver%20Classification%20A%20Comparison%20of%20Feature%20Extraction%20Methods.pdf">
+<node TEXT="Driving Maneuver Classification: Comparison of Feature Extraction Methods" ID="ID_1801389080" CREATED="1529494283347" MODIFIED="1534390768266" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/198%20Driving%20Maneuver%20Classification%20A%20Comparison%20of%20Feature%20Extraction%20Methods.pdf">
 <attribute NAME="key" VALUE="xie2017driving"/>
 <attribute NAME="journal" VALUE="IEEE Sensors Journal"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -1105,8 +1105,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Scene understanding" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1078234634" CREATED="1516851525657" MODIFIED="1516851536013">
-<node TEXT="Segmentation-Based Urban Traffic Scene Understanding -&gt; using first semantic labeling of pixels" ID="ID_258658" CREATED="1516851538081" MODIFIED="1522727223382" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/121%20Segmentation-Based%20Urban%20Traffic%20Scene%20Understanding.pdf">
+<node TEXT="Scene understanding" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1078234634" CREATED="1516851525657" MODIFIED="1516851536013">
+<node TEXT="Segmentation-Based Urban Traffic Scene Understanding -&gt; using first semantic labeling of pixels" ID="ID_258658" CREATED="1516851538081" MODIFIED="1534390768298" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/121%20Segmentation-Based%20Urban%20Traffic%20Scene%20Understanding.pdf">
 <attribute NAME="key" VALUE="ess2009sceneunderstanding"/>
 <attribute NAME="year" VALUE="2009"/>
 <attribute NAME="title" VALUE="Segmentation-Based Urban Traffic Scene Understanding"/>
@@ -1116,8 +1116,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data compression" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_203974535" CREATED="1521868113174" MODIFIED="1521868120954">
-<node TEXT="based on temporal correlation" ID="ID_924446852" CREATED="1521868123486" MODIFIED="1522727274743" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/171%20Compression%20algorithm%20of%20road%20traffic%20data.pdf">
+<node TEXT="Data compression" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_203974535" CREATED="1521868113174" MODIFIED="1521868120954">
+<node TEXT="based on temporal correlation" ID="ID_924446852" CREATED="1521868123486" MODIFIED="1534390768376" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/171%20Compression%20algorithm%20of%20road%20traffic%20data.pdf">
 <attribute NAME="key" VALUE="wang2018compression"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -1128,8 +1128,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Prediction" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_501991532" CREATED="1522895735218" MODIFIED="1522895739797">
-<node TEXT="Predicting the driver&apos;s intent to brake in a car-following scenario" ID="ID_1823774878" CREATED="1522895740906" MODIFIED="1522895755562" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/176%20Learning%20and%20Inferring%20a%20drivers%20braking%20action%20in%20carfollowing%20scenarios.pdf">
+<node TEXT="Prediction" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_501991532" CREATED="1522895735218" MODIFIED="1522895739797">
+<node TEXT="Predicting the driver&apos;s intent to brake in a car-following scenario" ID="ID_1823774878" CREATED="1522895740906" MODIFIED="1534391248592" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/176%20Learning%20and%20Inferring%20a%20drivers%20braking%20action%20in%20carfollowing%20scenarios.pdf">
 <attribute NAME="key" VALUE="wang2018learning"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1801.03905"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -1140,8 +1140,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Evaluation measure" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_925273535" CREATED="1522996306267" MODIFIED="1522996312499">
-<node TEXT="A New Model for Evaluating Range-Based Anomaly Detection Algorithms" ID="ID_1367017718" CREATED="1522996318461" MODIFIED="1522996330546" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/178%20A%20New%20Model%20for%20Evaluating%20Range-Based%20Anomaly%20Detection%20Algorithms.pdf">
+<node TEXT="Evaluation measure" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_925273535" CREATED="1522996306267" MODIFIED="1522996312499">
+<node TEXT="A New Model for Evaluating Range-Based Anomaly Detection Algorithms" ID="ID_1367017718" CREATED="1522996318461" MODIFIED="1534391264389" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/178%20A%20New%20Model%20for%20Evaluating%20Range-Based%20Anomaly%20Detection%20Algorithms.pdf">
 <attribute NAME="key" VALUE="tatbul2018new"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1803.03639"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -1152,8 +1152,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Scenario Libraries" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_28381863" CREATED="1529493235572" MODIFIED="1529493248164">
-<node TEXT="TrafficNet" ID="ID_1116865527" CREATED="1529493249499" MODIFIED="1529493255816" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/195%20TrafficNet%20An%20Open%20Naturalistic%20Driving%20Scenario%20Library.pdf">
+<node TEXT="Scenario Libraries" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_28381863" CREATED="1529493235572" MODIFIED="1529493248164">
+<node TEXT="TrafficNet" ID="ID_1116865527" CREATED="1529493249499" MODIFIED="1534390768313" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/195%20TrafficNet%20An%20Open%20Naturalistic%20Driving%20Scenario%20Library.pdf">
 <attribute NAME="key" VALUE="zhao2017trafficnet"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1708.01872"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1165,9 +1165,9 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
-<node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1530583127369" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
+<node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1534391328696" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -1178,17 +1178,17 @@
     <pdf_title>General Behavior Prediction by a Combination of Scenario-Specific Models</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Geyer et al.: Ontology for test and use-case" ID="ID_723136257" CREATED="1507090482013" MODIFIED="1531982901599" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="Geyer et al.: Ontology for test and use-case" ID="ID_723136257" CREATED="1507090482013" MODIFIED="1534391329139" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
-<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ulbrich et al: defining terms scene, situation and scenario." ID="ID_233985176" CREATED="1507599979556" MODIFIED="1522727275125" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<node TEXT="Ulbrich et al: defining terms scene, situation and scenario." ID="ID_233985176" CREATED="1507599979556" MODIFIED="1534391328982" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
@@ -1197,7 +1197,7 @@
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ontology based scene (see Ulbrich for scene) creation for development AV" ID="ID_1236926158" CREATED="1512622274267" MODIFIED="1531982921101" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
+<node TEXT="Ontology based scene (see Ulbrich for scene) creation for development AV" ID="ID_1236926158" CREATED="1512622274267" MODIFIED="1534391329029" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1207,7 +1207,7 @@
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Definitions in military field (from TNO)" ID="ID_1922268023" CREATED="1509502001489" MODIFIED="1522727274981" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/038%20Simulation%20environment%20architecture%20development%20using%20the%20DoDAF.pdf">
+<node TEXT="Definitions in military field (from TNO)" ID="ID_1922268023" CREATED="1509502001489" MODIFIED="1534391329107" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/038%20Simulation%20environment%20architecture%20development%20using%20the%20DoDAF.pdf">
 <attribute NAME="key" VALUE="berg2015simulation"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Simulation Environment Architecture Development Using the {D}o{DAF}"/>
@@ -1216,7 +1216,7 @@
     <pdf_title>Simulation environment architecture development using the DoDAF</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Definition of Hala&apos;s AMAA paper" ID="ID_1062103920" CREATED="1509704190708" MODIFIED="1522727275142" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/039%20Scenario%20Identification%20for%20Validation%20of%20ADF%20-%20Hala%20Elrofai.pdf">
+<node TEXT="Definition of Hala&apos;s AMAA paper" ID="ID_1062103920" CREATED="1509704190708" MODIFIED="1534391329170" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/039%20Scenario%20Identification%20for%20Validation%20of%20ADF%20-%20Hala%20Elrofai.pdf">
 <attribute NAME="key" VALUE="elrofai2016scenario"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Scenario Identification for Validation of Automated Driving Functions"/>
@@ -1225,7 +1225,7 @@
     <pdf_title>Advanced Microsystems for Automotive Applications 2016</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="CommonRoad: 1) network, 2) stat/dyn obstacles, 3) planning problem ego" ID="ID_1881248975" CREATED="1510633429764" MODIFIED="1531982941672" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/052%20CommonRoad.pdf">
+<node TEXT="CommonRoad: 1) network, 2) stat/dyn obstacles, 3) planning problem ego" ID="ID_1881248975" CREATED="1510633429764" MODIFIED="1534391328920" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/052%20CommonRoad.pdf">
 <attribute NAME="key" VALUE="althoff2017CommonRoad"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Common{R}oad: Composable Benchmarks for Motion Planning on Roads"/>
@@ -1234,8 +1234,8 @@
     <pdf_title>CommonRoad: Composable Benchmarks for Motion Planning on Roads</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Scenarios in general (not per se related to automotive)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_657869850" CREATED="1510118247632" MODIFIED="1511405450754">
-<node TEXT="It emphasizes the different views on scenarios from different fields." ID="ID_628194309" CREATED="1510118287811" MODIFIED="1522727314970" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/033%20Views%20of%20scenario-based%20system%20design.pdf">
+<node TEXT="Scenarios in general (not per se related to automotive)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_657869850" CREATED="1510118247632" MODIFIED="1511405450754">
+<node TEXT="It emphasizes the different views on scenarios from different fields." ID="ID_628194309" CREATED="1510118287811" MODIFIED="1534391329201" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/033%20Views%20of%20scenario-based%20system%20design.pdf">
 <attribute NAME="key" VALUE="go2004blind"/>
 <attribute NAME="journal" VALUE="Interactions"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -1245,7 +1245,7 @@
     <pdf_title>Theblindmenandtheelephant:Viewsof scenario-basedsystemdesign</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT=" Scenario Topology: Excellent overview of different kind of scenarios" ID="ID_1390127323" CREATED="1510118493624" MODIFIED="1531982966533" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/040%20Updated%20Scenario%20Topology.pdf">
+<node TEXT=" Scenario Topology: Excellent overview of different kind of scenarios" ID="ID_1390127323" CREATED="1510118493624" MODIFIED="1534391328967" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/040%20Updated%20Scenario%20Topology.pdf">
 <attribute NAME="key" VALUE="vannotten2003updated"/>
 <attribute NAME="journal" VALUE="Futures"/>
 <attribute NAME="year" VALUE="2003"/>
@@ -1255,7 +1255,7 @@
     <pdf_title>An updated scenario typology</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Techniques to come up with scenarios. One technique is using events." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_695479916" CREATED="1510193888346" MODIFIED="1522727314710" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/041%20Scenario%20techniques.pdf">
+<node TEXT="Techniques to come up with scenarios. One technique is using events." LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_695479916" CREATED="1510193888346" MODIFIED="1534391329045" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/041%20Scenario%20techniques.pdf">
 <attribute NAME="key" VALUE="bishop2007scentechniques"/>
 <attribute NAME="journal" VALUE="Foresight"/>
 <attribute NAME="year" VALUE="2007"/>
@@ -1284,7 +1284,7 @@
 <attribute NAME="authors" VALUE="Saltelli, Andrea and Ratto, Marco and Andres, Terry and Campolongo, Francesca and Cariboni, Jessica and Gatelli, Debora and Saisana, Michaela and Tarantola, Stefano"/>
 </node>
 </node>
-<node TEXT="In this book, a tool is discussed that adopts qualitative and quantitative scenarios" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_622954737" CREATED="1510280283487" MODIFIED="1522727374943" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/055%20Scenarios%20as%20tools%20for%20international%20environmental%20assessment.pdf">
+<node TEXT="In this book, a tool is discussed that adopts qualitative and quantitative scenarios" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_622954737" CREATED="1510280283487" MODIFIED="1534391329232" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/055%20Scenarios%20as%20tools%20for%20international%20environmental%20assessment.pdf">
 <attribute NAME="key" VALUE="alcamo2001scenarios"/>
 <attribute NAME="year" VALUE="2001"/>
 <attribute NAME="title" VALUE="Scenarios as Tools for International Environmental Assessment"/>
@@ -1292,7 +1292,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="6FCECC94259A051514D86CC4D9EA83CDF1AC1FF3364A8BCF44919BF2CF135">
     <pdf_title>Scenarios as tools for international environmental assessments</pdf_title>
 </pdf_annotation>
-<node TEXT="Example" ID="ID_1422624806" CREATED="1510280633670" MODIFIED="1522727374934" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/045%20Visions%20for%20a%20sustainable%20Europe.pdf">
+<node TEXT="Example" ID="ID_1422624806" CREATED="1510280633670" MODIFIED="1534391328936" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/045%20Visions%20for%20a%20sustainable%20Europe.pdf">
 <attribute NAME="key" VALUE="rotmans2000visions"/>
 <attribute NAME="journal" VALUE="Futures"/>
 <attribute NAME="year" VALUE="2000"/>
@@ -1310,8 +1310,8 @@
 <attribute NAME="authors" VALUE="Hooper, James W and Hsia, Pei"/>
 </node>
 </node>
-<node TEXT="Automotive scenarios where &apos;static environment&apos; is mentioned" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1521500661" CREATED="1510303353449" MODIFIED="1511405456105">
-<node TEXT="Althoff et al." ID="ID_1062024217" CREATED="1510633406234" MODIFIED="1522727374993" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/052%20CommonRoad.pdf" MOVED="1512638149808">
+<node TEXT="Automotive scenarios where &apos;static environment&apos; is mentioned" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1521500661" CREATED="1510303353449" MODIFIED="1511405456105">
+<node TEXT="Althoff et al." ID="ID_1062024217" CREATED="1510633406234" MODIFIED="1534391328904" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/052%20CommonRoad.pdf" MOVED="1512638149808">
 <attribute NAME="key" VALUE="althoff2017CommonRoad"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Common{R}oad: Composable Benchmarks for Motion Planning on Roads"/>
@@ -1320,7 +1320,7 @@
     <pdf_title>CommonRoad: Composable Benchmarks for Motion Planning on Roads</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Bagschik et al." ID="ID_1681269749" CREATED="1512638114716" MODIFIED="1522727375123" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf" MOVED="1512638158791">
+<node TEXT="Bagschik et al." ID="ID_1681269749" CREATED="1512638114716" MODIFIED="1534391329029" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf" MOVED="1512638158791">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1330,7 +1330,7 @@
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ebner et al." ID="ID_1254735938" CREATED="1510303916946" MODIFIED="1522727375135" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/047%20Identifying%20and%20Analyzing%20Reference%20Scenarios.pdf" MOVED="1512638144940">
+<node TEXT="Ebner et al." ID="ID_1254735938" CREATED="1510303916946" MODIFIED="1534391329217" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/047%20Identifying%20and%20Analyzing%20Reference%20Scenarios.pdf" MOVED="1512638144940">
 <attribute NAME="key" VALUE="ebner2011identifying"/>
 <attribute NAME="journal" VALUE="International Journal of Intelligent Transportation Systems Research"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -1340,7 +1340,7 @@
     <pdf_title>Identifying and Analyzing Reference Scenarios for the Development and Evaluation of Active Safety: Application to Preventive Pedestrian Safety</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Elrofai et al." ID="ID_1255921911" CREATED="1512637956240" MODIFIED="1522727375177" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/039%20Scenario%20Identification%20for%20Validation%20of%20ADF%20-%20Hala%20Elrofai.pdf" MOVED="1512638152727">
+<node TEXT="Elrofai et al." ID="ID_1255921911" CREATED="1512637956240" MODIFIED="1534391329170" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/039%20Scenario%20Identification%20for%20Validation%20of%20ADF%20-%20Hala%20Elrofai.pdf" MOVED="1512638152727">
 <attribute NAME="key" VALUE="elrofai2016scenario"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Scenario Identification for Validation of Automated Driving Functions"/>
@@ -1349,17 +1349,17 @@
     <pdf_title>Advanced Microsystems for Automotive Applications 2016</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Geyer et al." ID="ID_1977858210" CREATED="1512638073388" MODIFIED="1522727374981" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf" MOVED="1512638154801">
+<node TEXT="Geyer et al." ID="ID_1977858210" CREATED="1512638073388" MODIFIED="1534391329123" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf" MOVED="1512638154801">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
-<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Schuldt et al." ID="ID_190252876" CREATED="1510303376465" MODIFIED="1522727374884" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/046%20Effiziente%20systematische%20Testgenerierung%20f&#xfc;r%20Fahrerassistenzsysteme%20in%20virtuellen%20Umgebungen.pdf">
+<node TEXT="Schuldt et al." ID="ID_190252876" CREATED="1510303376465" MODIFIED="1534391329061" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/046%20Effiziente%20systematische%20Testgenerierung%20f&#xfc;r%20Fahrerassistenzsysteme%20in%20virtuellen%20Umgebungen.pdf">
 <attribute NAME="key" VALUE="schuldt2013effiziente"/>
 <attribute NAME="journal" VALUE="Automatisierungssysteme, Assistenzsysteme und Eingebettete Systeme f{\&quot;u}r Transportmittel"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -1369,7 +1369,7 @@
     <pdf_title>Effiziente systematische Testgenerierung f&#xfc;r</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ulbrich et al." ID="ID_1854876318" CREATED="1512638077373" MODIFIED="1522727375163" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<node TEXT="Ulbrich et al." ID="ID_1854876318" CREATED="1512638077373" MODIFIED="1534391329014" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
@@ -1379,8 +1379,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Papers that mention that scenarios (might) exist of events" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_216823371" CREATED="1510198203643" MODIFIED="1511405456115">
-<node TEXT="Van Notten et al." ID="ID_717680905" CREATED="1510198235612" MODIFIED="1522727374898" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/040%20Updated%20Scenario%20Topology.pdf">
+<node TEXT="Papers that mention that scenarios (might) exist of events" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_216823371" CREATED="1510198203643" MODIFIED="1511405456115">
+<node TEXT="Van Notten et al." ID="ID_717680905" CREATED="1510198235612" MODIFIED="1534391328951" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/040%20Updated%20Scenario%20Topology.pdf">
 <attribute NAME="key" VALUE="vannotten2003updated"/>
 <attribute NAME="journal" VALUE="Futures"/>
 <attribute NAME="year" VALUE="2003"/>
@@ -1390,7 +1390,7 @@
     <pdf_title>An updated scenario typology</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ulbrich et al. (actions &amp; events)" ID="ID_938037197" CREATED="1510198413206" MODIFIED="1522727375154" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<node TEXT="Ulbrich et al. (actions &amp; events)" ID="ID_938037197" CREATED="1510198413206" MODIFIED="1534391328998" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
@@ -1399,17 +1399,17 @@
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Geyer et al. (course of events)" ID="ID_561266417" CREATED="1510198447652" MODIFIED="1522727374971" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="Geyer et al. (course of events)" ID="ID_561266417" CREATED="1510198447652" MODIFIED="1534391329139" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
-<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Schoemaker (combination of events)" ID="ID_1168246157" CREATED="1510201747123" MODIFIED="1522727375112" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/042%20Multiple%20scenario%20development.pdf">
+<node TEXT="Schoemaker (combination of events)" ID="ID_1168246157" CREATED="1510201747123" MODIFIED="1534391329186" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/042%20Multiple%20scenario%20development.pdf">
 <attribute NAME="key" VALUE="schoemaker1993multiple"/>
 <attribute NAME="journal" VALUE="Strategic Management Journal"/>
 <attribute NAME="year" VALUE="1993"/>
@@ -1419,7 +1419,7 @@
     <pdf_title>Multiple Scenario Development: Its Conceptual and Behavioral Foundation Author(s): Paul J. H. Schoemaker Source: Strategic Management Journal, Vol. 14, No. 3 (Mar., 1993), pp. 193-213 Published by: John Wiley &amp; Sons Stable URL: Accessed: 02/07/2009 22:51</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Cuppens and Miege (combination of events)" ID="ID_1707233390" CREATED="1510202350532" MODIFIED="1522727375032" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/043%20Alert%20correlation%20in%20a%20cooperative%20intrusion%20detection%20framework.pdf">
+<node TEXT="Cuppens and Miege (combination of events)" ID="ID_1707233390" CREATED="1510202350532" MODIFIED="1534391329107" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/043%20Alert%20correlation%20in%20a%20cooperative%20intrusion%20detection%20framework.pdf">
 <attribute NAME="key" VALUE="cuppens2002alert"/>
 <attribute NAME="year" VALUE="2002"/>
 <attribute NAME="title" VALUE="Alert Correlation in a Cooperative Intrusion Detection Framework"/>
@@ -1428,7 +1428,7 @@
     <pdf_title>Alert Correlation in a Cooperative Intrusion Detection Framework</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Go and Carroll (sequence of actions and events)" ID="ID_1685181985" CREATED="1510205317556" MODIFIED="1522727374956" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/033%20Views%20of%20scenario-based%20system%20design.pdf">
+<node TEXT="Go and Carroll (sequence of actions and events)" ID="ID_1685181985" CREATED="1510205317556" MODIFIED="1534391329201" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/033%20Views%20of%20scenario-based%20system%20design.pdf">
 <attribute NAME="key" VALUE="go2004blind"/>
 <attribute NAME="journal" VALUE="Interactions"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -1438,7 +1438,7 @@
     <pdf_title>Theblindmenandtheelephant:Viewsof scenario-basedsystemdesign</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Englund et al." ID="ID_707903192" CREATED="1510206055590" MODIFIED="1522727375083" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/044%20GCDC%202016.pdf">
+<node TEXT="Englund et al." ID="ID_707903192" CREATED="1510206055590" MODIFIED="1534391329076" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/044%20GCDC%202016.pdf">
 <attribute NAME="key" VALUE="englund2016grand"/>
 <attribute NAME="journal" VALUE="IEEE Wireless Communications"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -1455,8 +1455,8 @@
 <attribute NAME="authors" VALUE="Bach, Johannes and Otten, Stefan and Sax, Eric"/>
 </node>
 </node>
-<node TEXT="Events in hybrid control" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_8438282" CREATED="1508311936834" MODIFIED="1511405456123">
-<node TEXT="When a continuous state hits a certain prescribed set" ID="ID_1948824813" CREATED="1508311946229" MODIFIED="1522727374916" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/034%20Hybrid%20control%20theory.pdf">
+<node TEXT="Events in hybrid control" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_8438282" CREATED="1508311936834" MODIFIED="1511405456123">
+<node TEXT="When a continuous state hits a certain prescribed set" ID="ID_1948824813" CREATED="1508311946229" MODIFIED="1534391370850" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/034%20Hybrid%20control%20theory.pdf">
 <attribute NAME="key" VALUE="branicky1998hybridcontrol"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Automatic Control"/>
 <attribute NAME="year" VALUE="1998"/>
@@ -1466,7 +1466,7 @@
     <pdf_title>A Unified Framework for Hybrid Control: Model and Optimal Control Theory</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="A system switches from one mode to the other when an event occurs" ID="ID_1393814808" CREATED="1508392710843" MODIFIED="1522727375020" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/035%20MPC%20for%20hybrid%20systems.pdf">
+<node TEXT="A system switches from one mode to the other when an event occurs" ID="ID_1393814808" CREATED="1508392710843" MODIFIED="1534391371231" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/035%20MPC%20for%20hybrid%20systems.pdf">
 <attribute NAME="key" VALUE="deschutter2003hybrid"/>
 <attribute NAME="year" VALUE="2003"/>
 <attribute NAME="title" VALUE="Model Predictive Control for Discrete-Event and Hybrid Systems"/>
@@ -1475,7 +1475,7 @@
     <pdf_title>Model predictive control for discrete-event and hybrid systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The system switches from one mode to another due to the occurrence of events (ORIGINAL)" ID="ID_1988937568" CREATED="1515091114695" MODIFIED="1522727375191" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/106%20Modelling%20Analysis%20and%20Control%20of%20Hybrid%20Systems.pdf">
+<node TEXT="The system switches from one mode to another due to the occurrence of events (ORIGINAL)" ID="ID_1988937568" CREATED="1515091114695" MODIFIED="1534391371310" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/106%20Modelling%20Analysis%20and%20Control%20of%20Hybrid%20Systems.pdf">
 <attribute NAME="key" VALUE="boel1999hybridcontrol"/>
 <attribute NAME="journal" VALUE="Journal A"/>
 <attribute NAME="year" VALUE="1999"/>
@@ -1485,7 +1485,7 @@
     <pdf_title>Approaches to modelling, analysis, and control of hybrid systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The system switches ... (same as above) (BETTER REFERENCE)" ID="ID_102659653" CREATED="1516765550142" MODIFIED="1522727375097" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/119%20Optimal%20control%20of%20a%20class%20of%20linear%20hybrid%20systems%20with%20saturation.pdf">
+<node TEXT="The system switches ... (same as above) (BETTER REFERENCE)" ID="ID_102659653" CREATED="1516765550142" MODIFIED="1534391371130" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/119%20Optimal%20control%20of%20a%20class%20of%20linear%20hybrid%20systems%20with%20saturation.pdf">
 <attribute NAME="key" VALUE="deschutter2000optimal"/>
 <attribute NAME="journal" VALUE="SIAM Journal on Control and Optimization"/>
 <attribute NAME="year" VALUE="2000"/>
@@ -1496,21 +1496,21 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
+<node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
 <node TEXT="In probability: the outcome of an experiment. For example coin &quot;tail&quot;" ID="ID_431203968" CREATED="1508810134759" MODIFIED="1531983021869">
 <attribute NAME="key" VALUE="pfeiffer2013concepts"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Concepts of Probability Theory"/>
 <attribute NAME="authors" VALUE="Pfeiffer, Paul E"/>
 </node>
-<node TEXT="In relativity, an event is a happening at a specific place and time" ID="ID_1388623566" CREATED="1508811983588" MODIFIED="1531983035184" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/036%20Understanding_Relativity_A_Simplified_Approach.pdf">
+<node TEXT="In relativity, an event is a happening at a specific place and time" ID="ID_1388623566" CREATED="1508811983588" MODIFIED="1534391371247" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/036%20Understanding_Relativity_A_Simplified_Approach.pdf">
 <attribute NAME="key" VALUE="sartori1996understanding"/>
 <attribute NAME="year" VALUE="1996"/>
 <attribute NAME="title" VALUE="Understanding Relativity: A Simplified Approach to Einstein&apos;s Theories"/>
 <attribute NAME="authors" VALUE="Sartori, Leo"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
-<node TEXT="An event is an occurrence that may trigger a state transition." ID="ID_696176091" CREATED="1508812639989" MODIFIED="1522727375044" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/037%20UML.pdf">
+<node TEXT="An event is an occurrence that may trigger a state transition." ID="ID_696176091" CREATED="1508812639989" MODIFIED="1534391371247" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/037%20UML.pdf">
 <attribute NAME="key" VALUE="breu1997towards"/>
 <attribute NAME="year" VALUE="1997"/>
 <attribute NAME="title" VALUE="Towards a Formalization of the Unified Modeling Language"/>
@@ -1519,7 +1519,7 @@
     <pdf_title>Towards a Formalization of the Unified Modeling Language*</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Event-based control, control action is computed when an event is triggered" ID="ID_1579063261" CREATED="1508819023047" MODIFIED="1531983054719" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/120%20An%20Introduction%20to%20Event-Triggered%20and%20Self-Triggered%20Control.pdf">
+<node TEXT="Event-based control, control action is computed when an event is triggered" ID="ID_1579063261" CREATED="1508819023047" MODIFIED="1534391371114" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/120%20An%20Introduction%20to%20Event-Triggered%20and%20Self-Triggered%20Control.pdf">
 <attribute NAME="key" VALUE="heemels2012eventcontrol"/>
 <attribute NAME="year" VALUE="2012"/>
 <attribute NAME="title" VALUE="An Introduction to Event-Triggered and Self-Triggered Control"/>
@@ -1535,8 +1535,8 @@
 <attribute NAME="authors" VALUE="Kim, Jaegwon"/>
 </node>
 </node>
-<node TEXT="List of scenarios (to show that people use it for almost everything)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_175737845" CREATED="1507099450463" MODIFIED="1511405430207" MOVED="1515750497719">
-<node TEXT="Gietelink et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1325672689" CREATED="1510112584305" MODIFIED="1522727480327" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/028%20Development%20of%20advanced%20driver%20assistance%20systems%20with%20vehicle%20hardware%20in%20the%20loop%20simulations.pdf">
+<node TEXT="List of scenarios (to show that people use it for almost everything)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_175737845" CREATED="1507099450463" MODIFIED="1511405430207" MOVED="1515750497719">
+<node TEXT="Gietelink et al." LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1325672689" CREATED="1510112584305" MODIFIED="1534391371200" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/028%20Development%20of%20advanced%20driver%20assistance%20systems%20with%20vehicle%20hardware%20in%20the%20loop%20simulations.pdf">
 <attribute NAME="key" VALUE="gietelink2006development"/>
 <attribute NAME="journal" VALUE="Vehicle System Dynamics"/>
 <attribute NAME="year" VALUE="2006"/>
@@ -1550,7 +1550,7 @@
 <node TEXT="Collision" ID="ID_1299562162" CREATED="1510112659775" MODIFIED="1510633897573"/>
 <node TEXT="Safety-critical" ID="ID_1340270968" CREATED="1510112665711" MODIFIED="1510112669571"/>
 </node>
-<node TEXT="Zofka et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_892977111" CREATED="1510112683295" MODIFIED="1522727480649" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<node TEXT="Zofka et al." LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_892977111" CREATED="1510112683295" MODIFIED="1534391371083" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Data-driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems"/>
@@ -1560,7 +1560,7 @@
 </pdf_annotation>
 <node TEXT="Urban" ID="ID_1534002459" CREATED="1510112700133" MODIFIED="1510112702336"/>
 </node>
-<node TEXT="Roesener et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1959714444" CREATED="1510112868187" MODIFIED="1522727480364" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/029%20Summary%20AdaptIVe%20ESV2017.pdf">
+<node TEXT="Roesener et al." LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1959714444" CREATED="1510112868187" MODIFIED="1534391371216" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/029%20Summary%20AdaptIVe%20ESV2017.pdf">
 <attribute NAME="key" VALUE="roesener2017comprehensive"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="A Comprehensive Evaluation Approach for Highly Automated Driving"/>
@@ -1577,11 +1577,18 @@
 <node TEXT="Obstacle in the lane" ID="ID_1075716021" CREATED="1510112954057" MODIFIED="1510112960091"/>
 <node TEXT="Approaching traffic jam" ID="ID_653624569" CREATED="1510112960537" MODIFIED="1510112967850"/>
 </node>
-<node TEXT="Xu et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1996382281" CREATED="1510371528992" MODIFIED="1511405469515">
+<node TEXT="Xu et al." LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1996382281" CREATED="1510371528992" MODIFIED="1534391395800" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/049%20Effects%20of%20V2V%20and%20I2V%20on%20ACC%20highway.pdf">
+<attribute NAME="key" VALUE="xu2002effects"/>
+<attribute NAME="year" VALUE="2002"/>
+<attribute NAME="title" VALUE="Effects of Vehicle-vehicle/Roadside-vehicle Communication on Adaptive Cruise Controlled Highway Systems"/>
+<attribute NAME="authors" VALUE="Xu, Qing and Hedrick, Karl and Sengupta, Raja and VanderWerf, Joel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DE17FCB71D33CFB48C648DCA4DC74118D23A6FE7E465C5874D0529AC78E18">
+    <pdf_title>Effects of Vehicle-vehicle/ roadside-vehicle Communication on Adaptive Cruise</pdf_title>
+</pdf_annotation>
 <node TEXT="Cut-in" ID="ID_1796108771" CREATED="1510371534667" MODIFIED="1510371536645"/>
 <node TEXT="Braking" ID="ID_1147648617" CREATED="1510371620505" MODIFIED="1510371622124"/>
 </node>
-<node TEXT="Karaduman et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_48004566" CREATED="1510113361344" MODIFIED="1522727480547" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/001%20Interactive%20Risky%20behavior%20overtaking%20scenario%20using%20Joint%20Bayesian%20Network.pdf">
+<node TEXT="Karaduman et al." LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_48004566" CREATED="1510113361344" MODIFIED="1534391371185" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/001%20Interactive%20Risky%20behavior%20overtaking%20scenario%20using%20Joint%20Bayesian%20Network.pdf">
 <attribute NAME="key" VALUE="karaduman2013interactivebehavior"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Interactive Risky Behavior Model for 3-car Overtaking Scenario Using Joint {B}ayesian Network"/>
@@ -1591,7 +1598,7 @@
 </pdf_annotation>
 <node TEXT="Overtaking" ID="ID_656222618" CREATED="1510113365476" MODIFIED="1510633906997"/>
 </node>
-<node TEXT="Englund et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_555930403" CREATED="1510205695901" MODIFIED="1522727480452" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/044%20GCDC%202016.pdf">
+<node TEXT="Englund et al." LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_555930403" CREATED="1510205695901" MODIFIED="1534391371169" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/044%20GCDC%202016.pdf">
 <attribute NAME="key" VALUE="englund2016grand"/>
 <attribute NAME="journal" VALUE="IEEE Wireless Communications"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -1603,7 +1610,7 @@
 <node TEXT="platoon merge" ID="ID_1119439800" CREATED="1510205705037" MODIFIED="1510205710910"/>
 <node TEXT="intersection passing" ID="ID_1764489752" CREATED="1510205711597" MODIFIED="1510205716927"/>
 </node>
-<node TEXT="Ebner et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_620506819" CREATED="1510303811132" MODIFIED="1522727480521" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/047%20Identifying%20and%20Analyzing%20Reference%20Scenarios.pdf">
+<node TEXT="Ebner et al." LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_620506819" CREATED="1510303811132" MODIFIED="1534391371278" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/047%20Identifying%20and%20Analyzing%20Reference%20Scenarios.pdf">
 <attribute NAME="key" VALUE="ebner2011identifying"/>
 <attribute NAME="journal" VALUE="International Journal of Intelligent Transportation Systems Research"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -1616,7 +1623,7 @@
 <node TEXT="critical" ID="ID_658639354" CREATED="1510303848740" MODIFIED="1510303850807"/>
 <node TEXT="accident" ID="ID_1045366321" CREATED="1510303851364" MODIFIED="1510303852974"/>
 </node>
-<node TEXT="Hulshof et al." LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_54693992" CREATED="1510304122182" MODIFIED="1522727480392" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/048%20Autonomous%20emergency%20braking%20test%20results.pdf">
+<node TEXT="Hulshof et al." LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_54693992" CREATED="1510304122182" MODIFIED="1534391371154" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/048%20Autonomous%20emergency%20braking%20test%20results.pdf">
 <attribute NAME="key" VALUE="hulshof2013autonomous"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Autonomous Emergency Braking Test Results"/>
@@ -1624,15 +1631,15 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="DADF57675EBC6C8C741D34C1BD43FED9DEEE8ADB8538D4C49BC86864A2324D5">
     <pdf_title>AUTONOMOUS EMERGENCY BRAKING TEST RESULTS</pdf_title>
 </pdf_annotation>
-<node TEXT="Car drives into stationary vehicle" FOLDED="true" ID="ID_197053455" CREATED="1510304135074" MODIFIED="1510304145008">
+<node TEXT="Car drives into stationary vehicle" ID="ID_197053455" CREATED="1510304135074" MODIFIED="1510304145008">
 <node TEXT="low speed" ID="ID_1143699897" CREATED="1510304158501" MODIFIED="1510304162280"/>
 <node TEXT="high speed" ID="ID_1733985864" CREATED="1510304162694" MODIFIED="1510304164863"/>
 </node>
 <node TEXT="car drives into slower moving vehicle" ID="ID_1737562608" CREATED="1510304166142" MODIFIED="1510304176160"/>
 <node TEXT="car drives into braking vehicle" ID="ID_829821400" CREATED="1510304183302" MODIFIED="1510304188504"/>
 </node>
-<node TEXT="Weather type" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_270628748" CREATED="1507168660640" MODIFIED="1511405469599">
-<node TEXT="Clear, Rain (light, moderate, heavy), Snow (light, moderate, heavy)&#xa;See Table 5-2" ID="ID_1899518772" CREATED="1507168669698" MODIFIED="1522727480534" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/030%20Data%20for%20weather%20responsive%20Traffic%20Management.pdf">
+<node TEXT="Weather type" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_270628748" CREATED="1507168660640" MODIFIED="1511405469599">
+<node TEXT="Clear, Rain (light, moderate, heavy), Snow (light, moderate, heavy)&#xa;See Table 5-2" ID="ID_1899518772" CREATED="1507168669698" MODIFIED="1534391437402" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/030%20Data%20for%20weather%20responsive%20Traffic%20Management.pdf">
 <attribute NAME="key" VALUE="mahmassani2012use"/>
 <attribute NAME="year" VALUE="2012"/>
 <attribute NAME="title" VALUE="Use of Mobile data for weather-responsive Traffic management models"/>
@@ -1643,9 +1650,9 @@
 </node>
 </node>
 </node>
-<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
-<node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
-<node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1522727480219" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
+<node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1534391438326" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -1655,7 +1662,7 @@
     <pdf_title>General Behavior Prediction by a Combination of Scenario-Specific Models</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Vehicle for which motion planning is conducted" ID="ID_433516311" CREATED="1511409783534" MODIFIED="1522727480266" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/052%20CommonRoad.pdf">
+<node TEXT="Vehicle for which motion planning is conducted" ID="ID_433516311" CREATED="1511409783534" MODIFIED="1534391438076" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/052%20CommonRoad.pdf">
 <attribute NAME="key" VALUE="althoff2017CommonRoad"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Common{R}oad: Composable Benchmarks for Motion Planning on Roads"/>
@@ -1664,19 +1671,19 @@
     <pdf_title>CommonRoad: Composable Benchmarks for Motion Planning on Roads</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="&quot;The ontology is described from the ego-vehicle&#x2019;s point of view&quot;" ID="ID_557989001" CREATED="1511411942167" MODIFIED="1522727480236" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="&quot;The ontology is described from the ego-vehicle&#x2019;s point of view&quot;" ID="ID_557989001" CREATED="1511411942167" MODIFIED="1534391438248" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
-<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1170266770" CREATED="1511433240314" MODIFIED="1511433246065">
-<node TEXT="Ulbrich: &quot;scenery subsumes all geo-spatially stationary elements&quot; (nothing about static env.)" ID="ID_99760855" CREATED="1511433247948" MODIFIED="1522727480573" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1170266770" CREATED="1511433240314" MODIFIED="1511433246065">
+<node TEXT="Ulbrich: &quot;scenery subsumes all geo-spatially stationary elements&quot; (nothing about static env.)" ID="ID_99760855" CREATED="1511433247948" MODIFIED="1534391438154" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
@@ -1685,17 +1692,17 @@
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Geyer says that weather, light conditions are dynamic elements that belong to a scene" ID="ID_1167387996" CREATED="1511433380166" MODIFIED="1522727480250" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="Geyer says that weather, light conditions are dynamic elements that belong to a scene" ID="ID_1167387996" CREATED="1511433380166" MODIFIED="1534391438248" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
-<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Bach says that weather is part of scenery" ID="ID_309640951" CREATED="1511433749693" MODIFIED="1522727480178" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/060%20Model%20based%20scenario%20specification.pdf">
+<node TEXT="Bach says that weather is part of scenery" ID="ID_309640951" CREATED="1511433749693" MODIFIED="1534391438295" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/060%20Model%20based%20scenario%20specification.pdf">
 <attribute NAME="key" VALUE="bach2016modelbased"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Model Based Scenario Specification for Development and Test of Automated Driving Functions"/>
@@ -1705,15 +1712,15 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
-<node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1522727480078" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/058%20Control_System_Engineering_Norman.pdf">
+<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
+<node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1534391438170" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/058%20Control_System_Engineering_Norman.pdf">
 <attribute NAME="key" VALUE="norman2011control"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="Control Systems Engineering"/>
 <attribute NAME="authors" VALUE="Norman, S. Nise"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
-<node TEXT="(1) A condition or mode of existence that a system, component, or simulation may be in; for example, the pre-flight state of an aircraft navigation program or the input state of given channel.&#xa;(2) The values assumed at a given instant by the variables that define the characteristics of a system, component, or simulation." ID="ID_648362426" CREATED="1512374908165" MODIFIED="1522727480096" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/065%20IEEE%20Standard%20Glossary%20of%20Software%20Engineering%20Terminology.pdf">
+<node TEXT="(1) A condition or mode of existence that a system, component, or simulation may be in; for example, the pre-flight state of an aircraft navigation program or the input state of given channel.&#xa;(2) The values assumed at a given instant by the variables that define the characteristics of a system, component, or simulation." ID="ID_648362426" CREATED="1512374908165" MODIFIED="1534391438295" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/065%20IEEE%20Standard%20Glossary%20of%20Software%20Engineering%20Terminology.pdf">
 <attribute NAME="key" VALUE="ieee1990glossary"/>
 <attribute NAME="journal" VALUE="IEEE Std 610.12-1990"/>
 <attribute NAME="year" VALUE="1990"/>
@@ -1723,18 +1730,18 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Actor" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1417461108" CREATED="1511841805284" MODIFIED="1511841809578">
-<node TEXT="Geyer: actor can be the driver, the automation, or both of them" ID="ID_1119876727" CREATED="1511841811733" MODIFIED="1522727480229" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="Actor" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1417461108" CREATED="1511841805284" MODIFIED="1511841809578">
+<node TEXT="Geyer: actor can be the driver, the automation, or both of them" ID="ID_1119876727" CREATED="1511841811733" MODIFIED="1534391438264" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
-<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ulbrich: an actor is an element of a scene acting on its own behalf" ID="ID_150150579" CREATED="1511841875665" MODIFIED="1522727480567" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
+<node TEXT="Ulbrich: an actor is an element of a scene acting on its own behalf" ID="ID_150150579" CREATED="1511841875665" MODIFIED="1534391438170" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving"/>
@@ -1744,8 +1751,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Mode" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1413348842" CREATED="1517036488478" MODIFIED="1517036492075">
-<node TEXT="Survey of modeling analysis and control of hybrid systems" ID="ID_507276086" CREATED="1517036499734" MODIFIED="1522727480424" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/132%20Survey%20of%20modeling%20analysis%20and%20control%20of%20hybrid%20systems.pdf">
+<node TEXT="Mode" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1413348842" CREATED="1517036488478" MODIFIED="1517036492075">
+<node TEXT="Survey of modeling analysis and control of hybrid systems" ID="ID_507276086" CREATED="1517036499734" MODIFIED="1534391438108" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/132%20Survey%20of%20modeling%20analysis%20and%20control%20of%20hybrid%20systems.pdf">
 <attribute NAME="key" VALUE="deschutter2009survey"/>
 <attribute NAME="year" VALUE="2009"/>
 <attribute NAME="title" VALUE="Survey of Modeling, Analysis, and Control of Hybrid Systems"/>
@@ -1755,8 +1762,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Road side unit" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1612718498" CREATED="1526745423605" MODIFIED="1526745450210" MOVED="1526745445914">
-<node TEXT="Survey on Vehicular Ad Hoc Networks" ID="ID_1988670367" CREATED="1526745461318" MODIFIED="1526745482322" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/187%20A%20Tutorial%20Survey%20on%20Vehicular%20Ad%20Hoc%20Networks.pdf">
+<node TEXT="Road side unit" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1612718498" CREATED="1526745423605" MODIFIED="1526745450210" MOVED="1526745445914">
+<node TEXT="Survey on Vehicular Ad Hoc Networks" ID="ID_1988670367" CREATED="1526745461318" MODIFIED="1534391438123" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/187%20A%20Tutorial%20Survey%20on%20Vehicular%20Ad%20Hoc%20Networks.pdf">
 <attribute NAME="key" VALUE="hartenstein2008tutorial"/>
 <attribute NAME="journal" VALUE="IEEE Communications magazine"/>
 <attribute NAME="year" VALUE="2008"/>
@@ -1766,7 +1773,7 @@
     <pdf_title>A Tutorial Survey on Vehicular Ad Hoc Networks</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Extended Survey on Vehicular Ad Hoc Networks" ID="ID_1554905721" CREATED="1526745487415" MODIFIED="1526745643301" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/188%20A%20comprehensive%20survey%20on%20vehicular%20Ad%20Hoc%20network.pdf">
+<node TEXT="Extended Survey on Vehicular Ad Hoc Networks" ID="ID_1554905721" CREATED="1526745487415" MODIFIED="1534391438076" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/188%20A%20comprehensive%20survey%20on%20vehicular%20Ad%20Hoc%20network.pdf">
 <attribute NAME="key" VALUE="alsultan2014comprehensive"/>
 <attribute NAME="journal" VALUE="Journal of network and computer applications"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -1778,8 +1785,8 @@
 </node>
 </node>
 </node>
-<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
-<node TEXT="Alvarez et al." ID="ID_747880869" CREATED="1512448020922" MODIFIED="1522727480554" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
+<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
+<node TEXT="Alvarez et al." ID="ID_747880869" CREATED="1512448020922" MODIFIED="1534391438311" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Prospective Effectiveness Assessment of {ADAS} and Active Safety Systems via Virtual Simulation: A Review of the Current Practices"/>
@@ -1788,7 +1795,7 @@
     <pdf_title>Alvarez 1</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Aparicio et al." ID="ID_1103392937" CREATED="1512448110567" MODIFIED="1522727480473" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/068%20Pre-Crash%20Performance%20ASSESS%20Project.pdf">
+<node TEXT="Aparicio et al." ID="ID_1103392937" CREATED="1512448110567" MODIFIED="1534391438264" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/068%20Pre-Crash%20Performance%20ASSESS%20Project.pdf">
 <attribute NAME="key" VALUE="aparicio2013pre"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Pre-crash Performance of Collision Mitigation and Avoidance Systems: Results from the Assess Project"/>
@@ -1797,17 +1804,17 @@
     <pdf_title>Pre-Crash Performance of Collision Mitigation and Avoidance Systems: Results from the Assess Project</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Geyer et al." ID="ID_993765448" CREATED="1512447930459" MODIFIED="1522727480243" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="Geyer et al." ID="ID_993765448" CREATED="1512447930459" MODIFIED="1534391438233" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
-<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Helmer et al." ID="ID_1098497053" CREATED="1512447992890" MODIFIED="1522727480169" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/066%20Safety%20Performance%20Assessment%20of%20AD%20in%20Traffic.pdf">
+<node TEXT="Helmer et al." ID="ID_1098497053" CREATED="1512447992890" MODIFIED="1534391438201" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/066%20Safety%20Performance%20Assessment%20of%20AD%20in%20Traffic.pdf">
 <attribute NAME="key" VALUE="Helmer2017safety"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Safety Performance Assessment of Assisted and Automated Driving in Traffic: Simulation as Knowledge Synthesis"/>
@@ -1816,7 +1823,7 @@
     <pdf_title>Safety Performance Assessment of Assisted and Automated Driving in Traffic: Simulation as Knowledge Synthesis</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Stellet et al." ID="ID_670372126" CREATED="1512447986954" MODIFIED="1522727480117" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<node TEXT="Stellet et al." ID="ID_670372126" CREATED="1512447986954" MODIFIED="1534391438139" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
@@ -1825,7 +1832,7 @@
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Zofka et al." ID="ID_725585647" CREATED="1512447937403" MODIFIED="1522727480657" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<node TEXT="Zofka et al." ID="ID_725585647" CREATED="1512447937403" MODIFIED="1534391438108" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Data-driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems"/>
@@ -1834,7 +1841,7 @@
     <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Lesemann et al." ID="ID_415824940" CREATED="1512555360738" MODIFIED="1522727480046" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/072%20eVALUE%20project.pdf">
+<node TEXT="Lesemann et al." ID="ID_415824940" CREATED="1512555360738" MODIFIED="1534391438061" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/072%20eVALUE%20project.pdf">
 <attribute NAME="key" VALUE="lesemann2011test"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="A Test Programme for Active Vehicle Safety-Detailed Discussion of the e{VALUE} Testing Protocols for Longitudinal and Stability Functionality"/>
@@ -1843,7 +1850,7 @@
     <pdf_title>A TEST PROGRAMME FOR ACTIVE VEHICLE SAFETY &#x2013; DETAILED DISCUSSION OF THE EVALUE TESTING PROTOCOLS FOR LONGITUDINAL AND STABILITY FUNCTIONALITY</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Putz et al." ID="ID_513898822" CREATED="1512615137961" MODIFIED="1522727480400" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
+<node TEXT="Putz et al." ID="ID_513898822" CREATED="1512615137961" MODIFIED="1534391438279" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="putz2017pegasus"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="System Validation of Highly Automated Vehicles with a Database of Relevant Traffic Scenarios"/>
@@ -1853,16 +1860,13 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Scenarios can be knowledge based or data-driven" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1010042086" CREATED="1512626864047" MODIFIED="1526269324991" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<node TEXT="Scenarios can be knowledge based or data-driven" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1010042086" CREATED="1512626864047" MODIFIED="1526269324991" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
 <attribute NAME="authors" VALUE="J. E. Stellet and M. R. Zofka and J. Schumacher and T. Schamm and F. Niewels and J. M. Z\&quot;{o}llner"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C2E634F82B895F5EDE73B4AA6CD5782A8FFA595B9FB6ECDDED19193E598592">
-    <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
-</pdf_annotation>
-<node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
-<node TEXT="Bagschik et al. (declined paper)" ID="ID_1750936302" CREATED="1512626946796" MODIFIED="1522727480502" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
+<node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
+<node TEXT="Bagschik et al. (declined paper)" ID="ID_1750936302" CREATED="1512626946796" MODIFIED="1534391629757" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1872,7 +1876,7 @@
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Gietelink et al." ID="ID_1969083540" CREATED="1513049049155" MODIFIED="1522727479985" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/079%20PreCrash%20System%20Validation%20with%20PRESCAN%20and%20VEHIL.pdf">
+<node TEXT="Gietelink et al." ID="ID_1969083540" CREATED="1513049049155" MODIFIED="1534391630391" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/079%20PreCrash%20System%20Validation%20with%20PRESCAN%20and%20VEHIL.pdf">
 <attribute NAME="key" VALUE="gietelink2004systemvalidation"/>
 <attribute NAME="year" VALUE="2004"/>
 <attribute NAME="title" VALUE="Pre-Crash System Validation with {PRESCAN} and {VEHIL}"/>
@@ -1882,8 +1886,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data-driven" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_58029598" CREATED="1512626897438" MODIFIED="1512626910548">
-<node TEXT="de Gelder et al." ID="ID_1971359552" CREATED="1512626963745" MODIFIED="1522727480540" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<node TEXT="Data-driven" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_58029598" CREATED="1512626897438" MODIFIED="1512626910548">
+<node TEXT="de Gelder et al." ID="ID_1971359552" CREATED="1512626963745" MODIFIED="1534391630219" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
@@ -1894,8 +1898,8 @@
 </node>
 </node>
 </node>
-<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
-<node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1527575114424" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1534391630156" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
 <attribute NAME="year" VALUE="1993"/>
@@ -1905,14 +1909,14 @@
     <pdf_title>A Translation Approach to Portable Ontology Specifications</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Work on ontology, this can be used as reference of what an ontology should look like" ID="ID_913218395" CREATED="1515430889468" MODIFIED="1531191202569" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
+<node TEXT="Work on ontology, this can be used as reference of what an ontology should look like" ID="ID_913218395" CREATED="1515430889468" MODIFIED="1534391630235" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
 <attribute NAME="key" VALUE="vanDamPhDThesis2009"/>
 <attribute NAME="year" VALUE="2009"/>
 <attribute NAME="title" VALUE="Capturing Socio-Technical Systems with Agent-Based Modelling"/>
 <attribute NAME="authors" VALUE="van Dam, Koen Hazi{\&quot;e}l"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
-<node TEXT="Ontology Development 101: A Guide to Creating Your First Ontology" ID="ID_1036667149" CREATED="1531118094828" MODIFIED="1531190476893" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/210%20Ontology%20development.pdf">
+<node TEXT="Ontology Development 101: A Guide to Creating Your First Ontology" ID="ID_1036667149" CREATED="1531118094828" MODIFIED="1534391630328" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/210%20Ontology%20development.pdf">
 <attribute NAME="key" VALUE="noy2001ontology"/>
 <attribute NAME="year" VALUE="2001"/>
 <attribute NAME="title" VALUE="Ontology Development 101: A Guide to Creating Your First Ontology"/>
@@ -1921,7 +1925,7 @@
     <pdf_title>Ontology Development 101: A Guide to Creating Your First Ontology</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Model Factory for Socio-Technical Infrastructure Systems" ID="ID_244991483" CREATED="1531190480048" MODIFIED="1531191696825" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/211%20Model%20Factory%20for%20Socio-Technical%20Infrastructure%20Systems.pdf">
+<node TEXT="Model Factory for Socio-Technical Infrastructure Systems" ID="ID_244991483" CREATED="1531190480048" MODIFIED="1534391630391" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/211%20Model%20Factory%20for%20Socio-Technical%20Infrastructure%20Systems.pdf">
 <attribute NAME="key" VALUE="vanDam2010model"/>
 <attribute NAME="year" VALUE="2010"/>
 <attribute NAME="authors" VALUE="van Dam, Koen Hazi{\&quot;e}l and Lukszo, Z."/>
@@ -1930,8 +1934,8 @@
     <pdf_title>Model Factory for Socio-Technical Infrastructure Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ontology for applications" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1504253001" CREATED="1531293489079" MODIFIED="1531294181571">
-<node TEXT="Specifying domains of International Entrepreneurship research" ID="ID_1080604173" CREATED="1531293527245" MODIFIED="1531293844334" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/215%20International%20Entrepreneurship%20research%201989-2009%20domain%20ontology%20and%20thematic%20analysis.pdf">
+<node TEXT="Ontology for applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1504253001" CREATED="1531293489079" MODIFIED="1531294181571">
+<node TEXT="Specifying domains of International Entrepreneurship research" ID="ID_1080604173" CREATED="1531293527245" MODIFIED="1534391630188" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/215%20International%20Entrepreneurship%20research%201989-2009%20domain%20ontology%20and%20thematic%20analysis.pdf">
 <attribute NAME="key" VALUE="jones2011international"/>
 <attribute NAME="journal" VALUE="Journal of Business Venturing"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -1941,17 +1945,17 @@
     <pdf_title>Journal of Business Venturing</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="For generation of test and use-case catalogue for automated vehicles" ID="ID_1631481662" CREATED="1531294184065" MODIFIED="1531294208318" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
+<node TEXT="For generation of test and use-case catalogue for automated vehicles" ID="ID_1631481662" CREATED="1531294184065" MODIFIED="1534391630281" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Concept and Development of a Unified Ontology for Generating Test and Use-Case Catalogues for Assisted and Automated Vehicle Guidance"/>
-<attribute NAME="authors" VALUE="S. Geyer and M. Baltzer and B. Franz and S. Hakuli and M. Kauer and M. Kienle and S. Meier and T. Weissgerber and K. Bengler and R. Bruder and F. Flemisch and H. Winner"/>
+<attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Biology (for describing mouse phenotypes)" ID="ID_197464765" CREATED="1531294478859" MODIFIED="1531305850782" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/216%20Using%20ontologies%20to%20describe%20mouse%20phenotypes.pdf">
+<node TEXT="Biology (for describing mouse phenotypes)" ID="ID_197464765" CREATED="1531294478859" MODIFIED="1534391630313" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/216%20Using%20ontologies%20to%20describe%20mouse%20phenotypes.pdf">
 <attribute NAME="key" VALUE="gkoutos2004mouse"/>
 <attribute NAME="journal" VALUE="Genome Biology"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -1961,7 +1965,7 @@
     <pdf_title>Georgios V Gkoutos, Eain CJ Green, Ann-Marie Mallon, John M Hancock and Duncan Davidson</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Security-related: express security requirements and capabilities." ID="ID_1585996560" CREATED="1531297664339" MODIFIED="1531298218551" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/217%20Security%20Ontology%20for%20Annotating%20Resources.pdf">
+<node TEXT="Security-related: express security requirements and capabilities." ID="ID_1585996560" CREATED="1531297664339" MODIFIED="1534391630172" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/217%20Security%20Ontology%20for%20Annotating%20Resources.pdf">
 <attribute NAME="key" VALUE="kim2005security"/>
 <attribute NAME="year" VALUE="2005"/>
 <attribute NAME="title" VALUE="Security Ontology for Annotating Resources"/>
@@ -1970,7 +1974,7 @@
     <pdf_title>Security Ontology for Annotating Resources</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Computing: SOUPA: Standard Ontology for Ubiquitous and Pervasive Applications" ID="ID_224953893" CREATED="1531298560216" MODIFIED="1531298718672" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/218%20SOUPA%20Standard%20Ontology%20for%20Ubiquitous%20and%20Pervasive%20Applications.pdf">
+<node TEXT="Computing: SOUPA: Standard Ontology for Ubiquitous and Pervasive Applications" ID="ID_224953893" CREATED="1531298560216" MODIFIED="1534391630344" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/218%20SOUPA%20Standard%20Ontology%20for%20Ubiquitous%20and%20Pervasive%20Applications.pdf">
 <attribute NAME="key" VALUE="chen2004soupa"/>
 <attribute NAME="year" VALUE="2004"/>
 <attribute NAME="title" VALUE="{SOUPA: Standard Ontology for Ubiquitous and Pervasive Applications}"/>
@@ -1979,7 +1983,7 @@
     <pdf_title>SOUPA: Standard Ontology for Ubiquitous and Pervasive Applications</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Computing: An Ontology for Context-Aware Pervasive Computing Environments" ID="ID_1397839613" CREATED="1531299660032" MODIFIED="1531299746596" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/219%20An%20Ontology%20for%20Context-Aware%20Pervasive%20Computing%20Environments.pdf">
+<node TEXT="Computing: An Ontology for Context-Aware Pervasive Computing Environments" ID="ID_1397839613" CREATED="1531299660032" MODIFIED="1534391630391" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/219%20An%20Ontology%20for%20Context-Aware%20Pervasive%20Computing%20Environments.pdf">
 <attribute NAME="key" VALUE="chen2003ontology"/>
 <attribute NAME="journal" VALUE="The Knowledge Engineering Review"/>
 <attribute NAME="year" VALUE="2003"/>
@@ -1989,7 +1993,7 @@
     <pdf_title>An Ontology for Context-Aware Pervasive Computing Environments</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="User profiling: Creating an Ontology for the User Profile: Method and Applications" ID="ID_117324600" CREATED="1531300320593" MODIFIED="1531300468617" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/221%20Creating%20an%20Ontology%20for%20the%20User%20Profile%20Method%20and%20Applications.pdf">
+<node TEXT="User profiling: Creating an Ontology for the User Profile: Method and Applications" ID="ID_117324600" CREATED="1531300320593" MODIFIED="1534391630406" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/221%20Creating%20an%20Ontology%20for%20the%20User%20Profile%20Method%20and%20Applications.pdf">
 <attribute NAME="key" VALUE="golemati2007creating"/>
 <attribute NAME="year" VALUE="2007"/>
 <attribute NAME="title" VALUE="Creating an Ontology for the User Profile: Method and Applications"/>
@@ -1998,7 +2002,7 @@
     <pdf_title>Creating an Ontology for the User Profile: Method and Applications</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Activites: indoor activities in a university context" ID="ID_1129926259" CREATED="1531302325806" MODIFIED="1531302427555" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/222%20Location%20based%20serive%20using%20ontology%20based%20semantic%20queries.pdf">
+<node TEXT="Activites: indoor activities in a university context" ID="ID_1129926259" CREATED="1531302325806" MODIFIED="1534391630360" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/222%20Location%20based%20serive%20using%20ontology%20based%20semantic%20queries.pdf">
 <attribute NAME="key" VALUE="lee2017location"/>
 <attribute NAME="journal" VALUE="Computers, Environment and Urban Systems"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -2008,7 +2012,7 @@
     <pdf_title>Computers, Environment and Urban Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Product lifecycle management (PLM): An Ontology-Based Approach for Closed-Loop PLM" ID="ID_1824909816" CREATED="1531299946315" MODIFIED="1531300250198" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/220%20An%20Ontology-Based%20Approach%20for%20Closed-Loop%20Product%20Lifecycle%20Management.pdf">
+<node TEXT="Product lifecycle management (PLM): An Ontology-Based Approach for Closed-Loop PLM" ID="ID_1824909816" CREATED="1531299946315" MODIFIED="1534391630250" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/220%20An%20Ontology-Based%20Approach%20for%20Closed-Loop%20Product%20Lifecycle%20Management.pdf">
 <attribute NAME="key" VALUE="matsokis2010plm"/>
 <attribute NAME="journal" VALUE="Computers in Industry"/>
 <attribute NAME="year" VALUE="2010"/>
@@ -2018,7 +2022,7 @@
     <pdf_title>Computers in Industry</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Capturing socio-technical systems" ID="ID_615943216" CREATED="1531304397309" MODIFIED="1531304423592" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
+<node TEXT="Capturing socio-technical systems" ID="ID_615943216" CREATED="1531304397309" MODIFIED="1534391630235" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/091%20Capturing%20socio-technical%20systems%20with%20agent-based%20modelling.pdf">
 <attribute NAME="key" VALUE="vanDamPhDThesis2009"/>
 <attribute NAME="year" VALUE="2009"/>
 <attribute NAME="title" VALUE="Capturing Socio-Technical Systems with Agent-Based Modelling"/>
@@ -2027,14 +2031,14 @@
 </node>
 </node>
 </node>
-<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
-<node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
-<node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1524534460071" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
+<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
+<node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
+<node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1534391705396" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
 <attribute NAME="key" VALUE="HighwayKeyOSM"/>
 <attribute NAME="title" VALUE="Key:highway"/>
 <attribute NAME="authors" VALUE="OpenStreetMaps"/>
 </node>
-<node TEXT="Speed limits in Singapore (30, 40, 50, 60, 70, 80, 90 km/h)" ID="ID_1600880452" CREATED="1524534485051" MODIFIED="1524534783867" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/181%20Road%20Traffic%20Act%20Singapore%20Chapter%20276%20Section%2063%20speed%20limits.pdf">
+<node TEXT="Speed limits in Singapore (30, 40, 50, 60, 70, 80, 90 km/h)" ID="ID_1600880452" CREATED="1524534485051" MODIFIED="1534391686578" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/181%20Road%20Traffic%20Act%20Singapore%20Chapter%20276%20Section%2063%20speed%20limits.pdf">
 <attribute NAME="key" VALUE="SingaporeSpeedLimits"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Road Traffic (Restriction of Speed on Roads) Notification"/>
@@ -2044,7 +2048,7 @@
 </pdf_annotation>
 </node>
 <node TEXT="Road curvature - based on lateral acceleration?" ID="ID_1956106047" CREATED="1524535079636" MODIFIED="1524535091717"/>
-<node TEXT="Weather" ID="ID_1200050037" CREATED="1524552375307" MODIFIED="1524552428109" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/030%20Data%20for%20weather%20responsive%20Traffic%20Management.pdf">
+<node TEXT="Weather" ID="ID_1200050037" CREATED="1524552375307" MODIFIED="1534391630375" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/030%20Data%20for%20weather%20responsive%20Traffic%20Management.pdf">
 <attribute NAME="key" VALUE="mahmassani2012use"/>
 <attribute NAME="year" VALUE="2012"/>
 <attribute NAME="title" VALUE="Use of Mobile data for weather-responsive Traffic management models"/>
@@ -2053,7 +2057,7 @@
     <pdf_title>Use of Mobile Data for Weather- Responsive Traffic Management Models</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Lighting conditions" ID="ID_1269004624" CREATED="1527564303407" MODIFIED="1527568112004" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/191%20Relationships%20Among%20Urban%20Freeway%20Accidents%20Traffic%20Flow%20Weather%20and%20Lighting.pdf">
+<node TEXT="Lighting conditions" ID="ID_1269004624" CREATED="1527564303407" MODIFIED="1534391630125" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/191%20Relationships%20Among%20Urban%20Freeway%20Accidents%20Traffic%20Flow%20Weather%20and%20Lighting.pdf">
 <attribute NAME="key" VALUE="golob2003relationships"/>
 <attribute NAME="journal" VALUE="Journal of Transportation Engineering"/>
 <attribute NAME="year" VALUE="2003"/>
@@ -2066,51 +2070,51 @@
 </node>
 <node TEXT="Dynamic environment" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_985681073" CREATED="1524534298587" MODIFIED="1524534310967">
 <node TEXT="Idem as Ego vehicle, i.e., speed and heading" ID="ID_306883983" CREATED="1524559130646" MODIFIED="1524559140103"/>
-<node TEXT="Target in front/back of ego" FOLDED="true" ID="ID_422429209" CREATED="1524559176291" MODIFIED="1524559189654">
+<node TEXT="Target in front/back of ego" ID="ID_422429209" CREATED="1524559176291" MODIFIED="1524559189654">
 <node TEXT="No target" ID="ID_622251175" CREATED="1524559190246" MODIFIED="1524559194373"/>
-<node TEXT="Target appearing" FOLDED="true" ID="ID_577645442" CREATED="1524559194931" MODIFIED="1524559198516">
+<node TEXT="Target appearing" ID="ID_577645442" CREATED="1524559194931" MODIFIED="1524559198516">
 <node TEXT="Cut-in" ID="ID_245850417" CREATED="1524559198527" MODIFIED="1524559201605"/>
 <node TEXT="Gap-closing" ID="ID_343585746" CREATED="1524559202180" MODIFIED="1524559205493"/>
 </node>
-<node TEXT="Vehicle following" FOLDED="true" ID="ID_1209232466" CREATED="1524559206803" MODIFIED="1524559211318">
+<node TEXT="Vehicle following" ID="ID_1209232466" CREATED="1524559206803" MODIFIED="1524559211318">
 <node TEXT="Decelerating" ID="ID_1685078160" CREATED="1524559211331" MODIFIED="1524559215893"/>
 <node TEXT="Cruising" ID="ID_1938190287" CREATED="1524559216259" MODIFIED="1524559217909"/>
 <node TEXT="Accelerating" ID="ID_1408560887" CREATED="1524559220355" MODIFIED="1524559222436"/>
 </node>
-<node TEXT="Target disappearing" FOLDED="true" ID="ID_234821103" CREATED="1524559225010" MODIFIED="1524559228260">
+<node TEXT="Target disappearing" ID="ID_234821103" CREATED="1524559225010" MODIFIED="1524559228260">
 <node TEXT="Cut-out" ID="ID_1634813483" CREATED="1524559229108" MODIFIED="1524559232452"/>
 <node TEXT="Gap making" ID="ID_1548186090" CREATED="1524559233043" MODIFIED="1524559237044"/>
 </node>
 </node>
-<node TEXT="Target left/right of ego" FOLDED="true" ID="ID_345132789" CREATED="1524559238498" MODIFIED="1524559243732">
+<node TEXT="Target left/right of ego" ID="ID_345132789" CREATED="1524559238498" MODIFIED="1524559243732">
 <node TEXT="Ego faster than target" ID="ID_1906954524" CREATED="1524559244262" MODIFIED="1524559252821"/>
 <node TEXT="Same speed" ID="ID_177750115" CREATED="1524559253426" MODIFIED="1524559257812"/>
 <node TEXT="Target faster than ego" ID="ID_1154773029" CREATED="1524559258226" MODIFIED="1524559262340"/>
 </node>
 </node>
 <node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_194709149" CREATED="1524534303419" MODIFIED="1524534310950">
-<node TEXT="Speed" FOLDED="true" ID="ID_965518741" CREATED="1524559020986" MODIFIED="1524559025533">
-<node TEXT="Decelerating" FOLDED="true" ID="ID_374277840" CREATED="1524559025557" MODIFIED="1524559033225">
+<node TEXT="Speed" ID="ID_965518741" CREATED="1524559020986" MODIFIED="1524559025533">
+<node TEXT="Decelerating" ID="ID_374277840" CREATED="1524559025557" MODIFIED="1524559033225">
 <node TEXT="Release throttle" ID="ID_921292788" CREATED="1524559039048" MODIFIED="1524559046265"/>
 <node TEXT="Emergency braking (i.e., a &lt; -6 m/s2)" ID="ID_692406412" CREATED="1524559046983" MODIFIED="1524559059945"/>
 <node TEXT="Other" ID="ID_1100787237" CREATED="1524559060581" MODIFIED="1524559066489"/>
 </node>
-<node TEXT="Cruising" FOLDED="true" ID="ID_1203154491" CREATED="1524559033607" MODIFIED="1524559034968">
+<node TEXT="Cruising" ID="ID_1203154491" CREATED="1524559033607" MODIFIED="1524559034968">
 <node TEXT="Full stop" ID="ID_1147849575" CREATED="1524559068970" MODIFIED="1524559074823"/>
 <node TEXT="Driving" ID="ID_262098799" CREATED="1524559097525" MODIFIED="1524559099400"/>
 </node>
-<node TEXT="Accelerating" FOLDED="true" ID="ID_863468497" CREATED="1524559035110" MODIFIED="1524559037641">
+<node TEXT="Accelerating" ID="ID_863468497" CREATED="1524559035110" MODIFIED="1524559037641">
 <node TEXT="Modest acceleration" ID="ID_993791479" CREATED="1524559101608" MODIFIED="1524559109399"/>
 <node TEXT="Heavy acceleration (i.e., ~full throttle)" ID="ID_860720210" CREATED="1524559110085" MODIFIED="1524559124919"/>
 </node>
 </node>
-<node TEXT="Heading" FOLDED="true" ID="ID_1170655609" CREATED="1524559142548" MODIFIED="1524559144503">
-<node TEXT="Turn left" FOLDED="true" ID="ID_342633074" CREATED="1524559145111" MODIFIED="1524559148264">
+<node TEXT="Heading" ID="ID_1170655609" CREATED="1524559142548" MODIFIED="1524559144503">
+<node TEXT="Turn left" ID="ID_342633074" CREATED="1524559145111" MODIFIED="1524559148264">
 <node TEXT="Left at crossing" ID="ID_859202554" CREATED="1524559148287" MODIFIED="1524559152870"/>
 <node TEXT="Lane change" ID="ID_479608977" CREATED="1524559153444" MODIFIED="1524559156630"/>
 </node>
 <node TEXT="Straight" ID="ID_1347971422" CREATED="1524559157620" MODIFIED="1524559162054"/>
-<node TEXT="Turn right" FOLDED="true" ID="ID_731162599" CREATED="1524559162325" MODIFIED="1524559164870">
+<node TEXT="Turn right" ID="ID_731162599" CREATED="1524559162325" MODIFIED="1524559164870">
 <node TEXT="Right at crossing" ID="ID_1168089609" CREATED="1524559164884" MODIFIED="1524559167958"/>
 <node TEXT="Lane change" ID="ID_1311152811" CREATED="1524559168612" MODIFIED="1524559172726"/>
 </node>
@@ -2118,8 +2122,8 @@
 </node>
 <node TEXT="Scenario" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_574351628" CREATED="1524534319379" MODIFIED="1524534327135"/>
 </node>
-<node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
-<node TEXT="Deliverable D7.3 AdaptIVe: Impact Analysis for Supervised AD Applications" ID="ID_1205070616" CREATED="1526269804012" MODIFIED="1532917541489" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/182%20AdaptIVe_SP7_D7_3_Impact%20analysis%20for%20supervised%20automated%20driving%20applications.pdf">
+<node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
+<node TEXT="Deliverable D7.3 AdaptIVe: Impact Analysis for Supervised AD Applications" ID="ID_1205070616" CREATED="1526269804012" MODIFIED="1534391630281" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/182%20AdaptIVe_SP7_D7_3_Impact%20analysis%20for%20supervised%20automated%20driving%20applications.pdf">
 <attribute NAME="key" VALUE="adaptive2017d73"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Deliverable {D}7.3 {I}mpact Analysis for Supervised Automated Driving Applications"/>
@@ -2128,7 +2132,7 @@
     <pdf_title>Impact analysis for supervised automated driving applications</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="CATS main accident scenarios" ID="ID_1238416109" CREATED="1526270122248" MODIFIED="1526270136096" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/183%20CATS%20Overview%20main%20accident%20scenarios.pdf">
+<node TEXT="CATS main accident scenarios" ID="ID_1238416109" CREATED="1526270122248" MODIFIED="1534391630297" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/183%20CATS%20Overview%20main%20accident%20scenarios.pdf">
 <attribute NAME="key" VALUE="opdencamp2014cats"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Overview of Main Accident Scenarios in Car-to-Cyclist Accidents for Use in {AEB}-System Test Protocol"/>
@@ -2137,7 +2141,7 @@
     <pdf_title>Overview of main accident scenarios in car-to-cyclist accidents for use in AEB-system test protocol</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="US DoT: Pre-Crash Scenario Typology for Crash Avoidance Research" FOLDED="true" ID="ID_894623070" CREATED="1526270449478" MODIFIED="1532917533992" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/184%20Pre-Crash%20Scenario%20Typology%20for%20Crash%20Avoidance%20Research.pdf">
+<node TEXT="US DoT: Pre-Crash Scenario Typology for Crash Avoidance Research" ID="ID_894623070" CREATED="1526270449478" MODIFIED="1534391630250" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/184%20Pre-Crash%20Scenario%20Typology%20for%20Crash%20Avoidance%20Research.pdf">
 <attribute NAME="key" VALUE="USDoT2007precrashscenarios"/>
 <attribute NAME="year" VALUE="2007"/>
 <attribute NAME="title" VALUE="Pre-Crash Scenario Typology for Crash Avoidance Research"/>
@@ -2150,12 +2154,9 @@
 <attribute NAME="year" VALUE="2000"/>
 <attribute NAME="title" VALUE="General Estimates System Coding and Editing Manual"/>
 <attribute NAME="authors" VALUE="{National Highway Traffic Safety Administration}"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D453117F651EFB4BBA2BD8B5C5F4348A9A6D4D1EF85EF65198E6E67B8F999E">
-    <pdf_title>General Estimates System Coding And Editing Manual</pdf_title>
-</pdf_annotation>
 </node>
 </node>
-<node TEXT="Typical Pedestrian Accident Scenarios for the Testing of AEB Systems (not used)" ID="ID_84185720" CREATED="1526445775438" MODIFIED="1526445798410" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/186%20Typical%20accident%20scenario%20pedestrians.pdf">
+<node TEXT="Typical Pedestrian Accident Scenarios for the Testing AEB" ID="ID_84185720" CREATED="1526445775438" MODIFIED="1534391630375" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/186%20Typical%20accident%20scenario%20pedestrians.pdf">
 <attribute NAME="key" VALUE="lenard2011typical"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="Typical Pedestrian Accident Scenarios for the Testing of Autonomous Emergency Braking Systems"/>
@@ -2164,7 +2165,7 @@
     <pdf_title>TYPICAL PEDESTRIAN ACCIDENT SCENARIOS FOR THE TESTING OF AUTONOMOUS EMERGENCY BRAKING SYSTEMS</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Taxonomy of Scenarios for Automated Driving" ID="ID_484843917" CREATED="1529494524703" MODIFIED="1529494664561" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/199%20Taxonomy%20of%20Scenarios%20for%20Automated%20Driving.pdf">
+<node TEXT="Taxonomy of Scenarios for Automated Driving" ID="ID_484843917" CREATED="1529494524703" MODIFIED="1534391630219" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/199%20Taxonomy%20of%20Scenarios%20for%20Automated%20Driving.pdf">
 <attribute NAME="key" VALUE="catapult2017taxonomy"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Taxonomy of Scenarios for Automated Driving"/>
@@ -2174,10 +2175,10 @@
 </node>
 </node>
 </node>
-<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
+<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
 <edge COLOR="#007c00"/>
-<node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
-<node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1522727479993" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
+<node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
+<node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1534390623301" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
 <attribute NAME="key" VALUE="cha2007surveyPDFmeasures"/>
 <attribute NAME="journal" VALUE="International Journal of Mathematical Models and Methods in Applied Sciences"/>
 <attribute NAME="year" VALUE="2007"/>
@@ -2187,7 +2188,7 @@
     <pdf_title>Comprehensive Survey on Distance/Similarity Measures between Probability Density Functions</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Wasserstein distance, EMD is the first Wasserstein distance" ID="ID_1960182517" CREATED="1513218380810" MODIFIED="1522727480011" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/081%20The%20Wasserstein%20Distance%20and%20Approximation%20Theorems.pdf">
+<node TEXT="Wasserstein distance, EMD is the first Wasserstein distance" ID="ID_1960182517" CREATED="1513218380810" MODIFIED="1534390623695" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/081%20The%20Wasserstein%20Distance%20and%20Approximation%20Theorems.pdf">
 <attribute NAME="key" VALUE="ruschendorf1985wasserstein"/>
 <attribute NAME="journal" VALUE="Probability Theory and Related Fields"/>
 <attribute NAME="year" VALUE="1985"/>
@@ -2197,7 +2198,7 @@
     <pdf_title>The Wasserstein Distance and Approximation Theorems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Earth Mover&apos;s Distance" ID="ID_1099823323" CREATED="1513307442647" MODIFIED="1522727480335" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/085%20The%20Earth%20Mover&#x2019;s%20Distance%20as%20a%20Metric%20for%20Image%20Retrieval.pdf">
+<node TEXT="Earth Mover&apos;s Distance" ID="ID_1099823323" CREATED="1513307442647" MODIFIED="1534390623663" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/085%20The%20Earth%20Mover&#x2019;s%20Distance%20as%20a%20Metric%20for%20Image%20Retrieval.pdf">
 <attribute NAME="key" VALUE="rubner2000emd"/>
 <attribute NAME="journal" VALUE="International Journal of Computer Vision"/>
 <attribute NAME="year" VALUE="2000"/>
@@ -2207,7 +2208,7 @@
     <pdf_title>The Earth Mover&#x2019;s Distance as a Metric for Image Retrieval</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Kullback-Leibler divergence" ID="ID_1644600260" CREATED="1513218914941" MODIFIED="1522727479968" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/082%20On%20information%20and%20sufficiency%20-%20Kullback%20Leibler%20divergence.pdf">
+<node TEXT="Kullback-Leibler divergence" ID="ID_1644600260" CREATED="1513218914941" MODIFIED="1534390623741" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/082%20On%20information%20and%20sufficiency%20-%20Kullback%20Leibler%20divergence.pdf">
 <attribute NAME="key" VALUE="kullback1951"/>
 <attribute NAME="journal" VALUE="The Annals of Mathematical Statistics"/>
 <attribute NAME="year" VALUE="1951"/>
@@ -2218,9 +2219,9 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Kernel Density Estimation" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_500468896" CREATED="1513311876271" MODIFIED="1513311886206">
-<node TEXT="Invention of KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_754407193" CREATED="1513312193327" MODIFIED="1513312239799">
-<node TEXT="Rosenblatt (1956)" ID="ID_245750230" CREATED="1513312276939" MODIFIED="1522727480508" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/087%20Kernel%20Density%20Estimation%20-%20Rosenblatt.pdf">
+<node TEXT="Kernel Density Estimation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_500468896" CREATED="1513311876271" MODIFIED="1513311886206">
+<node TEXT="Invention of KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_754407193" CREATED="1513312193327" MODIFIED="1513312239799">
+<node TEXT="Rosenblatt (1956)" ID="ID_245750230" CREATED="1513312276939" MODIFIED="1534390598239" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/087%20Kernel%20Density%20Estimation%20-%20Rosenblatt.pdf">
 <attribute NAME="key" VALUE="rosenblatt1956remarks"/>
 <attribute NAME="journal" VALUE="The Annals of Mathematical Statistics"/>
 <attribute NAME="year" VALUE="1956"/>
@@ -2230,7 +2231,7 @@
     <pdf_title>The Annals of Mathematical Statistics.</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Parzen (1962)" ID="ID_1119766300" CREATED="1513312398426" MODIFIED="1522727480411" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/088%20Kernel%20Density%20Estimation%20-%20Parzen.pdf">
+<node TEXT="Parzen (1962)" ID="ID_1119766300" CREATED="1513312398426" MODIFIED="1534390598739" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/088%20Kernel%20Density%20Estimation%20-%20Parzen.pdf">
 <attribute NAME="key" VALUE="parzen1962estimation"/>
 <attribute NAME="journal" VALUE="The annals of mathematical statistics"/>
 <attribute NAME="year" VALUE="1962"/>
@@ -2239,8 +2240,8 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="E5C660C7C1F11B7653E1623B17B68202A3CECDB42F96CF7C56F2815DA7CDA69"/>
 </node>
 </node>
-<node TEXT="Faster KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1533871381205" MOVED="1533871471287">
-<node TEXT="Kernel Density Estimation Using the Fast Fourier Transform" ID="ID_258148581" CREATED="1531796223169" MODIFIED="1531796336853" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/227%20Kernel%20Density%20Estimation%20Using%20the%20Fast%20Fourier%20Transform.pdf" MOVED="1533871385445">
+<node TEXT="Faster KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1533871381205" MOVED="1533871471287">
+<node TEXT="Kernel Density Estimation Using the Fast Fourier Transform" ID="ID_258148581" CREATED="1531796223169" MODIFIED="1534390598610" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/227%20Kernel%20Density%20Estimation%20Using%20the%20Fast%20Fourier%20Transform.pdf" MOVED="1533871385445">
 <attribute NAME="key" VALUE="silverman1982fourier"/>
 <attribute NAME="journal" VALUE="Journal of the Royal Statistical Society. Series C (Applied Statistics)"/>
 <attribute NAME="year" VALUE="1982"/>
@@ -2250,7 +2251,7 @@
     <pdf_title>Algorithm AS 176: Kernel Density Estimation Using the Fast Fourier Transform Author(s): B. W. Silverman Source: Journal of the Royal Statistical Society. Series C (Applied Statistics), Vol. 31, No. 1 (1982), pp. 93-99 Published by: Wiley for the Royal Statistical Society Stable URL: http://www.jstor.org/stable/2347084 Accessed: 17-07-2018 01:41 UTC</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="FFT-Based Fast Bandwidth Selector for Multivariate KDE" ID="ID_1403362881" CREATED="1533205651420" MODIFIED="1533205810394" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/231%20FFT-Based%20Fast%20Bandwidth%20Selector%20for%20Multivariate%20KDE.pdf" MOVED="1533871388875">
+<node TEXT="FFT-Based Fast Bandwidth Selector for Multivariate KDE" ID="ID_1403362881" CREATED="1533205651420" MODIFIED="1534390598786" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/231%20FFT-Based%20Fast%20Bandwidth%20Selector%20for%20Multivariate%20KDE.pdf" MOVED="1533871388875">
 <attribute NAME="key" VALUE="gramacki2017fft"/>
 <attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -2260,7 +2261,7 @@
     <pdf_title>FFT-Based Fast Bandwidth Selector for Multivariate Kernel Density Estimation</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="A fast and objective multidimensional kernel density estimation method" ID="ID_187819930" CREATED="1513917431887" MODIFIED="1522727480125" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/101%20FastKDE%20A%20fast%20and%20objective%20multidimensional%20kernel%20density%20estimation%20method.pdf">
+<node TEXT="A fast and objective multidimensional kernel density estimation method" ID="ID_187819930" CREATED="1513917431887" MODIFIED="1534390598672" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/101%20FastKDE%20A%20fast%20and%20objective%20multidimensional%20kernel%20density%20estimation%20method.pdf">
 <attribute NAME="key" VALUE="obrien2016fastkde"/>
 <attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -2270,7 +2271,7 @@
     <pdf_title>Computational Statistics and Data Analysis</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Reducing the computational cost of the ECF using a nuFFT" ID="ID_738327837" CREATED="1513917480382" MODIFIED="1522727480320" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/102%20FastKDE%20Reducing%20the%20computational%20cost%20of%20the%20ECF%20using%20a%20nuFFT.pdf">
+<node TEXT="Reducing the computational cost of the ECF using a nuFFT" ID="ID_738327837" CREATED="1513917480382" MODIFIED="1534390598801" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/102%20FastKDE%20Reducing%20the%20computational%20cost%20of%20the%20ECF%20using%20a%20nuFFT.pdf">
 <attribute NAME="key" VALUE="obrien2014fastkde"/>
 <attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -2281,8 +2282,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Books" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_116736876" CREATED="1531790817148" MODIFIED="1531790822476" MOVED="1533871476417">
-<node TEXT="Book of Silverman - rule of thumb for bandwidth selection" ID="ID_529098711" CREATED="1513311887634" MODIFIED="1522727480431" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/086%20First%20chapters%20of%20book%20Silverman%20Kernel%20Density%20Estimation.pdf" MOVED="1533871482300">
+<node TEXT="Books" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_116736876" CREATED="1531790817148" MODIFIED="1531790822476" MOVED="1533871476417">
+<node TEXT="Book of Silverman - rule of thumb for bandwidth selection" ID="ID_529098711" CREATED="1513311887634" MODIFIED="1534390598770" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/086%20First%20chapters%20of%20book%20Silverman%20Kernel%20Density%20Estimation.pdf" MOVED="1533871482300">
 <attribute NAME="key" VALUE="silverman1986density"/>
 <attribute NAME="year" VALUE="1986"/>
 <attribute NAME="title" VALUE="Density Estimation for Statistics and Data Analysis"/>
@@ -2291,14 +2292,14 @@
     <pdf_title>DENSITY ESTIMATION FOR STATISTICS AND DATA ANALYSIS</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Multivariate Density Estimation: Theory, Practice, and Visualization" ID="ID_539778844" CREATED="1531451876440" MODIFIED="1531451885522" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/224%20Multivariate%20Density%20Estimation.pdf" MOVED="1533871454440">
+<node TEXT="Multivariate Density Estimation: Theory, Practice, and Visualization" ID="ID_539778844" CREATED="1531451876440" MODIFIED="1534390598688" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/224%20Multivariate%20Density%20Estimation.pdf" MOVED="1533871454440">
 <attribute NAME="key" VALUE="scott1992multivariate"/>
 <attribute NAME="year" VALUE="1992"/>
 <attribute NAME="title" VALUE="Multivariate Density Estimation: Theory, Practice, and Visualization"/>
 <attribute NAME="authors" VALUE="Scott, David W."/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
-<node TEXT="Maximum-likelihood Kernel Density Estimation (PhD Thesis)" ID="ID_1806332425" CREATED="1528812767609" MODIFIED="1528812858649" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/192%20Maximum-likelihood%20Kernel%20Density%20Estimation.pdf" MOVED="1531790863455">
+<node TEXT="Maximum-likelihood Kernel Density Estimation (PhD Thesis)" ID="ID_1806332425" CREATED="1528812767609" MODIFIED="1534390598610" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/192%20Maximum-likelihood%20Kernel%20Density%20Estimation.pdf" MOVED="1531790863455">
 <attribute NAME="key" VALUE="vanderwalt2014mlkde"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Maximum-Likelihood Kernel Density Estimation in High-Dimensional Feature Spaces"/>
@@ -2307,7 +2308,7 @@
     <pdf_title>Maximum-likelihood Kernel Density</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="All of Nonparamatric Statistics" ID="ID_1168995949" CREATED="1531790833888" MODIFIED="1531790840378" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/225%20All%20of%20Nonparametric%20Statistics.pdf">
+<node TEXT="All of Nonparamatric Statistics" ID="ID_1168995949" CREATED="1531790833888" MODIFIED="1534390598754" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/225%20All%20of%20Nonparametric%20Statistics.pdf">
 <attribute NAME="key" VALUE="wasserman2006nonparametric"/>
 <attribute NAME="year" VALUE="2006"/>
 <attribute NAME="title" VALUE="All of Nonparamatric Statistics"/>
@@ -2315,8 +2316,8 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="General/tutorial papers" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1226869459" CREATED="1533871422798" MODIFIED="1533871436900" MOVED="1533871478284">
-<node TEXT="A Tutorial on Kernel Density Estimation and Recent Advances" ID="ID_367486150" CREATED="1531384075707" MODIFIED="1531384079434" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/223%20Kernel%20Density%20Estimation%20and%20Recent%20Advancements.pdf" MOVED="1533871439302">
+<node TEXT="General/tutorial papers" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1226869459" CREATED="1533871422798" MODIFIED="1533871436900" MOVED="1533871478284">
+<node TEXT="A Tutorial on Kernel Density Estimation and Recent Advances" ID="ID_367486150" CREATED="1531384075707" MODIFIED="1534390299641" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/223%20Kernel%20Density%20Estimation%20and%20Recent%20Advancements.pdf" MOVED="1533871439302">
 <attribute NAME="key" VALUE="chen2017tutorial"/>
 <attribute NAME="journal" VALUE="Biostatistics \&amp; Epidemiology"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -2326,7 +2327,7 @@
     <pdf_title>A Tutorial on Kernel Density Estimation and Recent Advances</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Bandwidth Selection in Kernel Density Estimation: A Review" ID="ID_561229745" CREATED="1513908246714" MODIFIED="1522727480292" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/099%20Bandwidth%20Selection%20in%20Kernel%20Density%20Estimation%20A%20Review.pdf" MOVED="1533871493160">
+<node TEXT="Bandwidth Selection in Kernel Density Estimation: A Review" ID="ID_561229745" CREATED="1513908246714" MODIFIED="1534390598723" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/099%20Bandwidth%20Selection%20in%20Kernel%20Density%20Estimation%20A%20Review.pdf" MOVED="1533871493160">
 <attribute NAME="key" VALUE="turlach1993bandwidthselection"/>
 <attribute NAME="year" VALUE="1993"/>
 <attribute NAME="title" VALUE="Bandwidth Selection in Kernel Density Estimation: A Review"/>
@@ -2334,7 +2335,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="40F9A34E24E03D74DDE25D6651FCFE1A37274D17210F57F75C9AD52BEBB5173"/>
 </node>
 </node>
-<node TEXT="Scott rule for bandwidth: On optimal and data-based histograms" ID="ID_551784586" CREATED="1513908872666" MODIFIED="1522727480459" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/100%20Scott%20Bandwidth.pdf">
+<node TEXT="Scott rule for bandwidth: On optimal and data-based histograms" ID="ID_551784586" CREATED="1513908872666" MODIFIED="1534390526124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/100%20Scott%20Bandwidth.pdf">
 <attribute NAME="key" VALUE="scott1979optimal"/>
 <attribute NAME="journal" VALUE="Biometrika"/>
 <attribute NAME="year" VALUE="1979"/>
@@ -2344,7 +2345,7 @@
     <pdf_title>On Optimal and Data-Based Histograms Author(s): David W. Scott Source: Biometrika, Vol. 66, No. 3 (Dec., 1979), pp. 605-610 Published by: Stable URL: Accessed: 26/08/2010 16:51</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Evading the curse of dimensionality in multivariate KDE with simplified vines" ID="ID_688422034" CREATED="1513918183261" MODIFIED="1533871400460" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/103%20Evading%20the%20curse%20of%20dimensionality%20in%20multivariate%20kernel%20density%20estimation%20with%20simplified%20vines.pdf">
+<node TEXT="Evading the curse of dimensionality in multivariate KDE with simplified vines" ID="ID_688422034" CREATED="1513918183261" MODIFIED="1534390527271" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/103%20Evading%20the%20curse%20of%20dimensionality%20in%20multivariate%20kernel%20density%20estimation%20with%20simplified%20vines.pdf">
 <attribute NAME="key" VALUE="NAGLER201669"/>
 <attribute NAME="journal" VALUE="Journal of Multivariate Analysis"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -2354,7 +2355,7 @@
     <pdf_title>Journal of Multivariate Analysis</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Maximum Leave-one-out Likelihood for Kernel Density Estimation" ID="ID_624615584" CREATED="1529494717577" MODIFIED="1529495109108" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/200%20Maximum%20Leave-one-out%20Likelihood%20for%20Kernel%20Density%20Estimation.pdf">
+<node TEXT="Maximum Leave-one-out Likelihood for Kernel Density Estimation" ID="ID_624615584" CREATED="1529494717577" MODIFIED="1534390527192" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/200%20Maximum%20Leave-one-out%20Likelihood%20for%20Kernel%20Density%20Estimation.pdf">
 <attribute NAME="key" VALUE="barnard2010maximum"/>
 <attribute NAME="year" VALUE="2010"/>
 <attribute NAME="title" VALUE="Maximum Leave-one-out Likelihood for Kernel Density Estimation"/>
@@ -2363,7 +2364,7 @@
     <pdf_title>Maximum Leave-one-out Likelihood for Kernel Density Estimation</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="On Global Properties of Variable Bandwidth Density Estimators" ID="ID_1144041838" CREATED="1533871509977" MODIFIED="1533871513653" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/232%20On%20Global%20Properties%20of%20Variable%20Bandwidth%20Density%20Estimators.pdf">
+<node TEXT="On Global Properties of Variable Bandwidth Density Estimators" ID="ID_1144041838" CREATED="1533871509977" MODIFIED="1534390527302" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/232%20On%20Global%20Properties%20of%20Variable%20Bandwidth%20Density%20Estimators.pdf">
 <attribute NAME="key" VALUE="hall1992global"/>
 <attribute NAME="journal" VALUE="The Annals of Statistics"/>
 <attribute NAME="year" VALUE="1992"/>
@@ -2372,8 +2373,8 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
-<node TEXT="Explanation of what copula&apos;s are" ID="ID_1206112239" CREATED="1513683703860" MODIFIED="1522727480149" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/092%20Coping%20with%20Copulas.pdf">
+<node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
+<node TEXT="Explanation of what copulas are" ID="ID_1206112239" CREATED="1513683703860" MODIFIED="1534390677729" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/092%20Coping%20with%20Copulas.pdf">
 <attribute NAME="key" VALUE="Schmidt2007"/>
 <attribute NAME="year" VALUE="2007"/>
 <attribute NAME="title" VALUE="Copulas - From Theory to Application in Finance"/>
@@ -2382,7 +2383,7 @@
     <pdf_title>Coping with Copulas</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The Estimation of Copulas: Theory and Practice" ID="ID_1545640869" CREATED="1513735661305" MODIFIED="1522727480635" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/096%20The%20Estimation%20of%20Copulas%20Theory%20and%20Practice.pdf">
+<node TEXT="The Estimation of Copulas: Theory and Practice" ID="ID_1545640869" CREATED="1513735661305" MODIFIED="1534390671104" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/096%20The%20Estimation%20of%20Copulas%20Theory%20and%20Practice.pdf">
 <attribute NAME="key" VALUE="scaillet2007estimationcopulas"/>
 <attribute NAME="year" VALUE="2007"/>
 <attribute NAME="title" VALUE="Copulas - From Theory to Application in Finance"/>
@@ -2391,7 +2392,7 @@
     <pdf_title>Copulas: from theory to application in finance</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Modelling Dependence with Copulas and Applications to Risk Management" ID="ID_261470647" CREATED="1513736257663" MODIFIED="1522727480641" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/097%20Modelling%20Dependence%20with%20Copulas%20and%20Applications%20to%20Risk%20Management.pdf">
+<node TEXT="Modelling Dependence with Copulas and Applications to Risk Management" ID="ID_261470647" CREATED="1513736257663" MODIFIED="1534390671167" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/097%20Modelling%20Dependence%20with%20Copulas%20and%20Applications%20to%20Risk%20Management.pdf">
 <attribute NAME="key" VALUE="Embrechts01modellingdependence"/>
 <attribute NAME="year" VALUE="2001"/>
 <attribute NAME="title" VALUE="Modelling Dependence with Copulas and Applications to Risk Management"/>
@@ -2400,8 +2401,8 @@
     <pdf_title>Modelling Dependence with Copulas</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Copula vines" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_480585567" CREATED="1513918549215" MODIFIED="1513920668191">
-<node TEXT="Pair-copula constructions of multiple dependence" ID="ID_779708528" CREATED="1513918589982" MODIFIED="1522727480439" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/104%20Pair-copula%20constructions%20of%20multiple%20dependence.pdf">
+<node TEXT="Copula vines" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_480585567" CREATED="1513918549215" MODIFIED="1513920668191">
+<node TEXT="Pair-copula constructions of multiple dependence" ID="ID_779708528" CREATED="1513918589982" MODIFIED="1534390671182" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/104%20Pair-copula%20constructions%20of%20multiple%20dependence.pdf">
 <attribute NAME="key" VALUE="aas2009paircopula"/>
 <attribute NAME="journal" VALUE="Insurance: Mathematics and Economics"/>
 <attribute NAME="year" VALUE="2009"/>
@@ -2411,7 +2412,7 @@
     <pdf_title>Pair-copula constructions of multiple dependence</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Pair-Copula Constructions of Multivariate Copulas" ID="ID_1522203937" CREATED="1513920646136" MODIFIED="1522727480618" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/105%20Pair-Copula%20Constructions%20of%20Multivariate%20Copulas.pdf">
+<node TEXT="Pair-Copula Constructions of Multivariate Copulas" ID="ID_1522203937" CREATED="1513920646136" MODIFIED="1534390671026" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/105%20Pair-Copula%20Constructions%20of%20Multivariate%20Copulas.pdf">
 <attribute NAME="key" VALUE="czado2010paircopula"/>
 <attribute NAME="year" VALUE="2010"/>
 <attribute NAME="title" VALUE="Copula Theory and Its Applications"/>
@@ -2422,8 +2423,8 @@
 </node>
 </node>
 </node>
-<node TEXT="Econometrics" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_414293478" CREATED="1513739564824" MODIFIED="1513739574221">
-<node TEXT="Introductory econometrics for finance" ID="ID_86705271" CREATED="1513739586343" MODIFIED="1522727480446" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/098%20Introductory%20Econometrics%20for%20Finance.pdf">
+<node TEXT="Econometrics" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_414293478" CREATED="1513739564824" MODIFIED="1513739574221">
+<node TEXT="Introductory econometrics for finance" ID="ID_86705271" CREATED="1513739586343" MODIFIED="1534390671073" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/098%20Introductory%20Econometrics%20for%20Finance.pdf">
 <attribute NAME="key" VALUE="brooks2014introductory"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Introductory Econometrics for Finance"/>
@@ -2433,15 +2434,15 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Bootstrapping" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_469412419" CREATED="1522047643493" MODIFIED="1522047650543">
-<node TEXT="Introduction to the bootstrap" ID="ID_602115159" CREATED="1522047651477" MODIFIED="1522727480205" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/172%20Bootstrapping.pdf">
+<node TEXT="Bootstrapping" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_469412419" CREATED="1522047643493" MODIFIED="1522047650543">
+<node TEXT="Introduction to the bootstrap" ID="ID_602115159" CREATED="1522047651477" MODIFIED="1534390671026" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/172%20Bootstrapping.pdf">
 <attribute NAME="key" VALUE="efron1994bootstrap"/>
 <attribute NAME="year" VALUE="1994"/>
 <attribute NAME="title" VALUE="An Introduction to the Bootstrap"/>
 <attribute NAME="authors" VALUE="Efron, Bradley and Tibshirani, Robert J"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="65B771CFCD76B67ABB893B29A4CA53A3AD6B4E346B31B78FA125C6B659A9F5"/>
 </node>
-<node TEXT="Bootstrap methods for decision making and information flows" ID="ID_1932314841" CREATED="1527214000284" MODIFIED="1527214309382" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/189%20Bootstrap%20methods%20for%20decision%20making%20and%20information%20flows.pdf">
+<node TEXT="Bootstrap methods for decision making and information flows" ID="ID_1932314841" CREATED="1527214000284" MODIFIED="1534390671042" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/189%20Bootstrap%20methods%20for%20decision%20making%20and%20information%20flows.pdf">
 <attribute NAME="key" VALUE="dedeo2013bootstrap"/>
 <attribute NAME="journal" VALUE="Entropy"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -2452,28 +2453,22 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Entropy" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_278372824" CREATED="1522301293611" MODIFIED="1522301298216">
-<node TEXT="Nonparametric entropy estimation: an overview" ID="ID_1964446420" CREATED="1522301299079" MODIFIED="1522727480602" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/174%20Nonparametric%20entropy%20estimation%20An%20overview.pdf">
+<node TEXT="Entropy" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_278372824" CREATED="1522301293611" MODIFIED="1522301298216">
+<node TEXT="Nonparametric entropy estimation: an overview" ID="ID_1964446420" CREATED="1522301299079" MODIFIED="1534390664070">
 <attribute NAME="key" VALUE="beirlant1997nonparametric"/>
 <attribute NAME="journal" VALUE="International Journal of Mathematics and Statistics Sciences"/>
 <attribute NAME="year" VALUE="1997"/>
 <attribute NAME="title" VALUE="Nonparametric Entropy Estimation: An Overview"/>
 <attribute NAME="authors" VALUE="Beirlant, J. and Dudewicz and Gy{\&quot;o}rfi, L. and van der Meulen, E. C."/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8557C4EDD34C1C44D1C39298E478427B47E91D9BF715177911E7B5F89E619">
-    <pdf_title>I Introduction</pdf_title>
-</pdf_annotation>
 </node>
-<node TEXT="Estimation of Entropy and Mutual Information (for nonparametric pdfs)" ID="ID_1227641079" CREATED="1522301875075" MODIFIED="1522727480494" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/175%20Estimation%20of%20Entropy%20and%20Mutual%20Information.pdf">
+<node TEXT="Estimation of Entropy and Mutual Information (for nonparametric pdfs)" ID="ID_1227641079" CREATED="1522301875075" MODIFIED="1534390664086">
 <attribute NAME="key" VALUE="paninski2003estimation"/>
 <attribute NAME="journal" VALUE="Neural Computation"/>
 <attribute NAME="year" VALUE="2003"/>
 <attribute NAME="title" VALUE="Estimation of Entropy and Mutual Information"/>
 <attribute NAME="authors" VALUE="Paninski, Liam"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="43256EF6B0D7A68DB57E64993DCF77A2F6119D1AC60263E9114527A68A17BE">
-    <pdf_title>Estimation of Entropy and Mutual Information</pdf_title>
-</pdf_annotation>
 </node>
-<node TEXT="Bootstrap methods for better estimating the entropy" ID="ID_1315443988" CREATED="1527214018807" MODIFIED="1527214312634" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/189%20Bootstrap%20methods%20for%20decision%20making%20and%20information%20flows.pdf">
+<node TEXT="Bootstrap methods for better estimating the entropy" ID="ID_1315443988" CREATED="1527214018807" MODIFIED="1534390671042" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/189%20Bootstrap%20methods%20for%20decision%20making%20and%20information%20flows.pdf">
 <attribute NAME="key" VALUE="dedeo2013bootstrap"/>
 <attribute NAME="journal" VALUE="Entropy"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -2483,16 +2478,18 @@
     <pdf_title>entropy</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Book: Elements of information theory" ID="ID_547483199" CREATED="1527214930262" MODIFIED="1527215360458" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/190%20Elements%20of%20information%20theory.pdf">
+<node TEXT="Book: Elements of information theory" ID="ID_547483199" CREATED="1527214930262" MODIFIED="1534390671010" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/190%20Elements%20of%20information%20theory%20SOLUTIONS.pdf">
 <attribute NAME="key" VALUE="cover2012elements"/>
 <attribute NAME="year" VALUE="2006"/>
 <attribute NAME="title" VALUE="Elements of Information Theory"/>
 <attribute NAME="authors" VALUE="Cover, Thomas M. and Thomas, Joy A."/>
-<pdf_annotation type="PDF_FILE" object_id="0"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="16F945296D7E75511682A2CDE1704CD3106A65BD211A314D86BE48FD18FEF3D">
+    <pdf_title>Elements of Information Theory Second Edition</pdf_title>
+</pdf_annotation>
 </node>
 </node>
-<node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_410836587" CREATED="1522285999005" MODIFIED="1522286009782">
-<node TEXT="1955 A mathematical theory of communication: ENTROPY defined" ID="ID_31946635" CREATED="1522286012922" MODIFIED="1522727480418" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/173%20A%20mathematical%20theory%20of%20communication.pdf">
+<node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_410836587" CREATED="1522285999005" MODIFIED="1522286009782">
+<node TEXT="1955 A mathematical theory of communication: ENTROPY defined" ID="ID_31946635" CREATED="1522286012922" MODIFIED="1534390671198" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/173%20A%20mathematical%20theory%20of%20communication.pdf">
 <attribute NAME="key" VALUE="shannon1948communication"/>
 <attribute NAME="journal" VALUE="The Bell System Technical Journal"/>
 <attribute NAME="year" VALUE="1948"/>
@@ -2502,7 +2499,7 @@
     <pdf_title>THE MATHEMATICAL THEORY OF COMMUNICATION</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="An Introduction to Statistical Learning" ID="ID_1663098703" CREATED="1529495478895" MODIFIED="1529495607404" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/201%20An%20Introduction%20to%20Statistical%20Learning.pdf">
+<node TEXT="An Introduction to Statistical Learning" ID="ID_1663098703" CREATED="1529495478895" MODIFIED="1534390670979" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/201%20An%20Introduction%20to%20Statistical%20Learning.pdf">
 <attribute NAME="key" VALUE="james2013introduction"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="An Introduction to Statistical Learning"/>
@@ -2511,7 +2508,7 @@
     <pdf_title>Springer Texts in Statistics</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The Elements of Statistical Learning" ID="ID_166214202" CREATED="1529495649897" MODIFIED="1529503429767" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/202%20The%20Elements%20of%20Statistical%20Learning.pdf">
+<node TEXT="The Elements of Statistical Learning" ID="ID_166214202" CREATED="1529495649897" MODIFIED="1534390671057" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/202%20The%20Elements%20of%20Statistical%20Learning.pdf">
 <attribute NAME="key" VALUE="hastie2001elements"/>
 <attribute NAME="year" VALUE="2008"/>
 <attribute NAME="title" VALUE="The Elements of Statistical Learning"/>
@@ -2520,7 +2517,7 @@
     <pdf_title>The Elements of Statistical Learning</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Probability Theory: The Logic of Science" ID="ID_456569245" CREATED="1529507201304" MODIFIED="1529507289897" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/203%20Probability%20Theory%20The%20Logic%20Of%20Science.pdf">
+<node TEXT="Probability Theory: The Logic of Science" ID="ID_456569245" CREATED="1529507201304" MODIFIED="1534390671089" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/203%20Probability%20Theory%20The%20Logic%20Of%20Science.pdf">
 <attribute NAME="key" VALUE="jaynes2003probability"/>
 <attribute NAME="year" VALUE="2003"/>
 <attribute NAME="title" VALUE="Probability theory: the logic of science"/>
@@ -2529,7 +2526,7 @@
     <pdf_title/>
 </pdf_annotation>
 </node>
-<node TEXT="All of Statistics: A Concise Course in Statistical Inference" ID="ID_832455186" CREATED="1531790847298" MODIFIED="1531790851360" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/226%20All%20of%20Statistics.pdf">
+<node TEXT="All of Statistics: A Concise Course in Statistical Inference" ID="ID_832455186" CREATED="1531790847298" MODIFIED="1534390671214" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/226%20All%20of%20Statistics.pdf">
 <attribute NAME="key" VALUE="wasserman2004statistics"/>
 <attribute NAME="year" VALUE="2004"/>
 <attribute NAME="title" VALUE="All of Statistics: A Concise Course in Statistical Inference"/>
@@ -2540,10 +2537,10 @@
 </node>
 </node>
 </node>
-<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1518673341857" HGAP="54" VSHIFT="-27">
+<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1518673341857" HGAP="54" VSHIFT="-27">
 <edge COLOR="#0000ff"/>
-<node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
-<node TEXT="GCDC2016" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1522727480141" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/054%20GCDC%202016%20Ploeg%20paper.pdf">
+<node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
+<node TEXT="GCDC2016" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1534391744397" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/054%20GCDC%202016%20Ploeg%20paper.pdf">
 <attribute NAME="key" VALUE="ploeg2017GCDC"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -2552,7 +2549,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F0A9446DBEC9FF1E37EB6BBB6DFDAE94E4051BA9B75256C74FE3D86728FF7B4">
     <pdf_title>Cooperative Automated Maneuvering at the 2016 Grand Cooperative Driving Challenge</pdf_title>
 </pdf_annotation>
-<node TEXT="Cooperative Intersection Contol Based on Virtual Platooning" ID="ID_785943988" CREATED="1521426699088" MODIFIED="1522727480587" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/169%20Cooperative%20Intersection%20Contol%20Based%20on%20Virtual%20Platooning.pdf">
+<node TEXT="Cooperative Intersection Contol Based on Virtual Platooning" ID="ID_785943988" CREATED="1521426699088" MODIFIED="1534391744120" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/169%20Cooperative%20Intersection%20Contol%20Based%20on%20Virtual%20Platooning.pdf">
 <attribute NAME="key" VALUE="morales2017cooperativeintersection"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -2563,7 +2560,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Waymo" ID="ID_302182765" CREATED="1511417632834" MODIFIED="1522727480134" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/059%20Waymo%20Safety%20Report.pdf">
+<node TEXT="Waymo" ID="ID_302182765" CREATED="1511417632834" MODIFIED="1534391744319" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/059%20Waymo%20Safety%20Report.pdf">
 <attribute NAME="key" VALUE="waymo2017"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Waymo Safety Report, On The Road to Fully Self-Driving"/>
@@ -2571,8 +2568,8 @@
     <pdf_title>on the road to fully self-driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="DARPA" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1034695220" CREATED="1534221470987" MODIFIED="1534221476275">
-<node TEXT="Stanley (2005 Grand Challenge)" ID="ID_150057063" CREATED="1511842346868" MODIFIED="1534221504120" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/063%20DARPA%20Stanley%20the%20robot%20that%20won.pdf" MOVED="1534221477829">
+<node TEXT="DARPA" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1034695220" CREATED="1534221470987" MODIFIED="1534221476275">
+<node TEXT="Stanley (2005 Grand Challenge)" ID="ID_150057063" CREATED="1511842346868" MODIFIED="1534391744475" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/063%20DARPA%20Stanley%20the%20robot%20that%20won.pdf" MOVED="1534221477829">
 <attribute NAME="key" VALUE="thrun2006stanleyDARPA"/>
 <attribute NAME="journal" VALUE="Journal of Field Robotics"/>
 <attribute NAME="year" VALUE="2006"/>
@@ -2582,17 +2579,17 @@
     <pdf_title>Stanley: The Robot that Won the DARPA Grand Challenge</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Tartan (2007 Urban Challenge)" ID="ID_1538124817" CREATED="1534221506067" MODIFIED="1534226795151" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/233%20Tartan%20Racing%20DARPA%20Urban%20Challenge.pdf">
+<node TEXT="Tartan (2007 Urban Challenge)" ID="ID_1538124817" CREATED="1534221506067" MODIFIED="1534391744381" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/233%20Tartan%20Racing%20DARPA%20Urban%20Challenge.pdf">
 <attribute NAME="key" VALUE="urmson2007tartan"/>
 <attribute NAME="year" VALUE="2007"/>
-<attribute NAME="title" VALUE="Tartan racing: A multi-modal approach to the darpa urban challenge"/>
+<attribute NAME="title" VALUE="Tartan Racing: A Multi-Modal Approach to the {DARPA} {U}rban {C}hallenge"/>
 <attribute NAME="authors" VALUE="Urmson, Chris and Anhalt, Joshua and Bagnell, Drew and Baker, Christopher and Bittner, Robert and Dolan, John and Duggins, Dave and Ferguson, Dave and Galatali, Tugrul and Geyer, Chris and Gittleman, Michele and Harbaugh, Sam and Hebert, Martial and Howard, Tom and Kelly, Alonzo and Kohanbash, David and Likhachev, Maxim and Miller, Nick and Peterson, Kevin and Rajkumar, Raj and Rubski, Paul and Salesky, Bryan and Scherer, Sebastian and Woo-Seo, Young and Simmons, Reid and Singh, Sanjiv and Snider, Jarrod and Stentz, Anthony and Whittaker, William and Ziglar, Jason and Bae, Hong and Litkouhi, Bakhtiar and Nickolaou, Jim and Sadekar, Varsha and Zeng, Shuqing and Struble, Joshua and Taylor, Michael and Darms, Michael"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="CC7505587E015F6EAB99CB2BE1941D48177194378BBFCE429F23456ECBB03A">
     <pdf_title>Tartan Racing: A Multi-Modal Approach to the DARPA Urban Challenge</pdf_title>
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="VAIC Experiment 13000 km intercontinental trip with driverless vehicles" ID="ID_1709885871" CREATED="1516309619444" MODIFIED="1522727480528" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/109%20VAIC%20Experiment%2013000%20km%20intercontinental%20trip%20with%20driverless%20vehicles.pdf">
+<node TEXT="VAIC Experiment 13000 km intercontinental trip with driverless vehicles" ID="ID_1709885871" CREATED="1516309619444" MODIFIED="1534391744491" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/109%20VAIC%20Experiment%2013000%20km%20intercontinental%20trip%20with%20driverless%20vehicles.pdf">
 <attribute NAME="key" VALUE="bertozzi2013vaic"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -2603,8 +2600,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">
-<node TEXT="Design and Evaluation of Automated MoD in Singapore" ID="ID_639563276" CREATED="1513224335345" MODIFIED="1522727480258" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/084%20Design%20and%20Evaluation%20of%20Automated%20Mobility%20on%20Demand%20in%20Singapore.pdf">
+<node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">
+<node TEXT="Design and Evaluation of Automated MoD in Singapore" ID="ID_639563276" CREATED="1513224335345" MODIFIED="1534391744397" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/084%20Design%20and%20Evaluation%20of%20Automated%20Mobility%20on%20Demand%20in%20Singapore.pdf">
 <attribute NAME="key" VALUE="spieser2014toward"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Toward a Systematic Approach to the Design and Evaluation of Automated Mobility-on-Demand Systems: A Case Study in Singapore"/>
@@ -2614,7 +2611,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="AV: Guide for policymakers" ID="ID_1427027601" CREATED="1511348288860" MODIFIED="1522727480383" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/057%20Autonomous%20Vehicle%20Technology%20a%20Guide%20for%20Policymakers.pdf">
+<node TEXT="AV: Guide for policymakers" ID="ID_1427027601" CREATED="1511348288860" MODIFIED="1534391744366" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/057%20Autonomous%20Vehicle%20Technology%20a%20Guide%20for%20Policymakers.pdf">
 <attribute NAME="key" VALUE="anderson2014autonomous"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Autonomous Vehicle Technology: A Guide for Policymakers"/>
@@ -2623,7 +2620,7 @@
     <pdf_title>Autonomous Vehicle Technology</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Use cases for Autonomous Vehicles" ID="ID_1344172445" CREATED="1511519822579" MODIFIED="1522727480610" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/061%20Use%20Cases%20for%20Autonomous%20Driving.pdf">
+<node TEXT="Use cases for Autonomous Vehicles" ID="ID_1344172445" CREATED="1511519822579" MODIFIED="1534391744460" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/061%20Use%20Cases%20for%20Autonomous%20Driving.pdf">
 <attribute NAME="key" VALUE="wachenfeld2016usecases"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Use Cases for Autonomous Driving"/>
@@ -2632,7 +2629,7 @@
     <pdf_title>Use Cases for Autonomous Driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Till 2020: intro AV controlled env., 2020-2040: AV mainstream, 2040+: AV commonplace" ID="ID_330146770" CREATED="1511520232345" MODIFIED="1522727479976" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/062%20Autonomous%20System-of-Systems.pdf">
+<node TEXT="Till 2020: intro AV controlled env., 2020-2040: AV mainstream, 2040+: AV commonplace" ID="ID_330146770" CREATED="1511520232345" MODIFIED="1534391744428" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/062%20Autonomous%20System-of-Systems.pdf">
 <attribute NAME="key" VALUE="madni2018autonomous"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Autonomous System-of-Systems"/>
@@ -2641,7 +2638,7 @@
     <pdf_title>Autonomous System-of-Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The Netherlands: 1%-11% penetration conditionally AVs in 2030, 7%-61% highly AVs in 2050" ID="ID_1106176958" CREATED="1512622736817" MODIFIED="1522727480465" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/076%20Future%20scenarios%20with%20AVs%20in%20the%20Netherlands.pdf">
+<node TEXT="The Netherlands: 1%-11% penetration conditionally AVs in 2030, 7%-61% highly AVs in 2050" ID="ID_1106176958" CREATED="1512622736817" MODIFIED="1534391744522" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/076%20Future%20scenarios%20with%20AVs%20in%20the%20Netherlands.pdf">
 <attribute NAME="key" VALUE="milakis2016scenarios"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Scenarios about Development and Implications of Automated Vehicles in the {N}etherlands"/>
@@ -2650,7 +2647,7 @@
     <pdf_title>Scenariosaboutdevelopmentandimplications ofautomatedvehiclesintheNetherlands</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Overview of all kinds of developments regarding assistance systems" ID="ID_477533569" CREATED="1512370199453" MODIFIED="1522727480306" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">
+<node TEXT="Overview of all kinds of developments regarding assistance systems" ID="ID_477533569" CREATED="1512370199453" MODIFIED="1534391744444" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/064%20Three%20Decades%20of%20Driver%20Assistance%20Systems.pdf">
 <attribute NAME="key" VALUE="bengler2014threedecades"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -2660,7 +2657,7 @@
     <pdf_title>Three Decades of Driver Assistance Systems</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Autonomous Cars: Past, Present and Future a Review of the Developments" ID="ID_1407016115" CREATED="1517371946542" MODIFIED="1522727480299" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/136%20Autonomous%20cars%20past%20present%20future.pdf">
+<node TEXT="Autonomous Cars: Past, Present and Future a Review of the Developments" ID="ID_1407016115" CREATED="1517371946542" MODIFIED="1534391744475" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/136%20Autonomous%20cars%20past%20present%20future.pdf">
 <attribute NAME="key" VALUE="bimbraw2015autonomous"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Autonomous Cars: Past, Present and Future a Review of the Developments in the Last Century, the Present Scenario and the Expected Future of Autonomous Vehicle Technology"/>
@@ -2670,11 +2667,11 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Scenario similarity" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_241166301" CREATED="1518000690565" MODIFIED="1518000924227">
+<node TEXT="Scenario similarity" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_241166301" CREATED="1518000690565" MODIFIED="1518000924227">
 <edge COLOR="#ff00ff"/>
-<node TEXT="Similarity measures for time series" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1080321734" CREATED="1518000705702" MODIFIED="1518000929563">
-<node TEXT="Surveys" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1108172693" CREATED="1518000949311" MODIFIED="1518001009771">
-<node TEXT="An Empirical Evaluation of Similarity Measures for Time Series Classification" ID="ID_1585992208" CREATED="1518000721561" MODIFIED="1522727480374" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/138%20An%20Empirical%20Evaluation%20of%20Similarity%20Measures%20for%20Time%20Series%20Classification.pdf">
+<node TEXT="Similarity measures for time series" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1080321734" CREATED="1518000705702" MODIFIED="1518000929563">
+<node TEXT="Surveys" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1108172693" CREATED="1518000949311" MODIFIED="1518001009771">
+<node TEXT="An Empirical Evaluation of Similarity Measures for Time Series Classification" ID="ID_1585992208" CREATED="1518000721561" MODIFIED="1534391795839" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/138%20An%20Empirical%20Evaluation%20of%20Similarity%20Measures%20for%20Time%20Series%20Classification.pdf">
 <attribute NAME="key" VALUE="serra2014empirical"/>
 <attribute NAME="journal" VALUE="Knowledge-Based Systems"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -2684,7 +2681,7 @@
     <pdf_title>An Empirical Evaluation of Similarity Measures for Time Series Classication</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Experimental comparison of representation methods and distance measures for time series data" ID="ID_1798612645" CREATED="1518003222983" MODIFIED="1522727480061" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/140%20Comparison%20of%20representation%20methods%20and%20distance%20measures%20for%20time%20series.pdf">
+<node TEXT="Experimental comparison of representation methods and distance measures for time series data" ID="ID_1798612645" CREATED="1518003222983" MODIFIED="1534391796080" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/140%20Comparison%20of%20representation%20methods%20and%20distance%20measures%20for%20time%20series.pdf">
 <attribute NAME="key" VALUE="wang2013distancemeasures"/>
 <attribute NAME="journal" VALUE="Data Mining and Knowledge Discovery"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -2694,7 +2691,7 @@
     <pdf_title>Experimental comparison of representation methods and distance measures for time series data</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="On the need for time series data mining benchmarks" ID="ID_39850436" CREATED="1518156681181" MODIFIED="1522727480029" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/144%20On%20the%20need%20for%20time%20series%20data%20mining%20benchmarks.pdf">
+<node TEXT="On the need for time series data mining benchmarks" ID="ID_39850436" CREATED="1518156681181" MODIFIED="1534391796345" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/144%20On%20the%20need%20for%20time%20series%20data%20mining%20benchmarks.pdf">
 <attribute NAME="key" VALUE="keogh2003survey"/>
 <attribute NAME="journal" VALUE="Data Mining and Knowledge Discovery"/>
 <attribute NAME="year" VALUE="2003"/>
@@ -2705,8 +2702,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Euclidian distance" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_11157457" CREATED="1518157328265" MODIFIED="1518157343019">
-<node TEXT="re-sample data so that it has equal length" ID="ID_1686113559" CREATED="1518157344748" MODIFIED="1522727480020" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/144%20On%20the%20need%20for%20time%20series%20data%20mining%20benchmarks.pdf">
+<node TEXT="Euclidian distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_11157457" CREATED="1518157328265" MODIFIED="1518157343019">
+<node TEXT="re-sample data so that it has equal length" ID="ID_1686113559" CREATED="1518157344748" MODIFIED="1534391796330" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/144%20On%20the%20need%20for%20time%20series%20data%20mining%20benchmarks.pdf">
 <attribute NAME="key" VALUE="keogh2003survey"/>
 <attribute NAME="journal" VALUE="Data Mining and Knowledge Discovery"/>
 <attribute NAME="year" VALUE="2003"/>
@@ -2716,7 +2713,7 @@
     <pdf_title>On the Need for Time Series Data Mining Benchmarks: A Survey and Empirical Demonstration</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Early classification of time series" ID="ID_189274529" CREATED="1518158265188" MODIFIED="1522727480625" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/145%20A%20Brief%20Survey%20on%20Sequence%20Classification.pdf">
+<node TEXT="Early classification of time series" ID="ID_189274529" CREATED="1518158265188" MODIFIED="1534391796221" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/145%20A%20Brief%20Survey%20on%20Sequence%20Classification.pdf">
 <attribute NAME="key" VALUE="xing2010survey"/>
 <attribute NAME="journal" VALUE="ACM SIGKDD Explorations Newsletter"/>
 <attribute NAME="year" VALUE="2010"/>
@@ -2727,15 +2724,23 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Feature-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1643428776" CREATED="1518168788173" MODIFIED="1518920914141">
-<node TEXT="Fourier transform, see book &quot;Discrete-Time Signal Processing&quot;" ID="ID_422840287" CREATED="1518168800416" MODIFIED="1522727480313" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/146%20Discrete%20time%20signal%20processing.pdf">
+<node TEXT="Feature-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1643428776" CREATED="1518168788173" MODIFIED="1518920914141">
+<node TEXT="Fourier transform, see book &quot;Discrete-Time Signal Processing&quot;" ID="ID_422840287" CREATED="1518168800416" MODIFIED="1534391796314" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/146%20Discrete%20time%20signal%20processing.pdf">
 <attribute NAME="key" VALUE="oppenheim1999discrete"/>
 <attribute NAME="year" VALUE="1999"/>
 <attribute NAME="title" VALUE="Discrete-Time Signal Processing"/>
 <attribute NAME="authors" VALUE="Oppenheim, Alan V. and Schafer, Ronald W. and Buck, John R."/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
-<node TEXT="Use of Discrete Fourier Transform" ID="ID_276450451" CREATED="1518168984904" MODIFIED="1522727480196" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/147%20Efficient%20similarity%20search%20in%20Sequence%20Databases.pdf">
+<node TEXT="Use of Discrete Fourier Transform" ID="ID_276450451" CREATED="1518168984904" MODIFIED="1534391796174" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/147%20Efficient%20similarity%20search%20in%20Sequence%20Databases.pdf">
+<attribute NAME="key" VALUE="agrawal1993similarity"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Efficient Similarity Search in Sequence Databases"/>
+<attribute NAME="authors" VALUE="Agrawal, Rakesh and Faloutsos, Christos and Swami, Arun"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4FEAF228D4FA754E9F696DD83CAA96FEB9BE38E2FB8DCD515A558E844FF92D">
+    <pdf_title>&#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; ! &quot;</pdf_title>
+</pdf_annotation>
+<node TEXT="Use of Discrete Fourier Transform" ID="ID_1244459440" CREATED="1518168984904" MODIFIED="1534391796189" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/147%20Efficient%20similarity%20search%20in%20Sequence%20Databases.pdf">
 <attribute NAME="key" VALUE="agrawal1993similarity"/>
 <attribute NAME="year" VALUE="1993"/>
 <attribute NAME="title" VALUE="Efficient Similarity Search in Sequence Databases"/>
@@ -2744,7 +2749,8 @@
     <pdf_title>&#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; ! &quot;</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Fast subsequence matching in time-series databases using Discrete Fourier Transform" ID="ID_1798522537" CREATED="1518575264486" MODIFIED="1522727480515" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/149%20Fast%20subsequence%20matching%20in%20time-series%20databases.pdf">
+</node>
+<node TEXT="Fast subsequence matching in time-series databases using Discrete Fourier Transform" ID="ID_1798522537" CREATED="1518575264486" MODIFIED="1534391796127" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/149%20Fast%20subsequence%20matching%20in%20time-series%20databases.pdf">
 <attribute NAME="key" VALUE="faloutsos1994fast"/>
 <attribute NAME="year" VALUE="1994"/>
 <attribute NAME="title" VALUE="Fast Subsequence Matching in Time-Series Databases"/>
@@ -2752,14 +2758,14 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B029A7781C2411CCC5FA85953958D788A143ECFF4391E7C9BB608AC5DD7AC1"/>
 </node>
 </node>
-<node TEXT="Model-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1061375636" CREATED="1518920893299" MODIFIED="1518920910671">
-<node TEXT="Using auto-regression model coefficients (original paper)" FOLDED="true" ID="ID_118891723" CREATED="1518502176763" MODIFIED="1519100203383">
+<node TEXT="Model-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1061375636" CREATED="1518920893299" MODIFIED="1518920910671">
+<node TEXT="Using auto-regression model coefficients (original paper)" ID="ID_118891723" CREATED="1518502176763" MODIFIED="1519100203383">
 <attribute NAME="key" VALUE="piccolo1990distance"/>
 <attribute NAME="journal" VALUE="Journal of Time Series Analysis"/>
 <attribute NAME="year" VALUE="1990"/>
 <attribute NAME="title" VALUE="A Distance Measure for Classifying {ARIMA} Models"/>
 <attribute NAME="authors" VALUE="Piccolo, Domenico"/>
-<node TEXT="Another paper with explanation" ID="ID_1786201095" CREATED="1518502237545" MODIFIED="1522727480349" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/148%20Time%20series%20clustering%20and%20classification%20by%20the%20autoregressive%20metric.pdf">
+<node TEXT="Another paper with explanation" ID="ID_1786201095" CREATED="1518502237545" MODIFIED="1534391796049" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/148%20Time%20series%20clustering%20and%20classification%20by%20the%20autoregressive%20metric.pdf">
 <attribute NAME="key" VALUE="corduas2008autoregressive"/>
 <attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
 <attribute NAME="year" VALUE="2008"/>
@@ -2770,7 +2776,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Auto-regression model computation with Yule-Walker equations (page 256 (page 281 of pdf))" ID="ID_1934183657" CREATED="1518942500496" MODIFIED="1522727480480" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/158%20Statistical%20spectral%20analysis%20Gardner%201988.pdf">
+<node TEXT="Auto-regression model computation with Yule-Walker equations (page 256 (page 281 of pdf))" ID="ID_1934183657" CREATED="1518942500496" MODIFIED="1534391796236" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/158%20Statistical%20spectral%20analysis%20Gardner%201988.pdf">
 <attribute NAME="key" VALUE="gardner1988spectral"/>
 <attribute NAME="year" VALUE="1988"/>
 <attribute NAME="title" VALUE="Statistical Spectral Analysis: A Nonprobabilistic Theory"/>
@@ -2778,8 +2784,8 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="48CBE523332E6B31EA4545204C5ECD8F601CB27E49B25DD918B41DCB7C38D65"/>
 </node>
 </node>
-<node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484" MOVED="1518157326491">
-<node TEXT="Dynamic programming optimization (original paper, but DTW not explicitly mentioned)" ID="ID_1407935713" CREATED="1518104424971" MODIFIED="1522727480356" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/141%20Dynamic%20programming%20algorithm%20optimization%20for%20spoken%20Word%20Recognition.pdf">
+<node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484" MOVED="1518157326491">
+<node TEXT="Dynamic programming optimization (original paper, but DTW not explicitly mentioned)" ID="ID_1407935713" CREATED="1518104424971" MODIFIED="1534391796267" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/141%20Dynamic%20programming%20algorithm%20optimization%20for%20spoken%20Word%20Recognition.pdf">
 <attribute NAME="key" VALUE="sakoe1978dynamic"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Acoustics, Speech, and Signal Processing"/>
 <attribute NAME="year" VALUE="1978"/>
@@ -2789,7 +2795,7 @@
     <pdf_title>Dynamic Programming Algorithm Optimization for Spoken Word Recognition</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Using dynamic time warping to find patterns in time series (DTW mentioned)" ID="ID_455804195" CREATED="1518104826749" MODIFIED="1522727480185" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/142%20Using%20dynamic%20time%20warping%20to%20find%20patterns%20in%20time%20series.pdf">
+<node TEXT="Using dynamic time warping to find patterns in time series (DTW mentioned)" ID="ID_455804195" CREATED="1518104826749" MODIFIED="1534391796111" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/142%20Using%20dynamic%20time%20warping%20to%20find%20patterns%20in%20time%20series.pdf">
 <attribute NAME="key" VALUE="berndt1994using"/>
 <attribute NAME="year" VALUE="1994"/>
 <attribute NAME="title" VALUE="Using Dynamic Time Warping to Find Patterns in Time Series"/>
@@ -2798,7 +2804,7 @@
     <pdf_title>.... Using Dynamic Time Warping to</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Exact indexing of dynamic time warping" ID="ID_1987491204" CREATED="1518105100240" MODIFIED="1522727480282" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/143%20Exact%20indexing%20of%20dynamic%20time%20warping.pdf">
+<node TEXT="Exact indexing of dynamic time warping" ID="ID_1987491204" CREATED="1518105100240" MODIFIED="1534391796221" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/143%20Exact%20indexing%20of%20dynamic%20time%20warping.pdf">
 <attribute NAME="key" VALUE="keogh2005exactDTW"/>
 <attribute NAME="journal" VALUE="Knowledge and information systems"/>
 <attribute NAME="year" VALUE="2005"/>
@@ -2808,7 +2814,7 @@
     <pdf_title>Exact indexing of dynamic time warping</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Dynamic Time Warping Algorithm Review" ID="ID_1783215725" CREATED="1518671600893" MODIFIED="1522727480486" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/150%20Dynamic%20Time%20Warping%20Algorithm%20Review.pdf">
+<node TEXT="Dynamic Time Warping Algorithm Review" ID="ID_1783215725" CREATED="1518671600893" MODIFIED="1534391796299" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/150%20Dynamic%20Time%20Warping%20Algorithm%20Review.pdf">
 <attribute NAME="key" VALUE="senin2008dynamic"/>
 <attribute NAME="journal" VALUE="Information and Computer Science Department University of Hawaii at Manoa Honolulu, USA"/>
 <attribute NAME="year" VALUE="2008"/>
@@ -2818,7 +2824,7 @@
     <pdf_title>Dynamic Time Warping Algorithm Review</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="DTW is very fast, CPUs concern is non-issue" ID="ID_1775447715" CREATED="1518672482680" MODIFIED="1522727480001" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/151%20Three%20Myths%20about%20Dynamic%20Time%20Warping%20Data%20Mining.pdf">
+<node TEXT="DTW is very fast, CPUs concern is non-issue" ID="ID_1775447715" CREATED="1518672482680" MODIFIED="1534391796330" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/151%20Three%20Myths%20about%20Dynamic%20Time%20Warping%20Data%20Mining.pdf">
 <attribute NAME="key" VALUE="ratanamahatana2005myths"/>
 <attribute NAME="year" VALUE="2005"/>
 <attribute NAME="title" VALUE="Three Myths about Dynamic Time Warping Data Mining"/>
@@ -2827,7 +2833,7 @@
     <pdf_title>ThreeMythsaboutDynamicTimeWarpingData Mining</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Change of cost function - take warping into account (stronger warping leads to higher cost)" ID="ID_1543523048" CREATED="1518672949323" MODIFIED="1522727480594" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/152%20Enhancement%20and%20Dynanic%20Time%20Warping.pdf">
+<node TEXT="Change of cost function - take warping into account (stronger warping leads to higher cost)" ID="ID_1543523048" CREATED="1518672949323" MODIFIED="1534391796158" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/152%20Enhancement%20and%20Dynanic%20Time%20Warping.pdf">
 <attribute NAME="key" VALUE="roberts1987enhancements"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Biomedical Engineering"/>
 <attribute NAME="year" VALUE="1987"/>
@@ -2837,7 +2843,7 @@
     <pdf_title>Components</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Also change of cost function" ID="ID_738015824" CREATED="1518673106695" MODIFIED="1522727480156" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/153%20ALIGNMENT%20OF%20CURVES%20BY%20DYNAMIC%20TIME%20WARPING.pdf">
+<node TEXT="Also change of cost function" ID="ID_738015824" CREATED="1518673106695" MODIFIED="1534391796080" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/153%20ALIGNMENT%20OF%20CURVES%20BY%20DYNAMIC%20TIME%20WARPING.pdf">
 <attribute NAME="key" VALUE="wang1997alignment"/>
 <attribute NAME="journal" VALUE="The Annals of Statistics"/>
 <attribute NAME="year" VALUE="1997"/>
@@ -2847,7 +2853,7 @@
     <pdf_title>w x</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Implementation for Python: fastDTW" ID="ID_1645648296" CREATED="1518674368937" MODIFIED="1522727480108" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/154%20FastDTW.pdf">
+<node TEXT="Implementation for Python: fastDTW" ID="ID_1645648296" CREATED="1518674368937" MODIFIED="1534391796283" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/154%20FastDTW.pdf">
 <attribute NAME="key" VALUE="salvador2007fastDTW"/>
 <attribute NAME="journal" VALUE="Intelligent Data Analysis"/>
 <attribute NAME="year" VALUE="2007"/>
@@ -2857,14 +2863,14 @@
     <pdf_title>FastDTW: Toward Accurate Dynamic Time Warping in Linear Time and Space</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="More on DTW in &quot;Fundamentals of Speech Recognition&quot; (Rabiner)" ID="ID_445189125" CREATED="1518750829404" MODIFIED="1522727480212" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/157%20Fundamentals%20of%20Speech%20Recognition.pdf">
+<node TEXT="More on DTW in &quot;Fundamentals of Speech Recognition&quot; (Rabiner)" ID="ID_445189125" CREATED="1518750829404" MODIFIED="1534391796142" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/157%20Fundamentals%20of%20Speech%20Recognition.pdf">
 <attribute NAME="key" VALUE="rabiner1993speech"/>
 <attribute NAME="year" VALUE="1993"/>
 <attribute NAME="title" VALUE="Fundamentals of Speech Recognition"/>
 <attribute NAME="authors" VALUE="Rabiner, Lawrence R and Juang, Biing-Hwang"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="536B6C8DD8542E54524F9DC413F831FE93C5B14DBB331DB1C857B21B122D2"/>
 </node>
-<node TEXT="More on DTW in &quot;Information Retrieval for Music and Motion&quot;" ID="ID_1785147880" CREATED="1518749656952" MODIFIED="1522727480275" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/155%20Information%20Retrieval%20for%20Music%20and%20Motion.pdf">
+<node TEXT="More on DTW in &quot;Information Retrieval for Music and Motion&quot;" ID="ID_1785147880" CREATED="1518749656952" MODIFIED="1534391796142" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/155%20Information%20Retrieval%20for%20Music%20and%20Motion.pdf">
 <attribute NAME="key" VALUE="muller2007information"/>
 <attribute NAME="year" VALUE="2007"/>
 <attribute NAME="title" VALUE="Information Retrieval for Music and Motion"/>
@@ -2873,7 +2879,7 @@
     <pdf_title>Information Retrieval for Music and Motion</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Itakura parallelogram" ID="ID_1930099220" CREATED="1518750696178" MODIFIED="1522727479851" LINK="project://16289831E40NEZ2DP35J7X82VH1EJ69TQTF/../../../OneDrive%20-%20TNO/Documents/literatuur/156%20Itakura%20parallelogram.pdf">
+<node TEXT="Itakura parallelogram" ID="ID_1930099220" CREATED="1518750696178" MODIFIED="1534391796033" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/156%20Itakura%20parallelogram.pdf">
 <attribute NAME="key" VALUE="itakura1975minimum"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Acoustics, Speech, and Signal Processing"/>
 <attribute NAME="year" VALUE="1975"/>
