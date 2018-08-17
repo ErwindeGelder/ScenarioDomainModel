@@ -69,45 +69,53 @@ A Method for Scenario Risk Quantification for Automated Driving Systems
 % Required by the ESV conference: Research Question/Objective [DONE], Methods and Data Sources, Results [DONE], Discussion and Limitations, Conclusion and relevance to session submitted 
 
 % Left open: Method, Data Sources, Disussion and limitation, relevance. 
+
+%TODO: Determine which track we want to go for
 	
+% Introduction
 New developments in the automotive industry towards higher levels of automation are introducing new safety concerns for vehicles. 
 Test procedures and performance measures need to be adapted to evaluate vehicles with automated driving systems. 
 
-TODO: Talk about the role of driving scenarios based on naturalistic data versus crash data. 
-
-TODO: Mention that virtual testing is required. 
+%TODO: Talk about the role of driving scenarios based on naturalistic data versus crash data. 
+%TODO: Mention that virtual testing is required. 
 
 The state of the art risk assessment methods in the automotive domain, 
 	such as the Hazard Analysis and Risk Assessment (HARA) of ISO~26262:2018, 
 	have a qualitative nature and rely on expert's judgment for ranking the severity and probability of risks.
-More over, these methods are only capable of evaluating the risk of a single (hazardous) event 
-	within the context of a generic operational situation.
-Where as, for safety evaluation by virtual testing, we need the detailed description of driving scenarios including the operational situation
+Moreover, these methods are only capable of evaluating the risk of a single (hazardous) event 
+	within the context of a generic operational situation, whereas, for safety evaluation by virtual testing, we need the detailed description of driving scenarios including the operational situation
 	as well as the description of actions and events of those scenarios. 
+The objective of this paper is to introduce a method for analysis and quantification of the risk of a driving scenario.
 
-TODO: Explain what a scenario and it's parts are. 	
-	
-
-The objective of this paper is to introduce a method for risk analysis and quantification of a driving scenario.
-Considering risk as the product of severity of the outcome of a scenario and probability of that scenario, 
-	we focus on the quantification of the probability in this work. 
-For severity, we adopt the same metric as in HARA, but we introduce a systematic method for calculating the probability, 
+% Method
+%TODO: Explain what a scenario and it's parts are.
+% Is this needed? As we say "activities and events that constitute a scenario", I guess it is already covered
+For the proposed method, the risk of a driving scenario is considered as the product of severity of the outcome of a scenario and probability of that scenario.
+%TODO: Check if we need following sentence
+% No need to say this, maybe it can be said when discussing the limitations of the work
+%, we focus on the quantification of the probability in this work. 
+For severity, we adopt the same metric as in HARA. For the probability, however, we introduce a systematic method for calculating this, 
 	where we assume a causal relation between the activities and events that constitute a scenario. 
 By making educated assumptions on the dependencies among the different activities, events, and environmental conditions, 
 	we simplify the calculation of the probability of a scenario. 
 Finally, Monte Carlo simulations are employed for computing the probability of the outcome of scenarios.
 
-To illustrate how the proposed method can be used in practice, 
+% Results
+To illustrate the use of the proposed method, 
 	we perform a case study by applying our proposed method for risk analysis of a cut-in scenario.	
+We use naturalistic driving data to determine the likelihoods of the conditions and the activities that constitute the cut-in scenario. For determining the outcome of the cut-in scenario, e.g., a collision or a near miss, Monte Carlo simulations are employed. 
 
-TODO: explain where we get our data. 
+%TODO: explain where we get our data. 
+%TODO: discuss the method and it's limitation. 
 
-TODO: discuss the method and it's limitation. 
-	
+% Discussion and limitations
+
+
+% Conclusion
 Using our proposed method, we can compare safety criticality of various scenarios in an quantitative manner. 
 This can lead to stronger justification for design decisions and test coverage for developing automated vehicle functionalities. 
 
-TODO: explain the relevance to the session. 
+%TODO: explain the relevance to the session. 
 
 
 %% No need to mention the challenges in the abstract
