@@ -63,6 +63,9 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \fancyhead[R]{\author, \date}                           %% similar
 \fancyfoot[C]{\thepage}                                 %% define footer
 
+\newlength{\figurewidth}
+\newlength{\figureheight}
+
 \begin{document}
 	
 \begin{center}
@@ -90,13 +93,31 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \section{Summary of work}
 
 \begin{itemize}
-	\item 
+	\item Together with a colleague, I worked on the ontology regarding the scenarios. The following conclusions are drawn:
+	\begin{itemize}
+		\item ``An ontology consists of classes (abstract specification of concepts, with their possible properties) and instances (concrete specification of concepts with specific properties)'' \cite{vanDamPhDThesis2009}. Other work in which ontologies for specific applications are presented, usually present all the classes and the relations among these classes, e.g., see \cite{jones2011international, gkoutos2004mouse, kim2005security, chen2003ontology, golemati2007creating, lee2017location, matsokis2010plm, vanDamPhDThesis2009}. For illustration purposes, some instances (but not all) of the presented classes are usually presented. To be consistent with other works, we aim to obtain an ontology for which all the classes are defined too.
+		
+		\item Previously, we used the notions of \emph{scenario class} and \emph{scenario}, where a \emph{scenario} would be an instance of one or multiple \emph{scenario classes}. An example of a \emph{scenario class} could have the name ``lead vehicle braking'' (i.e., it qualitatively describes a scenario in which a vehicle in front of the ego vehicle brakes) whereas an actual (real-world) scenario with a lead vehicle braking would be an instance of this scenario class. The problem with this approach is that it is practically impossible to define all the \emph{scenario classes}.
+		
+		Therefore, a different approach is used: both \emph{scenario class} and a \emph{scenario} are classes (i.e., abstract specifications of concepts). Because the word class in \emph{scenario class} might be confusing, we will name this class \emph{qualitative scenario} instead. As a result, the aforementioned ``lead vehicle braking'' is an instance of a \emph{qualitative scenario} and the actual (real-world) scenario is an instance of a (quantitative) \emph{scenario}. To maintain the relation between the actual (real-world) scenario and the qualitative scenario, a \emph{scenario} has a property a list of qualitative scenarios.
+		
+		\item Similarly to the classes \emph{qualitative scenario} and \emph{scenario}, the ontology consists of the classes \emph{qualitative activity} and \emph{activity}, \emph{qualitative actor} and \emph{actor}, and \emph{qualitative static environment} and \emph{static environment}. 
+		
+		\item Representing ontologies is usually done by either the Unified Modeling Language (UML) or the Web Ontology Language (OWL) (see \cite{atkinson2005detailed} for a comparison). As my colleague (Arash) has experience with UML, we use this language to describe the ontology. This is ongoing, so no results are shared in this progress report. At the same time, I am preparing some examples using the object-oriented language Python. I hope to share the results of this next time.
+	\end{itemize}
+
+	\item I worked on quantifying the completeness of a dataset. The following conclusions are drawn.
 \end{itemize}
 
 \section{Future plans}
 
 \begin{itemize}
-	\item 
+	\item Regarding the ontology, I plan to do the following:
+	\begin{itemize}
+		\item Finish the description of the ontology in UML (next month).
+		\item Finish the examples of instances of the defined classes in Python. Because Python is an object-oriented language, the examples should indicate whether the defined ontology is complete or not (next month).
+		\item When the previous steps are completed, we want to create a database with \emph{qualitative scenarios} (using the list of qualitative scenarios that are defined for the project in Singapore) and quantitative \emph{scenarios} (using real-world scenarios from recorded data) while adopting the defined ontology (next couple of months).
+	\end{itemize}
 \end{itemize}
 
 \section{Questions}
