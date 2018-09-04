@@ -16,8 +16,8 @@
 *.bib.bak
 _data/
 */.ipynb_checkpoints/*
-*/.idea/*
-*/__pycache__/*
+*.idea*
+*__pycache__*
 */pickles/*
 *.mp4
 *.nav
