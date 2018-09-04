@@ -45,11 +45,8 @@ f.savefig(os.path.join(figfolder, 'ego_activities'))
 
 # Plot the state of an actor
 qualitative_ego = QualitativeActor("sedan", "Passenger car (M1)", tags=["Passenger car (M1)"])
-ego = Actor("ego", qualitative_ego, [ego_acceleration1, ego_braking, ego_cruising1], tags=["Ego"])
+ego = Actor("ego", qualitative_ego, tags=["Ego"])
 f, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
-ego.plot_state("x", ax=ax1)
-ego.plot_state_dot("x", ax=ax2)
-f.savefig(os.path.join(figfolder, 'actor_activities'))
 
 print("Tags of ego vehicle:")
 for tag in ego.get_tags():
