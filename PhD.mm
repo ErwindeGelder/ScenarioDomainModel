@@ -2381,6 +2381,16 @@
 <attribute NAME="authors" VALUE="Hall, Peter"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
+<node TEXT="Bias Estimation on Coverage Accuracy in Nonparametric Inference" ID="ID_1170059189" CREATED="1536074657658" MODIFIED="1536074661424" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/236%20Bias%20and%20coverage%20accuracy%20for%20nonparametric%20inference.pdf">
+<attribute NAME="key" VALUE="calonico2018effect"/>
+<attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="On the Effect of Bias Estimation on Coverage Accuracy in Nonparametric Inference"/>
+<attribute NAME="authors" VALUE="Calonico, Sebastian and Cattaneo, Matias D and Farrell, Max H"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="0E57E2481A29BE7F33AC2B7108AAAA6B5ABEC7432D81EAB9863F9DECF7FD2E">
+    <pdf_title>On the Eect of Bias Estimation on Coverage Accuracy</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
 <node TEXT="Explanation of what copulas are" ID="ID_1206112239" CREATED="1513683703860" MODIFIED="1534390677729" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/092%20Coping%20with%20Copulas.pdf">
