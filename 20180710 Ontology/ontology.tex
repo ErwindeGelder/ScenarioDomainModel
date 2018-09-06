@@ -233,7 +233,7 @@
 \newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
 \ExplSyntaxOn
-\newcommand{\class}[2]{
+\newcommand{\classfig}[2]{
 	\begin{tikzpicture}
 		\node[align=center, draw=black, rounded~corners=0.5em]{%
 			\textbf{#1} \\
@@ -298,58 +298,89 @@ The names of the classes start with a capital letter, whereas the first letter o
 \subsection{Scenario class}
 \label{sec:scenario class}
 
+The abstract class \class{ScenarioClass} is used to refer to a set of scenarios that are described in a similar qualitative manner \cite{elrofai2018scenario}. \Cref{fig:scerario class} shows the properties of this class. Six different properties are identified:
+\begin{enumerate}
+	\item scenarioClassID: unique ID that is used to refer to an instance of \class{ScenarioClass}.
+	\item scenarioClassDescription: a human-readable description that can be used to interpret the commonality among the set of scenarios that belong to the scenario class.
+	\item subScenarioClasses: a list of instances of \class{ScenarioClass} that have at least the same tags as the corresponding instance. All scenarios that belong to the instances specified by the property subScenarioClasses also belong to the scenario class.
+	\item superScenarioClasses: a list of instances of \class{ScenarioClass} that have the scenario class listed in their property subScenarioClasses. 
+	\item tags: a list of instances of \class{Tag} that describe the scenarios of the scenario class. All scenarios that have at least the same tags are instances of the property scenarios.
+	\item scenarios: a list of instances of \class{Scenario}.
+\end{enumerate}
 
-
-\begin{figure}[h]
+\begin{figure}
 	\centering
-	\class{ScenarioClass}{%
+	\classfig{ScenarioClass}{%
 		scenarioClassID,Primitive,Integer;
 		scenarioClassDescription,Primitive,String;
 		subScenarioClasses,Instances,ScenarioClass;
 		superScenarioClasses,Instances,ScenarioClass;
-		tagsCombinations,Instances,TagCombination;
+		tags,Instances,Tag;
 		scenarios,Instances,Scenario
 	}
 	\caption{Description of the abstract class \class{ScenarioClass}.}
 	\label{fig:scerario class}
 \end{figure}
 
-\class{TagCombination}{tags,Instances,Tag}
+\begin{figure}
+	\centering
+	\classfig{Tag}{%
+		tagID,Primitive,Integer;
+		tagDescription,Primitive,String;
+		tagName,Primitive,String;
+		subTags,Instances,Tag;
+		superTag,Instances,Tag
+	}
+	\caption{Description of the abstract class \class{Tag}.}
+\end{figure}
 
-\class{Tag}{%
-	tagID,Primitive,Integer;
-	tagDescription,Primitive,String;
-	tagName,Primitive,String;
-	subTags,Instances,Tag;
-	superTag,Instances,Tag
-}
+\begin{figure}
+	\centering
+	\classfig{Scenario}{%
+		scenarioID,Primitive,Integer;
+		tags,Instances,Tag;
+		staticEnvironment,Instance,StaticEnvironment;
+		dynamicEnvironment,Instance,DynamicEnvironment;
+		scenarioClasses,Instances,ScenarioClass;
+		egoVehicles,Instances,EgoVehicle
+	}	
+	\caption{Description of the abstract class \class{Scenario}.}
+\end{figure}
 
-\class{Scenario}{%
-	scenarioID,Primitive,Integer;
-	tags,Instances,Tag;
-	staticEnvironment,Instance,StaticEnvironment;
-	dynamicEnvironment,Instance,DynamicEnvironment;
-	scenarioClasses,Instances,ScenarioClass;
-	egoVehicles,Instances,EgoVehicle
-}
+\begin{figure}
+	\centering
+	\classfig{StaticEnvironment}{staticEnvironmentProperties,Instances,StaticEnvironmentProperty}
+	\caption{Description of the abstract class \class{StaticEnvironment}.}
+\end{figure}
 
-\class{StaticEnvironment}{staticEnvironmentProperties,Instances,StaticEnvironmentProperty}
+\begin{figure}
+	\centering
+	\classfig{DynamicEnvironment}{dynamicElements,Instances,DynamicElement}
+	\caption{Description of the abstract class \class{DynamicEnvironment}.}
+\end{figure}
 
-\class{DynamicEnvironment}{dynamicElements,Instances,DynamicElement}
+\begin{figure}
+	\centering
+	\classfig{DynamicElement}{%
+		dynamicElementProperties,Instances,DynamicElementProperty;
+		activities,Instances,Activity
+	}
+	\caption{Description of the abstract class \class{DynamicElement}.}
+\end{figure}
 
-\class{DynamicElement}{%
-	dynamicElementProperties,Instances,DynamicElementProperty;
-	activities,Instances,Activity
-}
+\begin{figure}
+	\centering
+	\classfig{Activity}{%
+		activityName,Primitive,String;
+		activityModel,Instance,ActivityModel;
+		startTime,Primitive,Float;
+		endTime,Primitive,Float;
+		activityParameters,Instances,ActivityParameter;
+		activityState,Instance,ActivityState
+	}
+	\caption{Description of the abstract class \class{Activity}.}
+\end{figure}
 
-\class{Activity}{%
-	activityName,Primitive,String;
-	activityModel,Instance,ActivityModel;
-	startTime,Primitive,Float;
-	endTime,Primitive,Float;
-	activityParameters,Instances,ActivityParameter;
-	activityState,Instance,ActivityState
-}
 
 \printbibliography
 
