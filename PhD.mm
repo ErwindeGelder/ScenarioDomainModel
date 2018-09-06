@@ -624,7 +624,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Other methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1522896107890">
+<node TEXT="Other/general methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1536226544121">
 <node TEXT="Teaching Self-Driving Cars to Dream" ID="ID_1568568342" CREATED="1522896117493" MODIFIED="1534391955155" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/177%20Teaching%20Self-Driving%20Cars%20to%20Dream.pdf">
 <attribute NAME="key" VALUE="rocklage2017teaching"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -632,6 +632,15 @@
 <attribute NAME="authors" VALUE="Rocklage, Elias"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="369CC5CC5926BFF21609A650D1995E62A624D4A226395AAC82F6830317F2E">
     <pdf_title>Teaching Self-Driving Cars to Dream: A Deeply Integrated, Innovative Approach for Solving the Autonomous Vehicle Validation Problem</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Master thesis from HAN for WEpods tests" ID="ID_1010729177" CREATED="1536226547000" MODIFIED="1536226563188" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/237%20Master%20Thesis%20HAN%20Test%20Methods%20for%20an%20AV.pdf">
+<attribute NAME="key" VALUE="chaantremi2018test"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Test Methods for an Autonomous Vehicle"/>
+<attribute NAME="authors" VALUE="Shullai, Chaantremi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E34C9369E3F1CA96D12330662CB933984168AED66447DFC3F02CC6DD73F27527">
+    <pdf_title>MASTER THESIS</pdf_title>
 </pdf_annotation>
 </node>
 </node>
