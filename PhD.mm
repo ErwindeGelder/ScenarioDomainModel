@@ -870,6 +870,15 @@
     <pdf_title>Master Thesis</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Denis Pogosov - Prediction of Road User Behavior" ID="ID_723568225" CREATED="1536254227737" MODIFIED="1536254239556" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/239%20Master%20Thesis%20Denis%20Pogosov%20-%20Prediction%20of%20Road%20User%20Behavior.pdf">
+<attribute NAME="key" VALUE="pogosov2018prediction"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Prediction of Road User Behavior"/>
+<attribute NAME="authors" VALUE="Pogosov, Denis"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="99EF44995D21EF42A2FF1CDADC047A8E24AB514D413B343D17CCCCFF0731C">
+    <pdf_title>Prediction of Road User Behavior</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Own papers" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1038442194" CREATED="1516860598580" MODIFIED="1534304366349" HGAP="70" VSHIFT="-18" MOVED="1534304239757">
 <edge COLOR="#00ff00"/>
