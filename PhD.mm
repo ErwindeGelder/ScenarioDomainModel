@@ -51,7 +51,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="0"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="1"/>
 <node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1534304349580" HGAP="80" VSHIFT="-10" MOVED="1534304305826">
 <edge COLOR="#7c7c00"/>
 <node TEXT="Curve fitting" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1288097973" CREATED="1516866158372" MODIFIED="1516866168325">
@@ -857,6 +857,18 @@
     <pdf_title>X V</pdf_title>
 </pdf_annotation>
 </node>
+</node>
+</node>
+<node TEXT="Master Thesises" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1200522400" CREATED="1536234494309" MODIFIED="1536234527959" HGAP="78" VSHIFT="-4">
+<edge COLOR="#ff0000"/>
+<node TEXT="Peter Markovic - Event Detection" ID="ID_12958517" CREATED="1536234529817" MODIFIED="1536234633824" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/238%20Master-Thesis-Peter-Markotic-Event-Detection.pdf">
+<attribute NAME="key" VALUE="markotic2018pattern"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Pattern Recognition for Scenario Detection in Real-Life Traffic Data"/>
+<attribute NAME="authors" VALUE="Markoti{\&apos;c}, Petar Henricus Johannes"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="24F752A0EA367ED5B61FDBD47C97CA8DDA633E2EEEE5BF9745285CADEFA0">
+    <pdf_title>Master Thesis</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Own papers" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1038442194" CREATED="1516860598580" MODIFIED="1534304366349" HGAP="70" VSHIFT="-18" MOVED="1534304239757">
