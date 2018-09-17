@@ -2421,6 +2421,13 @@
     <pdf_title>On the Eect of Bias Estimation on Coverage Accuracy</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Estimating Tail Probabilities" ID="ID_1585430269" CREATED="1537180589409" MODIFIED="1537180792959" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/240%20Estimating%20Tail%20Probabilities.pdf">
+<attribute NAME="key" VALUE="carr1982estimating"/>
+<attribute NAME="year" VALUE="1982"/>
+<attribute NAME="title" VALUE="Estimating Tail Probabilities"/>
+<attribute NAME="authors" VALUE="Carr, D. B. and Tolley, H. D."/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
 </node>
 <node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
 <node TEXT="Explanation of what copulas are" ID="ID_1206112239" CREATED="1513683703860" MODIFIED="1534390677729" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/092%20Coping%20with%20Copulas.pdf">
