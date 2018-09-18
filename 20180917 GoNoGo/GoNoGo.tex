@@ -208,7 +208,7 @@
 %\setlength\subfigbottomskip{-3pt}                  %% (subfigure) distance between subcaption and caption
 %\renewcommand*{\subcapsize}{\small}                %% (subfigure) subcaption font size
 \renewcommand*{\thesubfigure}{(\alph{subfigure})}   %% (subfig) implement 1(a) instead of 1a ...as subfigure reference
-\captionsetup[subfloat]{labelformat=simple}        %% ... as subfigure reference
+%\captionsetup[subfloat]{labelformat=simple}        %% ... as subfigure reference
 %\captionsetup[subfloat]{
 %    farskip=0pt,
 %    nearskip=8pt,
@@ -232,6 +232,9 @@
 \newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
 %\usepackage{changebar}  %% When including the package earlier, it does not work for some reason...
+\newlength{\venncircle}
+\newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
+\newcommand{\mise}[1]{\textup{MISE} \left( #1 \right)}
 
 %%==========================================================================
 %% Begin document
