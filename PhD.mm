@@ -595,7 +595,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Scenario-based methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1555930360" CREATED="1517043981271" MODIFIED="1517043988742">
+<node TEXT="Scenario-based methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1555930360" CREATED="1517043981271" MODIFIED="1517043988742">
 <node TEXT="Scenario-Based Assessment by Using Time Series Classification of Human-Driving Behaviour" ID="ID_507707419" CREATED="1517043996475" MODIFIED="1534391955077" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/134%20A%20Scenario-Based%20Assessment%20Approach%20for%20Automated%20Driving.pdf">
 <attribute NAME="key" VALUE="roesener2016scenariobased"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -621,6 +621,15 @@
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
     <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="PhD Thesis Olaf Gietelink" ID="ID_1894223239" CREATED="1537236408648" MODIFIED="1537236484216" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/241%20PhD%20Olaf%20Gietelink.pdf">
+<attribute NAME="key" VALUE="gietelink2007phd"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Design and Validation of Advanced Driver Assistance Systems"/>
+<attribute NAME="authors" VALUE="Gietelink, Olaf Jeroen"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2B1A94744C2FADDB2D4A1B5A37D26122092201C3214AC10A13DE865BB8D50B2">
+    <pdf_title>Design and Validation of</pdf_title>
 </pdf_annotation>
 </node>
 </node>
