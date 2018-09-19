@@ -70,7 +70,7 @@ Hence, a scenario is defined as follows.
 	A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its dynamic environment (consisting of traffic environment and conditions) and its static environment. From the perspective of the ego vehicle, a scenario contains all relevant events.
 \end{definition}
 
-For the ontology, the other notions, such as ego vehicle, activity, dynamic environment, static environment, conditions, and events, need to be defined as well. However, this is out fo scope for this report.
+For the ontology, the other notions, such as ego vehicle, activity, dynamic environment, static environment, conditions, and events, need to be defined as well. However, this is out of scope for this report.
 
 Although a scenario is a quantitative description, there also exists a qualitative description of a scenario. We refer to the qualitative description of a scenario as a \emph{scenario class}. The qualitative description can be regarded as an abstraction of the quantitative scenario.
 
@@ -101,6 +101,7 @@ Scenarios are instances of scenario classes. A scenario class can contain multip
 A scenario class can be a subclass of another scenario class. For example, when we continue our previous example and consider the scenario class ``Day and rain'', this scenario class is a subclass of the scenario classes ``Day'' and ``Rain''. Also, a scenario that occurs during the day with rain now belongs to three scenario classes: ``Day'', ``Rain'', and ``Day and rain''.
 
 \subsubsection{Quantification of completeness}
+\label{sec:completeness}
 
 To draw conclusions on how an AV would perform in real-world traffic, it is necessary to know how representative the scenario database, that is used for the scenario-based assessment of the AV, is. Therefore, it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}. To quantify how complete a scenario database is, it is assumed that a scenario is defined according to \cref{def:scenario} and that a scenario class refers to a qualitative description of a scenario, such as described in \cref{sec:ontology}. The problem of quantifying the completeness can now be divided into two subproblems.
 
@@ -116,35 +117,35 @@ One way to estimate the uncertainty of an estimated pdf employs the so-called Me
 	\mise{n} = \expectation{ \int_{\mathbb{R}^d} \left(\hat{f}(x;n) - f(x)\right)^2 \, \textup{d}x} = \int_{\mathbb{R}^d} \expectation{\left(\hat{f}(x;n) - f(x)\right)^2} \, \textup{d}x,
 \end{equation}
 
-For calculating the MISE, the true pdf $f(x)$ is required. However, the MISE can be estimated using $\hat{f}(x, n)$. When $f(x)$ is estimated using a parametric statistics, e.g., a Gaussian distribution, the posterior distributions of the parameters of the pdf can be used \cite{bishop2006pattern}, whereas for nonparametric statistics, e.g., Kernel Density Estimation \cite{rosenblatt1956remarks, parzen1962estimation}, the asymptotic MISE can be employed \cite{chen2017tutorial}. As this report is meant to give an overview of the research, more details on quantifying the completeness are omitted in this report.
+For calculating the MISE, the true pdf $f(x)$ is required. However, the MISE can be estimated using $\hat{f}(x, n)$. When $f(x)$ is estimated using a parametric statistics, e.g., a Gaussian distribution, the posterior distributions of the parameters of the pdf can be used \cite{bishop2006pattern}, whereas for nonparametric statistics, e.g., Kernel Density Estimation \cite{rosenblatt1956remarks, parzen1962estimation}, the Asymptotic MISE (AMISE) can be employed \cite{chen2017tutorial}. As this report is meant to give an overview of the research, more details on quantifying the completeness are omitted in this report.
 
 \subsection{Papers and reports}
 \label{sec:paper}
 
-During last year, several papers and reports are written, among which is the following:
-\begin{itemize}
-	\item Paper on ontology for the Intelligent Vehicles Symposium (IV).
-	\item Paper for ITS AP
-	\item Report on scenario classes.
-	\item Position paper of StreetWise.
-\end{itemize}
+During last year, several papers and reports are written, among which are the following:
+\begin{enumerate}
+	\item Paper on ontology for scenarios, submitted to the Intelligent Vehicles Symposium (IV). Unfortunately, the paper has been rejected. Main criticism is that the paper presents a set of definitions, rather than an ontology. 
+	\item When working at CETRAN, I worked on a report that describes the framework for the scenario-based assessment of AVs. Part of this report has been turned into a paper for the Intelligent Transportation Systems (ITS) Asia-Pacific Forum \cite{ploeg2018cetran} of which I am the second author.
+	\item Together with Olaf Op den Camp, I wrote a report describing different scenario classes relevant for Singaporean traffic. To do this, use is made of the ontology defined earlier, so this report might be a good use case of the ontology. We aim to have this document publicly available as soon as it is finalized. \label{item:scenario classes}
+	\item The methodology of generating test cases for the assessment of AVs using real-world driving data is called ``StreetWise'' within TNO. TNO wrote a position paper on this topic \cite{elrofai2018scenario}.
+\end{enumerate}
 
 \subsection{Outlook}
 \label{sec:outlook}
 
-Major
+My goal is to write at least four journal papers on the following topics:
 \begin{itemize}
-	\item Paper on ontology
-	\item Paper on completeness
-	\item Overall paper describing the assessment procedure. Work out whole pipeline (including completeness, simulation) for at least one scenario class.
-	\item Test case generation (including parametrization and estimation pdf)
+	\item \emph{Ontology for scenarios for the assessment of AVs.} This paper extends the work done earlier for the conference paper that is rejected, see \cref{sec:ontology}. UML will be used as the ontology modeling language. Part of the work on the scenario classes (see item \ref{item:scenario classes} of \cref{sec:paper}) will be used as well.
+	\item \emph{Quantification of the completeness of traffic data.} This work extends the work partially described in \cref{sec:completeness}. The plan is to first write a conference paper on this topic with a simple case study involving artificial data (of which the true distributions are known). For the journal paper, real-world data will be used as well.
+	\item \emph{Framework for the safety assessment of AVs.} Work out the whole pipeline for at least one scenario class, i.e., including completeness, simulation, and evaluation, see \cref{fig:scheme}. This work should extend the work of \cite{ploeg2018cetran}.
+	\item \emph{Test case generation for the assessment of AVs.} This work includes the parametrization of the scenarios and the estimation of the probability density functions. Additionally, this work should describe how critical test cases (i.e., test cases for which the performance of the AV might be critical) can be generated.
 \end{itemize}
 
-Minor
+Next to the aforementioned topics, my goal is to also work on the following topics, which will typically result in a conference paper.
 \begin{itemize}
-	\item Publish data
-	\item Risk of a scenario class
-	\item Detection/classification of activities.
+	\item The whole methodology assumes that real-world data is being collected. Although TNO will depend on the industry to come with data, we will also collect some data ourselves. My aim would be to make part of the data we collect publicly available. I want to write a conference paper to describe the way the data is collected, the details of the data, and the potential use and limitations of the data.
+	\item The traditional ISO26262 standard is used to design a system that is functionally safe. This standard is used nowadays for the development for Advanced Driver Assistance Systems. For higher levels of automation, however, this standard is not enough for designing a safe system. One issue with this standard for designing and assessing higher levels of automation is that it only allows to compute the risk of an hazardous event while the risk of a particular scenario is also very relevant. Therefore, I want to work on a paper that quantifies the risk of a scenario (which can turn into a hazardous event).
+	\item The detection and classification of activities is the first step to go from the preprocessed data to the generation of test cases. I will work on this, but I do not expect to write a journal paper for this topic.
 \end{itemize}
 
-Note: scenario mining already addressed by other people.
+Note that scenario mining is also important, as mentioned in \cref{fig:scheme}. Because scenario mining is already addressed by other people within TNO, I did not list it above.
