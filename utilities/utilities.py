@@ -60,7 +60,7 @@ def pdf_latex(folder, texfile, output=False):
         out = call_output(['pdflatex.exe', '-synctex=1', '-interaction=nonstopmode', '-shell-escape',
                            '"{:s}".tex'.format(texfile)],
                           cwd=folder)
-        lines = out.decode().split('\r\n')
+        lines = out.decode('utf-8', 'ignore').split('\r\n')  # Ignore errors
         for line in lines:
             print(line)
         return lines
@@ -177,7 +177,7 @@ if __name__ == '__main__':
     call_output('git checkout PR10')
     pdf(os.path.join('..', 'progress_reports', 'report10'), 'progress_report_10', usebiber=True)
     call_output('git checkout PR11')
-    pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True)
+    pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report11'), 'progress_report_11')
     call_output('git checkout master')
 
