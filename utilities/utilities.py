@@ -176,6 +176,8 @@ if __name__ == '__main__':
     pdf(os.path.join('..', 'progress_reports', 'report09'), 'progress_report_09', usebiber=True)
     call_output('git checkout PR10')
     pdf(os.path.join('..', 'progress_reports', 'report10'), 'progress_report_10', usebiber=True)
+    call_output('git checkout PR11')
+    pdf(os.path.join('..', 'progress_reports', 'report11'), 'progress_report_11')
     call_output('git checkout master')
 
     # All other stuff
@@ -192,3 +194,4 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180521 Summary GoNoGo'), 'phd_summary', usebiber=True)
     pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True)
     pdf(os.path.join('..', '20180710 Ontology'), 'ontology', usebiber=True)
+    pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True)
