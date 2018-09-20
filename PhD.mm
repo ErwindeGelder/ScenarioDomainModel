@@ -499,7 +499,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
+<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
 <node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1534391906877" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
 <attribute NAME="key" VALUE="kalra2016driving"/>
 <attribute NAME="journal" VALUE="Transportation Research Part A: Policy and Practice"/>
