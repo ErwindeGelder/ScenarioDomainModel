@@ -177,6 +177,7 @@ if __name__ == '__main__':
     call_output('git checkout PR10')
     pdf(os.path.join('..', 'progress_reports', 'report10'), 'progress_report_10', usebiber=True)
     call_output('git checkout PR11')
+    pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True)
     pdf(os.path.join('..', 'progress_reports', 'report11'), 'progress_report_11')
     call_output('git checkout master')
 
