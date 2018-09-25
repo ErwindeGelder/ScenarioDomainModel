@@ -1,7 +1,37 @@
 \section{Problem definitions}
 \label{sec:problem} % Arash
 
-The need for quantification on risk calculation for automated driving. 
-TODO: formalizing this sentence in the context of scenario. 
+This Section presents: 
+\begin{itemize}
+	\item Why risk assessment matters?
+	\item What is currently the risk estimation method? 
+	\item What is lacking in this approach? 
+	\item What need to be done more? 
+\end{itemize}
 
-Differentiating probability of a single (hazardous) event (state of art) to what we are doing: i.e. probability of whole scenario. 
+In this section we position our research in the automotive safety engineering domain. 
+We present the current risk assessment methods and discuss their limitation and the impact of these limits.
+The argue that advancement in the risk assessment methods are required for achieving higher levels of automation in the automotive domain. 
+
+\subsection{Why risk assessment?}
+
+Safety means avoiding risk. 
+
+The goal of functional safety is to avoid \emph{unreasonable} risk\footnote{Unreasonable risk is judged according to the the society's acceptance of level of risk.} that is due to some sort of malfunctioning .
+
+
+\subsection{Risk assessment in ISO~26262}
+Risk is defined in ISO~26262 as:
+\begin{definition}
+	``combination of the probability of accurance of harm and the severity of that harm'' 
+\end{definition}
+
+
+
+Risk assessment is an integral part of the safety life-cycle of ISO~26262 and one of the earlier activities. 
+During risk assessment, the identified hazardous events are analyzed and the associated severity, probability of exposure and controllability are estimated and assigned to some predefined levels. 
+The combination of the estimated severity, exposure and controllability contribute to construct the Automotive Safety Integrity Level (ASIL). 
+
+
+
+
