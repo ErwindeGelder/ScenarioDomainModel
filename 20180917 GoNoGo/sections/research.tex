@@ -1,6 +1,8 @@
 \section{Research}
 \label{sec:research}
 
+An introduction of the research, including the main research question, is presented in \cref{sec:introduction}. \Cref{sec:focus} describes more details of the research and the sub-problems. In \cref{sec:paper}, a list of resulted papers and reports is shown. \Cref{sec:outlook} provides an outlook for the coming years of my PhD.
+
 
 \subsection{Introduction}
 \label{sec:introduction}
@@ -16,6 +18,12 @@ One proposed way to assess safety is to test drive AVs in real traffic, observe 
 % Scenarios are obtained with data
 These test-scenarios can be knowledge-driven or data-driven \cite{stellet2015taxonomy}. A drawback of knowledge-based test scenarios is that it does not allow to generalize the results to the performance of the system-under-test when operating in traffic, i.e., the test cases may not be valid or representative for real-world traffic. A data-driven approach is adopted, as it allows to generalize the results \cite{deGelder2017assessment}. The challenge is, however, to extract the interesting, e.g., performance critical, scenarios from the data, such that the number of simulations is still limited.
 
+In summary, the ultimate goal of this research is a methodology for generating test case that assess the performance of an AV using a data-driven approach. Hence, the main research question is formulated as follows:
+
+\begin{mdframed}[style=MyFrame]
+	\paragraph{Main research question:} How can test cases be generated that assess the performance of automated vehicles in real traffic using real-world driving data?
+\end{mdframed}
+
 \subsection{Focus of research}
 \label{sec:focus}
 
@@ -23,7 +31,8 @@ These test-scenarios can be knowledge-driven or data-driven \cite{stellet2015tax
 
 \input{figures/scheme.tikz}
 
-First of all, a clear definition of scenario is required to avoid the ambiguity that often arises when talking about \emph{scenarios}. Next to that, related notions need to be defined, e.g., the components that constitute a scenario, such as the activities and the static environment. 
+% Definition of scenario
+First of all, a clear definition of scenario is required to avoid the ambiguity that often arises when talking about \emph{scenarios}. Next to that, related notions need to be defined, e.g., the components that constitute a scenario, such as the activities and the static environment. The goal is to formally define scenario and the related notions, such that these definitions can be directly reflected to, e.g., code and database structure.
 
 % Activity detection
 An activity is considered the smallest building block of the dynamic part of the scenario (maneuver of the ego vehicle and the dynamic environment). An activity refers to the behavior of an actor, such as ``braking'' and ``changing lane''. The first step is to detect the activities from the preprocessed data. 
@@ -32,100 +41,40 @@ An activity is considered the smallest building block of the dynamic part of the
 In scenario mining, the events and activities that are independently identified for the ego vehicle, the other traffic participants, the static environment, and the conditions are combined to construct a scenario. 
 
 % Parametrization
-The recorded scenarios (and its associated activities) are to be stored in a database \cite{elrofai2018scenario}. The scenario database does not contain raw sensor data, but a parametrized model of the real world based on the sensor signals. Therefore, dependency of the stored scenarios on the sensor set with which the scenario was recorded is avoided. The fact that the stored scenarios do not contain the original sensor data brings several benefits. 
+The recorded scenarios (and its associated activities) are to be stored in a database \cite{elrofai2018scenario}. The scenario database does not contain raw sensor data, but a parametrized model of the real world based on the sensor signals. Therefore, dependency of the stored scenarios on the sensor set with which the scenario was recorded is avoided. The fact that the stored scenarios do not contain the original sensor data brings several benefits: 
 \begin{itemize}
 	\item The original sensor data might be sensitive as it reveals the sensor setup and processing capabilities of a car. This is much less of an issue when only parameters of the models of the scenarios are stored. Whereas the original sensor data is unlikely to be shared among different parties, the resulting scenarios might be shared, such that the involved parties can benefit from each other.
-	\item By condensing the information of all sensors into the least amount of parameters that describe the scenario within the error bounds of sensors, substantial reduction in storage volume is achieved.
+	\item By condensing the information of all sensors into the least number of parameters that describe the scenario within the error bounds of sensors, substantial reduction in storage volume is achieved.
 	\item All the parameters of scenarios of a specific scenario class can be used to construct probability density functions. These probability density functions can be used to generate test cases that lead to probabilistic results \cite{deGelder2017assessment}. Furthermore, it is possible, using the parametrized scenarios, to emphasize scenarios in which the system-under-test shows performance-critical behavior without a-priori knowledge of what scenarios might be critical \cite{deGelder2017assessment}. 
 	\item The parametrized models of the scenarios allow for time interpolation. Hence, the stored scenarios can be used for any given sample time, regardless of the sample time of the original sensor data. 
 \end{itemize}
 
 % Test case generation
+To generate the test cases, the parametrized scenarios are used. More specifically, a probability density function (pdf) of the parameters is estimated. By drawing samples from the pdf, new test cases are generated. The parametrization influences the estimation of the pdf, e.g., the number of parameters and the correlation among the parameters influence the uncertainty of the estimation. In general, the test case generation will be easier when fewer parameters are used to describe a scenario. On the other hand, using too few parameters might result in a loss of important information of the scenario. It needs to be investigated what the balance is between having enough parameters to retain sufficient information while enabling reliable generation of test cases.
 
 % Completeness
+On the one hand, the number of scenarios should be limited such that the test load remains feasible and, on the other hand, the scenarios should cover a large part of the variety of the actual scenarios that can be found in real-world traffic. For this reason, it is important to quantify to what extent the collected scenarios and the test cases are \emph{complete}. In \cref{fig:scheme}, this is indicated by the notion of \emph{completeness}. A goal of this research is to quantify the \emph{completeness} of the data.
 
+% Research question
+Based on the main research question, many sub-questions can be formulated. To limit the scope of the research, only three sub-questions are formulated. 
 
-\subsection{Preliminary results}
-\label{sec:results}
+\begin{mdframed}[style=MyFrame]
+	\paragraph{Sub-question 1:} How to formally define scenario in the context of the assessment of automated vehicles?
+	
+	\paragraph{Sub-question 2:} How to parametrize scenarios while retaining sufficient information and enabling reliable estimation of the probability density function of the parameters?
+	
+	\paragraph{Sub-question 3:} How to quantify the completeness of the driving data?
+\end{mdframed}
 
-I mainly worked on defining an appropriate ontology regarding scenarios and quantifying completeness. 
-
-\subsubsection{Ontology of scenario for the assessment of automated vehicles}
-\label{sec:ontology}
-
-The notion of scenario is frequently used in the context of automated driving \cite{putz2017pegasus, roesener2017comprehensive, gietelink2006development, hulshof2013autonomous, karaduman2013interactivebehavior, englund2016grand, xu2002effects, ebner2011identifying, ploeg2017GCDC, zofka2015datadrivetrafficscenarios}, despite the fact that an explicit definition is often not provided. However, as mentioned by various authors \cite{stellet2015taxonomy, alvarez2017prospective, zofka2015datadrivetrafficscenarios, aparicio2013pre, lesemann2011test, putz2017pegasus, geyer2014, ulbrich2015}, using a scenario in the context of the development or assessment of AVs requires a clear definition of a scenario. To this end, few definitions of a scenario in the context of (automated) driving have been proposed \cite{geyer2014, ulbrich2015, elrofai2016scenario}. For the context of the scenario database that we aim for \cite{elrofai2018scenario}, however, a more concrete definition of a scenario is required to minimize any ambiguity regarding the scenarios. Ultimately, an ontology is desired to directly use the definitions for the scenario database.
-
-Part of the ontology are the definitions of the different concepts that are adopted. For defining the notion of a scenario, the following characteristics are considered:
-\begin{enumerate}
-	\item A scenario corresponds to a time interval \cite{go2004blind, geyer2014, ulbrich2015, elrofai2016scenario}.
-	\item A scenario consists of one or several events \cite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962, englund2016grand, schoemaker1993multiple, cuppens2002alert, bach2016modelbased}.
-	\item Real-world traffic scenarios are quantitative scenarios.
-	\item The time interval of a scenario contains all relevant events \cite{geyer2014}.
-	\item A scenario can contain goal(s) of one or multiple actors \cite{geyer2014, ulbrich2015, elrofai2016scenario}.
-	\item A scenario includes the description of the environment \cite{geyer2014, ulbrich2015, elrofai2016scenario, ebner2011identifying, schuldt2013effiziente, althoff2017CommonRoad}.
-\end{enumerate}
-
-Hence, a scenario is defined as follows.
-\begin{definition}[Scenario]\label{def:scenario}
-	A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its dynamic environment (consisting of traffic environment and conditions) and its static environment. From the perspective of the ego vehicle, a scenario contains all relevant events.
-\end{definition}
-
-For the ontology, the other notions, such as ego vehicle, activity, dynamic environment, static environment, conditions, and events, need to be defined as well. However, this is out of scope for this report.
-
-Although a scenario is a quantitative description, there also exists a qualitative description of a scenario. We refer to the qualitative description of a scenario as a \emph{scenario class}. The qualitative description can be regarded as an abstraction of the quantitative scenario.
-
-Scenarios are instances of scenario classes. A scenario class can contain multiple scenarios. On the other hand, a scenario may belong to one or multiple scenario classes. As an example, consider the scenario class ``Day'', which contains all scenarios that occur during the day, and the scenario class ``Rain'', which contains all scenarios with rain, see \cref{fig:venn diagram scenario class}. A scenario that occurs during the night without rain does not belong to any of the previously defined scenario classes. Likewise, a scenario that occurs during the day with rain belongs to both scenario classes ``Day'' and ``Rain''. 
-
-\setlength{\venncircle}{10em}
-\begin{figure}
-	\centering
-	\begin{tikzpicture}
-		\fill[red, fill opacity=0.5] (-\venncircle/2, 0) circle (\venncircle);
-		\fill[green, fill opacity=0.5] (\venncircle/2, 0) circle (\venncircle);
-		\draw (-\venncircle/2, 0) circle (\venncircle);
-		\draw (\venncircle/2, 0) circle (\venncircle);
-		
-		\node[anchor=east](daylight) at (-4/3*\venncircle, 3/4*\venncircle) {Day};
-		\draw (daylight) -- ({(-sqrt(3)/2-1/2)*\venncircle}, \venncircle/2);
-		\node[anchor=west](rain) at (4/3*\venncircle, 3/4*\venncircle) {Rain};
-		\draw (rain) -- ({(sqrt(3)/2+1/2)*\venncircle}, \venncircle/2);
-		
-		\node[text width=\venncircle, align=center] at (-\venncircle, 0) {Scenarios without rain during day};
-		\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during day};
-		\node[text width=\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain during night};
-	\end{tikzpicture}
-	\caption{The two circles correspond to the two scenario classes ``Day'' and ``Rain'', respectively. Scenarios that occur during the day with rain belong to both scenario classes ``Day'' and ``Rain''. The new scenario class ``Day and rain'' can be defined as the class that contains all scenarios that occur during the day with rain. The scenario class ``Day and rain'' is a subclass of the scenario classes ``Day'' and ``Rain''.}
-	\label{fig:venn diagram scenario class}
-\end{figure}
-
-A scenario class can be a subclass of another scenario class. For example, when we continue our previous example and consider the scenario class ``Day and rain'', this scenario class is a subclass of the scenario classes ``Day'' and ``Rain''. Also, a scenario that occurs during the day with rain now belongs to three scenario classes: ``Day'', ``Rain'', and ``Day and rain''.
-
-\subsubsection{Quantification of completeness}
-\label{sec:completeness}
-
-To draw conclusions on how an AV would perform in real-world traffic, it is necessary to know how representative the scenario database, that is used for the scenario-based assessment of the AV, is. Therefore, it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}. To quantify how complete a scenario database is, it is assumed that a scenario is defined according to \cref{def:scenario} and that a scenario class refers to a qualitative description of a scenario, such as described in \cref{sec:ontology}. The problem of quantifying the completeness can now be divided into two subproblems.
-
-\begin{itemize}
-	\item The first subproblem deals with the quantification of the completeness regarding the number of scenario classes. 
-	\item The second subproblem deals with the quantification of the completeness regarding the scenarios of a specific scenario class.
-\end{itemize}
-
-During my research, I only focused on the second subproblem. To address this problem, it is assumed that each scenario of a specific scenario class can be parametrized using similar variables. Therefore, a probability density function (pdf) can be estimated based on the recorded scenarios. This pdf can be used to generate new instances that serve as test cases for the assessment of AVs. To obtain test cases that reflect the real-world traffic, the estimated pdf needs to resemble the true underlying pdf. Therefore, the second subproblem is addressed by quantifying the uncertainty of the estimated pdf.
-
-One way to estimate the uncertainty of an estimated pdf employs the so-called Mean Integrated Squared Error. Let $x \in \mathbb{R}^d$ be the vector of parameters and $f(x)$ the true underlying distribution. The pdf $f(x)$ is estimated using $n$ datapoints. Let $\hat{f}(x;n)$ denote the estimated pdf. This the MISE is defined as follows:
-\begin{equation} \label{eq:mise}
-	\mise{n} = \expectation{ \int_{\mathbb{R}^d} \left(\hat{f}(x;n) - f(x)\right)^2 \, \textup{d}x} = \int_{\mathbb{R}^d} \expectation{\left(\hat{f}(x;n) - f(x)\right)^2} \, \textup{d}x,
-\end{equation}
-
-For calculating the MISE, the true pdf $f(x)$ is required. However, the MISE can be estimated using $\hat{f}(x, n)$. When $f(x)$ is estimated using a parametric statistics, e.g., a Gaussian distribution, the posterior distributions of the parameters of the pdf can be used \cite{bishop2006pattern}, whereas for nonparametric statistics, e.g., Kernel Density Estimation \cite{rosenblatt1956remarks, parzen1962estimation}, the Asymptotic MISE (AMISE) can be employed \cite{chen2017tutorial}. As this report is meant to give an overview of the research, more details on quantifying the completeness are omitted in this report.
+Some preliminary results regarding sub-questions 1 and 3 are presented in \cref{sec:results}.
 
 \subsection{Papers and reports}
 \label{sec:paper}
 
 During last year, several papers and reports are written, among which are the following:
 \begin{enumerate}
-	\item Paper on ontology for scenarios, submitted to the Intelligent Vehicles Symposium (IV). Unfortunately, the paper has been rejected. Main criticism is that the paper presents a set of definitions, rather than an ontology. 
-	\item When working at CETRAN, I worked on a report that describes the framework for the scenario-based assessment of AVs. Part of this report has been turned into a paper for the Intelligent Transportation Systems (ITS) Asia-Pacific Forum \cite{ploeg2018cetran} of which I am the second author.
+	\item Paper on ontology for scenarios, see \cref{sec:attached papers}, submitted to the Intelligent Vehicles Symposium (IV). Unfortunately, the paper has been rejected. The main criticism was that the paper presents a set of definitions, rather than an ontology.
+	\item When working at CETRAN, I worked on a report that describes the framework for the scenario-based assessment of AVs. Part of this report has been turned into a paper for the Intelligent Transportation Systems (ITS) Asia-Pacific Forum \cite{ploeg2018cetran} of which I am the second author, see \cref{sec:attached papers}.
 	\item Together with Olaf Op den Camp, I wrote a report describing different scenario classes relevant for Singaporean traffic. To do this, use is made of the ontology defined earlier, so this report might be a good use case of the ontology. We aim to have this document publicly available as soon as it is finalized. \label{item:scenario classes}
 	\item The methodology of generating test cases for the assessment of AVs using real-world driving data is called ``StreetWise'' within TNO. TNO wrote a position paper on this topic \cite{elrofai2018scenario}.
 \end{enumerate}
@@ -137,11 +86,20 @@ My goal is to write at least four journal papers on the following topics:
 \begin{itemize}
 	\item \emph{Ontology for scenarios for the assessment of AVs.} This paper extends the work done earlier for the conference paper that is rejected, see \cref{sec:ontology}. UML will be used as the ontology modeling language. Part of the work on the scenario classes (see item \ref{item:scenario classes} of \cref{sec:paper}) will be used as well.
 	\item \emph{Quantification of the completeness of traffic data.} This work extends the work partially described in \cref{sec:completeness}. The plan is to first write a conference paper on this topic with a simple case study involving artificial data (of which the true distributions are known). For the journal paper, real-world data will be used as well.
-	\item \emph{Framework for the safety assessment of AVs.} Work out the whole pipeline for at least one scenario class, i.e., including completeness, simulation, and evaluation, see \cref{fig:scheme}. This work should extend the work of \cite{ploeg2018cetran}.
+	\item \emph{Framework for the safety assessment of AVs.} Work out the whole pipeline for at least one scenario class, i.e., including completeness, simulation, and evaluation, see \cref{fig:scheme}. This work should extend the work of \cite{ploeg2018cetran}. The goal is to finish this near the end of my period in Singapore, as this paper will be in cooperation with CETRAN.
 	\item \emph{Test case generation for the assessment of AVs.} This work includes the parametrization of the scenarios and the estimation of the probability density functions. Additionally, this work should describe how critical test cases (i.e., test cases for which the performance of the AV might be critical) can be generated.
 \end{itemize}
 
-Next to the aforementioned topics, my goal is to also work on the following topics, which will typically result in a conference paper.
+\Cref{fig:planning} shows the planning of the aforementioned journal papers together with some preliminary conference papers. To ensure the feasibility of the planning, the work will be done in cooperation with colleagues. Arash Khabbaz Saberi helps with the ontology, Jan-Pieter Paardekooper helps with the completeness, and Olaf Op den Camp will help with the framework (``overall methodology'' in \cref{fig:planning}). 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{planning}
+	\caption{Planning for the four main topics for which I aim to write a journal paper and the final dissertation. The red line indicates the time of writing this report.}
+	\label{fig:planning}
+\end{figure}
+
+Next to the aforementioned topics, my goal is to also work on the following topics, which might result in a conference paper.
 \begin{itemize}
 	\item The whole methodology assumes that real-world data is being collected. Although TNO will depend on the industry to come with data, we will also collect some data ourselves. My aim would be to make part of the data we collect publicly available. I want to write a conference paper to describe the way the data is collected, the details of the data, and the potential use and limitations of the data.
 	\item The traditional ISO26262 standard is used to design a system that is functionally safe. This standard is used nowadays for the development for Advanced Driver Assistance Systems. For higher levels of automation, however, this standard is not enough for designing a safe system. One issue with this standard for designing and assessing higher levels of automation is that it only allows to compute the risk of an hazardous event while the risk of a particular scenario is also very relevant. Therefore, I want to work on a paper that quantifies the risk of a scenario (which can turn into a hazardous event).

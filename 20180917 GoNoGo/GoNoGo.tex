@@ -79,6 +79,8 @@
 \usepackage{subcaption}
 \usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
 \usepackage{xparse}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[final]{pdfpages}                    %% Include other pdfs
 
 %%==========================================================================
 %% Fancy headers and footers
@@ -231,6 +233,16 @@
 \setlength{\heavyrulewidth}{0.1em}
 \newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
+% Define box for main problem
+\mdfdefinestyle{MyFrame}{%
+	linecolor=black,
+	outerlinewidth=2pt,
+	roundcorner=5pt,
+	innertopmargin=-2pt,
+	innerbottommargin=10pt,
+	innerrightmargin=10pt,
+	innerleftmargin=10pt}
+
 %\usepackage{changebar}  %% When including the package earlier, it does not work for some reason...
 \newlength{\venncircle}
 \newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
@@ -256,8 +268,29 @@
 \include{sections/biography}
 \include{sections/research}
 \include{sections/personal}
+\include{sections/de}
 
 
 \printbibliography
+
+%%==========================================================================
+%% Appendices
+%%==========================================================================
+
+\clearpage
+\appendix                                               %% Adapt section numbering
+\appendixpage                                           %% Add "Appendices" chapter head
+\addappheadtotoc                                        %% Add "Appendices" chapter head to ToC
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}  %% Adapt figure numbering
+\renewcommand{\thetable}{\thesection.\arabic{table}}    %% Adapt table numbering
+
+% Preliminary results
+\include{sections/prelim}
+
+% Papers that are written
+\section{Papers}
+\label{sec:attached papers}
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{papers/ontology.pdf}
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{papers/its_ap_2018.pdf}
 
 \end{document} 
