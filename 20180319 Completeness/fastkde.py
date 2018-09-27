@@ -2,13 +2,11 @@ import numpy as np
 import scipy.spatial.distance as dist
 import scipy.stats
 import time
-from sklearn.neighbors import KernelDensity
 import matplotlib.pyplot as plt
 
 
 class KDE(object):
     def __init__(self, data=None, bw=None):
-        self.kde = KernelDensity()
         self.bw = bw
         self.data, self.mindists, self.n, self.const_score, self.d, self.muk = None, None, 0, 0, 0, 0
         self.xhist, self.yhist, self.fft = None, None, None
@@ -21,7 +19,9 @@ class KDE(object):
             self.data = data[:, np.newaxis]
         else:
             self.data = data
-        self.mindists = -dist.squareform(dist.pdist(self.data, metric='sqeuclidean')) / 2
+
+        # Note: creating the distance matrix takes quite some time and is only needed if cross validation is performed.
+        # Therefore, this is not done here. Only the first time when cross validation is performed
         self.set_n(len(self.data))
         self.d = self.data.shape[1]
         self.muk = 1 / (2**self.d * np.sqrt(np.pi**self.d))  # muk = integral[ kernel(x)^2 ]
@@ -48,11 +48,12 @@ class KDE(object):
             newdata = newdata[:, np.newaxis]
         nnew = len(newdata)
 
-        # Expand the matrix with the distances
-        newmindists = -dist.squareform(dist.pdist(newdata, metric='sqeuclidean')) / 2
-        oldmindists = -dist.cdist(self.data, newdata, metric='sqeuclidean') / 2
-        self.mindists = np.concatenate((np.concatenate((self.mindists, oldmindists), axis=1),
-                                        np.concatenate((np.transpose(oldmindists), newmindists), axis=1)), axis=0)
+        # Expand the matrix with the distances if this matrix is already defined
+        if self.mindists is not None:
+            newmindists = -dist.squareform(dist.pdist(newdata, metric='sqeuclidean')) / 2
+            oldmindists = -dist.cdist(self.data, newdata, metric='sqeuclidean') / 2
+            self.mindists = np.concatenate((np.concatenate((self.mindists, oldmindists), axis=1),
+                                            np.concatenate((np.transpose(oldmindists), newmindists), axis=1)), axis=0)
 
         # Update other stuff
         self.data = np.concatenate((self.data, newdata), axis=0)
@@ -119,28 +120,60 @@ class KDE(object):
             self.bw = (b + c) / 2
 
     def score_leave_one_out(self, bw=None):
+        # Check if the distance matrix is defined. If not, create it (this takes some time)
+        if self.mindists is None:
+            self.mindists = -dist.squareform(dist.pdist(self.data, metric='sqeuclidean')) / 2
+
+        # Compute the one-leave-out score
         h = self.bw if bw is None else bw
         return np.sum(np.log(np.sum(np.exp(self.mindists[:self.n, :self.n] / h ** 2), axis=0) - 1)) - \
             self.n*self.d*np.log(h) + self.const_score
 
-    def compute_kde(self, bw=None):
-        if bw is None:
-            bw = self.bw
-        self.kde.set_params(bandwidth=bw)
-        self.kde.fit(self.data)
+    def set_bw(self, bw):
+        self.bw = bw
 
     def score_samples(self, x):
+        """ Return the scores, i.e., the value of the pdf, for all the datapoints in x
+
+        :param x: Input data
+        :return: Values of the KDE evaluated at x
+        """
+
+        # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
+        # This might result in an error if x is meant to be a single (multi-dimensional) datapoint
         if len(x.shape) == 1:
             x = x[:, np.newaxis]
         if len(x.shape) == 2:
-            return np.exp(self.kde.score_samples(x))
+            return np.exp(self._logscore_samples(x))
         else:
             # It is assumed that the last dimension corresponds to the dimension of the data (i.e., a single datapoint)
             # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is converted to input
             # shape
             newshape = x.shape[:-1]
-            scores = np.exp(self.kde.score_samples(x.reshape((np.prod(newshape), x.shape[-1]))))
+            scores = np.exp(self._logscore_samples(x.reshape((np.prod(newshape), x.shape[-1]))))
             return scores.reshape(newshape)
+
+    def _logscore_samples(self, x):
+        """ Return the scores, i.e., the value of the pdf, for all the datapoints in x.
+        It is assumed that x is in the correct format, i.e., 2D array.
+        NOTE: this function returns the LOG of the scores!!!
+
+        The reason to use this function istead of score_samples from scipy's KernelDensity is that this function takes
+        into account the number of datapoints (i.e., self.n). Furthermore, for some reason, this function is
+        approximately 10 times as fast as scipy's function!!!
+        """
+
+        # Compute the distance of the datapoints in x to the datapoints of the KDE
+        # Let x have M datapoints, then the result is a (self.n-by-M)-matrix
+        eucl_dist = dist.cdist(self.data[:self.n], x, metric='sqeuclidean')
+
+        # Note that we have f(x,n) = sumc [ (2pi)^(-d/2)/(n h^d) * exp{-(x-xi)^2/(2h**2)} ]
+        #                          = (2pi)^(-d/2)/(n h^d) * sum_{i=1}^n [ exp{-(x-xi)^2/(2h**2)} ]
+        # We first compute the sum. Then the log of f(x,n) is computed:
+        # log(f(x,n)) = -d/2*log(2pi) - log(n) - d*log(h) + log(sum)
+        sum_kernel = np.sum(np.exp(-eucl_dist / (2*self.bw**2)), axis=0)
+        const = -self.d/2*np.log(2*np.pi) - np.log(self.n) - self.d*np.log(self.bw)
+        return const + np.log(sum_kernel)
 
     def confidence_interval(self, x, confidence=0.95):
         if len(x.shape) == 1:
@@ -179,7 +212,6 @@ if __name__ == '__main__':
         t1 = time.time()
         print("Elapsed time: {:.3f} s".format(t1 - t0))
         print("Bandwidth: {:.5f}".format(kde.bw))
-        kde.compute_kde()
 
         xpdf = np.linspace(-3, 3, 301)
         ypdf = np.exp(-xpdf**2/2) / np.sqrt(2*np.pi)
