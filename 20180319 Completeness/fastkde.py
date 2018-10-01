@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 
 
 class KDE(object):
+    """ Kernel Density Estimation
+    """
     def __init__(self, data=None, bw=None):
         self.bw = bw
         self.data, self.mindists, self.n, self.const_score, self.d, self.muk = None, None, 0, 0, 0, 0
@@ -69,13 +71,13 @@ class KDE(object):
             score[i] = self.score_leave_one_out(bw=h)
         self.bw = bandwidth[np.argmax(score)]
 
-    ''' Golden section search.                                                                                                                                  
-
-        Given a function f with a single local minimum in                                                                                                       
-        the interval [a,b], gss returns a subset interval                                                                                                       
-        [c,d] that contains the minimum with d-c <= tol. 
-    '''
     def compute_bw_gss(self, min_bw=0.001, max_bw=1, max_iter=100, tol=1e-5, verbose=True):
+        """ Golden section search.
+
+        Given a function f with a single local minimum in
+        the interval [a,b], gss returns a subset interval
+        [c,d] that contains the minimum with d-c <= tol.
+        """
         diff = max_bw - min_bw
         a, b = min_bw, max_bw
         c = a + self.invgr2 * diff
@@ -137,6 +139,9 @@ class KDE(object):
 
         :param x: Input data
         :return: Values of the KDE evaluated at x
+
+        Note that this function will return an error when the bandwidth is not defined. The bandwidth can be set using
+        set_bw() or computed using compute_bw()
         """
 
         # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
@@ -158,9 +163,9 @@ class KDE(object):
         It is assumed that x is in the correct format, i.e., 2D array.
         NOTE: this function returns the LOG of the scores!!!
 
-        The reason to use this function istead of score_samples from scipy's KernelDensity is that this function takes
-        into account the number of datapoints (i.e., self.n). Furthermore, for some reason, this function is
-        approximately 10 times as fast as scipy's function!!!
+        The reason to use this function instead of score_samples from sklearn's KernelDensity is that this function
+        takes into account the number of datapoints (i.e., self.n). Furthermore, for some reason, this function is
+        approximately 10 times as fast as sklearn's function!!!
         """
 
         # Compute the distance of the datapoints in x to the datapoints of the KDE
