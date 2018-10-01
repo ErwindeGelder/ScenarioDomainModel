@@ -1,27 +1,26 @@
 import numpy as np
-from fastkde import fastKDE
 
 
 class SplineInter1D:
-    """Initialize the spline function
-
-    By initializing this, the constraint matrix is built to make future fits faster
-
-    Parameters
-    ----------
-    t : np.array
-        Locations of the knots, including the exterior knots
-    d : int
-        degree of the spline polynomials
-    c : int
-        degree of continuity
-    left_constraints : list
-        Set constraint for left point. For example, [0] means that the zero'th derivative should be 0, [1, 0] means that
-        the zero'th derivative should be 1 and the first derivative should be 0. Default is [].
-    right_constraints : list
-        Idem as left_constraints, but then for the right bound.
-    """
     def __init__(self, t, d=3, c=2, left_constraints=None, right_constraints=None):
+        """Initialize the spline function
+
+        By initializing this, the constraint matrix is built to make future fits faster
+
+        Parameters
+        ----------
+        t : np.array
+            Locations of the knots, including the exterior knots
+        d : int
+            degree of the spline polynomials
+        c : int
+            degree of continuity
+        left_constraints : list
+            Set constraint for left point. For example, [0] means that the zero'th derivative should be 0, [1, 0] means
+            that the zero'th derivative should be 1 and the first derivative should be 0. Default is [].
+        right_constraints : list
+            Idem as left_constraints, but then for the right bound.
+        """
         # Check options that are given
         if left_constraints is None:
             left_constraints = []
