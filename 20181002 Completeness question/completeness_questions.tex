@@ -1,0 +1,392 @@
+%%==========================================================================
+%% This is the very first version of a Streetwise LaTeX template. By
+%% chosing the document class, it is easily convertible to a two-column IEEE
+%% paper format, provided any conflicting packages and (new)commmands are
+%% removed.
+%%
+%% Erwin de Gelder, January 6, 2018
+%%==========================================================================
+
+%%==========================================================================
+%% Title:
+%% Author(s):
+%% To be published in:
+%% Date of submission:
+%% Date of submission R1:
+%% Date of submission R2:
+%% Date of final submission:
+%%==========================================================================
+
+
+%% Generic
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%% IEEE
+%% Document class options: replace "draftcls" by "final" for final document.
+%% All other options may just as well be omitted because they are the default values.
+%\documentclass[10pt,final,journal,letterpaper,twoside,twocolumn]{IEEEtran}
+
+
+%%==========================================================================
+%% Document automation
+%%==========================================================================
+
+\def\reptitle{Completeness of real-world driving data}
+\def\repauthor{Erwin de Gelder}
+
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../bib}
+
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+%\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+            bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage{lmodern} 
+\usepackage{etoolbox}							%% Needed for apptocmd later
+\usepackage[capitalize]{cleveref}
+\usepackage{units}
+\usepackage{subcaption}
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+
+\newtoggle{standalone}
+\toggletrue{standalone}
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\iftoggle{standalone}{%
+	\fancyhead[L]{\includegraphics[width=15mm]{Streetwise}} %% define headers (LE: left field/even pages, etc.)
+	\fancyhead[R]{\small\emph{\reptitle}}                   %% similar
+	\fancyfoot[C]{\thepage}                                 %% define footer
+	\setlength{\headheight}{18pt}                           %% increase head height to accommodate an oversized picture in the header
+	\renewcommand*{\headrulewidth}{0.25pt}                  %% header line width
+	%% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
+	\fancypagestyle{plain}{%
+		\fancyhf{}
+		\fancyhead[C]{\includegraphics[width=30mm]{Streetwise}}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+		\setlength{\headheight}{36pt}
+	}
+}{%
+	\renewcommand*{\headrulewidth}{0pt}                  	%% No line in this case
+	%% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
+	\fancypagestyle{plain}{%
+		\fancyhf{}
+	}
+}
+\renewcommand*{\footrulewidth}{0pt}                     %% footer line width
+
+
+%%==========================================================================
+%% TikZ figures
+%%==========================================================================
+
+\newlength\figurewidth
+\setlength\figurewidth{0.35\textwidth}              %% set figure width
+\newlength\figureheight
+\setlength\figureheight{0.3\textwidth}              %% set figure height
+\pgfplotsset{every axis/.append style={
+    scaled y ticks=false,
+    scaled x ticks=false,
+    y tick label style={/pgf/number format/fixed},
+    x tick label style={/pgf/number format/fixed},
+    legend style={font=\small}},
+    compat=1.9}                                     %% PGFPlots package options
+\usetikzlibrary{shapes.geometric, arrows, arrows.meta}
+\usepgfplotslibrary{groupplots}
+%\usetikzlibrary{external}                           %% Create pdf figures from TikZ. Use PDFTeXify ...
+%\tikzexternalize[prefix=./tikz/]                    %% ... with --tex-option=--shell-escape switch.
+%\tikzset{external/force remake}                    %% force pdf figure update
+
+
+%%==========================================================================
+%% User-defined commands
+%%==========================================================================
+
+\newcommand*{\mat}[1]{\mathbf{#1}}                              %% matrix/vector notation
+\newcommand*{\matsym}[1]{\boldsymbol{#1}}                       %% matrix/vector notation for Greek letters
+\newcommand*{\T}{^{\scriptscriptstyle\mathsf{T}}}               %% transpose operator
+\newcommand*{\Hr}{^{\scriptscriptstyle\mathsf{H}}}              %% conjugate transpose operator
+\newcommand*{\ud}{\mathrm{\,d}}                                 %% differential operator (upright d)
+\newcommand*{\defeq}{\mathrel{\mathop:}=}                       %% definition sign :=
+\newcommand*{\eqdef}{=\mathrel{\mathop:}}                       %% definition sign =:
+\newcommand*{\ip}[2]{\left\langle#1\,{,}\,#2\right\rangle}      %% inner product
+\newcommand*{\real}[1]{\mathrm{Re}(#1)}                         %% real part
+\newcommand*{\imag}[1]{\mathrm{Im}(#1)}                         %% imaginary part
+\newcommand*{\lsup}[1]{{}^{#1}\!}                               %% left superscript
+\newcommand*{\hi}[1]{$^\text{#1}$}                              %% superscript in normal text
+\newcommand*{\lo}[1]{$_\text{#1}$}                              %% subscript in normal text
+\newcommand*{\w}[1]{\mathrm{#1}}                                %% multiple character super-/subscript in math mode
+\newcommand*{\capskip}{\vspace{-12pt}}                          %% caption skip for figures with subfloats
+\newcommand*{\etal}{et al.}                                     %% may be required for Natbib bibliography styles
+\renewcommand*{\qedsymbol}{$\blacksquare$}                      %% redefine the end-of-proof symbol
+\renewcommand*{\labelitemi}{$\bullet$}                          %% first level item list bullet
+\renewcommand*{\labelitemii}{$-$}                               %% second level item list bullet
+%\renewcommand*{\theenumi}{\textit{\roman{enumi}}}               %% first level enumerator
+\renewcommand*{\labelenumi}{\theenumi.}
+\renewcommand*{\theenumii}{\textit{\alph{enumii}}}              %% second level enumerator
+\renewcommand*{\labelenumii}{\theenumii.}
+\DeclareMathOperator{\tr}{tr}                                   %% trace of a matrix
+\DeclareMathOperator{\sgn}{sgn}                                 %% signum function
+\DeclareMathOperator{\atan}{atan}                               %% arc tangent
+
+\newcommand{\deuclid}{d_{\textup{Euclidian}}}
+\newcommand{\ddtw}{d_{\textup{DTW}}}
+\newcommand{\imagi}{\textbf{j}}
+\newcommand{\profile}[1]{\textbf{v}_{#1}}
+\newcommand{\barprofile}[1]{\bar{\textbf{v}}_{#1}}
+\newcommand{\parvstart}{v_{\textup{start}}}
+\newcommand{\parvend}{v_{\textup{end}}}
+\newcommand{\pardv}{v_{\Delta}}
+\newcommand{\pardt}{t_{\textup{duration}}}
+\newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
+\newcommand{\mise}[1]{\textup{MISE} \left( #1 \right)}
+\newcommand{\entropy}[1]{\textup{H} \left[ #1 \right]}
+\newcommand{\hatentropy}[1]{\hat{\textup{H}} \left[ #1 \right]}
+\newcommand{\kl}[2]{\textup{KL} \left( #1 || #2 \right)}
+\newcommand{\intinf}{\int_{-\infty}^{\infty}}
+
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
+
+%%==========================================================================
+%% User-defined environments
+%%==========================================================================
+
+\theoremstyle{plain}\newtheorem{definition}{Definition}[section]    %% definition
+                    \newtheorem{theorem}{Theorem}[section]          %% theorem
+                    \newtheorem{lemma}[theorem]{Lemma}              %% lemma
+                    \newtheorem{corollary}[theorem]{Corollary}      %% corollary
+                    \newtheorem{assumption}{Assumption}[section]    %% assumption
+                    \newtheorem{condition}{Condition}[section]      %% condition
+\theoremstyle{definition}\newtheorem{example}{Example}[section]     %% examples
+\theoremstyle{remark}\newtheorem{remarkenv}{Remark}[section]        %% remarks
+\newenvironment{remark}{\begin{remarkenv}}%
+                       {\hfill$\blacklozenge$\end{remarkenv}}       %% end remark with a lozenge
+\newenvironment{reviewer}{\itshape}{\upshape}                       %% environment for reviewer's comments
+
+
+%%==========================================================================
+%% Miscellaneous
+%%==========================================================================
+
+\graphicspath{{./../}{./figures/}{./more_figures/}} %% (graphicx) directory path for figures
+%\setlength{\parindent}{0pt}                        %% no paragraph indentation
+%\setlength{\parskip}{2ex}                          %% create empty line between paragraphs
+%\interdisplaylinepenalty=2500                      %% (amsmath) allow for page breaks within multiline equations
+%\numberwithin{equation}{section}                   %% (amsmath) include section number in equation numbering
+%\numberwithin{figure}{section}                     %% (amsmath) include section number in figure numbering
+%\numberwithin{table}{section}                      %% (amsmath) include section number in table numbering
+\addtolength{\arraycolsep}{-0.5mm}                  %% squeeze matrix columns a little
+\fnbelowfloat                                       %% (stfloats) put footnote below a float at the page bottom
+\urlstyle{same}                                     %% (hyperref) use current font for URLs
+\hypersetup{pdftitle={\reptitle},
+            pdfauthor={\repauthor}}                 %% (hyperref) pdf properties title and author
+%\raggedbottom                                      %% don't add inter-paragraph spacing to achieve \textheight
+%\setlength\subfigcapskip{-3pt}                     %% (subfigure) distance between subfloat and subcaption
+%\setlength\subfigbottomskip{-3pt}                  %% (subfigure) distance between subcaption and caption
+%\renewcommand*{\subcapsize}{\small}                %% (subfigure) subcaption font size
+\renewcommand*{\thesubfigure}{(\alph{subfigure})}   %% (subfig) implement 1(a) instead of 1a ...as subfigure reference
+\captionsetup[subfloat]{labelformat=simple}        %% ... as subfigure reference
+%\captionsetup[subfloat]{
+%    farskip=0pt,
+%    nearskip=8pt,
+%    captionskip=1.5pt,
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig) subfloat caption format
+%\captionsetup[figure]{
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig/caption) figure caption format
+%\captionsetup[table]{
+%    aboveskip=2pt,
+%    labelfont={small,bf},
+%    textfont={small,sc}}                           %% (subfig/caption) table caption format
+\apptocmd{\thebibliography}{\raggedright}{}{}		%% Suppress badness warnings in bibliography
+
+
+% Table stuff
+\usepackage{booktabs}
+\usepackage{tabularx}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+%\usepackage{changebar}  %% When including the package earlier, it does not work for some reason...
+
+%%==========================================================================
+%% Begin document
+%%==========================================================================
+
+\begin{document}
+
+\selectlanguage{USenglish}
+
+\title{\textbf{\reptitle}}
+\author{\repauthor}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+\label{sec:introduction}
+
+% Scenario-based approach for assessment of AVs -> this scenarios are important
+An important aspect in the development of automated vehicles (AVs) is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \cite{bengler2014threedecades, stellet2015taxonomy, wachenfeld2016release, putz2017pegasus, roesener2016scenariobased, kompass2015sicherheitsveranderung}. 
+For legal and public acceptance, it is important that there is a clear definition of system performance and that there are quantitative measures for the system quality. 
+The more traditional methods \cite{response2006code, ISO26262}, used for evaluation of driver assistance systems, are no longer valid for the assessment of quality and performance aspects of an AV \cite{wachenfeld2016release}. 
+Therefore, a scenario-based approach is proposed \cite{roesener2016scenariobased, putz2017pegasus, kompass2015sicherheitsveranderung}. 
+For the scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in test cases used for scenario-based assessment \cite{stellet2015taxonomy}.
+
+% Completeness
+To draw conclusions on how an automated vehicle would perform in real-world traffic, it is necessary to know how representative the scenario database, that is used for the scenario-based assessment of the automated vehicle, is. Therefore it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}.
+
+% Structure of the document
+In the next section, the problem that is addressed in this report is presented. In \cref{sec:method}, we show how this problem is approached. To illustrate this, an example is presented in \cref{sec:example}. Some questions are formulated in \cref{sec:questions}.
+
+\section{Problem definition}
+\label{sec:problem}
+
+Before continuing our discussion about the scenario database, we will clarify the meaning of a scenario. A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its dynamic environment (consisting of traffic environment and conditions) and its static environment. From the perspective of the ego vehicle, a scenario contains all relevant events. Scenarios can be categorized into so-called scenario classes. A scenario class refers to a qualitative description. \Cref{fig:scenario classes} shows the schematic representations of two examples of scenario classes.
+
+It is assumed that the data can be described by a sequence of scenarios. Since these scenarios can categorized using different scenario classes, the problem of quantifying the completeness can now be divided into two subproblems.
+\begin{enumerate}
+	\item The first subproblem deals with the quantification of the completeness regarding the scenario classes.
+	\item The second subproblem deals with the quantification of the completeness regarding the scenarios of a specific scenario class.
+\end{enumerate}
+In this report, we will only address the second subproblem. 
+
+It is assumed that all scenarios that fall into the same scenario class can be parametrized in a similar manner using $d$ parameters. Let $n$ denote the number of scenarios for a specific scenario class. Consequently, we have $n$ parameter vectors, denoted by $x_i \in \mathbb{R}^d$ with $i\in\{1,...,n\}$, which describe the scenarios. To enable the generation of new scenarios from the same scenario class, we want to estimate the underlying distribution of $x_i$. Let $f(x)$ denote the true probability density function (pdf) and let $\hat{f}(x;n)$ denote the estimated pdf using $n$ parameter vectors. To quantify the completeness of the set of scenarios, represented by $x_i$, $i\in\{1,...,n\}$, we can make use of the Mean Integrated Squared Error (MISE), where the error is $f(x)-\hat{f}(x;n)$, i.e.,
+\begin{equation} \label{eq:mise}
+	\mise{n} = \expectation{ \int_{\mathbb{R}^d} \left(f(x) - \hat{f}(x;n)\right)^2 \ud x}.
+\end{equation}
+
+For the remainder of this report, it is assumed that the second subproblem can be addressed by estimating the MISE \cref{eq:mise} (see question \ref{question:mise}).
+
+\begin{figure}
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[scale=0.5]{"Scenario lead braking"}
+		\caption{Schematic representation of the scenario class ``lead vehicle braking''.}
+		\label{fig:lead vehicle braking}
+	\end{subfigure}
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[scale=0.5]{"Scenario cut-in"}
+		\caption{Schematic representation of the scenario class ``cut-in''.}
+		\label{fig:cut-in}
+	\end{subfigure}
+	\caption{Schematic representations of two different scenario classes. The blue vehicle represents the ego vehicle and the red vehicle represents a vehicle that belongs to the dynamic environment of the ego vehicle.}
+	\label{fig:scenario classes}
+\end{figure}
+
+
+
+\section{Method}
+\label{sec:method}
+
+It is assumed that the pdf is estimated using Kernel Density Estimation (KDE) \cite{rosenblatt1956remarks, parzen1962estimation}, i.e.,
+\begin{equation}
+	\hat{f}(x;n) = \frac{1}{nh^d} \sum_{i=1}^n K \left( \frac{x - x_i}{h} \right),
+\end{equation}
+where $h$ denotes the bandwidth and $K(\cdot)$ denotes the kernel function. Furthermore, one-leave-out cross validation is used to compute the bandwidth $h$ because this minimizes the Kullback-Leibler divergence between the real pdf $f(x)$ and the estimated pdf $\hat{f}(x;n)$ \cite{turlach1993bandwidthselection}.
+
+Chen \cite{chen2017tutorial} describes how the MISE \cref{eq:mise} can be estimated when KDE is used to estimate a pdf and when smoothness conditions apply:
+\begin{equation} \label{eq:mise approximation}
+	\mise{n} \approx \frac{h^4}{4} \sigma_K^4 \int_{\mathbb{R}^d} \left(\nabla^2 f(x)\right)^2 \, \textup{d}x + \frac{\mu_K}{nh^d}.
+\end{equation}
+Here, $\sigma_K^2 = \int_{\mathbb{R}^d} ||x||^2 K(x) \ud x$ and $\mu_K = \int_{\mathbb{R}^d} K(x)^2 \ud x$ are constants that depend on the choice of the kernel function $K(\cdot)$. In \cref{eq:mise approximation}, $\nabla^2 f(x)$ denotes the Laplacian of $f(x)$, i.e., $\nabla^2 f(x) = \sum_{i=1}^d \frac{\partial^2 f(x)}{\partial x_l^2}$ (this is similar to the trace of the Hessian of $f(x)$). The right-hand side of \cref{eq:mise approximation} is also know as the Asymptotic Mean Integrated Squared Error (AMISE) because it is similar to the MISE \cref{eq:mise} in the limit of $nh \rightarrow \infty$ and $h \rightarrow 0$.
+
+The first term of the right-hand side of \cref{eq:mise approximation} corresponds to the bias introduced by smoothing the pdf. Therefore, this term approaches zero when $h \rightarrow 0$. However, when $h \rightarrow 0$, the variance goes to infinity, as can be seen by the second term of the right-hand side of \cref{eq:mise approximation}. Therefore, the optimal bandwidth is such that $h \rightarrow 0$ while $nh^d \rightarrow \infty$. Obviously, this is only achieved by having infinite data ($n \rightarrow \infty$).
+
+We are unable to compute the approximation of the MISE, i.e., the right-hand side of \cref{eq:mise approximation}, because it involves the Laplacian of the true pdf $f(x)$. This term can be approximated, however, by using the estimated pdf $\hat{f}(x;n)$ \cite{calonico2018effect}. As a result, the MISE can be approximated as follows:
+\begin{equation} \label{eq:mise final approximation}
+	\mise{n} \approx \frac{h^4}{4} \sigma_K^4 \int_{\mathbb{R}^d} \left(\nabla^2 \hat{f}(x;n)\right)^2 \, \textup{d}x + \frac{\mu_K}{nh^d}.
+\end{equation}
+
+
+
+\section{Example}
+\label{sec:example}
+
+To illustrate the use of the approximated MISE \cref{eq:mise final approximation}, an example is presented. \Cref{fig:pdf} shows the pdf $f(x)$ that is used to generate data. The pdf $f(x)$ corresponds to a mixture of two normal distributions (with means of $-1$ and $1$ and standard deviations $0.5$ and $0.3$). 
+
+\setlength\figurewidth{0.6\linewidth}
+\setlength\figureheight{0.25\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/true_pdf.tikz}
+	\caption{The true distribution $f(x)$ that is used for the example. The pdf $f(x)$ corresponds to a mixture of two normal distributions (with means of $-1$ and $1$ and standard deviations $0.5$ and $0.3$). }
+	\label{fig:pdf}
+\end{figure}
+
+To compare the approximated MISE of \cref{eq:mise final approximation} with the MISE of \cref{eq:mise}, the MISE needs to be computed. This is done by approximating the expectation in \cref{eq:mise} by taking the average of 100 experiments. The result is shown in \cref{fig:mise example}. The result shows that the approximated MISE of \cref{eq:mise final approximation} follows the same trend as the real MISE.
+
+\setlength\figureheight{0.35\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/mise_example.tikz}
+	\caption{Comparison of the MISE of \cref{eq:mise} (blue) and the approximation of the MISE using \cref{eq:mise final approximation} (orange) for different number of data points.}
+	\label{fig:mise example}
+\end{figure}
+
+To illustrate that the result in \cref{fig:mise example} is not a mere coincidence as it depends on randomly generated data, the experiment is repeated 100 times. \Cref{fig:mise example repeats} shows the result of repeating the experiment 100 times. It shows that the average follows the same trend as the real MISE. Furthermore, the deviation is not very large.
+
+\begin{figure}
+	\centering
+	\input{figures/mise_example2.tikz}
+	\caption{The real MISE is show by the blue line. The average of the approximation for 100 repeated experiments is shown by the solid orange line. The dashed orange lines represent the average of the approximation plus or minus twice the standard deviation.}
+	\label{fig:mise example repeats}
+\end{figure}
+
+\section{Questions}
+\label{sec:questions}
+
+Based on the theory I described above, I have some questions:
+
+\begin{enumerate}
+	\item \label{question:mise} Does it seem correct to assume that the MISE can be used to quantify the completeness of the set of scenarios belonging to a specific scenario class? Do I overlook something?
+	\item Given that the probability density function is estimated using Kernel Density Estimation, would there be other methods useful/applicable for estimating how reliable our estimated probability density function is?
+	\item According to Chen \cite{chen2017tutorial}, the approximation of the MISE using the AMISE of \cref{eq:mise approximation} is valid if the smoothness conditions apply, i.e., the real pdf $f(x)$ needs to be smooth. That made me think that it is reasonable to approximate the MISE using \cref{eq:mise final approximation}. Is this too simplistic, i.e., do I overlook something?
+	\item When searching on this topic, I found many papers that use the (A)MISE. However, if these papers use experiments at all, they use synthetic data (i.e., similar to what I did in the example). Do you know some studies where the same theory is applied for some real-life applications?
+\end{enumerate}
+
+\printbibliography
+
+\end{document} 
