@@ -162,7 +162,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 		
 		The first term of the right-hand side of \cref{eq:mise approximation} corresponds to the bias introduced by smoothing the pdf. Therefore, this term approaches zero when $h \rightarrow 0$. However, when $h \rightarrow 0$, the variance goes to infinity, as can be seen by the second term of the right-hand side of \cref{eq:mise approximation}. Therefore, the optimal bandwidth is such that $h \rightarrow 0$ while $nh^d \rightarrow \infty$. Obviously, this is only achieved by having infinite data ($n \rightarrow \infty$).
 		
-		\item The approximation of the MISE in \cref{eq:mise approximation} is that it involves the real pdf $f(x)$. This term can be approximated, however, by using the estimated pdf $\hat{f}(x;n)$ \cite{calonico2018effect}. 
+		\item The problem of the MISE in \cref{eq:mise approximation} is that it involves the real pdf $f(x)$. This term can be approximated, however, by using the estimated pdf $\hat{f}(x;n)$ \cite{calonico2018effect}. 
 		
 		\item In \cref{tab:example}, results are shown of an experiment. In total, $n=1000$ datapoints are generated from a pdf $f(x)$. The pdf $f(x)$ corresponds to a mixture of two normal distributions (with means of $-1$ and $1$ and standard deviations $0.5$ and $0.3$). The real MISE is computed by estimating the distribution $100$ times. 
 		
