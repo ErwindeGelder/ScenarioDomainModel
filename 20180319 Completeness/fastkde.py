@@ -15,6 +15,7 @@ class KDE(object):
         self.fit(data)
         self.invgr = (np.sqrt(5) - 1) / 2  # Inverse of Golden Ratio
         self.invgr2 = (3 - np.sqrt(5)) / 2  # 1/gr^2
+        self.data_score_samples, self.newshape, self.data_dist = None, None, None
 
     def fit(self, data):
         if len(data.shape) == 1:
@@ -36,9 +37,10 @@ class KDE(object):
         # self.xhist = (bin_edges[:-1] + bin_edges[1:]) / 2
         # self.fft = np.fft.fft(self.yhist)
 
-    def set_n(self, n):
-        """
-        Set the number of datapoints. The constant term of the score for the one-leave-out cross validation is set.
+    def set_n(self, n: int) -> None:
+        """ Set the number of datapoints that are to be used when evaluating the (one-leave-out) score.
+        
+        The constant term of the score for the one-leave-out cross validation is set.
 
         :param n: Number of datapoints
         """
@@ -134,31 +136,62 @@ class KDE(object):
     def set_bw(self, bw):
         self.bw = bw
 
-    def score_samples(self, x):
-        """ Return the scores, i.e., the value of the pdf, for all the datapoints in x
+    def set_score_samples(self, x: np.array) -> None:
+        """ Set the data that is to be used to compute the score samples
 
         :param x: Input data
-        :return: Values of the KDE evaluated at x
-
-        Note that this function will return an error when the bandwidth is not defined. The bandwidth can be set using
-        set_bw() or computed using compute_bw()
+        :return: None
         """
-
         # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
         # This might result in an error if x is meant to be a single (multi-dimensional) datapoint
         if len(x.shape) == 1:
             x = x[:, np.newaxis]
+        self.newshape = x.shape[:-1]
         if len(x.shape) == 2:
-            return np.exp(self._logscore_samples(x))
-        else:
-            # It is assumed that the last dimension corresponds to the dimension of the data (i.e., a single datapoint)
-            # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is converted to input
-            # shape
-            newshape = x.shape[:-1]
-            scores = np.exp(self._logscore_samples(x.reshape((np.prod(newshape), x.shape[-1]))))
-            return scores.reshape(newshape)
+            self.data_score_samples = x.copy()
+        if not len(x.shape) == 2:
+            self.data_score_samples = x.reshape((np.prod(self.newshape), x.shape[-1]))
 
-    def _logscore_samples(self, x):
+        # Compute the distance of the datapoints in x to the datapoints of the KDE
+        # Let x have M datapoints, then the result is a (self.n-by-M)-matrix
+        # Reason to do this now is that this will save computations when the score needs to be computed multiple times
+        # (e.g., with different values of self.n)
+        self.data_dist = dist.cdist(self.data, self.data_score_samples, metric='sqeuclidean')
+
+    def score_samples(self, x=None):
+        """ Return the scores, i.e., the value of the pdf, for all the datapoints in x
+
+        Note that this function will return an error when the bandwidth is not defined. The bandwidth can be set using
+        set_bw() or computed using compute_bw()
+        If no data is given, it is assumed that the data is already set by set_score_samples()!
+
+        :param x: Input data
+        :return: Values of the KDE evaluated at x
+        """
+
+        if x is None:
+            # The data is already set. We can compute the scores directly using _logscore_samples
+            scores = np.exp(self._logscore_samples())
+
+            # The data needs to be converted to the original input shape
+            return scores.reshape(self.newshape)
+        else:
+            # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
+            # This might result in an error if x is meant to be a single (multi-dimensional) datapoint
+            if len(x.shape) == 1:
+                x = x[:, np.newaxis]
+            if len(x.shape) == 2:
+                return np.exp(self._logscore_samples(x))
+            else:
+                # It is assumed that the last dimension corresponds to the dimension of the data (i.e., a single
+                # datapoint)
+                # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is converted to
+                # input shape
+                newshape = x.shape[:-1]
+                scores = np.exp(self._logscore_samples(x.reshape((np.prod(newshape), x.shape[-1]))))
+                return scores.reshape(newshape)
+
+    def _logscore_samples(self, x=None):
         """ Return the scores, i.e., the value of the pdf, for all the datapoints in x.
         It is assumed that x is in the correct format, i.e., 2D array.
         NOTE: this function returns the LOG of the scores!!!
@@ -166,13 +199,19 @@ class KDE(object):
         The reason to use this function instead of score_samples from sklearn's KernelDensity is that this function
         takes into account the number of datapoints (i.e., self.n). Furthermore, for some reason, this function is
         approximately 10 times as fast as sklearn's function!!!
+
+        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
+        distance will not be computed.
         """
 
         # Compute the distance of the datapoints in x to the datapoints of the KDE
         # Let x have M datapoints, then the result is a (self.n-by-M)-matrix
-        eucl_dist = dist.cdist(self.data[:self.n], x, metric='sqeuclidean')
+        if x is None:
+            eucl_dist = self.data_dist[:self.n]
+        else:
+            eucl_dist = dist.cdist(self.data[:self.n], x, metric='sqeuclidean')
 
-        # Note that we have f(x,n) = sumc [ (2pi)^(-d/2)/(n h^d) * exp{-(x-xi)^2/(2h**2)} ]
+        # Note that we have f(x,n) = sum [ (2pi)^(-d/2)/(n h^d) * exp{-(x-xi)^2/(2h**2)} ]
         #                          = (2pi)^(-d/2)/(n h^d) * sum_{i=1}^n [ exp{-(x-xi)^2/(2h**2)} ]
         # We first compute the sum. Then the log of f(x,n) is computed:
         # log(f(x,n)) = -d/2*log(2pi) - log(n) - d*log(h) + log(sum)
