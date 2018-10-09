@@ -1,4 +1,5 @@
-\documentclass[]{interact}
+\documentclass[]{ieeeconf}
+\IEEEoverridecommandlockouts 
 
 \usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
 \usepackage[caption=false]{subfig}% Support for small, `sub' figures and tables
@@ -21,31 +22,16 @@
 \bibliography{../bib}
 \renewcommand{\cite}[1]{\parencite{#1}}
 
-\theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{proposition}[theorem]{Proposition}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-
-\theoremstyle{remark}
-\newtheorem{remark}{Remark}
-\newtheorem{notation}{Notation}
+\title{\LARGE \bf Have we collected enough field data?}
+\author{
+	E.\ de Gelder\textsuperscript{a,b}\thanks{\textsuperscript{a} TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands} \thanks{\textsuperscript{b} Corresponding author. Email: erwin.degelder@tno.nl}, Jan-Pieter Paardekooper\textsuperscript{a}, Olaf Op den Camp\textsuperscript{a}, and Bart De Schutter\textsuperscript{c} \thanks{\textsuperscript{c} Delft University of Technology, Delft Center for Systems and Control}
+}
 
 \begin{document}
 
-
-\title{Have we collected enough field data?}
-
-\author{
-	\name{E.\ de Gelder\textsuperscript{a}\thanks{Corresponding author E.\ de Gelder. Email: erwin.degelder@tno.nl}, Jan-Pieter Paardekooper\textsuperscript{a}, Olaf Op den Camp\textsuperscript{a}, and Bart De Schutter\textsuperscript{b}}
-	\affil{\textsuperscript{a}TNO\newline \textsuperscript{b}TU Delft}
-}
-
 \maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
 
 \input{sections/abstract}
 \input{sections/introduction}
