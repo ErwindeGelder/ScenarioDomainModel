@@ -6,13 +6,20 @@
 %\usepackage[doublespacing]{setspace}% To produce a `double spaced' document if required
 %\setlength\parindent{24pt}% To increase paragraph indentation when line spacing is doubled
 
-\usepackage[longnamesfirst,sort]{natbib}% Citation support using natbib.sty
-\bibpunct[, ]{(}{)}{;}{a}{,}{,}% Citation support using natbib.sty
-\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using natbib.sty
+%\usepackage[longnamesfirst,sort]{natbib}% Citation support using natbib.sty
+%\bibpunct[, ]{(}{)}{;}{a}{,}{,}% Citation support using natbib.sty
+%\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using natbib.sty
 
 %\usepackage[natbibapa,nodoi]{apacite}% Citation support using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 %\setlength\bibhang{12pt}% To set the indentation in the list of references using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 %\renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage[style=authoryear-comp,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=1,uniquelist=false,uniquename=false]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../bib}
+\renewcommand{\cite}[1]{\parencite{#1}}
 
 \theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
 \newtheorem{theorem}{Theorem}[section]
@@ -42,15 +49,16 @@
 
 \input{sections/abstract}
 \input{sections/introduction}
+\input{sections/related}
 \input{sections/problem}
 \input{sections/method}
 \input{sections/results}
 \input{sections/discussion}
 \input{sections/conclusion}
 
-\bibliographystyle{model3-num-names_jisa}
+%\bibliographystyle{model3-num-names_jisa}
 
-\bibliography{\jobname}
+\printbibliography
 
 \end{document}    
   

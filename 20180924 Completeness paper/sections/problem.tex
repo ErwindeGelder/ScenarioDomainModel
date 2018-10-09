@@ -1,2 +1,23 @@
 \section{Problem definition}
 \label{sec:problem}
+
+% Explain that we want to quantify the amount of data
+The required amount of data depends on the use of the data \cite{wang2017much}. For example, when investigating (near)-accident scenarios, more data might be required compared to studying nominal driving behavior, because of the low probability of having a (near)-accident scenario. Therefore, in this paper, the goal is to define a quantitative measure for the completeness of the data. To determine whether the data are enough for a specific use, this quantitative measure can be used, but determining the exact threshold is outside the scope of this paper.
+
+% Explain assumptions
+
+Before splitting the problem of quantifying the completeness of the data, few assumptions are made:
+\begin{enumerate}
+	\item The data are interpreted as an endless sequence of scenarios, where scenarios might overlap in time \cite{elrofai2018scenario}. The term scenario in the context of traffic data is defined by, among others, \textcite{geyer2014, ulbrich2015, elrofai2016scenario, elrofai2018scenario}. Because we want to differentiate between quantitative and qualitative descriptions, the definition of the term scenario is adopted from \textcite{elrofai2018scenario} as it explicitly defines a scenario as a quantitative description: ``A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its dynamic environment (consisting of traffic environment and conditions) and its static environment. From the perspective of the ego vehicle, a scenario contains all relevant events.''
+	
+	\item Whereas a scenario refers to a quantitative description, these scenarios can be abstracted by means of a qualitative description, referred to as scenario class, see also \textcite{ploeg2018cetran, elrofai2018scenario}. An example of a scenario class could have the name ``ego vehicle braking'', i.e., this scenario qualitatively describes a scenario in which the ego vehicle brakes. An actual (real-world) scenario in which the ego vehicle is braking would fall into this scenario class. It is assumed that all scenarios can be categorized into these scenario classes. This assumption does not necessarily limit the applicability of this paper. However, it might require a large number of scenario classes to describe all scenarios that are in the data.
+	
+	\item The third assumption is that all scenarios that fall into a specific scenario class can be parametrized similarly. 
+\end{enumerate}
+
+% Define sub-problems
+
+% Why splitting problem?
+% Comparing different scenario types directly is like comparing apples and oranges
+
+% Mention that we only address sub-problem 2 (and why)
