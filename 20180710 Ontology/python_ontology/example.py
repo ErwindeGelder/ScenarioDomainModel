@@ -51,3 +51,14 @@ f, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
 print("Tags of ego vehicle:")
 for tag in ego.get_tags():
     print(" - {:s}".format(tag))
+
+qualitative_pickup = QualitativeActor("pickup", "Truck", tags=["Truck"])
+pickup_cruising = DetectedActivity(cruising, 0.8, 32.6, {"xstart": 117, "xend": 556})
+pickup = Actor("pickup", qualitative_pickup, tags=["Direction - Same as ego", "Lat. pos. - Same lane",
+                                                   "Long. pos. - In front of ego", "Appearing - Gap-closing",
+                                                   "Lat. act. - Straight", "Lat. act. - Going forward"])
+print("Tags of pickup truck:")
+for tag in pickup.get_tags():
+    print(" - {:s}".format(tag))
+
+# Create the scenario class
