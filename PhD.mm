@@ -150,7 +150,7 @@
     <pdf_title>How Much Data Are Enough? A Statistical Approach With Case Study on Longitudinal Driving Behavior</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Papers that address completeness issue" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1149339259" CREATED="1510111962578" MODIFIED="1511519222945" HGAP="40">
+<node TEXT="Papers that address completeness issue" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1149339259" CREATED="1510111962578" MODIFIED="1511519222945" HGAP="40">
 <node TEXT="Geyer et al." ID="ID_614965474" CREATED="1510111977891" MODIFIED="1534391857043" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
@@ -297,6 +297,18 @@
 <attribute NAME="authors" VALUE="Chao, Anne and Yang, Mark C. K."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="876D8C63131CA0AE3D63E06349C13FC8A6486564D9C8F43A6323F87824B9DE">
     <pdf_title>167 Stopping Rules and Estimation for Recapture Debugging with Unequal Failure Rates.pdf</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="References for completeness paper" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1374713109" CREATED="1538980432676" MODIFIED="1538980442538">
+<node TEXT="Vehicle tracking and traffic surveillance" ID="ID_1572452443" CREATED="1538980443639" MODIFIED="1538980552599" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/242%20Vehicle%20tracking%20and%20traffic%20surveillance.pdf">
+<attribute NAME="key" VALUE="coifman1998real"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="1998"/>
+<attribute NAME="title" VALUE="A Real-Time Computer Vision System for Vehicle Tracking and Traffic Surveillance"/>
+<attribute NAME="authors" VALUE="Coifman, Benjamin and Beymer, David and McLauchlan, Philip and Malik, Jitendra"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BFDDA0B32362F89CDBE63D8FE21FDE59E56F9BA89A19BCD9BC54095E721D5">
+    <pdf_title>3 E-mail: malik@cs.berkeley.edu</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -535,7 +547,7 @@
 <node TEXT="Traditional methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_212387236" CREATED="1517041168552" MODIFIED="1517041183565">
 <node TEXT="Code of Practice for the Design and Evaluation of ADAS" ID="ID_1744658253" CREATED="1517041192918" MODIFIED="1534391906768" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/133%20Code%20of%20practice%20for%20the%20design%20and%20evaluation%20of%20adas.pdf">
 <attribute NAME="key" VALUE="response2006code"/>
-<attribute NAME="journal" VALUE="RESPOSNE III: a PReVENT Project"/>
+<attribute NAME="journal" VALUE="RESPONSE III: a PReVENT Project"/>
 <attribute NAME="year" VALUE="2009"/>
 <attribute NAME="title" VALUE="Code of Practice for the Design and Evaluation of {ADAS}"/>
 <attribute NAME="authors" VALUE="Knapp, Andreas and Neumann, Markus and Brockmann, Martin and Walz, Rainer and Winkle, Thomas"/>
