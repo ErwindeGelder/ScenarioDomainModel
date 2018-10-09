@@ -12,12 +12,18 @@ Before splitting the problem of quantifying the completeness of the data, few as
 	
 	\item Whereas a scenario refers to a quantitative description, these scenarios can be abstracted by means of a qualitative description, referred to as scenario class, see also \textcite{ploeg2018cetran, elrofai2018scenario}. An example of a scenario class could have the name ``ego vehicle braking'', i.e., this scenario qualitatively describes a scenario in which the ego vehicle brakes. An actual (real-world) scenario in which the ego vehicle is braking would fall into this scenario class. It is assumed that all scenarios can be categorized into these scenario classes. This assumption does not necessarily limit the applicability of this paper. However, it might require a large number of scenario classes to describe all scenarios that are in the data.
 	
-	\item The third assumption is that all scenarios that fall into a specific scenario class can be parametrized similarly. 
+	\item It is assumed that all scenarios that fall into a specific scenario class can be parametrized similarly. As with the previous assumption, this does not necessarily limit the applicability of this paper. However, it might constrain the variety of scenarios that fall into a scenario class. 
 \end{enumerate}
 
-% Define sub-problems
+% Define subproblems
+Describing the data in terms of scenarios, we can now, instead of quantifying the completeness of the data, quantify the completeness of the scenarios. Furthermore, having the distinction between qualitative scenarios, i.e., scenario classes, and quantitative scenarios, we can describe the problem of quantifying the completeness of scenarios into two subproblems:
+\begin{enumerate}
+	\item How to quantify the completeness regarding the scenario classes?
+	\item How to quantify the completeness regarding all scenarios that fall into a scenario class?
+\end{enumerate}
 
 % Why splitting problem?
 % Comparing different scenario types directly is like comparing apples and oranges
+
 
 % Mention that we only address sub-problem 2 (and why)
