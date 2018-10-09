@@ -11,11 +11,12 @@ class KDE(object):
     def __init__(self, data=None, bw=None):
         self.bw = bw
         self.data, self.mindists, self.n, self.const_score, self.d, self.muk = None, None, 0, 0, 0, 0
+        self.last_n = 0  # Store n when the bandwidth is computed
         self.xhist, self.yhist, self.fft = None, None, None
         self.fit(data)
         self.invgr = (np.sqrt(5) - 1) / 2  # Inverse of Golden Ratio
         self.invgr2 = (3 - np.sqrt(5)) / 2  # 1/gr^2
-        self.data_score_samples, self.newshape, self.data_dist = None, None, None
+        self.data_score_samples, self.newshape, self.data_dist, self.difference = None, None, None, None
 
     def fit(self, data):
         if len(data.shape) == 1:
@@ -136,10 +137,13 @@ class KDE(object):
     def set_bw(self, bw):
         self.bw = bw
 
-    def set_score_samples(self, x: np.array) -> None:
+    def set_score_samples(self, x: np.array, compute_difference=False) -> None:
         """ Set the data that is to be used to compute the score samples
 
+        By default, the difference is not computed, because this requires a lot of memory.
+
         :param x: Input data
+        :param compute_difference: Whether to compute the difference or not (default)
         :return: None
         """
         # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
@@ -157,6 +161,14 @@ class KDE(object):
         # Reason to do this now is that this will save computations when the score needs to be computed multiple times
         # (e.g., with different values of self.n)
         self.data_dist = dist.cdist(self.data, self.data_score_samples, metric='sqeuclidean')
+
+        # Compute the difference of the datapoints in x to the datapoints of the KDE
+        # The different is a n-by-m-by-d matrix, so the vector (i,j,:) corresponds to kde.data[i] - x[j]
+        # The difference if only needed to compute the gradient. Therefore, by default, the difference is not computed
+        if compute_difference:
+            self.difference = np.zeros((len(self.data), len(self.data_score_samples), self.d))
+            for i, xm in enumerate(self.data_score_samples):
+                self.difference[:, i, :] = self.data - xm
 
     def score_samples(self, x=None):
         """ Return the scores, i.e., the value of the pdf, for all the datapoints in x
@@ -203,7 +215,6 @@ class KDE(object):
         If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
         distance will not be computed.
         """
-
         # Compute the distance of the datapoints in x to the datapoints of the KDE
         # Let x have M datapoints, then the result is a (self.n-by-M)-matrix
         if x is None:
@@ -218,6 +229,126 @@ class KDE(object):
         sum_kernel = np.sum(np.exp(-eucl_dist / (2*self.bw**2)), axis=0)
         const = -self.d/2*np.log(2*np.pi) - np.log(self.n) - self.d*np.log(self.bw)
         return const + np.log(sum_kernel)
+
+    def gradient_samples(self, x=None):
+        """ Compute gradient of the KDE
+
+        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
+        distance will not be computed.
+
+        :param x: np.array with the datapoints.
+        :return: gradient of the KDE
+        """
+        if x is None:
+            # The data is already set. We can compute the scores directly using _logscore_samples
+            gradient = self._gradient_samples()
+
+            # The data needs to be converted to the original input shape
+            return gradient.reshape(self.data_score_samples.shape)
+
+        # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
+        # This might result in an error if x is meant to be a single (multi-dimensional) datapoint
+        if len(x.shape) == 1:
+            x = x[:, np.newaxis]
+        if len(x.shape) == 2:
+            return self._gradient_samples(x)
+        else:
+            # It is assumed that the last dimension corresponds to the dimension of the data (i.e., a single
+            # datapoint)
+            # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is converted to
+            # input shape
+            newshape = x.shape
+            gradient = self._gradient_samples(x.reshape((np.prod(newshape[:-1]), x.shape[-1])))
+            return gradient.reshape(newshape)
+
+    def _gradient_samples(self, x=None):
+        """ Compute gradient of the KDE
+
+        It is assumed that the data is already in the right format (i.e., a 2D array). If not, use gradient_samples().
+        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
+        distance will not be computed.
+
+        :param x: m-by-d array with m datapoint
+        :return: m-by-d vector, where the i-th element corresponds to the gradient at the m-th datapoint
+        """
+        if x is None:
+            # Assume that we already did the proper calculations
+            eucl_dist = self.data_dist[:self.n]
+            if self.difference is None:
+                self.set_score_samples(self.data_score_samples, compute_difference=True)
+            difference = self.difference[:self.n]
+        else:
+            # Compute the distance of the datapoints in x to the datapoints of the KDE
+            # Let x have M datapoints, then the result is a (self.n-by-M)-matrix
+            eucl_dist = dist.cdist(self.data[:self.n], x, metric='sqeuclidean')
+
+            # First compute "difference" = x - xi, which is now a n-by-m-by-d matrix
+            difference = np.zeros((self.n, len(x), self.d))
+            for i, xm in enumerate(x):
+                difference[:, i, :] = self.data[:self.n] - xm
+
+        # The gradient is defined as follows:
+        # df(x,n)/dx = (2pi)^(-d/2)/(n h^(d+2)) * sum_{i=1}^n [ exp{-(x-xi)^2/(2h**2)} (x - xi) ]
+        summation = np.einsum('nm,nmd->md', np.exp(-eucl_dist / (2 * self.bw ** 2)), difference)
+        const = 1 / (self.n * self.bw**(self.d+2)) / (2*np.pi)**(self.d/2)
+        return const * summation
+
+    def laplacian(self, x=None):
+        """ Compute the Laplacian of the KDE
+
+        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
+        distance will not be computed.
+
+        :param x:
+        :return:
+        """
+        if x is None:
+            # The data is already set. We can compute the scores directly using _logscore_samples
+            laplacian = self._laplacian()
+
+            # The data needs to be converted to the original input shape
+            return laplacian.reshape(self.newshape)
+
+        # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
+        # This might result in an error if x is meant to be a single (multi-dimensional) datapoint
+        if len(x.shape) == 1:
+            x = x[:, np.newaxis]
+        if len(x.shape) == 2:
+            return self._laplacian(x)
+        else:
+            # It is assumed that the last dimension corresponds to the dimension of the data (i.e., a single
+            # datapoint)
+            # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is converted to
+            # input shape
+            newshape = x.shape[:-1]
+            laplacian = self._laplacian(x.reshape((np.prod(newshape), x.shape[-1])))
+            return laplacian.reshape(newshape)
+
+    def _laplacian(self, x=None):
+        """ Compute the Laplacian of the KDE
+
+        It is assumed that the data is already in the right format (i.e., a 2D array). If not, use gradient_samples().
+        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
+        distance will not be computed.
+
+        :param x:
+        :return:
+        """
+        # Compute the distance of the datapoints in x to the datapoints of the KDE
+        # Let x have M datapoints, then the result is a (self.n-by-M)-matrix
+        if x is None:
+            eucl_dist = self.data_dist[:self.n]
+        else:
+            eucl_dist = dist.cdist(self.data[:self.n], x, metric='sqeuclidean')
+
+        # The Laplacian is defined as the trace of the Hessian
+        # Let one value of a Kernel be denoted by K(u), then the Laplacian for that Kernel is:
+        # K(u) * (u^2 - d) / h^2
+        # K(u) can be computed as is done in _logscore_samples()  (hereafter, p=K(u))
+        # u^2 is the squared euclidean distance divided by h^2, hence, u^2=eucl_dist/kde.bw**2
+        # d is the dimension of the data and h is the bandwidth
+        p = np.exp(-eucl_dist / (2 * self.bw ** 2)) / (2*np.pi)**(self.d/2) / self.bw**self.d
+        return np.mean(p * (eucl_dist/self.bw**2 - self.d) / self.bw ** 2, axis=0)
 
     def confidence_interval(self, x, confidence=0.95):
         if len(x.shape) == 1:
