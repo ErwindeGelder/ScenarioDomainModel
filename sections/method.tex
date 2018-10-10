@@ -1,12 +1,26 @@
-\section{Proposed Risk Estimation Method} % Arash & Hala
+\section{Proposed Risk Estimation Method} % Hala
 \label{sec:method}
 
-
+In this section we discuss the following:
 \begin{enumerate}
-	\item Back ground on risk (ISO 26262/SOTIF) and acceptable level of risk
 	\item High level description of the method 
-	\item explaining how assumptions are being made
+	\item calculating the probability of occurrence of a scenario based on its Events, Activities, and Conditions. This is in the context of the scenario that gives a specified temporal relation between its events and activities.
+	
+	We are not sure about the causal relation, but we have observed the temporal relation from data. 
+	 
+	\item Scenario Events $\rightarrow$ independent variables 
+	\item Scenario Activities $\rightarrow$ some are dependent on each other (how to distinguish dependency?)
+	\item Scenario Conditions $\rightarrow$ some activities/events may depend on these. (how to define the dependencies?)
+	\item We make assumptions about the dependencies, and later validate whether the assumption was justified based on measured data. 	
+	\item explaining how assumptions are being made based on data
+	\item give both formulas for the two cases of dependent and independent variables. (there may be a third mixed option?)
+	\item use the enumerators $i, j, k$ to make the formulas independent on the number of variables (activities, events, conditions)
 \end{enumerate}
+
+Note: We use the formula of independent variable in the case study. 
+
+
+
 
 
 \begin{enumerate}
