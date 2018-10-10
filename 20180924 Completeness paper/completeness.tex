@@ -16,16 +16,24 @@
 %\renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
-\usepackage[style=authoryear-comp,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=1,uniquelist=false,uniquename=false]{biblatex}
+\usepackage[style=authoryear-comp,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
 \renewcommand{\cite}[1]{\parencite{#1}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[capitalize]{cleveref}
 
 \title{\LARGE \bf Have we collected enough field data?}
 \author{
 	E.\ de Gelder\textsuperscript{a,b}\thanks{\textsuperscript{a} TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands} \thanks{\textsuperscript{b} Corresponding author. Email: erwin.degelder@tno.nl}, Jan-Pieter Paardekooper\textsuperscript{a}, Olaf Op den Camp\textsuperscript{a}, and Bart De Schutter\textsuperscript{c} \thanks{\textsuperscript{c} Delft University of Technology, Delft Center for Systems and Control}
 }
+
+\newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
+\newcommand{\mise}[1]{\textup{MISE} \left( #1 \right)}
+\newcommand{\amise}[1]{\textup{AMISE} \left( #1 \right)}
+\newcommand*{\ud}{\mathrm{\,d}}
 
 \begin{document}
 
