@@ -292,7 +292,7 @@ It is assumed that the data can be described by a sequence of scenarios. Since t
 \end{enumerate}
 In this report, we will only address the second subproblem. 
 
-It is assumed that all scenarios that fall into the same scenario class can be parametrized in a similar manner using $d$ parameters. Let $n$ denote the number of scenarios for a specific scenario class. Consequently, we have $n$ parameter vectors, denoted by $x_i \in \mathbb{R}^d$ with $i\in\{1,...,n\}$, which describe the scenarios. To enable the generation of new scenarios from the same scenario class, we want to estimate the underlying distribution of $x_i$. Let $f(x)$ denote the true probability density function (pdf) and let $\hat{f}(x;n)$ denote the estimated pdf using $n$ parameter vectors. To quantify the completeness of the set of scenarios, represented by $x_i$, $i\in\{1,...,n\}$, we can make use of the Mean Integrated Squared Error (MISE), where the error is $f(x)-\hat{f}(x;n)$, i.e.,
+It is assumed that all scenarios that fall into the same scenario class can be parametrized in a similar manner using $d$ parameters. Let $n$ denote the number of scenarios for a specific scenario class. Consequently, we have $n$ parameter vectors, denoted by $X_i \in \mathbb{R}^d$ with $i\in\{1,...,n\}$, which describe the scenarios. To enable the generation of new scenarios from the same scenario class, we want to estimate the underlying distribution of $X_i$. Let $f(x)$ denote the true probability density function (pdf) and let $\hat{f}(x;n)$ denote the estimated pdf using $n$ parameter vectors. To quantify the completeness of the set of scenarios, represented by $X_i$, $i\in\{1,...,n\}$, we can make use of the Mean Integrated Squared Error (MISE), where the error is $f(x)-\hat{f}(x;n)$, i.e.,
 \begin{equation} \label{eq:mise}
 	\mise{n} = \expectation{ \int_{\mathbb{R}^d} \left(f(x) - \hat{f}(x;n)\right)^2 \ud x}.
 \end{equation}
@@ -323,7 +323,7 @@ For the remainder of this report, it is assumed that the second subproblem can b
 
 It is assumed that the pdf is estimated using Kernel Density Estimation (KDE) \cite{rosenblatt1956remarks, parzen1962estimation}, i.e.,
 \begin{equation}
-	\hat{f}(x;n) = \frac{1}{nh^d} \sum_{i=1}^n K \left( \frac{x - x_i}{h} \right),
+	\hat{f}(x;n) = \frac{1}{nh^d} \sum_{i=1}^n K \left( \frac{x - X_i}{h} \right),
 \end{equation}
 where $h$ denotes the bandwidth and $K(\cdot)$ denotes the kernel function. Furthermore, one-leave-out cross validation is used to compute the bandwidth $h$ because this minimizes the Kullback-Leibler divergence between the real pdf $f(x)$ and the estimated pdf $\hat{f}(x;n)$ \cite{turlach1993bandwidthselection}.
 
@@ -331,7 +331,7 @@ Chen \cite{chen2017tutorial} describes how the MISE \cref{eq:mise} can be estima
 \begin{equation} \label{eq:mise approximation}
 	\mise{n} \approx \frac{h^4}{4} \sigma_K^4 \int_{\mathbb{R}^d} \left(\nabla^2 f(x)\right)^2 \, \textup{d}x + \frac{\mu_K}{nh^d}.
 \end{equation}
-Here, $\sigma_K^2 = \int_{\mathbb{R}^d} ||x||^2 K(x) \ud x$ and $\mu_K = \int_{\mathbb{R}^d} K(x)^2 \ud x$ are constants that depend on the choice of the kernel function $K(\cdot)$. In \cref{eq:mise approximation}, $\nabla^2 f(x)$ denotes the Laplacian of $f(x)$, i.e., $\nabla^2 f(x) = \sum_{i=1}^d \frac{\partial^2 f(x)}{\partial x_l^2}$ (this is similar to the trace of the Hessian of $f(x)$). The right-hand side of \cref{eq:mise approximation} is also know as the Asymptotic Mean Integrated Squared Error (AMISE) because it is similar to the MISE \cref{eq:mise} in the limit of $nh \rightarrow \infty$ and $h \rightarrow 0$.
+Here, $\sigma_K^2 = \int_{\mathbb{R}^d} ||x||^2 K(x) \ud x$ and $\mu_K = \int_{\mathbb{R}^d} K(x)^2 \ud x$ are constants that depend on the choice of the kernel function $K(\cdot)$. In \cref{eq:mise approximation}, $\nabla^2 f(x)$ denotes the Laplacian of $f(x)$, i.e., $\nabla^2 f(x) = \sum_{l=1}^d \frac{\partial^2 f(x)}{\partial x_l^2}$ (this is similar to the trace of the Hessian of $f(x)$). The right-hand side of \cref{eq:mise approximation} is also know as the Asymptotic Mean Integrated Squared Error (AMISE) because it is similar to the MISE \cref{eq:mise} in the limit of $nh \rightarrow \infty$ and $h \rightarrow 0$.
 
 The first term of the right-hand side of \cref{eq:mise approximation} corresponds to the bias introduced by smoothing the pdf. Therefore, this term approaches zero when $h \rightarrow 0$. However, when $h \rightarrow 0$, the variance goes to infinity, as can be seen by the second term of the right-hand side of \cref{eq:mise approximation}. Therefore, the optimal bandwidth is such that $h \rightarrow 0$ while $nh^d \rightarrow \infty$. Obviously, this is only achieved by having infinite data ($n \rightarrow \infty$).
 
