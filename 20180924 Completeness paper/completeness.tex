@@ -15,6 +15,7 @@
 %\setlength\bibhang{12pt}% To set the indentation in the list of references using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 %\renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 
+\usepackage[pdftex]{graphicx} 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 \usepackage[style=authoryear-comp,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
@@ -24,6 +25,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[capitalize]{cleveref}
+\usepackage{breqn}
+%\Crefname{equation}{Equation}{Equations}
 
 \title{\LARGE \bf Have we collected enough field data?}
 \author{
@@ -31,8 +34,9 @@
 }
 
 \newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
-\newcommand{\mise}[1]{\textup{MISE} \left( #1 \right)}
-\newcommand{\amise}[1]{\textup{AMISE} \left( #1 \right)}
+\newcommand{\mise}[2]{\textup{MISE}_{#1}\left( #2 \right)}
+\newcommand{\amise}[2]{\textup{AMISE}_{#1} \left( #2 \right)}
+\newcommand{\measure}[2]{J_{#1} \left( #2 \right)}
 \newcommand*{\ud}{\mathrm{\,d}}
 
 \begin{document}
