@@ -129,12 +129,12 @@
 </node>
 <node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6" MOVED="1534304323924">
 <edge COLOR="#ff0000"/>
-<node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1534391857090" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
+<node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1539230742839" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
 <attribute NAME="key" VALUE="yang2012estimating"/>
 <attribute NAME="journal" VALUE="BPM Center Report"/>
 <attribute NAME="year" VALUE="2012"/>
 <attribute NAME="title" VALUE="Estimating Completeness of Event Logs"/>
-<attribute NAME="authors" VALUE="Yang, Hedong and Van Dongen, B and Ter Hofstede, A and Wynn, M and Wang, Jianmin"/>
+<attribute NAME="authors" VALUE="Yang, Hedong and Van Dongen, B. F. and Ter Hofstede, Arthur H. M. and Wynn, Moe T. and Wang, Jianmin"/>
 <hook NAME="FirstGroupNode"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="58E49B4BD7F4EFABD2DA074E78897E961BAF035B9D37D7069FBD7F7DB9DC8">
     <pdf_title>Estimating Completeness of Event Logs</pdf_title>
@@ -206,7 +206,7 @@
 <attribute NAME="journal" VALUE="BPM Center Report"/>
 <attribute NAME="year" VALUE="2012"/>
 <attribute NAME="title" VALUE="Estimating Completeness of Event Logs"/>
-<attribute NAME="authors" VALUE="Yang, Hedong and Van Dongen, B and Ter Hofstede, A and Wynn, M and Wang, Jianmin"/>
+<attribute NAME="authors" VALUE="Yang, Hedong and Van Dongen, B. F. and Ter Hofstede, Arthur H. M. and Wynn, Moe T. and Wang, Jianmin"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="58E49B4BD7F4EFABD2DA074E78897E961BAF035B9D37D7069FBD7F7DB9DC8">
     <pdf_title>Estimating Completeness of Event Logs</pdf_title>
 </pdf_annotation>
@@ -2342,7 +2342,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Books" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_116736876" CREATED="1531790817148" MODIFIED="1531790822476" MOVED="1533871476417">
+<node TEXT="Books" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_116736876" CREATED="1531790817148" MODIFIED="1531790822476" MOVED="1533871476417">
 <node TEXT="Book of Silverman - rule of thumb for bandwidth selection" ID="ID_529098711" CREATED="1513311887634" MODIFIED="1534390598770" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/086%20First%20chapters%20of%20book%20Silverman%20Kernel%20Density%20Estimation.pdf" MOVED="1533871482300">
 <attribute NAME="key" VALUE="silverman1986density"/>
 <attribute NAME="year" VALUE="1986"/>
@@ -2358,6 +2358,7 @@
 <attribute NAME="title" VALUE="Multivariate Density Estimation: Theory, Practice, and Visualization"/>
 <attribute NAME="authors" VALUE="Scott, David W."/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
+<node TEXT="Second edition" ID="ID_628431633" CREATED="1539252919806" MODIFIED="1539252922920"/>
 </node>
 <node TEXT="Maximum-likelihood Kernel Density Estimation (PhD Thesis)" ID="ID_1806332425" CREATED="1528812767609" MODIFIED="1534390598610" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/192%20Maximum-likelihood%20Kernel%20Density%20Estimation.pdf" MOVED="1531790863455">
 <attribute NAME="key" VALUE="vanderwalt2014mlkde"/>
@@ -2394,6 +2395,58 @@
 <attribute NAME="authors" VALUE="Turlach, Berwin A."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="40F9A34E24E03D74DDE25D6651FCFE1A37274D17210F57F75C9AD52BEBB5173"/>
 </node>
+<node TEXT="Bandwidth Selection for Kernel Conditional Density Estimation" ID="ID_1818938426" CREATED="1539230748443" MODIFIED="1539230754978" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/243%20Bandwidth%20Selection%20for%20Kernel%20Conditional%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="bashtannyk2001bandwidth"/>
+<attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
+<attribute NAME="year" VALUE="2001"/>
+<attribute NAME="title" VALUE="Bandwidth Selection for Kernel Conditional Density Estimation"/>
+<attribute NAME="authors" VALUE="Bashtannyk, David M. and Hyndman, Rob J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4C2DBEF99DD4F2FAD5E728D0999CDBF1DC90923592E92E8ADF771F7E34AB2E6">
+    <pdf_title>BandwidthSelectionforKernel ConditionalDensityEstimation</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A Brief Survey of Bandwidth Selection for Density Estimation" ID="ID_879111398" CREATED="1539230800460" MODIFIED="1539230821912" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/244%20A%20Brief%20Survey%20of%20Bandwidth%20Selection%20for%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="jones1996brief"/>
+<attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
+<attribute NAME="year" VALUE="1996"/>
+<attribute NAME="title" VALUE="A Brief Survey of Bandwidth Selection for Density Estimation"/>
+<attribute NAME="authors" VALUE="Jones, M. Chris and Marron, James S. and Sheather, Simon J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2171B4D8A748D6C6A994BCA148D0C17BE3B363628CAD423B14679BB94FEFB">
+    <pdf_title>A Brief Survey of Bandwidth Selection for Density Estimation Author(s): M. C. Jones, J. S. Marron and S. J. Sheather Source: Journal of the American Statistical Association, Vol. 91, No. 433 (Mar., 1996), pp. 401-407 Published by: Taylor &amp; Francis, Ltd. on behalf of the American Statistical Association Stable URL: https://www.jstor.org/stable/2291420 Accessed: 11-10-2018 04:06 UTC</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A Comparative Review of Bandwidth Selection for KDE" ID="ID_931739009" CREATED="1539230931608" MODIFIED="1539231097519" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/245%20A%20Comparative%20Review%20of%20Bandwidth%20Selection%20for%20Kernel%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="chiu1996comparative"/>
+<attribute NAME="journal" VALUE="Statistica Sinica"/>
+<attribute NAME="year" VALUE="1996"/>
+<attribute NAME="title" VALUE="A Comparative Review of Bandwidth Selection for Kernel Density Estimation"/>
+<attribute NAME="authors" VALUE="Chiu, Shean-Tsong"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9E9E935DEA6322782D4FE3DA231BFD75A1B01E67FA633003DCA6B5194546C">
+    <pdf_title>A C O M P A R A T I V E R E V I E W O F B A N D W I D T H S E L E C T I O N</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Exact Mean Integrated Squared Error" ID="ID_1931385133" CREATED="1539231109400" MODIFIED="1539231131153" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/246%20Exact%20Mean%20Integrated%20Squared%20Error.pdf">
+<attribute NAME="key" VALUE="marron1992exact"/>
+<attribute NAME="journal" VALUE="The Annals of Statistics"/>
+<attribute NAME="year" VALUE="1992"/>
+<attribute NAME="title" VALUE="Exact Mean Integrated Squared Error"/>
+<attribute NAME="authors" VALUE="Marron, J. Steve and Wand, Matt. P."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3F53DFD14BD3589D1ECFC64F5F8BC29DBFE0D8CFB3CBC5ACE8BA518719ED">
+    <pdf_title>Exact Mean Integrated Squared Error Author(s): J. S. Marron and M. P. Wand Source: The Annals of Statistics, Vol. 20, No. 2 (Jun., 1992), pp. 712-736 Published by: Institute of Mathematical Statistics Stable URL: https://www.jstor.org/stable/2241980 Accessed: 11-10-2018 04:11 UTC</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_765833272" CREATED="1539231165017" MODIFIED="1539231170294">
+<node TEXT="A Review of Kernel Density Estimation with Applications to Econometrics" ID="ID_248249806" CREATED="1539231172521" MODIFIED="1539231225505" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/247%20A%20Review%20of%20KDE%20with%20Aapplications%20to%20Econometrics.pdf">
+<attribute NAME="key" VALUE="zambom2013review"/>
+<attribute NAME="journal" VALUE="International Econometric Review (IER)"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="A Review of Kernel Density Estimation with Applications to Econometrics"/>
+<attribute NAME="authors" VALUE="Zambom, Adriano Zanin and Dias, Ronaldo"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="623AD1169DFE5E91AC5BE32E6398859CAD54C5481E1A9B951AF29DF4352D">
+    <pdf_title>A Review of Kernel Density Estimation with</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Scott rule for bandwidth: On optimal and data-based histograms" ID="ID_551784586" CREATED="1513908872666" MODIFIED="1534390526124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/100%20Scott%20Bandwidth.pdf">
 <attribute NAME="key" VALUE="scott1979optimal"/>
@@ -2413,6 +2466,16 @@
 <attribute NAME="authors" VALUE="Nagler, Thomas and Czado, Claudia"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F8D02A2F7B5768C319C99A46CB3BC656AA63A2A666AE9BB4F66C1EC735AE619">
     <pdf_title>Journal of Multivariate Analysis</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Using CV for estimating bandwidth" ID="ID_1584189025" CREATED="1539231295993" MODIFIED="1539231306784" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/248%20On%20the%20Choice%20of%20Smoothing%20Parameters%20for%20Parzen%20Estimators%20of%20Probability%20Density%20Functions.pdf">
+<attribute NAME="key" VALUE="duin1976parzen"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Computers"/>
+<attribute NAME="year" VALUE="1976"/>
+<attribute NAME="title" VALUE="On the Choice of Smoothing Parameters for Parzen Estimators of Probability Density Functions"/>
+<attribute NAME="authors" VALUE="Duin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FAFB3766E369F768BFC586C94BE4FCD3A44A07DE15BD1E4489C7D4BD49A2E14">
+    <pdf_title>On the Choice of Smoothing Parameters for Parzen Estimators of Probability Density Functions</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="Maximum Leave-one-out Likelihood for Kernel Density Estimation" ID="ID_624615584" CREATED="1529494717577" MODIFIED="1534390527192" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/200%20Maximum%20Leave-one-out%20Likelihood%20for%20Kernel%20Density%20Estimation.pdf">
