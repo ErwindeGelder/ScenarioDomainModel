@@ -2300,7 +2300,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="E5C660C7C1F11B7653E1623B17B68202A3CECDB42F96CF7C56F2815DA7CDA69"/>
 </node>
 </node>
-<node TEXT="Faster KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1533871381205" MOVED="1533871471287">
+<node TEXT="Faster KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1533871381205" MOVED="1533871471287">
 <node TEXT="Kernel Density Estimation Using the Fast Fourier Transform" ID="ID_258148581" CREATED="1531796223169" MODIFIED="1534390598610" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/227%20Kernel%20Density%20Estimation%20Using%20the%20Fast%20Fourier%20Transform.pdf" MOVED="1533871385445">
 <attribute NAME="key" VALUE="silverman1982fourier"/>
 <attribute NAME="journal" VALUE="Journal of the Royal Statistical Society. Series C (Applied Statistics)"/>
@@ -2433,6 +2433,16 @@
 <attribute NAME="authors" VALUE="Marron, J. Steve and Wand, Matt. P."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="3F53DFD14BD3589D1ECFC64F5F8BC29DBFE0D8CFB3CBC5ACE8BA518719ED">
     <pdf_title>Exact Mean Integrated Squared Error Author(s): J. S. Marron and M. P. Wand Source: The Annals of Statistics, Vol. 20, No. 2 (Jun., 1992), pp. 712-736 Published by: Institute of Mathematical Statistics Stable URL: https://www.jstor.org/stable/2241980 Accessed: 11-10-2018 04:11 UTC</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Multi-dimensional Density Estimation" ID="ID_1521845584" CREATED="1539426082514" MODIFIED="1539426106278" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/249%20Multi-dimensional%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="scott2005multidimensional"/>
+<attribute NAME="journal" VALUE="Handbook of Statistics"/>
+<attribute NAME="year" VALUE="2005"/>
+<attribute NAME="title" VALUE="Multi-dimensional Density Estimation"/>
+<attribute NAME="authors" VALUE="Scott, David W and Sain, Stephan R"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="439F15D7C97D36DA2CD2D9A7E838E4BA46C772B7747BB44095BACD832A1027B4">
+    <pdf_title>Multi-dimensional Density Estimation</pdf_title>
 </pdf_annotation>
 </node>
 </node>
