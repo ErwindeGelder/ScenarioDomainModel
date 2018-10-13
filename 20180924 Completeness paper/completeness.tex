@@ -26,12 +26,28 @@
 \usepackage{amssymb}
 \usepackage[capitalize]{cleveref}
 \usepackage{breqn}
+\usepackage{pgfplots}                           %% support for TikZ figures
 %\Crefname{equation}{Equation}{Equations}
+
+% The following is needed to make sure that the packages breqn and cleveref work nicely together
+\makeatletter
+\let\cref@old@eq@setnumber\eq@setnumber
+\def\eq@setnumber{%
+	\cref@old@eq@setnumber%
+	\cref@constructprefix{equation}{\cref@result}%
+	\protected@xdef\cref@currentlabel{%
+		[equation][\arabic{equation}][\cref@result]\p@equation\theequation}}
+\makeatother
 
 \title{\LARGE \bf Have we collected enough field data?}
 \author{
 	E.\ de Gelder\textsuperscript{a,b}\thanks{\textsuperscript{a} TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands} \thanks{\textsuperscript{b} Corresponding author. Email: erwin.degelder@tno.nl}, Jan-Pieter Paardekooper\textsuperscript{a}, Olaf Op den Camp\textsuperscript{a}, and Bart De Schutter\textsuperscript{c} \thanks{\textsuperscript{c} Delft University of Technology, Delft Center for Systems and Control}
 }
+
+\newlength\figurewidth
+\setlength\figurewidth{\linewidth}              %% set figure width
+\newlength\figureheight
+\setlength\figureheight{0.8\linewidth}              %% set figure height
 
 \newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
 \newcommand{\mise}[2]{\textup{MISE}_{#1}\left( #2 \right)}
