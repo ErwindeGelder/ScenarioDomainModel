@@ -34,7 +34,7 @@ Here, $K(\cdot)$ is an appropriate kernel function and $h$ denotes the bandwidth
 \end{equation}
 where $\|u\|^2$ denotes the squared 2-norm of $u$, i.e., $u^T u$.
 
-The bandwidth $h$ controls the amount of smoothing. For our chosen kernel of \cref{eq:gaussian kernel}, the same amount of smoothing is applied in every direction, although our method can easily be exended to a multi-dimensional bandwidth, see, e.g., \textcite{chen2017tutorial}. There are many different ways of estimating the bandwidth, ranging from simple reference rules like for example Scott's rule of thumb \cite{scott2015multivariate} or Silverman's rule of thumb \cite{silverman1986density} to more elaborate methods. See \textcite{turlach1993bandwidthselection, bashtannyk2001bandwidth, jones1996brief, chiu1996comparative} for reviews of different bandwidth selection methods. 
+The bandwidth $h$ controls the amount of smoothing. For our chosen kernel of \cref{eq:gaussian kernel}, the same amount of smoothing is applied in every direction, although our method can easily be extended to a multi-dimensional bandwidth, see, e.g., \textcite{scott2005multidimensional, chen2017tutorial}. There are many different ways of estimating the bandwidth, ranging from simple reference rules like for example Scott's rule of thumb \cite{scott2015multivariate} or Silverman's rule of thumb \cite{silverman1986density} to more elaborate methods. See \textcite{turlach1993bandwidthselection, bashtannyk2001bandwidth, jones1996brief, chiu1996comparative} for reviews of different bandwidth selection methods. 
 
 % Explain how MISE is computed
 \subsection{Estimating the Mean Integrated Squared Error for dependent parameters}
@@ -78,6 +78,7 @@ KDE is employed because the KDE fit is flexible with the underlying data distrib
 
 Without loss of generality, consider the parameter vector $x$ that can be decomposed into two parts:
 \begin{equation}
+	\label{eq:combine}
 	x = \begin{bmatrix}
 		y \\ z
 	\end{bmatrix},

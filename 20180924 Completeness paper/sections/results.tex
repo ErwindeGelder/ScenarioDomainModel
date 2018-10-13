@@ -1,21 +1,54 @@
 \section{Examples}
 \label{sec:results}
 
-In this section, the proposed method of \cref{sec:method} is illustrated by means of two examples. The first example applies the method with data generated from a known distribution. Because the distribution is known, the real MISE can be computed and compared with the results from \cref{eq:measure,eq:measure independent}. Secondly, in \cref{sec:result real}, the proposed method is applied on a dataset containing naturalistic driving data.
+In this section, the proposed method of \cref{sec:method} is illustrated by means of two examples. The first example applies the method with data generated from a known distribution. Because the distribution is known, the real MISE can be accurately approximated and compared with the results from \cref{eq:measure,eq:measure independent}. Secondly, in \cref{sec:result real}, the proposed method is applied on a dataset containing naturalistic driving data.
 
 \subsection{Example with known underlying distribution}
 \label{sec:result artificial}
+
+In this example, the data samples $Y_i$ with $i \in \{1, \ldots, n\}$ are independently and identically distributed random variables that are distributed according to the pdf $g(\cdot)$. Each data sample $Y_i$ corresponds to a scalar, i.e., $d_y=1$. Similarly, the data samples $Z_i$ with $i \in \{1, \ldots, n\}$ are independently and identically distributed random variables that are distributed according to the pdf $h(\cdot)$. The data samples are combined, similar to \cref{eq:combine}, such that the likelihood of $X_i$ is $f(X_i)=g(Y_i)h(Z_i)$. 
+
+\Cref{fig:true pdf} shows the distributions $g(\cdot)$ (black solid line) and $h(\cdot)$ (gray dashed line). Both distributions are Gaussian mixtures, i.e., both pdfs equal the sum of multiple weighted Gaussian distributions. The pdf $g(\cdot)$ corresponds to the average of two Gaussian distributions with means of $-1$ and $1$ and standard deviations $0.5$ and $0.3$, respectively. The pdf $h(\cdot)$ corresponds to the average of three Gaussian distributions with means $-0.5$, $0.5$, and $1.5$, and standard deviations $0.3$, $0.5$, and $0.3$, respectively. 
 
 \setlength\figurewidth{\linewidth}
 \setlength\figureheight{0.7\linewidth}
 \begin{figure}
 	\centering
 	\input{figures/true_pdf.tikz}
-	\caption{The true probability density functions that are used to illustrate the quantification of the completeness.}
+	\caption{The true probability density functions $g(\cdot)$ (black solid line) and $h(\cdot)$ (gray dashed line) that are used to illustrate the quantification of the completeness.}
 	\label{fig:true pdf}
 \end{figure}
 
-% We use one-leave-out cross validation to compute the bandwidth $h$ (see also \textcite{duin1976parzen}) because this minimizes the Kullback-Leibler divergence between the real pdf $f(x)$ and the estimated pdf $\hat{f}(x;n)$ \cite{turlach1993bandwidthselection,zambom2013review}.
+The real MISE of \cref{eq:mise} is not calculated exactly. The expectation $\expectation{\cdot}$ is estimated by repeating the estimation of the pdf 200 times, i.e., 
+\begin{equation}
+	\label{eq:approx mise}
+	\mise{f}{n} \approx \frac{1}{m} \sum_{j=1}^m \int \left( f(x) - \hat{f}_j(x;n)\right)^2 \ud x,
+\end{equation}
+where $\hat{f}_j(x;n)$ is the $j$-th estimate and $m=200$. 
+
+All three pdfs are estimated using \cref{eq:kde}. We use one-leave-out cross validation to compute the bandwidth $h$ (see also \textcite{duin1976parzen}) because this minimizes the Kullback-Leibler divergence between the real pdf $f(x)$ and the estimated pdf $\hat{f}(x;n)$ \cite{turlach1993bandwidthselection,zambom2013review}. Note that although the estimation of the pdfs is repeated 200 times to accurately approximate the MISE using \cref{eq:approx mise}, the bandwidth is only determined once for a specific number of samples. All the other 199 times, the same bandwidths are adopted. The resulting bandwidths are shown in \cref{fig:bandwidth}. The bandwidth of $\hat{f}(x;n)$ (black dashed line) is significantly larger than the bandwidths of $\hat{g}(y;n)$ (gray solid line) and $\hat{h}(z;n)$ (gray dotted line). This result is not surprising: because $\hat{f}(x;n)$ represents a bivariate distribution, it requires more data to have a similar bandwidth compared with a univariate distribution \cite{scott2005multidimensional}.
+
+\setlength\figurewidth{0.9\linewidth}
+\setlength\figureheight{0.7\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/bandwidth.tikz}
+	\caption{The bandwidths of $\hat{f}(x;n)$ (black dashed line), $\hat{g}(y;n)$ (gray solid line), and $\hat{h}(z;n)$ (gray dotted line) computed with one-leave-out cross validation using different number of samples.}
+	\label{fig:bandwidth}
+\end{figure}
+
+\Cref{fig:mise example} shows the result this example. The black lines show the real MISEs, approximated using \cref{eq:approx mise}, where the black solid line represents the MISE when $f(x)$ is directly estimated and the black dashed line represented the MISE when use is made of \cref{eq:independency}. The MISE is significantly lower when it is assumed that the two parameters are independent. One way to look at this is that the degree of freedom of $f(x)$ is reduced when assuming that the two parameters are independent and this lower degree in freedom leads to a more certain estimate. Hence, the MISE is lower.
+
+\setlength\figurewidth{\linewidth}
+\setlength\figureheight{0.7\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/mise_example.tikz}
+	\caption{Bladibla.}
+	\label{fig:mise example}
+\end{figure}
+
+The gray lines in \cref{fig:mise example} show the measures to quantify the completeness of the data. The gray solid line shows the result of applying \cref{eq:measure} and the gray dashed line shows the result of applying \cref{eq:measure independent}. Both lines follow the same trend as their black equivalents. This illustrates that the measures \cref{eq:measure,eq:measure independent} are applicable for estimated the real MISE of \cref{eq:mise}. To show that this is not a mere coincidence, the grayed areas in \cref{fig:mise example} show the interval $[\mu-3\sigma,\mu+3\sigma]$, where $\mu$ and $\sigma$ denote the mean and standard deviation, respectively, of the measures of \cref{eq:measure,eq:measure independent} when repeating the experiment 200 times. Note that the measures of completeness are consequently higher than the real MISE. This can be explained from the fact that the measures of completeness are approximations of the AMISE and the AMISE itself is always higher than the real MISE under some mild conditions, see Theorem 4.2 of \textcite{marron1992exact}.
 
 \subsection{Example with real data}
 \label{sec:result real}

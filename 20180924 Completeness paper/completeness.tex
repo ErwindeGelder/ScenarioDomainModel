@@ -15,7 +15,7 @@
 %\setlength\bibhang{12pt}% To set the indentation in the list of references using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 %\renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 
-\usepackage[pdftex]{graphicx} 
+\usepackage{graphicx}
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 \usepackage[style=authoryear-comp,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
@@ -27,6 +27,7 @@
 \usepackage[capitalize]{cleveref}
 \usepackage{breqn}
 \usepackage{pgfplots}                           %% support for TikZ figures
+\pgfplotsset{compat=1.16}
 %\Crefname{equation}{Equation}{Equations}
 
 % The following is needed to make sure that the packages breqn and cleveref work nicely together
