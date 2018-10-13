@@ -1,2 +1,22 @@
-\section{Results}
+\section{Examples}
 \label{sec:results}
+
+In this section, the proposed method of \cref{sec:method} is illustrated by means of two examples. The first example applies the method with data generated from a known distribution. Because the distribution is known, the real MISE can be computed and compared with the results from \cref{eq:measure,eq:measure independent}. Secondly, in \cref{sec:result real}, the proposed method is applied on a dataset containing naturalistic driving data.
+
+\subsection{Example with known underlying distribution}
+\label{sec:result artificial}
+
+\setlength\figurewidth{\linewidth}
+\setlength\figureheight{0.7\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/true_pdf.tikz}
+	\caption{The true probability density functions that are used to illustrate the quantification of the completeness.}
+	\label{fig:true pdf}
+\end{figure}
+
+% We use one-leave-out cross validation to compute the bandwidth $h$ (see also \textcite{duin1976parzen}) because this minimizes the Kullback-Leibler divergence between the real pdf $f(x)$ and the estimated pdf $\hat{f}(x;n)$ \cite{turlach1993bandwidthselection,zambom2013review}.
+
+\subsection{Example with real data}
+\label{sec:result real}
+
