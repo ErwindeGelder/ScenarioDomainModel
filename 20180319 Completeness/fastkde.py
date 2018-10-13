@@ -115,9 +115,9 @@ class KDE(object):
         # Check if we only searched on one side
         if verbose:
             if not at_boundary_min:
-                print("Warning: only searched on right side. Might need to increase max_bw")
+                print("Warning: only searched on right side. Might need to increase max_bw.")
             if not at_boundary_max:
-                print("Warning: only searched on right side. Might need to increase max_bw")
+                print("Warning: only searched on right side. Might need to increase max_bw.")
 
         if yc < yd:
             self.bw = (a + d) / 2
@@ -226,7 +226,9 @@ class KDE(object):
         #                          = (2pi)^(-d/2)/(n h^d) * sum_{i=1}^n [ exp{-(x-xi)^2/(2h**2)} ]
         # We first compute the sum. Then the log of f(x,n) is computed:
         # log(f(x,n)) = -d/2*log(2pi) - log(n) - d*log(h) + log(sum)
-        sum_kernel = np.sum(np.exp(-eucl_dist / (2*self.bw**2)), axis=0)
+        sum_kernel = np.zeros(eucl_dist.shape[1])
+        for d in eucl_dist:
+            sum_kernel += np.exp(-d / (2*self.bw**2))
         const = -self.d/2*np.log(2*np.pi) - np.log(self.n) - self.d*np.log(self.bw)
         return const + np.log(sum_kernel)
 
@@ -347,8 +349,11 @@ class KDE(object):
         # K(u) can be computed as is done in _logscore_samples()  (hereafter, p=K(u))
         # u^2 is the squared euclidean distance divided by h^2, hence, u^2=eucl_dist/kde.bw**2
         # d is the dimension of the data and h is the bandwidth
-        p = np.exp(-eucl_dist / (2 * self.bw ** 2)) / (2*np.pi)**(self.d/2) / self.bw**self.d
-        return np.mean(p * (eucl_dist/self.bw**2 - self.d) / self.bw ** 2, axis=0)
+        laplacian = np.zeros(eucl_dist.shape[1])
+        for d in eucl_dist:
+            p = np.exp(-d / (2 * self.bw ** 2)) / ((2*np.pi)**(self.d/2) * self.bw**self.d)
+            laplacian += p * (d/self.bw**4 - self.d/self.bw**2)
+        return laplacian / self.n
 
     def confidence_interval(self, x, confidence=0.95):
         if len(x.shape) == 1:
