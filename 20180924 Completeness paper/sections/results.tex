@@ -33,7 +33,7 @@ All three pdfs are estimated using \cref{eq:kde}. We use one-leave-out cross val
 \begin{figure}
 	\centering
 	\input{figures/bandwidth.tikz}
-	\caption{The bandwidths of $\hat{f}(x;n)$ (black dashed line), $\hat{g}(y;n)$ (gray solid line), and $\hat{h}(z;n)$ (gray dotted line) computed with one-leave-out cross validation using different number of samples.}
+	\caption{The bandwidths of $\hat{f}(x;n)$ (black dashed line), $\hat{g}(y;n)$ (gray solid line), and $\hat{h}(z;n)$ (gray dotted line) for the example of \cref{sec:result artificial}. The bandwidths are computed using one-leave-out cross validation for different number of samples.}
 	\label{fig:bandwidth}
 \end{figure}
 
@@ -52,4 +52,31 @@ The gray lines in \cref{fig:mise example} show the measures to quantify the comp
 
 \subsection{Example with real data}
 \label{sec:result real}
+
+\setlength\figurewidth{\linewidth}
+\setlength\figureheight{0.5\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/histogram2.tikz}
+	\caption{Histogram of the data that used for the example with the real data.}
+	\label{fig:histogram}
+\end{figure}
+
+\setlength\figurewidth{0.9\linewidth}
+\setlength\figureheight{0.7\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/bandwidth_real.tikz}
+	\caption{The bandwidths of $\hat{f}(x;n)$ (black dashed line), $\hat{g}(y;n)$ (gray solid line), and $\hat{h}(z;n)$ (gray dotted line) for the example of \cref{sec:result real}. The bandwidths are computed using one-leave-out cross validation for different number of samples.}
+	\label{fig:bandwidth real}
+\end{figure}
+
+\setlength\figurewidth{\linewidth}
+\setlength\figureheight{\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/mise_real.tikz}
+	\caption{Bladibla.}
+	\label{fig:mise real}
+\end{figure}
 
