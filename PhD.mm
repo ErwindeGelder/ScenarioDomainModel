@@ -439,7 +439,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Safety" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1183001868" CREATED="1530151668822" MODIFIED="1530151674988">
+<node TEXT="Safety" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1183001868" CREATED="1530151668822" MODIFIED="1530151674988">
 <node TEXT="Challenges" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_720959665" CREATED="1531278476883" MODIFIED="1531278483471">
 <node TEXT="Autonomous Vehicle Safety: An Interdisciplinary Challenge" ID="ID_32688539" CREATED="1531278488420" MODIFIED="1534391906684" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/212%20Autonomous%20Vehicle%20Safety%20An%20Interdisciplinary%20Challenge.pdf">
 <attribute NAME="key" VALUE="koopman2017interdisciplinary"/>
@@ -462,7 +462,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Towards increased reliability by objectification of HARA of automated automotive systems" ID="ID_1947999662" CREATED="1530151676773" MODIFIED="1534391906815" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
+<node TEXT="Towards increased reliability by objectification of HARA of AD" ID="ID_1947999662" CREATED="1530151676773" MODIFIED="1539742197564" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
 <attribute NAME="key" VALUE="khastgir2017towards"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -472,7 +472,7 @@
     <pdf_title>Safety Science</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Forecasts or fortune-telling: When are expert judgements of safety risk valid?" ID="ID_833487467" CREATED="1530152765709" MODIFIED="1534391906737" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/206%20When%20are%20expert%20judgements%20of%20safety%20risk%20valid.pdf">
+<node TEXT="Forecasts: When are expert judgements of safety risk valid?" ID="ID_833487467" CREATED="1530152765709" MODIFIED="1539742205657" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/206%20When%20are%20expert%20judgements%20of%20safety%20risk%20valid.pdf">
 <attribute NAME="key" VALUE="rae2017forecast"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -508,6 +508,15 @@
 <attribute NAME="authors" VALUE="Shalev-Shwartz, Shai and Shammah, Shaked and Shashua, Amnon"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5F760B70AA3859ECAFB7AA49608E9129EC6BD34503F5B53987A2AAC835E7E">
     <pdf_title>On a Formal Model of Safe and Scalable Self-driving Cars</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="An Architecture Pattern for Safety Critical AD: Design and Analysis" ID="ID_261568920" CREATED="1539742214247" MODIFIED="1539742224789" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/250%20An%20Architecture%20Pattern%20for%20Safety%20Critical%20AD.pdf">
+<attribute NAME="key" VALUE="luo2017architecture"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="An Architecture Pattern for Safety Critical Automated Driving Applications: Design and Analysis"/>
+<attribute NAME="authors" VALUE="Luo, Yaping and Khabbaz Saberi, Arash and Bijlsma, Tjerk and Lukkien, Johan J. and van den Brand, Mark"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="ABAD4DB9800B73A4D5795EA652E26E3D3EF684C56F934D1ABD69821EEECD45">
+    <pdf_title>An Architecture Pattern for Safety Critical Automated Driving Applications: Design and Analysis</pdf_title>
 </pdf_annotation>
 </node>
 </node>
