@@ -180,7 +180,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Estimating number of species" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1995372175" CREATED="1513318000249" MODIFIED="1513318020945" HGAP="40">
+<node TEXT="Estimating number of species" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1995372175" CREATED="1513318000249" MODIFIED="1513318020945" HGAP="40">
 <node TEXT="A review by Bunge and Fitzpatrick (1993)" ID="ID_770072296" CREATED="1513318119920" MODIFIED="1534391857043" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/089%20Estimating%20the%20Number%20of%20Species%20A%20Review.pdf">
 <attribute NAME="key" VALUE="bunge1993estimating"/>
 <attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
@@ -309,6 +309,105 @@
 <attribute NAME="authors" VALUE="Coifman, Benjamin and Beymer, David and McLauchlan, Philip and Malik, Jitendra"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="BFDDA0B32362F89CDBE63D8FE21FDE59E56F9BA89A19BCD9BC54095E721D5">
     <pdf_title>3 E-mail: malik@cs.berkeley.edu</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="What is data used for?" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1937528963" CREATED="1539859088544" MODIFIED="1539859102421">
+<node TEXT="To determine the risks and prevalence evaluation" ID="ID_787334324" CREATED="1539859106194" MODIFIED="1539859286572" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/251%20Driver%20crash%20risk%20factors%20and%20prevalence%20evaluation%20from%20NDD.pdf">
+<attribute NAME="key" VALUE="dingus2016crashrisk"/>
+<attribute NAME="journal" VALUE="Proceedings of the National Academy of Sciences"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Driver Crash Risk Factors and Prevalence Evaluation Using Naturalistic Driving Data"/>
+<attribute NAME="authors" VALUE="Dingus, Thomas A. and Guo, Feng and Lee, Suzie and Antin, Jonathan F. and Perez, Miguel and Buchanan-King, Mindy and Hankey, Jonathan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8C0B814139E18A806D3E97C9B2718844ED9C12D2CB6F85D672F1CE06759D0">
+    <pdf_title>Driver crash risk factors and prevalence evaluation using naturalistic driving data</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Determine impact of driver inattention and fatigue" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_864528776" CREATED="1539859764154" MODIFIED="1539860048845" MOVED="1539921653697">
+<node TEXT="Klauer et al." ID="ID_1763465458" CREATED="1539860042128" MODIFIED="1539860206705" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/252%20The%20Impact%20of%20Driver%20Inattention.pdf">
+<attribute NAME="key" VALUE="klauer2006impact"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="The Impact of Driver Inattention on Near-Crash/Crash Risk: An Analysis Using the 100-Car Naturalistic Driving Study Data"/>
+<attribute NAME="authors" VALUE="Klauer, Sheila G. and Dingus, Thomas A. and Neale, Vicki L. and Sudweeks, Jeremy D. and Ramsey, David J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="16A4E2D2FD19AB18532391E5FF585ED327EFE65DA964DAABE8AF94A3FC4B58">
+    <pdf_title>The Impact of Driver Inattention&#xffff;&#xffff; On Near-Crash/Crash Risk:&#xffff;&#xffff;</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Williamson et al." ID="ID_471009459" CREATED="1539860300870" MODIFIED="1539860306982" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/253%20The%20link%20between%20fatigue%20and%20safety.pdf">
+<attribute NAME="key" VALUE="williamson2011link"/>
+<attribute NAME="journal" VALUE="Accident Analysis \&amp; Prevention"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="The Link between Fatigue and Safety"/>
+<attribute NAME="authors" VALUE="Williamson, Ann and Lombardi, David A. and Folkard, Simon and Stutts, Jane and Courtney, Theodore K. and Connor, Jennie L."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3D6AB6A828691ABF56F050E3FC7448F9218EE01FE1EAEF22F620BF186970FD1F">
+    <pdf_title>Accident Analysis and Prevention</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Data-driven modeling and verification of driver behavior" ID="ID_1309595588" CREATED="1539860874920" MODIFIED="1539861671943" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/254%20Data-Driven%20Probabilistic%20Modeling%20and%20Verification%20of%20Human%20Driver%20Behavior.pdf" MOVED="1539921647933">
+<attribute NAME="key" VALUE="sadigh2014data"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Data-driven probabilistic modeling and verification of human driver behavior"/>
+<attribute NAME="authors" VALUE="Sadigh, Dorsa and Driggs-Campbell, Katherine and Puggelli, Alberto and Li, Wenchao and Shia, Victor and Bajcsy, Ruzena and Sangiovanni-Vincentelli, Alberto L. and Sastry, S. Shankar and Seshia, Sanjit A."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="63ADE5CA50214080A3BE51A6E9FEBA1A739C556921C9A2F78E1C1DB3D196AF">
+    <pdf_title>Data-Driven Probabilistic Modeling and Verification of Human Driver Behavior</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Create test cases for evaluation of AD" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1568619945" CREATED="1539859402839" MODIFIED="1539859453339">
+<node TEXT="Zofka et al." ID="ID_858448434" CREATED="1539859433139" MODIFIED="1539859443304" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Data-driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems"/>
+<attribute NAME="authors" VALUE="Zofka, Marc Ren{\&apos;e} and Kuhnt, Florian and Kohlhaas, Ralf and Rist, Christoph and Schamm, Thomas and Z\&quot;{o}llner, J. Marius"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F91B4B237B607197EFC2BD5C7A836F87F289E47CFAF66BFE19F3A3F8DFFB694">
+    <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Elrofai et al." ID="ID_1433412678" CREATED="1539859458227" MODIFIED="1539859474039" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/228%20Streetwise%20white%20paper.pdf">
+<attribute NAME="key" VALUE="elrofai2018scenario"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Scenario-Based Safety Validation of Connected and Automated Driving"/>
+<attribute NAME="authors" VALUE="Elrofai, Hala and Paardekooper, Jan-Pieter and de Gelder, Erwin and Kalisvaart, Sytze and Op den Camp, Olaf"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FC27CA7B22F2D8D96C7CE7C97A4597AC0D4A54198DAF717A6233908747E3">
+    <pdf_title>StreetWise</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="de Gelder and Paardekooper" ID="ID_290885533" CREATED="1539859477026" MODIFIED="1539859576040" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<attribute NAME="key" VALUE="deGelder2017assessment"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
+    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Ploeg et al." ID="ID_1475875121" CREATED="1539859498907" MODIFIED="1539859510320" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
+<attribute NAME="key" VALUE="ploeg2018cetran"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Scenario-Based Safety Assessment Framework for Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Ploeg, Jeroen and de Gelder, Erwin and Slav{\&apos;i}k, Martin and Querner, Eley and Webster, Thomas and de Boer, Niels"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6B31F33616AE27EBD54FD7549B19B0DFCC869DAB57C34B572167C3BE14A286">
+    <pdf_title>ITS AP Forum 2018 Fukuoka</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Putz et al." ID="ID_1513737338" CREATED="1539859567236" MODIFIED="1539859572382" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
+<attribute NAME="key" VALUE="putz2017pegasus"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="System Validation of Highly Automated Vehicles with a Database of Relevant Traffic Scenarios"/>
+<attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
+    <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Data used to assess system performance" ID="ID_1666081724" CREATED="1539862173293" MODIFIED="1539920640920" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/255%20Extensive%20Tests%20of%20Autonomous%20Driving%20Technologies.pdf">
+<attribute NAME="key" VALUE="broggi2013extensive"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Extensive Tests of Autonomous Driving Technologies"/>
+<attribute NAME="authors" VALUE="Broggi, Alberto and Buzzoni, Michele and Debattisti, Stefano and Grisleri, Paolo and Laghi, Maria Chiara and Medici, Paolo and Versari, Pietro"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="74AFF5397B08CC149209F5EEB77EA44FE392C42BCAE65E58317246B8FE81A">
+    <pdf_title>Extensive Tests of Autonomous Driving Technologies</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2530,6 +2629,18 @@
 <attribute NAME="title" VALUE="Estimating Tail Probabilities"/>
 <attribute NAME="authors" VALUE="Carr, D. B. and Tolley, H. D."/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+</node>
+<node TEXT="PDF (parameter) uncertainty" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_69833391" CREATED="1539963688545" MODIFIED="1539963705970">
+<node TEXT="Separating the Contributions of Variability and Parameter Uncertainty" ID="ID_733405407" CREATED="1539963716606" MODIFIED="1539963728316" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/256%20Separating%20the%20contributions%20of%20variability%20and%20parameter%20uncertainty.pdf">
+<attribute NAME="key" VALUE="sankararaman2013separating"/>
+<attribute NAME="journal" VALUE="Reliability Engineering \&amp; System Safety"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Separating the Contributions of Variability and Parameter Uncertainty in Probability Distributions"/>
+<attribute NAME="authors" VALUE="Sankararaman, Shankar and Mahadevan, Sankaran"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AF4DCD8889C632C47C945D49A8264DC4B934AC345FDC9FD9817BBA932DA5E">
+    <pdf_title>Reliability Engineering and System Safety</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
