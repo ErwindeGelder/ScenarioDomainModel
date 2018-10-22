@@ -300,7 +300,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="References for completeness paper" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1374713109" CREATED="1538980432676" MODIFIED="1538980442538">
+<node TEXT="References for completeness paper" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1374713109" CREATED="1538980432676" MODIFIED="1540198068146" HGAP="44">
 <node TEXT="Vehicle tracking and traffic surveillance" ID="ID_1572452443" CREATED="1538980443639" MODIFIED="1538980552599" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/242%20Vehicle%20tracking%20and%20traffic%20surveillance.pdf">
 <attribute NAME="key" VALUE="coifman1998real"/>
 <attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
@@ -312,7 +312,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="What is data used for?" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1937528963" CREATED="1539859088544" MODIFIED="1539859102421">
+<node TEXT="What is data used for?" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1937528963" CREATED="1539859088544" MODIFIED="1540198071221" HGAP="44" VSHIFT="-8">
 <node TEXT="To determine the risks and prevalence evaluation" ID="ID_787334324" CREATED="1539859106194" MODIFIED="1539859286572" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/251%20Driver%20crash%20risk%20factors%20and%20prevalence%20evaluation%20from%20NDD.pdf">
 <attribute NAME="key" VALUE="dingus2016crashrisk"/>
 <attribute NAME="journal" VALUE="Proceedings of the National Academy of Sciences"/>
@@ -408,6 +408,38 @@
 <attribute NAME="authors" VALUE="Broggi, Alberto and Buzzoni, Michele and Debattisti, Stefano and Grisleri, Paolo and Laghi, Maria Chiara and Medici, Paolo and Versari, Pietro"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="74AFF5397B08CC149209F5EEB77EA44FE392C42BCAE65E58317246B8FE81A">
     <pdf_title>Extensive Tests of Autonomous Driving Technologies</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="How much data are enough?" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_891896649" CREATED="1540198072678" MODIFIED="1540198085762" HGAP="44">
+<node TEXT="How Many Interviews Are Enough?" ID="ID_1706689748" CREATED="1540198099729" MODIFIED="1540198207313" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/258%20How%20Many%20Interviews%20Are%20Enough.pdf">
+<attribute NAME="key" VALUE="guest2006many"/>
+<attribute NAME="journal" VALUE="Field Methods"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="How Many Interviews Are Enough? An Experiment with Data Saturation and Variability"/>
+<attribute NAME="authors" VALUE="Guest, Greg and Bunce, Arwen and Johnson, Laura"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9172BBD7B7D4DF3251F17818948A2C29573754929FFBBED2479989F5221434">
+    <pdf_title>How Many Interviews Are Enough? An Experiment with Data Saturation and Variability</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Evolution physical activity how much is enough" ID="ID_1751094351" CREATED="1540198285264" MODIFIED="1540198389062" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/259%20Evolution%20physical%20activity%20how%20much%20is%20enough.pdf">
+<attribute NAME="key" VALUE="blair2004evolution"/>
+<attribute NAME="journal" VALUE="The American Journal of Clinical Nutrition"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="The Evolution of Physical Activity Recommendations: How Much Is Enough?"/>
+<attribute NAME="authors" VALUE="Blair, Steven N. and LaMonte, Michael J. and Nichaman, Milton Z."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FC36C888D1A12695586F3E2FA7125FA9C51E2ABED36AE7282B251B5124DCD8">
+    <pdf_title>The evolution of physical activity recommendations: how much is enough?</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Using simulation to determine reliability" ID="ID_1263097598" CREATED="1540198826484" MODIFIED="1540204781222" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/260%20Using%20simulation%20to%20determine%20reliability.pdf">
+<attribute NAME="key" VALUE="marks2018howmuch"/>
+<attribute NAME="journal" VALUE="World Journal of Surgery"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="How Much Data are Good Enough? Using Simulation to Determine the Reliability of Estimating POMR for Resource-Constrained Settings"/>
+<attribute NAME="authors" VALUE="Marks, Isobel H. and Fong, Zhi Ven and Stapleton, Sahael M. and Hung, Ya-Ching and Bababekov, Yanik J. and Chang, David C."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="31BC4EBE75BD7E1B93D2178A458774AFD178B44EE4D3D7142BBCB3B2483BF9E">
+    <pdf_title>How Much Data are Good Enough? Using Simulation to Determine the Reliability of Estimating POMR for Resource- Constrained Settings</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -986,6 +1018,15 @@
     <pdf_title>X V</pdf_title>
 </pdf_annotation>
 </node>
+</node>
+<node TEXT="HighD Dataset" ID="ID_393145882" CREATED="1540197239390" MODIFIED="1540205906986" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/257%20HighD%20Dataset.pdf">
+<attribute NAME="key" VALUE="krajewski2018highD"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="The High{D} Dataset: A Drone Dataset of Naturalistic Vehicle Trajectories on German Highways for Validation of Highly Automated Driving Systems"/>
+<attribute NAME="authors" VALUE="Krajewski, Robert and Bock, Julian and Kloeker, Laurent and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2B4BC2B745349714571F2D9AE23D7327B8EB3B80796A193924B18D28EA31602C">
+    <pdf_title>The highD Dataset: A Drone Dataset of Naturalistic Vehicle Trajectories on German Highways for Validation of Highly Automated Driving Systems</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Master Thesises" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1200522400" CREATED="1536234494309" MODIFIED="1536234527959" HGAP="78" VSHIFT="-4">
@@ -2466,7 +2507,12 @@
 <attribute NAME="title" VALUE="Multivariate Density Estimation: Theory, Practice, and Visualization"/>
 <attribute NAME="authors" VALUE="Scott, David W."/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
-<node TEXT="Second edition" ID="ID_628431633" CREATED="1539252919806" MODIFIED="1539252922920"/>
+<node TEXT="Second edition" ID="ID_628431633" CREATED="1539252919806" MODIFIED="1540205483515">
+<attribute NAME="key" VALUE="scott2015multivariate"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Multivariate Density Estimation: Theory, Practice, and Visualization"/>
+<attribute NAME="authors" VALUE="Scott, David W"/>
+</node>
 </node>
 <node TEXT="Maximum-likelihood Kernel Density Estimation (PhD Thesis)" ID="ID_1806332425" CREATED="1528812767609" MODIFIED="1534390598610" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/192%20Maximum-likelihood%20Kernel%20Density%20Estimation.pdf" MOVED="1531790863455">
 <attribute NAME="key" VALUE="vanderwalt2014mlkde"/>
