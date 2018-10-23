@@ -1,8 +1,8 @@
-class QualitativeActor:
-    """ Qualitative description of an actor
+class ActorCategory:
+    """ Category of actor
 
-    An actor is an element of a scenario acting on its own behalf. The ego vehicle and other road users are examples of
-    actors in a scenario. The qualitative actor only describes the actor in qualitative terms.
+    An actor is an agent in a scenario acting on its own behalf. "Ego vehicle" and "Other Road User" are types of
+    actors in a scenario. The actor category only describes the actor in qualitative terms.
 
     Attributes:
         name (str): A name that serves as a short description of the qualitative actor.
@@ -15,3 +15,6 @@ class QualitativeActor:
         self.name = name
         self.type = vehicle_type
         self.tags = [] if tags is None else tags
+
+    def get_tags(self):
+        return self.tags
