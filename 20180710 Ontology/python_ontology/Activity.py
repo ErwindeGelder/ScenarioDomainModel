@@ -67,14 +67,15 @@ class Activity:
 class DetectedActivity(Activity):
     """ Detected activity
 
-    A detected activity is similarly defined as an activity with, in addition, two extra attributes.
+    The only difference between DetectedActivity and Activity is that with DetectedActivity, the starting time (tstart)
+    and the end time (tend) can be defined.
 
     Attributes:
         tstart(float): The starting time of the activity.
         tend(float): The end time of the activity.
     """
-    def __init__(self, name, activity_category, tstart, duration, parameters):
-        Activity.__init__(self, name, activity_category, duration, parameters)
+    def __init__(self, name, activity_category, tstart, duration, parameters, tags=None):
+        Activity.__init__(self, name, activity_category, duration, parameters, tags=tags)
         self.tstart = tstart
         self.tend = self.tstart + self.tduration
 
@@ -82,6 +83,25 @@ class DetectedActivity(Activity):
         activity = Activity.to_json(self)
         activity['tstart'] = self.tstart
         activity['tend'] = self.tend
+        return activity
+
+
+class TriggeredActivity(Activity):
+    """ Triggered activity
+
+    A triggered activity is similarly defined as an activity with, in addition, some starting conditions.
+
+    Attributes:
+        conditions(dict): A dictionary with the conditions that trigger the start of this activity. The dictionary
+            needs to be defined according to OSCConditionGroup from OpenSCENARIO.
+    """
+    def __init__(self, name, activity_category, duration, parameters, conditions, tags=None):
+        Activity.__init__(self, name, activity_category, duration, parameters, tags=tags)
+        self.conditions = conditions
+
+    def to_json(self):
+        activity = Activity.to_json(self)
+        activity['conditions'] = self.conditions
         return activity
 
 
