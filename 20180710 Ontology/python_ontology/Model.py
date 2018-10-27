@@ -2,6 +2,25 @@ import numpy as np
 
 
 class Model:
+    """ Model
+
+    Parameter Model describes the relation between the states variables and the parameters that specify an activity.
+
+    Example :
+    x = a * t
+
+    In this case,
+     - a is a parameter that should be also described for the activity.
+     - x is a state variable of the activity.
+     - t is from the timeline of an activity.
+    It is assumed that the time t runs from 0 to 1.
+
+    Attributes:
+         modelname(str): The name of the model which is used to describe the relation between the state and time. The
+            following models are supported:
+             - Linear: A linear relation between time and state. Parameters: xstart, xend
+             - Spline3Knots: Two third order splines are used. Parameters: xstart, xend, a1, b1, c1, d1, a2, b2, c2, d2
+    """
     def __init__(self, modelname):
         self.name = modelname
 

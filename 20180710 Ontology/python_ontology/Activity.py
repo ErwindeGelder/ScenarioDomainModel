@@ -1,21 +1,33 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from ActivityCategory import ActivityCategory
+from Model import Model
+import json
 
 
 class Activity:
     """ Activity
 
-    An activity specifies the evolution of a state (defined by ActivityCategory) over time.
+    An activity specifies the evolution of a state (defined by ActivityCategory) over time. The evolution is described
+    by a model (defined by ActivityCategory) and parameters.
 
+    Attributes:
+        name (str): A name that serves as a short description of the activity.
+        activity_category(ActivityCategory): The category of the activity defines the state and the model.
+        duration(float): The duration of the activity.
+        parameters(dict): A dictionary of the parameters that quantifies the activity.
+        tstart(float): By default, the starting time tstart is 0.
+        tend(float): By default, the end time is the same as the duration.
+        tags (List of str): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
-    def __init__(self, name, activity_category, duration, parameters):
+    def __init__(self, name, activity_category, duration, parameters, tags=None):
         self.name = name
         self.activity_category = activity_category  # type: ActivityCategory
         self.tduration = duration
         self.parameters = parameters
         self.tstart = 0
         self.tend = self.tduration
+        self.tags = [] if tags is None else tags
 
     def plot_state(self, ax=None):
         if ax is None:
@@ -35,6 +47,11 @@ class Activity:
         ax.set_xlabel("Time")
         ax.set_ylabel("{:s} dot".format(self.activity_category.state))
 
+    def get_tags(self):
+        tags = self.tags
+        tags += self.activity_category.get_tags()
+        return tags
+
     def to_json(self):
         """
 
@@ -43,14 +60,45 @@ class Activity:
         activity = {"name": self.name,
                     "activity_category": self.activity_category.name,
                     "tduration": self.tduration,
-                    "parameters": self.parameters,
-                    "tstart": self.tstart,
-                    "tend": self.tend}
+                    "parameters": self.parameters}
         return activity
 
 
 class DetectedActivity(Activity):
+    """ Detected activity
+
+    A detected activity is similarly defined as an activity with, in addition, two extra attributes.
+
+    Attributes:
+        tstart(float): The starting time of the activity.
+        tend(float): The end time of the activity.
+    """
     def __init__(self, name, activity_category, tstart, duration, parameters):
         Activity.__init__(self, name, activity_category, duration, parameters)
         self.tstart = tstart
         self.tend = self.tstart + self.tduration
+
+    def to_json(self):
+        activity = Activity.to_json(self)
+        activity['tstart'] = self.tstart
+        activity['tend'] = self.tend
+        return activity
+
+
+if __name__ == "__main__":
+    # An example to illustrate how an activity can be instantiated.
+    braking = ActivityCategory("braking", Model("Spline3Knots"), "x",
+                               tags=["Long. activity - Driving forward - Braking"])
+    brakingact = DetectedActivity("ego_braking", braking, 9.00, 1.98,
+                                  {"xstart": 133, "xend": 168, "a1": 1.56e-2, "b1": -6.27e-2, "c1": 1.04, "d1": 0,
+                                   "a2": 3.31e-2, "b2": -8.89e-2, "c2": 1.06, "d2": -2.18e-3})
+
+    # Show the tags that are associated with the activity.
+    print("Tags of the activity:")
+    for tag in brakingact.get_tags():
+        print(" - {:s}".format(tag))
+
+    # Show the JSON code when this actor is exported to json
+    print()
+    print("JSON code for the actor:")
+    print(json.dumps(brakingact.to_json(), indent=4))
