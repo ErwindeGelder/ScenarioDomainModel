@@ -19,18 +19,21 @@ Modifications
 """
 from typing import List
 from tags import Tag
+from abc import ABC, abstractmethod
 
 
-class DefaultClass:
+class DefaultClass(ABC):
     """ DefaultClass that is used for most classes.
 
     Because most classes contain the attributes 'name' and 'tags', a default class is created that contains these
     attributes. This class also does type checking for these attributes. This class also supports conversion to JSON.
+    This is an abstract class, so it is not possible to instantiate objects from this class.
 
     Attributes:
         name (str): A name that serves as a short description of the actor category.
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
+    @abstractmethod
     def __init__(self, name, tags=None):
         # Check the types of the inputs
         if not isinstance(name, str):

@@ -1,3 +1,24 @@
+"""
+Class Activity
+
+
+Author
+------
+Erwin de Gelder
+
+Creation
+--------
+30 Oct 2018
+
+To do
+-----
+
+Modifications
+-------------
+
+"""
+
+
 from tags import Tag
 from typing import List, Tuple
 from static_environment_category import StaticEnvironmentCategory

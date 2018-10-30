@@ -1,8 +1,30 @@
+"""
+Class Activity
+
+
+Author
+------
+Erwin de Gelder
+
+Creation
+--------
+30 Oct 2018
+
+To do
+-----
+
+Modifications
+-------------
+
+"""
+
+
+from default_class import DefaultClass
 from tags import Tag
 from typing import List
 
 
-class StaticEnvironmentCategory:
+class StaticEnvironmentCategory(DefaultClass):
     """ Static environment category
 
     The static environment refers to the part of a scenario that does not change during a scenario. This includes
@@ -18,9 +40,24 @@ class StaticEnvironmentCategory:
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
     def __init__(self, name, description, tags=None):
-        self.name = name
+        # Check the types of the inputs
+        if not isinstance(description, str):
+            raise TypeError("Input 'description' should be of type <str> but is of type {0}.".format(type(description)))
+
+        DefaultClass.__init__(self, name, tags=tags)
         self.description = description
-        self.tags = [] if tags is None else tags  # Type: List[Tag]
 
     def get_tags(self):
         return self.tags
+
+    def to_json(self):
+        """ to_json
+
+        For storing scenarios into the database, the scenarios need to be converted to JSON. This method converts the
+        attributes of StaticEnvironmentCategory to JSON.
+
+        :return: dictionary that can be converted to a json file
+        """
+        static_environment_category = DefaultClass.to_json(self)
+        static_environment_category["description"] = self.description
+        return static_environment_category

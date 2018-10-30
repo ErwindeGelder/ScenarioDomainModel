@@ -1,9 +1,31 @@
+"""
+Class Activity
+
+
+Author
+------
+Erwin de Gelder
+
+Creation
+--------
+30 Oct 2018
+
+To do
+-----
+
+Modifications
+-------------
+
+"""
+
+
+from default_class import DefaultClass
 from static_environment_category import StaticEnvironmentCategory
 from tags import Tag
 from typing import List
 
 
-class StaticEnvironment:
+class StaticEnvironment(DefaultClass):
     """ Static environment
 
     The static environment refers to the part of a scenario that does not change during a scenario. This includes
@@ -19,10 +41,16 @@ class StaticEnvironment:
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
     def __init__(self, name, static_environment_category, properties=None, tags=None):
-        self.name = name
+        # Check the types of the inputs
+        if not isinstance(static_environment_category, StaticEnvironmentCategory):
+            raise TypeError("Input 'static_environment_category' should be of type <StaticEnvironmentCategory> but " +
+                            "is of type {0}.".format(type(static_environment_category)))
+        if not isinstance(properties, dict):
+            raise TypeError("Input 'properties' should be of type <dict> but is of type {0}.".format(type(properties)))
+
+        DefaultClass.__init__(self, name, tags=tags)
         self.static_environment_category = static_environment_category  # type: StaticEnvironmentCategory
         self.properties = {} if properties is None else properties
-        self.tags = [] if tags is None else tags  # Type: List[Tag]
 
     def get_tags(self):
         tags = self.tags
@@ -30,12 +58,14 @@ class StaticEnvironment:
         return self.tags
 
     def to_json(self):
-        """
+        """ to_json
+
+        For storing scenarios into the database, the scenarios need to be converted to JSON. This method converts the
+        attributes of StaticEnvironment to JSON.
 
         :return: dictionary that can be converted to a json file
         """
-        static_environment = {"name": self.name,
-                              "static_environment_category": self.static_environment_category.name,
-                              "property": self.properties,
-                              "tag": [tag.name for tag in self.tags]}
+        static_environment = DefaultClass.to_json(self)
+        static_environment["static_environment_category"] = self.static_environment_category.name
+        static_environment["property"] = self.properties
         return static_environment
