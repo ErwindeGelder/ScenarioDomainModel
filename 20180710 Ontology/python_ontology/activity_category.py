@@ -19,14 +19,14 @@ Modifications
 """
 
 
-from default_class import DefaultClass
+from default_class import Default
 from model import Model
 from enum import Enum
 from typing import List
 from tags import Tag
 
 
-class ActivityCategory(DefaultClass):
+class ActivityCategory(Default):
     """ Category of activity
 
     An activity specified the evolution of a state over time. The activity category describes the activity in
@@ -47,7 +47,7 @@ class ActivityCategory(DefaultClass):
         if not isinstance(state, StateVariable):
             raise TypeError("Input 'state' should be of type <StateVariable> but is of type {0}.".format(type(state)))
 
-        DefaultClass.__init__(self, name, tags=tags)
+        Default.__init__(self, name, tags=tags)
         self.model = model  # type: Model
         self.state = state  # type: StateVariable
 
@@ -62,7 +62,7 @@ class ActivityCategory(DefaultClass):
 
         :return: dictionary that can be converted to a json file
         """
-        activity_category = DefaultClass.to_json(self)
+        activity_category = Default.to_json(self)
         activity_category["model"] = self.model.to_json()
         activity_category["state"] = self.state.to_json()
         return activity_category

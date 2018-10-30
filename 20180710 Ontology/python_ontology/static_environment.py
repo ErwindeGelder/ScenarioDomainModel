@@ -19,13 +19,13 @@ Modifications
 """
 
 
-from default_class import DefaultClass
+from default_class import Default
 from static_environment_category import StaticEnvironmentCategory
 from tags import Tag
 from typing import List
 
 
-class StaticEnvironment(DefaultClass):
+class StaticEnvironment(Default):
     """ Static environment
 
     The static environment refers to the part of a scenario that does not change during a scenario. This includes
@@ -48,7 +48,7 @@ class StaticEnvironment(DefaultClass):
         if not isinstance(properties, dict):
             raise TypeError("Input 'properties' should be of type <dict> but is of type {0}.".format(type(properties)))
 
-        DefaultClass.__init__(self, name, tags=tags)
+        Default.__init__(self, name, tags=tags)
         self.static_environment_category = static_environment_category  # type: StaticEnvironmentCategory
         self.properties = {} if properties is None else properties
 
@@ -65,7 +65,7 @@ class StaticEnvironment(DefaultClass):
 
         :return: dictionary that can be converted to a json file
         """
-        static_environment = DefaultClass.to_json(self)
+        static_environment = Default.to_json(self)
         static_environment["static_environment_category"] = self.static_environment_category.name
         static_environment["property"] = self.properties
         return static_environment

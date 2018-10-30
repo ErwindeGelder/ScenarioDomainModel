@@ -19,12 +19,12 @@ Modifications
 """
 
 
-from default_class import DefaultClass
+from default_class import Default
 from tags import Tag
 from typing import List
 
 
-class StaticEnvironmentCategory(DefaultClass):
+class StaticEnvironmentCategory(Default):
     """ Static environment category
 
     The static environment refers to the part of a scenario that does not change during a scenario. This includes
@@ -44,7 +44,7 @@ class StaticEnvironmentCategory(DefaultClass):
         if not isinstance(description, str):
             raise TypeError("Input 'description' should be of type <str> but is of type {0}.".format(type(description)))
 
-        DefaultClass.__init__(self, name, tags=tags)
+        Default.__init__(self, name, tags=tags)
         self.description = description
 
     def get_tags(self):
@@ -58,6 +58,6 @@ class StaticEnvironmentCategory(DefaultClass):
 
         :return: dictionary that can be converted to a json file
         """
-        static_environment_category = DefaultClass.to_json(self)
+        static_environment_category = Default.to_json(self)
         static_environment_category["description"] = self.description
         return static_environment_category

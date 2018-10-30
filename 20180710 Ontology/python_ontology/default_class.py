@@ -1,5 +1,5 @@
 """
-DefaultClass
+Default
 
 
 Author
@@ -22,8 +22,8 @@ from tags import Tag
 from abc import ABC, abstractmethod
 
 
-class DefaultClass(ABC):
-    """ DefaultClass that is used for most classes.
+class Default(ABC):
+    """ Default that is used for most classes.
 
     Because most classes contain the attributes 'name' and 'tags', a default class is created that contains these
     attributes. This class also does type checking for these attributes. This class also supports conversion to JSON.

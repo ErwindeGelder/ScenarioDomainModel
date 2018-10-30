@@ -21,7 +21,7 @@ Modifications
 
 import numpy as np
 import matplotlib.pyplot as plt
-from default_class import DefaultClass
+from default_class import Default
 from activity_category import ActivityCategory, StateVariable
 from model import Model
 import json
@@ -29,7 +29,7 @@ from tags import Tag
 from typing import List
 
 
-class Activity(DefaultClass):
+class Activity(Default):
     """ Activity
 
     An activity specifies the evolution of a state (defined by ActivityCategory) over time. The evolution is described
@@ -54,7 +54,7 @@ class Activity(DefaultClass):
         if not isinstance(parameters, dict):
             raise TypeError("Input 'parameters' should be of type <dict> but is of type {0}.".format(type(parameters)))
 
-        DefaultClass.__init__(self, name, tags=tags)
+        Default.__init__(self, name, tags=tags)
         self.activity_category = activity_category  # type: ActivityCategory
         self.tduration = duration
         self.parameters = parameters
@@ -92,7 +92,7 @@ class Activity(DefaultClass):
 
         :return: dictionary that can be converted to a json file
         """
-        activity = DefaultClass.to_json(self)
+        activity = Default.to_json(self)
         activity["activity_category"] = self.activity_category.name
         activity["tduration"] = self.tduration
         activity["parameters"] = self.parameters

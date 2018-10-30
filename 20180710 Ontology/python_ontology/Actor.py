@@ -19,14 +19,14 @@ Modifications
 """
 
 
-from default_class import DefaultClass
+from default_class import Default
 from actor_category import ActorCategory, VehicleType
 from tags import Tag
 import json
 from typing import List
 
 
-class Actor(DefaultClass):
+class Actor(Default):
     """ Category of actor
 
     An actor is an agent in a scenario acting on its own behalf. "Ego vehicle" and "Other Road User" are types of
@@ -43,7 +43,7 @@ class Actor(DefaultClass):
             raise TypeError("Input 'vehicle_type' should be of type <ActorCategory> but is of type {0}.".
                             format(type(actor_category)))
 
-        DefaultClass.__init__(self, name, tags=tags)
+        Default.__init__(self, name, tags=tags)
         self.actor_category = actor_category  # type: ActorCategory
 
     def get_tags(self):
@@ -59,7 +59,7 @@ class Actor(DefaultClass):
 
         :return: dictionary that can be converted to a json file
         """
-        actor = DefaultClass.to_json(self)
+        actor = Default.to_json(self)
         actor["actor_category"] = self.actor_category.name
         return actor
 
