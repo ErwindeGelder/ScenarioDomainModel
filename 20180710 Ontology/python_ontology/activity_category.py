@@ -20,10 +20,10 @@ Modifications
 
 
 from default_class import Default
-from model_ import Model
+from model import Model
 from enum import Enum
 from typing import List
-from tags_ import Tag
+from tags import Tag
 
 
 class ActivityCategory(Default):

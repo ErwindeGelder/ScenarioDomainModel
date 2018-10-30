@@ -23,9 +23,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from default_class import Default
 from activity_category import ActivityCategory, StateVariable
-from model_ import Model
+from model import Model
 import json
-from tags_ import Tag
+from tags import Tag
 from typing import List
 
 

@@ -20,12 +20,12 @@ Modifications
 
 
 from default_class import Default
-from tags_ import Tag
+from tags import Tag
 from typing import List, Tuple
 from static_environment_category import StaticEnvironmentCategory
 from actor_category import ActorCategory, VehicleType
 from activity_category import ActivityCategory, StateVariable
-from model_ import Model
+from model import Model
 import json
 import os
 

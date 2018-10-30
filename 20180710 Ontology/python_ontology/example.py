@@ -1,9 +1,9 @@
 from activity_category import ActivityCategory
 from actor_category import ActorCategory
-from model_ import Model
-from activity_ import DetectedActivity
-from actor_ import Actor
-from scenario_ import Scenario
+from model import Model
+from activity import DetectedActivity
+from actor import Actor
+from scenario import Scenario
 import matplotlib.pyplot as plt
 import os
 import json

@@ -21,7 +21,7 @@ Modifications
 
 from default_class import Default
 from static_environment_category import StaticEnvironmentCategory
-from tags_ import Tag
+from tags import Tag
 from typing import List
 
 

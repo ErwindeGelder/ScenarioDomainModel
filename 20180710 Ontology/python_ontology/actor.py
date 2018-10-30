@@ -21,7 +21,7 @@ Modifications
 
 from default_class import Default
 from actor_category import ActorCategory, VehicleType
-from tags_ import Tag
+from tags import Tag
 import json
 from typing import List
 

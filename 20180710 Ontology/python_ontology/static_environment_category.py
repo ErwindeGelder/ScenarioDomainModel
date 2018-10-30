@@ -20,7 +20,7 @@ Modifications
 
 
 from default_class import Default
-from tags_ import Tag
+from tags import Tag
 from typing import List
 
 

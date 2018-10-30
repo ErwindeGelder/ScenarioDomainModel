@@ -18,7 +18,7 @@ Modifications
 
 """
 from typing import List
-from tags_ import Tag
+from tags import Tag
 from abc import ABC, abstractmethod
 
 
