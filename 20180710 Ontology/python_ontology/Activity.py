@@ -1,11 +1,35 @@
+"""
+Class Activity
+
+
+Author
+------
+Erwin de Gelder
+
+Creation
+--------
+30 Oct 2018
+
+To do
+-----
+
+Modifications
+-------------
+
+"""
+
+
 import numpy as np
 import matplotlib.pyplot as plt
-from ActivityCategory import ActivityCategory
-from Model import Model
+from default_class import DefaultClass
+from activity_category import ActivityCategory, StateVariable
+from model import Model
 import json
+from tags import Tag
+from typing import List
 
 
-class Activity:
+class Activity(DefaultClass):
     """ Activity
 
     An activity specifies the evolution of a state (defined by ActivityCategory) over time. The evolution is described
@@ -18,16 +42,24 @@ class Activity:
         parameters(dict): A dictionary of the parameters that quantifies the activity.
         tstart(float): By default, the starting time tstart is 0.
         tend(float): By default, the end time is the same as the duration.
-        tags (List of str): The tags are used to determine whether a scenario falls into a scenarioClass.
+        tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
     def __init__(self, name, activity_category, duration, parameters, tags=None):
-        self.name = name
+        # Check the types of the inputs
+        if not isinstance(activity_category, ActivityCategory):
+            raise TypeError("Input 'activity_category' should be of type <ActivityCategory> but is of type {0}.".
+                            format(type(activity_category)))
+        if not isinstance(duration, float):
+            raise TypeError("Input 'duration' should be of type <float> but is of type {0}.".format(type(duration)))
+        if not isinstance(parameters, dict):
+            raise TypeError("Input 'parameters' should be of type <dict> but is of type {0}.".format(type(parameters)))
+
+        DefaultClass.__init__(self, name, tags=tags)
         self.activity_category = activity_category  # type: ActivityCategory
         self.tduration = duration
         self.parameters = parameters
         self.tstart = 0
         self.tend = self.tduration
-        self.tags = [] if tags is None else tags
 
     def plot_state(self, ax=None):
         if ax is None:
@@ -53,14 +85,17 @@ class Activity:
         return tags
 
     def to_json(self):
-        """
+        """ to_json
+
+        For storing scenarios into the database, the scenarios need to be converted to JSON. This method converts the
+        attributes of Activity to JSON.
 
         :return: dictionary that can be converted to a json file
         """
-        activity = {"name": self.name,
-                    "activity_category": self.activity_category.name,
-                    "tduration": self.tduration,
-                    "parameters": self.parameters}
+        activity = DefaultClass.to_json(self)
+        activity["activity_category"] = self.activity_category.name
+        activity["tduration"] = self.tduration
+        activity["parameters"] = self.parameters
         return activity
 
 
@@ -100,6 +135,13 @@ class TriggeredActivity(Activity):
         self.conditions = conditions
 
     def to_json(self):
+        """ to_json
+
+        For storing scenarios into the database, the scenarios need to be converted to JSON. This method converts the
+        attributes of Activity to JSON.
+
+        :return: dictionary that can be converted to a json file
+        """
         activity = Activity.to_json(self)
         activity['conditions'] = self.conditions
         return activity
@@ -107,18 +149,23 @@ class TriggeredActivity(Activity):
 
 if __name__ == "__main__":
     # An example to illustrate how an activity can be instantiated.
-    braking = ActivityCategory("braking", Model("Spline3Knots"), "x",
-                               tags=["Long. activity - Driving forward - Braking"])
+    braking = ActivityCategory("braking", Model("Spline3Knots"), StateVariable.LONGITUDINAL_POSITION,
+                               tags=[Tag.VEH_LONG_ACT_DRIVING_FORWARD_BRAKING])
     brakingact = DetectedActivity("ego_braking", braking, 9.00, 1.98,
                                   {"xstart": 133, "xend": 168, "a1": 1.56e-2, "b1": -6.27e-2, "c1": 1.04, "d1": 0,
                                    "a2": 3.31e-2, "b2": -8.89e-2, "c2": 1.06, "d2": -2.18e-3})
 
     # Show the tags that are associated with the activity.
     print("Tags of the activity:")
-    for tag in brakingact.get_tags():
-        print(" - {:s}".format(tag))
+    for t in brakingact.get_tags():
+        print(" - {:s}".format(t))
 
-    # Show the JSON code when this actor is exported to json
+    # Show the JSON code when exporting the ActivityCategory to JSON
     print()
-    print("JSON code for the actor:")
+    print("JSON code for the ActivityCategory:")
+    print(json.dumps(braking.to_json(), indent=4))
+
+    # Show the JSON code when this activity is exported to JSON
+    print()
+    print("JSON code for the Activity:")
     print(json.dumps(brakingact.to_json(), indent=4))

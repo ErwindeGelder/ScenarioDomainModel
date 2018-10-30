@@ -52,7 +52,10 @@ class Actor(DefaultClass):
         return tags
 
     def to_json(self):
-        """
+        """ to_json
+
+        For storing scenarios into the database, the scenarios need to be converted to JSON. This method converts the
+        attributes of Actor to JSON.
 
         :return: dictionary that can be converted to a json file
         """

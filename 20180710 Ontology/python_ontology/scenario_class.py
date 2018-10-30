@@ -1,3 +1,11 @@
+from tags import Tag
+from typing import List, Tuple
+from static_environment_category import StaticEnvironmentCategory
+from actor_category import ActorCategory, VehicleType
+from activity_category import ActivityCategory
+from model import Model
+
+
 class ScenarioClass:
     """ ScenarioClass - A qualitative description
 
@@ -21,15 +29,24 @@ class ScenarioClass:
         name (str): A name that serves as a short description of the scenario class.
         description (str): A description of the scenario class. The objective of the description is to make the scenario
             class human interpretable.
-        tags (dict): A list of tags that formally defines the scenario class. These tags determine whether scenarios
-            fall into this scenario class or not.
+        image (str): Path to image that schematically shows the class.
+        static_environment (StaticEnvironmentCategory): Static environment of the ScenarioClass.
+        activities (List[ActivityCategory]): List of activities that are used for this ScenarioClass.
+        actors (List[ActorCategory]): List of actors that participate in the ScenarioClass.
+        acts (List[Tuple[ActorCategory, ActivityCategory]]): The acts describe which actors perform which activities.
+        tags (List[Tag]): A list of tags that formally defines the scenario class. These tags determine whether
+            scenarios fall into this scenario class or not.
     """
-    def __init__(self, name: str, description: str, tags=None):
+    def __init__(self, name, description, image, static_environment, activities=None, actors=None, acts=None,
+                 tags=None):
         self.name = name
         self.description = description
-        self.tags = {}
-        if tags is not None:
-            self.tags = tags
+        self.image = image
+        self.static_environment = static_environment  # Type: StaticEnvironmentCategory
+        self.activities = [] if activities is None else activities  # Type: List[ActivityCategory]
+        self.actors = [] if actors is None else actors  # Type: List[ActorCategory]
+        self.acts = [] if acts is None else acts  # Type: List[Tuple[ActorCategory, ActivityCategory]]
+        self.tags = [] if tags is None else tags  # Type: List[Tag]
 
         # Some parameters
         self.maxprintlength = 80  # Maximum number of characters that are used when printing the general description
@@ -61,40 +78,30 @@ class ScenarioClass:
         if self.tags is None:
             string += "Not available\n"
         else:
-            for key, item in self.tags.items():
-                length = len(key)
-                string += "{:s}: ".format(key)
-                if isinstance(item, dict):
-                    for i, (key2, item2) in enumerate(item.items()):
-                        length2 = len(key2)
-                        if i > 0:
-                            string += "{:{w}s}".format("", w=length+2)
-                        string += "{:s}: ".format(key2)
-                        if isinstance(item2, dict):
-                            for j, (key3, item3) in enumerate(item2.items()):
-                                if j > 0:
-                                    string += "{:{w}s}".format("", w=length+length2+4)
-                                string += "{:s}: {:s}\n".format(key3, item3)
-                        else:
-                            string += "{:s}\n".format(item2)
+            for tag in self.tags:
+                string += {" - {:s}".format(tag.name)}
         return string
 
 
 # Add an example
 if __name__ == '__main__':
-    scname = "Gap closing"
-    scdesc = "Another vehicle is driving in front of the ego vehicle at a slower speed. As a result, the other " + \
-             "vehicle appears in the ego vehicle's field of view. The ego vehicle might brake to avoid a " + \
-             "collision. Another possibility for the ego vehicle is to perform a lane change if this is " + \
-             "possible. The reason for the other vehicle to drive slower is e.g., due to a traffic jam ahead."
-    sctags = {"Ego": {"Vehicle lateral activity": "Going straight",
-                      "Vehicle longitudinal activity": "Driving forward"},
-              "Actor": {"Road user type": "Vehicle",
-                        "Initial state": {"Direction": "Same as ego",
-                                          "Lateral position": "Same as ego",
-                                          "Longitudinal position": "In front of ego"},
-                        "Lead vehicle": {"Appearing": "Gap-closing"},
-                        "Vehicle lateral activity": "Going straight",
-                        "Vehicle longitudinal activity": "Driving forward"}}
-    sc = ScenarioClass(name=scname, description=scdesc, tags=sctags)
+    sc_name = "Ego vehicle approaching slower lead vehicle"
+    sc_desc = "Another vehicle is driving in front of the ego vehicle at a slower speed. As a result, the other " + \
+              "vehicle appears in the ego vehicle's field of view. The ego vehicle might brake to avoid a " + \
+              "collision. Another possibility for the ego vehicle is to perform a lane change if this is " + \
+              "possible. The reason for the other vehicle to drive slower is e.g., due to a traffic jam ahead."
+    sc_image = ""
+
+    # Define the static environment
+    sc_static_environment = StaticEnvironmentCategory("Anything",
+                                                      "No further details are specified for the static environment.")
+
+    # Define the actors
+    ego_vehicle = ActorCategory("Ego", VehicleType.VEHICLE, tags=[Tag.EGO_VEHICLE])
+    target_vehicle = ActorCategory("Target", VehicleType.VEHICLE)
+
+    # Define the activities
+    going_straight = ActivityCategory("Going straight", Model("NA"), "x")
+
+    sc = ScenarioClass(sc_name, sc_desc, sc_image, sc_static_environment)
     print(sc)

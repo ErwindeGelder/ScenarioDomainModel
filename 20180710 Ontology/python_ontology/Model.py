@@ -51,3 +51,11 @@ class Model:
             return np.ones(n) * (p["xend"] - p["xstart"])
         else:
             raise ValueError('State cannot be computed for modelname "{:s}".'.format(self.name))
+
+    def to_json(self):
+        """ Function that can be called when exporting Model to JSON
+
+        Currently, only the name of the model is returned. This might change later. For example, a short description
+        (e.g., the formula) might be given as well.
+        """
+        return self.name
