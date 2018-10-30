@@ -20,7 +20,7 @@ Modifications
 
 
 from default_class import Default
-from tags import Tag
+from tags_ import Tag
 from typing import List
 from enum import Enum
 
@@ -32,17 +32,18 @@ class ActorCategory(Default):
     actors in a scenario. The actor category only describes the actor in qualitative terms.
 
     Attributes:
+        uid (int): A unique ID.
         name (str): A name that serves as a short description of the actor category.
         vehicle_type (VehicleType): The type of the actor. This should be from the enumeration VehicleType.
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
-    def __init__(self, name, vehicle_type, tags=None):
+    def __init__(self, uid, name, vehicle_type, tags=None):
         # Check the types of the inputs
         if not isinstance(vehicle_type, VehicleType):
             raise TypeError("Input 'vehicle_type' should be of type <VehicleType> but is of type {0}.".
                             format(type(vehicle_type)))
 
-        Default.__init__(self, name, tags=tags)
+        Default.__init__(self, uid, name, tags=tags)
         self.vehicle_type = vehicle_type  # type: VehicleType
 
     def get_tags(self):

@@ -20,12 +20,12 @@ Modifications
 
 
 from default_class import Default
-from tags import Tag
+from tags_ import Tag
 from typing import List, Tuple
 from static_environment_category import StaticEnvironmentCategory
 from actor_category import ActorCategory, VehicleType
 from activity_category import ActivityCategory, StateVariable
-from model import Model
+from model_ import Model
 import json
 import os
 
@@ -50,6 +50,7 @@ class Scenario(Default):
     "Day and rain".
 
     Attributes:
+        uid (int): A unique ID.
         name (str): A name that serves as a short description of the scenario class.
         description (str): A description of the scenario class. The objective of the description is to make the scenario
             class human interpretable.
@@ -64,7 +65,7 @@ class Scenario(Default):
         tags (List[Tag]): A list of tags that formally defines the scenario class. These tags determine whether
             scenarios fall into this scenario class or not.
     """
-    def __init__(self, name, description, image, static_environment, activities=None, actors=None, acts=None,
+    def __init__(self, uid, name, description, image, static_environment, activities=None, actors=None, acts=None,
                  tags=None, verbose=True):
         # Check the types of the inputs
         if not isinstance(description, str):
@@ -107,7 +108,7 @@ class Scenario(Default):
                                     "<ActivityCategory> but this second item is at least for one tuple of type {0}".
                                     format(type(act[1])))
 
-        Default.__init__(self, name, tags=tags)
+        Default.__init__(self, uid, name, tags=tags)
         self.description = description
         self.image = image
         self.static_environment = static_environment  # Type: StaticEnvironmentCategory
@@ -193,18 +194,18 @@ if __name__ == '__main__':
     sc_image = ""
 
     # Define the static environment
-    sc_static_environment = StaticEnvironmentCategory("Anything",
+    sc_static_environment = StaticEnvironmentCategory(0, "Anything",
                                                       "No further details are specified for the static environment.")
 
     # Define the actors
-    ego_vehicle = ActorCategory("Ego", VehicleType.VEHICLE, tags=[Tag.EGO_VEHICLE])
-    target_vehicle = ActorCategory("Target", VehicleType.VEHICLE)
+    ego_vehicle = ActorCategory(0, "Ego", VehicleType.VEHICLE, tags=[Tag.EGO_VEHICLE])
+    target_vehicle = ActorCategory(1, "Target", VehicleType.VEHICLE)
 
     # Define the activities
-    going_straight = ActivityCategory("Going straight", Model("NA"), StateVariable.LONGITUDINAL_POSITION,
+    going_straight = ActivityCategory(0, "Going straight", Model("NA"), StateVariable.LONGITUDINAL_POSITION,
                                       tags=[Tag.VEH_LAT_ACT_LANE_FOLLOWING])
 
-    sc = Scenario(sc_name, sc_desc, sc_image, sc_static_environment,
+    sc = Scenario(0, sc_name, sc_desc, sc_image, sc_static_environment,
                   activities=[going_straight], actors=[ego_vehicle, target_vehicle],
                   acts=[(target_vehicle, going_straight)])
 

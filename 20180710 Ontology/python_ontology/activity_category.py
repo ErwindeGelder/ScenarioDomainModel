@@ -20,10 +20,10 @@ Modifications
 
 
 from default_class import Default
-from model import Model
+from model_ import Model
 from enum import Enum
 from typing import List
-from tags import Tag
+from tags_ import Tag
 
 
 class ActivityCategory(Default):
@@ -33,6 +33,7 @@ class ActivityCategory(Default):
     qualitative terms.
 
     Attributes:
+        uid (int): A unique ID.
         name (str): A name that serves as a short description of the activity category.
         model (Model): Parameter Model describes the relation between the states variables and the parameters that
             specify an activity.
@@ -40,14 +41,14 @@ class ActivityCategory(Default):
             state is the output of the mode.
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
-    def __init__(self, name, model, state, tags=None):
+    def __init__(self, uid, name, model, state, tags=None):
         # Check the types of the inputs
         if not isinstance(model, Model):
             raise TypeError("Input 'model' should be of type <Model> but is of type {0}.".format(type(model)))
         if not isinstance(state, StateVariable):
             raise TypeError("Input 'state' should be of type <StateVariable> but is of type {0}.".format(type(state)))
 
-        Default.__init__(self, name, tags=tags)
+        Default.__init__(self, uid, name, tags=tags)
         self.model = model  # type: Model
         self.state = state  # type: StateVariable
 

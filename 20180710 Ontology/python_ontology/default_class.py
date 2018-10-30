@@ -18,7 +18,7 @@ Modifications
 
 """
 from typing import List
-from tags import Tag
+from tags_ import Tag
 from abc import ABC, abstractmethod
 
 
@@ -30,12 +30,15 @@ class Default(ABC):
     This is an abstract class, so it is not possible to instantiate objects from this class.
 
     Attributes:
+        uid (int): A unique ID.
         name (str): A name that serves as a short description of the actor category.
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
     @abstractmethod
-    def __init__(self, name, tags=None):
+    def __init__(self, uid, name, tags=None):
         # Check the types of the inputs
+        if not isinstance(uid, int):
+            raise TypeError("Input 'uid' should be of type <int> but is of type {0}.".format(type(uid)))
         if not isinstance(name, str):
             raise TypeError("Input 'name' should be of type <str> but is of type {0}.".format(type(name)))
         if tags is not None:
@@ -46,6 +49,7 @@ class Default(ABC):
                     raise TypeError("Items of input 'tags' should be of type <Tag> but at least one item is of type " +
                                     "{0}.".format(type(tag)))
 
+        self.id = uid  # type: int
         self.name = name  # type: str
         self.tags = [] if tags is None else tags  # type: List[Tag]
 
@@ -58,5 +62,6 @@ class Default(ABC):
         :return: dictionary that can be converted to a json file
         """
         default_class = {"name": self.name,
+                         "id": self.id,
                          "tag": [tag.to_json() for tag in self.tags]}
         return default_class

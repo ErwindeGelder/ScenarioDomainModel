@@ -20,7 +20,7 @@ Modifications
 
 
 from default_class import Default
-from tags import Tag
+from tags_ import Tag
 from typing import List
 
 
@@ -34,17 +34,18 @@ class StaticEnvironmentCategory(Default):
     The StaticEnvironmentCategory only describes the static environment in qualitative terms.
 
     Attributes:
+        uid (int): A unique ID.
         name (str): A name that serves as a short description of the static environment category.
         description (str): A description of the static environment category. The objective of the description is to make
             the static environment category human interpretable.
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
-    def __init__(self, name, description, tags=None):
+    def __init__(self, uid, name, description, tags=None):
         # Check the types of the inputs
         if not isinstance(description, str):
             raise TypeError("Input 'description' should be of type <str> but is of type {0}.".format(type(description)))
 
-        Default.__init__(self, name, tags=tags)
+        Default.__init__(self, uid, name, tags=tags)
         self.description = description
 
     def get_tags(self):

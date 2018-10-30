@@ -21,7 +21,7 @@ Modifications
 
 from default_class import Default
 from static_environment_category import StaticEnvironmentCategory
-from tags import Tag
+from tags_ import Tag
 from typing import List
 
 
@@ -35,12 +35,13 @@ class StaticEnvironment(Default):
     The StaticEnvironment describes the static environment in quantitatively.
 
     Attributes:
+        uid (int): A unique ID.
         name (str): A name that serves as a short description of the static environment category.
         static_environment_category (StaticEnvironmentCategory): The category of the static environment.
         properties (dict): All properties of the static environment are stored in this dictionary.
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
-    def __init__(self, name, static_environment_category, properties=None, tags=None):
+    def __init__(self, uid, name, static_environment_category, properties=None, tags=None):
         # Check the types of the inputs
         if not isinstance(static_environment_category, StaticEnvironmentCategory):
             raise TypeError("Input 'static_environment_category' should be of type <StaticEnvironmentCategory> but " +
@@ -48,7 +49,7 @@ class StaticEnvironment(Default):
         if not isinstance(properties, dict):
             raise TypeError("Input 'properties' should be of type <dict> but is of type {0}.".format(type(properties)))
 
-        Default.__init__(self, name, tags=tags)
+        Default.__init__(self, uid, name, tags=tags)
         self.static_environment_category = static_environment_category  # type: StaticEnvironmentCategory
         self.properties = {} if properties is None else properties
 
