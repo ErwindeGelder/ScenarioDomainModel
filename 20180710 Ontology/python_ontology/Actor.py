@@ -1,8 +1,32 @@
-from ActorCategory import ActorCategory
+"""
+Class Actor
+
+
+Author
+------
+Erwin de Gelder
+
+Creation
+--------
+30 Oct 2018
+
+To do
+-----
+
+Modifications
+-------------
+
+"""
+
+
+from default_class import DefaultClass
+from actor_category import ActorCategory, VehicleType
+from tags import Tag
 import json
+from typing import List
 
 
-class Actor:
+class Actor(DefaultClass):
     """ Category of actor
 
     An actor is an agent in a scenario acting on its own behalf. "Ego vehicle" and "Other Road User" are types of
@@ -11,12 +35,16 @@ class Actor:
     Attributes:
         name (str): A name that serves as a short description of the qualitative actor.
         actor_category (ActorCategory): Specifying the category to which the actor belongs to.
-        tags (List of str): The tags are used to determine whether a scenario falls into a scenarioClass.
+        tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
     def __init__(self, name, actor_category, tags=None):
-        self.name = name
+        # Check the types of the inputs
+        if not isinstance(actor_category, ActorCategory):
+            raise TypeError("Input 'vehicle_type' should be of type <ActorCategory> but is of type {0}.".
+                            format(type(actor_category)))
+
+        DefaultClass.__init__(self, name, tags=tags)
         self.actor_category = actor_category  # type: ActorCategory
-        self.tags = [] if tags is None else tags
 
     def get_tags(self):
         tags = self.tags
@@ -28,9 +56,8 @@ class Actor:
 
         :return: dictionary that can be converted to a json file
         """
-        actor = {"name": self.name,
-                 "actor_category": self.actor_category.name,
-                 "tag": self.tags}
+        actor = DefaultClass.to_json(self)
+        actor["actor_category"] = self.actor_category.name
         return actor
 
 
@@ -42,23 +69,29 @@ class EgoVehicle(Actor):
     """
     def __init__(self, name, actor_category, tags=None):
         Actor.__init__(self, name, actor_category, tags=tags)
-        self.tags += ['Ego vehicle']
+        self.tags += [Tag.EGO_VEHICLE]
 
 
 # An example to illustrate how an actor can be instantiated.
 if __name__ == '__main__':
     # Create an actor category that describes the actor in qualitative terms.
-    ac = ActorCategory("Sedan", "Passenger car (M1)", tags=["Passenger car (M1)"])
+    ac = ActorCategory("sedan", VehicleType.PASSENGER_CAR_M1, tags=[Tag.ACTOR_TYPE_PASSENGER_CAR_M1])
 
     # Create an actor that is the ego vehicle.
     ego = EgoVehicle("Ego", ac)
 
     # Show the tags that are associated with the actor.
     print("Tags of the actor:")
-    for tag in ego.get_tags():
-        print(" - {:s}".format(tag))
+    for t in ego.get_tags():
+        print(" - {:s}".format(t.name))
 
-    # Show the JSON code when this actor is exported to json
+    # Show the JSON code when the ActorCategory is exported to JSON
     print()
-    print("JSON code for the actor:")
+    print("JSON code for the ActorCategory:")
+    print(ac.to_json())
+    print(json.dumps(ac.to_json(), indent=4))
+
+    # Show the JSON code when this actor is exported to JSON
+    print()
+    print("JSON code for the Actor:")
     print(json.dumps(ego.to_json(), indent=4))
