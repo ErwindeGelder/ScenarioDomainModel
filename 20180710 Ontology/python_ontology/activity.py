@@ -36,20 +36,21 @@ class Activity(Default):
     by a model (defined by ActivityCategory) and parameters.
 
     Attributes:
-        uid (int): A unique ID.
         name (str): A name that serves as a short description of the activity.
         activity_category(ActivityCategory): The category of the activity defines the state and the model.
         duration(float): The duration of the activity.
         parameters(dict): A dictionary of the parameters that quantifies the activity.
         tstart(float): By default, the starting time tstart is 0.
         tend(float): By default, the end time is the same as the duration.
+        uid (int): A unique ID.
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
-    def __init__(self, uid, name, activity_category, duration, parameters, tags=None):
+    def __init__(self, name, activity_category, duration, parameters, uid=-1, tags=None):
         # Check the types of the inputs
         if not isinstance(activity_category, ActivityCategory):
             raise TypeError("Input 'activity_category' should be of type <ActivityCategory> but is of type {0}.".
                             format(type(activity_category)))
+        duration = float(duration) if isinstance(duration, int) else duration
         if not isinstance(duration, float):
             raise TypeError("Input 'duration' should be of type <float> but is of type {0}.".format(type(duration)))
         if not isinstance(parameters, dict):
@@ -110,12 +111,13 @@ class DetectedActivity(Activity):
         tstart(float): The starting time of the activity.
         tend(float): The end time of the activity.
     """
-    def __init__(self, uid, name, activity_category, tstart, duration, parameters, tags=None):
+    def __init__(self, name, activity_category, tstart, duration, parameters, uid=-1, tags=None):
         # Check the types of the inputs
+        tstart = float(tstart) if isinstance(tstart, int) else tstart
         if not isinstance(tstart, float):
             raise TypeError("Input 'tstart' should be of type <float> but is of type {0}.".format(type(tstart)))
 
-        Activity.__init__(self, uid, name, activity_category, duration, parameters, tags=tags)
+        Activity.__init__(self, name, activity_category, duration, parameters, uid=uid, tags=tags)
         self.tstart = tstart
         self.tend = self.tstart + self.tduration
 
@@ -135,12 +137,12 @@ class TriggeredActivity(Activity):
         conditions(dict): A dictionary with the conditions that trigger the start of this activity. The dictionary
             needs to be defined according to OSCConditionGroup from OpenSCENARIO.
     """
-    def __init__(self, uid, name, activity_category, duration, parameters, conditions, tags=None):
+    def __init__(self, name, activity_category, duration, parameters, conditions, uid=-1, tags=None):
         # Check the types of the inputs
         if not isinstance(conditions, dict):
             raise TypeError("Input 'conditions' should be of type <dict> but is of type {0}.".format(type(conditions)))
 
-        Activity.__init__(self, uid, name, activity_category, duration, parameters, tags=tags)
+        Activity.__init__(self, name, activity_category, duration, parameters, uid=uid, tags=tags)
         self.conditions = conditions
 
     def to_json(self):
@@ -158,9 +160,9 @@ class TriggeredActivity(Activity):
 
 if __name__ == "__main__":
     # An example to illustrate how an activity can be instantiated.
-    braking = ActivityCategory(0, "braking", Model("Spline3Knots"), StateVariable.LONGITUDINAL_POSITION,
+    braking = ActivityCategory("braking", Model("Spline3Knots"), StateVariable.LONGITUDINAL_POSITION,
                                tags=[Tag.VEH_LONG_ACT_DRIVING_FORWARD_BRAKING])
-    brakingact = DetectedActivity(0, "ego_braking", braking, 9.00, 1.98,
+    brakingact = DetectedActivity("ego_braking", braking, 9.00, 1.98,
                                   {"xstart": 133, "xend": 168, "a1": 1.56e-2, "b1": -6.27e-2, "c1": 1.04, "d1": 0,
                                    "a2": 3.31e-2, "b2": -8.89e-2, "c2": 1.06, "d2": -2.18e-3})
 

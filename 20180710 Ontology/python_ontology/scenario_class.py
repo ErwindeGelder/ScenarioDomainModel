@@ -30,8 +30,8 @@ import json
 import os
 
 
-class Scenario(Default):
-    """ Scenario - A qualitative description
+class ScenarioClass(Default):
+    """ ScenarioClass - A qualitative description
 
     Although a scenario is a quantitative description, there also exists a qualitative description of a scenario. We
     refer to the qualitative description of a scenario as a scenario class. The qualitative description can be regarded
@@ -50,7 +50,6 @@ class Scenario(Default):
     "Day and rain".
 
     Attributes:
-        uid (int): A unique ID.
         name (str): A name that serves as a short description of the scenario class.
         description (str): A description of the scenario class. The objective of the description is to make the scenario
             class human interpretable.
@@ -62,11 +61,12 @@ class Scenario(Default):
             The actors and activities that are used in acts should also be passed with the actors and activities
             arguments. If not, a warning will be shown and the corresponding actor/activity will be added to the list of
             actors/activities.
+        uid (int): A unique ID.
         tags (List[Tag]): A list of tags that formally defines the scenario class. These tags determine whether
             scenarios fall into this scenario class or not.
     """
-    def __init__(self, uid, name, description, image, static_environment, activities=None, actors=None, acts=None,
-                 tags=None, verbose=True):
+    def __init__(self, name, description, image, static_environment, activities=None, actors=None, acts=None,
+                 uid=-1, tags=None, verbose=True):
         # Check the types of the inputs
         if not isinstance(description, str):
             raise TypeError("Input 'description' should be of type <str> but is of type {0}.".format(type(description)))
@@ -194,20 +194,25 @@ if __name__ == '__main__':
     sc_image = ""
 
     # Define the static environment
-    sc_static_environment = StaticEnvironmentCategory(0, "Anything",
+    sc_static_environment = StaticEnvironmentCategory("Anything",
                                                       "No further details are specified for the static environment.")
 
     # Define the actors
-    ego_vehicle = ActorCategory(0, "Ego", VehicleType.VEHICLE, tags=[Tag.EGO_VEHICLE])
-    target_vehicle = ActorCategory(1, "Target", VehicleType.VEHICLE)
+    ego_vehicle = ActorCategory("Ego", VehicleType.VEHICLE, tags=[Tag.EGO_VEHICLE])
+    target_vehicle = ActorCategory("Target", VehicleType.VEHICLE, tags=[Tag.INIT_STATE_LONG_POS_IN_FRONT_OF_EGO,
+                                                                        Tag.INIT_STATE_DIRECTION_SAME_AS_EGO,
+                                                                        Tag.INIT_STATE_LAT_POS_SAME_LANE,
+                                                                        Tag.ACTOR_TYPE_VEHICLE])
 
     # Define the activities
-    going_straight = ActivityCategory(0, "Going straight", Model("NA"), StateVariable.LONGITUDINAL_POSITION,
+    going_straight = ActivityCategory("Going straight", Model("NA"), StateVariable.LATERAL_POSITION,
                                       tags=[Tag.VEH_LAT_ACT_LANE_FOLLOWING])
+    going_forward = ActivityCategory("Going forward", Model("NA"), StateVariable.LONGITUDINAL_POSITION,
+                                     tags=[Tag.VEH_LONG_ACT_DRIVING_FORWARD])
 
-    sc = Scenario(0, sc_name, sc_desc, sc_image, sc_static_environment,
-                  activities=[going_straight], actors=[ego_vehicle, target_vehicle],
-                  acts=[(target_vehicle, going_straight)])
+    sc = ScenarioClass(sc_name, sc_desc, sc_image, sc_static_environment,
+                       activities=[going_straight], actors=[ego_vehicle, target_vehicle],
+                       acts=[(target_vehicle, going_straight), (target_vehicle, going_forward)])
 
     # Show the JSON code when this scenario class is exported to JSON
     print()

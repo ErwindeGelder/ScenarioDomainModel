@@ -34,13 +34,13 @@ class StaticEnvironmentCategory(Default):
     The StaticEnvironmentCategory only describes the static environment in qualitative terms.
 
     Attributes:
-        uid (int): A unique ID.
         name (str): A name that serves as a short description of the static environment category.
         description (str): A description of the static environment category. The objective of the description is to make
             the static environment category human interpretable.
+        uid (int): A unique ID.
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
-    def __init__(self, uid, name, description, tags=None):
+    def __init__(self, name, description, uid=-1, tags=None):
         # Check the types of the inputs
         if not isinstance(description, str):
             raise TypeError("Input 'description' should be of type <str> but is of type {0}.".format(type(description)))

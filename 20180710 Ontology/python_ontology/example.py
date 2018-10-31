@@ -1,9 +1,10 @@
-from activity_category import ActivityCategory
-from actor_category import ActorCategory
+from activity_category import ActivityCategory, StateVariable
+from actor_category import ActorCategory, VehicleType
 from model import Model
 from activity import DetectedActivity
-from actor import Actor
+from actor import Actor, EgoVehicle
 from scenario import Scenario
+from tags import Tag
 import matplotlib.pyplot as plt
 import os
 import json
@@ -14,12 +15,12 @@ if not os.path.exists(figfolder):
     os.mkdir(figfolder)
 
 # Define the qualitative activities
-accelerating = ActivityCategory("accelerating", Model("Spline3Knots"), "x",
-                                tags=["Long. activity - Driving forward - Accelerating"])
-braking = ActivityCategory("braking", Model("Spline3Knots"), "x",
-                           tags=["Long. activity - Driving forward - Braking"])
-cruising = ActivityCategory("cruising", Model("Linear"), "x",
-                            tags=["Long. activity - Driving forward - Cruising"])
+accelerating = ActivityCategory("accelerating", Model("Spline3Knots"), StateVariable.LONGITUDINAL_POSITION,
+                                tags=[Tag.VEH_LONG_ACT_DRIVING_FORWARD_ACCELERATING])
+braking = ActivityCategory("braking", Model("Spline3Knots"), StateVariable.LONGITUDINAL_POSITION,
+                           tags=[Tag.VEH_LONG_ACT_DRIVING_FORWARD_BRAKING])
+cruising = ActivityCategory("cruising", Model("Linear"), StateVariable.LONGITUDINAL_POSITION,
+                            tags=[Tag.VEH_LONG_ACT_DRIVING_FORWARD_CRUISING])
 
 # Define activities
 ego_acceleration1 = DetectedActivity("ego_accelerating", accelerating, 0, 8.97,
@@ -46,19 +47,22 @@ ax2.set_ylabel('Speed [m/s]')
 f.savefig(os.path.join(figfolder, 'ego_activities'))
 
 # Plot the state of an actor
-qualitative_ego = ActorCategory("sedan", "Passenger car (M1)", tags=["Passenger car (M1)"])
-ego = Actor("ego", qualitative_ego, tags=["Ego"])
+qualitative_ego = ActorCategory("sedan", VehicleType.PASSENGER_CAR_M1, tags=[Tag.ACTOR_TYPE_PASSENGER_CAR_M1])
+ego = EgoVehicle("ego", qualitative_ego)
 f, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
 
 print("Tags of ego vehicle:")
 for tag in ego.get_tags():
     print(" - {:s}".format(tag))
 
-qualitative_pickup = ActorCategory("pickup", "Truck", tags=["Truck"])
+qualitative_pickup = ActorCategory("pickup", VehicleType.LGV_N2_N3, tags=[Tag.ACTOR_TYPE_LGV_N2_N3])
 pickup_cruising = DetectedActivity("pickup_cruising", cruising, 0.8, 32.6, {"xstart": 117, "xend": 556})
-pickup = Actor("pickup", qualitative_pickup, tags=["Direction - Same as ego", "Lat. pos. - Same lane",
-                                                   "Long. pos. - In front of ego", "Appearing - Gap-closing",
-                                                   "Lat. act. - Straight", "Lat. act. - Going forward"])
+pickup = Actor("pickup", qualitative_pickup, tags=[Tag.INIT_STATE_DIRECTION_SAME_AS_EGO,
+                                                   Tag.INIT_STATE_LAT_POS_SAME_LANE,
+                                                   Tag.INIT_STATE_LONG_POS_IN_FRONT_OF_EGO,
+                                                   Tag.LEAD_VEHICLE_APPEARING_GAP_CLOSING,
+                                                   Tag.VEH_LAT_ACT_LANE_FOLLOWING,
+                                                   Tag.VEH_LONG_ACT_DRIVING_FORWARD])
 print("Tags of pickup truck:")
 for tag in pickup.get_tags():
     print(" - {:s}".format(tag))
@@ -67,6 +71,6 @@ for tag in pickup.get_tags():
 activities = [ego_acceleration1, ego_braking, ego_cruising1, ego_acceleration2, ego_cruising2]
 acts = [[ego, activity, activity.tstart] for activity in activities]
 scenario = Scenario("example", 0, ego_cruising2.tend, actors=[ego], activities=activities, acts=acts)
+print(json.dumps(scenario.to_json(), indent=4))
 with open(os.path.join("examples", "example.json"), "w") as f:
-    print(scenario.to_json())
-    json.dump(scenario.to_json(), f)
+    json.dump(scenario.to_json(), f, indent=4)

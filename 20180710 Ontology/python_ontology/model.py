@@ -18,8 +18,9 @@ class Model:
     Attributes:
          modelname(str): The name of the model which is used to describe the relation between the state and time. The
             following models are supported:
-             - Linear: A linear relation between time and state. Parameters: xstart, xend
-             - Spline3Knots: Two third order splines are used. Parameters: xstart, xend, a1, b1, c1, d1, a2, b2, c2, d2
+             - Linear: A linear relation between time and state. Parameters: xstart, xend.
+             - Spline3Knots: Two third order splines are used. Parameters: xstart, xend, a1, b1, c1, d1, a2, b2, c2, d2.
+             - Sinusoidal: TODO. Parameters: xstart, xend.
     """
     def __init__(self, modelname):
         self.name = modelname
@@ -35,6 +36,10 @@ class Model:
             return p["xstart"] + y * (p["xend"] - p["xstart"])
         elif self.name == "Linear":
             return np.linspace(p["xstart"], p["xend"], n)
+        elif self.name == "Sinusoidal":
+            offset = (p["xstart"] + p["xend"]) / 2
+            amplitude = (p["xstart"] - p["xend"]) / 2
+            return amplitude*np.cos(np.pi*x) + offset
         else:
             raise ValueError('State cannot be computed for modelname "{:s}".'.format(self.name))
 
@@ -49,6 +54,9 @@ class Model:
             return y * (p["xend"] - p["xstart"])
         elif self.name == "Linear":
             return np.ones(n) * (p["xend"] - p["xstart"])
+        elif self.name == "Sinusoidal":
+            amplitude = (p["xstart"] - p["xend"]) / 2
+            return -np.pi*amplitude*np.sin(np.pi*x)
         else:
             raise ValueError('State cannot be computed for modelname "{:s}".'.format(self.name))
 

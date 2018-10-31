@@ -32,12 +32,12 @@ class ActorCategory(Default):
     actors in a scenario. The actor category only describes the actor in qualitative terms.
 
     Attributes:
-        uid (int): A unique ID.
         name (str): A name that serves as a short description of the actor category.
         vehicle_type (VehicleType): The type of the actor. This should be from the enumeration VehicleType.
+        uid (int): A unique ID.
         tags (List[Tag]): The tags are used to determine whether a scenario falls into a scenarioClass.
     """
-    def __init__(self, uid, name, vehicle_type, tags=None):
+    def __init__(self, name, vehicle_type, uid=-1, tags=None):
         # Check the types of the inputs
         if not isinstance(vehicle_type, VehicleType):
             raise TypeError("Input 'vehicle_type' should be of type <VehicleType> but is of type {0}.".
@@ -68,6 +68,9 @@ class VehicleType(Enum):
     PASSENGER_CAR_M1 = Tag.ACTOR_TYPE_PASSENGER_CAR_M1.value
     MINIBUS_M2 = Tag.ACTOR_TYPE_MINIBUS_M2.value
     BUS_M3 = Tag.ACTOR_TYPE_BUS_M3.value
+    CATEGORY_N = Tag.ACTOR_TYPE_CATEGORY_N.value
+    LCV_N1 = Tag.ACTOR_TYPE_LCV_N1.value
+    LGV_N2_N3 = Tag.ACTOR_TYPE_LGV_N2_N3.value
     VRU = Tag.ACTOR_TYPE_VRU.value
     PEDESTRIAN = Tag.ACTOR_TYPE_VRU_PEDESTRIAN.value
     VRU_CYCLIST = Tag.ACTOR_TYPE_VRU_CYCLIST.value
