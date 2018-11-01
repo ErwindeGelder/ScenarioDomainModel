@@ -179,6 +179,9 @@ if __name__ == '__main__':
     call_output('git checkout PR11')
     pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report11'), 'progress_report_11')
+    call_output('git checkout PR12')
+    pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True, log=False)
+    pdf(os.path.join('..', 'progress_reports', 'report12'), 'progress_report_12')
     call_output('git checkout master')
 
     # All other stuff
@@ -196,3 +199,5 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True)
     pdf(os.path.join('..', '20180710 Ontology'), 'ontology', usebiber=True)
     pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True)
+    pdf(os.path.join('..', '20181002 Completeness question'), 'completeness_questions', usebiber=True)
+    pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True)
