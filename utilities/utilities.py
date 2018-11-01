@@ -111,6 +111,10 @@ def pdf(folder, texfile, usebibtex=False, usebiber=False, clean=True, log=True):
                 runpdflatex = True
                 print("RERUN BECAUSE LABELS CHANGED !!!")
                 break
+            if w[0].find('Changebar info has changed.') >= 0:
+                runpdflatex = True
+                print("RERUN BECAUSE CHANGEBAR CHANGED !!!")
+                break
     if log:
         with open("log2.txt", "a") as f:
             f.write("####################################################################\n")
