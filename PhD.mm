@@ -1403,7 +1403,7 @@
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Ontology Based Scene Creation for the Development of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0EC3A9A0EE5222DF61BEBAAE5CA6FEC5D01ECEC0D4FBC22B8437F9A7D4FC99">
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6E205E2683CC485EC5A5F9CFBA2B4651DD2968E634B74C8D82F20AFAB2517">
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
@@ -1526,7 +1526,7 @@
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Ontology Based Scene Creation for the Development of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0EC3A9A0EE5222DF61BEBAAE5CA6FEC5D01ECEC0D4FBC22B8437F9A7D4FC99">
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6E205E2683CC485EC5A5F9CFBA2B4651DD2968E634B74C8D82F20AFAB2517">
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
@@ -2072,7 +2072,7 @@
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Ontology Based Scene Creation for the Development of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0EC3A9A0EE5222DF61BEBAAE5CA6FEC5D01ECEC0D4FBC22B8437F9A7D4FC99">
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6E205E2683CC485EC5A5F9CFBA2B4651DD2968E634B74C8D82F20AFAB2517">
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
@@ -2132,6 +2132,15 @@
 <attribute NAME="title" VALUE="Model Factory for Socio-Technical Infrastructure Systems"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="401C8D512295C853466C915CDD30156ACC8F062BD665324C9833DE754FB5A6">
     <pdf_title>Model Factory for Socio-Technical Infrastructure Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Theory of conceptual models" ID="ID_712120560" CREATED="1540300269340" MODIFIED="1540300795970" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/262%20Theory%20of%20conceptual%20models.pdf">
+<attribute NAME="key" VALUE="thalheim2011theory"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="The Theory of Conceptual Models, the Theory of Conceptual Modelling and Foundations of Conceptual Modelling"/>
+<attribute NAME="authors" VALUE="Thalheim, Bernhard"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="64CDE95A9C751E331F5D24466B070F4D53099A1A665721981B87EE95D7AD399">
+    <pdf_title>The Theory of Conceptual Models, the Theory of Conceptual Modelling and Foundations of Conceptual Modelling</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="Ontology for applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1504253001" CREATED="1531293489079" MODIFIED="1531294181571">
@@ -2980,6 +2989,14 @@
 <attribute NAME="authors" VALUE="Bimbraw, Keshav"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F2DE1880F22A3B1F82673403F8A701B8CA36B21B281CC2DFD7B4CA72D2BD">
     <pdf_title>Autonomous Cars: Past, Present and Future</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="J3016" ID="ID_632878449" CREATED="1540286342512" MODIFIED="1540286348941" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/261%20J3016_201806.pdf">
+<attribute NAME="key" VALUE="sea2018j3016"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="164E75E54C4ACAF6CF09314741D60FEA9A17E40D434EC9DD8EB6C257E24C90">
+    <pdf_title>SURFACE VEHICLERECOMMENDED PRACTICE</pdf_title>
 </pdf_annotation>
 </node>
 </node>
