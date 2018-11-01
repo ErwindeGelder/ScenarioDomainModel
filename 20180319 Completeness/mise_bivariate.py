@@ -21,6 +21,7 @@ mub = [-0.5, 0.5, 1.5]
 sigmaa = [0.5, 0.3]
 sigmab = [0.3, 0.5, 0.3]
 max_change_bw = 0.25
+figures_folder = os.path.join('..', '20180924 Completeness paper', 'figures')
 
 # Create object for generating data from a Gaussian mixture
 gma = GaussianMixture(mua, sigmaa)
@@ -169,10 +170,12 @@ mean = np.mean(est_mise_ind, axis=1)
 std = np.std(est_mise_ind, axis=1)
 ax.fill_between(nn, mean - 3 * std, mean + 3 * std, color=[.8, .8, .8])
 ax.set_xlabel("Number of samples")
-ax.set_ylabel("MISE")
-ax.grid(True)
+# ax.set_ylabel("MISE")
+# ax.grid(True)
 ax.set_xlim([np.min(nn), np.max(nn)])
 # ax.set_title("Data to be assumed dependent (solid) or independent (dashed)")
+save(os.path.join(figures_folder, 'mise_example.tikz'),
+     figureheight='\\figureheight', figurewidth='\\figurewidth')
 
 # Plot the bandwidth for varying n
 dx = np.mean(np.gradient(xpdf))
@@ -183,6 +186,7 @@ lapb = np.trapz((np.gradient(np.gradient(ypdfb)) / dx**2)**2, xpdf)
 hoptb = (1*muka / (nn*lapb))**(1/(1+4))
 lapab = np.trapz(np.trapz((np.gradient(np.gradient(ypdfab, axis=0), axis=0) / dx**2 +
                            np.gradient(np.gradient(ypdfab, axis=1), axis=1) / dx**2)**2, xpdf), xpdf)
+print("Laplacian AB: {:.5f}".format(lapab))
 mukab = 1 / (4*np.pi)
 hoptab = ((2*mukab) / (nn*lapab))**(1/(2+4))
 
@@ -195,16 +199,18 @@ ax.loglog(nn, bwab, '--', label="bwab", lw=5, color=[0, 0, 0])
 # ax.loglog(nn, hoptab)
 ax.set_xlabel("Number of samples")
 ax.set_ylabel("Bandwidth")
-ax.grid(True)
+# ax.grid(True)
 ax.set_xlim([np.min(nn), np.max(nn)])
-plt.show()
+save(os.path.join(figures_folder, 'bandwidth.tikz'),
+     figureheight='\\figureheight', figurewidth='\\figurewidth')
 
 # Make a figure of the distribution and export to tikz
 _, ax = plt.subplots(1, 1, figsize=(7, 5))
 ax.plot(xpdf, ypdfa, lw=5, color=[0, 0, 0])
 ax.plot(xpdf, ypdfb, '--', lw=5, color=[.5, .5, .5])
-ax.grid(True)
+# ax.grid(True)
 ax.set_xlabel('$x$')
 ax.set_xlim(xlim)
-save(os.path.join('..', '20180924 Completeness paper', 'figures', 'true_pdf.tikz'),
+save(os.path.join(figures_folder, 'true_pdf.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth')
+plt.show()

@@ -7,6 +7,7 @@ from tqdm import tqdm_notebook as tqdm
 import h5py
 import psutil
 from time import time
+from matplotlib2tikz import save
 
 # Open the dataset
 with open(os.path.join('pickles', 'df.p'), 'rb') as f:
@@ -32,8 +33,9 @@ d = scaling.shape[1]
 da = 1
 db = d - da
 overwrite = False
-overwrite2 = True
+overwrite2 = False
 max_change_bw = 0.5
+figures_folder = os.path.join('..', '20180924 Completeness paper', 'figures')
 
 # Initialize some stuff
 nn = np.round(np.logspace(np.log10(nmin), np.log10(nmax), nsteps)).astype(np.int)
@@ -190,29 +192,84 @@ else:
         bwa = f["bwa"][:]
         bwb = f["bwb"][:]
 
-for m in mise:
-    plt.loglog(nn, m, color=[.5, .5, 1])
-plt.loglog(nn, mise[0], lw=3, label="Estimated")
-plt.loglog(nn, np.mean(mise, axis=0), 'r-', lw=3, label="Mean")
-plt.xlabel("Number of samples")
-plt.ylabel("MISE")
-plt.legend()
-plt.grid(True)
-
-for m in miseab:
-    plt.loglog(nn, m, color=[.5, .5, 1])
-plt.loglog(nn, miseab[0], lw=3, label="Estimated2")
-plt.loglog(nn, np.mean(miseab, axis=0), 'r-', lw=3, label="Mean")
-plt.xlabel("Number of samples")
-plt.ylabel("MISE")
-plt.legend()
-plt.grid(True)
+with open(os.path.join('pickles', 'df.p'), 'rb') as f:
+    dfs, scaling = pickle.load(f)
+scaling = scaling.T  # [time vstart vend]
+scaling = scaling[scaling[:, 2] > 0, :]  # Remove full stops
+scaling[:, 1] = scaling[:, 1] - scaling[:, 2]  # Now it becomes: [time deltav vend] (less correlation)
+scaling[:, 0] = scaling[:, 1] / scaling[:, 0]  # Now it becomes: [deceleration deltav vend] (better behaved)
+f, axs = plt.subplots(3, 1, figsize=(7, 5))
+for i, ax in enumerate(axs):
+    ax.hist(scaling[:, i], bins=20, color=[.5, .5, .5], edgecolor=[0, 0, 0])
+    xlim = ax.get_xlim()
+    ax.set_xlim([0, xlim[1]])
+axs[0].set_xlabel('Average deceleration [m/s$^2$]')
+axs[1].set_xlabel('Speed difference [m/s]')
+axs[2].set_xlabel('End speed [m/s]')
+plt.tight_layout()
+save(os.path.join(figures_folder, 'histogram.tikz'),
+     figureheight='\\figureheight', figurewidth='\\figurewidth')
 
 f, ax = plt.subplots(1, 1, figsize=(7, 5))
-ax.loglog(nn, mise[0], lw=5)
+ax.loglog(nn, bwa[0], '-', label="bwa", lw=5, color=[.5, .5, .5])
+ax.loglog(nn, bwb[0], ':', label="bwb", lw=5, color=[.5, .5, .5])
+ax.loglog(nn, bw[0], '--', label="bwab", lw=5, color=[0, 0, 0])
+ax.set_xlabel("Number of samples")
+ax.set_ylabel("Bandwidth")
+ax.set_xlim([np.min(nn), np.max(nn)])
+save(os.path.join(figures_folder, 'bandwidth_real.tikz'),
+     figureheight='\\figureheight', figurewidth='\\figurewidth')
+
+f, ax = plt.subplots(1, 1, figsize=(7, 5))
+logfit1 = np.polyfit(np.log(nn), np.log(mise[0]), 1)
+ax.loglog(nn, np.exp(logfit1[1]) * nn ** logfit1[0], color=[0, 0, 0], lw=2)
+ax.loglog(nn, mise[0], lw=5, color=[.5, .5, .5])
+print("Approximation of MISE1: {:.3f}*n^{:.2f}".format(np.exp(logfit1[1]), logfit1[0]))
+logfit2 = np.polyfit(np.log(nn), np.log(miseab[0]), 1)
+ax.loglog(nn, np.exp(logfit2[1]) * nn ** logfit2[0], '--', color=[0, 0, 0], lw=2)
+ax.loglog(nn, miseab[0], '--', lw=5, color=[.5, .5, .5])
+print("Approximation of MISE1: {:.3f}*n^{:.2f}".format(np.exp(logfit2[1]), logfit2[0]))
+n2 = 1000
+n1 = (np.exp(logfit2[1] - logfit1[1])*n2**logfit2[0])**(1/logfit1[0])
+print("Number of points for MISE 1 to be equal to MISE 2 at n={:d}: {:.0f}".format(n2, n1))
+ax.set_xlim([np.min(nn), np.max(nn)])
+ax.set_xlabel("Number of samples")
+save(os.path.join(figures_folder, 'mise_real.tikz'),
+     figureheight='\\figureheight', figurewidth='\\figurewidth')
+
+f, ax = plt.subplots(1, 1, figsize=(7, 5))
+for m in mise:
+    ax.loglog(nn, m, color=[.5, .5, 1])
+ax.loglog(nn, mise[0], lw=3, label="Estimated")
+ax.loglog(nn, np.mean(mise, axis=0), 'r-', lw=3, label="Mean")
 ax.set_xlabel("Number of samples")
 ax.set_ylabel("MISE")
-ax.set_xlim([nn[0], nn[-1]])
+ax.legend()
 ax.grid(True)
-print("Power for estimated MISE: {:.2f}".format(np.polyfit(np.log(nn), np.log(mise[0]), 1)[0]))
+
+f, ax = plt.subplots(1, 1, figsize=(7, 5))
+for m in miseab:
+    plt.loglog(nn, m, color=[.5, .5, 1])
+ax.loglog(nn, miseab[0], lw=3, label="Estimated2")
+ax.loglog(nn, np.mean(miseab, axis=0), 'r-', lw=3, label="Mean")
+ax.set_xlabel("Number of samples")
+ax.set_ylabel("MISE")
+ax.legend()
+ax.grid(True)
+
+f, (ax1, ax2) = plt.subplots(2, 1, figsize=(7, 5))
+for i, (ax, m) in enumerate(zip([ax1, ax2], [misea, miseb])):
+    ax.loglog(nn, m[0], lw=3, label="Estimated a")
+    ax.legend()
+    logfit = np.polyfit(np.log(nn), np.log(m[0]), 1)
+    ax.set_title("Approximation of MISE{:d}: {:.3f}*n^{:.2f}".format(i, np.exp(logfit[1]), logfit[0]))
+    ax.set_xlabel("Number of samples")
+    ax.set_ylabel("MISE")
+    ax.grid(True)
+f.tight_layout()
+
+logfit = np.polyfit(np.log(nn), np.log(mise[0]), 1)
+print("Formula for estimated MISE assuming full dependecy: {:.3f}*n^{:.2f}".format(np.exp(logfit[1]), logfit[0]))
+logfit = np.polyfit(np.log(nn), np.log(miseab[0]), 1)
+print("Formula for estimated MISE without this assumption: {:.3f}*n^{:.2f}".format(np.exp(logfit[1]), logfit[0]))
 plt.show()
