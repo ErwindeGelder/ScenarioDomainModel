@@ -1,7 +1,7 @@
+import time
 import numpy as np
 import scipy.spatial.distance as dist
 import scipy.stats
-import time
 import matplotlib.pyplot as plt
 
 
@@ -10,13 +10,15 @@ class KDE(object):
     """
     def __init__(self, data=None, bw=None):
         self.bw = bw
-        self.data, self.mindists, self.n, self.const_score, self.d, self.muk = None, None, 0, 0, 0, 0
+        self.data, self.mindists, self.n, self.const_score = None, None, 0, 0
+        self.d, self.muk = 0, 0
         self.last_n = 0  # Store n when the bandwidth is computed
-        self.xhist, self.yhist, self.fft = None, None, None
+        # self.xhist, self.yhist, self.fft = None, None, None  # Not used at the moment
         self.fit(data)
         self.invgr = (np.sqrt(5) - 1) / 2  # Inverse of Golden Ratio
         self.invgr2 = (3 - np.sqrt(5)) / 2  # 1/gr^2
-        self.data_score_samples, self.newshape, self.data_dist, self.difference = None, None, None, None
+        self.data_score_samples, self.newshape = None, None
+        self.data_dist, self.difference = None, None
 
     def fit(self, data):
         if len(data.shape) == 1:
@@ -24,7 +26,8 @@ class KDE(object):
         else:
             self.data = data
 
-        # Note: creating the distance matrix takes quite some time and is only needed if cross validation is performed.
+        # Note: creating the distance matrix takes quite some time and is only needed if cross
+        # validation is performed.
         # Therefore, this is not done here. Only the first time when cross validation is performed
         self.set_n(len(self.data))
         self.d = self.data.shape[1]
@@ -32,14 +35,18 @@ class KDE(object):
 
         # # Build histogram (for using FFT for computing bandwidth)
         # sigma = np.std(self.data)
-        # self.yhist, bin_edges = np.histogram(self.data, int((np.max(self.data) - np.min(self.data) / (sigma/100))),
-        #                                      range=(np.min(self.data) - 3*sigma, np.max(self.data) + 3*sigma),
+        # self.yhist, bin_edges = np.histogram(self.data,
+        #                                      int((np.max(self.data) - np.min(self.data) /
+        #                                           (sigma/100))),
+        #                                      range=(np.min(self.data) - 3*sigma,
+        #                                             np.max(self.data) + 3*sigma),
         #                                      density=True)
         # self.xhist = (bin_edges[:-1] + bin_edges[1:]) / 2
         # self.fft = np.fft.fft(self.yhist)
 
     def set_n(self, n: int) -> None:
-        """ Set the number of datapoints that are to be used when evaluating the (one-leave-out) score.
+        """ Set the number of datapoints that are to be used when evaluating the one-leave-out
+        score.
         
         The constant term of the score for the one-leave-out cross validation is set.
 
@@ -58,7 +65,9 @@ class KDE(object):
             newmindists = -dist.squareform(dist.pdist(newdata, metric='sqeuclidean')) / 2
             oldmindists = -dist.cdist(self.data, newdata, metric='sqeuclidean') / 2
             self.mindists = np.concatenate((np.concatenate((self.mindists, oldmindists), axis=1),
-                                            np.concatenate((np.transpose(oldmindists), newmindists), axis=1)), axis=0)
+                                            np.concatenate((np.transpose(oldmindists),
+                                                            newmindists), axis=1)),
+                                           axis=0)
 
         # Update other stuff
         self.data = np.concatenate((self.data, newdata), axis=0)
@@ -92,8 +101,8 @@ class KDE(object):
 
         yc = self.score_leave_one_out(bw=c)
         yd = self.score_leave_one_out(bw=d)
-        at_boundary_min = False  # Check if we only search at one side as this could indicate wrong values of min_bw
-        at_boundary_max = False  # Check if we only search at one side as this could indicate wrong values of min_bw
+        at_boundary_min = False  # Check if we only search at one side as this could indicate ...
+        at_boundary_max = False  # ... wrong values of min_bw
         for k in range(n):
             if yc > yd:
                 at_boundary_min = True
@@ -131,7 +140,8 @@ class KDE(object):
 
         # Compute the one-leave-out score
         h = self.bw if bw is None else bw
-        return np.sum(np.log(np.sum(np.exp(self.mindists[:self.n, :self.n] / h ** 2), axis=0) - 1)) - \
+        return np.sum(np.log(np.sum(np.exp(self.mindists[:self.n, :self.n] / h ** 2),
+                                    axis=0) - 1)) - \
             self.n*self.d*np.log(h) + self.const_score
 
     def set_bw(self, bw):
@@ -158,13 +168,15 @@ class KDE(object):
 
         # Compute the distance of the datapoints in x to the datapoints of the KDE
         # Let x have M datapoints, then the result is a (self.n-by-M)-matrix
-        # Reason to do this now is that this will save computations when the score needs to be computed multiple times
-        # (e.g., with different values of self.n)
+        # Reason to do this now is that this will save computations when the score needs to be
+        # computed multiple times (e.g., with different values of self.n)
         self.data_dist = dist.cdist(self.data, self.data_score_samples, metric='sqeuclidean')
 
         # Compute the difference of the datapoints in x to the datapoints of the KDE
-        # The different is a n-by-m-by-d matrix, so the vector (i,j,:) corresponds to kde.data[i] - x[j]
-        # The difference if only needed to compute the gradient. Therefore, by default, the difference is not computed
+        # The different is a n-by-m-by-d matrix, so the vector (i,j,:) corresponds to
+        # kde.data[i] - x[j]
+        # The difference if only needed to compute the gradient. Therefore, by default, the
+        # difference is not computed
         if compute_difference:
             self.difference = np.zeros((len(self.data), len(self.data_score_samples), self.d))
             for i, xm in enumerate(self.data_score_samples):
@@ -173,8 +185,8 @@ class KDE(object):
     def score_samples(self, x=None):
         """ Return the scores, i.e., the value of the pdf, for all the datapoints in x
 
-        Note that this function will return an error when the bandwidth is not defined. The bandwidth can be set using
-        set_bw() or computed using compute_bw()
+        Note that this function will return an error when the bandwidth is not defined. The
+        bandwidth can be set using set_bw() or computed using compute_bw().
         If no data is given, it is assumed that the data is already set by set_score_samples()!
 
         :param x: Input data
@@ -187,33 +199,36 @@ class KDE(object):
 
             # The data needs to be converted to the original input shape
             return scores.reshape(self.newshape)
-        else:
-            # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
-            # This might result in an error if x is meant to be a single (multi-dimensional) datapoint
-            if len(x.shape) == 1:
-                x = x[:, np.newaxis]
-            if len(x.shape) == 2:
-                return np.exp(self._logscore_samples(x))
-            else:
-                # It is assumed that the last dimension corresponds to the dimension of the data (i.e., a single
-                # datapoint)
-                # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is converted to
-                # input shape
-                newshape = x.shape[:-1]
-                scores = np.exp(self._logscore_samples(x.reshape((np.prod(newshape), x.shape[-1]))))
-                return scores.reshape(newshape)
+
+        # If the input x is a 1D array, it is assumed that each entry corresponds to a
+        # datapoint
+        # This might result in an error if x is meant to be a single (multi-dimensional)
+        # datapoint
+        if len(x.shape) == 1:
+            x = x[:, np.newaxis]
+        if len(x.shape) == 2:
+            return np.exp(self._logscore_samples(x))
+
+        # It is assumed that the last dimension corresponds to the dimension of the data
+        # (i.e., a single datapoint)
+        # Data is transformed to a 2d-array which can be used by self.kde. Afterwards,
+        # data is converted to input shape
+        newshape = x.shape[:-1]
+        scores = np.exp(self._logscore_samples(x.reshape((np.prod(newshape), x.shape[-1]))))
+        return scores.reshape(newshape)
 
     def _logscore_samples(self, x=None):
         """ Return the scores, i.e., the value of the pdf, for all the datapoints in x.
         It is assumed that x is in the correct format, i.e., 2D array.
         NOTE: this function returns the LOG of the scores!!!
 
-        The reason to use this function instead of score_samples from sklearn's KernelDensity is that this function
-        takes into account the number of datapoints (i.e., self.n). Furthermore, for some reason, this function is
-        approximately 10 times as fast as sklearn's function!!!
+        The reason to use this function instead of score_samples from sklearn's KernelDensity is
+        that this function takes into account the number of datapoints (i.e., self.n).
+        Furthermore, for some reason, this function is approximately 10 times as fast as
+        sklearn's function!!!
 
-        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
-        distance will not be computed.
+        If no data is given, it is assumed that the data is already set by set_score_samples().
+        Therefore, the euclidean distance will not be computed.
         """
         # Compute the distance of the datapoints in x to the datapoints of the KDE
         # Let x have M datapoints, then the result is a (self.n-by-M)-matrix
@@ -235,8 +250,8 @@ class KDE(object):
     def gradient_samples(self, x=None):
         """ Compute gradient of the KDE
 
-        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
-        distance will not be computed.
+        If no data is given, it is assumed that the data is already set by set_score_samples().
+        Therefore, the euclidean distance will not be computed.
 
         :param x: np.array with the datapoints.
         :return: gradient of the KDE
@@ -254,24 +269,26 @@ class KDE(object):
             x = x[:, np.newaxis]
         if len(x.shape) == 2:
             return self._gradient_samples(x)
-        else:
-            # It is assumed that the last dimension corresponds to the dimension of the data (i.e., a single
-            # datapoint)
-            # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is converted to
-            # input shape
-            newshape = x.shape
-            gradient = self._gradient_samples(x.reshape((np.prod(newshape[:-1]), x.shape[-1])))
-            return gradient.reshape(newshape)
+
+        # It is assumed that the last dimension corresponds to the dimension of the data
+        # (i.e., a single datapoint)
+        # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is
+        # converted to input shape
+        newshape = x.shape
+        gradient = self._gradient_samples(x.reshape((np.prod(newshape[:-1]), x.shape[-1])))
+        return gradient.reshape(newshape)
 
     def _gradient_samples(self, x=None):
         """ Compute gradient of the KDE
 
-        It is assumed that the data is already in the right format (i.e., a 2D array). If not, use gradient_samples().
-        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
-        distance will not be computed.
+        It is assumed that the data is already in the right format (i.e., a 2D array). If not, use
+        gradient_samples().
+        If no data is given, it is assumed that the data is already set by set_score_samples().
+        Therefore, the euclidean distance will not be computed.
 
         :param x: m-by-d array with m datapoint
-        :return: m-by-d vector, where the i-th element corresponds to the gradient at the m-th datapoint
+        :return: m-by-d vector, where the i-th element corresponds to the gradient at the m-th
+            datapoint
         """
         if x is None:
             # Assume that we already did the proper calculations
@@ -298,8 +315,8 @@ class KDE(object):
     def laplacian(self, x=None):
         """ Compute the Laplacian of the KDE
 
-        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
-        distance will not be computed.
+        If no data is given, it is assumed that the data is already set by set_score_samples().
+        Therefore, the euclidean distance will not be computed.
 
         :param x:
         :return:
@@ -317,21 +334,22 @@ class KDE(object):
             x = x[:, np.newaxis]
         if len(x.shape) == 2:
             return self._laplacian(x)
-        else:
-            # It is assumed that the last dimension corresponds to the dimension of the data (i.e., a single
-            # datapoint)
-            # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is converted to
-            # input shape
-            newshape = x.shape[:-1]
-            laplacian = self._laplacian(x.reshape((np.prod(newshape), x.shape[-1])))
-            return laplacian.reshape(newshape)
+
+        # It is assumed that the last dimension corresponds to the dimension of the data
+        # (i.e., a single datapoint)
+        # Data is transformed to a 2d-array which can be used by self.kde. Afterwards, data is
+        # converted to input shape
+        newshape = x.shape[:-1]
+        laplacian = self._laplacian(x.reshape((np.prod(newshape), x.shape[-1])))
+        return laplacian.reshape(newshape)
 
     def _laplacian(self, x=None):
         """ Compute the Laplacian of the KDE
 
-        It is assumed that the data is already in the right format (i.e., a 2D array). If not, use gradient_samples().
-        If no data is given, it is assumed that the data is already set by set_score_samples(). Therefor, the euclidean
-        distance will not be computed.
+        It is assumed that the data is already in the right format (i.e., a 2D array). If not, use
+        gradient_samples().
+        If no data is given, it is assumed that the data is already set by set_score_samples().
+        Therefore, the euclidean distance will not be computed.
 
         :param x:
         :return:
@@ -369,35 +387,35 @@ class KDE(object):
 if __name__ == '__main__':
     np.random.seed(0)
 
-    xx = np.random.rand(200)
-    kde = KDE(data=xx)
-    kde.compute_bw()
-    print("Bandwidth n=200: {:.5f}".format(kde.bw))
+    XDATA = np.random.rand(200)
+    KERNEL_DENSITY = KDE(data=XDATA)
+    KERNEL_DENSITY.compute_bw()
+    print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.bw))
     nstart = 50
-    kde = KDE(data=xx[:nstart])
-    kde.compute_bw()
-    print("Bandwidth n={:d}: {:.5f}".format(nstart, kde.bw))
-    kde.add_data(xx[nstart:])
-    kde.compute_bw()
-    print("Bandwidth n=200: {:.5f}".format(kde.bw))
+    KERNEL_DENSITY = KDE(data=XDATA[:nstart])
+    KERNEL_DENSITY.compute_bw()
+    print("Bandwidth n={:d}: {:.5f}".format(nstart, KERNEL_DENSITY.bw))
+    KERNEL_DENSITY.add_data(XDATA[nstart:])
+    KERNEL_DENSITY.compute_bw()
+    print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.bw))
 
-    ndatapoints = [100, 500]
-    f, axs = plt.subplots(1, len(ndatapoints), figsize=(12, 5))
+    NDATAPOINTS = [100, 500]
+    FIGURE, AXS = plt.subplots(1, len(NDATAPOINTS), figsize=(12, 5))
 
-    for ndatapoint, ax in zip(ndatapoints, axs):
-        xx = np.random.randn(ndatapoint)
-        kde = KDE(data=xx)
+    for ndatapoint, ax in zip(NDATAPOINTS, AXS):
+        XDATA = np.random.randn(ndatapoint)
+        KERNEL_DENSITY = KDE(data=XDATA)
         t0 = time.time()
-        kde.compute_bw()
+        KERNEL_DENSITY.compute_bw()
         t1 = time.time()
         print("Elapsed time: {:.3f} s".format(t1 - t0))
-        print("Bandwidth: {:.5f}".format(kde.bw))
+        print("Bandwidth: {:.5f}".format(KERNEL_DENSITY.bw))
 
         xpdf = np.linspace(-3, 3, 301)
         ypdf = np.exp(-xpdf**2/2) / np.sqrt(2*np.pi)
         ax.plot(xpdf, ypdf, label='Real')
-        ax.plot(xpdf, kde.score_samples(xpdf), label='Estimated')
-        low, up = kde.confidence_interval(xpdf)
+        ax.plot(xpdf, KERNEL_DENSITY.score_samples(xpdf), label='Estimated')
+        low, up = KERNEL_DENSITY.confidence_interval(xpdf)
         ax.fill_between(xpdf, low, up, facecolor=[0.5, 0.5, 1], alpha=0.5, label='95% Confidence')
         ax.legend()
         ax.set_title('{:d} datapoints'.format(ndatapoint))
