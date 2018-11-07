@@ -20,6 +20,7 @@ Modifications
 
 """
 
+from typing import List
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -78,7 +79,7 @@ class GaussianMixture:
         xsamples = np.random.randn(nsamples, self.dim)
         return self.mean[idx] + np.einsum('nij,nj->ni', self.chol[idx], xsamples)
 
-    def pdf(self, npoints: int = 51, minx: float = None, maxx: float = None):
+    def pdf(self, npoints: int = 51, minx: List[float] = None, maxx: List[float] = None):
         """ Generate probability density function (PDF)
 
         :param npoints: Number of points to be used for each dimension (default=101).
@@ -100,7 +101,7 @@ class GaussianMixture:
 
         # Create the PDF grid
         xorig = np.meshgrid(*[np.linspace(minx[i], maxx[i], npoints)
-                              for i in range(self.dim)])  # type: Tuple
+                              for i in range(self.dim)])
         marginal_grid = np.reshape(xorig, (self.dim, npoints ** self.dim))
 
         # Compute determinants and inverses of covariances (needed for computation of PDF)
