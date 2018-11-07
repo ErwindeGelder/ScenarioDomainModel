@@ -311,8 +311,18 @@
     <pdf_title>3 E-mail: malik@cs.berkeley.edu</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Estimating the Support of a High-Dimensional Distribution" ID="ID_1037317307" CREATED="1541579127410" MODIFIED="1541579204696" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/263%20Estimating%20the%20Support%20of%20a%20High-Dimensional%20Distribution.pdf">
+<attribute NAME="key" VALUE="scholkopf2001estimating"/>
+<attribute NAME="journal" VALUE="Neural Computation"/>
+<attribute NAME="year" VALUE="2001"/>
+<attribute NAME="title" VALUE="Estimating the Support of a High-Dimensional Distribution"/>
+<attribute NAME="authors" VALUE="Sch{\&quot;o}lkopf, Bernhard and Platt, John C and Shawe-Taylor, John and Smola, Alex J and Williamson, Robert C"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B116A77BEAD976579BB86FF981B9441B712657D6EB9F9CD0A5C8FC23BB83A3">
+    <pdf_title>yx</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="What is data used for?" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1937528963" CREATED="1539859088544" MODIFIED="1540198071221" HGAP="44" VSHIFT="-8">
+</node>
+<node TEXT="What is data used for?" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1937528963" CREATED="1539859088544" MODIFIED="1540198071221" HGAP="44" VSHIFT="-8">
 <node TEXT="To determine the risks and prevalence evaluation" ID="ID_787334324" CREATED="1539859106194" MODIFIED="1539859286572" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/251%20Driver%20crash%20risk%20factors%20and%20prevalence%20evaluation%20from%20NDD.pdf">
 <attribute NAME="key" VALUE="dingus2016crashrisk"/>
 <attribute NAME="journal" VALUE="Proceedings of the National Academy of Sciences"/>
@@ -422,7 +432,8 @@
     <pdf_title>How Many Interviews Are Enough? An Experiment with Data Saturation and Variability</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Evolution physical activity how much is enough" ID="ID_1751094351" CREATED="1540198285264" MODIFIED="1540198389062" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/259%20Evolution%20physical%20activity%20how%20much%20is%20enough.pdf">
+<node TEXT="Evolution physical activity how much is enough" ID="ID_1751094351" CREATED="1540198285264" MODIFIED="1541498074210" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/259%20Evolution%20physical%20activity%20how%20much%20is%20enough.pdf">
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="80" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1751094351" STARTINCLINATION="40;0;" ENDINCLINATION="40;45;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <attribute NAME="key" VALUE="blair2004evolution"/>
 <attribute NAME="journal" VALUE="The American Journal of Clinical Nutrition"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -2451,7 +2462,7 @@
 </node>
 <node TEXT="Parzen (1962)" ID="ID_1119766300" CREATED="1513312398426" MODIFIED="1534390598739" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/088%20Kernel%20Density%20Estimation%20-%20Parzen.pdf">
 <attribute NAME="key" VALUE="parzen1962estimation"/>
-<attribute NAME="journal" VALUE="The annals of mathematical statistics"/>
+<attribute NAME="journal" VALUE="The Annals of Mathematical Statistics"/>
 <attribute NAME="year" VALUE="1962"/>
 <attribute NAME="title" VALUE="On Estimation of a Probability Density Function and Mode"/>
 <attribute NAME="authors" VALUE="Parzen, Emanuel"/>
@@ -2698,7 +2709,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
+<node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
 <node TEXT="Explanation of what copulas are" ID="ID_1206112239" CREATED="1513683703860" MODIFIED="1534390677729" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/092%20Coping%20with%20Copulas.pdf">
 <attribute NAME="key" VALUE="Schmidt2007"/>
 <attribute NAME="year" VALUE="2007"/>
@@ -2726,7 +2737,7 @@
     <pdf_title>Modelling Dependence with Copulas</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Copula vines" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_480585567" CREATED="1513918549215" MODIFIED="1513920668191">
+<node TEXT="Copula vines" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_480585567" CREATED="1513918549215" MODIFIED="1513920668191">
 <node TEXT="Pair-copula constructions of multiple dependence" ID="ID_779708528" CREATED="1513918589982" MODIFIED="1534390671182" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/104%20Pair-copula%20constructions%20of%20multiple%20dependence.pdf">
 <attribute NAME="key" VALUE="aas2009paircopula"/>
 <attribute NAME="journal" VALUE="Insurance: Mathematics and Economics"/>
