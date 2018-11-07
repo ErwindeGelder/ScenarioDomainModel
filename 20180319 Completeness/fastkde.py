@@ -17,6 +17,7 @@ To do
 Modifications
 -------------
 06 Nov 2018 Improve PEP8 compliancy.
+07 Nov 2018 Add description of class.
 
 """
 
@@ -29,17 +30,48 @@ import matplotlib.pyplot as plt
 
 class KDE(object):
     """ Kernel Density Estimation
+
+    This class can be utilized to create Kernel Density Estimations (KDE) of data.
+
+    Inference of the KDE is significantly faster than existing KDE tools from, e.g.,
+    sklearn and scipy. This is especially the case when one needs to infer at the same
+    datapoints (e.g., each time with a different bandwidth), because the squared euclidean
+    distance between the points at which  the KDE needs to be evaluated and the points that are
+    used to construct the KDE is only calculated once (if the method set_score_samples() is used).
+    Also the leave-one-out cross validation is significantly faster than existing KDE tools,
+    because of the same reason: the euclidean distance between the datapoints is only calculated
+    once.
+
+    Attributes:
+        bandwidth(float): The bandwidth of the KDE. If no bandwidth is set or computed,
+            the bandwidth equals None.
+        data(np.array): The data that is used to construct the KDE.
+        constants(dict): Constants that are used for the various methods. The following
+            constants are included:
+            n(int): Number of datapoints that are used (can be smaller than the number of
+                datapoints in the data attribute.
+            const_score(float): Constant part of leave-one-out score.
+            d(float): Dimension of data.
+            muk(float): integral [ kernel(x)^2 ]. Since Gaussian kernel is used: 1/(2pi)^(d/2).
+            invgr(float): Inverse of Golden Ratio (used for Golden Section Search).
+            invgr2(float): Inverse of squared Golden Ratio (used for Golden Section Search).
+        data_helpers(dict): Several np.arrays that are used for the various methods. The
+            following variables are included:
+            mindists(np.array): Negative (minus) of euclidean distances.
+            data_score_samples(np.array): Scores of each sample of data.
+            newshape(np.array): The new shape of the data to be returned.
+            data_dist(np.array): Euclidean distance of KDE data and input data.
+            difference(np.array): Difference of KDE data and input data.
     """
-    def __init__(self, data=None, bw=None):
-        self.bandwidth = bw
+    def __init__(self, data=None, bandwidth=None):
+        self.bandwidth = bandwidth
         self.data = None
         self.constants = {
             'n': 0,                         # Number of datapoints
             'const_score': 0,               # Constant part of leave-one-out score
             'd': 0,                         # Dimension of data
             'muk': 0,                       # integral [ kernel(x)^2 ]
-            'last_n': 0,                    # Store n when the bandwidth is computed
-            'invgr': (np.sqrt(5) - 1) / 2,  # Inverse of Golden Ratio}
+            'invgr': (np.sqrt(5) - 1) / 2,  # Inverse of Golden Ratio
             'invgr2': (3 - np.sqrt(5)) / 2  # 1/gr^2
         }
         self.data_helpers = {
