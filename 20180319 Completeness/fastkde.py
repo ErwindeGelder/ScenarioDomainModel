@@ -7,7 +7,7 @@ Erwin de Gelder
 
 Creation
 --------
-01 Sep 2018
+18 Jul 2018
 
 
 To do
@@ -16,6 +16,13 @@ To do
 
 Modifications
 -------------
+08 Aug 2018 Add functionality for adding data.
+10 Aug 2018 Fixed mistakes for computing one-leave-out score.
+27 Sep 2018 Several improvements. Score now computed with only the first n datapoints. Speed
+    improved.
+01 Oct 2018 Some comments added.
+09 Oct 2018 Added computation of gradient and laplacian of the KDE.
+13 Oct 2018 Changed computation of scores and laplacian such that less memory is used.
 06 Nov 2018 Improve PEP8 compliancy.
 07 Nov 2018 Add description of class.
 
