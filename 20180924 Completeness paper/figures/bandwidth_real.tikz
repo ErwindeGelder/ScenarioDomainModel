@@ -13,7 +13,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 x grid style={white!69.01960784313725!black},
-y grid style={white!69.01960784313725!black}
+y grid style={white!69.01960784313725!black},
+xtick={600, 800, 1000, 1500, 2000, 2500},
+xticklabels={600, 800, 1000, 1500, 2000, 2500}
 ]
 \addplot [line width=2.0pt, gray, forget plot]
 table {%
