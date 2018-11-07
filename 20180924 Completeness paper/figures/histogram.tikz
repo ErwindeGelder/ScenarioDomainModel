@@ -4,6 +4,7 @@
 \begin{groupplot}[group style={group size=1 by 3}]
 \nextgroupplot[
 xlabel={Average deceleration [m/s$^2$]},
+ylabel={Frequency},
 xmin=0, xmax=3.29356704206494,
 ymin=0, ymax=581.7,
 width=\figurewidth,
@@ -35,6 +36,7 @@ y grid style={white!69.01960784313725!black}
 \draw[draw=black,fill=gray] (axis cs:3.00232155325556,0) rectangle (axis cs:3.14794429766025,2);
 \nextgroupplot[
 xlabel={Speed difference [m/s]},
+ylabel={Frequency},
 xmin=0, xmax=26.9465,
 ymin=0, ymax=819,
 width=\figurewidth,
@@ -68,6 +70,7 @@ y grid style={white!69.01960784313725!black}
 \draw[draw=black,fill=gray] (axis cs:24.5135,0) rectangle (axis cs:25.73,1);
 \nextgroupplot[
 xlabel={End speed [m/s]},
+ylabel={Frequency},
 xmin=0, xmax=35.1355,
 ymin=0, ymax=584.85,
 width=\figurewidth,
