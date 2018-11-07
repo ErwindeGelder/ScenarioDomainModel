@@ -1,15 +1,10 @@
 \section{Discussion}
 \label{sec:discussion}
 
+The measure for quantification of completeness of the set of activities is based on the amount of data and the chosen parametrization. More data might be used to achieve a certain threshold. However, it might also be possible to adopt the parametrization to achieve a certain threshold if a parametrization exists that achieves a certain threshold. Hence, the presented method can be used to determine the proper parametrization of activities.
 
+We presented a method for quantifying the completeness of the set of activities. However, to determine whether the amount of data is enough, a threshold needs to be chosen. This threshold might be different for different applications. For example, when the data are used for determining test scenarios \cite{elrofai2018scenario, ploeg2018cetran}, the desired threshold might be lower than when the data are used for determining driver models \cite{wang2017much, sadigh2014data}. More research is required to determine what the desired threshold should be for a specific application.
 
-\color{red}
+The measure for completeness that is proposed in this paper can be regarded as a approximation of the MISE of \cref{eq:mise}. To minimize the MISE, the approximated pdf should be similar to the real pdf. When we are interested in all possible parameters, however, we might also be interested in the support of the real pdf, i.e., the closure of the set of possible values that the parameters can have, see, e.g., \textcite{scholkopf2001estimating}.
 
-Things to mention in the discussion:
-\begin{itemize}
-	\item The measure for quantification of completeness is based on the amount of data and the parametrization. So if the amount of data is fixed, we can adopt the parametrization to achieve a certain threshold. Hence, this method can also be used to determine the proper parametrization of activities.
-	\item Threshold needs to be determined. This depends on the applications (give two examples?)
-	\item Describe how solution fits into bigger picture. E.g., give outlook on how to answer other subproblems.
-\end{itemize}
-
-\color{black}
+As already mentioned in \cref{sec:problem}, our proposed method only answers the third subproblem, i.e., how to quantify the completeness regarding the activities. The next step is to quantify the completeness regarding all scenarios that fall into a specific scenario class. Here, the joint probability of the parameters of different activities in the same scenario class might be considered. Although the presented method can be applied, this might be impractical because the number of parameters will be higher than for the activities. The problems of quantifying the completeness regarding all scenarios that fall into a specific scenario class and quantifying the completeness regarding the scenario classes remain future work.
