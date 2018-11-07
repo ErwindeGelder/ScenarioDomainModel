@@ -16,7 +16,7 @@ To do
 
 Modifications
 -------------
-07 Nov 2018 Make PEP8 compliant
+07 Nov 2018 Make PEP8 compliant.
 
 """
 
