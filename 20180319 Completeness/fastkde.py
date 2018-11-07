@@ -45,7 +45,7 @@ class KDE(object):
     Attributes:
         bandwidth(float): The bandwidth of the KDE. If no bandwidth is set or computed,
             the bandwidth equals None.
-        data(np.array): The data that is used to construct the KDE.
+        data(np.ndarray): The data that is used to construct the KDE.
         constants(dict): Constants that are used for the various methods. The following
             constants are included:
             n(int): Number of datapoints that are used (can be smaller than the number of
@@ -57,11 +57,11 @@ class KDE(object):
             invgr2(float): Inverse of squared Golden Ratio (used for Golden Section Search).
         data_helpers(dict): Several np.arrays that are used for the various methods. The
             following variables are included:
-            mindists(np.array): Negative (minus) of euclidean distances.
-            data_score_samples(np.array): Scores of each sample of data.
-            newshape(np.array): The new shape of the data to be returned.
-            data_dist(np.array): Euclidean distance of KDE data and input data.
-            difference(np.array): Difference of KDE data and input data.
+            mindists(np.ndarray): Negative (minus) of euclidean distances.
+            data_score_samples(np.ndarray): Scores of each sample of data.
+            newshape(np.ndarray): The new shape of the data to be returned.
+            data_dist(np.ndarray): Euclidean distance of KDE data and input data.
+            difference(np.ndarray): Difference of KDE data and input data.
     """
     def __init__(self, data=None, bandwidth=None):
         self.bandwidth = bandwidth
