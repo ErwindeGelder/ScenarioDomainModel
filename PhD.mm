@@ -321,6 +321,16 @@
     <pdf_title>yx</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="On the exact variance of products" ID="ID_920292664" CREATED="1541670801426" MODIFIED="1541670881636" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/264%20On%20the%20exact%20variance%20of%20products.pdf">
+<attribute NAME="key" VALUE="goodman1960exact"/>
+<attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
+<attribute NAME="year" VALUE="1960"/>
+<attribute NAME="title" VALUE="On the Exact Variance of Products"/>
+<attribute NAME="authors" VALUE="Goodman, Leo A"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8D2EA5406FB7FEB6039FDF0AD5A54AE4DE35F60C236D89CDEBCB67F998C2F88">
+    <pdf_title>On the Exact Variance of Products Author(s): Leo A. Goodman Source: Journal of the American Statistical Association, Vol. 55, No. 292 (Dec., 1960), pp. 708-713 Published by: Taylor &amp; Francis, Ltd. on behalf of the American Statistical Association Stable URL: https://www.jstor.org/stable/2281592 Accessed: 08-11-2018 09:51 UTC</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="What is data used for?" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1937528963" CREATED="1539859088544" MODIFIED="1540198071221" HGAP="44" VSHIFT="-8">
 <node TEXT="To determine the risks and prevalence evaluation" ID="ID_787334324" CREATED="1539859106194" MODIFIED="1539859286572" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/251%20Driver%20crash%20risk%20factors%20and%20prevalence%20evaluation%20from%20NDD.pdf">
@@ -432,8 +442,7 @@
     <pdf_title>How Many Interviews Are Enough? An Experiment with Data Saturation and Variability</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Evolution physical activity how much is enough" ID="ID_1751094351" CREATED="1540198285264" MODIFIED="1541498074210" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/259%20Evolution%20physical%20activity%20how%20much%20is%20enough.pdf">
-<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="80" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1751094351" STARTINCLINATION="40;0;" ENDINCLINATION="40;45;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+<node TEXT="Evolution physical activity how much is enough" ID="ID_1751094351" CREATED="1540198285264" MODIFIED="1541671327231" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/259%20Evolution%20physical%20activity%20how%20much%20is%20enough.pdf">
 <attribute NAME="key" VALUE="blair2004evolution"/>
 <attribute NAME="journal" VALUE="The American Journal of Clinical Nutrition"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -2870,6 +2879,14 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5E8213E4E3E6C5ECE779E13A47FA7A2FCF662C5B0E5CD35B0BD421D275878">
     <pdf_title>All of Statistics</pdf_title>
 </pdf_annotation>
+</node>
+</node>
+<node TEXT="Extreme Value Statistics" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_39821948" CREATED="1542357420081" MODIFIED="1542357425327">
+<node TEXT="Example, dutch sea dikes" ID="ID_1987157892" CREATED="1542357496348" MODIFIED="1542357507546">
+<attribute NAME="key" VALUE="dehaan1994extreme"/>
+<attribute NAME="year" VALUE="1994"/>
+<attribute NAME="title" VALUE="Extreme Value Statistics"/>
+<attribute NAME="authors" VALUE="de Haan, Laurens"/>
 </node>
 </node>
 </node>
