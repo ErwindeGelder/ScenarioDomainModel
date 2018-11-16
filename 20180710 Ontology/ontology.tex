@@ -51,7 +51,7 @@
 \usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
-\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber]{biblatex}
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
@@ -79,13 +79,14 @@
 \usepackage{subcaption}
 \usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
 \usepackage{xparse}
+\usepackage{listings}
 
 %%==========================================================================
 %% Fancy headers and footers
 %%==========================================================================
 
 \newtoggle{standalone}
-\toggletrue{standalone}
+\togglefalse{standalone}
 \pagestyle{fancy}                                       %% set page style
 \fancyhf{}                                              %% clear all header & footer fields
 \iftoggle{standalone}{%
@@ -170,6 +171,7 @@
 \crefname{figure}{Figure}{Figures}
 \crefname{equation}{}{}
 \Crefname{equation}{Equation}{Equations}
+\crefname{example}{Example}{Examples}
 
 %%==========================================================================
 %% User-defined environments
@@ -232,32 +234,13 @@
 \setlength{\heavyrulewidth}{0.1em}
 \newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
-\ExplSyntaxOn
-\newcommand{\classfig}[2]{
-	\begin{tikzpicture}
-		\node[align=center, draw=black, rounded~corners=0.5em]{%
-			\textbf{#1} \\
-			\\
-			\begin{tabular}{lll}
-				\seq_set_split:Nnn \arg { ; } { #2 }
-				\seq_map_inline:Nn \arg {
-					\seq_set_split:Nnn \argb {,} {##1}
-					\seq_pop_left:NN \argb \argl
-					\argl
-					\seq_map_inline:Nn \argb {
-						& ####1
-					}
-					\\
-				}
-			\vspace{-1em}
-			\end{tabular}
-		};
-	\end{tikzpicture}
-}
-\ExplSyntaxOff
+% Listings for python snippits
+%\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\footnotesize}
 
-
-%\usepackage{changebar}  %% When including the package earlier, it does not work for some reason...
+\usepackage{changebar}  %% When including the package earlier, it does not work for some reason...
 
 %%==========================================================================
 %% Begin document
@@ -281,6 +264,10 @@
 
 This document describes an ontology that can be used to describe and structure scenarios that are found in real-world traffic or scenarios that are used for the assessment of automated vehicles.
 
+\color{red}
+TODO: Improve introduction, e.g., write WHY such an ontology is useful.
+\color{black}
+
 \section{Ontology}
 \label{sec:ontology}
 
@@ -291,97 +278,168 @@ According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit spec
 
 Ontologies are widely applied in all kinds of research areas, e.g., biology \cite{gkoutos2004mouse}, security-related research \cite{kim2005security}, socio-technical systems \cite{vanDamPhDThesis2009}, and computing \cite{chen2004soupa,chen2003ontology}. Furthermore, ontologies are defined for various applications, e.g., for the specification of international entrepreneurship research domains \cite{jones2011international}, for the profiling of users \cite{golemati2007creating}, for the formalization of human activities \cite{lee2017location}, and for product life cycle management \cite{matsokis2010plm}.
 
-For the visualization of the classes of the ontology, a similar approach as given in \cite{vanDamPhDThesis2009} is used. The properties for each class are shown in the left column and for each property the allowed classes are listed in the right column, with the value type in the middle. If the value type in the middle column is singular, it means only one value is allowed for this property, while a value type in plural means that multiple values are possible in the class definition.
+% For the visualization of the classes of the ontology, a similar approach as given in \cite{vanDamPhDThesis2009} is used. The properties for each class are shown in the left column and for each property the allowed classes are listed in the right column, with the value type in the middle. If the value type in the middle column is singular, it means only one value is allowed for this property, while a value type in plural means that multiple values are possible in the class definition.
 
-The names of the classes start with a capital letter, whereas the first letter of a property is lower case. If the name of a class consists of more than one word, the so-called CamelCase notation is used. For properties, starting in lower case, the first letter of each next word is capitalized, when applicable. 
+\cbstart
+The names of the classes start with a capital letter, whereas the first letter of a property is lower case. If the name of a class consists of more than one word, the so-called \texttt{CamelCase} notation is used. For properties, starting in lower case, the first letter of each next word, when applicable, is preceded by an underscore, according to the \texttt{snake\_case} naming style. Instantiations of classes (i.e., objects) follow the \texttt{UPPER\_CASE} naming style.
+\cbend
 
-\subsection{Scenario class}
+\subsection{Domain model}
+\label{sec:domain model}
+
+\cbstart
+
+\Cref{fig:domain model} shows the ontology through a domain model representation. Every block represents a class. The domain model can be roughly divided into two parts: the blue classes and the red/orange classes. The blue classes are used to qualitatively describe a scenario. The red/orange classes are used together with the blue classes to quantitatively describe a scenario.
+
+The different classes are connected via different connectors. In \cref{fig:domain model}, there are two different connectors. An arrow, such as the connector that connects \texttt{Scenario} with \texttt{ScenarioClass} represents an association. In case of the classes \texttt{Scenario} and \texttt{ScenarioClass}, this means that objects of \texttt{Scenario} have access to objects of \texttt{ScenarioClass} or, more specifically, to the method \texttt{falls\_into} of objects of \texttt{ScenarioClass}. The other type of connector is an aggregation, such as the connection that connector that connects \texttt{ActorCategory} with \texttt{ScenarioClass}. With an aggregation, an object of one class ``owns'' object of another class. Furthermore, the child can exist independently of the parent, i.e., if the parent is deleted, the child still exists. With an aggregation, a number is shown to indicate how many children the parent must have. For example, an object of \texttt{ScenarioClass} must have at least one object of \texttt{ActorCategory}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{domain_model}
+	\caption{Screen shot from Enterprise Architect with the domain model.}
+	\label{fig:domain model}
+\end{figure}
+
+\subsubsection{Structure of the domain model}
+\label{sec:structure domain model}
+
+Because we want to differentiate between quantitative and qualitative descriptions, the definition of the term scenario is adopted from \cite{elrofai2018scenario} as it explicitly defines a scenario as a quantitative description: ``A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its dynamic environment (consisting of traffic environment and conditions) and its static environment. From the perspective of the ego vehicle, a scenario contains all relevant events.'' Whereas a scenario refers to a quantitative description, these scenarios can be abstracted by means of a qualitative description, referred to as scenario class, see also \cite{ploeg2018cetran, elrofai2018scenario}. Scenario classes are formally described, see \cref{sec:qualitative scenario}. Next, we describe how scenarios are formally describes while making used of the classes defined for the formal description of scenario classes, see \cref{sec:quantitative scenario}.
+
+To prevent duplications of some attributes, many classes are subclasses of the class \texttt{Default}. The class \texttt{Default} contains three attributes:
+\begin{itemize}
+	\item \texttt{id}: This is a unique identifier of type \texttt{Integer} that is used to refer to a specific object.
+	\item \texttt{name}: This attribute is of type \texttt{String} and is used to help users understand what the object is about without looking for the details of the object. 
+	\item \texttt{tag}: This attribute is a (possibly empty) list of \texttt{Tag}. Here, only a \texttt{Tag} can be chosen from a predefined enumeration.
+	
+	\color{red}
+	TODO: Explain the function of tags.
+	\color{black}
+\end{itemize}
+Note that \texttt{Default} is an abstract class, i.e., it is impossible to create instantiations of this class. It is, however, possible to create instantiations of subclasses.
+
+\subsection{Qualitative description of scenario}
+\label{sec:qualitative scenario}
+
+As already mentioned in \cref{sec:structure domain model}, a scenario consists of a static environment and a dynamic environment. The dynamic environment consists of actors performing activities. Therefore, the classes \texttt{Actor}, \texttt{Activity}, and \texttt{StaticEnvironment} are used to define a scenario. Analogously, the classes \texttt{ActorCategory}, \texttt{ActivityCategory}, and \texttt{StaticEnvironmentCategory} are owned by \texttt{ScenarioClass}. We will first describe the classes \texttt{ActorCategory}, \texttt{ActivityCategory}, and \texttt{StaticEnvironmentCategory} before describe how a scenario class is defined.
+
+To illustrate the use of the different classes, an example is presented. This example explains how a scenario can be qualitatively described where the ego vehicle is driving towards a vehicle that is driving at a lower speed. 
+
+\subsubsection{The class \texttt{ActorCategory}}
+\label{sec:actor category}
+
+An object from the class \texttt{ActorCategory} describes an actor in qualitative terms. Here, an actor is an element of a scenario acting on its own behalf \cite{ulbrich2015}. In practice, this can be a driver of a car, a bicyclist, a pedestrian, an automation system, or a combination of a driver and an automation system \cite{geyer2014}. 
+
+Next to the attributes that this class inherits from \texttt{Default}, it has attribute \texttt{type} which specifies the type of the actor, e.g., a vehicle or a pedestrian. The attribute \texttt{type} needs to be chosen from a predefined enumeration \texttt{RoadUserType}. 
+
+For the future, it might be that we need to add a ``dynamic model'' that describes the dynamics of the actor. For now, we ignored this.
+
+\begin{example}[Gap closing --- Actors] \label{example:actor category}
+	In a scenario with an ego vehicle that drives towards a vehicle that is driving at a lower speed, two actors are defined. Hence, there need to be two objects from \texttt{ActorCategory}, see the following code.
+	
+	\begin{lstlisting}[caption=Code for instantiating two objects of \texttt{ActorCategory}.]
+EGO_VEHICLE = ActorCategory(id = 1,
+                            name = "Ego vehicle",
+                            type = RoadUserType.Vehicle,
+                            tags = [Tag.EgoVehicle])
+TARGET_VEHICLE = ActorCategory(id = 2,
+                               name = "Target vehicle",
+                               type = RoadUserType.Vehicle,
+                               tags = [Tag.InitState_LongPosition_InFrontOfEgo,
+                                       Tag.InitState_Direction_SameAsEgo,
+                                       Tag.InitState_LatPosition_SameLane])
+	\end{lstlisting}
+\end{example}
+
+\subsubsection{The class \texttt{ActivityCategory}}
+\label{sec:activity category}
+
+An activity refers to the behavior of a particular mode. For example, an activity could be described by the label `braking' or `changing lane'. In each mode, the behavior of the system is described by a
+particular model with a fixed function $f$, parameter $\theta$ and smooth input $u(t)$ \cite{deschutter2000optimal}. This model describes the state \cite{norman2011control}, where the state refers to ``[...] variables that define the characteristics of a system, component, or simulation'' according to the IEEE Standard Glossary of Software Engineering Terminology \cite{ieee1990glossary}. For example, a state could be the acceleration of an actor.
+
+An object from the class \texttt{ActivityCategory} describes an activity in qualitative terms. Next to the attributes that this class inherits from \texttt{Default}, it has attributes \texttt{state} and \texttt{model} (note that \cref{fig:domain model} also shows the attribute \texttt{description}, but this attribute is not considered anymore). The attribute \texttt{state} needs to be chosen from a predefined enumeration \texttt{StateVariable}. The attribute \texttt{model} needs to be an object of the class \texttt{ParameterModel}.
+
+Note that the actual parameters of the model are not defined, because this class describes the activity in qualitative terms. 
+
+\begin{example}[Gap closing --- Activities] \label{example:activity category}
+	We already saw that in a scenario with an ego vehicle that drives towards a vehicle that is driving at a lower speed, two actors are defined. We assume that both actors are driving forward and driving straight. Note that both vehicles drive with a different speed, so the activity that describes the longitudinal behavior is different for both actors. However, in qualitative terms, the activities are the same. Also for the lateral behavior, we only need one qualitative description. Hence, in total, we need to objects of \texttt{ActivityCategory}, see the following code. Note that for simplicity, it is assumed that the state can be described by a linear model, i.e., \texttt{Linear()}. Here, \texttt{Linear} is a subclass of \texttt{ParameterModel}. 
+	
+	\begin{lstlisting}[caption=Code for instantiating two objects of \texttt{ActivityCategory}.]
+GOING_STRAIGHT = ActivityCategory(id = 1,
+                                  name = "Going straight",
+                                  model = Linear(), 
+                                  state = StateVariable.LATERAL_POSITION,
+                                  tags = [Tag.LatActivity_GoingStraight])
+GOING_STRAIGHT = ActivityCategory(id = 2,
+                                  name = "Going forward",
+                                  model = Linear(), 
+                                  state = StateVariable.LONGITUDINAL_POSITION,
+                                  tags = [Tag.LongActivity_DrivingForward])
+	\end{lstlisting}
+\end{example}
+
+\subsubsection{The class \texttt{StaticEnvironmentCategory}}
+\label{sec:static environment category}
+
+An object from the class \texttt{StaticEnvironmentCategory} describes the static environment in qualitative terms. The static environment refers to the part of a scenario that does not change during a scenario. This includes geo-spatially stationary elements \cite{ulbrich2015}.
+
+Next to the attributes that this class inherits from \texttt{Default}, it has attribute \texttt{description} of type \texttt{String} which enables the user to provide more details about the static environment.
+
+\begin{example}[Gap closing --- Static environment] \label{example:static environment category}
+	For this scenario class, we do not want to describe anything about the static environment. In other words, a scenario that falls into this scenario class can happen on, e.g., a highway, an urban road, or a junction. Therefore, no additional tags are defined. The following code illustrates how such a static environment can be defined.
+	
+	\begin{lstlisting}[caption=Code for instantiating an object of \texttt{StaticEnvironmentCategory}.]
+STATIC_DESC = "No further details are specified for the static environment."
+STATIC_ENVIRONMENT = StaticEnvironmentCategory(id = 1,
+                                               name = "Anything",
+                                               description = STATIC_DESC,
+                                               tags = [])
+	\end{lstlisting}
+\end{example}
+
+\subsubsection{The class \texttt{ScenarioClass}}
 \label{sec:scenario class}
 
-The abstract class \class{ScenarioClass} is used to refer to a set of scenarios that are described in a similar qualitative manner \cite{elrofai2018scenario}. \Cref{fig:scerario class} shows the properties of this class. Six different properties are identified:
-\begin{enumerate}
-	\item scenarioClassID: unique ID that is used to refer to an instance of \class{ScenarioClass}.
-	\item scenarioClassDescription: a human-readable description that can be used to interpret the commonality among the set of scenarios that belong to the scenario class.
-	\item subScenarioClasses: a list of instances of \class{ScenarioClass} that have at least the same tags as the corresponding instance. All scenarios that belong to the instances specified by the property subScenarioClasses also belong to the scenario class.
-	\item superScenarioClasses: a list of instances of \class{ScenarioClass} that have the scenario class listed in their property subScenarioClasses. 
-	\item tags: a list of instances of \class{Tag} that describe the scenarios of the scenario class. All scenarios that have at least the same tags are instances of the property scenarios.
-	\item scenarios: a list of instances of \class{Scenario}.
-\end{enumerate}
+Next to the attributes that this class inherits from \texttt{Default}, \texttt{ScenarioClass} has the following attributes:
+\begin{itemize}
+	\item \texttt{description}: This is a text of type \texttt{String} that enables the user to provide more details about the scenario class.
+	\item \texttt{image}: This enables the user to define a path to an image that (schematically) shows the scenario class. This attribute is of type \texttt{String}.
+	\item \texttt{actors}: This attribute is a list containing objects of type \texttt{ActorCategory} as described in \cref{sec:actor category}. This list needs to contain at least one \texttt{ActorCategory}.
+	\item \texttt{activities}: This attribute is a list containing objects of type \texttt{ActivityCategory} as described in \cref{sec:activity category}. This list needs to contain at least one \texttt{ActivityCategory}.
+	\item \texttt{static\_environment}: This attribute describes the static environment in which the scenario happens. This attribute is of type \texttt{StaticEnvironmentCategory} as described in \cref{sec:static environment category}.
+	\item \texttt{act}: This attribute is a list of tuples, with each tuple containing one \texttt{ActorCategory} and one \texttt{ActivityCategory}. These acts connect the activities with the actors. 
+\end{itemize}
 
-\begin{figure}
-	\centering
-	\classfig{ScenarioClass}{%
-		scenarioClassID,Primitive,Integer;
-		scenarioClassDescription,Primitive,String;
-		subScenarioClasses,Instances,ScenarioClass;
-		superScenarioClasses,Instances,ScenarioClass;
-		tags,Instances,Tag;
-		scenarios,Instances,Scenario
-	}
-	\caption{Description of the abstract class \class{ScenarioClass}.}
-	\label{fig:scerario class}
-\end{figure}
+\begin{example}[Gap closing --- Scenario class]
+	To define the scenario class gap closing, use is made of the previously defined objects, i.e., the \texttt{EGO\_VEHICLE} and \texttt{TARGET\_VEHICLE} from \cref{example:actor category}, \texttt{GOING\_STRAIGHT} and \texttt{GOING\_FORWARD} from \cref{example:activity category}, and \texttt{STATIC\_ENVIRONMENT} from \cref{example:static environment category}.
+	
+	\begin{lstlisting}[caption=Code for instantiating an object of \texttt{ScenarioClass}.]
+SC_NAME = "Ego vehicle approaching slower lead vehicle"
+SC_DESC = "Another vehicle is driving in front of the ego vehicle at a " + \
+          "slower speed. As a result, the other vehicle appears in the " + \
+          "ego vehicle's field of view. The reason for the other vehicle " + \
+          "to drive slower is, e.g., due to a traffic jam ahead."
+SC_IMAGE = "gap_closing.png"
+GAP_CLOSING = ScenarioClass(id = 1,
+                            name = SC_NAME,
+                            description = SC_DESC,
+                            actors = [EGO_VEHICLE, TARGET_VEHICLE],
+                            activities = [GOING_STRAIGHT, GOING_FORWARD],
+                            static_environment = STATIC_ENVIRONMENT,
+                            acts = [(EGO_VEHICLE, GOING_STRAIGHT),
+                                    (EGO_VEHICLE, GOING_FORWARD),
+                                    (TARGET_VEHICLE, GOING_STRAIGHT),
+                                    (TARGET_VEHICLE, GOING_FORWARD)])
+	\end{lstlisting}
+\end{example}
 
-\begin{figure}
-	\centering
-	\classfig{Tag}{%
-		tagID,Primitive,Integer;
-		tagDescription,Primitive,String;
-		tagName,Primitive,String;
-		subTags,Instances,Tag;
-		superTag,Instances,Tag
-	}
-	\caption{Description of the abstract class \class{Tag}.}
-\end{figure}
+\subsection{Quantitative description of scenario}
+\label{sec:quantitative scenario}
 
-\begin{figure}
-	\centering
-	\classfig{Scenario}{%
-		scenarioID,Primitive,Integer;
-		tags,Instances,Tag;
-		staticEnvironment,Instance,StaticEnvironment;
-		dynamicEnvironment,Instance,DynamicEnvironment;
-		scenarioClasses,Instances,ScenarioClass;
-		egoVehicles,Instances,EgoVehicle
-	}	
-	\caption{Description of the abstract class \class{Scenario}.}
-\end{figure}
+\color{red}
+TODO: The classes that are used to quantitatively describe a scenario (i.e., \texttt{Scenario}, \texttt{Event}, \texttt{StaticEnvironment}, \texttt{Activity}, and \texttt{Actor}) need to be described.
+\color{black}.
 
-\begin{figure}
-	\centering
-	\classfig{StaticEnvironment}{staticEnvironmentProperties,Instances,StaticEnvironmentProperty}
-	\caption{Description of the abstract class \class{StaticEnvironment}.}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\classfig{DynamicEnvironment}{dynamicElements,Instances,DynamicElement}
-	\caption{Description of the abstract class \class{DynamicEnvironment}.}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\classfig{DynamicElement}{%
-		dynamicElementProperties,Instances,DynamicElementProperty;
-		activities,Instances,Activity
-	}
-	\caption{Description of the abstract class \class{DynamicElement}.}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\classfig{Activity}{%
-		activityName,Primitive,String;
-		activityModel,Instance,ActivityModel;
-		startTime,Primitive,Float;
-		endTime,Primitive,Float;
-		activityParameters,Instances,ActivityParameter;
-		activityState,Instance,ActivityState
-	}
-	\caption{Description of the abstract class \class{Activity}.}
-\end{figure}
-
-
+\cbend
 \printbibliography
 
 \end{document} 
