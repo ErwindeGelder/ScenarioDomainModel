@@ -238,14 +238,14 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report05'), 'progress_report_05', usebiber=True)
     os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
-    call_output(['git', 'checkout', '../"20180207 Similarity"/scenario_similarity.tex'])
+    call('git checkout ../"20180207 Similarity"/scenario_similarity.tex')
     if os.path.exists('log.txt'):
         os.remove('log.txt')  # To prevent complaining that log.txt will be overwritten by checkout
     call_output(['git', 'checkout', 'PR6'])
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report06'), 'progress_report_06', usebiber=True)
-    call_output(['git', 'checkout', '../"20180319 Completeness"/completeness.tex'])
+    call('git checkout ../"20180319 Completeness"/completeness.tex')
     call_output(['git', 'checkout', 'PR7'])
     pdf(os.path.join('..', 'progress_reports', 'report07'), 'progress_report_07', usebiber=True)
     call_output(['git', 'checkout', 'PR8'])
