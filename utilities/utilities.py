@@ -215,15 +215,15 @@ if __name__ == '__main__':
 
     # Do all the progress reports
     pdf(os.path.join('..', 'progress_reports', 'template'), 'progress_report')
-    call_output(['git checkout PR1'])
+    call_output(['git', 'checkout', 'PR1'])
     pdf(os.path.join('..', 'progress_reports', 'report01'), 'progress_report_01', usebibtex=True)
-    call_output(['git checkout PR2'])
+    call_output(['git', 'checkout', 'PR2'])
     pdf(os.path.join('..', 'progress_reports', 'report02'), 'progress_report_02', usebibtex=True)
-    call_output(['git checkout PR3'])
+    call_output(['git', 'checkout', 'PR3'])
     pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebibtex=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report03'), 'progress_report_03', usebibtex=True)
     os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
-    call_output(['git checkout PR4'])
+    call_output(['git', 'checkout', 'PR4'])
     settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'),
               'standalone', False)
     pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection',
@@ -231,43 +231,43 @@ if __name__ == '__main__':
     pdf(os.path.join('..', 'progress_reports', 'report04'), 'progress_report_04', usebibtex=True)
     settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'),
               'standalone', True)
-    call_output(['git checkout PR5'])
+    call_output(['git', 'checkout', 'PR5'])
     pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebiber=True, log=False)
     settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'),
               'standalone', False)
     pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report05'), 'progress_report_05', usebiber=True)
     os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
-    call_output(['git checkout ../"20180207 Similarity"/scenario_similarity.tex'])
+    call_output(['git', 'checkout', '../"20180207 Similarity"/scenario_similarity.tex'])
     if os.path.exists('log.txt'):
         os.remove('log.txt')  # To prevent complaining that log.txt will be overwritten by checkout
-    call_output(['git checkout PR6'])
+    call_output(['git', 'checkout', 'PR6'])
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report06'), 'progress_report_06', usebiber=True)
-    call_output(['git checkout ../"20180319 Completeness"/completeness.tex'])
-    call_output(['git checkout PR7'])
+    call_output(['git', 'checkout', '../"20180319 Completeness"/completeness.tex'])
+    call_output(['git', 'checkout', 'PR7'])
     pdf(os.path.join('..', 'progress_reports', 'report07'), 'progress_report_07', usebiber=True)
-    call_output(['git checkout PR8'])
+    call_output(['git', 'checkout', 'PR8'])
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report08'), 'progress_report_08', usebiber=True)
-    call_output(['git checkout PR9'])
+    call_output(['git', 'checkout', 'PR9'])
     pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True,
         log=False)
     pdf(os.path.join('..', 'progress_reports', 'report09'), 'progress_report_09', usebiber=True)
-    call_output(['git checkout PR10'])
+    call_output(['git', 'checkout', 'PR10'])
     pdf(os.path.join('..', 'progress_reports', 'report10'), 'progress_report_10', usebiber=True)
-    call_output(['git checkout PR11'])
+    call_output(['git', 'checkout', 'PR11'])
     pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report11'), 'progress_report_11')
-    call_output(['git checkout PR12'])
+    call_output(['git', 'checkout', 'PR12'])
     pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True,
         log=False)
     pdf(os.path.join('..', 'progress_reports', 'report12'), 'progress_report_12')
-    call_output(['git checkout PR13'])
+    call_output(['git', 'checkout', 'PR13'])
     pdf(os.path.join('..', '20180710 Ontology'), 'ontology', usebiber=True, log=False)
     pdf(os.path.join('..', 'progress_reports', 'report13'), 'progress_report_13')
-    call_output(['git checkout master'])
+    call_output(['git', 'checkout', 'master'])
 
     # All other stuff
     pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'ontology', usebiber=True)
