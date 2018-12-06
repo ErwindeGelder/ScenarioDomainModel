@@ -1,11 +1,11 @@
-import numpy as np
-from gaussianmixture import GaussianMixture
 import os
+import numpy as np
 from matplotlib2tikz import save
 import h5py
 from tqdm import tqdm
-from fastkde import KDE
 import matplotlib.pyplot as plt
+from fastkde import KDE
+from gaussianmixture import GaussianMixture
 
 # Parameters
 nmax = 5000
@@ -27,7 +27,7 @@ gm = GaussianMixture(mu, sigma)
 X = gm.generate_samples(nmax*nrepeat).reshape((nrepeat, nmax))
 
 # This we need for the next step
-(xpdf,), ypdf = gm.pdf(minx=[xlim[0]], maxx=[xlim[1]], n=npdf)
+(xpdf,), ypdf = gm.pdf(minx=[xlim[0]], maxx=[xlim[1]], npoints=npdf)
 nn = np.round(np.logspace(np.log10(nmin), np.log10(nmax), nsteps)).astype(np.int)
 dx = np.mean(np.gradient(xpdf))
 muk = 1 / (2 * np.sqrt(np.pi))
@@ -55,17 +55,19 @@ if overwrite or not os.path.exists(filename):
         # Compute the optimal bandwidth using 1-leave-out
         kdes[i_bw].set_n(n)
         if i == 0:
-            kdes[i_bw].compute_bw()
+            kdes[i_bw].compute_bandwidth()
         else:
-            kdes[i_bw].compute_bw(min_bw=kdes[i_bw].bw*(1-max_change_bw), max_bw=kdes[i_bw].bw*(1+max_change_bw))
-        bw[i] = kdes[i_bw].bw
+            kdes[i_bw].compute_bandwidth(min_bw=kdes[i_bw].bandwidth * (1 - max_change_bw),
+                                         max_bw=kdes[i_bw].bandwidth * (1 + max_change_bw))
+        bw[i] = kdes[i_bw].bandwidth
 
     print("Estimate the pdfs and Laplacians")
     for j in tqdm(range(nrepeat)):
         for i, n in enumerate(nn):
-            # Compute all the nrepeats pdfs. We need to do this many times in order to determine the real MISE
+            # Compute all the nrepeats pdfs. We need to do this many times in order to determine
+            # the real MISE
             kdes[j].set_n(n)
-            kdes[j].set_bw(bw[i])
+            kdes[j].set_bandwidth(bw[i])
             kde_estimated[i, j] = kdes[j].score_samples()
             laplacians[i, j] = kdes[j].laplacian()
 
@@ -88,7 +90,8 @@ else:
 
 # Compute power by which the MISE is decreasing
 print("Power for real MISE:      {:.2f}".format(np.polyfit(np.log(nn), np.log(real_mise), 1)[0]))
-print("Power for estimated MISE: {:.2f}".format(np.polyfit(np.log(nn), np.log(est_mise[:, 0]), 1)[0]))
+print("Power for estimated MISE: {:.2f}".
+      format(np.polyfit(np.log(nn), np.log(est_mise[:, 0]), 1)[0]))
 
 # Plot the real MISE and the estimated MISE and export plot to tikz
 _, ax = plt.subplots(1, 1, figsize=(7, 5))

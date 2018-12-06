@@ -71,11 +71,11 @@ if overwrite or not os.path.exists(filename):
             kde.set_n(n)
             print("{:8.1f} Compute bandwidth".format(time() - starttime), end="")
             if i == 0:
-                kde.compute_bw()
+                kde.compute_bandwidth()
             else:
-                kde.compute_bw(min_bw=kde.bw * (1 - max_change_bw), max_bw=kde.bw * (1 + max_change_bw))
-            bw[repeat, i] = kde.bw
-            print(" --> {:.6f}".format(kde.bw))
+                kde.compute_bandwidth(min_bw=kde.bandwidth * (1 - max_change_bw), max_bw=kde.bandwidth * (1 + max_change_bw))
+            bw[repeat, i] = kde.bandwidth
+            print(" --> {:.6f}".format(kde.bandwidth))
 
             # Compute the pdf
             print("{:8.1f} Compute pdf".format(time() - starttime))
@@ -134,14 +134,14 @@ if overwrite or not os.path.exists(filename):
             kdeb.set_n(n)
             print("{:8.1f} Compute bandwidth".format(time() - starttime), end="")
             if i == 0:
-                kdea.compute_bw()
-                kdeb.compute_bw()
+                kdea.compute_bandwidth()
+                kdeb.compute_bandwidth()
             else:
-                kdea.compute_bw(min_bw=kdea.bw * (1 - max_change_bw), max_bw=kdea.bw * (1 + max_change_bw))
-                kdeb.compute_bw(min_bw=kdeb.bw * (1 - max_change_bw), max_bw=kdeb.bw * (1 + max_change_bw))
-            bwa[repeat, i] = kdea.bw
-            bwb[repeat, i] = kdeb.bw
-            print(" --> {:.6f} and {:.6f}".format(kdea.bw, kdeb.bw))
+                kdea.compute_bandwidth(min_bw=kdea.bandwidth * (1 - max_change_bw), max_bw=kdea.bandwidth * (1 + max_change_bw))
+                kdeb.compute_bandwidth(min_bw=kdeb.bandwidth * (1 - max_change_bw), max_bw=kdeb.bandwidth * (1 + max_change_bw))
+            bwa[repeat, i] = kdea.bandwidth
+            bwb[repeat, i] = kdeb.bandwidth
+            print(" --> {:.6f} and {:.6f}".format(kdea.bandwidth, kdeb.bandwidth))
 
             # Compute the pdf
             print("{:8.1f} Compute pdf".format(time() - starttime))
@@ -196,8 +196,8 @@ with open(os.path.join('pickles', 'df.p'), 'rb') as f:
     dfs, scaling = pickle.load(f)
 scaling = scaling.T  # [time vstart vend]
 scaling = scaling[scaling[:, 2] > 0, :]  # Remove full stops
-scaling[:, 1] = scaling[:, 1] - scaling[:, 2]  # Now it becomes: [time deltav vend] (less correlation)
-scaling[:, 0] = scaling[:, 1] / scaling[:, 0]  # Now it becomes: [deceleration deltav vend] (better behaved)
+scaling[:, 1] = scaling[:, 1] - scaling[:, 2]  # Now it becomes: [time deltav vend]
+scaling[:, 0] = scaling[:, 1] / scaling[:, 0]  # Now it becomes: [deceleration deltav vend]
 f, axs = plt.subplots(3, 1, figsize=(7, 5))
 for i, ax in enumerate(axs):
     ax.hist(scaling[:, i], bins=20, color=[.5, .5, .5], edgecolor=[0, 0, 0])
@@ -206,11 +206,13 @@ for i, ax in enumerate(axs):
 axs[0].set_xlabel('Average deceleration [m/s$^2$]')
 axs[1].set_xlabel('Speed difference [m/s]')
 axs[2].set_xlabel('End speed [m/s]')
+for ax in axs:
+    ax.set_ylabel('Frequency')
 plt.tight_layout()
 save(os.path.join(figures_folder, 'histogram.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth')
 
-f, ax = plt.subplots(1, 1, figsize=(7, 5))
+_, ax = plt.subplots(1, 1, figsize=(7, 5))
 ax.loglog(nn, bwa[0], '-', label="bwa", lw=5, color=[.5, .5, .5])
 ax.loglog(nn, bwb[0], ':', label="bwb", lw=5, color=[.5, .5, .5])
 ax.loglog(nn, bw[0], '--', label="bwab", lw=5, color=[0, 0, 0])
@@ -218,9 +220,11 @@ ax.set_xlabel("Number of samples")
 ax.set_ylabel("Bandwidth")
 ax.set_xlim([np.min(nn), np.max(nn)])
 save(os.path.join(figures_folder, 'bandwidth_real.tikz'),
-     figureheight='\\figureheight', figurewidth='\\figurewidth')
+     figureheight='\\figureheight', figurewidth='\\figurewidth',
+     extra_axis_parameters=['xtick={600, 800, 1000, 1500, 2000, 2500}',
+                            'xticklabels={600, 800, 1000, 1500, 2000, 2500}'])
 
-f, ax = plt.subplots(1, 1, figsize=(7, 5))
+_, ax = plt.subplots(1, 1, figsize=(7, 5))
 logfit1 = np.polyfit(np.log(nn), np.log(mise[0]), 1)
 ax.loglog(nn, np.exp(logfit1[1]) * nn ** logfit1[0], color=[0, 0, 0], lw=2)
 ax.loglog(nn, mise[0], lw=5, color=[.5, .5, .5])
@@ -235,9 +239,11 @@ print("Number of points for MISE 1 to be equal to MISE 2 at n={:d}: {:.0f}".form
 ax.set_xlim([np.min(nn), np.max(nn)])
 ax.set_xlabel("Number of samples")
 save(os.path.join(figures_folder, 'mise_real.tikz'),
-     figureheight='\\figureheight', figurewidth='\\figurewidth')
+     figureheight='\\figureheight', figurewidth='\\figurewidth',
+     extra_axis_parameters=['xtick={600, 800, 1000, 1500, 2000, 2500}',
+                            'xticklabels={600, 800, 1000, 1500, 2000, 2500}'])
 
-f, ax = plt.subplots(1, 1, figsize=(7, 5))
+_, ax = plt.subplots(1, 1, figsize=(7, 5))
 for m in mise:
     ax.loglog(nn, m, color=[.5, .5, 1])
 ax.loglog(nn, mise[0], lw=3, label="Estimated")
@@ -247,7 +253,7 @@ ax.set_ylabel("MISE")
 ax.legend()
 ax.grid(True)
 
-f, ax = plt.subplots(1, 1, figsize=(7, 5))
+_, ax = plt.subplots(1, 1, figsize=(7, 5))
 for m in miseab:
     plt.loglog(nn, m, color=[.5, .5, 1])
 ax.loglog(nn, miseab[0], lw=3, label="Estimated2")
