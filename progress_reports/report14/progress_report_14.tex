@@ -40,6 +40,13 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../../bib}
 
+% Table stuff
+\usepackage{booktabs}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
 %%==========================================================================
 %% Define reference stuff
 %%==========================================================================
@@ -77,13 +84,39 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \section{Previous meeting minutes}
 
 \begin{itemize}
-	\item 
+	\item The main comment on the previous report was about the format of the paper. We proposed to use the original paper format and have an appendix with the computer science part. Furthermore, other papers will be checked as to how they present an ontology.
 \end{itemize}
 
 \section{Summary of work}
 
+\begin{table}[b]
+	\caption{Summary of how the ontology is represented}
+	\label{tbl:ontology papers}
+	\begin{tabularx}{\linewidth}{l X}
+		\toprule
+		Reference & Comments \\ \otoprule
+		\cite{jones2011international} & A very big table. Ontology is very simple and can hardly be called an ontology. \\
+		\cite{geyer2014} & A figure showing only one class and its attributes (which are classes). Figure is incomplete. \\
+		\cite{gkoutos2004mouse} & A simplified scheme and screenshots. \\
+		\cite{kim2005security} & Figures that show classes and subclasses. Classes and attributes are described in the text. \\
+		\cite{chen2004soupa} & The code is shown. Classes and attributes are described in the text. \\
+		\cite{chen2003ontology} & The code is shown. Classes and attributes are described in the text. \\
+		\cite{golemati2007creating} & All classes are described using tables. Classes and attributes are described in the text. \\
+		\cite{lee2017location} & Only screenshots are shown. Information is insufficient to reproduce the ontology. \\
+		\cite{matsokis2010plm} & Screenshots are shown and classes and attributes are described in the text. \\
+		\cite{vanDamPhDThesis2009} & Ontology is presented using figures that show relations and attributes of the classes. Furthermore, classes and attributes are described in the text. Note that the corresponding paper \cite{vanDam2010model} only shows part of the ontology. \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
 \begin{itemize}
-	\item 
+	\item I looked at others papers for different ways of representing an ontology. For writing the ontology paper, I conclude the following:
+	\begin{itemize}
+		\item Representing the ontology using some code \cite{chen2004soupa, chen2003ontology} is not a good way, because it is not understandable for most readers. We might consider, however, to put the code on a public repository.
+		\item Some papers \cite{gkoutos2004mouse, lee2017location, matsokis2010plm} provide screenshots from a program that they used to describe the ontology. This is also what I showed in the previous report. This is also hard to understand for most readers and often the contents of the figure are not clearly visible. 
+		\item Six \cite{kim2005security, chen2004soupa, chen2003ontology, golemati2007creating, matsokis2010plm, vanDamPhDThesis2009} out of the ten papers describe all the details of the ontology, i.e., all attributes of the different classes are mentioned in the text. Although this makes the text tough to read (like my previous progress report), I think it is good to provide all the details as that is the only way to make the ontology reproducible. Therefore, I have the idea to also provide all the details of our ontology. To do this in a more structured and readable manner, I consider to provide one or more tables like is done in \cite{golemati2007creating}. These table(s) might be part of the appendix.
+		\item Three papers show one or more figures other than screenshots. Geyer et al.\ \cite{geyer2014} show a figure describing the ``has'' relation between different classes (e.g., an object of class A contains and attribute which is an object of class B). Kim et al.\ \cite{kim2005security} show figures describing the ``is'' relations between the different classes (e.g., class B is a subclass of class A). Van Dam \cite{vanDamPhDThesis2009} shows figures with both ``has'' and ``is'' relations. Since both relations are important for our ontology, I consider to make similar figures as in \cite{vanDamPhDThesis2009}. 
+	\end{itemize}
 \end{itemize}
 
 \section{Future plans}
