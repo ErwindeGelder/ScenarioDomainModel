@@ -16,7 +16,7 @@ The qualitative description can be regarded as an abstraction of the quantitativ
 % - Scenario is instance of scenario class
 % - Class can be subclass
 % - Instance can belong to none, one or more classes
-Scenarios are instances of scenario classes. A scenario class can contain multiple scenarios. On the other hand, a scenario may belong to none, one, or multiple scenario classes. As an example, consider the scenario class ``Day'' which contains all scenarios that occur during the day and the scenario class ``Rain'' which contains all scenarios with rain, see \cref{fig:venn diagram scenario class}. A scenario that occurs during the night without rain does not belong to any of the previously defined scenario classes. Likewise, a scenario that occurs during the day with rain belongs to both scenario classes ``Day'' and ``Rain''. 
+Scenarios are instances of scenario classes. A scenario class can contain multiple scenarios. On the other hand, a scenario may belong to none, one, or multiple scenario classes. As an example, consider the scenario class ``Day'', which contains all scenarios that occur during the day, and the scenario class ``Rain'', which contains all scenarios with rain, see \cref{fig:venn diagram scenario class}. A scenario that occurs during the night without rain does not belong to any of the previously defined scenario classes. Likewise, a scenario that occurs during the day with rain belongs to both scenario classes ``Day'' and ``Rain''. 
 
 \setlength{\venncircle}{7em}
 \begin{figure}
@@ -40,7 +40,7 @@ Scenarios are instances of scenario classes. A scenario class can contain multip
 	\label{fig:venn diagram scenario class}
 \end{figure}
 
-A scenario class can be a subclass of another scenario class. For example, when we continue our previous example and consider the scenario class ``Day and rain'', this scenario class is a subclass of the scenario class ``Day'' and ``Rain''. Also, a scenario that occurs during the day with rain now belongs to three scenario classes: ``Day'', ``Rain'', and ``Day and rain''.
+A scenario class can be a subclass of another scenario class. For example, when we continue our previous example and consider the scenario class ``Day and rain''. This scenario class is a subclass of the scenario class ``Day'' and ``Rain''. Also, a scenario that occurs during the day with rain now belongs to three scenario classes: ``Day'', ``Rain'', and ``Day and rain''.
 
 A scenario class has two different types of properties. Firstly, a scenario class contains a human-readable description of all its instances. Secondly, it contains so-called tags that characterize the scenario class in a formal manner. 
 
