@@ -89,7 +89,23 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 
 \section{Summary of work}
 
-\begin{table}[b]
+\begin{itemize}
+	\item I looked at others papers for different ways of representing an ontology. For writing the ontology paper, I conclude the following:
+	\begin{itemize}
+		\item Representing the ontology using some code \cite{chen2004soupa, chen2003ontology} is not a good way, because it is not understandable for most readers. We might consider, however, to put the code on a public repository.
+		\item Some papers \cite{gkoutos2004mouse, lee2017location, matsokis2010plm} provide screenshots of a program that they used to describe the ontology. This is also what I showed in the previous report. This is also hard to understand for most readers and often the contents of the figure are not clearly visible. 
+		\item Six \cite{kim2005security, chen2004soupa, chen2003ontology, golemati2007creating, matsokis2010plm, vanDamPhDThesis2009} out of the ten papers I looked at describe all the details of the ontology, i.e., all attributes of the different classes are mentioned in the text. Although this makes the text tough to read (like my previous progress report), I think it is good to provide all the details as that is the only way to make the ontology reproducible. Therefore, I have the idea to also provide all the details of our ontology. To do this in a more structured and readable manner, I consider to provide one or more tables like is done in \cite{golemati2007creating}. These table(s) might be part of the appendix.
+		\item Three papers show one or more figures other than screenshots. Geyer et al.\ \cite{geyer2014} show a figure describing the ``has'' relation between different classes (e.g., an object of class A contains and attribute which is an object of class B). Kim et al.\ \cite{kim2005security} show figures describing the ``is'' relations between the different classes (e.g., class B is a subclass of class A). Van Dam \cite{vanDamPhDThesis2009} shows figures with both ``has'' and ``is'' relations. Since both relations are important for our ontology, I consider to make similar figures as in \cite{vanDamPhDThesis2009}. 
+	\end{itemize}
+	\item In summary, for the ontology paper, I propose to present the ontology in the paper by showing the different classes in a figure and shortly describing these classes and their relations in the text. A description of all the attributes of the classes will be added in an appendix. Furthermore, I will discuss whether we can make the code public (but I tend to think that we will not do this).
+	\item Unfortunately, I did not have the time to continue the writing of the ontology paper. I hope to send next time a (major) update on this paper based on the aforementioned conclusions.
+	\item I received feedback from the \emph{completeness} paper, submitted to a special issue of the Traffic Injury Prevention journal. Although the paper is not yet accepted, I think the feedback is positive, since it is mentioned that ``the reviews are favorable and suggest that, subject to revisions, your paper may be suitable for publication.'' I updated the paper based on the reviews (see red part with a change bar). The associate editor also asks for a cover letter describing how we have specifically addressed each of the reviewer comments. I attached this cover letter to this progress report for review.
+	\item A student from the university of Padova, Italy, will start on the 4th of March at TNO. He will perform his graduation project at TNO on the quantification of completeness.
+	\item Discussions regarding ``Milestone 3'' (final test for AVs in Singapore) are ongoing. The plan is to first write a report on this internally at CETRAN (Singapore). When this report is finished, I hope to turn it into a paper, but this will take a while. Hence, no update on this subject is to be expected any time soon.
+\end{itemize}
+
+
+\begin{table}
 	\caption{Summary of how the ontology is represented}
 	\label{tbl:ontology papers}
 	\begin{tabularx}{\linewidth}{l X}
@@ -109,29 +125,20 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 	\end{tabularx}
 \end{table}
 
-\begin{itemize}
-	\item I looked at others papers for different ways of representing an ontology. For writing the ontology paper, I conclude the following:
-	\begin{itemize}
-		\item Representing the ontology using some code \cite{chen2004soupa, chen2003ontology} is not a good way, because it is not understandable for most readers. We might consider, however, to put the code on a public repository.
-		\item Some papers \cite{gkoutos2004mouse, lee2017location, matsokis2010plm} provide screenshots from a program that they used to describe the ontology. This is also what I showed in the previous report. This is also hard to understand for most readers and often the contents of the figure are not clearly visible. 
-		\item Six \cite{kim2005security, chen2004soupa, chen2003ontology, golemati2007creating, matsokis2010plm, vanDamPhDThesis2009} out of the ten papers describe all the details of the ontology, i.e., all attributes of the different classes are mentioned in the text. Although this makes the text tough to read (like my previous progress report), I think it is good to provide all the details as that is the only way to make the ontology reproducible. Therefore, I have the idea to also provide all the details of our ontology. To do this in a more structured and readable manner, I consider to provide one or more tables like is done in \cite{golemati2007creating}. These table(s) might be part of the appendix.
-		\item Three papers show one or more figures other than screenshots. Geyer et al.\ \cite{geyer2014} show a figure describing the ``has'' relation between different classes (e.g., an object of class A contains and attribute which is an object of class B). Kim et al.\ \cite{kim2005security} show figures describing the ``is'' relations between the different classes (e.g., class B is a subclass of class A). Van Dam \cite{vanDamPhDThesis2009} shows figures with both ``has'' and ``is'' relations. Since both relations are important for our ontology, I consider to make similar figures as in \cite{vanDamPhDThesis2009}. 
-	\end{itemize}
-\end{itemize}
-
 \section{Future plans}
 
 \begin{itemize}
-	\item 
-\end{itemize}
-
-\section{Questions}
-
-\begin{itemize}
-	\item 
+	\item Holidays from December 22 till January 6. 
+	\item Continue writing of the ontology paper!
+	\item Submit updated \emph{completeness} paper.
 \end{itemize}
 
 
 \printbibliography
+
+\newpage
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20181217 Completeness paper review"/cover_letter.pdf}
+\newpage
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20180924 Completeness paper"/completeness.pdf}
 
 \end{document}
