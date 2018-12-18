@@ -141,6 +141,7 @@ def pdf_till_no_rerun_warning(folder: str, texfile: str) -> Tuple[List, List]:
     runpdflatex = True
     badboxes = []
     warnings = []
+    n_rerun_changebar = 0
     while runpdflatex:
         badboxes = []
         warnings = []
@@ -164,8 +165,10 @@ def pdf_till_no_rerun_warning(folder: str, texfile: str) -> Tuple[List, List]:
                 break
             if warning[0].find('Changebar info has changed.') >= 0:
                 runpdflatex = True
-                print("RERUN BECAUSE CHANGEBAR CHANGED !!!")
-                break
+                n_rerun_changebar += 1
+                if n_rerun_changebar < 5:  # Limit reruns, because sometimes it goes on infinitely
+                    print("RERUN BECAUSE CHANGEBAR CHANGED !!!")
+                    break
     return warnings, badboxes
 
 
