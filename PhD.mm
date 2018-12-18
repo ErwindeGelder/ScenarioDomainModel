@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="0.91">
@@ -1150,6 +1150,12 @@
     <pdf_title>StreetWise</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="2019 Automatic Identification of Critical Scenarios in Public Dataset 3000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1545083256669">
+<attribute NAME="key" VALUE="paardekooper2019dataset3000km"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 3000 km of Naturalistic Driving"/>
+<attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and de Gelder, Erwin and Manders, Jeroen and Op den Camp, Olaf"/>
+</node>
 </node>
 <node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
@@ -1275,8 +1281,8 @@
 </node>
 <node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
-<node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
-<node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
+<node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
+<node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
 <node TEXT="Object-Oriented Bayesian Networks for Detection of Lane Change" ID="ID_809676015" CREATED="1513049590036" MODIFIED="1534390768454" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
@@ -1288,7 +1294,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_930564985" CREATED="1513061263150" MODIFIED="1513061275832">
+<node TEXT="Hidden Markov Models" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_930564985" CREATED="1513061263150" MODIFIED="1513061275832">
 <node TEXT="Tutorial on HMM (famous Rabiner paper)" ID="ID_728268315" CREATED="1513061279856" MODIFIED="1534390768391" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/004%20Tutorial%20HMM.pdf">
 <attribute NAME="key" VALUE="HMM_Rabiner"/>
 <attribute NAME="journal" VALUE="Proceedings of the IEEE"/>
@@ -1301,8 +1307,8 @@
 </node>
 </node>
 </node>
-<node TEXT="Applications with traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1528361068" CREATED="1513049599509" MODIFIED="1513049693187">
-<node TEXT="Lane Changes" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1183548072" CREATED="1513049616151" MODIFIED="1513049695649">
+<node TEXT="Applications with traffic scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1528361068" CREATED="1513049599509" MODIFIED="1513049693187">
+<node TEXT="Lane Changes" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1183548072" CREATED="1513049616151" MODIFIED="1513049695649">
 <node TEXT="Kasper et al." ID="ID_1219262019" CREATED="1513049679878" MODIFIED="1534390768454" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
@@ -1324,8 +1330,14 @@
     <pdf_title>Driving Maneuver Classification: A Comparison of Feature Extraction Methods</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Automatic Identification of Critical Scenarios in a Public Dataset of 3000 km" ID="ID_1737215624" CREATED="1545082846235" MODIFIED="1545082871055">
+<attribute NAME="key" VALUE="paardekooper3000km"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 3000 km of Naturalistic Driving"/>
+<attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and de Gelder, Erwin and Manders, Jeroen and Op den Camp, Olaf"/>
 </node>
-<node TEXT="Scene understanding" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1078234634" CREATED="1516851525657" MODIFIED="1516851536013">
+</node>
+<node TEXT="Scene understanding" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1078234634" CREATED="1516851525657" MODIFIED="1516851536013">
 <node TEXT="Segmentation-Based Urban Traffic Scene Understanding -&gt; using first semantic labeling of pixels" ID="ID_258658" CREATED="1516851538081" MODIFIED="1534390768298" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/121%20Segmentation-Based%20Urban%20Traffic%20Scene%20Understanding.pdf">
 <attribute NAME="key" VALUE="ess2009sceneunderstanding"/>
 <attribute NAME="year" VALUE="2009"/>
@@ -1336,7 +1348,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data compression" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_203974535" CREATED="1521868113174" MODIFIED="1521868120954">
+<node TEXT="Data compression" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_203974535" CREATED="1521868113174" MODIFIED="1521868120954">
 <node TEXT="based on temporal correlation" ID="ID_924446852" CREATED="1521868123486" MODIFIED="1534390768376" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/171%20Compression%20algorithm%20of%20road%20traffic%20data.pdf">
 <attribute NAME="key" VALUE="wang2018compression"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
@@ -1348,7 +1360,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Prediction" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_501991532" CREATED="1522895735218" MODIFIED="1522895739797">
+<node TEXT="Prediction" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_501991532" CREATED="1522895735218" MODIFIED="1522895739797">
 <node TEXT="Predicting the driver&apos;s intent to brake in a car-following scenario" ID="ID_1823774878" CREATED="1522895740906" MODIFIED="1534391248592" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/176%20Learning%20and%20Inferring%20a%20drivers%20braking%20action%20in%20carfollowing%20scenarios.pdf">
 <attribute NAME="key" VALUE="wang2018learning"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1801.03905"/>
@@ -1360,7 +1372,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Evaluation measure" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_925273535" CREATED="1522996306267" MODIFIED="1522996312499">
+<node TEXT="Evaluation measure" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_925273535" CREATED="1522996306267" MODIFIED="1522996312499">
 <node TEXT="A New Model for Evaluating Range-Based Anomaly Detection Algorithms" ID="ID_1367017718" CREATED="1522996318461" MODIFIED="1534391264389" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/178%20A%20New%20Model%20for%20Evaluating%20Range-Based%20Anomaly%20Detection%20Algorithms.pdf">
 <attribute NAME="key" VALUE="tatbul2018new"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1803.03639"/>
@@ -1372,7 +1384,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Scenario Libraries" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_28381863" CREATED="1529493235572" MODIFIED="1529493248164">
+<node TEXT="Scenario Libraries" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_28381863" CREATED="1529493235572" MODIFIED="1529493248164">
 <node TEXT="TrafficNet" ID="ID_1116865527" CREATED="1529493249499" MODIFIED="1534390768313" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/195%20TrafficNet%20An%20Open%20Naturalistic%20Driving%20Scenario%20Library.pdf">
 <attribute NAME="key" VALUE="zhao2017trafficnet"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1708.01872"/>
