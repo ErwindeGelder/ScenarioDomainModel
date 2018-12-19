@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="0.91">
@@ -693,7 +693,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
+<node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
 <node TEXT="Testing of high level components of automated driving" ID="ID_565029269" CREATED="1512630169330" MODIFIED="1534391906721" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2016testing"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -701,6 +701,15 @@
 <attribute NAME="authors" VALUE="Zofka, Marc Ren{\&apos;e} and Klemm, Sebastian and Kuhnt, Florian and Schamm, Thomas and Z{\&quot;o}llner, J Marius"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="6A8F4FFC63FCCDC88EE2EB2BC9BC2DCAA54BE11AB1FCB1B1192DA1606445D3">
     <pdf_title>Testing and Validating High Level Components for Automated Driving: Simulation Framework for Traffic Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Modular Validation Framework for collision avoidance on road junctions" ID="ID_476139069" CREATED="1545212395184" MODIFIED="1545212459467" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/265%20Validation%20framework%20for%20collision%20avoidance%20at%20road%20junctions.pdf">
+<attribute NAME="key" VALUE="8569631"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A Novel, Modular Validation Framework for Collision Avoidance of Automated Vehicles at Road Junctions"/>
+<attribute NAME="authors" VALUE="Nitsche, P. and Welsh, R. H. and Genser, A. and Thomas, P. D."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FB1FAE2F24A29AC587363372436E83038776734A19A52F7C825CBEFE712B1">
+    <pdf_title>A novel, modular validation framework for collision avoidance of automated vehicles at road junctions*</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -802,6 +811,15 @@
 <attribute NAME="authors" VALUE="Gietelink, Olaf Jeroen"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="2B1A94744C2FADDB2D4A1B5A37D26122092201C3214AC10A13DE865BB8D50B2">
     <pdf_title>Design and Validation of</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Modular Validation Framework for collision avoidance on road junctions" ID="ID_1936045439" CREATED="1545212496222" MODIFIED="1545212499420" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/265%20Validation%20framework%20for%20collision%20avoidance%20at%20road%20junctions.pdf">
+<attribute NAME="key" VALUE="8569631"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A Novel, Modular Validation Framework for Collision Avoidance of Automated Vehicles at Road Junctions"/>
+<attribute NAME="authors" VALUE="Nitsche, P. and Welsh, R. H. and Genser, A. and Thomas, P. D."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FB1FAE2F24A29AC587363372436E83038776734A19A52F7C825CBEFE712B1">
+    <pdf_title>A novel, modular validation framework for collision avoidance of automated vehicles at road junctions*</pdf_title>
 </pdf_annotation>
 </node>
 </node>
