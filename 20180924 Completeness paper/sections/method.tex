@@ -49,14 +49,14 @@ As an approximation of the MISE of \cref{eq:mise}, the asymptotic mean integrate
 \end{equation}
 Here, $\sigma_K$ and $\mu_K$ are constants that depend on the choice of the kernel $K(\cdot)$:
 \begin{align}
-	\sigma_K &= \int_{\mathbb{R}^d} u^2 K(u) \ud u, \\
+	\sigma_K &= \int_{\mathbb{R}^d} \|u\|^2 K(u) \ud u, \label{eq:sigmak} \\
 	\mu_K &= \int_{\mathbb{R}^d} K(u)^2 \ud u.
 \end{align}
 Because we use the Gaussian kernel of \cref{eq:gaussian kernel}, we have $\sigma_K=1$ and $\mu_K=(2\sqrt{\pi})^{-d}$. In \cref{eq:amise}, $\nabla^2 f(x)$ denotes the Laplacian of $f(x)$, i.e., 
 \begin{equation}
 	\nabla^2 f(x) = \sum_{l=1}^d \frac{\partial^2 f(x)}{\partial x_l^2}.
 \end{equation}
-Note that the Laplacian equals the trace of the Hessian. Assuming that $h \rightarrow 0$ and $nh^d \rightarrow \infty$ as $n \rightarrow \infty$, the AMISE only differs from the MISE by higher-order terms \cstart under some mild conditions \cend \cite{silverman1986density}.
+Note that the Laplacian equals the trace of the Hessian. Assuming that $h \rightarrow 0$ and $nh^d \rightarrow \infty$ as $n \rightarrow \infty$, the AMISE only differs from the MISE by higher-order terms \cstart under some mild conditions\footnote{The pdf $f(\cdot)$ needs to comply with the regularity conditions, $K(u) \leq 0, \forall u$, $\int_{\mathbb{R}^d} K(u) \ud u = 1$ and $\sigma_K$ from \cref{eq:sigmak} is not infinite.}\cend \cite{silverman1986density}.
 
 The influence of the bandwidth $h$ is demonstrated in an illustrative way by the AMISE of \cref{eq:amise}. The first term of the AMISE of \cref{eq:amise} corresponds to the asymptotic bias introduced by smoothing the pdf. Therefore, this term approaches zero when $h \rightarrow 0$. However, when $h \rightarrow 0$, the variance goes to infinity, as can be seen by the second term of the AMISE, which corresponds to the asymptotic variance. 
 
