@@ -247,6 +247,10 @@ save(os.path.join(FIGURES_FOLDER, 'bandwidth.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth')
 
 # Make a figure of the distribution and export to tikz
+# To get the xticks right, use more datapoints
+NPDF = 601
+(XPDF,), YPDFA = GMA.pdf(minx=[XLIM[0]], maxx=[XLIM[1]], npoints=NPDF)
+_, YPDFB = GMB.pdf(minx=[XLIM[0]], maxx=[XLIM[1]], npoints=NPDF)
 _, AX = plt.subplots(1, 1, figsize=(7, 5))
 AX.plot(XPDF, YPDFA, lw=5, color=[0, 0, 0])
 AX.plot(XPDF, YPDFB, '--', lw=5, color=[.5, .5, .5])
