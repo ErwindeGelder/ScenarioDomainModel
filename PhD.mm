@@ -822,6 +822,16 @@
     <pdf_title>A novel, modular validation framework for collision avoidance of automated vehicles at road junctions*</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Reduced Complexity Safety Testing for ADAS &amp; ADF" ID="ID_1615505824" CREATED="1545409066299" MODIFIED="1545409078784" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/266%20Reduced%20Complexity%20Safety%20Testing%20for%20ADAS.pdf">
+<attribute NAME="key" VALUE="zhou2017reduced"/>
+<attribute NAME="journal" VALUE="IFAC-PapersOnLine"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Reduced Complexity Safety Testing for ADAS \&amp; ADF"/>
+<attribute NAME="authors" VALUE="Zhou, Jinwei and del Re, Luigi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="69D38660C6275557FA419EB0E831E998CCEE26FA61979F5B5CF58C7AF56BDA6">
+    <pdf_title>ScienceDirect ScienceDirect</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Other/general methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1536226544121">
 <node TEXT="Teaching Self-Driving Cars to Dream" ID="ID_1568568342" CREATED="1522896117493" MODIFIED="1534391955155" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/177%20Teaching%20Self-Driving%20Cars%20to%20Dream.pdf">
