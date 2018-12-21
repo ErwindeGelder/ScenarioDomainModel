@@ -49,10 +49,12 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \titlespacing*{\paragraph}{0ex}{1ex}{1ex}
 \newcommand{\toauthor}{\paragraph*{Comment to author:} \itshape}
 \newcommand{\fromauthor}{\paragraph*{Reply:} \normalfont}
-\newcommand{\cstart}{\color{red}}
-\newcommand{\cend}{\color{black}}
 \newcommand{\additionend}[1]{\color{black}[#1]\color{red}}
 \newcommand{\addition}[1]{\additionend{#1}\ }
+
+\usepackage{changebar}
+\newcommand{\cstart}{\cbstart\color{red}}
+\newcommand{\cend}{\cbend\color{black}}
 
 \begin{document}
 	
@@ -130,10 +132,10 @@ As this is not considered as a major simplification, this is omitted from the pa
 
 \toauthor The title of the paper is a bit misleading, as you state in the discussion that the desired threshold for completeness will require more application-specific research. A better title would be `How do we determine if we've collected enough field data?'
 
-\fromauthor We changed the title accordingly while adding some context information. The new title is:
+\fromauthor We changed the title as suggested while adding some context information. The new title is:
 
 \cstart
-How do we determine if we have collected enough field data from driving studies?
+Safety assessment of automated vehicles: how to determine whether we have collected enough field data?
 \cend
 
 \section*{Review 3}
@@ -153,7 +155,7 @@ How do we determine if we have collected enough field data from driving studies?
 \fromauthor Few examples with references are given when introducing the concept of scenario (Section~II):
 
 \cstart 
-Extracting scenarios from data received significant attention and the applied methods are very diverse. For example, Elrofai~et~al.\ (2016) use a model-based approach to detect scenarios in which the ego vehicle is changing lane, whereas Kasper~et~al.\ (2011) use Bayesian networks to detect scenarios with lane changes of other vehicles around the ego vehicle. Xie~et~al.\ (2018) use a random forest classifier for extracting various scenarios and Paardekooper~et~al.\ (2019) employ deep learning for scenario extraction. 
+Extracting scenarios from data received significant attention and the applied methods are very diverse. For example, Elrofai~et~al.\ (2016) use a model-based approach to detect scenarios in which the ego vehicle is changing lane, whereas Kasper~et~al.\ (2011) use Bayesian networks to detect scenarios with lane changes of other vehicles around the ego vehicle. Xie~et~al.\ (2018) use a random forest classifier for extracting various scenarios and Paardekooper~et~al.\ (2019) employ rule-based algorithms for scenario extraction. 
 \cend
 
 \toauthor 2. How to justify the example given in this paper is a good representation of the proposed method? How sensitive is the conclusion to different criteria? More statistical analysis is appreciated.
@@ -161,7 +163,7 @@ Extracting scenarios from data received significant attention and the applied me
 \fromauthor A paragraph is added to the discussion to elaborate on some considerations when employing our measure for completeness:
 
 \cstart
-When using our measure for completeness, the following might be considered. As explained in Section~III, the measure for completeness is based on the AMISE. It is also mentioned that the AMISE only differs from the MISE by higher-order terms under some mild conditions\footnote{The pdf $f(\cdot)$ needs to comply with the regularity conditions, $K(u) \leq 0, \forall u$, $\int_{\mathbb{R}^d} K(u) \ud u = 1$ and $\sigma_K=\int_{\mathbb{R}^d} \|u\|^2 K(u) \ud u$ from Eq.~(5) is not infinite.}. This requires that the real pdf is smooth, i.e., without large spikes (Marron and Wand 1992). Marron and Wand (1992) also state that the AMISE is always higher than the MISE under some mild conditions\footnote{The Laplacian of $f(\cdot)$ needs to be continuous and square-integrable and $K(u) \leq 0, \forall u$.}. As a result, it is likely that the measure for completeness, which is an approximation of the AMISE, is higher than the MISE. This could lead to an overestimation of the number of required samples.
+When using our measure for completeness, the following might be considered. As explained in Section~III, the measure for completeness is based on the AMISE. It is also mentioned that the AMISE only differs from the MISE by higher-order terms under some mild conditions\footnote{The pdf $f(\cdot)$ needs to comply with the regularity conditions, $K(u) \geq 0, \forall u$, $\int_{\mathbb{R}^d} K(u) \ud u = 1$ and $\sigma_K=\int_{\mathbb{R}^d} \|u\|^2 K(u) \ud u$ from Eq.~(5) is not infinite.}. This requires that the real pdf is smooth, i.e., without large spikes (Marron and Wand 1992). Marron and Wand (1992) also state that the AMISE is strictly higher than the MISE under some mild conditions\footnote{The Laplacian of $f(\cdot)$ needs to be continuous and square-integrable and $K(u) \geq 0, \forall u$.}. As a result, it is likely that the measure for completeness, which is an approximation of the AMISE, is higher than the MISE. This could lead to an overestimation of the number of required samples.
 \cend
 
 

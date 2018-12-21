@@ -56,7 +56,7 @@ Because we use the Gaussian kernel of \cref{eq:gaussian kernel}, we have $\sigma
 \begin{equation}
 	\nabla^2 f(x) = \sum_{l=1}^d \frac{\partial^2 f(x)}{\partial x_l^2}.
 \end{equation}
-Note that the Laplacian equals the trace of the Hessian. Assuming that $h \rightarrow 0$ and $nh^d \rightarrow \infty$ as $n \rightarrow \infty$, the AMISE only differs from the MISE by higher-order terms \cstart under some mild conditions\footnote{The pdf $f(\cdot)$ needs to comply with the regularity conditions, $K(u) \leq 0, \forall u$, $\int_{\mathbb{R}^d} K(u) \ud u = 1$ and $\sigma_K$ from \cref{eq:sigmak} is not infinite.}\cend \cite{silverman1986density}.
+Note that the Laplacian equals the trace of the Hessian. Assuming that $h \rightarrow 0$ and $nh^d \rightarrow \infty$ as $n \rightarrow \infty$, the AMISE only differs from the MISE by higher-order terms \cstart under some mild conditions\footnote{The pdf $f(\cdot)$ needs to comply with the regularity conditions, $K(u) \geq 0, \forall u$, $\int_{\mathbb{R}^d} K(u) \ud u = 1$ and $\sigma_K$ from \cref{eq:sigmak} is not infinite.}\cend \cite{silverman1986density}.
 
 The influence of the bandwidth $h$ is demonstrated in an illustrative way by the AMISE of \cref{eq:amise}. The first term of the AMISE of \cref{eq:amise} corresponds to the asymptotic bias introduced by smoothing the pdf. Therefore, this term approaches zero when $h \rightarrow 0$. However, when $h \rightarrow 0$, the variance goes to infinity, as can be seen by the second term of the AMISE, which corresponds to the asymptotic variance. 
 
@@ -73,7 +73,7 @@ Substituting $f(x)$ in \cref{eq:amise} with $\hat{f}(x;n)$ gives the measure tha
 \end{equation}
 
 \cstart
-In summary, the measure \cref{eq:measure} is an estimation of the MISE of \eqref{eq:mise} given that the pdf is estimated using the KDE of \eqref{eq:kde}. Because the MISE cannot be directly evaluated, the asymptotic MISE is used with the estimated pdf substituted for the real pdf. 
+In summary, the measure \cref{eq:measure} is an estimation of the MISE of \cref{eq:mise} given that the pdf is estimated using the KDE of \cref{eq:kde}. Because the MISE cannot be directly evaluated, the asymptotic MISE is used with the estimated pdf substituted for the real pdf. 
 \cend
 
 % Explain how MISE can be estimated with independent data

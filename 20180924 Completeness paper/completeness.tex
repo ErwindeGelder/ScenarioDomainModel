@@ -18,7 +18,10 @@
 
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{silence}  							%% For filtering warnings
 \usepackage[style=authoryear-comp,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
+\WarningFilter{biblatex}{Patching footnotes failed}
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
@@ -43,7 +46,9 @@
 \makeatother
 
 %\title{\cstart \LARGE \bf How do we determine if we have collected enough field data? \cend}
-\title{\cstart \LARGE \bf How do we determine if we have collected enough field data from driving studies? \cend}
+%\title{\cstart \LARGE \bf How do we determine whether we have collected enough field data in driving studies? \cend}
+\title{\cstart \LARGE \bf Safety assessment of automated vehicles: how to determine whether we have collected enough field data? \cend}
+
 \author{
 	Erwin de Gelder\textsuperscript{a,b}\thanks{\textsuperscript{a} TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}\thanks{\textsuperscript{b} Corresponding author. Email: erwin.degelder@tno.nl}, Jan-Pieter Paardekooper\textsuperscript{a}, Olaf Op den Camp\textsuperscript{a}, and Bart De Schutter\textsuperscript{c} \thanks{\textsuperscript{c} Delft University of Technology, Delft Center for Systems and Control}
 }
