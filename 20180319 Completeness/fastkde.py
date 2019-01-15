@@ -533,41 +533,70 @@ class KDE(object):
         return lower_conf, upper_conf
 
 
+    def sample(self, n_samples=1):
+        """ Generates random samples from the model
+
+        Based on the scikit learn implementation
+
+        Args
+        ----
+        n_samples : int, optional
+            Number of samples to generate. Defaults to 1.
+
+        Returns
+        -------
+        X : array_like, shape (n_samples, n_features)
+            List of samples.
+        """
+
+        uniform_vars = np.random.uniform(0, 1, size=n_samples)
+
+        i = (uniform_vars * self.data.shape[0]).astype(np.int64)
+
+        return np.atleast_2d(np.random.normal(self.data[i], self.bandwidth))
+
+
+
 if __name__ == '__main__':
+
     np.random.seed(0)
 
     XDATA = np.random.rand(200)
     KERNEL_DENSITY = KDE(data=XDATA)
     KERNEL_DENSITY.compute_bandwidth()
-    print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.bandwidth))
-    NSTART = 50
-    KERNEL_DENSITY = KDE(data=XDATA[:NSTART])
-    KERNEL_DENSITY.compute_bandwidth()
-    print("Bandwidth n={:d}: {:.5f}".format(NSTART, KERNEL_DENSITY.bandwidth))
-    KERNEL_DENSITY.add_data(XDATA[NSTART:])
-    KERNEL_DENSITY.compute_bandwidth()
-    print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.bandwidth))
 
-    NDATAPOINTS = [100, 500]
-    FIGURE, AXS = plt.subplots(1, len(NDATAPOINTS), figsize=(12, 5))
+    print(KERNEL_DENSITY.sample(10))
 
-    for ndatapoint, ax in zip(NDATAPOINTS, AXS):
-        XDATA = np.random.randn(ndatapoint)
-        KERNEL_DENSITY = KDE(data=XDATA)
-        t0 = time.time()
-        KERNEL_DENSITY.compute_bandwidth()
-        t1 = time.time()
-        print("Elapsed time: {:.3f} s".format(t1 - t0))
-        print("Bandwidth: {:.5f}".format(KERNEL_DENSITY.bandwidth))
 
-        xpdf = np.linspace(-3, 3, 301)
-        ypdf = np.exp(-xpdf**2/2) / np.sqrt(2*np.pi)
-        ax.plot(xpdf, ypdf, label='Real')
-        ax.plot(xpdf, KERNEL_DENSITY.score_samples(xpdf), label='Estimated')
-        low, up = KERNEL_DENSITY.confidence_interval(xpdf)
-        ax.fill_between(xpdf, low, up, facecolor=[0.5, 0.5, 1], alpha=0.5, label='95% Confidence')
-
-        ax.legend()
-        ax.set_title('{:d} datapoints'.format(ndatapoint))
-        ax.grid(True)
-    plt.show()
+    # print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.bandwidth))
+    # NSTART = 50
+    # KERNEL_DENSITY = KDE(data=XDATA[:NSTART])
+    # KERNEL_DENSITY.compute_bandwidth()
+    # print("Bandwidth n={:d}: {:.5f}".format(NSTART, KERNEL_DENSITY.bandwidth))
+    # KERNEL_DENSITY.add_data(XDATA[NSTART:])
+    # KERNEL_DENSITY.compute_bandwidth()
+    # print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.bandwidth))
+    #
+    # NDATAPOINTS = [100, 500]
+    # FIGURE, AXS = plt.subplots(1, len(NDATAPOINTS), figsize=(12, 5))
+    #
+    # for ndatapoint, ax in zip(NDATAPOINTS, AXS):
+    #     XDATA = np.random.randn(ndatapoint)
+    #     KERNEL_DENSITY = KDE(data=XDATA)
+    #     t0 = time.time()
+    #     KERNEL_DENSITY.compute_bandwidth()
+    #     t1 = time.time()
+    #     print("Elapsed time: {:.3f} s".format(t1 - t0))
+    #     print("Bandwidth: {:.5f}".format(KERNEL_DENSITY.bandwidth))
+    #
+    #     xpdf = np.linspace(-3, 3, 301)
+    #     ypdf = np.exp(-xpdf**2/2) / np.sqrt(2*np.pi)
+    #     ax.plot(xpdf, ypdf, label='Real')
+    #     ax.plot(xpdf, KERNEL_DENSITY.score_samples(xpdf), label='Estimated')
+    #     low, up = KERNEL_DENSITY.confidence_interval(xpdf)
+    #     ax.fill_between(xpdf, low, up, facecolor=[0.5, 0.5, 1], alpha=0.5, label='95% Confidence')
+    #
+    #     ax.legend()
+    #     ax.set_title('{:d} datapoints'.format(ndatapoint))
+    #     ax.grid(True)
+    # plt.show()
