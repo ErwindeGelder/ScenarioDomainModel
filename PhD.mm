@@ -591,7 +591,7 @@
 </node>
 </node>
 <node TEXT="Safety" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1183001868" CREATED="1530151668822" MODIFIED="1530151674988">
-<node TEXT="Challenges" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_720959665" CREATED="1531278476883" MODIFIED="1531278483471">
+<node TEXT="Challenges" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_720959665" CREATED="1531278476883" MODIFIED="1531278483471">
 <node TEXT="Autonomous Vehicle Safety: An Interdisciplinary Challenge" ID="ID_32688539" CREATED="1531278488420" MODIFIED="1534391906684" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/212%20Autonomous%20Vehicle%20Safety%20An%20Interdisciplinary%20Challenge.pdf">
 <attribute NAME="key" VALUE="koopman2017interdisciplinary"/>
 <attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
@@ -850,6 +850,15 @@
 <attribute NAME="authors" VALUE="Shullai, Chaantremi"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="E34C9369E3F1CA96D12330662CB933984168AED66447DFC3F02CC6DD73F27527">
     <pdf_title>MASTER THESIS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Assessment and standardization of AVs" ID="ID_1234274151" CREATED="1547806052690" MODIFIED="1547806281438" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/267%20Assessment%20and%20standardization%20of%20AVs.pdf">
+<attribute NAME="key" VALUE="takacs2018assessment"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Assessment and Standardization of Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Tak{\&apos;a}cs, {\&apos;A}rp{\&apos;a}d and Drexler, D{\&apos;a}niel Andr{\&apos;a}s and Galambos, P{\&apos;e}ter and Rudas, Imre J. and Haidegger, Tam{\&apos;a}s"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B9227EE3B9652F4C6081BCA873826A6B5FD5A0B62E219A73D6F0E1A4645A3C7">
+    <pdf_title>Assessment and standardization of autonomous vehicles</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1184,6 +1193,12 @@
 <attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 3000 km of Naturalistic Driving"/>
 <attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and de Gelder, Erwin and Manders, Jeroen and Op den Camp, Olaf"/>
 </node>
+<node TEXT="2019 Completeness paper" ID="ID_807223433" CREATED="1547188936412" MODIFIED="1547712887056">
+<attribute NAME="key" VALUE="Gelder"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Safety Assessment of Automated Vehicles: How to Determine Whether We Have Collected Enough Field Data?"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Op den Camp, Olaf and De Schutter, Bart"/>
+</node>
 </node>
 <node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
@@ -1457,11 +1472,10 @@
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ontology based scene (see Ulbrich for scene) creation for development AV" ID="ID_1236926158" CREATED="1512622274267" MODIFIED="1534391329029" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
+<node TEXT="Ontology based scene (see Ulbrich for scene) creation for development AV" ID="ID_1236926158" CREATED="1512622274267" MODIFIED="1547537017327" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
-<attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Ontology Based Scene Creation for the Development of Automated Vehicles"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Ontology based scene creation for the development of automated vehicles"/>
 <attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="6E205E2683CC485EC5A5F9CFBA2B4651DD2968E634B74C8D82F20AFAB2517">
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
@@ -1582,9 +1596,8 @@
 </node>
 <node TEXT="Bagschik et al." ID="ID_1681269749" CREATED="1512638114716" MODIFIED="1534391329029" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf" MOVED="1512638158791">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
-<attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Ontology Based Scene Creation for the Development of Automated Vehicles"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Ontology based scene creation for the development of automated vehicles"/>
 <attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="6E205E2683CC485EC5A5F9CFBA2B4651DD2968E634B74C8D82F20AFAB2517">
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
@@ -2128,9 +2141,8 @@
 <node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
 <node TEXT="Bagschik et al. (declined paper)" ID="ID_1750936302" CREATED="1512626946796" MODIFIED="1534391629757" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
-<attribute NAME="journal" VALUE="arXiv preprint arXiv:1704.01006"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Ontology Based Scene Creation for the Development of Automated Vehicles"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Ontology based scene creation for the development of automated vehicles"/>
 <attribute NAME="authors" VALUE="Bagschik, Gerrit and Menzel, Till and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="6E205E2683CC485EC5A5F9CFBA2B4651DD2968E634B74C8D82F20AFAB2517">
     <pdf_title>Ontology based Scene Creation for the Development of Automated Vehicles</pdf_title>
@@ -2400,7 +2412,7 @@
 </node>
 <node TEXT="Scenario" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_574351628" CREATED="1524534319379" MODIFIED="1524534327135"/>
 </node>
-<node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
+<node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
 <node TEXT="Deliverable D7.3 AdaptIVe: Impact Analysis for Supervised AD Applications" ID="ID_1205070616" CREATED="1526269804012" MODIFIED="1534391630281" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/182%20AdaptIVe_SP7_D7_3_Impact%20analysis%20for%20supervised%20automated%20driving%20applications.pdf">
 <attribute NAME="key" VALUE="adaptive2017d73"/>
 <attribute NAME="year" VALUE="2017"/>
