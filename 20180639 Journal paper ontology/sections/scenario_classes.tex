@@ -1,23 +1,29 @@
-\subsection{Scenario classes}
+\section{Scenario classes}
 \label{sec:scenario classes}
 % Introduce term scenario class (i.e. qualitative description of scenario)
 In this section, the notion of scenario class is introduced. As proposed above, a scenario in the context of the performance assessment of an AV needs to be quantitative. However, a qualitative description of each scenario exists. 
-\cbstart
 A scenario class refers to the qualitative description of a scenario.
-The qualitative description can be regarded as an abstraction of the quantitative scenario. 
-%As a result, for a qualitative description there is a virtually infinite number of scenarios.
+The qualitative description can be regarded as an abstraction of the quantitative scenario. Therefore, a scenario class refers to multiple scenarios with a common characteristic \cite{elrofai2018scenario}.
 
 % What is the purpose of this?
 % - Human interpretable
-% - Cluster scenarios that are very similar --> Analysis is easier
-% - 
+% - Group scenarios that are very similar --> Analysis is easier
+% - Completeness
+\cbstart
+Introducing the concept of scenario classes brings the following benefits:
+\begin{itemize}
+	\item Whereas the quantitative description might be difficult to interpret as a human, a qualitative description is easily interpreted by a human.
+	\item It enables to reference to a group of scenarios that have something in common. This makes communication much easier.
+	\item It enables easier comparison of scenarios. For example, two scenarios that fall into the same scenario class may look more similar than two scenarios that do not fall into different scenario classes. This can be used to quantify the completeness of a set of scenarios, see \cite{degelder2019completeness} for more details on this.
+\end{itemize}
 
-% Explain idea of a class
-% - Scenario is instance of scenario class
-% - Class can be subclass
-% - Instance can belong to none, one or more classes
-Scenarios are instances of scenario classes. A scenario class can contain multiple scenarios. On the other hand, a scenario may belong to none, one, or multiple scenario classes. As an example, consider the scenario class ``Day'', which contains all scenarios that occur during the day, and the scenario class ``Rain'', which contains all scenarios with rain, see \cref{fig:venn diagram scenario class}. A scenario that occurs during the night without rain does not belong to any of the previously defined scenario classes. Likewise, a scenario that occurs during the day with rain belongs to both scenario classes ``Day'' and ``Rain''. 
+\subsection{Scenario classes versus scenarios}
+\label{sec:fall into method}
 
+% Explain scenarios fall into scenario class
+We describe the formal relation between a scenario and a scenario class with the verb ``to fall into''. If a specific scenario class is an abstraction of a specific scenario, then we say that the specific scenario falls into that specific scenario class. Multiple scenarios can fall into a scenario class. For example, consider the scenario classes with the names ``Day'' and ``Rain'', see \cref{fig:venn diagram scenario class}. All scenarios that occur during the day fall into the scenario class ``Day''. Similarly, all scenarios with rain fall into the scenario class ``Rain''.
+
+\cbend
 \setlength{\venncircle}{7em}
 \begin{figure}
 	\centering
@@ -36,12 +42,54 @@ Scenarios are instances of scenario classes. A scenario class can contain multip
 		\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during day};
 		\node[text width=\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain during night};
 	\end{tikzpicture}
-	\caption{The two circles correspond to the two scenario classes ``Day'' and ``Rain'', respectively. Scenarios that occur during the day with rain belong to both scenario classes ``Day'' and ``Rain''. The new scenario class ``Day and rain'' can be defined as the class that contains all scenarios that occur during the day with rain. The scenario class ``Day and rain'' is a subclass of the scenario classes ``Day'' and ``Rain''.}
+	\caption{The red and green circles correspond to the scenario classes ``Day'' and ``Rain'', respectively. Scenarios that occur during the day with rain fall into both scenario classes ``Day'' and ``Rain''. The new scenario class ``Day and rain'' can be defined as the scenario class in which all scenarios that occur during the day with rain fall. The scenario class ``Day and rain'' is falls into the scenario classes ``Day'' and ``Rain''.}
 	\label{fig:venn diagram scenario class}
 \end{figure}
+\cbstart
 
-A scenario class can be a subclass of another scenario class. For example, when we continue our previous example and consider the scenario class ``Day and rain''. This scenario class is a subclass of the scenario class ``Day'' and ``Rain''. Also, a scenario that occurs during the day with rain now belongs to three scenario classes: ``Day'', ``Rain'', and ``Day and rain''.
+% Explain scenario can fall into multiple scenario classes
+Whereas multiple scenarios can fall into one scenario class, it is also possible for one scenario to fall into multiple scenario classes. Continuing the example of \cref{fig:venn diagram scenario class}, a scenario with rain during the day falls into both the scenario classes ``Day'' and ``Rain''.
 
-A scenario class has two different types of properties. Firstly, a scenario class contains a human-readable description of all its instances. Secondly, it contains so-called tags that characterize the scenario class in a formal manner. 
+% Explain scenario class can fall into scenario classes
+The verb ``to fall into'' is also used to describe the relation between two scenario classes. A scenario class A is said to fall into a scenario class B if all scenarios that fall into scenario class A also fall into scenario class B. 
+For example, consider the scenario class ``Rain during day'', which is represented by the intersection of the red and green circles in \cref{fig:venn diagram scenario class}. All scenarios with rain that occur during the day fall into this scenario class. Obviously, these scenarios also fall into the scenario classes ``Day'' and ``Rain''. Hence, the scenario class ``Rain during day'' falls into the scenario classes ``Day'' and ``Rain''.
+
+\subsection{Tags}
+\label{sec:tags}
+
+When providing extra information to a piece of data, often tags are used \cite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enables users to quickly obtain several items that share a certain characteristic described by a tag \cite{craft2004tagging, vasquez2019controlling}. Applications are very broad, e.g., from classification of audio data \cite{kong2017joint} and capturing musical characteristics from songs \cite{ellis2011semantic} to tagging of Wikipedia pages \cite{voss2006collaborative}.
+
+It is proposed to provide scenarios and scenario classes with applicable tags that describe the scenario in a qualitative manner. The tags of a scenario determines which scenario classes the scenario falls into. For example, if a scenario occurred during the day, it will contain the tag ``Day''. As a result, the scenario is automatically recognized as an instance of the scenario class ``Day'' which is characterized by the single tag ``Day''. The use of these tags brings some benefits:
+\begin{itemize}
+	\item The scenarios do not need to be directly classified. This can be a time consuming effort if the number of scenario classes is high.
+	\item If a scenario class that only contains known tags is added to the database of scenario classes, it can be easily seen which scenarios fall into this scenario class by only inspecting the tags of the scenarios.
+	\item It is easy to select scenarios from a scenario database or a scenario library by using tags or a combination of tags.
+\end{itemize}
+
+There is a balance between having generic scenario classes - and thus a high variety among the scenarios belonging to the scenario class - and having specific scenario classes without much variety among the scenarios in the scenario class. For some systems, one is interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags are structured in hierarchical trees \cite{molloy2017dynamic, badger2012dynamic}. The different layers of the trees can be regarded as different abstraction levels \cite{Bonnin2014}. 
+
+\Cref{fig:tree vehicle activities} shows two examples of trees of tags. These tags describe some of the possible activities of a vehicle. Only the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags. The tags may also refer to the objective of the ego vehicle in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. 
+
+\cbend
+\begin{figure*}
+	\centering
+	\begin{subfigure}{\linewidth}
+		\centering
+		\tree{Vehicle lateral activity}{Going straight; Changing lane, Left, Right; Turning, Left, Right; Swerving, Left, Right}
+		\caption{Lateral activities of a vehicle.}
+		\label{fig:tree vehicle lat act}
+	\end{subfigure}
+	\begin{subfigure}{\linewidth}
+		\centering
+		\tree{Vehicle longitudinal activity}{Reversing; Standing still; Driving forward, Braking, Cruising, Accelerating}
+		\caption{Longitudinal activities of a vehicle.}
+		\label{fig:tree vehicle long act}
+	\end{subfigure}
+	\caption{Tags for lateral and longitudinal activities of a vehicle. The lateral activity is relative to the lane in which the corresponding vehicle is driving. For example, if the vehicle is driving on a curved road, its lateral activity is ``Going straight''.}
+	\label{fig:tree vehicle activities}
+\end{figure*}
+\cbstart
+
+Four different types of activities are identified regarding the lateral movement, see \cref{fig:tree vehicle lat act}. Here, it is assumed that ``Lateral'' refers to the direction perpendicular to the lane the vehicle is driving in (e.g., according to the Road Coordinate System in \cite{zofka2015datadrivetrafficscenarios}). Therefore, if the vehicle is driving on a curved road while staying more or less in its lane (lane-following), the tag ``Going straight'' is applicable. When the vehicle changes lane to an adjacent lane, the tag ``Changing lane'' is applicable. The tag ``Turning'' is applicable when the vehicle turns at a junction. The tag ``Swerving'' is applicable when the vehicle significantly changes lateral position without performing a complete lane change. For example, when the vehicle overtakes a cyclist that is riding at one side of the lane, the vehicle might swerve to the other side of the lane.
 
 \cbend

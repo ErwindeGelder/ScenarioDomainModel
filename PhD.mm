@@ -882,6 +882,17 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Assessment for road user behavior" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1098743243" CREATED="1548213692420" MODIFIED="1548213706860">
+<node TEXT="PhD Thesis, many metrics for road user behavior" ID="ID_1307608725" CREATED="1548213708177" MODIFIED="1548213929605" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/268%20Automated%20Video%20Analysis%20for%20Road%20User%20Behaviour.pdf">
+<attribute NAME="key" VALUE="laureshyn2010videoanalysis"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Application of Automated Video Analysis to Road User Behaviour"/>
+<attribute NAME="authors" VALUE="Laureshyn, Aliaksei"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A41BED919740D18D4121E6FFC49A7487E35AF3E74A758AFF13DCAA466C6AED">
+    <pdf_title>Laureshyn, Aliaksei</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Data-driven simulation and parametrization of traffic scenario" ID="ID_1028680362" CREATED="1507091082672" MODIFIED="1534391955108" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
 <attribute NAME="year" VALUE="2015"/>
@@ -2411,6 +2422,78 @@
 </node>
 </node>
 <node TEXT="Scenario" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_574351628" CREATED="1524534319379" MODIFIED="1524534327135"/>
+</node>
+<node TEXT="Tagging in general" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_136679188" CREATED="1548295511616" MODIFIED="1548295527656">
+<node TEXT="Tagging data assets" ID="ID_191096193" CREATED="1548295530882" MODIFIED="1548295583812" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/269%20Tagging%20data%20assests.pdf">
+<attribute NAME="key" VALUE="craft2004tagging"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Tagging Data Assets"/>
+<attribute NAME="authors" VALUE="Craft, Daniel H. and Caro, Perry A. and Pasqua, Joseph and Brotsky, Daniel C."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="265F4648C6EB213DDB2534B8FAAA706EA2210983BF27CDBCC343147D1D898">
+    <pdf_title>United States Patent</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Controlling access by tagging data" ID="ID_1833665972" CREATED="1548295628276" MODIFIED="1548295846691" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/270%20Controlling%20access%20by%20tagging%20data.pdf">
+<attribute NAME="key" VALUE="vasquez2019controlling"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Controlling Access by Tagging Data"/>
+<attribute NAME="authors" VALUE="Vasquez, Juan and Johansson, Jesper"/>
+<pdf_annotation type="BOOKMARK" page="1" object_id="4928718262118037431" object_number="60" document_hash="FBB161B2B43E7B698B64A2BC66709C7168FD2C2758B3656FCFC387B0953427">
+    <pdf_title>Controlling access by tagging data</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Tagging for classification of audio data" ID="ID_1243432343" CREATED="1548295987955" MODIFIED="1548296053840" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/271%20Tagging%20for%20classification%20of%20audio%20data.pdf">
+<attribute NAME="key" VALUE="kong2017joint"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="A joint detection-classification model for audio tagging of weakly labelled data"/>
+<attribute NAME="authors" VALUE="Kong, Qiuqiang and Xu, Yong and Wang, Wenwu and Plumbley, Mark D"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="38D85B72A77BDB912A6EFC0DFF5B33A4740F63973FE2047FE5D4E538FB2A">
+    <pdf_title>X D O</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Capture the musical characteristics of songs associated with a tag" ID="ID_125535651" CREATED="1548296516819" MODIFIED="1548296523076" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/272%20Capture%20the%20musical%20characteristics%20of%20songs%20associated%20with%20a%20tag.pdf">
+<attribute NAME="key" VALUE="ellis2011semantic"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Semantic Annotation and Retrieval of Music using a Bag of Systems Representation."/>
+<attribute NAME="authors" VALUE="Ellis, Katherine and Coviello, Emanuele and Lanckriet, Gert RG"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="35BA73DBEE32CD32E24DA45669C9F82558F0D85E74676C99F72B2D5FAB62AF93">
+    <pdf_title>SEMANTIC ANNOTATION AND RETRIEVAL OF MUSIC USING A BAG OF SYSTEMS REPRESENTATION</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Dynamic hierarchical tagging system and method" ID="ID_223352149" CREATED="1548297208414" MODIFIED="1548297222392" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/273%20Dynamic%20hierarchical%20tagging%20system%20and%20method.pdf">
+<attribute NAME="key" VALUE="molloy2017dynamic"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Dynamic Hierarchical Tagging System and Method"/>
+<attribute NAME="authors" VALUE="Molloy, Sean and Ramos, Terry and Thakar, Sumedh"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6F37EBDA498195D269A64EAFC22FB8D188B851372B4A4D872C637B51FF03E">
+    <pdf_title>(12) United States Patent (10) Patent No.: US 9,613,099 B2</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Hierarchical Tagging with Permissions" ID="ID_511073156" CREATED="1548297315500" MODIFIED="1548308189478" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/274%20Hierarchical%20Tagging%20with%20Permissions.pdf">
+<attribute NAME="key" VALUE="badger2012dynamic"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="System and Process for Hierarchical Tagging with Permissions"/>
+<attribute NAME="authors" VALUE="Badger, John and Kreshavamurthy, Muralidhara and Hanumanthaiah, Vedavathi and Viraktamath, Mahesh"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1A322472D8946AEBB9CBFEA442802A27C394B4B746A9972EF9A377CFE0184BA5">
+    <pdf_title>(19) United States</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Tagging of Wikipedia pages" ID="ID_786216590" CREATED="1548297651123" MODIFIED="1548297718737" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/275%20Tagging%20of%20Wikipedia%20pages.pdf">
+<attribute NAME="key" VALUE="voss2006collaborative"/>
+<attribute NAME="journal" VALUE="arXiv preprint cs/0604036"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="Collaborative thesaurus tagging the Wikipedia way"/>
+<attribute NAME="authors" VALUE="Voss, Jakob"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="341DDF3C156ECF722B3DC7D922B87F3F8EE4C303147C67CDD7548E4DAF1140">
+    <pdf_title>Collaborative thesaurus tagging the Wikipedia way *</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Tagging: People-Powered Metadata for the Social Web" ID="ID_213480918" CREATED="1548299265307" MODIFIED="1548299282800">
+<attribute NAME="key" VALUE="smith2007tagging"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Tagging: People-Powered Metadata for the Social Web"/>
+<attribute NAME="authors" VALUE="Smith, Gene"/>
+</node>
 </node>
 <node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
 <node TEXT="Deliverable D7.3 AdaptIVe: Impact Analysis for Supervised AD Applications" ID="ID_1205070616" CREATED="1526269804012" MODIFIED="1534391630281" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/182%20AdaptIVe_SP7_D7_3_Impact%20analysis%20for%20supervised%20automated%20driving%20applications.pdf">
