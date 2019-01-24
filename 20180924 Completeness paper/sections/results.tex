@@ -54,9 +54,7 @@ The gray lines in \cref{fig:mise example} show the measures to quantify the comp
 \label{sec:result real}
 
 In this example, 60 hours of naturalistic driving data from 20 different drivers (see also \textcite{deGelder2017assessment}) is used to extract approximately 2800 braking activities. Three parameters are used to describe each braking activity: the average deceleration, the total speed difference, and the end speed. A histogram of each of these parameters is shown in \cref{fig:histogram}. Note that these braking activities do not include full stops, i.e., activities where the end speed is zero, because the distribution of the end speed will have a large peak at zero. The AMISE of \cref{eq:amise} deviates more from the real MISE of \cref{eq:mise}, especially for larger bandwidths, when such peaks are present in the underlying distribution \cite{marron1992exact}. Because the measure \cref{eq:measure} we use for quantification of completeness is based on the AMISE of \cref{eq:amise}, we want to avoid these peaks as much as possible. Therefore, the full stops are excluded.
-\cstart
 Note, however, that the method can be applied separately for the full stops. In fact, the analysis for full stops will be simpler, because a full stop activity can be parametrized using only two parameters because the end speed always equals zero. 
-\cend
 
 \setlength\figurewidth{0.95\linewidth}
 \setlength\figureheight{0.5\linewidth}
