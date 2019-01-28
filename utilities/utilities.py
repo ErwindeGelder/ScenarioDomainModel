@@ -275,9 +275,32 @@ if __name__ == '__main__':
         log=False)
     pdf(os.path.join('..', '20181217 Completeness paper review'), 'cover_letter', log=False)
     pdf(os.path.join('..', 'progress_reports', 'report14'), 'progress_report_14', usebiber=True)
-    call_output(['git', 'checkout', 'master'])
+    call_output(['git', 'checkout', 'PR15'])
+    pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True,
+        log=False)
+    pdf(os.path.join('..', 'progress_reports', 'report15'), 'progress_report_15', usebiber=True)
+
+    # Revisions/versions
+    call_output(['git', 'checkout', 'CompletenessPaperInit'])
+    pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True,
+        log=False)
+    copyfile(os.path.join('..', '20180924 Completeness paper', 'completeness.pdf'),
+             os.path.join('..', '20180924 Completeness paper',
+                          '20181108 Completeness Initial.pdf'))
+
+    call_output(['git', 'checkout', 'CompletenessPaperR1'])
+    pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True,
+        log=False)
+    copyfile(os.path.join('..', '20180924 Completeness paper', 'completeness.pdf'),
+             os.path.join('..', '20180924 Completeness paper',
+                          '20181221 Completeness revision 1.pdf'))
+    pdf(os.path.join('..', '20181217 Completeness paper review'), 'cover_letter')
+    copyfile(os.path.join('..', '20181217 Completeness paper review', 'cover_letter.pdf'),
+             os.path.join('..', '20181217 Completeness paper review',
+                          '20181221 Cover letter revision 1.pdf'))
 
     # All other stuff
+    call_output(['git', 'checkout', 'master'])
     pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'ontology', usebiber=True)
     pdf(os.path.join('..', '20180109 Ontology presentation'), 'ontology', usebibtex=True)
     pdf(os.path.join('..', '20180110 Test scenario generation presentation'),
