@@ -1,9 +1,46 @@
 \section{Ontology}
 \label{sec:ontology}
 
-Given the scenario definition of \cref{def:scenario}, which is suitable for our context, an ontology can be defined that takes this definition of the notion of scenario into account. The first step towards this ontology is the definition of a scenario class, see \cref{sec:scenario classes}. The relation between scenarios and scenario classes is defined using so-called tags. This is further detailed in \cref{sec:tags}. \Cref{sec:formal scenario} describes the formalization of a scenario according to \cref{def:scenario}. \Cref{sec:formal activity} describes the formalization of an activity, which can be regarded as one of the building blocks of a scenario.
+\cbstart
+We will first explain why we want to present an ontology for describing scenarios and scenario classes. Next, we will present the domain model that represents the ontology in \cref{sec:domain model}.
 
-\input{sections/scenario_classes}
-\input{sections/tags}
-\input{sections/formal_scenario}
-\input{sections/activity}
+\subsection{Why an ontology?}
+\label{sec:why ontology}
+According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization'', where a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some purpose'' \cite{gruber1993ontology}. Ontologies are widely applied in all kinds of research areas, e.g., biology \cite{gkoutos2004mouse}, security-related research \cite{kim2005security}, socio-technical systems \cite{vanDamPhDThesis2009}, and computing \cite{chen2004soupa,chen2003ontology}. Furthermore, ontologies are defined for various applications, e.g., for the specification of international entrepreneurship research domains \cite{jones2011international}, for the profiling of users \cite{golemati2007creating}, for the formalization of human activities \cite{lee2017location}, and for product life cycle management \cite{matsokis2010plm}.
+
+In this section, we introduce an ontology for modeling scenarios and scenario classes while considering the definition of a scenario in \cref{sec:scenario} and the explanation of a scenario class in \cref{sec:scenario classes}. An ontology offers the following:
+\begin{itemize}
+	\item An ontology is useful for sharing knowledge between people and software agents \cite{vanDamPhDThesis2009, noy2001ontology}. As mentioned by various authors \cite{stellet2015taxonomy, Helmer2017safety, alvarez2017prospective, zofka2015datadrivetrafficscenarios, aparicio2013pre, lesemann2011test, putz2017pegasus, geyer2014, ulbrich2015}, using scenarios in the context of the development or assessment of AVs requires a clear definition of a scenario, so this is what the ontology offers. Furthermore, the ontology can be used for communication between different software agents, such as different simulation tools.
+	\item An ontology can be directly translated to a class structure for object-oriented software implementation \cite{vanDamPhDThesis2009}. We implemented the presented ontology using the object-oriented programming language Python.
+	\item Assumptions are made explicit \cite{noy2001ontology}. This not only helps with preventing any ambiguity when communicating about scenarios, it also helps with understanding the underlying code when the assumptions are explicit.
+	\item An ontology can be used as a ``conceptual schemata in database systems'' \cite{gruber1993ontology}. In our case, the ontology is used for defining the database structure that is used to store the scenarios and scenario classes (and their attributes, but we will cover that later in this section).
+\end{itemize}
+
+There are several languages dedicated to the implementation of an ontology. Two major technologies are the Web Ontology Language (OWL) and the Unified Modeling Language (UML). We use UML for implementing the ontology, because UML focuses on describing implementation related issues, which is useful considering our Python implementation. For a detailed comparison between OWL and URL, see \cite{kiko2005detailed}.
+
+\subsection{Domain model}
+\label{sec:domain model}
+
+The classes of the domain model that are used to define a scenario and a scenario class are shown in \cref{fig:ontology classes}. The blue blocks represents the classes that are used to qualitatively describe a scenario whereas the orange blocks represents the classes that are used to quantitatively describe a scenario. 
+
+There are three different arrows used in \cref{fig:ontology classes}. The arrow ``Method'' defines a method for the class it originates from with as input the class it points to. The two methods shown in this figure are the ``falls into'' methods that are described in \cref{sec:fall into method}. Most arrows represent an aggregation, which is best described by the verb ``to have'', i.e., an aggregation arrow from class A to class B means that an object of class A ``has'' zero, one, or multiple objects of class B. The number of objects of class B that A can ``have'' is denoted shown at the starting point of the aggregation arrow and this is either one (1) or any number ($\mathbb{N}$), i.e., 0, 1, 2, etc. The third arrow denotes a superclass relation, i.e., the class from which this arrow originates inherits all properties from the class the arrow is pointing to. More specifically, the classes of triggered and detected activities are subclasses of the class ``Activity''.
+
+\cbend
+\begin{figure}
+	\centering
+	\input{figures/ontology_classes.tikz}
+	\caption{Schematic overview of the some classes of the ontology.}
+	\label{fig:ontology classes}
+\end{figure}
+\cbstart
+
+
+\color{red}
+TODO: 
+\begin{itemize}
+	\item Explain difference between qualitative descriptions (blue) and quantitative descriptions (orange).
+	\item Briefly explain the different classes.
+\end{itemize}
+\color{black}
+
+\cbend

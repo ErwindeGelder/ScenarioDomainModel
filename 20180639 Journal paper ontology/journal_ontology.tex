@@ -22,6 +22,7 @@
 \let\endproof\relax
 \usepackage{amsmath} % assumes amsmath package installed
 \usepackage{amsthm}  % For special theorem style
+\usepackage{amsfonts}
 %\usepackage{amssymb}  % assumes amsmath package installed
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
@@ -86,6 +87,8 @@
 \newlength\figureheight
 \newlength\venncircle
 
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
 \definecolor{TNOlightgray}{RGB}{222,222,231}
 \tikzstyle{tag}=[text height=.8em, text depth=.1em, font=\small\sffamily, rounded corners=0.2em, fill=TNOlightgray, node distance=9em, text width=7em, align=center]
 \tikzstyle{tag wide}=[tag, text width=12em]
@@ -128,8 +131,13 @@
 \ExplSyntaxOff
 
 %\usepackage{changebar}
-\newcommand{\cbstart}{\color{red}}
+\newcommand{\cbstart}{\color{blue}}
 \newcommand{\cbend}{\color{black}}
+
+\usepackage{setspace}
+\doublespacing
+% or:
+%\onehalfspacing
 
 \begin{document}
 
@@ -146,9 +154,9 @@
 \input{sections/introduction}
 \input{sections/definition_scenario}
 \input{sections/scenario_classes}
+\input{sections/ontology}
 
-%\input{sections/ontology}
-%\input{sections/example}
+\input{sections/example}
 %\input{sections/discussion}
 
 \input{sections/conclusion}

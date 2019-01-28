@@ -1,5 +1,6 @@
 \section{Scenario classes}
 \label{sec:scenario classes}
+
 % Introduce term scenario class (i.e. qualitative description of scenario)
 In this section, the notion of scenario class is introduced. As proposed above, a scenario in the context of the performance assessment of an AV needs to be quantitative. However, a qualitative description of each scenario exists. 
 A scenario class refers to the qualitative description of a scenario.
@@ -68,7 +69,7 @@ It is proposed to provide scenarios and scenario classes with applicable tags th
 
 There is a balance between having generic scenario classes - and thus a high variety among the scenarios belonging to the scenario class - and having specific scenario classes without much variety among the scenarios in the scenario class. For some systems, one is interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags are structured in hierarchical trees \cite{molloy2017dynamic, badger2012dynamic}. The different layers of the trees can be regarded as different abstraction levels \cite{Bonnin2014}. 
 
-\Cref{fig:tree vehicle activities} shows two examples of trees of tags. These tags describe some of the possible activities of a vehicle. Only the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags. The tags may also refer to the objective of the ego vehicle in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. 
+In \cite{degelder2019scenarioclasses}, several trees of tags are defined and \cref{fig:tree vehicle activities} shows two examples of trees of tags taken from \cite{degelder2019scenarioclasses}. These tags describe possible activities of a vehicle, i.e., the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags. The tags may refer to the objective of the ego vehicle in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. 
 
 \cbend
 \begin{figure*}
@@ -85,7 +86,7 @@ There is a balance between having generic scenario classes - and thus a high var
 		\caption{Longitudinal activities of a vehicle.}
 		\label{fig:tree vehicle long act}
 	\end{subfigure}
-	\caption{Tags for lateral and longitudinal activities of a vehicle. The lateral activity is relative to the lane in which the corresponding vehicle is driving. For example, if the vehicle is driving on a curved road, its lateral activity is ``Going straight''.}
+	\caption{Tags for lateral and longitudinal activities of a vehicle. The lateral activity is relative to the lane in which the corresponding vehicle is driving. For example, if the vehicle is driving on a curved road, its lateral activity is ``Going straight''. Figure is taken from \cite{degelder2019scenarioclasses}.}
 	\label{fig:tree vehicle activities}
 \end{figure*}
 \cbstart
