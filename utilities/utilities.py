@@ -7,6 +7,7 @@ import os
 import glob
 import fileinput
 from typing import List, Tuple
+from shutil import copyfile
 
 
 def print_line():
