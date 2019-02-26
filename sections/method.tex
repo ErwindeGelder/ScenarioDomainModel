@@ -18,10 +18,26 @@ In this section we discuss the following:
 \end{enumerate}
 
 Note: We use the formula of independent variable in the case study. 
+ 
+In the Hazard Analysis and Risk Assessment required by ISO 26262 standard, the estimation of Automotive Safety Integrity Level (ASIL) is calculated based on a single specific hazardous event/action (I need to add a concrete description of the event in this context). Although the operational situation in which this single event occurs as well as the operating mode are taken into account in the analysis, still the proceeding and successive events were not taken into account.       
+In this paper we propose a new methods to estimate the portability of exposure of a risky situation/harm in a certain scenario based on real-life driving data. This method consider/take into account a chain of relevant activities and events that are performed by different road users, within a specific scenario, and their dependency on each other. This very much in compliance with the analysis required by SOTIF (needs more explanation). 
 
+As explained in the previous section [ref-section], a scenario consist of:
+\begin{itemize}
+\item $A$: activities performed by ego vehicle and other road user(dynamic environment)
+\item $C$: conditions of the scenario including Operational Design Domain (ODD) of the scenario, e.g.infrastructure, weather,lighting and geographical locations(static environment).
+\end{itemize}
+Let $E$ be the final event that might result in a risky situation/harm. The probability $P$ of the exposure of a harm/risk in a certain scenario is then given by 
+\begin{equation}
+P(E,A_1,A_2,...A_n,C_1,C_2,..,C_m)=P(E,A,C) \label{eq:secM1}
+\end{equation}
+where $n$ is the number of performed activities within the scenario and $m$ is the number of conditions in the same scenario.
+Since the harm event $E$ depends on the performed actives and scenario conditions, to compute \ref{eq3} requires computing $P(A,C)$ first.
+\begin{equation}
+P(A,C)=P(A|C)\dot P(C) \label{eq:secM2}
+\end{equation}
 
-
-
+To compute the severity of a harm in similar manner different .....
 
 \begin{enumerate}
 \item{Compare the risk of the platooning driving behavior ($R_p$)to the risk of human drivers ($R_h$) with respect to rear-end-collisions only. If $$R_p < \frac{1}{10} R_h, $$ the risk is assumed to be acceptable.}
