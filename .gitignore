@@ -7,3 +7,4 @@
 *.pdf
 *.run.xml
 *.synctex.gz
+!figures/ASIL.pdf
