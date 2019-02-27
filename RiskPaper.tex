@@ -21,6 +21,8 @@
 \usepackage{braket}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{breqn}
 \usepackage[utf8]{inputenc}
 \usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
@@ -38,8 +40,16 @@
 \graphicspath{ {figures/} }
 \usepackage[capitalize]{cleveref}
 \usepackage{color}
+\usepackage{units}
 %\usepackage[English]{babel}             %% language support
 \newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+
+
+% Table stuff
+\usepackage{booktabs}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
 \title{\LARGE \bf
 A Method for Scenario Risk Quantification for Automated Driving Systems

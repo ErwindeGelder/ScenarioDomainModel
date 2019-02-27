@@ -1,21 +1,83 @@
 \section{Case Study} % Erwin & Hala
 \label{sec:example}
 
-\begin{enumerate}
-	\item use case description
-	\item specific assumptions for this case
-	\item description of the models used for calculating the probabilities 
-	\item 
-\end{enumerate}
+In this section, we present a case study to illustrate the method of quantifying the risk for a type of scenario, i.e., a scenario class \cite{elrofai2018scenario}. We will first explain the scenario class and the use case. The actual system for which the risk is computed is presented in \cref{sec:system}. Next, we will describe the conditions and activities in \cref{sec:conditions,sec:activities}, respectively. Finally, we will present the results in \cref{sec:results}.
 
+\subsection{The scenario class and its use case}
+\label{sec:scenario class}
 
-This section details the models applied to derive the probabilities
-\subsection{COLLISION SET}
-This section aims to identify the set $\mathcal{S}$. I'm crossing my fingers that this will be a convex set ;)
-As an example we have Fig.~\ref{fig:example}, which identifies possible collisions for $u_L<-5 m/s^2$ AND ...
-(ELLEN)
-\begin{figure}
-  \centering
-  \includegraphics[width=1\columnwidth]{example.png}
-  \caption{Example }\label{fig:example}
-\end{figure}
+We want to quantify the risk for scenarios that are linguistically described as follows: while the ego vehicle drives at a moderate to high speed while staying in its lane, another vehicle cuts into the lane of the ego vehicle, such that this vehicle becomes the ego vehicle's lead vehicle. Furthermore, the ego vehicle needs to brake to prevent a collision.
+
+For the quantification of the risk, 60 hours of data (see also \cite{deGelder2017assessment}) are collected by driving a specific route in and between Eindhoven and Helmond, The Netherlands, with twenty different drivers, each driving the route twice. Therefore, it is assumed that the use case of the automation system is simply driving this route. We will use the data for the estimation of the risk. Hence, we will make use of the following assumption:
+\begin{assumption}
+	The recorded naturalistic driving data is representative for what a vehicle with an automation system might encounter along the same route.
+\end{assumption}
+
+\subsection{System-under-test}
+\label{sec:system}
+
+To reduce efforts for the assessment, often simulations are employed. However, even simulations can consume considerable time, as these simulations might run real-time \cite{shah2018airsim} or slower when a higher level of detail is used \cite{zofka2016testing}. For our method, we will simplify the simulations, such that the total required time on a common computer is in the order of minutes. Since we are interested in approximate results, a high level of detail is not required. 
+
+To simplify the system-under-test, it is assumed that the system's desired acceleration is similar to the adaptive cruise control defined in \cite{deGelder2017assessment}, i.e.,
+\begin{equation}
+	\label{eq:desired acceleration} 
+	u(t) = k_{\mathrm{d}}(v(t))(d(t) - \tau_{\mathrm{h}} v(t) - s_0) + k_{\mathrm{v}}\left(\dot{d}(t) - ha(t) \right),
+\end{equation}
+with
+\begin{equation}
+	\label{eq:gain}
+	k_{\mathrm{d}}(v(t)) = k_{\mathrm{d1}} + \left( k_{\mathrm{d2}} - k_{\mathrm{d1}} \right) \exp \left\{ -\frac{v(t)^2}{2\sigma_{\mathrm{d}}} \right\}.
+\end{equation}
+Here, $v$ is the speed of the ego vehicle, $d$ denotes the clearance between the ego vehicle and its predecessor, i.e., the vehicle that performs the cut-in. The relative speed is denoted by $\dot{d}$ and $a$ refers to the acceleration of the ego vehicle. The ego vehicle is modeled using a first order model with a time delay, i.e.,
+\begin{equation}
+	\label{eq:vehicle model}
+	\tau \dot{a}(t) + a(t) = u(t - \theta).
+\end{equation}
+Furthermore, the deceleration is limited at \unit[-6]{ms^{-2}}. A description of the constants of \cref{eq:desired acceleration,eq:gain,eq:vehicle model} are listed in \cref{tab:constants}.
+
+\begin{table}
+	\centering
+	\caption{The constants used for the simple automation system of \cref{eq:desired acceleration,eq:gain,eq:vehicle model}.}
+	\label{tab:constants}
+	\begin{tabular}{clc}
+		\toprule
+		Parameter & Description & Value \\ \otoprule
+		$\tau_{\mathrm{h}}$ & Desired time headway & \unit[1.0]{s} and \unit[2.0]{s} \\
+		$s_0$ & Safety distance & \unit[1.5]{m} \\
+		$k_{\mathrm{d1}}$ & Distance gain at high speed & $\unit[0.7]{s^{-2}}$ \\
+		$k_{\mathrm{d1}}$ & Distance gain at low speed & $\unit[2.0]{s^{-2}}$ \\
+		$\sigma_{\mathrm{d}}$ & Shaping coefficient of distance gain & $\unit[5]{ms^{-1}}$ \\
+		$k_{\mathrm{v}}$ & Speed difference gain & $\unit[0.35]{s^{-1}}$ \\
+		$\tau$ & Time constant of vehicle model & \unit[0.1]{s} \\
+		$\theta$ & Delay of the vehicle response & \unit[0.2]{s} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\subsection{Conditions}
+\label{sec:conditions}
+
+All scenarios are subject to the following conditions:
+\begin{itemize}
+	\item $C_1$: The speed of the ego vehicle is within the range of \unit[60]{km/h} and \unit[130]{km/h}.
+	\item $C_2$: There are no restrictions on the weather conditions.
+	\item $C_3$: There are no restrictions on the lighting conditions.
+\end{itemize}
+
+Obviously, because there are no restrictions to the weather and lighting conditions, we have $P(C_2,C_3)=1$. For the first condition, we can use the data to estimate the likelihood. The data, however, has been recorded during sunny weather at daylight. Therefore, we need to following assumption.
+
+\begin{assumption} \label{asm:conditions}
+	Let $C_2'$ and $C_3'$ denote the conditions of having sunny weather and daylight, respectively. Then we have $P(C_1|C_2,C_3)=P(C_1|C_2',C_3')$.
+\end{assumption}
+
+From the data, it appeared that $P(C_1|C_2',C_3')=0.20$. Using \cref{asm:conditions}, we have
+\begin{dmath}
+	P(C) = P(C_1,C_2,C_3)=P(C_1|C_2',C_3')\cdot P(C_2,C_3)=0.20.
+\end{dmath}
+
+\subsection{Activities}
+\label{sec:activities}
+
+\subsection{Results}
+\label{sec:results}
+
