@@ -15,6 +15,8 @@ For the quantification of the risk, 60 hours of data (see also \cite{deGelder201
 	The recorded naturalistic driving data is representative for what a vehicle with an automation system might encounter along the same route.
 \end{assumption}
 
+
+
 \subsection{System-under-test}
 \label{sec:system}
 
@@ -44,7 +46,7 @@ Furthermore, the deceleration is limited at $\unit[-6]{ms^{-2}}$. A description 
 	\begin{tabular}{clc}
 		\toprule
 		Parameter & Description & Value \\ \otoprule
-		$\tau_{\mathrm{h}}$ & Desired headway time & \unit[1.0]{s} and \unit[2.0]{s} \\
+		$\tau_{\mathrm{h}}$ & Desired headway time & \unit[2.0]{s} \\
 		$s_0$ & Safety distance & \unit[1.5]{m} \\
 		$k_{\mathrm{d1}}$ & Distance gain at high speed & $\unit[0.7]{s^{-2}}$ \\
 		$k_{\mathrm{d1}}$ & Distance gain at low speed & $\unit[2.0]{s^{-2}}$ \\
@@ -63,7 +65,7 @@ Note that there is no intervention of a human:
 
 
 
-\subsection{Conditions}
+\subsection{Likelihood of the conditions}
 \label{sec:example conditions}
 
 All scenarios are subject to the following conditions:
@@ -86,8 +88,8 @@ From the data, it appeared that $P(C_1|C_2',C_3')=0.20$. Using \cref{asm:conditi
 
 
 
-\subsection{Activities}
-\label{sec:example activities}
+\subsection{Calculate exposure}
+\label{sec:example exposure}
 
 The cut-in scenario consists of the following activities:
 \begin{itemize}
@@ -105,7 +107,10 @@ For simplicity, we assume the following:
 	The automation system always detects the cut-in and activates the brakes after detecting the cut-in, such that $P(A_4,A_5|A_1,A_2,A_3,C) = 1$.
 \end{assumption}
 
-Using this assumption, we can compute $\lambda_{A|C}$ by detecting the number of occurrences of the activities $A_1$, $A_2$, and $A_3$ under the conditions $C$. Based on the dataset described in \cref{sec:scenario class}, we have $\lambda_{A|C}=\unit[9.9]{h^{-1}}$, i.e., on average there are $9.9$ cut-ins with the target vehicle driving slower than the ego vehicle, such that the headway time after the cut-in is less than two seconds in each hour that the ego vehicle is driving in a speed range of \unit[60]{km/h} and \unit[130]{km/h}.
+Using this assumption, we can compute $\lambda_{A|C}$ by detecting the number of occurrences of the activities $A_1$, $A_2$, and $A_3$ under the conditions $C$. Based on the dataset described in \cref{sec:scenario class}, we have $\lambda_{A|C}=\unit[9.9]{h^{-1}}$, i.e., on average there are $9.9$ cut-ins with the target vehicle driving slower than the ego vehicle, such that the headway time after the cut-in is less than three seconds in each hour that the ego vehicle is driving in a speed range of \unit[60]{km/h} and \unit[130]{km/h}. From this, it simply follows that
+\begin{equation}
+	\lambda_{A,C} = \lambda_{A|C} \cdot P(C) = 2.0.
+\end{equation}
 
 
 
@@ -127,10 +132,11 @@ Both assumptions can be justified using the data. In case of the ego vehicle, th
 \end{enumerate}
 
 
+
 \subsection{Estimation of the pdf}
 \label{sec:example pdf}
 
-A histogram of the data of the parameters is shown in \cref{fig:histogram}. The probability density function is estimated using KDE, as presented in \cref{sec:pdf}. Before applying KDE, the data is scaled, such that the standard deviation equals one for each parameter. We use leave-one-out cross validation to compute the bandwidth $h$ (see also \cite{duin1976parzen}) because this minimizes the Kullback-Leibler divergence between the real underlying pdf and the estimated pdf \cite{turlach1993bandwidthselection,zambom2013review}. The resulting bandwidth equals $h=0.198$. The marginal probability distributions coming from the resulting joint distribution, i.e. the KDE, are shown in \cref{fig:histogram} by the black lines.
+A histogram of the data of the parameters is shown in \cref{fig:histogram}. The probability density function is estimated using the KDE of \cref{eq:kde} with the Gaussian kernel of \cref{eq:gaussian kernel}, as presented in \cref{sec:pdf}. Before applying KDE, the data is scaled, such that the standard deviation equals one for each parameter. We use leave-one-out cross validation to compute the bandwidth $h$ (see also \cite{duin1976parzen}) because this minimizes the Kullback-Leibler divergence between the real underlying pdf and the estimated pdf \cite{turlach1993bandwidthselection,zambom2013review}. The resulting bandwidth equals $h=0.198$. The marginal probability distributions coming from the resulting joint distribution, i.e. the KDE, are shown in \cref{fig:histogram} by the black lines.
 
 \setlength\figurewidth{0.95\linewidth}
 \setlength\figureheight{0.5\linewidth}
@@ -143,33 +149,32 @@ A histogram of the data of the parameters is shown in \cref{fig:histogram}. The 
 
 
 
-\subsection{Simulations}
+\subsection{Calculating severity}
 \label{sec:example simulations}
 
-For the simulation, we used the forward Euler method with a step size of \unit[0.01]{s}, similar as the sample time of the controller. On a regular computer, approximately 1000 simulations are performed in a second. We performed a million simulations with $\tau_{\mathrm{h}}=\unit[1.0]{s}$ and a million simulations with $\tau_{\mathrm{h}}=\unit[2.0]{s}$. Let $R_1$ denote the result of having a collision with $\tau_{\mathrm{h}}=\unit[1.0]{s}$. Similarly, let $R_2$ denote the result of having a collision with $\tau_{\mathrm{h}}=\unit[2.0]{s}$. We $\tau_{\mathrm{h}}=\unit[1.0]{s}$, 7423 simulations ended with a collision and with $\tau_{\mathrm{h}}=\unit[2.0]{s}$, 28 simulations ended with a collision, thus we have:
-\begin{align}
-	P(R_1|A,C) &= 7.4 \cdot 10^{-3}, \\
-	P(R_2|A,C) &= 2.8 \cdot 10^{-5}.
-\end{align}
-
-\subsection{Likelihood of result}
-\label{sec:example result}
-
-Let $\lambda_1$ and $\lambda_2$ denote the average number of collisions with a scenario as described in \cref{sec:scenario class} along the specified route for a vehicle with an automation system with a desired headway time of $\tau_{\mathrm{h}}=\unit[1.0]{s}$ and $\tau_{\mathrm{h}}=\unit[2.0]{s}$, respectively. Using \cref{eq:final lambda}, we have:
-\begin{align}
-	\lambda_1 &= \lambda_{A|C} \cdot P(R_1|A,C) \cdot P(C) = \unit[1.5 \cdot 10^{-2}]{h^{-1}}. \\	\lambda_1 &= \lambda_{A|C} \cdot P(R_2|A,C) \cdot P(C) = \unit[5.5 \cdot 10^{-5}]{h^{-1}}.
-\end{align}
-
-\subsection{Likelihood of no collisions}
-\label{sec:example no collisions}
-
-Using \cref{eq:probability no collision}, the probability of having no collision in a cut-in scenario as defined in \cref{sec:scenario class} with $\tau_{\mathrm{h}}=\unit[1.0]{s}$ during an hour of driving is
+Let $R$ denote the result of having a collision. Given a certain parameter vector $\theta$, we have $P(R|\theta,A,C)=1$ if the outcome of the simulation is a collision and $P(R|\theta,A,C)=0$ otherwise. For the simulation, we used the forward Euler method with a step size of \unit[0.01]{s}, similar as the sample time of the controller. On a regular computer, approximately 2000 simulations are performed in a second. We performed a million simulations, i.e., $N=10^6$. In total, 28 simulations ended with a collision, thus, according to \cref{eq:monte carlo}, we have:
 \begin{equation}
-	P(\text{no }R_1,A,C\text{ during an hour}) = 0.985.
-\end{equation}
-With $\tau_{\mathrm{h}}=\unit[2.0]{s}$, this probability is 
-\begin{equation}
-	P(\text{no }R_2,A,C\text{ during an hour}) = 0.999945.
+	P(R|A,C) = 2.8 \cdot 10^{-5}.
 \end{equation}
 
-By solving the Poisson distribution of \cref{eq:poisson} for $\lambda$, we can also conclude that with \unit[95]{\%} certainty, there will be no collision in a cut-in scenario as defined in \cref{sec:scenario class} when driving \unit[3.5]{h} with $\tau_{\mathrm{h}}=\unit[1.0]{s}$ or \unit[925]{h} with $\tau_{\mathrm{h}}=\unit[2.0]{s}$.
+
+
+\subsection{Calculating the risk}
+\label{sec:example risk}
+
+Let $\lambda$ denote the average number of collisions with a scenario as described in \cref{sec:scenario class} along the specified route for a vehicle with an automation system as described in \cref{sec:system}. Using \cref{eq:final lambda}, we have:
+\begin{equation}
+	\lambda = \lambda_{A|C} \cdot P(R|A,C) \cdot P(C) = \unit[5.5 \cdot 10^{-5}]{h^{-1}}.
+\end{equation}
+
+
+
+\subsection{Likelihood of no harm}
+\label{sec:example no harm}
+
+Using \cref{eq:no harm}, the probability of having no collision in a cut-in scenario as described in \cref{sec:scenario class} during an hour of driving is
+\begin{equation}
+	P(\text{no }R,A,C\text{ during an hour}) = 0.999945.
+\end{equation}
+
+By solving the Poisson distribution of \cref{eq:poisson risk} for $\lambda$ with $k=0$, we can also conclude that with \unit[95]{\%} certainty, there will be no collision in a cut-in scenario as described in \cref{sec:scenario class} when driving \unit[925]{h}.
