@@ -47,7 +47,7 @@
 
 % Tikz stuff
 \usepackage{pgfplots}                           %% support for TikZ figures
-\pgfplotsset{compat=1.16}
+%\pgfplotsset{compat=1.16}
 \usepgfplotslibrary{groupplots}
 \newlength{\figurewidth}
 \newlength{\figureheight}
@@ -94,62 +94,22 @@ A Method for Scenario Risk Quantification for Automated Driving Systems
 % Tuesday Afternoon Track C: Crash Avoidance: Automated Driving Systems (ADS) Levels 3, 4 and 5: Product Evolution; Evaluation; and Real-World Deployment Challenges
 	
 % Introduction
-New developments in the automotive industry towards higher levels of automation are introducing new safety concerns for vehicles. Test procedure and performance measures need to be adapted for evaluation of vehicles with Automated Driving Systems (ADS). The safety and reliability of the AD vehicles must be validated in principle for all possible traffic situations/scenarios that ADS may encounter on the road, before these systems can be taken into production.
+%New developments in the automotive industry towards higher levels of automation are introducing new safety concerns for vehicles. Test procedure and performance measures need to be adapted for evaluation of vehicles with an Automated Driving (AD) system. The safety and reliability of the AD vehicles must be validated in principle for all possible traffic situations/scenarios that ADS may encounter on the road, before these systems can be taken into production.
 
-%test-driving with autonomous car prototypes on regular roads. This is a very expensive and time consuming alternative. Millions of driving kilometers are needed to get sufficient ‘driving events’ that trigger the ADS functionality under test
-%The main challenge is to over-come the dilemma of testing the entire complexity of real-world traffic without the need of test-driving millions of kilometers.
-%Test procedures and assessment of automotive technology to ensure implementation of new safety and comfort AD systems and functionalities has become state of the art in the last decades.
-Scenario-based safety validation for automated driving is one of the proposed approach that is broadly supported by the automotive community. This is reflected in a draft standard of NHTSA and the ISO 26262 working group on SOTIF. Related projects in Germany (Pegasus [ref]) and EU (ENABLE-S3 [ref]) strongly support this approach.
-%With the increasing level of automation, the vehicle needs to operate safely in a large number of different scenarios. 
-%To assure the operational safety, the automated driving systems need to be assessed for this large number of scenarios. To prioritize the scenarios, risk assessment methods are required to estimate the associated risk for each scenario.
-Main challenge for this approach is prioritization and selection of scenarios for testing and validation, hence risk assessment methods are required to estimate the associated risk for each scenario.
-
-The ISO 26262:2018 [1] captures the State of the art in automotive functional safety. It defines the safety lifecycle and the related safety activities such as Hazard Identification and Risk Assessment.
-
- It defines risk as:
-\begin{definition}
-	``combination of the probability of occurrence of harm and the severity of that harm.'' 
-\end{definition}
-
-This standard gives guidelines to assess risk based on vehicle level hazardous events. A hazardous event is the combination of a vehicle level hazard with operational situation or scenario. It requires analyzing each hazardous event risk individually based on three parameters of Severity, Probability of exposure, and Comparability. The combination of these parameters contributes to constructing the Automotive Safety Integrity Level (ASIL). In this framework, each parameter is quantified in three or four levels that construct the ASIL ranking A, B, C, D, and QM. Where ASIL A represents the least critical level and in ascending order, ASIL D the most critical level. Quality Management (QM) means that the identified hazard is not critical enough for the safety processes, and the quality management system of the manufacturer should suffice for reducing the risk. We depict the ASIL ranking graph in \cref{Fig:ASILGraph}. 
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\linewidth]{./figures/ASIL}
-	\caption{ASIL Risk Assessment Graph.}
-	\label{Fig:ASILGraph}
-\end{figure}
-
-The ASIL methodology for risk assessment relies on the experts’ judgments of the three risk parameters. The ISO 26262 provides some general guidelines for assessing these parameters. However, the assessment is for the most part subjective and dependent on the experts who carry it out. 
-
-%\color{red}
-%Problem detention?
-%The state of the art risk assessment methods in the automotive domain, such as the Hazard Analysis and Risk Assessment (HARA) of ISO~26262:2018, have a qualitative nature and rely on expert's judgment for ranking the severity and probability of risks(ref).
-%
-%Moreover, these methods are only capable of evaluating the risk of a single (hazardous) event within the context of a generic operational situation.}
-%\color{black}
-
-The objective of this paper is to introduce a method for analysis and quantification of the risk of a driving scenario taking into account the entire operational situations and their interrelation. 
-
-% Method
-
-For the proposed method, we assume that a scenario consists of events, activities (performed by different actors), and environmental conditions.
-Next, the risk of a driving scenario is considered as the product of severity of the outcome of a scenario and probability of the exposure of that scenario.
-We introduce a systematic method for calculating this probability, 
-	where we assume a causal relation between the activities and events that constitute a scenario. 
-By making educated assumptions on the dependencies among the different activities, events, and environmental conditions, 
-	we simplify the calculation of the probability of the exposure of a scenario. 
-Finally, Monte Carlo simulations are employed for computing the risk of a scenario.
-
-
+Recent innovations such as automated driving and smart mobility have elevated the safety-criticality of automotive systems due to the impact of these technologies in the traffic behavior and safety. New safety validation and assessment methodologies are required to provide the level of assurance that matches the societal impact of these systems.
+The objective of this paper is to introduce a novel method for assessment and quantification of the risk of a driving scenario taking into account the operational design domain. 
+For our proposed method, we assume that a scenario consists of activities (performed by different actors) and environmental conditions that leads to a potentially hazardous consequence.
+The risk of a driving scenario is the product of the probability of the exposure of a scenario and the severity of the hazardous consequence of that scenario.
+We introduce a systematic method for calculating the probability of exposure, 
+	where we assume a causal relation between the activities that constitute a scenario. 
+By making educated assumptions on the dependencies among the different activities and environmental conditions, 
+	we simplify the calculation of the probability of the exposure. 
+For estimating the severity, we employ Monte Carlo simulations.
 % Results
-To illustrate the use of the proposed method, 
-	we perform a case study by applying our proposed method for risk analysis of a cut-in scenario.	
-We use naturalistic driving data acquired from field studies on the Dutch highways to determine the likelihoods of the events, activities, and environmental conditions that constitute the cut-in scenarios. Monte Carlo simulations are employed for determining the outcome of the cut-in scenarios, e.g., a collision or a near miss, given a state-of-the-art highway pilot system. 
-
+We illustrate the use of our proposed method by applying it to an example of a collision avoidance system in a cut-in scenario.	
+We use naturalistic driving data acquired from field studies on the Dutch highways to determine the risk. 
 % Discussion and limitations
-The presented case study illustrates the potential of the proposed risk estimation method. The main limitation of the presented case study is the limited amount of data used. Furthermore, we applied the proposed method for only one type of driving scenario, while the full potential can be better demonstrated by applying the method to a wider range of scenarios.
-
+The presented example illustrates the potential of our proposed risk estimation method. 
 % Conclusion
 Using our proposed method, we can compare the safety criticality of various scenarios in a quantitative manner, which can be used as a safety metric for evaluating automated driving systems. 
 This can lead to stronger justification for design decisions and test coverage for developing automated vehicle functionalities. 
