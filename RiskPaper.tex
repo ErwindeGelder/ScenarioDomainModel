@@ -94,16 +94,45 @@ A Method for Scenario Risk Quantification for Automated Driving Systems
 % Tuesday Afternoon Track C: Crash Avoidance: Automated Driving Systems (ADS) Levels 3, 4 and 5: Product Evolution; Evaluation; and Real-World Deployment Challenges
 	
 % Introduction
-New developments in the automotive industry towards higher levels of automation are introducing new safety concerns for vehicles. 
-Test procedures and performance measures need to be adapted for evaluation of vehicles with automated driving systems. 
-With the increasing level of automation, the vehicle needs to operate safely in a large number of different scenarios. To assure the operational safety, the automated driving systems need to be assessed for this large number of scenarios. To prioritize the scenarios, risk assessment methods are required to estimate the associated risk for each scenario.
-The state of the art risk assessment methods in the automotive domain, 
-	such as the Hazard Analysis and Risk Assessment (HARA) of ISO~26262:2018, 
-	have a qualitative nature and rely on expert's judgment for ranking the severity and probability of risks.
-Moreover, these methods are only capable of evaluating the risk of a single (hazardous) event within the context of a generic operational situation.
-The objective of this paper is to introduce a method for analysis and quantification of the risk of a driving scenario.
+New developments in the automotive industry towards higher levels of automation are introducing new safety concerns for vehicles. Test procedure and performance measures need to be adapted for evaluation of vehicles with Automated Driving Systems (ADS). The safety and reliability of the AD vehicles must be validated in principle for all possible traffic situations/scenarios that ADS may encounter on the road, before these systems can be taken into production.
+
+%test-driving with autonomous car prototypes on regular roads. This is a very expensive and time consuming alternative. Millions of driving kilometers are needed to get sufficient ‘driving events’ that trigger the ADS functionality under test
+%The main challenge is to over-come the dilemma of testing the entire complexity of real-world traffic without the need of test-driving millions of kilometers.
+%Test procedures and assessment of automotive technology to ensure implementation of new safety and comfort AD systems and functionalities has become state of the art in the last decades.
+Scenario-based safety validation for automated driving is one of the proposed approach that is broadly supported by the automotive community. This is reflected in a draft standard of NHTSA and the ISO 26262 working group on SOTIF. Related projects in Germany (Pegasus [ref]) and EU (ENABLE-S3 [ref]) strongly support this approach.
+%With the increasing level of automation, the vehicle needs to operate safely in a large number of different scenarios. 
+%To assure the operational safety, the automated driving systems need to be assessed for this large number of scenarios. To prioritize the scenarios, risk assessment methods are required to estimate the associated risk for each scenario.
+Main challenge for this approach is prioritization and selection of scenarios for testing and validation, hence risk assessment methods are required to estimate the associated risk for each scenario.
+
+The ISO 26262:2018 [1] captures the State of the art in automotive functional safety. It defines the safety lifecycle and the related safety activities such as Hazard Identification and Risk Assessment.
+
+ It defines risk as:
+\begin{definition}
+	``combination of the probability of occurrence of harm and the severity of that harm.'' 
+\end{definition}
+
+This standard gives guidelines to assess risk based on vehicle level hazardous events. A hazardous event is the combination of a vehicle level hazard with operational situation or scenario. It requires analyzing each hazardous event risk individually based on three parameters of Severity, Probability of exposure, and Comparability. The combination of these parameters contributes to constructing the Automotive Safety Integrity Level (ASIL). In this framework, each parameter is quantified in three or four levels that construct the ASIL ranking A, B, C, D, and QM. Where ASIL A represents the least critical level and in ascending order, ASIL D the most critical level. Quality Management (QM) means that the identified hazard is not critical enough for the safety processes, and the quality management system of the manufacturer should suffice for reducing the risk. We depict the ASIL ranking graph in \cref{Fig:ASILGraph}. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{./figures/ASIL}
+	\caption{ASIL Risk Assessment Graph.}
+	\label{Fig:ASILGraph}
+\end{figure}
+
+The ASIL methodology for risk assessment relies on the experts’ judgments of the three risk parameters. The ISO 26262 provides some general guidelines for assessing these parameters. However, the assessment is for the most part subjective and dependent on the experts who carry it out. 
+
+%\color{red}
+%Problem detention?
+%The state of the art risk assessment methods in the automotive domain, such as the Hazard Analysis and Risk Assessment (HARA) of ISO~26262:2018, have a qualitative nature and rely on expert's judgment for ranking the severity and probability of risks(ref).
+%
+%Moreover, these methods are only capable of evaluating the risk of a single (hazardous) event within the context of a generic operational situation.}
+%\color{black}
+
+The objective of this paper is to introduce a method for analysis and quantification of the risk of a driving scenario taking into account the entire operational situations and their interrelation. 
 
 % Method
+
 For the proposed method, we assume that a scenario consists of events, activities (performed by different actors), and environmental conditions.
 Next, the risk of a driving scenario is considered as the product of severity of the outcome of a scenario and probability of the exposure of that scenario.
 We introduce a systematic method for calculating this probability, 
