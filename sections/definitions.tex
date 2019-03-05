@@ -1,13 +1,30 @@
 \section{Nomenclature} % Erwin (use the other paper) & Arash
 \label{sec:definitions}
 
-TODO: give more examples
-First, we introduce the following notions:
-\begin{enumerate}
-\item Risk = Severity $\times$ Probability
-\item Severity: a quantitative measure, depending on the impact velocity.
-\item Condition:
-\item Actor: the relevant actors here are the lead vehicle (denoted with L), the following vehicle (F) and the communication unit (V2V)
-\item Activity: the relevant actions here are braking, and failure.
-\item Scenario:
-\end{enumerate}
+In this section we give the definitions of the terms that are used in our proposed methodology. 
+\cref{Tab:Terms} gives the overview of the terminology we use in this paper. 
+%\begin{enumerate}
+%\item Risk = Severity $\times$ Probability
+%\item Severity: a quantitative measure, depending on the impact velocity.
+%\item Condition:
+%\item Actor: the relevant actors here are the lead vehicle (denoted with L), the following vehicle (F) and the communication unit (V2V)
+%\item Activity: the relevant actions here are braking, and failure.
+%\item Scenario:
+%\end{enumerate}
+
+
+
+\begin{table}
+	\centering
+	\caption{The terms and definitions}
+	\begin{tabular}{p{0.1\linewidth} p{0.8\linewidth}} \hline
+		\textbf{Term} & \textbf{Definition} \\ \hline
+		Severity & An estimate of the extent of harm to one or more individuals that can occur in a potentially hazardous event~\cite{ISO26262} \\
+		Exposure & The state of being in an driving scenario \\
+		Risk & The combination of the probability of occurrence of harm and the severity of that harm~\cite{ISO26262} \\ 
+		Condition & The constant parameters describing the environmental aspects of the operational design domain \\
+		Actor & An element of a scenario acting on its own behalf~\cite{} \\ 
+		Scenario & A quantitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment. From the perspective of the ego vehicle, a scenario contains all relevant events \\ \hline
+	\end{tabular}
+	\label{Tab:Terms}
+\end{table}

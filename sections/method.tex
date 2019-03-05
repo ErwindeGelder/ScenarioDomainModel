@@ -6,9 +6,9 @@ Although the operational situation in which this single event occurs as well as 
 In this paper, we propose a new method to estimate the risk of a certain scenario considering the whole chain of activities and conditions that constitute the scenario.
 The estimated risk is based on real-world driving data. To estimate the risk, we will quantify the exposure and the severity.
 
-As explained in \cref{sec:definitions}, a scenario consist of conditions and activities, denoted by $A$ and $C$, respectively. We formulate the exposure as the average number of occurrences of the activities $A$ under the conditions $C$, denoted by $\lambda_{A,C}$. The severity is the likelihood of the potential hazardous consequence $R$ given the activities $A$ and the conditions $C$, denoted by the conditional probability $P(R|A,C)$. The risk is computed as the multiplication of the exposure and the severity. 
+As explained in \cref{sec:definitions}, a scenario consist of a set of conditions and activities, denoted by $A$ and $C$, respectively. We formulate the exposure as the average number of occurrences of the activities $A$ under the conditions $C$, denoted by $\lambda_{A,C}$. The severity is the likelihood of the potential hazardous consequence $R$ given the activities $A$ and the conditions $C$, denoted by the conditional probability $P(R|A,C)$. The risk is computed as the multiplication of the exposure and the severity. 
 
-The proposed method is summarized in \cref{fig:method}. To compute the exposure, we calculate the likelihood of the conditions, denoted by $P(C)$, and the conditional likelihood of the activities, denoted by $P(A|C)$, based on real-world driving data. This is explained in detail in \cref{sec:exposure}. For the estimation of the severity, we consider the variations within the scenario. Therefore, we parametrize the scenario using the parameter vector $\theta$. Based on the real-world driving data, the probability density function of the parameters $P(\theta|A,C)$ is estimated. Next, using simulations, we estimate $P(R|\theta,A,C)$, the likelihood of a potential hazardous consequence $R$ given a parametrized scenario. The details of the estimation of the severity are presented in \cref{sec:severity}. Finally, in \cref{sec:risk}, we describe how the risk is estimated based on the estimated exposure and severity.
+The proposed method is summarized in \cref{fig:method}. To compute the exposure, we calculate the likelihood of the conditions, denoted by $P(C)$, and the conditional likelihood of the activities, denoted by $P(A|C)$, based on real-world driving data. This is explained in detail in \cref{sec:exposure}. For the estimation of the severity, we consider all possible scenarios that are subject to a set of conditions $C$ and consist of the activities $A$. Therefore, we parametrize the scenarios using the parameter vector $\theta$. Based on the real-world driving data, the probability density function of the parameters $P(\theta|A,C)$ is estimated. Next, using simulations, we estimate $P(R|\theta,A,C)$, the likelihood of a potential hazardous consequence $R$ given a parametrized scenario. The details of the estimation of the severity are presented in \cref{sec:severity}. Finally, in \cref{sec:risk}, we describe how the risk is estimated based on the estimated exposure and severity.
 
 \begin{figure}
 	\centering
@@ -28,23 +28,15 @@ The proposed method is summarized in \cref{fig:method}. To compute the exposure,
 %	\item Compute the number of hours that can be driven without any harm associated with the given scenario class.
 %\end{enumerate}
 
-In the following sections, we will explain these steps one by one. 
 
+\subsection{Calculate exposure}
+\label{sec:exposure}
 
-
-\subsection{Likelihood of the conditions}
-\label{sec:conditions}
-
-Different instances for the same traffic scenario are subject to $n_C$ conditions, denoted by $C_1, \ldots, C_m$. For the sake of brevity, all conditions together are denoted by $C$, i.e., $P(C_1, \ldots, C_{n_C})=P(C)$. Many of these conditions might be based on the operational design domain\footnote{``Operating conditions under which a given driving automation system or feature thereof is specifically designed to function'' \cite{sea2018j3016}.} of the automation system and might include conditions with respect to the infrastructure, weather conditions, lighting conditions, and geographical locations. 
+The scenarios are subject to $n_C$ conditions, denoted by $C_1, \ldots, C_m$. For the sake of brevity, all conditions together are denoted by $C$, i.e., $P(C_1, \ldots, C_{n_C})=P(C)$. Many of these conditions might be based on the operational design domain\footnote{``Operating conditions under which a given driving automation system or feature thereof is specifically designed to function'' \cite{sea2018j3016}.} of the automation system and might include conditions with respect to the infrastructure, weather conditions, lighting conditions, and geographical locations. 
 
 The first step is to compute the joint probability of the conditions, i.e., $P(C)$. In case these conditions are independent, the probability can be computed by simply multiplying the individual likelihoods for each condition, i.e., $P(C)=P(C_1)\cdot\ldots\cdot P(C_{n_C})$. This, however, might not necessarily be the case, which requires either to compute the joint probability or to compute conditional probabilities. In some cases, it might also be reasonable to simply assume that the likelihood of certain conditions are independent.
 
 Note that the the defined conditions might not be the same as the conditions under which the data is collected that is used to compute $P(C)$. This might require additional assumptions, see our example in \cref{sec:example conditions}.
-
-
-
-\subsection{Calculate exposure}
-\label{sec:exposure}
 
 To calculate the exposure, the average number of occurrences of the activities that constitute the scenarios that fall into the specified scenario class within a certain time interval need to be estimated. Let $n_A$ denote the number of activities, such that $A_1, \ldots, A_{n_A}$ denote the activities. For the sake of brevity, all activities together are denoted by $A$. 
 
