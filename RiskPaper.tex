@@ -32,7 +32,6 @@
 %\usepackage{amsthm}
 %\usepackage{mathrsfs}
 \usepackage{epsfig} % for postscript graphics files
-\usepackage{nomencl}
 %\usepackage{mathptmx} % assumes new font selection scheme installed
 \usepackage{times} % assumes new font selection scheme installed
 %\usepackage{amsmath} % assumes amsmath package installed
@@ -46,11 +45,24 @@
 \newtheorem{assumption}{Assumption}
 
 % Tikz stuff
+\usepackage{standalone}
+\usepackage{tikz}
 \usepackage{pgfplots}                           %% support for TikZ figures
+%\usepackage{xcolor}
+\usepackage{calc}
 \pgfplotsset{compat=1.16}
 \usepgfplotslibrary{groupplots}
 \newlength{\figurewidth}
 \newlength{\figureheight}
+
+\newlength\blockwidth
+\newlength\blockheight
+\newlength\blockx
+\newlength\blocky
+\setlength{\blockwidth}{6em}
+\setlength{\blockheight}{4em}
+\setlength{\blockx}{6.6em}
+\setlength{\blocky}{7em}
 
 % Self defined commands
 \newcommand*{\ud}{\mathrm{\,d}}
