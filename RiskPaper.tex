@@ -44,6 +44,11 @@
 \newtheorem{definition}{Definition}
 \newtheorem{assumption}{Assumption}
 
+% For footnote in tabular
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+
 % Tikz stuff
 \usepackage{standalone}
 \usepackage{tikz}
@@ -137,7 +142,7 @@ This can lead to stronger justification for design decisions and test coverage f
 
 \input{sections/introduction}
 %\input{sections/problem}
-\input{sections/definitions}
+%\input{sections/definitions}
 \input{sections/method}
 \input{sections/example}
 \input{sections/discussion}
