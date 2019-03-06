@@ -4,6 +4,7 @@
 *.bib.bak
 *.blg
 *.log
+*.out
 *.pdf
 *.run.xml
 *.synctex.gz
