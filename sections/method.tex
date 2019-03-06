@@ -1,57 +1,72 @@
-\section{Proposed Risk Estimation Method}
+\section{Proposed Risk Estimation Method} % Hala
 \label{sec:method}
- 
-In the Hazard Analysis and Risk Assessment (HARA) required by the ISO~26262 standard, the estimation of Automotive Safety Integrity Level (ASIL) is calculated based on a so-called single specific hazardous event \cite{ISO26262}.
-Although the operational situation in which this single event occurs as well as the operating mode are considered in the analysis, still the proceeding and successive events are not taken into account.
-In this paper, we propose a new method to estimate the risk of a certain scenario considering the whole chain of activities and conditions that constitute the scenario.
-The estimated risk is based on real-world driving data. To estimate the risk, we will quantify the exposure and the severity. In \cref{Tab:Terms}, we present the definitions of the terms that are used in our proposed methodology. 
-
-\begin{table}
-	\centering
-	\caption{The terms and definitions}
-	\label{Tab:Terms}
-	\begin{tabular}{p{0.15\linewidth} p{0.75\linewidth}} \hline
-		\textbf{Term} & \textbf{Definition} \\ \hline
-		Severity & An estimate of the extent of harm to one or more individuals that can occur in a potentially hazardous event~\cite{ISO26262} \\
-		Exposure & The state of being in a driving scenario \\
-		Risk & The combination of the probability of occurrence of harm and the severity of that harm~\cite{ISO26262} \\ 
-		Condition & The constant parameters describing the environmental aspects of the operational design domain\footnote{``Operating conditions under which a given driving automation system or feature thereof is specifically designed to function'' \cite{sea2018j3016}.} \\
-		Actor & An element of a scenario acting on its own behalf~\cite{ulbrich2015} \\ 
-		Scenario & A quantitative description of the activities of the ego vehicle and other actors and the conditions from the static environment \\ \hline
-	\end{tabular}
-\end{table}
-
-As explained in \cref{Tab:Terms}, a scenario consist of a set of conditions and activities, denoted by $A$ and $C$, respectively. We formulate the exposure as the average number of occurrences of the activities $A$ under the conditions $C$, denoted by $\lambda_{A,C}$. The severity is the likelihood of the potential hazardous consequence $R$ given the activities $A$ and the conditions $C$, denoted by the conditional probability $P(R|A,C)$. The risk is computed as the multiplication of the exposure and the severity. 
-
-The proposed method is summarized in \cref{fig:method}. To compute the exposure, we calculate the likelihood of the conditions, denoted by $P(C)$, and the conditional likelihood of the activities, denoted by $P(A|C)$, based on real-world driving data. This is explained in detail in \cref{sec:exposure}. For the estimation of the severity, we consider all possible scenarios that are subject to a set of conditions $C$ and consist of the activities $A$. Therefore, we parametrize the scenarios using the parameter vector $\theta$. Based on the real-world driving data, the probability density function of the parameters $P(\theta|A,C)$ is estimated. Next, using simulations, we estimate $P(R|\theta,A,C)$, the likelihood of a potential hazardous consequence $R$ given a parametrized scenario. The details of the estimation of the severity are presented in \cref{sec:severity}. Finally, in \cref{sec:risk}, we describe how the risk is estimated based on the estimated exposure and severity.
-
-\begin{figure}
-	\centering
-	\includestandalone[width=\linewidth]{figures/method}
-	\caption{Proposed method for quantifying the risk. The risk is a multiplication of the exposure and the severity, explained in \cref{sec:exposure,sec:severity}, respectively.}
-	\label{fig:method}
-\end{figure}
-
-%The following steps are followed when computing the risk:
+%In this section we discuss the following:
 %\begin{enumerate}
-%	\item Estimate the likelihood of the conditions $P(C)$.
-%	\item Estimate the exposure $\lambda_{A,C}$.
-%	\item Parametrize the scenario with a parameter vector $\theta$.
-%	\item Estimate the distribution of $\theta$ for this scenario class, i.e., $P(\theta|A,C)$.
-%	\item Use simulations to estimate the severity, i.e., $P(R|A,C)$.
-%	\item Compute the risk of a scenario class denoted by $\lambda$.
-%	\item Compute the number of hours that can be driven without any harm associated with the given scenario class.
+%	\item High level description of the method 
+%	\item calculating the probability of occurrence of a scenario based on its Events, Activities, and Conditions. This is in the context of the scenario that gives a specified temporal relation between its events and activities.
+%	
+%	We are not sure about the causal relation, but we have observed the temporal relation from data. 
+%	 
+%	\item Scenario Events $\rightarrow$ independent variables 
+%	\item Scenario Activities $\rightarrow$ some are dependent on each other (how to distinguish dependency?)
+%	\item Scenario Conditions $\rightarrow$ some activities/events may depend on these. (how to define the dependencies?)
+%	\item We make assumptions about the dependencies, and later validate whether the assumption was justified based on measured data. 	
+%	\item explaining how assumptions are being made based on data
+%	\item give both formulas for the two cases of dependent and independent variables. (there may be a third mixed option?)
+%	\item use the enumerators $i, j, k$ to make the formulas independent on the number of variables (activities, events, conditions)
 %\end{enumerate}
+%
+%Note: We use the formula of independent variable in the case study. 
+ 
+In the Hazard Analysis and Risk Assessment required by the ISO~26262 standard, the estimation of Automotive Safety Integrity Level (ASIL) is calculated based on a single specific hazardous event.
+%/action (I need to add a concrete description of the event in this context). 
+Although the operational situation in which this single event occurs as well as the operating mode are considered in the analysis, still the proceeding and successive events are not taken into account.
+In this paper, we propose a new method to estimate the risk of a certain traffic scenario taking into account the whole chain of events and conditions occur duringthat constiario [ref-defiition section].
+ %class, i.e., the risk of a set of scenarios that are linguistically described similarly. cederation
+ This method considers the conditions under which this scenario happened and activities that are performed by different road users, within this scenario, and their dependency on each other. This is in compliance with the analysis required by SOTIF (needs more explanation (ERWIN: Why not just a reference to SOTIF?)).  The estimated risk is based on real-world driving data. To estimate the risk, we will quantify the exposure and the severity.
+
+\color{red}
+\boldsymbol{This should move to conclusion section}
+In the calculation of estimated risk many assumption made to simplify the calculation or because there are unknown due to lack of data. This affect/reduce the accuracy of the calculated/estimated risk. 
+However, we still believe that the quantified risk is very valuable and makes the steps forward towards meeting the requirements of SOTIF standard , because of the following reasons:
+\begin{itemize}
+	\item all the assumptions that were made for estimating the risk are explicit. In contrast, when people assign ASIL levels to a hazardous event, often many assumptions are implicitly made. By making the assumptions explicit, it is much clearer why a certain risk is associated with --- in this case --- a certain/specific scenario.
+	\item It provides a good estimate of the order of the risk for each scenario. For example, if the estimated risk of two different scenarions differ by a factor 10, $C$, denoted by $\lambda_{A,C}$. The severity is still reasonable to arguethat one scenario introduces a higher risk ththe likelihood of the potential hazardous consequence $R$ given ughonditions $C$, denoted by the factor 10 might not be exact.                                                          A,C$. The risk is computed as the multiplication of the steps and assumptions that lead to a certain estimateble to update the risk when more information of the system is known or when more data is available.
+\end{itemize}
+\color{black}
+As explained in the previous section [ref-section], a scenario consist of:
+\begin{itemize}
+	\item $A$: activities performed by the ego vehicle and other road users;
+	\item $C$: conditions of the scenario.
+\end{itemize}
+Let $E$ denote the associated risk of a scenario. For this study we assume that $E$ can only results in two possibilities/categories, risky or safe scenarios. The level of severity of the risk is not taken into account. We formulate the exposure as the average number of occurrences of the activities $A$ under the conditions $C$, denoted by $\lambda_{A,C}$. The severity is denoted by the conditional probability $P(R|A,C)$, i.e., the likelihood of the severe outcome $R$ given the activities $A$ and the conditions $C$. The risk can be computed by combining these two numbers. The following steps are followed when computing the risk:
+\begin{enumerate}
+	\item Estimate the likelihood of the conditions $P(C)$.
+	\item Estimate the exposure $\lambda_{A,C}$.
+	\item Parametrize the scenario with a parameter vector $\theta$.
+	\item Estimate the distribution of $\theta$ for this scenario class, i.e., $P(\theta|A,C)$.
+	\item Use simulations to estimate the severity, i.e., $P(R|A,C)$.
+	\item Compute the risk of a scenario class denoted by $\lambda$.
+	\item Compute the number of hours that can be driven without any harm associated with the given scenario class.
+\end{enumerate}
+
+In the following sections, we will explain these steps one by one. 
+
+
+
+\subsection{Likelihood of the conditions}
+\label{sec:conditions}
+
+Different instances for the same traffic scenario are subject to $n_C$ conditions, denoted by $C_1, \ldots, C_m$. For the sake of brevity, all conditions together are denoted by $C$, i.e., $P(C_1, \ldots, C_{n_C})=P(C)$. Many of these conditions might be based on the operational design domain\footnote{``Operating conditions under which a given driving automation system or feature thereof is specifically designed to function'' \cite{sea2018j3016}.} of the automation system and might include conditions with respect to the infrastructure, weather conditions, lighting conditions, and geographical locations. 
+
+The first step is to compute the joint probability of the conditions, i.e., $P(C)$. In case these conditions are independent, the probability can be computed by simply multiplying the individual likelihoods for each condition, i.e., $P(C)=P(C_1)\cdot\ldots\cdot P(C_{n_C})$. This, however, might not necessarily be the case, which requires either to compute the joint probability or to compute conditional probabilities. In some cases, it might also be reasonable to simply assume that the likelihood of certain conditions are independent.
+
+Note that the the defined conditions might not be the same as the conditions under which the data is collected that is used to compute $P(C)$. This might require additional assumptions, see our example in \cref{sec:example conditions}.
+
 
 
 \subsection{Calculate exposure}
 \label{sec:exposure}
-
-The scenarios are subject to $n_C$ conditions, denoted by $C_1, \ldots, C_m$. For the sake of brevity, all conditions together are denoted by $C$, i.e., $P(C_1, \ldots, C_{n_C})=P(C)$. Many of these conditions might be based on the operational design domain of the AD system and might include conditions with respect to the infrastructure, weather conditions, lighting conditions, and geographical locations. 
-
-The first step is to compute the joint probability of the conditions, i.e., $P(C)$. In case these conditions are independent, the probability can be computed by simply multiplying the individual likelihoods for each condition, i.e., $P(C)=P(C_1)\cdot\ldots\cdot P(C_{n_C})$. This, however, might not necessarily be the case, which requires either to compute the joint probability or to compute conditional probabilities. In some cases, it might also be reasonable to simply assume that the likelihood of certain conditions are independent.
-
-Note that the the defined conditions might not be the same as the conditions under which the data is collected that is used to compute $P(C)$. This might require additional assumptions, see our example in \cref{sec:example exposure}.
 
 To calculate the exposure, the average number of occurrences of the activities that constitute the scenarios that fall into the specified scenario class within a certain time interval need to be estimated. Let $n_A$ denote the number of activities, such that $A_1, \ldots, A_{n_A}$ denote the activities. For the sake of brevity, all activities together are denoted by $A$. 
 
@@ -73,12 +88,17 @@ Based on these assumptions, the number of occurrences of scenarios consisting of
 
 
 
-\subsection{Severity}
-\label{sec:severity}
+\subsection{Parametrization}
+\label{sec:parametrization}
 
-The first step towards estimating the severity is to parametrize the scenarios with a parameter vector $\theta \in \mathbb{R}^d$. The parametrization enables the generation of infinitely many unique individual test cases that resemble the scenarios found in naturalistic driving \cite{deGelder2017assessment,elrofai2018scenario}.
+The third step is to parametrize the scenarios with a parameter vector $\theta \in \mathbb{R}^d$. The parametrization enables the generation of infinitely many unique individual test cases that resemble the scenarios found in naturalistic driving \cite{deGelder2017assessment,elrofai2018scenario}.
 
-In case the parameters are dependent, which is often the case, it is important that the number of parameters is limited to avoid the curse of dimensionality \cite{scott2015multivariate}. This often requires some assumptions. An example is presented in \cref{sec:example severity}.
+In case the parameters are dependent, which is often the case, it is important that the number of parameters is limited to avoid the curse of dimensionality \cite{scott2015multivariate}. This often requires some assumptions. An example is presented in \cref{sec:example parametrization}.
+
+
+
+\subsection{Estimation of the pdf}
+\label{sec:pdf}
 
 To estimate the probability density function (pdf) of the parameter vector $\theta$, i.e., $P(\theta|A,C)$, either parametric models, non-parametric models, or a combination of the two can be used. In case of parametric models, a certain functional form of the pdf is assumed. For example, it might be assumed that the pdf can be modeled using a Gaussian distribution. In this paper, we present a non-parametric approach using Kernel Density Estimation (KDE) \cite{rosenblatt1956remarks, parzen1962estimation}. Using KDE, there is no assumption on the functional form of the pdf because the shape of the pdf is automatically computed.
 
@@ -96,7 +116,12 @@ where $\|u\|^2$ denotes the squared 2-norm of $u$, i.e., $u^T u$.
 
 The bandwidth $h$ controls the amount of smoothing. For the kernel of \cref{eq:gaussian kernel}, the same amount of smoothing is applied in every direction, although this can easily be extended to a multi-dimensional bandwidth, see, e.g., \cite{scott2005multidimensional, chen2017tutorial}. There are many different ways of estimating the bandwidth, ranging from simple reference rules like, e.g., Scott's rule of thumb \cite{scott2015multivariate} or Silverman's rule of thumb \cite{silverman1986density} to more elaborate methods; see \cite{turlach1993bandwidthselection, bashtannyk2001bandwidth, jones1996brief, chiu1996comparative} for reviews of different bandwidth selection methods. 
 
-Let $R$ denote a potential hazardous consequence of a scenario. We define the severity of a scenario with activities $A$ and conditions $C$ as the probability of $R$, given the activities $A$ and $C$, i.e., $P(R|A,C)$. We cannot evaluate $P(R|A,C)$ directly, because the outcome of a scenario highly depends on the parametrization $\theta$. Therefore, we estimate $P(R|\theta,A,C)$ through a simulation of the scenario with parameters $\theta$. Using $P(\theta|A,C)$ from \cref{eq:kde}, we can compute 
+
+
+\subsection{Calculating severity}
+\label{sec:simulations}
+
+Let $R$ denote a harmful outcome of a scenario. We define the severity of a scenario with activities $A$ and conditions $C$ as the probability of $R$, given the activities $A$ and $C$, i.e., $P(R|A,C)$. We cannot evaluate $P(R|A,C)$ directly, because the outcome of a scenario highly depends on the parametrization $\theta$. Hence, $P(R|\theta,A,C)$ can be evaluated, for example, through a simulation of the scenario with parameters $\theta$. Using $P(\theta|A,C)$ from \cref{eq:kde}, we can compute 
 \begin{equation} \label{eq:probability R theta}
 	P(R,\theta|A,C) = P(R|\theta,A,C) \cdot P(\theta|A,C).
 \end{equation}
@@ -126,6 +151,10 @@ Analogous to the number of occurrences of a scenario consisting of activities $A
 \begin{equation} \label{eq:poisson risk}
 	P(k\text{ times }R,A,C\text{ in an hour}) = \exp \left\{ -\lambda \right\} \frac{\lambda^k}{k!}.
 \end{equation}
+
+
+\subsection{Likelihood of no harm}
+\label{sec:no harm}
 
 Using \cref{eq:poisson risk}, to calculate the probability of not having the harmful outcome $R$ in a scenario consisting of activities $A$ and conditions $C$ we simply need to use $k=0$:
 \begin{equation} \label{eq:no harm}
