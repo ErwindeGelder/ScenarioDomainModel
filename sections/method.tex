@@ -55,14 +55,14 @@ The first step is to compute the joint probability of the conditions, i.e., $P(C
 
 Note that the the defined conditions might not be the same as the conditions under which the data is collected that is used to compute $P(C)$. This might require additional assumptions, see our case study for examples.
 
-To calculate the exposure, the average number of occurrences of the activities that constitute the scenarios that fall into the specified scenario class within a certain time interval need to be estimated. Let $n_A$ denote the number of activities, such that $A_1, \ldots, A_{n_A}$ denote the activities. For the sake of brevity, all activities together are denoted by $A$. 
+To calculate the exposure, the average number of occurrences of the activities that constitute the scenarios within a certain time interval need to be estimated. Let $n_A$ denote the number of activities, such that $A_1, \ldots, A_{n_A}$ denote the activities. For the sake of brevity, all activities together are denoted by $A$. 
 
 Without loss of generality, we assume that the time interval is an hour. To estimate the number occurrences of the activities, the data for which the conditions $C$ are satisfied are analyzed. The average number of occurrences of the activities $A$ for each hour of driving for which the conditions $C$ are satisfied is denoted by $\lambda_{A|C}$. Next, we can calculate the average number of occurrences of the activities $A$ under the conditions $C$ for each hour of driving:
 \begin{equation}
 	\lambda_{A,C} = \lambda_{A|C} \cdot P(C).
 \end{equation}
 
-Regarding the scenarios that fall into the specified scenario class, we assume the following:
+Regarding the scenarios consisting of conditions $C$ and activities $A$, we assume the following:
 \begin{itemize}
 	\item The occurrence of one scenario consisting of activities $A$ and conditions $C$ does not affect the probability that a second scenario consisting of activities $A$ and conditions $C$ occurs.
 	\item The rate at which a scenario consisting of activities $A$ and conditions $C$ occurs is constant. I.e., $\lambda_{A,C}$ is constant.
