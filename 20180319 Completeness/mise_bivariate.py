@@ -216,7 +216,8 @@ AX.set_xlabel("Number of samples")
 AX.set_xlim([np.min(NN), np.max(NN)])
 # ax.set_title("Data to be assumed dependent (solid) or independent (dashed)")
 save(os.path.join(FIGURES_FOLDER, 'mise_example.tikz'),
-     figureheight='\\figureheight', figurewidth='\\figurewidth')
+     figureheight='\\figureheight', figurewidth='\\figurewidth',
+     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left'])
 
 # Plot the bandwidth for varying n
 DX = np.mean(np.gradient(XPDF))
@@ -244,7 +245,8 @@ AX.set_ylabel("Bandwidth")
 # ax.grid(True)
 AX.set_xlim([np.min(NN), np.max(NN)])
 save(os.path.join(FIGURES_FOLDER, 'bandwidth.tikz'),
-     figureheight='\\figureheight', figurewidth='\\figurewidth')
+     figureheight='\\figureheight', figurewidth='\\figurewidth',
+     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left'])
 
 # Make a figure of the distribution and export to tikz
 # To get the xticks right, use more datapoints
@@ -258,5 +260,6 @@ AX.plot(XPDF, YPDFB, '--', lw=5, color=[.5, .5, .5])
 AX.set_xlabel('$x$')
 AX.set_xlim(XLIM)
 save(os.path.join(FIGURES_FOLDER, 'true_pdf.tikz'),
-     figureheight='\\figureheight', figurewidth='\\figurewidth')
+     figureheight='\\figureheight', figurewidth='\\figurewidth',
+     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left'])
 plt.show()

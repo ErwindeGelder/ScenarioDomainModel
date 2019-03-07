@@ -210,7 +210,8 @@ for ax in axs:
     ax.set_ylabel('Frequency')
 plt.tight_layout()
 save(os.path.join(figures_folder, 'histogram.tikz'),
-     figureheight='\\figureheight', figurewidth='\\figurewidth')
+     figureheight='\\figureheight', figurewidth='\\figurewidth',
+     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left'])
 
 _, ax = plt.subplots(1, 1, figsize=(7, 5))
 ax.loglog(nn, bwa[0], '-', label="bwa", lw=5, color=[.5, .5, .5])
@@ -222,7 +223,8 @@ ax.set_xlim([np.min(nn), np.max(nn)])
 save(os.path.join(figures_folder, 'bandwidth_real.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
      extra_axis_parameters=['xtick={600, 800, 1000, 1500, 2000, 2500}',
-                            'xticklabels={600, 800, 1000, 1500, 2000, 2500}'])
+                            'xticklabels={600, 800, 1000, 1500, 2000, 2500}',
+                            'axis x line*=bottom', 'axis y line*=left'])
 
 _, ax = plt.subplots(1, 1, figsize=(7, 5))
 logfit1 = np.polyfit(np.log(nn), np.log(mise[0]), 1)
@@ -241,7 +243,8 @@ ax.set_xlabel("Number of samples")
 save(os.path.join(figures_folder, 'mise_real.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
      extra_axis_parameters=['xtick={600, 800, 1000, 1500, 2000, 2500}',
-                            'xticklabels={600, 800, 1000, 1500, 2000, 2500}'])
+                            'xticklabels={600, 800, 1000, 1500, 2000, 2500}',
+                            'axis x line*=bottom', 'axis y line*=left'])
 
 _, ax = plt.subplots(1, 1, figsize=(7, 5))
 for m in mise:
