@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="0.91">
@@ -51,7 +51,62 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="1"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="2"/>
+<node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_108958345" CREATED="1551885103957" MODIFIED="1551885128015" HGAP="77" VSHIFT="-1">
+<edge COLOR="#0000ff"/>
+<node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1430726573" CREATED="1551885142947" MODIFIED="1551885148978">
+<node TEXT="Local outlier detection reconsidered" ID="ID_229112618" CREATED="1551885154549" MODIFIED="1551885471840" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/285%20Local%20outlier%20detection%20reconsidered.pdf">
+<attribute NAME="key" VALUE="schubert2014local"/>
+<attribute NAME="journal" VALUE="Data Mining and Knowledge Discovery"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Local Outlier Detection Reconsidered: A Generalized View on Locality with Applications to Spatial, Video, and Network Outlier Detection"/>
+<attribute NAME="authors" VALUE="Schubert, Erich and Zimek, Arthur and Kriegel, Hans-Peter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3C1AFC24696DFD2615CD7F9929EBD6FA87218BD4A31226B294CEA63745606DC6">
+    <pdf_title>Local outlier detection reconsidered: a generalized view on locality with applications to spatial, video, and network outlier detection</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Anomaly detection in GPS data based on visual analytics" ID="ID_1198263067" CREATED="1551885286759" MODIFIED="1551885459260" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/286%20Anomaly%20detection%20in%20GPS%20data%20based%20on%20visual%20analytics.pdf">
+<attribute NAME="key" VALUE="liao2010anomaly"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Anomaly Detection in {GPS} Data Based on Visual Analytics"/>
+<attribute NAME="authors" VALUE="Liao, Zicheng and Yo, Yizhou and Chen, Baoquan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B8F51E27C7A69813FE946BFF2B276A44D3A7ED35741DF2AF40C7E61434745">
+    <pdf_title>Anomaly Detection in GPS Data Based on Visual Analytics</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Driving" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_418156053" CREATED="1551885491881" MODIFIED="1551885501668">
+<node TEXT="Abnormal Driving Detection Based" ID="ID_1560661886" CREATED="1551885502965" MODIFIED="1551885668351" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/287%20Abnormal%20Driving%20Detection%20Based.pdf">
+<attribute NAME="key" VALUE="hu2017abnormal"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Vehicular Technology"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Abnormal Driving Detection Based on Normalized Driving Behavior"/>
+<attribute NAME="authors" VALUE="Hu, Jie and Xu, Li and He, Xin and Meng, Wuqiang"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2B017AA42F9ABE1C33CE4759156ED92387AE5B0D87B697E2A418A6BD84120">
+    <pdf_title>Abnormal Driving Detection Based on Normalized Driving Behavior</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Abnormal Driving Behaviors Detection using smartphone" ID="ID_191242700" CREATED="1551885698293" MODIFIED="1551885827688" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/288%20Abnormal%20Driving%20Behaviors%20Detection%20using%20smartphone.pdf">
+<attribute NAME="key" VALUE="chen2015d3"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="D3: Abnormal Driving Behaviors Detection and Identification Using Smartphone Sensors"/>
+<attribute NAME="authors" VALUE="Chen, Zhongyang and Yu, Jiadi and Zhu, Yanmin and Chen, Yingying and Li, Minglu"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A2982F4AD1CE4F37C2A2CC79C49158E71DA1171A8F92C21E05A1FABDC3C1E81">
+    <pdf_title>: Abnormal Driving Behaviors Detection and Identification Using Smartphone Sensors</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Fine-grained Abnormal Driving Behaviors" ID="ID_627052415" CREATED="1551885852487" MODIFIED="1551885946474" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/289%20Fine-grained%20Abnormal%20Driving%20Behaviors.pdf">
+<attribute NAME="key" VALUE="yu2017fine"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Mobile Computing"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Fine-Grained Abnormal Driving Behaviors Detection and Identification with Smartphones"/>
+<attribute NAME="authors" VALUE="Yu, Jiadi and Chen, Zhongyang and Zhu, Yanmin and Chen, Yingying Jennifer and Kong, Linghe and Li, Minglu"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="EC5C5182C62C22A39EFAC13CA34C2FE8F811EA88C231FBDB6ACDE2E03C64A240">
+    <pdf_title>Fine-grained Abnormal Driving Behaviors Detection and Identification with Smartphones</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
 <node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1534304349580" HGAP="80" VSHIFT="-10" MOVED="1534304305826">
 <edge COLOR="#7c7c00"/>
 <node TEXT="Curve fitting" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1288097973" CREATED="1516866158372" MODIFIED="1516866168325">
@@ -694,6 +749,12 @@
 </node>
 </node>
 <node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
+<node TEXT="Book on fundamentals of traffic simulation" ID="ID_1323580842" CREATED="1551718970600" MODIFIED="1551719006751" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/283%20Book%20on%20traffic%20simulations.pdf">
+<attribute NAME="key" VALUE="barcelo2010fundamentals"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Fundamentals of Traffic Simulation"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
 <node TEXT="Testing of high level components of automated driving" ID="ID_565029269" CREATED="1512630169330" MODIFIED="1534391906721" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2016testing"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -712,8 +773,17 @@
     <pdf_title>A novel, modular validation framework for collision avoidance of automated vehicles at road junctions*</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="AirSim High-Fidelity Visual and Physical Simulation for AVs" ID="ID_1701755222" CREATED="1551189523154" MODIFIED="1551189635529" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/281%20AirSim%20High-Fidelity%20Visual%20and%20Physical%20Simulation%20for%20AVs.pdf">
+<attribute NAME="key" VALUE="shah2018airsim"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Airsim: High-Fidelity Visual and Physical Simulation for Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Shah, Shital and Dey, Debadeepta and Lovett, Chris and Kapoor, Ashish"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9271F3FEC6A3FC4EDC2C64E8DA0D5B68D2AD837EECDE65F800601D1C22EB5">
+    <pdf_title>AirSim: High-Fidelity Visual and Physical Simulation for Autonomous Vehicles</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="Traditional methods" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_212387236" CREATED="1517041168552" MODIFIED="1517041183565">
+</node>
+<node TEXT="Traditional methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_212387236" CREATED="1517041168552" MODIFIED="1517041183565">
 <node TEXT="Code of Practice for the Design and Evaluation of ADAS" ID="ID_1744658253" CREATED="1517041192918" MODIFIED="1534391906768" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/133%20Code%20of%20practice%20for%20the%20design%20and%20evaluation%20of%20adas.pdf">
 <attribute NAME="key" VALUE="response2006code"/>
 <attribute NAME="journal" VALUE="RESPONSE III: a PReVENT Project"/>
@@ -724,12 +794,12 @@
     <pdf_title>Code of Practice</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
+<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
 <attribute NAME="authors" VALUE="{International Organization for Standardization (ISO)}"/>
-<node TEXT="How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles" ID="ID_1071919017" CREATED="1529470315799" MODIFIED="1534391906940" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/193%20How%20to%20reach%20complete%20safety%20requirement%20refinement%20for%20AVs.pdf">
+<node TEXT="How to Reach Complete Safety Requirement Refinement for AVs" ID="ID_1071919017" CREATED="1529470315799" MODIFIED="1551885979715" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/193%20How%20to%20reach%20complete%20safety%20requirement%20refinement%20for%20AVs.pdf">
 <attribute NAME="key" VALUE="bergenhem2015cars"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles"/>
@@ -756,6 +826,42 @@
     <pdf_title>Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle*</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="ISO 26262 safety cases compliance and assurance" ID="ID_961590544" CREATED="1551886008500" MODIFIED="1551886130442" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/290%20ISO%2026262%20safety%20cases%20compliance%20and%20assurance.pdf">
+<attribute NAME="key" VALUE="palin2011iso"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="ISO 26262 Safety Cases: Compliance and Assurance"/>
+<attribute NAME="authors" VALUE="Palin, Rob and Ward, David and Habli, Ibrahim and Rivett, Roger"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CC42B37CE382ACD1CAA4A541974F5256D6DE6C6FEEFEBABDAF8D69E2191E048">
+    <pdf_title>ISO 26262 SAFETY CASES: COMPLIANCE AND ASSURANCE</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Safety Cases and their role in ISO 26262" ID="ID_393109399" CREATED="1551886165033" MODIFIED="1551886249321" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/291%20Safety%20Cases%20and%20their%20role%20in%20ISO%2026262.pdf">
+<attribute NAME="key" VALUE="birch2013safety"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Safety Cases and their Role in ISO 26262 Functional Safety Assessment"/>
+<attribute NAME="authors" VALUE="Birch, John and Rivett, Roger and Habli, Ibrahim and Bradshaw, Ben and Botham, John and Higham, Dave and Jesty, Peter and Monkhouse, Helen and Palin, Robert"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8F22755492F2DF94D4414490C473F33E3E1F1FDE4DE59C569AF6E8517B922">
+    <pdf_title>Safety Cases and their role in ISO 26262 Functional Safety Assessment</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262" ID="ID_1106902334" CREATED="1551886265976" MODIFIED="1551886360035" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/292%20How%20to%20Survive%20a%20Safety%20Case%20According%20to%20ISO%2026262.pdf">
+<attribute NAME="key" VALUE="dittel2010survive"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262"/>
+<attribute NAME="authors" VALUE="Dittel, Torsten and Aryus, Hans-J{\&quot;o}rg"/>
+<pdf_annotation type="BOOKMARK" page="1" object_id="1464197473066962614" object_number="259" document_hash="6C1C716B638F9A2D482D5E2A987C6730ADDBD229DA96336BFA1B850871535D0">
+    <pdf_title>How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Analysis of ISO 26262 Compliant Techniques" ID="ID_281053633" CREATED="1551886457803" MODIFIED="1551886907780" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/293%20Analysis%20of%20ISO%2026262%20Compliant%20Techniques.pdf">
+<attribute NAME="key" VALUE="kannan2015analysis"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Analysis of ISO 26262 Compliant Techniques for the Automotive Domain"/>
+<attribute NAME="authors" VALUE="Kannan, S Manoj and Dajsuren, Yanja and Luo, Yaping and Barosan, Ion"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="91647078DB83C62A1E85B1E4BDB1565A19B36B8C684ED898FBC2DF43DCCEDC3">
+    <pdf_title>Analysis of ISO 26262 Compliant Techniques for the Automotive Domain</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1534391906691" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
 <attribute NAME="key" VALUE="wachenfeld2016release"/>
@@ -773,6 +879,15 @@
 <attribute NAME="authors" VALUE="Wagner, Michael and Koopman, Philip"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5C22DFAFE41E6A1C484CF7FF6D5B1B188AF59C9B734F43F9E99A5D2C23DE">
     <pdf_title>A Philosophy for Developing Trust in Self-driving Cars</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Euro NCAP first step to test AEB for VRU --&gt; no simulations" ID="ID_1112556965" CREATED="1548672985922" MODIFIED="1548673152459" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/276%20Euro%20NCAP%20first%20step%20to%20test%20AEB%20for%20VRU.PDF">
+<attribute NAME="key" VALUE="schram2015euro"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Euro {NCAP}&apos;s First Step to Assess {A}utonomous {E}mergency {B}raking ({AEB}) for Vulnerable Road Users"/>
+<attribute NAME="authors" VALUE="Schram, Richard and Williams, Aled and van Ratingen, Michiel and Ryrberg, Stephan and Sferco, Raimondo"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7BC9E9F4428F6763343B77A5E688531D974E82F1EBEA1B6C8FE31486710AA">
+    <pdf_title>Schram et al - 1</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -830,6 +945,16 @@
 <attribute NAME="authors" VALUE="Zhou, Jinwei and del Re, Luigi"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="69D38660C6275557FA419EB0E831E998CCEE26FA61979F5B5CF58C7AF56BDA6">
     <pdf_title>ScienceDirect ScienceDirect</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A Methodology for Scenario-Based Safety Assessment of HAVs" ID="ID_1749929702" CREATED="1549009370273" MODIFIED="1549009410149" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/277%20Methodology%20for%20scenario-based%20safety%20assessment%20of%20HAVs.pdf">
+<attribute NAME="key" VALUE="zhou2019methodology"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="A Methodology for Scenario-Based Safety Assessment of Highly Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Zhou, Jinwei and Tkachenko, Pavlo and del Re, Luigi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FDFB9529E72F1AD89E6A88101448F31A2A865D355361FE6265DB484A871FF">
+    <pdf_title>A Methodology for Scenario-based Safety Assessment of Highly Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -892,8 +1017,7 @@
     <pdf_title>Laureshyn, Aliaksei</pdf_title>
 </pdf_annotation>
 </node>
-</node>
-<node TEXT="Data-driven simulation and parametrization of traffic scenario" ID="ID_1028680362" CREATED="1507091082672" MODIFIED="1534391955108" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<node TEXT="Data-driven simulation and parametrization of traffic scenario" ID="ID_1028680362" CREATED="1507091082672" MODIFIED="1534391955108" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf" MOVED="1549013305092">
 <attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Data-driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems"/>
@@ -901,6 +1025,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F91B4B237B607197EFC2BD5C7A836F87F289E47CFAF66BFE19F3A3F8DFFB694">
     <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
 </pdf_annotation>
+</node>
 </node>
 <node TEXT="Taxonomy regarding test scenarios. &apos;Famous&apos; Bosch paper." ID="ID_1394606892" CREATED="1507692581524" MODIFIED="1534391955124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
@@ -1198,6 +1323,15 @@
     <pdf_title>StreetWise</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="2018 Cut-in Scenario Prediction for Automated Vehicles" ID="ID_914893490" CREATED="1551162819610" MODIFIED="1551162888870" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/280%20Cut-in%20Scenario%20Prediction%20for%20Automated%20Vehicles.pdf">
+<attribute NAME="key" VALUE="remmen2018cutin"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Cut-in Scenario Prediction for Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Remmen, Floris and Cara, Irene and de Gelder, Erwin and Willemsen, Dehlia"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F318C39069524298695B4462F4ACFBE4C6D69CD4E8C6CBD2911BA4D2E849AA">
+    <pdf_title>Cut-in Scenario Prediction for Automated Vehicles</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="2019 Automatic Identification of Critical Scenarios in Public Dataset 3000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1545083256669">
 <attribute NAME="key" VALUE="paardekooper2019dataset3000km"/>
 <attribute NAME="year" VALUE="2019"/>
@@ -1329,6 +1463,18 @@
 <attribute NAME="authors" VALUE="H{\o}yland, Kjetil and Kaut, Michal and Wallace, Stein W"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="351DEB7A39A2DFCCF750A2152F35058FFEF27FE9E345899D686A4B9E48552">
     <pdf_title>A Heuristic for Moment-Matching Scenario Generation</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Reduction of parameters" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1410220571" CREATED="1550215600107" MODIFIED="1550215613614">
+<node TEXT="Scenario reduction revisited: fundamental limits and guarantees" ID="ID_1997636225" CREATED="1550215615031" MODIFIED="1550215702702" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/278%20Scenario%20reduction%20revisited%20fundamental%20limits%20and%20guarantees.pdf">
+<attribute NAME="key" VALUE="Rujeerapaiboon2018"/>
+<attribute NAME="journal" VALUE="Mathematical Programming"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Scenario reduction revisited: fundamental limits and guarantees"/>
+<attribute NAME="authors" VALUE="Rujeerapaiboon, Napat and Schindler, Kilian and Kuhn, Daniel and Wiesemann, Wolfram"/>
+<pdf_annotation type="BOOKMARK" page="1" object_id="1101348007244982725" object_number="1448" document_hash="E916AA2E4B6EE210735747852A8C461543509C93CD71B0844FBCF6F7852135CA">
+    <pdf_title>Scenario reduction revisited: fundamental limits and guarantees</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1519,7 +1665,7 @@
     <pdf_title>CommonRoad: Composable Benchmarks for Motion Planning on Roads</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Scenarios in general (not per se related to automotive)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_657869850" CREATED="1510118247632" MODIFIED="1511405450754">
+<node TEXT="Scenarios in general (not per se related to automotive)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_657869850" CREATED="1510118247632" MODIFIED="1511405450754">
 <node TEXT="It emphasizes the different views on scenarios from different fields." ID="ID_628194309" CREATED="1510118287811" MODIFIED="1534391329201" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/033%20Views%20of%20scenario-based%20system%20design.pdf">
 <attribute NAME="key" VALUE="go2004blind"/>
 <attribute NAME="journal" VALUE="Interactions"/>
@@ -1817,6 +1963,40 @@
 <attribute NAME="year" VALUE="1993"/>
 <attribute NAME="title" VALUE="Supervenience and Mind: Selected Philosophical Essays"/>
 <attribute NAME="authors" VALUE="Kim, Jaegwon"/>
+</node>
+</node>
+<node TEXT="Activities" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1082116712" CREATED="1551888033535" MODIFIED="1551888044349">
+<node TEXT="Activities vs actions" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1302378841" CREATED="1551889046941" MODIFIED="1551889056607">
+<node TEXT="Actions require interpretive context (i.e., explanations for observed movements)" ID="ID_1574242373" CREATED="1551889058917" MODIFIED="1551889227527" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/295%20Movement%20activity%20and%20action.pdf">
+<attribute NAME="key" VALUE="bobick1997movement"/>
+<attribute NAME="journal" VALUE="Philosophical Transactions of the Royal Society of London. Series B: Biological Sciences"/>
+<attribute NAME="year" VALUE="1997"/>
+<attribute NAME="title" VALUE="Movement, Activity and Action: The Role of Knowledge in the Perception of Motion"/>
+<attribute NAME="authors" VALUE="Bobick, Aaron F"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1D4EFBDA2E271614BE976DE2BE3454E8915743B877DC399CC2B35C70E7C5F1">
+    <pdf_title>Printed in Great Britain</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Physical activity is deined as any bodily movement produced by skeletal muscles that result in energy expenditure" ID="ID_771327643" CREATED="1551888669410" MODIFIED="1551888838352" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/294%20Physical%20Activity%20definition.pdf">
+<attribute NAME="key" VALUE="caspersen1985physical"/>
+<attribute NAME="journal" VALUE="Public Health Reports"/>
+<attribute NAME="year" VALUE="1985"/>
+<attribute NAME="title" VALUE="Physical Activity, Exercise, and Physical Fitness: Definitions and Distinctions for Health-Related Research."/>
+<attribute NAME="authors" VALUE="Caspersen, Carl J and Powell, Kenneth E and Christenson, Gregory M"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A81637D4EF8F5938787230BD5E1094416BF89C72F9D7E821BB6F8C3F86B21">
+    <pdf_title>for Health-Related</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Sequence of movements" ID="ID_1073084020" CREATED="1551889298449" MODIFIED="1551889316887" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/295%20Movement%20activity%20and%20action.pdf">
+<attribute NAME="key" VALUE="bobick1997movement"/>
+<attribute NAME="journal" VALUE="Philosophical Transactions of the Royal Society of London. Series B: Biological Sciences"/>
+<attribute NAME="year" VALUE="1997"/>
+<attribute NAME="title" VALUE="Movement, Activity and Action: The Role of Knowledge in the Perception of Motion"/>
+<attribute NAME="authors" VALUE="Bobick, Aaron F"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1D4EFBDA2E271614BE976DE2BE3454E8915743B877DC399CC2B35C70E7C5F1">
+    <pdf_title>Printed in Great Britain</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="List of scenarios (to show that people use it for almost everything)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_175737845" CREATED="1507099450463" MODIFIED="1511405430207" MOVED="1515750497719">
@@ -2149,7 +2329,7 @@
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
 <attribute NAME="authors" VALUE="J. E. Stellet and M. R. Zofka and J. Schumacher and T. Schamm and F. Niewels and J. M. Z\&quot;{o}llner"/>
-<node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
+<node TEXT="Knowledge based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1684183353" CREATED="1512626892146" MODIFIED="1512626907907">
 <node TEXT="Bagschik et al. (declined paper)" ID="ID_1750936302" CREATED="1512626946796" MODIFIED="1534391629757" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/074%20Ontology%20based%20scene%20creation%20for%20the%20development%20of%20automated%20vehicles.pdf">
 <attribute NAME="key" VALUE="bagschik2017ontology"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -2169,7 +2349,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data-driven" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_58029598" CREATED="1512626897438" MODIFIED="1512626910548">
+<node TEXT="Data-driven" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_58029598" CREATED="1512626897438" MODIFIED="1512626910548">
 <node TEXT="de Gelder et al." ID="ID_1971359552" CREATED="1512626963745" MODIFIED="1534391630219" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -2224,6 +2404,16 @@
 <attribute NAME="authors" VALUE="Thalheim, Bernhard"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="64CDE95A9C751E331F5D24466B070F4D53099A1A665721981B87EE95D7AD399">
     <pdf_title>The Theory of Conceptual Models, the Theory of Conceptual Modelling and Foundations of Conceptual Modelling</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Dimensions of knowledge sharing and reuse" ID="ID_653610019" CREATED="1551877562205" MODIFIED="1551877619631" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/284%20Dimensions%20of%20knowledge%20sharing%20and%20reuse.pdf">
+<attribute NAME="key" VALUE="musen1992dimensions"/>
+<attribute NAME="journal" VALUE="Computers and Biomedical Research"/>
+<attribute NAME="year" VALUE="1992"/>
+<attribute NAME="title" VALUE="Dimensions of Knowledge Sharing and Reuse"/>
+<attribute NAME="authors" VALUE="Musen, Mark A"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B9BB3D518AA76D7A8B3989777CD27FD5613F63FA992277B236DFE88A88B57CA3">
+    <pdf_title>Dimensions of knowledge sharing and reuse</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="Ontology for applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1504253001" CREATED="1531293489079" MODIFIED="1531294181571">
@@ -2322,11 +2512,11 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="UML versus OWL" ID="ID_1041471545" CREATED="1535980234884" MODIFIED="1535980255503" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/235%20A%20Detailed%20Comparison%20of%20UML%20and%20OWL.pdf">
-<attribute NAME="key" VALUE="atkinson2005detailed"/>
+<node TEXT="UML versus OWL" ID="ID_1041471545" CREATED="1535980234884" MODIFIED="1548673064481" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/235%20A%20Detailed%20Comparison%20of%20UML%20and%20OWL.pdf">
+<attribute NAME="key" VALUE="kiko2005detailed"/>
 <attribute NAME="year" VALUE="2005"/>
 <attribute NAME="title" VALUE="A Detailed Comparison of {UML} and {OWL}"/>
-<attribute NAME="authors" VALUE="Atkinson, Colin and Kiko, Kilian"/>
+<attribute NAME="authors" VALUE="Kiko, Kilian and Atkinson, Colin"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="98EE9C8BEB61A38B574ED8B5557E6293C4CFE764FFEC9ABA28341321B101">
     <pdf_title>ADetailed Comparison of UML and OWL</pdf_title>
 </pdf_annotation>
@@ -3096,6 +3286,17 @@
 <attribute NAME="authors" VALUE="Spieser, Kevin and Treleaven, Kyle and Zhang, Rick and Frazzoli, Emilio and Morton, Daniel and Pavone, Marco"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9C98B7841599718CE5A124954259926EDC722C7BFB386E64DA9857DA38A">
     <pdf_title>Toward a Systematic Approach to the Design and Evaluation of Automated Mobility-on-Demand Systems: A Case Study in Singapore</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="CACC" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_6906881" CREATED="1551238488735" MODIFIED="1551238494453">
+<node TEXT="CACC with artificial potential fields" ID="ID_1352061070" CREATED="1551238496146" MODIFIED="1551238616927" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/282%20CACC%20Artificial%20potential%20fields.pdf">
+<attribute NAME="key" VALUE="semsarkazerooni2016cacc"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Cooperative Adaptive Cruise Control: An Artificial Potential Field Approach"/>
+<attribute NAME="authors" VALUE="Semsar-Kazerooni, E. and Verhaegh, J. and Ploeg, J. and Alirezaei, M."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F28A69BE676ACB184473879B023C824643BE361FC83C51DEDF988635F9F6F5D">
+    <pdf_title>Cooperative Adaptive Cruise Control: An artificial potential field approach</pdf_title>
 </pdf_annotation>
 </node>
 </node>
