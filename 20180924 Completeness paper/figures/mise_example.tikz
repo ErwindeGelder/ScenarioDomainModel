@@ -12,7 +12,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 x grid style={white!69.01960784313725!black},
-y grid style={white!69.01960784313725!black}
+y grid style={white!69.01960784313725!black},
+axis x line*=bottom,
+axis y line*=left
 ]
 \path [draw=white!80.0!black, fill=white!80.0!black] (axis cs:100,0.00837360965052848)
 --(axis cs:100,0.00452218826677066)

@@ -12,7 +12,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 x grid style={white!69.01960784313725!black},
-y grid style={white!69.01960784313725!black}
+y grid style={white!69.01960784313725!black},
+axis x line*=bottom,
+axis y line*=left
 ]
 \draw[draw=black,fill=gray] (axis cs:0.235489409566475,0) rectangle (axis cs:0.381112153971163,36);
 \draw[draw=black,fill=gray] (axis cs:0.381112153971163,0) rectangle (axis cs:0.526734898375852,71);
@@ -44,7 +46,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 x grid style={white!69.01960784313725!black},
-y grid style={white!69.01960784313725!black}
+y grid style={white!69.01960784313725!black},
+axis x line*=bottom,
+axis y line*=left
 ]
 \draw[draw=black,fill=gray] (axis cs:1.4,0) rectangle (axis cs:2.6165,780);
 \draw[draw=black,fill=gray] (axis cs:2.6165,0) rectangle (axis cs:3.833,479);
@@ -76,7 +80,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 x grid style={white!69.01960784313725!black},
-y grid style={white!69.01960784313725!black}
+y grid style={white!69.01960784313725!black},
+axis x line*=bottom,
+axis y line*=left
 ]
 \draw[draw=black,fill=gray] (axis cs:0.37,0) rectangle (axis cs:2.0255,557);
 \draw[draw=black,fill=gray] (axis cs:2.0255,0) rectangle (axis cs:3.681,290);

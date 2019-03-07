@@ -64,6 +64,14 @@
 \newcommand{\measure}[2]{J_{#1} \left( #2 \right)}
 \newcommand*{\ud}{\mathrm{\,d}}
 
+% Enable tikz externalization
+\usetikzlibrary{external}                       %% Create pdf figures from TikZ. Use PDFTeXify ...
+\tikzexternalize[prefix=tikz/]                  %% ... with --tex-option=--shell-escape switch.
+
+% Times New Roman (for figures)
+\usepackage{times}
+\usepackage{mathptmx}
+
 %\usepackage{changebar}
 %\newcommand{\cstart}{\cbstart\color{red}}
 %\newcommand{\cend}{\cbend\color{black}}

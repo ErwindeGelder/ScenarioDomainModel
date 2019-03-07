@@ -10,7 +10,9 @@ height=\figureheight,
 tick align=outside,
 tick pos=left,
 x grid style={white!69.01960784313725!black},
-y grid style={white!69.01960784313725!black}
+y grid style={white!69.01960784313725!black},
+axis x line*=bottom,
+axis y line*=left
 ]
 \addplot [line width=2.0pt, black, forget plot]
 table {%

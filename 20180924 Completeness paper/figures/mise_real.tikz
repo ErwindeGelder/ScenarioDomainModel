@@ -14,7 +14,9 @@ tick pos=left,
 x grid style={white!69.01960784313725!black},
 y grid style={white!69.01960784313725!black},
 xtick={600, 800, 1000, 1500, 2000, 2500},
-xticklabels={600, 800, 1000, 1500, 2000, 2500}
+xticklabels={600, 800, 1000, 1500, 2000, 2500},
+axis x line*=bottom,
+axis y line*=left
 ]
 \addplot [thick, black, forget plot]
 table {%
