@@ -4,11 +4,11 @@
 In the Hazard Analysis and Risk Assessment (HARA) required by the ISO~26262 standard, the estimation of Automotive Safety Integrity Level (ASIL) is calculated based on a so-called single specific hazardous event \cite{ISO26262}.
 Although the operational situation in which this single event occurs as well as the operating mode are considered in the analysis, still the proceeding and successive events are not taken into account.
 In this paper, we propose a new method to estimate the risk of a certain scenario considering the whole chain of activities and conditions that constitute the scenario.
-The estimated risk is based on real-world driving data. To estimate the risk, we will quantify the exposure and the severity. In \cref{Tab:Terms}, we present the definitions of the terms that are used in our proposed methodology. 
+The estimated risk is based on real-world driving data. To estimate the risk, we quantify the exposure and the severity. In \cref{Tab:Terms}, we present the definitions of the terms that are used in our proposed methodology. 
 
 \begin{table}
 	\centering
-	\caption{The terms and definitions}
+	\caption{The terms and definitions.}
 	\label{Tab:Terms}
 	\begin{tabular}{p{0.1\linewidth} p{0.8\linewidth}}
 		\toprule
@@ -16,7 +16,7 @@ The estimated risk is based on real-world driving data. To estimate the risk, we
 		Severity & An estimate of the extent of harm to one or more individuals that can occur in a potentially hazardous event~\cite{ISO26262} \\
 		Exposure & The state of being in a driving scenario \\
 		Risk & The combination of the probability of occurrence of harm and the severity of that harm~\cite{ISO26262} \\ 
-		Condition & The constant parameters describing the environmental aspects of the operational design domain\footnote{``Operating conditions under which a given driving automation system or feature thereof is specifically designed to function'' \cite{sea2018j3016}.} \\
+		Condition & The constant parameters describing the environmental aspects of the operational design domain\footnote{The operational design domain refers to the ``operating conditions under which a given driving automation system or feature thereof is specifically designed to function'' \cite{sea2018j3016}.} \\
 		Actor & An element of a scenario acting on its own behalf~\cite{ulbrich2015} \\ 
 		Scenario & A quantitative description of the activities of the ego vehicle and other actors and the conditions from the static environment \\
 		\bottomrule
@@ -25,7 +25,7 @@ The estimated risk is based on real-world driving data. To estimate the risk, we
 
 As explained in \cref{Tab:Terms}, a scenario consist of a set of conditions and activities, denoted by $A$ and $C$, respectively. We formulate the exposure as the average number of occurrences of the activities $A$ under the conditions $C$, denoted by $\lambda_{A,C}$. The severity is the likelihood of the potential hazardous consequence $R$ given the activities $A$ and the conditions $C$, denoted by the conditional probability $P(R|A,C)$. The risk is computed as the multiplication of the exposure and the severity. 
 
-The proposed method is summarized in \cref{fig:method}. To compute the exposure, we calculate the likelihood of the conditions, denoted by $P(C)$, and the conditional likelihood of the activities, denoted by $P(A|C)$, based on real-world driving data. This is explained in detail in the next section. For the estimation of the severity, we consider all possible scenarios that are subject to a set of conditions $C$ and consist of the activities $A$. Therefore, we parametrize the scenarios using the parameter vector $\theta$. Based on the real-world driving data, the probability density function of the parameters $P(\theta|A,C)$ is estimated. Next, using simulations, we estimate $P(R|\theta,A,C)$, the likelihood of a potential hazardous consequence $R$ given a parametrized scenario. The details of the estimation of the severity are presented after the details of the estimation of the exposure. Finally, we describe how the risk is estimated based on the estimated exposure and severity.
+The proposed method is summarized in \cref{fig:method}. To compute the exposure, we calculate the likelihood of the conditions, denoted by $P(C)$, and the conditional likelihood of the activities, denoted by $P(A|C)$, based on real-world driving data. This is explained in detail in the next section. For the estimation of the severity, we consider all possible scenarios that are subject to a set of conditions $C$ and consist of the activities $A$. Therefore, we parametrize the scenarios using the parameter vector $\theta$. Based on the real-world driving data, the probability density function of the parameters, denoted by $P(\theta|A,C)$, is estimated. Next, using simulations, we estimate $P(R|\theta,A,C)$, the likelihood of a potential hazardous consequence $R$ given a parametrized scenario. The details of the estimation of the severity are presented after the details of the estimation of the exposure. Finally, we describe how the risk is estimated based on the estimated exposure and severity.
 
 \begin{figure}
 	\centering
@@ -49,7 +49,7 @@ The proposed method is summarized in \cref{fig:method}. To compute the exposure,
 \subsection{Calculate exposure}
 %\label{sec:exposure}
 
-The scenarios are subject to $n_C$ conditions, denoted by $C_1, \ldots, C_m$. For the sake of brevity, all conditions together are denoted by $C$, i.e., $P(C_1, \ldots, C_{n_C})=P(C)$. Many of these conditions might be based on the operational design domain of the AD system and might include conditions with respect to the infrastructure, weather conditions, lighting conditions, and geographical locations. 
+The scenarios are subject to $n_C$ conditions, denoted by $C_1, \ldots, C_{n_C}$. For the sake of brevity, all conditions together are denoted by $C$, i.e., $P(C_1, \ldots, C_{n_C})=P(C)$. Many of these conditions might be based on the operational design domain of the AD system and might include conditions with respect to the infrastructure, weather conditions, lighting conditions, and geographical locations. 
 
 The first step is to compute the joint probability of the conditions, i.e., $P(C)$. In case these conditions are independent, the probability can be computed by simply multiplying the individual likelihoods for each condition, i.e., $P(C)=P(C_1)\cdot\ldots\cdot P(C_{n_C})$. This, however, might not necessarily be the case, which requires either to compute the joint probability or to compute conditional probabilities. In some cases, it might also be reasonable to simply assume that the likelihood of certain conditions are independent.
 
@@ -82,9 +82,7 @@ The first step towards estimating the severity is to parametrize the scenarios w
 
 In case the parameters are dependent, which is often the case, it is important that the number of parameters is limited to avoid the curse of dimensionality \cite{scott2015multivariate}. This often requires some assumptions. An example is presented in our case study in the next section.
 
-To estimate the probability density function (pdf) of the parameter vector $\theta$, i.e., $P(\theta|A,C)$, either parametric models, non-parametric models, or a combination of the two can be used. In case of parametric models, a certain functional form of the pdf is assumed. For example, it might be assumed that the pdf can be modeled using a Gaussian distribution. In this paper, we present a non-parametric approach using Kernel Density Estimation (KDE) \cite{rosenblatt1956remarks, parzen1962estimation}. Using KDE, there is no assumption on the functional form of the pdf because the shape of the pdf is automatically computed.
-
-Using KDE, the estimated pdf is given by
+To estimate the probability density function (pdf) of the parameter vector $\theta$, i.e., $P(\theta|A,C)$, either parametric models, non-parametric models, or a combination of the two can be used. In case of parametric models, a certain functional form of the pdf is assumed. For example, it might be assumed that the pdf can be modeled using a Gaussian distribution. In this paper, we present a non-parametric approach using Kernel Density Estimation (KDE) \cite{rosenblatt1956remarks, parzen1962estimation}. Using KDE, there is no assumption on the functional form of the pdf because the shape of the pdf is automatically computed. With KDE, the estimated pdf is given by
 \begin{equation}
 	\label{eq:kde}
 	P(\theta|A,C) = \frac{1}{nh^d} \sum_{i=1}^n K\left(\frac{\theta - \theta_i}{h}\right).
@@ -119,7 +117,7 @@ To improve the accuracy of \cref{eq:monte carlo}, importance sampling can be use
 \subsection{Calculating the risk}
 %\label{sec:risk}
 
-Analogous to the exposure, we define the risk as the number of occurrences of the harmful outcome $R$ in a scenario consisting of activities $A$ and conditions $C$ in a certain time interval. Let $\lambda$ denote the average number of these occurrences in an hour of driving. The chain rule of probability tells us that this equals the sum of $\lambda_{A,C}$ (i.e., the exposure) and $P(R|A,C)$ (i.e., the severity):
+Analogous to the exposure, we define the risk as the number of occurrences of the hazardous consequence $R$ in a scenario consisting of activities $A$ and conditions $C$ in a certain time interval. Let $\lambda$ denote the average number of these occurrences in an hour of driving. The chain rule of probability tells us that this equals the product of $\lambda_{A,C}$ (i.e., the exposure) and $P(R|A,C)$ (i.e., the severity):
 \begin{equation} \label{eq:risk}
 	\lambda = \lambda_{A,C} \cdot P(R|A,C)
 \end{equation}
