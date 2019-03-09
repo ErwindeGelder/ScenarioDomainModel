@@ -862,6 +862,15 @@
     <pdf_title>Analysis of ISO 26262 Compliant Techniques for the Automotive Domain</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="The notion of controllability" ID="ID_397801534" CREATED="1552041268238" MODIFIED="1552041403794" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/296%20The%20notion%20of%20controllability.pdf">
+<attribute NAME="key" VALUE="monkhouse2015notion"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="The Notion of Controllability in an Autonmous Vehicle Context"/>
+<attribute NAME="authors" VALUE="Monkhouse, Helen and Habli, Ibrahim and Mcdermid, John"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="29F5A3732B6D4BACD71CFC45970BB85C6F7A472EDFE12506CB5603BF5E1D96C">
+    <pdf_title>The Notion of Controllability in an autonmous vehicle context</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1534391906691" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
 <attribute NAME="key" VALUE="wachenfeld2016release"/>
@@ -1978,7 +1987,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Physical activity is deined as any bodily movement produced by skeletal muscles that result in energy expenditure" ID="ID_771327643" CREATED="1551888669410" MODIFIED="1551888838352" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/294%20Physical%20Activity%20definition.pdf">
+<node TEXT="Physical activity is defined as any bodily movement produced by skeletal muscles that result in energy expenditure" ID="ID_771327643" CREATED="1551888669410" MODIFIED="1552056092074" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/294%20Physical%20Activity%20definition.pdf">
 <attribute NAME="key" VALUE="caspersen1985physical"/>
 <attribute NAME="journal" VALUE="Public Health Reports"/>
 <attribute NAME="year" VALUE="1985"/>
