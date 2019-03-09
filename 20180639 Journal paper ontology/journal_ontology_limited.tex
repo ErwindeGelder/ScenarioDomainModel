@@ -1,0 +1,24 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\edef\footer{CONFIDENTIAL. Limited circulation. For review only.}
+\renewcommand*{\headrulewidth}{0pt}                      %% header line width
+\renewcommand*{\footrulewidth}{0pt}                         %% footer line width
+\fancyfoot[C]{%
+	\vspace{5em}
+	\large{\textcolor{red}{\footer}}
+}
+\setlength{\topmargin}{-20pt}
+\fancyhead[C]{%
+	\large{\textcolor{red}{\footer}}
+}
+
+\begin{document}
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{journal_ontology.pdf}
+\end{document}

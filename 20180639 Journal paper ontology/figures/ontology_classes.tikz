@@ -25,10 +25,11 @@
 \node[class, fill=category](actorcategory) at (3\blockx, \blocky) {Actor category};
 \node[class, fill=scenario](scenario) at (.5\blockx, 2\blocky) {Scenario};
 \node[class, fill=otherclass](static) at (\blockx, 3\blocky) {Static environment};
-\node[class, fill=otherclass](activity) at (2\blockx, 3\blocky) {Acitivity};
+\node[class, fill=otherclass](activity) at (2\blockx, 3\blocky) {Activity};
 \node[class, fill=otherclass](actor) at (3\blockx, 3\blocky) {Actor};
-\node[class, fill=otherclass](triggered) at (1.5\blockx, 4\blocky) {Triggered activity};
-\node[class, fill=otherclass](detected) at (2.5\blockx, 4\blocky) {Detected activity};
+\node[class, fill=otherclass](triggered) at (1.75\blockx, 4\blocky) {Triggered activity};
+\node[class, fill=otherclass](detected) at (2.75\blockx, 4\blocky) {Detected activity};
+\node[class, fill=otherclass](event) at (0.5\blockx, 4\blocky) {Event};
 
 % Aggregation arrows for the scenario class
 \node[coordinate, below of=scenario class, node distance=-\blocky/2, xshift=\blockwidth/3](helper scenario class){};
@@ -50,7 +51,7 @@
 % Aggregation arrow for scenario
 \node[coordinate, below of=scenario, node distance=-\blocky/2](helper scenario){};
 \node[coordinate, below of=scenario, node distance=\blockheight/2+1pt](aggregation scenario){};
-\foreach \class in {static, activity, actor}
+\foreach \class in {static, activity, actor, event}
 {
 	\node[coordinate, above of=\class, node distance=\blockheight/2, xshift=-\blockwidth/4](helper \class){};
 	\draw[aggregation] (helper \class) |- (helper scenario) -- (aggregation scenario);
@@ -58,6 +59,7 @@
 \node[anchor=south east] at (helper static) {1};
 \node[anchor=south east] at (helper activity) {$\mathbb{N}$};
 \node[anchor=south east] at (helper actor) {$\mathbb{N}$};
+\node[anchor=south east] at (helper event) {$\mathbb{N}$};
 
 % Aggregations for static environment, activity, and actor
 \foreach \class in {static, activity, actor}
@@ -68,15 +70,20 @@
 	\node[anchor=north east] at (category helper) {1};
 }
 
+% Aggregation for event -> triggered activity
+\draw[aggregation] (event) -- (triggered);
+\node[coordinate, right of=event, node distance=\blockwidth/2](helper event) {};
+\node[anchor=south west] at (helper event) {1};
+
 % falls into arrows
 \node[coordinate, right of=scenario class, node distance=\blockwidth/2+1pt, yshift=-\blockheight/3](helper1){};
 \node[coordinate, right of=scenario class, node distance=\blockwidth/2+1pt, yshift=\blockheight/3](helper2){};
 \node[coordinate, right of=helper1, node distance=\blockwidth/2](helper3){};
 \node[coordinate, right of=helper2, node distance=\blockwidth/2](helper4){};
 \draw[falls into] (helper1) -- (helper3) -- node[fill=white]{falls into} (helper4) -- (helper2);
-\node[coordinate, above of=scenario, node distance=\blockheight/2+1pt, xshift=-\blockwidth/3](helper1){};
-\node[coordinate, below of=scenario class, node distance=\blockheight/2+1pt, xshift=-\blockwidth/3](helper2){};
-\draw[falls into] (helper1) -- node[fill=white, align=center]{falls\\into} (helper2);
+\node[coordinate, above of=scenario, node distance=\blockheight/2+1pt, xshift=-\blockwidth/4](helper1){};
+\node[coordinate, below of=scenario class, node distance=\blockheight/2+1pt, xshift=-\blockwidth/4](helper2){};
+\draw[falls into] (helper1) -- node[fill=white, align=center, text width=2em]{falls into} (helper2);
 
 % Superclass arrows
 \node[coordinate, below of=activity, node distance=-.6\blocky](helper activity){};
@@ -92,10 +99,10 @@
 \node[coordinate, below of=legend, node distance=1.2em](helper1){};
 \node[coordinate, below of=legend right, node distance=1.2em](helper2){};
 \draw[superclass] (helper1) -- (helper2);
-\node[right of=helper2, node distance=0em, anchor=west]{Superclass};
+\node[right of=helper2, node distance=0em, anchor=west]{Subclass};
 \node[coordinate, above of=legend, node distance=1.2em](helper1){};
 \node[coordinate, above of=legend right, node distance=1.2em](helper2){};
 \draw[falls into] (helper1) -- (helper2);
-\node[right of=helper2, node distance=0em, anchor=west]{Method};
+\node[right of=helper2, node distance=0em, anchor=west]{Falls into};
 
 \end{tikzpicture}

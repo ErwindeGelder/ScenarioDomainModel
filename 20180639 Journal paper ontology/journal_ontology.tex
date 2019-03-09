@@ -4,6 +4,16 @@
 
 \documentclass[letterpaper, conference]{ieeeconf}  % Comment this line out if you need a4paper
 
+
+% make changes take effect
+\pagestyle{headings}
+% adjust as needed
+\addtolength{\footskip}{0\baselineskip}
+\addtolength{\textheight}{-1\baselineskip}
+
+
+
+
 %\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
 
 \IEEEoverridecommandlockouts                              % This command is only needed if 
@@ -34,7 +44,7 @@
 %\usepackage{cite}  % Make sure that citation appear as [1]-[3] instead of [1], [2], [3]
 \usepackage[utf8]{inputenc}    % utf8 support
 \usepackage[T1]{fontenc}       % code for pdf file
-\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=6,maxbibnames=15,backend=biber]{biblatex}
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,mincitenames=2,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 \renewcommand*{\bibfont}{\footnotesize}
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
@@ -65,7 +75,7 @@
 
 
 \title{\LARGE \bf
-	Scenario definition for the assessment of automated vehicles
+	Ontology for scenarios for the assessment of automated vehicles
 }
 
 
@@ -133,11 +143,11 @@
 %\usepackage{changebar}
 \newcommand{\cbstart}{\color{blue}}
 \newcommand{\cbend}{\color{black}}
+\newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
 
 \usepackage{setspace}
 \doublespacing
-% or:
-%\onehalfspacing
+
 
 \begin{document}
 
@@ -152,8 +162,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{sections/introduction}
-\input{sections/definition_scenario}
-\input{sections/scenario_classes}
+\input{sections/background}
+\input{sections/definitions}
 \input{sections/ontology}
 
 \input{sections/example}
