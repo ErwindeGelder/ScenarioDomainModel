@@ -35,7 +35,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \usepackage{units}								%% Appropriate behavior of units
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 \usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
-\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,mincitenames=2,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../../bib}
@@ -91,21 +91,55 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 	The reason that I mention this, is because I think that this paper might be a good contribution to my PhD, because quantifying the risk of particular scenarios is very useful for the performance assessment of automated vehicles. Furthermore, since real-world driving data is used to quantify the risk, the work is in line with my other work. We have some future plans (I will elaborate in a future progress report) to continue with this work. From now on, I will mention any updates regarding this work in these progress reports.
 	
 	FYI: The paper is attached to this report. \emph{NOTE: No review is required as the paper is already submitted.}
+	
+	\item The paper on the completeness is conditionally accepted for a special issue in the journal Traffic Injury Prevention. The paper needs to be submitted as a MS Word file. I converted the paper to a MS Word file. I will do a final check before submitting it (deadline is April 8). No actions from you required.
+	
+	\item I continued working on the paper about the ontology (attached below). Unfortunately, because the paper on risk quantification took more time, I could not finish the paper. I highlighted the changes using blue text. Few notable changes:
+	\begin{itemize}
+		\item Following the comment to separate literature from my own contributions, I restructured the paper:
+		\begin{enumerate}
+			\item Introduction
+			\item Background (Why an ontology; Context of scenario; Nomenclature)
+			
+			\emph{This section contains knowledge from literature.}
+			\item Definitions (Scenario; Event; Activity; Scenario class)
+			
+			\emph{This section is still a mix: it contanis the definitions of few terms and because we want the definitions to be consistent with literature, there are also many references.}
+			\item Ontology (represented by a domain model)
+			
+			\emph{This section only contains our contributions}.
+			\item Conclusion		
+		\end{enumerate}
+		\item I removed the term ``Activity'' from the nomenclature. First of all, no reference was made to any literature, whereas the nomenclature section should only mention definitions of terms that are directly adopted from literature. Secondly, I want to elaborate a bit more, as the activities are very important when describing a scenario. Thirdly, I want to highlight the difference between the terms ``action'' (this term is used by others, such as \textcite{ulbrich2015}) and ``activity'' and explain why we prefer the term ``activity'' (in a nutshell: activity refers to a movement \cite{caspersen1985physical}, whereas an action also includes the explanation of the movement. Therefore, actions require interpretive context \cite{bobick1997movement}).
+		\item I added event to the domain model/ontology (see Fig.\ 4 of paper) and to the section on definitions (Section~III-B). Currently, the definition is similar to the definition that we had in our rejected conference paper. However, I think we need to update the definition. As can be seen in Fig.\ 4 of the paper, an event can be a trigger of an activity. Such an event could be ``the distance of the ego vehicle to the crossing becomes less than 30 meters''. Currently, however, such an event is not compliant with the definition of an event (Definition~2 of the paper).
+	\end{itemize}
+	\item I am following the MSc.\ course Applied Statistics (6 ECTS $\rightarrow$ 5 Graduate School (GS) Credtis).
+	\item After the progress meeting, I will discuss with Mascha Toppenburg whether I can use my TNO courses to get GS credits.
+	\item On March 4, a student from the Padova university (Italy) started his MSc.\ thesis at TNO. He will work on quantification of the \emph{completeness} of the data. Whereas our paper focuses on the completeness of the activities, I think the student can focus on quantifying the completeness regarding the scenario classes. A good starting point might be \cite{wang2018extracting}. In the first month, I will give the student some time to do a literature study, such that he can formulate a relevant research question for his thesis.
+	\item During previous meeting, I discussed the so-called ``Milestone 3'' assessment methodology that we are developing in Singapore. The original deadline for a report on the methodology was on February 15. It appeared, however, that this was much too ambitious as the other people were very busy carrying out the ``Milestone 2'' assessment. 
 \end{itemize}
 
 \section{Future plans}
 
 \begin{itemize}
-	\item 
+	\item Progress with the ontology paper. Again, I plan to have a complete paper for the next meeting.
 \end{itemize}
 
 \section{Questions}
 
 \begin{itemize}
-	\item 
+	\item Is it a good plan to make the work on risk quantification part of my PhD thesis?
+	\item Is the structure of the ontology paper OK?
+	\item According to the portal of my doctoral education, the Go/No Go meeting is not yet completed. I think action point lies at Bart.
 \end{itemize}
 
 
 \printbibliography
+
+
+\newpage
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20180639 Journal paper ontology"/journal_ontology.pdf}
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{RiskPaper_ESV2019-Format.pdf}
+
 
 \end{document}
