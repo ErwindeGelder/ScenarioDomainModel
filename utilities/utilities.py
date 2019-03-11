@@ -70,7 +70,7 @@ def clean_folder(folder: str) -> None:
     # Remove contents of folder (if it is generated)
     tikzpath = os.path.join(folder, 'tikz')
     if os.path.exists(tikzpath):
-        exts = ['dpth', 'log', 'run.xml', 'md5', 'pdf']
+        exts = ['cb', 'cb2', 'dpth', 'log', 'run.xml', 'md5', 'pdf']
         for ext in exts:
             remove_files(ext, tikzpath)
 
@@ -280,6 +280,10 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True,
         log=False)
     pdf(os.path.join('..', 'progress_reports', 'report15'), 'progress_report_15', usebiber=True)
+    call_output(['git', 'checkout', 'PR16'])
+    pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True,
+        log=False)
+    pdf(os.path.join('..', 'progress_reports', 'report16'), 'progress_report_16', usebiber=True)
 
     # Revisions/versions
     call_output(['git', 'checkout', 'CompletenessPaperInit'])
@@ -317,7 +321,7 @@ if __name__ == '__main__':
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', True)
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True)
     pdf(os.path.join('..', '20180521 Summary GoNoGo'), 'phd_summary', usebiber=True)
-    pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True)
+    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
     pdf(os.path.join('..', '20180710 Ontology'), 'ontology', usebiber=True)
     pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True)
     pdf(os.path.join('..', '20181002 Completeness question'), 'completeness_questions',
