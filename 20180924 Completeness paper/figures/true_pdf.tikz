@@ -12,9 +12,11 @@ tick pos=left,
 x grid style={white!69.01960784313725!black},
 y grid style={white!69.01960784313725!black},
 axis x line*=bottom,
-axis y line*=left
+axis y line*=left,
+every x tick/.style={black},
+every y tick/.style={black}
 ]
-\addplot [line width=2.0pt, black, forget plot]
+\addplot [line width=0.7000000000000001pt, black, forget plot]
 table {%
 -3 0.0051667463394783
 -2.99 0.00537706752410664
@@ -618,7 +620,7 @@ table {%
 2.99 0.000495374477399596
 3 0.000463503099710759
 };
-\addplot [line width=2.0pt, gray, dashed, forget plot]
+\addplot [line width=0.7000000000000001pt, gray, dashed, forget plot]
 table {%
 -3 8.1664388086521e-06
 -2.99 8.86176776665391e-06

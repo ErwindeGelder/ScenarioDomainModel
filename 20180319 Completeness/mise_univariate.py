@@ -19,7 +19,7 @@ mu = [-1, 1]
 sigma = [0.5, 0.3]
 xlim = [-3, 3]
 max_change_bw = 0.25
-filename = os.path.join("hdf5", "mise_univariate.hdf5")
+filename = os.path.join("hdf5", "mise_univariate2.hdf5")
 
 # Generate datapoints
 np.random.seed(seed)

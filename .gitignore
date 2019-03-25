@@ -25,6 +25,7 @@ _data/
 *.dpth
 *.md5
 *.hdf5
+*/tikz/*
 utilities/log2.txt
 
 # Other files to be ignored

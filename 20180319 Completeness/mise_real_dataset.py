@@ -213,10 +213,11 @@ save(os.path.join(figures_folder, 'histogram.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
      extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left'])
 
+LW = 1.75
 _, ax = plt.subplots(1, 1, figsize=(7, 5))
-ax.loglog(nn, bwa[0], '-', label="bwa", lw=5, color=[.5, .5, .5])
-ax.loglog(nn, bwb[0], ':', label="bwb", lw=5, color=[.5, .5, .5])
-ax.loglog(nn, bw[0], '--', label="bwab", lw=5, color=[0, 0, 0])
+ax.loglog(nn, bwa[0], '-', label="bwa", lw=LW, color=[.5, .5, .5])
+ax.loglog(nn, bwb[0], ':', label="bwb", lw=LW, color=[.5, .5, .5])
+ax.loglog(nn, bw[0], '--', label="bwab", lw=LW, color=[0, 0, 0])
 ax.set_xlabel("Number of samples")
 ax.set_ylabel("Bandwidth")
 ax.set_xlim([np.min(nn), np.max(nn)])
@@ -224,16 +225,17 @@ save(os.path.join(figures_folder, 'bandwidth_real.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
      extra_axis_parameters=['xtick={600, 800, 1000, 1500, 2000, 2500}',
                             'xticklabels={600, 800, 1000, 1500, 2000, 2500}',
-                            'axis x line*=bottom', 'axis y line*=left'])
+                            'axis x line*=bottom', 'axis y line*=left',
+                            'every x tick/.style={black}', 'every y tick/.style={black}'])
 
 _, ax = plt.subplots(1, 1, figsize=(7, 5))
 logfit1 = np.polyfit(np.log(nn), np.log(mise[0]), 1)
-ax.loglog(nn, np.exp(logfit1[1]) * nn ** logfit1[0], color=[0, 0, 0], lw=2)
-ax.loglog(nn, mise[0], lw=5, color=[.5, .5, .5])
+ax.loglog(nn, np.exp(logfit1[1]) * nn ** logfit1[0], color=[0, 0, 0], lw=LW)
+ax.loglog(nn, mise[0], lw=LW, color=[.5, .5, .5])
 print("Approximation of MISE1: {:.3f}*n^{:.2f}".format(np.exp(logfit1[1]), logfit1[0]))
 logfit2 = np.polyfit(np.log(nn), np.log(miseab[0]), 1)
-ax.loglog(nn, np.exp(logfit2[1]) * nn ** logfit2[0], '--', color=[0, 0, 0], lw=2)
-ax.loglog(nn, miseab[0], '--', lw=5, color=[.5, .5, .5])
+ax.loglog(nn, np.exp(logfit2[1]) * nn ** logfit2[0], '--', color=[0, 0, 0], lw=LW)
+ax.loglog(nn, miseab[0], '--', lw=LW, color=[.5, .5, .5])
 print("Approximation of MISE1: {:.3f}*n^{:.2f}".format(np.exp(logfit2[1]), logfit2[0]))
 n2 = 1000
 n1 = (np.exp(logfit2[1] - logfit1[1])*n2**logfit2[0])**(1/logfit1[0])
@@ -244,7 +246,8 @@ save(os.path.join(figures_folder, 'mise_real.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
      extra_axis_parameters=['xtick={600, 800, 1000, 1500, 2000, 2500}',
                             'xticklabels={600, 800, 1000, 1500, 2000, 2500}',
-                            'axis x line*=bottom', 'axis y line*=left'])
+                            'axis x line*=bottom', 'axis y line*=left',
+                            'every x tick/.style={black}', 'every y tick/.style={black}'])
 
 _, ax = plt.subplots(1, 1, figsize=(7, 5))
 for m in mise:

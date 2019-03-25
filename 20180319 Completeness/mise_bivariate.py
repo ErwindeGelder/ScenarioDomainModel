@@ -198,15 +198,16 @@ print("Power for estimated MISE independent: {:.2f}".
       format(np.polyfit(np.log(NN), np.log(EST_MISE_IND[:, 0]), 1)[0]))
 
 # Plot the MISEs
+LW = 1.75
 SIGMAS = 3
 _, AX = plt.subplots(1, 1, figsize=(7, 5))
-PLOTREAL = AX.loglog(NN, REAL_MISE_DEP, lw=5, label="Real MISE", color=[0, 0, 0])
-PLOTEST = AX.loglog(NN, EST_MISE_DEP[:, 0], lw=5, label="Estimated MISE", color=[.5, .5, .5])
+PLOTREAL = AX.loglog(NN, REAL_MISE_DEP, lw=LW, label="Real MISE", color=[0, 0, 0])
+PLOTEST = AX.loglog(NN, EST_MISE_DEP[:, 0], lw=LW, label="Estimated MISE", color=[.5, .5, .5])
 MEAN = np.mean(EST_MISE_DEP, axis=1)
 STD = np.std(EST_MISE_DEP, axis=1)
 AX.fill_between(NN, MEAN - 3 * STD, MEAN + 3 * STD, color=[.8, .8, .8])
-AX.loglog(NN, REAL_MISE_IND, '--', lw=5, color=PLOTREAL[0].get_color())
-AX.loglog(NN, EST_MISE_IND[:, 0], '--', lw=5, color=PLOTEST[0].get_color())
+AX.loglog(NN, REAL_MISE_IND, '--', lw=LW, color=PLOTREAL[0].get_color())
+AX.loglog(NN, EST_MISE_IND[:, 0], '--', lw=LW, color=PLOTEST[0].get_color())
 MEAN = np.mean(EST_MISE_IND, axis=1)
 STD = np.std(EST_MISE_IND, axis=1)
 AX.fill_between(NN, MEAN - 3 * STD, MEAN + 3 * STD, color=[.8, .8, .8])
@@ -217,7 +218,8 @@ AX.set_xlim([np.min(NN), np.max(NN)])
 # ax.set_title("Data to be assumed dependent (solid) or independent (dashed)")
 save(os.path.join(FIGURES_FOLDER, 'mise_example.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
-     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left'])
+     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left',
+                            'every x tick/.style={black}', 'every y tick/.style={black}'])
 
 # Plot the bandwidth for varying n
 DX = np.mean(np.gradient(XPDF))
@@ -234,11 +236,11 @@ MUKAB = 1 / (4 * np.pi)
 HOPTAB = ((2 * MUKAB) / (NN * LAPAB)) ** (1 / (2 + 4))
 
 _, AX = plt.subplots(1, 1, figsize=(7, 5))
-AX.loglog(NN, BWA, '-', label="bwa", lw=5, color=[.5, .5, .5])
+AX.loglog(NN, BWA, '-', label="bwa", lw=LW, color=[.5, .5, .5])
 # ax.loglog(nn, hopta)
-AX.loglog(NN, BWB, ':', label="bwb", lw=5, color=[.5, .5, .5])
+AX.loglog(NN, BWB, ':', label="bwb", lw=LW, color=[.5, .5, .5])
 # ax.loglog(nn, hoptb)
-AX.loglog(NN, BWAB, '--', label="bwab", lw=5, color=[0, 0, 0])
+AX.loglog(NN, BWAB, '--', label="bwab", lw=LW, color=[0, 0, 0])
 # ax.loglog(nn, hoptab)
 AX.set_xlabel("Number of samples")
 AX.set_ylabel("Bandwidth")
@@ -246,7 +248,8 @@ AX.set_ylabel("Bandwidth")
 AX.set_xlim([np.min(NN), np.max(NN)])
 save(os.path.join(FIGURES_FOLDER, 'bandwidth.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
-     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left'])
+     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left',
+                            'every x tick/.style={black}', 'every y tick/.style={black}'])
 
 # Make a figure of the distribution and export to tikz
 # To get the xticks right, use more datapoints
@@ -254,12 +257,13 @@ NPDF = 601
 (XPDF,), YPDFA = GMA.pdf(minx=[XLIM[0]], maxx=[XLIM[1]], npoints=NPDF)
 _, YPDFB = GMB.pdf(minx=[XLIM[0]], maxx=[XLIM[1]], npoints=NPDF)
 _, AX = plt.subplots(1, 1, figsize=(7, 5))
-AX.plot(XPDF, YPDFA, lw=5, color=[0, 0, 0])
-AX.plot(XPDF, YPDFB, '--', lw=5, color=[.5, .5, .5])
+AX.plot(XPDF, YPDFA, lw=LW, color=[0, 0, 0])
+AX.plot(XPDF, YPDFB, '--', lw=LW, color=[.5, .5, .5])
 # ax.grid(True)
 AX.set_xlabel('$x$')
 AX.set_xlim(XLIM)
 save(os.path.join(FIGURES_FOLDER, 'true_pdf.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
-     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left'])
+     extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left',
+                            'every x tick/.style={black}', 'every y tick/.style={black}'])
 plt.show()

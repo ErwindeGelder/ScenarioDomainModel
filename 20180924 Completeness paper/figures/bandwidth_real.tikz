@@ -17,9 +17,11 @@ y grid style={white!69.01960784313725!black},
 xtick={600, 800, 1000, 1500, 2000, 2500},
 xticklabels={600, 800, 1000, 1500, 2000, 2500},
 axis x line*=bottom,
-axis y line*=left
+axis y line*=left,
+every x tick/.style={black},
+every y tick/.style={black}
 ]
-\addplot [line width=2.0pt, gray, forget plot]
+\addplot [line width=0.7000000000000001pt, gray, forget plot]
 table {%
 600 0.347177088177924
 633 0.34415549792894
@@ -52,7 +54,7 @@ table {%
 2642 0.146332828305586
 2786 0.147635865443625
 };
-\addplot [line width=2.0pt, gray, dotted, forget plot]
+\addplot [line width=0.7000000000000001pt, gray, dotted, forget plot]
 table {%
 600 0.192723686765745
 633 0.1911630941321
@@ -85,7 +87,7 @@ table {%
 2642 0.116747556114718
 2786 0.115430982819393
 };
-\addplot [line width=2.0pt, black, dashed, forget plot]
+\addplot [line width=0.7000000000000001pt, black, dashed, forget plot]
 table {%
 600 0.30374188664615
 633 0.301111016006188

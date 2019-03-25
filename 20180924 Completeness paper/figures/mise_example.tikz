@@ -14,7 +14,9 @@ tick pos=left,
 x grid style={white!69.01960784313725!black},
 y grid style={white!69.01960784313725!black},
 axis x line*=bottom,
-axis y line*=left
+axis y line*=left,
+every x tick/.style={black},
+every y tick/.style={black}
 ]
 \path [draw=white!80.0!black, fill=white!80.0!black] (axis cs:100,0.00837360965052848)
 --(axis cs:100,0.00452218826677066)
@@ -224,7 +226,7 @@ axis y line*=left
 --(axis cs:100,0.00817470080609374)
 --cycle;
 
-\addplot [line width=2.0pt, black, forget plot]
+\addplot [line width=0.7000000000000001pt, black, forget plot]
 table {%
 100 0.00625937102376296
 108 0.00595209850097616
@@ -277,7 +279,7 @@ table {%
 4616 0.000621788963895844
 5000 0.000591550883568053
 };
-\addplot [line width=2.0pt, gray, forget plot]
+\addplot [line width=0.7000000000000001pt, gray, forget plot]
 table {%
 100 0.0069216886435915
 108 0.00683474719360247
@@ -330,7 +332,7 @@ table {%
 4616 0.000731015866498229
 5000 0.000700602325221335
 };
-\addplot [line width=2.0pt, black, dashed, forget plot]
+\addplot [line width=0.7000000000000001pt, black, dashed, forget plot]
 table {%
 100 0.00412232947189457
 108 0.00391868410126267
@@ -383,7 +385,7 @@ table {%
 4616 0.000258232785833462
 5000 0.00024255859537546
 };
-\addplot [line width=2.0pt, gray, dashed, forget plot]
+\addplot [line width=0.7000000000000001pt, gray, dashed, forget plot]
 table {%
 100 0.00653238050466375
 108 0.00607631293508446
