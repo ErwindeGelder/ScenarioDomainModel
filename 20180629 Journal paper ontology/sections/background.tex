@@ -1,20 +1,19 @@
-\cbstart
 \section{Background}
 \label{sec:background}
 
-We will first explain why we want to present an ontology for describing scenarios and scenario classes. Next, in \cref{sec:context}, we provide some information of the context for which we want to define scenarios. In \cref{sec:nomenclature}, we describe notions that are adopted from literature to define our ontology.
-\cbend
+We first explain in \cref{sec:why ontology} why we want to present an ontology for describing scenarios and scenario classes. Next, in \cref{sec:context}, we provide some information of the context for which we want to define scenarios. In \cref{sec:nomenclature}, we describe notions that are adopted from literature to define our ontology.
+
+
 
 \subsection{Why an ontology?}
 \label{sec:why ontology}
-According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization'', where a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some purpose'' \cite{gruber1993ontology}. Ontologies are widely applied in all kinds of research areas, e.g., biology \cite{gkoutos2004mouse}, security-related research \cite{kim2005security}, socio-technical systems \cite{vanDamPhDThesis2009}, and computing \cite{chen2004soupa,chen2003ontology}. Furthermore, ontologies are defined for various applications, e.g., for the specification of international entrepreneurship research domains \cite{jones2011international}, for the profiling of users \cite{golemati2007creating}, for the formalization of human activities \cite{lee2017location}, and for product life cycle management \cite{matsokis2010plm}. \cbstart An ontology offers the following benefits:
+According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization'', where a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some purpose'' \cite{gruber1993ontology}. Ontologies are widely applied in all kinds of research areas, e.g., biology \cite{gkoutos2004mouse}, security-related research \cite{kim2005security}, socio-technical systems \cite{vanDamPhDThesis2009}, and computing \cite{chen2004soupa,chen2003ontology}. Furthermore, ontologies are defined for various applications, e.g., for the specification of international entrepreneurship research domains \cite{jones2011international}, for the profiling of users \cite{golemati2007creating}, for the formalization of human activities \cite{lee2017location}, and for product life cycle management \cite{matsokis2010plm}. An ontology offers the following benefits:
 \begin{itemize}
 	\item An ontology is useful for sharing knowledge between people and software agents \cite{vanDamPhDThesis2009, noy2001ontology, musen1992dimensions}. For example, the ontology can be used for communication between different software agents, such as different simulation tools.
-	\item An ontology can be directly translated into a class structure for object-oriented software implementation \cite{vanDamPhDThesis2009}. The ontology specifies the relationships between the different classes and provides information on the properties of a class and the possible values.
+	\item An ontology can be directly translated into a class structure for an object-oriented software implementation \cite{vanDamPhDThesis2009}. The ontology specifies the relationships between the different classes and provides information on the properties of a class and the possible values.
 	\item Domain assumptions about the terms and definitions are made explicit \cite{noy2001ontology}. This not only helps with preventing any ambiguity when communicating about scenarios, it also helps with understanding the underlying code when the assumptions are explicit.
-	\item An ontology can be used as a ``conceptual schemata in database systems'' \cite{gruber1993ontology}.
+	\item An ontology can be used as conceptual schemas in database systems \cite{gruber1993ontology}. A conceptual schema can be used to design a database structure.
 \end{itemize}
-\cbend
 
 There are several languages dedicated to the implementation of an ontology. Two major technologies are the Web Ontology Language (OWL) and the Unified Modeling Language (UML). We use UML for implementing the ontology, because UML focuses on describing implementation related issues, which is useful considering our Python implementation. For a detailed comparison between OWL and URL, see \cite{kiko2005detailed}.
 
@@ -25,7 +24,7 @@ There are several languages dedicated to the implementation of an ontology. Two 
 
 Because the notion of scenario is used in many different contexts, a high diversity in definitions of this notion exists (for an overview, see \cite{vannotten2003updated, bishop2007scentechniques}). Therefore, it is reasonable to assume that ``there is no `correct' scenario definition'' \cite{vannotten2003updated}. As a result, to define the notion of scenario, it is important to consider the context in which it will be used. 
 
-In this paper, the context of a scenario is the assessment of AVs, \cbstart where AVs refer to vehicles equipped with a driving automation system\footnote{\cbstart According to \cite{sea2018j3016}, a driving automation system is ``The hardware and software that are collectively capable of performing part or all of the dynamic driving task on a sustained basis. This term is used generically to describe any system capable of level 1-5 driving automation.'' Here, level 1 driving automation refers to ``driver assistance'' and level 5 refers to ``full driving automation''. For more details, see \cite{sea2018j3016}.\cbend}\cbend. 
+In this paper, the context of a scenario is the assessment of AVs, where AVs refer to vehicles equipped with a driving automation system\footnote{According to \cite{sea2018j3016}, a driving automation system is ``The hardware and software that are collectively capable of performing part or all of the dynamic driving task on a sustained basis. This term is used generically to describe any system capable of level 1-5 driving automation.'' Here, level 1 driving automation refers to ``driver assistance'' and level 5 refers to ``full driving automation''. For more details, see \cite{sea2018j3016}.}. 
 It is assumed that the assessment methodology uses scenarios (i.e., test cases) for which some resulting metrics are compared with a reference \cite{stellet2015taxonomy}. 
 % - Scenarios that an (automated) vehicle can encounter
 The ultimate goal is to build a database with all relevant scenarios that an AV has to cope with when driving in the real world \cite{putz2017pegasus}. Hence, a scenario should be a description of a potential use case of an AV. 
@@ -63,7 +62,7 @@ Typically, a system is modeled using a differential equation of the form $\dot{x
 \subsubsection{Mode}
 \label{sec:mode}
 In some systems, the behavior or evaluation of the system may all of a sudden change abruptly, e.g., due to a sudden change in an input, a model parameter, or the model function. Such a transient is called a mode switch.
-In each mode, the behavior of the system is described by a particular model with a fixed function $f$, parameter $\theta$ and smooth input $u(t)$ \cite{deschutter2000optimal}.
+In each mode, the behavior of the system is described by a particular model with a fixed function $f$, parameter $\theta$, and smooth input $u(t)$ \cite{deschutter2000optimal}.
 
 %\subsubsection{Activity}
 %\label{sec:activity}

@@ -5,9 +5,7 @@
 
 The classes of the domain model that are used to define a scenario and a scenario class are shown in \cref{fig:ontology classes}. The blue blocks represent the classes that are used to qualitatively describe a scenario whereas the orange blocks represent the classes that are used to quantitatively describe a scenario. 
 
-\cbstart
 There are three different types of arrows used in \cref{fig:ontology classes}. When translating the domain model to object-oriented code, the arrow ``Falls into'' is defines a method for the class it originates from with as input the class it points to. The two methods shown in this figure are the ``falls into'' methods that are described in \cref{sec:scenario class}. Most arrows represent an aggregation, which is best described by the verb ``to have'', i.e., an aggregation arrow from class A to class B means that an object of class A ``has'' zero, one, or multiple objects of class B. The number of objects of class B that A can ``have'' is shown at the starting point of the aggregation arrow and this is either one (1) or any integer number ($\mathbb{N}$), i.e., 0, 1, 2, etc. The third arrow denotes a subclass relation, i.e., the class from which this arrow originates inherits all properties from the class the arrow is pointing to. More specifically, the classes of triggered and detected activities are subclasses of the class ``Activity''.
-\cbend
 
 \begin{figure}
 	\centering
@@ -17,10 +15,7 @@ There are three different types of arrows used in \cref{fig:ontology classes}. W
 \end{figure}
 
 
-\color{red}
-TODO: 
-\begin{itemize}
+\todo{\begin{itemize}
 	\item Explain difference between qualitative descriptions (blue) and quantitative descriptions (orange).
 	\item Briefly explain the different classes.
-\end{itemize}
-\color{black}
+\end{itemize}}

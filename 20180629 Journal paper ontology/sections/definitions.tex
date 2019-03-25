@@ -1,9 +1,7 @@
 \section{Definitions}
 \label{sec:definitions}
 
-\cbstart
-One of reasons to present an ontology is to enable sharing of knowledge between people. Therefore, it is important that the terms we use are clearly defined. When presenting our ontology in \cref{sec:ontology}, we will formalize the terms such that it can be used by software agents, but first we will define the terms linguistically, such that communication among different people is clear when these people conform to our ontology. We will first define the concept of a scenario. Next, we will define two important attributes of a scenario, events and activities, in \cref{sec:event,sec:activity}, respectively. Lastly, we will present the definition of a scenario class in \cref{sec:scenario class}.
-\cbend
+One of reasons to present an ontology is to enable sharing of knowledge between people. Therefore, it is important that the terms we use are clearly defined. When presenting our ontology in \cref{sec:ontology}, we will formalize the terms such that it can be used by software agents, but first we will define the terms linguistically, such that communication among different people is clear when these people conform to our ontology. We will first define the concept of a scenario in \cref{sec:scenario}. Next, we will define two important attributes of a scenario, events and activities, in \cref{sec:event,sec:activity}, respectively. Lastly, we will present the definition of a scenario class in \cref{sec:scenario class}.
 
 
 
@@ -64,7 +62,7 @@ Hence, we define a scenario as follows.
 
 \textcite{geyer2014} and \textcite{ulbrich2015} use the term \emph{scene} to define a scenario, while \cref{def:scenario} describes the scenes implicitly. Thus the scenes do not have to be described explicitly.
 
-\Cref{fig:scenario} provides a schematic overview of the various components of a scenario. As shown in the second row of \cref{fig:scenario}, a scenario contains a description of the ego vehicle, the dynamic environment, and the static environment. As an example, possible activities of the vehicle in front, which is part of the dynamic environment, are detailed by considering the states `heading' and `speed'. \cbstart Note that a definition of the term activity is given in \cref{sec:activity}\cbend. The two rows of the activities show more generic descriptions and more detailed descriptions, respectively, of some possible activities.
+\Cref{fig:scenario} provides a schematic overview of the various components of a scenario. As shown in the second row of \cref{fig:scenario}, a scenario contains a description of the ego vehicle, the dynamic environment, and the static environment. As an example, possible activities of the vehicle in front, which is part of the dynamic environment, are detailed by considering the states `heading' and `speed'. Note that a definition of the term activity is given in \cref{sec:activity}. The two rows of the activities show more generic descriptions and more detailed descriptions, respectively, of some possible activities.
 
 \begin{figure}
 	\centering
@@ -119,24 +117,23 @@ An event according to \cref{def:event} is related to an event described in hybri
 %Another example of an event is the time instant at which the head lights are turned on. In that case, the activities before and after the event can be described as `lights off' and `lights on', respectively.
 
 
-\cbstart
+
 \subsection{Activity}
 \label{sec:activity}
 
 As mentioned in \cref{sec:dynamic environment}, the dynamic environment consists of the moving actors. To describe the dynamic environment, activities are used. The activities describe the way the states evolve over time. 
 
 An activity refers to the behavior of a particular mode. For example, an activity could be described by the label `braking' or `changing lane'.
-A scenario contains the quantitative description of the ongoing activity of the ego vehicle and its dynamic environment. Here, the description refers to the changing states that are relevant for the scenario, e.g., acceleration and velocity. The activity is described using the models that describe the way the state evolves over time.
+A scenario contains the quantitative description of the ongoing activity of the ego vehicle and its dynamic environment. Here, the description refers to the changing states that are relevant for the scenario, e.g., acceleration and velocity. 
 
-\color{red}
-TODO:
-\begin{itemize}
+\todo{\begin{itemize}
 	\item Give definition of activity and a bit more explanation.
 	\item Explain difference between action and activity (which also explains why we do not use the term action).
-\end{itemize}
-\color{black}
+	\item What about weather?
+	\item Actors $\rightarrow$ this should include ego vehicle.
+\end{itemize}}
 
-\cbend
+
 
 \subsection{Scenario class}
 \label{sec:scenario class}
@@ -145,12 +142,13 @@ TODO:
 In this section, the notion of scenario class is introduced. As proposed above, a scenario in the context of the performance assessment of an AV needs to be quantitative. However, a qualitative description of each scenario exists. 
 A scenario class refers to the qualitative description of a scenario.
 The qualitative description can be regarded as an abstraction of the quantitative scenario. Therefore, a scenario class refers to multiple scenarios with a common characteristic \cite{elrofai2018scenario}.
-\cbstart
+
 We define a scenario class as follows.
 \begin{definition}[Scenario class] \label{def:scenario class}
 	A scenario class refers to a set of scenarios that are qualitatively described similarly.
 \end{definition}
-\cbend
+
+\todo{Definition is too vague.}
 
 % What is the purpose of this?
 % - Human interpretable
@@ -165,8 +163,7 @@ Introducing the concept of scenario classes brings the following benefits:
 \end{itemize}
 
 % Explain scenarios fall into scenario class
-\cbstart
-We describe the formal relation between a scenario and a scenario class with the verb ``to fall into'', denoted by $\in$. If a specific scenario class $\mathcal{C}$ is an abstraction of a specific scenario $S$, then we say that the specific scenario $S$ falls into that specific scenario class $\mathcal{C}$, or simply $S \in \mathcal{C}$\cbend. Multiple scenarios can fall into a given scenario class. For example, consider the scenario class with the name ``Day'', see \cref{fig:venn diagram scenario class}. All scenarios that occur during the day fall into the scenario class ``Day''.
+We describe the formal relation between a scenario and a scenario class with the verb ``to fall into'', denoted by $\in$. If a specific scenario class $\mathcal{C}$ is an abstraction of a specific scenario $S$, then we say that the specific scenario $S$ falls into that specific scenario class $\mathcal{C}$, or simply $S \in \mathcal{C}$. Multiple scenarios can fall into a given scenario class. For example, consider the scenario class with the name ``Day'', see \cref{fig:venn diagram scenario class}. All scenarios that occur during the day fall into the scenario class ``Day''.
 
 \setlength{\venncircle}{7em}
 \begin{figure}
@@ -194,12 +191,10 @@ We describe the formal relation between a scenario and a scenario class with the
 Whereas multiple scenarios can fall into one scenario class, it is also possible for one scenario to fall into multiple scenario classes. Continuing the example of \cref{fig:venn diagram scenario class}, a scenario with rain during the day falls into both the scenario classes ``Day'' and ``Rain''.
 
 % Explain scenario class can fall into scenario classes
-\cbstart
 The verb ``to fall into'' is also used to describe the relation between two scenario classes. A scenario class $\mathcal{C}_1$ is said to fall into a scenario class $\mathcal{C}_2$ if all scenarios that fall into scenario class $\mathcal{C}_1$ also fall into scenario class $\mathcal{C}_2$. In that case, we can write $\mathcal{C}_1 \subseteq \mathcal{C}_2$. Thus we have
 \begin{equation}
 	\mathcal{C}_1 \subseteq \mathcal{C}_2 \text{ if } S \in \mathcal{C}_2 \,\,\forall\,\, S \in \mathcal{C}_1.
 \end{equation}
-\cbend
 For example, consider the scenario class ``Rain during day'', which is represented by the intersection of the red and green circles in \cref{fig:venn diagram scenario class}. All scenarios with rain that occur during the day fall into this scenario class. Obviously, these scenarios also fall into the scenario classes ``Day'' and ``Rain''. Hence, the scenario class ``Rain during day'' falls into the scenario classes ``Day'' and ``Rain''.
 
 When providing extra information to a piece of data, often tags are used \cite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \cite{craft2004tagging, vasquez2019controlling}. Applications are very broad, e.g., from classification of audio data \cite{kong2017joint} and capturing musical characteristics from songs \cite{ellis2011semantic} to tagging of Wikipedia pages \cite{voss2006collaborative}.
@@ -233,5 +228,5 @@ In \cite{degelder2019scenarioclasses}, several trees of tags are defined and \cr
 	\label{fig:tree vehicle activities}
 \end{figure*}
 
-Four different types of activities are identified regarding the lateral movement, see \cref{fig:tree vehicle lat act}. Here, it is assumed that ``Lateral'' refers to the direction perpendicular to the lane the vehicle is driving in (e.g., according to the Road Coordinate System in \cite{zofka2015datadrivetrafficscenarios}). Therefore, if the vehicle is driving on a curved road while staying more or less in its lane (lane-following), the tag ``Going straight'' is applicable. \cbstart Besides going straight, the vehicle might change lane, turn, or swerve to either the left or the right.\cbend
+Four different types of activities are identified regarding the lateral movement, see \cref{fig:tree vehicle lat act}. Here, it is assumed that ``Lateral'' refers to the direction perpendicular to the lane the vehicle is driving in (e.g., according to the Road Coordinate System in \cite{zofka2015datadrivetrafficscenarios}). Therefore, if the vehicle is driving on a curved road while staying more or less in its lane (lane-following), the tag ``Going straight'' is applicable. Besides going straight, the vehicle might change lane, turn, or swerve to either the left or the right.
 
