@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="0.91">
@@ -668,6 +668,18 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Cyber security" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_451753081" CREATED="1553046111818" MODIFIED="1553046118757">
+<node TEXT="A Review on Safety Failures, Security Attacks for AVs" ID="ID_1006939370" CREATED="1553046121772" MODIFIED="1553046140006" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/300%20Review%20safety%20faileres%20security%20attacks%20AVs.pdf">
+<attribute NAME="key" VALUE="cui2018review"/>
+<attribute NAME="journal" VALUE="Ad Hoc Networks"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A Review on Safety Failures, Security Attacks, and Available Countermeasures for Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Cui, Jin and Liew, Lin Shen and Sabaliauskaite, Giedre and Zhou, Fengjun"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5C4DB851193FA1DC4E805F6E4A682AD6B6313038FD21477853EFBFCFA5C055CD">
+    <pdf_title>ARTICLEINPRESS</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Towards increased reliability by objectification of HARA of AD" ID="ID_1947999662" CREATED="1530151676773" MODIFIED="1539742197564" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
 <attribute NAME="key" VALUE="khastgir2017towards"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
@@ -844,10 +856,10 @@
     <pdf_title>Safety Cases and their role in ISO 26262 Functional Safety Assessment</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262" ID="ID_1106902334" CREATED="1551886265976" MODIFIED="1551886360035" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/292%20How%20to%20Survive%20a%20Safety%20Case%20According%20to%20ISO%2026262.pdf">
+<node TEXT="How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262" ID="ID_1106902334" CREATED="1551886265976" MODIFIED="1552469529397" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/292%20How%20to%20Survive%20a%20Safety%20Case%20According%20to%20ISO%2026262.pdf">
 <attribute NAME="key" VALUE="dittel2010survive"/>
 <attribute NAME="year" VALUE="2010"/>
-<attribute NAME="title" VALUE="How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262"/>
+<attribute NAME="title" VALUE="How to &#x201c;Survive&#xfffd;? a Safety Case According to ISO 26262"/>
 <attribute NAME="authors" VALUE="Dittel, Torsten and Aryus, Hans-J{\&quot;o}rg"/>
 <pdf_annotation type="BOOKMARK" page="1" object_id="1464197473066962614" object_number="259" document_hash="6C1C716B638F9A2D482D5E2A987C6730ADDBD229DA96336BFA1B850871535D0">
     <pdf_title>How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262</pdf_title>
@@ -964,6 +976,15 @@
 <attribute NAME="authors" VALUE="Zhou, Jinwei and Tkachenko, Pavlo and del Re, Luigi"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="FDFB9529E72F1AD89E6A88101448F31A2A865D355361FE6265DB484A871FF">
     <pdf_title>A Methodology for Scenario-based Safety Assessment of Highly Automated Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="NHTSA: Framework for ADS testable cases/scenarios" ID="ID_1002798072" CREATED="1552988474486" MODIFIED="1552988488491" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/299%20Framework%20ADS%20Testable%20cases%20and%20scenarios.pdf">
+<attribute NAME="key" VALUE="nhtsa2018framework"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A Framework for Automated Driving System Testable Cases and Scenarios"/>
+<attribute NAME="authors" VALUE="Staplin, L., Mastromatto, T., Lococo, K. H. and Kenneth, W. and Gish, K. W. and Brooks, J. O."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC74C7F23B38FB7FDFE7E9BFD74714E42830A85D43D4992A4137E3E9C4BE">
+    <pdf_title>A Framework for Automated Driving System Testable Cases and Scenarios</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1341,14 +1362,14 @@
     <pdf_title>Cut-in Scenario Prediction for Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2019 Automatic Identification of Critical Scenarios in Public Dataset 3000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1545083256669">
-<attribute NAME="key" VALUE="paardekooper2019dataset3000km"/>
+<node TEXT="2019 Automatic Identification of Critical Scenarios in Public Dataset 3000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1553052811751">
+<attribute NAME="key" VALUE="paardekooper2019dataset6000km"/>
 <attribute NAME="year" VALUE="2019"/>
-<attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 3000 km of Naturalistic Driving"/>
-<attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and de Gelder, Erwin and Manders, Jeroen and Op den Camp, Olaf"/>
+<attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 6000 km of Public-Road Driving"/>
+<attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and Montfort, Sjef and Manders, Jeroen and Goos, Jorrit and de Gelder, Erwin and Op den Camp, Olaf and Bracquemond, O. and Thiolon, G."/>
 </node>
-<node TEXT="2019 Completeness paper" ID="ID_807223433" CREATED="1547188936412" MODIFIED="1547712887056">
-<attribute NAME="key" VALUE="Gelder"/>
+<node TEXT="2019 Completeness paper" ID="ID_807223433" CREATED="1547188936412" MODIFIED="1553052739619">
+<attribute NAME="key" VALUE="degelder2019completeness"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Safety Assessment of Automated Vehicles: How to Determine Whether We Have Collected Enough Field Data?"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Op den Camp, Olaf and De Schutter, Bart"/>
@@ -2123,8 +2144,8 @@
 </node>
 </node>
 </node>
-<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
-<node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
 <node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1534391438326" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
@@ -2152,6 +2173,15 @@
 <attribute NAME="authors" VALUE="Geyer, Sebastian and Baltzer, Marcel and Franz, Benjamin and Hakuli, Stephan and Kauer, Michaela and Kienle, Martin and Meier, Sonja and Wei{\ss}gerber, Thomas and Bengler, Klaus and Bruder, Ralph and Flemisch, Frank and Winner, Hermann"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B922D2A4F7949AAFB93DCFCB8B5719DE3595E8724DC50DCAD807068672DE44">
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="&quot;In a simulation, the vehicle you are driving or controlling.&quot;" ID="ID_517684460" CREATED="1552470952287" MODIFIED="1552471131215" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/298_AV-Simulation-Testing-Report.pdf">
+<attribute NAME="key" VALUE="catapult2018regulating"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Regulating and Accelerating Development of Highly Automated and Autonomous Vehicles Through Simulation and Modelling"/>
+<attribute NAME="authors" VALUE="Saigol, Zeyn and Peters, Alan and Barton, Matthew and Taylor, Mark"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="44C868DDD77D6C7CE3B766FE30C49FEE40C696111F6111444F824B2C78F7F4BA">
+    <pdf_title>REGULATING AND ACCELERATING DEVELOPMENT OF HIGHLY AUTOMATED AND AUTONOMOUS VEHICLES THROUGH SIMULATION AND MODELLING</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2254,6 +2284,26 @@
 <attribute NAME="authors" VALUE="Al-Sultan, Saif and Al-Doori, Moath M and Al-Bayatti, Ali H and Zedan, Hussien"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="2E6F9750DDE741CD89E0984749B28D90D9E71CEF5246FBE4895F4ACBD90F03">
     <pdf_title>Journal of Network and Computer Applications</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Glossaries" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1560004196" CREATED="1552469581889" MODIFIED="1552469593138">
+<node TEXT="Catapult: MUSICC" ID="ID_290746102" CREATED="1552469594155" MODIFIED="1552469604841" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/297%20MUSICC-Workshop-Glossary.pdf">
+<attribute NAME="key" VALUE="catapult2018musicc"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="{MUSICC}: {M}ulti {U}ser {S}cenario {C}atalogue for {CAV}s, Glossary of Terms and Definitions"/>
+<attribute NAME="authors" VALUE="Frost, A. B."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8DCC95234FC992C9154C8767A45DB7839CA339074552B82571A8983320A98">
+    <pdf_title>MUSICC: Multi User Scenario Catalogue for CAVs</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Catapult: AV simulation testing report" ID="ID_1259073047" CREATED="1552471457555" MODIFIED="1552471469594" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/298_AV-Simulation-Testing-Report.pdf">
+<attribute NAME="key" VALUE="catapult2018regulating"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Regulating and Accelerating Development of Highly Automated and Autonomous Vehicles Through Simulation and Modelling"/>
+<attribute NAME="authors" VALUE="Saigol, Zeyn and Peters, Alan and Barton, Matthew and Taylor, Mark"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="44C868DDD77D6C7CE3B766FE30C49FEE40C696111F6111444F824B2C78F7F4BA">
+    <pdf_title>REGULATING AND ACCELERATING DEVELOPMENT OF HIGHLY AUTOMATED AND AUTONOMOUS VEHICLES THROUGH SIMULATION AND MODELLING</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2370,7 +2420,7 @@
 </node>
 </node>
 </node>
-<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
 <node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1534391630156" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
@@ -2622,7 +2672,7 @@
 </node>
 <node TEXT="Scenario" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_574351628" CREATED="1524534319379" MODIFIED="1524534327135"/>
 </node>
-<node TEXT="Tagging in general" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_136679188" CREATED="1548295511616" MODIFIED="1548295527656">
+<node TEXT="Tagging in general" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_136679188" CREATED="1548295511616" MODIFIED="1548295527656">
 <node TEXT="Tagging data assets" ID="ID_191096193" CREATED="1548295530882" MODIFIED="1548295583812" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/269%20Tagging%20data%20assests.pdf">
 <attribute NAME="key" VALUE="craft2004tagging"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -2659,7 +2709,7 @@
     <pdf_title>SEMANTIC ANNOTATION AND RETRIEVAL OF MUSIC USING A BAG OF SYSTEMS REPRESENTATION</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Dynamic hierarchical tagging system and method" ID="ID_223352149" CREATED="1548297208414" MODIFIED="1548297222392" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/273%20Dynamic%20hierarchical%20tagging%20system%20and%20method.pdf">
+<node TEXT="Dynamic hierarchical tagging system and method" ID="ID_223352149" CREATED="1548297208414" MODIFIED="1552469559210" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/273%20Dynamic%20hierarchical%20tagging%20system%20and%20method.pdf">
 <attribute NAME="key" VALUE="molloy2017dynamic"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Dynamic Hierarchical Tagging System and Method"/>
