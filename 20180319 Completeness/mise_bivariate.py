@@ -212,10 +212,10 @@ MEAN = np.mean(EST_MISE_IND, axis=1)
 STD = np.std(EST_MISE_IND, axis=1)
 AX.fill_between(NN, MEAN - 3 * STD, MEAN + 3 * STD, color=[.8, .8, .8])
 AX.set_xlabel("Number of samples")
-# ax.set_ylabel("MISE")
-# ax.grid(True)
+AX.set_ylabel("Measure for completeness")
+# AX.grid(True)
 AX.set_xlim([np.min(NN), np.max(NN)])
-# ax.set_title("Data to be assumed dependent (solid) or independent (dashed)")
+# AX.set_title("Data to be assumed dependent (solid) or independent (dashed)")
 save(os.path.join(FIGURES_FOLDER, 'mise_example.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
      extra_axis_parameters=['axis x line*=bottom', 'axis y line*=left',
@@ -261,6 +261,7 @@ AX.plot(XPDF, YPDFA, lw=LW, color=[0, 0, 0])
 AX.plot(XPDF, YPDFB, '--', lw=LW, color=[.5, .5, .5])
 # ax.grid(True)
 AX.set_xlabel('$x$')
+AX.set_ylabel('Probability density')
 AX.set_xlim(XLIM)
 save(os.path.join(FIGURES_FOLDER, 'true_pdf.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',

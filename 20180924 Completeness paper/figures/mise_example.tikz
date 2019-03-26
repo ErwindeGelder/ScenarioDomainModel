@@ -3,6 +3,7 @@
 
 \begin{axis}[
 xlabel={Number of samples},
+ylabel={Measure for completeness},
 xmin=100, xmax=5000,
 ymin=0.000203194461844845, ymax=0.00999579898297368,
 xmode=log,

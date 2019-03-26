@@ -242,6 +242,7 @@ n1 = (np.exp(logfit2[1] - logfit1[1])*n2**logfit2[0])**(1/logfit1[0])
 print("Number of points for MISE 1 to be equal to MISE 2 at n={:d}: {:.0f}".format(n2, n1))
 ax.set_xlim([np.min(nn), np.max(nn)])
 ax.set_xlabel("Number of samples")
+ax.set_ylabel("Measure for completeness")
 save(os.path.join(figures_folder, 'mise_real.tikz'),
      figureheight='\\figureheight', figurewidth='\\figurewidth',
      extra_axis_parameters=['xtick={600, 800, 1000, 1500, 2000, 2500}',

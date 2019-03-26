@@ -3,6 +3,7 @@
 
 \begin{axis}[
 xlabel={$x$},
+ylabel={Probability density},
 xmin=-3, xmax=3,
 ymin=-0.0184681719232084, ymax=0.388011272041166,
 width=\figurewidth,
