@@ -121,17 +121,46 @@ An event according to \cref{def:event} is related to an event described in hybri
 \subsection{Activity}
 \label{sec:activity}
 
-As mentioned in \cref{sec:dynamic environment}, the dynamic environment consists of the moving actors. To describe the dynamic environment, activities are used. The activities describe the way the states evolve over time. 
+\cbstart
+As mentioned in \cref{def:scenario}, a scenario is a description of the dynamic environment of the ego vehicle. To describe the dynamic environment, activities are used. Furthermore, a scenario may describe the activities from the ego vehicle. Therefore, next to events, activities can be seen as the building blocks of a scenario.
 
-An activity refers to the behavior of a particular mode. For example, an activity could be described by the label `braking' or `changing lane'.
-A scenario contains the quantitative description of the ongoing activity of the ego vehicle and its dynamic environment. Here, the description refers to the changing states that are relevant for the scenario, e.g., acceleration and velocity. 
+The term activity is defined multiple times, e.g.:
+\begin{itemize}
+	\item According to the Cambridge Dictionary, an activity is defined as ``the doing of something, or something that you are doing, have done, or could do'' \cite{cambridge2019activity}.
+	\item \textcite{caspersen1985physical} define physical activity ``as any bodily movement produced by skeletal muscles that result in energy expenditure''.
+	\item \textcite{bobick1997movement} simply states that an activity is a ``sequence of movements''. 
+	\item In a glossary for modeling and simulation \cite{sigsim2019glossary}, an ``activity is the state of an object over an interval of time. An activity starts with an event and ends with another event.''
+\end{itemize}
 
-\todo{\begin{itemize}
-	\item Give definition of activity and a bit more explanation.
-	\item Explain difference between action and activity (which also explains why we do not use the term action).
-	\item What about weather?
-	\item Actors $\rightarrow$ this should include ego vehicle.
-\end{itemize}}
+Before providing the definition of an activity, the following is concluded about an activity:
+
+% Time interval
+\subsubsection{An activity corresponds to an inter-event time interval}
+As opposed to an event, an activity spans over a certain time interval. Furthermore, the start and the end of an activity is marked by an event.
+
+% Describing the evolution of a state
+\subsubsection{An activity quantitatively describes the evolution of a state}
+Because activities are the building blocks of a scenario and a scenario corresponds to a quantitative description, the activities itself need to be quantitative as well. Furthermore, since an activity corresponds to a time interval, it describes the evolution of a state, where the term state is defined in \cref{sec:state}.
+
+% Performed by something (an actor?)
+\subsubsection{An activity may be performed by an actor}
+An activity describes the evolution of a state and a state typically corresponds to an actor, e.g., the acceleration of a vehicle, and, therefore, an activity is typically performed by an actor. Note that the actor might be the ego vehicle. However, it might also be the case that a state does not correspond to an actor. For example, a state describing the weather conditions does not correspond to an actor, so if an activity describes changing weather conditions, the activity is not performed by an actor.
+
+Hence, we define an activity as follows.
+\begin{definition}[Activity]
+	An activity quantitatively describes the evolution of a state in between two events.
+\end{definition}
+
+% Remarks
+% 1. Activity is very similar to mode, i.e., a model that describes the evolution of a state over time with parameters theta
+% Skipped...
+
+% 2. Activity vs. action
+Note that \textcite{geyer2014, ulbrich2015} use the term \emph{action} and although they do not define this term, it seems to be related to our use of the term activity. Similarly, other authors \cite{sigsim2019glossary, catapult2018musicc, elrofai2018scenario} use the term activity. Although the terms \emph{activity} and \emph{action} may seem very similar, there is a difference. According to the Cambridge Dictionary, an action is defined as ``the process of doing something, [...], especially for a particular purpose'' \cite{cambridge2019action}. Therefore, an action requires information on the context (i.e., the particular purpose). \textcite{bobick1997movement} points out that (physical) actions require an interpretive context --- ``a set of constraints on possible explanations for the observed motions.'' In our case, we do not want to bother ourselves with detailing on the purpose of each of the activities. Hence, we refrain from using the term \emph{action}.
+
+% 3. Examples of activities
+Examples of activities are accelerating, cruising, and decelerating. Here, the activities describe the evolution of the longitudinal acceleration (or, e.g., speed). Activities describing the evolution of the lateral position of a vehicle with respect to center of the road might be labeled with ``driving straight'' or ``lane change''.
+\cbend
 
 
 

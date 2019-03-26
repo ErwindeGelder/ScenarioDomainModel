@@ -2007,6 +2007,12 @@
     <pdf_title>Printed in Great Britain</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Cambridge Dictionary: the process of doing something, or something done, especially for a particular purpose:" ID="ID_1465534794" CREATED="1553585575259" MODIFIED="1553585645895" LINK="https://dictionary.cambridge.org/dictionary/english/action">
+<attribute NAME="key" VALUE="cambridge2019action"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Action"/>
+<attribute NAME="authors" VALUE="{Cambridge Dictionary}"/>
+</node>
 </node>
 <node TEXT="Physical activity is defined as any bodily movement produced by skeletal muscles that result in energy expenditure" ID="ID_771327643" CREATED="1551888669410" MODIFIED="1552056092074" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/294%20Physical%20Activity%20definition.pdf">
 <attribute NAME="key" VALUE="caspersen1985physical"/>
@@ -2027,6 +2033,17 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1D4EFBDA2E271614BE976DE2BE3454E8915743B877DC399CC2B35C70E7C5F1">
     <pdf_title>Printed in Great Britain</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="Activity is the state of an object over an interval of time. An activity starts with an event and ends with another event." ID="ID_627119779" CREATED="1553508593730" MODIFIED="1553570656145" LINK="https://www.acm-sigsim-mskr.org/glossary.htm">
+<attribute NAME="key" VALUE="sigsim2019glossary"/>
+<attribute NAME="title" VALUE="Modeling and Simulation Glossary"/>
+<attribute NAME="year" VALUE="2019"/>
+</node>
+<node TEXT="the doing of something, or something that you are doing, have done, or could do" ID="ID_1789383369" CREATED="1553570216269" MODIFIED="1553572931261" LINK="https://dictionary.cambridge.org/dictionary/english/activity">
+<attribute NAME="key" VALUE="cambridge2019activity"/>
+<attribute NAME="title" VALUE="Activity"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="authors" VALUE="{Cambridge Dictionary}"/>
 </node>
 </node>
 <node TEXT="List of scenarios (to show that people use it for almost everything)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_175737845" CREATED="1507099450463" MODIFIED="1511405430207" MOVED="1515750497719">
