@@ -1,21 +1,50 @@
-\section{Domain model}
+\cbstart
+\section{Ontology for scenarios}
 \label{sec:ontology}
 
-\todo{This section should be rewritten.}
+We already explained the use of an ontology in \cref{sec:why ontology}. In this section, we present our ontology for scenarios for the assessment of automated vehicles. The ontology is formally representation through a domain model, which is briefly presented in \cref{sec:domain model}. Next, in \cref{sec:domain scenario class}, we explain how a scenario class is formally represented using the domain model. Similarly, in \cref{sec:domain scenario}, we describe how a scenario is formally represented using the domain model. For more details on the domain model that is representing the ontology, see \cref{sec:appendix domain model}.
 
-The classes of the domain model that are used to define a scenario and a scenario class are shown in \cref{fig:ontology classes}. The blue blocks represent the classes that are used to qualitatively describe a scenario whereas the orange blocks represent the classes that are used to quantitatively describe a scenario. 
 
-There are three different types of arrows used in \cref{fig:ontology classes}. When translating the domain model to object-oriented code, the arrow ``Falls into'' is defines a method for the class it originates from with as input the class it points to. The two methods shown in this figure are the ``falls into'' methods that are described in \cref{sec:scenario class}. Most arrows represent an aggregation, which is best described by the verb ``to have'', i.e., an aggregation arrow from class A to class B means that an object of class A ``has'' zero, one, or multiple objects of class B. The number of objects of class B that A can ``have'' is shown at the starting point of the aggregation arrow and this is either one (1) or any integer number ($\mathbb{N}$), i.e., 0, 1, 2, etc. The third arrow denotes a subclass relation, i.e., the class from which this arrow originates inherits all properties from the class the arrow is pointing to. More specifically, the classes of triggered and detected activities are subclasses of the class ``Activity''.
 
+\subsection{Domain model}
+\label{sec:domain model}
+
+The classes of the domain model that are used to define a scenario and a scenario class are shown in \cref{fig:ontology classes}, where each block represents a class. The blue blocks represent the classes that are used to qualitatively describe a scenario whereas the orange blocks represent the classes that are used to quantitatively describe a scenario. 
+
+\cbend
 \begin{figure}
 	\centering
 	\input{figures/ontology_classes.tikz}
-	\caption{Schematic overview of most classes of the ontology.}
+	\caption{\cbstart Schematic overview of most classes of the domain model for representing the ontology for scenarios for the assessment of automated vehicles.\cbend}
 	\label{fig:ontology classes}
 \end{figure}
+\cbstart
+
+The arrows in \cref{fig:ontology classes} represent the relations of the different classes. There are three different types of arrows. The arrows with the text ``falls into'' denote that both a scenario and a scenario class may fall into a scenario class, as explained in \cref{sec:scenario class}. The arrows with the diamond are best described by the verb ``to have''\footnote{\cbstart In UML, this is called an aggregation.\cbend}. For example, a scenario ``has'' a static environment. To be more precise: a scenario ``has'' exactly one static environment, which is indicated by the 1 at the start of the arrow. In a similar manner, a scenario ``has'' zero, one, or multiple activities, which is indicated by the symbol $\mathbb{N}$ indicating any integer number starting from 0. The third arrow denotes a subclass relation. For example, the class triggered activity is a subclass of the class activity such that the class triggered activity inherits all properties from the class activity.
 
 
-\todo{\begin{itemize}
-	\item Explain difference between qualitative descriptions (blue) and quantitative descriptions (orange).
-	\item Briefly explain the different classes.
-\end{itemize}}
+
+\subsection{Scenario class and its attributes}
+\label{sec:domain scenario class}
+
+The blue blocks in \cref{fig:ontology classes} represent the classes that are used to model a scenario class according to the definition of a scenario class, see \cref{def:scenario class}. According to \cref{def:scenario class}, a scenario class is a qualitative description of the ego vehicle, its static environment, and its dynamic environment. The ego vehicle and the dynamic environment are qualitatively described by activity categories and actor categories. Similarly, the static environment is qualitatively described by a static environment category. 
+
+The static environment category contains a human interpretable name and description of the static environment. Furthermore, it may contain predefined tags which are also interpretable by a software agent. 
+
+The activity category also contains a human interpretable name of the activity and it may contain predefined tags, such as the examples shown in \cref{fig:tree vehicle activities}. Furthermore, in line with the definition of an activity, see \cref{def:activity}, the activity category includes the state.  The model that is used to describe the evolution is specified. For example, the model could be `linear' or `sinusoidal'. However, since the activity category is a qualitative description, the parameters of the model are not included.
+
+Similar to the static environment category and the activity category, the actor category has a name and tags. Furthermore, the vehicle type is specified from a predefined list. To indicate that the actor is an ego vehicle, the tag ``Ego vehicle'' is added to the list of tags.
+
+% Explain why we have these different classes
+The reader might wonder why we introduce the different classes for describing a scenario class, i.e., the blue blocks, instead of only one class for modeling a scenario class. To explain this, consider the following example. We have two scenario classes that ``have'' the same static environment category. In the current domain model, a static environment category exists independently of a scenario class. As a result, when the first scenario class is, for some reason, deleted, the static environment category is not affected. Therefore, the other scenario class, which ``has'' the same static environment category is also not affected. Another reason for having the static environment category, the activity category, and the actor category is because of the quantitative counterparts, i.e., the static environment, activity, and actor (orange blocks in \cref{fig:ontology classes}), which we explain in the next section.
+
+
+
+\subsection{Scenario and its attributes}
+\label{sec:domain scenario}
+
+The orange blocks in \cref{fig:ontology classes} represent the classes that are used to model a scenario according to the definition of a scenario, see \cref{def:scenario}. 
+
+\cbend
+
+

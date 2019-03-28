@@ -86,7 +86,9 @@ The term event is used in many different fields, e.g.:
 	\item In probability theory, an event is an outcome or a set of outcomes of an experiment \cite{pfeiffer2013concepts}. For example, a thrown coin landing on its tail is an event.
 	%\item ``In relativity, an event is any occurrence with which a definite time and a definite location are associated; it is an idealization in the sense that any actual event is bound to have a finite extent both in time and in space'' \cite{sartori1996understanding}.
 	\item In the field of hybrid theory, ``the continuous and discrete dynamics interact at `event' or `trigger' times when the continuous state hits certain prescribed sets in the continuous state space'' \cite{branicky1998hybridcontrol}. ``A hybrid system can be in one of several modes, [...], and the system switches from one mode to another due to the occurrence of events'' \cite{deschutter2000optimal}.
-	\item In event-based control, a control action is computed when an event is triggered, as opposed to the more traditional approach where a control action is periodically computed \cite{heemels2012eventcontrol}. 
+	\cbstart
+	\item In event-based control, a control action is computed when an event is triggered, as opposed to the more traditional approach where a control action is periodically computed \cite{heemels2012eventcontrol}. Here, the trigger is the moment at which the system (is about to) reach a certain boundary.
+	\cbend
 \end{itemize}
 
 Before providing the definition of an event, the following is concluded about an event:
@@ -96,22 +98,25 @@ Before providing the definition of an event, the following is concluded about an
 Whether it is regarding computing, hybrid control, or event-based control, an event is happening at a time instant.
 
 % Event should mark transition of a state from one set to another - mention relation with hybrid control
-\subsubsection{An event marks a mode transition}
-A mode transition may be caused by either an abrupt change of an input signal, a change of a parameter or a change in the model. For example, pushing the brake pedal may cause a mode transition and therefore, this may be regarded as an event. 
+\cbstart
+\subsubsection{An event marks a mode transition or the moment a system reaches a boundary}
+A mode transition may be caused by either an abrupt change of an input signal, a change of a parameter or a change in the model. For example, pushing the brake pedal may cause a mode transition and therefore, this may be regarded as an event. It is also possible that the event marks the moment that a system reaches a boundary. For example, a vehicle entering a tunnel, i.e., the distance between the vehicle and the tunnel reaches zero, can be an event.
+\cbend
 
 %\subsubsection{An event marks (a cause of) a mode transition}
 %Events mark the transition of mode, which is either a change of input, parameter or state. This is analogous to the way event is described in hybrid control \cite{boel1999hybridcontrol}.
 
 % Give definition
 Hence, we define an event as follows.
+\cbstart
 \begin{definition}[Event] \label{def:event}
-	An event marks the time instant at which a mode transition occurs, such that before and after an event, the state corresponds to two different modes.
+	An event marks the time instant at which the system reaches a specified boundary or at which a mode transition occurs, such that before and after an event, the state corresponds to two different modes.
 \end{definition}
 
-% Compare definition with literature and other remarks
-% - Mention that it is basically similar to the definition adopted with hybrid control theory
-% - Mention that before and after, different qualitative description
-An event according to \cref{def:event} is related to an event described in hybrid control \cite{deschutter2000optimal}, where an event describes the transition from one mode of operation to another mode of operation. In our application, i.e., events in traffic scenarios, ``mode of operation'' is described by a certain model with parameters assigned to it.
+% Mention that there are basically two definitions. First definition more suitable for observations and inputs. Second definition more suitable for triggers for test cases.
+According to \cref{def:event}, an event is either a moment at which the system reaches a boundary or a moment at which a mode transition occurs. This first type of event, i.e., the moment at which the system reaches a boundary, is related to events in event-based control \cite{heemels2012eventcontrol}, whereas the second type of event, i.e., the moment at which a mode transition occurs, is related to events in hybrid theory \cite{deschutter2000optimal}. Especially when designing scenarios for testing purposes, an event of the first type might trigger an event of the second type. For example, consider a vehicle approaching a zebra crossing with a pedestrian (dummy) that is about to cross the road at the zebra crossing. When the distance between the vehicle and the zebra crossing becomes less than 20 meters (event of the first type), the pedestrian (dummy) starts crossing the road at the zebra crossing (event of the second type).
+
+\cbend
 
 %The inter-event time interval, i.e., the time in between two events, corresponds to a certain activity. For example, when the longitudinal acceleration is negative during an inter-event time interval, the activity can be described by the label `braking'.
 %Another example of an event is the time instant at which the head lights are turned on. In that case, the activities before and after the event can be described as `lights off' and `lights on', respectively.
@@ -148,6 +153,7 @@ An activity describes the evolution of a state and a state typically corresponds
 
 Hence, we define an activity as follows.
 \begin{definition}[Activity]
+	\label{def:activity}
 	An activity quantitatively describes the evolution of a state in between two events.
 \end{definition}
 
@@ -173,17 +179,16 @@ A scenario class refers to the qualitative description of a scenario.
 The qualitative description can be regarded as an abstraction of the quantitative scenario. Therefore, a scenario class refers to multiple scenarios with a common characteristic \cite{elrofai2018scenario}.
 
 We define a scenario class as follows.
+\cbstart
 \begin{definition}[Scenario class] \label{def:scenario class}
-	A scenario class refers to a set of scenarios that are qualitatively described similarly.
+	A scenario class is a qualitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment.
 \end{definition}
-
-\todo{Definition is too vague.}
+\cbend
 
 % What is the purpose of this?
 % - Human interpretable
 % - Group scenarios that are very similar --> Analysis is easier
 % - Completeness
-
 Introducing the concept of scenario classes brings the following benefits:
 \begin{itemize}
 	\item Whereas the quantitative description might be difficult to interpret as a human, a qualitative description is more easily interpreted by a human.

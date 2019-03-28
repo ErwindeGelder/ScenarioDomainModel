@@ -1956,7 +1956,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
+<node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
 <node TEXT="In probability: the outcome of an experiment. For example coin &quot;tail&quot;" ID="ID_431203968" CREATED="1508810134759" MODIFIED="1531983021869">
 <attribute NAME="key" VALUE="pfeiffer2013concepts"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -1987,6 +1987,15 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9F755389F5B93DE478321B968AD1E2D74F78CE4DAE6C3C5E93D97ECB1A3C2C">
     <pdf_title>An Introduction to Event-triggered and Self-triggered Control</pdf_title>
 </pdf_annotation>
+<node TEXT="Another paper on event-based control" ID="ID_1453448596" CREATED="1553744136051" MODIFIED="1553744191153" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/301%20Event%20Based%20Control.pdf">
+<attribute NAME="key" VALUE="astrom2008event"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="Event based control"/>
+<attribute NAME="authors" VALUE="Astr{\&quot;o}m, Karl J"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1381D4971FC8AC0D66752B2D08C56D96DD4D262ADB2F2889F947F11E63">
+    <pdf_title>Event Based Control</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="In philosophy: &quot;The term event ordinarily implies change&quot;" ID="ID_58366766" CREATED="1510564529789" MODIFIED="1516514901140">
 <attribute NAME="key" VALUE="kim1993supervenience"/>
