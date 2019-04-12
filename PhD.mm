@@ -1,7 +1,7 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
-<node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="0.91">
+<node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
     <properties show_icon_for_attributes="true" show_note_icons="true"/>
 
 <map_styles>
@@ -806,7 +806,7 @@
     <pdf_title>Code of Practice</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
+<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
@@ -3363,6 +3363,21 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Standards" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1405312808" CREATED="1554350838465" MODIFIED="1554350844611">
+<node TEXT="J3016" ID="ID_632878449" CREATED="1540286342512" MODIFIED="1540286348941" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/261%20J3016_201806.pdf">
+<attribute NAME="key" VALUE="sea2018j3016"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="164E75E54C4ACAF6CF09314741D60FEA9A17E40D434EC9DD8EB6C257E24C90">
+    <pdf_title>SURFACE VEHICLERECOMMENDED PRACTICE</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="OpenSCENARIO" ID="ID_1907137131" CREATED="1554350973364" MODIFIED="1554351043456" LINK="http://www.openscenario.org">
+<attribute NAME="key" VALUE="openscenario"/>
+<attribute NAME="title" VALUE="{OpenSCENARIO}"/>
+<attribute NAME="year" VALUE="2018"/>
+</node>
+</node>
 <node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">
 <node TEXT="Design and Evaluation of Automated MoD in Singapore" ID="ID_639563276" CREATED="1513224335345" MODIFIED="1534391744397" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/084%20Design%20and%20Evaluation%20of%20Automated%20Mobility%20on%20Demand%20in%20Singapore.pdf">
 <attribute NAME="key" VALUE="spieser2014toward"/>
@@ -3438,14 +3453,6 @@
 <attribute NAME="authors" VALUE="Bimbraw, Keshav"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F2DE1880F22A3B1F82673403F8A701B8CA36B21B281CC2DFD7B4CA72D2BD">
     <pdf_title>Autonomous Cars: Past, Present and Future</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="J3016" ID="ID_632878449" CREATED="1540286342512" MODIFIED="1540286348941" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/261%20J3016_201806.pdf">
-<attribute NAME="key" VALUE="sea2018j3016"/>
-<attribute NAME="year" VALUE="2018"/>
-<attribute NAME="title" VALUE="Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="164E75E54C4ACAF6CF09314741D60FEA9A17E40D434EC9DD8EB6C257E24C90">
-    <pdf_title>SURFACE VEHICLERECOMMENDED PRACTICE</pdf_title>
 </pdf_annotation>
 </node>
 </node>

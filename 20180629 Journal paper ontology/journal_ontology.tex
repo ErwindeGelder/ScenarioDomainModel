@@ -56,6 +56,7 @@
 \usepackage{subcaption}
 \usepackage{xstring}
 \usepackage{xparse}
+\usepackage{units}
 
 \theoremstyle{plain}
 \newtheorem{definition}{Definition}
@@ -97,9 +98,13 @@
 \newlength\figureheight
 \newlength\venncircle
 
-\usetikzlibrary{arrows}
+\usetikzlibrary{arrows,positioning}
 \usetikzlibrary{arrows.meta}
 \definecolor{TNOlightgray}{RGB}{222,222,231}
+\definecolor{scenarioclass}{RGB}{30, 144, 255}
+\definecolor{category}{RGB}{0, 191, 255}
+\definecolor{scenario}{RGB}{255, 69, 0}
+\definecolor{otherclass}{RGB}{255, 127, 80}
 \tikzstyle{tag}=[text height=.8em, text depth=.1em, font=\small\sffamily, rounded corners=0.2em, fill=TNOlightgray, node distance=9em, text width=7em, align=center]
 \tikzstyle{tag wide}=[tag, text width=12em]
 \tikzstyle{tagarrow}=[->, line width=0.75mm, color=TNOlightgray]

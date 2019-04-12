@@ -1,7 +1,3 @@
-\definecolor{scenarioclass}{RGB}{30, 144, 255}
-\definecolor{category}{RGB}{0, 191, 255}
-\definecolor{scenario}{RGB}{255, 69, 0}
-\definecolor{otherclass}{RGB}{255, 127, 80}
 \newlength\blockwidth
 \newlength\blockheight
 \newlength\blockx
@@ -50,7 +46,7 @@
 
 % Aggregation arrow for scenario
 \node[coordinate, below of=scenario, node distance=-\blocky/2](helper scenario){};
-\node[coordinate, below of=scenario, node distance=\blockheight/2+1pt](aggregation scenario){};
+\node[coordinate, below of=scenario, node distance=\blockheight/2](aggregation scenario){};
 \foreach \class in {static, activity, actor, event}
 {
 	\node[coordinate, above of=\class, node distance=\blockheight/2, xshift=-\blockwidth/4](helper \class){};
@@ -81,8 +77,8 @@
 \node[coordinate, right of=helper1, node distance=\blockwidth/2](helper3){};
 \node[coordinate, right of=helper2, node distance=\blockwidth/2](helper4){};
 \draw[falls into] (helper1) -- (helper3) -- node[fill=white]{falls into} (helper4) -- (helper2);
-\node[coordinate, above of=scenario, node distance=\blockheight/2+1pt, xshift=-\blockwidth/4](helper1){};
-\node[coordinate, below of=scenario class, node distance=\blockheight/2+1pt, xshift=-\blockwidth/4](helper2){};
+\node[coordinate, above of=scenario, node distance=\blockheight/2, xshift=-\blockwidth/4](helper1){};
+\node[coordinate, below of=scenario class, node distance=\blockheight/2, xshift=-\blockwidth/4](helper2){};
 \draw[falls into] (helper1) -- node[fill=white, align=center, text width=2em]{falls into} (helper2);
 
 % Superclass arrows
