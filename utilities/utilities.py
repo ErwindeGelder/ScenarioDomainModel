@@ -284,6 +284,10 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True,
         log=False)
     pdf(os.path.join('..', 'progress_reports', 'report16'), 'progress_report_16', usebiber=True)
+    call_output(['git', 'checkout', 'PR17'])
+    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True,
+        log=False)
+    pdf(os.path.join('..', 'progress_reports', 'report17'), 'progress_report_17', usebiber=True)
 
     # Revisions/versions
     call_output(['git', 'checkout', 'CompletenessPaperInit'])
