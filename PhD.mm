@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -668,18 +668,6 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Cyber security" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_451753081" CREATED="1553046111818" MODIFIED="1553046118757">
-<node TEXT="A Review on Safety Failures, Security Attacks for AVs" ID="ID_1006939370" CREATED="1553046121772" MODIFIED="1553046140006" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/300%20Review%20safety%20faileres%20security%20attacks%20AVs.pdf">
-<attribute NAME="key" VALUE="cui2018review"/>
-<attribute NAME="journal" VALUE="Ad Hoc Networks"/>
-<attribute NAME="year" VALUE="2018"/>
-<attribute NAME="title" VALUE="A Review on Safety Failures, Security Attacks, and Available Countermeasures for Autonomous Vehicles"/>
-<attribute NAME="authors" VALUE="Cui, Jin and Liew, Lin Shen and Sabaliauskaite, Giedre and Zhou, Fengjun"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5C4DB851193FA1DC4E805F6E4A682AD6B6313038FD21477853EFBFCFA5C055CD">
-    <pdf_title>ARTICLEINPRESS</pdf_title>
-</pdf_annotation>
-</node>
-</node>
 <node TEXT="Towards increased reliability by objectification of HARA of AD" ID="ID_1947999662" CREATED="1530151676773" MODIFIED="1539742197564" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
 <attribute NAME="key" VALUE="khastgir2017towards"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
@@ -738,6 +726,63 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Cyber security" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_451753081" CREATED="1553046111818" MODIFIED="1555571374741" MOVED="1555571367724">
+<node TEXT="Internal attacks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1962484135" CREATED="1555571386732" MODIFIED="1555571400818">
+<node TEXT="Bus systems" ID="ID_1909578800" CREATED="1555571475934" MODIFIED="1555571578498" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/308%20Security%20in%20Automotive%20Bus%20Systems.pdf">
+<attribute NAME="key" VALUE="wolf2004security"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Security in Automotive Bus Systems"/>
+<attribute NAME="authors" VALUE="Wolf, Marko and Weimerskirch, Andr{\&apos;e} and Paar, Christof"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E9C69CDB228D7EC472A35D921FE10D9FB8FAF226585C82B6E84C49571E1C6">
+    <pdf_title>Security in Automotive Bus Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="CAN via OBD port (On-board diagnostics)" ID="ID_1395547921" CREATED="1555574328572" MODIFIED="1555574507953" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/309%20Comprehensive%20Experimental%20Analyses%20of%20Automotive%20Attack%20Surfaces.pdf">
+<attribute NAME="key" VALUE="checkoway2011comprehensive"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Comprehensive Experimental Analyses of Automotive Attack Surfaces."/>
+<attribute NAME="authors" VALUE="Checkoway, Stephen and McCoy, Damon and Kantor, Brian and Anderson, Danny and Shacham, Hovav and Savage, Stefan and Koscher, Karl and Czeskis, Alexei and Roesner, Franziska and Kohno, Tadayoshi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1A724E709451471C88981B39D8E686E52131AFC7AAA59D6A761067E960D6660">
+    <pdf_title>Comprehensive Experimental Analyses of Automotive Attack Surfaces</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="A Review on Safety Failures, Security Attacks for AVs" ID="ID_1006939370" CREATED="1553046121772" MODIFIED="1553046140006" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/300%20Review%20safety%20faileres%20security%20attacks%20AVs.pdf">
+<attribute NAME="key" VALUE="cui2018review"/>
+<attribute NAME="journal" VALUE="Ad Hoc Networks"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A Review on Safety Failures, Security Attacks, and Available Countermeasures for Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Cui, Jin and Liew, Lin Shen and Sabaliauskaite, Giedre and Zhou, Fengjun"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5C4DB851193FA1DC4E805F6E4A682AD6B6313038FD21477853EFBFCFA5C055CD">
+    <pdf_title>ARTICLEINPRESS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="TR68 Part 3: Cybersecurity" ID="ID_185998485" CREATED="1555566289482" MODIFIED="1555566300077" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/306%20TR%20for%20AV%20Part%203%20Cybersecurity.pdf">
+<attribute NAME="key" VALUE="tr68cybersecurity"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Technical Reference Autonomous Vehicles -- Part 3: Cybersecurity"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FBA876EF7E4CDEF2FA79DAEA162CACDC55AEEB84DD5C3A131CCA44A73684CA">
+    <pdf_title>Mm</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Driving with Sharks: Rethinking Connected Vehicles with Cybersecurity" ID="ID_495769616" CREATED="1555570024977" MODIFIED="1555570154414" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/307%20Driving%20with%20Sharks%20Rethinking%20Connected%20Vehicles%20with%20Cybersecurity.pdf">
+<attribute NAME="key" VALUE="hashemeiza2017sharks"/>
+<attribute NAME="journal" VALUE="IEEE Vehicular Technology Magazine"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Driving with Sharks: Rethinking Connected Vehicles with Vehicle Cybersecurity"/>
+<attribute NAME="authors" VALUE="Hashem Eiza, Mahmoud and Ni, Qiang"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8F187F86FF7E5553F511FD8E967C1583CB51ED22695658F6D61A58B614AC9C">
+    <pdf_title>DRIVING WITH SHARKS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="US2: Unified Safety and Security Analsys for AVs" ID="ID_675137093" CREATED="1555670258365" MODIFIED="1555670578866" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/310%20Unified%20Safety%20and%20Security%20Analsys%20for%20AVs.pdf">
+<attribute NAME="key" VALUE="cui2018us"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="US$^2$: An Unified Safety and Security Analysis Method for Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Cui, Jin and Sabaliauskaite, Giedre"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+</node>
 <node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
 <node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1534391906877" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
 <attribute NAME="key" VALUE="kalra2016driving"/>
@@ -794,6 +839,25 @@
     <pdf_title>AirSim: High-Fidelity Visual and Physical Simulation for Autonomous Vehicles</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Comparison of Car-Following Models" ID="ID_1062538707" CREATED="1555293113329" MODIFIED="1555293125994" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/302%20Comparison%20of%20Car-Following%20Models.pdf">
+<attribute NAME="key" VALUE="olstam2004comparison"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Comparison of Car-following models"/>
+<attribute NAME="authors" VALUE="Olstam, Johan Janson and Tapani, Andreas"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B9FB1B96167BD951774FA438D162B43CD1AB70B4F13644F12D76FBEF20F582E9">
+    <pdf_title>Comparison of Car-following models</pdf_title>
+</pdf_annotation>
+<node TEXT="Incorporating human factors in car-following models" ID="ID_454425979" CREATED="1555293518339" MODIFIED="1555293533708" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/303%20Incorporating%20human%20factors%20in%20car-following%20models.pdf">
+<attribute NAME="key" VALUE="saifuzzaman2014incorporating"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Incorporating Human-Factors in Car-Following Models: A Review of Recent Developments and Research Needs"/>
+<attribute NAME="authors" VALUE="Saifuzzaman, Mohammad and Zheng, Zuduo"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9E89DB355CBEFE523B98A4D3C64E4B4E8FD49A23EF5913EF31CE63A113BD5A">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Traditional methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_212387236" CREATED="1517041168552" MODIFIED="1517041183565">
 <node TEXT="Code of Practice for the Design and Evaluation of ADAS" ID="ID_1744658253" CREATED="1517041192918" MODIFIED="1534391906768" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/133%20Code%20of%20practice%20for%20the%20design%20and%20evaluation%20of%20adas.pdf">
@@ -806,7 +870,7 @@
     <pdf_title>Code of Practice</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
+<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
@@ -922,15 +986,6 @@
     <pdf_title>A Scenario-Based Assessment Approach for Automated Driving by Using Time Series Classification of Human-Driving Behaviour</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="PEGASUS: Database with traffic scenarios" ID="ID_1531496623" CREATED="1512615525217" MODIFIED="1534391955311" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf">
-<attribute NAME="key" VALUE="putz2017pegasus"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="System Validation of Highly Automated Vehicles with a Database of Relevant Traffic Scenarios"/>
-<attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
-    <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
-</pdf_annotation>
-</node>
 <node TEXT="AdaptIVe conference paper at IV2017" ID="ID_1057835923" CREATED="1510630510294" MODIFIED="1534391955249" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -986,6 +1041,35 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC74C7F23B38FB7FDFE7E9BFD74714E42830A85D43D4992A4137E3E9C4BE">
     <pdf_title>A Framework for Automated Driving System Testable Cases and Scenarios</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="PEGASUS" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1615434539" CREATED="1555470126855" MODIFIED="1555470213524" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/304%20PEGASUS%20Approach.pdf">
+<attribute NAME="key" VALUE="winner2017pegasus"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Safety Assurance for Highly Automated Driving-The PEGASUS Approach"/>
+<attribute NAME="authors" VALUE="Winner, H and Wachenfeld, W and Junietz, P"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="374D8FF1E3BD9F577E55B1982368E876A5FD0FE86BD79EB15323C79DF0F74">
+    <pdf_title>Safety Assurance for Highly Automated Driving &#x2013; The PEGASUS Approach</pdf_title>
+</pdf_annotation>
+<node TEXT="PEGASUS: Database with traffic scenarios" ID="ID_1531496623" CREATED="1512615525217" MODIFIED="1534391955311" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/073%20PEGASUS%20with%20database%20of%20relevant%20traffic%20scenarios.pdf" MOVED="1555564879672">
+<attribute NAME="key" VALUE="putz2017pegasus"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="System Validation of Highly Automated Vehicles with a Database of Relevant Traffic Scenarios"/>
+<attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
+    <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Methods for HAVs" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_774172965" CREATED="1555565022870" MODIFIED="1555565032767">
+<node TEXT="Toward a Framework for HAV Safety Validation" ID="ID_1158276808" CREATED="1555565047695" MODIFIED="1555565134047" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/305%20Toward%20a%20Framework%20for%20HAV%20Safety%20Validation.pdf">
+<attribute NAME="key" VALUE="koopman2018toward"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Toward a framework for highly automated vehicle safety validation"/>
+<attribute NAME="authors" VALUE="Koopman, Philip and Wagner, Michael"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F889DEA139D76EC294CE4F19F41232E627AA1F45E056BAF156DD6FAD13FE">
+    <pdf_title>Toward a Framework for Highly Automated Vehicle Safety Validation</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Other/general methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1536226544121">
@@ -1374,6 +1458,7 @@
 <attribute NAME="title" VALUE="Safety Assessment of Automated Vehicles: How to Determine Whether We Have Collected Enough Field Data?"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Op den Camp, Olaf and De Schutter, Bart"/>
 </node>
+<node TEXT="2019 Quantification of scenario risk" ID="ID_1198050945" CREATED="1555381619441" MODIFIED="1555381629045"/>
 </node>
 <node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
