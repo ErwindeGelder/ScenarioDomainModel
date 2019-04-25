@@ -727,7 +727,7 @@
 </node>
 </node>
 <node TEXT="Cyber security" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_451753081" CREATED="1553046111818" MODIFIED="1555571374741" MOVED="1555571367724">
-<node TEXT="Internal attacks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1962484135" CREATED="1555571386732" MODIFIED="1555571400818">
+<node TEXT="Internal attacks" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1962484135" CREATED="1555571386732" MODIFIED="1555571400818">
 <node TEXT="Bus systems" ID="ID_1909578800" CREATED="1555571475934" MODIFIED="1555571578498" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/308%20Security%20in%20Automotive%20Bus%20Systems.pdf">
 <attribute NAME="key" VALUE="wolf2004security"/>
 <attribute NAME="year" VALUE="2004"/>
@@ -747,7 +747,82 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="A Review on Safety Failures, Security Attacks for AVs" ID="ID_1006939370" CREATED="1553046121772" MODIFIED="1553046140006" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/300%20Review%20safety%20faileres%20security%20attacks%20AVs.pdf">
+<node TEXT="DSRC" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1023302769" CREATED="1556115435242" MODIFIED="1556115451677">
+<node TEXT="Denial-of-Service attacks" ID="ID_1546711140" CREATED="1556115452981" MODIFIED="1556116132356" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/311%20Real-time%20detection%20of%20Denial-of-Service%20attacks.pdf">
+<attribute NAME="key" VALUE="lyamin2014real"/>
+<attribute NAME="journal" VALUE="IEEE Communications Letters"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Real-time Detection of {D}enial-of-{S}ervice Attacks in {IEEE} 802.11p Vehicular Networks"/>
+<attribute NAME="authors" VALUE="Lyamin, Nikita and Vinel, Alexey and Jonsson, Magnus and Loo, Jonathan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E12D6A4B36C98B90253EC8B28B1BEE36C2ADE4D5035E9DA6166FAA2CF4DF">
+    <pdf_title>Real-time detection of Denial-of-Service attacks in IEEE 802.11p vehicular networks</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Injection of false message, eavesdropping" ID="ID_1130803519" CREATED="1556116731295" MODIFIED="1556118049961" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/312%20Risk%20analysis%20study%20of%20ITS%20communication.pdf">
+<attribute NAME="key" VALUE="moalla2012risk"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Risk Analysis Study of {ITS} Communication Architecture"/>
+<attribute NAME="authors" VALUE="Moalla, Rim and Labiod, Houda and Lonc, Brigitte and Simoni, Noemie"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="688FC895A22BA5E9D4476BF866F1102EA8A4CB0CE59B7BCFBF776F40D38A">
+    <pdf_title>Risk Analysis Study of ITS Communication Architecture</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Malware attacks" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_376081192" CREATED="1556117479668" MODIFIED="1556117487397">
+<node TEXT="General paper about all kinds of malware attacks" ID="ID_688403557" CREATED="1556117610998" MODIFIED="1556117951216" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/313%20Defending%20Connected%20Vehicles%20Against%20Malware.pdf">
+<attribute NAME="key" VALUE="zhang2014defending"/>
+<attribute NAME="journal" VALUE="IEEE Internet of Things Journal"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Defending Connected Vehicles Against Malware: Challenges and a Solution Framework"/>
+<attribute NAME="authors" VALUE="Zhang, Tao and Antunes, Helder and Aggarwal, Siddhartha"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5FEE1BE42E63EF536FC488FB2DE219C6DCC7E7D56A753D4F61FCD3D091D574">
+    <pdf_title>Defending Connected Vehicles Against Malware: Challenges and a Solution Framework</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Automobile Apps Threats" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1937043603" CREATED="1556175029551" MODIFIED="1556175047619">
+<node TEXT="Two-year survey on security challenges" ID="ID_927541248" CREATED="1556175183201" MODIFIED="1556175271040" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/315%20Two-year%20survey%20on%20security%20challenges%20in%20automotive.pdf">
+<attribute NAME="key" VALUE="yan2015twoyear"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="A Two-year Survey on Security Challenges in Automotive Threat Landscape"/>
+<attribute NAME="authors" VALUE="Yan, Wei"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CA5CB87EB6A9DCB596147D8EA575A04D9666465A1489C1E542F8020CECA64">
+    <pdf_title>A Two-year Survey on Security Challenges in Automotive Threat Landscape</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Via bluetooth - a survey of vehicle bluetooth devices" ID="ID_1028216684" CREATED="1556175540223" MODIFIED="1556180038030" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/316%20Survey%20of%20Vehicle%20IoT%20Bluetooth%20Devices.pdf">
+<attribute NAME="key" VALUE="oka2014bluetooth"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Survey of Vehicle IoT Bluetooth Devices"/>
+<attribute NAME="authors" VALUE="Oka, Dennis Kengo and Furue, Takahiro and Langenhop, Lennart and Nishimura, Tomohiro"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5D88208F9519D147D76A5F57454D933D4E1D3384DFC76837676E7923EE311E5">
+    <pdf_title>Survey of Vehicle IoT Bluetooth Devices</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Spoofing" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1063522837" CREATED="1556180620005" MODIFIED="1556180626144">
+<node TEXT="Contactless Attacks" ID="ID_914458965" CREATED="1556182428242" MODIFIED="1556182768736" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/321%20Contactless%20Attacks.pdf">
+<attribute NAME="key" VALUE="yan2016can"/>
+<attribute NAME="journal" VALUE="DEF CON"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Can You Trust Autonomous Vehicles: Contactless Attacks Against Sensors of Self-driving Vehicle"/>
+<attribute NAME="authors" VALUE="Yan, Chen and Xu, Wenyuan and Liu, Jianhao"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="801C84126A2FDC10F2A921C55E6E5C7F15A534701D4FC9C22B11E58BCE6292">
+    <pdf_title>Can You Trust Autonomous Vehicles: Contactless Attacks against Sensors of Self-driving Vehicle</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Controlling UAVs with Sensor Input Spoofing Attacks" ID="ID_1759981407" CREATED="1556183232806" MODIFIED="1556183437063" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/322%20Controlling%20UAVs%20with%20Sensor%20Input%20Spoofing%20Attacks.pdf">
+<attribute NAME="key" VALUE="davidson2016controlling"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Controlling {UAV}s with Sensor Input Spoofing Attacks"/>
+<attribute NAME="authors" VALUE="Davidson, Drew and Wu, Hao and Jellinek, Rob and Singh, Vikas and Ristenpart, Thomas"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8D40A979B8741855E4C59DD4E8FB44E1BD5F4EB52E2ACF7CB13FA2C6A32A6">
+    <pdf_title>Controlling UAVs with Sensor Input Spoofing Attacks</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Overviews of threats" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_533816605" CREATED="1556117405571" MODIFIED="1556117413378">
+<node TEXT="A Review on Safety Failures, Security Attacks for AVs" ID="ID_1006939370" CREATED="1553046121772" MODIFIED="1553046140006" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/300%20Review%20safety%20faileres%20security%20attacks%20AVs.pdf" MOVED="1556117415964">
 <attribute NAME="key" VALUE="cui2018review"/>
 <attribute NAME="journal" VALUE="Ad Hoc Networks"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -757,15 +832,7 @@
     <pdf_title>ARTICLEINPRESS</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="TR68 Part 3: Cybersecurity" ID="ID_185998485" CREATED="1555566289482" MODIFIED="1555566300077" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/306%20TR%20for%20AV%20Part%203%20Cybersecurity.pdf">
-<attribute NAME="key" VALUE="tr68cybersecurity"/>
-<attribute NAME="year" VALUE="2019"/>
-<attribute NAME="title" VALUE="Technical Reference Autonomous Vehicles -- Part 3: Cybersecurity"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FBA876EF7E4CDEF2FA79DAEA162CACDC55AEEB84DD5C3A131CCA44A73684CA">
-    <pdf_title>Mm</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="Driving with Sharks: Rethinking Connected Vehicles with Cybersecurity" ID="ID_495769616" CREATED="1555570024977" MODIFIED="1555570154414" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/307%20Driving%20with%20Sharks%20Rethinking%20Connected%20Vehicles%20with%20Cybersecurity.pdf">
+<node TEXT="Driving with Sharks: Rethinking Connected Vehicles with Cybersecurity" ID="ID_495769616" CREATED="1555570024977" MODIFIED="1555570154414" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/307%20Driving%20with%20Sharks%20Rethinking%20Connected%20Vehicles%20with%20Cybersecurity.pdf" MOVED="1556117418719">
 <attribute NAME="key" VALUE="hashemeiza2017sharks"/>
 <attribute NAME="journal" VALUE="IEEE Vehicular Technology Magazine"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -773,6 +840,103 @@
 <attribute NAME="authors" VALUE="Hashem Eiza, Mahmoud and Ni, Qiang"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="8F187F86FF7E5553F511FD8E967C1583CB51ED22695658F6D61A58B614AC9C">
     <pdf_title>DRIVING WITH SHARKS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Survey on security threats and protection mechanisms" ID="ID_536533554" CREATED="1556117739362" MODIFIED="1556117874447" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/314%20Survey%20on%20Security%20Threats.pdf">
+<attribute NAME="key" VALUE="studnia2013survey"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="A Survey on Security Threats and Protection Mechanisms in Embedded Automotive Networks"/>
+<attribute NAME="authors" VALUE="Studnia, Ivan and Nicomette, Vincent and Alata, Eric and Deswarte, Yves and Ka{\^a}niche, Mohamed and Laarouchi, Youssef"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9770D3A39799B8C0BC31A57DA1F2228C215F4C3BCA3CF344730642639AEA50">
+    <pdf_title>A Survey of Security Threats and Protection Mechanisms in Embedded Automotive Networks</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A study on cyber-security of AVs" ID="ID_99176670" CREATED="1556180675157" MODIFIED="1556180816228" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/317%20A%20study%20on%20cyber-security%20of%20AVs.pdf">
+<attribute NAME="key" VALUE="yaugdereli2015study"/>
+<attribute NAME="journal" VALUE="The Journal of Defense Modeling and Simulation"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="A Study on Cyber-Security of Autonomous and Unmanned Vehicles"/>
+<attribute NAME="authors" VALUE="Ya{\u{g}}dereli, Eray and Gemci, Cemal and Akta{\c{s}}, A Ziya"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E3A54A2A3E2C991B5B50957CB4B641D28910832FB982C779EB78ACB2980B">
+    <pdf_title>A study on cyber-security of autonomous and unmanned vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Survey on Misbehavior Detection in Cooperative ITS" ID="ID_782053639" CREATED="1556181333253" MODIFIED="1556181650441" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/318%20Survey%20on%20Misbehavior%20Detection%20in%20Cooperative%20ITS.pdf">
+<attribute NAME="key" VALUE="vanderheijden2016survey"/>
+<attribute NAME="journal" VALUE="IEEE Communications Surveys \&amp; Tutorials"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Survey on Misbehavior Detection in Cooperative Intelligent Transportation Systems"/>
+<attribute NAME="authors" VALUE="van der Heijden, Rens Wouter and Dietzel, Stefan and Leinm{\&quot;u}ller, Tim and Kargl, Frank"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5C13B32E438F5D0D35E77B6AFB425702EE253C9F557428FB1773E42F558660">
+    <pdf_title>Survey on Misbehavior Detection in Cooperative Intelligent Transportation Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A Survey of Attacks and Detection Mechanisms on ITS" ID="ID_346195030" CREATED="1556181561877" MODIFIED="1556181627437" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/319%20A%20Survey%20of%20Attacks%20and%20Detection%20Mechanisms%20on%20ITS.pdf">
+<attribute NAME="key" VALUE="sakiz2017survey"/>
+<attribute NAME="journal" VALUE="Ad Hoc Networks"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="A Survey of Attacks and Detection Mechanisms on Intelligent Transportation Systems: {VANET}s and {IoV}"/>
+<attribute NAME="authors" VALUE="Sakiz, Fatih and Sen, Sevil"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8F295F625A6CD57E8E192739B49A659AB75DAF3A8C08D5CA78C94F9575C6645">
+    <pdf_title>A Survey of Attacks and Detection Mechanisms on Intelligent Transportation Systems: VANETs and IoV</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Investigating security vulnerabilities in modern vehicle systems" ID="ID_1274342631" CREATED="1556181779199" MODIFIED="1556181886971" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/320%20Investigating%20security%20vulnerabilities%20in%20modern%20vehicle%20systems.pdf">
+<attribute NAME="key" VALUE="zheng2016investigating"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Investigating Security Vulnerabilities in Modern Vehicle Systems"/>
+<attribute NAME="authors" VALUE="Zheng, Xi and Pan, Lei and Chen, Hongxu and Wang, Peiyin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="65F073E2A852EEC745A03835D4A17FF9EF6D3624BF89FFCA81B1E99CB78963D6">
+    <pdf_title>Investigating Security Vulnerabilities in Modern Vehicle Systems</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Cybersecurity principles" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1423088288" CREATED="1556196987177" MODIFIED="1556197006093">
+<node TEXT="Security by design" FOLDED="true" ID="ID_351198021" CREATED="1556197007863" MODIFIED="1556197100568" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/323%20%20Security%20by%20Design.pdf">
+<attribute NAME="key" VALUE="chattopadhyay2018autonomous"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1810.00545"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Autonomous Vehicle: Security by Design"/>
+<attribute NAME="authors" VALUE="Chattopadhyay, Anupam and Lam, Kwok-Yan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D285DD918058CB5471BE60881355AE5A073CEFDAACE7638E5905D7F8FFB370">
+    <pdf_title>Autonomous Vehicle: Security by Design</pdf_title>
+</pdf_annotation>
+<node TEXT="Systems Security Engineering" ID="ID_1587841266" CREATED="1556197706907" MODIFIED="1556198209585" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/324%20Systems%20Security%20Engineering.pdf">
+<attribute NAME="key" VALUE="ross2018systems"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Systems Security Engineering: Cyber Resiliency Considerations for the Engineering&#xa; of Trustworthy Secure Systems"/>
+<attribute NAME="authors" VALUE="Ross, Ron and Graubart, Richard and Bodeau, Deborah and McQuaid, Rosalie"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B0D82E749EB08E1EAA52CFAA4366E4D6B59EE7A49559997F3F2AEAB7F8B558">
+    <pdf_title>Systems Security Engineering</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Defence in depth - Castle Model" ID="ID_1395582903" CREATED="1556205141495" MODIFIED="1556205192625" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/325%20Beyond%20the%20Castle%20Model%20of%20cyber-risk%20and%20cyber-security.pdf">
+<attribute NAME="key" VALUE="leuprecht2016beyond"/>
+<attribute NAME="journal" VALUE="Government Information Quarterly"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Beyond the Castle Model of Cyber-Risk and Cyber-Security"/>
+<attribute NAME="authors" VALUE="Leuprecht, Christian and Skillicorn, David B and Tait, Victoria E"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="12251CBA9963AE9B23FA92C38B2F7D3FF2BE4CD66DB5EFD11F84B43F5D08B5F">
+    <pdf_title>Government Information Quarterly</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Predicting Cyber Threats" ID="ID_49670725" CREATED="1556205933755" MODIFIED="1556208541619" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/326%20Computational%20Techniques%20for%20Predicting%20Cyber%20Threats.pdf">
+<attribute NAME="key" VALUE="gandotra2015computational"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Computational Techniques for Predicting Cyber Threats"/>
+<attribute NAME="authors" VALUE="Gandotra, Ekta and Bansal, Divya and Sofat, Sanjeev"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="73449770949A8C83E8287D536DE69EF521C8BFD25D5AB5CFA89E71F6A171846">
+    <pdf_title>Computational Techniques for Predicting Cyber Threats</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="TR68 Part 3: Cybersecurity" ID="ID_185998485" CREATED="1555566289482" MODIFIED="1555566300077" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/306%20TR%20for%20AV%20Part%203%20Cybersecurity.pdf">
+<attribute NAME="key" VALUE="tr68cybersecurity"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Technical Reference Autonomous Vehicles -- Part 3: Cybersecurity"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FBA876EF7E4CDEF2FA79DAEA162CACDC55AEEB84DD5C3A131CCA44A73684CA">
+    <pdf_title>Mm</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="US2: Unified Safety and Security Analsys for AVs" ID="ID_675137093" CREATED="1555670258365" MODIFIED="1555670578866" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/310%20Unified%20Safety%20and%20Security%20Analsys%20for%20AVs.pdf">
