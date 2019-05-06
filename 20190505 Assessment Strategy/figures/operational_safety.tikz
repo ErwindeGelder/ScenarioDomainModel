@@ -1,0 +1,17 @@
+\tikzstyle{block}=[minimum width=8.5em, minimum height=4.5em, align=center, font=\small\sffamily, rounded corners=0.4em, fill=TNOlightgray]%
+\begin{tikzpicture}
+	%% Place the nodes
+	\node[block](operational){Operational\\safety};
+    \node[coordinate, below of=operational, node distance=7em](below operational){};
+	\node[block, left of=below operational, node distance=5.2em](cyber){Cybersecurity};
+	\node[block, left of=cyber, node distance=10.4em](functional){Functional safety\\(ISO~26262)};
+	\node[block, right of=below operational, node distance=5.2em](sotif){SOTIF\\(ISO~21448)};
+	\node[block, right of=sotif, node distance=10.4em](behavioural){Behavioural safety};
+	
+	%% Place the lines
+	\node[coordinate, below of=operational, node distance=3.5em](operational helper){};
+	\draw (operational) -- (operational helper) -| (functional);
+	\draw (operational) -- (operational helper) -| (cyber);
+	\draw (operational) -- (operational helper) -| (sotif);
+	\draw (operational) -- (operational helper) -| (behavioural);
+\end{tikzpicture}
