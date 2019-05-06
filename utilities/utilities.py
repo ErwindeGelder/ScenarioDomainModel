@@ -287,7 +287,11 @@ if __name__ == '__main__':
     call_output(['git', 'checkout', 'PR17'])
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True,
         log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report17'), 'progress_report_17', usebiber=True)
+    pdf(os.path.join('..', 'progress_reports', 'report17'), 'progress_report_17')
+    call_output(['git', 'checkout', 'PR17'])
+    pdf(os.path.join('..', '20190505 Assessment Strategy'), 'assessment_strategy', usebiber=True,
+        log=False)
+    pdf(os.path.join('..', 'progress_reports', 'report18'), 'progress_report_18')
 
     # Revisions/versions
     call_output(['git', 'checkout', 'CompletenessPaperInit'])
@@ -332,3 +336,4 @@ if __name__ == '__main__':
         usebiber=True)
     pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True)
     pdf(os.path.join('..', '20181217 Completeness paper review'), 'cover_letter')
+    pdf(os.path.join('..', '20190505 Assessment Strategy'), 'assessment_strategy', usebiber=True)
