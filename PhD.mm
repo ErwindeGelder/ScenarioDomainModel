@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -726,7 +726,36 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Cyber security" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_451753081" CREATED="1553046111818" MODIFIED="1555571374741" MOVED="1555571367724">
+<node TEXT="Cyber security" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_451753081" CREATED="1553046111818" MODIFIED="1555571374741" MOVED="1555571367724">
+<node TEXT="Definition of cybersecurity" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_813776013" CREATED="1556267984552" MODIFIED="1556267994890">
+<node TEXT="The protection of electronic systems from cyberattacks" ID="ID_782015852" CREATED="1556268000024" MODIFIED="1556268040164" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/306%20TR%20for%20AV%20Part%203%20Cybersecurity.pdf">
+<attribute NAME="key" VALUE="tr68cybersecurity"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Technical Reference Autonomous Vehicles -- Part 3: Cybersecurity"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FBA876EF7E4CDEF2FA79DAEA162CACDC55AEEB84DD5C3A131CCA44A73684CA">
+    <pdf_title>Mm</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Cybersecurity is the organization and collection of resources, processes, and structures used to protect cyberspace and cyberspace-enabled systems from occurrences that misalign de jure from de facto property rights." ID="ID_594054898" CREATED="1556268121241" MODIFIED="1556268254795" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/328%20Defining%20Cybersecurity.pdf">
+<attribute NAME="key" VALUE="craigen2014defining"/>
+<attribute NAME="journal" VALUE="Technology Innovation Management Review"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Defining Cybersecurity"/>
+<attribute NAME="authors" VALUE="Craigen, Dan and Diakun-Thibault, Nadia and Purse, Randy"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A6BB6CB316FC74A8B479811DCB672555F21558DCA83319E0B8F93E981767CB5A">
+    <pdf_title>Defining Cybersecurity</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Cybersecurity entails the safeguarding of computer networks and the information they contain from penetration and from malicious damage or disruption" ID="ID_1313252539" CREATED="1556268497323" MODIFIED="1556268610301" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/329%20Cybersecurity%20and%20Critical%20Infrastructure%20Protection.pdf">
+<attribute NAME="key" VALUE="lewis2006cybersecurity"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="Cybersecurity and critical infrastructure protection"/>
+<attribute NAME="authors" VALUE="Lewis, James A"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1B9130B9DD1D66376C848F8D31B43F8CFD7C65A7BD1BE8AA24BFCF3ED9E2989">
+    <pdf_title>Cybersecurity and Critical Infrastructure Protection</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Internal attacks" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1962484135" CREATED="1555571386732" MODIFIED="1555571400818">
 <node TEXT="Bus systems" ID="ID_1909578800" CREATED="1555571475934" MODIFIED="1555571578498" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/308%20Security%20in%20Automotive%20Bus%20Systems.pdf">
 <attribute NAME="key" VALUE="wolf2004security"/>
@@ -891,7 +920,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Cybersecurity principles" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1423088288" CREATED="1556196987177" MODIFIED="1556197006093">
+<node TEXT="Cybersecurity principles" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1423088288" CREATED="1556196987177" MODIFIED="1556197006093">
 <node TEXT="Security by design" FOLDED="true" ID="ID_351198021" CREATED="1556197007863" MODIFIED="1556197100568" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/323%20%20Security%20by%20Design.pdf">
 <attribute NAME="key" VALUE="chattopadhyay2018autonomous"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1810.00545"/>
@@ -930,6 +959,15 @@
     <pdf_title>Computational Techniques for Predicting Cyber Threats</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Resilience" ID="ID_508243226" CREATED="1556209671242" MODIFIED="1556209694730" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/327%20From%20Cybersecurity%20to%20Collaborative%20Resiliency.pdf">
+<attribute NAME="key" VALUE="sharkov2016cybersecurity"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="From Cybersecurity to Collaborative Resiliency"/>
+<attribute NAME="authors" VALUE="Sharkov, George"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B8BBA7CE185E8637EB45DF1D832BB07417CFEA839A5FE924B9272A47544D9">
+    <pdf_title>From Cybersecurity to Collaborative Resiliency</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="TR68 Part 3: Cybersecurity" ID="ID_185998485" CREATED="1555566289482" MODIFIED="1555566300077" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/306%20TR%20for%20AV%20Part%203%20Cybersecurity.pdf">
 <attribute NAME="key" VALUE="tr68cybersecurity"/>
@@ -947,7 +985,263 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
+<node TEXT="Functional safety" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_162351357" CREATED="1556276847384" MODIFIED="1556276854207">
+<node TEXT="Safety Validation for Machine Learning" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1887530624" CREATED="1556285118126" MODIFIED="1556285138088">
+<node TEXT="Safely Entering the Deep" ID="ID_1393279846" CREATED="1556285141731" MODIFIED="1556285190131" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/331%20Safely%20Entering%20the%20Deep.pdf">
+<attribute NAME="key" VALUE="borg2018safely"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1812.05389"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Safely Entering the Deep: A Review of Verification and Validation for Machine Learning and a Challenge Elicitation in the Automotive Industry"/>
+<attribute NAME="authors" VALUE="Borg, Markus and Englund, Cristofer and Wnuk, Krzysztof and Duran, Boris and Levandowski, Christoffer and Gao, Shenjian and Tan, Yanwen and Kaijser, Henrik and L{\&quot;o}nn, Henrik and T{\&quot;o}rnqvist, Jonas"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="ACB358C35E3A2387EC855E02697B83E0933A5EF8B236E794A6BECF3310AF35">
+    <pdf_title>X D</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Deep Learning in Automotive Software" ID="ID_1043847068" CREATED="1556288736293" MODIFIED="1556288879834" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/332%20Deep%20Learning%20in%20Automotive%20Software.pdf">
+<attribute NAME="key" VALUE="falcini2017deeplearning"/>
+<attribute NAME="journal" VALUE="IEEE Software"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Deep Learning in Automotive Software"/>
+<attribute NAME="authors" VALUE="Falcini, Fabio and Lami, giuseppe and Costanza, Alessandra Mitidieri"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="46EF131DB16541B76515D32914A97B312D2B3DC35A6B385A344DCBC3F06132">
+    <pdf_title>Deep Learning in Automotive Software</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Overal safety management" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_931729636" CREATED="1556614786090" MODIFIED="1556614796520">
+<node TEXT="The nature of safety culture" ID="ID_1335293392" CREATED="1556615007822" MODIFIED="1556615099299" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/335%20The%20nature%20of%20safety%20culture.pdf">
+<attribute NAME="key" VALUE="choudhry2007nature"/>
+<attribute NAME="journal" VALUE="Safety Science"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="The Nature of Safety Culture: A Survey of the State-of-the-Art"/>
+<attribute NAME="authors" VALUE="Choudhry, Rafiq M and Fang, Dongping and Mohamed, Sherif"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="284EC2D8513B231CA178D0E188C34C691ECDC53FDE8B71993C3A57EBA834">
+    <pdf_title>The nature of safety culture: A survey of the state-of-the-art</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A method for quantitative measurement of safety culture" ID="ID_497772208" CREATED="1556617045017" MODIFIED="1556695575418" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/337%20A%20method%20for%20quantitative%20measurement%20of%20safety%20culture.pdf">
+<attribute NAME="key" VALUE="khabbazsaberi2018method"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A Method for Quantitative Measurement of Safety Culture Based on {ISO} 26262"/>
+<attribute NAME="authors" VALUE="Khabbaz Saberi, Arash and Benders, Frank P. and Koch, Richard and Lukkien, Johan J. and van den Brand, Mark G."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AAE06FE3C695379E44CC49C1F09C5B771F9B49F8F5CBB484D39E3F6F45398A">
+    <pdf_title>Elsevier Editorial System(tm) for Journal of Systems and Software Manuscript Draft Manuscript Number: Title: A method for quantitative measurement of safety culture based on</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="About safety culture. The organization impacts the functional safety" ID="ID_869549218" CREATED="1556631989981" MODIFIED="1556632390249" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/338%20Automotive%20Systems%20and%20Software%20Engineering.pdf">
+<attribute NAME="key" VALUE="yaping2019safetydriven"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Automotive Systems and Software Engineering"/>
+<attribute NAME="authors" VALUE="Luo, Yaping and Khabbaz Saberi, Arash and van den Brand, Mark"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="51913C53F7F96454B5D7E7158843F711C0D583C1AAD3B956F21EBDE9CB23F">
+    <pdf_title>Automotive Systems and Software Engineering</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Safety culture defined" ID="ID_1320101601" CREATED="1556637575619" MODIFIED="1556637640927" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/339%20Safety%20culture.pdf">
+<attribute NAME="key" VALUE="piers2009safety"/>
+<attribute NAME="journal" VALUE="European Commercial Aviation Safety Team (ECAST)"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Safety culture framework for the ECAST SMS-WG"/>
+<attribute NAME="authors" VALUE="Piers, Montijn and Montijn, Carolynne and Balk, Arjen"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="64504E468C85E448F7ABC5DD9BC98357D6C07EA21E87B346FDF083E4A158DF2F">
+    <pdf_title>SAFETY CULTURE FRAMEWORK FOR THE ECAST SMS-WG</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Qualitative measurement of safety culture" ID="ID_729149253" CREATED="1556694365363" MODIFIED="1556694478461" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/340%20Safety%20Culture%20as%20an%20Ongoing%20Process.pdf">
+<attribute NAME="key" VALUE="carroll1998safety"/>
+<attribute NAME="journal" VALUE="Work \&amp; Stress"/>
+<attribute NAME="year" VALUE="1998"/>
+<attribute NAME="title" VALUE="Safety Culture as an Ongoing Process: Culture Surveys as Opportunities for Inquiry and Change"/>
+<attribute NAME="authors" VALUE="Carroll, John S"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6634FC60BAA16BF36275F34A2C5C17AE635721213BC53F4DF56F0323AC6A158">
+    <pdf_title>Safety Culture as an Ongoing Process:</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Method for quantitative assessment of safety culture" ID="ID_1284249772" CREATED="1556694622195" MODIFIED="1556694675360" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/341%20Method%20for%20quantitative%20assessment%20of%20safety%20culture.pdf">
+<attribute NAME="key" VALUE="warszawska2016method"/>
+<attribute NAME="journal" VALUE="Journal of Loss Prevention in the Process Industries"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Method for Quantitative Assessment of Safety Culture"/>
+<attribute NAME="authors" VALUE="Warszawska, Katarzyna and Kraslawski, Andrzej"/>
+<pdf_annotation type="BOOKMARK_WITHOUT_DESTINATION" object_id="6294752221716477419" object_number="407" document_hash="5ED7708B8134AE214DBC9A56AB301D673DAF1A7B84753172C0D13047DE57EEC4">
+    <pdf_title>Journal of Loss Prevention in the Process Industries</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Item definition" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_981729329" CREATED="1556614797354" MODIFIED="1556614803917">
+<node TEXT="Limiting operational concepts (=easier to deploy)" ID="ID_407550217" CREATED="1556627205259" MODIFIED="1556627231564" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/213%20Challenges%20in%20Autonomous%20Vehicle%20Testing%20and%20Validation.pdf">
+<attribute NAME="key" VALUE="koopman2016challenges"/>
+<attribute NAME="journal" VALUE="SAE International Journal of Transportation Safety"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Challenges in Autonomous Vehicle Testing and Validation"/>
+<attribute NAME="authors" VALUE="Koopman, Philip and Wagner, Michael"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6F28BE925CC24D606FFE4B4C5F91F37BA671A672B0454F2197BD8E847BEEC">
+    <pdf_title>Challenges in Autonomous Vehicle Testing and Validation</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="ISO26262: a) To define and describe item, its dependencies on/interaction with environment and other items, b) [...]" ID="ID_1293008690" CREATED="1556627733066" MODIFIED="1556627799133">
+<attribute NAME="key" VALUE="ISO26262"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
+</node>
+</node>
+<node TEXT="HARA" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_490388406" CREATED="1556289523572" MODIFIED="1556289527556">
+<node TEXT="HARA is used for decades (survey paper from 1980)" ID="ID_40654051" CREATED="1556613732728" MODIFIED="1556613818079" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/333%20Methodologies%20for%20Risk%20and%20Hazard%20Assessment.pdf">
+<attribute NAME="key" VALUE="sage1980methodologies"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Systems, Man, and Cybernetics"/>
+<attribute NAME="year" VALUE="1980"/>
+<attribute NAME="title" VALUE="Methodologies for Risk and Hazard Assessment: A Survey and Status Report"/>
+<attribute NAME="authors" VALUE="Sage, Andrew P. and White, Elbert B."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AE49738FB96863916AEFC8DCBA9F463C58AD2AC1EDB8EB80E0332CC052FBE4">
+    <pdf_title>Assessment:</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="HARA for an Automated Unmanned Protective Vehicle" ID="ID_549860845" CREATED="1530238931813" MODIFIED="1534391906721" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/208%20HARA%20for%20an%20Automated%20Unmanned%20Protective%20Vehicle.pdf" MOVED="1556289531551">
+<attribute NAME="key" VALUE="stolte2017hara"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle"/>
+<attribute NAME="authors" VALUE="Stolte, Torben and Bagschik, Gerrit and Reschka, Andreas and Maurer, Markus"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A5FD229C259E3C70674158BAC8027958885C170E3FEE715C8A7562ECEC0ED82">
+    <pdf_title>Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle*</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Using Rigorous Simulation to Support ISO 26262 HARA" ID="ID_710804722" CREATED="1530238701102" MODIFIED="1534391906654" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/207%20Using%20Rigorous%20Simulation%20to%20Support%20ISO%2026262%20HARA.pdf" MOVED="1556289538097">
+<attribute NAME="key" VALUE="duracz2015rigorous"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Using Rigorous Simulation to Support {ISO} 26262 Hazard Analysis and Risk Assessment"/>
+<attribute NAME="authors" VALUE="Duracz, Adam and Eriksson, Henrik and Bartha, Ferenc A. and Xu, Fei and Zeng, Yingfu and Taha, Walid"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7371D0E1B09A519839DE20235733CAE158B63A275072243765AC3625A6D59CF6">
+    <pdf_title>Using Rigorous Simulation to Support ISO 26262 Hazard Analysis and Risk Assessment</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Towards objective HARA" ID="ID_1544007711" CREATED="1556698576117" MODIFIED="1556698585446" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
+<attribute NAME="key" VALUE="khastgir2017towards"/>
+<attribute NAME="journal" VALUE="Safety Science"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Towards Increased Reliability by Objectification of {H}azard {A}nalysis and {R}isk {A}ssessment ({HARA}) of Automated Automotive Systems"/>
+<attribute NAME="authors" VALUE="Khastgir, Siddartha and Birrell, Stewart and Dhadyalla, Gunwant and Sivencrona, H{\aa}kan and Jennings, Paul"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E9C3D56EF13CDB75F8E99876BAE3E4D5F0447699AEC3793B10322850EC27FBDC">
+    <pdf_title>Safety Science</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="The Importance of Active Choices in HARA" ID="ID_1965945459" CREATED="1556699268395" MODIFIED="1556699311663" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/342%20The%20Importance%20of%20Active%20Choices%20in%20HARA.pdf">
+<attribute NAME="key" VALUE="johansson2015importance"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="The Importance of Active Choices in Hazard Analysis and Risk Assessment"/>
+<attribute NAME="authors" VALUE="Johansson, Rolf"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="81C284BB75E596C4CDA0492F0ED9448BE4D6E47758706F69E5483CC4C647">
+    <pdf_title>The Importance of Active Choices in Hazard Analysis and Risk Assessment</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Scenario risk quantification" ID="ID_1984966966" CREATED="1556700233806" MODIFIED="1556700339674" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/343%20Scenario%20risk%20quantification.pdf">
+<attribute NAME="key" VALUE="degelder2019risk"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="A Method for Scenario Risk Quantification for Automated Driving Systems"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Khabbaz Saberi, Arash and Elrofai, Hala"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D5DC942EC9867CA0ABC436E3F8990D2D54811CF054E9A79DCFC26A826A2B2">
+    <pdf_title>A METHOD FOR SCENARIO RISK QUANTIFICATION FOR AUTOMATED DRIVING SYSTEMS</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Safety cases" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1580797181" CREATED="1556289559811" MODIFIED="1556289565555">
+<node TEXT="ISO 26262 safety cases compliance and assurance" ID="ID_961590544" CREATED="1551886008500" MODIFIED="1551886130442" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/290%20ISO%2026262%20safety%20cases%20compliance%20and%20assurance.pdf" MOVED="1556289573579">
+<attribute NAME="key" VALUE="palin2011iso"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="ISO 26262 Safety Cases: Compliance and Assurance"/>
+<attribute NAME="authors" VALUE="Palin, Rob and Ward, David and Habli, Ibrahim and Rivett, Roger"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CC42B37CE382ACD1CAA4A541974F5256D6DE6C6FEEFEBABDAF8D69E2191E048">
+    <pdf_title>ISO 26262 SAFETY CASES: COMPLIANCE AND ASSURANCE</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Safety Cases and their role in ISO 26262" ID="ID_393109399" CREATED="1551886165033" MODIFIED="1551886249321" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/291%20Safety%20Cases%20and%20their%20role%20in%20ISO%2026262.pdf" MOVED="1556289573633">
+<attribute NAME="key" VALUE="birch2013safety"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Safety Cases and their Role in ISO 26262 Functional Safety Assessment"/>
+<attribute NAME="authors" VALUE="Birch, John and Rivett, Roger and Habli, Ibrahim and Bradshaw, Ben and Botham, John and Higham, Dave and Jesty, Peter and Monkhouse, Helen and Palin, Robert"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8F22755492F2DF94D4414490C473F33E3E1F1FDE4DE59C569AF6E8517B922">
+    <pdf_title>Safety Cases and their role in ISO 26262 Functional Safety Assessment</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Safety case for complete vehicle" ID="ID_155115647" CREATED="1556614197465" MODIFIED="1556614275739" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/334%20Assurance%20of%20Automotive%20Safety.pdf">
+<attribute NAME="key" VALUE="palin2010assurance"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Assurance of automotive safety --- A safety case approach"/>
+<attribute NAME="authors" VALUE="Palin, Robert and Habli, Ibrahim"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="20C5E8E54A72DA3D5C257D7E2F6A191487E15A9CEDA6C5EDD71DEFADB3EF8F">
+    <pdf_title>Assurance of Automotive Safety &#x2013; A Safety Case Approach</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Industrial Experiences of Building a ISO26262 Safety Case" ID="ID_63238293" CREATED="1556615287073" MODIFIED="1556615360054" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/336%20Industrial%20Experiences%20of%20Building%20a%20ISO26262%20Safety%20Case.pdf">
+<attribute NAME="key" VALUE="dardar2012industrial"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Industrial Experiences of Building a Safety Case in Compliance with {ISO} 26262"/>
+<attribute NAME="authors" VALUE="Dardar, Raghad and Gallina, Barbara and Johnsen, Andreas and Lundqvist, Kristina and Nyberg, Mattias"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A3875504AC1D4590FB2259F4AEA572A3B7C4A46984A316114BDC67702DA4">
+    <pdf_title>Industrial Experiences of Building a Safety Case in Compliance with ISO 26262</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Goal Structuring Notation" ID="ID_399146873" CREATED="1556713862108" MODIFIED="1556714042561" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/344%20Goal%20Structuring%20Notation.PDF">
+<attribute NAME="key" VALUE="GSN2018"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Goal Structuring Notation Community Standard Version 2"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="669A8DCF18F4E3419F8C6FCC8BE7B79C2C7F41813D1DD14975A12D9A3E3469">
+    <pdf_title>Goal Structuring Notation Community Standard</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Controllability" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_480213956" CREATED="1556289640694" MODIFIED="1556289649838">
+<node TEXT="The notion of controllability" ID="ID_397801534" CREATED="1552041268238" MODIFIED="1552041403794" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/296%20The%20notion%20of%20controllability.pdf" MOVED="1556289652973">
+<attribute NAME="key" VALUE="monkhouse2015notion"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="The Notion of Controllability in an Autonmous Vehicle Context"/>
+<attribute NAME="authors" VALUE="Monkhouse, Helen and Habli, Ibrahim and Mcdermid, John"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="29F5A3732B6D4BACD71CFC45970BB85C6F7A472EDFE12506CB5603BF5E1D96C">
+    <pdf_title>The Notion of Controllability in an autonmous vehicle context</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="ISO26262" ID="ID_350817561" CREATED="1556277759997" MODIFIED="1556277808620">
+<attribute NAME="key" VALUE="ISO26262"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
+</node>
+<node TEXT="TR68 Part 2: Safety" ID="ID_881994144" CREATED="1556276857668" MODIFIED="1556277127508" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/330%20TR68%202%20Safety.pdf">
+<attribute NAME="key" VALUE="tr68safety"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Technical Reference for Autonomous Vehicles -- Part 2: Safety"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="68B44092C2FBB619126DD7428FBC555EF63C758FB8D41BC3DE930F4783A">
+    <pdf_title>Mm</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="How to Reach Complete Safety Requirement Refinement for AVs" ID="ID_1071919017" CREATED="1529470315799" MODIFIED="1551885979715" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/193%20How%20to%20reach%20complete%20safety%20requirement%20refinement%20for%20AVs.pdf" MOVED="1556289629979">
+<attribute NAME="key" VALUE="bergenhem2015cars"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Bergenhem, Carl and Johansson, Rolf and S{\&quot;o}derberg, Andreas and Nilsson, Jonas and Tryggvesson, J{\&quot;o}rgen and T{\&quot;o}rngren, Martin and Ursing, Stig"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="32084524125C9C527E0788461A3F3D19CE97426F3508A9CFC919BDD42F8464D">
+    <pdf_title>How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262" ID="ID_1106902334" CREATED="1551886265976" MODIFIED="1552469529397" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/292%20How%20to%20Survive%20a%20Safety%20Case%20According%20to%20ISO%2026262.pdf" MOVED="1556289634087">
+<attribute NAME="key" VALUE="dittel2010survive"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="How to &#x201c;Survive&#xfffd;? a Safety Case According to ISO 26262"/>
+<attribute NAME="authors" VALUE="Dittel, Torsten and Aryus, Hans-J{\&quot;o}rg"/>
+<pdf_annotation type="BOOKMARK" page="1" object_id="1464197473066962614" object_number="259" document_hash="6C1C716B638F9A2D482D5E2A987C6730ADDBD229DA96336BFA1B850871535D0">
+    <pdf_title>How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Analysis of ISO 26262 Compliant Techniques" ID="ID_281053633" CREATED="1551886457803" MODIFIED="1551886907780" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/293%20Analysis%20of%20ISO%2026262%20Compliant%20Techniques.pdf" MOVED="1556289638863">
+<attribute NAME="key" VALUE="kannan2015analysis"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Analysis of ISO 26262 Compliant Techniques for the Automotive Domain"/>
+<attribute NAME="authors" VALUE="Kannan, S Manoj and Dajsuren, Yanja and Luo, Yaping and Barosan, Ion"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="91647078DB83C62A1E85B1E4BDB1565A19B36B8C684ED898FBC2DF43DCCEDC3">
+    <pdf_title>Analysis of ISO 26262 Compliant Techniques for the Automotive Domain</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
 <node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1534391906877" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
 <attribute NAME="key" VALUE="kalra2016driving"/>
 <attribute NAME="journal" VALUE="Transportation Research Part A: Policy and Practice"/>
@@ -985,8 +1279,8 @@
     <pdf_title>Testing and Validating High Level Components for Automated Driving: Simulation Framework for Traffic Scenarios</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Modular Validation Framework for collision avoidance on road junctions" ID="ID_476139069" CREATED="1545212395184" MODIFIED="1545212459467" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/265%20Validation%20framework%20for%20collision%20avoidance%20at%20road%20junctions.pdf">
-<attribute NAME="key" VALUE="8569631"/>
+<node TEXT="Modular Validation Framework for collision avoidance on road junctions" ID="ID_476139069" CREATED="1545212395184" MODIFIED="1556720271572" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/265%20Validation%20framework%20for%20collision%20avoidance%20at%20road%20junctions.pdf">
+<attribute NAME="key" VALUE="nitsche2018novel"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="A Novel, Modular Validation Framework for Collision Avoidance of Automated Vehicles at Road Junctions"/>
 <attribute NAME="authors" VALUE="Nitsche, P. and Welsh, R. H. and Genser, A. and Thomas, P. D."/>
@@ -1033,84 +1327,6 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="A860787D5687DECA71D92DBAD3875FA2854BAD562FA6ADFC3A2C179289157B8">
     <pdf_title>Code of Practice</pdf_title>
 </pdf_annotation>
-</node>
-<node TEXT="ISO26262" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1070914813" CREATED="1517041963906" MODIFIED="1529470303581">
-<attribute NAME="key" VALUE="ISO26262"/>
-<attribute NAME="year" VALUE="2011"/>
-<attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
-<attribute NAME="authors" VALUE="{International Organization for Standardization (ISO)}"/>
-<node TEXT="How to Reach Complete Safety Requirement Refinement for AVs" ID="ID_1071919017" CREATED="1529470315799" MODIFIED="1551885979715" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/193%20How%20to%20reach%20complete%20safety%20requirement%20refinement%20for%20AVs.pdf">
-<attribute NAME="key" VALUE="bergenhem2015cars"/>
-<attribute NAME="year" VALUE="2015"/>
-<attribute NAME="title" VALUE="How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles"/>
-<attribute NAME="authors" VALUE="Bergenhem, Carl and Johansson, Rolf and S{\&quot;o}derberg, Andreas and Nilsson, Jonas and Tryggvesson, J{\&quot;o}rgen and T{\&quot;o}rngren, Martin and Ursing, Stig"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="32084524125C9C527E0788461A3F3D19CE97426F3508A9CFC919BDD42F8464D">
-    <pdf_title>How to Reach Complete Safety Requirement Refinement for Autonomous Vehicles</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="Using Rigorous Simulation to Support ISO 26262 HARA" ID="ID_710804722" CREATED="1530238701102" MODIFIED="1534391906654" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/207%20Using%20Rigorous%20Simulation%20to%20Support%20ISO%2026262%20HARA.pdf">
-<attribute NAME="key" VALUE="duracz2015rigorous"/>
-<attribute NAME="year" VALUE="2015"/>
-<attribute NAME="title" VALUE="Using Rigorous Simulation to Support {ISO} 26262 Hazard Analysis and Risk Assessment"/>
-<attribute NAME="authors" VALUE="Duracz, Adam and Eriksson, Henrik and Bartha, Ferenc A. and Xu, Fei and Zeng, Yingfu and Taha, Walid"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7371D0E1B09A519839DE20235733CAE158B63A275072243765AC3625A6D59CF6">
-    <pdf_title>Using Rigorous Simulation to Support ISO 26262 Hazard Analysis and Risk Assessment</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="HARA for an Automated Unmanned Protective Vehicle" ID="ID_549860845" CREATED="1530238931813" MODIFIED="1534391906721" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/208%20HARA%20for%20an%20Automated%20Unmanned%20Protective%20Vehicle.pdf">
-<attribute NAME="key" VALUE="stolte2017hara"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle"/>
-<attribute NAME="authors" VALUE="Stolte, Torben and Bagschik, Gerrit and Reschka, Andreas and Maurer, Markus"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A5FD229C259E3C70674158BAC8027958885C170E3FEE715C8A7562ECEC0ED82">
-    <pdf_title>Hazard Analysis and Risk Assessment for an Automated Unmanned Protective Vehicle*</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="ISO 26262 safety cases compliance and assurance" ID="ID_961590544" CREATED="1551886008500" MODIFIED="1551886130442" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/290%20ISO%2026262%20safety%20cases%20compliance%20and%20assurance.pdf">
-<attribute NAME="key" VALUE="palin2011iso"/>
-<attribute NAME="year" VALUE="2011"/>
-<attribute NAME="title" VALUE="ISO 26262 Safety Cases: Compliance and Assurance"/>
-<attribute NAME="authors" VALUE="Palin, Rob and Ward, David and Habli, Ibrahim and Rivett, Roger"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CC42B37CE382ACD1CAA4A541974F5256D6DE6C6FEEFEBABDAF8D69E2191E048">
-    <pdf_title>ISO 26262 SAFETY CASES: COMPLIANCE AND ASSURANCE</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="Safety Cases and their role in ISO 26262" ID="ID_393109399" CREATED="1551886165033" MODIFIED="1551886249321" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/291%20Safety%20Cases%20and%20their%20role%20in%20ISO%2026262.pdf">
-<attribute NAME="key" VALUE="birch2013safety"/>
-<attribute NAME="year" VALUE="2013"/>
-<attribute NAME="title" VALUE="Safety Cases and their Role in ISO 26262 Functional Safety Assessment"/>
-<attribute NAME="authors" VALUE="Birch, John and Rivett, Roger and Habli, Ibrahim and Bradshaw, Ben and Botham, John and Higham, Dave and Jesty, Peter and Monkhouse, Helen and Palin, Robert"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8F22755492F2DF94D4414490C473F33E3E1F1FDE4DE59C569AF6E8517B922">
-    <pdf_title>Safety Cases and their role in ISO 26262 Functional Safety Assessment</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262" ID="ID_1106902334" CREATED="1551886265976" MODIFIED="1552469529397" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/292%20How%20to%20Survive%20a%20Safety%20Case%20According%20to%20ISO%2026262.pdf">
-<attribute NAME="key" VALUE="dittel2010survive"/>
-<attribute NAME="year" VALUE="2010"/>
-<attribute NAME="title" VALUE="How to &#x201c;Survive&#xfffd;? a Safety Case According to ISO 26262"/>
-<attribute NAME="authors" VALUE="Dittel, Torsten and Aryus, Hans-J{\&quot;o}rg"/>
-<pdf_annotation type="BOOKMARK" page="1" object_id="1464197473066962614" object_number="259" document_hash="6C1C716B638F9A2D482D5E2A987C6730ADDBD229DA96336BFA1B850871535D0">
-    <pdf_title>How to &#x201c;Survive&#x201d; a Safety Case According to ISO 26262</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="Analysis of ISO 26262 Compliant Techniques" ID="ID_281053633" CREATED="1551886457803" MODIFIED="1551886907780" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/293%20Analysis%20of%20ISO%2026262%20Compliant%20Techniques.pdf">
-<attribute NAME="key" VALUE="kannan2015analysis"/>
-<attribute NAME="year" VALUE="2015"/>
-<attribute NAME="title" VALUE="Analysis of ISO 26262 Compliant Techniques for the Automotive Domain"/>
-<attribute NAME="authors" VALUE="Kannan, S Manoj and Dajsuren, Yanja and Luo, Yaping and Barosan, Ion"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="91647078DB83C62A1E85B1E4BDB1565A19B36B8C684ED898FBC2DF43DCCEDC3">
-    <pdf_title>Analysis of ISO 26262 Compliant Techniques for the Automotive Domain</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="The notion of controllability" ID="ID_397801534" CREATED="1552041268238" MODIFIED="1552041403794" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/296%20The%20notion%20of%20controllability.pdf">
-<attribute NAME="key" VALUE="monkhouse2015notion"/>
-<attribute NAME="year" VALUE="2015"/>
-<attribute NAME="title" VALUE="The Notion of Controllability in an Autonmous Vehicle Context"/>
-<attribute NAME="authors" VALUE="Monkhouse, Helen and Habli, Ibrahim and Mcdermid, John"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="29F5A3732B6D4BACD71CFC45970BB85C6F7A472EDFE12506CB5603BF5E1D96C">
-    <pdf_title>The Notion of Controllability in an autonmous vehicle context</pdf_title>
-</pdf_annotation>
-</node>
 </node>
 <node TEXT="Traditional methods not applicable: How to address the approval trap for autonomous vehicles?" ID="ID_1194936183" CREATED="1517195613034" MODIFIED="1534391906691" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
 <attribute NAME="key" VALUE="wachenfeld2016release"/>
@@ -1168,8 +1384,8 @@
     <pdf_title>Design and Validation of</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Modular Validation Framework for collision avoidance on road junctions" ID="ID_1936045439" CREATED="1545212496222" MODIFIED="1545212499420" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/265%20Validation%20framework%20for%20collision%20avoidance%20at%20road%20junctions.pdf">
-<attribute NAME="key" VALUE="8569631"/>
+<node TEXT="Modular Validation Framework for collision avoidance on road junctions" ID="ID_1936045439" CREATED="1545212496222" MODIFIED="1556720271611" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/265%20Validation%20framework%20for%20collision%20avoidance%20at%20road%20junctions.pdf">
+<attribute NAME="key" VALUE="nitsche2018novel"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="A Novel, Modular Validation Framework for Collision Avoidance of Automated Vehicles at Road Junctions"/>
 <attribute NAME="authors" VALUE="Nitsche, P. and Welsh, R. H. and Genser, A. and Thomas, P. D."/>
@@ -1197,16 +1413,16 @@
     <pdf_title>A Methodology for Scenario-based Safety Assessment of Highly Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="NHTSA: Framework for ADS testable cases/scenarios" ID="ID_1002798072" CREATED="1552988474486" MODIFIED="1552988488491" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/299%20Framework%20ADS%20Testable%20cases%20and%20scenarios.pdf">
+<node TEXT="NHTSA: Framework for ADS testable cases/scenarios" ID="ID_1002798072" CREATED="1552988474486" MODIFIED="1556721796610" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/299%20Framework%20ADS%20Testable%20cases%20and%20scenarios.pdf">
 <attribute NAME="key" VALUE="nhtsa2018framework"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="A Framework for Automated Driving System Testable Cases and Scenarios"/>
-<attribute NAME="authors" VALUE="Staplin, L., Mastromatto, T., Lococo, K. H. and Kenneth, W. and Gish, K. W. and Brooks, J. O."/>
+<attribute NAME="authors" VALUE="Staplin, L. and Mastromatto, T. and Lococo, K. H. and Kenneth, W. and Gish, K. W. and Brooks, J. O."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC74C7F23B38FB7FDFE7E9BFD74714E42830A85D43D4992A4137E3E9C4BE">
     <pdf_title>A Framework for Automated Driving System Testable Cases and Scenarios</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="PEGASUS" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1615434539" CREATED="1555470126855" MODIFIED="1555470213524" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/304%20PEGASUS%20Approach.pdf">
+<node TEXT="PEGASUS" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1615434539" CREATED="1555470126855" MODIFIED="1555470213524" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/304%20PEGASUS%20Approach.pdf">
 <attribute NAME="key" VALUE="winner2017pegasus"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Safety Assurance for Highly Automated Driving-The PEGASUS Approach"/>
@@ -1622,7 +1838,15 @@
 <attribute NAME="title" VALUE="Safety Assessment of Automated Vehicles: How to Determine Whether We Have Collected Enough Field Data?"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Op den Camp, Olaf and De Schutter, Bart"/>
 </node>
-<node TEXT="2019 Quantification of scenario risk" ID="ID_1198050945" CREATED="1555381619441" MODIFIED="1555381629045"/>
+<node TEXT="2019 Quantification of scenario risk" ID="ID_1198050945" CREATED="1555381619441" MODIFIED="1556700333742" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/343%20Scenario%20risk%20quantification.pdf">
+<attribute NAME="key" VALUE="degelder2019risk"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="A Method for Scenario Risk Quantification for Automated Driving Systems"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Khabbaz Saberi, Arash and Elrofai, Hala"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D5DC942EC9867CA0ABC436E3F8990D2D54811CF054E9A79DCFC26A826A2B2">
+    <pdf_title>A METHOD FOR SCENARIO RISK QUANTIFICATION FOR AUTOMATED DRIVING SYSTEMS</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
