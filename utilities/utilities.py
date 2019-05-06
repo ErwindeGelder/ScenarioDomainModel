@@ -288,7 +288,7 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True,
         log=False)
     pdf(os.path.join('..', 'progress_reports', 'report17'), 'progress_report_17')
-    call_output(['git', 'checkout', 'PR17'])
+    call_output(['git', 'checkout', 'PR18'])
     pdf(os.path.join('..', '20190505 Assessment Strategy'), 'assessment_strategy', usebiber=True,
         log=False)
     pdf(os.path.join('..', 'progress_reports', 'report18'), 'progress_report_18')
