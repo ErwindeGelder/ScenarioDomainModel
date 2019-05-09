@@ -337,3 +337,6 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True)
     pdf(os.path.join('..', '20181217 Completeness paper review'), 'cover_letter')
     pdf(os.path.join('..', '20190505 Assessment Strategy'), 'assessment_strategy', usebiber=True)
+
+    # Delete folder that has wrong name
+    call('rm "20180639 Journal paper ontology" -r')
