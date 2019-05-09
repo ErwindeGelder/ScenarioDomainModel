@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -255,7 +255,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Discrete case" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_710753940" CREATED="1519207355432" MODIFIED="1519207367864" HGAP="40" VSHIFT="-4">
+<node TEXT="Discrete case" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_710753940" CREATED="1519207355432" MODIFIED="1519207367864" HGAP="40" VSHIFT="-4">
 <node TEXT="Estimating completeness of event logs" ID="ID_1337739868" CREATED="1519207952501" MODIFIED="1534391857106" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf">
 <attribute NAME="key" VALUE="yang2012estimating"/>
 <attribute NAME="journal" VALUE="BPM Center Report"/>
@@ -1518,6 +1518,16 @@
 <attribute NAME="authors" VALUE="Zofka, Marc Ren{\&apos;e} and Kuhnt, Florian and Kohlhaas, Ralf and Rist, Christoph and Schamm, Thomas and Z\&quot;{o}llner, J. Marius"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F91B4B237B607197EFC2BD5C7A836F87F289E47CFAF66BFE19F3A3F8DFFB694">
     <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Authority interaction protocol" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1653781775" CREATED="1557410422677" MODIFIED="1557410433636">
+<node TEXT="Waymo&apos;s interaction protocol" ID="ID_158031918" CREATED="1557410437507" MODIFIED="1557410613011" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/345%20Waymo%20Emergency%20Response%20Guide%20and%20Law%20Enforcement%20Interaction%20Protocol.pdf">
+<attribute NAME="key" VALUE="waymo2019lawenforcement"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Waymo Fully Self-Driving Chrysler Pacifica: Emergency Response Guide and Law Enforcement Interaction Protocol"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D0F7E98C0F268EC2335B7F54EBA0DBC7FF8D5354682CC51F6B3A95BD3DDE56">
+    <pdf_title>Waymo Fully Self-Driving Chrysler Pacifica</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -3779,9 +3789,9 @@
 <node TEXT="GCDC2016" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1534391744397" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/054%20GCDC%202016%20Ploeg%20paper.pdf">
 <attribute NAME="key" VALUE="ploeg2017GCDC"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
-<attribute NAME="year" VALUE="2017"/>
-<attribute NAME="title" VALUE="Cooperative Automated Maneuvering at the 2016 {G}rand {C}ooperative {D}riving {C}hallenge"/>
-<attribute NAME="authors" VALUE="J. Ploeg and E. Semsar-Kazerooni and A. I. Morales Medina and J. F. C. M. de Jongh and J. van de Sluis and A. Voronov and C. Englund and R. J. Bril and H. Salunkhe and \&apos;{A}. Arr\&apos;{u} and A. Ruano and L. Garc&#xed;-Sol and E. van Nunen and N. van de Wouw"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Cooperative Automated Maneuvering at the 2016 Grand Cooperative Driving Challenge"/>
+<attribute NAME="authors" VALUE="Ploeg, Jeroen and Semsar-Kazerooni, Elham and Morales Medina, A. I. and de Jongh, J. F. C. M. and van de Sluis, J. and Voronov, A. and Englund, C. and Bril, R. J. and Salunkhe, H. and Arr\&apos;{u}e, \&apos;{A}lvaro and Ruano, A. and Garc{\&apos;i}a-Sol, L. and van Nunen, E. and van de Wouw, N."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F0A9446DBEC9FF1E37EB6BBB6DFDAE94E4051BA9B75256C74FE3D86728FF7B4">
     <pdf_title>Cooperative Automated Maneuvering at the 2016 Grand Cooperative Driving Challenge</pdf_title>
 </pdf_annotation>
@@ -3837,8 +3847,8 @@
 </node>
 </node>
 <node TEXT="Standards" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1405312808" CREATED="1554350838465" MODIFIED="1554350844611">
-<node TEXT="J3016" ID="ID_632878449" CREATED="1540286342512" MODIFIED="1540286348941" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/261%20J3016_201806.pdf">
-<attribute NAME="key" VALUE="sea2018j3016"/>
+<node TEXT="J3016" ID="ID_632878449" CREATED="1540286342512" MODIFIED="1557325706800" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/261%20J3016_201806.pdf">
+<attribute NAME="key" VALUE="sae2018j3016"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="164E75E54C4ACAF6CF09314741D60FEA9A17E40D434EC9DD8EB6C257E24C90">
