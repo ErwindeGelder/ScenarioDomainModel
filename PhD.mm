@@ -667,6 +667,15 @@
     <pdf_title>Challenges in Autonomous Vehicle Testing and Validation</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Unsettled Topics Concerning Sensors for Automated Road Vehicles" ID="ID_1505770583" CREATED="1557822179439" MODIFIED="1557822305838" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/346%20Unsettled%20Topics%20Concerning%20Sensors%20for%20Automated%20Road%20Vehicles.pdf">
+<attribute NAME="key" VALUE="Beiker2019"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Unsettled Topics Concerning Sensors for Automated Road Vehicles"/>
+<attribute NAME="authors" VALUE="Beiker, Sven"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="82B4F688C78A72CBC3B4352BB9160A926C83F597E3B4762D6FBBF350FD7B25">
+    <pdf_title>Unsettled Topics Concerning Sensors for Automated Road Vehicles</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Towards increased reliability by objectification of HARA of AD" ID="ID_1947999662" CREATED="1530151676773" MODIFIED="1539742197564" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
 <attribute NAME="key" VALUE="khastgir2017towards"/>

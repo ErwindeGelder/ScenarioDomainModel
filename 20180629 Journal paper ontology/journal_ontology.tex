@@ -45,6 +45,12 @@
 \usepackage[utf8]{inputenc}    % utf8 support
 \usepackage[T1]{fontenc}       % code for pdf file
 \usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,mincitenames=2,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+\AtEveryBibitem{%
+	\ifentrytype{inproceedings}{%
+		\clearfield{organization}%
+	}{%
+	}%
+}
 \renewcommand*{\bibfont}{\footnotesize}
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
@@ -101,10 +107,10 @@
 \usetikzlibrary{arrows,positioning}
 \usetikzlibrary{arrows.meta}
 \definecolor{TNOlightgray}{RGB}{222,222,231}
-\definecolor{scenarioclass}{RGB}{30, 144, 255}
-\definecolor{category}{RGB}{0, 191, 255}
-\definecolor{scenario}{RGB}{255, 69, 0}
-\definecolor{otherclass}{RGB}{255, 127, 80}
+\definecolor{scenarioclass}{RGB}{86, 172, 255}
+\definecolor{category}{RGB}{64, 207, 255}
+\definecolor{scenario}{RGB}{255, 115, 64}
+\definecolor{otherclass}{RGB}{255, 159, 124}
 \tikzstyle{tag}=[text height=.8em, text depth=.1em, font=\small\sffamily, rounded corners=0.2em, fill=TNOlightgray, node distance=9em, text width=7em, align=center]
 \tikzstyle{tag wide}=[tag, text width=12em]
 \tikzstyle{tagarrow}=[->, line width=0.75mm, color=TNOlightgray]
@@ -150,8 +156,8 @@
 \newcommand{\cbend}{\color{black}}
 \newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
 
-\usepackage{setspace}
-\doublespacing
+%\usepackage{setspace}
+%\doublespacing
 
 
 \begin{document}
@@ -189,11 +195,9 @@
 %\bibliography{../bib}
 \printbibliography
 
-\cbstart
 \appendix
 \appendices
 \input{sections/domain_model}
-\cbend
 
 
 \end{document}

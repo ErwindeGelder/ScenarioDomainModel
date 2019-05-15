@@ -1,29 +1,26 @@
-\cbstart
 \section{Example: pedestrian crossing}
 \label{sec:example}
 
-To illustrate the use of the ontology, we describe a scenario using the domain model presented in \cref{sec:ontology}. The scenario is schematically shown in \cref{fig:scenario overview}. The ego vehicle is driving on a two-lane road and a pedestrian is walking on a footway that intersects the road the ego vehicle is driving on. Both the ego vehicle and the pedestrian are initially approaching the zebra crossing. The ego vehicle brakes and comes to a full stop in front of the zebra crossing. While the ego vehicle is stationary, the pedestrian crosses the road using the zebra crossing. When the pedestrian passed the ego vehicle, the ego vehicle accelerates to continue its drive.
-\cbend
+To illustrate the use of the ontology, we describe a scenario using the domain model presented in \cref{sec:ontology}. The scenario is schematically shown in \cref{fig:scenario overview}. The ego vehicle is driving on a two-lane road and a pedestrian is walking on a footway that intersects the road the ego vehicle is driving on. Both the ego vehicle and the pedestrian are initially approaching the pedestrian crossing. The ego vehicle brakes and comes to a full stop in front of the pedestrian crossing. While the ego vehicle is stationary, the pedestrian crosses the road using the pedestrian crossing. When the pedestrian has passed the ego vehicle, the ego vehicle accelerates.
 
 \setlength{\figurewidth}{\linewidth}
 \begin{figure}
 	\centering
 	\input{figures/example_overview.tikz}
-	\caption{\cbstart Schematic overview of a scenario where both the ego vehicle (red car) and a pedestrian (blue dot) are approaching a non-signalized zebra crossing. The pedestrian has priority. \cbend}
+	\caption{Schematic overview of a scenario where both the ego vehicle (red car) and a pedestrian (blue dot) are approaching a non-signalized pedestrian crossing. The pedestrian has priority.}
 	\label{fig:scenario overview}
 \end{figure}
 
-\cbstart
+
 To describe the scenario according to the presented domain model, objects are instantiated from the classes presented in \cref{fig:ontology classes}. \Cref{fig:example qualitative} shows the objects for describing the scenario qualitatively. There are two actor categories: one for the ego vehicle and one for the pedestrian. Five different activity categories are defined: braking, stationary, accelerating, driving straight, and walking straight. These objects, together with the static environment category, are used by the scenario class. The scenario class has five acts. The first four acts assign the first four activity categories to the ego vehicle. The last act assigns the activity category ``walking straight'' to the pedestrian.
-\cbend
 
 \begin{figure}
 	\centering
 	\input{figures/example_qualitative.tikz}
-	\caption{\cbstart The objects that are used to qualitatively describe the scenario that is schematically shown in \cref{fig:scenario overview}. The first line of each blocks shows the name (before the double colon) and the class from which the object is instantiated. The following lines show the attributes of the object.\cbend}
+	\caption{The objects that are used to qualitatively describe the scenario that is schematically shown in \cref{fig:scenario overview}. The first line of each blocks shows the name (before the double colon) and the class from which the object is instantiated. The following lines show the attributes of the object.}
 	\label{fig:example qualitative}
 \end{figure}
 
 \todo{Also describe the quantitative part of the scenario.}
 
-\todo{Explain how a test case would look like. In that case, the activities of the ego vehicle will not be defined. Instead, an initial goal and a desired goal will be defined. Furthermore, the walking activity of the pedestrian will be triggered. Lastly, the ego vehicle will start at a larger distance from the zebra crossing.}
+\todo{Explain how a test case would look like. In that case, the activities of the ego vehicle will not be defined. Instead, an initial goal and a desired goal will be defined. Furthermore, the walking activity of the pedestrian will be triggered. Lastly, the ego vehicle will start at a larger distance from the pedestrian crossing.}
