@@ -143,18 +143,21 @@ Before providing the definition of an activity, the following is concluded about
 As opposed to an event, an activity spans over a certain time interval. Furthermore, the start and the end of an activity is marked by an event.
 
 % Describing the evolution of a state
-\subsubsection{An activity quantitatively describes the evolution of a state}
+\cbstart
+\subsubsection{An activity quantitatively describes the state of an actor}
 Because activities are the building blocks of a scenario and a scenario corresponds to a quantitative description, the activities itself need to be quantitative as well. Furthermore, since an activity corresponds to a time interval, it describes the evolution of a state, where the term state is defined in \cref{sec:state}.
 
 % Performed by something (an actor?)
-\subsubsection{An activity may be performed by an actor}
-An activity describes the evolution of a state and a state typically corresponds to an actor, e.g., the acceleration of a vehicle, and, therefore, an activity is typically performed by an actor. Note that the actor might be the ego vehicle. However, it might also be the case that a state does not correspond to an actor. For example, a state describing the weather conditions does not correspond to an actor, so if an activity describes changing weather conditions, the activity is not performed by an actor.
+\subsubsection{An activity is performed by an actor}
+An activity quantitatively a state and a state corresponds to an actor, e.g., the acceleration of a vehicle, and, therefore, an activity is performed by an actor. Note that the actor might be the ego vehicle. 
+%However, it might also be the case that a state does not correspond to an actor. For example, a state describing the weather conditions does not correspond to an actor, so if an activity describes changing weather conditions, the activity is not performed by an actor.
 
 Hence, we define an activity as follows.
 \begin{definition}[Activity]
 	\label{def:activity}
-	An activity quantitatively describes the evolution of a state in between two events.
+	An activity quantitatively describes the state of an actor in between two events.
 \end{definition}
+\cbend
 
 % Remarks
 % 1. Activity is very similar to mode, i.e., a model that describes the evolution of a state over time with parameters theta

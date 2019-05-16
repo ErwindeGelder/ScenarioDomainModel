@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -667,9 +667,9 @@
     <pdf_title>Challenges in Autonomous Vehicle Testing and Validation</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Unsettled Topics Concerning Sensors for Automated Road Vehicles" ID="ID_1505770583" CREATED="1557822179439" MODIFIED="1557822305838" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/346%20Unsettled%20Topics%20Concerning%20Sensors%20for%20Automated%20Road%20Vehicles.pdf">
-<attribute NAME="key" VALUE="Beiker2019"/>
-<attribute NAME="year" VALUE="2019"/>
+<node TEXT="Unsettled Topics Concerning Sensors for Automated Road Vehicles" ID="ID_1505770583" CREATED="1557822179439" MODIFIED="1557822352928" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/346%20Unsettled%20Topics%20Concerning%20Sensors%20for%20Automated%20Road%20Vehicles.pdf">
+<attribute NAME="key" VALUE="beiker2018unsettled"/>
+<attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Unsettled Topics Concerning Sensors for Automated Road Vehicles"/>
 <attribute NAME="authors" VALUE="Beiker, Sven"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="82B4F688C78A72CBC3B4352BB9160A926C83F597E3B4762D6FBBF350FD7B25">
@@ -2751,7 +2751,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Actor" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1417461108" CREATED="1511841805284" MODIFIED="1511841809578">
+<node TEXT="Actor" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1417461108" CREATED="1511841805284" MODIFIED="1511841809578">
 <node TEXT="Geyer: actor can be the driver, the automation, or both of them" ID="ID_1119876727" CREATED="1511841811733" MODIFIED="1534391438264" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
 <attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
