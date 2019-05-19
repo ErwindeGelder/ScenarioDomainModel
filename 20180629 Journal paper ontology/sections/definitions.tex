@@ -23,8 +23,17 @@ In \cite{geyer2014}, the meaning of action is not detailed.
 % Definition according to Elrofai et al.
 Another definition of a scenario in the context of automated driving is given by \textcite{elrofai2016scenario}. They define scenario as ``the combination of actions and maneuvers of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and maneuvers of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
 
+% What is missing in the definitions?
+% 1. No difference between qualitative and quantitative. I.e., definitions are ambiguous.
+% 2. There are undefined terms.
+% 3. Definitions are not detailed enough to reflect into code.
+\cbstart
+Although the aforementioned definitions of scenario \cite{geyer2014, ulbrich2015, elrofai2016scenario} are in the context of automated driving, we require a more concrete definition. First, the aforementioned definitions do not specify the level of detail. We experience much speech confusion where one group thinks a discussion is about a very specific scenario whereas another group thinks the same discussion is about a collection of scenarios that share some characteristics. Secondly, the aforementioned definitions use undefined terms, such as ``action'' and ``event''. Thirdly, because scenarios are used to specify test cases for the assessment of automated vehicles, a proper specification of these scenarios is important and the aforementioned definitions are not concrete enough to be directly reflected into a coding language.
+\cbend
+
+
 % "Requirements"
-Before providing the definition of the notion of scenario, the characteristics of this notion are listed.
+Before providing the definition of the notion of scenario, the characteristics of the notion of scenario are listed.
 
 % Order of seconds
 \subsubsection{A scenario corresponds to a time interval}
@@ -113,8 +122,14 @@ Hence, we define an event as follows.
 	An event marks the time instant at which the system reaches a specified boundary or at which a mode transition occurs, such that before and after an event, the state corresponds to two different modes.
 \end{definition}
 
-% Mention that there are basically two definitions. First definition more suitable for observations and inputs. Second definition more suitable for triggers for test cases.
-According to \cref{def:event}, an event occurs at either a moment at which the system reaches a boundary or a moment at which a mode transition occurs. This first type of event, i.e., at the moment at which the system reaches a boundary, is related to events in event-based control \cite{heemels2012eventcontrol}, whereas the second type of event, i.e., at the moment at which a mode transition occurs, is related to events in hybrid theory \cite{deschutter2000optimal}. 
+% Mention that there are basically two definitions. First definition more suitable for triggers for test cases. Second definition more suitable for observations and inputs. 
+According to \cref{def:event}, an event occurs at either a moment at which the system reaches a boundary or a moment at which a mode transition occurs. 
+\cbstart
+Both these types of event are related to hybrid theory \cite{deschutter2003hybrid, heemels2012eventcontrol}.
+The first type of event, i.e., at the moment at which the system reaches a boundary, is especially useful when describing test cases. For example, consider a vehicle approaching a pedestrian (dummy) that is about to cross the road \cite{seiniger2015test}. Here, the event is at the moment that the distance between the vehicle and pedestrian is less than $x$ meters. At this event, the pedestrian (dummy) starts to cross the road such that the vehicle impacts the pedestrian (dummy) if it does not change its speed or direction \cite{seiniger2015test}.
+The second type of event, i.e., at the moment at which a mode transition occurs, can be, for example, during an observed scenario at the moment at which a driver suddenly brakes. 
+\cbend
+%This first type of event, i.e., at the moment at which the system reaches a boundary, is related to events in event-based control \cite{heemels2012eventcontrol}, whereas the second type of event, i.e., at the moment at which a mode transition occurs, is related to events in hybrid theory \cite{deschutter2000optimal}. 
 %Especially when designing scenarios for testing purposes, an event of the first type might trigger an event of the second type. For example, consider a vehicle approaching a zebra crossing with a pedestrian (dummy) that is about to cross the road at the zebra crossing. When the distance between the vehicle and the zebra crossing becomes less than 20 meters (event of the first type), the pedestrian (dummy) starts crossing the road at the zebra crossing (event of the second type).
 
 
@@ -144,12 +159,12 @@ As opposed to an event, an activity spans over a certain time interval. Furtherm
 
 % Describing the evolution of a state
 \cbstart
-\subsubsection{An activity quantitatively describes the state of an actor}
-Because activities are the building blocks of a scenario and a scenario corresponds to a quantitative description, the activities itself need to be quantitative as well. Furthermore, since an activity corresponds to a time interval, it describes the evolution of a state, where the term state is defined in \cref{sec:state}.
+\subsubsection{An activity quantitatively describes a state}
+Because activities are building blocks of a scenario and a scenario corresponds to a quantitative description, the activities itself need to be quantitative as well. Therefore, an activity describes the value(s) of a state over an inter-event time interval that corresponds to the activity, where the term state is defined in \cref{sec:state}.
 
 % Performed by something (an actor?)
 \subsubsection{An activity is performed by an actor}
-An activity quantitatively a state and a state corresponds to an actor, e.g., the acceleration of a vehicle, and, therefore, an activity is performed by an actor. Note that the actor might be the ego vehicle. 
+An activity quantitatively describes a state and a state corresponds to an actor, e.g., the acceleration of a vehicle, and, therefore, an activity is performed by an actor. Note that the actor might be the ego vehicle. 
 %However, it might also be the case that a state does not correspond to an actor. For example, a state describing the weather conditions does not correspond to an actor, so if an activity describes changing weather conditions, the activity is not performed by an actor.
 
 Hence, we define an activity as follows.
@@ -167,7 +182,7 @@ Hence, we define an activity as follows.
 Note that \textcite{geyer2014, ulbrich2015} use the term \emph{action} and although they do not define this term, it seems to be related to our use of the term activity. Similarly, other authors \cite{sigsim2019glossary, catapult2018musicc, elrofai2018scenario} use the term activity. Although the terms \emph{activity} and \emph{action} may seem very similar, there is a difference. As \textcite{bobick1997movement} points out, actions require an interpretive context --- ``a set of constraints on possible explanations for the observed motions.'' In our case, we do not want to bother ourselves with detailing on the purpose of each of the activities. Hence, we refrain from using the term \emph{action}.
 
 % 3. Examples of activities
-Examples of activities are accelerating, cruising, and decelerating. Here, the activities describe the evolution of the longitudinal acceleration (or, e.g., speed). Activities describing the evolution of the lateral position of a vehicle with respect to the center of the road might, for example, be labeled with ``driving straight'' or ``lane change''.
+Examples of activities are accelerating, cruising, and decelerating. Here, the activities describe the evolution of the longitudinal acceleration (or, e.g., speed). Activities describing the lateral position of a vehicle with respect to the center of the road might, for example, be labeled with ``driving straight'' or ``lane change''.
 
 
 
