@@ -49,7 +49,8 @@ The ego vehicle refers to the perspective from which the world is seen. The ego 
 
 \subsubsection{Actor}
 \label{sec:actor}
-An actor is an element of a scenario acting on its own behalf \cite{ulbrich2015}. In practice, this can be, for example, a driver of a car, a bicyclist, a pedestrian, a driving automation system, or a combination of a driver and a driving automation system \cite{geyer2014}.
+Informally, actors are all dynamic components of a scenario, excluding the ego vehicle itself\cite{catapult2018musicc}
+%An actor is an element of a scenario acting on its own behalf \cite{ulbrich2015}. In practice, this can be, for example, a driver of a car, a bicyclist, a pedestrian, a driving automation system, or a combination of a driver and a driving automation system \cite{geyer2014}.
 % Traffic light?
 
 \subsubsection{State}
@@ -78,8 +79,9 @@ In each mode, the behavior of the system is described by a particular model with
 
 \subsubsection{Static environment}
 \label{sec:static environment}
-The static environment refers to the part of a scenario that does not change during a scenario. This includes geo-spatially stationary elements \cite{ulbrich2015}. Although one might argue whether light and weather conditions are dynamic or not \cite{geyer2014,bach2016modelbased}, in most cases it is reasonable to assume that these conditions are not subject to significant changes during the time frame of a scenario. 
-Hence, light and weather conditions are usually part of the static environment.
+The static environment refers to the part of a scenario that does not change during a scenario. This includes geo-spatially stationary elements \cite{ulbrich2015}. 
+%Although one might argue whether light and weather conditions are dynamic or not \cite{geyer2014,bach2016modelbased}, in most cases it is reasonable to assume that these conditions are not subject to significant changes during the time frame of a scenario. 
+%Hence, light and weather conditions are usually part of the static environment.
 
 \subsubsection{Dynamic environment}
 \label{sec:dynamic environment}

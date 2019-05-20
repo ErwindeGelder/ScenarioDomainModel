@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -994,7 +994,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="Functional safety" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_162351357" CREATED="1556276847384" MODIFIED="1556276854207">
+<node TEXT="Functional safety" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_162351357" CREATED="1556276847384" MODIFIED="1556276854207">
 <node TEXT="Safety Validation for Machine Learning" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1887530624" CREATED="1556285118126" MODIFIED="1556285138088">
 <node TEXT="Safely Entering the Deep" ID="ID_1393279846" CREATED="1556285141731" MODIFIED="1556285190131" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/331%20Safely%20Entering%20the%20Deep.pdf">
 <attribute NAME="key" VALUE="borg2018safely"/>
@@ -1017,7 +1017,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Overal safety management" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_931729636" CREATED="1556614786090" MODIFIED="1556614796520">
+<node TEXT="Overal safety management" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_931729636" CREATED="1556614786090" MODIFIED="1556614796520">
 <node TEXT="The nature of safety culture" ID="ID_1335293392" CREATED="1556615007822" MODIFIED="1556615099299" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/335%20The%20nature%20of%20safety%20culture.pdf">
 <attribute NAME="key" VALUE="choudhry2007nature"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
