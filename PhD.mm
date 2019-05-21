@@ -1448,6 +1448,15 @@
     <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Scenarios for development, test and validation of automated vehicles" ID="ID_172517485" CREATED="1558422128426" MODIFIED="1558422162118" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/350%20Scenarios%20for%20Development,%20Test%20and%20Validation.pdf">
+<attribute NAME="key" VALUE="menzel2018scenarios"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Scenarios for Development, Test and Validation of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Menzel, Till and Bagschik, Gerrit and Maurer, Markus"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="918B6EC0C15C3AAA632B2E831B1BAB1BC252BC1E1DEC475F7CAFD89366589C">
+    <pdf_title>Scenarios for Development, Test and Validation of Automated Vehicles</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Methods for HAVs" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_774172965" CREATED="1555565022870" MODIFIED="1555565032767">
 <node TEXT="Toward a Framework for HAV Safety Validation" ID="ID_1158276808" CREATED="1555565047695" MODIFIED="1555565134047" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/305%20Toward%20a%20Framework%20for%20HAV%20Safety%20Validation.pdf">
@@ -1963,8 +1972,17 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="For testing of AVs" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_446913384" CREATED="1522996423752" MODIFIED="1522996430189">
+<node TEXT="For testing of AVs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_446913384" CREATED="1522996423752" MODIFIED="1522996430189">
 <node TEXT="Automated Scenario Generation of Regression Testing of AVs" ID="ID_164912009" CREATED="1522996504294" MODIFIED="1522996505122"/>
+<node TEXT="EuroNCAP tests pedestrian AEB" ID="ID_1302624810" CREATED="1558350496137" MODIFIED="1558350512643" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/347%20Test%20Procedures%20and%20Results%20for%20Pedestrian%20AEB%20Systems.PDF">
+<attribute NAME="key" VALUE="seiniger2015test"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Test Procedures and Results for Pedestrian {AEB} Systems"/>
+<attribute NAME="authors" VALUE="Seiniger, Patrick and Hellmann, Adrian and Bartels, Oliver and Wisch, Marcus and Gail, Jost"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="35724E6080594D218220B75114893D9EF28B54D9ABD57F6226D0FCCBCB4AC53A">
+    <pdf_title>TEST PROCEDURES AND RESULTS FOR PEDESTRIAN AEB SYSTEMS</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
 <node TEXT="Evaluation of scenario-generation methods for stochastic programming" ID="ID_1027960109" CREATED="1529493643125" MODIFIED="1534390768282" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/196%20Evaluation%20of%20scenario-generation%20methods%20for%20stochastic%20programming.pdf">
@@ -2316,7 +2334,7 @@
 <attribute NAME="journal" VALUE="Automatisierungssysteme, Assistenzsysteme und Eingebettete Systeme f{\&quot;u}r Transportmittel"/>
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Effiziente Systematische {T}estgenerierung f{\&quot;u}r {F}ahrerassistenzsysteme in Virtuellen {U}mgebungen"/>
-<attribute NAME="authors" VALUE="Schuldt, Fabian and Saust, Falko and Lichte, Bernd and Maurer, Markus and Scholz, S"/>
+<attribute NAME="authors" VALUE="Schuldt, Fabian and Saust, Falko and Lichte, Bernd and Maurer, Markus and Scholz, Stephan"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1475157FB5897842DBFF7A24353BDBE29C968198DD5E6CC7D953A47763E4B064">
     <pdf_title>Effiziente systematische Testgenerierung f&#xfc;r</pdf_title>
 </pdf_annotation>
@@ -2515,6 +2533,27 @@
 <attribute NAME="authors" VALUE="{Cambridge Dictionary}"/>
 </node>
 </node>
+<node TEXT="Papers using &quot;activity&quot; without definition" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_52153250" CREATED="1558409792368" MODIFIED="1558409802580">
+<node TEXT="Distraction becomes engagement in automated driving" ID="ID_1132750713" CREATED="1558409875601" MODIFIED="1558409896285" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/348%20Distraction%20Becomes%20Engagement%20in%20Automated%20Driving.pdf">
+<attribute NAME="key" VALUE="miller2015distraction"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Distraction Becomes Engagement in Automated Driving"/>
+<attribute NAME="authors" VALUE="Miller, David and Sun, Annabel and Johns, Mishel and Ive, Hillary and Sirkin, David and Aich, Sudipto and Ju, Wendy"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="14AED3B5B15E2E598D1C2B5A509DA4D5B84C8AD9F8E546B2BF0E36DFB8FA72E">
+    <pdf_title>Distraction Becomes Engagement in Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Using an activity-based model to explore impact AVs" ID="ID_250323267" CREATED="1558410080011" MODIFIED="1558410290552" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/349%20Using%20an%20activity-based%20model%20to%20explore%20impact%20AVs.pdf">
+<attribute NAME="key" VALUE="childress2015using"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Using an Activity-Based Model to Explore the Potential Impacts of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Childress, Suzanne and Nichols, Brice and Charlton, Billy and Coe, Stefan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2D396ECB645D397645F075C03DB3C26F7D82D56BF8BBA9E633910BFD73A11F6">
+    <pdf_title>USING AN ACTIVITY-BASED MODEL TO EXPLORE POSSIBLE IMPACTS OF AUTOMATED VEHICLES</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Physical activity is defined as any bodily movement produced by skeletal muscles that result in energy expenditure" ID="ID_771327643" CREATED="1551888669410" MODIFIED="1552056092074" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/294%20Physical%20Activity%20definition.pdf">
 <attribute NAME="key" VALUE="caspersen1985physical"/>
 <attribute NAME="journal" VALUE="Public Health Reports"/>
@@ -2539,6 +2578,7 @@
 <attribute NAME="key" VALUE="sigsim2019glossary"/>
 <attribute NAME="title" VALUE="Modeling and Simulation Glossary"/>
 <attribute NAME="year" VALUE="2019"/>
+<attribute NAME="authors" VALUE="{Special Interest Group (SIG) on SImulation and Modeling (SIM)}"/>
 </node>
 <node TEXT="the doing of something, or something that you are doing, have done, or could do" ID="ID_1789383369" CREATED="1553570216269" MODIFIED="1553572931261" LINK="https://dictionary.cambridge.org/dictionary/english/activity">
 <attribute NAME="key" VALUE="cambridge2019activity"/>
@@ -2762,6 +2802,7 @@
     <pdf_title>Concept and development of a unified ontology for generating test and use-case catalogues for assisted and automated vehicle guidance</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Geyer, later: &quot;the actor (in this case: the ego-vehicle with driver/automation)&quot;" ID="ID_391109196" CREATED="1558350841165" MODIFIED="1558350849086"/>
 <node TEXT="Ulbrich: an actor is an element of a scene acting on its own behalf" ID="ID_150150579" CREATED="1511841875665" MODIFIED="1534391438170" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/031%20Defining%20terms%20scene,%20situation%20and%20scenario.pdf">
 <attribute NAME="key" VALUE="ulbrich2015"/>
 <attribute NAME="year" VALUE="2015"/>
@@ -2769,6 +2810,15 @@
 <attribute NAME="authors" VALUE="Ulbrich, Simon and Menzel, Till and Reschka, Andreas and Schuldt, Fabian and Maurer, Markus"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="C92F905077497556A7891896E6D2712926B9EFF5CA8140A62C4C97894C481426">
     <pdf_title>Defining and Substantiating the Terms Scene, Situation, and Scenario for Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="An entity that participates in a scenario, and is capable of independent motion. This includes motor vehicles, pedestrians, bicycles, and animals. Informally, actors are all dynamic components of a scenario, excluding the ego vehicle itself." ID="ID_1860228640" CREATED="1558350610258" MODIFIED="1558350620425" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/297%20MUSICC-Workshop-Glossary.pdf">
+<attribute NAME="key" VALUE="catapult2018musicc"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="{MUSICC}: {M}ulti {U}ser {S}cenario {C}atalogue for {CAV}s, Glossary of Terms and Definitions"/>
+<attribute NAME="authors" VALUE="Frost, A. B."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8DCC95234FC992C9154C8767A45DB7839CA339074552B82571A8983320A98">
+    <pdf_title>MUSICC: Multi User Scenario Catalogue for CAVs</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2796,7 +2846,7 @@
 </node>
 <node TEXT="Extended Survey on Vehicular Ad Hoc Networks" ID="ID_1554905721" CREATED="1526745487415" MODIFIED="1534391438076" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/188%20A%20comprehensive%20survey%20on%20vehicular%20Ad%20Hoc%20network.pdf">
 <attribute NAME="key" VALUE="alsultan2014comprehensive"/>
-<attribute NAME="journal" VALUE="Journal of network and computer applications"/>
+<attribute NAME="journal" VALUE="Journal of Network and Computer Applications"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="A Comprehensive Survey on Vehicular Ad Hoc Network"/>
 <attribute NAME="authors" VALUE="Al-Sultan, Saif and Al-Doori, Moath M and Al-Bayatti, Ali H and Zedan, Hussien"/>

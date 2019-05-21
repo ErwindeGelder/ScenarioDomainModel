@@ -90,7 +90,7 @@ Hence, we define a scenario as follows.
 \subsection{Event}
 \label{sec:event}
 % Introduction of this section
-As mentioned earlier, a scenario consists of events. Events can be seen as the building blocks of a scenario. The notion of event is extensively used in literature \cite{breu1997towards, kim1993supervenience, pfeiffer2013concepts, branicky1998hybridcontrol, deschutter2000optimal, heemels2012eventcontrol}. In this section, a selected number of descriptions is presented. Next, a definition of event is given that suits our context.
+As mentioned earlier, a scenario consists of events. Events can be seen as the building blocks of a scenario. The notion of event is extensively used in literature \cite{breu1997towards, pfeiffer2013concepts, branicky1998hybridcontrol, deschutter2000optimal, heemels2012eventcontrol}. In this section, a selected number of descriptions is presented. Next, a definition of event is given that suits our context.
 
 % Literature review
 The term event is used in many different fields, e.g.:
@@ -143,13 +143,17 @@ The second type of event, i.e., at the moment at which a mode transition occurs,
 
 As mentioned in \cref{def:scenario}, a scenario is a description of the dynamic environment of the ego vehicle. To describe the dynamic environment, activities are used. Furthermore, a scenario may describe the activities from the ego vehicle. Therefore, next to events, activities can be seen as the building blocks of a scenario.
 
-The term activity is defined multiple times in literature, e.g.:
+\cbstart
+Both the terms activity \cite{geyer2014, elrofai2018scenario, miller2015distraction, childress2015using, catapult2018musicc, sigsim2019glossary} and action \cite{geyer2014, ulbrich2015, bagschik2017ontology} are used in the context of automated driving. Although, strictly speaking, the terms action and activity have a slightly different meaning, it is often used for the same purpose:
 \begin{itemize}
-	\item According to the Cambridge Dictionary, an activity is defined as ``the doing of something, or something that you are doing, have done, or could do'' \cite{cambridge2019activity}.
-	\item \textcite{caspersen1985physical} define physical activity ``as any bodily movement produced by skeletal muscles that result in energy expenditure''.
-	\item \textcite{bobick1997movement} simply states that an activity is a ``sequence of movements''. 
-	\item In a glossary for modeling and simulation \cite{sigsim2019glossary}, an ``activity is the state of an object over an interval of time. An activity starts with an event and ends with another event.''
+	\item According to \textcite{ulbrich2015}, actions may be specified for characterizing the temporal development in a scenario.
+	\item \textcite{elrofai2018scenario} considers an activity as a building block of the dynamic part of the scenario: ``An activity is a time evolution of state variables such as speed and heading to describe for instance a lane change, or a braking-to-standstill.''
+	\item In a glossary for a scenario catalog development \cite{catapult2018musicc}, an activity is defined as ``the state of an object over an interval of time. An activity starts with an event and ends with another event.''
+%	\item According to the Cambridge Dictionary, an activity is defined as ``the doing of something, or something that you are doing, have done, or could do'' \cite{cambridge2019activity}.
+%	\item \textcite{caspersen1985physical} define physical activity ``as any bodily movement produced by skeletal muscles that result in energy expenditure''.
+%	\item \textcite{bobick1997movement} simply states that an activity is a ``sequence of movements''. 
 \end{itemize}
+\cbend
 
 Before providing the definition of an activity, the following is concluded about an activity:
 
@@ -190,10 +194,14 @@ Examples of activities are accelerating, cruising, and decelerating. Here, the a
 \label{sec:scenario class}
 
 % Introduce term scenario class (i.e. qualitative description of scenario)
-In this section, the notion of scenario class is introduced. As proposed above, a scenario in the context of the performance assessment of an AV needs to be quantitative. 
+\cbstart
+As proposed above, a scenario in the context of the performance assessment of an AV needs to be quantitative. 
+However, in literature, the term scenario is also used to refer to a collection of scenarios, where this collection of scenarios is semantically described. For example, in \cite{USDoT2007precrashscenarios}, a typology of 37 pre-crash scenarios is proposed. Here, each of the 37 pre-crash scenarios can be seen as an abstraction of many quantitative scenarios. Similar studies are performed to describe scenarios that lead to highway accidents \cite{adaptive2017d73}, car-cyclist accidents \cite{opdencamp2014cats}, and car-pedestrian accidents \cite{lenard2011typical}. In \cite{catapult2017taxonomy}, a taxonomy of scenarios is proposed to qualitatively describe challenging scenarios for automated driving.
+
+The aforementioned references \cite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2011typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce another term to also address the qualitative description. We propose to use the term \emph{scenario class} to refer to the qualitative description of a scenario. The qualitative description can be regarded as an abstraction of the quantitative scenario.
+\cbend
 %However, each scenario can be abstractly described in words; i.e., a qualitative description of each scenario exists. 
-A scenario class refers to the qualitative description of a scenario.
-The qualitative description can be regarded as an abstraction of the quantitative scenario. Therefore, a scenario class refers to multiple scenarios with a common characteristic \cite{elrofai2018scenario}.
+%Therefore, a scenario class refers to multiple scenarios with a common characteristic \cite{elrofai2018scenario}.
 
 We define a scenario class as follows.
 \begin{definition}[Scenario class] \label{def:scenario class}
