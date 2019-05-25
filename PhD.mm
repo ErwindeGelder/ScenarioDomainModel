@@ -1865,6 +1865,7 @@
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Safety Assessment of Automated Vehicles: How to Determine Whether We Have Collected Enough Field Data?"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Op den Camp, Olaf and De Schutter, Bart"/>
+<attribute NAME="journal" VALUE="Traffic Injury Prevention"/>
 </node>
 <node TEXT="2019 Quantification of scenario risk" ID="ID_1198050945" CREATED="1555381619441" MODIFIED="1556700333742" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/343%20Scenario%20risk%20quantification.pdf">
 <attribute NAME="key" VALUE="degelder2019risk"/>
@@ -2988,7 +2989,7 @@
 </node>
 </node>
 </node>
-<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
 <node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1534391630156" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
@@ -3359,6 +3360,7 @@
 <attribute NAME="key" VALUE="catapult2017taxonomy"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Taxonomy of Scenarios for Automated Driving"/>
+<attribute NAME="authors" VALUE="{Transport Systems Catapult}"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="DB5D41EA9F667A8E7897D85C9FE82921B2E88F9C01826E358D53B6075B4CC">
     <pdf_title>Taxonomy of Scenarios for Automated Driving</pdf_title>
 </pdf_annotation>
@@ -3912,6 +3914,15 @@
 <attribute NAME="title" VALUE="Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="164E75E54C4ACAF6CF09314741D60FEA9A17E40D434EC9DD8EB6C257E24C90">
     <pdf_title>SURFACE VEHICLERECOMMENDED PRACTICE</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="OpenDRIVE" ID="ID_338832854" CREATED="1558768647938" MODIFIED="1558768672253" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/351%20OpenDRIVE%202010%20and%20Beyond.pdf">
+<attribute NAME="key" VALUE="dupuis2010opendrive"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="OpenDRIVE 2010 and Beyond -- Status and Future of the de facto Standard for the Description of Road Networks"/>
+<attribute NAME="authors" VALUE="Dupuis, Marius and Strobl, Martin and Grezlikowski, Hans"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="36C9DDE7BE7ABBAF9618DBCE5AD84C5A11C7AF60384D9A6435CE604CEC2AAE91">
+    <pdf_title>Driving Simulation Conference Europe 2010 Proceedings Arts et M&#xe9;tiers ParisTech September 9 &#x2013;10, 2010</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="OpenSCENARIO" ID="ID_1907137131" CREATED="1554350973364" MODIFIED="1554351043456" LINK="http://www.openscenario.org">
