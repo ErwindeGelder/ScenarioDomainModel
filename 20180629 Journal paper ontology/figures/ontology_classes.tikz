@@ -24,7 +24,7 @@
 \node[class, fill=otherclass](activity) at (2\blockx, 3\blocky) {Activity};
 \node[class, fill=otherclass](actor) at (3\blockx, 3\blocky) {Actor};
 \node[class, fill=otherclass](triggered) at (1.75\blockx, 4\blocky) {Triggered activity};
-\node[class, fill=otherclass](detected) at (2.75\blockx, 4\blocky) {Detected activity};
+\node[class, fill=otherclass](detected) at (2.75\blockx, 4\blocky) {Set activity};
 \node[class, fill=otherclass](event) at (0.5\blockx, 4\blocky) {Event};
 
 % Aggregation arrows for the scenario class

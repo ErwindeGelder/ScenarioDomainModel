@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+	% Circles
+	\fill[red, fill opacity=0.5] (-\venncircle/2, 0) circle (\venncircle);
+	\fill[green, fill opacity=0.5] (\venncircle/2, 0) circle (\venncircle);
+	\draw (-\venncircle/2, 0) circle (\venncircle);
+	\draw (\venncircle/2, 0) circle (\venncircle);
+	
+	% Names of scenario classes
+	\node[anchor=east](daylight) at (-4/3*\venncircle, 3/4*\venncircle) {Day};
+	\draw (daylight) -- ({(-sqrt(3)/2-1/2)*\venncircle}, \venncircle/2);
+	\node[anchor=west](rain) at (4/3*\venncircle, 3/4*\venncircle) {Rain};
+	\draw (rain) -- ({(sqrt(3)/2+1/2)*\venncircle}, \venncircle/2);
+	\node[anchor=south](day and rain) at (-1/4*\venncircle, 6/5*\venncircle) {Day and rain};
+	\draw (day and rain) -- ({(1/2-sqrt(2)/2)*\venncircle}, {(sqrt(2)/2)*\venncircle});
+	
+	% Text in circles
+	\node[text width=\venncircle, align=center] at (-\venncircle, 0) {Scenarios without rain during day};
+	\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during day};
+	\node[text width=.9\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain during night};
+\end{tikzpicture}

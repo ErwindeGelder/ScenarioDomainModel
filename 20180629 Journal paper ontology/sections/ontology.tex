@@ -3,7 +3,8 @@
 
 We already explained the use of an ontology in \cref{sec:why ontology}. In this section, we present our ontology for scenarios for the assessment of automated vehicles. 
 We use UML for implementing the ontology, because UML focuses on describing implementation related issues, which is useful considering our Python implementation.
-The ontology is formally represented through a domain model that is briefly presented in \cref{sec:domain model}. Next, in \cref{sec:domain scenario class}, we explain how a scenario class is formally represented using the domain model. Similarly, in \cref{sec:domain scenario}, we describe how a scenario is formally represented using the domain model. For more details on the domain model that is representing the ontology, see \cref{sec:appendix domain model}.
+The ontology is formally represented through a domain model that is briefly presented in \cref{sec:domain model}. Next, in \cref{sec:domain scenario class}, we explain how a scenario class is formally represented using the domain model. Similarly, in \cref{sec:domain scenario}, we describe how a scenario is formally represented using the domain model. 
+%For more details on the domain model that is representing the ontology, see \cref{sec:appendix domain model}.
 
 
 
@@ -15,7 +16,7 @@ The classes of the domain model that are used to define a scenario and a scenari
 \begin{figure}
 	\centering
 	\input{figures/ontology_classes.tikz}
-	\caption{Schematic overview of most classes of the domain model for representing the ontology for scenarios for the assessment of automated vehicles.}
+	\caption{\cbstart Schematic overview of most classes of the domain model for representing the ontology for scenarios for the assessment of automated vehicles. The aggregation arrow denotes the ``has'' relation, where $1$ indicates that one class ``has'' exactly one instance of the other class and $\mathbb{N}$ indicates that one class ``has'' zero, one, or multiple instances of the other class. For example, a scenario ``has'' exactly one static environment and a scenario has zero, one, or multiple activities.\cbend}
 	\label{fig:ontology classes}
 \end{figure}
 
@@ -30,16 +31,25 @@ The blue blocks in \cref{fig:ontology classes} represent the classes that are us
 
 The static environment category contains a human interpretable name and description of the static environment. Furthermore, it may contain predefined tags that are also interpretable by a software agent. 
 
-The activity category also contains a human interpretable name of the activity and it may contain predefined tags, such as the examples shown in \cref{fig:tree vehicle activities}. Furthermore, in line with the definition of an activity, see \cref{def:activity}, the activity category includes the state.  The model that is used to describe the evolution is specified. For example, the model could be `linear' or `sinusoidal'. However, since the activity category is a qualitative description, the parameters of the model are not included.
+\cbstart
+The activity category also contains a human interpretable name of the activity and it may contain predefined tags, such as the examples shown in \cref{fig:tree vehicle activities}. Furthermore, in line with the definition of an activity, see \cref{def:activity}, the activity category includes the state.  The model that is used to describe the state is specified. For example, the model to describe a lane change could be a sinusoidal function:
+\begin{equation} \label{eq:sinusoidal}
+	\dot{\state}(t) = \frac{\amplitude \pi}{2\duration} \sin \left( \frac{\pi t}{\duration} \right), \state(0) = \initstate.
+\end{equation}
+Here, $\state$ and $\dot{\state}$ denotes the state and the time derivative of the state, respectively. In case of the lane change change, the state is the lateral displacement with respect to the center of the road. The parameters of the model are the total lateral displacement during the lane change ($\amplitude$), the duration of the lane change ($\duration$) and the initial lateral displacement ($\initstate$). The model of \cref{eq:sinusoidal} describes the state for time $\time=0$ until $\time=\duration$. Since the activity category is a qualitative description, the values of these parameters of the model are not included.
+\cbend
 
 Similar to the static environment category and the activity category, the actor category has a name and tags. Furthermore, the type of the road user is specified from a predefined list. To indicate that the actor is an ego vehicle, the tag ``Ego vehicle'' is added to the list of tags.
 
 % Scenario class
-The scenario class ``has'' a static environment category, activity categories, and actor categories. As with the other classes, a scenario class contains a name and may contain predefined tags that describe parts of the scenario that are not described by the other classes. An important attribute of the scenario class, that is not shown in \cref{fig:ontology classes}, is the list of acts. Each act is a combination of an activity category and an actor category. These acts describe which actors perform which activities. Naturally, it is possible that one actor performs multiple activities and that one activity is performed by multiple actors.
+The scenario class ``has'' a static environment category, activity categories, and actor categories. As with the other classes, a scenario class contains a name and may contain predefined tags that describe parts of the scenario that are not described by the other classes. An important attribute of the scenario class, that is not shown in \cref{fig:ontology classes}, is the list of acts\cbstart\footnote{\cbstart For a scenario class, an act is a combination of an activity category and an actor category.\cbend}\cbend. These acts describe which actors perform which activities. Naturally, it is possible that one actor performs multiple activities and that one activity is performed by multiple actors.
 
 % Explain why we have these different classes
-The reader might wonder why we introduce the different classes for describing a scenario class, i.e., the blue blocks, instead of only one class for modeling a scenario class. To explain this, consider the following example. We have two scenario classes that ``have'' the same static environment category. In the current domain model, a static environment category exists independently of a scenario class. As a result, when the first scenario class is, for some reason, deleted, the static environment category is not affected. Therefore, the other scenario class, which ``has'' the same static environment category is also not affected. Another reason for having the static environment category, the activity category, and the actor category is because of the quantitative counterparts, i.e., the static environment, activity, and actor (orange blocks in \cref{fig:ontology classes}), which we explain in the next section.
-
+\cbstart
+The reader might wonder why we introduce the different classes for describing a scenario class, i.e., the blue blocks, instead of only one class for modeling a scenario class. 
+%To explain this, consider the following example. We have two scenario classes that ``have'' the same static environment category. In the current domain model, a static environment category exists independently of a scenario class. As a result, when the first scenario class is, for some reason, deleted, the static environment category is not affected. Therefore, the other scenario class, which ``has'' the same static environment category is also not affected. Another reason for having the static environment category, the activity category, and the actor category is because of the quantitative counterparts, i.e., the static environment, activity, and actor (orange blocks in \cref{fig:ontology classes}), which we explain in the next section.
+The main advantage of the different classes is the re-usability of the instances of the classes. For example, two scenarios classes ``have'' the same static environment category, we only need to define the static environment category once, whereas if the static environment category would not be a class on its own but only a property of the scenario class, we would need to define the static environment category twice.
+\cbend
 
 
 \subsection{Scenario and its attributes}
@@ -51,23 +61,25 @@ The orange blocks in \cref{fig:ontology classes} represent the classes that are 
 The static environment ``has'' a static environment category, which defines the static environment qualitatively. The most notable difference between the static environment category and the static environment, is that the static environment can have multiple properties that quantitatively define the static environment. These properties define the road layout, static weather and lighting conditions, and infrastructural elements, etc.
 
 % Activity
-According to \cref{def:activity}, an activity quantitatively describes the evolution of a state in a time interval. The state that is described by an activity is defined in the activity category that the activity ``has''. The evolution is described by a model, which is also contained by the activity category, and a set of parameters. These parameters are part of the activity. 
+According to \cref{def:activity}, an activity quantitatively describes a state in a time interval. The state that is described by an activity is defined by the activity category that the activity ``has''. The state is described by a model, which is also contained by the activity category, and a set of parameters. The values of the parameters are part of the activity. 
 %Note that the model can be a time interpolation of (measured) data points, in which case the parameters are a sequence of time and state values. The time interval is defined by a duration of the activity.
 
 % Detected and triggered activity
-Two different types of activities can be defined. A detected activity describes an activity that happens at a certain fixed time. On the other hand, the starting time of a triggered activity is not defined beforehand, as the activity is triggered by a certain event. This is often used for scenario-based testing. For example, in a test with a pedestrian (dummy) that starts crossing a pedestrian crossing when the ego vehicle is within a certain distance (or time) from the pedestrian crossing, the starting time of the activity of the pedestrian (dummy), i.e., walking over the pedestrian crossing, is not defined beforehand and depends on, for example, the speed of the ego vehicle. Both the detected activity and the triggered activity are subclasses of the activity, as shown in \cref{fig:ontology classes}, which means that the detected activity and the triggered activity inherit all properties from the activity. Additionally, the detected activity ``has'' a starting time and the triggered activity ``has'' an event that triggers the activity.
+\cbstart
+Two different types of activities can be defined. A set activity describes an activity that happens at a certain fixed time. This is often used to describe real-world scenarios that are extracted from real-world data. On the other hand, the starting time of a triggered activity is not defined beforehand, as the activity is triggered by an event. This is often used to describe test cases for scenario-based testing, e.g., see the example with the ego vehicle approaching a pedestrian crossing with a pedestrian (dummy) in \cref{sec:event}. Here, the starting time of the activity of the pedestrian (dummy), i.e., walking over the pedestrian crossing, is not defined beforehand and depends on, for example, the speed of the ego vehicle \cite{seiniger2015test}. Both the detected activity and the triggered activity are subclasses of the activity, as shown in \cref{fig:ontology classes}, which means that the detected activity and the triggered activity inherit all properties from the activity. Additionally, the detected activity ``has'' a starting time and the triggered activity ``has'' an event that triggers the activity.
+\cbend
 
 % Actor
-Similar as the static environment and the activity, the actor ``has'' its qualitative counterpart, the actor category. Additionally, because the actor is a quantitative description, it may have multiple properties defined, such as its size, weight, color, radar reflectivity factor, etc. The actor may have an initial state and a desired state, i.e., the goal of the actor. This is especially useful for defining a test case, that describes the objective of the ego vehicle rather than its activities.
+\cbstart
+Similar as the static environment and the activity, the actor ``has'' its qualitative counterpart, the actor category. Additionally, because the actor is a quantitative description, it may have multiple properties defined, such as its size, weight, color, radar reflectivity factor, etc. The actor may have an initial state and a desired state. The desired state can be used to formulate the goal of the actor. This is especially useful for defining a test case, that describes the objective of the ego vehicle rather than its activities. Additionally, the goal can be formulated as text if it cannot be formulated using a desired state.
+Note that the goals are typically on a strategic level, such as destinations and waypoints, as opposed to the tactical and operational levels\footnote{\cbstart See \cite[p.~7, Figure 1]{sae2018j3016} for an overview of the difference between the strategic, tactical, and operational functions.\cbend}.
+\cbend
 
 % Event
-According to \cref{def:event}, an events marks the time instant at which the system reaches a specified boundary or at which a mode transition occurs. To describe this time instant, one or more conditions are specified. For example, a condition could be that the distance of the ego vehicle and a pedestrian crossing should be less than \unit[30]{m}. For this example, the moment at which this condition is met for the first time corresponds to the event. In \cite{openscenario}, an extensive list of possible conditions is given.
+According to \cref{def:event}, an events marks the time instant at which the system reaches a specified boundary or at which a mode transition occurs. To describe this time instant, one or more conditions are specified. For example, a condition could be that the distance of the ego vehicle and a pedestrian crossing should be less than \SI{30}{\meter}. For this example, the moment at which this condition is met for the first time corresponds to the event. In \cite{openscenario}, an extensive list of possible conditions is given.
 
 % Another advantage of the blue blocks -> only one activity category for multiple activities
 An advantage of having the qualitative counterparts of the static environment, the activity, and the actor is that the qualitative description can be reused. For example, there can be many different braking activities, but there needs to be only one activity category for qualitatively defining the braking activity. Here, it is assumed that all braking activities are modeled with the same model and that similar tags apply. If this is not the case, multiple activity categories need to be defined, but the number of activity categories will still be significantly lower.
 
 % Scenario
-As with the static environment, activity, and actor, the scenario is the quantitative counterpart of the scenario class. As a result, a scenario ``has'' a static environment, activities, and actors. Additionally, in compliance with \cref{def:scenario}, a scenario ``has'' events. As with a scenario class, a scenario contains a list of acts. In this case, an act is a combination of an activity and an actor.
-
-
-
+As with the static environment, activity, and actor, the scenario is the quantitative counterpart of the scenario class. As a result, a scenario ``has'' a static environment, activities, and actors. Additionally, in compliance with \cref{def:scenario}, a scenario ``has'' events. As with a scenario class, a scenario contains a list of acts\cbstart\footnote{\cbstart For a scenario, an act is a combination of an activity and an actor.\cbend}. The acts are used to describe which actors perform which activities.\cbend

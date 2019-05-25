@@ -82,7 +82,7 @@
 	
 	% Create dynamic environment
 	\node[coordinate, below of=scenario, node distance=7.5em](below scenario){};
-	\node[fill=colorDynBlock, block, left of=below scenario, node distance=0em](otherdyn){Other road user};
+	\node[fill=colorDynBlock, block, left of=below scenario, node distance=0em, block one row](otherdyn){$\ldots$};
 	\node[length dashed arrow, below of=otherdyn](otherdyn arrow){};
 	\draw[dashed arrow] (otherdyn) -- (otherdyn arrow);
 	\node[fill=colorDynBlock, block, left of=otherdyn](target){Vehicle in front};
@@ -103,7 +103,7 @@
 	
 	% Static environment
 	\node[block, right of=otherdyn, larger distance, fill=colorStat, block one row](road){Road};
-	\node[block, right of=road, fill=colorStat, block one row](weather){Weather};
+	\node[block, right of=road, fill=colorStat, block one row](weather){$\ldots$};
 	\node[above of=weather, environment text](helper3){};
 	\node[right of=helper3, environment text b]{Static\\environment};
 	\node[left of=weather, in between](helper4){};

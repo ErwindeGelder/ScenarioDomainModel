@@ -62,7 +62,7 @@
 \usepackage{subcaption}
 \usepackage{xstring}
 \usepackage{xparse}
-\usepackage{units}
+\usepackage{siunitx}
 
 \theoremstyle{plain}
 \newtheorem{definition}{Definition}
@@ -103,6 +103,8 @@
 \newlength\figurewidth
 \newlength\figureheight
 \newlength\venncircle
+\newlength\objectwidth\setlength{\objectwidth}{24em}
+
 
 \usetikzlibrary{arrows,positioning}
 \usetikzlibrary{arrows.meta}
@@ -114,6 +116,7 @@
 \tikzstyle{tag}=[text height=.8em, text depth=.1em, font=\small\sffamily, rounded corners=0.2em, fill=TNOlightgray, node distance=9em, text width=7em, align=center]
 \tikzstyle{tag wide}=[tag, text width=12em]
 \tikzstyle{tagarrow}=[->, line width=0.75mm, color=TNOlightgray]
+\tikzstyle{object}=[draw, text width=\objectwidth-.5em, align=left, line width=1pt, minimum width=\objectwidth, anchor=north west, node distance=3pt]
 \newcounter{tagbcounter}
 \newcounter{tagccounter}
 \newcommand{\taga}[1]{
@@ -150,6 +153,29 @@
 	\end{tikzpicture}
 }
 \ExplSyntaxOff
+
+% Notations
+\newcommand{\amplitude}{A}
+\newcommand{\attrtstart}{start time}
+\newcommand{\attrtend}{end time}
+\newcommand{\duration}{T}
+\newcommand{\east}{x}
+\newcommand{\north}{y}
+\newcommand{\head}{\phi}
+\newcommand{\egosub}{ego}
+\newcommand{\egoeast}{\east_{\mathrm{\egosub}}}
+\newcommand{\egonorth}{\north_{\mathrm{\egosub}}}
+\newcommand{\egospeed}{\dot{\east}_{\mathrm{\egosub}}}
+\newcommand{\egoheading}{\head_{\mathrm{\egosub}}}
+\newcommand{\pedsub}{ped}
+\newcommand{\pedeast}{\east_{\mathrm{\pedsub}}}
+\newcommand{\pednorth}{\north_{\mathrm{\pedsub}}}
+\newcommand{\pedheading}{\head_{\mathrm{\pedsub}}}
+\newcommand{\origin}{O}
+\newcommand{\slope}{a}
+\newcommand{\state}{x}
+\newcommand{\initstate}{\state_0}
+\renewcommand{\time}{t}
 
 %\usepackage{changebar}
 \newcommand{\cbstart}{\color{blue}}
@@ -195,9 +221,9 @@
 %\bibliography{../bib}
 \printbibliography
 
-\appendix
-\appendices
-\input{sections/domain_model}
+%\appendix
+%\appendices
+%\input{sections/domain_model}
 
 
 \end{document}

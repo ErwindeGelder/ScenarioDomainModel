@@ -52,16 +52,16 @@ Regarding the nature of the data, a scenario can be either qualitative or quanti
 According to \textcite{geyer2014}, ``the end of a scenario is defined by the first irrelevant situation with respect to the scenario''. In a similar manner, we require that the time interval of a scenario should contain all relevant events. Note that `relevant' is subjective and, therefore, an event is considered to be relevant, if it is relevant to the ego vehicle.
 % Next to that, an event is regarded as irrelevant, if it is independent of the relevant events.
 
-% Goals (instead of activities)
-\subsubsection{A scenario can contain goal(s) of one or multiple actors}
-For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} do not mention this. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \cite{geyer2014}) could be specified rather than its activities \cite{ulbrich2015}. The same holds for other actors within the scenario.
-
 % Description of static environment
 \subsubsection{A scenario includes the description of the environment}
 A scenario should include the description of the static and dynamic environment.
 %The static environment does not change during a scenario.
 Although this is not a general prerequisite of a scenario, the description of the static environment is often included when speaking about traffic scenarios \cite{geyer2014, ulbrich2015, elrofai2016scenario, ebner2011identifying, schuldt2013effiziente, althoff2017CommonRoad}.
 %Everything that changes during the time interval of a scenario is considered to be part of the dynamic environment. 
+
+% Goals (instead of activities)
+%\subsubsection{A scenario can contain goal(s) of one or multiple actors}
+For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} do not mention this. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \cite{geyer2014}) could be specified rather than its activities \cite{ulbrich2015}. The same holds for other actors within the scenario.
 
 % Definition
 Hence, we define a scenario as follows.
@@ -126,7 +126,7 @@ Hence, we define an event as follows.
 According to \cref{def:event}, an event occurs at either a moment at which the system reaches a boundary or a moment at which a mode transition occurs. 
 \cbstart
 Both these types of event are related to hybrid theory \cite{deschutter2003hybrid, heemels2012eventcontrol}.
-The first type of event, i.e., at the moment at which the system reaches a boundary, is especially useful when describing test cases. For example, consider a vehicle approaching a pedestrian (dummy) that is about to cross the road \cite{seiniger2015test}. Here, the event is at the moment that the distance between the vehicle and pedestrian is less than $x$ meters. At this event, the pedestrian (dummy) starts to cross the road such that the vehicle impacts the pedestrian (dummy) if it does not change its speed or direction \cite{seiniger2015test}.
+The first type of event, i.e., at the moment at which the system reaches a boundary, is especially useful when describing test cases. For example, consider the ego vehicle approaching a pedestrian (dummy) that is about to cross the road \cite{seiniger2015test}. Here, the event is at the moment that the distance between the vehicle and pedestrian is less than $x$ meters. At this event, the pedestrian (dummy) starts to cross the road such that the vehicle impacts the pedestrian (dummy) if it does not change its speed or direction \cite{seiniger2015test}.
 The second type of event, i.e., at the moment at which a mode transition occurs, can be, for example, during an observed scenario at the moment at which a driver suddenly brakes. 
 \cbend
 %This first type of event, i.e., at the moment at which the system reaches a boundary, is related to events in event-based control \cite{heemels2012eventcontrol}, whereas the second type of event, i.e., at the moment at which a mode transition occurs, is related to events in hybrid theory \cite{deschutter2000optimal}. 
@@ -196,7 +196,7 @@ Examples of activities are accelerating, cruising, and decelerating. Here, the a
 % Introduce term scenario class (i.e. qualitative description of scenario)
 \cbstart
 As proposed above, a scenario in the context of the performance assessment of an AV needs to be quantitative. 
-However, in literature, the term scenario is also used to refer to a collection of scenarios, where this collection of scenarios is semantically described. For example, in \cite{USDoT2007precrashscenarios}, a typology of 37 pre-crash scenarios is proposed. Here, each of the 37 pre-crash scenarios can be seen as an abstraction of many quantitative scenarios. Similar studies are performed to describe scenarios that lead to highway accidents \cite{adaptive2017d73}, car-cyclist accidents \cite{opdencamp2014cats}, and car-pedestrian accidents \cite{lenard2011typical}. In \cite{catapult2017taxonomy}, a taxonomy of scenarios is proposed to qualitatively describe challenging scenarios for automated driving.
+However, in literature, the term scenario is also used to refer to a collection of scenarios, where this collection of scenarios is semantically described. For example, in \cite{USDoT2007precrashscenarios}, a typology of pre-crash scenarios is proposed. Here, each of the pre-crash scenarios is an abstraction of many quantitative scenarios. Similar studies are performed to describe scenarios that lead to highway accidents \cite{adaptive2017d73}, car-cyclist accidents \cite{opdencamp2014cats}, and car-pedestrian accidents \cite{lenard2011typical}. In \cite{catapult2017taxonomy}, a taxonomy of scenarios is proposed to qualitatively describe challenging scenarios for automated driving.
 
 The aforementioned references \cite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2011typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce another term to also address the qualitative description. We propose to use the term \emph{scenario class} to refer to the qualitative description of a scenario. The qualitative description can be regarded as an abstraction of the quantitative scenario.
 \cbend
@@ -225,21 +225,7 @@ We describe the formal relation between a scenario and a scenario class with the
 \setlength{\venncircle}{7em}
 \begin{figure}
 	\centering
-	\begin{tikzpicture}
-	\fill[red, fill opacity=0.5] (-\venncircle/2, 0) circle (\venncircle);
-	\fill[green, fill opacity=0.5] (\venncircle/2, 0) circle (\venncircle);
-	\draw (-\venncircle/2, 0) circle (\venncircle);
-	\draw (\venncircle/2, 0) circle (\venncircle);
-	
-	\node[anchor=east](daylight) at (-4/3*\venncircle, 3/4*\venncircle) {Day};
-	\draw (daylight) -- ({(-sqrt(3)/2-1/2)*\venncircle}, \venncircle/2);
-	\node[anchor=west](rain) at (4/3*\venncircle, 3/4*\venncircle) {Rain};
-	\draw (rain) -- ({(sqrt(3)/2+1/2)*\venncircle}, \venncircle/2);
-	
-	\node[text width=\venncircle, align=center] at (-\venncircle, 0) {Scenarios without rain during day};
-	\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during day};
-	\node[text width=.9\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain during night};
-	\end{tikzpicture}
+	\input{figures/venn_diagrams.tikz}
 	\caption{The red and green circles correspond to the scenario classes ``Day'' and ``Rain'', respectively. Scenarios that occur during the day with rain fall into both scenario classes ``Day'' and ``Rain''. The new scenario class ``Day and rain'' can be defined as the scenario class in which all scenarios that occur during the day with rain fall. The scenario class ``Day and rain'' falls into the scenario classes ``Day'' and ``Rain''.}
 	\label{fig:venn diagram scenario class}
 \end{figure}

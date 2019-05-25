@@ -17,7 +17,7 @@ According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit spec
 
 There are several languages dedicated to the implementation of an ontology. Two major technologies are the Web Ontology Language (OWL) and the Unified Modeling Language (UML). 
 %We use UML for implementing the ontology, because UML focuses on describing implementation related issues, which is useful considering our Python implementation.
-For a detailed comparison between OWL and URL, see \cite{kiko2005detailed}.
+For a detailed comparison between OWL and UML, see \cite{kiko2005detailed}.
 
 
 
@@ -63,7 +63,7 @@ According to the IEEE Standard Glossary of Software Engineering Terminology \cit
 \label{sec:model}
 Typically, a system is modeled using a differential equation of the form $\dot{x}(t)=f_{\theta}(x(t), u(t), t)$ \cite{norman2011control}, where $x(t)$ represents the state vector at time $t$, $u(t)$ represents an external input vector, and the function $f(\cdot)$ is parameterized by $\theta$. \cbstart Note that, technically speaking, $x(\cdot)$, $u(\cdot)$, $t$, and $\theta$ are inputs of the function $f$, but $\theta$ is assumed to be constant for a certain time interval. For example, the following first-order model is parameterized by $\theta=(a,b)$:
 \begin{equation}
-	\dot{x}(t) = a x(t) + b u(t).
+	\dot{\state}(\time) = a \state(\time) + b u(\time).
 \end{equation}
 \cbend
 

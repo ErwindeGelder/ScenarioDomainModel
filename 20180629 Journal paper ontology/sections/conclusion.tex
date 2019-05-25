@@ -1,18 +1,16 @@
+\cbstart
 \section{Conclusions}
 \label{sec:conclusion}
 
 The performance assessment of AVs is important for the legal and public acceptance of AVs. 
 Since scenarios for testing are crucial for the assessment, a clear definition of a scenario is required within this context. 
-We have proposed a new definition of a scenario in the context of the assessment of the quality of an AV. 
-The definition states that a scenario is a quantitative description of the ego vehicle, its activities and/or goals, its static environment and its dynamic environment. 
-The attributes of a scenario are further specified in the proposed ontology.
-The ontology is illustrated with an example.
-The presented ontology is applicable for scenario mining and scenario-based assessment and therefore, this paper provides a step towards the scenario-based performance assessment of AVs. 
+We have proposed a new definition of a scenario in the context of the assessment of the performance of an AV. 
+The definition states that a scenario is a quantitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment. 
+We further defined the notions of event, activity, and scenario class. Events and activities are the building blocks for a scenario and a scenario class is an abstraction of a scenario.
 
-\todo{Review conclusion.}
+To formalize the definitions of a scenario, an event, an activity, and a scenario class, an ontology is proposed. Using the proposed ontology, it is possible to describe a scenario in a qualitative manner and in a quantitative manner. The ontology, represented using a domain model, can be directly translated into a class structure for an object-oriented software implementation. This allows us to code scenarios, such that both domain experts and software programs, such as simulation tools, are able to understand the content of the scenarios. 
 
-\todo{Add appendices
-\begin{itemize}
-	\item Details of the attributes of the classes from the ontology.
-	\item Example of scenario defined according to the ontology.
-\end{itemize}}
+The ontology is illustrated with an example. In the example, the ego vehicle is approaching a pedestrian crossing while a pedestrian wants to cross the road using the pedestrian crossing. In this scenario, the ego vehicle is braking to let the pedestrian cross the road. We also show how this particular scenario can be used as a test case and how this test case would then be represented using the proposed ontology.
+
+The presented ontology is applicable for scenario mining and scenario-based assessment and, therefore, this paper provides a step towards the scenario-based performance assessment of AVs. The next step is to define scenarios and scenario classes\footnote{\cbstart In \cite{degelder2019scenarioclasses}, we already defined 56 scenario classes for Singapore\cbend} that are relevant for an AV in a specific deployment area. Furthermore, based on the scenarios, proper tests can be defined to assess the performance of AVs. 
+\cbend
