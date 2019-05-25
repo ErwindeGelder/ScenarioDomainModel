@@ -316,6 +316,10 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
     copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
              os.path.join('..', '20180629 Journal paper ontology', '20190525_V1_blue.pdf'))
+    call_output(['git', 'checkout', 'OntologyV1'])
+    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
+    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
+             os.path.join('..', '20180629 Journal paper ontology', '20190525_V1.pdf'))
 
     # All other stuff
     call_output(['git', 'checkout', 'master'])
@@ -344,4 +348,4 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20190505 Assessment Strategy'), 'assessment_strategy', usebiber=True)
 
     # Delete folder that has wrong name
-    call('rm "20180639 Journal paper ontology" -r')
+    call('rm "{:s}" -r'.format(os.path.join('..', '20180639 Journal paper ontology')))
