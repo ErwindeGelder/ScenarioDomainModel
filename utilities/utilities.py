@@ -292,6 +292,8 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20190505 Assessment Strategy'), 'assessment_strategy', usebiber=True,
         log=False)
     pdf(os.path.join('..', 'progress_reports', 'report18'), 'progress_report_18')
+    call_output(['git', 'checkout', 'PR19'])
+    pdf(os.path.join('..', 'progress_reports', 'report19'), 'progress_report_19', usebiber=True)
 
     # Revisions/versions
     call_output(['git', 'checkout', 'CompletenessPaperInit'])
