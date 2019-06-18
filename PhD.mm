@@ -596,7 +596,7 @@
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
-<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
+<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1534391906453" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1250,6 +1250,19 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Behavioral safety" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1714483791" CREATED="1560761741124" MODIFIED="1560761749746">
+<node TEXT="Safety field" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1897393452" CREATED="1560761756703" MODIFIED="1560761762289">
+<node TEXT="An Introduction to the Safety Force Field" ID="ID_185970781" CREATED="1560761775777" MODIFIED="1560761872798" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/353%20An%20Introduction%20to%20the%20Safety%20Force%20Field.pdf">
+<attribute NAME="key" VALUE="nister2019nvidia"/>
+<attribute NAME="title" VALUE="An Introduction to the Safety Force Field"/>
+<attribute NAME="authors" VALUE="Nist{\&apos;e}r, David and Lee, Hon-Leung and Ng, Julia and Wang, Yizhou"/>
+<attribute NAME="year" VALUE="2019"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5DCF7298A083FFBCF4746A4475A0DA8C135B724320466BE134F9FA808F5DCD">
+    <pdf_title>An Introduction to the Safety Force Field</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
 <node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
 <node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1534391906877" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
 <attribute NAME="key" VALUE="kalra2016driving"/>
@@ -1468,6 +1481,15 @@
     <pdf_title>Toward a Framework for Highly Automated Vehicle Safety Validation</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Mcity ABC Test" ID="ID_947368401" CREATED="1560761416022" MODIFIED="1560761617396" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/352%20Mcity%20ABC%20Test.pdf">
+<attribute NAME="key" VALUE="mcity"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Mcity {ABC} Test: A concept to Assess the Safety Performance of Highly Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Pengu, Huei and McCarthy, Roger L."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3BA127C834689DD87C9FAE6AF27598CF3598CCDC1C711087F395140AE3C5DF3">
+    <pdf_title>A Concept to Assess the Safety Performance of Highly Automated Vehicles</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Other/general methods" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1813501053" CREATED="1522896099929" MODIFIED="1536226544121">
@@ -1544,6 +1566,7 @@
 <attribute NAME="key" VALUE="waymo2019lawenforcement"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Waymo Fully Self-Driving Chrysler Pacifica: Emergency Response Guide and Law Enforcement Interaction Protocol"/>
+<attribute NAME="authors" VALUE="Waymo"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D0F7E98C0F268EC2335B7F54EBA0DBC7FF8D5354682CC51F6B3A95BD3DDE56">
     <pdf_title>Waymo Fully Self-Driving Chrysler Pacifica</pdf_title>
 </pdf_annotation>
