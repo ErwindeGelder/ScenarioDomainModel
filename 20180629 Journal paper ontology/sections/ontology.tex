@@ -20,7 +20,7 @@ The classes of the domain model that are used to define a scenario and a scenari
 	\label{fig:ontology classes}
 \end{figure}
 
-The arrows in \cref{fig:ontology classes} represent the relations of the different classes. There are three different types of arrows. The arrows with the text ``falls into'' indicate that both a scenario and a scenario class may fall into a scenario class, as explained in \cref{sec:scenario class}. The arrows with the diamond are best described by the verb ``to have''\footnote{In UML, this is called an aggregation.}. For example, a scenario ``has'' a static environment. To be more precise: a scenario ``has'' exactly one static environment, which is indicated by the 1 at the start of the arrow. In a similar manner, a scenario ``has'' zero, one, or multiple activities, which is indicated by the symbol $\mathbb{N}$ indicating any integer number starting from 0. The third arrow denotes a subclass relation. For example, the class triggered activity is a subclass of the class activity such that the class triggered activity inherits all properties from the class activity.
+The arrows in \cref{fig:ontology classes} represent the relations of the different classes. There are three different types of arrows. The arrows with the text ``falls into'' indicate that both a scenario and a scenario class may fall into a scenario class, as explained in \cref{sec:scenario class}. The arrows with the diamond are best described by the verb ``to have''\footnote{In UML, this is called an aggregation. \cbstartb This is typically implemented using pointers. For example, if object A ``has'' B, it means that A contains a pointer to B and, thus, if object A dies, object B can continue to live.\cbend}. For example, a scenario ``has'' a static environment. To be more precise: a scenario ``has'' exactly one static environment, which is indicated by the 1 at the start of the arrow. In a similar manner, a scenario ``has'' zero, one, or multiple activities, which is indicated by the symbol $\mathbb{N}$ indicating any integer number starting from 0. The third arrow denotes a subclass relation. For example, the class triggered activity is a subclass of the class activity such that the class triggered activity inherits all properties from the class activity.
 
 
 
@@ -55,7 +55,11 @@ The main advantage of the different classes is the re-usability of the instances
 \subsection{Scenario and its attributes}
 \label{sec:domain scenario}
 
-The orange blocks in \cref{fig:ontology classes} represent the classes that are used to model a scenario according to the definition of a scenario, see \cref{def:scenario}. A scenario ``has'' a static environment, activities, actors, and events. It is very similar to a scenario class, as the static environment, activities, and actors are the quantitative counterparts of the static environment category, activity categories, and actor categories, just as a scenario is the quantitative counterpart of a scenario class. 
+The orange blocks in \cref{fig:ontology classes} represent the classes that are used to model a scenario according to the definition of a scenario, see \cref{def:scenario}. A scenario ``has'' a static environment, activities, actors, and events. 
+\cbstartb
+The ego vehicle and the dynamic environment are quantitatively described by activities and actors. 
+\cbend
+It is very similar to a scenario class, as the static environment, activities, and actors are the quantitative counterparts of the static environment category, activity categories, and actor categories, just as a scenario is the quantitative counterpart of a scenario class. 
 
 % Static environment
 The static environment ``has'' a static environment category, which defines the static environment qualitatively. The most notable difference between the static environment category and the static environment, is that the static environment can have multiple properties that quantitatively define the static environment. These properties define the road layout, static weather and lighting conditions, and infrastructural elements, etc.
@@ -76,7 +80,7 @@ Note that the goals are typically on a strategic level, such as destinations and
 \cbend
 
 % Event
-According to \cref{def:event}, an events marks the time instant at which the system reaches a specified boundary or at which a mode transition occurs. To describe this time instant, one or more conditions are specified. For example, a condition could be that the distance of the ego vehicle and a pedestrian crossing should be less than \SI{30}{\meter}. For this example, the moment at which this condition is met for the first time corresponds to the event. In \cite{openscenario}, an extensive list of possible conditions is given.
+According to \cref{def:event}, an events marks the time instant at which the system reaches a specified boundary or at which a mode transition occurs. To describe this time instant, one or more conditions are specified. For example, a condition could be that the distance of the ego vehicle and a pedestrian crossing should be less than \SI{30}{\meter}. For this example, the moment at which this condition is met for the first time corresponds to the event.
 
 % Another advantage of the blue blocks -> only one activity category for multiple activities
 An advantage of having the qualitative counterparts of the static environment, the activity, and the actor is that the qualitative description can be reused. For example, there can be many different braking activities, but there needs to be only one activity category for qualitatively defining the braking activity. Here, it is assumed that all braking activities are modeled with the same model and that similar tags apply. If this is not the case, multiple activity categories need to be defined, but the number of activity categories will still be significantly lower.

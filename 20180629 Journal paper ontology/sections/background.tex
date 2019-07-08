@@ -26,7 +26,7 @@ For a detailed comparison between OWL and UML, see \cite{kiko2005detailed}.
 
 Because the notion of scenario is used in many different contexts, a high diversity in definitions of this notion exists (for an overview, see \cite{vannotten2003updated, bishop2007scentechniques}). Therefore, it is reasonable to assume that ``there is no [generally] `correct' scenario definition'' \cite{vannotten2003updated}. As a result, to define the notion of scenario, it is important to consider the context in which it will be used. 
 
-In this paper, the context of a scenario is the assessment of AVs, where AVs refer to vehicles equipped with a driving automation system\footnote{According to \cite{sae2018j3016}, a driving automation system is ``The hardware and software that are collectively capable of performing part or all of the dynamic driving task on a sustained basis. This term is used generically to describe any system capable of level 1-5 driving automation.'' Here, level 1 driving automation refers to ``driver assistance'' and level 5 refers to ``full driving automation''. For more details, see \cite{sae2018j3016}.}. 
+In this paper, the context of a scenario is the assessment of AVs, where AVs refer to vehicles equipped with a driving automation system\footnote{According to \cite{sae2018j3016}, a driving automation system is ``the hardware and software that are collectively capable of performing part or all of the dynamic driving task on a sustained basis. This term is used generically to describe any system capable of level 1-5 driving automation.'' Here, level 1 driving automation refers to ``driver assistance'' and level 5 refers to ``full driving automation''. For more details, see \cite{sae2018j3016}.}. 
 It is assumed that the assessment methodology uses scenarios (i.e., test cases) for which some resulting metrics are compared with a reference \cite{stellet2015taxonomy}. 
 % - Scenarios that an (automated) vehicle can encounter
 The ultimate goal is to build a database with all relevant scenarios that an AV has to cope with when driving in the real world \cite{putz2017pegasus}. Hence, a scenario should be a description of a potential use case of an AV. 
@@ -50,7 +50,7 @@ The ego vehicle refers to the perspective from which the world is seen. The ego 
 \subsubsection{Actor}
 \label{sec:actor}
 \cbstart
-According to \textcite{catapult2018musicc}, ``actors are all dynamic components of a scenario, excluding the ego vehicle itself.'' In practice, this can be, for example, a driver of a car, a bicyclist, a pedestrian, a driving automation system, or a combination of a driver and a driving automation system \cite{geyer2014}. Note that, in contrast to \cite{catapult2018musicc}, in this paper, the ego vehicle, its driver, and/or automation system are considered as actors, similar as \cite{geyer2014}.%: ``in this case, [the actor is] the ego-vehicle with driver/automation.''
+According to \textcite{catapult2018musicc}, ``actors are all dynamic components of a scenario, excluding the ego vehicle itself.'' In practice, this can be, for example, a driver of a car, a cyclist, a pedestrian, a driving automation system, or a combination of a driver and a driving automation system \cite{geyer2014}. Note that, in contrast to \cite{catapult2018musicc}, in this paper, the ego vehicle, its driver, and/or automation system are considered as actors, similar as \cite{geyer2014}.%: ``in this case, [the actor is] the ego-vehicle with driver/automation.''
 \cbend
 %An actor is an element of a scenario acting on its own behalf \cite{ulbrich2015}. 
 % Traffic light?
@@ -89,8 +89,10 @@ The static environment refers to the part of a scenario that does not change dur
 \label{sec:dynamic environment}
 As opposed to the static environment, the dynamic environment refers to the part of a scenario that changes during the time frame of a scenario. 
 %The dynamic environment is described using the activities that describe the way the states evolve over time. 
-In practice, the dynamic environment mainly consists of the moving actors (other than the ego vehicle) that are relevant to the ego vehicle. 
+In practice, the dynamic environment mainly consists of the moving actors (other than the ego vehicle) that are relevant to the ego vehicle.
+\cbstartb
+For example, the primary use-case of OpenSCENARIO, a file format for the description of the dynamic content of driving simulations, is to describe ``complex, synchronized maneuvers that involve multiple entities like vehicles, pedestrians, and other traffic participants'' \cite{openscenario}.
+\cbend
 Roadside units that communicate with vehicles within the communication range \cite{alsultan2014comprehensive} are also part of the dynamic environment. Furthermore, changing (weather) conditions are part of the dynamic environment.
 
 Note that it might not always be obvious whether an element of the environment belongs to the static or dynamic environment. For example, the post of a traffic light can be considered as part of the static environment, while the signal of the traffic light can be considered as part of the dynamic environment. Most important, however, is that all parts of the environment that are relevant to the assessment are described in either the static or the dynamic environment.
-

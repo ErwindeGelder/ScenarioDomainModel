@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -596,7 +596,7 @@
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
-<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
+<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1534391906453" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -732,6 +732,16 @@
 <attribute NAME="authors" VALUE="Luo, Yaping and Khabbaz Saberi, Arash and Bijlsma, Tjerk and Lukkien, Johan J. and van den Brand, Mark"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="ABAD4DB9800B73A4D5795EA652E26E3D3EF684C56F934D1ABD69821EEECD45">
     <pdf_title>An Architecture Pattern for Safety Critical Automated Driving Applications: Design and Analysis</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="How Safe Is Safe Enough for Self-Driving Vehicles?" ID="ID_1999402083" CREATED="1561635757994" MODIFIED="1561635802937" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/355%20How%20Safe%20Is%20Safe%20Enough%20for%20Self-Driving%20Vehicles.pdf">
+<attribute NAME="key" VALUE="liu2019safe"/>
+<attribute NAME="journal" VALUE="Risk Analysis"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="How Safe Is Safe Enough for Self-Driving Vehicles?"/>
+<attribute NAME="authors" VALUE="Liu, Peng and Yang, Run and Xu, Zhigang"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="29E07E7B72F8D397C0D6BC3AC9A04A73F2BA385E86CC813FD59E7B8BFF4A4785">
+    <pdf_title>How Safe Is Safe Enough for Self-Driving Vehicles?</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1017,7 +1027,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Overal safety management" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_931729636" CREATED="1556614786090" MODIFIED="1556614796520">
+<node TEXT="Overal safety management" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_931729636" CREATED="1556614786090" MODIFIED="1556614796520">
 <node TEXT="The nature of safety culture" ID="ID_1335293392" CREATED="1556615007822" MODIFIED="1556615099299" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/335%20The%20nature%20of%20safety%20culture.pdf">
 <attribute NAME="key" VALUE="choudhry2007nature"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
@@ -1488,6 +1498,15 @@
 <attribute NAME="authors" VALUE="Pengu, Huei and McCarthy, Roger L."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="3BA127C834689DD87C9FAE6AF27598CF3598CCDC1C711087F395140AE3C5DF3">
     <pdf_title>A Concept to Assess the Safety Performance of Highly Automated Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="OICA: Future Certification of Automated/Autonomous Driving Systems" ID="ID_1931827252" CREATED="1561451585852" MODIFIED="1561451938037" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/354%20OICA%20Future%20Certification%20of%20ADSs.pdf">
+<attribute NAME="key" VALUE="oica2019certification"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Future Certification of Automated/Autonomous Driving Systems"/>
+<attribute NAME="authors" VALUE="{Organisation Internationale des Constructeurs d&apos;Automobiles}"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5F9693876C5AAA4925DD52CD66A5F2A7375DB353AE32348BFE40E5258F936">
+    <pdf_title>Future Certification of Automated/Autonomous Driving Systems</pdf_title>
 </pdf_annotation>
 </node>
 </node>

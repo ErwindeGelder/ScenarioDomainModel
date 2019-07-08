@@ -28,7 +28,7 @@ Another definition of a scenario in the context of automated driving is given by
 % 2. There are undefined terms.
 % 3. Definitions are not detailed enough to reflect into code.
 \cbstart
-Although the aforementioned definitions of scenario \cite{geyer2014, ulbrich2015, elrofai2016scenario} are in the context of automated driving, we require a more concrete definition. First, the aforementioned definitions do not specify the level of detail. We experience much speech confusion where one group thinks a discussion is about a very specific scenario whereas another group thinks the same discussion is about a collection of scenarios that share some characteristics. Secondly, the aforementioned definitions use undefined terms, such as ``action'' and ``event''. Thirdly, because scenarios are used to specify test cases for the assessment of automated vehicles, a proper specification of these scenarios is important and the aforementioned definitions are not concrete enough to be directly reflected into a coding language.
+Although the aforementioned definitions of scenario \cite{geyer2014, ulbrich2015, elrofai2016scenario} are in the context of automated driving, we require a more concrete definition. First, the aforementioned definitions do not specify the level of detail. We experience much confusion where one group thinks a discussion is about a very specific scenario whereas another group thinks the same discussion is about a collection of scenarios that share some characteristics. Secondly, the aforementioned definitions use undefined terms, such as ``action'' and ``event''. Thirdly, because scenarios are used to specify test cases for the assessment of AVs, a proper specification of these scenarios is important and the aforementioned definitions are not concrete enough to be directly reflected into a coding language.
 \cbend
 
 
@@ -76,14 +76,18 @@ Hence, we define a scenario as follows.
 
 \textcite{geyer2014} and \textcite{ulbrich2015} use the term \emph{scene} to define a scenario, while \cref{def:scenario} describes the scenes implicitly. Thus the scenes do not have to be described explicitly.
 
-\Cref{fig:scenario} provides a schematic overview of the various components of a scenario. As shown in the second row of \cref{fig:scenario}, a scenario contains a description of the ego vehicle, the dynamic environment, and the static environment. As an example, possible activities of the vehicle in front, which is part of the dynamic environment, are detailed by considering the states `heading' and `speed'. Note that a definition of the term activity is given in \cref{sec:activity}. The two rows of the activities show more generic descriptions and more detailed descriptions, respectively, of some possible activities.
+\Cref{fig:scenario} shows a schematic overview of the various components of a scenario. As shown in the second row of \cref{fig:scenario}, a scenario contains a description of the ego vehicle, the dynamic environment, and the static environment. As an example, possible activities of the vehicle in front, which is part of the dynamic environment, are detailed by considering the states `heading' and `speed'. Note that a definition of the term activity is given in \cref{sec:activity}. The two rows of the activities show more generic descriptions and more detailed descriptions, respectively, of some possible activities.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{figures/scenario.pdf}%
-	\caption{Schematic overview of a scenario. Note that the dynamic environment is not limited to the `vehicle in front' and `other road user', while the static environment is not limited to `road' and `weather'.}
+	\caption{Schematic overview of a scenario. Note that the dynamic environment is not limited to the `vehicle in front', nor does it need to have the `vehicle in front'. Similarly, the static environment is not limited to `road', nor does it need to have `road'.}
 	\label{fig:scenario}
 \end{figure}
+
+\cbstartb
+According to \cref{def:scenario}, a scenario describes, among others, the static environment. When it comes to applying this definition in an ontology, it is possible that ``describing'' the static environment is done by simply ``referring'' to a static environment. This also holds for the other parts of a scenario. The advantage of ``referring'' is that these parts of the scenario can be reused for other scenarios. As an example, an OpenSCENARIO file, which has as primary use-case to describe the dynamic content of a scenario \cite{openscenario}, allows to refer to an OpenDRIVE file which describes a road network \cite{dupuis2010opendrive}. As we will see in \cref{sec:ontology}, in our proposed ontology, a scenario ``refers'' to a static environment, activities, actors, and events. 
+\cbend
 
 
 
@@ -126,9 +130,13 @@ Hence, we define an event as follows.
 According to \cref{def:event}, an event occurs at either a moment at which the system reaches a boundary or a moment at which a mode transition occurs. 
 \cbstart
 Both these types of event are related to hybrid theory \cite{deschutter2003hybrid, heemels2012eventcontrol}.
-The first type of event, i.e., at the moment at which the system reaches a boundary, is especially useful when describing test cases. For example, consider the ego vehicle approaching a pedestrian (dummy) that is about to cross the road \cite{seiniger2015test}. Here, the event is at the moment that the distance between the vehicle and pedestrian is less than $x$ meters. At this event, the pedestrian (dummy) starts to cross the road such that the vehicle impacts the pedestrian (dummy) if it does not change its speed or direction \cite{seiniger2015test}.
+The first type of event, i.e., at the moment at which the system reaches a boundary, is especially useful when describing test cases. For example, consider the ego vehicle approaching a pedestrian (dummy) that is about to cross the road \cite{seiniger2015test}. Here, the event is at the moment that the distance between the vehicle and pedestrian is less than $\distancecondition$ meters. At this event, the pedestrian (dummy) starts to cross the road such that the vehicle impacts the pedestrian (dummy) if it does not change its speed or direction \cite{seiniger2015test}.
 The second type of event, i.e., at the moment at which a mode transition occurs, can be, for example, during an observed scenario at the moment at which a driver suddenly brakes. 
+
+\cbstartb
+For the practical implementation of events, a condition or a set of conditions may be specified. In that case, the event is at the moment that the condition is or the conditions are met. A condition could be, for example, the distance between the vehicle and pedestrian. In \cite{openscenario}, an extensive list of possible conditions is given.
 \cbend
+
 %This first type of event, i.e., at the moment at which the system reaches a boundary, is related to events in event-based control \cite{heemels2012eventcontrol}, whereas the second type of event, i.e., at the moment at which a mode transition occurs, is related to events in hybrid theory \cite{deschutter2000optimal}. 
 %Especially when designing scenarios for testing purposes, an event of the first type might trigger an event of the second type. For example, consider a vehicle approaching a zebra crossing with a pedestrian (dummy) that is about to cross the road at the zebra crossing. When the distance between the vehicle and the zebra crossing becomes less than 20 meters (event of the first type), the pedestrian (dummy) starts crossing the road at the zebra crossing (event of the second type).
 
@@ -141,7 +149,7 @@ The second type of event, i.e., at the moment at which a mode transition occurs,
 \subsection{Activity}
 \label{sec:activity}
 
-As mentioned in \cref{def:scenario}, a scenario is a description of the dynamic environment of the ego vehicle. To describe the dynamic environment, activities are used. Furthermore, a scenario may describe the activities from the ego vehicle. Therefore, next to events, activities can be seen as the building blocks of a scenario.
+As mentioned in \cref{def:scenario}, a scenario \cbstartb includes \cbend a description of the dynamic environment of the ego vehicle. To describe the dynamic environment, activities are used. Furthermore, a scenario may describe the activities from the ego vehicle. Therefore, next to events, activities can be seen as the building blocks of a scenario.
 
 \cbstart
 Both the terms activity \cite{geyer2014, elrofai2018scenario, miller2015distraction, childress2015using, catapult2018musicc, sigsim2019glossary} and action \cite{geyer2014, ulbrich2015, bagschik2017ontology} are used in the context of automated driving. Although, strictly speaking, the terms action and activity have a slightly different meaning, it is often used for the same purpose:
@@ -186,7 +194,7 @@ Hence, we define an activity as follows.
 Note that \textcite{geyer2014, ulbrich2015} use the term \emph{action} and although they do not define this term, it seems to be related to our use of the term activity. Similarly, other authors \cite{sigsim2019glossary, catapult2018musicc, elrofai2018scenario} use the term activity. Although the terms \emph{activity} and \emph{action} may seem very similar, there is a difference. As \textcite{bobick1997movement} points out, actions require an interpretive context --- ``a set of constraints on possible explanations for the observed motions.'' In our case, we do not want to bother ourselves with detailing on the purpose of each of the activities. Hence, we refrain from using the term \emph{action}.
 
 % 3. Examples of activities
-Examples of activities are accelerating, cruising, and decelerating. Here, the activities describe the evolution of the longitudinal acceleration (or, e.g., speed). Activities describing the lateral position of a vehicle with respect to the center of the road might, for example, be labeled with ``driving straight'' or ``lane change''.
+Examples of activities are accelerating, cruising, and decelerating. Here, the activities describe the longitudinal acceleration (or, e.g., speed). Activities describing the lateral position of a vehicle with respect to the center of the \cbstartb corresponding lane \cbend might, for example, be labeled with ``driving straight'' or ``lane change''.
 
 
 
@@ -195,10 +203,10 @@ Examples of activities are accelerating, cruising, and decelerating. Here, the a
 
 % Introduce term scenario class (i.e. qualitative description of scenario)
 \cbstart
-As proposed above, a scenario in the context of the performance assessment of an AV needs to be quantitative. 
+As proposed in \cref{def:scenario}, a scenario in the context of the performance assessment of an AV needs to be quantitative. 
 However, in literature, the term scenario is also used to refer to a collection of scenarios, where this collection of scenarios is semantically described. For example, in \cite{USDoT2007precrashscenarios}, a typology of pre-crash scenarios is proposed. Here, each of the pre-crash scenarios is an abstraction of many quantitative scenarios. Similar studies are performed to describe scenarios that lead to highway accidents \cite{adaptive2017d73}, car-cyclist accidents \cite{opdencamp2014cats}, and car-pedestrian accidents \cite{lenard2011typical}. In \cite{catapult2017taxonomy}, a taxonomy of scenarios is proposed to qualitatively describe challenging scenarios for automated driving.
 
-The aforementioned references \cite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2011typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce another term to also address the qualitative description. We propose to use the term \emph{scenario class} to refer to the qualitative description of a scenario. The qualitative description can be regarded as an abstraction of the quantitative scenario.
+The aforementioned references \cite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2011typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce another term to also address the qualitative description. We propose to use the term \emph{scenario class} to refer to the qualitative description of a scenario. A qualitative description can be regarded as an abstraction of a quantitative scenario, \cbstartb whereas a quantitative description can be regarded as a concretization of a qualitative description.
 \cbend
 %However, each scenario can be abstractly described in words; i.e., a qualitative description of each scenario exists. 
 %Therefore, a scenario class refers to multiple scenarios with a common characteristic \cite{elrofai2018scenario}.
@@ -243,7 +251,7 @@ In \cref{fig:venn diagram scenario class}, an example is shown with the scenario
 
 When providing extra information to a piece of data, often tags are used \cite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \cite{craft2004tagging, vasquez2019controlling}. Applications are very broad, e.g., from classification of audio data \cite{kong2017joint} and capturing musical characteristics from songs \cite{ellis2011semantic} to tagging of Wikipedia pages \cite{voss2006collaborative}.
 
-We propose to provide scenarios and scenario classes with tags that describe the scenario in a qualitative manner. The tags of a scenario determine which scenario classes the scenario falls into. For example, if a scenario occurred during the day, it will contain the tag ``Day''. As a result, the scenario is automatically recognized as a scenario that falls into the scenario class ``Day'' which is characterized by the single tag ``Day''. The use of these tags brings some benefits:
+We propose to \cbstartb additionally \cbend provide scenarios and scenario classes with tags that describe the scenario in a qualitative manner. The tags of a scenario determine which scenario classes the scenario falls into. For example, if a scenario occurred during the day, it will contain the tag ``Day''. As a result, the scenario is automatically recognized as a scenario that falls into the scenario class ``Day'' which is characterized by the single tag ``Day''. The use of these tags brings some benefits:
 \begin{itemize}
 	\item The scenarios do not need to be directly classified. Classifying scenarios can be a time-consuming effort if the number of scenario classes is high.
 	\item If a scenario class that only contains known tags is added to the database of scenario classes, it can easily be seen which scenarios fall into this scenario class by only inspecting the tags of the scenarios.
