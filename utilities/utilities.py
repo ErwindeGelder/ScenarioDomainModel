@@ -215,7 +215,6 @@ if __name__ == '__main__':
     if os.path.exists('log2.txt'):
         os.remove("log2.txt")  # Empty log
 
-    """
     pdf(os.path.join('..', '20171010 Summary'), 'phd_summary')
 
     # Do all the progress reports
@@ -295,6 +294,10 @@ if __name__ == '__main__':
     pdf(os.path.join('..', 'progress_reports', 'report18'), 'progress_report_18')
     call_output(['git', 'checkout', 'PR19'])
     pdf(os.path.join('..', 'progress_reports', 'report19'), 'progress_report_19', usebiber=True)
+    call_output(['git', 'checkout', 'PR20'])
+    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True,
+        log=False)
+    pdf(os.path.join('..', 'progress_reports', 'report20'), 'progress_report_20', usebiber=True)
 
     # Revisions/versions
     call_output(['git', 'checkout', 'CompletenessPaperInit'])
@@ -323,7 +326,7 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
     copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
              os.path.join('..', '20180629 Journal paper ontology', '20190525_V1.pdf'))
-    """
+
     call_output(['git', 'checkout', 'OntologyV2limited'])
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology_limited')
@@ -333,8 +336,10 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
     copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
              os.path.join('..', '20180629 Journal paper ontology', '20190708_V2_blue.pdf'))
+    call_output(['git', 'checkout', 'OntologyV2'])
+    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
+             os.path.join('..', '20180629 Journal paper ontology', '20190708_V2.pdf'))
 
-    exit()
     # All other stuff
     call_output(['git', 'checkout', 'master'])
     pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'ontology', usebiber=True)
