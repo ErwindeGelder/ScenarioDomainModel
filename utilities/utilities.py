@@ -215,6 +215,7 @@ if __name__ == '__main__':
     if os.path.exists('log2.txt'):
         os.remove("log2.txt")  # Empty log
 
+    """
     pdf(os.path.join('..', '20171010 Summary'), 'phd_summary')
 
     # Do all the progress reports
@@ -322,7 +323,18 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
     copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
              os.path.join('..', '20180629 Journal paper ontology', '20190525_V1.pdf'))
+    """
+    call_output(['git', 'checkout', 'OntologyV2blue'])
+    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
+    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology_limited')
+    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology_limited.pdf'),
+             os.path.join('..', '20180629 Journal paper ontology', '20190708_V2_limited.pdf'))
+    call_output(['git', 'checkout', 'OntologyV2veryblue'])
+    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
+    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
+             os.path.join('..', '20180629 Journal paper ontology', '20190708_V2_blue.pdf'))
 
+    exit()
     # All other stuff
     call_output(['git', 'checkout', 'master'])
     pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'ontology', usebiber=True)
