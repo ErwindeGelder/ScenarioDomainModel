@@ -3407,11 +3407,11 @@
     <pdf_title>Taxonomy of Scenarios for Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Harmonizing pre-crash scenarios (ESV conference, Continental)" ID="ID_366731326" CREATED="1562580710538" MODIFIED="1562581244932" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/356%20Harmonized%20pre-crash%20scenarios%20(continental).pdf">
+<node TEXT="Harmonizing pre-crash scenarios (ESV conference, Continental)" ID="ID_366731326" CREATED="1562580710538" MODIFIED="1562581441671" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/356%20Harmonized%20pre-crash%20scenarios%20(continental).pdf">
 <attribute NAME="key" VALUE="lara2019harmonized"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Harmonized Pre-Crash Scenarios for Reaching Global Vision Zero"/>
-<attribute NAME="authors" VALUE="Lara, Antonio and Skvarce, Jeffrey and Feifel, Harald, Wagner, Michael and Tengeiji, Toshihisa"/>
+<attribute NAME="authors" VALUE="Lara, Antonio and Skvarce, Jeffrey and Feifel, Harald and Wagner, Michael and Tengeiji, Toshihisa"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="A5815641DFBA3D643A1ADB2D7321BD585483A4E2DB8DAE534C2CB82180A36F57">
     <pdf_title>Lara 1</pdf_title>
 </pdf_annotation>
