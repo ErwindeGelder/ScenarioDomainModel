@@ -1,0 +1,135 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab/Python)
+\pgfplotsset{compat=1.14}						%% Run in backwards compatibility mode
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+\usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
+\usepackage{units}								%% Appropriate behavior of units
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../../bib}
+
+%%==========================================================================
+%% Define reference stuff
+%%==========================================================================
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{20}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{July 9, 2019}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-world driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item We discussed who could be the co-promotor. First option would be Jan-Pieter, second option Jeroen Ploeg, and third option somebody from Bart's group. Apparently, Jan-Pieter still qualifies to be the co-promotor as the rules only changed recently (after the Go/No Go meeting). Therefore, Jan-Pieter is officially the co-promotor for now.
+	\item We set the date for the second year progress meeting on the 16th of October.
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item The forms for the Go/No Go meeting are in the Doctoral Monitoring Application (DMA).
+	\item I passed the exam on the MSc.\ course of Applied Statistics. This means that I have 15 credits for the discipline-related skills. For the research skills, I have 9 credits and I will easily obtain the other 6 credits using ``learning-on-the-job'' activities. For the transferable skills, I have 7.5 credits (out of 15), so this requires some attention.
+	\item I updated the ontology paper based on the feedback from Ludwig Friedman (BMW) and Mark van den Brand (TU Eindhoven). Attached is the latest version. The changes compared to the last version that Bart reviewed are in blue.
+	\item I attended an ISO working group meeting. The objective of the working group is to come up with ``test scenarios for the assessment of autonomous vehicles''. I am now responsible for a work item that has two goals:
+	\begin{enumerate}
+		\item The first goal is to provide the attributes of a scenario, e.g., the static environment, actors, and activities. I hope/think we can use the ontology paper as a basis for this. The idea is that these attributes should be described using (existing) standards and that there will be some requirements regarding these attributes, but this is out of my scope.
+		\item The second goal is to categorize scenarios using tags. 
+		%The main purpose of categorizing the (test) scenarios is that elements of the so-called Operational Design Domain (ODD) of an autonomous vehicle (AV) can be directly related to one or multiple categories of scenarios. For example, if the ODD specifies that the AV cannot operate in rain, all scenarios that have the tag ``Rain'' are not used for testing the AV. 
+		I hope that we can use part of the ontology paper and the work we did in CETRAN for this \cite{degelder2019scenarioclasses}. Furthermore, I aim to cooperate with Harald Feifel from Continental to extend his work on ``categorizing scenarios''. We both have the ambition to extend his work in \cite{lara2019harmonized} and to write a paper on this subject.
+	\end{enumerate}
+	\item I had a discussion with two colleagues to extend our work on risk quantification of a scenario \cite{degelder2019risk}. Our idea is to quantify risk similar as ISO~26262 \cite{ISO26262} does that in a qualitative manner for ``hazardous events''. For this, ISO~26262 uses the terms \emph{exposure}, \emph{severity}, \emph{controllability}. Our idea is as follows:
+	\begin{itemize}
+		\item The \emph{exposure} of a scenario $A$ can be based on a dataset and will have the unit of ``per hour'' (or any other unit of time). Let the exposure be denoted by $\lambda$. We assume that the probability of encountering the scenario $A$ $k$ times follows a Poisson distribution:
+		\begin{equation} \label{eq:exposure}
+			P(k \text{ times }A\text{ in an hour}) = \frac{\lambda^k}{k!} e^{-\lambda}.
+		\end{equation}
+		\item According to ISO~26262, the \emph{severity} is ``the extent of harm''. Let $S \in \mathcal{S}$ denote the severity and let $H \in \mathcal{H}$ denote a description of a harmful outcome of a scenario. Here, $H$ might contain, for example, the impact speed of a collision between a vehicle and a pedestrian. Our assumption is that literature provides a reasonably accurate description of mapping a harmful outcome to the (expected) extent of harm. So for this paper, we assume that literature gives us this mapping $f:\mathcal{H} \rightarrow \mathcal{S}$.
+		\item The definition of \emph{controllability} from ISO~26262\footnote{ISO~26262 defines controllability as the ``ability to avoid a specified harm or damage through the timely reactions of the persons involved, possibly with support from external measures.''} does not apply for autonomous vehicles because the system cannot rely on humans operating the vehicle \cite{monkhouse2015notion,khastgir2017towards}. We therefore define the controllability as the likelihood that the AV avoids the harm $H$, given a scenario $A$. Let the controllability be denoted by $C$. Our idea is that $C$ can be obtained from (simulation) tests.
+		\item By combining $\lambda$, $f$, and $C$, we want to quantify the risk. In the next progress report, I will give more details on how to do that.
+%		\item With the \emph{controllability} and the \emph{exposure}, we can compute the likelihood of having no harm $H$ in an hour. In case we encounter the scenario $A$ $k$ times, we need to avoid the harm $k$ times, so this likelihood is $C^k$. Applying this for all $k$ gives:
+%		\begin{equation} \label{eq:ability to avoid harm}
+%			\sum_{k=0}^{\infty} C^k \frac{\lambda^k}{k!} e^{-\lambda} = e^{-\lambda (1 - C)}.
+%		\end{equation}
+%		The right-hand side of \cref{eq:ability to avoid harm} can be easily interpreted. If $C=1$, we will never obtain harm $H$. However, if $C=0$, the likelihood of having no harm equals the likelihood of not encountering the scenario A (i.e., $k=0$ in \cref{eq:exposure}).
+	\end{itemize}
+\end{itemize}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item Based on the feedback on the paper from Bart, Hala, Jan-Pieter, and Olaf, I will update the paper. Next, I will submit the paper.
+	\item I will to start writing on our method for quantifying the risk of a scenario.
+	\item I want to come up with a plan for categorizing scenarios such that it can be used for the ISO working group. I hope that the method can be described in a (conference) paper, whereas the actual categories will be part of the work item from the ISO working group.
+	\item I will participate in the 2-day course called ``Communication, Coping-strategies \& Awareness''. 
+\end{itemize}
+
+\section{Questions}
+
+\begin{itemize}
+	\item There will be a new journal, called Journal of Automotive Software Engineering\footnote{\url{https://www.atlantis-press.com/journals/jase}}. Looking at the scope of the journal, it seems applicable for the ontology paper. However, it is a new journal, so there is not yet an impact factor. Should I consider submitting to this journal, or is it better to submit to other (longer existing) journals first?
+\end{itemize}
+
+
+\printbibliography
+
+\newpage
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20180629 Journal paper ontology"/journal_ontology.pdf}
+
+\end{document}

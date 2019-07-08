@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -3407,9 +3407,18 @@
     <pdf_title>Taxonomy of Scenarios for Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Harmonizing pre-crash scenarios (ESV conference, Continental)" ID="ID_366731326" CREATED="1562580710538" MODIFIED="1562581244932" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/356%20Harmonized%20pre-crash%20scenarios%20(continental).pdf">
+<attribute NAME="key" VALUE="lara2019harmonized"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Harmonized Pre-Crash Scenarios for Reaching Global Vision Zero"/>
+<attribute NAME="authors" VALUE="Lara, Antonio and Skvarce, Jeffrey and Feifel, Harald, Wagner, Michael and Tengeiji, Toshihisa"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A5815641DFBA3D643A1ADB2D7321BD585483A4E2DB8DAE534C2CB82180A36F57">
+    <pdf_title>Lara 1</pdf_title>
+</pdf_annotation>
 </node>
 </node>
-<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
+</node>
+<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
 <edge COLOR="#007c00"/>
 <node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
 <node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1534390623301" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
@@ -3967,10 +3976,10 @@
     <pdf_title>Driving Simulation Conference Europe 2010 Proceedings Arts et M&#xe9;tiers ParisTech September 9 &#x2013;10, 2010</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="OpenSCENARIO" ID="ID_1907137131" CREATED="1554350973364" MODIFIED="1554351043456" LINK="http://www.openscenario.org">
+<node TEXT="OpenSCENARIO" ID="ID_1907137131" CREATED="1554350973364" MODIFIED="1562315292167" LINK="http://www.openscenario.org">
 <attribute NAME="key" VALUE="openscenario"/>
 <attribute NAME="title" VALUE="{OpenSCENARIO}"/>
-<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="year" VALUE="2017"/>
 </node>
 </node>
 <node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">
