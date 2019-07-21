@@ -2,17 +2,19 @@
 \label{sec:introduction}
 
 % Our contribution
-An important aspect in the development of automated vehicles (AVs) is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \cite{bengler2014threedecades, stellet2015taxonomy, Helmer2017safety, putz2017pegasus, roesener2017comprehensive, gietelink2006development, roesener2016scenariobased, wachenfeld2016release}. 
+An essential aspect in the development of automated vehicles (AVs) is the assessment of quality and performance of the AVs, such as safety, comfort, and efficiency \cite{bengler2014threedecades, stellet2015taxonomy, Helmer2017safety, putz2017pegasus, roesener2017comprehensive, gietelink2006development, roesener2016scenariobased, wachenfeld2016release}. 
+Maurer and Stiller comment that: ``If testing and assessment methods cannot keep pace with this functional growth, they will become the bottleneck of the introduction of ADAS to the market'' \cite{bengler2014threedecades}.
 For legal and public acceptance of AVs, it is important that there is a clear definition of system performance and that there are quantitative measures for the system quality. 
-The more traditional methods, such as \cite{response2006code, ISO26262}, used for evaluation of driver assistance systems, are no longer valid for the assessment of quality and performance aspects of an AV \cite{wachenfeld2016release}. 
-Therefore, a scenario-based approach has been proposed \cite{roesener2016scenariobased, putz2017pegasus}. 
+Traditional methods, such as \cite{response2006code, ISO26262}, used for evaluation of driver assistance systems, are no longer sufficient for the assessment of quality and performance aspects of an AV, because it would require too much resources \cite{wachenfeld2016release}. 
+Therefore, among other methods, a scenario-based approach has been proposed \cite{roesener2016scenariobased, putz2017pegasus}. 
 For scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in the test cases used for scenario-based assessment \cite{stellet2015taxonomy}. 
+
 The current paper proposes an ontology for these \emph{scenarios}.
 
 % Explain importance/relevance
 The notion of scenario is frequently used in the context of automated driving \cite{putz2017pegasus, roesener2017comprehensive, gietelink2006development, hulshof2013autonomous, karaduman2013interactivebehavior, englund2016grand, xu2002effects, ebner2011identifying, ploeg2017GCDC, zofka2015datadrivetrafficscenarios}, despite the fact that an explicit definition is often not provided. However, as mentioned by various authors \cite{stellet2015taxonomy, Helmer2017safety, alvarez2017prospective, zofka2015datadrivetrafficscenarios, aparicio2013pre, lesemann2011test, putz2017pegasus, geyer2014, ulbrich2015}, using a scenario in the context of the development or assessment of AVs requires a clear definition of a scenario. To this end, some definitions of a scenario in the context of (automated) driving have been proposed \cite{geyer2014, ulbrich2015, elrofai2016scenario}.
 \cbstart
-These definitions, however, leave some room for interpretation because the definitions itself are somewhat ambiguous and because the definitions use other undefined terms.
+These definitions, however, leave room for interpretation because of two main reasons. First, the definitions itself are somewhat ambiguous and, secondly, the definitions use other undefined terms.
 For the context of the assessment of AVs, scenarios are used to describe the test conditions \cite{stellet2015taxonomy} and this requires a more concrete definition of a scenario as to minimize any ambiguity.
 \cbend
 
@@ -22,13 +24,13 @@ For the context of the assessment of AVs, scenarios are used to describe the tes
 % - More complete (also event defined etc.)
 % - Backed up with literature (should we mention this???)
 % - Real example given
-We aim for a definition of a scenario that is, on the one hand, broadly consistent with existing definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} while, on the other hand, more concrete, such that it is applicable for scenario mining \cite{elrofai2016scenario} and scenario-based assessment \cite{stellet2015taxonomy, deGelder2017assessment}. We propose a definition that is concrete enough to be used in quantitative analysis required for assessment of AVs. This is achieved by defining quantitative building blocks of scenarios in the form of activities, actors, and the static environment. In addition, we introduce the concept of a \emph{scenario class} that is used to qualitatively describe scenarios, i.e., an abstraction of a scenario. 
+We aim for a definition of a scenario that is, on the one hand, broadly consistent with existing definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} while, on the other hand, more concrete, such that it is applicable for scenario mining \cite{elrofai2016scenario} and scenario-based assessment \cite{stellet2015taxonomy, deGelder2017assessment}. We propose a definition that is concrete enough to be used in quantitative analysis required for assessment of AVs. This is achieved by defining quantitative building blocks of a scenario in the form of activities, actors, and the static environment. In addition, we introduce the concept of a \emph{scenario class} that is used to qualitatively describe scenarios, i.e., an abstraction of a scenario. 
 
 \cbstartb
 Besides defining a notion of scenario, its building blocks, and the notion of scenario class, an ontology is presented that formalizes the description of a scenario and a scenario class. 
 The ontology describes the relation between the different terms such as scenario, activity, and actor.
 Furthermore, the ontology enables the translation of the terms to object-oriented code.
-This, in turn, is used describe the scenarios in a coding language that can be understood by various software agents, such as simulation tools.
+This, in turn, is used to describe the scenarios in a coding language that can be understood by various software agents, such as simulation tools.
 The ontology is also used as a schema for a database system for storing the scenarios and scenario classes.
 An example is provided that illustrates the use of the ontology with a real-world case.
 \cbend

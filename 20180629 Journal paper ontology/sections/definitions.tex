@@ -1,7 +1,7 @@
 \section{Definitions}
 \label{sec:definitions}
 
-One of the main reasons to introduce an ontology is to enable sharing of knowledge between people. Therefore, it is important that the terms we use are clearly defined. When presenting our ontology in \cref{sec:ontology}, we will formalize the terms such that they can be used by software agents, but first we will define the terms linguistically, such that communication among different people is clear when these people conform to our ontology. We will first define the concept of a scenario in \cref{sec:scenario}. Next, we will define two important attributes of a scenario: events and activities, in \cref{sec:event,sec:activity}, respectively. Lastly, we will present the definition of a scenario class in \cref{sec:scenario class}.
+One of the main reasons to introduce an ontology is to enable sharing of knowledge between researchers, developers, and users. Therefore, it is important that the terms we use are clearly defined. When presenting our ontology in \cref{sec:ontology}, we will formalize the terms such that they can be used by software agents, but first we will define the terms linguistically, such that communication among different potential users is clear when those users refer to our ontology. We will first define the concept of a scenario in \cref{sec:scenario}. Next, we will define two important attributes of a scenario: events and activities, in \cref{sec:event,sec:activity}, respectively. Lastly, we will present the definition of a scenario class in \cref{sec:scenario class}.
 
 
 
@@ -21,7 +21,7 @@ In \cite{geyer2014}, the meaning of action is not detailed.
 \textcite{ulbrich2015} also define a scenario in the context of automated driving. They define a scenario as ``the temporal development between several scenes in a sequence of scenes. Every scenario starts with an initial scene. Actions \& events as well as goals \& values may be specified to characterize this temporal development in a scenario. Other than a scene, a scenario spans a certain amount of time.'' They state that actions and events link the different scenes. A further description of actions and events is not given in \cite{ulbrich2015}.
 
 % Definition according to Elrofai et al.
-Another definition of a scenario in the context of automated driving is given by \textcite{elrofai2016scenario}. They define scenario as ``the combination of actions and maneuvers of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and maneuvers of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
+Another definition of a scenario in the context of automated driving is given by \textcite{elrofai2016scenario}. They define a scenario as ``the combination of actions and maneuvers of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and maneuvers of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
 
 % What is missing in the definitions?
 % 1. No difference between qualitative and quantitative. I.e., definitions are ambiguous.
@@ -33,7 +33,7 @@ Although the aforementioned definitions of scenario \cite{geyer2014, ulbrich2015
 
 
 % "Requirements"
-Before providing the definition of the notion of scenario, the characteristics of the notion of scenario are listed.
+Before providing the definition of the notion of scenario, the characteristics of the notion of scenario are listed:
 
 % Order of seconds
 \subsubsection{A scenario corresponds to a time interval}
@@ -64,7 +64,7 @@ Although this is not a general prerequisite of a scenario, the description of th
 For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} do not mention this. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \cite{geyer2014}) could be specified rather than its activities \cite{ulbrich2015}. The same holds for other actors within the scenario.
 
 % Definition
-Hence, we define a scenario as follows.
+Hence, we define a scenario as follows:
 \begin{definition}[Scenario]\label{def:scenario}
 	A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment. From the perspective of the ego vehicle, a scenario contains all relevant events.
 \end{definition}
@@ -86,7 +86,8 @@ Hence, we define a scenario as follows.
 \end{figure}
 
 \cbstartb
-According to \cref{def:scenario}, a scenario describes, among others, the static environment. When it comes to applying this definition in an ontology, it is possible that “describing” the static environment is done by simply providing a reference to a static environment. This also holds for the other parts of a scenario. The advantage of references is that these parts of the scenario can be reused for other scenarios, as these scenarios can use the same references. As an example, an OpenSCENARIO file, which has as primary use-case to describe the dynamic content of a scenario \cite{openscenario}, allows to provide a reference to an OpenDRIVE file which describes a road network \cite{dupuis2010opendrive}. As we will see in \cref{sec:ontology}, in our proposed ontology, a scenario contains references to a static environment, activities, actors, and events.
+According to \cref{def:scenario}, a scenario describes, among others, the static environment. When it comes to applying this definition in an ontology, it is possible that ``describing'' the static environment is done by simply providing a reference to a static environment. This also holds for the other parts of a scenario. \cbstartc The advantage of references is that these parts of the scenario can be exchanged between different scenarios, as these scenarios can use the same references. \cbend
+As an example, an OpenSCENARIO file, which has as primary use case to describe the dynamic content of a scenario \cite{openscenario}, allows to provide a reference to an OpenDRIVE file which describes a road network \cite{dupuis2010opendrive}. As we will see in \cref{sec:ontology}, in our proposed ontology, a scenario contains references to a static environment, activities, actors, and events.
 \cbend
 
 
@@ -94,7 +95,7 @@ According to \cref{def:scenario}, a scenario describes, among others, the static
 \subsection{Event}
 \label{sec:event}
 % Introduction of this section
-As mentioned earlier, a scenario consists of events. Events can be seen as the building blocks of a scenario. The notion of event is extensively used in literature \cite{breu1997towards, pfeiffer2013concepts, branicky1998hybridcontrol, deschutter2000optimal, heemels2012eventcontrol}. In this section, a selected number of descriptions is presented. Next, a definition of event is given that suits our context.
+As mentioned in \cref{def:scenario}, a scenario consists of events. The notion of event is extensively used in literature \cite{breu1997towards, pfeiffer2013concepts, branicky1998hybridcontrol, deschutter2000optimal, heemels2012eventcontrol}. In this section, a selected number of descriptions is presented. Next, a definition of event is given that suits our context.
 
 % Literature review
 The term event is used in many different fields, e.g.:
@@ -149,13 +150,13 @@ For the practical implementation of events, a condition or a set of conditions m
 \subsection{Activity}
 \label{sec:activity}
 
-As mentioned in \cref{def:scenario}, a scenario \cbstartb includes \cbend a description of the dynamic environment of the ego vehicle. To describe the dynamic environment, activities are used. Furthermore, a scenario may describe the activities from the ego vehicle. Therefore, next to events, activities can be seen as the building blocks of a scenario.
+As mentioned in \cref{def:scenario}, a scenario \cbstartb includes \cbend a description of the dynamic environment of the ego vehicle. To describe the dynamic environment, activities are used. Furthermore, a scenario may describe the activities of the ego vehicle. Therefore, next to events, activities can be seen as the building blocks of a scenario.
 
 \cbstart
-Both the terms activity \cite{geyer2014, elrofai2018scenario, miller2015distraction, childress2015using, catapult2018musicc, sigsim2019glossary} and action \cite{geyer2014, ulbrich2015, bagschik2017ontology} are used in the context of automated driving. Although, strictly speaking, the terms action and activity have a slightly different meaning, it is often used for the same purpose:
+Both the terms activity \cite{geyer2014, 2018scenario, miller2015distraction, childress2015using, catapult2018musicc, sigsim2019glossary} and action \cite{geyer2014, ulbrich2015, bagschik2017ontology} are used in the context of automated driving. Although, strictly speaking, the terms action and activity have a slightly different meaning, it is often used for the same purpose:
 \begin{itemize}
 	\item According to \textcite{ulbrich2015}, actions may be specified for characterizing the temporal development in a scenario.
-	\item \textcite{elrofai2018scenario} considers an activity as a building block of the dynamic part of the scenario: ``An activity is a time evolution of state variables such as speed and heading to describe for instance a lane change, or a braking-to-standstill.''
+	\item \textcite{elrofai2018scenario} consider an activity as a building block of the dynamic part of the scenario: ``An activity is a time evolution of state variables such as speed and heading to describe for instance a lane change, or a braking-to-standstill.''
 	\item In a glossary for a scenario catalog development \cite{catapult2018musicc}, an activity is defined as ``the state of an object over an interval of time. An activity starts with an event and ends with another event.''
 %	\item According to the Cambridge Dictionary, an activity is defined as ``the doing of something, or something that you are doing, have done, or could do'' \cite{cambridge2019activity}.
 %	\item \textcite{caspersen1985physical} define physical activity ``as any bodily movement produced by skeletal muscles that result in energy expenditure''.
@@ -222,7 +223,7 @@ We define a scenario class as follows.
 % - Completeness
 Introducing the concept of scenario classes brings the following benefits:
 \begin{itemize}
-	\item Whereas the quantitative description might be difficult to interpret as a human, a qualitative description is more easily interpreted by a human.
+	\item Whereas the quantitative description might be difficult to interpret as a human, a qualitative description is easier interpretable by a human.
 	\item It enables to refer to a group of scenarios that have something in common. This makes communication much easier.
 	\item It enables easier comparison of scenarios. This can be used to quantify the completeness of a set of scenarios; see \cite{degelder2019completeness} for more details on this.
 \end{itemize}
@@ -258,7 +259,7 @@ We propose to \cbstartb additionally \cbend provide scenarios and scenario class
 	\item It is easy to select scenarios from a scenario database or a scenario library by using tags or a combination of tags.
 \end{itemize}
 
-There is a balance between having generic scenario classes - and thus a high variety among the scenarios belonging to the scenario class - and having specific scenario classes without much variety among the scenarios in the scenario class. For some systems, one may be interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags are structured in hierarchical trees \cite{molloy2017dynamic, badger2012dynamic}. The different layers of the trees can be regarded as different abstraction levels \cite{Bonnin2014}. 
+There is a balance between having generic scenario classes - and thus a wide variety among the scenarios belonging to the scenario class - and having specific scenario classes without much variety among the scenarios in the scenario class. For some systems, one may be interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags are structured in hierarchical trees \cite{molloy2017dynamic, badger2012dynamic}. The different layers of the trees can be regarded as different abstraction levels \cite{Bonnin2014}. 
 
 In \cite{degelder2019scenarioclasses}, several trees of tags are defined and \cref{fig:tree vehicle activities} shows two examples of trees of tags taken from \cite{degelder2019scenarioclasses}. These tags describe possible activities of a vehicle, i.e., the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags. The tags may refer to the objective of the ego vehicle in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. 
 
