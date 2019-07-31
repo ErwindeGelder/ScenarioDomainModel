@@ -298,6 +298,9 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True,
         log=False)
     pdf(os.path.join('..', 'progress_reports', 'report20'), 'progress_report_20', usebiber=True)
+    call_output(['git', 'checkout', 'PR21'])
+    pdf(os.path.join('..', '20190725 Scenario Risk'), 'scenariorisk', usebiber=True, log=False)
+    pdf(os.path.join('..', 'progress_reports', 'report21'), 'progress_report_21', usebiber=True)
 
     # Revisions/versions
     call_output(['git', 'checkout', 'CompletenessPaperInit'])
@@ -365,6 +368,7 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True)
     pdf(os.path.join('..', '20181217 Completeness paper review'), 'cover_letter')
     pdf(os.path.join('..', '20190505 Assessment Strategy'), 'assessment_strategy', usebiber=True)
+    pdf(os.path.join('..', '20190725 Scenario Risk'), 'scenariorisk', usebiber=True)
 
     # Delete folder that has wrong name
     call('rm "{:s}" -r'.format(os.path.join('..', '20180639 Journal paper ontology')))
