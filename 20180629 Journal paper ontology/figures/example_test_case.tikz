@@ -26,7 +26,7 @@
 
 \node[object, fill=otherclass, below=of event.south](walking){{\bfseries Pedestrian walking::Triggered activity}\\
 	activity category: Walking\\
-	parameters: $\slope=\SI{-1}{\meter\per\second}$, $\initstate=\SI{6}{\meter}$\\
+	parameters: $\slopepedestrian=\SI{1}{\meter\per\second}$, $\pednorthinit=\SI{-6}{\meter}$\\
 	trigger: Start walking \\
 	duration: \SI{12}{\second} \\
 	tags: };

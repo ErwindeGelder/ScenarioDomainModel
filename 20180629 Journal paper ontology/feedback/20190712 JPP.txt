@@ -1,0 +1,16 @@
+==========================================================================================
+I am not sure if it makes sense to make a scenario class that contains all scenarios that occur during the day. To me, “day” is a tag, not a scenario class. See comment next to Sect IV B
+-
+This is the easiest example I can give. It is a bit of an artificial example, but for practical reasons, I'd like to keep it like this.
+==========================================================================================
+What is not entirely clear from this sentence and the example is the relation between tags and scenario classes. One could get the impression that there is no difference between a tag and a scenario class. This distinction should be made more clear from the beginning
+-
+Check if the following text is clear:
+We propose to provide scenarios and scenario classes with additional information in the form of tags that describe the scenario in a qualitative manner. The tags of a scenario can be used to determine which scenario classes the scenario falls into. For example, if a scenario contains the tag ``Day'', it is automatically recognized as a scenario that falls into the scenario class ``Day'' which is characterized by the single tag ``Day''. 
+==========================================================================================
+Is it reall necessary to introduce acts? And if so, why not give a formal definition?
+-
+I think it is necessary, I don't see another way to "combine" activity and actor. 
+No formal definition is given:
+ - There exists no formal definition in literature, so it won't fit in the nomenclature.
+ - I simply don't want to spend another subsection on this, because then I would need much more information.

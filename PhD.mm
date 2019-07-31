@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -1259,6 +1259,15 @@
     <pdf_title>Analysis of ISO 26262 Compliant Techniques for the Automotive Domain</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Alternative: STPA handbook" ID="ID_977769596" CREATED="1564047908263" MODIFIED="1564047988534" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/357%20STPA%20Handbook.pdf">
+<attribute NAME="key" VALUE="leveson2018stpa"/>
+<attribute NAME="authors" VALUE="Leveson, Nancy G. and Thomas, John P."/>
+<attribute NAME="title" VALUE="{STPA} Handbook"/>
+<attribute NAME="year" VALUE="2018"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F9152ED5D1EC25B4F8B975882C0EEBA263DA1B9268B457FCC526AE5EF8587FE">
+    <pdf_title>NG.L JP.T</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Behavioral safety" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1714483791" CREATED="1560761741124" MODIFIED="1560761749746">
 <node TEXT="Safety field" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1897393452" CREATED="1560761756703" MODIFIED="1560761762289">
@@ -1896,7 +1905,7 @@
     <pdf_title>Cut-in Scenario Prediction for Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2019 Automatic Identification of Critical Scenarios in Public Dataset 3000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1553052811751">
+<node TEXT="2019 Automatic Identification of Critical Scenarios in Public Dataset 6000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1563957700656">
 <attribute NAME="key" VALUE="paardekooper2019dataset6000km"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 6000 km of Public-Road Driving"/>
@@ -3980,6 +3989,17 @@
 <attribute NAME="key" VALUE="openscenario"/>
 <attribute NAME="title" VALUE="{OpenSCENARIO}"/>
 <attribute NAME="year" VALUE="2017"/>
+</node>
+<node TEXT="ISO26262" ID="ID_1345725509" CREATED="1564490785273" MODIFIED="1564490810489">
+<attribute NAME="key" VALUE="ISO26262"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
+</node>
+<node TEXT="ISO21448 (SOTIF)" ID="ID_955932098" CREATED="1564490790039" MODIFIED="1564490798733">
+<attribute NAME="key" VALUE="ISO21448"/>
+<attribute NAME="year" VALUE="Under development"/>
+<attribute NAME="title" VALUE="Road vehicles -- {S}afety of the intended functionality"/>
+<attribute NAME="authors" VALUE="{ISO/WD PAS 21448}"/>
 </node>
 </node>
 <node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">

@@ -1,0 +1,51 @@
+=========================================================================================
+why "agents"? Maybe say "software environments" or "software tools" or something like that?
+-
+When reading "ontology" papers, they often talk about "agents". To clarify this, I add "such as simulation tools".
+=========================================================================================
+why is this not abbreviated as WOL? I see OWL everywhere, but I couldn't find an explanation of what the abbreviation actually means. Apparently, nobody cares (and searching for "owl" also gives quite a lot of unrelated results :-)
+- 
+According to Wikipedia: "Why not be inconsistent in at least one aspect of a language which is all about consistency?"
+So OWL is correct, but I understand that there will be confusion. I added the following footnote: "For easy pronunciation and some other reasons, OWL has been chosen as the acronym instead of WOL."
+=========================================================================================
+What is exactly meant with "a quantitative description of the ego vehicle"? In other words, shouldn't it be "a quantitative description of the activities and/or goals of the ego vehicle"?
+-
+What I meant is that the "ego vehicle" itself should also be described. E.g., what type of vehicle, the mass, bladibla. 
+=========================================================================================
+(format of references to figures and tables depends on the journal)
+-
+You mentioned that "Figure 1" should be "Fig. 1". I think this is not true, because in this particular case, I start the sentence with "Figure" and in that case, you need to spell out the whole word. But I mmight be wrong here.
+In any case, I want to tell you that I am using the "cleveref" package for this. I hugely recommend this package. You can type "\cref{<label>}" and it automatically puts "Fig.~1" (if it is a figure). Another advantage is that you only need to change it on one place if I want it to say, for instance, "figure 1". It also works great when referring to multiple figures/sections (it automatically combines them if possible). And to start a sentence, you need to used "\Cref{<label>}" (note the capital C), in which case it uses "Figure 1". 
+=========================================================================================
+The main problem of this definition is that it is partially based on "mode switching", but without defining the notion of mode. I would not add a definition of mode, but it would be good to spend some words on this notion to get a better understanding of what you consider a "mode."
+-
+Mode is defined in the nomenclature (Section II-C-5).
+=========================================================================================
+the state of what exactly? I would add this to the definition.
+-
+Haha, good question. I guess I meant the state of an actor, but this is also very vague. This problem is that I want to keep it as general as possible, because it could (very hypothetically) also refer to a state of the simulation environment. Perhaps "a state" instead of "the state" would be better but I am afraid it will make things even more vague... I will think about this point.
+=========================================================================================
+state evolution over time
+- 
+That is what I had first. But Bart complained, because "evolution" implies a change, whereas the state can be constant as well. But perhaps I change it back...
+=========================================================================================
+But you may also say that the pedestrian starting to cross the road is the event, instead of being an activity triggered by an event: The pedestrian starts to cross the road (event), upon which the vehicle slows down (triggered activity).
+
+On the next page, it appears that you do it differently: the vehicle reaches some distance towards the crossing (event), upon which the pedestrian starts to cross the road (triggered activity).
+
+This suggests that the same scenario can be characterized in different ways in the current framework, exchanging events and activities. There is nothing wrong wit that, but it indicates that a description of a scenario is not necessarily unique. I would mention that somewhere.
+-
+Funny enough, I had exactly the same thought process, but I did not write it down. I am not yet convinced that I need to say something about this, as others might seem it too obvious that there are multiple ways to describe the exact same scenario. I will think about it and ask someone else's opinion.
+=========================================================================================
+Well, (5) corresponds to constant speed, not to accelerating, or is x suddenly no longer interpreted as a position but as a speed? That is very unclear and multiple interpretations of the same symbol must be avoided at all times. I also have some remarks about this in Section V.B.
+-
+The idea I had is that the "state" can represent different things, depending on the "activity category". So for braking, x means speed and for the pedestrian, x means its position. Due to the paper already being long, I did it like this :). But I agree that I totally messed up this part. I fix it immediately (at the "cost" of having more formulas :P).
+=========================================================================================
+Next to these conclusions, I think you need to make more clear what the practical benefit of the proposed approach is compared to existing methods/software. In my view, that is not emphasized enough now and in my experience, reviewers are not necessarily thrilled by a better definition
+(I experienced that in the case of one of my papers about string stability: I thought I'd found a better definition of string stability, but most reviewers didn't give a shit because it wasn't clear what the practical relevance was)
+-
+I agree with your comment, but I still need to edit the text...
+=========================================================================================
+Het paper is wel een beetje lang vind ik; ik denk dat de tekst hier en daar (bij het voorbeeld aan het eind) wel wat korter kan zodat het geheel nog wat krachtiger overkomt.
+-
+Zover ik kan zien is er voor Transportation (Part C) geen pagina limiet. Toch kan het ongetwijfeld hier en daar iets korter. Ik zal even met Bart overleggen, die weet ongetwijfeld wat handig is.

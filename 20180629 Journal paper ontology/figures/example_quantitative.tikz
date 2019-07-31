@@ -4,36 +4,36 @@
 \tikzstyle{every node}=[font=\footnotesize]
 \node[object, fill=otherclass](ego){{\bfseries Ego::Actor}\\
 	actor category: Ego qualitative\\
-	initial states: $\egoeast=\SI{-20}{\meter}$, $\egonorth=\SI{1.5}{\meter}$, $\egoheading=\ang{90}$\\
+	initial states: $\egoeast=\SI{-20}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$\\
 	desired states: \\
 	goal: \\
 	tags: };
 
 \node[object, fill=otherclass, below=of ego.south](pedestrian){{\bfseries Pedestrian::Actor}\\
 	actor category: Pedestrian qualitative\\
-	initial states: $\pedeast=\SI{0}{\meter}$, $\pedheading=\ang{180}$\\
+	initial states: $\pedeast=\SI{0}{\meter}$, $\pedheading=\ang{0}$\\
 	desired states: \\
 	goal: \\
 	tags: };
 
 \node[object, fill=otherclass, below=of pedestrian.south](ego braking){{\bfseries Ego braking::Set activity}\\
 	activity category: Braking \\
-	parameters: $\amplitude=\SI{-8}{\meter\per\second}$, $\duration=\SI{4}{\second}$, $\initstate=\SI{8}{\meter\per\second}$ \\
-	\attrtstart: \SI{0}{\second} \\
+	parameters: $\amplitude=\SI{-8}{\meter\per\second}$, $\duration=\SI{4}{\second}$, $\egospeedinit=\SI{8}{\meter\per\second}$ \\
+	\attrtstart: $\inittime = \SI{0}{\second}$ \\
 	duration: \SI{4}{\second} \\
 	tags: };
 
 \node[object, fill=otherclass, below=of ego braking.south](ego stationary){{\bfseries Ego stationary::Set activity}\\
 	activity category: Stationary \\
-	parameters: $\initstate=\SI{0}{\meter\per\second}$ \\
-	\attrtstart: \SI{4}{\second} \\
+	parameters: $\egospeedinitb=\SI{0}{\meter\per\second}$ \\
+	\attrtstart: $\inittimeb = \SI{4}{\second}$ \\
 	duration: \SI{3}{\second} \\
 	tags:};
 
 \node[object, fill=otherclass, below=of ego stationary.south](ego accelerating){{\bfseries Ego accelerating::Set activity}\\
 	activity category: Accelerating \\
-	parameters: $\slope=\SI{1.5}{\meter\per\second\squared}$, $\initstate=\SI{0}{\meter\per\second}$ \\
-	\attrtstart: \SI{7}{\second} \\
+	parameters: $\slopeego=\SI{1.5}{\meter\per\second\squared}$, $\egospeedinitc=\SI{0}{\meter\per\second}$ \\
+	\attrtstart: $\inittimec = \SI{7}{\second}$ \\
 	duration: \SI{5}{\second} \\
 	tags:};
 
@@ -44,8 +44,8 @@
 
 \node[object, fill=otherclass, below=of ego accelerating.south](pedestrian walking){{\bfseries Pedestrian walking::Set activity}\\
 	activity category: Walking \\
-	parameters: $\slope=\SI{-1}{\meter\per\second}$, $\initstate=\SI{6}{\meter}$\\
-	\attrtstart: \SI{0}{\second} \\
+	parameters: $\slopepedestrian=\SI{1}{\meter\per\second}$, $\pednorthinit=\SI{-6}{\meter}$\\
+	\attrtstart: $\inittime = \SI{0}{\second}$ \\
 	duration: \SI{12}{\second} \\
 	tags: };
 

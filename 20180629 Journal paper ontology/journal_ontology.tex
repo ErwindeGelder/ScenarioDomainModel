@@ -59,6 +59,7 @@
 %\usetikzlibrary{external}                       %% Create pdf figures from TikZ. Use PDFTeXify ...
 %\tikzexternalize[prefix=tikz/]                  %% ... with --tex-option=--shell-escape switch.
 \usepackage[capitalize]{cleveref}
+\Crefname{figure}{Fig.}{Figs.}
 \usepackage{subcaption}
 \usepackage{xstring}
 \usepackage{xparse}
@@ -85,11 +86,11 @@
 	Ontology for scenarios for the assessment of automated vehicles
 }
 
-
-\author{Erwin de Gelder$^{1,2*}$, Jan-Pieter Paardekooper$^{1,3}$, Arash Khabbaz Saberi$^{1}$, Hala Elrofai$^{1}$, Olaf Op den Camp$^{1}$, \\Bart De Schutter$^{2}$%
+\author{Erwin de Gelder$^{1,2*}$, Jan-Pieter Paardekooper$^{1,3}$, Arash Khabbaz Saberi$^{1}$, Hala Elrofai$^{1}$, Olaf Op den Camp$^{1}$, \\ Jeroen Ploeg$^{4}$, Bart De Schutter$^{2}$%
 \thanks{$^{1}$TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}%
 \thanks{$^{2}$Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
 \thanks{$^{3}$Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
+\thanks{$^{4}$2getthere, Utrecht, The Netherlands}%
 \thanks{$^{*}$Corresponding author. \newline E-mail address: {\tt\small erwin.degelder@tno.nl}}%
 %\thanks{*This work was not supported by any organization}% <-this % stops a space
 %\thanks{$^{1}$Albert Author is with Faculty of Electrical Engineering, Mathematics and Computer Science,
@@ -168,22 +169,32 @@
 \newcommand{\egoeast}{\east_{\mathrm{\egosub}}}
 \newcommand{\egonorth}{\north_{\mathrm{\egosub}}}
 \newcommand{\egospeed}{\dot{\east}_{\mathrm{\egosub}}}
+\newcommand{\egospeedinitsymbol}{v}
+\newcommand{\egospeedinit}{\egospeedinitsymbol_{0}}
+\newcommand{\egospeedinitb}{\egospeedinitsymbol_{0}}
+\newcommand{\egospeedinitc}{\egospeedinitsymbol_{0}}
+\newcommand{\egoacceleration}{\ddot{\east}_{\mathrm{\egosub}}}
 \newcommand{\egoheading}{\head_{\mathrm{\egosub}}}
 \newcommand{\pedsub}{ped}
 \newcommand{\pedeast}{\east_{\mathrm{\pedsub}}}
 \newcommand{\pednorth}{\north_{\mathrm{\pedsub}}}
+\newcommand{\pednorthinit}{\north_{0}}
 \newcommand{\pedheading}{\head_{\mathrm{\pedsub}}}
+\newcommand{\pedspeed}{\dot{\north}_{\mathrm{\pedsub}}}
 \newcommand{\origin}{O}
-\newcommand{\slope}{a}
+\newcommand{\slopeego}{a_{\mathrm{\egosub}}}
+\newcommand{\slopepedestrian}{v_{\mathrm{\pedsub}}}
 \newcommand{\state}{x}
-\newcommand{\initstate}{\state_0}
 \renewcommand{\time}{t}
+\newcommand{\inittime}{\time_{0}}
+\newcommand{\inittimeb}{\time_{1}}
+\newcommand{\inittimec}{\time_{2}}
 
 %\usepackage{changebar}
 \newcommand{\cbstart}{\color{black}}
 \newcommand{\cbend}{\color{black}}
 \newcommand{\cbstartb}{\color{black}}
-\newcommand{\cbstartc}{\color{black}}
+\newcommand{\cbstartc}{\color{blue}}
 \newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
 
 %\usepackage{setspace}

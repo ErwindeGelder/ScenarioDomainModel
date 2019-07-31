@@ -4,11 +4,11 @@
 \tikzstyle{every node}=[font=\footnotesize]
 \node[object, fill=category](ego qualitative){{\bfseries Ego qualitative::Actor category}\\
 	type: Vehicle\\
-	tags: Ego vehicle};
+	tags: Ego vehicle, Passenger car};
 
 \node[object, fill=category, below=of ego qualitative.south](pedestrian qualitative){{\bfseries Pedestrian qualitative::Actor category}\\
 	type: Pedestrian\\
-	tags: };
+	tags: Pedestrian};
 
 \node[object, fill=category, below=of pedestrian qualitative.south](braking){{\bfseries Braking::Activity category}\\
 	model: Sinusoid\\
