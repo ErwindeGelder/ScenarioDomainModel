@@ -342,6 +342,12 @@ if __name__ == '__main__':
     call_output(['git', 'checkout', 'OntologyV2'])
     copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
              os.path.join('..', '20180629 Journal paper ontology', '20190708_V2.pdf'))
+    call_output(['git', 'checkout', 'OntologyV3'])
+    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
+             os.path.join('..', '20180629 Journal paper ontology', '20190801_V3.pdf'))
+    call_output(['git', 'checkout', 'OntologyV3blue'])
+    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
+             os.path.join('..', '20180629 Journal paper ontology', '20190801_V3blue.pdf'))
 
     # All other stuff
     call_output(['git', 'checkout', 'master'])
