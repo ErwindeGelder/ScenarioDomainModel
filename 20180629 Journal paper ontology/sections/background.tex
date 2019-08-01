@@ -12,7 +12,7 @@ According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit spec
 	\item An ontology is useful for sharing knowledge between people and software agents \cite{vanDamPhDThesis2009, noy2001ontology, musen1992dimensions}. For example, the ontology can be used for communication between different software agents, such as different simulation tools.
 	\item An ontology can be directly translated into a class structure for an object-oriented software implementation \cite{vanDamPhDThesis2009}. The ontology then specifies the relationships between the different classes and provides information on the properties of a class and the possible values.
 	\item Domain assumptions about terms and definitions are made explicit \cite{noy2001ontology}. This not only helps with preventing any ambiguity when communicating about scenarios, it also helps with understanding the underlying implementations, e.g., the programming-language code, when the assumptions are explicit.
-	\item An ontology can be used as conceptual schema in database systems  \cite{gruber1993ontology}. A conceptual schema allows ``databases to interoperate without having to share data structures'' \cite{gruber1993ontology}. In addition, a conceptual schema can be directly used to design the structure of a database.
+	\item An ontology can be used as a conceptual schema in database systems  \cite{gruber1993ontology}. A conceptual schema allows ``databases to interoperate without having to share data structures'' \cite{gruber1993ontology}. In addition, a conceptual schema can be directly used to design the structure of a database.
 \end{itemize}
 
 There are several languages dedicated to the implementation of an ontology. Two major technologies are the Web Ontology Language (OWL)\footnote{For easy pronunciation and some other reasons, OWL has been chosen as the acronym instead of WOL.} and the Unified Modeling Language (UML). 
@@ -84,7 +84,7 @@ In each mode, the behavior of the system is described by a model with a fixed fu
 \subsubsection{Act}
 \label{sec:act}
 
-We define act as the combination of an actor and the activity that is performed by the actor. Additionally, the act can contain conditions that mark the start or end of the act.
+We define act as the combination of an actor and the activity that is performed by the actor. %Additionally, the act can contain conditions that mark the start or end of the act.
 This is in accordance with the use of the term act in \cite{openscenario}. 
 \cbend
 
@@ -104,4 +104,4 @@ For example, the primary use-case of OpenSCENARIO, a file format for the descrip
 \cbend
 Roadside units that communicate with vehicles within the communication range \cite{alsultan2014comprehensive} are also part of the dynamic environment. Furthermore, changing (weather) conditions are part of the dynamic environment.
 
-Note that it might not always be obvious whether an element of the environment belongs to the static or dynamic environment. For example, the post of a traffic light can be considered as part of the static environment, while the signal of the traffic light can be considered as part of the dynamic environment. Most important, however, is that all parts of the environment that are relevant to the assessment are described in either the static or the dynamic environment.
+Note that it might not always be obvious whether an element of the environment belongs to the static or dynamic environment. For example, the post of a traffic light can be considered as part of the static environment, while the signal of the traffic light can be considered as part of the dynamic environment. Most important, however, is that all parts of the environment that are relevant to the assessment of an AV are described in either the static or the dynamic environment.

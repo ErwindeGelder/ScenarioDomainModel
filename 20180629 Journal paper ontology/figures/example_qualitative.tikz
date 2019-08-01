@@ -11,17 +11,17 @@
 	tags: Pedestrian};
 
 \node[object, fill=category, below=of pedestrian qualitative.south](braking){{\bfseries Braking::Activity category}\\
-	model: Sinusoid\\
+	model: Sinusoid, see \cref{eq:sinusoidal}\\
 	state: Speed ($\egospeed$)\\
 	tags: Braking};
 
 \node[object, fill=category, below=of braking.south](stationary){{\bfseries Stationary::Activity category}\\
-	model: Constant\\
+	model: Constant, see \cref{eq:constant model}\\
 	state: Speed ($\egospeed$)\\
 	tags: Stationary};
 
 \node[object, fill=category, below=of stationary.south](accelerating){{\bfseries Accelerating::Activity category}\\
-	model: Linear\\
+	model: Linear, see \cref{eq:ego accelerating}\\
 	state: Speed ($\egospeed$)\\
 	tags: Accelerating};
 
@@ -31,7 +31,7 @@
 %	tags: Driving straight};
 
 \node[object, fill=category, below=of accelerating.south](walking){{\bfseries Walking straight::Activity category}\\
-	model: Linear\\
+	model: Linear, see \cref{eq:pedestrian walking}\\
 	state: Position ($\pednorth$)\\
 	tags: Walking straight};
 

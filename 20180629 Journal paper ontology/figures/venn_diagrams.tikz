@@ -6,15 +6,21 @@
 	\draw (\venncircle/2, 0) circle (\venncircle);
 	
 	% Names of scenario classes
-	\node[anchor=east](daylight) at (-5/4*\venncircle, 4/5*\venncircle) {Daytime};
-	\draw (daylight) -- ({(-sqrt(3)/2-1/2)*\venncircle}, \venncircle/2);
-	\node[anchor=west](rain) at (5/4*\venncircle, 4/5*\venncircle) {Rain};
-	\draw (rain) -- ({(sqrt(3)/2+1/2)*\venncircle}, \venncircle/2);
-	\node[anchor=south](day and rain) at (-1/4*\venncircle, 8/7*\venncircle) {Daytime and rain};
+	\node[anchor=east](daylight) at (-5/4*\venncircle, \venncircle) {$\scenarioclassb$};
+	\draw (daylight) -- ({(-sqrt(2)/2-1/2)*\venncircle}, {sqrt(2)/2*\venncircle});
+	\node[anchor=west](rain) at (5/4*\venncircle, \venncircle) {$\scenarioclassc$};
+	\draw (rain) -- ({(sqrt(2)/2+1/2)*\venncircle}, {sqrt(2)/2*\venncircle});
+	\node[anchor=south](day and rain) at (-1/4*\venncircle, 8/7*\venncircle) {$\scenarioclassa$};
 	\draw (day and rain) -- ({(1/2-sqrt(2)/2)*\venncircle}, {(sqrt(2)/2)*\venncircle});
 	
-	% Text in circles
-	\node[text width=\venncircle, align=center] at (-\venncircle, 0) {Scenarios without rain during daytime};
-	\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during daytime};
-	\node[text width=.9\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain during nighttime};
+	% Scenarios
+	\node at (-0.1*\venncircle, -0.1*\venncircle) (scenariob){\textbullet};
+	\node at (-\venncircle, 0.3*\venncircle) (scenarioa){\textbullet};
+	\node at (\venncircle, 0.2*\venncircle) (scenarioc){\textbullet};
+	\node[right of=scenarioa, node distance=1em]{$\scenarioa$};
+	\node[right of=scenariob, node distance=1em]{$\scenariob$};
+	\node[right of=scenarioc, node distance=1em]{$\scenarioc$};
+	%\node[text width=\venncircle, align=center] at (-\venncircle, 0) {Scenarios without rain during daytime};
+	%\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during daytime};
+	%\node[text width=.9\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain during nighttime};
 \end{tikzpicture}

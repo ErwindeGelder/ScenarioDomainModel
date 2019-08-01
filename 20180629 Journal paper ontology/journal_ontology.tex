@@ -60,6 +60,8 @@
 %\tikzexternalize[prefix=tikz/]                  %% ... with --tex-option=--shell-escape switch.
 \usepackage[capitalize]{cleveref}
 \Crefname{figure}{Fig.}{Figs.}
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
 \usepackage{subcaption}
 \usepackage{xstring}
 \usepackage{xparse}
@@ -83,7 +85,7 @@
 
 
 \title{\LARGE \bf
-	Ontology for scenarios for the assessment of automated vehicles
+	Ontology for Scenarios for the Assessment of Automated Vehicles
 }
 
 \author{Erwin de Gelder$^{1,2*}$, Jan-Pieter Paardekooper$^{1,3}$, Arash Khabbaz Saberi$^{1}$, Hala Elrofai$^{1}$, Olaf Op den Camp$^{1}$, \\ Jeroen Ploeg$^{4}$, Bart De Schutter$^{2}$%
@@ -182,6 +184,16 @@
 \newcommand{\pedheading}{\head_{\mathrm{\pedsub}}}
 \newcommand{\pedspeed}{\dot{\north}_{\mathrm{\pedsub}}}
 \newcommand{\origin}{O}
+\newcommand{\scenario}{S}
+\newcommand{\scenarioa}{\scenario_{1}}
+\newcommand{\scenariob}{\scenario_{2}}
+\newcommand{\scenarioc}{\scenario_{3}}
+\newcommand{\scenariofallsinto}{\in}
+\newcommand{\scenarioclass}{\mathcal{C}}
+\newcommand{\scenarioclassa}{\scenarioclass_{1}}
+\newcommand{\scenarioclassb}{\scenarioclass_{2}}
+\newcommand{\scenarioclassc}{\scenarioclass_{3}}
+\newcommand{\scenarioclassfallsinto}{\subseteq}
 \newcommand{\slopeego}{a_{\mathrm{\egosub}}}
 \newcommand{\slopepedestrian}{v_{\mathrm{\pedsub}}}
 \newcommand{\state}{x}
@@ -194,7 +206,7 @@
 \newcommand{\cbstart}{\color{black}}
 \newcommand{\cbend}{\color{black}}
 \newcommand{\cbstartb}{\color{black}}
-\newcommand{\cbstartc}{\color{blue}}
+\newcommand{\cbstartc}{\color{black}}
 \newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
 
 %\usepackage{setspace}

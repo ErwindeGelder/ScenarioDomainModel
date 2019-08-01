@@ -14,9 +14,9 @@
 
 \node[object, fill=otherclass, below=of scenario class.south](ego){{\bfseries Ego::Actor}\\
 	actor category: Ego qualitative\\
-	initial states: $\egoeast=\SI{-60}{\meter}$, $\egonorth=\SI{1.5}{\meter}$, $\egoheading=\ang{90}$, \\
+	initial states: $\egoeast=\SI{-60}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$, \\
 	\leavevmode\phantom{initial states: }$\egospeed=\SI{0}{\meter\per\second}$\\
-	desired states: $\egoeast=\SI{20}{\meter}$, $\egonorth=\SI{1.5}{\meter}$, $\egoheading=\ang{90}$,\\ 
+	desired states: $\egoeast=\SI{20}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$,\\ 
 	\leavevmode\phantom{desired states: }$\egospeed=\SI{8}{\meter\per\second}$\\
 	goal: \\
 	tags: };
