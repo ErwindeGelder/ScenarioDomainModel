@@ -596,7 +596,7 @@
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
-<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
+<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1534391906453" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1101,7 +1101,7 @@
 <node TEXT="ISO26262: a) To define and describe item, its dependencies on/interaction with environment and other items, b) [...]" ID="ID_1293008690" CREATED="1556627733066" MODIFIED="1556627799133">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2018"/>
-<attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
+<attribute NAME="title" VALUE="{ISO} 26262: Road {V}ehicles -- {F}unctional {S}afety"/>
 </node>
 </node>
 <node TEXT="HARA" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_490388406" CREATED="1556289523572" MODIFIED="1556289527556">
@@ -1219,10 +1219,10 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="ISO26262" ID="ID_350817561" CREATED="1556277759997" MODIFIED="1556277808620">
+<node TEXT="ISO26262" ID="ID_350817561" CREATED="1556277759997" MODIFIED="1565607713221">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2018"/>
-<attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
+<attribute NAME="title" VALUE="{ISO} 26262: Road {V}ehicles -- {F}unctional {S}afety"/>
 </node>
 <node TEXT="TR68 Part 2: Safety" ID="ID_881994144" CREATED="1556276857668" MODIFIED="1556277127508" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/330%20TR68%202%20Safety.pdf">
 <attribute NAME="key" VALUE="tr68safety"/>
@@ -1516,6 +1516,15 @@
 <attribute NAME="authors" VALUE="{Organisation Internationale des Constructeurs d&apos;Automobiles}"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5F9693876C5AAA4925DD52CD66A5F2A7375DB353AE32348BFE40E5258F936">
     <pdf_title>Future Certification of Automated/Autonomous Driving Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="UK Safety Case Framework - a report by Zenzic" ID="ID_1159907280" CREATED="1564729264568" MODIFIED="1564730181052" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/358%20UK%20Safety%20Case%20Framework%20-%20a%20report%20by%20Zenzic.pdf">
+<attribute NAME="key" VALUE="zenzic2019safety"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Safety Case Framework - a Report by Zenzic"/>
+<attribute NAME="authors" VALUE="{TRL for Testbed UK}"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6080F254398F45DCDF439643FD7246F20E5E62E3A829E9946BCC9CC77288ACF">
+    <pdf_title>Safety Case Framework a report by Zenzic</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1905,18 +1914,24 @@
     <pdf_title>Cut-in Scenario Prediction for Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2019 Automatic Identification of Critical Scenarios in Public Dataset 6000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1563957700656">
+<node TEXT="2019 Identification of Critical Scenarios in Public Dataset 6000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1565069892122" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/360%20ESV%20Public%20dataset.pdf">
 <attribute NAME="key" VALUE="paardekooper2019dataset6000km"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 6000 km of Public-Road Driving"/>
 <attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and Montfort, Sjef and Manders, Jeroen and Goos, Jorrit and de Gelder, Erwin and Op den Camp, Olaf and Bracquemond, O. and Thiolon, G."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="66498E977114BB98512D96D1E608ABEC494FC779333C9FEA68FA64E4786F3E6">
+    <pdf_title>Paardekooper 1</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="2019 Completeness paper" ID="ID_807223433" CREATED="1547188936412" MODIFIED="1553052739619">
+<node TEXT="2019 Completeness paper" ID="ID_807223433" CREATED="1547188936412" MODIFIED="1565069646505" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/359%20Completeness%20paper%20TIP.pdf">
 <attribute NAME="key" VALUE="degelder2019completeness"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Safety Assessment of Automated Vehicles: How to Determine Whether We Have Collected Enough Field Data?"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Op den Camp, Olaf and De Schutter, Bart"/>
 <attribute NAME="journal" VALUE="Traffic Injury Prevention"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="666F809CDF8235D6697E7F5ACCE974133D8C1FD1FF19E1919766272C59A985">
+    <pdf_title>Safety assessment of automated vehicles: how to determine whether we have collected enough field data?</pdf_title>
+</pdf_annotation>
 </node>
 <node TEXT="2019 Quantification of scenario risk" ID="ID_1198050945" CREATED="1555381619441" MODIFIED="1556700333742" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/343%20Scenario%20risk%20quantification.pdf">
 <attribute NAME="key" VALUE="degelder2019risk"/>
@@ -2492,7 +2507,7 @@
 <attribute NAME="key" VALUE="deschutter2003hybrid"/>
 <attribute NAME="year" VALUE="2003"/>
 <attribute NAME="title" VALUE="Model Predictive Control for Discrete-Event and Hybrid Systems"/>
-<attribute NAME="authors" VALUE="De Schutter, B and Van Den Boom, T"/>
+<attribute NAME="authors" VALUE="De Schutter, B and van den Boom, T"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9629DAE7C4929E02EB2F1406B7E1B34E810F1B0C69FC47D5D1A7D0DB114DB">
     <pdf_title>Model predictive control for discrete-event and hybrid systems</pdf_title>
 </pdf_annotation>
@@ -2941,7 +2956,7 @@
 <node TEXT="Aparicio et al." ID="ID_1103392937" CREATED="1512448110567" MODIFIED="1534391438264" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/068%20Pre-Crash%20Performance%20ASSESS%20Project.pdf">
 <attribute NAME="key" VALUE="aparicio2013pre"/>
 <attribute NAME="year" VALUE="2013"/>
-<attribute NAME="title" VALUE="Pre-crash Performance of Collision Mitigation and Avoidance Systems: Results from the Assess Project"/>
+<attribute NAME="title" VALUE="Pre-crash Performance of Collision Mitigation and Avoidance Systems: Results from the {ASSESS} Project"/>
 <attribute NAME="authors" VALUE="Aparicio, Andr{\&apos;e}s and Baur{\`e}s, S{\&apos;e}bastien and Bargall{\&apos;o}, Jordi and Rodarius, Carmen and Vissers, John and Bartels, Oliver and Seiniger, Patrick and Lemmen, Paul and Unselt, Thomas and Ranovona, Maminirina and Okawa, Tatsuhiro and Schaub, Swen"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="A975864978BD9AD1595688728FF7D7E9D04C48EBAC19A6F82123CBADB57D4292">
     <pdf_title>Pre-Crash Performance of Collision Mitigation and Avoidance Systems: Results from the Assess Project</pdf_title>
@@ -3990,10 +4005,10 @@
 <attribute NAME="title" VALUE="{OpenSCENARIO}"/>
 <attribute NAME="year" VALUE="2017"/>
 </node>
-<node TEXT="ISO26262" ID="ID_1345725509" CREATED="1564490785273" MODIFIED="1564490810489">
+<node TEXT="ISO26262" ID="ID_1345725509" CREATED="1564490785273" MODIFIED="1565607713216">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2018"/>
-<attribute NAME="title" VALUE="{ISO} 26262: Road vehicles -- Functional Safety"/>
+<attribute NAME="title" VALUE="{ISO} 26262: Road {V}ehicles -- {F}unctional {S}afety"/>
 </node>
 <node TEXT="ISO21448 (SOTIF)" ID="ID_955932098" CREATED="1564490790039" MODIFIED="1564490798733">
 <attribute NAME="key" VALUE="ISO21448"/>

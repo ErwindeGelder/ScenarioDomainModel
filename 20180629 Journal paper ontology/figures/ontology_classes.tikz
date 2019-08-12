@@ -35,9 +35,9 @@
 	\node[coordinate, above of=\class category, node distance=\blockheight/2](helper \class){};  % Needed for later
 	\draw[aggregation] (\class category) |- (helper scenario class) -- (aggregation scenario class);
 }
-\node[anchor=south east] at (helper static) {1};
-\node[anchor=south east] at (helper activity) {$\mathbb{N}$};
-\node[anchor=south east] at (helper actor) {$\mathbb{N}$};
+\node[anchor=south east] at (helper static) {\hasone};
+\node[anchor=south east] at (helper activity) {\hasn};
+\node[anchor=south east] at (helper actor) {\hasn};
 
 % Aggregation arrow for the model
 \node[coordinate, above of=model, node distance=\blockheight/2, xshift=-\blockwidth/8+\blockx/4](aggregation model){};
@@ -52,10 +52,10 @@
 	\node[coordinate, above of=\class, node distance=\blockheight/2, xshift=-\blockwidth/4](helper \class){};
 	\draw[aggregation] (helper \class) |- (helper scenario) -- (aggregation scenario);
 }
-\node[anchor=south east] at (helper static) {1};
-\node[anchor=south east] at (helper activity) {$\mathbb{N}$};
-\node[anchor=south east] at (helper actor) {$\mathbb{N}$};
-\node[anchor=south east] at (helper event) {$\mathbb{N}$};
+\node[anchor=south east] at (helper static) {\hasone};
+\node[anchor=south east] at (helper activity) {\hasn};
+\node[anchor=south east] at (helper actor) {\hasn};
+\node[anchor=south east] at (helper event) {\hasn};
 
 % Aggregations for static environment, activity, and actor
 \foreach \class in {static, activity, actor}
@@ -63,13 +63,13 @@
 	\node[coordinate, below of=\class category, node distance=\blockheight/2, xshift=\blockwidth/4](category helper){};
 	\node[coordinate, above of=\class, node distance=\blockheight/2, xshift=\blockwidth/4](helper){};
 	\draw[aggregation] (category helper) -- (helper);
-	\node[anchor=north east] at (category helper) {1};
+	\node[anchor=north east] at (category helper) {\hasone};
 }
 
 % Aggregation for event -> triggered activity
 \draw[aggregation] (event) -- (triggered);
 \node[coordinate, right of=event, node distance=\blockwidth/2](helper event) {};
-\node[anchor=south west] at (helper event) {1};
+\node[anchor=south west] at (helper event) {\hasone};
 
 % falls into arrows
 \node[coordinate, right of=scenario class, node distance=\blockwidth/2+1pt, yshift=-\blockheight/3](helper1){};

@@ -6,14 +6,14 @@
 	actor category: Ego qualitative\\
 	initial states: $\egoeast=\SI{-20}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$\\
 	desired states: \\
-	goal: \\
+	goals: \\
 	tags: };
 
 \node[object, fill=otherclass, below=of ego.south](pedestrian){{\bfseries Pedestrian::Actor}\\
 	actor category: Pedestrian qualitative\\
 	initial states: $\pedeast=\SI{0}{\meter}$, $\pedheading=\ang{0}$\\
 	desired states: \\
-	goal: \\
+	goals: \\
 	tags: };
 
 \node[object, fill=otherclass, below=of pedestrian.south](ego braking){{\bfseries Ego braking::Set activity}\\

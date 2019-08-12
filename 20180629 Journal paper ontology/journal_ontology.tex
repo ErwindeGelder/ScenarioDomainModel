@@ -69,6 +69,9 @@
 
 \theoremstyle{plain}
 \newtheorem{definition}{Definition}
+\theoremstyle{remark}\newtheorem{remarkenv}{Remark}        %% remarks
+\newenvironment{remark}{\begin{remarkenv}}%
+	{\hfill$\lozenge$\end{remarkenv}}            %% end remark with a lozenge
 
 % Table stuff
 \usepackage{booktabs}
@@ -88,11 +91,12 @@
 	Ontology for Scenarios for the Assessment of Automated Vehicles
 }
 
-\author{Erwin de Gelder$^{1,2*}$, Jan-Pieter Paardekooper$^{1,3}$, Arash Khabbaz Saberi$^{1}$, Hala Elrofai$^{1}$, Olaf Op den Camp$^{1}$, \\ Jeroen Ploeg$^{4}$, Bart De Schutter$^{2}$%
+\author{Erwin de Gelder$^{1,2*}$, Jan-Pieter Paardekooper$^{1,3}$, Arash Khabbaz Saberi$^{1}$, Hala Elrofai$^{1}$, Olaf Op den Camp$^{1}$, \\ Jeroen Ploeg$^{4}$, Ludwig Friedmann$^{5}$, Bart De Schutter$^{2}$%
 \thanks{$^{1}$TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}%
 \thanks{$^{2}$Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
 \thanks{$^{3}$Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
 \thanks{$^{4}$2getthere, Utrecht, The Netherlands}%
+\thanks{$^{5}$BMW, Munich, Germany}%
 \thanks{$^{*}$Corresponding author. \newline E-mail address: {\tt\small erwin.degelder@tno.nl}}%
 %\thanks{*This work was not supported by any organization}% <-this % stops a space
 %\thanks{$^{1}$Albert Author is with Faculty of Electrical Engineering, Mathematics and Computer Science,
@@ -113,10 +117,10 @@
 \usetikzlibrary{arrows,positioning}
 \usetikzlibrary{arrows.meta}
 \definecolor{TNOlightgray}{RGB}{222,222,231}
-\definecolor{scenarioclass}{RGB}{86, 172, 255}
-\definecolor{category}{RGB}{64, 207, 255}
-\definecolor{scenario}{RGB}{255, 115, 64}
-\definecolor{otherclass}{RGB}{255, 159, 124}
+\definecolor{scenarioclass}{RGB}{137, 197, 255}
+\definecolor{category}{RGB}{121, 221, 255}
+\definecolor{scenario}{RGB}{255, 157, 121}
+\definecolor{otherclass}{RGB}{255, 188, 163}
 \tikzstyle{tag}=[text height=.8em, text depth=.1em, font=\small\sffamily, rounded corners=0.2em, fill=TNOlightgray, node distance=9em, text width=7em, align=center]
 \tikzstyle{tag wide}=[tag, text width=12em]
 \tikzstyle{tagarrow}=[->, line width=0.75mm, color=TNOlightgray]
@@ -159,7 +163,7 @@
 \ExplSyntaxOff
 
 % Notations
-\newcommand{\amplitude}{A}
+\newcommand{\amplitude}{\Delta v}
 \newcommand{\attrtstart}{start time}
 \newcommand{\attrtend}{end time}
 \newcommand{\distancecondition}{d_{\mathrm{v,p}}}
@@ -177,6 +181,11 @@
 \newcommand{\egospeedinitc}{\egospeedinitsymbol_{0}}
 \newcommand{\egoacceleration}{\ddot{\east}_{\mathrm{\egosub}}}
 \newcommand{\egoheading}{\head_{\mathrm{\egosub}}}
+\newcommand{\function}{f}
+\newcommand{\inputsystem}{u}
+\newcommand{\parameter}{\theta}
+\newcommand{\parametera}{a}
+\newcommand{\parameterb}{b}
 \newcommand{\pedsub}{ped}
 \newcommand{\pedeast}{\east_{\mathrm{\pedsub}}}
 \newcommand{\pednorth}{\north_{\mathrm{\pedsub}}}
@@ -197,20 +206,24 @@
 \newcommand{\slopeego}{a_{\mathrm{\egosub}}}
 \newcommand{\slopepedestrian}{v_{\mathrm{\pedsub}}}
 \newcommand{\state}{x}
+\newcommand{\statedot}{\dot{\state}}
 \renewcommand{\time}{t}
 \newcommand{\inittime}{\time_{0}}
 \newcommand{\inittimeb}{\time_{1}}
 \newcommand{\inittimec}{\time_{2}}
+\newcommand{\hasone}{$1$}
+\newcommand{\hasn}{$N$}
 
 %\usepackage{changebar}
-\newcommand{\cbstart}{\color{blue}}
+\newcommand{\cbstart}{\color{black}}
 \newcommand{\cbend}{\color{black}}
-\newcommand{\cbstartb}{\color{blue}}
+\newcommand{\cbstartb}{\color{black}}
 \newcommand{\cbstartc}{\color{blue}}
+\newcommand{\cbstartd}{\color{blue}}  % Changes since 2019 08 10
 \newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
 
-\usepackage{setspace}
-\doublespacing
+%\usepackage{setspace}
+%\doublespacing
 
 
 \begin{document}

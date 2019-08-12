@@ -1,7 +1,7 @@
 \begin{tikzpicture}
 	% Circles
-	\fill[red, fill opacity=0.5] (-\venncircle/2, 0) circle (\venncircle);
-	\fill[green, fill opacity=0.5] (\venncircle/2, 0) circle (\venncircle);
+	\fill[red!50, fill opacity=0.5] (-\venncircle/2, 0) circle (\venncircle);
+	\fill[green!50, fill opacity=0.5] (\venncircle/2, 0) circle (\venncircle);
 	\draw (-\venncircle/2, 0) circle (\venncircle);
 	\draw (\venncircle/2, 0) circle (\venncircle);
 	
