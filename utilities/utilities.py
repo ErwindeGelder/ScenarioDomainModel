@@ -351,6 +351,11 @@ if __name__ == '__main__':
     pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
     copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
              os.path.join('..', '20180629 Journal paper ontology', '20190801_V3blue.pdf'))
+    call_output(['git', 'checkout', 'OntologyV4blue'])
+    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
+    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology_limited')
+    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology_limited.pdf'),
+             os.path.join('..', '20180629 Journal paper ontology', '20190812_V4blue.pdf'))
 
     # All other stuff
     call_output(['git', 'checkout', 'master'])
