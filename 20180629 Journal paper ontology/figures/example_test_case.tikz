@@ -3,7 +3,7 @@
 \begin{tikzpicture}
 \tikzstyle{every node}=[font=\footnotesize]
 
-\node[object, fill=scenarioclass](scenario class){{\bfseries Crossing pedestrian::Scenario class}\\
+\node[object, fill=scenariocategory](scenario category){{\bfseries Crossing pedestrian::Scenario category}\\
 	description: A pedestrian is crossing the road on a zebra crossing in\\
 	\leavevmode\phantom{description: }front of the ego vehicle\\
 	static environment category: Pedestrian crossing qualitative\\
@@ -12,7 +12,7 @@
 	acts: (Pedestrian qualitative, Walking straight)\\
 	tags:};
 
-\node[object, fill=otherclass, below=of scenario class.south](ego){{\bfseries Ego::Actor}\\
+\node[object, fill=otherclass, below=of scenario category.south](ego){{\bfseries Ego::Actor}\\
 	actor category: Ego qualitative\\
 	initial states: $\egoeast=\SI{-40}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$, \\
 	\leavevmode\phantom{initial states: }$\egospeed=\SI{8}{\meter\per\second}$\\

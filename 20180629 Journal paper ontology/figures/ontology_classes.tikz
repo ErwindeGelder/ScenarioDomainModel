@@ -14,7 +14,7 @@
 \tikzstyle{superclass}=[-{Triangle[width=8pt, length=12pt, fill=white]}, line width=1pt]
 \begin{tikzpicture}
 % Classes
-\node[class, fill=scenarioclass](scenario class) at (.5\blockx,0) {Scenario class};
+\node[class, fill=scenariocategory](scenario category) at (.5\blockx,0) {Scenario category};
 \node[class, fill=category](staticcategory) at (\blockx, \blocky) {Static environment category};
 \node[class, fill=category](activitycategory) at (2\blockx, \blocky) {Activity category};
 \node[class, fill=category](model) at (1.5\blockx+0.25\blockwidth, 2\blocky) {Model};
@@ -27,13 +27,13 @@
 \node[class, fill=otherclass](detected) at (2.75\blockx, 4\blocky) {Set activity};
 \node[class, fill=otherclass](event) at (0.5\blockx, 4\blocky) {Event};
 
-% Aggregation arrows for the scenario class
-\node[coordinate, below of=scenario class, node distance=-\blocky/2, xshift=\blockwidth/3](helper scenario class){};
-\node[coordinate, below of=scenario class, node distance=\blockheight/2, xshift=\blockwidth/3](aggregation scenario class){};
+% Aggregation arrows for the scenario category
+\node[coordinate, below of=scenario category, node distance=-\blocky/2, xshift=\blockwidth/3](helper scenario category){};
+\node[coordinate, below of=scenario category, node distance=\blockheight/2, xshift=\blockwidth/3](aggregation scenario category){};
 \foreach \class in {static, activity, actor}
 {
 	\node[coordinate, above of=\class category, node distance=\blockheight/2](helper \class){};  % Needed for later
-	\draw[aggregation] (\class category) |- (helper scenario class) -- (aggregation scenario class);
+	\draw[aggregation] (\class category) |- (helper scenario category) -- (aggregation scenario category);
 }
 \node[anchor=south east] at (helper static) {\hasone};
 \node[anchor=south east] at (helper activity) {\hasn};
@@ -72,13 +72,13 @@
 \node[anchor=south west] at (helper event) {\hasone};
 
 % falls into arrows
-\node[coordinate, right of=scenario class, node distance=\blockwidth/2+1pt, yshift=-\blockheight/3](helper1){};
-\node[coordinate, right of=scenario class, node distance=\blockwidth/2+1pt, yshift=\blockheight/3](helper2){};
+\node[coordinate, right of=scenario category, node distance=\blockwidth/2+1pt, yshift=-\blockheight/3](helper1){};
+\node[coordinate, right of=scenario category, node distance=\blockwidth/2+1pt, yshift=\blockheight/3](helper2){};
 \node[coordinate, right of=helper1, node distance=\blockwidth/2](helper3){};
 \node[coordinate, right of=helper2, node distance=\blockwidth/2](helper4){};
 \draw[falls into] (helper1) -- (helper3) -- node[fill=white]{falls into} (helper4) -- (helper2);
 \node[coordinate, above of=scenario, node distance=\blockheight/2, xshift=-\blockwidth/4](helper1){};
-\node[coordinate, below of=scenario class, node distance=\blockheight/2, xshift=-\blockwidth/4](helper2){};
+\node[coordinate, below of=scenario category, node distance=\blockheight/2, xshift=-\blockwidth/4](helper2){};
 \draw[falls into] (helper1) -- node[fill=white, align=center, text width=2em]{falls into} (helper2);
 
 % Superclass arrows

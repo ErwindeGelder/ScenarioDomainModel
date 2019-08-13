@@ -2,7 +2,7 @@
 \label{sec:ontology}
 
 We have already explained the use of an ontology in \cref{sec:why ontology}. In this section, we present our ontology for scenarios for the assessment of automated vehicles. 
-The ontology is formally represented through a domain model that is briefly presented in \cref{sec:domain model}. Next, in \cref{sec:domain scenario class}, we explain how a scenario class is formally represented using the domain model. Similarly, in \cref{sec:domain scenario}, we describe how a scenario is formally represented using the domain model. 
+The ontology is formally represented through a domain model that is briefly presented in \cref{sec:domain model}. Next, in \cref{sec:domain scenario category}, we explain how a scenario category is formally represented using the domain model. Similarly, in \cref{sec:domain scenario}, we describe how a scenario is formally represented using the domain model. 
 %For more details on the domain model that is representing the ontology, see \cref{sec:appendix domain model}.
 
 
@@ -10,7 +10,7 @@ The ontology is formally represented through a domain model that is briefly pres
 \subsection{Domain model}
 \label{sec:domain model}
 
-The classes of the domain model that are used to define a scenario and a scenario class are shown in \cref{fig:ontology classes}, where each block represents a class\cbstartd\footnote{\cbstartd In the remainder of this paper, when referring to (an instance of) a class, italic font is used.\cbend}\cbend.
+The classes of the domain model that are used to define a scenario and a scenario category are shown in \cref{fig:ontology classes}, where each block represents a class\cbstartd\footnote{\cbstartd In the remainder of this paper, when referring to (an instance of) a class, italic font is used.\cbend}\cbend.
 The blue blocks represent the classes that are used to qualitatively describe a scenario whereas the orange blocks represent the classes that are used to quantitatively describe a scenario. 
 
 \begin{figure}
@@ -24,16 +24,16 @@ The arrows in \cref{fig:ontology classes} represent the relations of the differe
 There are three different types of arrows. 
 We use UML for implementing the ontology, so the same type of arrows are used.
 %because UML focuses on describing implementation related issues, which is useful considering our Python implementation.
-The arrows with the text ``falls into'' indicate that both a scenario and a scenario class may fall into a scenario class, as explained in \cref{sec:scenario class}. \cbstartc More specifically, the ``falls into'' method from the scenario to the scenario class is denoted by $\scenariofallsinto$ and the other ``falls into'' method is denoted by $\scenarioclassfallsinto$, see \cref{eq:fall into scenario class}. \cbend 
+The arrows with the text ``falls into'' indicate that both a scenario and a scenario category may fall into a scenario category, as explained in \cref{sec:scenario category}. \cbstartc More specifically, the ``falls into'' method from the scenario to the scenario category is denoted by $\scenariofallsinto$ and the other ``falls into'' method is denoted by $\scenariocategoryfallsinto$, see \cref{eq:fall into scenario category}. \cbend 
 The arrows with the diamond are best described by the verb ``to have''\footnote{In UML, this is called an aggregation. \cbstartb This is typically implemented using pointers. For example, if object A ``has'' B, it means that A contains a pointer to B.\cbend}. For example, a scenario ``has'' a static environment. To be more precise: a scenario ``has'' exactly one static environment, which is indicated by the ``\hasone'' at the start of the arrow. In a similar manner, a scenario ``has'' zero, one, or multiple activities, which is indicated by ``\hasn'' indicating any integer number starting from 0. The third arrow denotes a subclass relation. For example, the class \textit{triggered activity} is a subclass of the class \textit{activity} such that the class \textit{triggered activity} inherits all properties from the \textit{class} activity.
 
 
 
-\subsection{Scenario class and its attributes}
-\label{sec:domain scenario class}
+\subsection{Scenario category and its attributes}
+\label{sec:domain scenario category}
 
-The blue blocks in \cref{fig:ontology classes} represent the classes that are used to model a scenario class according to the definition of a scenario class, see \cref{def:scenario class}. 
-%According to \cref{def:scenario class}, a scenario class is a qualitative description of the ego vehicle, its static environment, and its dynamic environment. 
+The blue blocks in \cref{fig:ontology classes} represent the classes that are used to model a scenario category according to the definition of a scenario category, see \cref{def:scenario category}. 
+%According to \cref{def:scenario category}, a scenario category is a qualitative description of the ego vehicle, its static environment, and its dynamic environment. 
 The ego vehicle and the dynamic environment are qualitatively described by \textit{activity categories} and \textit{actor categories}. Similarly, the static environment is qualitatively described by a \textit{static environment category}. 
 
 \cbstartc
@@ -55,16 +55,16 @@ The \textit{model} of \cref{eq:sinusoidal} describes the evolution of the state 
 
 Similar to the \textit{static environment category} and the \textit{activity category}, the \textit{actor category} has a name and tags. Furthermore, the type of the road user is specified from a predefined list. To indicate that an actor is an ego vehicle, the tag ``Ego vehicle'' is added to the list of tags of the \textit{actor category}.
 
-% Scenario class
-The \textit{scenario class} ``has'' a \textit{static environment category}, \textit{activity categories}, and \textit{actor categories}. As with the other classes, a \textit{scenario class} contains a name and may contain predefined tags that describe parts of the scenario that are not described by the other classes.
-Another attribute of the scenario class, is the list of acts. %\cbstart\footnote{\cbstartc In line with the definition of \emph{act} in \cref{sec:act}, for a \textit{scenario class}, an \emph{act} is a combination of \textit{activity categories} and \textit{actor categories}.\cbend}\cbend. 
+% Scenario category
+The \textit{scenario category} ``has'' a \textit{static environment category}, \textit{activity categories}, and \textit{actor categories}. As with the other classes, a \textit{scenario category} contains a name and may contain predefined tags that describe parts of the scenario that are not described by the other classes.
+Another attribute of the scenario category, is the list of acts. %\cbstart\footnote{\cbstartc In line with the definition of \emph{act} in \cref{sec:act}, for a \textit{scenario category}, an \emph{act} is a combination of \textit{activity categories} and \textit{actor categories}.\cbend}\cbend. 
 These acts describe which actors perform which activities. Naturally, it is possible that one actor performs multiple activities and that one activity is performed by multiple actors.
 
 % Explain why we have these different classes
 \cbstartc
 The reader might wonder why we introduce the different classes for describing a scenario class, i.e., the blue blocks, instead of only one class for modeling a scenario class. 
 %To explain this, consider the following example. We have two scenario classes that ``have'' the same static environment category. In the current domain model, a static environment category exists independently of a scenario class. As a result, when the first scenario class is, for some reason, deleted, the static environment category is not affected. Therefore, the other scenario class, which ``has'' the same static environment category is also not affected. Another reason for having the static environment category, the activity category, and the actor category is because of the quantitative counterparts, i.e., the static environment, activity, and actor (orange blocks in \cref{fig:ontology classes}), which we explain in the next section.
-The main advantage of the different classes is the re-usability of the instances of the classes, because these instances can be exchanged among different scenario classes. For example, if two \textit{scenarios classes} ``have'' the same \textit{static environment category}, we only need to define the \textit{static environment category} once, whereas if the \textit{static environment category} would not be a class on its own but only a property of the scenario class, we would need to define the \textit{static environment category} twice.
+The main advantage of the different classes is the re-usability of the instances of the classes, because these instances can be exchanged among different \textit{scenario categories}. For example, if two \textit{scenarios classes} ``have'' the same \textit{static environment category}, we only need to define the \textit{static environment category} once, whereas if the \textit{static environment category} would not be a class on its own but only a property of the scenario category, we would need to define the \textit{static environment category} twice.
 \cbend
 
 
@@ -75,7 +75,7 @@ The orange blocks in \cref{fig:ontology classes} represent the classes that are 
 \cbstartb
 The ego vehicle and the dynamic environment are quantitatively described by activities and actors. 
 \cbend
-It is very similar to a \textit{scenario class}, as the \textit{static environment}, \textit{activities}, and \textit{actors} are the quantitative counterparts of the \textit{static environment category}, \textit{activity categories}, and \textit{actor categories}, just as a \textit{scenario} is the quantitative counterpart of a \textit{scenario class}. 
+It is very similar to a \textit{scenario category}, as the \textit{static environment}, \textit{activities}, and \textit{actors} are the quantitative counterparts of the \textit{static environment category}, \textit{activity categories}, and \textit{actor categories}, just as a \textit{scenario} is the quantitative counterpart of a \textit{scenario category}. 
 
 % Static environment
 \cbstartc
@@ -108,6 +108,6 @@ Following the definition of an event (\cref{def:event}), an \textit{event} conta
 An advantage of having the qualitative counterparts of the \textit{static environment}, the \textit{activity}, and the \textit{actor} is that the qualitative description can be reused and exchanged. For example, there can be many different braking activities, but there needs to be only one \textit{activity category} for qualitatively defining the braking activity. Here, it is assumed that all braking activities are modeled with the same model and that similar tags apply. If this is not the case, multiple \textit{activity categories} need to be defined, but the number of \textit{activity categories} will still be significantly lower than the number of activities.
 
 % Scenario
-As with the \textit{static environment}, \textit{activity}, and \textit{actor}, the \textit{scenario} is the quantitative counterpart of the \textit{scenario class}. As a result, a \textit{scenario} ``has'' a \textit{static environment}, \textit{activities}, and \textit{text}. Additionally, in compliance with \cref{def:scenario}, a \textit{scenario} ``has'' \textit{events}. As with a \textit{scenario class}, a \textit{scenario} contains a list of acts.
+As with the \textit{static environment}, \textit{activity}, and \textit{actor}, the \textit{scenario} is the quantitative counterpart of the \textit{scenario category}. As a result, a \textit{scenario} ``has'' a \textit{static environment}, \textit{activities}, and \textit{text}. Additionally, in compliance with \cref{def:scenario}, a \textit{scenario} ``has'' \textit{events}. As with a \textit{scenario category}, a \textit{scenario} contains a list of acts.
 %\cbstartc\footnote{\cbstartc In line with the definition of act in \cref{sec:act}, for a scenario, an act is a combination of an activity, an actor, and, possibly, the times or events that marks the start and end of the activity.\cbend}. 
 The acts are used to describe which actors perform which activities at what time.\cbend

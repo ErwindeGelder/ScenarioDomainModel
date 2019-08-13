@@ -13,6 +13,13 @@ To illustrate the use of the ontology, we describe a scenario using the domain m
 	\label{fig:scenario overview}
 \end{figure}
 
+%\begin{figure}
+%	\centering
+%	\scentags{>Ego; Braking; Stationary; Accelerating|
+%		>Actor; Pedestrian; Initial state, Direction/Crossing, Long.\ position/In front of ego; Walking straight|
+%	Road layout, non-signalized zebra crossing}
+%\end{figure}
+
 \cbstart
 We first describe the scenario qualitatively using our proposed ontology. Next, the scenario is described quantitatively in \cref{sec:example quantitative}. Finally, in \cref{sec:example test case}, we show the differences if a test case is considered with a crossing pedestrian.
 
@@ -40,7 +47,7 @@ Here, the parameters $\slopeego$ and $\slopepedestrian$ describe the rate of cha
 \end{figure}
 
 \cbstart
-The two \textit{actor categories}, the four \textit{activity categories}, and the \textit{static environment category}, are used by the \textit{scenario class}. The \textit{scenario class} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian.
+The two \textit{actor categories}, the four \textit{activity categories}, and the \textit{static environment category}, are used by the \textit{scenario category}. The \textit{scenario category} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian.
 
 \subsection{Quantitative description of the pedestrian crossing}
 \label{sec:example quantitative}
@@ -89,7 +96,7 @@ In this example, we consider a test case based on the previously illustrated rea
 \cbstart
 %\Cref{fig:example test case} shows the objects that change when describing a test case instead of the scenario that is described in \cref{fig:example qualitative,fig:example quantitative}. There are five objects that are different:
 
-The \textit{scenario class} only differs from the \textit{scenario class} shown in \cref{fig:example qualitative} in that it does not contain the \textit{activity categories} that describe the activity of the ego vehicle.
+The \textit{scenario category} only differs from the \textit{scenario category} shown in \cref{fig:example qualitative} in that it does not contain the \textit{activity categories} that describe the activity of the ego vehicle.
 
 Two attributes of the quantitative description of the ego vehicle are different. First, the initial state also includes the speed, denoted by $\egospeed$, at the start of the scenario and \cbstartd the initial position is further away from the pedestrian crossing, such that the ego vehicle's driver or automation system has more time to perceive the pedestrian. 
 \cbend
@@ -101,5 +108,5 @@ The \textit{event} that marks the start of the walking activity of the pedestria
 
 For the test case, the pedestrian starts walking when the corresponding event is triggered. Hence, this \textit{activity} is a \textit{triggered activity} instead of a \textit{set activity}.
 
-As with the \textit{scenario class}, the \textit{scenario} does not contain \textit{activities} of the ego vehicle. Furthermore, the end time is set to a much larger number. The test can also end earlier if the ego vehicle reaches its destination, so the end time is an upper bound in case the ego vehicle does not manage to reach its destination.
+As with the \textit{scenario category}, the \textit{scenario} does not contain \textit{activities} of the ego vehicle. Furthermore, the end time is set to a much larger number. The test can also end earlier if the ego vehicle reaches its destination, so the end time is an upper bound in case the ego vehicle does not manage to reach its destination.
 \cbend

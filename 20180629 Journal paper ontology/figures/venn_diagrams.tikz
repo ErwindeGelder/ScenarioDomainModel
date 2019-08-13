@@ -5,12 +5,12 @@
 	\draw (-\venncircle/2, 0) circle (\venncircle);
 	\draw (\venncircle/2, 0) circle (\venncircle);
 	
-	% Names of scenario classes
-	\node[anchor=east](daylight) at (-5/4*\venncircle, \venncircle) {$\scenarioclassb$};
+	% Names of scenario categories
+	\node[anchor=east](daylight) at (-5/4*\venncircle, \venncircle) {$\scenariocategoryb$};
 	\draw (daylight) -- ({(-sqrt(2)/2-1/2)*\venncircle}, {sqrt(2)/2*\venncircle});
-	\node[anchor=west](rain) at (5/4*\venncircle, \venncircle) {$\scenarioclassc$};
+	\node[anchor=west](rain) at (5/4*\venncircle, \venncircle) {$\scenariocategoryc$};
 	\draw (rain) -- ({(sqrt(2)/2+1/2)*\venncircle}, {sqrt(2)/2*\venncircle});
-	\node[anchor=south](day and rain) at (-1/4*\venncircle, 8/7*\venncircle) {$\scenarioclassa$};
+	\node[anchor=south](day and rain) at (-1/4*\venncircle, 8/7*\venncircle) {$\scenariocategorya$};
 	\draw (day and rain) -- ({(1/2-sqrt(2)/2)*\venncircle}, {(sqrt(2)/2)*\venncircle});
 	
 	% Scenarios

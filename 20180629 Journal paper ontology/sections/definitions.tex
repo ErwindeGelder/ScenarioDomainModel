@@ -7,10 +7,10 @@ When presenting our ontology in \cref{sec:ontology}, we will formalize the terms
 In this section, we will define the terms linguistically, thereby providing insight into the terms used in the next section.
 We will first define the concept of a scenario in \cref{sec:scenario}. 
 Next, we will define two important attributes of a scenario: events and activities, in \cref{sec:event,sec:activity}, respectively. 
-Lastly, we will present the definition of a scenario class in \cref{sec:scenario class}.
+Lastly, we will present the definition of a scenario category in \cref{sec:scenario category}.
 
 \cbstartc
-In each of the \cref{sec:scenario,sec:event,sec:activity,sec:scenario class}, we start with some background information. Next, we draw conclusions that lead to our proposed definition of the corresponding terms. After proposing a definition, we finish each section with some remarks and implications of our proposed definition.
+In each of the \cref{sec:scenario,sec:event,sec:activity,sec:scenario category}, we start with some background information. Next, we draw conclusions that lead to our proposed definition of the corresponding terms. After proposing a definition, we finish each section with some remarks and implications of our proposed definition.
 \cbend
 
 
@@ -58,7 +58,7 @@ It can be helpful to develop scenarios using events \cite{bishop2007scentechniqu
 % Semantically described
 \subsubsection{Real-world traffic scenarios are quantitative scenarios}
 Regarding the nature of the data, a scenario can be either qualitative or quantitative \cite{vannotten2003updated}. Real-world traffic scenarios are quantitative scenarios, such that they are, e.g., suitable for simulation purposes. A scenario, however, can also be described qualitatively, such that it is readable and understandable for human experts. Providing a qualitative description of a quantitative scenario has become known as a story-and-simulation approach \cite{alcamo2001scenarios}. 
-Note that several quantitative scenarios might have the same qualitative description; thus, a qualitative description of a scenario does not uniquely define a quantitative scenario. A qualitative description can be regarded as an abstraction of the quantitative scenario, see also \cref{sec:scenario class}.
+Note that several quantitative scenarios might have the same qualitative description; thus, a qualitative description of a scenario does not uniquely define a quantitative scenario. A qualitative description can be regarded as an abstraction of the quantitative scenario, see also \cref{sec:scenario category}.
 
 % Some relevance between events
 \subsubsection{The time interval of a scenario contains all relevant events}
@@ -233,41 +233,43 @@ Examples of activities are accelerating, cruising, and decelerating. Here, the a
 
 
 
-\subsection{Scenario class}
-\label{sec:scenario class}
+\cbstartd
+\subsection{Scenario category}
+\label{sec:scenario category}
+\cbend
 
-% Introduce term scenario class (i.e. qualitative description of scenario)
+% Introduce term scenario category (i.e. qualitative description of scenario)
 \cbstart
 As proposed in \cref{def:scenario}, a scenario in the context of the performance assessment of an AV needs to be quantitative. 
 However, in literature, the term scenario is also used to refer to a collection of scenarios, where this collection of scenarios is semantically described. For example, in \cite{USDoT2007precrashscenarios}, a typology of pre-crash scenarios is proposed. Here, each of the pre-crash scenarios is an abstraction of many quantitative scenarios. Similar studies have been performed to describe scenarios that lead to highway accidents \cite{adaptive2017d73}, car-cyclist accidents \cite{opdencamp2014cats}, and car-pedestrian accidents \cite{lenard2011typical}. In \cite{catapult2017taxonomy}, a taxonomy of scenarios is proposed to qualitatively describe challenging scenarios for automated driving.
 
-The aforementioned references \cite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2011typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce a different term to address the qualitative description. We propose to use the term \emph{scenario class} to refer to the qualitative description of a scenario. A qualitative description can be regarded as an abstraction of a quantitative scenario, \cbstartb whereas a quantitative description can be regarded as a concretization of a qualitative description.
+The aforementioned references \cite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2011typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce a different term to address the qualitative description. We propose to use the term \emph{scenario category} to refer to the qualitative description of a scenario. A qualitative description can be regarded as an abstraction of a quantitative scenario, \cbstartb whereas a quantitative description can be regarded as a concretization of a qualitative description.
 \cbend
 %However, each scenario can be abstractly described in words; i.e., a qualitative description of each scenario exists. 
 %Therefore, a scenario class refers to multiple scenarios with a common characteristic \cite{elrofai2018scenario}.
 
-We thus define a scenario class as follows:
-\begin{definition}[Scenario class] \label{def:scenario class}
-	A scenario class is a qualitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment.
+We thus define a scenario category as follows:
+\begin{definition}[Scenario category] \label{def:scenario category}
+	A scenario category is a qualitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment.
 \end{definition}
 
 % What is the purpose of this?
 % - Human interpretable
 % - Group scenarios that are very similar --> Analysis is easier
 % - Completeness
-Introducing the concept of scenario classes brings the following benefits:
+Introducing the concept of scenario categories brings the following benefits:
 \begin{itemize}
 	\item For a human, it is easier to interpret a qualitative description rather than a quantitative description.
 	\item It enables to refer to a group of scenarios that have something in common. Therefore, it enables characterization of the type of scenarios, thus making discussing scenarios much easier.
 	\cbstartd
-	\item It allows for quantifying the completeness of a set of scenarios by quantifying the completeness of scenarios classes and scenarios with the same qualitative description separately. This is easier because scenario classes are discrete by nature whereas scenarios are continuous. See \cite{degelder2019completeness} for more details.
+	\item It allows for quantifying the completeness of a set of scenarios by quantifying the completeness of scenarios categories and scenarios with the same qualitative description separately. This is easier because scenario categories are discrete by nature whereas scenarios are continuous. See \cite{degelder2019completeness} for more details.
 	\cbend
 \end{itemize}
 
-% Explain scenarios fall into scenario class
-We describe the formal relation between a scenario and a scenario class with the verb ``to fall into'', denoted by $\scenariofallsinto$. If a specific scenario class $\scenarioclass$ is an abstraction of a specific scenario $\scenario$, then we say that the specific scenario $\scenario$ falls into that specific scenario class $\scenarioclass$, or simply $\scenario \scenariofallsinto \scenarioclass$. \cbstartc This is illustrated in \cref{fig:venn diagram scenario class}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenarioclassa$, $\scenarioclassb$, and $\scenarioclassc$ represent scenario classes. Multiple scenarios can fall into a given scenario class. For example, we have $\scenarioa \scenariofallsinto \scenarioclassb$ and $\scenariob \scenariofallsinto \scenarioclassb$ in \cref{fig:venn diagram scenario class}. 
-% Explain scenario can fall into multiple scenario classes
-Furthermore, a scenario can fall into multiple scenario classes. For example, in \cref{fig:venn diagram scenario class}, we have $\scenariob \scenariofallsinto \scenarioclassa$, $\scenariob \scenariofallsinto \scenarioclassb$, and $\scenariob \scenariofallsinto \scenarioclassc$.
+% Explain scenarios fall into scenario category
+We describe the formal relation between a scenario and a scenario category with the verb ``to fall into'', denoted by $\scenariofallsinto$. If a specific scenario category $\scenariocategory$ is an abstraction of a specific scenario $\scenario$, then we say that the specific scenario $\scenario$ falls into that specific scenario category $\scenariocategory$, or simply $\scenario \scenariofallsinto \scenariocategory$. \cbstartc This is illustrated in \cref{fig:venn diagram scenario category}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenariocategorya$, $\scenariocategoryb$, and $\scenariocategoryc$ represent scenario categories. Multiple scenarios can fall into a given scenario category. For example, we have $\scenarioa \scenariofallsinto \scenariocategoryb$ and $\scenariob \scenariofallsinto \scenariocategoryb$ in \cref{fig:venn diagram scenario category}. 
+% Explain scenario can fall into multiple scenario categories
+Furthermore, a scenario can fall into multiple scenario categories. For example, in \cref{fig:venn diagram scenario category}, we have $\scenariob \scenariofallsinto \scenariocategorya$, $\scenariob \scenariofallsinto \scenariocategoryb$, and $\scenariob \scenariofallsinto \scenariocategoryc$.
 \cbend
 %Whereas multiple scenarios can fall into one scenario class, it is also possible for one scenario to fall into multiple scenario classes. Continuing the example of \cref{fig:venn diagram scenario class}, a scenario with rain during daytime falls into both the scenario classes ``Daytime'' and ``Rain''.
 
@@ -275,22 +277,22 @@ Furthermore, a scenario can fall into multiple scenario classes. For example, in
 \begin{figure}
 	\centering
 	\input{figures/venn_diagrams.tikz}
-	\caption{\cbstartc The red and green circles correspond to the scenario classes $\scenarioclassb$ and $\scenarioclassc$, respectively. The overlap between the two circles corresponds to scenario class $\scenarioclassa$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. Scenarios $\scenarioa$ and $\scenariob$ fall into scenario class $\scenarioclassb$. Scenario class $\scenarioclassa$ falls into scenario classes $\scenarioclassb$ and $\scenarioclassc$.\cbend}
-	\label{fig:venn diagram scenario class}
+	\caption{\cbstartc The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. Scenarios $\scenarioa$ and $\scenariob$ fall into scenario category $\scenariocategoryb$. Scenario category $\scenariocategorya$ falls into scenario categories $\scenariocategoryb$ and $\scenariocategoryc$.\cbend}
+	\label{fig:venn diagram scenario category}
 \end{figure}
 
-% Explain scenario class can fall into scenario classes
-The verb ``to fall into'' is also used to describe the relation between two scenario classes. A scenario class $\scenarioclassa$ is said to fall into a scenario class $\scenarioclassb$ if all scenarios that fall into scenario class $\scenarioclassa$ also fall into scenario class $\scenarioclassb$. In that case, we can write $\scenarioclassa \scenarioclassfallsinto \scenarioclassb$. Thus we have
-\begin{equation} \label{eq:fall into scenario class}
-	\scenarioclassa \scenarioclassfallsinto \scenarioclassb \text{ if } \scenario \scenariofallsinto \scenarioclassb \,\,\forall\,\, \scenario \scenariofallsinto \scenarioclassa.
+% Explain scenario category can fall into scenario categories
+The verb ``to fall into'' is also used to describe the relation between two scenario categories. A scenario category $\scenariocategorya$ is said to fall into a scenario category $\scenariocategoryb$ if all scenarios that fall into scenario category $\scenariocategorya$ also fall into scenario category $\scenariocategoryb$. In that case, we can write $\scenariocategorya \scenariocategoryfallsinto \scenariocategoryb$. Thus we have
+\begin{equation} \label{eq:fall into scenario category}
+	\scenariocategorya \scenariocategoryfallsinto \scenariocategoryb \text{ if } \scenario \scenariofallsinto \scenariocategoryb \,\,\forall\,\, \scenario \scenariofallsinto \scenariocategorya.
 \end{equation}
 \cbstartc
-In \cref{fig:venn diagram scenario class}, scenario class $\scenarioclassa$ falls into scenario classes $\scenarioclassb$ and $\scenarioclassc$; thus $\scenarioclassa \scenarioclassfallsinto \scenarioclassb$ and $\scenarioclassa \scenarioclassfallsinto \scenarioclassc$.
+In \cref{fig:venn diagram scenario category}, scenario category $\scenariocategorya$ falls into scenario categories $\scenariocategoryb$ and $\scenariocategoryc$; thus $\scenariocategorya \scenariocategoryfallsinto \scenariocategoryb$ and $\scenariocategorya \scenariocategoryfallsinto \scenariocategoryc$.
 \cbend
 %In \cref{fig:venn diagram scenario class}, an example is shown with the scenario class ``Rain during daytime'', which falls into the scenario classes ``Daytime'' and ``Rain''.
 %For example, consider the scenario class ``Rain during day'', which is represented by the intersection of the red and green circles in \cref{fig:venn diagram scenario class}. All scenarios with rain that occur during the day fall into this scenario class. Obviously, these scenarios also fall into the scenario classes ``Day'' and ``Rain''. Hence, the scenario class ``Rain during day'' falls into the scenario classes ``Day'' and ``Rain''.
 
-When providing extra information on a piece of data, often tags are used \cite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \cite{craft2004tagging, vasquez2019controlling}. Applications are very broad, e.g., from classification of audio data \cite{kong2017joint} and capturing musical characteristics from songs \cite{ellis2011semantic} to tagging of Wikipedia pages \cite{voss2006collaborative}.
+When providing extra information on a piece of data, often tags are used \cite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \cite{craft2004tagging, vasquez2019controlling}. Applications are very broad, e.g., from classification of audio data \cite{kong2017joint} capturing musical characteristics from songs \cite{ellis2011semantic} to tagging of Wikipedia pages \cite{voss2006collaborative}.
 
 % Figure is explained in last few paragraphs, but placed earlier as to appear at the right page of the paper.
 \begin{figure*}
@@ -311,21 +313,20 @@ When providing extra information on a piece of data, often tags are used \cite{s
 	\label{fig:tree vehicle activities}
 \end{figure*}
 
-\cbstartc We propose to provide scenarios and scenario classes with additional information in the form of tags that describe the scenario in a qualitative manner.
-The tags of a scenario can be used to determine which scenario classes the scenario falls into.
+\cbstartc We propose to provide scenarios and scenario categories with additional information in the form of tags that describe the scenario in a qualitative manner.
 %For example, if a scenario contains the tag ``Daytime'', it is automatically recognized as a scenario that falls into the scenario class ``Daytime'' which is characterized by the single tag ``Daytime''. 
 \cbend
 The use of these tags brings several benefits:
 \begin{itemize}
-	\item The scenarios do not need to be explicitly classified. Classifying scenarios can be a time-consuming effort if the number of scenario classes is high.
-	\item If a scenario class that only contains known tags is added to the database of scenario classes, it can easily be seen which scenarios fall into this scenario class by only inspecting the tags of the scenarios. Therefore, there is no need to define scenario classes a priori.
+	\item \cbstartd The tags of a scenario can be helpful in determining which scenario categories the scenario might fall into and which scenario categories it does not fall into.\cbend
+	%\item If a scenario category that only contains known tags is added to the database of scenario categories, it can easily be seen which scenarios fall into this scenario category by only inspecting the tags of the scenarios. Therefore, there is no need to define scenario categories a priori.
 	\item It is easy to select scenarios from a scenario database or a scenario library by using tags or a combination of tags.
-	\item As opposed to the proposed categorization of scenarios in \cite{opdencamp2014cats, USDoT2007precrashscenarios, lenard2011typical, lara2019harmonized}, scenario classes do not need to be mutually exclusive.
+	\item As opposed to the proposed categorization of scenarios in \cite{opdencamp2014cats, USDoT2007precrashscenarios, lenard2011typical, lara2019harmonized}, scenario categories do not need to be mutually exclusive.
 \end{itemize}
 
-There is a balance between having generic scenario classes --- and thus a wide variety among the scenarios belonging to the scenario class --- and having specific scenario classes without much variety among the scenarios in the scenario class. For some systems, one may be interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags can be structured in hierarchical trees \cite{molloy2017dynamic, badger2012dynamic}. The different layers of the trees can be regarded as different abstraction levels \cite{Bonnin2014}. 
+There is a balance between having generic scenario categories --- and thus a wide variety among the scenarios belonging to the scenario category --- and having specific scenario categories without much variety among the scenarios in the scenario category. For some systems, one may be interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags can be structured in hierarchical trees \cite{molloy2017dynamic, badger2012dynamic}. The different layers of the trees can be regarded as different abstraction levels \cite{Bonnin2014}. 
 
-In \cite{degelder2019scenarioclasses}, several trees of tags are defined and \cref{fig:tree vehicle activities} shows two examples of trees of tags taken from \cite{degelder2019scenarioclasses}. These tags describe possible activities of a vehicle, i.e., the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags. The tags may refer to the objective of an actor in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. 
+In \cite{degelder2019scenariocategories}, several trees of tags are defined and \cref{fig:tree vehicle activities} shows two examples of trees of tags taken from \cite{degelder2019scenariocategories}. These tags describe possible activities of a vehicle, i.e., the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags. The tags may refer to the objective of an actor in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. 
 
 Four different types of activities are identified regarding the lateral movement, see \cref{fig:tree vehicle lat act}. Here, it is assumed that ``lateral'' refers to the direction perpendicular to the lane the vehicle is driving in (e.g., according to the Road Coordinate System in \cite{zofka2015datadrivetrafficscenarios}). Therefore, if the vehicle is driving on a curved road while staying more or less in its lane (lane-following), the tag ``Going straight'' is applicable. Apart from going straight, the vehicle might change lane, turn, or swerve to either the left or the right. 
 \cbstartd 

@@ -39,7 +39,7 @@
 	description: Straight road with two lanes and a pedestrian crossing\\
 	tags: Non-signalized zebra crossing};
 
-\node[object, fill=scenarioclass, below=of static category.south](scenario class){{\bfseries Crossing pedestrian::Scenario class}\\
+\node[object, fill=scenariocategory, below=of static category.south](scenario category){{\bfseries Crossing pedestrian::Scenario category}\\
 	description: A pedestrian is crossing the road on a zebra crossing in\\
 	\leavevmode\phantom{description: }front of the ego vehicle\\
 	static environment category: Pedestrian crossing qualitative\\
