@@ -4,6 +4,7 @@ Generate all relevant pdfs from .tex files.
 
 import subprocess
 import os
+from os.path import join
 import glob
 import fileinput
 import argparse
@@ -53,7 +54,7 @@ def remove_files(extension: str, folder: str) -> None:
     :param extension: The extionsion of the file to be removed.
     :param folder: The folder in which the files should be removed.
     """
-    files = glob.glob(os.path.join(folder, '*.'+extension))
+    files = glob.glob(join(folder, '*.'+extension))
     for file in files:
         print('Remove file "{:s}"'.format(file))
         os.remove(file)
@@ -74,7 +75,7 @@ def clean_folder(folder: str) -> None:
         remove_files(ext, folder)
 
     # Remove contents of folder (if it is generated)
-    tikzpath = os.path.join(folder, 'tikz')
+    tikzpath = join(folder, 'tikz')
     if os.path.exists(tikzpath):
         exts = ['cb', 'cb2', 'dpth', 'log', 'run.xml', 'md5', 'pdf']
         for ext in exts:
@@ -201,7 +202,7 @@ def pdf(folder: str, texfile: str, usebibtex: bool = False, usebiber: bool = Fal
     if log:
         with open("log2.txt", "a") as file:
             file.write("####################################################################\n")
-            file.write('Processing file "{:s}"\n'.format(os.path.join(folder, texfile)))
+            file.write('Processing file "{:s}"\n'.format(join(folder, texfile)))
             file.write("{:d} warnings\n".format(len(warnings)))
             for i, warning in enumerate(warnings):
                 file.write("{:2d}: {:s}\n".format(i+1, warning[0]))
@@ -233,12 +234,12 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None,
     filename = os.path.basename(os.path.splitext(filename)[0])
     if overwrite is False:
         if newname is not None:
-            if os.path.exists(os.path.join('..', folder, '{:s}.pdf'.format(newname))):
-                clean_folder(os.path.join('..', folder))
+            if os.path.exists(join('..', folder, '{:s}.pdf'.format(newname))):
+                clean_folder(join('..', folder))
                 return
         else:
-            if os.path.exists(os.path.join('..', folder, '{:s}.pdf'.format(filename))):
-                clean_folder(os.path.join('..', folder))
+            if os.path.exists(join('..', folder, '{:s}.pdf'.format(filename))):
+                clean_folder(join('..', folder))
                 return
 
     if git is not None:
@@ -250,18 +251,20 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None,
         for file, arguments in other:
             arguments.update(dict(log=False, overwrite=True))
             compile_doc(file, **arguments)
+            # Remove the generated files, because they need to be recompiled later.
+            os.remove(join('..', '{:s}.pdf'.format(file)))
 
     if toggle is not None:
-        settoggle(os.path.join('..', folder, '{:s}.tex'.format(filename)), toggle[0], toggle[1])
-    pdf(os.path.join('..', folder), filename, **kwargs)
+        settoggle(join('..', folder, '{:s}.tex'.format(filename)), toggle[0], toggle[1])
+    pdf(join('..', folder), filename, **kwargs)
 
     if newname is not None:
-        copyfile(os.path.join('..', folder, '{:s}.pdf'.format(filename)),
-                 os.path.join('..', folder, '{:s}.pdf'.format(newname)))
+        copyfile(join('..', folder, '{:s}.pdf'.format(filename)),
+                 join('..', folder, '{:s}.pdf'.format(newname)))
 
     # Reset toggle, otherwise cannot do git checkout
     if toggle is not None:
-        settoggle(os.path.join('..', folder, '{:s}.tex'.format(filename)),
+        settoggle(join('..', folder, '{:s}.tex'.format(filename)),
                   toggle[0], not toggle[1])
 
     if git is not None:
@@ -274,7 +277,7 @@ def compile_pr(i: int, **kwargs):
     :param i: The number of the progress report.
     :param kwargs: All arguments that are parsed to compile_doc.
     """
-    filename = os.path.join('progress_reports', 'report{:02d}'.format(i),
+    filename = join('progress_reports', 'report{:02d}'.format(i),
                             'progress_report_{:02d}'.format(i))
     kwargs.update(dict(git='PR{:d}'.format(i)))
     compile_doc(filename, **kwargs)
@@ -295,163 +298,106 @@ if __name__ == '__main__':
             os.remove('log.txt')  # Prevent complain that log.txt will be overwritten by checkout.
         os.remove("log2.txt")  # Empty log
 
-    compile_doc(os.path.join('20171010 Summary', 'phd_summary'))
+    compile_doc(join('20171010 Summary', 'phd_summary'))
 
     # Do all the progress reports
-    compile_doc(os.path.join('progress_reports', 'template', 'progress_report'))
+    compile_doc(join('progress_reports', 'template', 'progress_report'))
     compile_pr(1, usebibtex=True)
     compile_pr(2, usebibtex=True)
     compile_pr(3, usebibtex=True,
-               other=(os.path.join('20171111 IV2018 Ontology', 'root'), dict(usebibtex=True)))
-    remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
+               other=(join('20171111 IV2018 Ontology', 'root'), dict(usebibtex=True)))
     compile_pr(4, usebibtex=True,
-               other=(os.path.join('20171126 Parametrization', 'hyperparameter_selection'),
+               other=(join('20171126 Parametrization', 'hyperparameter_selection'),
                       dict(usebibtex=True, toggle=('standalone', False))))
     compile_pr(5, usebiber=True,
-               other=[(os.path.join('20171111 IV2018 Ontology', 'root'), dict(usebiber=True)),
-                      (os.path.join('20180207 Similarity', 'scenario_similarity'),
-                       dict(usebiber=True))])
-    remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
-    """    
-    call_output(['git', 'checkout', 'PR6'])
-    settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', False)
-    pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report06'), 'progress_report_06', usebiber=True)
-    call('git checkout ../"20180319 Completeness"/completeness.tex')
-    call_output(['git', 'checkout', 'PR7'])
-    pdf(os.path.join('..', 'progress_reports', 'report07'), 'progress_report_07', usebiber=True)
-    call_output(['git', 'checkout', 'PR8'])
-    pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report08'), 'progress_report_08', usebiber=True)
-    call_output(['git', 'checkout', 'PR9'])
-    pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True,
-        log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report09'), 'progress_report_09', usebiber=True)
-    call_output(['git', 'checkout', 'PR10'])
-    pdf(os.path.join('..', 'progress_reports', 'report10'), 'progress_report_10', usebiber=True)
-    call_output(['git', 'checkout', 'PR11'])
-    pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True, log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report11'), 'progress_report_11')
-    call_output(['git', 'checkout', 'PR12'])
-    pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True,
-        log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report12'), 'progress_report_12')
-    call_output(['git', 'checkout', 'PR13'])
-    pdf(os.path.join('..', '20180710 Ontology'), 'ontology', usebiber=True, log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report13'), 'progress_report_13', usebiber=True)
-    call_output(['git', 'checkout', 'PR14'])
-    pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True,
-        log=False)
-    pdf(os.path.join('..', '20181217 Completeness paper review'), 'cover_letter', log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report14'), 'progress_report_14', usebiber=True)
-    call_output(['git', 'checkout', 'PR15'])
-    pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True,
-        log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report15'), 'progress_report_15', usebiber=True)
-    call_output(['git', 'checkout', 'PR16'])
-    pdf(os.path.join('..', '20180639 Journal paper ontology'), 'journal_ontology', usebiber=True,
-        log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report16'), 'progress_report_16', usebiber=True)
-    call_output(['git', 'checkout', 'PR17'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True,
-        log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report17'), 'progress_report_17')
-    call_output(['git', 'checkout', 'PR18'])
-    pdf(os.path.join('..', '20190505 Assessment Strategy'), 'assessment_strategy', usebiber=True,
-        log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report18'), 'progress_report_18')
-    call_output(['git', 'checkout', 'PR19'])
-    pdf(os.path.join('..', 'progress_reports', 'report19'), 'progress_report_19', usebiber=True)
-    call_output(['git', 'checkout', 'PR20'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True,
-        log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report20'), 'progress_report_20', usebiber=True)
-    call_output(['git', 'checkout', 'PR21'])
-    pdf(os.path.join('..', '20190725 Scenario Risk'), 'scenariorisk', usebiber=True, log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report21'), 'progress_report_21', usebiber=True)
+               other=[(join('20171111 IV2018 Ontology', 'root'), dict(usebiber=True)),
+                      (join('20180207 Similarity', 'scenario_similarity'), dict(usebiber=True))])
+    compile_pr(6, usebiber=True,
+               other=(join('20180319 Completeness', 'completeness'), dict(usebiber=True)))
+    compile_pr(7, usebiber=True)
+    compile_pr(8, usebiber=True,
+               other=(join('20180319 Completeness', 'completeness'), dict(usebiber=True)))
+    compile_pr(9, usebiber=True,
+               other=(join('20180639 Journal paper ontology', 'journal_ontology'),
+                      dict(usebiber=True)))
+    compile_pr(10, usebiber=True)
+    compile_pr(11, other=(join('20180917 GoNoGo', 'GoNoGo'), dict(usebiber=True)))
+    compile_pr(12,
+               other=(join('20180924 Completeness paper', 'completeness'), dict(usebiber=True)))
+    compile_pr(13, usebiber=True,
+               other=(join('20180710 Ontology', 'ontology'), dict(usebiber=True)))
+    compile_pr(14, usebiber=14,
+               other=[(join('20180924 Completeness paper', 'completeness'), dict(usebiber=True)),
+                      (join('20181217 Completeness paper review', 'cover_letter'))])
+    compile_pr(15, usebiber=True,
+               other=(join('20180639 Journal paper ontology', 'journal_ontology'),
+                      dict(usebiber=True)))
+    compile_pr(16, usebiber=True,
+               other=(join('20180639 Journal paper ontology', 'journal_ontology'),
+                      dict(usebiber=True)))
+    compile_pr(17, other=(join('20180639 Journal paper ontology', 'journal_ontology'),
+                          dict(usebiber=True)))
+    compile_pr(18, other=(join('20190505 Assessment Strategy', 'assessment_strategy'),
+                          dict(usebiber=True)))
+    compile_pr(19, usebiber=True)
+    compile_pr(20, usebiber=True,
+               other=(join('20180629 Journal paper ontology', 'journal_ontology'),
+                      dict(usebiber=True)))
+    compile_pr(21, usebiber=True,
+               other=(join('20190725 Scenario Risk', 'scenariorisk'), dict(usebiber=True)))
 
     # Revisions/versions
-    call_output(['git', 'checkout', 'CompletenessPaperInit'])
-    pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True,
-        log=False)
-    copyfile(os.path.join('..', '20180924 Completeness paper', 'completeness.pdf'),
-             os.path.join('..', '20180924 Completeness paper',
-                          '20181108 Completeness Initial.pdf'))
+    compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',
+                newname='20181108 Completeness Initial', usebiber=True, log=False)
+    compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperR1',
+                newname='20181221 Completeness revision 1', usebiber=True, log=False)
+    compile_doc(join('20181217 Completeness paper review', 'cover_letter'),
+                git='CompletenessPaperR1', newname='20181221 Cover letter revision 1')
 
-    call_output(['git', 'checkout', 'CompletenessPaperR1'])
-    pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True,
-        log=False)
-    copyfile(os.path.join('..', '20180924 Completeness paper', 'completeness.pdf'),
-             os.path.join('..', '20180924 Completeness paper',
-                          '20181221 Completeness revision 1.pdf'))
-    pdf(os.path.join('..', '20181217 Completeness paper review'), 'cover_letter')
-    copyfile(os.path.join('..', '20181217 Completeness paper review', 'cover_letter.pdf'),
-             os.path.join('..', '20181217 Completeness paper review',
-                          '20181221 Cover letter revision 1.pdf'))
-
-    call_output(['git', 'checkout', 'OntologyV1blue'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
-    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
-             os.path.join('..', '20180629 Journal paper ontology', '20190525_V1_blue.pdf'))
-    call_output(['git', 'checkout', 'OntologyV1'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
-    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
-             os.path.join('..', '20180629 Journal paper ontology', '20190525_V1.pdf'))
-
-    call_output(['git', 'checkout', 'OntologyV2limited'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology_limited')
-    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology_limited.pdf'),
-             os.path.join('..', '20180629 Journal paper ontology', '20190708_V2_limited.pdf'))
-    call_output(['git', 'checkout', 'OntologyV2blue'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
-    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
-             os.path.join('..', '20180629 Journal paper ontology', '20190708_V2_blue.pdf'))
-    call_output(['git', 'checkout', 'OntologyV2'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
-    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
-             os.path.join('..', '20180629 Journal paper ontology', '20190708_V2.pdf'))
-    call_output(['git', 'checkout', 'OntologyV3'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
-    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
-             os.path.join('..', '20180629 Journal paper ontology', '20190801_V3.pdf'))
-    call_output(['git', 'checkout', 'OntologyV3blue'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
-    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology.pdf'),
-             os.path.join('..', '20180629 Journal paper ontology', '20190801_V3blue.pdf'))
-    call_output(['git', 'checkout', 'OntologyV4blue'])
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology_limited')
-    copyfile(os.path.join('..', '20180629 Journal paper ontology', 'journal_ontology_limited.pdf'),
-             os.path.join('..', '20180629 Journal paper ontology', '20190812_V4blue.pdf'))
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'),
+                git='OntologyV1blue', newname='20190525_V1_blue', usebiber=True, log=False)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'),
+                git='OntologyV1', newname='20190525_V1', usebiber=True, log=False)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology_limited'),
+                git='OntologyV2limited', newname='20190708_V2_limited', log=False,
+                other=(join('20180629 Journal paper ontology', 'journal_ontology'),
+                       dict(usebiber=True)))
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'),
+                git='OntologyV2blue', newname='20190708_V2_blue', usebiber=True, log=False)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'),
+                git='OntologyV2', newname='20190708_V2', usebiber=True, log=False)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'),
+                git='OntologyV3', newname='20190801_V3', usebiber=True, log=False)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'),
+                git='OntologyV3blue', newname='20190801_V3blue', usebiber=True, log=False)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology_limited'),
+                git='OntologyV4blue', newname='20190813_V4blue', log=False,
+                other=(join('20180629 Journal paper ontology', 'journal_ontology'),
+                       dict(usebiber=True)))
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology_limited'),
+                git='OntologyV4lessblue', newname='20190813_V4lessblue', log=False,
+                other=(join('20180629 Journal paper ontology', 'journal_ontology'),
+                       dict(usebiber=True)))
 
     # All other stuff
-    call_output(['git', 'checkout', 'master'])
-    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'ontology', usebiber=True)
-    pdf(os.path.join('..', '20180109 Ontology presentation'), 'ontology', usebibtex=True)
-    pdf(os.path.join('..', '20180110 Test scenario generation presentation'),
-        'scenario_generation', usebibtex=True)
-    settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'),
-              'standalone', True)
-    pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection', usebibtex=True)
-    settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'), 'standalone',
-              True)
-    pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True)
-    pdf(os.path.join('..', '20180320 Detailed scenario description'), 'scenario_description',
-        usebiber=True)
-    settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', True)
-    pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True)
-    pdf(os.path.join('..', '20180521 Summary GoNoGo'), 'phd_summary', usebiber=True)
-    pdf(os.path.join('..', '20180629 Journal paper ontology'), 'journal_ontology', usebiber=True)
-    pdf(os.path.join('..', '20180710 Ontology'), 'ontology', usebiber=True)
-    pdf(os.path.join('..', '20180917 GoNoGo'), 'GoNoGo', usebiber=True)
-    pdf(os.path.join('..', '20181002 Completeness question'), 'completeness_questions',
-        usebiber=True)
-    pdf(os.path.join('..', '20180924 Completeness paper'), 'completeness', usebiber=True)
-    pdf(os.path.join('..', '20181217 Completeness paper review'), 'cover_letter')
-    pdf(os.path.join('..', '20190505 Assessment Strategy'), 'assessment_strategy', usebiber=True)
-    pdf(os.path.join('..', '20190725 Scenario Risk'), 'scenariorisk', usebiber=True)
+    compile_doc(join('20171111 IV2018 Ontology', 'ontology'), usebiber=True)
+    compile_doc(join('20180109 Ontology presentation', 'ontology'), usebibtex=True)
+    compile_doc(join('20180110 Test scenario generation presentation', 'scenario_generation'),
+                usebibtex=True)
+    compile_doc(join('20171126 Parametrization', 'hyperparameter_selection'), usebibtex=True)
+    compile_doc(join('20180207 Similarity', 'scenario_similarity'), usebiber=True)
+    compile_doc(join('20180320 Detailed scenario description', 'scenario_description'),
+                usebiber=True)
+    compile_doc(join('20180319 Completeness', 'completeness'), usebiber=True)
+    compile_doc(join('20180521 Summary GoNoGo', 'phd_summary'), usebiber=True)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), usebiber=True)
+    compile_doc(join('20180710 Ontology', 'ontology'), usebiber=True)
+    compile_doc(join('20180917 GoNoGo', 'GoNoGo'), usebiber=True)
+    compile_doc(join('20181002 Completeness question', 'completeness_questions'), usebiber=True)
+    compile_doc(join('20180924 Completeness paper', 'completeness'), usebiber=True)
+    compile_doc(join('20181217 Completeness paper review', 'cover_letter'))
+    compile_doc(join('20190505 Assessment Strategy', 'assessment_strategy'), usebiber=True)
+    compile_doc(join('20190725 Scenario Risk', 'scenariorisk'), usebiber=True)
 
     # Delete folder that has wrong name
-    call('rm "{:s}" -r'.format(os.path.join('..', '20180639 Journal paper ontology')))
-    """
+    call('rm "{:s}" -r'.format(join('..', '20180639 Journal paper ontology')))
