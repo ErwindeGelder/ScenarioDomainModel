@@ -308,7 +308,9 @@ if __name__ == '__main__':
                other=(os.path.join('20171126 Parametrization', 'hyperparameter_selection'),
                       dict(usebibtex=True, toggle=('standalone', False))))
     compile_pr(5, usebiber=True,
-               other=(os.path.join('20171111 IV2018 Ontology', 'root'), dict(usebiber=True)))
+               other=[(os.path.join('20171111 IV2018 Ontology', 'root'), dict(usebiber=True)),
+                      (os.path.join('20180207 Similarity', 'scenario_similarity'),
+                       dict(usebiber=True))])
     remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
     """    
     call_output(['git', 'checkout', 'PR6'])
