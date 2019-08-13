@@ -251,16 +251,20 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None,
         for file, arguments in other:
             arguments.update(dict(log=False, overwrite=True))
             compile_doc(file, **arguments)
-            # Remove the generated files, because they need to be recompiled later.
-            os.remove(join('..', '{:s}.pdf'.format(file)))
 
     if toggle is not None:
         settoggle(join('..', folder, '{:s}.tex'.format(filename)), toggle[0], toggle[1])
     pdf(join('..', folder), filename, **kwargs)
 
+    if other is not None:
+        for file, _ in other:
+            # Remove the generated files, because they need to be recompiled later.
+            os.remove(join('..', '{:s}.pdf'.format(file)))
+
     if newname is not None:
         copyfile(join('..', folder, '{:s}.pdf'.format(filename)),
                  join('..', folder, '{:s}.pdf'.format(newname)))
+        os.remove(join('..', folder, '{:s}.pdf'.format(filename)))
 
     # Reset toggle, otherwise cannot do git checkout
     if toggle is not None:
