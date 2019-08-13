@@ -268,7 +268,7 @@ def compile_progress_report(i: int, **kwargs):
     :param i: The number of the progress report.
     :param kwargs: All arguments that are parsed to compile_doc.
     """
-    filename = os.path.join('..', 'progress_reports', 'report{:02d}'.format(i),
+    filename = os.path.join('progress_reports', 'report{:02d}'.format(i),
                             'progress_report_{:02d}'.format(i))
     kwargs.update(dict(git='PR{:d}'.format(i)))
     compile_doc(filename, **kwargs)
@@ -281,7 +281,7 @@ if __name__ == '__main__':
     compile_doc(os.path.join('20171010 Summary', 'phd_summary'))
 
     # Do all the progress reports
-    compile_doc(os.path.join('..', 'progress_reports', 'template', 'progress_report'))
+    compile_doc(os.path.join('progress_reports', 'template', 'progress_report'))
     compile_progress_report(1, usebibtex=True)
     compile_progress_report(2, usebibtex=True)
     """
