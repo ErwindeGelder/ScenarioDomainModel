@@ -6,8 +6,14 @@ import subprocess
 import os
 import glob
 import fileinput
+import argparse
 from typing import List, Tuple
 from shutil import copyfile
+
+
+PARSER = argparse.ArgumentParser(description="Compile the documents")
+PARSER.add_argument('--overwrite', help="Overwrite existings pdfs", action="store_true")
+ARGS = PARSER.parse_args()
 
 
 def print_line():
@@ -211,16 +217,74 @@ def pdf(folder: str, texfile: str, usebibtex: bool = False, usebiber: bool = Fal
     clean_folder(folder)
 
 
+def compile_doc(filename, git=None, other=None, newname=None, toggle=None, **kwargs):
+    """ Compile a document.
+
+    :param filename: The full name of the document, relative from the base folder of this git repo.
+    :param git: The git commit version, if any other than the master.
+    :param other: Any other files. Any file needs to be a tuple (<filename::str>, <args::dict>)
+    :param newname: Rename the file, if needed.
+    :param toggle: Set a toggle, if needed. Tuple: (<name of toggle::str>, <value::bool>).
+    :param kwargs: Any additional arguments that will be used for the pdf function.
+    """
+    folder = os.path.dirname(os.path.splitext(filename)[0])
+    filename = os.path.basename(os.path.splitext(filename)[0])
+    if ARGS.overwrite is False:
+        if newname is not None:
+            if os.path.exists(os.path.join('..', folder, '{:s}.pdf'.format(newname))):
+                clean_folder(os.path.join('..', folder))
+                return
+        else:
+            if os.path.exists(os.path.join('..', folder, '{:s}.pdf'.format(filename))):
+                clean_folder(os.path.join('..', folder))
+                return
+
+    if git is not None:
+        call_output(['git', 'checkout', git])
+
+    if other is not None:
+        if not isinstance(other, List):
+            other = [other]
+        for file, arguments in other:
+            folder_other = os.path.dirname(os.path.splitext(file)[0])
+            filename_other = os.path.basename(os.path.splitext(file)[0])
+            pdf(os.path.join('..', folder_other), filename_other, **arguments)
+
+    if toggle is not None:
+        settoggle(os.path.join('..', folder, '{:s}.tex'.format(filename)), toggle[0], toggle[1])
+    pdf(os.path.join('..', folder), filename, **kwargs)
+
+    if newname is not None:
+        copyfile(os.path.join('..', folder, '{:s}.pdf'.format(filename)),
+                 os.path.join('..', folder, '{:s}.pdf'.format(newname)))
+
+    if git is not None:
+        call_output(['git', 'checkout', 'master'])
+
+
+def compile_progress_report(i: int, **kwargs):
+    """ Compile a progress report.
+
+    :param i: The number of the progress report.
+    :param kwargs: All arguments that are parsed to compile_doc.
+    """
+    filename = os.path.join('..', 'progress_reports', 'report{:02d}'.format(i),
+                            'progress_report_{:02d}'.format(i))
+    kwargs.update(dict(git='PR{:d}'.format(i)))
+    compile_doc(filename, **kwargs)
+
+
 if __name__ == '__main__':
     if os.path.exists('log2.txt'):
         os.remove("log2.txt")  # Empty log
 
-    pdf(os.path.join('..', '20171010 Summary'), 'phd_summary')
+    compile_doc(os.path.join('20171010 Summary', 'phd_summary'))
 
     # Do all the progress reports
-    pdf(os.path.join('..', 'progress_reports', 'template'), 'progress_report')
-    call_output(['git', 'checkout', 'PR1'])
-    pdf(os.path.join('..', 'progress_reports', 'report01'), 'progress_report_01', usebibtex=True)
+    compile_doc(os.path.join('..', 'progress_reports', 'template', 'progress_report'))
+    compile_progress_report(1, usebibtex=True)
+    compile_progress_report(2, usebibtex=True)
+    """
     call_output(['git', 'checkout', 'PR2'])
     pdf(os.path.join('..', 'progress_reports', 'report02'), 'progress_report_02', usebibtex=True)
     call_output(['git', 'checkout', 'PR3'])
@@ -386,3 +450,4 @@ if __name__ == '__main__':
 
     # Delete folder that has wrong name
     call('rm "{:s}" -r'.format(os.path.join('..', '20180639 Journal paper ontology')))
+    """
