@@ -217,7 +217,8 @@ def pdf(folder: str, texfile: str, usebibtex: bool = False, usebiber: bool = Fal
     clean_folder(folder)
 
 
-def compile_doc(filename, git=None, other=None, newname=None, toggle=None, **kwargs):
+def compile_doc(filename, git=None, other=None, newname=None, toggle=None,
+                overwrite=ARGS.overwrite, **kwargs):
     """ Compile a document.
 
     :param filename: The full name of the document, relative from the base folder of this git repo.
@@ -225,11 +226,12 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, **kwa
     :param other: Any other files. Any file needs to be a tuple (<filename::str>, <args::dict>)
     :param newname: Rename the file, if needed.
     :param toggle: Set a toggle, if needed. Tuple: (<name of toggle::str>, <value::bool>).
+    :param overwrite: Whether to overwrite a file.
     :param kwargs: Any additional arguments that will be used for the pdf function.
     """
     folder = os.path.dirname(os.path.splitext(filename)[0])
     filename = os.path.basename(os.path.splitext(filename)[0])
-    if ARGS.overwrite is False:
+    if overwrite is False:
         if newname is not None:
             if os.path.exists(os.path.join('..', folder, '{:s}.pdf'.format(newname))):
                 clean_folder(os.path.join('..', folder))
@@ -246,6 +248,7 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, **kwa
         if not isinstance(other, List):
             other = [other]
         for file, arguments in other:
+            arguments.update(dict(log=False, overwrite=True))
             compile_doc(file, **arguments)
 
     if toggle is not None:
