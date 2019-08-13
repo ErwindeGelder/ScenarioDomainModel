@@ -246,9 +246,7 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, **kwa
         if not isinstance(other, List):
             other = [other]
         for file, arguments in other:
-            folder_other = os.path.dirname(os.path.splitext(file)[0])
-            filename_other = os.path.basename(os.path.splitext(file)[0])
-            pdf(os.path.join('..', folder_other), filename_other, **arguments)
+            compile_doc(file, **arguments)
 
     if toggle is not None:
         settoggle(os.path.join('..', folder, '{:s}.tex'.format(filename)), toggle[0], toggle[1])
@@ -284,13 +282,10 @@ if __name__ == '__main__':
     compile_doc(os.path.join('progress_reports', 'template', 'progress_report'))
     compile_progress_report(1, usebibtex=True)
     compile_progress_report(2, usebibtex=True)
-    """
-    call_output(['git', 'checkout', 'PR2'])
-    pdf(os.path.join('..', 'progress_reports', 'report02'), 'progress_report_02', usebibtex=True)
-    call_output(['git', 'checkout', 'PR3'])
-    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebibtex=True, log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report03'), 'progress_report_03', usebibtex=True)
+    compile_progress_report(3, other=(os.path.join('20171111 IV2018 Ontology', 'root'),
+                                      dict(usebibtex=True)), usebibtex=True)
     os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
+    """
     call_output(['git', 'checkout', 'PR4'])
     settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'),
               'standalone', False)
