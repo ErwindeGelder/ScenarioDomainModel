@@ -332,7 +332,7 @@ if __name__ == '__main__':
                other=(join('20180710 Ontology', 'ontology'), dict(usebiber=True)))
     compile_pr(14, usebiber=14,
                other=[(join('20180924 Completeness paper', 'completeness'), dict(usebiber=True)),
-                      (join('20181217 Completeness paper review', 'cover_letter'))])
+                      (join('20181217 Completeness paper review', 'cover_letter'), dict())])
     compile_pr(15, usebiber=True,
                other=(join('20180639 Journal paper ontology', 'journal_ontology'),
                       dict(usebiber=True)))
