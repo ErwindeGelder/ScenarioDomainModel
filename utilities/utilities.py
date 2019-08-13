@@ -339,7 +339,7 @@ if __name__ == '__main__':
     compile_pr(16, usebiber=True,
                other=(join('20180639 Journal paper ontology', 'journal_ontology'),
                       dict(usebiber=True)))
-    compile_pr(17, other=(join('20180639 Journal paper ontology', 'journal_ontology'),
+    compile_pr(17, other=(join('20180629 Journal paper ontology', 'journal_ontology'),
                           dict(usebiber=True)))
     compile_pr(18, other=(join('20190505 Assessment Strategy', 'assessment_strategy'),
                           dict(usebiber=True)))
