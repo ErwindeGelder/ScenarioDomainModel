@@ -277,6 +277,15 @@ def compile_pr(i: int, **kwargs):
     compile_doc(filename, **kwargs)
 
 
+def remove(filename):
+    """ Removes file after checking if it exists.
+
+    :param filename:
+    """
+    if os.path.exists(filename):
+        os.remove(filename)
+
+
 if __name__ == '__main__':
     if os.path.exists('log2.txt'):
         if os.path.exists('log.txt'):
@@ -291,13 +300,13 @@ if __name__ == '__main__':
     compile_pr(2, usebibtex=True)
     compile_pr(3, usebibtex=True,
                other=(os.path.join('20171111 IV2018 Ontology', 'root'), dict(usebibtex=True)))
-    os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
+    remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
     compile_pr(4, usebibtex=True,
                other=(os.path.join('20171126 Parametrization', 'hyperparameter_selection'),
                       dict(usebibtex=True, toggle=('standalone', False))))
     compile_pr(5, usebiber=True,
                other=(os.path.join('20171111 IV2018 Ontology', 'root'), dict(usebiber=True)))
-    os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
+    remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
     """    
     call_output(['git', 'checkout', 'PR6'])
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', False)
