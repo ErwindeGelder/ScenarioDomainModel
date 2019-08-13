@@ -256,11 +256,16 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, **kwa
         copyfile(os.path.join('..', folder, '{:s}.pdf'.format(filename)),
                  os.path.join('..', folder, '{:s}.pdf'.format(newname)))
 
+    # Reset toggle, otherwise cannot do git checkout
+    if toggle is not None:
+        settoggle(os.path.join('..', folder, '{:s}.tex'.format(filename)),
+                  toggle[0], not toggle[1])
+
     if git is not None:
         call_output(['git', 'checkout', 'master'])
 
 
-def compile_progress_report(i: int, **kwargs):
+def compile_pr(i: int, **kwargs):
     """ Compile a progress report.
 
     :param i: The number of the progress report.
@@ -274,36 +279,26 @@ def compile_progress_report(i: int, **kwargs):
 
 if __name__ == '__main__':
     if os.path.exists('log2.txt'):
+        if os.path.exists('log.txt'):
+            os.remove('log.txt')  # Prevent complain that log.txt will be overwritten by checkout.
         os.remove("log2.txt")  # Empty log
 
     compile_doc(os.path.join('20171010 Summary', 'phd_summary'))
 
     # Do all the progress reports
     compile_doc(os.path.join('progress_reports', 'template', 'progress_report'))
-    compile_progress_report(1, usebibtex=True)
-    compile_progress_report(2, usebibtex=True)
-    compile_progress_report(3, other=(os.path.join('20171111 IV2018 Ontology', 'root'),
-                                      dict(usebibtex=True)), usebibtex=True)
+    compile_pr(1, usebibtex=True)
+    compile_pr(2, usebibtex=True)
+    compile_pr(3, usebibtex=True,
+               other=(os.path.join('20171111 IV2018 Ontology', 'root'), dict(usebibtex=True)))
     os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
-    """
-    call_output(['git', 'checkout', 'PR4'])
-    settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'),
-              'standalone', False)
-    pdf(os.path.join('..', '20171126 Parametrization'), 'hyperparameter_selection',
-        usebibtex=True, log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report04'), 'progress_report_04', usebibtex=True)
-    settoggle(os.path.join('..', '20171126 Parametrization', 'hyperparameter_selection.tex'),
-              'standalone', True)
-    call_output(['git', 'checkout', 'PR5'])
-    pdf(os.path.join('..', '20171111 IV2018 Ontology'), 'root', usebiber=True, log=False)
-    settoggle(os.path.join('..', '20180207 Similarity', 'scenario_similarity.tex'),
-              'standalone', False)
-    pdf(os.path.join('..', '20180207 Similarity'), 'scenario_similarity', usebiber=True, log=False)
-    pdf(os.path.join('..', 'progress_reports', 'report05'), 'progress_report_05', usebiber=True)
+    compile_pr(4, usebibtex=True,
+               other=(os.path.join('20171126 Parametrization', 'hyperparameter_selection'),
+                      dict(usebibtex=True, toggle=('standalone', False))))
+    compile_pr(5, usebiber=True,
+               other=(os.path.join('20171111 IV2018 Ontology', 'root'), dict(usebiber=True)))
     os.remove(os.path.join('..', '20171111 IV2018 Ontology', 'root.pdf'))  # Renamed to ontology
-    call('git checkout ../"20180207 Similarity"/scenario_similarity.tex')
-    if os.path.exists('log.txt'):
-        os.remove('log.txt')  # To prevent complaining that log.txt will be overwritten by checkout
+    """    
     call_output(['git', 'checkout', 'PR6'])
     settoggle(os.path.join('..', '20180319 Completeness', 'completeness.tex'), 'standalone', False)
     pdf(os.path.join('..', '20180319 Completeness'), 'completeness', usebiber=True, log=False)
