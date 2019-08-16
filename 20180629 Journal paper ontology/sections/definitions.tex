@@ -10,7 +10,7 @@ Next, we will define two important attributes of a scenario: events and activiti
 Lastly, we will present the definition of a scenario category in \cref{sec:scenario category}.
 
 \cbstartc
-In each of the \cref{sec:scenario,sec:event,sec:activity,sec:scenario category}, we start with some background information. Next, we draw conclusions that lead to our proposed definition of the corresponding terms. After proposing a definition, we finish each section with some remarks and implications of our proposed definition.
+In each of the \cref{sec:scenario,sec:event,sec:activity,sec:scenario category}, we start with background information. Next, we draw conclusions that lead to our proposed definition of the corresponding terms. After proposing a definition, we finish each section with remarks and implications of our proposed definition.
 \cbend
 
 
@@ -108,7 +108,7 @@ According to \cref{def:scenario}, a scenario describes, among others, the static
 When it comes to applying this definition in an ontology, it is possible that ``describing'' the static environment is done by simply providing a reference to a static environment. 
 This also holds for the other parts of a scenario. 
 \cbstartd
-A reference could be, for example, the full name of a file that, a pointer pointing to a specific part of the computer memory, or an identifier that addresses a specific entry in a database.
+A reference could be, for example, the full name of a file, a pointer pointing to a specific part of the computer memory, or an identifier that addresses a specific entry in a database.
 \cbstartc 
 The advantage of references is that these parts of the scenario can be exchanged across different scenarios, as these scenarios can use the same references. 
 \cbend
@@ -262,7 +262,8 @@ Introducing the concept of scenario categories brings the following benefits:
 	\item For a human, it is easier to interpret a qualitative description rather than a quantitative description.
 	\item It enables to refer to a group of scenarios that have something in common. Therefore, it enables characterization of the type of scenarios, thus making discussing scenarios much easier.
 	\cbstartd
-	\item It allows for quantifying the completeness of a set of scenarios by quantifying the completeness of scenarios categories and scenarios with the same qualitative description separately. This is easier because scenario categories are discrete by nature whereas scenarios are continuous. See \cite{degelder2019completeness} for more details.
+	\item It allows for quantifying the completeness of a set of scenarios by separately quantifying the completeness of scenario categories and the completeness of scenarios in each category.
+	This is easier because scenario categories are discrete by nature whereas scenarios are continuous. See \cite{degelder2019completeness} for more details.
 	\cbend
 \end{itemize}
 
