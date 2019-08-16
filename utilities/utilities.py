@@ -382,6 +382,8 @@ if __name__ == '__main__':
                 git='OntologyV4lessblue', newname='20190813_V4lessblue', log=False,
                 other=(join('20180629 Journal paper ontology', 'journal_ontology'),
                        dict(usebiber=True)))
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
+                git='OntologyV5submitted', newname='20190816_OntologySubmitted', usebiber=True)
 
     # All other stuff
     compile_doc(join('20171111 IV2018 Ontology', 'ontology'), usebiber=True)
