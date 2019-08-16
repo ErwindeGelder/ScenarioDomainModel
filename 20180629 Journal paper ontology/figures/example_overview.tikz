@@ -616,12 +616,12 @@ table {%
 -4.0472972972973 -2.16741071428571
 -3.26081081081081 -2.13526785714286
 };
-\addplot [semithick, red, forget plot]
+\addplot [semithick, blue, forget plot]
 table {%
 -2.75 -1.4
 4.5 -1.4
 };
-\addplot [semithick, red, forget plot]
+\addplot [semithick, blue, forget plot]
 table {%
 3.75 -0.65
 4.5 -1.4
