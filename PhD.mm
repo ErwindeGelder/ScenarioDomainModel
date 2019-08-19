@@ -51,7 +51,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="2"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="3"/>
 <node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_108958345" CREATED="1551885103957" MODIFIED="1551885128015" HGAP="77" VSHIFT="-1">
 <edge COLOR="#0000ff"/>
 <node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1430726573" CREATED="1551885142947" MODIFIED="1551885148978">
@@ -1500,11 +1500,11 @@
     <pdf_title>Toward a Framework for Highly Automated Vehicle Safety Validation</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Mcity ABC Test" ID="ID_947368401" CREATED="1560761416022" MODIFIED="1560761617396" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/352%20Mcity%20ABC%20Test.pdf">
+<node TEXT="Mcity ABC Test" ID="ID_947368401" CREATED="1560761416022" MODIFIED="1565959369551" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/352%20Mcity%20ABC%20Test.pdf">
 <attribute NAME="key" VALUE="mcity"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Mcity {ABC} Test: A concept to Assess the Safety Performance of Highly Automated Vehicles"/>
-<attribute NAME="authors" VALUE="Pengu, Huei and McCarthy, Roger L."/>
+<attribute NAME="authors" VALUE="Peng, Huei and McCarthy, Roger L."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="3BA127C834689DD87C9FAE6AF27598CF3598CCDC1C711087F395140AE3C5DF3">
     <pdf_title>A Concept to Assess the Safety Performance of Highly Automated Vehicles</pdf_title>
 </pdf_annotation>
@@ -3322,6 +3322,7 @@
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Controlling Access by Tagging Data"/>
 <attribute NAME="authors" VALUE="Vasquez, Juan and Johansson, Jesper"/>
+<attribute NAME="journal" VALUE="Technical Disclosure Commons"/>
 <pdf_annotation type="BOOKMARK" page="1" object_id="4928718262118037431" object_number="60" document_hash="FBB161B2B43E7B698B64A2BC66709C7168FD2C2758B3656FCFC387B0953427">
     <pdf_title>Controlling access by tagging data</pdf_title>
 </pdf_annotation>
@@ -3338,7 +3339,7 @@
 <node TEXT="Capture the musical characteristics of songs associated with a tag" ID="ID_125535651" CREATED="1548296516819" MODIFIED="1548296523076" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/272%20Capture%20the%20musical%20characteristics%20of%20songs%20associated%20with%20a%20tag.pdf">
 <attribute NAME="key" VALUE="ellis2011semantic"/>
 <attribute NAME="year" VALUE="2011"/>
-<attribute NAME="title" VALUE="Semantic Annotation and Retrieval of Music using a Bag of Systems Representation."/>
+<attribute NAME="title" VALUE="Semantic Annotation and Retrieval of Music using a Bag of Systems Representation"/>
 <attribute NAME="authors" VALUE="Ellis, Katherine and Coviello, Emanuele and Lanckriet, Gert RG"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="35BA73DBEE32CD32E24DA45669C9F82558F0D85E74676C99F72B2D5FAB62AF93">
     <pdf_title>SEMANTIC ANNOTATION AND RETRIEVAL OF MUSIC USING A BAG OF SYSTEMS REPRESENTATION</pdf_title>
@@ -4317,6 +4318,78 @@
     <pdf_title>Minimum Prediction Residual Principle Applied to Speech Recognition</pdf_title>
 </pdf_annotation>
 </node>
+</node>
+</node>
+</node>
+<node TEXT="Journals" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1709195997" CREATED="1566199212968" MODIFIED="1566199220596">
+<edge COLOR="#00ff00"/>
+<node TEXT="Transportation Research Part A" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1749173518" CREATED="1566199221583" MODIFIED="1566199232160">
+<node TEXT="Ontologies for Transportation Research: A Survey" ID="ID_153077203" CREATED="1566199237387" MODIFIED="1566199240645" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/362%20Ontologies%20for%20transportation%20research.pdf">
+<attribute NAME="key" VALUE="katsumi2018ontologies"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Ontologies for Transportation Research: A Survey"/>
+<attribute NAME="authors" VALUE="Katsumi, Megan and Fox, Mark"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="643B24626217BD3837C16FFE99C33F24A64793C8D7CB224B58A21E8869C534">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="An Ontology-Based Framework to Support Performance Monitoring in Public Transport Systems" ID="ID_67922479" CREATED="1566199607018" MODIFIED="1566199631782" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/363%20An%20Ontology-Based%20Framework%20to%20Support%20Performance%20Monitoring%20in%20Public%20Transport%20Systems.pdf">
+<attribute NAME="key" VALUE="benvenuti2017ontologybased"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="An Ontology-Based Framework to Support Performance Monitoring in Public Transport Systems"/>
+<attribute NAME="authors" VALUE="Benvenuti, Filippo and Diamantini, Claudia and Potena, Domenico and Storti, Emanuele"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="87B981ADAB814EF81CD2B3BD484D552BBABFFE4A9E1A4D84465F8A2CB930">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="An Ontological Model to Support Communications of Situation-Aware Vehicles" ID="ID_601623948" CREATED="1566199692056" MODIFIED="1566199766012" LINK="http://www.sciencedirect.com/science/article/pii/S0968090X15000509">
+<attribute NAME="key" VALUE="CHOI2015112"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="An Ontological Model to Support Communications of Situation-Aware Vehicles"/>
+<attribute NAME="authors" VALUE="Choi, Seong Kyu"/>
+</node>
+<node TEXT="A Conceptualization of Vehicle Platoons and Platoon Operations" ID="ID_685509512" CREATED="1566202335643" MODIFIED="1566202372491" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/365%20A%20Conceptualization%20of%20Vehicle%20Platoons%20and%20Platoon%20Operations.pdf">
+<attribute NAME="key" VALUE="maiti2017conceptualization"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="A Conceptualization of Vehicle Platoons and Platoon Operations"/>
+<attribute NAME="authors" VALUE="Maiti, Santa and Winter, Stephan and Kulik, Lars"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3892C79579AAA3299DA9280AE1F11DE39FDD5E5247059951D35DF4104C">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Fuzzy Ontology-Based Sentiment Analysis of Transportation and City Feature Reviews for Safe Traveling" ID="ID_1929221168" CREATED="1566203369258" MODIFIED="1566203375906" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/366%20Fuzzy%20Ontology-Based%20Sentiment%20Analysis%20of%20Transportation%20and%20City%20Feature%20Reviews%20for%20Safe%20Traveling.pdf">
+<attribute NAME="key" VALUE="ali2017fuzzy"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Fuzzy Ontology-Based Sentiment Analysis of Transportation and City Feature Reviews for Safe Traveling"/>
+<attribute NAME="authors" VALUE="Ali, Farman and Kwak, Daehan and Khan, Pervez and Islam, S.M. Riazul and Kim, Kye Hyun and Kwak, K. S."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AA7C11A6EF9949AA7337BDA9EA13C890F664B9BEAE4EB8D2DBEDD71EA70DF">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Framework of Simulation-Based Vehicle Safety Performance Assessment of Highway System under Hazardous Driving Conditions" ID="ID_1369093100" CREATED="1566204646009" MODIFIED="1566204650179" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/367%20Framework%20of%20Simulation-Based%20Vehicle%20Safety%20Performance%20Assessment.pdf">
+<attribute NAME="key" VALUE="hou2019framework"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Framework of Simulation-Based Vehicle Safety Performance Assessment of Highway System under Hazardous Driving Conditions"/>
+<attribute NAME="authors" VALUE="Hou, Guangyang and Chen, Suren and Chen, Feng"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E1926E68E8DC1A1B742D38A1C39AE516193537916E9E8EC02C6CC64B718D573">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Evaluating Connected and Autonomous Vehicles using a Hardware-in-the-Loop Testbed and a Living Lab" ID="ID_135795909" CREATED="1566204790875" MODIFIED="1566204801771" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/368%20Evaluating%20Connected%20and%20Autonomous%20Vehicles%20using%20a%20HIL.pdf">
+<attribute NAME="key" VALUE="shao2019evaluating"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Evaluating Connected and Autonomous Vehicles using a Hardware-in-the-Loop Testbed and a Living Lab"/>
+<attribute NAME="authors" VALUE="Shao, Yunli and Mohd Zulkefli, Mohd Azrin and Sun, Zongxuan and Huang, Peter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7B64341FF0DF41CC83BC3A47EF8D07B92D240A94F92A1846F52EA1BA76B79">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 </node>
