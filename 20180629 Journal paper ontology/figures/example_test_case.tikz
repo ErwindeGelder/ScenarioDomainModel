@@ -12,7 +12,7 @@
 	acts: (Pedestrian qualitative, Walking straight)\\
 	tags:};
 
-\node[object, fill=otherclass, below=of scenario category.south](ego){{\bfseries Ego::Actor}\\
+\node[object, fill=otherclass, right=of scenario category.north east, anchor=north west](ego){{\bfseries Ego::Actor}\\
 	actor category: Ego qualitative\\
 	initial states: $\egoeast=\SI{-40}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$, \\
 	\leavevmode\phantom{initial states: }$\egospeed=\SI{8}{\meter\per\second}$\\
@@ -31,7 +31,7 @@
 	duration: \SI{12}{\second} \\
 	tags: };
 
-\node[object, fill=scenario, below=of walking.south](scenario){{\bfseries Ego braking for crossing pedestrian::Scenario}\\
+\node[object, fill=scenario, below=of scenario category.south](scenario){{\bfseries Ego braking for crossing pedestrian::Scenario}\\
 	static environment: Pedestrian crossing\\
 	actors: Ego, Pedestrian\\
 	activities: Pedestrian walking\\

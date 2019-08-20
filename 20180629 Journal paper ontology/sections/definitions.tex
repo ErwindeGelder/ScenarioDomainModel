@@ -98,7 +98,7 @@ Hence, we define a scenario as follows:
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{figures/scenario.pdf}%
+	\includegraphics[width=0.5\linewidth]{figures/scenario.pdf}%
 	\caption{Schematic overview of a scenario. Note that the dynamic environment is not limited to the `vehicle in front', nor does it need to have the `vehicle in front'. Similarly, the static environment is not limited to `road', nor does it need to have `road'.}
 	\label{fig:scenario}
 \end{figure}
@@ -241,9 +241,9 @@ Examples of activities are accelerating, cruising, and decelerating. Here, the a
 % Introduce term scenario category (i.e. qualitative description of scenario)
 \cbstart
 As proposed in \cref{def:scenario}, a scenario in the context of the performance assessment of an AV needs to be quantitative. 
-However, in literature, the term scenario is also used to refer to a collection of scenarios, where this collection of scenarios is semantically described. For example, in \cite{USDoT2007precrashscenarios}, a typology of pre-crash scenarios is proposed. Here, each of the pre-crash scenarios is an abstraction of many quantitative scenarios. Similar studies have been performed to describe scenarios that lead to highway accidents \cite{adaptive2017d73}, car-cyclist accidents \cite{opdencamp2014cats}, and car-pedestrian accidents \cite{lenard2011typical}. In \cite{catapult2017taxonomy}, a taxonomy of scenarios is proposed to qualitatively describe challenging scenarios for automated driving.
+However, in literature, the term scenario is also used to refer to a collection of scenarios, where this collection of scenarios is semantically described. For example, in \cite{USDoT2007precrashscenarios}, a typology of pre-crash scenarios is proposed. Here, each of the pre-crash scenarios is an abstraction of many quantitative scenarios. Similar studies have been performed to describe scenarios that lead to highway accidents \cite{adaptive2017d73}, car-cyclist accidents \cite{opdencamp2014cats}, and car-pedestrian accidents \cite{lenard2014typical}. In \cite{catapult2017taxonomy}, a taxonomy of scenarios is proposed to qualitatively describe challenging scenarios for automated driving.
 
-The aforementioned references \cite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2011typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce a different term to address the qualitative description. We propose to use the term \emph{scenario category} to refer to the qualitative description of a scenario. A qualitative description can be regarded as an abstraction of a quantitative scenario, \cbstartb whereas a quantitative description can be regarded as a concretization of a qualitative description.
+The aforementioned references \cite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2014typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce a different term to address the qualitative description. We propose to use the term \emph{scenario category} to refer to the qualitative description of a scenario. A qualitative description can be regarded as an abstraction of a quantitative scenario, \cbstartb whereas a quantitative description can be regarded as a concretization of a qualitative description.
 \cbend
 %However, each scenario can be abstractly described in words; i.e., a qualitative description of each scenario exists. 
 %Therefore, a scenario class refers to multiple scenarios with a common characteristic \cite{elrofai2018scenario}.
@@ -322,7 +322,7 @@ The use of these tags brings several benefits:
 	\item \cbstartd The tags of a scenario can be helpful in determining which scenario categories the scenario might fall into and which scenario categories it does not fall into.\cbend
 	%\item If a scenario category that only contains known tags is added to the database of scenario categories, it can easily be seen which scenarios fall into this scenario category by only inspecting the tags of the scenarios. Therefore, there is no need to define scenario categories a priori.
 	\item It is easy to select scenarios from a scenario database or a scenario library by using tags or a combination of tags.
-	\item As opposed to the proposed categorization of scenarios in \cite{opdencamp2014cats, USDoT2007precrashscenarios, lenard2011typical, lara2019harmonized}, scenario categories do not need to be mutually exclusive.
+	\item As opposed to the proposed categorization of scenarios in \cite{opdencamp2014cats, USDoT2007precrashscenarios, lenard2014typical, lara2019harmonized}, scenario categories do not need to be mutually exclusive.
 \end{itemize}
 
 There is a balance between having generic scenario categories --- and thus a wide variety among the scenarios belonging to the scenario category --- and having specific scenario categories without much variety among the scenarios in the scenario category. For some systems, one may be interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags can be structured in hierarchical trees \cite{molloy2017dynamic, badger2012dynamic}. The different layers of the trees can be regarded as different abstraction levels \cite{Bonnin2014}. 

@@ -10,7 +10,7 @@
 	type: Pedestrian\\
 	tags: Pedestrian};
 
-\node[object, fill=category, below=of pedestrian qualitative.south](braking){{\bfseries Braking::Activity category}\\
+\node[object, fill=category, right=of ego qualitative.north east, anchor=north west](braking){{\bfseries Braking::Activity category}\\
 	model: Sinusoid, see \cref{eq:sinusoidal}\\
 	state: Speed ($\egospeed$)\\
 	tags: Braking};
@@ -35,7 +35,7 @@
 	state: Position ($\pednorth$)\\
 	tags: Walking straight};
 
-\node[object, fill=category, below=of walking.south](static category){{\bfseries Pedestrian crossing qualitative::Static environment category}\\
+\node[object, fill=category, below=of pedestrian qualitative.south](static category){{\bfseries Pedestrian crossing qualitative::Static environment category}\\
 	description: Straight road with two lanes and a pedestrian crossing\\
 	tags: Non-signalized zebra crossing};
 

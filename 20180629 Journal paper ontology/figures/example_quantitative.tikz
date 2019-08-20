@@ -16,7 +16,7 @@
 	goals: \\
 	tags: };
 
-\node[object, fill=otherclass, below=of pedestrian.south](ego braking){{\bfseries Ego braking::Set activity}\\
+\node[object, fill=otherclass, right=of ego.north east, anchor=north west](ego braking){{\bfseries Ego braking::Set activity}\\
 	activity category: Braking \\
 	parameters: $\amplitude=\SI{-8}{\meter\per\second}$, $\duration=\SI{4}{\second}$, $\egospeedinit=\SI{8}{\meter\per\second}$ \\
 	\attrtstart: $\inittime = \SI{0}{\second}$ \\
@@ -49,7 +49,7 @@
 	duration: \SI{12}{\second} \\
 	tags: };
 
-\node[object, fill=otherclass, below=of pedestrian walking.south](static environment){{\bfseries Pedestrian crossing::Static environment}\\
+\node[object, fill=otherclass, below=of pedestrian.south](static environment){{\bfseries Pedestrian crossing::Static environment}\\
 	static environment category: Pedestrian crossing qualitative\\
 	properties: \{road: \{lanes: 2, lanewidth: \SI{3}{\meter}, \\
 	\leavevmode\phantom{properties: \{road: \{}coordinates: [(-60, 0), (60, 0)]\}, \\

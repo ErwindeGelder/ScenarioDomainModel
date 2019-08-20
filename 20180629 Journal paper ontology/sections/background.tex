@@ -7,9 +7,9 @@ We first explain in \cref{sec:why ontology} why we want to present an ontology f
 
 \subsection{Why an ontology?}
 \label{sec:why ontology}
-According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization'', where a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some purpose''. Ontologies are widely applied in all kinds of research areas, e.g., biology \cite{gkoutos2004mouse}, security-related research \cite{kim2005security}, socio-technical systems \cite{vanDamPhDThesis2009}, and computing \cite{chen2004soupa,chen2003ontology}. Furthermore, ontologies are defined for various applications, e.g., for the profiling of users \cite{golemati2007creating}, for the formalization of human activities \cite{lee2017location}, and for product life cycle management \cite{matsokis2010plm}. An ontology offers the following benefits:
+According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization'', where a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some purpose''. Ontologies are widely applied in all kinds of research areas, e.g., biology \cite{gkoutos2004mouse}, security-related research \cite{kim2005security}, socio-technical systems \cite{vanDamPhDThesis2009}, computing \cite{chen2004soupa, chen2003ontology}, vehicle platooning \cite{maiti2017conceptualization}, system performance \cite{benvenuti2017ontologybased}, and transportation \cite{katsumi2018ontologies}. Furthermore, ontologies are defined for various applications, e.g., for the profiling of users \cite{golemati2007creating}, for the formalization of human activities \cite{lee2017location}, and for product life cycle management \cite{matsokis2010plm}. An ontology offers the following benefits:
 \begin{itemize}
-	\item An ontology is useful for sharing knowledge between people and software agents \cite{vanDamPhDThesis2009, noy2001ontology, musen1992dimensions}. For example, the ontology can be used for communication between different software agents, such as different simulation tools.
+	\item An ontology is useful for sharing knowledge between people and software agents \cite{vanDamPhDThesis2009, noy2001ontology, musen1992dimensions}. For example, the ontology can be used for communication between different software agents, such as different simulation tools \cite{hou2019framework, shao2019evaluating}.
 	\item An ontology can be directly translated into a class structure for an object-oriented software implementation \cite{vanDamPhDThesis2009}. The ontology then specifies the relationships between the different classes and provides information on the properties of a class and the possible values.
 	\item Domain assumptions about terms and definitions are made explicit \cite{noy2001ontology}. 
 	\cbstartd
@@ -67,7 +67,7 @@ According to the IEEE Standard Glossary of Software Engineering Terminology \cit
 \label{sec:model}
 Typically, a dynamical system is modeled using a differential equation of the form $\statedot(\time)=\function_{\parameter}(\state(\time), \inputsystem(\time), \time)$ \cite{norman2011control}, where $\state(\time)$ represents the state vector at time $\time$, $\inputsystem(\time)$ represents an external input vector, and the function $\function_{\parameter}(\cdot)$ is parameterized by $\parameter$. \cbstart Note that, technically speaking, $\state(\cdot)$, $\inputsystem(\cdot)$, $\time$, and $\parameter$ are inputs of the function $\function$, but $\parameter$ is assumed to be constant for a certain time interval. For example, the following first-order model is parameterized by $\parameter=(\parametera,\parameterb)$:
 \begin{equation}
-	\statedot(\time) = \parametera \state(\time) + \parameterb \inputsystem(\time)
+	\statedot(\time) = \parametera \state(\time) + \parameterb \inputsystem(\time).
 \end{equation}
 \cbend
 \vspace{-1em}  % Why is this needed?
