@@ -517,6 +517,16 @@
     <pdf_title>How Much Data are Good Enough? Using Simulation to Determine the Reliability of Estimating POMR for Resource- Constrained Settings</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Implications of Using {GPS}-Based Surveys for Travel Demand Analysis" ID="ID_686217235" CREATED="1566282229981" MODIFIED="1566282234263" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/376%20When%20is%20big%20data%20big%20enough.pdf">
+<attribute NAME="key" VALUE="vij2015when"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="When is Big Data Big Enough? Implications of Using {GPS}-Based Surveys for Travel Demand Analysis"/>
+<attribute NAME="authors" VALUE="Vij, Akshay and Shankari, K."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E0B0FDDE1197B6D9EB9AE222CAA8CC388E5CF4AA37A3E598E2F10AC71E52449">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1534304369005" HGAP="70" VSHIFT="-2" MOVED="1534304332067">
