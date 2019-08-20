@@ -4344,12 +4344,15 @@
     <pdf_title>Transportation Research Part C</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="An Ontological Model to Support Communications of Situation-Aware Vehicles" ID="ID_601623948" CREATED="1566199692056" MODIFIED="1566199766012" LINK="http://www.sciencedirect.com/science/article/pii/S0968090X15000509">
-<attribute NAME="key" VALUE="CHOI2015112"/>
+<node TEXT="An Ontological Model to Support Communications of Situation-Aware Vehicles" ID="ID_601623948" CREATED="1566199692056" MODIFIED="1566263848378" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/364%20An%20Ontological%20Model%20to%20Support%20Communications%20of%20Situation-Aware%20Vehicles.pdf">
+<attribute NAME="key" VALUE="choi2015ontological"/>
 <attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="An Ontological Model to Support Communications of Situation-Aware Vehicles"/>
 <attribute NAME="authors" VALUE="Choi, Seong Kyu"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4139A357BAFC68BD7939B7622883C1C89EE6AA7B508F837A81E882F9B060D61C">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
 </node>
 <node TEXT="A Conceptualization of Vehicle Platoons and Platoon Operations" ID="ID_685509512" CREATED="1566202335643" MODIFIED="1566202372491" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/365%20A%20Conceptualization%20of%20Vehicle%20Platoons%20and%20Platoon%20Operations.pdf">
 <attribute NAME="key" VALUE="maiti2017conceptualization"/>
@@ -4388,6 +4391,76 @@
 <attribute NAME="title" VALUE="Evaluating Connected and Autonomous Vehicles using a Hardware-in-the-Loop Testbed and a Living Lab"/>
 <attribute NAME="authors" VALUE="Shao, Yunli and Mohd Zulkefli, Mohd Azrin and Sun, Zongxuan and Huang, Peter"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="7B64341FF0DF41CC83BC3A47EF8D07B92D240A94F92A1846F52EA1BA76B79">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Experimental Validation of Connected Automated Vehicle Design among Human-Driven Vehicles" ID="ID_1991186226" CREATED="1566204879118" MODIFIED="1566204998153" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/369%20Experimental%20Validation%20of%20Connected%20Automated%20Vehicle%20Design.pdf">
+<attribute NAME="key" VALUE="ge2018experimental"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Experimental Validation of Connected Automated Vehicle Design among Human-Driven Vehicles"/>
+<attribute NAME="authors" VALUE="Ge, Jin I. and Avedisov, Sergei S. and He, Chaozhe R. and Qin, Wubing B. and Sadeghpour, Mehdi and Orosz, G{\&apos;a}bor"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3AA928FC01F4F39985BBFA3BAB566D467B74AAD82225139874A8AC8EF4F">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Development of a Simulation Platform for Safety Impact Analysis Considering Vehicle Dynamics, Sensor Errors, and Communication Latencies: Assessing Cooperative Adaptive Cruise Control under Cyber Attack" ID="ID_1012508236" CREATED="1566206946103" MODIFIED="1566206950257" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/370%20Development%20of%20a%20Simulation%20Platform%20for%20Safety%20Impact%20Analysis.pdf">
+<attribute NAME="key" VALUE="cui2018development"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Development of a Simulation Platform for Safety Impact Analysis Considering Vehicle Dynamics, Sensor Errors, and Communication Latencies: Assessing Cooperative Adaptive Cruise Control under Cyber Attack"/>
+<attribute NAME="authors" VALUE="Cui, Lian and Hu, Jia and Park, B. Brian and Bujanovic, Pavle"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FE8A8A6C6D81DF78CC365AE40FE50FA15EFE7DD3DFCB5DD473FAA03F7DB94">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Cooperative Vehicle-to-Vehicle Active Safety Testing under Challenging Conditions" ID="ID_1913703976" CREATED="1566207169336" MODIFIED="1566207173113" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/371%20Cooperative%20Vehicle-to-Vehicle%20Active%20Safety%20Testing.pdf">
+<attribute NAME="key" VALUE="sepulcre2013cooperative"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Cooperative Vehicle-to-Vehicle Active Safety Testing under Challenging Conditions"/>
+<attribute NAME="authors" VALUE="Sepulcre, M. and Gozalvez, J. and Hernandez, J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FA823C254D1594FEAEA82CD2B3F01B64F97DAB5164F7881E5E8C2751EFE">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Orchestration of Driving Simulator Scenarios Based on Dynamic Actor Preparation and Automated Action Planning" ID="ID_1008054821" CREATED="1566208817504" MODIFIED="1566208882190" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/372%20Orchestration%20of%20Driving%20Simulator%20Scenarios.pdf">
+<attribute NAME="key" VALUE="xiong2015orchestration"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Orchestration of Driving Simulator Scenarios Based on Dynamic Actor Preparation and Automated Action Planning"/>
+<attribute NAME="authors" VALUE="Xiong, Zhitao and Olstam, Johan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D5C55E88682166EACDECE0DFC669AE7A3F2E084C9A33A541F269370693948">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Design and Evaluation of a User-Centered Interface to Model Scenarios on Driving Simulators" ID="ID_690165232" CREATED="1566208999114" MODIFIED="1566209064473" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/373%20Design%20and%20Evaluation%20of%20a%20User-Centered%20Interface%20to%20Model%20Scenarios.pdf">
+<attribute NAME="key" VALUE="bhatti2015design"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Design and Evaluation of a User-Centered Interface to Model Scenarios on Driving Simulators"/>
+<attribute NAME="authors" VALUE="Bhatti, Ghasan and Br{\&apos;e}mond, Roland and Jessel, Jean-Pierre and Dang, Nguyen-Thong and Vienne, Fabrice and Millet, Guillaume"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2CB37FB3C35D2B46DF37D97040274EDA713B8E1AC7C8AB435B57FCC65CD18D5">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A Two-Dimensional Simulation Model for Modelling Turning Vehicles at Mixed-Flow Intersections" ID="ID_350691858" CREATED="1566209453097" MODIFIED="1566209538845" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/374%20A%20Two-Dimensional%20Simulation%20Model.pdf">
+<attribute NAME="key" VALUE="ma2017twodimensional"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="A Two-Dimensional Simulation Model for Modelling Turning Vehicles at Mixed-Flow Intersections"/>
+<attribute NAME="authors" VALUE="Ma, Zian and Sun, Jian and Wang, Yunpeng"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2A3DC848CA92B786316AB7713859CBF5A73C8E3577C5B882466C442DC7D92985">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Don&apos;t Pass the Automated Vehicles!: System Level Impacts of Multi-Vehicle CAV Control Strategies" ID="ID_39992663" CREATED="1566209682629" MODIFIED="1566209715237" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/375%20System%20Level%20Impacts%20of%20Multi-Vehicle.pdf">
+<attribute NAME="key" VALUE="mcconky2019dontpass"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Don&apos;t Pass the Automated Vehicles!: System Level Impacts of Multi-Vehicle {CAV} Control Strategies"/>
+<attribute NAME="authors" VALUE="McConky, Katie and Rungta, Vaibhav"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2D683A932CB89EA077B87CB2CD4A4ACA7BC8602FDA87FCE248E2CFFF3E8E7A">
     <pdf_title>Transportation Research Part C</pdf_title>
 </pdf_annotation>
 </node>
