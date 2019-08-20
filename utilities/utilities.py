@@ -384,6 +384,10 @@ if __name__ == '__main__':
                        dict(usebiber=True)))
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
                 git='OntologyV5submitted', newname='20190816_OntologySubmitted', usebiber=True)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
+                git='OntologyR1', newname='20190820_OntologyR1', usebiber=True)
+    compile_doc(join('20190819 Journal paper ontology cover', 'ontology_cover'), log=False,
+                git='OntologyR1', newname='20190820_OntologyCoverR1', usebiber=True)
 
     # All other stuff
     compile_doc(join('20171111 IV2018 Ontology', 'ontology'), usebiber=True)
@@ -404,6 +408,7 @@ if __name__ == '__main__':
     compile_doc(join('20181217 Completeness paper review', 'cover_letter'))
     compile_doc(join('20190505 Assessment Strategy', 'assessment_strategy'), usebiber=True)
     compile_doc(join('20190725 Scenario Risk', 'scenariorisk'), usebiber=True)
+    compile_doc(join('20190819 Journal paper ontology cover', 'ontology_cover'), usebiber=True)
 
     # Delete folder that has wrong name
     call('rm "{:s}" -r'.format(join('..', '20180639 Journal paper ontology')))
