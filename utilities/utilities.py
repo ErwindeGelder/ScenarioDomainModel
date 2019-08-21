@@ -233,14 +233,13 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None,
     folder = os.path.dirname(os.path.splitext(filename)[0])
     filename = os.path.basename(os.path.splitext(filename)[0])
     if overwrite is False:
-        if newname is not None:
-            if os.path.exists(join('..', folder, '{:s}.pdf'.format(newname))):
-                clean_folder(join('..', folder))
-                return
-        else:
-            if os.path.exists(join('..', folder, '{:s}.pdf'.format(filename))):
-                clean_folder(join('..', folder))
-                return
+        pdfname = '{:s}.pdf'.format(newname if newname is not None else filename)
+        if os.path.exists(join('..', folder, pdfname)):
+            clean_folder(join('..', folder))
+
+            if not os.path.exists(join('..', 'pdfs', pdfname)):
+                copyfile(join('..', folder, pdfname), join('..', 'pdfs', pdfname))
+            return
 
     if git is not None:
         call_output(['git', 'checkout', git])
@@ -265,6 +264,11 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None,
         copyfile(join('..', folder, '{:s}.pdf'.format(filename)),
                  join('..', folder, '{:s}.pdf'.format(newname)))
         os.remove(join('..', folder, '{:s}.pdf'.format(filename)))
+        copyfile(join('..', folder, '{:s}.pdf'.format(newname)),
+                 join('..', 'pdfs', '{:s}.pdf'.format(newname)))
+    else:
+        copyfile(join('..', folder, '{:s}.pdf'.format(filename)),
+                 join('..', 'pdfs', '{:s}.pdf'.format(filename)))
 
     # Reset toggle, otherwise cannot do git checkout
     if toggle is not None:
@@ -301,6 +305,8 @@ if __name__ == '__main__':
         if os.path.exists('log.txt'):
             os.remove('log.txt')  # Prevent complain that log.txt will be overwritten by checkout.
         os.remove("log2.txt")  # Empty log
+    if not os.path.exists(join('..', 'pdfs')):
+        os.mkdir(join('..', 'pdfs'))
 
     compile_doc(join('20171010 Summary', 'phd_summary'))
 
