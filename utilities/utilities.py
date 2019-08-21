@@ -237,7 +237,7 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, add2p
         if os.path.exists(join('..', folder, pdfname)):
             clean_folder(join('..', folder))
 
-            if not os.path.exists(join('..', 'pdfs', pdfname)):
+            if not os.path.exists(join('..', 'pdfs', pdfname)) and add2pdfs:
                 copyfile(join('..', folder, pdfname), join('..', 'pdfs', pdfname))
             return
 
@@ -264,9 +264,10 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, add2p
         copyfile(join('..', folder, '{:s}.pdf'.format(filename)),
                  join('..', folder, '{:s}.pdf'.format(newname)))
         os.remove(join('..', folder, '{:s}.pdf'.format(filename)))
-        copyfile(join('..', folder, '{:s}.pdf'.format(newname)),
-                 join('..', 'pdfs', '{:s}.pdf'.format(newname)))
-    else:
+        if add2pdfs:
+            copyfile(join('..', folder, '{:s}.pdf'.format(newname)),
+                     join('..', 'pdfs', '{:s}.pdf'.format(newname)))
+    elif add2pdfs:
         copyfile(join('..', folder, '{:s}.pdf'.format(filename)),
                  join('..', 'pdfs', '{:s}.pdf'.format(filename)))
 
