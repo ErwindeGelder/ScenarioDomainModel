@@ -218,7 +218,7 @@ def pdf(folder: str, texfile: str, usebibtex: bool = False, usebiber: bool = Fal
     clean_folder(folder)
 
 
-def compile_doc(filename, git=None, other=None, newname=None, toggle=None,
+def compile_doc(filename, git=None, other=None, newname=None, toggle=None, add2pdfs=True,
                 overwrite=ARGS.overwrite, **kwargs):
     """ Compile a document.
 
@@ -248,7 +248,7 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None,
         if not isinstance(other, List):
             other = [other]
         for file, arguments in other:
-            arguments.update(dict(log=False, overwrite=True))
+            arguments.update(dict(log=False, overwrite=True, add2pdfs=False))
             compile_doc(file, **arguments)
 
     if toggle is not None:
@@ -286,7 +286,7 @@ def compile_pr(i: int, **kwargs):
     :param kwargs: All arguments that are parsed to compile_doc.
     """
     filename = join('progress_reports', 'report{:02d}'.format(i),
-                            'progress_report_{:02d}'.format(i))
+                    'progress_report_{:02d}'.format(i))
     kwargs.update(dict(git='PR{:d}'.format(i)))
     compile_doc(filename, **kwargs)
 
@@ -417,4 +417,5 @@ if __name__ == '__main__':
     compile_doc(join('20190819 Journal paper ontology cover', 'ontology_cover'), usebiber=True)
 
     # Delete folder that has wrong name
-    call('rm "{:s}" -r'.format(join('..', '20180639 Journal paper ontology')))
+    if os.path.exists(join('..', '20180639 Journal paper ontology')):
+        call('rm "{:s}" -r'.format(join('..', '20180639 Journal paper ontology')))
