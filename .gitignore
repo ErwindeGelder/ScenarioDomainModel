@@ -16,6 +16,7 @@
 *.bib.bak
 _data/
 */.ipynb_checkpoints/*
+*/*/.ipynb_checkpoints/*
 *.idea*
 *__pycache__*
 */pickles/*
