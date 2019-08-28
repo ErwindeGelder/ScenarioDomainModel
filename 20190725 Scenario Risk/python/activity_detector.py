@@ -4,9 +4,11 @@ Creation data: 2019 08 23
 Author(s): Erwin de Gelder
 
 Modifications:
+2019 08 27 Use Enums instead of strings for activities. Add activities to dataframe.
 """
 
-from typing import List, Tuple, NamedTuple
+from typing import List, Tuple, NamedTuple, Callable
+from enum import Enum
 import pandas as pd
 import numpy as np
 from options import Options
@@ -19,10 +21,33 @@ TargetLines = NamedTuple("LineData", [("left", pd.Series), ("right", pd.Series),
 FromGoal = NamedTuple("FromGoal", [("from_y", float), ("goal_y", float)])
 
 
+class LongitudinalActivity(Enum):
+    """ Possible longitudinal activities. """
+    CRUISING = 'c'
+    DECELERATING = 'd'
+    ACCELERATING = 'a'
+
+
+class LateralActivityHost(Enum):
+    """ Possible lateral activities of the host vehicle. """
+    LANE_FOLLOWING = 'fl'
+    LEFT_LANE_CHANGE = 'l'
+    RIGHT_LANE_CHANGE = 'r'
+
+
+class LateralActivityTarget(Enum):
+    """ Possible lateral activities of a target vehicle. """
+    LANE_FOLLOWING = 'fl'
+    LEFT_CUT_IN = 'li'
+    LEFT_CUT_OUT = 'lo'
+    RIGHT_CUT_IN = 'ri'
+    RIGHT_CUT_OUT = 'ro'
+
+
 class ActivityDetectorParameters(Options):
     """ Parameters that are used by the ActivityDetector. """
     # Fields of the DataFrame.
-    host_long_vel = 'Host_vx'
+    host_lon_vel = 'Host_vx'
     y_left_line = 'Host_line_left_c0'
     y_right_line = 'Host_line_right_c0'
     y_left_line_lin = 'Host_line_left_c1'
@@ -82,13 +107,15 @@ class ActivityDetector:
             return self.data[signal]
         return self.data.at[index, signal]
 
-    def set(self, signal: str, data: np.ndarray) -> None:
+    def set(self, signal: str, data: np.ndarray) -> str:
         """ Set data.
 
         :param signal: The name of the signal.
         :param data: The data that is set.
+        :return: The name of the field of the dataframe (same as signal).
         """
         self.data[signal] = data
+        return signal
 
     def get_t(self, target_index: int, signal: str, index: float = None):
         """ Get target data.
@@ -102,50 +129,88 @@ class ActivityDetector:
         signal = 'Target_{:d}_{:s}'.format(target_index, signal)
         return self.get(signal, index)
 
-    def set_t(self, target_index: int, signal: str, data: np.ndarray) -> None:
+    def set_t(self, target_index: int, signal: str, data: np.ndarray) -> str:
         """ Set target data.
 
         :param target_index: The index of the target (from 0 till 7).
         :param signal: The name of the signal.
         :param data: The data that is set.
+        :return: The name of the field of the dataframe.
         """
         signal = 'Target_{:d}_{:s}'.format(target_index, signal)
         self.data[signal] = data
+        return signal
 
     def get_all_data(self) -> pd.DataFrame:
         """ Return the dataframe. """
         return self.data
 
-    def long_activities_host(self) -> List[Tuple[float, str]]:
+    def set_activities(self, func: Callable, name: str, i_target: int = None) -> None:
+        """ Compute the activities in the dataframe.
+
+        If the activities are already set in the dataframe, these activities
+        will be overwritten.
+        The function must return a list of events. The list of events must be a
+        list of tuples of the form (index, event). Here, index should be an
+        index of the dataframe. The event must be an enumeration that returns a
+        string once the .value method is used.
+
+        :param func: The function that returns the events.
+        :param name: The name of the field in the dataframe.
+        :param i_target: If the activities concern a target vehicle, the number
+                         of the target vehicle must be given.
+        """
+        if i_target is None:
+            events = func()
+        else:
+            events = func(i_target)
+        indices = [index for index, _ in events]
+        activities = [activity.value for _, activity in events]
+        if i_target is None:
+            signal = self.set(name, np.nan)
+        else:
+            signal = self.set_t(i_target, name, np.nan)
+        self.data.loc[indices, signal] = activities
+        self.data[signal].ffill(inplace=True)
+
+    def set_lon_activities_host(self) -> None:
+        """ Compute and add to dataframe the longitudinal activities of host.
+
+        The longitudinal activities of the host vehicle are already set, then
+        these values will be overwritten. The activities are written to
+        "host_longitudinal_activity".
+        """
+        self.set_activities(self.lon_activities_host, "host_longitudinal_activity")
+
+    def lon_activities_host(self) -> List[Tuple[float, LongitudinalActivity]]:
         """ Compute the longitudinal activities of the host vehicle.
 
         The activities accelerating, decelerating, and cruising of the host
         vehicle are detected. However, the events preceding the activities are
         returned. Each event is a tuple of the time and the name of the
-        following activity. The name can be 'a' (accelerating),
-        'd' (decelerating), and 'c' (cruising). The returned time corresponds
-        to an index of the dataframe.
+        following activity. The name can is of type LongitudinalActivity. The
+        returned time corresponds to an index of the dataframe.
 
         :return: A list of events, where each event is a tuple of its time and
                  the name of the following activity.
         """
         # Compute speed increase in next second.
         shift = np.round(self.parms.time_speed_difference * self.frequency).astype(np.int)
-        shifted = self.data[self.parms.host_long_vel].shift(-shift)
+        shifted = self.data[self.parms.host_lon_vel].shift(-shift)
         filtered = shifted.rolling(shift).min()
         self.set('speed_inc', shifted - filtered)
         self.set('speed_inc_start', self.get('speed_inc').copy())
-        self.data.loc[self.data[self.parms.host_long_vel] != filtered, 'speed_inc_start'] = 0
+        self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_inc_start'] = 0
 
         # Compute speed decrease in next second.
-        shifted = self.data[self.parms.host_long_vel].shift(-shift)
+        shifted = self.data[self.parms.host_lon_vel].shift(-shift)
         filtered = shifted.rolling(shift).max()
         self.set('speed_dec', shifted - filtered)
         self.set('speed_dec_start', self.get('speed_dec').copy())
-        self.data.loc[self.data[self.parms.host_long_vel] != filtered, 'speed_dec_start'] = 0
+        self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_dec_start'] = 0
 
-        all_events = [(self.data.index[0], 'c')]
-        event = 'c'
+        event = LongitudinalActivity.CRUISING
+        all_events = [(self.data.index[0], event)]
         cruise_switch = 0
         speed_inc = self.get("speed_inc")
         speed_dec = -self.get("speed_dec")
@@ -154,43 +219,47 @@ class ActivityDetector:
 
             # Potential acceleration signal when in minimum wrt next second, accelerating and not
             # standing still.
-            if event != 'a' and row.speed_inc_start >= self.parms.min_speed_difference and \
-                    getattr(row, self.parms.host_long_vel) >= self.parms.min_activity_speed:
-                i, is_event = self.end_long_activity(row.Index, speed_inc)
+            if event != LongitudinalActivity.ACCELERATING and \
+                    row.speed_inc_start >= self.parms.min_speed_difference and \
+                    getattr(row, self.parms.host_lon_vel) >= self.parms.min_activity_speed:
+                i, is_event = self._end_lon_activity(row.Index, speed_inc)
                 if is_event:
-                    event = 'a'
+                    event = LongitudinalActivity.ACCELERATING
                     all_events.append((row.Index, event))
                     cruise_switch = (i - row.Index) * self.frequency
-            elif event != 'd' and row.speed_dec_start <= -self.parms.min_speed_difference:
-                i, is_event = self.end_long_activity(row.Index, speed_dec)
+            elif event != LongitudinalActivity.DECELERATING and \
+                    row.speed_dec_start <= -self.parms.min_speed_difference:
+                i, is_event = self._end_lon_activity(row.Index, speed_dec)
                 if is_event:
-                    event = 'd'
+                    event = LongitudinalActivity.DECELERATING
                     all_events.append((row.Index, event))
                     cruise_switch = (i - row.Index)*self.frequency
-            elif event != 'c' and cruise_switch <= 0:
-                event = 'c'
+            elif event != LongitudinalActivity.CRUISING and cruise_switch <= 0:
+                event = LongitudinalActivity.CRUISING
                 all_events.append((row.Index, event))
 
         # Remove small cruise activities.
         events = []
         i = 0
         while i < len(all_events):
-            if i == 0 or i == len(all_events)-1 or all_events[i][1] in ['a', 'd'] or \
+            if i == 0 or i == len(all_events)-1 or \
+                    all_events[i][1] in [LongitudinalActivity.ACCELERATING,
+                                         LongitudinalActivity.DECELERATING] or \
                     all_events[i+1][0]-all_events[i][0] >= self.parms.min_cruising_time:
                 events.append(all_events[i])
                 i += 1
             elif all_events[i-1][1] == all_events[i+1][1]:
                 i += 2
             else:
-                xvel = self.data[self.parms.host_long_vel].loc[all_events[i][0]:all_events[i+1][0]]
-                if all_events[i+1][1] == 'a':
-                    events.append((xvel[::-1].idxmin(), 'a'))
+                xvel = self.data[self.parms.host_lon_vel].loc[all_events[i][0]:all_events[i+1][0]]
+                if all_events[i+1][1] == LongitudinalActivity.ACCELERATING:
+                    events.append((xvel[::-1].idxmin(), LongitudinalActivity.ACCELERATING))
                 else:
-                    events.append((xvel[::-1].idxmax(), 'd'))
+                    events.append((xvel[::-1].idxmax(), LongitudinalActivity.DECELERATING))
                 i += 2
         return events
 
-    def end_long_activity(self, i: float, speed_difference: pd.Series):
+    def _end_lon_activity(self, i: float, speed_difference: pd.Series):
         """ Find first index where speed difference is less than significant.
 
         :param i: Index of the start of the potential longitudinal activity.
@@ -210,7 +279,16 @@ class ActivityDetector:
             return 0, False
         return end_i, True
 
-    def lat_activities_host(self) -> List[Tuple[float, str]]:
+    def set_lat_activities_host(self) -> None:
+        """ Compute and add to dataframe the lateral activities of the host.
+
+        The lateral activities of the host vehicle are already set, then these
+        values will be overwritten. The activities are written to
+        "host_lateral_activity".
+        """
+        self.set_activities(self.lat_activities_host, "host_lateral_activity")
+
+    def lat_activities_host(self) -> List[Tuple[float, LateralActivityHost]]:
         """ Compute the lateral activities of the host vehicle.
 
         The following events are possible:
@@ -240,8 +318,8 @@ class ActivityDetector:
         self.set('line_right_y_conf_up', self.get('line_right_y_conf') -
                  self.data['line_right_y_conf'].rolling(window=self.frequency).min())
 
-        events = [(self.data.index[0], 'fl')]
-        event = 'fl'
+        event = LateralActivityHost.LANE_FOLLOWING
+        events = [(self.data.index[0], event)]
 
         previous_y = (self.get(self.parms.y_left_line, self.data.index[0]),
                       self.get(self.parms.y_right_line, self.data.index[0]))
@@ -251,29 +329,30 @@ class ActivityDetector:
         right_dy = self.get('line_right_y_conf_up')
         for row in self.data.itertuples():
             # Left lane change (out of ego lane).
-            if event != 'l' and self.potential_left(getattr(row, self.parms.y_left_line),
-                                                    previous_y[0], row.line_left_y_conf_down):
-                begin_i, lane_change = self.start_lane_change(row.Index, events[-1], left_y,
-                                                              left_dy)
+            if event != LateralActivityHost.LEFT_LANE_CHANGE and \
+                    self._potential_left(getattr(row, self.parms.y_left_line),
+                                         previous_y[0], row.line_left_y_conf_down):
+                begin_i, lane_change = self._start_lane_change(row.Index, events[-1], left_y,
+                                                               left_dy)
                 if lane_change:
-                    event = 'l'
+                    event = LateralActivityHost.LEFT_LANE_CHANGE
                     events.append((begin_i, event))
 
             # Right lane change (out of ego lane)
-            elif event != 'r' and self.potential_right(getattr(row, self.parms.y_right_line),
-                                                       previous_y[1],
-                                                       row.line_right_y_conf_up):
-                begin_i, lane_change = self.start_lane_change(row.Index, events[-1], -right_y,
-                                                              -right_dy)
+            elif event != LateralActivityHost.RIGHT_LANE_CHANGE and \
+                    self._potential_right(getattr(row, self.parms.y_right_line), previous_y[1],
+                                          row.line_right_y_conf_up):
+                begin_i, lane_change = self._start_lane_change(row.Index, events[-1], -right_y,
+                                                               -right_dy)
                 if lane_change:
-                    event = 'r'
+                    event = LateralActivityHost.RIGHT_LANE_CHANGE
                     events.append((begin_i, event))
 
             # Follow-Lane
-            elif event != 'fl' and row.line_center_y_conf != 0 and \
+            elif event != LateralActivityHost.LANE_FOLLOWING and row.line_center_y_conf != 0 and \
                     row.line_right_y_conf_up < self.parms.lane_conf_threshold and \
                     row.line_left_y_conf_down > -self.parms.lane_conf_threshold:
-                event = 'fl'
+                event = LateralActivityHost.LANE_FOLLOWING
                 events.append((row.Index, event))
 
             # Update the previous positions
@@ -281,8 +360,8 @@ class ActivityDetector:
                           getattr(row, self.parms.y_right_line))
         return events
 
-    def potential_left(self, current_y: float, previous_y: float,
-                       lateral_difference: float) -> bool:
+    def _potential_left(self, current_y: float, previous_y: float,
+                        lateral_difference: float) -> bool:
         """ Determine whether there is a potential left lane change of the host.
 
         If any of the following is true, a False is returned.
@@ -312,8 +391,8 @@ class ActivityDetector:
             return False
         return True
 
-    def potential_right(self, current_y: float, previous_y: float,
-                        lateral_difference: float) -> bool:
+    def _potential_right(self, current_y: float, previous_y: float,
+                         lateral_difference: float) -> bool:
         """ Determine whether there is a potential right lane change of host.
 
         If any of the following is true, a False is returned.
@@ -331,10 +410,11 @@ class ActivityDetector:
                                    lane compared to "time_speed_difference" ago.
         :return: A boolean whether there is a potential lane change.
         """
-        return self.potential_left(-current_y, -previous_y, -lateral_difference)
+        return self._potential_left(-current_y, -previous_y, -lateral_difference)
 
-    def start_lane_change(self, i: float, event: Tuple[float, str], lateral_distance: pd.Series,
-                          lateral_difference: pd.Series) -> Tuple[float, bool]:
+    def _start_lane_change(self, i: float, event: Tuple[float, LateralActivityHost],
+                           lateral_distance: pd.Series, lateral_difference: pd.Series) \
+            -> Tuple[float, bool]:
         """ Compute the start of a potential lane change.
 
         If there is no lane change found, (0, False) will be returned.
@@ -364,12 +444,24 @@ class ActivityDetector:
 
         return begin_i, True
 
-    def long_activities_target_i(self, i: int) -> List[Tuple[float, str]]:
+    def set_target_activities(self, i: int) -> None:
+        """ Set the lateral and longitudinal activities of a target.
+
+        The activities of the target vehicle are already set, then these values
+        will be overwritten. The activities are written to
+        "Target_i_longitudinal_activity" and "Target_i_lateral_activity".
+
+        :param i: The index of the target vehicle.
+        """
+        self.set_activities(self.lon_activities_target_i, "longitudinal_activity", i_target=i)
+        self.set_activities(self.lat_activities_target_i, "lateral_activity", i_target=i)
+
+    def lon_activities_target_i(self, i: int) -> List[Tuple[float, LongitudinalActivity]]:
         """ Compute the longitudinal activities of the i-th target vehicle.
 
-        The activities cruising ("c"), decelerating ("d"), and accelerating
-        ("a") are detected. To do this, a new ActivityDetector is constructed
-        with the target vehicle as "Host" vehicle.
+        The activities cruising, decelerating, and accelerating are detected.
+        To do this, a new ActivityDetector is constructed with the target
+        vehicle as "Host" vehicle.
         Automatically, the same thresholds are used as for the host vehicle.
 
         :param i: Index of the target.
@@ -377,12 +469,12 @@ class ActivityDetector:
                  the name of the following activity.
         """
         parameters = self.parms
-        parameters.host_long_vel = "Target_{:d}_{:s}".format(i, self.parms.v_target)
-        target_df = self.data[[parameters.host_long_vel, 'Time']].copy()
+        parameters.host_lon_vel = "Target_{:d}_{:s}".format(i, self.parms.v_target)
+        target_df = self.data[[parameters.host_lon_vel, 'Time']].copy()
         activity_detector = ActivityDetector(target_df, parameters=parameters)
-        return activity_detector.long_activities_host()
+        return activity_detector.lon_activities_host()
 
-    def line_info_target_i(self, i: int):
+    def _line_info_target_i(self, i: int):
         """ Compute the lateral activities of the i-th target vehicle.
 
         :param i: Index of the target.
@@ -422,7 +514,7 @@ class ActivityDetector:
                    (self.get_t(i, 'line_right') -
                     self.get_t(i, 'line_right').rolling(window=self.frequency).min()))
 
-    def lat_activities_target_i(self, i: int) -> List[Tuple[float, str]]:
+    def lat_activities_target_i(self, i: int) -> List[Tuple[float, LateralActivityTarget]]:
         """ Compute the lateral activities of the i-th target vehicle.
 
         The following events are possible:
@@ -438,9 +530,9 @@ class ActivityDetector:
         :return: A list of events, where each event is a tuple of its time and
                  the name of the following activity.
         """
-        self.line_info_target_i(i)
+        self._line_info_target_i(i)
 
-        event = 'fl'
+        event = LateralActivityTarget.LANE_FOLLOWING
         prev_index = self.data.index[0]
         events = [(prev_index, event)]
         follow_lane_switch = 0
@@ -459,58 +551,63 @@ class ActivityDetector:
                      get_from_row(row, 'line_right', i) < get_from_row(row, 'line_left', i))
 
             # Left lane change out of ego lane: cross left_y down.
-            if valid and event != 'lo' and event != 'li' and \
-                    self.potential_left(get_from_row(row, 'line_left', i), lines.left[prev_index],
-                                        get_from_row(row, 'line_left_down', i)):
+            if valid and event not in [LateralActivityTarget.LEFT_CUT_IN,
+                                       LateralActivityTarget.LEFT_CUT_OUT] and \
+                    self._potential_left(get_from_row(row, 'line_left', i), lines.left[prev_index],
+                                         get_from_row(row, 'line_left_down', i)):
                 lineinfo = LineData(distance=lines.left, difference=lines.left_down)
-                begin_j, end_j, lane_change = self.start_end_target(i, row, lineinfo, events[-1])
+                begin_j, end_j, lane_change = self._start_end_target(i, row, lineinfo, events[-1])
                 if lane_change:
-                    event = 'lo'
+                    event = LateralActivityTarget.LEFT_CUT_OUT
                     events.append((begin_j, event))
                     follow_lane_switch = (end_j - row.Index)*self.frequency
 
             # Left lane change into ego lane: cross right_y down.
-            elif valid and event != 'li' and event != 'lo' and \
-                    self.potential_left(get_from_row(row, 'line_right', i), lines.right[prev_index],
-                                        get_from_row(row, 'line_right_down', i)):
+            elif valid and event not in [LateralActivityTarget.LEFT_CUT_IN,
+                                         LateralActivityTarget.LEFT_CUT_OUT] and \
+                    self._potential_left(get_from_row(row, 'line_right', i),
+                                         lines.right[prev_index],
+                                         get_from_row(row, 'line_right_down', i)):
                 lineinfo = LineData(distance=lines.right, difference=lines.right_down)
-                begin_j, end_j, lane_change = self.start_end_target(i, row, lineinfo, events[-1])
+                begin_j, end_j, lane_change = self._start_end_target(i, row, lineinfo, events[-1])
                 if lane_change:
-                    event = 'li'
+                    event = LateralActivityTarget.LEFT_CUT_IN
                     events.append((begin_j, event))
                     follow_lane_switch = (end_j - row.Index)*self.frequency
 
             # Right lane change into ego lane: cross left_y up.
-            elif valid and event != 'ri' and event != 'ro' and \
-                    self.potential_right(get_from_row(row, 'line_left', i), lines.left[prev_index],
-                                         get_from_row(row, 'line_left_up', i)):
+            elif valid and event not in [LateralActivityTarget.RIGHT_CUT_IN,
+                                         LateralActivityTarget.RIGHT_CUT_OUT] and \
+                    self._potential_right(get_from_row(row, 'line_left', i), lines.left[prev_index],
+                                          get_from_row(row, 'line_left_up', i)):
                 lineinfo = LineData(distance=-lines.left, difference=lines.left_up)
-                begin_j, end_j, lane_change = self.start_end_target(i, row, lineinfo, events[-1])
+                begin_j, end_j, lane_change = self._start_end_target(i, row, lineinfo, events[-1])
                 if lane_change:
-                    event = 'ri'
+                    event = LateralActivityTarget.RIGHT_CUT_IN
                     events.append((begin_j, event))
                     follow_lane_switch = (end_j - row.Index)*self.frequency
 
             # Right lane change out of ego lane: cross right_y up.
-            elif valid and event != 'ro' and event != 'ri' and \
-                    self.potential_right(get_from_row(row, 'line_right', i),
-                                         lines.right[prev_index],
-                                         get_from_row(row, 'line_right_up', i)):
+            elif valid and event not in [LateralActivityTarget.RIGHT_CUT_IN,
+                                         LateralActivityTarget.RIGHT_CUT_OUT] and \
+                    self._potential_right(get_from_row(row, 'line_right', i),
+                                          lines.right[prev_index],
+                                          get_from_row(row, 'line_right_up', i)):
                 lineinfo = LineData(distance=-lines.right, difference=lines.right_up)
-                begin_j, end_j, lane_change = self.start_end_target(i, row, lineinfo, events[-1])
+                begin_j, end_j, lane_change = self._start_end_target(i, row, lineinfo, events[-1])
                 if lane_change:
-                    event = 'ro'
+                    event = LateralActivityTarget.RIGHT_CUT_OUT
                     events.append((begin_j, event))
                     follow_lane_switch = (end_j - row.Index)*self.frequency
 
-            elif event != 'fl' and follow_lane_switch <= 0:
-                event = 'fl'
+            elif event != LateralActivityTarget.LANE_FOLLOWING and follow_lane_switch <= 0:
+                event = LateralActivityTarget.LANE_FOLLOWING
                 events.append((row.Index, event))
             prev_index = row.Index
         return events
 
-    def start_lc_target(self, j: float, fromgoal: FromGoal, lineinfo: LineData,
-                        event: Tuple[float, str]) -> Tuple[float, bool]:
+    def _start_lc_target(self, j: float, fromgoal: FromGoal, lineinfo: LineData,
+                         event: Tuple[float, LateralActivityTarget]) -> Tuple[float, bool]:
         """ Compute the starting index of a potential lane change.
 
         :param j: The index at which the potential lane change is found.
@@ -545,7 +642,7 @@ class ActivityDetector:
             return begin_j, True
         return 0, False
 
-    def end_lc_target(self, j, fromgoal, line_y):
+    def _end_lc_target(self, j: int, fromgoal: FromGoal, line_y):
         """ Compute the end index of a potential lane change.
 
         :param j: The index at which the potential lane change is found.
@@ -565,8 +662,8 @@ class ActivityDetector:
                 break
         return 0, False
 
-    def start_end_target(self, i: int, row, lineinfo: LineData,
-                         event: Tuple[float, str]) -> Tuple[float, float, bool]:
+    def _start_end_target(self, i: int, row, lineinfo: LineData,
+                          event: Tuple[float, LateralActivityTarget]) -> Tuple[float, float, bool]:
         """ Compute the start and end of a potential lane change of a target.
 
         If the potential lane change is not a lane change, (0, 0, False) will be
@@ -584,15 +681,15 @@ class ActivityDetector:
         :return: The starting index, the end index, and a boolean whether there
                  is a lane change.
         """
-        fromgoal = self.goal_left_lane_change(get_from_row(row, 'line_left', i),
-                                              get_from_row(row, 'line_right', i))
-        begin_j, lane_change = self.start_lc_target(row.Index, fromgoal, lineinfo, event)
+        fromgoal = self._goal_left_lane_change(get_from_row(row, 'line_left', i),
+                                               get_from_row(row, 'line_right', i))
+        begin_j, lane_change = self._start_lc_target(row.Index, fromgoal, lineinfo, event)
         if lane_change:
-            end_j, lane_change = self.end_lc_target(row.Index, fromgoal, lineinfo.distance)
+            end_j, lane_change = self._end_lc_target(row.Index, fromgoal, lineinfo.distance)
             return begin_j, end_j, lane_change
         return 0, 0, False
 
-    def goal_left_lane_change(self, left_y: float, right_y: float) -> FromGoal:
+    def _goal_left_lane_change(self, left_y: float, right_y: float) -> FromGoal:
         """ Compute the goal and the starting position of a left lane change.
 
         :param left_y: Distance toward left line.
@@ -605,7 +702,7 @@ class ActivityDetector:
         return FromGoal(from_y=from_y, goal_y=goal_y)
 
 
-def get_from_row(row, signal, target_index: int = None) -> float:
+def get_from_row(row, signal, target_index: int = None):
     """ Get data entry from a row of data.
 
     :param row: Row of a data. Should be a named tuple, obtained via
