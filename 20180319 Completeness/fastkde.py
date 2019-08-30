@@ -16,15 +16,16 @@ To do
 
 Modifications
 -------------
-08 Aug 2018 Add functionality for adding data.
-10 Aug 2018 Fixed mistakes for computing one-leave-out score.
-27 Sep 2018 Several improvements. Score now computed with only the first n datapoints. Speed
-    improved.
-01 Oct 2018 Some comments added.
-09 Oct 2018 Added computation of gradient and laplacian of the KDE.
-13 Oct 2018 Changed computation of scores and laplacian such that less memory is used.
-06 Nov 2018 Improve PEP8 compliancy.
-07 Nov 2018 Add description of class.
+2018 08 08 Add functionality for adding data.
+2018 08 10 Fixed mistakes for computing one-leave-out score.
+2018 09 27 Several improvements. Score now computed with only the first n datapoints. Speed
+           improved.
+2018 10 01 Some comments added.
+2018 10 09 Added computation of gradient and laplacian of the KDE.
+2018 10 13 Changed computation of scores and laplacian such that less memory is used.
+2018 11 06 Improve PEP8 compliancy.
+2018 11 07 Add description of class.
+2019 08 30 Change type hinting: np.array should be np.ndarray.
 
 """
 
@@ -62,7 +63,7 @@ class KDE(object):
             muk(float): integral [ kernel(x)^2 ]. Since Gaussian kernel is used: 1/(2pi)^(d/2).
             invgr(float): Inverse of Golden Ratio (used for Golden Section Search).
             invgr2(float): Inverse of squared Golden Ratio (used for Golden Section Search).
-        data_helpers(dict): Several np.arrays that are used for the various methods. The
+        data_helpers(dict): Several np.ndarrays that are used for the various methods. The
             following variables are included:
             mindists(np.ndarray): Negative (minus) of euclidean distances.
             data_score_samples(np.ndarray): Scores of each sample of data.
@@ -91,7 +92,7 @@ class KDE(object):
         # self.xhist, self.yhist, self.fft = None, None, None  # Not used at the moment
         self.fit(data)
 
-    def fit(self, data: np.array) -> None:
+    def fit(self, data: np.ndarray) -> None:
         """ Fit the data
 
         The data is stored. Furthermore, some calculations are done:
@@ -136,7 +137,7 @@ class KDE(object):
         self.constants['const_score'] = (-ndatapoints * self.constants['d'] / 2 *
                                          np.log(2 * np.pi) - ndatapoints * np.log(ndatapoints - 1))
 
-    def add_data(self, newdata: np.array) -> None:
+    def add_data(self, newdata: np.ndarray) -> None:
         """ Add extra data
 
         The extra data is stored. The number of datapoints is updated. In case the matrix with
@@ -275,7 +276,7 @@ class KDE(object):
         """
         self.bandwidth = bandwidth
 
-    def set_score_samples(self, xdata: np.array, compute_difference: bool = False) -> None:
+    def set_score_samples(self, xdata: np.ndarray, compute_difference: bool = False) -> None:
         """ Set the data that is to be used to compute the score samples
 
         By default, the difference is not computed, because this requires a lot of memory.
@@ -316,7 +317,7 @@ class KDE(object):
             for i, xdatam in enumerate(self.data_helpers['data_score_samples']):
                 self.data_helpers['difference'][:, i, :] = self.data - xdatam
 
-    def score_samples(self, xdata: np.array = None) -> np.array:
+    def score_samples(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Return the scores, i.e., the value of the pdf, for all the datapoints in x
 
         Note that this function will return an error when the bandwidth is not defined. The
@@ -352,7 +353,7 @@ class KDE(object):
                                                               xdata.shape[-1]))))
         return scores.reshape(newshape)
 
-    def _logscore_samples(self, xdata: np.array = None) -> np.array:
+    def _logscore_samples(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Return the scores, i.e., the value of the pdf, for all the datapoints in x.
         It is assumed that x is in the correct format, i.e., 2D array.
         NOTE: this function returns the LOG of the scores!!!
@@ -383,13 +384,13 @@ class KDE(object):
             self.constants['d']*np.log(self.bandwidth)
         return const + np.log(sum_kernel)
 
-    def gradient_samples(self, xdata: np.array = None) -> np.array:
+    def gradient_samples(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Compute gradient of the KDE
 
         If no data is given, it is assumed that the data is already set by set_score_samples().
         Therefore, the euclidean distance will not be computed.
 
-        :param xdata: np.array with the datapoints.
+        :param xdata: np.ndarray with the datapoints.
         :return: gradient of the KDE
         """
         if xdata is None:
@@ -414,7 +415,7 @@ class KDE(object):
         gradient = self._gradient_samples(xdata.reshape((np.prod(newshape[:-1]), xdata.shape[-1])))
         return gradient.reshape(newshape)
 
-    def _gradient_samples(self, xdata: np.array = None) -> np.array:
+    def _gradient_samples(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Compute gradient of the KDE
 
         It is assumed that the data is already in the right format (i.e., a 2D array). If not, use
@@ -452,7 +453,7 @@ class KDE(object):
             (2 * np.pi) ** (self.constants['d'] / 2)
         return const * summation
 
-    def laplacian(self, xdata: np.array = None) -> np.array:
+    def laplacian(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Compute the Laplacian of the KDE
 
         If no data is given, it is assumed that the data is already set by set_score_samples().
@@ -483,7 +484,7 @@ class KDE(object):
         laplacian = self._laplacian(xdata.reshape((np.prod(newshape), xdata.shape[-1])))
         return laplacian.reshape(newshape)
 
-    def _laplacian(self, xdata: np.array = None) -> np.array:
+    def _laplacian(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Compute the Laplacian of the KDE
 
         It is assumed that the data is already in the right format (i.e., a 2D array). If not, use
@@ -515,7 +516,7 @@ class KDE(object):
                                 self.bandwidth ** 2)
         return laplacian / self.constants['n']
 
-    def confidence_interval(self, xdata: np.array, confidence: float = 0.95):
+    def confidence_interval(self, xdata: np.ndarray, confidence: float = 0.95):
         """ Determine the confidence interval
 
         :param xdata: Input data
