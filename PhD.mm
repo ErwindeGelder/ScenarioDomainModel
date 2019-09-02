@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -51,8 +51,8 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="3"/>
-<node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_108958345" CREATED="1551885103957" MODIFIED="1551885128015" HGAP="77" VSHIFT="-1">
+<hook NAME="AutomaticEdgeColor" COUNTER="4"/>
+<node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_108958345" CREATED="1551885103957" MODIFIED="1551885128015" HGAP="77" VSHIFT="-1">
 <edge COLOR="#0000ff"/>
 <node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1430726573" CREATED="1551885142947" MODIFIED="1551885148978">
 <node TEXT="Local outlier detection reconsidered" ID="ID_229112618" CREATED="1551885154549" MODIFIED="1551885471840" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/285%20Local%20outlier%20detection%20reconsidered.pdf">
@@ -107,7 +107,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1534304349580" HGAP="80" VSHIFT="-10" MOVED="1534304305826">
+<node TEXT="Parametrization" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_945219929" CREATED="1515764417163" MODIFIED="1534304349580" HGAP="80" VSHIFT="-10" MOVED="1534304305826">
 <edge COLOR="#7c7c00"/>
 <node TEXT="Curve fitting" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1288097973" CREATED="1516866158372" MODIFIED="1516866168325">
 <node TEXT="General" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1015917001" CREATED="1516866172981" MODIFIED="1516866180627">
@@ -182,7 +182,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6" MOVED="1534304323924">
+<node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6" MOVED="1534304323924">
 <edge COLOR="#ff0000"/>
 <node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1539230742839" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
 <attribute NAME="key" VALUE="yang2012estimating"/>
@@ -529,7 +529,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1534304369005" HGAP="70" VSHIFT="-2" MOVED="1534304332067">
+<node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1534304369005" HGAP="70" VSHIFT="-2" MOVED="1534304332067">
 <edge COLOR="#007c7c"/>
 <node TEXT="General literature" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1488737728" CREATED="1513736407885" MODIFIED="1513736423051">
 <node TEXT="Pattern Recognition and Machine Learning" ID="ID_567315421" CREATED="1513736426477" MODIFIED="1534391906908" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/003%20Bishop%20-%20Pattern%20Recognition%20and%20Machine%20Learning.pdf">
@@ -604,7 +604,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
+<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
 <node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1534391906453" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
@@ -1222,7 +1222,7 @@
 <node TEXT="The notion of controllability" ID="ID_397801534" CREATED="1552041268238" MODIFIED="1552041403794" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/296%20The%20notion%20of%20controllability.pdf" MOVED="1556289652973">
 <attribute NAME="key" VALUE="monkhouse2015notion"/>
 <attribute NAME="year" VALUE="2015"/>
-<attribute NAME="title" VALUE="The Notion of Controllability in an Autonmous Vehicle Context"/>
+<attribute NAME="title" VALUE="The Notion of Controllability in an Autonomous Vehicle Context"/>
 <attribute NAME="authors" VALUE="Monkhouse, Helen and Habli, Ibrahim and Mcdermid, John"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="29F5A3732B6D4BACD71CFC45970BB85C6F7A472EDFE12506CB5603BF5E1D96C">
     <pdf_title>The Notion of Controllability in an autonmous vehicle context</pdf_title>
@@ -1694,7 +1694,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1534304355670" HGAP="70" VSHIFT="-2" MOVED="1534304246551">
+<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1534304355670" HGAP="70" VSHIFT="-2" MOVED="1534304246551">
 <edge COLOR="#ffff00"/>
 <node TEXT="Overpass" ID="ID_522788377" CREATED="1511518432024" MODIFIED="1524721797370">
 <attribute NAME="key" VALUE="overpass"/>
@@ -1754,7 +1754,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1534304359676" HGAP="71" VSHIFT="-19">
+<node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1534304359676" HGAP="71" VSHIFT="-19">
 <edge COLOR="#ff0000"/>
 <node TEXT="The SHRP 2 Naturalistic Driving Study" ID="ID_682322192" CREATED="1510642780423" MODIFIED="1534391955265" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/053%20The%20SHRP%202%20Naturalistic%20Driving%20Study.pdf">
 <attribute NAME="key" VALUE="campbell2012shrp"/>
@@ -1814,7 +1814,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Master Thesises" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1200522400" CREATED="1536234494309" MODIFIED="1536234527959" HGAP="78" VSHIFT="-4">
+<node TEXT="Master Thesises" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_1200522400" CREATED="1536234494309" MODIFIED="1536234527959" HGAP="78" VSHIFT="-4">
 <edge COLOR="#ff0000"/>
 <node TEXT="Peter Markovic - Event Detection" ID="ID_12958517" CREATED="1536234529817" MODIFIED="1536234633824" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/238%20Master-Thesis-Peter-Markotic-Event-Detection.pdf">
 <attribute NAME="key" VALUE="markotic2018pattern"/>
@@ -1825,7 +1825,7 @@
     <pdf_title>Master Thesis</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Denis Pogosov - Prediction of Road User Behavior" ID="ID_723568225" CREATED="1536254227737" MODIFIED="1536254239556" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/239%20Master%20Thesis%20Denis%20Pogosov%20-%20Prediction%20of%20Road%20User%20Behavior.pdf">
+<node TEXT="Denis Pogosov - Prediction of Road User Behavior" ID="ID_723568225" CREATED="1536254227737" MODIFIED="1567057051229" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/239%20Master%20Thesis%20Denis%20Pogosov%20-%20Prediction%20of%20Road%20User%20Behavior.pdf">
 <attribute NAME="key" VALUE="pogosov2018prediction"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Prediction of Road User Behavior"/>
@@ -1953,7 +1953,129 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
+<node TEXT="Risk" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_398321502" CREATED="1567057870946" MODIFIED="1567057884205">
+<edge COLOR="#ff00ff"/>
+<node TEXT="Risk estimation techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_297184787" CREATED="1567057885210" MODIFIED="1567057910111">
+<node TEXT="FMEA (Failure Mode and Effect Analysis)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1704503303" CREATED="1567057911201" MODIFIED="1567057948898">
+<node TEXT="Failure Mode and Effect Analysis: FMEA from Theory to Execution" ID="ID_1972444910" CREATED="1567058951026" MODIFIED="1567058958827">
+<attribute NAME="key" VALUE="stamatis2003failure"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="Failure Mode and Effect Analysis: {FMEA} from Theory to Execution"/>
+<attribute NAME="authors" VALUE="Stamatis, Diomidis H"/>
+</node>
+<node TEXT="FMEA on intelligent vehicles" ID="ID_1456426217" CREATED="1567059617974" MODIFIED="1567059684243" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/379%20FMEA%20on%20intelligent%20vehicles.pdf">
+<attribute NAME="key" VALUE="tokody2017overview"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="An Overview of Autonomous Intelligent Vehicle Systems"/>
+<attribute NAME="authors" VALUE="Tokody, Daniel and Mezei, Imre J{\&apos;a}nos and Schuster, Gy{\&quot;o}rgy"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="63BC8526F922AEB719451AD53DF4A1B508FF12E20C82A46F2EAB589661B0">
+    <pdf_title>An Overview of Autonomous Intelligent Vehicle Systems</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="SWIFT (Structured What If Technique)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1122963818" CREATED="1567057940658" MODIFIED="1567057948890">
+<node TEXT="Beyond FMEA: the structured what-if technique (SWIFT) (ORIGINAL)" ID="ID_844612651" CREATED="1567058089690" MODIFIED="1567058296212" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/377%20Beyond%20FMEA%20The%20Structured%20What%20If%20Technique.pdf">
+<attribute NAME="key" VALUE="card2012beyond"/>
+<attribute NAME="journal" VALUE="Journal of Healthcare Risk Management"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Beyond {FMEA}: The Structured What-If Technique ({SWIFT})"/>
+<attribute NAME="authors" VALUE="Card, Alan J and Ward, James R and Clarkson, P John"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D57C54E4486AF1E59E54C99A374CF7BDD7DE3A3B6F4CDFE2E13E2F3FA7C97">
+    <pdf_title>Beyond FMEA: The Structured What-If Technique (SWIFT)</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Comparing FMEA and SWIFT" ID="ID_163018577" CREATED="1567058577105" MODIFIED="1567058735381" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/378%20Comparing%20FMEA%20and%20SWIFT.pdf">
+<attribute NAME="key" VALUE="potts2014assessing"/>
+<attribute NAME="journal" VALUE="BMC Health Services Research"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Assessing the Validity of Prospective Hazard Analysis Methods: A Comparison of Two Techniques"/>
+<attribute NAME="authors" VALUE="Potts, Henry W. W. and Anderson, Janet E. and Colligan, Lacey and Leach, Paul and Davis, Sheena and Berman, Jon"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6CF8A68CCD6576ECDE5A069BDB487824A81B3EF40712C1829BC3F266249E7">
+    <pdf_title>Assessing the validity of prospective hazard analysis methods: a comparison of two techniques</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="HAZOP (Hazard and Operability)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_152274346" CREATED="1567058748043" MODIFIED="1567058794793">
+<node TEXT="Hazard and operability (HAZOP) analysis: A literature review" ID="ID_1656852573" CREATED="1567064706027" MODIFIED="1567064822814" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/380%20Hazard%20and%20operability%20(HAZOP)%20analysis.pdf">
+<attribute NAME="key" VALUE="dunjo2010hazard"/>
+<attribute NAME="journal" VALUE="Journal of Hazardous Materials"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Hazard and Operability ({HAZOP}) Analysis. A Literature Review"/>
+<attribute NAME="authors" VALUE="Dunj{\&apos;o}, Jordi and Fthenakis, Vasilis and V{\&apos;i}lchez, Juan A. and Arnaldos, Josep"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E7A5EDAE18E0B5ECE86F819934E9DF44477A3212A925AEFF4596FF0EF65A338">
+    <pdf_title>Journal of Hazardous Materials</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="HAZOP - Past and Future" ID="ID_644855023" CREATED="1567064898844" MODIFIED="1567064989593" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/381%20HAZOP%20-%20Past%20and%20Future.pdf">
+<attribute NAME="key" VALUE="kletz1997hazop"/>
+<attribute NAME="journal" VALUE="Reliability Engineering &amp; System Safety"/>
+<attribute NAME="year" VALUE="1997"/>
+<attribute NAME="title" VALUE="{HAZOP} --- Past and Future"/>
+<attribute NAME="authors" VALUE="Kletz, Trevor A."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="50B071ACF4E2D9EE8D5F6814CC1F85AA8E94D36F729FE944335EBA4CE3DB842">
+    <pdf_title>Hazop--past and future</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="SHERPA (Systematic Human Error Reduction and Prediction Approach)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_736920437" CREATED="1567058760749" MODIFIED="1567058794805"/>
+<node TEXT="THERP (Technique for Human Error Rate Prediction)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_716268737" CREATED="1567058779649" MODIFIED="1567058794818"/>
+<node TEXT="STPA (Systems-Theoretic Processes Analysis)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_951904788" CREATED="1567065037087" MODIFIED="1567065050024">
+<node TEXT="STPA Handbook" ID="ID_479360711" CREATED="1567065457823" MODIFIED="1567065463790" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/357%20STPA%20Handbook.pdf">
+<attribute NAME="key" VALUE="leveson2018stpa"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="{STPA} Handbook"/>
+<attribute NAME="authors" VALUE="Leveson, Nancy G. and Thomas, John P."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F9152ED5D1EC25B4F8B975882C0EEBA263DA1B9268B457FCC526AE5EF8587FE">
+    <pdf_title>NG.L JP.T</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A Systematic Approach Based on STPA for developing ADVs" ID="ID_12989691" CREATED="1567065053127" MODIFIED="1567065273521" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/382%20A%20Systematic%20Approach%20Based%20on%20STPA%20for%20developing%20ADVs.pdf">
+<attribute NAME="key" VALUE="abdulkhaleq2017systematic"/>
+<attribute NAME="journal" VALUE="Procedia Engineering"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="A Systematic Approach Based on {STPA} for Developing a Dependable Architecture for Fully Automated Driving Vehicles"/>
+<attribute NAME="authors" VALUE="Abdulkhaleq, Asim and Lammering, Daniel and Wagner, Stefan and R{\&quot;o}der, J{\&quot;u}rgen and Balbierer, Norbert and Ramsauer, Ludwig and Raste, Thomas and Boehmert, Hagen"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F8E4817486DA7D4EDBFB64BBD348AC3D5796F45BF1AD0ACD8C331AE5EB42F84">
+    <pdf_title>ScienceDirect</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="(Simplified) models for AVs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_779185092" CREATED="1567137605189" MODIFIED="1567137616583">
+<node TEXT="Lane change" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_84636491" CREATED="1567137618260" MODIFIED="1567137626233">
+<node TEXT="Lane Change Scheduling for Autonomous Vehicles" ID="ID_302371769" CREATED="1567137638452" MODIFIED="1567137933731" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/383%20Lane%20Change%20Scheduling%20for%20Autonomous%20Vehicles.pdf">
+<attribute NAME="key" VALUE="atagoziyev2016lanechange"/>
+<attribute NAME="journal" VALUE="IFAC-PapersOnLine"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Lane Change Scheduling for Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Atagoziyev, Maksat and Schmidt, Klaus W. and Schmidt, Ece G."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9790FCEDEBB760F1415BD7752D7974CB758B2B16FF4ED1F8E9EB1946471E3C5">
+    <pdf_title>ScienceDirect ScienceDirect</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A Novel Lane Change Decision (SVM, comparing it with simple model)" ID="ID_686461620" CREATED="1567138013271" MODIFIED="1567148404661" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/384%20A%20Novel%20Lane%20Change%20Decision.pdf">
+<attribute NAME="key" VALUE="liu2019novel"/>
+<attribute NAME="journal" VALUE="IEEE Access"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="A Novel Lane Change Decision-Making Model of Autonomous Vehicle Based on Support Vector Machine"/>
+<attribute NAME="authors" VALUE="Liu, Yonggang and Wang, Xiao and Li, Liang and Cheng, Shuo and Chen, Zheng"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A31B514751C5E8C092FD5BC5C7CFAED462436AF4708FA4D828205D47">
+    <pdf_title>A Novel Lane Change Decision-Making Model of Autonomous Vehicle Based on Support Vector Machine</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Lane change based on Multi-Kernels Least Squares Policy Iteration" ID="ID_1681525803" CREATED="1567149163215" MODIFIED="1567149319558" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/385%20Lane%20change%20based%20on%20Multi-Kernels%20Least%20Squares%20Policy%20Iteration.pdf">
+<attribute NAME="key" VALUE="feixiang2017research"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Research on Lane Change Decision for Autonomous Vehicles Based on Multi-Kernels Least Squares Policy Iteration"/>
+<attribute NAME="authors" VALUE="Liu, Feixiang and Li, Yan and Zuo, Lei and Xu, Xin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="855AF816A4322C316469612BDD6EC9D232EE489AFDD52CC2F49E14A6D580D87B">
+    <pdf_title>Research on Lane Change Decision for Autonomous Vehicles Based on Multi-Kernels Least Squares Policy Iteration</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
 <node TEXT="Generative Adversarial Nets (GANs)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1284675129" CREATED="1516590666097" MODIFIED="1516590687904">
 <node TEXT="Introduction of GANs" ID="ID_451182813" CREATED="1516591618309" MODIFIED="1534391121959" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/110%20Generative%20Adversarial%20Nets.pdf">
@@ -2096,7 +2218,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
+<node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
 <node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
 <node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
@@ -2214,7 +2336,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
 <node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1534391328696" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -3930,7 +4052,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1518673341857" HGAP="54" VSHIFT="-27">
+<node TEXT="Automated Driving" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1583453268" CREATED="1511151254702" MODIFIED="1518673341857" HGAP="54" VSHIFT="-27">
 <edge COLOR="#0000ff"/>
 <node TEXT="Examples of automated driving" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1394340330" CREATED="1511348230594" MODIFIED="1511407791717">
 <node TEXT="GCDC2016" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_96916682" CREATED="1511348244942" MODIFIED="1534391744397" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/054%20GCDC%202016%20Ploeg%20paper.pdf">
@@ -4333,7 +4455,7 @@
 </node>
 <node TEXT="Journals" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1709195997" CREATED="1566199212968" MODIFIED="1566199220596">
 <edge COLOR="#00ff00"/>
-<node TEXT="Transportation Research Part A" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1749173518" CREATED="1566199221583" MODIFIED="1566199232160">
+<node TEXT="Transportation Research Part A" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1749173518" CREATED="1566199221583" MODIFIED="1566199232160">
 <node TEXT="Ontologies for Transportation Research: A Survey" ID="ID_153077203" CREATED="1566199237387" MODIFIED="1566199240645" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/362%20Ontologies%20for%20transportation%20research.pdf">
 <attribute NAME="key" VALUE="katsumi2018ontologies"/>
 <attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
