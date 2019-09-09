@@ -356,6 +356,7 @@ if __name__ == '__main__':
                       dict(usebiber=True)))
     compile_pr(21, usebiber=True,
                other=(join('20190725 Scenario Risk', 'scenariorisk'), dict(usebiber=True)))
+    compile_pr(22, usebiber=True)
 
     # Revisions/versions
     compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',

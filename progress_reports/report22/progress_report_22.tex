@@ -1,0 +1,192 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab/Python)
+\pgfplotsset{compat=1.14}						%% Run in backwards compatibility mode
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+\usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
+\usepackage{units}								%% Appropriate behavior of units
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../../bib}
+\usepackage{subcaption}
+
+%%==========================================================================
+%% Define reference stuff
+%%==========================================================================
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{22}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{September 11, 2019}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-world driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\newlength{\figurewidth}
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item I suggested to follow the course \emph{Writing a dissertation}, because in this course, I would write the introduction of the PhD dissertation. Bart suggested, however, that it would be better to look for another course, because writing the introduction of the dissertation should not be too difficult. 
+	\item We discussed the planning for my PhD. According to the proposed planning, I would work on four different topics. It has been suggested that I should work at most on three topics at the same time. Furthermore, Bart mentioned that writing the dissertation takes around two weeks per chapter, assuming that each chapter is based on an already published paper, whereas I thought writing the dissertation would take a year.
+	\item We shortly discussed the work on the \emph{scenario risk} paper. The proposed method was based on ISO~26262 \cite{ISO26262}. Bart suggested that it would be better to write the proposed method from a more general perspective, because standards, such as ISO~26262, are not necessarily the best scientific source. In a subsection, we can still explain the relation between the proposed method and ISO~26262.
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item I submitted the ontology paper. The paper is now under review.
+	
+	\item I worked on the \emph{scenario risk estimation}:
+	\begin{itemize}
+		\item I did a literature search on quantifying the risk. It turned out that this is harder than I thought. There are many ``risk estimation'' techniques, e.g., Failure Mode and Effect Analysis (FMEA), Structured What If Technique (SWIFT), Hazard and Operability (HAZOP), and Systems-Theoretic Processes Analysis (STPA). It seems, however, that these methods focus on identifying the different hazards. I could not find a method for quantification of a risk of a hazard.
+		
+		For example, in \cite{tokody2017overview}, an FMEA is performed for ``intelligent vehicles''. The risk of each failure is simply calculated by multiplying the \emph{failure extent}, the \emph{frequency}, and the \emph{recognisability}. In \cite{tokody2017overview}, there is no information on how these numbers are estimated. On the one hand, this shows that our paper is original and no similar work (that is known to me) is done before. On the other hand, it might be good if there is already some work that can be used as a reference.
+		
+		\item I want to include a case study. In my previous papers, I always considered the ``obvious'' scenario categories \emph{lead vehicle braking} \cite{deGelder2017assessment, degelder2019completeness} or \emph{cut-in} \cite{degelder2019risk}. For this paper, I want to work out more scenario categories to give the case study more significance. In \cref{fig:scenarios}, the scenario categories that I want to consider for the case study are shown. To simplify the case study, I want to only consider highway driving.
+		
+		\item The data I want to use for the analysis consists of 60 hours of driving, of which roughly 50\% on highway \cite{paardekooper2019dataset6000km}. The scenarios need to be identified in the data. I want to do this automatically. I did some Python programming for this, but it is not yet finished. 
+	\end{itemize}
+
+	\item In CETRAN, we finished a first version of a report describing the overall methodology for assessing an autonomous vehicle. This version is reviewed by the Land Transport Authority. Based on their feedback, we will improve the report.
+\end{itemize}
+
+\setlength{\figurewidth}{0.49\textwidth}
+\begin{figure}
+	\begin{subfigure}{0.49\textwidth}
+		\input{scenarios/"lead braking".tikz}
+		\vspace{-1em}
+		\caption{Lead vehicle braking.}
+		\vspace{1em}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\input{scenarios/"lead braking overtaking".tikz}
+		\vspace{-1em}
+		\caption{Lead vehicle braking with overtaking vehicle.}
+		\vspace{1em}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\input{scenarios/"slow lead".tikz}
+		\vspace{-1em}
+		\caption{Slow lead vehicle.}
+		\vspace{1em}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\input{scenarios/"slow lead overtaking".tikz}
+		\vspace{-1em}
+		\caption{Slow lead vehicle with overtaking vehicle.}
+		\vspace{1em}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\input{scenarios/cutin.tikz}
+		\vspace{-1em}
+		\caption{Cut-in.}
+		\vspace{2em}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\input{scenarios/merge.tikz}
+		\vspace{-1em}
+		\caption{Ego intends to change lane with overtaking vehicle.}
+		\vspace{1em}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\input{scenarios/cutout.tikz}
+		\vspace{-1em}
+		\caption{Cut-out that leads to a new lead vehicle.}
+		\vspace{1em}
+	\end{subfigure}
+	\caption{Potential \emph{scenario categories} that are to be considered for the case study for determining the risk of each scenario category. The blue car denotes the ego vehicle.}
+	\label{fig:scenarios}
+\end{figure}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item \Cref{fig:planning} shows the updated planning. Changes compared to the planning in the previous report:
+	\begin{itemize}
+		\item Writing the final dissertation takes only half a year compared to a full year. If I would have full time to work on my dissertation, which I am trying to arrange, it would take only three months. 
+		\item I postponed the work on \emph{test case generation}, such that I have at most three topics to work on at the same time.
+	\end{itemize}
+
+	\item Most of my time will be spent on the case study for the \emph{scenario risk} paper. I foresee the following steps:
+	\begin{itemize}
+		\item Extract the scenarios from the data.
+		\item Parametrize the scenarios and estimate the probability density functions.
+		\item Find an appropriate ``control system'' that I can use. I prefer to use a simple model, rather than the somewhat complex \emph{highway pilot} we have at TNO. The advantage of using a simple model is that the simulations will run much faster and that others could repeat the experiment because the simple model could be explained in the paper. For the longitudinal control, I could use a similar model as I did in the previous paper \cite{degelder2019risk}. In \cite{liu2019novel}, a simple lane change decision model is used, so I might consider using the same model.
+		\item I need to model the surrounding traffic as well. Again, I can use software tools, but I would prefer a simple --- yet realistic --- driver model.
+		\item Run simulations to get the results.
+	\end{itemize}
+
+	\item Earlier, I mentioned that it might be difficult to publish about the overall methodology. We are now trying to publish some other work \cite{degelder2019scenariocategories} on our TNO website. I am confident that \cite{degelder2019scenariocategories} can be published and if this is the case, I want to discuss (again) on the possibilities for publishing something regarding the overall methodology.
+\end{itemize}
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{planning}
+	\caption{Planning of my PhD. The red line denotes the time at writing this report.}
+	\label{fig:planning}
+\end{figure}
+
+\section{Questions}
+
+\begin{itemize}
+	\item I think we discussed that previous time, but I am not sure. We planned our yearly progress meeting the 16th of October. Should I prepare some self-evaluation (one/two pages) for that meeting? Anything else that I need to prepare?
+\end{itemize}
+
+
+\printbibliography
+
+%\clearpage
+%\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../""/.pdf}
+
+\end{document}
