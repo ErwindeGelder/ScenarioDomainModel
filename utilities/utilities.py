@@ -357,6 +357,8 @@ if __name__ == '__main__':
     compile_pr(21, usebiber=True,
                other=(join('20190725 Scenario Risk', 'scenariorisk'), dict(usebiber=True)))
     compile_pr(22, usebiber=True)
+    compile_pr(23, usebiber=True, other=(join('20191004 Ontology revision letter',
+                                              'ontology_revision'), dict(usebiber=True)))
 
     # Revisions/versions
     compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',
@@ -421,6 +423,7 @@ if __name__ == '__main__':
     compile_doc(join('20190505 Assessment Strategy', 'assessment_strategy'), usebiber=True)
     compile_doc(join('20190725 Scenario Risk', 'scenariorisk'), usebiber=True)
     compile_doc(join('20190819 Journal paper ontology cover', 'ontology_cover'), usebiber=True)
+    compile_doc(join('20191004 Ontology revision letter', 'ontology_revision'), usebiber=True)
 
     # Delete folder that has wrong name
     if os.path.exists(join('..', '20180639 Journal paper ontology')):
