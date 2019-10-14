@@ -45,7 +45,7 @@ The \textit{activity category} also contains a human interpretable name of the a
 The \textit{model} that is used to describe the time evolution of the state is specified. For example, the \textit{model} to describe the speed of the ego vehicle during a braking activity could be a sinusoidal function:
 \cbstartc
 \begin{equation} \label{eq:sinusoidal}
-	\egoacceleration(\time) = \frac{\pi \amplitude}{2\duration} \sin \left( \frac{\pi t}{\duration} \right),\ \egospeed(\inittime) = \egospeedinit,\ t \in [\inittime, \inittime+\duration].
+	\egoacceleration(\time) = \frac{\pi \amplitude}{2\duration} \sin \left( \frac{\pi \time}{\duration} \right),\ \egospeed(\inittime) = \egospeedinit,\ \time \in [\inittime, \inittime+\duration].
 \end{equation}
 Here, $\egospeed$ denotes the speed of the ego vehicle and $\egoacceleration$ denotes the time derivative of $\egospeed$, i.e., the acceleration. Thus, in case of a braking activity, the state corresponds to the speed. 
 The parameters of the \textit{model} are the total speed difference ($\amplitude$) between the start of the activity and the end of the activity, the duration of the braking activity ($\duration$), and the initial speed ($\egospeedinit$) at time $\inittime$. 
