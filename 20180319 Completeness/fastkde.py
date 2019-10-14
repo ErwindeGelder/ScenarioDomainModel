@@ -36,7 +36,7 @@ import scipy.stats
 import matplotlib.pyplot as plt
 
 
-class KDE(object):
+class KDE():
     """ Kernel Density Estimation
 
     This class can be utilized to create Kernel Density Estimations (KDE) of data.
