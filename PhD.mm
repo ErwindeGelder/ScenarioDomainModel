@@ -540,7 +540,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1534304369005" HGAP="70" VSHIFT="-2" MOVED="1534304332067">
+<node TEXT="Machine learning" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1948294603" CREATED="1513736384684" MODIFIED="1534304369005" HGAP="70" VSHIFT="-2" MOVED="1534304332067">
 <edge COLOR="#007c7c"/>
 <node TEXT="General literature" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1488737728" CREATED="1513736407885" MODIFIED="1513736423051">
 <node TEXT="Pattern Recognition and Machine Learning" ID="ID_567315421" CREATED="1513736426477" MODIFIED="1534391906908" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/003%20Bishop%20-%20Pattern%20Recognition%20and%20Machine%20Learning.pdf">
@@ -614,10 +614,21 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="n gram modelling" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_517235135" CREATED="1570974962756" MODIFIED="1570974971928">
+<node TEXT="Improved Backing-Off For M-Gram Language Modeling" ID="ID_629416292" CREATED="1570974977621" MODIFIED="1570974990202" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/394%20Improved%20backing-off%20for%20mgram%20language%20modeling.pdf">
+<attribute NAME="key" VALUE="kneser1995improved"/>
+<attribute NAME="year" VALUE="1995"/>
+<attribute NAME="title" VALUE="Improved Backing-Off For M-Gram Language Modeling"/>
+<attribute NAME="authors" VALUE="Kneser, Reinhard and Ney, Hermann"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8A1B428F62AFC36BF02E45387EAECA6FA1C6A2D285D45B48528A1A32744E48">
+    <pdf_title>h.</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
+</node>
+</node>
+<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
-<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
+<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1534391906453" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -666,7 +677,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Safety" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1183001868" CREATED="1530151668822" MODIFIED="1530151674988">
+<node TEXT="Safety" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1183001868" CREATED="1530151668822" MODIFIED="1530151674988">
 <node TEXT="Challenges" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_720959665" CREATED="1531278476883" MODIFIED="1531278483471">
 <node TEXT="Autonomous Vehicle Safety: An Interdisciplinary Challenge" ID="ID_32688539" CREATED="1531278488420" MODIFIED="1534391906684" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/212%20Autonomous%20Vehicle%20Safety%20An%20Interdisciplinary%20Challenge.pdf">
 <attribute NAME="key" VALUE="koopman2017interdisciplinary"/>
@@ -1048,7 +1059,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Overal safety management" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_931729636" CREATED="1556614786090" MODIFIED="1556614796520">
+<node TEXT="Overal safety management" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_931729636" CREATED="1556614786090" MODIFIED="1556614796520">
 <node TEXT="The nature of safety culture" ID="ID_1335293392" CREATED="1556615007822" MODIFIED="1556615099299" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/335%20The%20nature%20of%20safety%20culture.pdf">
 <attribute NAME="key" VALUE="choudhry2007nature"/>
 <attribute NAME="journal" VALUE="Safety Science"/>
@@ -1183,7 +1194,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Safety cases" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1580797181" CREATED="1556289559811" MODIFIED="1556289565555">
+<node TEXT="Safety cases" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1580797181" CREATED="1556289559811" MODIFIED="1556289565555">
 <node TEXT="ISO 26262 safety cases compliance and assurance" ID="ID_961590544" CREATED="1551886008500" MODIFIED="1551886130442" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/290%20ISO%2026262%20safety%20cases%20compliance%20and%20assurance.pdf" MOVED="1556289573579">
 <attribute NAME="key" VALUE="palin2011iso"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -1229,7 +1240,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Controllability" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_480213956" CREATED="1556289640694" MODIFIED="1556289649838">
+<node TEXT="Controllability" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_480213956" CREATED="1556289640694" MODIFIED="1568663922809">
 <node TEXT="The notion of controllability" ID="ID_397801534" CREATED="1552041268238" MODIFIED="1552041403794" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/296%20The%20notion%20of%20controllability.pdf" MOVED="1556289652973">
 <attribute NAME="key" VALUE="monkhouse2015notion"/>
 <attribute NAME="year" VALUE="2015"/>
@@ -1630,6 +1641,26 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Metrics" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_891831161" CREATED="1569577334790" MODIFIED="1569577342974">
+<node TEXT="Time to collision" ID="ID_1526007142" CREATED="1569577343767" MODIFIED="1569577426281" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/387%20Time%20to%20collision%20and%20collision%20avoidance%20systems.pdf">
+<attribute NAME="key" VALUE="vanderhorst1993ttc"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Time-to-Collision and Collision Avoidance Systems"/>
+<attribute NAME="authors" VALUE="van der Horst, Richard and Hogema, Jeroen"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8E656B95966EDA3EB03BF85775998057784879A5B15939F95B3ACACEB05C5382">
+    <pdf_title>TIME-TO-COLLISION AND COLLISION AVOIDANCE SYSTEMS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Break/Steer Threat Number" ID="ID_453164835" CREATED="1569577774941" MODIFIED="1569577856762" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/388%20Multi-Target%20Threat%20Assessment%20for%20Autonomous%20Emergency%20Braking.pdf">
+<attribute NAME="key" VALUE="andersson2016multitarget"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Multi-Target Threat Assessment for Autonomous Emergency Braking"/>
+<attribute NAME="authors" VALUE="Andersson, Andreas"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3C384DC7D2FA58AC144BFAB87A81FEFBC4FF13F7414EA3566CA6A407DAE99">
+    <pdf_title>Multi-Target Threat Assessment for Autonomous Emergency Braking</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Taxonomy regarding test scenarios. &apos;Famous&apos; Bosch paper." ID="ID_1394606892" CREATED="1507692581524" MODIFIED="1534391955124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
@@ -1825,7 +1856,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Master Thesises" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_1200522400" CREATED="1536234494309" MODIFIED="1536234527959" HGAP="78" VSHIFT="-4">
+<node TEXT="Master Thesises" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1200522400" CREATED="1536234494309" MODIFIED="1536234527959" HGAP="78" VSHIFT="-4">
 <edge COLOR="#ff0000"/>
 <node TEXT="Peter Markovic - Event Detection" ID="ID_12958517" CREATED="1536234529817" MODIFIED="1536234633824" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/238%20Master-Thesis-Peter-Markotic-Event-Detection.pdf">
 <attribute NAME="key" VALUE="markotic2018pattern"/>
@@ -1903,11 +1934,6 @@
     <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2018 Ontology of scenarios for the assessment of automated vehicles" ID="ID_176436300" CREATED="1518065217613" MODIFIED="1526953310168">
-<attribute NAME="key" VALUE="degelder2018ontology"/>
-<attribute NAME="title" VALUE="Definition of Scenario in the Context of the Assessment of Automated Vehicles"/>
-<attribute NAME="authors" VALUE="de Gelder, Erwin and J.-P. Paardekooper and J. Ploeg and H. Elrofai and Op den Camp, Olaf and Khabbaz Saberi, Arash and De Schutter, Bart"/>
-</node>
 <node TEXT="2018 Scenario-Based Safety Assessment Framework for AVs" ID="ID_110202670" CREATED="1526434328702" MODIFIED="1534391955280" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
 <attribute NAME="key" VALUE="ploeg2018cetran"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -1935,11 +1961,11 @@
     <pdf_title>Cut-in Scenario Prediction for Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2019 Identification of Critical Scenarios in Public Dataset 6000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1565069892122" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/360%20ESV%20Public%20dataset.pdf">
+<node TEXT="2019 Identification of Critical Scenarios in Public Dataset 6000 km" ID="ID_289327551" CREATED="1545083225440" MODIFIED="1568186591544" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/360%20ESV%20Public%20dataset.pdf">
 <attribute NAME="key" VALUE="paardekooper2019dataset6000km"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 6000 km of Public-Road Driving"/>
-<attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and Montfort, Sjef and Manders, Jeroen and Goos, Jorrit and de Gelder, Erwin and Op den Camp, Olaf and Bracquemond, O. and Thiolon, G."/>
+<attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and Montfort, Sjef and Manders, Jeroen and Goos, Jorrit and de Gelder, Erwin and Op den Camp, Olaf and Bracquemond, Annie and Thiolon, Gildas"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="66498E977114BB98512D96D1E608ABEC494FC779333C9FEA68FA64E4786F3E6">
     <pdf_title>Paardekooper 1</pdf_title>
 </pdf_annotation>
@@ -1962,6 +1988,11 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D5DC942EC9867CA0ABC436E3F8990D2D54811CF054E9A79DCFC26A826A2B2">
     <pdf_title>A METHOD FOR SCENARIO RISK QUANTIFICATION FOR AUTOMATED DRIVING SYSTEMS</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="2019 Ontology of scenarios for the assessment of automated vehicles" ID="ID_176436300" CREATED="1518065217613" MODIFIED="1569410074343" MOVED="1569409945813">
+<attribute NAME="key" VALUE="degelder2018ontology"/>
+<attribute NAME="title" VALUE="Ontology for Scenarios for the Assessment of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Khabbaz Saberi, Arash and Elrofai, Hala and Op den Camp, Olaf and Ploeg, Jeroen and Friedman, Ludwig and De Schutter, Bart"/>
 </node>
 </node>
 <node TEXT="Risk" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_398321502" CREATED="1567057870946" MODIFIED="1567057884205">
@@ -2347,7 +2378,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
 <node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1534391328696" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -2912,7 +2943,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
 <node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
 <node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1534391438326" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -2983,7 +3014,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
+<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
 <node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1534391438170" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/058%20Control_System_Engineering_Norman.pdf">
 <attribute NAME="key" VALUE="norman2011control"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -3198,7 +3229,7 @@
 </node>
 </node>
 </node>
-<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
 <node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1534391630156" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
@@ -3347,6 +3378,47 @@
 <attribute NAME="title" VALUE="Capturing Socio-Technical Systems with Agent-Based Modelling"/>
 <attribute NAME="authors" VALUE="van Dam, Koen Hazi{\&quot;e}l"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+</node>
+<node TEXT="Ontology related to AD" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1906835029" CREATED="1570356422699" MODIFIED="1570356430848">
+<node TEXT="Ontology-Based Methods for Enhancing Autonomous Vehicle Path Planning" ID="ID_735920762" CREATED="1570356464201" MODIFIED="1570356667639" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/389%20Ontology-Based%20Methods%20for%20Enhancing%20Autonomous%20Vehicle%20Path%20Planning.pdf">
+<attribute NAME="key" VALUE="provine2004ontology"/>
+<attribute NAME="journal" VALUE="Robotics and Autonomous Systems"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Ontology-Based Methods for Enhancing Autonomous Vehicle Path Planning"/>
+<attribute NAME="authors" VALUE="Provine, Ron and Schlenoff, Craig and Balakirsky, Stephen and Smith, Scott and Uschold, Mike"/>
+<font NAME="SansSerif"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5FC87D991F4AEB2DDA0CA5A5ED2DECA652628964081CBCD6B7EE1037C6B4">
+    <pdf_title>Ontology-Based Methods for Enhancing Autonomous Vehicle Path Planning</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="An ontology-Based Approach to Relax Traffic Regulation for Autonomous Vehicle Assistance" ID="ID_740407115" CREATED="1570357202385" MODIFIED="1570357217382" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/390%20Ontology-Based%20Approach%20to%20Relax%20Traffic%20Regulation%20for%20AV%20Assistance.pdf">
+<attribute NAME="key" VALUE="morignot2013ontology"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="An ontology-Based Approach to Relax Traffic Regulation for Autonomous Vehicle Assistance"/>
+<attribute NAME="authors" VALUE="Morignot, Philippe and Nashashibi, Fawzi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="657C6CC2DDD05DE8332A3C33E3BF6B070DE9C37A7F7B71AA1BFD2FD6321198">
+    <pdf_title>AN ONTOLOGY-BASED APPROACH TO RELAX TRAFFIC REGULATION FOR AUTONOMOUS VEHICLE ASSISTANCE</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Using Ontologies to Aid Navigation Planning in Autonomous Vehicles" ID="ID_1346022044" CREATED="1570357437717" MODIFIED="1570357502711" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/391%20Using%20Ontologies%20to%20Aid%20Navigation%20Planning%20in%20AVs.pdf">
+<attribute NAME="key" VALUE="schlenoff2003using"/>
+<attribute NAME="journal" VALUE="The Knowledge Engineering Review"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="Using Ontologies to Aid Navigation Planning in Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Schlenoff, Craig and Balakirsky, Stephen and Uschold, Mike and Provine, Ron and Smith, Scott"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CC53D45EBD604020C5D84A694DC326BFA08A12F29323F86CEF5CD42ACD292">
+    <pdf_title>Using ontologies to aid navigation planning in autonomous vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Core Ontologies for Safe Autonomous Driving" ID="ID_1768760453" CREATED="1570357726208" MODIFIED="1570357817401" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/392%20Core%20Ontologies%20for%20Safe%20Autonomous%20Driving.pdf">
+<attribute NAME="key" VALUE="zhao2015core"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Core Ontologies for Safe Autonomous Driving"/>
+<attribute NAME="authors" VALUE="Zhao, Lihua and Ichise, Ryutaro and Mita, Seiichi and Sasaki, Yutaka"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="96E85F6C8912DD9A8298216CDFFA7BE259C8E1DA53FBE5B4C7E8C9A1F98BECA">
+    <pdf_title>Ontologies for Advanced Driver Assistance Systems</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="UML versus OWL" ID="ID_1041471545" CREATED="1535980234884" MODIFIED="1548673064481" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/235%20A%20Detailed%20Comparison%20of%20UML%20and%20OWL.pdf">
@@ -4466,7 +4538,7 @@
 </node>
 <node TEXT="Journals" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1709195997" CREATED="1566199212968" MODIFIED="1566199220596">
 <edge COLOR="#00ff00"/>
-<node TEXT="Transportation Research Part A" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1749173518" CREATED="1566199221583" MODIFIED="1566199232160">
+<node TEXT="Transportation Research Part A" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1749173518" CREATED="1566199221583" MODIFIED="1566199232160">
 <node TEXT="Ontologies for Transportation Research: A Survey" ID="ID_153077203" CREATED="1566199237387" MODIFIED="1566199240645" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/362%20Ontologies%20for%20transportation%20research.pdf">
 <attribute NAME="key" VALUE="katsumi2018ontologies"/>
 <attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
