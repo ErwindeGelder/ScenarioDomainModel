@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -3032,6 +3032,22 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="State variable" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_906086455" CREATED="1571315480437" MODIFIED="1571315488221">
+<node TEXT="The smallest set of linearly independent system variables such that the values of the members of the set at time to along with known forcing functions completely determine the value of all system variables for all t&gt;t_0." ID="ID_1034026453" CREATED="1571315721041" MODIFIED="1571315734266" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/058%20Control_System_Engineering_Norman.pdf">
+<attribute NAME="key" VALUE="norman2011control"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Control Systems Engineering"/>
+<attribute NAME="authors" VALUE="Norman, S. Nise"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+<node TEXT="(p 233): State variables: The set of variables that describe the system." ID="ID_1178261870" CREATED="1571316700788" MODIFIED="1571316740553" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/397%20Modern%20Control%20Systems.pdf">
+<attribute NAME="key" VALUE="dorf2011modern"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Modern Control Systems Twelfth Edition"/>
+<attribute NAME="authors" VALUE="Dorf, Richard C. and Bishop, Robert H."/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+</node>
 <node TEXT="Actor" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1417461108" CREATED="1511841805284" MODIFIED="1511841809578">
 <node TEXT="Geyer: actor can be the driver, the automation, or both of them" ID="ID_1119876727" CREATED="1511841811733" MODIFIED="1534391438264" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/026%20Ontology%20test%20and%20use-case.pdf">
 <attribute NAME="key" VALUE="geyer2014"/>
@@ -3096,7 +3112,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Glossaries" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1560004196" CREATED="1552469581889" MODIFIED="1552469593138">
+<node TEXT="Glossaries" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1560004196" CREATED="1552469581889" MODIFIED="1552469593138">
 <node TEXT="Catapult: MUSICC" ID="ID_290746102" CREATED="1552469594155" MODIFIED="1552469604841" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/297%20MUSICC-Workshop-Glossary.pdf">
 <attribute NAME="key" VALUE="catapult2018musicc"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -4203,6 +4219,7 @@
 <attribute NAME="key" VALUE="sae2018j3016"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles"/>
+<attribute NAME="authors" VALUE="{SAE International}"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="164E75E54C4ACAF6CF09314741D60FEA9A17E40D434EC9DD8EB6C257E24C90">
     <pdf_title>SURFACE VEHICLERECOMMENDED PRACTICE</pdf_title>
 </pdf_annotation>
@@ -4231,6 +4248,15 @@
 <attribute NAME="year" VALUE="Under development"/>
 <attribute NAME="title" VALUE="Road vehicles -- {S}afety of the intended functionality"/>
 <attribute NAME="authors" VALUE="{ISO/WD PAS 21448}"/>
+</node>
+<node TEXT="DIN SAE SPEC 91381:2019-06" ID="ID_1585288704" CREATED="1571127497374" MODIFIED="1571127512238" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/395%20DINSAESPEC91381.pdf">
+<attribute NAME="key" VALUE="SAEInternational2019"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Terms and Definitions Related to Testing of Automated Vehicle Technologies"/>
+<attribute NAME="authors" VALUE="{SAE International}"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8DC4F25772A2E072EEEA5A426CDFF7680CF7139B039DFCA2F3158939D2BD91">
+    <pdf_title>DIN Deutsches Institut f&#xfc;r Normung (German Institute for Standardization) e. V. and SAE International are the owner of all rights of exploitation, irrespective of the form and procedure.</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">

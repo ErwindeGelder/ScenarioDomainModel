@@ -36,6 +36,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 
 
 \usepackage{silence}  							%% For filtering warnings
+\usepackage{csquotes}
 % Add doi=false if no DOI
 \usepackage[style=authoryear-comp,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 % Filter warnings issued by package biblatex starting with "Patching footnotes failed"
@@ -43,7 +44,6 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
-\renewcommand{\cite}[1]{\parencite{#1}}
 
 
 \pagestyle{fancy}                                       %% set page style
@@ -89,6 +89,7 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \newcommand{\egoheading}{\head_{\mathrm{\egosub}}}
 \newcommand{\function}{f}
 \newcommand{\inputsystem}{u}
+\newcommand{\dimensionstate}{n}
 \newcommand{\parameter}{\theta}
 \newcommand{\parametera}{a}
 \newcommand{\parameterb}{b}
@@ -128,95 +129,132 @@ This cover letter describes how we have addressed the reviewers' comments for th
 	
 \section*{Reviewer 1}
 
-\toauthor Novelty: Similar work has been published before, see e.g.\ \cite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core}. Thus, it is unclear what the novelty of the presented ontology is.
+\toauthor Novelty: Similar work has been published before, see e.g.\ \autocite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core}. Thus, it is unclear what the novelty of the presented ontology is.
 
-\fromauthor In the introduction, we added the following: \cstart Although ontologies have been widely used in the field of automated driving \cite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core, maiti2017conceptualization, benvenuti2017ontologybased, bagschik2017ontology}, we believe that, to the best of our knowledge, we are the first to propose an ontology for scenarios for the assessment of AVs. There are, however, implementations of ontologies that can be used for this purpose, e.g., OpenSCENARIO \cite{openscenario} and CommonRoad \cite{althoff2017CommonRoad}. Our proposed ontology differs from these implementations in that our ontology also allows for qualitative descriptions of scenarios. Furthermore, our ontology is supported with the definitions and justifications of each of the terms.\cend
+\fromauthor Thank you for the mentioned references. In the introduction, we added the following: \cstart Although ontologies have been widely used in the field of automated driving \autocite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core, maiti2017conceptualization, benvenuti2017ontologybased, bagschik2017ontology}, we believe that, to the best of our knowledge, we are the first to propose an ontology for scenarios for the assessment of AVs. There are, however, implementations of ontologies that can be used for this purpose, e.g., OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}. Our proposed ontology differs from these implementations in that our ontology also allows for qualitative descriptions of scenarios. Furthermore, our ontology is supported with the definitions and justifications of each of the terms.\cend
 
 Furthermore, the manuscript's title (``Ontology for Scenarios for the Assessment of Automated Vehicles'') indicates the purpose of the ontology and, therefore, indicates the different purpose compared to other ontologies (among which the provided examples).
 
 Although this manuscript is not the first article to provide a definition of scenario in the context of automated driving, we indicate that, as opposed to definitions from other literature, our definition ``is concrete enough to be used in quantitative analysis required for the assessment of AVs''.
 
-We added \cite{provine2004ontology, schlenoff2003using} to the examples of ontologies mentioned in Section~II-A: ``Ontologies are widely applied in all kinds of research areas, e.g., [...], \cstart and vehicle path planning \cite{provine2004ontology, schlenoff2003using}.\cend''
+We have also added \autocite{provine2004ontology, schlenoff2003using} to the examples of ontologies mentioned in Section~II-A: ``Ontologies are widely applied in all kinds of research areas, e.g., [...], \cstart and vehicle path planning \autocite{provine2004ontology, schlenoff2003using}.\cend''
+
+
 
 \toauthor Implementations of ontologies exist. The paper cites OpenScenario and CommonRoad, which are both implementations of ontologies. However, the authors do not mention in the introduction that these are concrete implementations with a concrete XML structure. What aspects are described in this paper that are not already implemented in OpenScenario or CommonRoad? This should be discussed in the paper. 
 
-\fromauthor We added the following sentence to the introduction: \cstart There are, however, implementations of ontologies that can be used for this purpose, e.g., OpenSCENARIO \cite{openscenario} and CommonRoad \cite{althoff2017CommonRoad}. Our proposed ontology differs from these implementation in that our ontology also allows for qualitative descriptions of scenarios. Furthermore, our ontology is supported with the definitions and justification of each of the terms.\cend
+\fromauthor To address this comment, we have added the following sentence to the introduction: \cstart There are, however, implementations of ontologies that can be used for this purpose, e.g., OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}. Our proposed ontology differs from these implementations in that our ontology also allows for qualitative descriptions of scenarios. Furthermore, our ontology is supported with definitions and justifications of each of the terms.\cend
+
+
 
 \toauthor It is unclear whether an executable implementation of the proposed ontology exists. This should be clarified in the paper.
 
-\fromauthor In the introduction, it is mentioned that we use object-oriented code that results from the ontology to describe scenarios in a coding language. We added that the code will be publicly available. Furthermore, the ontology is used as a schema for our database system. See the following text in the introduction: ``Furthermore, the ontology enables the translation of the terms to object-oriented code. This, in turn, is used to describe the scenarios in a coding language that can be understood by various software agents, such as simulation tools. \cstart The code of implementation of our ontology is publicly available\footnote{\cstart As a coding language, Python is used. The code is publicly available at \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.\cend}\cend. The ontology is also used as a schema for a database system for storing the scenarios and scenario categories.''
+\fromauthor To clarify that we implemented the proposed ontology in a coding language, we have added to following line to the introduction (including the footnote): \cstart The code of implementation of our ontology is publicly available\footnote{\cstart As a coding language, Python is used. The code is publicly available at \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.\cend}\cend.
+
+
 
 \toauthor The paper has several mistakes: 1. event: It is written that an event requires a time step. This, however, is not required, see e.g.\ finite state machines. Only in timed automata and in hybrid systems timing information is required.
-	
-\fromauthor This comment is not clear to us. In our manuscript, we did not write that an event requires a time step; we write that ``an event corresponds to a time instant [rather than a time span/step]''. Since hybrid systems and finite state machines are closely related, we assume mentioning hybrid systems suffices. Could the reviewer clarify what the intention is of this comment?
+
+\fromauthor To address this comment, we have clarified that we use a hybrid-system setting to define events and that, therefore, an event happens at a time instant rather than a time span. However, the timing itself may be undefined: ``\cstart We considered the definitions of event in hybrid systems and control and event-based control. Therefore, an event happens at some time instant rather than a time span. Note, however, that the timing itself may be undefined.\cend''
+
+%\fromauthor This comment is not clear to us. In our manuscript, we did not write that an event requires a time step; we write that ``an event corresponds to a time instant [rather than a time span/step]''. Since hybrid systems and finite state machines are closely related, we assume mentioning hybrid systems suffices. Could the reviewer clarify what the intention is of this comment?
+
+
 
 \toauthor 2. braking trajectory: Since a sine function is multiplied by a constant, it is hard to see why the acceleration should always be negative when $t_0$ can be freely chosen
 
-\fromauthor There was a mistake in the corresponding equation. We changed the corresponding equation:
+\fromauthor There was indeed a mistake in the corresponding equation. We have corrected the corresponding equation as follows:
 \begin{equation}
 \egoacceleration(\time) = \frac{\pi \amplitude}{2\duration} \sin \left( \frac{\pi \color{red}\left(\color{black} \time \color{red} - \inittime\right)\color{black}}{\duration} \right),\ \egospeed(\inittime) = \egospeedinit,\ \time \in [\inittime, \inittime+\duration].
 \end{equation}
-Now the part inside the $\sin(\cdot)$ is in the range of $[0, \pi]$. Hence, $\egoacceleration(\time)$ always has the same sign has $\amplitude/\duration$.
+Now the part inside the $\sin(\cdot)$ is in the range of $[0, \pi]$. Hence, $\egoacceleration(\time)$ always has the same sign as $\amplitude/\duration$.
+
+
 
 \toauthor 3. state/state variable: A state consists of many state variables and each system has only one state. This is often confused in this paper
 
-\fromauthor We added a definition of the notion of a \emph{state variable} to the nomenclature (Section II-C):
+\fromauthor Thank you for pointing this out. We have now added a definition of the notion of a \emph{state variable} to the nomenclature (Section II-C):
 
-\cstart State variable: A quantity that defines a characteristic of a system, component, or simulation. E.g., a state variable could be the acceleration of an actor.\cend
+\cstart State variable: \textcite[p.~163]{dorf2011modern} write that ``the state variables describe the present configuration of a system and can be used to determine the future response, given the excitation inputs and the equations describing the dynamics.'' In our case, ``the system'' could refer to an actor, a component, or a simulation. E.g., a state variable could be the acceleration of an actor.\cend
 
-For the definition of the notion of \emph{state}, we replaced the sentence ``For example, the state could be the acceleration of an actor'' by ``\cstart The state corresponds to all state variables of a system, component, or simulation.\cend''
+To avoid any confusion between a \emph{state variable} and a \emph{state}, we have changed \emph{state} into \emph{state \cstart vector\cend}. We have now defined \emph{state vector} as follows (replacing the definition of \emph{state}):
 
-We added the word \cstart \emph{variable} \cend to \emph{state} at many occasions in the paper in order to address this mistake.
+\cstart State vector: a state vector refers to ``the vector containing all $n$ state variables'' \autocite[p.~233]{dorf2011modern}.\cend
+
+We have added the word \cstart \emph{variable} \cend and \cstart \emph{vector} \cend to \emph{state} at many occasions in the paper in order to address this mistake.
+
+
 
 \toauthor 4. ``an event marks a mode transition or the moment a system reaches a threshold'': This is not correct, since an event can be an external event that is broadcast or a user input.
 
-\fromauthor This comment is not clear to us. We do not claim that our definition of event is ``globally'' correct, but as far as we know, it fits the purpose of our ontology. Furthermore, the provided examples are possible to program using our proposed ontology. For example, if a state variable is defined to take the value of a certain user input, a threshold on that state variable can be used to trigger an event at a certain user input. Alternatively, a user input might trigger a mode transition, and, therefore, an event.
+% \fromauthor This comment is not clear to us. We do not claim that our definition of event is ``globally'' correct, but as far as we know, it fits the purpose of our ontology. Furthermore, the provided examples are possible to program using our proposed ontology. For example, if a state variable is defined to take the value of a certain user input, a threshold on that state variable can be used to trigger an event at a certain user input. Alternatively, a user input might trigger a mode transition, and, therefore, an event.
+%Could the reviewer indicate whether this explanation suffices? If not, should the definition of \emph{event} be reviewed or would a more elaborate explanation suffice?
 
-Could the reviewer indicate whether this explanation suffices? If not, should the definition of \emph{event} be reviewed or would a more elaborate explanation suffice?
+\fromauthor To address this comment, we have clarified that there are two options for defining an event and we provide an example of an event based on a user input:
+
+\cstart
+According to Definition~2, the moment of an event can be defined in two different ways, i.e., either by the system reaching a threshold or a mode transition.\cend [...] \cstart The second type of event, i.e., a mode transition, can occur at the moment of a driver input, e.g., when the driver suddenly brakes.\cend
+
+
 
 \toauthor Scope. The paper often discusses issues that are not related to autonomous driving. E.g.\ ontologies on computing, security, etc.\ are mentioned. It is unclear why these should be relevant for this paper.
 
-\fromauthor We mentioned other fields of research for which ontologies has proven to be useful. This is used as an implicit argument that an ontology might also be useful for our purpose. To make the list of examples shorter, we removed ``biology \cite{gkoutos2004mouse}, security-related research \cite{kim2005security}, socio-technical systems \cite{vanDamPhDThesis2009}''.
+\fromauthor In order to clearly justify some of the claims we make, we mention other fields of research for which ontologies have proven to be useful. This is used as an implicit argument that an ontology might also be useful for our purpose. However, to make the list of examples shorter and more compact, we have removed ``biology \autocite{gkoutos2004mouse}, security-related research \autocite{kim2005security}, socio-technical systems \autocite{vanDamPhDThesis2009}''.
+
+
 
 \toauthor Focus. The paper is not very focused and overly lengthy. For instance, the term ``event'' is described using almost an entire page. I would have spent around 5 sentences to explain this.  
 
-\fromauthor For the terms \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category}, (1) we list existing definitions, (2) we draw conclusions from the existing literature, (3) we define the term, and (4) we finish with some remarks/implications. 
+\fromauthor  In our discussions with the community (conferences, (ISO) working groups), we have noticed that the definitions of these terms is often opinion based. Hence, we have opted to use the following approach to define the terms \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category}: (1) list existing definitions, (2) draw conclusions from the existing literature, (3) define the term, and (4) finish with some remarks/implications. 
 
-To shorten the section on ``event'' to 5 sentences, we need to deviate from our approach. For example, we could only provide the definition (3). However, we think it can be helpful to add also (1) and (2) because it provides arguments why we chose the definitions we adopted. In our discussions with the community (conferences, (ISO) working groups), we noticed that the definitions of these terms is often opinion based. Therefore, arguments (1-2) help to justify our proposed definitions. This is confirmed by the second reviewer (``The background research is extensive, and the definition development is justified.''). The remarks (4) are meant for the reader who is interested in some implications of the definitions, because the definitions itself are rather abstract. 
-% If, however, the reader is only interested in the definitions itself, he or she can read the definitions and skip the other part.
+The arguments (1-2) and remarks (4) help to justify our proposed definitions. This is confirmed by the second reviewer (``The background research is extensive, and the definition development is justified.''). Therefore, we have opted to keep the current approach to define the terms \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category}.
+
+
 
 \toauthor Also, Fig.~2 is not required to understand the difference between categories and instances. 
 
-\fromauthor The figure is a visualization of the text to improve the understanding of the reader. The shorten the paper, the figure is made smaller.
+\fromauthor The figure is a visualization of the text to improve the understanding of the reader. Therefore, we have opted to keep the figure. However, to shorten the paper, the figure is made smaller.
+
+
 
 \toauthor The explanation after Def.~4 is also overly lengthy. 
 
-\fromauthor We shortened this part of the manuscript:
+\fromauthor As suggested by the reviewer, we have shortened this part of the manuscript:
 \begin{itemize}
-	\item The explanation of the ``fall into'' method (changed to \cstart ``comprise'' \cend and \cstart ``encompass''\cend, see comments of reviewer 2) is shortened.
-	\item Examples of the use of tags are not provided.
-	\item The explanation of all tags in Fig.~3 is omitted because we assume this is self-explanatory.
+	\item The explanation of the ``fall into'' method (changed to \cstart ``comprise'' \cend and \cstart ``encompass''\cend, see comments of reviewer 2) has been shortened.
+	\item Examples of the use of tags have been removed.
+	\item The explanation of all tags in Fig.~3 has been omitted because we assume this is self-explanatory.
 \end{itemize}
+
+
 
 \toauthor Another example is the explanation of ``category'' using music styles. Most people know what a category is.  
 
-\fromauthor We assume that this comment refers to the examples of the use of tags: ``Applications are very broad, e.g., from classification of audio data \cite{kong2017joint} capturing musical characteristics from songs \cite{ellis2011semantic} to tagging of Wikipedia pages \cite{voss2006collaborative}.'' We removed this sentence.
+\fromauthor We assume that this comment refers to the examples of the use of tags: ``Applications are very broad, e.g., from classification of audio data \autocite{kong2017joint} capturing musical characteristics from songs \autocite{ellis2011semantic} to tagging of Wikipedia pages \autocite{voss2006collaborative}.'' We have removed this sentence.
+
+
 
 \toauthor One could probably write the whole paper with half the pages without loosing any information.
 
 \fromauthor We considered this comment and shortened the manuscript by almost 2 pages.
 
+
+
 \toauthor Renaming of existing concepts. To me, an activity is a state trajectory. Why do we need a new name?
 
-\fromauthor An activity describes the trajectory of a state \emph{variable}. We chose the name ``activity'' because --- as explained in Section III-C --- ``activity'' \cite{elrofai2018scenario,catapult2018musicc} or ``action'' \cite{ulbrich2015} are part of the existing literature on the subject. In the manuscript, we provide the reason why we opt for ``activity'' over ``action''. To the best of our knowledge, ``state (variable) trajectory'' is less common.
+\fromauthor Please note that an activity describes the trajectory of a state \emph{variable}. We have chosen the name ``activity'' because --- as explained in Section III-C --- ``activity'' \autocite{elrofai2018scenario,catapult2018musicc} or ``action'' \autocite{ulbrich2015} are part of the existing literature on the subject. In the manuscript, we provide the reason why we opt for ``activity'' over ``action''. To the best of our knowledge, ``state (variable) trajectory'' is less common in the field of safety assessment of (automated) vehicles.
+
+
 
 \toauthor Schematic overview in Fig.~4. To me this is quite trivial and does not require the lengthy explanation in the paper. The figure could also be made smaller.
 
-\fromauthor Fig.~4 is made smaller. For someone who is not familiar with the UML notation (which is conceivable because the manuscript is not submitted to a dedicated computer science journal), we think this explanation is useful. Could the reviewer indicate what parts of the explanation can be removed?
+\fromauthor Fig.~4 is now made smaller. For someone who is not familiar with the UML notation (which is conceivable because the manuscript is not submitted to a dedicated computer science journal), we think this explanation is useful. However, we considered to shorten the explanation, so we have removed the short examples.
+
+
 
 \toauthor Example. The example is not overly exciting. It would be good if the authors could share the corresponding code for other researchers.
 
-\fromauthor We will make the code available on a github repository\footnote{See \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.}. To not further lengthen the paper, we use this rather straightforward example. However, more examples will be shared on the github repository.
+\fromauthor As suggested by the reviewer, we have made the code available on a github repository. This is now mentioned in the manuscript (including the footnote): ``\cstart The code of this example is publicly available\footnote{\cstart See \url{https://github.com/ErwindeGelder/ScenarioDomainModel}. The repository also contains more examples that the one presented here.\cend}\cend.'' To not further lengthen the paper, we use this rather straightforward example. However, as now mentioned in the manuscript, more examples will be shared on the github repository.
 
 
 
@@ -226,35 +264,43 @@ To shorten the section on ``event'' to 5 sentences, we need to deviate from our 
 
 Page 1, opening paragraph: The authors mix ADAS with automation (citation of Bengler et al.\ (2014)). Care should be taken to distinguish between the two.
 
-\fromauthor ADAS refer to L1 or L2 automation, whereas AVs refer to L1 and higher automation levels (we explain this in Section II-B). Since \textcite{bengler2014threedecades} addresses ADAS, we assume that the same arguments hold for AVs. After citing \textcite{bengler2014threedecades}, we added the following sentence to clarify this: \cstart Whereas \textcite{bengler2014threedecades} address driver assistance systems, it is not hard to imagine that the same holds for AVs.\cend
+\fromauthor Thank you for pointing this out. After citing \textcite{bengler2014threedecades}, we have added the following sentence to clarify this: \cstart Whereas \textcite{bengler2014threedecades} address driver assistance systems, it is not hard to imagine that the same holds for AVs.\cend
+
+
 
 \toauthor Page 1, opening paragraph: ``too much resources''.
 
 \fromauthor This is rephrased to ``\cstart too many resources\cend''.
 
+
+
 \toauthor Page 5, 6: It might be useful to mention that if the activity of the ego vehicle is described rather than its goal, that an observer might not be able to determine if the ego vehicle successfully navigated the scenario.
 
-\fromauthor We added the following sentence at point 6 of Section~III-A: \cstart Note that if the activity of the ego vehicle is described rather than its goal, an observer might not be able to determine whether the ego vehicle successfully completed the scenario.\cend
+\fromauthor Thank you for this suggestion. We have now added the following sentence at point 6 of Section~III-A: \cstart Note that if the activity of the ego vehicle is described rather than its goal, an observer might not be able to determine whether the ego vehicle has successfully responded to the scenario.\cend
+
+
 
 \toauthor Page 6, under Definition 2: The example of the event involving the vehicle and pedestrian -- the point could be made that the threshold value is set by whomever is setting up the scenario, i.e., that it is flexible.
 
-\fromauthor We added the following sentence after Definition 2 in Section~III-B: \cstart By using a variable threshold $\distancecondition$, the value is flexible and can be set by whomever is setting up the scenario.\cend
+\fromauthor This is indeed true. We have added the following sentence after Definition 2 in Section~III-B: \cstart By using a variable threshold $\distancecondition$, the value is flexible and can be set differently to define multiple scenarios.\cend
+
+
 
 \toauthor Page 7, Definition 4: I am not sure that ``scenario category'' is the best choice of nomenclature. Perhaps instead of ``category'', ``account'' or ``depiction'' could be used. The term ``category'' is a grouping term, but each scenario will be unique, despite having common features to other scenarios. It's not clear to me that multiple scenarios could fall under the scenario category -- an example should be provided. If the qualitative description is sufficiently detailed, multiple scenarios should not be able to ``fall into'' a scenario category.
 
-\fromauthor We appreciate the different options for ``category''. Although ``depiction'' might be closer to the actual definition of the term, we opt for using ``category'', because this also addresses the fact that scenarios can be grouped into scenario categories. To clarify that multiple scenarios could fall under a scenario category, we added the following to the example (Section~V-B): \cstart A different scenario can be defined by, e.g., changing the parameter values. This illustrates that the scenario category in Fig.~6 comprises multiple scenarios, namely all scenarios that only differ from the scenario in Fig.~7 because of different parameter values.\cend
+\fromauthor We appreciate the different options for ``category''. Although ``depiction'' might be closer to the actual definition of the term, we opt for using ``category'', because this also addresses the fact that scenarios can be grouped into scenario categories. To clarify that multiple scenarios could fall under a scenario category, we have added the following to the example (Section~V-B): \cstart A different scenario can be defined by, e.g., changing the parameter values. This illustrates that the scenario category in Fig.~6 comprises multiple scenarios, namely all scenarios that only differ from the scenario in Fig.~7 because of different parameter values.\cend
 
 \toauthor Further, ``fall into'' is colloquial, and I would use ``comprises'' instead (although the terms would have to be reversed).
 
-\fromauthor We changes the ``fall into'' method to the ``\cstart comprise\cend'' method. Furthermore, because it might be confusion that we use different symbols ($\scenariofallsinto$ and $\scenariocategoryfallsinto$), we choose to use different names:
+\fromauthor We have changed the ``fall into'' method to the ``\cstart comprise\cend'' method. Furthermore, because it might be confusing that we use different symbols ($\scenariofallsinto$ and $\scenariocategoryfallsinto$), we choose to use different names:
 \begin{itemize}
-	\item A scenario category can \cstart comprise \cend one or multiple scenarios, e.g., $\scenarioa \scenariofallsinto \scenariocategoryb$.
-	\item A scenario category can \cstart encompass \cend one or multiple scenario categories, e.g., $\scenariocategorya \scenariocategoryfallsinto \scenariocategoryb$.
+	\item A scenario category can \cstart comprise \cend one or multiple scenarios, e.g., $\scenarioa \scenariofallsinto \scenariocategoryb$ means that $\scenarioa$ \cstart is comprised in \cend $\scenariocategoryb$.
+	\item A scenario category can \cstart encompass \cend one or multiple scenario categories, e.g., $\scenariocategorya \scenariocategoryfallsinto \scenariocategoryb$ means that $\scenariocategorya$ \cstart is encompassed by \cend $\scenariocategoryb$.
 \end{itemize}
 
 \toauthor Page 13, Static Environment block: You should mention that there are many facets to this quantitative description -- more than just number of lanes, lane width, and coordinates -- e.g., road friction.
 
-\fromauthor We added the following sentence: \cstart Note that, in practice, the quantitative description of the static environment contains many more facets than the ones mentioned in Fig.~7.\cend
+\fromauthor To clarify that there are many facets to the quantitative description of the static environment, we have added the following sentence: \cstart Note that, in practice, the quantitative description of the static environment contains many more facets than the ones mentioned in Fig.~7.\cend
 
 
 
