@@ -1,0 +1,205 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1200;
+            height: 500;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+        #loadingBar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width: 1200;
+            height: 500;
+            background-color:rgba(200,200,200,0.8);
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            opacity:1;
+        }
+
+        #bar {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:20px;
+            height:20px;
+            margin:auto auto auto auto;
+            border-radius:11px;
+            border:2px solid rgba(30,30,30,0.05);
+            background: rgb(0, 173, 246); /* Old browsers */
+            box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+        }
+
+        #border {
+            position:absolute;
+            top:10px;
+            left:10px;
+            width:500px;
+            height:23px;
+            margin:auto auto auto auto;
+            box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+            border-radius:10px;
+        }
+
+        #text {
+            position:absolute;
+            top:8px;
+            left:530px;
+            width:30px;
+            height:50px;
+            margin:auto auto auto auto;
+            font-size:22px;
+            color: #000000;
+        }
+
+        div.outerBorder {
+            position:relative;
+            top:400px;
+            width:600px;
+            height:44px;
+            margin:auto auto auto auto;
+            border:8px solid rgba(0,0,0,0.1);
+            background: rgb(252,252,252); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+            border-radius:72px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+<div id="loadingBar">
+    <div class="outerBorder">
+        <div id="text">0%</div>
+        <div id="border">
+            <div id="bar"></div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "blue", "id": 217066, "label": "217066", "shape": "dot"}, {"color": "blue", "id": 848, "label": "848", "shape": "dot"}, {"color": "blue", "id": 217558, "label": "217558", "shape": "dot"}, {"color": "blue", "id": 217691, "label": "217691", "shape": "dot"}, {"color": "blue", "id": 218159, "label": "218159", "shape": "dot"}, {"color": "blue", "id": 218316, "label": "218316", "shape": "dot"}, {"color": "blue", "id": 217906, "label": "217906", "shape": "dot"}, {"color": "blue", "id": 217274, "label": "217274", "shape": "dot"}, {"color": "blue", "id": 217383, "label": "217383", "shape": "dot"}, {"color": "blue", "id": 217095, "label": "217095", "shape": "dot"}, {"color": "blue", "id": 25406, "label": "25406", "shape": "dot"}, {"color": "blue", "id": 217790, "label": "217790", "shape": "dot"}, {"color": "blue", "id": 217098, "label": "217098", "shape": "dot"}, {"color": "blue", "id": 4233, "label": "4233", "shape": "dot"}, {"color": "blue", "id": 218188, "label": "218188", "shape": "dot"}, {"color": "blue", "id": 4215, "label": "4215", "shape": "dot"}, {"color": "blue", "id": 217139, "label": "217139", "shape": "dot"}, {"color": "blue", "id": 217257, "label": "217257", "shape": "dot"}, {"color": "blue", "id": 217288, "label": "217288", "shape": "dot"}, {"color": "blue", "id": 217680, "label": "217680", "shape": "dot"}, {"color": "blue", "id": 217412, "label": "217412", "shape": "dot"}, {"color": "blue", "id": 137691, "label": "137691", "shape": "dot"}, {"color": "blue", "id": 217057, "label": "217057", "shape": "dot"}, {"color": "blue", "id": 217144, "label": "217144", "shape": "dot"}, {"color": "blue", "id": 217272, "label": "217272", "shape": "dot"}, {"color": "blue", "id": 217540, "label": "217540", "shape": "dot"}, {"color": "blue", "id": 216893, "label": "216893", "shape": "dot"}, {"color": "blue", "id": 179, "label": "179", "shape": "dot"}, {"color": "blue", "id": 217141, "label": "217141", "shape": "dot"}, {"color": "blue", "id": 217900, "label": "217900", "shape": "dot"}, {"color": "blue", "id": 216895, "label": "216895", "shape": "dot"}, {"color": "blue", "id": 218306, "label": "218306", "shape": "dot"}, {"color": "blue", "id": 9933, "label": "9933", "shape": "dot"}, {"color": "blue", "id": 217006, "label": "217006", "shape": "dot"}, {"color": "blue", "id": 25147, "label": "25147", "shape": "dot"}, {"color": "blue", "id": 835, "label": "835", "shape": "dot"}, {"color": "green", "id": 115522, "label": "115522", "shape": "dot"}, {"color": "green", "id": 115523, "label": "115523", "shape": "dot"}, {"color": "green", "id": 1186, "label": "1186", "shape": "dot"}, {"color": "green", "id": 129997, "label": "129997", "shape": "dot"}, {"color": "green", "id": 155865, "label": "155865", "shape": "dot"}, {"color": "green", "id": 155867, "label": "155867", "shape": "dot"}, {"color": "green", "id": 216894, "label": "216894", "shape": "dot"}, {"color": "green", "id": 216999, "label": "216999", "shape": "dot"}, {"color": "green", "id": 217000, "label": "217000", "shape": "dot"}, {"color": "green", "id": 217001, "label": "217001", "shape": "dot"}, {"color": "green", "id": 217002, "label": "217002", "shape": "dot"}, {"color": "green", "id": 217003, "label": "217003", "shape": "dot"}, {"color": "green", "id": 217004, "label": "217004", "shape": "dot"}, {"color": "green", "id": 217005, "label": "217005", "shape": "dot"}, {"color": "green", "id": 217062, "label": "217062", "shape": "dot"}, {"color": "green", "id": 217063, "label": "217063", "shape": "dot"}, {"color": "green", "id": 217064, "label": "217064", "shape": "dot"}, {"color": "green", "id": 217065, "label": "217065", "shape": "dot"}, {"color": "green", "id": 217096, "label": "217096", "shape": "dot"}, {"color": "green", "id": 217097, "label": "217097", "shape": "dot"}, {"color": "green", "id": 217140, "label": "217140", "shape": "dot"}, {"color": "green", "id": 217142, "label": "217142", "shape": "dot"}, {"color": "green", "id": 217145, "label": "217145", "shape": "dot"}, {"color": "green", "id": 217146, "label": "217146", "shape": "dot"}, {"color": "green", "id": 217147, "label": "217147", "shape": "dot"}, {"color": "green", "id": 217148, "label": "217148", "shape": "dot"}, {"color": "green", "id": 217149, "label": "217149", "shape": "dot"}, {"color": "green", "id": 217150, "label": "217150", "shape": "dot"}, {"color": "green", "id": 217151, "label": "217151", "shape": "dot"}, {"color": "green", "id": 217152, "label": "217152", "shape": "dot"}, {"color": "green", "id": 217153, "label": "217153", "shape": "dot"}, {"color": "green", "id": 217154, "label": "217154", "shape": "dot"}, {"color": "green", "id": 217258, "label": "217258", "shape": "dot"}, {"color": "green", "id": 217259, "label": "217259", "shape": "dot"}, {"color": "green", "id": 217260, "label": "217260", "shape": "dot"}, {"color": "green", "id": 217261, "label": "217261", "shape": "dot"}, {"color": "green", "id": 217262, "label": "217262", "shape": "dot"}, {"color": "green", "id": 217263, "label": "217263", "shape": "dot"}, {"color": "green", "id": 217264, "label": "217264", "shape": "dot"}, {"color": "green", "id": 217265, "label": "217265", "shape": "dot"}, {"color": "green", "id": 217266, "label": "217266", "shape": "dot"}, {"color": "green", "id": 217267, "label": "217267", "shape": "dot"}, {"color": "green", "id": 217268, "label": "217268", "shape": "dot"}, {"color": "green", "id": 217269, "label": "217269", "shape": "dot"}, {"color": "green", "id": 217270, "label": "217270", "shape": "dot"}, {"color": "green", "id": 217271, "label": "217271", "shape": "dot"}, {"color": "green", "id": 217275, "label": "217275", "shape": "dot"}, {"color": "green", "id": 217276, "label": "217276", "shape": "dot"}, {"color": "green", "id": 217277, "label": "217277", "shape": "dot"}, {"color": "green", "id": 217278, "label": "217278", "shape": "dot"}, {"color": "green", "id": 217279, "label": "217279", "shape": "dot"}, {"color": "green", "id": 217280, "label": "217280", "shape": "dot"}, {"color": "green", "id": 217281, "label": "217281", "shape": "dot"}, {"color": "green", "id": 217282, "label": "217282", "shape": "dot"}, {"color": "green", "id": 217283, "label": "217283", "shape": "dot"}, {"color": "green", "id": 217284, "label": "217284", "shape": "dot"}, {"color": "green", "id": 217285, "label": "217285", "shape": "dot"}, {"color": "green", "id": 217286, "label": "217286", "shape": "dot"}, {"color": "green", "id": 217287, "label": "217287", "shape": "dot"}, {"color": "green", "id": 217384, "label": "217384", "shape": "dot"}, {"color": "green", "id": 217385, "label": "217385", "shape": "dot"}, {"color": "green", "id": 217386, "label": "217386", "shape": "dot"}, {"color": "green", "id": 217387, "label": "217387", "shape": "dot"}, {"color": "green", "id": 217388, "label": "217388", "shape": "dot"}, {"color": "green", "id": 217389, "label": "217389", "shape": "dot"}, {"color": "green", "id": 217390, "label": "217390", "shape": "dot"}, {"color": "green", "id": 217391, "label": "217391", "shape": "dot"}, {"color": "green", "id": 217392, "label": "217392", "shape": "dot"}, {"color": "green", "id": 217393, "label": "217393", "shape": "dot"}, {"color": "green", "id": 217394, "label": "217394", "shape": "dot"}, {"color": "green", "id": 217395, "label": "217395", "shape": "dot"}, {"color": "green", "id": 217396, "label": "217396", "shape": "dot"}, {"color": "green", "id": 217397, "label": "217397", "shape": "dot"}, {"color": "green", "id": 217398, "label": "217398", "shape": "dot"}, {"color": "green", "id": 217399, "label": "217399", "shape": "dot"}, {"color": "green", "id": 217400, "label": "217400", "shape": "dot"}, {"color": "green", "id": 217401, "label": "217401", "shape": "dot"}, {"color": "green", "id": 217402, "label": "217402", "shape": "dot"}, {"color": "green", "id": 217403, "label": "217403", "shape": "dot"}, {"color": "green", "id": 217404, "label": "217404", "shape": "dot"}, {"color": "green", "id": 217405, "label": "217405", "shape": "dot"}, {"color": "green", "id": 217406, "label": "217406", "shape": "dot"}, {"color": "green", "id": 217407, "label": "217407", "shape": "dot"}, {"color": "green", "id": 217408, "label": "217408", "shape": "dot"}, {"color": "green", "id": 217409, "label": "217409", "shape": "dot"}, {"color": "green", "id": 217410, "label": "217410", "shape": "dot"}, {"color": "green", "id": 217411, "label": "217411", "shape": "dot"}, {"color": "green", "id": 217541, "label": "217541", "shape": "dot"}, {"color": "green", "id": 217542, "label": "217542", "shape": "dot"}, {"color": "green", "id": 217543, "label": "217543", "shape": "dot"}, {"color": "green", "id": 217544, "label": "217544", "shape": "dot"}, {"color": "green", "id": 217545, "label": "217545", "shape": "dot"}, {"color": "green", "id": 217546, "label": "217546", "shape": "dot"}, {"color": "green", "id": 217547, "label": "217547", "shape": "dot"}, {"color": "green", "id": 217548, "label": "217548", "shape": "dot"}, {"color": "green", "id": 217549, "label": "217549", "shape": "dot"}, {"color": "green", "id": 217550, "label": "217550", "shape": "dot"}, {"color": "green", "id": 217551, "label": "217551", "shape": "dot"}, {"color": "green", "id": 217552, "label": "217552", "shape": "dot"}, {"color": "green", "id": 217553, "label": "217553", "shape": "dot"}, {"color": "green", "id": 217554, "label": "217554", "shape": "dot"}, {"color": "green", "id": 217555, "label": "217555", "shape": "dot"}, {"color": "green", "id": 217556, "label": "217556", "shape": "dot"}, {"color": "green", "id": 217557, "label": "217557", "shape": "dot"}, {"color": "green", "id": 217681, "label": "217681", "shape": "dot"}, {"color": "green", "id": 217682, "label": "217682", "shape": "dot"}, {"color": "green", "id": 217683, "label": "217683", "shape": "dot"}, {"color": "green", "id": 217684, "label": "217684", "shape": "dot"}, {"color": "green", "id": 217685, "label": "217685", "shape": "dot"}, {"color": "green", "id": 217686, "label": "217686", "shape": "dot"}, {"color": "green", "id": 217687, "label": "217687", "shape": "dot"}, {"color": "green", "id": 217688, "label": "217688", "shape": "dot"}, {"color": "green", "id": 217689, "label": "217689", "shape": "dot"}, {"color": "green", "id": 217690, "label": "217690", "shape": "dot"}, {"color": "green", "id": 217791, "label": "217791", "shape": "dot"}, {"color": "green", "id": 217792, "label": "217792", "shape": "dot"}, {"color": "green", "id": 217793, "label": "217793", "shape": "dot"}, {"color": "green", "id": 217794, "label": "217794", "shape": "dot"}, {"color": "green", "id": 217795, "label": "217795", "shape": "dot"}, {"color": "green", "id": 217796, "label": "217796", "shape": "dot"}, {"color": "green", "id": 217901, "label": "217901", "shape": "dot"}, {"color": "green", "id": 217902, "label": "217902", "shape": "dot"}, {"color": "green", "id": 217903, "label": "217903", "shape": "dot"}, {"color": "green", "id": 217904, "label": "217904", "shape": "dot"}, {"color": "green", "id": 217905, "label": "217905", "shape": "dot"}, {"color": "green", "id": 218160, "label": "218160", "shape": "dot"}, {"color": "green", "id": 218161, "label": "218161", "shape": "dot"}, {"color": "green", "id": 218162, "label": "218162", "shape": "dot"}, {"color": "green", "id": 218163, "label": "218163", "shape": "dot"}, {"color": "green", "id": 218164, "label": "218164", "shape": "dot"}, {"color": "green", "id": 218165, "label": "218165", "shape": "dot"}, {"color": "green", "id": 218166, "label": "218166", "shape": "dot"}, {"color": "green", "id": 218167, "label": "218167", "shape": "dot"}, {"color": "green", "id": 218168, "label": "218168", "shape": "dot"}, {"color": "green", "id": 218169, "label": "218169", "shape": "dot"}, {"color": "green", "id": 218170, "label": "218170", "shape": "dot"}, {"color": "green", "id": 218171, "label": "218171", "shape": "dot"}, {"color": "green", "id": 218172, "label": "218172", "shape": "dot"}, {"color": "green", "id": 218173, "label": "218173", "shape": "dot"}, {"color": "green", "id": 218174, "label": "218174", "shape": "dot"}, {"color": "green", "id": 218175, "label": "218175", "shape": "dot"}, {"color": "green", "id": 218176, "label": "218176", "shape": "dot"}, {"color": "green", "id": 218177, "label": "218177", "shape": "dot"}, {"color": "green", "id": 218178, "label": "218178", "shape": "dot"}, {"color": "green", "id": 218179, "label": "218179", "shape": "dot"}, {"color": "green", "id": 218180, "label": "218180", "shape": "dot"}, {"color": "green", "id": 218181, "label": "218181", "shape": "dot"}, {"color": "green", "id": 218182, "label": "218182", "shape": "dot"}, {"color": "green", "id": 218183, "label": "218183", "shape": "dot"}, {"color": "green", "id": 218184, "label": "218184", "shape": "dot"}, {"color": "green", "id": 218185, "label": "218185", "shape": "dot"}, {"color": "green", "id": 218186, "label": "218186", "shape": "dot"}, {"color": "green", "id": 218187, "label": "218187", "shape": "dot"}, {"color": "green", "id": 218307, "label": "218307", "shape": "dot"}, {"color": "green", "id": 218308, "label": "218308", "shape": "dot"}, {"color": "green", "id": 218309, "label": "218309", "shape": "dot"}, {"color": "green", "id": 218310, "label": "218310", "shape": "dot"}, {"color": "green", "id": 218311, "label": "218311", "shape": "dot"}, {"color": "green", "id": 218312, "label": "218312", "shape": "dot"}, {"color": "green", "id": 218313, "label": "218313", "shape": "dot"}, {"color": "green", "id": 218314, "label": "218314", "shape": "dot"}, {"color": "green", "id": 218315, "label": "218315", "shape": "dot"}, {"color": "green", "id": 32513, "label": "32513", "shape": "dot"}, {"color": "green", "id": 34787, "label": "34787", "shape": "dot"}, {"color": "green", "id": 5747, "label": "5747", "shape": "dot"}, {"color": "green", "id": 5755, "label": "5755", "shape": "dot"}, {"color": "green", "id": 69549, "label": "69549", "shape": "dot"}]);
+        edges = new vis.DataSet([{"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 216893, "to": 216894}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 216894, "to": 216895}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 835, "to": 1186}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 25147, "to": 5747}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 5747, "to": 32513}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 5747, "to": 5755}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 32513, "to": 5747}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 5755, "to": 115522}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 5755, "to": 217000}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 115522, "to": 115523}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 115523, "to": 1186}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 1186, "to": 216999}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 1186, "to": 848}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 216999, "to": 5755}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217000, "to": 129997}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 129997, "to": 217001}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 129997, "to": 217002}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217001, "to": 129997}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217002, "to": 217003}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217003, "to": 217004}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217004, "to": 217005}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217005, "to": 217006}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217057, "to": 217062}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217062, "to": 217063}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217063, "to": 217064}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217064, "to": 217065}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217065, "to": 217066}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217095, "to": 217096}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217096, "to": 217097}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217097, "to": 217098}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217139, "to": 217140}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217140, "to": 69549}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 69549, "to": 217141}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 69549, "to": 217142}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217141, "to": 69549}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217142, "to": 34787}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 34787, "to": 9933}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 34787, "to": 4233}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 34787, "to": 4215}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 9933, "to": 34787}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217144, "to": 217145}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217145, "to": 217146}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217146, "to": 217147}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217147, "to": 217148}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217148, "to": 217149}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217149, "to": 217150}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217150, "to": 217151}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217151, "to": 217152}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217152, "to": 217153}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217153, "to": 217154}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217154, "to": 137691}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217257, "to": 217258}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217258, "to": 155865}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 155865, "to": 217259}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217259, "to": 217260}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217260, "to": 217261}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217261, "to": 217262}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217262, "to": 217263}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217263, "to": 217264}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217263, "to": 217265}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217264, "to": 217263}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217265, "to": 217266}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217266, "to": 217267}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217267, "to": 217268}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217268, "to": 217269}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217269, "to": 217270}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217269, "to": 217271}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217270, "to": 217269}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217271, "to": 155867}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 155867, "to": 217272}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217274, "to": 217275}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217275, "to": 217276}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217276, "to": 217277}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217277, "to": 217278}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217278, "to": 217279}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217279, "to": 217278}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217279, "to": 217280}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217280, "to": 217281}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217281, "to": 217282}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217282, "to": 217283}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217282, "to": 217284}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217283, "to": 217282}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217284, "to": 217285}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217285, "to": 217286}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217286, "to": 217287}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217287, "to": 217288}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217383, "to": 217384}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217384, "to": 217385}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217385, "to": 217386}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217386, "to": 217387}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217387, "to": 217388}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217388, "to": 217389}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217389, "to": 217390}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217390, "to": 217391}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217391, "to": 217392}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217392, "to": 217393}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217393, "to": 217394}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217394, "to": 217395}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217395, "to": 217396}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217396, "to": 217397}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217397, "to": 217398}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217398, "to": 217399}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217399, "to": 217400}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217400, "to": 217401}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217401, "to": 217402}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217402, "to": 217403}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217403, "to": 217404}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217404, "to": 217405}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217405, "to": 217406}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217406, "to": 217407}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217407, "to": 217408}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217408, "to": 217409}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217409, "to": 217410}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217410, "to": 217411}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217411, "to": 217412}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217540, "to": 217541}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217541, "to": 217542}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217542, "to": 217543}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217543, "to": 217544}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217544, "to": 217545}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217545, "to": 217546}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217546, "to": 217547}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217547, "to": 217548}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217548, "to": 217549}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217549, "to": 217550}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217550, "to": 217551}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217551, "to": 217552}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217552, "to": 217553}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217553, "to": 217554}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217554, "to": 217555}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217555, "to": 217556}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217556, "to": 217557}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217557, "to": 217558}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217680, "to": 217681}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217681, "to": 217682}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217682, "to": 217683}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217683, "to": 217684}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217684, "to": 217685}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217685, "to": 217686}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217686, "to": 217687}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217687, "to": 217688}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217688, "to": 217689}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217689, "to": 217690}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217690, "to": 217691}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217790, "to": 217791}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217791, "to": 217792}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217792, "to": 217793}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217793, "to": 217794}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217794, "to": 217795}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217795, "to": 217796}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217796, "to": 179}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217900, "to": 217901}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217901, "to": 217902}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217902, "to": 217903}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217903, "to": 217904}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217904, "to": 217905}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 217905, "to": 217906}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 25406, "to": 34787}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218159, "to": 218160}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218160, "to": 218161}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218161, "to": 218162}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218162, "to": 218163}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218163, "to": 218164}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218164, "to": 218165}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218165, "to": 218166}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218166, "to": 218167}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218167, "to": 218168}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218168, "to": 218169}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218169, "to": 218170}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218170, "to": 218171}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218171, "to": 218172}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218172, "to": 218173}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218172, "to": 218174}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218173, "to": 218172}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218174, "to": 218175}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218175, "to": 218176}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218176, "to": 218177}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218177, "to": 218178}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218178, "to": 218179}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218179, "to": 218180}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218180, "to": 218181}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218181, "to": 218182}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218182, "to": 218183}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218183, "to": 218184}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218184, "to": 218185}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218185, "to": 218186}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218186, "to": 218187}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218187, "to": 218188}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218306, "to": 218307}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218307, "to": 218308}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218308, "to": 218309}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218309, "to": 218310}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218309, "to": 218311}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218310, "to": 218309}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218311, "to": 218312}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218312, "to": 218313}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218313, "to": 218314}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218314, "to": 218315}, {"arrows": "to", "color": {"color": "#000000", "highlight": "#000000"}, "from": 218315, "to": 218316}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        // default to using dot shape for nodes
+        options.nodes = {
+            shape: "dot"
+        }
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+        network.on("stabilizationProgress", function(params) {
+      		document.getElementById('loadingBar').removeAttribute("style");
+	        var maxWidth = 496;
+	        var minWidth = 20;
+	        var widthFactor = params.iterations/params.total;
+	        var width = Math.max(minWidth,maxWidth * widthFactor);
+
+	        document.getElementById('bar').style.width = width + 'px';
+	        document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+	    });
+	    network.once("stabilizationIterationsDone", function() {
+	        document.getElementById('text').innerHTML = '100%';
+	        document.getElementById('bar').style.width = '496px';
+	        document.getElementById('loadingBar').style.opacity = 0;
+	        // really clean the dom element
+	        setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+	    });
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

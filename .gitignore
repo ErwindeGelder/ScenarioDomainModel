@@ -31,3 +31,6 @@ utilities/log2.txt
 
 # Other files to be ignored
 20171126 Parametrization/df.p
+20190725 Scenario risk/python/data/
+20191014 Scenario mining/data/
+20191014 Scenario mining/dev/_old/
