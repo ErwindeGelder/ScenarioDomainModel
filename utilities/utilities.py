@@ -5,6 +5,7 @@ Generate all relevant pdfs from .tex files.
 import subprocess
 import os
 from os.path import join
+import platform
 import glob
 import fileinput
 import argparse
@@ -15,6 +16,12 @@ from shutil import copyfile
 PARSER = argparse.ArgumentParser(description="Compile the documents")
 PARSER.add_argument('--overwrite', help="Overwrite existings pdfs", action="store_true")
 ARGS = PARSER.parse_args()
+
+
+if platform.system() == "Linux":
+    PDFLATEX = "pdflatex"
+else:
+    PDFLATEX = "pdflatex.exe"
 
 
 def print_line():
@@ -105,12 +112,12 @@ def pdf_latex(folder: str, texfile: str, output: bool = False) -> str:
     :param output: Whether to return the output or not.
     """
     if output is False:
-        cmd = 'pdflatex.exe -synctex=1 -interaction=nonstopmode -shell-escape "{:s}".tex'.\
-            format(texfile)
+        cmd = '{:s} -synctex=1 -interaction=nonstopmode -shell-escape "{:s}".tex'.\
+            format(PDFLATEX, texfile)
         call(cmd, cwd=folder)
         return ''
 
-    out = call_output(['pdflatex.exe', '-synctex=1', '-interaction=nonstopmode',
+    out = call_output([PDFLATEX, '-synctex=1', '-interaction=nonstopmode',
                        '-shell-escape', '"{:s}".tex'.format(texfile)],
                       cwd=folder)
     lines = out.decode('utf-8', 'ignore').split('\r\n')  # Ignore errors
