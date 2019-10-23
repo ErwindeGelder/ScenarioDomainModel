@@ -37,7 +37,7 @@ def call(string: str, **kwargs) -> None:
     :param kwargs: any arguments (other than shell=True) added to subprocess.call().
     """
     print("Subprocess: {:s}".format(string))
-    subprocess.call(string, shell=True, **kwargs)
+    subprocess.call(string, **kwargs)
     print_line()
 
 
@@ -50,7 +50,7 @@ def call_output(calllist: List[str], **kwargs) -> str:
     :return: the output of the call.
     """
     print("Subprocess: {:s}".format(" ".join(calllist)))
-    out = subprocess.check_output(calllist, shell=True, **kwargs)
+    out = subprocess.check_output(calllist, **kwargs)
     print_line()
     return out
 
