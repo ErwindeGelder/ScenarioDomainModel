@@ -112,12 +112,12 @@ def pdf_latex(folder: str, texfile: str, output: bool = False) -> str:
     :param output: Whether to return the output or not.
     """
     if output is False:
-        cmd = 'pdflatex.exe -synctex=1 -interaction=nonstopmode -shell-escape '
+        cmd = '{:s} -synctex=1 -interaction=nonstopmode -shell-escape '.format(PDFLATEX)
         cmd += '-output-directory="{:s}" "{:s}".tex'.format(folder, texfile)
         call(cmd)
         return ''
 
-    out = call_output(['pdflatex.exe', '-synctex=1', '-interaction=nonstopmode',
+    out = call_output([PDFLATEX, '-synctex=1', '-interaction=nonstopmode',
                        '-shell-escape', '-output-directory="{:s}"'.format(folder),
                        '"{:s}".tex'.format(texfile)])
     lines = out.decode('utf-8', 'ignore').split('\r\n')  # Ignore errors
