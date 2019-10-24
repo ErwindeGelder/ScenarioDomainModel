@@ -34,7 +34,7 @@ def call(string: str, **kwargs) -> None:
     """ Call a command
 
     :param string: command to call.
-    :param kwargs: any arguments (other than shell=True) added to subprocess.call().
+    :param kwargs: any arguments added to subprocess.call().
     """
     print("Subprocess: {:s}".format(string))
     subprocess.call(string, **kwargs)
@@ -46,7 +46,7 @@ def call_output(calllist: List[str], **kwargs) -> str:
 
     :param calllist: List of commands to call. Any options to the call should be provided as a
         seperate item of the list.
-    :param kwargs: any arguments (other than shell=True) added to subprocess.call().
+    :param kwargs: any arguments added to subprocess.call().
     :return: the output of the call.
     """
     print("Subprocess: {:s}".format(" ".join(calllist)))
@@ -112,14 +112,14 @@ def pdf_latex(folder: str, texfile: str, output: bool = False) -> str:
     :param output: Whether to return the output or not.
     """
     if output is False:
-        cmd = '{:s} -synctex=1 -interaction=nonstopmode -shell-escape "{:s}".tex'.\
-            format(PDFLATEX, texfile)
-        call(cmd, cwd=folder)
+        cmd = 'pdflatex.exe -synctex=1 -interaction=nonstopmode -shell-escape '
+        cmd += '-output-directory="{:s}" "{:s}".tex'.format(folder, texfile)
+        call(cmd)
         return ''
 
-    out = call_output([PDFLATEX, '-synctex=1', '-interaction=nonstopmode',
-                       '-shell-escape', '"{:s}".tex'.format(texfile)],
-                      cwd=folder)
+    out = call_output(['pdflatex.exe', '-synctex=1', '-interaction=nonstopmode',
+                       '-shell-escape', '-output-directory="{:s}"'.format(folder),
+                       '"{:s}".tex'.format(texfile)])
     lines = out.decode('utf-8', 'ignore').split('\r\n')  # Ignore errors
     for line in lines:
         print(line)
@@ -132,8 +132,8 @@ def bibtex(folder: str, texfile: str) -> None:
     :param folder: Folder of the texfile.
     :param texfile: Name of the texfile.
     """
-    cmd = 'bibtex.exe "{:s}"'.format(texfile)
-    call(cmd, cwd=folder)
+    cmd = 'bibtex.exe "{:s}"'.format(os.path.join(folder, texfile))
+    call(cmd)
 
 
 def biber(folder: str, texfile: str) -> None:
@@ -142,8 +142,8 @@ def biber(folder: str, texfile: str) -> None:
     :param folder: Folder of the texfile.
     :param texfile: Name of the texfile.
     """
-    cmd = 'biber.exe "{:s}"'.format(texfile)
-    call(cmd, cwd=folder)
+    cmd = 'biber.exe "{:s}"'.format(os.path.join(folder, texfile))
+    call(cmd)
 
 
 def pdf_till_no_rerun_warning(folder: str, texfile: str) -> Tuple[List, List]:
