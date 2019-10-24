@@ -5,12 +5,14 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2019 08 28 Automatically save updated dataframe. Loop through all dataframes.
+2019 10 22 Use multiprocessing to speed up the analysis.
 """
 
 
-import os
-from glob import glob
 import argparse
+from glob import glob
+import os
+import multiprocessing as mp
 import pandas as pd
 from tqdm import tqdm
 from activity_detector import ActivityDetector
@@ -24,10 +26,13 @@ PARSER.add_argument('--hostactivities', help="Detect host activities", action="s
 PARSER.add_argument('--targetactivities', help="Detect host activities", action="store_true")
 ARGS = PARSER.parse_args()
 
-if not os.path.exists(ARGS.folder):
-    os.mkdir(ARGS.folder)
-DATAFILES = glob(os.path.join(ARGS.folder, '*.hdf5'))
-for datafile in tqdm(DATAFILES):
+
+def process_file(datafile: str) -> None:
+    """ Process an HDF5 file.
+
+    :param datafile: Path of the to-be-processed file.
+    :return:
+    """
     dataframe = pd.read_hdf(datafile)  # type: pd.DataFrame
     activity_detector = ActivityDetector(dataframe)
     if ARGS.hostactivities:
@@ -38,3 +43,12 @@ for datafile in tqdm(DATAFILES):
             activity_detector.set_target_activities(i)
     activity_detector.get_all_data().to_hdf(os.path.join(ARGS.folder, os.path.basename(datafile)),
                                             'Data', mode='w', complevel=ARGS.complevel)
+
+
+if __name__ == "__main__":
+    if not os.path.exists(ARGS.folder):
+        os.mkdir(ARGS.folder)
+    DATAFILES = glob(os.path.join(ARGS.folder, '*.hdf5'))
+    with mp.Pool(processes=4) as POOL:
+        for _ in tqdm(POOL.imap_unordered(process_file, DATAFILES), total=len(DATAFILES)):
+            pass
