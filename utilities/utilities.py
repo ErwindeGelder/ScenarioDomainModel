@@ -146,7 +146,7 @@ def bibtex(folder: str, texfile: str) -> None:
     :param folder: Folder of the texfile.
     :param texfile: Name of the texfile.
     """
-    cmd = '{:s} "{:s}"'.format(BIBTEX, texfile)
+    cmd = '{:s} {:s}'.format(BIBTEX, texfile)
     call(cmd, folder)
 
 
@@ -156,7 +156,7 @@ def biber(folder: str, texfile: str) -> None:
     :param folder: Folder of the texfile.
     :param texfile: Name of the texfile.
     """
-    cmd = '{:s} "{:s}"'.format(BIBER, texfile)
+    cmd = '{:s} {:s}'.format(BIBER, texfile)
     call(cmd, folder)
 
 
