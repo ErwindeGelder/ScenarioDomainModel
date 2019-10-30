@@ -340,7 +340,7 @@ if __name__ == '__main__':
     compile_pr(1, usebibtex=True)
     compile_pr(2, usebibtex=True)
     compile_pr(3, usebibtex=True,
-               other=(join('20171111 IV2018 Ontology', 'root'), dict(usebibtex=True)))
+               other=(join('20171111 IV2018 Ontology', 'root'), dict(usebibtex=True, tikz=True)))
     compile_pr(4, usebibtex=True,
                other=(join('20171126 Parametrization', 'hyperparameter_selection'),
                       dict(usebibtex=True, toggle=('standalone', False), tikz=True)))
