@@ -31,7 +31,7 @@ def print_line():
     print("#####################################################################################")
 
 
-def call(string: str, folder: str, **kwargs) -> None:
+def call(string: str, folder: str = None, **kwargs) -> None:
     """ Call a command
 
     :param string: command to call.
@@ -39,9 +39,11 @@ def call(string: str, folder: str, **kwargs) -> None:
     :param kwargs: any arguments added to subprocess.call().
     """
     print("Subprocess: {:s}".format(string))
-    os.chdir(folder)
+    if folder is not None:
+        os.chdir(folder)
     subprocess.call(string.split(" "), **kwargs)
-    os.chdir(HOMEFOLDER)
+    if folder is not None:
+        os.chdir(HOMEFOLDER)
     print_line()
 
 
@@ -55,9 +57,11 @@ def call_output(calllist: List[str], folder, **kwargs) -> str:
     :return: the output of the call.
     """
     print("Subprocess: {:s}".format(" ".join(calllist)))
-    os.chdir(folder)
+    if folder is not None:
+        os.chdir(folder)
     out = subprocess.check_output(calllist, **kwargs)
-    os.chdir(HOMEFOLDER)
+    if folder is not None:
+        os.chdir(HOMEFOLDER)
     print_line()
     return out
 
