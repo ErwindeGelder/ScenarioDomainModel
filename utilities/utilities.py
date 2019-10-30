@@ -47,7 +47,7 @@ def call(string: str, folder: str = None, **kwargs) -> None:
     print_line()
 
 
-def call_output(calllist: List[str], folder, **kwargs) -> str:
+def call_output(calllist: List[str], folder: str = None, **kwargs) -> str:
     """ Call a command and return output
 
     :param calllist: List of commands to call. Any options to the call should be provided as a
