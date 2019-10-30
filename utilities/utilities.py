@@ -16,6 +16,7 @@ from shutil import copyfile
 PARSER = argparse.ArgumentParser(description="Compile the documents")
 PARSER.add_argument('--overwrite', help="Overwrite existings pdfs", action="store_true")
 ARGS = PARSER.parse_args()
+HOMEFOLDER = os.getcwd()
 
 
 if platform.system() == "Linux":
@@ -30,27 +31,33 @@ def print_line():
     print("#####################################################################################")
 
 
-def call(string: str, **kwargs) -> None:
+def call(string: str, folder: str, **kwargs) -> None:
     """ Call a command
 
     :param string: command to call.
+    :param folder: Folder where the command is to be executed.
     :param kwargs: any arguments added to subprocess.call().
     """
     print("Subprocess: {:s}".format(string))
-    subprocess.call(string, **kwargs)
+    os.chdir(folder)
+    subprocess.call(string.split(" "), **kwargs)
+    os.chdir(HOMEFOLDER)
     print_line()
 
 
-def call_output(calllist: List[str], **kwargs) -> str:
+def call_output(calllist: List[str], folder, **kwargs) -> str:
     """ Call a command and return output
 
     :param calllist: List of commands to call. Any options to the call should be provided as a
         seperate item of the list.
+    :param folder: Folder where the command is to be executed.
     :param kwargs: any arguments added to subprocess.call().
     :return: the output of the call.
     """
     print("Subprocess: {:s}".format(" ".join(calllist)))
+    os.chdir(folder)
     out = subprocess.check_output(calllist, **kwargs)
+    os.chdir(HOMEFOLDER)
     print_line()
     return out
 
@@ -113,13 +120,12 @@ def pdf_latex(folder: str, texfile: str, output: bool = False) -> str:
     """
     if output is False:
         cmd = '{:s} -synctex=1 -interaction=nonstopmode -shell-escape '.format(PDFLATEX)
-        cmd += '-output-directory="{:s}" "{:s}".tex'.format(folder, texfile)
-        call(cmd)
+        cmd += '"{:s}".tex'.format(texfile)
+        call(cmd, folder)
         return ''
 
-    out = call_output([PDFLATEX, '-synctex=1', '-interaction=nonstopmode',
-                       '-shell-escape', '-output-directory="{:s}"'.format(folder),
-                       '"{:s}".tex'.format(texfile)])
+    out = call_output([PDFLATEX, '-synctex=1', '-interaction=nonstopmode', '-shell-escape',
+                       '"{:s}".tex'.format(texfile)], folder)
     lines = out.decode('utf-8', 'ignore').split('\r\n')  # Ignore errors
     for line in lines:
         print(line)
@@ -133,7 +139,7 @@ def bibtex(folder: str, texfile: str) -> None:
     :param texfile: Name of the texfile.
     """
     cmd = 'bibtex.exe "{:s}"'.format(os.path.join(folder, texfile))
-    call(cmd)
+    call(cmd, folder)
 
 
 def biber(folder: str, texfile: str) -> None:
@@ -143,7 +149,7 @@ def biber(folder: str, texfile: str) -> None:
     :param texfile: Name of the texfile.
     """
     cmd = 'biber.exe "{:s}"'.format(os.path.join(folder, texfile))
-    call(cmd)
+    call(cmd, folder)
 
 
 def pdf_till_no_rerun_warning(folder: str, texfile: str) -> Tuple[List, List]:
