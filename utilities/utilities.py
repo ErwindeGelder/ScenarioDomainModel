@@ -354,7 +354,7 @@ if __name__ == '__main__':
                other=(join('20180319 Completeness', 'completeness'), dict(usebiber=True)))
     compile_pr(9, usebiber=True,
                other=(join('20180639 Journal paper ontology', 'journal_ontology'),
-                      dict(usebiber=True)))
+                      dict(usebiber=True, tikz=True)))
     compile_pr(10, usebiber=True)
     compile_pr(11, other=(join('20180917 GoNoGo', 'GoNoGo'), dict(usebiber=True)))
     compile_pr(12,
