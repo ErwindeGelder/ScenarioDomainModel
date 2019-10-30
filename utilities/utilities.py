@@ -171,7 +171,7 @@ def pdf_till_no_rerun_warning(folder: str, texfile: str) -> Tuple[List, List]:
             if line.find("Warning:") >= 0:
                 warning = [line]
                 i += 1
-                while not out[i] == "":
+                while i < len(out) and not out[i] == "":
                     warning.append(out[i])
                     i += 1
                 warnings.append(warning)
