@@ -21,8 +21,12 @@ HOMEFOLDER = os.getcwd()
 
 if platform.system() == "Linux":
     PDFLATEX = "pdflatex"
+    BIBTEX = "bibtex"
+    BIBER = "biber"
 else:
     PDFLATEX = "pdflatex.exe"
+    BIBTEX = "bibtex.exe"
+    BIBER = "biber.exe"
 
 
 def print_line():
@@ -142,7 +146,7 @@ def bibtex(folder: str, texfile: str) -> None:
     :param folder: Folder of the texfile.
     :param texfile: Name of the texfile.
     """
-    cmd = 'bibtex.exe "{:s}"'.format(os.path.join(folder, texfile))
+    cmd = '{:s} "{:s}"'.format(BIBTEX, os.path.join(folder, texfile))
     call(cmd, folder)
 
 
@@ -152,7 +156,7 @@ def biber(folder: str, texfile: str) -> None:
     :param folder: Folder of the texfile.
     :param texfile: Name of the texfile.
     """
-    cmd = 'biber.exe "{:s}"'.format(os.path.join(folder, texfile))
+    cmd = '{:s} "{:s}"'.format(BIBER, os.path.join(folder, texfile))
     call(cmd, folder)
 
 
