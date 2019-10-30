@@ -240,7 +240,7 @@ def pdf(folder: str, texfile: str, usebibtex: bool = False, usebiber: bool = Fal
 
 
 def compile_doc(filename, git=None, other=None, newname=None, toggle=None, add2pdfs=True,
-                overwrite=ARGS.overwrite, **kwargs):
+                overwrite=ARGS.overwrite, tikz=False, **kwargs):
     """ Compile a document.
 
     :param filename: The full name of the document, relative from the base folder of this git repo.
@@ -249,6 +249,7 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, add2p
     :param newname: Rename the file, if needed.
     :param toggle: Set a toggle, if needed. Tuple: (<name of toggle::str>, <value::bool>).
     :param overwrite: Whether to overwrite a file.
+    :param tikz: Whether a tikz folder needs to be created.
     :param kwargs: Any additional arguments that will be used for the pdf function.
     """
     folder = os.path.dirname(os.path.splitext(filename)[0])
@@ -274,6 +275,8 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, add2p
 
     if toggle is not None:
         settoggle(join('..', folder, '{:s}.tex'.format(filename)), toggle[0], toggle[1])
+    if tikz:
+        os.mkdir(join('..', folder, 'tikz'))
     pdf(join('..', folder), filename, **kwargs)
 
     if other is not None:
@@ -340,7 +343,7 @@ if __name__ == '__main__':
                other=(join('20171111 IV2018 Ontology', 'root'), dict(usebibtex=True)))
     compile_pr(4, usebibtex=True,
                other=(join('20171126 Parametrization', 'hyperparameter_selection'),
-                      dict(usebibtex=True, toggle=('standalone', False))))
+                      dict(usebibtex=True, toggle=('standalone', False), tikz=True)))
     compile_pr(5, usebiber=True,
                other=[(join('20171111 IV2018 Ontology', 'root'), dict(usebiber=True)),
                       (join('20180207 Similarity', 'scenario_similarity'), dict(usebiber=True))])
