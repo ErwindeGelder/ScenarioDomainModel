@@ -451,4 +451,4 @@ if __name__ == '__main__':
 
     # Delete folder that has wrong name
     if os.path.exists(join('..', '20180639 Journal paper ontology')):
-        call('rm "{:s}" -r'.format(join('..', '20180639 Journal paper ontology')))
+        subprocess.call(['rm', join('..', '20180639 Journal paper ontology'), '-r'])
