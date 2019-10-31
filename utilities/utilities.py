@@ -275,7 +275,7 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, add2p
 
     if toggle is not None:
         settoggle(join('..', folder, '{:s}.tex'.format(filename)), toggle[0], toggle[1])
-    if tikz:
+    if tikz and not os.path.exists(join('..', folder, 'tikz')):
         os.mkdir(join('..', folder, 'tikz'))
     pdf(join('..', folder), filename, **kwargs)
 
