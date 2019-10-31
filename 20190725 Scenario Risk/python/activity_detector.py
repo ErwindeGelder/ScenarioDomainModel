@@ -253,6 +253,9 @@ class ActivityDetector:
             else:
                 xvel = self.data[self.parms.host_lon_vel].loc[all_events[i][0]:all_events[i+1][0]]
                 if all_events[i+1][1] == LongitudinalActivity.ACCELERATING:
+                    # Note that the [::-1] is needed to get the latest occurence
+                    # of the minimum. This, however, does not swap the index, so
+                    # it works fine.
                     events.append((xvel[::-1].idxmin(), LongitudinalActivity.ACCELERATING))
                 else:
                     events.append((xvel[::-1].idxmax(), LongitudinalActivity.DECELERATING))
