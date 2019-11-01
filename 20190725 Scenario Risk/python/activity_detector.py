@@ -1,6 +1,6 @@
 """ Class for reading and adding extra information to ERP2017 data, including various activities.
 
-Creation data: 2019 08 23
+Creation date: 2019 08 23
 Author(s): Erwin de Gelder
 
 Modifications:

@@ -1,6 +1,6 @@
 """ Convert mat files to HDF5 files with pandas dataframes
 
-Creation data: 2019 10 22
+Creation date: 2019 10 22
 Author(s): Erwin de Gelder
 
 Modifications:

@@ -1,17 +1,29 @@
 """ Convert mat files to HDF5 files with pandas dataframes
 
-Creation data: 2019 10 22
+Creation date: 2019 10 22
 Author(s): Erwin de Gelder
 
 Modifications:
+2019 11 01 Add arguments and the possibility to convert one single file.
 """
 
-
+import argparse
 import glob
 import multiprocessing as mp
 import os
 from tqdm import tqdm
 from mat2df import Mat2DF
+
+
+PARSER = argparse.ArgumentParser(description="Convert .mat data to .hdf5")
+PARSER.add_argument('-complevel', default=4, type=int, choices=range(10),
+                    help="Compression level, default=4")
+PARSER.add_argument('-matfolder', default=os.path.join("data", "0_mat_files"), type=str,
+                    help="Folder to get .mat data from")
+PARSER.add_argument('-outfolder', default=os.path.join("data", "1_hdf5"), type=str,
+                    help="Folder to write the data to")
+PARSER.add_argument('-file', default=None, type=str, help="If not all files, select single file")
+ARGS = PARSER.parse_args()
 
 
 # Define the columns that are to be removed.
@@ -40,7 +52,7 @@ for i in range(8):
 def conv_mat_file(matfile: str) -> None:
     """ Convert a single matfile.
 
-    :param matfile:
+    :param matfile: Name of the file that has to be converted.
     """
     conv = Mat2DF(matfile)
     conv.convert()
@@ -50,11 +62,14 @@ def conv_mat_file(matfile: str) -> None:
     conv.data.index = (conv.data.index - conv.data.index[0]) / 1e9
     filename = os.path.join("data", "1_hdf5",
                             "{:s}.hdf5".format(os.path.splitext(os.path.basename(matfile))[0]))
-    conv.save2hdf5(filename)
+    conv.save2hdf5(filename, complevel=ARGS.complevel)
 
 
 if __name__ == "__main__":
-    MATFILES = glob.glob(os.path.join("data", "0_mat_files", "*.mat"))
-    with mp.Pool(processes=4) as POOL:
-        for _ in tqdm(POOL.imap_unordered(conv_mat_file, MATFILES), total=len(MATFILES)):
-            pass
+    if ARGS.file is None:
+        MATFILES = glob.glob(os.path.join(ARGS.matfolder, "*.mat"))
+        with mp.Pool(processes=4) as POOL:
+            for _ in tqdm(POOL.imap_unordered(conv_mat_file, MATFILES), total=len(MATFILES)):
+                pass
+    else:
+        conv_mat_file(os.path.join(ARGS.matfolder, ARGS.file))
