@@ -14,10 +14,10 @@
 
 \node[object, fill=otherclass, right=of scenario category.north east, anchor=north west](ego){{\bfseries Ego::Actor}\\
 	actor category: Ego qualitative\\
-	initial states: $\egoeast=\SI{-40}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$, \\
-	\leavevmode\phantom{initial states: }$\egospeed=\SI{8}{\meter\per\second}$\\
-	desired states: $\egoeast=\SI{20}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$,\\ 
-	\leavevmode\phantom{desired states: }$\egospeed=\SI{8}{\meter\per\second}$\\
+	initial state vector: $\egoeast=\SI{-40}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$, \\
+	\leavevmode\phantom{initial state vector: }$\egospeed=\SI{8}{\meter\per\second}$\\
+	desired state vector: $\egoeast=\SI{20}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$,\\ 
+	\leavevmode\phantom{desired state vector: }$\egospeed=\SI{8}{\meter\per\second}$\\
 	goals: \\
 	tags: };
 

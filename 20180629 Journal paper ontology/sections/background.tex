@@ -1,39 +1,39 @@
 \section{Background}
 \label{sec:background}
 
-We first explain in \cref{sec:why ontology} why we want to present an ontology for describing scenarios and \cbstartd scenario categories\cbend. Next, in \cref{sec:context}, we provide some information on the context for which we want to define scenarios. In \cref{sec:nomenclature}, we describe notions that are adopted from literature to define our ontology.
+We first explain in \cref{sec:why ontology} why we want to present an ontology for describing scenarios and  scenario categories. Next, in \cref{sec:context}, we provide some information on the context for which we want to define scenarios. In \cref{sec:nomenclature}, we describe notions that are adopted from literature to define our ontology.
 
 
 
 \subsection{Why an ontology?}
 \label{sec:why ontology}
-According to Gruber \cite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization'', where a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some purpose''. Ontologies are widely applied in all kinds of research areas, e.g., biology \cite{gkoutos2004mouse}, security-related research \cite{kim2005security}, socio-technical systems \cite{vanDamPhDThesis2009}, computing \cite{chen2004soupa, chen2003ontology}, vehicle platooning \cite{maiti2017conceptualization}, system performance \cite{benvenuti2017ontologybased}, and transportation \cite{katsumi2018ontologies}. Furthermore, ontologies are defined for various applications, e.g., for the profiling of users \cite{golemati2007creating}, for the formalization of human activities \cite{lee2017location}, and for product life cycle management \cite{matsokis2010plm}. An ontology offers the following benefits:
+According to Gruber \autocite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization'', where a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some purpose''. Ontologies are widely applied in all kinds of research areas, e.g., biology \autocite{gkoutos2004mouse}, security-related research \autocite{kim2005security}, socio-technical systems \autocite{vanDamPhDThesis2009}, computing \autocite{chen2004soupa, chen2003ontology}, vehicle platooning \autocite{maiti2017conceptualization}, system performance \autocite{benvenuti2017ontologybased}, transportation \autocite{katsumi2018ontologies}, \cstart and vehicle path planning \autocite{provine2004ontology, schlenoff2003using}\cend. Furthermore, ontologies are defined for various applications, e.g., for the profiling of users \autocite{golemati2007creating}, for the formalization of human activities \autocite{lee2017location}, and for product life cycle management \autocite{matsokis2010plm}. An ontology offers the following benefits:
 \begin{itemize}
-	\item An ontology is useful for sharing knowledge between people and software agents \cite{vanDamPhDThesis2009, noy2001ontology, musen1992dimensions}. For example, the ontology can be used for communication between different software agents, such as different simulation tools \cite{hou2019framework, shao2019evaluating}.
-	\item An ontology can be directly translated into a class structure for an object-oriented software implementation \cite{vanDamPhDThesis2009}. The ontology then specifies the relationships between the different classes and provides information on the properties of a class and the possible values.
-	\item Domain assumptions about terms and definitions are made explicit \cite{noy2001ontology}. 
-	\cbstartd
-	For example, we define the term \emph{scenario} in \cref{sec:scenario} and \cbend this does not only help in preventing any ambiguity when communicating about scenarios, it also helps in understanding the underlying implementations, e.g., the programming language code, when some assumptions are explicit.
-	\item An ontology can be used as a conceptual schema in database systems  \cite{gruber1993ontology}. A conceptual schema allows ``databases to interoperate without having to share data structures'' \cite{gruber1993ontology}. In addition, a conceptual schema can be directly used to design the structure of a database.
+	\item An ontology is useful for sharing knowledge between people and software agents \autocite{vanDamPhDThesis2009, noy2001ontology, musen1992dimensions}. For example, the ontology can be used for communication between different software agents, such as different simulation tools \autocite{hou2019framework, shao2019evaluating}.
+	\item An ontology can be directly translated into a class structure for an object-oriented software implementation \autocite{vanDamPhDThesis2009}. The ontology then specifies the relationships between the different classes and provides information on the properties of a class and the possible values.
+	\item Domain assumptions about terms and definitions are made explicit \autocite{noy2001ontology}. 
+	
+	For example, we define the term \emph{scenario} in \cref{sec:scenario} and  this does not only help in preventing any ambiguity when communicating about scenarios, it also helps in understanding the underlying implementations, e.g., the programming language code, when some assumptions are explicit.
+	\item An ontology can be used as a conceptual schema in database systems  \autocite{gruber1993ontology}. A conceptual schema allows ``databases to interoperate without having to share data structures'' \autocite{gruber1993ontology}. In addition, a conceptual schema can be directly used to design the structure of a database.
 \end{itemize}
 
 There are several languages dedicated to the implementation of an ontology. Two major technologies are the Web Ontology Language (OWL)\footnote{OWL is the standard abbreviation for the Web Ontology Language.} and the Unified Modeling Language (UML). 
 %We use UML for implementing the ontology, because UML focuses on describing implementation related issues, which is useful considering our Python implementation.
-For a detailed comparison between OWL and UML, we refer the interested reader to \cite{kiko2005detailed}.
+For a detailed comparison between OWL and UML, we refer the interested reader to \autocite{kiko2005detailed}.
 
 
 
 \subsection{Context of a scenario}
 \label{sec:context}
 
-Because the notion of scenario is used in many different contexts, a wide diversity in definitions of this notion exists (for an overview, see \cite{vannotten2003updated, bishop2007scentechniques}). Therefore, it is reasonable to assume that ``there is no [generally] `correct' scenario definition'' \cite{vannotten2003updated}. As a result, to define the notion of scenario, it is important to consider the context in which it will be used. 
+Because the notion of scenario is used in many different contexts, a wide diversity in definitions of this notion exists (for an overview, see \autocite{vannotten2003updated, bishop2007scentechniques}). Therefore, it is reasonable to assume that ``there is no [generally] `correct' scenario definition'' \autocite{vannotten2003updated}. As a result, to define the notion of scenario, it is important to consider the context in which it will be used. 
 
-In this paper, the context of a scenario is the assessment of AVs, where AVs refer to vehicles equipped with a driving automation system\footnote{According to \cite{sae2018j3016}, a driving automation system is ``the hardware and software that are collectively capable of performing part or all of the dynamic driving task on a sustained basis. This term is used generically to describe any system capable of level 1-5 driving automation.'' Here, level 1 driving automation refers to ``driver assistance'' and level 5 refers to ``full driving automation''. For more details, see \cite{sae2018j3016}.}. 
+In this paper, the context of a scenario is the assessment of AVs, where AVs refer to vehicles equipped with a driving automation system\footnote{According to \autocite{sae2018j3016}, a driving automation system is ``the hardware and software that are collectively capable of performing part or all of the dynamic driving task on a sustained basis. This term is used generically to describe any system capable of level 1-5 driving automation.'' Here, level 1 driving automation refers to ``driver assistance'' and level 5 refers to ``full driving automation''. For more details, see \autocite{sae2018j3016}.}. 
 It is assumed that the assessment methodology uses scenarios. %(i.e., test cases) 
-%for which some resulting metrics are compared with a reference \cite{stellet2015taxonomy}. 
+%for which some resulting metrics are compared with a reference \autocite{stellet2015taxonomy}. 
 % - Scenarios that an (automated) vehicle can encounter
-The ultimate goal is to build a database with all relevant scenarios that an AV has to cope with when driving in the real world \cite{putz2017pegasus}. Hence, a scenario should be a description of a potential use case of an AV. 
-% Whether these scenarios are obtained with a knowledge-based approach \cite{gietelink2004systemvalidation, stellet2015taxonomy} or with a data-driven approach \cite{deGelder2017assessment, stellet2015taxonomy}, a clear and unambiguous definition of such a test scenario is required. 
+The ultimate goal is to build a database with all relevant scenarios that an AV has to cope with when driving in the real world \autocite{putz2017pegasus}. Hence, a scenario should be a description of a potential use case of an AV. 
+% Whether these scenarios are obtained with a knowledge-based approach \autocite{gietelink2004systemvalidation, stellet2015taxonomy} or with a data-driven approach \autocite{deGelder2017assessment, stellet2015taxonomy}, a clear and unambiguous definition of such a test scenario is required. 
 
 %In this paper, \emph{scenario} can refer to either an observed scenario in (real-world driving) data, i.e., a real-world scenario, or a scenario that is used for testing AVs, i.e., a test case. Note that, typically, the difference between the two is that with a real-world scenario, the activity of all actors is described, while for a test case, some goals are specified for the system under test (e.g., the goal could be to drive from A to B) instead of its activity. 
 
@@ -42,59 +42,65 @@ The ultimate goal is to build a database with all relevant scenarios that an AV 
 \subsection{Nomenclature}
 \label{sec:nomenclature}
 
-For the definition of \emph{scenario}, several notions are adopted from literature. In this section, the concepts of \emph{ego vehicle}, \emph{actor}, \emph{state}, \emph{model}, \emph{mode}, \cbstartc\emph{act}\cbend, \emph{static environment}, and \emph{dynamic environment} are detailed. 
+For the definition of \emph{scenario}, several notions are adopted from literature. In this section, the concepts of \emph{ego vehicle}, \emph{actor}, \cstart \emph{state variable}, \emph{state vector}\cend, \emph{model}, \emph{mode}, \emph{act}, \emph{static environment}, and \emph{dynamic environment} are detailed. 
 
 \subsubsection{Ego vehicle}
 \label{sec:ego vehicle}
-The ego vehicle refers to the perspective from which the world is seen. In particular, the ego vehicle refers to the vehicle that is perceiving the world through its sensors (e.g., see \cite{Bonnin2014}). When performing tests, the ego vehicle also refers to the vehicle that must perform a specific task (e.g., see \cite{althoff2017CommonRoad}). In this case, the ego vehicle is often referred to as the system under test \cite{stellet2015taxonomy}, the vehicle under test \cite{gietelink2006development}, or the host vehicle \cite{gietelink2006development}.
-%The ontology presented by Geyer~et~al.\ ``is described from the ego-vehicle's point of view'' \cite{geyer2014}. 
+The ego vehicle refers to the perspective from which the world is seen. In particular, the ego vehicle refers to the vehicle that is perceiving the world through its sensors (e.g., see \autocite{Bonnin2014}). When performing tests, the ego vehicle also refers to the vehicle that must perform a specific task (e.g., see \autocite{althoff2017CommonRoad}). In this case, the ego vehicle is often referred to as the system under test \autocite{stellet2015taxonomy}, the vehicle under test \autocite{gietelink2006development}, or the host vehicle \autocite{gietelink2006development}.
+%The ontology presented by Geyer~et~al.\ ``is described from the ego-vehicle's point of view'' \autocite{geyer2014}. 
 %Note that in case a sensor-equipped vehicle is used to extract scenarios from real-world driving, the ego vehicle in an extracted scenario does not necessarily have to correspond to the sensor-equipped vehicle that is used to acquire the real-world data.
 
 \subsubsection{Actor}
 \label{sec:actor}
-\cbstart
-According to \textcite{catapult2018musicc}, ``actors are all dynamic components of a scenario, excluding the ego vehicle itself.'' In practice, this can be, for example, a driver of a car, a cyclist, a pedestrian, a driving automation system, or a combination of a driver and a driving automation system \cite{geyer2014}. Note that, in contrast to \cite{catapult2018musicc}, in the current paper, the ego vehicle's driver, and/or automation system are considered as actors, similar to \cite{geyer2014}, \cbstartd because they have the same properties as another driver or automation system.
-\cbend
+
+According to \textcite{catapult2018musicc}, ``actors are all dynamic components of a scenario, excluding the ego vehicle itself.'' In practice, this can be, for example, a driver of a car, a cyclist, a pedestrian, a driving automation system, or a combination of a driver and a driving automation system \autocite{geyer2014}. Note that, in contrast to \autocite{catapult2018musicc}, in the current paper, the ego vehicle's driver, and/or automation system are considered as actors, similar to \autocite{geyer2014},  because they have the same properties as another driver or automation system.
+
 %: ``in this case, [the actor is] the ego-vehicle with driver/automation.''
-%An actor is an element of a scenario acting on its own behalf \cite{ulbrich2015}. 
+%An actor is an element of a scenario acting on its own behalf \autocite{ulbrich2015}. 
 % Traffic light?
 
-\subsubsection{State}
-\label{sec:state}
-According to the IEEE Standard Glossary of Software Engineering Terminology \cite{ieee1990glossary}, states are ``[...] variables that define the characteristics of a system, component, or simulation''. For example, a state could be the acceleration of an actor.
+\cstart 
+\subsubsection{State variable} 
+\label{sec:state variable}
+\textcite[p.~163]{dorf2011modern} write that ``the state variables describe the present configuration of a system and can be used to determine the future response, given the excitation inputs and the equations describing the dynamics.'' In our case, ``the system'' could refer to an actor, a component, or a simulation. E.g., a state variable could be the acceleration of an actor.
+
+\subsubsection{State vector}
+\label{sec:state vector}
+A state vector refers to ``the vector containing all $n$ state variables'' \autocite[p.~233]{dorf2011modern}.
+\cend.
 
 \subsubsection{Model}
 \label{sec:model}
-Typically, a dynamical system is modeled using a differential equation of the form $\statedot(\time)=\function_{\parameter}(\state(\time), \inputsystem(\time), \time)$ \cite{norman2011control}, where $\state(\time)$ represents the state vector at time $\time$, $\inputsystem(\time)$ represents an external input vector, and the function $\function_{\parameter}(\cdot)$ is parameterized by $\parameter$. \cbstart Note that, technically speaking, $\state(\cdot)$, $\inputsystem(\cdot)$, $\time$, and $\parameter$ are inputs of the function $\function$, but $\parameter$ is assumed to be constant for a certain time interval. For example, the following first-order model is parameterized by $\parameter=(\parametera,\parameterb)$:
+Typically, a dynamical system is modeled using a differential equation of the form $\statedot(\time)=\function_{\parameter}(\state(\time), \inputsystem(\time), \time)$ \autocite{norman2011control}, where $\state(\time)$ represents the state vector at time $\time$, $\inputsystem(\time)$ represents an external input vector, and the function $\function_{\parameter}(\cdot)$ is parameterized by $\parameter$.  Note that, technically speaking, $\state(\cdot)$, $\inputsystem(\cdot)$, $\time$, and $\parameter$ are inputs of the function $\function$, but $\parameter$ is assumed to be constant for a certain time interval. For example, the following first-order model is parameterized by $\parameter=(\parametera,\parameterb)$:
 \begin{equation}
 	\statedot(\time) = \parametera \state(\time) + \parameterb \inputsystem(\time).
 \end{equation}
-\cbend
+
 \vspace{-1em}  % Why is this needed?
-% The input $u$ is a function of time, that needs to be quantified. For this purpose, a parametrized function can be used, i.e. $u=g_{\theta}(t)$ with parameter vector $\theta$, such that the differential equation can be rewritten to $\dot{x}=h_{\theta}(x,t)$. In the context of this paper, model refers to a parametrized function, such as $h_{\theta}(x,t)$. It might be more practical to directly model the state (i.e., the result of the differential equation) using a function $x=k_{\theta}(t)$, such that no explicit information is required about the system dynamics. For example, see \cite{deGelder2017assessment}.
+% The input $u$ is a function of time, that needs to be quantified. For this purpose, a parametrized function can be used, i.e. $u=g_{\theta}(t)$ with parameter vector $\theta$, such that the differential equation can be rewritten to $\dot{x}=h_{\theta}(x,t)$. In the context of this paper, model refers to a parametrized function, such as $h_{\theta}(x,t)$. It might be more practical to directly model the state (i.e., the result of the differential equation) using a function $x=k_{\theta}(t)$, such that no explicit information is required about the system dynamics. For example, see \autocite{deGelder2017assessment}.
 
 \subsubsection{Mode}
 \label{sec:mode}
 In some systems, the behavior of the system may suddenly change abruptly, e.g., due to a sudden change in an input, a model parameter, or the model function. Such a transition is called a mode switch.
-In each mode, the behavior of the system is described by a model with a fixed function $f_{\theta}$ and smooth input $u(\cdot)$ \cite{deschutter2000optimal}.
+In each mode, the behavior of the system is described by a model with a fixed function $f_{\theta}$ and smooth input $u(\cdot)$ \autocite{deschutter2000optimal}.
 
 %\subsubsection{Activity}
 %\label{sec:activity}
 %An activity refers to the behavior of a particular mode. For example, an activity could be described by the label `braking' or `changing lane'.
 %A scenario contains the quantitative description of the ongoing activity of the ego vehicle and its dynamic environment. Here, the description refers to the changing states that are relevant for the scenario, e.g., acceleration and velocity. The activity is described using the models that describe the way the state evolves over time.
 
-\cbstartc
+
 \subsubsection{Act}
 \label{sec:act}
 
 We define act as the combination of actors and the activities that are performed by the actors. %Additionally, the act can contain conditions that mark the start or end of the act.
-This is in accordance with the use of the term \emph{act} in \cite{openscenario}. 
-\cbend
+This is in accordance with the use of the term \emph{act} in \autocite{openscenario}. 
+
 
 \subsubsection{Static environment}
 \label{sec:static environment}
-The static environment refers to the part of the environment that does not change during a scenario. This includes geo-spatially stationary elements \cite{ulbrich2015}, \cbstartd such as the road network.\cbend
-%Although one might argue whether light and weather conditions are dynamic or not \cite{geyer2014,bach2016modelbased}, in most cases it is reasonable to assume that these conditions are not subject to significant changes during the time frame of a scenario. 
+The static environment refers to the part of the environment that does not change during a scenario. This includes geo-spatially stationary elements \autocite{ulbrich2015},  such as the road network.
+%Although one might argue whether light and weather conditions are dynamic or not \autocite{geyer2014,bach2016modelbased}, in most cases it is reasonable to assume that these conditions are not subject to significant changes during the time frame of a scenario. 
 %Hence, light and weather conditions are usually part of the static environment.
 
 \subsubsection{Dynamic environment}
@@ -102,10 +108,10 @@ The static environment refers to the part of the environment that does not chang
 As opposed to the static environment, the dynamic environment refers to the part of a scenario that changes during the time frame of a scenario. 
 %The dynamic environment is described using the activities that describe the way the states evolve over time. 
 In practice, the dynamic environment mainly consists of the moving actors (other than the ego vehicle) that are relevant to the ego vehicle.
-\cbstartb
-For example, the primary use case of OpenSCENARIO, a file format for the description of the dynamic content of driving simulations, is to describe ``complex, synchronized maneuvers that involve multiple entities like vehicles, pedestrians, and other traffic participants'' \cite{openscenario}, \cbstartd so for OpenSCENARIO, these maneuvers represent the dynamic environment.
-\cbend
-Roadside units that communicate with vehicles within the communication range \cite{alsultan2014comprehensive} are also part of the dynamic environment. Furthermore, changing (weather) conditions are part of the dynamic environment.
+
+For example, the primary use case of OpenSCENARIO, a file format for the description of the dynamic content of driving simulations, is to describe ``complex, synchronized maneuvers that involve multiple entities like vehicles, pedestrians, and other traffic participants'' \autocite{openscenario},  so for OpenSCENARIO, these maneuvers represent the dynamic environment.
+
+Roadside units that communicate with vehicles within the communication range \autocite{alsultan2014comprehensive} are also part of the dynamic environment. Furthermore, changing (weather) conditions are part of the dynamic environment.
 
 \begin{remark}
 	Note that it might not always be obvious whether an element of the environment belongs to the static or dynamic environment. For example, the post of a traffic light can be considered as part of the static environment, while the signal of the traffic light can be considered as part of the dynamic environment. Most important, however, is that all parts of the environment that are relevant to the assessment of an AV are described in either the static or the dynamic environment.

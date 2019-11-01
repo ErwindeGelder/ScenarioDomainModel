@@ -57,6 +57,7 @@
 %\bibliography{../bib}
 
 \usepackage{silence}  							%% For filtering warnings
+\usepackage{csquotes}
 % Add doi=false if no DOI
 \usepackage[style=authoryear-comp,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 % Filter warnings issued by package biblatex starting with "Patching footnotes failed"
@@ -64,7 +65,6 @@
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
-\renewcommand{\cite}[1]{\parencite{#1}}
 
 
 
@@ -230,12 +230,9 @@
 \newcommand{\hasone}{$1$}
 \newcommand{\hasn}{$N$}
 
-%\usepackage{changebar}
-\newcommand{\cbstart}{\color{black}}
-\newcommand{\cbend}{\color{black}}
-\newcommand{\cbstartb}{\color{black}}
-\newcommand{\cbstartc}{\color{black}}
-\newcommand{\cbstartd}{\color{black}}  % Changes since 2019 08 10
+\usepackage{changebar}
+\newcommand{\cstart}{\cbstart\color{red}}  % Revision changes (from 31 Oct 2019)
+\newcommand{\cend}{\cbend\color{black}}
 \newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
 
 %\usepackage{setspace}

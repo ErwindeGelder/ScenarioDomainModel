@@ -4,15 +4,15 @@
 \tikzstyle{every node}=[font=\footnotesize]
 \node[object, fill=otherclass](ego){{\bfseries Ego::Actor}\\
 	actor category: Ego qualitative\\
-	initial states: $\egoeast=\SI{-20}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$\\
-	desired states: \\
+	initial state vector: $\egoeast=\SI{-20}{\meter}$, $\egonorth=\SI{-1.5}{\meter}$, $\egoheading=\ang{90}$\\
+	desired state vector: \\
 	goals: \\
 	tags: };
 
 \node[object, fill=otherclass, below=of ego.south](pedestrian){{\bfseries Pedestrian::Actor}\\
 	actor category: Pedestrian qualitative\\
-	initial states: $\pedeast=\SI{0}{\meter}$, $\pedheading=\ang{0}$\\
-	desired states: \\
+	initial state vector: $\pedeast=\SI{0}{\meter}$, $\pedheading=\ang{0}$\\
+	desired state vector: \\
 	goals: \\
 	tags: };
 
