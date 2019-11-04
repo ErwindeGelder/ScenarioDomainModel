@@ -94,24 +94,21 @@ Hence, we define a scenario as follows:
 
 \textcite{geyer2014} and \textcite{ulbrich2015} use the term \emph{scene} to define a scenario, while \cref{def:scenario} describes the scenes implicitly. Thus, the scenes do not have to be described explicitly.
 
-\Cref{fig:scenario} shows a schematic overview of the various components of a scenario. As shown in the second row of \cref{fig:scenario}, a scenario contains an ego vehicle, a dynamic environment, and a static environment. As an example, possible activities of the vehicle in front, which is part of the dynamic environment, are detailed by considering the \cstart state variables \cend `heading' and `speed'. Note that a definition of the term activity is given in \cref{sec:activity}. The two rows of the activities show more generic descriptions and more detailed descriptions, respectively, of some possible activities.
+%\Cref{fig:scenario} shows a schematic overview of the various components of a scenario. As shown in the second row of \cref{fig:scenario}, a scenario contains an ego vehicle, a dynamic environment, and a static environment. As an example, possible activities of the vehicle in front, which is part of the dynamic environment, are detailed by considering the \cstart state variables \cend `heading' and `speed'. Note that a definition of the term activity is given in \cref{sec:activity}. The two rows of the activities show more generic descriptions and more detailed descriptions, respectively, of some possible activities.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\linewidth]{figures/scenario.pdf}%
-	\caption{Schematic overview of a scenario. Note that the dynamic environment is not limited to the `vehicle in front', nor does it need to have the `vehicle in front'. Similarly, the static environment is not limited to `road', nor does it need to have `road'.}
-	\label{fig:scenario}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.5\linewidth]{figures/scenario.pdf}%
+%	\caption{Schematic overview of a scenario. Note that the dynamic environment is not limited to the `vehicle in front', nor does it need to have the `vehicle in front'. Similarly, the static environment is not limited to `road', nor does it need to have `road'.}
+%	\label{fig:scenario}
+%\end{figure}
 
 
 According to \cref{def:scenario}, a scenario describes, among others, the static environment. 
 When it comes to applying this definition in an ontology, it is possible that ``describing'' the static environment is done by simply providing a reference to a static environment. 
 This also holds for the other parts of a scenario. 
-
 A reference could be, for example, the full name of a file, a pointer pointing to a specific part of the computer memory, or an identifier that addresses a specific entry in a database.
- 
 The advantage of references is that these parts of the scenario can be exchanged across different scenarios, as these scenarios can use the same references. 
-
 As an example, an OpenSCENARIO file, allows to provide a reference to an OpenDRIVE file which describes a road network \autocite{dupuis2010opendrive}. As we will see in \cref{sec:ontology}, in our proposed ontology, a scenario may contain references to a static environment, activities, actors, and events.
 
 
@@ -152,16 +149,15 @@ Hence, we define an event as follows:
 	An event marks the time instant at which the system reaches a specified threshold or at which a mode transition occurs, such that before and after an event, the state \cstart vector \cend of the system corresponds to two different modes.
 \end{definition}
 
-% Mention that there are basically two definitions. First definition more suitable for triggers for test cases. Second definition more suitable for observations and inputs. 
-According to \cref{def:event}, an event occurs at either a moment at which the system reaches a threshold or a moment at which a mode transition occurs. 
-
+% Mention that there are basically two definitions. First definition more suitable for triggers for test cases. Second definition more suitable for observations and inputs.
+\cstart
+Definition~2 indicates that the moment of an event can be defined in two different ways: (1) by the system reaching a threshold or (2) by a mode transition. \cend 
 Both these types of event are related to hybrid systems theory \autocite{deschutter2003hybrid, heemels2012eventcontrol}.
 The first type of event, i.e., related to the system reaching a threshold, is especially useful when describing test cases. 
 For example, consider the ego vehicle approaching a pedestrian that is about to cross the road \autocite{seiniger2015test}. 
 Here, the event marks the moment that the distance between the vehicle and pedestrian is less than $\distancecondition$ meters. 
 At the moment of this event, the pedestrian starts to cross the road such that the vehicle impacts the pedestrian if it does not change its speed or direction \autocite{seiniger2015test}.
-The second type of event, i.e., a mode transition, can occur during an observed scenario at the moment at which a driver suddenly brakes. 
-
+\cstart The second type of event, i.e., a mode transition, can, e.g., occur at the moment of a driver input.\cend 
 
 For the practical implementation of events, a set of conditions may be specified. In that case, the event occurs at the moment that the conditions are met. A condition could be on, e.g., the distance between the vehicle and pedestrian. In \autocite{openscenario}, an extensive list of possible conditions that can be used to define an event is given.
 
@@ -202,7 +198,7 @@ As opposed to an event, an activity spans over a certain time interval. Furtherm
 
 % Describing the evolution of a state
 
-\subsubsection{An activity quantitatively describes the time evolution of a state \protect\cstart variable \protect\cend}
+\subsubsection{An activity quantitatively describes the time evolution of a state \protect\cstart variable\protect\cend}
 Because activities are building blocks of a scenario and a scenario corresponds to a quantitative description, the activities themselves need to be quantitative as well. 
 Therefore, an activity describes the time evolution of \cstart one or more state variables \cend, i.e., the trajectory of \cstart one or more state variables \cend over an inter-event time interval that corresponds to the activity, where the term state \cstart variable \cend is defined in \cref{sec:state variable}.
 
@@ -268,32 +264,33 @@ Introducing the concept of scenario categories brings the following benefits:
 \end{itemize}
 
 % Explain scenarios fall into scenario category
-We describe the formal relation between a scenario and a scenario category with the verb ``to fall into'', denoted by $\scenariofallsinto$. If a specific scenario category $\scenariocategory$ is an abstraction of a specific scenario $\scenario$, then we say that the specific scenario $\scenario$ falls into that specific scenario category $\scenariocategory$, or simply $\scenario \scenariofallsinto \scenariocategory$.  This is illustrated in \cref{fig:venn diagram scenario category}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenariocategorya$, $\scenariocategoryb$, and $\scenariocategoryc$ represent scenario categories. Multiple scenarios can fall into a given scenario category. For example, we have $\scenarioa \scenariofallsinto \scenariocategoryb$ and $\scenariob \scenariofallsinto \scenariocategoryb$ in \cref{fig:venn diagram scenario category}. 
+We describe the formal relation between a scenario and a scenario category with the verb ``to \cstart comprise\cend'', denoted by \cstart$\comprises$\cend. If a specific scenario category $\scenariocategory$ is an abstraction of a specific scenario $\scenario$, then we say that the specific \cstart scenario category $\scenariocategory$ comprises that specific $\scenario$, or simply $\scenariocategory \comprises \scenario$\cend.  This is illustrated in \cref{fig:venn diagram scenario category}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenariocategorya$, $\scenariocategoryb$, and $\scenariocategoryc$ represent scenario categories. \cstart A given scenario category can comprise multiple scenarios, e.g., $\scenariocategoryb \comprises \scenarioa$ and $\scenariocategoryb \comprises \scenariob$ in \cref{fig:venn diagram scenario category}. 
 % Explain scenario can fall into multiple scenario categories
-Furthermore, a scenario can fall into multiple scenario categories. For example, in \cref{fig:venn diagram scenario category}, we have $\scenariob \scenariofallsinto \scenariocategorya$, $\scenariob \scenariofallsinto \scenariocategoryb$, and $\scenariob \scenariofallsinto \scenariocategoryc$.
+Furthermore, multiple scenario categories can comprise a specific scenario. For example, in \cref{fig:venn diagram scenario category}, we have $\scenariocategorya \comprises \scenariob$, $\scenariocategoryb \comprises \scenariob$, and $\scenariocategoryc \comprises \scenariob$. \cend
 
 %Whereas multiple scenarios can fall into one scenario class, it is also possible for one scenario to fall into multiple scenario classes. Continuing the example of \cref{fig:venn diagram scenario class}, a scenario with rain during daytime falls into both the scenario classes ``Daytime'' and ``Rain''.
 
-\setlength{\venncircle}{7em}
+\setlength{\venncircle}{5em}
 \begin{figure}
 	\centering
 	\input{figures/venn_diagrams.tikz}
-	\caption{ The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. Scenarios $\scenarioa$ and $\scenariob$ fall into scenario category $\scenariocategoryb$. Scenario category $\scenariocategorya$ falls into scenario categories $\scenariocategoryb$ and $\scenariocategoryc$.}
+	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. $\scenariocategoryb$ comprises $\scenarioa$ and $\scenariob$. $\scenariocategoryb$ and $\scenariocategoryc$ include $\scenariocategorya$.}
 	\label{fig:venn diagram scenario category}
 \end{figure}
 
 % Explain scenario category can fall into scenario categories
-The verb ``to fall into'' is also used to describe the relation between two scenario categories. A scenario category $\scenariocategorya$ is said to fall into a scenario category $\scenariocategoryb$ if all scenarios that fall into scenario category $\scenariocategorya$ also fall into scenario category $\scenariocategoryb$. In that case, we can write $\scenariocategorya \scenariocategoryfallsinto \scenariocategoryb$. Thus we have
+The verb ``to \cstart include\cend'' is used to describe the relation between two scenario categories. A scenario category $\scenariocategoryb$ is said to \cstart include \cend a scenario category $\scenariocategorya$ \cstart if $\scenariocategoryb$ comprises all scenarios that are comprised in $\scenariocategorya$. In that case, we can write $\scenariocategoryb \includes \scenariocategorya$. Thus we have
 \begin{equation} \label{eq:fall into scenario category}
-	\scenariocategorya \scenariocategoryfallsinto \scenariocategoryb \text{ if } \scenario \scenariofallsinto \scenariocategoryb \,\,\forall\,\, \scenario \scenariofallsinto \scenariocategorya.
+	\scenariocategoryb \includes \scenariocategorya \text{ if } \scenariocategoryb \comprises \scenario\,\,\forall\,\, \{S: \scenariocategorya \comprises \scenario\}.
 \end{equation}
-
-In \cref{fig:venn diagram scenario category}, scenario category $\scenariocategorya$ falls into scenario categories $\scenariocategoryb$ and $\scenariocategoryc$; thus $\scenariocategorya \scenariocategoryfallsinto \scenariocategoryb$ and $\scenariocategorya \scenariocategoryfallsinto \scenariocategoryc$.
+In \cref{fig:venn diagram scenario category}, scenario categories $\scenariocategoryb$ and $\scenariocategoryc$ include scenario category $\scenariocategorya$; thus $\scenariocategoryb \includes \scenariocategorya$ and $\scenariocategoryc \includes \scenariocategorya$.
+\cend
 
 %In \cref{fig:venn diagram scenario class}, an example is shown with the scenario class ``Rain during daytime'', which falls into the scenario classes ``Daytime'' and ``Rain''.
 %For example, consider the scenario class ``Rain during day'', which is represented by the intersection of the red and green circles in \cref{fig:venn diagram scenario class}. All scenarios with rain that occur during the day fall into this scenario class. Obviously, these scenarios also fall into the scenario classes ``Day'' and ``Rain''. Hence, the scenario class ``Rain during day'' falls into the scenario classes ``Day'' and ``Rain''.
 
-When providing extra information on a piece of data, often tags are used \autocite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \autocite{craft2004tagging, vasquez2019controlling}. Applications are very broad, e.g., from classification of audio data \autocite{kong2017joint} capturing musical characteristics from songs \autocite{ellis2011semantic} to tagging of Wikipedia pages \autocite{voss2006collaborative}.
+When providing extra information on a piece of data, often tags are used \autocite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \autocite{craft2004tagging, vasquez2019controlling}. 
+%Applications are very broad, e.g., from classification of audio data \autocite{kong2017joint} capturing musical characteristics from songs \autocite{ellis2011semantic} to tagging of Wikipedia pages \autocite{voss2006collaborative}.
 
 % Figure is explained in last few paragraphs, but placed earlier as to appear at the right page of the paper.
 \begin{figure*}
@@ -314,12 +311,11 @@ When providing extra information on a piece of data, often tags are used \autoci
 	\label{fig:tree vehicle activities}
 \end{figure*}
 
- We propose to provide scenarios and scenario categories with additional information in the form of tags that describe the scenario in a qualitative manner.
+We propose to provide scenarios and scenario categories with additional information in the form of tags that describe the scenario in a qualitative manner.
 %For example, if a scenario contains the tag ``Daytime'', it is automatically recognized as a scenario that falls into the scenario class ``Daytime'' which is characterized by the single tag ``Daytime''. 
-
 The use of these tags brings several benefits:
 \begin{itemize}
-	\item  The tags of a scenario can be helpful in determining which scenario categories the scenario might fall into and which scenario categories it does not fall into.
+	\item  The tags of a scenario can be helpful in determining which scenario categories \cstart do and do not comprise \cend the scenario.
 	%\item If a scenario category that only contains known tags is added to the database of scenario categories, it can easily be seen which scenarios fall into this scenario category by only inspecting the tags of the scenarios. Therefore, there is no need to define scenario categories a priori.
 	\item It is easy to select scenarios from a scenario database or a scenario library by using tags or a combination of tags.
 	\item As opposed to the proposed categorization of scenarios in \autocite{opdencamp2014cats, USDoT2007precrashscenarios, lenard2014typical, lara2019harmonized}, scenario categories do not need to be mutually exclusive.
@@ -327,8 +323,8 @@ The use of these tags brings several benefits:
 
 There is a balance between having generic scenario categories --- and thus a wide variety among the scenarios belonging to the scenario category --- and having specific scenario categories without much variety among the scenarios in the scenario category. For some systems, one may be interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags can be structured in hierarchical trees \autocite{molloy2017dynamic, badger2012dynamic}. The different layers of the trees can be regarded as different abstraction levels \autocite{Bonnin2014}. 
 
-In \autocite{degelder2019scenariocategories}, several trees of tags are defined and \cref{fig:tree vehicle activities} shows two examples of trees of tags taken from \autocite{degelder2019scenariocategories}. These tags describe possible activities of a vehicle, i.e., the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags. The tags may refer to the objective of an actor in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. 
+In \autocite{degelder2019scenariocategories}, several trees of tags are defined and \cref{fig:tree vehicle activities} shows two examples of trees of tags taken from \autocite{degelder2019scenariocategories}. These tags describe possible activities of a vehicle, i.e., the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags. The tags may refer to the objective of an actor in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. Note that tags may be used not only to classify vehicle behavior, but also traffic and environment situations, e.g., ``cut-in'' or ``heavy rain''.
 
-Four different types of activities are identified regarding the lateral movement, see \cref{fig:tree vehicle lat act}. Here, it is assumed that ``lateral'' refers to the direction perpendicular to the lane the vehicle is driving in (e.g., according to the Road Coordinate System in \autocite{zofka2015datadrivetrafficscenarios}). Therefore, if the vehicle is driving on a curved road while staying more or less in its lane (lane-following), the tag ``Going straight'' is applicable. Apart from going straight, the vehicle might change lane, turn, or swerve to either the left or the right. 
+%Four different types of activities are identified regarding the lateral movement, see \cref{fig:tree vehicle lat act}. Here, it is assumed that ``lateral'' refers to the direction perpendicular to the lane the vehicle is driving in (e.g., according to the Road Coordinate System in \autocite{zofka2015datadrivetrafficscenarios}). Therefore, if the vehicle is driving on a curved road while staying more or less in its lane (lane-following), the tag ``Going straight'' is applicable. Apart from going straight, the vehicle might change lane, turn, or swerve to either the left or the right. 
  
-\Cref{fig:tree vehicle long act} shows tags regarding the longitudinal activity of a vehicle. Note that tags may be used not only to classify vehicle behavior, but also traffic and environment situations, e.g., ``cut-in'' or ``heavy rain''.
+%\Cref{fig:tree vehicle long act} shows tags regarding the longitudinal activity of a vehicle. 
