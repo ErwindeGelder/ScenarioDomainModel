@@ -17,6 +17,7 @@ Modifications
 -------------
 14 Mar 2019: StateVariables {LONGITUDINAL,LATERAL}_ROAD_POSITION added.
 11 Oct 2019: Update of terminology.
+04 Nov 2019: Add the heading as a possible state variable.
 
 """
 
@@ -29,6 +30,7 @@ class StateVariable(Enum):
     LONGITUDINAL_POSITION = "x"
     LATERAL_POSITION = "y"
     SPEED = "v"
+    HEADING = "psi"
     LONGITUDINAL_ROAD_POSITION = "[ROAD_ID, ROAD_DISTANCE]"
     LATERAL_ROAD_POSITION = "[LANE_ID, LANE_OFFSET]"
 
