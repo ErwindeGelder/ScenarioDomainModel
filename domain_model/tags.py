@@ -25,6 +25,7 @@ Modifications
 07 Dec 2018: Many "supertags" added.
 07 Dec 2018: Functionality for determining whether a Tag is a subtag of another Tag.
 10 Dec 2018: Region tags added.
+04 Nov 2019: Add str() around tag.name as to avoid Pylint from complaining.
 
 """
 
@@ -241,7 +242,7 @@ class Tag(Enum):
 
         # If the subtag is exactly the same, but with more details, it is regarded to be a
         # subtag. For example,
-        if len(subtag.name) > len(self.name) and subtag.name[:len(self.name)] == self.name:
+        if len(subtag.name) > len(self.name) and subtag.name[:len(self.name)] == str(self.name):
             return True
 
         # In case the own Tag is a "RoadUserType_Vehicle", then there are many other
