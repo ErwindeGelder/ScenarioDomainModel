@@ -23,6 +23,7 @@ Modifications
 17 Jan 2019: @Joost Bosman: Fix options dictionary modified when using _set_default_options
              function in Model class.
 13 Oct 2019: Update of terminology.
+04 Nov 2019: Add constant model.
 """
 
 
@@ -130,6 +131,26 @@ class Model(ABC):
             if key not in options.keys():
                 options[key] = value
         return options
+
+
+class Constant(Model):
+    """ Constant model
+
+    The output is a constant value.
+    """
+    def __init__(self):
+        Model.__init__(self, "Constant")
+
+    def get_state(self, pars: dict, npoints: int = 100,
+                  tstart: float = 0, tend: float = 0) -> np.ndarray:
+        return np.ones(npoints)*pars["xstart"]
+
+    def get_state_dot(self, pars: dict, npoints: int = 100,
+                      tstart: float = 0, tend: float = 0) -> np.ndarray:
+        return np.zeros(npoints)
+
+    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
+        return dict(xstart=np.mean(data))
 
 
 class Linear(Model):

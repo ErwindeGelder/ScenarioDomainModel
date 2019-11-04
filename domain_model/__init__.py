@@ -8,7 +8,7 @@ attributes.
 # imports to make easy access possible after importing domain_model
 from .activity_category import ActivityCategory
 from .actor_category import ActorCategory, VehicleType
-from .model import Spline3Knots, Linear, Sinusoidal
+from .model import Spline3Knots, Linear, Sinusoidal, Constant
 from .activity import Activity, DetectedActivity, TriggeredActivity
 from .actor import Actor, EgoVehicle
 from .scenario import Scenario
