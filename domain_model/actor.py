@@ -24,7 +24,7 @@ Modifications
 23 May 2019: Add goal attribute to actor. This can be used when goal cannot be formulated as a
              desried state.
 11 Oct 2019: Update of terminology.
-
+04 Nov 2019: Add goals to ego vehicle.
 """
 
 
@@ -150,7 +150,8 @@ class EgoVehicle(Actor):
     that it contains the tag "Ego vehicle".
 
     """
-    def __init__(self, actor_category, initial_states=None, desired_states=None, **kwargs):
+    def __init__(self, actor_category: ActorCategory, initial_states: List[State] = None,
+                 desired_states: List[State] = None, goal: str = "", **kwargs):
         Actor.__init__(self, actor_category, initial_states=initial_states,
-                       desired_states=desired_states, **kwargs)
+                       desired_states=desired_states, goal=goal, **kwargs)
         self.tags += [Tag.EgoVehicle]
