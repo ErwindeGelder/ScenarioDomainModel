@@ -23,11 +23,13 @@ Modifications
 06 Dec 2018: Make it possible to return full JSON code (incl. attributes' JSON code).
 22 May 2019: Make use of type_checking.py to shorten the initialization.
 11 Oct 2019: Update of terminology.
+04 Nov 2019: Add options to automatically assign unique ids to actor/activities.
 
 """
 
 
 from typing import List, Tuple
+import numpy as np
 from .default_class import Default
 from .tags import tag_from_json
 from .static_environment_category import StaticEnvironmentCategory, stat_env_category_from_json
@@ -95,7 +97,8 @@ class ScenarioCategory(Default):
         # Maximum number of characters that are used when printing the general description
         self.maxprintlength = 80
 
-    def set_activities(self, activity_categories: List[ActivityCategory]) -> None:
+    def set_activities(self, activity_categories: List[ActivityCategory],
+                       update_uids: bool = False) -> None:
         """ Set the activities
 
         Check whether the activities are correctly defined. Activities should be
@@ -103,6 +106,7 @@ class ScenarioCategory(Default):
 
         :param activity_categories: List of activities that are used for this
             ScenarioCategory.
+        :param update_uids: Automatically assign uids if they are similar.
         """
         # Check whether the activities are correctly defined.
         check_for_list("activities", activity_categories, ActivityCategory, can_be_none=False)
@@ -110,19 +114,28 @@ class ScenarioCategory(Default):
         # Assign activity categories to an attribute.
         self.activity_categories = activity_categories  # Type: List[ActivityCategory]
 
-    def set_actors(self, actor_categories: List[ActorCategory]) -> None:
+        # Update the uids of the activity categories.
+        if update_uids:
+            create_unique_ids(self.activity_categories)
+
+    def set_actors(self, actor_categories: List[ActorCategory], update_uids: bool = False) -> None:
         """ Set the actors
 
         Check whether the actors are correctly defined. Actors should be a list with
         instantiations of ActorCategory.
 
         :param actor_categories: List of actors that participate in the Scenario.
+        :param update_uids: Automatically assign uids if they are similar.
         """
         # Check whether the actors are correctly defined.
         check_for_list("actors", actor_categories, ActorCategory, can_be_none=False)
 
         # Assign actor categories to an attribute.
         self.actor_categories = actor_categories  # Type: List[ActorCategory]
+
+        # Update the uids of the activity categories.
+        if update_uids:
+            create_unique_ids(self.actor_categories)
 
     def set_acts(self, acts_scenario_category: List[Tuple[ActorCategory, ActivityCategory]],
                  verbose: bool = True) -> None:
@@ -342,3 +355,24 @@ def derive_actor_tags(actors: List, acts: List, tags: dict = None) -> dict:
                 key = "{:s}{:d}::ActorCategory".format(actor.name, i)
             tags[key] = list(set(actor_tags))  # list(set()) makes sure that tags are unique.
     return tags
+
+
+def create_unique_ids(items: List) -> None:
+    """ Update the uids of the items.
+
+    It is assumed that each item has the attribute "uid". If a "uid" is negative
+    or similar to another "uid", the "uid" is given the value of (N+1), where
+    N is the (up-to-then) highest "uid" or 0 incase the highest "uid" is
+    negative.
+
+    :param items: List of the items.
+    """
+    highest_uid = np.max([item.uid for item in items]).astype(np.int)
+    if highest_uid < 0:
+        highest_uid = 0
+    uids = []
+    for item in items:
+        if item.uid < 0 or item.uid in uids:
+            highest_uid += 1
+            item.uid = highest_uid
+        uids.append(item.uid)

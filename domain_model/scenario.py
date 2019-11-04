@@ -22,6 +22,7 @@ Modifications
 07 Dec 2018: fall_into method for checking if Scenario falls into ScenarioCategory.
 22 May 2019: Make use of type_checking.py to shorten the initialization.
 13 Oct 2019: Update of terminology.
+04 Nov 2019: Add options to automatically assign unique ids to actor/activities.
 
 """
 
@@ -33,7 +34,7 @@ from .static_environment import StaticEnvironment, stat_env_from_json
 from .activity import Activity, activity_from_json
 from .actor import Actor, actor_from_json
 from .tags import tag_from_json
-from .scenario_category import ScenarioCategory, derive_actor_tags
+from .scenario_category import ScenarioCategory, derive_actor_tags, create_unique_ids
 from .type_checking import check_for_type, check_for_list, check_for_tuple
 
 
@@ -85,13 +86,14 @@ class Scenario(Default):
         self.acts = []        # Type: List[tuple(Actor, Activity, float)]
         self.static_environment = static_environment
 
-    def set_activities(self, activities: List[Activity]) -> None:
+    def set_activities(self, activities: List[Activity], update_uids: bool = False) -> None:
         """ Set the activities.
 
         Check whether the activities are correctly defined. Activities should be
         a list with instantiations of Activity.
 
         :param activities: List of activities that are used for this Scenario.
+        :param update_uids: Automatically assign uids if they are similar.
         """
         # Check whether the activities are correctly defined.
         check_for_list("activities", activities, Activity, can_be_none=False)
@@ -99,20 +101,28 @@ class Scenario(Default):
         # Assign actitivies to an attribute.
         self.activities = activities  # Type: List[Activity]
 
-    def set_actors(self, actors: List[Actor]) -> None:
+        # Update the uids of the activities.
+        if update_uids:
+            create_unique_ids(self.activities)
+
+    def set_actors(self, actors: List[Actor], update_uids: bool = False) -> None:
         """ Set the actors.
 
         Check whether the actors are correctly defined. Actors should be a list
         with instantiations of Actor.
 
         :param actors: List of actors that participate in the Scenario.
-        :return: None
+        :param update_uids: Automatically assign uids if they are similar.
         """
         # Check whether the actors are correctly defined.
         check_for_list("actors", actors, Actor)
 
         # Assign actors to an attribute.
         self.actors = actors  # Type: List[Actor]
+
+        # Update the uids of the actors.
+        if update_uids:
+            create_unique_ids(self.actors)
 
     def set_acts(self, acts_scenario: List[Tuple[Actor, Activity, float]],
                  verbose: bool = True) -> None:
