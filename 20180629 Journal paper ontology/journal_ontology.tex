@@ -65,7 +65,6 @@
 \WarningFilter{biblatex}{Patching footnotes failed}
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
 \setlength{\biblabelsep}{\labelsep}
-\renewcommand*{\bibfont}{\small}
 \bibliography{../bib}
 
 
@@ -114,7 +113,7 @@
 \thanks{$^{4}$2getthere, Utrecht, The Netherlands}%
 \thanks{$^{5}$Eindhoven University of Technology, Department of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}%
 \thanks{$^{6}$BMW Group, Petuelring 130, 80788 Munich, Germany}%
-\thanks{$^{*}$Corresponding author. \newline E-mail address: {\tt\small erwin.degelder@tno.nl}}%
+\thanks{$^{*}$Corresponding author. E-mail address: {\tt\small erwin.degelder@tno.nl}}%
 %\thanks{*This work was not supported by any organization}% <-this % stops a space
 %\thanks{$^{1}$Albert Author is with Faculty of Electrical Engineering, Mathematics and Computer Science,
 %        University of Twente, 7500 AE Enschede, The Netherlands
@@ -146,10 +145,10 @@
 \newcounter{tagccounter}
 \newcommand{\taga}[1]{
 	\node[tag wide](taga){#1};
-	\node[coordinate, below of=taga, node distance=2em](helper){};
+	\node[coordinate, below of=taga, node distance=1.2em](helper){};
 }
 \newcommand{\tagb}[3]{
-	\node[tag, below of=taga, node distance=4em, xshift=#3](tagb#2){#1};
+	\node[tag, below of=taga, node distance=3em, xshift=#3](tagb#2){#1};
 	\draw[tagarrow] (taga) -- (helper) -| (tagb#2);
 	\node[coordinate, xshift=1em](tagb#2 helper) at (tagb#2.south west) {};
 }
@@ -215,13 +214,11 @@
 \newcommand{\scenarioa}{\scenario_{1}}
 \newcommand{\scenariob}{\scenario_{2}}
 \newcommand{\scenarioc}{\scenario_{3}}
-\newcommand{\scenariofallsinto}{\in}
 \newcommand{\comprises}{\ni}
 \newcommand{\scenariocategory}{\mathcal{C}}
 \newcommand{\scenariocategorya}{\scenariocategory_{1}}
 \newcommand{\scenariocategoryb}{\scenariocategory_{2}}
 \newcommand{\scenariocategoryc}{\scenariocategory_{3}}
-\newcommand{\scenariocategoryfallsinto}{\subseteq}
 \newcommand{\includes}{\supseteq}
 \newcommand{\slopeego}{a_{\mathrm{\egosub}}}
 \newcommand{\slopepedestrian}{v_{\mathrm{\pedsub}}}

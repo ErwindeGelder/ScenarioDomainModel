@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -1736,7 +1736,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1534304355670" HGAP="70" VSHIFT="-2" MOVED="1534304246551">
+<node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1534304355670" HGAP="70" VSHIFT="-2" MOVED="1534304246551">
 <edge COLOR="#ffff00"/>
 <node TEXT="Overpass" ID="ID_522788377" CREATED="1511518432024" MODIFIED="1524721797370">
 <attribute NAME="key" VALUE="overpass"/>
@@ -1796,7 +1796,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1534304359676" HGAP="71" VSHIFT="-19">
+<node TEXT="Data" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_840396363" CREATED="1510642762884" MODIFIED="1534304359676" HGAP="71" VSHIFT="-19">
 <edge COLOR="#ff0000"/>
 <node TEXT="The SHRP 2 Naturalistic Driving Study" ID="ID_682322192" CREATED="1510642780423" MODIFIED="1534391955265" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/053%20The%20SHRP%202%20Naturalistic%20Driving%20Study.pdf">
 <attribute NAME="key" VALUE="campbell2012shrp"/>

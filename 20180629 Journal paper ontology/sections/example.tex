@@ -1,7 +1,7 @@
 \section{Example: pedestrian crossing}
 \label{sec:example}
 
-To illustrate the use of the ontology, we describe a scenario using the domain model presented in \cref{sec:ontology}. The scenario is schematically shown in \cref{fig:scenario overview}. The ego vehicle is driving on the right lane of a two-lane road and a pedestrian is walking on a footway that intersects the road the ego vehicle is driving on. Both the ego vehicle and the pedestrian are initially approaching the pedestrian crossing. The ego vehicle brakes and comes to a full stop in front of the pedestrian crossing. While the ego vehicle is stationary, the pedestrian crosses the road using the pedestrian crossing. When the pedestrian has passed the ego vehicle, the ego vehicle accelerates.
+To illustrate the use of the ontology, we describe a scenario using the domain model presented in \cref{sec:ontology}. The scenario is schematically shown in \cref{fig:scenario overview}. The ego vehicle is driving on the right lane of a two-lane road and a pedestrian is walking on a footway that intersects the road the ego vehicle is driving on. Both the ego vehicle and the pedestrian are initially approaching the pedestrian crossing. The ego vehicle brakes and comes to a full stop in front of the pedestrian crossing. While the ego vehicle is stationary, the pedestrian crosses the road using the pedestrian crossing. When the pedestrian has passed the ego vehicle, the ego vehicle accelerates. \cstart The code of this example is publicly available\footnote{\cstart See \url{https://github.com/ErwindeGelder/ScenarioDomainModel}. The repository also contains more examples that the one presented here.\cend}\cend.
 
 \setlength{\figurewidth}{0.5\linewidth}
 \begin{figure}
@@ -47,7 +47,7 @@ Here, the parameters $\slopeego$ and $\slopepedestrian$ describe the rate of cha
 \end{figure}
 
 
-The two \textit{actor categories}, the four \textit{activity categories}, and the \textit{static environment category}, are used by the \textit{scenario category}. The \textit{scenario category} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian.
+The two \textit{actor categories}, the four \textit{activity categories}, and the \textit{static environment category}, are used by the \textit{scenario category}. The \textit{scenario category} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian. 
 
 \subsection{Quantitative description of the pedestrian crossing}
 \label{sec:example quantitative}
@@ -68,9 +68,11 @@ Since we are describing a real-world scenario, there is no need to define desire
 
 There are four \textit{activities} defined and each of these \textit{activities} refers to its qualitative counterpart. The \textit{activities} contain the values of the parameters as well as the start time and the duration. As described by the first \textit{activity} (\emph{ego braking}), the ego vehicle starts with a speed of \SI{8}{\meter\per\second} and brakes in \SI{4}{\second} to come to a full stop. By integrating the sinusoidal function of \cref{eq:sinusoidal} twice, it can be shown that the ego vehicle stops at \SI{4}{\meter} from the center of the pedestrian crossing. After waiting for \SI{3}{\second}, see the second \textit{activity} (\emph{ego stationary}), the ego vehicle accelerates with \SI{1.5}{\meter\per\second\square} towards a speed of \SI{7.5}{\meter\per\second}, see the third \textit{activity} (\emph{ego accelerating}). The fourth activity describes the position of the pedestrian.
 
-The \textit{static environment} describes the main road the ego vehicle is driving on and the footway the pedestrian is walking on. The example in \cref{fig:example quantitative} shows some properties to illustrate how the static environment can be described. As mentioned in \cref{sec:scenario}, however, it is also possible to refer to another source that contains a description of (part of) the static environment, see, e.g., \autocite{dupuis2010opendrive}. 
+The \textit{static environment} describes the main road the ego vehicle is driving on and the footway the pedestrian is walking on. The example in \cref{fig:example quantitative} shows some properties to illustrate how the static environment can be described. \cstart Note that, in practice, the quantitative description of the static environment contains many more facets than the ones mentioned in \cref{fig:example quantitative}. \cend As mentioned in \cref{sec:scenario}, it is possible to refer to another source that contains a description of (part of) the static environment, see, e.g., \autocite{dupuis2010opendrive}. 
 
 The \textit{scenario}, the last object in \cref{fig:example quantitative}, ``has'' the previously defined \textit{static environment}, \textit{actors}, and \textit{activities}. The acts are used to assign the first three \textit{activities} to the ego vehicle and the last \textit{activity} to the pedestrian. The events happen at the starts and ends of the activities. For the sake of brevity, the events itself are not defined in \cref{fig:example quantitative}. The scenario also ``has'' a start time and an end time.
+
+\cstart A different scenario can be defined by, e.g., changing the parameter values. This illustrates that the scenario category in \cref{fig:example qualitative} comprises multiple scenarios, namely all scenarios that only differ from the scenario in \cref{fig:example quantitative} because of different parameter values.\cend
 
 \subsection{Test case with pedestrian crossing}
 \label{sec:example test case}

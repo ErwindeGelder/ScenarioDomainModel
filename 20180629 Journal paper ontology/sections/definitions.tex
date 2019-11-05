@@ -52,7 +52,7 @@ Before providing the definition of the notion of scenario, characteristics of th
 The aforementioned definitions \autocite{go2004blind, geyer2014, ulbrich2015, elrofai2016scenario} state that a scenario corresponds to a time interval. \textcite{vannotten2003updated} call such a scenario a chain scenario (``like movies''), as opposed to a snapshot scenario, i.e., a scenario that describes the state at a time instant (``like photos''). %The duration of a scenario is in the order of seconds, as explicitly mentioned by \textcite{elrofai2016scenario}. Though the duration is not mentioned by \textcite{ulbrich2015}, the presented example is in the order of seconds. Furthermore, other scenarios regarding (automated) driving are also in the order of seconds, e.g., see \autocite{gietelink2006development, zofka2015datadrivetrafficscenarios, roesener2017comprehensive, karaduman2013interactivebehavior, hulshof2013autonomous, englund2016grand}.
 
 % Scenarios consists of one or several events
-\subsubsection{A scenario consists of one or several events \autocite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962, englund2016grand, schoemaker1993multiple, cuppens2002alert, bach2016modelbased}}
+\subsubsection{A scenario consists of one or several events \autocite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962}}
 It can be helpful to develop scenarios using events \autocite{bishop2007scentechniques}. Thus, a scenario could be defined as a particular sequence of events or, as \textcite[p.~143]{kahn1962} writes, ``a scenario results from an attempt to describe in more or less detail some hypothetical sequence of events''. Furthermore, \textcite{geyer2014} and \textcite{ulbrich2015} use the notion of event for describing a scenario, although they do not provide a definition of the term \emph{event}. In \cref{sec:event}, we will elaborate on the notion of \emph{event}.
 
 % Semantically described
@@ -68,9 +68,8 @@ According to \textcite{geyer2014}, ``the end of a scenario is defined by the fir
 % Description of static environment
 \subsubsection{A scenario includes the description of the environment}
 A scenario should include the description of the static and dynamic environment.
-Although the description of the static environment is not a general prerequisite of a scenario, this is often included when speaking about traffic scenarios \autocite{geyer2014, ulbrich2015, elrofai2016scenario, ebner2011identifying, schuldt2013effiziente, althoff2017CommonRoad}.
+Although the description of the static environment is not a general prerequisite of a scenario, this is often included when speaking about traffic scenarios \autocite{geyer2014, ulbrich2015, elrofai2016scenario, ebner2011identifying, althoff2017CommonRoad}.
 %The static environment does not change during a scenario.
-
 The description of the dynamic environment includes a description of the type of actors and the goals and/or activities of the actors.
 
 %Everything that changes during the time interval of a scenario is considered to be part of the dynamic environment. 
@@ -78,7 +77,7 @@ The description of the dynamic environment includes a description of the type of
 % Goals (instead of activities)
 
 \subsubsection{A scenario describes the goals or activities of the ego vehicle}
-For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} mention the activities of the ego vehicle rather than its goals. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \autocite{geyer2014}) could be specified rather than its activities \autocite{ulbrich2015}. 
+For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} mention the activities of the ego vehicle rather than its goals. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \autocite{geyer2014}) could be specified rather than its activities \autocite{ulbrich2015}. \cstart Note that if the activities of the ego vehicle are described rather than its goals, an observer might not be able to determine whether the ego vehicle has successfully responded to the scenario.\cend
 
 
 % Definition
@@ -109,7 +108,7 @@ When it comes to applying this definition in an ontology, it is possible that ``
 This also holds for the other parts of a scenario. 
 A reference could be, for example, the full name of a file, a pointer pointing to a specific part of the computer memory, or an identifier that addresses a specific entry in a database.
 The advantage of references is that these parts of the scenario can be exchanged across different scenarios, as these scenarios can use the same references. 
-As an example, an OpenSCENARIO file, allows to provide a reference to an OpenDRIVE file which describes a road network \autocite{dupuis2010opendrive}. As we will see in \cref{sec:ontology}, in our proposed ontology, a scenario may contain references to a static environment, activities, actors, and events.
+As an example, an OpenSCENARIO file allows to provide a reference to an OpenDRIVE file which describes a road network \autocite{dupuis2010opendrive}. As we will see in \cref{sec:ontology}, in our proposed ontology, a scenario may contain references to a static environment, activities, actors, and events.
 
 
 
@@ -117,8 +116,8 @@ As an example, an OpenSCENARIO file, allows to provide a reference to an OpenDRI
 \subsection{Event}
 \label{sec:event}
 % Introduction of this section
-As mentioned in \cref{def:scenario}, a scenario consists of events. The notion of event is extensively used in literature \autocite{breu1997towards, pfeiffer2013concepts, branicky1998hybridcontrol, deschutter2000optimal, heemels2012eventcontrol}. In this section, a selected number of descriptions is presented. Next, a definition of event is given that suits our context.
-
+As mentioned in \cref{def:scenario}, a scenario consists of events. 
+%The notion of event is extensively used in literature \autocite{breu1997towards, pfeiffer2013concepts, branicky1998hybridcontrol, deschutter2000optimal, heemels2012eventcontrol}. In this section, a selected number of descriptions is presented. Next, a definition of event is given that suits our context.
 % Literature review
 The term event is used in many different fields, e.g.:
 \begin{itemize}
@@ -138,7 +137,7 @@ Before providing the definition of an event, the following is concluded about an
 
 % Event should mark transition of a state from one set to another - mention relation with hybrid control
 \subsubsection{An event marks a mode transition or the moment a system reaches a threshold}
-A mode transition may be caused by either an abrupt change of an input signal, a change of a parameter, or a change in the model. For example, pushing the brake pedal may cause a mode transition and therefore, this may be regarded as an event. It is also possible that the event marks the moment that a system reaches a threshold. For example, a vehicle entering a tunnel, i.e., the distance between the vehicle and the tunnel reaches zero, can be an event.
+A mode transition may be caused by either an abrupt change of an input signal, a change of a parameter, or a change in the model. For example, pushing the brake pedal may cause a mode transition and therefore, this may be regarded as an event. It is also possible that the event marks the moment that a system reaches a threshold. For example, a vehicle entering a tunnel can be an event.
 
 %\subsubsection{An event marks (a cause of) a mode transition}
 %Events mark the transition of mode, which is either a change of input, parameter or state. This is analogous to the way event is described in hybrid control \autocite{boel1999hybridcontrol}.
@@ -157,7 +156,8 @@ The first type of event, i.e., related to the system reaching a threshold, is es
 For example, consider the ego vehicle approaching a pedestrian that is about to cross the road \autocite{seiniger2015test}. 
 Here, the event marks the moment that the distance between the vehicle and pedestrian is less than $\distancecondition$ meters. 
 At the moment of this event, the pedestrian starts to cross the road such that the vehicle impacts the pedestrian if it does not change its speed or direction \autocite{seiniger2015test}.
-\cstart The second type of event, i.e., a mode transition, can, e.g., occur at the moment of a driver input.\cend 
+\cstart By using a variable threshold $\distancecondition$, the value is flexible and can be set differently to define multiple scenarios. 
+The second type of event, i.e., a mode transition, can, e.g., occur at the moment of a driver input.\cend 
 
 For the practical implementation of events, a set of conditions may be specified. In that case, the event occurs at the moment that the conditions are met. A condition could be on, e.g., the distance between the vehicle and pedestrian. In \autocite{openscenario}, an extensive list of possible conditions that can be used to define an event is given.
 
@@ -178,8 +178,7 @@ As mentioned in \cref{def:scenario}, a scenario  includes  a description of the 
 % [Following sentence removed, because too obvious]
 % Therefore, next to events, activities can be seen as the building blocks of a scenario.
 
-
-Both the terms activity \autocite{geyer2014, elrofai2018scenario, miller2015distraction, childress2015using, catapult2018musicc, sigsim2019glossary} and action \autocite{geyer2014, ulbrich2015, bagschik2017ontology} are used in the context of automated driving. Although, strictly speaking, the terms action and activity have a slightly different meaning, they are often used for the same purpose:
+Both the terms activity \autocite{geyer2014, elrofai2018scenario, childress2015using, catapult2018musicc, sigsim2019glossary} and action \autocite{geyer2014, ulbrich2015, bagschik2017ontology} are used in the context of automated driving. Although, strictly speaking, the terms action and activity have a slightly different meaning, they are often used for the same purpose:
 \begin{itemize}
 	\item According to \textcite{ulbrich2015}, actions may be specified for characterizing the temporal development in a scenario.
 	\item \textcite{elrofai2018scenario} consider an activity as a building block of the dynamic part of the scenario: ``An activity is a time evolution of state variables such as speed and heading to describe for instance a lane change, or a braking-to-standstill.''
@@ -194,7 +193,7 @@ Before providing the definition of an activity, the following is concluded about
 
 % Time interval
 \subsubsection{An activity corresponds to an inter-event time interval}
-As opposed to an event, an activity spans over a certain time interval. Furthermore, the start and the end of an activity is marked by an event.
+As opposed to an event, an activity spans over a certain time interval. Furthermore, the start and the end of an activity are marked by an event.
 
 % Describing the evolution of a state
 
@@ -220,7 +219,6 @@ Hence, we define an activity as follows:
 
 % 2. Activity vs. action
 Note that \textcite{geyer2014, ulbrich2015} use the term \emph{action} and although they do not define this term, it seems to be related to our use of the term activity. Similarly, other authors \autocite{sigsim2019glossary, catapult2018musicc, elrofai2018scenario} use the term activity. Although the terms \emph{activity} and \emph{action} may seem very similar, there is a difference. As \textcite{bobick1997movement} points out, actions require an interpretive context --- ``a set of constraints on possible explanations for the observed motions.''
- 
 Considering our context of scenarios, i.e., the assessment of AVs, we are concerned with the occurrence of activities, because an AV needs to cope with them. The actual purpose of each of the activities is irrelevant concerning the assessment. Hence, we refrain from using the term \emph{action}.
 
 
@@ -233,13 +231,11 @@ Examples of activities are accelerating, cruising, and decelerating. Here, the a
 \subsection{Scenario category}
 \label{sec:scenario category}
 
-
 % Introduce term scenario category (i.e. qualitative description of scenario)
-
 As proposed in \cref{def:scenario}, a scenario in the context of the performance assessment of an AV needs to be quantitative. 
 However, in literature, the term scenario is also used to refer to a collection of scenarios, where this collection of scenarios is semantically described. For example, in \autocite{USDoT2007precrashscenarios}, a typology of pre-crash scenarios is proposed. Here, each of the pre-crash scenarios is an abstraction of many quantitative scenarios. Similar studies have been performed to describe scenarios that lead to highway accidents \autocite{adaptive2017d73}, car-cyclist accidents \autocite{opdencamp2014cats}, and car-pedestrian accidents \autocite{lenard2014typical}. In \autocite{catapult2017taxonomy}, a taxonomy of scenarios is proposed to qualitatively describe challenging scenarios for automated driving.
 
-The aforementioned references \autocite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2014typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce a different term to address the qualitative description. We propose to use the term \emph{scenario category} to refer to the qualitative description of a scenario. A qualitative description can be regarded as an abstraction of a quantitative scenario,  whereas a quantitative description can be regarded as a concretization of a qualitative description.
+The aforementioned references \autocite{USDoT2007precrashscenarios, adaptive2017d73, opdencamp2014cats, lenard2014typical, catapult2017taxonomy} show that the term \emph{scenario} is also used to address qualitative descriptions. Since we defined a scenario as a quantitative description, we need to introduce a different term to address the qualitative description. We propose to use the term \emph{scenario category} to refer to the qualitative description of a scenario. A qualitative description can be regarded as an abstraction of a quantitative scenario, whereas a quantitative description can be regarded as a concretization of a qualitative description.
 
 %However, each scenario can be abstractly described in words; i.e., a qualitative description of each scenario exists. 
 %Therefore, a scenario class refers to multiple scenarios with a common characteristic \autocite{elrofai2018scenario}.
@@ -257,40 +253,31 @@ Introducing the concept of scenario categories brings the following benefits:
 \begin{itemize}
 	\item For a human, it is easier to interpret a qualitative description rather than a quantitative description.
 	\item It enables to refer to a group of scenarios that have something in common. Therefore, it enables characterization of the type of scenarios, thus making discussing scenarios much easier.
-	
 	\item It allows for quantifying the completeness of a set of scenarios by separately quantifying the completeness of scenario categories and the completeness of scenarios in each category.
 	This is easier because scenario categories are discrete by nature whereas scenarios are continuous. See \autocite{degelder2019completeness} for more details.
-	
 \end{itemize}
 
-% Explain scenarios fall into scenario category
+% Explain scenario category comprise scenarios
 We describe the formal relation between a scenario and a scenario category with the verb ``to \cstart comprise\cend'', denoted by \cstart$\comprises$\cend. If a specific scenario category $\scenariocategory$ is an abstraction of a specific scenario $\scenario$, then we say that the specific \cstart scenario category $\scenariocategory$ comprises that specific $\scenario$, or simply $\scenariocategory \comprises \scenario$\cend.  This is illustrated in \cref{fig:venn diagram scenario category}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenariocategorya$, $\scenariocategoryb$, and $\scenariocategoryc$ represent scenario categories. \cstart A given scenario category can comprise multiple scenarios, e.g., $\scenariocategoryb \comprises \scenarioa$ and $\scenariocategoryb \comprises \scenariob$ in \cref{fig:venn diagram scenario category}. 
-% Explain scenario can fall into multiple scenario categories
+% Explain multiple scenario categories can comprise a scenario
 Furthermore, multiple scenario categories can comprise a specific scenario. For example, in \cref{fig:venn diagram scenario category}, we have $\scenariocategorya \comprises \scenariob$, $\scenariocategoryb \comprises \scenariob$, and $\scenariocategoryc \comprises \scenariob$. \cend
-
-%Whereas multiple scenarios can fall into one scenario class, it is also possible for one scenario to fall into multiple scenario classes. Continuing the example of \cref{fig:venn diagram scenario class}, a scenario with rain during daytime falls into both the scenario classes ``Daytime'' and ``Rain''.
 
 \setlength{\venncircle}{5em}
 \begin{figure}
 	\centering
 	\input{figures/venn_diagrams.tikz}
-	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. $\scenariocategoryb$ comprises $\scenarioa$ and $\scenariob$. $\scenariocategoryb$ and $\scenariocategoryc$ include $\scenariocategorya$.}
+	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. %$\scenariocategoryb$ comprises $\scenarioa$ and $\scenariob$. $\scenariocategoryb$ and $\scenariocategoryc$ include $\scenariocategorya$.
+	}
 	\label{fig:venn diagram scenario category}
 \end{figure}
 
-% Explain scenario category can fall into scenario categories
+% Explain scenario category can include scenario categories
 The verb ``to \cstart include\cend'' is used to describe the relation between two scenario categories. A scenario category $\scenariocategoryb$ is said to \cstart include \cend a scenario category $\scenariocategorya$ \cstart if $\scenariocategoryb$ comprises all scenarios that are comprised in $\scenariocategorya$. In that case, we can write $\scenariocategoryb \includes \scenariocategorya$. Thus we have
-\begin{equation} \label{eq:fall into scenario category}
+\begin{equation} \label{eq:scenario category include}
 	\scenariocategoryb \includes \scenariocategorya \text{ if } \scenariocategoryb \comprises \scenario\,\,\forall\,\, \{S: \scenariocategorya \comprises \scenario\}.
 \end{equation}
 In \cref{fig:venn diagram scenario category}, scenario categories $\scenariocategoryb$ and $\scenariocategoryc$ include scenario category $\scenariocategorya$; thus $\scenariocategoryb \includes \scenariocategorya$ and $\scenariocategoryc \includes \scenariocategorya$.
 \cend
-
-%In \cref{fig:venn diagram scenario class}, an example is shown with the scenario class ``Rain during daytime'', which falls into the scenario classes ``Daytime'' and ``Rain''.
-%For example, consider the scenario class ``Rain during day'', which is represented by the intersection of the red and green circles in \cref{fig:venn diagram scenario class}. All scenarios with rain that occur during the day fall into this scenario class. Obviously, these scenarios also fall into the scenario classes ``Day'' and ``Rain''. Hence, the scenario class ``Rain during day'' falls into the scenario classes ``Day'' and ``Rain''.
-
-When providing extra information on a piece of data, often tags are used \autocite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \autocite{craft2004tagging, vasquez2019controlling}. 
-%Applications are very broad, e.g., from classification of audio data \autocite{kong2017joint} capturing musical characteristics from songs \autocite{ellis2011semantic} to tagging of Wikipedia pages \autocite{voss2006collaborative}.
 
 % Figure is explained in last few paragraphs, but placed earlier as to appear at the right page of the paper.
 \begin{figure*}
@@ -312,16 +299,17 @@ When providing extra information on a piece of data, often tags are used \autoci
 \end{figure*}
 
 We propose to provide scenarios and scenario categories with additional information in the form of tags that describe the scenario in a qualitative manner.
-%For example, if a scenario contains the tag ``Daytime'', it is automatically recognized as a scenario that falls into the scenario class ``Daytime'' which is characterized by the single tag ``Daytime''. 
+Tags are often used when providing extra information on a piece of data \autocite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \autocite{craft2004tagging}. 
+%Applications are very broad, e.g., from classification of audio data \autocite{kong2017joint} capturing musical characteristics from songs \autocite{ellis2011semantic} to tagging of Wikipedia pages \autocite{voss2006collaborative}.
 The use of these tags brings several benefits:
 \begin{itemize}
 	\item  The tags of a scenario can be helpful in determining which scenario categories \cstart do and do not comprise \cend the scenario.
-	%\item If a scenario category that only contains known tags is added to the database of scenario categories, it can easily be seen which scenarios fall into this scenario category by only inspecting the tags of the scenarios. Therefore, there is no need to define scenario categories a priori.
+	%\item If a scenario category that only contains known tags is added to the database of scenario categories, it can easily be seen which scenarios the scenario category comprises by only inspecting the tags of the scenarios. Therefore, there is no need to define scenario categories a priori.
 	\item It is easy to select scenarios from a scenario database or a scenario library by using tags or a combination of tags.
 	\item As opposed to the proposed categorization of scenarios in \autocite{opdencamp2014cats, USDoT2007precrashscenarios, lenard2014typical, lara2019harmonized}, scenario categories do not need to be mutually exclusive.
 \end{itemize}
 
-There is a balance between having generic scenario categories --- and thus a wide variety among the scenarios belonging to the scenario category --- and having specific scenario categories without much variety among the scenarios in the scenario category. For some systems, one may be interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags can be structured in hierarchical trees \autocite{molloy2017dynamic, badger2012dynamic}. The different layers of the trees can be regarded as different abstraction levels \autocite{Bonnin2014}. 
+There is a balance between having generic scenario categories --- and thus a wide variety among the scenarios belonging to the scenario category --- and having specific scenario categories without much variety among the scenarios in the scenario category. For some systems, one may be interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags can be structured in hierarchical trees \autocite{molloy2017dynamic}. The different layers of the trees can be regarded as different abstraction levels \autocite{Bonnin2014}. 
 
 In \autocite{degelder2019scenariocategories}, several trees of tags are defined and \cref{fig:tree vehicle activities} shows two examples of trees of tags taken from \autocite{degelder2019scenariocategories}. These tags describe possible activities of a vehicle, i.e., the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags. The tags may refer to the objective of an actor in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. Note that tags may be used not only to classify vehicle behavior, but also traffic and environment situations, e.g., ``cut-in'' or ``heavy rain''.
 

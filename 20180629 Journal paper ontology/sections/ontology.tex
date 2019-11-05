@@ -24,7 +24,7 @@ The arrows in \cref{fig:ontology classes} represent the relations of the differe
 There are three different types of arrows. 
 We use UML for implementing the ontology, so the same type of arrows are used.
 %because UML focuses on describing implementation related issues, which is useful considering our Python implementation.
-\cstart The arrow with the text ``comprises'' and ``includes'' represent methods that are explained in \cref{sec:scenario category}. Here, ``comprises'' can be denoted by $\comprises$ and ``includes'' can be denoted by $\includes$, see \cref{eq:fall into scenario category}. \cend
+\cstart The arrow with the text ``comprises'' and ``includes'' represent methods that are explained in \cref{sec:scenario category}. Here, ``comprises'' can be denoted by $\comprises$ and ``includes'' can be denoted by $\includes$, see \cref{eq:scenario category include}. \cend
 The arrows with the diamond are best described by the verb ``to have''\footnote{In UML, this is called an aggregation.  This is typically implemented using pointers. For example, if object A ``has'' B, it means that A contains a pointer to B.}. \cstart Here, a ``\hasone'' at the start of the arrow indicates that an object ``has'' one of such an object. A ``\hasn'' indicates that an object ``has'' zero, one, or multiple objects of the corresponding class. \cend The third arrow denotes a subclass relation. 
 %For example, the class \textit{triggered activity} is a subclass of the class \textit{activity} such that the class \textit{triggered activity} inherits all properties from the \textit{class} activity.
 

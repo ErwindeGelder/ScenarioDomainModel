@@ -104,12 +104,12 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \newcommand{\scenarioa}{\scenario_{1}}
 \newcommand{\scenariob}{\scenario_{2}}
 \newcommand{\scenarioc}{\scenario_{3}}
-\newcommand{\scenariofallsinto}{\in}
+\newcommand{\comprises}{\ni}
 \newcommand{\scenariocategory}{\mathcal{C}}
 \newcommand{\scenariocategorya}{\scenariocategory_{1}}
 \newcommand{\scenariocategoryb}{\scenariocategory_{2}}
 \newcommand{\scenariocategoryc}{\scenariocategory_{3}}
-\newcommand{\scenariocategoryfallsinto}{\subseteq}
+\newcommand{\includes}{\supseteq}
 \newcommand{\slopeego}{a_{\mathrm{\egosub}}}
 \newcommand{\slopepedestrian}{v_{\mathrm{\pedsub}}}
 \newcommand{\state}{x}
@@ -210,13 +210,13 @@ Definition~2 indicates that the moment of an event can be defined in two differe
 
 \toauthor Scope. The paper often discusses issues that are not related to autonomous driving. E.g.\ ontologies on computing, security, etc.\ are mentioned. It is unclear why these should be relevant for this paper.
 
-\fromauthor In order to clearly justify some of the claims we make, we mention other fields of research for which ontologies have proven to be useful. This is used as an implicit argument that an ontology might also be useful for our purpose. However, to make the list of examples shorter and more compact, we have removed ``biology \autocite{gkoutos2004mouse}, security-related research \autocite{kim2005security}, socio-technical systems \autocite{vanDamPhDThesis2009}''.
+\fromauthor In order to clearly justify some of the claims we make, we mention other fields of research for which ontologies have proven to be useful. This is used as an implicit argument that an ontology might also be useful for our purpose. However, to make the list of examples shorter and more compact, we have removed ``biology \autocite{gkoutos2004mouse}, security-related research \autocite{kim2005security}, socio-technical systems \autocite{vanDamPhDThesis2009}''. Furthermore, the following sentence is removed: ``Furthermore, ontologies are defined for various applications, e.g., for the profiling of users \autocite{golemati2007creating}, for the formalization of human activities \autocite{lee2017location}, and for product life cycle management \autocite{matsokis2010plm}.''
 
 
 
 \toauthor Focus. The paper is not very focused and overly lengthy. For instance, the term ``event'' is described using almost an entire page. I would have spent around 5 sentences to explain this.  
 
-\fromauthor  In our discussions with the community (conferences, (ISO) working groups), we have noticed that the definitions of these terms is often opinion based. Hence, we have opted to use the following approach to define the terms \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category}: (1) list existing definitions, (2) draw conclusions from the existing literature, (3) define the term, and (4) finish with some remarks/implications. 
+\fromauthor  In our discussions with the community (conferences, (ISO) working groups), we have noticed that the definitions of the terms \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category} are often opinion based. Hence, we have opted to use the following approach to define these terms: (1) list existing definitions, (2) draw conclusions from the existing literature, (3) define the term, and (4) finish with some remarks/implications. 
 
 The arguments (1-2) and remarks (4) help to justify our proposed definitions. This is confirmed by the second reviewer (``The background research is extensive, and the definition development is justified.''). Therefore, we have opted to keep the current approach to define the terms \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category}. Please note that, considering this comment, we shortened the manuscript by almost 2 pages.
 
@@ -265,7 +265,7 @@ The arguments (1-2) and remarks (4) help to justify our proposed definitions. Th
 
 \toauthor Example. The example is not overly exciting. It would be good if the authors could share the corresponding code for other researchers.
 
-\fromauthor As suggested by the reviewer, we have made the code available on a github repository. This is now mentioned in the manuscript (including the footnote): ``\cstart The code of this example is publicly available\footnote{\cstart See \url{https://github.com/ErwindeGelder/ScenarioDomainModel}. The repository also contains more examples that the one presented here.\cend}\cend.'' To not further lengthen the paper, we use this rather straightforward example. However, as now mentioned in the manuscript, more examples will be shared on the github repository.
+\fromauthor As suggested by the reviewer, we have made the code available on a GitHub repository. This is now mentioned in the manuscript (including the footnote): ``\cstart The code of this example is publicly available\footnote{\cstart See \url{https://github.com/ErwindeGelder/ScenarioDomainModel}. The repository also contains more examples that the one presented here.\cend}\cend.'' To not further lengthen the paper, we use this rather straightforward example. However, as now mentioned in the manuscript, more examples will be shared on the GitHub repository.
 
 
 
@@ -281,13 +281,13 @@ Page 1, opening paragraph: The authors mix ADAS with automation (citation of Ben
 
 \toauthor Page 1, opening paragraph: ``too much resources''.
 
-\fromauthor This is rephrased to ``\cstart too many resources\cend''.
+\fromauthor This is rephrased to ``too \cstart many \cend resources''.
 
 
 
 \toauthor Page 5, 6: It might be useful to mention that if the activity of the ego vehicle is described rather than its goal, that an observer might not be able to determine if the ego vehicle successfully navigated the scenario.
 
-\fromauthor Thank you for this suggestion. We have now added the following sentence at point 6 of Section~III-A: \cstart Note that if the activity of the ego vehicle is described rather than its goal, an observer might not be able to determine whether the ego vehicle has successfully responded to the scenario.\cend
+\fromauthor Thank you for this suggestion. We have now added the following sentence at point 6 of Section~III-A: \cstart Note that if the activities of the ego vehicle are described rather than its goals, an observer might not be able to determine whether the ego vehicle has successfully responded to the scenario.\cend
 
 
 
@@ -299,19 +299,19 @@ Page 1, opening paragraph: The authors mix ADAS with automation (citation of Ben
 
 \toauthor Page 7, Definition 4: I am not sure that ``scenario category'' is the best choice of nomenclature. Perhaps instead of ``category'', ``account'' or ``depiction'' could be used. The term ``category'' is a grouping term, but each scenario will be unique, despite having common features to other scenarios. It's not clear to me that multiple scenarios could fall under the scenario category -- an example should be provided. If the qualitative description is sufficiently detailed, multiple scenarios should not be able to ``fall into'' a scenario category.
 
-\fromauthor We appreciate the different options for ``category''. Although ``depiction'' might be closer to the actual definition of the term, we opt for using ``category'', because this also addresses the fact that scenarios can be grouped into scenario categories. To clarify that multiple scenarios could fall under a scenario category, we have added the following to the example (Section~V-B): \cstart A different scenario can be defined by, e.g., changing the parameter values. This illustrates that the scenario category in Fig.~6 comprises multiple scenarios, namely all scenarios that only differ from the scenario in Fig.~7 because of different parameter values.\cend
+\fromauthor We appreciate the different options for ``category''. Although ``depiction'' might be closer to the actual definition of the term, we opt for using ``category'', because this also addresses the fact that scenarios can be grouped into scenario categories. To clarify that a scenario category can comprise multiple scenarios, we have added the following to the example (Section~V-B): \cstart A different scenario can be defined by, e.g., changing the parameter values. This illustrates that the scenario category in Fig.~5 comprises multiple scenarios, namely all scenarios that only differ from the scenario in Fig.~6 because of different parameter values.\cend
 
 \toauthor Further, ``fall into'' is colloquial, and I would use ``comprises'' instead (although the terms would have to be reversed).
 
-\fromauthor We have changed the ``fall into'' method to the ``\cstart comprise\cend'' method. Furthermore, because it might be confusing that we use different symbols ($\scenariofallsinto$ and $\scenariocategoryfallsinto$), we choose to use different names:
+\fromauthor We have changed the ``fall into'' method to the ``\cstart comprise\cend'' method. Furthermore, because it might be confusing that we use different symbols ($\comprises$ and $\includes$), we choose to use different names:
 \begin{itemize}
-	\item A scenario category can \cstart comprise \cend one or multiple scenarios, e.g., $\scenarioa \scenariofallsinto \scenariocategoryb$ means that $\scenariocategoryb$ \cstart comprises \cend $\scenarioa$.
-	\item A scenario category can \cstart include \cend one or multiple scenario categories, e.g., $\scenariocategorya \scenariocategoryfallsinto \scenariocategoryb$ means that $\scenariocategoryb$ \cstart includes \cend $\scenariocategorya$.
+	\item A scenario category can \cstart comprise \cend one or multiple scenarios, e.g., $\scenariocategoryb \comprises \scenarioa$ means that $\scenariocategoryb$ \cstart comprises \cend $\scenarioa$.
+	\item A scenario category can \cstart include \cend one or multiple scenario categories, e.g., $\scenariocategoryb \includes \scenariocategorya$ means that $\scenariocategoryb$ \cstart includes \cend $\scenariocategorya$.
 \end{itemize}
 
 \toauthor Page 13, Static Environment block: You should mention that there are many facets to this quantitative description -- more than just number of lanes, lane width, and coordinates -- e.g., road friction.
 
-\fromauthor To clarify that there are many facets to the quantitative description of the static environment, we have added the following sentence: \cstart Note that, in practice, the quantitative description of the static environment contains many more facets than the ones mentioned in Fig.~7.\cend
+\fromauthor To clarify that there are many facets to the quantitative description of the static environment, we have added the following sentence: \cstart Note that, in practice, the quantitative description of the static environment contains many more facets than the ones mentioned in Fig.~6.\cend
 
 
 
