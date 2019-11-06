@@ -1,9 +1,9 @@
 \section{Example: pedestrian crossing}
 \label{sec:example}
 
-To illustrate the use of the ontology, we describe a scenario using the domain model presented in \cref{sec:ontology}. The scenario is schematically shown in \cref{fig:scenario overview}. The ego vehicle is driving on the right lane of a two-lane road and a pedestrian is walking on a footway that intersects the road the ego vehicle is driving on. Both the ego vehicle and the pedestrian are initially approaching the pedestrian crossing. The ego vehicle brakes and comes to a full stop in front of the pedestrian crossing. While the ego vehicle is stationary, the pedestrian crosses the road using the pedestrian crossing. When the pedestrian has passed the ego vehicle, the ego vehicle accelerates. \cstart The code of this example is publicly available\footnote{\cstart See \url{https://github.com/ErwindeGelder/ScenarioDomainModel}. The repository also contains more examples that the one presented here.\cend}\cend.
+To illustrate the use of the ontology, we describe a scenario using the domain model presented in \cref{sec:ontology}. The scenario is schematically shown in \cref{fig:scenario overview}. The ego vehicle is driving on the right lane of a two-lane road and a pedestrian is walking on a footway that intersects the road the ego vehicle is driving on. Both the ego vehicle and the pedestrian are initially approaching the pedestrian crossing. The ego vehicle brakes and comes to a full stop in front of the pedestrian crossing. While the ego vehicle is stationary, the pedestrian crosses the road using the pedestrian crossing. When the pedestrian has passed the ego vehicle, the ego vehicle accelerates. \cstart The code of this example is publicly available\footnote{\cstart See \url{https://github.com/ErwindeGelder/ScenarioDomainModel}. The repository also contains other examples.\cend}\cend.
 
-\setlength{\figurewidth}{0.5\linewidth}
+\setlength{\figurewidth}{0.4\linewidth}
 \begin{figure}
 	\centering
 	\input{figures/example_overview.tikz}
@@ -23,10 +23,12 @@ To illustrate the use of the ontology, we describe a scenario using the domain m
 
 We first describe the scenario qualitatively using our proposed ontology. Next, the scenario is described quantitatively in \cref{sec:example quantitative}. Finally, in \cref{sec:example test case}, we show the differences if a test case is considered with a crossing pedestrian.
 
+
+
 \subsection{Qualitative description of the pedestrian crossing}
 \label{sec:example qualitative}
-To describe the scenario according to the presented domain model, objects are instantiated from the classes presented in \cref{fig:ontology classes}. \Cref{fig:example qualitative} shows the objects for describing the scenario qualitatively. There are two \textit{actor categories}: one for the ego vehicle and one for the pedestrian. Four different activity categories are defined: \emph{braking}, \emph{stationary}, \emph{accelerating}, and \emph{walking straight}. The braking activity is described with the sinusoidal model of \cref{eq:sinusoidal}. The stationary activity is simply modeled using a constant, i.e.:
 
+To describe the scenario according to the presented domain model, objects are instantiated from the classes presented in \cref{fig:ontology classes}. \Cref{fig:example qualitative} shows the objects for describing the scenario qualitatively. There are two \textit{actor categories}: one for the ego vehicle and one for the pedestrian. Four different activity categories are defined: \emph{braking}, \emph{stationary}, \emph{accelerating}, and \emph{walking straight}. The braking activity is described with the sinusoidal model of \cref{eq:sinusoidal}. The stationary activity is simply modeled using a constant, i.e.:
 \begin{equation} \label{eq:constant model}
 	\egoacceleration(t) = 0,\ \egospeed(\inittimeb) = \egospeedinitb,
 \end{equation}
@@ -42,15 +44,18 @@ Here, the parameters $\slopeego$ and $\slopepedestrian$ describe the rate of cha
 \begin{figure}
 	\centering
 	\input{figures/example_qualitative.tikz}
-	\caption{The objects that are used to qualitatively describe the scenario that is schematically shown in \cref{fig:scenario overview}. The first line of each blocks shows the name (before the double colon) and the class from which the object is instantiated. The following lines show the attributes of the object with the name of the attribute before the colon and the value of the corresponding attribute after the colon.}
+	\caption{The objects that are used to qualitatively describe the scenario that is schematically shown in \cref{fig:scenario overview}. The first line of each block shows the name (before the double colon) and the class from which the object is instantiated. The following lines show the attributes of the object with the name and value of the attribute before and after the colon, respectively.}
 	\label{fig:example qualitative}
 \end{figure}
 
 
 The two \textit{actor categories}, the four \textit{activity categories}, and the \textit{static environment category}, are used by the \textit{scenario category}. The \textit{scenario category} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian. 
 
+
+
 \subsection{Quantitative description of the pedestrian crossing}
 \label{sec:example quantitative}
+
 The objects to describe the scenario quantitatively are shown in \cref{fig:example quantitative}. The two \textit{actors} refer to the quantitative counterparts of the \textit{actor categories} in \cref{fig:example qualitative}. Initial \cstart state vectors \cend are listed for each \textit{actor} using the coordinate frame that is shown in \cref{fig:scenario overview}. 
 %It is not necessary to describe the initial northing position of the pedestrian, because it will be described by an activity. For a similar reason, the initial speed of both actors is not included. 
 Since we are describing a real-world scenario, there is no need to define desired \cstart state vectors \cend or goals for the actors.
@@ -59,12 +64,9 @@ Since we are describing a real-world scenario, there is no need to define desire
 \begin{figure}
 	\centering
 	\input{figures/example_quantitative.tikz}
-	\caption{ The objects that are used to quantitatively describe the scenario that is schematically shown in \cref{fig:scenario overview}. 
-		%See \cref{fig:example qualitative} for a further explanation.
-	}
+	\caption{The objects that are used to quantitatively describe the scenario that is schematically shown in \cref{fig:scenario overview}.}
 	\label{fig:example quantitative}
 \end{figure}
-
 
 There are four \textit{activities} defined and each of these \textit{activities} refers to its qualitative counterpart. The \textit{activities} contain the values of the parameters as well as the start time and the duration. As described by the first \textit{activity} (\emph{ego braking}), the ego vehicle starts with a speed of \SI{8}{\meter\per\second} and brakes in \SI{4}{\second} to come to a full stop. By integrating the sinusoidal function of \cref{eq:sinusoidal} twice, it can be shown that the ego vehicle stops at \SI{4}{\meter} from the center of the pedestrian crossing. After waiting for \SI{3}{\second}, see the second \textit{activity} (\emph{ego stationary}), the ego vehicle accelerates with \SI{1.5}{\meter\per\second\square} towards a speed of \SI{7.5}{\meter\per\second}, see the third \textit{activity} (\emph{ego accelerating}). The fourth activity describes the position of the pedestrian.
 
@@ -101,8 +103,6 @@ In this example, we consider a test case based on the previously illustrated rea
 The \textit{scenario category} only differs from the \textit{scenario category} shown in \cref{fig:example qualitative} in that it does not contain the \textit{activity categories} that describe the activity of the ego vehicle.
 
 Two attributes of the quantitative description of the ego vehicle are different. First, the initial state \cstart vector \cend also includes the speed, denoted by $\egospeed$, at the start of the scenario and the initial position is further away from the pedestrian crossing, such that the ego vehicle's driver or automation system has more time to perceive the pedestrian. 
-
-
 %Note that we choose for a start at rest as this is most practical when performing a test in real life. Therefore, the ego vehicle needs to accelerate to approach the pedestrian crossing, which is why the initial distance is larger (\SI{60}{\meter} instead of \SI{20}{\meter}). 
 Secondly, because there are no activities defined for the ego vehicle, the desired \cstart state vector is \cend defined. The goal is to reach the point \SI{80}{\meter} in front of the ego vehicle while driving with a speed of $\egospeed=\SI{8}{\meter\per\second}$.
 

@@ -10,7 +10,7 @@
 	type: Pedestrian\\
 	tags: Pedestrian};
 
-\node[object, fill=category, right=of ego qualitative.north east, anchor=north west](braking){{\bfseries Braking::Activity category}\\
+\node[object, fill=category, below=of pedestrian qualitative.south](braking){{\bfseries Braking::Activity category}\\
 	model: Sinusoid, see \cref{eq:sinusoidal}\\
 	state: Speed ($\egospeed$)\\
 	tags: Braking};
@@ -20,7 +20,7 @@
 	state: Speed ($\egospeed$)\\
 	tags: Stationary};
 
-\node[object, fill=category, below=of stationary.south](accelerating){{\bfseries Accelerating::Activity category}\\
+\node[object, fill=category, right=of ego qualitative.north east, anchor=north west](accelerating){{\bfseries Accelerating::Activity category}\\
 	model: Linear, see \cref{eq:ego accelerating}\\
 	state: Speed ($\egospeed$)\\
 	tags: Accelerating};
@@ -35,17 +35,22 @@
 	state: Position ($\pednorth$)\\
 	tags: Walking straight};
 
-\node[object, fill=category, below=of pedestrian qualitative.south](static category){{\bfseries Pedestrian crossing qualitative::Static environment category}\\
-	description: Straight road with two lanes and a pedestrian crossing\\
+\node[object, fill=category, below=of walking.south](static category){{\bfseries Pedestrian crossing qualitative::Static environment category}\\
+	description: Straight road with two lanes and a\\
+	\leavevmode\phantom{description: }pedestrian crossing\\
 	tags: Non-signalized zebra crossing};
 
-\node[object, fill=scenariocategory, below=of static category.south](scenario category){{\bfseries Crossing pedestrian::Scenario category}\\
-	description: A pedestrian is crossing the road on a zebra crossing in\\
-	\leavevmode\phantom{description: }front of the ego vehicle\\
-	static environment category: Pedestrian crossing qualitative\\
+\node[object, fill=scenariocategory, right=of accelerating.north east, anchor=north west](scenario category){{\bfseries Crossing pedestrian::Scenario category}\\
+	description: A pedestrian is crossing the road \\
+	\leavevmode\phantom{description: }on a zebra crossing in front of the \\
+	\leavevmode\phantom{description: }ego vehicle\\
+	static environment category: Pedestrian \\
+	\leavevmode\phantom{static environment category: }crossing \\
+	\leavevmode\phantom{static environment category: }qualitative\\
 	actors: Ego qualitative, Pedestrian qualitative\\
 	activities: Braking, Stationary, Accelerating, Walking straight\\
-	acts: (Ego qualitative, Braking), (Ego qualitative, Stationary), \\
+	acts: (Ego qualitative, Braking), , \\
+	\leavevmode\phantom{acts: }(Ego qualitative, Stationary), \\
 	\leavevmode\phantom{acts: }(Ego qualitative, Accelerating), \\
 	\leavevmode\phantom{acts: }(Pedestrian qualitative, Walking straight)\\
 	tags:};
