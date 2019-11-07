@@ -7,6 +7,7 @@
 *.blg
 *.cb
 *.cb2
+*.csv
 *.log
 *.out
 *.pdf
@@ -17,6 +18,7 @@
 _data/
 */.ipynb_checkpoints/*
 */*/.ipynb_checkpoints/*
+*/*/*/.ipynb_checkpoints/*
 *.idea*
 *__pycache__*
 */pickles/*
@@ -33,4 +35,4 @@ utilities/log2.txt
 20171126 Parametrization/df.p
 20190725 Scenario risk/python/data/
 20191014 Scenario mining/data/
-20191014 Scenario mining/dev/_old/
+20191014 Scenario mining/Corrado/dev/_old/
