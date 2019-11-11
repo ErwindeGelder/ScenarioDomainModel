@@ -3408,10 +3408,10 @@
     <pdf_title>Ontology-Based Methods for Enhancing Autonomous Vehicle Path Planning</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="An ontology-Based Approach to Relax Traffic Regulation for Autonomous Vehicle Assistance" ID="ID_740407115" CREATED="1570357202385" MODIFIED="1570357217382" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/390%20Ontology-Based%20Approach%20to%20Relax%20Traffic%20Regulation%20for%20AV%20Assistance.pdf">
+<node TEXT="An ontology-Based Approach to Relax Traffic Regulation for Autonomous Vehicle Assistance" ID="ID_740407115" CREATED="1570357202385" MODIFIED="1573406007826" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/390%20Ontology-Based%20Approach%20to%20Relax%20Traffic%20Regulation%20for%20AV%20Assistance.pdf">
 <attribute NAME="key" VALUE="morignot2013ontology"/>
 <attribute NAME="year" VALUE="2013"/>
-<attribute NAME="title" VALUE="An ontology-Based Approach to Relax Traffic Regulation for Autonomous Vehicle Assistance"/>
+<attribute NAME="title" VALUE="An Ontology-Based Approach to Relax Traffic Regulation for Autonomous Vehicle Assistance"/>
 <attribute NAME="authors" VALUE="Morignot, Philippe and Nashashibi, Fawzi"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="657C6CC2DDD05DE8332A3C33E3BF6B070DE9C37A7F7B71AA1BFD2FD6321198">
     <pdf_title>AN ONTOLOGY-BASED APPROACH TO RELAX TRAFFIC REGULATION FOR AUTONOMOUS VEHICLE ASSISTANCE</pdf_title>

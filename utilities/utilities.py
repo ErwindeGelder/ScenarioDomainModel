@@ -248,6 +248,7 @@ def compile_doc(filename, git=None, other=None, newname=None, toggle=None, add2p
     :param other: Any other files. Any file needs to be a tuple (<filename::str>, <args::dict>)
     :param newname: Rename the file, if needed.
     :param toggle: Set a toggle, if needed. Tuple: (<name of toggle::str>, <value::bool>).
+    :param add2pdfs: If true, the PDF will be copied to the pdf folder.
     :param overwrite: Whether to overwrite a file.
     :param tikz: Whether a tikz folder needs to be created.
     :param kwargs: Any additional arguments that will be used for the pdf function.
@@ -383,6 +384,7 @@ if __name__ == '__main__':
     compile_pr(22, usebiber=True)
     compile_pr(23, usebiber=True, other=(join('20191004 Ontology revision letter',
                                               'ontology_revision'), dict(usebiber=True)))
+    compile_pr(24)
 
     # Revisions/versions
     compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',
@@ -426,6 +428,10 @@ if __name__ == '__main__':
                 git='OntologyR1', newname='20190820_OntologyR1', usebiber=True)
     compile_doc(join('20190819 Journal paper ontology cover', 'ontology_cover'), log=False,
                 git='OntologyR1', newname='20190820_OntologyCoverR1', usebiber=True)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
+                git='OntologyR2', newname='20191111_OntologyR2', usebiber=True)
+    compile_doc(join('20191004 Ontology revision letter', 'ontology_revision'), log=False,
+                git='OntologyR2', newname='20191111_RevisionLetter', usebiber=True)
 
     # All other stuff
     compile_doc(join('20171111 IV2018 Ontology', 'ontology'), usebiber=True)
