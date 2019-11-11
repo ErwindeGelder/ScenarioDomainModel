@@ -2,7 +2,7 @@
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 %        1         2         3         4         5         6         7         8
 
-\documentclass[letterpaper, conference, onecolumn]{ieeeconf}  % Comment this line out if you need a4paper
+\documentclass[3p,onecolumn,authoryear]{elsarticle}  % Comment this line out if you need a4paper
 
 
 % make changes take effect
@@ -16,7 +16,7 @@
 
 %\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
 
-\IEEEoverridecommandlockouts                              % This command is only needed if 
+%\IEEEoverridecommandlockouts                              % This command is only needed if 
                                                           % you want to use the \thanks command
 
 % See the \addtolength command later in the file to balance the column lengths
@@ -46,32 +46,16 @@
 \usepackage[T1]{fontenc}       % code for pdf file
 \usepackage[USenglish]{babel}             %% language support
 
-%\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,mincitenames=2,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
-%\AtEveryBibitem{%
-%	\ifentrytype{inproceedings}{%
-%		\clearfield{organization}%
-%	}{%
-%	}%
-%}
-%\renewcommand*{\bibfont}{\footnotesize}
-%\setlength{\biblabelsep}{\labelsep}
-%\bibliography{../bib}
-
-\usepackage{silence}  							%% For filtering warnings
-\usepackage{csquotes}
-% Add doi=false if no DOI
-\usepackage[style=authoryear-comp,isbn=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
-% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
-\WarningFilter{biblatex}{Patching footnotes failed}
-%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
-\setlength{\biblabelsep}{\labelsep}
-\bibliography{../bib}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{letltxmacro}
+\LetLtxMacro{\autocite}{\citep}
+\LetLtxMacro{\textcite}{\citet}
 
 
 
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.9}  % Prevent warning, pgf running in backwards compatibility mode anyway
-%\usetikzlibrary{external}                       %% Create pdf figures from TikZ. Use PDFTeXify ...
+\pgfplotsset{compat=1.9}  % Prevent warning, pgf running in backwards compatibility mode anyway%\usetikzlibrary{external}                       %% Create pdf figures from TikZ. Use PDFTeXify ...
 %\tikzexternalize[prefix=tikz/]                  %% ... with --tex-option=--shell-escape switch.
 \usepackage[capitalize]{cleveref}
 \Crefname{figure}{Fig.}{Figs.}
@@ -88,13 +72,6 @@
 \newenvironment{remark}{\begin{remarkenv}}%
 	{\hfill$\lozenge$\end{remarkenv}}            %% end remark with a lozenge
 
-% Table stuff
-\usepackage{booktabs}
-\usepackage{tabularx}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-\setlength{\heavyrulewidth}{0.1em}
-\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
-
 %\pgfplotsset{compat=newest} 
 %\pgfplotsset{plot coordinates/math parser=false}
 
@@ -102,32 +79,38 @@
 \graphicspath{ {figures/} }
 
 
-\title{\LARGE \bf
-	Ontology for Scenarios for the Assessment of Automated Vehicles
-}
+%\author{Erwin de Gelder$^{a,b*}$, Jan-Pieter Paardekooper$^{a,c}$, Arash Khabbaz Saberi$^{a}$, Hala Elrofai$^{a}$, Olaf Op den Camp$^{a}$, \\ Jeroen Ploeg$^{d,e}$, Ludwig Friedmann$^{f}$, Bart De Schutter$^{b}$%
+%\thanks{$^{a}$TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}%
+%\thanks{$^{b}$Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
+%\thanks{$^{c}$Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
+%\thanks{$^{d}$2getthere, Utrecht, The Netherlands}%
+%\thanks{$^{e}$Eindhoven University of Technology, Department of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}%
+%\thanks{$^{f}$BMW Group, Petuelring 130, 80788 Munich, Germany}%
+%\thanks{$^{*}$Corresponding author. E-mail address: {\tt\small erwin.degelder@tno.nl}}%
+%}
 
-\author{Erwin de Gelder$^{a,b*}$, Jan-Pieter Paardekooper$^{a,c}$, Arash Khabbaz Saberi$^{a}$, Hala Elrofai$^{a}$, Olaf Op den Camp$^{a}$, \\ Jeroen Ploeg$^{d,e}$, Ludwig Friedmann$^{f}$, Bart De Schutter$^{b}$%
-\thanks{$^{a}$TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}%
-\thanks{$^{b}$Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
-\thanks{$^{c}$Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
-\thanks{$^{d}$2getthere, Utrecht, The Netherlands}%
-\thanks{$^{e}$Eindhoven University of Technology, Department of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}%
-\thanks{$^{f}$BMW Group, Petuelring 130, 80788 Munich, Germany}%
-\thanks{$^{*}$Corresponding author. E-mail address: {\tt\small erwin.degelder@tno.nl}}%
-%\thanks{*This work was not supported by any organization}% <-this % stops a space
-%\thanks{$^{1}$Albert Author is with Faculty of Electrical Engineering, Mathematics and Computer Science,
-%        University of Twente, 7500 AE Enschede, The Netherlands
-%        {\tt\small albert.author@papercept.net}}%
-%\thanks{$^{2}$Bernard D. Researcheris with the Department of Electrical Engineering, Wright State University,
-%        Dayton, OH 45435, USA
-%        {\tt\small b.d.researcher@ieee.org}}%
-}
+\author[1,2]{Erwin de Gelder\corref{cor1}}
+\ead{erwin.degelder@tno.nl}
+\author[1,3]{Jan-Pieter Paardekooper}
+\author[1]{Arash Khabbaz Saberi}
+\author[1]{Hala Elrofai}
+\author[1]{Olaf Op den Camp}
+\author[4,5]{Jeroen Ploeg}
+\author[6]{Ludwig Friedmann}
+\author[2]{Bart De Schutter}
+\cortext[cor1]{Corresponding author}
+\address[1]{TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}
+\address[2]{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}
+\address[3]{Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}
+\address[4]{2getthere, Utrecht, The Netherlands}
+\address[5]{Eindhoven University of Technology, Department of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}
+\address[6]{BMW Group, Petuelring 130, 80788 Munich, Germany}
 
 
 \newlength\figurewidth
 \newlength\figureheight
 \newlength\venncircle
-\newlength\objectwidth\setlength{\objectwidth}{16em}
+\newlength\objectwidth\setlength{\objectwidth}{18.5em}
 
 
 \usetikzlibrary{arrows,positioning}
@@ -243,13 +226,15 @@
 \begin{document}
 
 
-\maketitle
-\thispagestyle{empty}
-\pagestyle{empty}
+%\thispagestyle{empty}
+%\pagestyle{empty}
+\title{Ontology for Scenarios for the Assessment of Automated Vehicles}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{sections/abstract}
+\maketitle
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{sections/introduction}
@@ -272,8 +257,9 @@
                                   % sure that you do not shorten the textheight too much.
 
 %\bibliographystyle{ieeetran}
-%\bibliography{../bib}
-\printbibliography
+\bibliographystyle{authordate1}
+\bibliography{ontologybib}
+%\printbibliography
 
 %\appendix
 %\appendices

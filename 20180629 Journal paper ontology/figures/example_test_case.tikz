@@ -1,5 +1,6 @@
 %\newlength\objectwidth\setlength{\objectwidth}{24em}
 %\tikzstyle{object}=[draw, text width=\objectwidth-.5em, align=left, line width=1pt, minimum width=\objectwidth, anchor=north west, node distance=3pt]
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}
 \tikzstyle{every node}=[font=\footnotesize]
 
@@ -48,3 +49,4 @@ conditions: $|\egoeast/\egospeed| \leq \SI{2.5}{\second}$};
 	\attrtend: \SI{100}{\second}\\
 	tags:};
 \end{tikzpicture}
+}

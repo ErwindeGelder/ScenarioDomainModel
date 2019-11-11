@@ -46,38 +46,39 @@ Secondly, the aforementioned definitions use undefined terms, such as ``action''
 
 % "Requirements"
 Before providing the definition of the notion of scenario, characteristics of the notion of scenario based on literature are listed as follows:
-
+%
 % Order of seconds
-\subsubsection{A scenario corresponds to a time interval}
-The aforementioned definitions \autocite{go2004blind, geyer2014, ulbrich2015, elrofai2016scenario} state that a scenario corresponds to a time interval. \textcite{vannotten2003updated} call such a scenario a chain scenario (``like movies''), as opposed to a snapshot scenario, i.e., a scenario that describes the state at a time instant (``like photos''). %The duration of a scenario is in the order of seconds, as explicitly mentioned by \textcite{elrofai2016scenario}. Though the duration is not mentioned by \textcite{ulbrich2015}, the presented example is in the order of seconds. Furthermore, other scenarios regarding (automated) driving are also in the order of seconds, e.g., see \autocite{gietelink2006development, zofka2015datadrivetrafficscenarios, roesener2017comprehensive, karaduman2013interactivebehavior, hulshof2013autonomous, englund2016grand}.
+\begin{enumerate}
+	\item \textit{A scenario corresponds to a time interval:}
+	The aforementioned definitions \autocite{go2004blind, geyer2014, ulbrich2015, elrofai2016scenario} state that a scenario corresponds to a time interval. \textcite{vannotten2003updated} call such a scenario a chain scenario (``like movies''), as opposed to a snapshot scenario, i.e., a scenario that describes the state at a time instant (``like photos''). %The duration of a scenario is in the order of seconds, as explicitly mentioned by \textcite{elrofai2016scenario}. Though the duration is not mentioned by \textcite{ulbrich2015}, the presented example is in the order of seconds. Furthermore, other scenarios regarding (automated) driving are also in the order of seconds, e.g., see \autocite{gietelink2006development, zofka2015datadrivetrafficscenarios, roesener2017comprehensive, karaduman2013interactivebehavior, hulshof2013autonomous, englund2016grand}.
 
-% Scenarios consists of one or several events
-\subsubsection{A scenario consists of one or several events \autocite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962}}
-It can be helpful to develop scenarios using events \autocite{bishop2007scentechniques}. Thus, a scenario could be defined as a particular sequence of events or, as \textcite[p.~143]{kahn1962} writes, ``a scenario results from an attempt to describe in more or less detail some hypothetical sequence of events''. Furthermore, \textcite{geyer2014} and \textcite{ulbrich2015} use the notion of event for describing a scenario, although they do not provide a definition of the term \emph{event}. In \cref{sec:event}, we will elaborate on the notion of \emph{event}.
+	% Scenarios consists of one or several events
+	\item \textit{A scenario consists of one or several events \autocite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962}:}
+	It can be helpful to develop scenarios using events \autocite{bishop2007scentechniques}. Thus, a scenario could be defined as a particular sequence of events or, as \textcite[p.~143]{kahn1962} writes, ``a scenario results from an attempt to describe in more or less detail some hypothetical sequence of events''. Furthermore, \textcite{geyer2014} and \textcite{ulbrich2015} use the notion of event for describing a scenario, although they do not provide a definition of the term \emph{event}. In \cref{sec:event}, we will elaborate on the notion of \emph{event}.
 
-% Semantically described
-\subsubsection{Real-world traffic scenarios are quantitative scenarios}
-Regarding the nature of the data, a scenario can be either qualitative or quantitative \autocite{vannotten2003updated}. Real-world traffic scenarios are quantitative scenarios, such that they are, e.g., suitable for simulation purposes. A scenario, however, can also be described qualitatively, such that it is readable and understandable for human experts. Providing a qualitative description of a quantitative scenario has become known as a story-and-simulation approach \autocite{alcamo2001scenarios}. 
-Note that several quantitative scenarios might have the same qualitative description; thus, a qualitative description of a scenario does not uniquely define a quantitative scenario. A qualitative description can be regarded as an abstraction of the quantitative scenario, see also \cref{sec:scenario category}.
+	% Semantically described
+	\item \textit{Real-world traffic scenarios are quantitative scenarios:}
+	Regarding the nature of the data, a scenario can be either qualitative or quantitative \autocite{vannotten2003updated}. Real-world traffic scenarios are quantitative scenarios, such that they are, e.g., suitable for simulation purposes. A scenario, however, can also be described qualitatively, such that it is readable and understandable for human experts. Providing a qualitative description of a quantitative scenario has become known as a story-and-simulation approach \autocite{alcamo2001scenarios}. 
+	Note that several quantitative scenarios might have the same qualitative description; thus, a qualitative description of a scenario does not uniquely define a quantitative scenario. A qualitative description can be regarded as an abstraction of the quantitative scenario, see also \cref{sec:scenario category}.
 
-% Some relevance between events
-\subsubsection{The time interval of a scenario contains all relevant events}
-According to \textcite{geyer2014}, ``the end of a scenario is defined by the first irrelevant situation with respect to the scenario''. In a similar manner, we require that the time interval of a scenario should contain all relevant events. Note that `relevant' is subjective and, therefore, an event is considered to be relevant, if it is relevant to the ego vehicle.
-% Next to that, an event is regarded as irrelevant, if it is independent of the relevant events.
+	% Some relevance between events
+	\item\textit{The time interval of a scenario contains all relevant events:}
+	According to \textcite{geyer2014}, ``the end of a scenario is defined by the first irrelevant situation with respect to the scenario''. In a similar manner, we require that the time interval of a scenario should contain all relevant events. Note that `relevant' is subjective and, therefore, an event is considered to be relevant, if it is relevant to the ego vehicle.
+	% Next to that, an event is regarded as irrelevant, if it is independent of the relevant events.
 
-% Description of static environment
-\subsubsection{A scenario includes the description of the environment}
-A scenario should include the description of the static and dynamic environment.
-Although the description of the static environment is not a general prerequisite of a scenario, this is often included when speaking about traffic scenarios \autocite{geyer2014, ulbrich2015, elrofai2016scenario, ebner2011identifying, althoff2017CommonRoad}.
-%The static environment does not change during a scenario.
-The description of the dynamic environment includes a description of the type of actors and the goals and/or activities of the actors.
-
-%Everything that changes during the time interval of a scenario is considered to be part of the dynamic environment. 
-
-% Goals (instead of activities)
-
-\subsubsection{A scenario describes the goals or activities of the ego vehicle}
-For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} mention the activities of the ego vehicle rather than its goals. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \autocite{geyer2014}) could be specified rather than its activities \autocite{ulbrich2015}. \cstart Note that if the activities of the ego vehicle are described rather than its goals, an observer might not be able to determine whether the ego vehicle has successfully responded to the scenario.\cend
+	% Description of static environment
+	\item\textit{A scenario includes the description of the environment:}
+	A scenario should include the description of the static and dynamic environment.
+	Although the description of the static environment is not a general prerequisite of a scenario, this is often included when speaking about traffic scenarios \autocite{geyer2014, ulbrich2015, elrofai2016scenario, ebner2011identifying, althoff2017CommonRoad}.
+	%The static environment does not change during a scenario.
+	The description of the dynamic environment includes a description of the type of actors and the goals and/or activities of the actors.
+	
+	%Everything that changes during the time interval of a scenario is considered to be part of the dynamic environment. 
+	
+	% Goals (instead of activities)
+	\item\textit{A scenario describes the goals or activities of the ego vehicle:}
+	For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} mention the activities of the ego vehicle rather than its goals. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \autocite{geyer2014}) could be specified rather than its activities \autocite{ulbrich2015}. \cstart Note that if the activities of the ego vehicle are described rather than its goals, an observer might not be able to determine whether the ego vehicle has successfully responded to the scenario.\cend
+\end{enumerate}
 
 
 % Definition
@@ -132,15 +133,17 @@ The term event is used in many different fields, e.g.:
 Before providing the definition of an event, the following is concluded about an event, based on aforementioned literature:
 
 % It is a time instant
-\subsubsection{An event corresponds to a time instant}
-\cstart We considered the definitions of event in hybrid systems and control and event-based control. Therefore, an event happens at some time instant rather than taking a time span. Note, however, that the time does not need to be fully defined in advance.\cend
-
-% Event should mark transition of a state from one set to another - mention relation with hybrid control
-\subsubsection{An event marks a mode transition or the moment a system reaches a threshold}
-A mode transition may be caused by either an abrupt change of an input signal, a change of a parameter, or a change in the model. For example, pushing the brake pedal may cause a mode transition and therefore, this may be regarded as an event. It is also possible that the event marks the moment that a system reaches a threshold. For example, a vehicle entering a tunnel can be an event.
-
-%\subsubsection{An event marks (a cause of) a mode transition}
-%Events mark the transition of mode, which is either a change of input, parameter or state. This is analogous to the way event is described in hybrid control \autocite{boel1999hybridcontrol}.
+\begin{enumerate}
+	\item\textit{An event corresponds to a time instant:}
+	\cstart We considered the definitions of event in hybrid systems and control and event-based control. Therefore, an event happens at some time instant rather than taking a time span. Note, however, that the time does not need to be fully defined in advance.\cend
+	
+	% Event should mark transition of a state from one set to another - mention relation with hybrid control
+	\item\textit{An event marks a mode transition or the moment a system reaches a threshold:}
+	A mode transition may be caused by either an abrupt change of an input signal, a change of a parameter, or a change in the model. For example, pushing the brake pedal may cause a mode transition and therefore, this may be regarded as an event. It is also possible that the event marks the moment that a system reaches a threshold. For example, a vehicle entering a tunnel can be an event.
+	
+	%\item\textit{An event marks (a cause of) a mode transition}
+	%Events mark the transition of mode, which is either a change of input, parameter or state. This is analogous to the way event is described in hybrid control \autocite{boel1999hybridcontrol}.
+\end{enumerate}
 
 % Give definition
 Hence, we define an event as follows:
@@ -191,20 +194,22 @@ Both the terms activity \autocite{geyer2014, elrofai2018scenario, childress2015u
 
 Before providing the definition of an activity, the following is concluded about an activity based on the aforementioned literature:
 
-% Time interval
-\subsubsection{An activity corresponds to an inter-event time interval}
-As opposed to an event, an activity spans over a certain time interval. Furthermore, the start and the end of an activity are marked by an event.
-
-% Describing the evolution of a state
-
-\subsubsection{An activity quantitatively describes the time evolution of a state \protect\cstart variable\protect\cend}
-Because activities are building blocks of a scenario and a scenario corresponds to a quantitative description, the activities themselves need to be quantitative as well. 
-Therefore, an activity describes the time evolution of \cstart one or more state variables \cend, i.e., the trajectory of \cstart one or more state variables \cend over an inter-event time interval that corresponds to the activity, where the term state \cstart variable \cend is defined in \cref{sec:state variable}.
-
-% Performed by something (an actor?)
-\subsubsection{An activity is performed by an actor}
-An activity quantitatively describes the time evolution of \cstart one or more state variables \cend and a state \cstart variable \cend corresponds to an actor, e.g., the acceleration of a vehicle, and, therefore, an activity is performed by an actor. Note that the actor might be the ego vehicle. 
-%However, it might also be the case that a state does not correspond to an actor. For example, a state describing the weather conditions does not correspond to an actor, so if an activity describes changing weather conditions, the activity is not performed by an actor.
+\begin{enumerate}
+	% Time interval
+	\item\textit{An activity corresponds to an inter-event time interval:}
+	As opposed to an event, an activity spans over a certain time interval. Furthermore, the start and the end of an activity are marked by an event.
+	
+	% Describing the evolution of a state
+	
+	\item\textit{An activity quantitatively describes the time evolution of a state \protect\cstart variable\protect\cend:}
+	Because activities are building blocks of a scenario and a scenario corresponds to a quantitative description, the activities themselves need to be quantitative as well. 
+	Therefore, an activity describes the time evolution of \cstart one or more state variables \cend, i.e., the trajectory of \cstart one or more state variables \cend over an inter-event time interval that corresponds to the activity, where the term state \cstart variable \cend is defined in \cref{sec:state variable}.
+	
+	% Performed by something (an actor?)
+	\item\textit{An activity is performed by an actor:}
+	An activity quantitatively describes the time evolution of \cstart one or more state variables \cend and a state \cstart variable \cend corresponds to an actor, e.g., the acceleration of a vehicle, and, therefore, an activity is performed by an actor. Note that the actor might be the ego vehicle. 
+	%However, it might also be the case that a state does not correspond to an actor. For example, a state describing the weather conditions does not correspond to an actor, so if an activity describes changing weather conditions, the activity is not performed by an actor.
+\end{enumerate}
 
 Hence, we define an activity as follows:
 \begin{definition}[Activity]
@@ -260,7 +265,7 @@ We describe the formal relation between a scenario and a scenario category with 
 Furthermore, multiple scenario categories can comprise a specific scenario. For example, in \cref{fig:venn diagram scenario category}, we have $\scenariocategorya \comprises \scenariob$, $\scenariocategoryb \comprises \scenariob$, and $\scenariocategoryc \comprises \scenariob$. \cend
 
 \setlength{\venncircle}{5em}
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	\input{figures/venn_diagrams.tikz}
 	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. %$\scenariocategoryb$ comprises $\scenarioa$ and $\scenariob$. $\scenariocategoryb$ and $\scenariocategoryc$ include $\scenariocategorya$.
@@ -277,7 +282,7 @@ In \cref{fig:venn diagram scenario category}, scenario categories $\scenariocate
 \cend
 
 % Figure is explained in last few paragraphs, but placed earlier as to appear at the right page of the paper.
-\begin{figure*}
+\begin{figure}[t]
 	\centering
 	\begin{subfigure}{\linewidth}
 		\centering
@@ -293,7 +298,7 @@ In \cref{fig:venn diagram scenario category}, scenario categories $\scenariocate
 	\end{subfigure}
 	\caption{Tags for lateral and longitudinal activities of a vehicle. The lateral activity is relative to the lane in which the corresponding vehicle is driving.}
 	\label{fig:tree vehicle activities}
-\end{figure*}
+\end{figure}
 
 We propose to provide scenarios and scenario categories with additional information in the form of tags that describe the scenario in a qualitative manner.
 Tags are often used when providing extra information on a piece of data \autocite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \autocite{craft2004tagging}. 

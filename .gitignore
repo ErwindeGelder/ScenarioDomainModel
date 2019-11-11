@@ -12,6 +12,7 @@
 *.out
 *.pdf
 *.run.xml
+*.spl
 *.synctex.gz
 *.toc
 *.bib.bak
