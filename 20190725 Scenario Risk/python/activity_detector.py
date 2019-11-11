@@ -197,26 +197,26 @@ class ActivityDetector:
         # Compute speed increase in next second.
         shift = np.round(self.parms.time_speed_difference * self.frequency).astype(np.int)
         shifted = self.data[self.parms.host_lon_vel].shift(-shift)
-        filtered = shifted.rolling(shift).min()
+        filtered = shifted.rolling(shift+1).min()
+        self.set('shifted', shifted)
+        self.set('filtered', filtered)
         self.set('speed_inc', shifted - filtered)
         self.set('speed_inc_start', self.get('speed_inc').copy())
         self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_inc_start'] = 0
 
         # Compute speed decrease in next second.
         shifted = self.data[self.parms.host_lon_vel].shift(-shift)
-        filtered = shifted.rolling(shift).max()
+        filtered = shifted.rolling(shift+1).max()
         self.set('speed_dec', shifted - filtered)
         self.set('speed_dec_start', self.get('speed_dec').copy())
         self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_dec_start'] = 0
 
         event = LongitudinalActivity.CRUISING
         all_events = [(self.data.index[0], event)]
-        cruise_switch = 0
+        end_event_time = np.inf
         speed_inc = self.get("speed_inc")
         speed_dec = -self.get("speed_dec")
         for row in self.data.itertuples():
-            cruise_switch -= 1
-
             # Potential acceleration signal when in minimum wrt next second, accelerating and not
             # standing still.
             if event != LongitudinalActivity.ACCELERATING and \
@@ -226,15 +226,15 @@ class ActivityDetector:
                 if is_event:
                     event = LongitudinalActivity.ACCELERATING
                     all_events.append((row.Index, event))
-                    cruise_switch = (i - row.Index) * self.frequency
+                    end_event_time = i
             elif event != LongitudinalActivity.DECELERATING and \
                     row.speed_dec_start <= -self.parms.min_speed_difference:
                 i, is_event = self._end_lon_activity(row.Index, speed_dec)
                 if is_event:
                     event = LongitudinalActivity.DECELERATING
                     all_events.append((row.Index, event))
-                    cruise_switch = (i - row.Index)*self.frequency
-            elif event != LongitudinalActivity.CRUISING and cruise_switch <= 0:
+                    end_event_time = i
+            elif event != LongitudinalActivity.CRUISING and row.Index >= end_event_time:
                 event = LongitudinalActivity.CRUISING
                 all_events.append((row.Index, event))
 
@@ -278,7 +278,8 @@ class ActivityDetector:
                       value < self.parms.diffspeed_start_act),
                      self.data.index[-1])
 
-        if np.sum(speed_difference.loc[i:end_i]) / self.frequency < self.parms.min_speed_inc:
+        if abs(self.get(self.parms.host_lon_vel, end_i) - self.get(self.parms.host_lon_vel, i)) < \
+                self.parms.min_speed_inc:
             return 0, False
         return end_i, True
 
