@@ -434,9 +434,9 @@ if __name__ == '__main__':
                 git='OntologyR3', newname='20191111_RevisionLetter', usebiber=True)
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
                 git='OntologyR3', newname='20191111_OntologyR3', usebibtex=True)
-    compile_doc(join('20180629 Journal paper ontology', 'highlights'), log=False,
+    compile_doc(join('20191004 Ontology revision letter', 'highlights'), log=False,
                 git='OntologyR3', newname='20191111_Highlights')
-    compile_doc(join('20180629 Journal paper ontology', 'revision_cover'), log=False,
+    compile_doc(join('20191004 Ontology revision letter', 'revision_cover'), log=False,
                 git='OntologyR3', newname='20191111_RevisionCover')
 
     # All other stuff
