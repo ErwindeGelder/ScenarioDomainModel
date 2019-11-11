@@ -86,13 +86,13 @@ def clean_folder(folder: str) -> None:
     """ Remove all kind of files in a folder.
 
     The following files are removed: '.aux', '.auxlock', '.bbl', '.bcf', '.blg', '.cb', '.cb2',
-    '.hst', '.log', '.nav', '.out', '.run.xml', '.snm', '.synctex.gz', '.toc', '.ver'
+    '.hst', '.log', '.nav', '.out', '.run.xml', '.snm', '.spl' '.synctex.gz', '.toc', '.ver'
 
     :param folder: Folder in which the files need to be removed.
     """
     # Remove files that might be generated when compiling a .tex file
     exts = ['aux', 'auxlock', 'bbl', 'bcf', 'blg', 'cb', 'cb2', 'hst', 'log', 'nav', 'out',
-            'run.xml', 'snm', 'synctex.gz', 'toc', 'ver']
+            'run.xml', 'snm', 'spl', 'synctex.gz', 'toc', 'ver']
     for ext in exts:
         remove_files(ext, folder)
 
@@ -431,9 +431,13 @@ if __name__ == '__main__':
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
                 git='OntologyR2', newname='20191111_OntologyR2', usebiber=True)
     compile_doc(join('20191004 Ontology revision letter', 'ontology_revision'), log=False,
-                git='OntologyR2', newname='20191111_RevisionLetter', usebiber=True)
+                git='OntologyR3', newname='20191111_RevisionLetter', usebiber=True)
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
                 git='OntologyR3', newname='20191111_OntologyR3', usebibtex=True)
+    compile_doc(join('20180629 Journal paper ontology', 'highlights'), log=False,
+                git='OntologyR3', newname='20191111_Highlights')
+    compile_doc(join('20180629 Journal paper ontology', 'revision_cover'), log=False,
+                git='OntologyR3', newname='20191111_RevisionCover')
 
     # All other stuff
     compile_doc(join('20171111 IV2018 Ontology', 'ontology'), usebiber=True)
@@ -456,6 +460,8 @@ if __name__ == '__main__':
     compile_doc(join('20190725 Scenario Risk', 'scenariorisk'), usebiber=True)
     compile_doc(join('20190819 Journal paper ontology cover', 'ontology_cover'), usebiber=True)
     compile_doc(join('20191004 Ontology revision letter', 'ontology_revision'), usebiber=True)
+    compile_doc(join('20191004 Ontology revision letter', 'highlights'))
+    compile_doc(join('20191004 Ontology revision letter', 'revision_cover'))
 
     # Delete folder that has wrong name
     if os.path.exists(join('..', '20180639 Journal paper ontology')):
