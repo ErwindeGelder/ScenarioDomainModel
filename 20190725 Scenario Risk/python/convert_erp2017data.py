@@ -28,7 +28,7 @@ ARGS = PARSER.parse_args()
 
 # Define the columns that are to be removed.
 REMOVE = ["navposllh_iTOW", "navposllh_hMSL", "navposllh_hAcc",
-          "navposllh_vAcc"]
+          "navposllh_vAcc", "navposllh_height"]
 for i in range(2):
     for key in ["length", "type", "width"]:
         REMOVE.append("lines_{:d}_{:s}".format(i, key))
@@ -39,7 +39,7 @@ for i in range(8):
 # Define the columns that are to be renamed.
 RENAME = {"ego_lonVel": "Host_vx", "ego_yawrate": "Host_yawrate", "ego_lonAcc": "Host_ax",
           "ego_delta": "Host_theta_steeringwheel", "navposllh_lon": "gps_lon",
-          "navposllh_lat": "gps_lat", "navposllh_height": "gps_alt"}
+          "navposllh_lat": "gps_lat"}
 for i in range(2):
     for key, value in dict(y="c0", confidence="quality").items():
         RENAME["lines_{:d}_{:s}".format(i, key)] = "lines_{:d}_{:s}".format(i, value)
@@ -58,11 +58,28 @@ def conv_mat_file(matfile: str) -> None:
     conv.convert()
     conv.data = conv.data.drop(columns=REMOVE)
     conv.data = conv.data.rename(columns=RENAME)
+    fix_gps(conv)
     conv.data["Time"] = conv.data.index.values
     conv.data.index = (conv.data.index - conv.data.index[0]) / 1e9
     filename = os.path.join("data", "1_hdf5",
                             "{:s}.hdf5".format(os.path.splitext(os.path.basename(matfile))[0]))
     conv.save2hdf5(filename, complevel=ARGS.complevel)
+
+
+def fix_gps(conv: Mat2DF) -> None:
+    """ Fix the GPS data.
+
+    The fix works very simple: If the dataframe has a column "position_x", then
+    the data in "position_x" and "position_y" is written to the columns
+    "Host_gps_lon" and "Host_gps_lat", respectively. Next, the columns
+    "position_x" and "position_y" are removed.
+
+    :param conv: The converter object that has the field 'data'.
+    """
+    if "position_x" in conv.data.keys():
+        conv.data["Host_gps_lon"] = conv.data["position_x"]
+        conv.data["Host_gps_lat"] = conv.data["position_y"]
+        conv.data = conv.data.drop(columns=["position_x", "position_y"])
 
 
 if __name__ == "__main__":

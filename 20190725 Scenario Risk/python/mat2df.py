@@ -17,7 +17,7 @@ from options import Options
 
 class Mat2DFOptions(Options):
     """ Options for converting a mat file to a pandas dataframe. """
-    topics: List[str] = ["ego", "lines", "navposllh", "wm_targets"]
+    topics: List[str] = ["ego", "lines", "navposllh", "wm_targets", "position"]
     topic_start_end_time: str = "ego"
     fps: int = 100
 
@@ -49,6 +49,8 @@ class Mat2DF:
         for topic in self.options.topics:
             # Obtain the data
             mat_data = getattr(matfile["data"], topic).data
+            if not np.prod(mat_data.shape):
+                continue
             nsubtopics = 1
             if len(mat_data.shape) == 3:
                 nsubtopics = mat_data.shape[2]
