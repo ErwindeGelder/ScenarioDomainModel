@@ -159,6 +159,8 @@ class Tag(Enum):
     RoadLayout_Curved_Entrance = 86
     RoadLayout_Curved_Exit = 87
     RoadLayout_Curved_Other = 88
+    RoadLayout_Curved_Left = 152
+    RoadLayout_Curved_Right = 153
     RoadLayout_Junction = 133
     RoadLayout_Junction_TrafficLight = 89
     RoadLayout_Junction_NoTrafficLight = 90
