@@ -69,7 +69,8 @@ def scenario_category() -> dm.ScenarioCategory:
     # Define the scenario category.
     category = dm.ScenarioCategory(
         "Straight road with two lanes and a pedestrian crossing",
-        os.path.join("images", "pedestrian_crossing.pdf"), crossing
+        os.path.join("images", "pedestrian_crossing.pdf"), crossing,
+        name="Pedestrian crossing"
     )
     category.set_actors([ego, pedestrian], update_uids=True)
     category.set_activities([braking, stationary, accelerating, walking], update_uids=True)
