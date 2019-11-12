@@ -12,6 +12,7 @@ Creation
 
 To do
 -----
+Move falls_into method to ScenarioCategory and rename it to "comprises".
 
 Modifications
 -------------

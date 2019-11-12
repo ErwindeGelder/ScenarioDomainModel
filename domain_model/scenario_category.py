@@ -12,6 +12,8 @@ Creation
 
 To do
 -----
+Add "comprises" method based on the "fall_into" method that is defined for Scenario.
+Add "includes" method.
 
 Modifications
 -------------
