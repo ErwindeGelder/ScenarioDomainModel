@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="OpenDRIVE_1_4H.xsl"?>
+<OpenDRIVE>
+  <header revMajor="1" revMinor="4" vendor="TNO"></header>
+  <road name="" length="4000" id="1" junction="-1">
+    <type s="0" type="motorway"></type>
+    <planView>
+      <geometry s="0" x="0" y="0" hdg="0" length="20">
+        <line />
+      </geometry>
+      <geometry s="20" x="20" y="0" hdg="0" length="600">
+        <arc curvature="0.001" />
+      </geometry>
+      <geometry s="620" x="584.6425" y="174.6644" hdg="0.6" length="3380">
+        <line />
+      </geometry>
+    </planView>
+    <elevationProfile>
+      <elevation s="0" a="0" b="0" c="0" d="0" />
+    </elevationProfile>
+    <lanes>
+      <laneSection s="0">
+        <left>
+          <lane id="6" type="border" level="false">
+            <width sOffset="0" a="5" b="0" c="0" d="0" />
+          </lane>
+          <lane id="5" type="stop" level="false">
+            <width sOffset="0" a="3.5" b="0" c="0" d="0" />
+          </lane>
+          <lane id="4" type="driving" level="false">
+            <width sOffset="0" a="3.5" b="0" c="0" d="0" />
+            <roadMark sOffset="0" color="standard" width="0.2" weight="standard" type="solid" height="0.02">
+              <type name="solid" width="0.2">
+                <line length="0" space="0" width="0.2" sOffset="0" tOffset="0" />
+              </type>
+            </roadMark>
+          </lane>
+          <lane id="3" type="driving" level="false">
+            <width sOffset="0" a="3.5" b="0" c="0" d="0" />
+            <roadMark sOffset="0" color="standard" width="0.2" weight="standard" type="broken" height="0.02">
+              <type name="broken" width="0.2">
+                <line length="2" space="6" width="0.2" sOffset="0" tOffset="0" />
+              </type>
+            </roadMark>
+          </lane>
+          <lane id="2" type="border" level="false">
+            <width sOffset="0" a="0.5" b="0" c="0" d="0" />
+            <roadMark sOffset="0" color="standard" width="0.2" weight="standard" type="solid" height="0.02">
+              <type name="solid" width="0.2">
+                <line length="0" space="0" width="0.2" sOffset="0" tOffset="0" />
+              </type>
+            </roadMark>
+          </lane>
+          <lane id="1" type="border" level="false">
+            <width sOffset="0" a="1.5" b="0" c="0" d="0" />
+          </lane>
+        </left>
+        <center>
+          <lane id="0" type="driving" level="false"></lane>
+        </center>
+        <right>
+          <lane id="-1" type="border" level="false">
+            <width sOffset="0" a="1.5" b="0" c="0" d="0" />
+          </lane>
+          <lane id="-2" type="border" level="false">
+            <width sOffset="0" a="0.5" b="0" c="0" d="0" />
+            <roadMark sOffset="0" color="standard" width="0.2" weight="standard" type="solid" height="0.02">
+              <type name="solid" width="0.2">
+                <line length="0" space="0" width="0.2" sOffset="0" tOffset="0" />
+              </type>
+            </roadMark>
+          </lane>
+          <lane id="-3" type="driving" level="false">
+            <width sOffset="0" a="3.5" b="0" c="0" d="0" />
+            <roadMark sOffset="0" color="standard" width="0.2" weight="standard" type="broken" height="0.02">
+              <type name="broken" width="0.2">
+                <line length="2" space="6" width="0.2" sOffset="0" tOffset="0" />
+              </type>
+            </roadMark>
+          </lane>
+          <lane id="-4" type="driving" level="false">
+            <width sOffset="0" a="3.5" b="0" c="0" d="0" />
+            <roadMark sOffset="0" color="standard" width="0.2" weight="standard" type="solid" height="0.02">
+              <type name="solid" width="0.2">
+                <line length="0" space="0" width="0.2" sOffset="0" tOffset="0" />
+              </type>
+            </roadMark>
+          </lane>
+          <lane id="-5" type="stop" level="false">
+            <width sOffset="0" a="3.5" b="0" c="0" d="0" />
+          </lane>
+          <lane id="-6" type="border" level="false">
+            <width sOffset="0" a="5" b="0" c="0" d="0" />
+          </lane>
+        </right>
+      </laneSection>
+    </lanes>
+    <objects>
+      <object type="Railing" name="RAILING_SGL_OPP_UP" id="1" s="0" t="1.0" zOffset="0.4" validLength="4000" orientation="none" length="0" width="0.35" height="0.3" hdg="0" pitch="0" roll="0">
+        <repeat s="0" length="4000" distance="0" tStart="1.0" tEnd="1.0" widthStart="0.35" widthEnd="0.35" heightStart="0.3" heightEnd="0.3" zOffsetStart="0.4" zOffsetEnd="0.4" />
+      </object>
+      <object type="Railing" name="RAILING_SGL_OPP_UP" id="2" s="0" t="-1.0" zOffset="0.4" validLength="4000" orientation="none" length="0" width="0.35" height="0.3" hdg="0" pitch="0" roll="0">
+        <repeat s="0" length="4000" distance="0" tStart="-1.0" tEnd="-1.0" widthStart="0.35" widthEnd="0.35" heightStart="0.3" heightEnd="0.3" zOffsetStart="0.4" zOffsetEnd="0.4" />
+      </object>
+      <object type="Railing" name="RAILING_SGL_STD_UP" id="3" s="0" t="13" zOffset="0.4" validLength="4000" orientation="none" length="0" width="0.35" height="0.3" hdg="0" pitch="0" roll="0">
+        <repeat s="0" length="4000" distance="0" tStart="13" tEnd="13" widthStart="0.35" widthEnd="0.35" heightStart="0.3" heightEnd="0.3" zOffsetStart="0.4" zOffsetEnd="0.4" />
+      </object>
+      <object type="Railing" name="RAILING_SGL_STD_UP" id="4" s="0" t="-13" zOffset="0.4" validLength="4000" orientation="none" length="0" width="0.35" height="0.3" hdg="0" pitch="0" roll="0">
+        <repeat s="0" length="4000" distance="0" tStart="-13" tEnd="-13" widthStart="0.35" widthEnd="0.35" heightStart="0.3" heightEnd="0.3" zOffsetStart="0.4" zOffsetEnd="0.4" />
+      </object>
+      <object type="obstacle" name="RdMiscRailPostSglSidedUpper.flt" id="11" s="2" t="0.985" zOffset="-0.585" validLength="0" orientation="none" length="0.1" width="0.32" height="1.27" hdg="0" pitch="0" roll="0">
+        <repeat s="2" length="4000" distance="4" tStart="0.985" tEnd="0.985" widthStart="0.32" widthEnd="0.32" heightStart="1.27" heightEnd="1.27" zOffsetStart="-0.585" zOffsetEnd="-0.585" />
+      </object>
+      <object type="obstacle" name="RdMiscRailPostSglSidedUpper.flt" id="12" s="2" t="-0.985" zOffset="-0.585" validLength="0" orientation="none" length="0.1" width="0.32" height="1.27" hdg="0" pitch="0" roll="0">
+        <repeat s="2" length="4000" distance="4" tStart="-0.985" tEnd="-0.985" widthStart="0.32" widthEnd="0.32" heightStart="1.27" heightEnd="1.27" zOffsetStart="-0.585" zOffsetEnd="-0.585" />
+      </object>
+      <object type="obstacle" name="RdMiscRailPostSglSidedUpper.flt" id="13" s="2" t="13.015" zOffset="-0.585" validLength="0" orientation="none" length="0.1" width="0.32" height="1.27" hdg="0" pitch="0" roll="0">
+        <repeat s="2" length="4000" distance="4" tStart="13.015" tEnd="13.015" widthStart="0.32" widthEnd="0.32" heightStart="1.27" heightEnd="1.27" zOffsetStart="-0.585" zOffsetEnd="-0.585" />
+      </object>
+      <object type="obstacle" name="RdMiscRailPostSglSidedUpper.flt" id="14" s="2" t="-13.015" zOffset="-0.585" validLength="0" orientation="none" length="0.1" width="0.32" height="1.27" hdg="0" pitch="0" roll="0">
+        <repeat s="2" length="4000" distance="4" tStart="-13.015" tEnd="-13.015" widthStart="0.32" widthEnd="0.32" heightStart="1.27" heightEnd="1.27" zOffsetStart="-0.585" zOffsetEnd="-0.585" />
+      </object>
+      <object type="pole" name="Sg620_GuidePost_CrashBarr.flt" id="21" s="2" t="13" zOffset="0.66" validLength="0" orientation="none" length="0.14" width="0.12" height="0.7" hdg="0" pitch="0" roll="0">
+        <repeat s="2" length="4000" distance="100" tStart="13" tEnd="13" widthStart="0.12" widthEnd="0.12" heightStart="0.7" heightEnd="0.7" zOffsetStart="0.66" zOffsetEnd="0.66" />
+      </object>
+      <object type="pole" name="Sg620_GuidePost_CrashBarr.flt" id="22" s="2" t="-13" zOffset="0.66" validLength="0" orientation="none" length="0.14" width="0.12" height="0.7" hdg="0" pitch="0" roll="0">
+        <repeat s="2" length="4000" distance="100" tStart="-13" tEnd="-13" widthStart="0.12" widthEnd="0.12" heightStart="0.7" heightEnd="0.7" zOffsetStart="0.66" zOffsetEnd="0.66" />
+      </object>
+      <object type="pole" name="SgPoleSign01.flt" id="101" s="100" t="-13.5" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="102" s="100" t="0" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="103" s="100" t="13.5" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="104" s="1100" t="-13.5" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="105" s="1100" t="0" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="106" s="1200" t="13.5" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="107" s="2100" t="-13.5" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="108" s="2100" t="0" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="109" s="2100" t="13.5" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="110" s="3100" t="-13.5" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="111" s="3100" t="0" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+      <object type="pole" name="SgPoleSign01.flt" id="112" s="3100" t="13.5" zOffset="0" validLength="0" orientation="none" length="0.05" width="0.05" height="1" hdg="0" pitch="0" roll="0" />
+    </objects>
+    <signals>
+      <signal s="100" t="0" id="1" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="+" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="100" t="0" id="2" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="-" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="100" t="-13.5" id="3" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="+" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="100" t="13.5" id="4" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="-" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="1100" t="0" id="5" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="+" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="1100" t="0" id="6" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="-" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="1100" t="-13.5" id="7" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="+" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="1100" t="13.5" id="8" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="-" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="2100" t="0" id="9" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="+" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="2100" t="0" id="10" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="-" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="2100" t="-13.5" id="11" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="+" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="2100" t="13.5" id="12" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="-" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="3100" t="0" id="13" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="+" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="3100" t="0" id="14" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="-" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="3100" t="-13.5" id="15" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="+" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+      <signal s="3100" t="13.5" id="16" name="Sg274Hoechstgeschw130_03.flt" dynamic="no" orientation="-" zOffset="2" type="274" country="OpenDRIVE" subtype="62" value="1.3000000000000000e+02" unit="km/h" hOffset="0.0000000000000000e+00" pitch="0.0000000000000000e+00" roll="0.0000000000000000e+00" height="0.76"></signal>
+    </signals>
+  </road>
+</OpenDRIVE>
