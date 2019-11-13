@@ -1,3 +1,0 @@
-TODO
-
-the dictionary is too big, it contains too many images, we should stop having them. jpg might be enough. or just full img
