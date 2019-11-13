@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -252,6 +252,16 @@
 <attribute NAME="authors" VALUE="Gandolfi, Alberto and Sastri, Chelluri C. A."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1DD12F8A6ACCA6BCB0D4A1EDFCCDADDD99E165A78CD2E588A3C66D6BD475DC1B">
     <pdf_title>Nonparametric Estimations about Species Not Observed in a Random Sample</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Review by Gotelli and Colwell" ID="ID_1181732477" CREATED="1573548915809" MODIFIED="1573548926542" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/398%20Estimating%20species%20richness.pdf">
+<attribute NAME="key" VALUE="gotelli2011estimating"/>
+<attribute NAME="journal" VALUE="Biological diversity: frontiers in measurement and assessment"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Biological Diversity"/>
+<attribute NAME="authors" VALUE="Gotelli, Nicholas J. and Colwell, Robert K."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BF1DCCEFF32718EB4566B6F7EE69983EDC982B4E790DAACCE0238F4C88EE2">
+    <pdf_title>Estimating species richness</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -626,7 +636,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
+<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
 <node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1534391906453" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
@@ -1130,10 +1140,11 @@
     <pdf_title>Challenges in Autonomous Vehicle Testing and Validation</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="ISO26262: a) To define and describe item, its dependencies on/interaction with environment and other items, b) [...]" ID="ID_1293008690" CREATED="1556627733066" MODIFIED="1556627799133">
+<node TEXT="ISO26262: a) To define and describe item, its dependencies on/interaction with environment and other items, b) [...]" ID="ID_1293008690" CREATED="1556627733066" MODIFIED="1573548672493" LINK="https://www.iso.org/standard/68383.html">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road {V}ehicles -- {F}unctional {S}afety"/>
+<attribute NAME="authors" VALUE="{ISO 26262}"/>
 </node>
 </node>
 <node TEXT="HARA" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_490388406" CREATED="1556289523572" MODIFIED="1556289527556">
@@ -1251,10 +1262,11 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="ISO26262" ID="ID_350817561" CREATED="1556277759997" MODIFIED="1565607713221">
+<node TEXT="ISO26262" ID="ID_350817561" CREATED="1556277759997" MODIFIED="1573548672442" LINK="https://www.iso.org/standard/68383.html">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road {V}ehicles -- {F}unctional {S}afety"/>
+<attribute NAME="authors" VALUE="{ISO 26262}"/>
 </node>
 <node TEXT="TR68 Part 2: Safety" ID="ID_881994144" CREATED="1556276857668" MODIFIED="1556277127508" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/330%20TR68%202%20Safety.pdf">
 <attribute NAME="key" VALUE="tr68safety"/>
@@ -2378,7 +2390,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
 <node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1534391328696" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -4238,10 +4250,11 @@
 <attribute NAME="title" VALUE="{OpenSCENARIO}"/>
 <attribute NAME="year" VALUE="2017"/>
 </node>
-<node TEXT="ISO26262" ID="ID_1345725509" CREATED="1564490785273" MODIFIED="1565607713216">
+<node TEXT="ISO26262" ID="ID_1345725509" CREATED="1564490785273" MODIFIED="1573548672493" LINK="https://www.iso.org/standard/68383.html">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road {V}ehicles -- {F}unctional {S}afety"/>
+<attribute NAME="authors" VALUE="{ISO 26262}"/>
 </node>
 <node TEXT="ISO21448 (SOTIF)" ID="ID_955932098" CREATED="1564490790039" MODIFIED="1564490798733">
 <attribute NAME="key" VALUE="ISO21448"/>
@@ -4564,7 +4577,7 @@
 </node>
 <node TEXT="Journals" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1709195997" CREATED="1566199212968" MODIFIED="1566199220596">
 <edge COLOR="#00ff00"/>
-<node TEXT="Transportation Research Part A" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1749173518" CREATED="1566199221583" MODIFIED="1566199232160">
+<node TEXT="Transportation Research Part A" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1749173518" CREATED="1566199221583" MODIFIED="1566199232160">
 <node TEXT="Ontologies for Transportation Research: A Survey" ID="ID_153077203" CREATED="1566199237387" MODIFIED="1566199240645" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/362%20Ontologies%20for%20transportation%20research.pdf">
 <attribute NAME="key" VALUE="katsumi2018ontologies"/>
 <attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
