@@ -1,0 +1,162 @@
+\section{Case Study} % Erwin & Hala
+%\label{sec:example}
+
+In this section, we present a case study to illustrate the method of quantifying the risk for a cut-in scenario. We will first describe the cut-in scenario and the use case. The actual system for which the risk is computed is presented in next. After these two steps, we will go through the steps of our proposed method.
+
+
+
+\subsection{The cut-in scenario and the use case}
+%\label{sec:scenario class}
+
+We want to quantify the risk for cut-in scenarios that are linguistically described as follows: while the ego vehicle drives at a moderate to high speed while staying in its lane, another vehicle cuts into the lane of the ego vehicle, such that this vehicle becomes the ego vehicle's lead vehicle. Furthermore, the ego vehicle needs to brake to prevent a collision.
+
+For the quantification of the risk, 60 hours of data (see also \cite{deGelder2017assessment}) are collected by driving a specific route in and between Eindhoven and Helmond, The Netherlands, with twenty different drivers, each driving the route twice. Therefore, it is assumed that the use case of the AD system is driving this route. We will use the data for the estimation of the risk. Hence, we will make use of the following assumption:
+\begin{assumption}
+	The recorded naturalistic driving data is representative for what a vehicle with the AD system might encounter along the same route.
+\end{assumption}
+
+
+
+\subsection{System-under-test}
+%\label{sec:system}
+
+To reduce efforts for the assessment, often simulations are employed. However, even simulations can consume considerable time, as these simulations might run real-time \cite{shah2018airsim} or slower when a higher level of detail is used \cite{zofka2016testing}. For our method, we will simplify the simulations, such that the total required time on a common computer is in the order of minutes. Since we are interested in approximate results, a high level of detail is not required. 
+
+To simplify the system-under-test, it is assumed that the system's desired acceleration is similar to the adaptive cruise control defined in \cite{deGelder2017assessment}, i.e.,
+\begin{equation}
+	\label{eq:desired acceleration} 
+	u(t) = k_{\mathrm{d}}(v(t))(d(t) - \tau_{\mathrm{h}} v(t) - s_0) + k_{\mathrm{v}}\left(\dot{d}(t) - ha(t) \right),
+\end{equation}
+with
+\begin{equation}
+	\label{eq:gain}
+	k_{\mathrm{d}}(v(t)) = k_{\mathrm{d1}} + \left( k_{\mathrm{d2}} - k_{\mathrm{d1}} \right) \exp \left\{ -\frac{v(t)^2}{2\sigma_{\mathrm{d}}} \right\}.
+\end{equation}
+Here, $v$ is the speed of the ego vehicle, $d$ denotes the clearance between the ego vehicle and its predecessor, i.e., the vehicle that performs the cut-in. The relative speed is denoted by $\dot{d}$ and $a$ refers to the acceleration of the ego vehicle. The ego vehicle is modeled using a first order model with a time delay, i.e.,
+\begin{equation}
+	\label{eq:vehicle model}
+	\tau \dot{a}(t) + a(t) = u(t - \theta).
+\end{equation}
+Furthermore, the deceleration is limited at $\unit[-6]{ms^{-2}}$. A description of the constants of \cref{eq:desired acceleration,eq:gain,eq:vehicle model} are listed in \cref{tab:constants}. The controller runs at \unit[100]{Hz}.
+
+\begin{table}
+	\centering
+	\caption{The constants used for the simple automation system of \cref{eq:desired acceleration,eq:gain,eq:vehicle model}.}
+	\label{tab:constants}
+	\begin{tabular}{clc}
+		\toprule
+		Parameter & Description & Value \\ \otoprule
+		$\tau_{\mathrm{h}}$ & Desired headway time & \unit[2.0]{s} \\
+		$s_0$ & Safety distance & \unit[1.5]{m} \\
+		$k_{\mathrm{d1}}$ & Distance gain at high speed & $\unit[0.7]{s^{-2}}$ \\
+		$k_{\mathrm{d2}}$ & Distance gain at low speed & $\unit[2.0]{s^{-2}}$ \\
+		$\sigma_{\mathrm{d}}$ & Shaping coefficient of distance gain & $\unit[5]{ms^{-1}}$ \\
+		$k_{\mathrm{v}}$ & Speed difference gain & $\unit[0.35]{s^{-1}}$ \\
+		$\tau$ & Time constant of the vehicle model & \unit[0.1]{s} \\
+		$\theta$ & Delay of the vehicle response & \unit[0.2]{s} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Note that there is no intervention of a human:
+\begin{assumption}
+	The ego vehicle is fully controlled by the automation system as defined by \cref{eq:desired acceleration,eq:gain}. Hence, there is no intervention of a human.
+\end{assumption}
+
+
+
+\subsection{Calculate exposure}
+%\label{sec:example exposure}
+
+The cut-in scenarios are subject to the following conditions:
+\begin{itemize}
+	\item $C_1$: The speed of the ego vehicle is within the range of \unit[60]{km/h} and \unit[130]{km/h}.
+	\item $C_2$: There are no restrictions on the weather conditions.
+	\item $C_3$: There are no restrictions on the lighting conditions.
+\end{itemize}
+
+Obviously, because there are no restrictions to the weather and lighting conditions, we have $P(C_2,C_3)=1$. For the first condition, we can use the data to estimate the likelihood. The data, however, has been recorded during sunny weather at daylight. Therefore, we need to following assumption.
+
+\begin{assumption} \label{asm:conditions}
+	Let $C_2'$ and $C_3'$ denote the conditions of having sunny weather and daylight, respectively. Then we have $P(C_1|C_2,C_3)=P(C_1|C_2',C_3')$.
+\end{assumption}
+
+From the data, it appeared that $P(C_1|C_2',C_3')=0.20$. Using \cref{asm:conditions}, we have
+\begin{equation}
+	P(C) = P(C_1,C_2,C_3) = P(C_1|C_2',C_3')\cdot P(C_2,C_3) = 0.20.
+\end{equation}
+
+The cut-in scenarios consist of the following activities:
+\begin{itemize}
+	\item $A_1$: The ego vehicle is lane following.
+	\item $A_2$: The target vehicle is driving in an adjacent lane in the same direction as the ego vehicle.
+	\item $A_3$: After activity $A_2$, the target vehicle performs a lane change towards the lane of the ego vehicle, such that the ego vehicle needs to brake.
+	\item $A_4$: The automation system detects the cut-in.
+	\item $A_5$: After activity $A_4$, the automation system activates the brakes of the ego vehicle.
+\end{itemize}
+
+The likelihood of the activities $A_1$, $A_2$, and $A_3$ can be estimated using the data. It is assumed that the ego vehicle needs to brake if the target vehicle is driving slower and the headway time is less than three seconds. In case of a slower target vehicle with a larger headway time, the scenario is referred to as a gap closing scenario \cite{semsarkazerooni2016cacc, gelder2016pacc}.
+
+For simplicity, we assume the following:
+\begin{assumption}
+	The automation system always detects the cut-in and activates the brakes after detecting the cut-in, such that $P(A_4,A_5|A_1,A_2,A_3,C) = 1$.
+\end{assumption}
+
+Using this assumption, we can compute $\lambda_{A|C}$ by detecting the number of occurrences of the activities $A_1$, $A_2$, and $A_3$ under the conditions $C$. Based on the dataset, we have $\lambda_{A|C}=\unit[9.9]{h^{-1}}$, i.e., in each hour that the ego vehicle is driving in a speed range of \unit[60]{km/h} and \unit[130]{km/h}, there are on average $9.9$ cut-ins with the target vehicle driving slower than the ego vehicle, such that the headway time after the cut-in is less than three seconds. From this, it simply follows that
+\begin{equation}
+	\lambda_{A,C} = \lambda_{A|C} \cdot P(C) = 2.0.
+\end{equation}
+
+
+
+\subsection{Calculating severity}
+%\label{sec:example severity}
+
+To limit the number of parameters, we assume the following:
+\begin{assumption}
+	The ego vehicle is driving at a constant speed at the moment of the cut-in of the target vehicle, i.e., the moment that the target vehicle enters the lane of the ego vehicle.
+\end{assumption}
+\begin{assumption}
+	The target vehicle is driving at a constant speed.
+\end{assumption}
+Both assumptions can be justified using the data. In case of the ego vehicle, the average acceleration at the moment of the cut-in is $\unit[-0.29]{ms^{-2}}$ and the standard deviation equals $\unit[0.50]{ms^{-2}}$. In case of the target vehicle, the average deceleration at the moment of the cut-in is $\unit[0.05]{ms^{-2}}$ and the standard deviation equals $\unit[0.37]{ms^{-2}}$. As a result, the scenario is parametrized using $d=3$ parameters:
+\begin{enumerate}
+	\item The clearance between the target vehicle and the ego vehicle at the moment of the cut-in, i.e., the moment than the target vehicle enters the lane of the ego vehicle.
+	\item The speed of the ego vehicle at the moment of the cut-in.
+	\item The speed of the target vehicle throughout the whole scenario.
+\end{enumerate}
+
+
+A histogram of the data of the parameters is shown in \cref{fig:histogram}. The probability density function is estimated using the KDE of \cref{eq:kde} with the Gaussian kernel of \cref{eq:gaussian kernel}. Before applying KDE, the data is scaled, such that the standard deviation equals one for each parameter. We use leave-one-out cross validation to compute the bandwidth $h$ (see also \cite{duin1976parzen}) because this minimizes the Kullback-Leibler divergence between the real underlying pdf and the estimated pdf \cite{turlach1993bandwidthselection,zambom2013review}. The resulting bandwidth equals $h=0.198$. The marginal probability distributions coming from the resulting joint distribution, i.e. the KDE, are shown in \cref{fig:histogram} by the black lines.
+
+\setlength\figurewidth{0.5\linewidth}
+\setlength\figureheight{0.25\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/histogram.tikz}
+	\caption{Histogram of the data of the parameters (bars) and their estimated marginal probabilities (lines).}
+	\label{fig:histogram}
+\end{figure}
+
+
+Let $R$ denote the result of having a collision. Given a certain parameter vector $\theta$, we have $P(R|\theta,A,C)=1$ if the outcome of the simulation is a collision and $P(R|\theta,A,C)=0$ otherwise. For the simulation, we used the forward Euler method with a step size of \unit[0.01]{s}, similar as the sample time of the controller. On a regular computer, approximately 2000 simulations are performed in a second. We performed a million simulations, i.e., $N=10^6$. In total, 28 simulations ended with a collision, thus, according to \cref{eq:monte carlo}, we have:
+\begin{equation}
+	P(R|A,C) = 2.8 \cdot 10^{-5}.
+\end{equation}
+
+
+
+\subsection{Calculating the risk}
+%\label{sec:example risk}
+
+Let $\lambda$ denote the average number of collisions with a cut-in scenario as described earlier along the specified route for a vehicle with the automation system as described above. Using \cref{eq:risk}, we have:
+\begin{equation}
+	\lambda = \lambda_{A,C} \cdot P(R|A,C) = \unit[5.5 \cdot 10^{-5}]{h^{-1}}.
+\end{equation}
+
+Using \cref{eq:no harm}, the probability of having no collision in a cut-in scenario as described above during an hour of driving is
+\begin{equation}
+	P(\text{no }R,A,C\text{ during an hour}) = 0.999945.
+\end{equation}
+
+By solving the Poisson distribution of \cref{eq:poisson risk} for $\lambda$ with $k=0$, we can also conclude that with \unit[95]{\%} certainty, there will be no collision in a cut-in scenario as described earlier when driving \unit[925]{h}.

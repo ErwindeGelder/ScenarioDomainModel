@@ -1,0 +1,24 @@
+%\definecolor{methodblock}{RGB}{200, 200, 200}
+\tikzstyle{block}=[draw, text width=\blockwidth-.5em, align=center, minimum height=\blockheight, line width=1pt, minimum width=\blockwidth, node distance=\blocky, fill=gray!20]
+\tikzstyle{arrow}=[->, line width=1pt]
+\begin{tikzpicture}
+% Blocks
+\node[block](risk) {Risk};
+\node[block, below of=risk, xshift=-\blockx](exposure) {Exposure\\$\lambda_{A,C}$};
+\node[block, below of=risk, xshift=\blockx](severity) {Severity\\$P(R\rvert A,C)$};
+\node[block, below of=exposure, xshift=-\blockx/2](conditions) {Conditions\\$P(C)$};
+\node[block, below of=exposure, xshift=\blockx/2](activities) {Activities\\$P(A\rvert C)$};
+\node[block, below of=severity, xshift=-\blockx/2](parametrization) {Parametrization\\$P(\theta\rvert A,C)$};
+\node[block, below of=severity, xshift=\blockx/2](simulations) {Simulations\\$P(R\rvert \theta,A,C)$};
+
+% Lines
+\node[coordinate, below of=risk, node distance=\blocky/2](risk helper) {};
+\node[coordinate, below of=exposure, node distance=\blocky/2](exposure helper) {};
+\node[coordinate, below of=severity, node distance=\blocky/2](severity helper) {};
+\draw[arrow] (risk) -- (risk helper) -| (exposure);
+\draw[arrow] (risk) -- (risk helper) -| (severity);
+\draw[arrow] (exposure) -- (exposure helper) -| (conditions);
+\draw[arrow] (exposure) -- (exposure helper) -| (activities);
+\draw[arrow] (severity) -- (severity helper) -| (parametrization);
+\draw[arrow] (severity) -- (severity helper) -| (simulations);
+\end{tikzpicture}
