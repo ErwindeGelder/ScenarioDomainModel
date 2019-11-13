@@ -463,6 +463,7 @@ if __name__ == '__main__':
     compile_doc(join('20191004 Ontology revision letter', 'ontology_revision'), usebiber=True)
     compile_doc(join('20191004 Ontology revision letter', 'highlights'))
     compile_doc(join('20191004 Ontology revision letter', 'revision_cover'))
+    compile_doc(join('20191010 Scenario Mining', 'scenario_mining'), usebiber=True)
 
     # Delete folder that has wrong name
     if os.path.exists(join('..', '20180639 Journal paper ontology')):
