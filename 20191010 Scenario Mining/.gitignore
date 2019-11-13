@@ -1,0 +1,10 @@
+*.bib.bak
+*.bib.sav
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.pdf
+*.run.xml
+*.synctex.gz
