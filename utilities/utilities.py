@@ -452,6 +452,7 @@ if __name__ == '__main__':
     compile_doc(join('20180521 Summary GoNoGo', 'phd_summary'), usebiber=True)
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), usebibtex=True)
     compile_doc(join('20180710 Ontology', 'ontology'), usebiber=True)
+    compile_doc(join('20180806 Risk paper', 'RiskPaper_ESV2019-Format'), usebiber=True)
     compile_doc(join('20180917 GoNoGo', 'GoNoGo'), usebiber=True)
     compile_doc(join('20181002 Completeness question', 'completeness_questions'), usebiber=True)
     compile_doc(join('20180924 Completeness paper', 'completeness'), usebiber=True)
