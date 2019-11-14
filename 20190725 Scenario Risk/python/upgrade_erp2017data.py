@@ -28,6 +28,9 @@ PARSER.add_argument('-folder', default=os.path.join("data", "1_hdf5"), type=str,
 PARSER.add_argument('--hostactivities', help="Detect host activities", action="store_true")
 PARSER.add_argument('--targetactivities', help="Detect host activities", action="store_true")
 PARSER.add_argument('--markhighway', help="Mark highway data", action="store_true")
+PARSER.add_argument('--targetstates', help="Create tags describing the target states",
+                    action="store_true")
+PARSER.add_argument('--everything', help="Do all possible processing", action="store_true")
 PARSER.add_argument('-file', default=None, type=str, help="If not all files, select single file")
 ARGS = PARSER.parse_args()
 
@@ -36,19 +39,22 @@ def process_file(datafile: str) -> None:
     """ Process an HDF5 file.
 
     :param datafile: Path of the to-be-processed file.
-    :return:
     """
     dataframe = pd.read_hdf(datafile)  # type: pd.DataFrame
 
-    if ARGS.hostactivities or ARGS.targetactivities:
+    if ARGS.hostactivities or ARGS.targetactivities or ARGS.targetstates or ARGS.everything:
         activity_detector = ActivityDetector(dataframe)
-        if ARGS.hostactivities:
+        if ARGS.hostactivities or ARGS.everything:
             activity_detector.set_lon_activities_host()
             activity_detector.set_lat_activities_host()
-        if ARGS.targetactivities:
-            for i in range(8):
+        if ARGS.targetactivities or ARGS.everything:
+            for i in range(activity_detector.parms.n_targets):
                 activity_detector.set_target_activities(i)
-    if ARGS.markhighway:
+        if ARGS.targetstates or ARGS.everything:
+            for i in range(activity_detector.parms.n_targets):
+                activity_detector.set_states_target_i(i)
+            activity_detector.set_lead_vehicle()
+    if ARGS.markhighway or ARGS.everything:
         highway_marker = HighwayMarker(dataframe)
         highway_marker.mark_highway()
 

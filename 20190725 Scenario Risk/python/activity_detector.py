@@ -763,7 +763,22 @@ class ActivityDetector:
 
     def set_lead_vehicle(self) -> None:
         """ Determine the lead vehicle and set the tag accordingly. """
+        # Compute the distance of the lead vehicle
+        min_dx = np.ones(len(self.data)) * np.inf
+        samelane = LateralStateTarget.SAME.value
+        for i in range(self.parms.n_targets):
+            is_candidate = np.logical_and(self.get_t(i, "lateral_state") == samelane,
+                                          self.get_t(i, "dx") > 0,
+                                          self.get_t(i, "dx").values < min_dx)
+            min_dx[is_candidate] = self.get_t(i, "dx")[is_candidate]
 
+        # Set the tag correctly.
+        for i in range(self.parms.n_targets):
+            signal = self.set_t(i, "lead_vehicle", LeadVehicle.NOLEAD.value)
+            self.data.loc[np.logical_and(self.get_t(i, "lateral_state") == samelane,
+                                         self.get_t(i, "dx") == min_dx),
+                          signal] = LeadVehicle.LEAD.value
+            self.data.loc[self.get_t(i, "id") == 0, signal] = LeadVehicle.NOVEHICLE
 
 
 def get_from_row(row, signal, target_index: int = None):
