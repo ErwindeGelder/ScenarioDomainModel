@@ -7,8 +7,8 @@ Modifications:
 2019 08 27 Use Enums instead of strings for activities. Add activities to dataframe.
 """
 
-from typing import List, Tuple, NamedTuple, Callable
-from enum import Enum
+from typing import List, Tuple, NamedTuple, Callable, Union
+from enum import Enum, unique
 import pandas as pd
 import numpy as np
 from options import Options
@@ -21,6 +21,7 @@ TargetLines = NamedTuple("LineData", [("left", pd.Series), ("right", pd.Series),
 FromGoal = NamedTuple("FromGoal", [("from_y", float), ("goal_y", float)])
 
 
+@unique
 class LongitudinalActivity(Enum):
     """ Possible longitudinal activities. """
     CRUISING = 'c'
@@ -28,6 +29,7 @@ class LongitudinalActivity(Enum):
     ACCELERATING = 'a'
 
 
+@unique
 class LateralActivityHost(Enum):
     """ Possible lateral activities of the host vehicle. """
     LANE_FOLLOWING = 'fl'
@@ -35,6 +37,7 @@ class LateralActivityHost(Enum):
     RIGHT_LANE_CHANGE = 'r'
 
 
+@unique
 class LateralActivityTarget(Enum):
     """ Possible lateral activities of a target vehicle. """
     LANE_FOLLOWING = 'fl'
@@ -42,6 +45,32 @@ class LateralActivityTarget(Enum):
     LEFT_CUT_OUT = 'lo'
     RIGHT_CUT_IN = 'ri'
     RIGHT_CUT_OUT = 'ro'
+
+
+@unique
+class LateralStateTarget(Enum):
+    """ Possible lateral state of a target. """
+    LEFT = 'l'
+    RIGHT = 'r'
+    SAME = 's'
+    UNKNOWN = 'u'
+    NOVEHICLE = 'na'
+
+
+@unique
+class LongitudinalStateTarget(Enum):
+    """ Possible longitudinal state of a target. """
+    FRONT = 'f'
+    REAR = 'r'
+    NOVEHICLE = 'na'
+
+
+@unique
+class LeadVehicle(Enum):
+    """ Indication whether a target is a lead vehicle or not. """
+    LEAD = 'y'
+    NOLEAD = 'n'
+    NOVEHICLE = 'na'
 
 
 class ActivityDetectorParameters(Options):
@@ -78,6 +107,7 @@ class ActivityDetectorParameters(Options):
     lane_conf_threshold = 0.25
     max_time_lat_target = 6  # [s]
     factor_goal_y_target = 0.25  # ???
+    n_targets = 8
 
 
 class ActivityDetector:
@@ -129,7 +159,7 @@ class ActivityDetector:
         signal = 'Target_{:d}_{:s}'.format(target_index, signal)
         return self.get(signal, index)
 
-    def set_t(self, target_index: int, signal: str, data: np.ndarray) -> str:
+    def set_t(self, target_index: int, signal: str, data: Union[np.ndarray, float, str]) -> str:
         """ Set target data.
 
         :param target_index: The index of the target (from 0 till 7).
@@ -704,6 +734,36 @@ class ActivityDetector:
         from_y = self.parms.factor_goal_y_target * (left_y - right_y)
         goal_y = -from_y
         return FromGoal(from_y=from_y, goal_y=goal_y)
+
+    def set_states_target_i(self, i: int) -> None:
+        """ Set the longitudinal and lateral state of a target vehicle.
+
+        :param i: Index of target.
+        """
+        # Set the longitudinal state.
+        signal = self.set_t(i, "longitudinal_state", "")
+        no_target = self.get_t(i, "id") == 0
+        self.data.loc[self.get_t(i, "dx") >= 0, signal] = LongitudinalStateTarget.FRONT.value
+        self.data.loc[self.get_t(i, "dx") < 0, signal] = LongitudinalStateTarget.REAR.value
+        self.data.loc[no_target, signal] = LongitudinalStateTarget.NOVEHICLE.value
+
+        # Set the lateral state.
+        signal = self.set_t(i, "lateral_state", "")
+        self.data.loc[self.get_t(i, "line_right") > 0, signal] = LateralStateTarget.RIGHT.value
+        self.data.loc[self.get_t(i, "line_left") < 0, signal] = LateralStateTarget.LEFT.value
+        self.data.loc[np.logical_and(self.get_t(i, "line_right") <= 0,
+                                     self.get_t(i, "line_left") >= 0),
+                      signal] = LateralStateTarget.SAME.value
+        self.data.loc[np.logical_or(self.get(self.parms.left_conf) < self.parms.min_line_quality,
+                                    self.get(self.parms.right_conf) < self.parms.min_line_quality),
+                      signal] = LateralStateTarget.UNKNOWN.value
+        self.data.loc[self.get_t(i, "line_left") < self.get_t(i, "line_right"), signal] = \
+            LateralStateTarget.UNKNOWN.value
+        self.data.loc[no_target, signal] = LateralStateTarget.NOVEHICLE.value
+
+    def set_lead_vehicle(self) -> None:
+        """ Determine the lead vehicle and set the tag accordingly. """
+
 
 
 def get_from_row(row, signal, target_index: int = None):

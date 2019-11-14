@@ -61,7 +61,7 @@ if __name__ == "__main__":
         print("Provided folder '{:s}' does not exist.".format(ARGS.folder))
         exit()
     if ARGS.file is None:
-        DATAFILES = glob(os.path.join(ARGS.folder, '*.hdf5'))[17:]
+        DATAFILES = glob(os.path.join(ARGS.folder, '*.hdf5'))
         with mp.Pool(processes=4) as POOL:
             for _ in tqdm(POOL.imap_unordered(process_file, DATAFILES), total=len(DATAFILES)):
                 pass
