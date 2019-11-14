@@ -430,6 +430,10 @@ if __name__ == '__main__':
                 git='OntologyR1', newname='20190820_OntologyCoverR1', usebiber=True)
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
                 git='OntologyR2', newname='20191111_OntologyR2', usebiber=True)
+    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology_limited'),
+                git='OntologyR2nochanges', newname='20191111_OntologyR2nochanges', log=False,
+                other=(join('20180629 Journal paper ontology', 'journal_ontology'),
+                       dict(usebiber=True)))
     compile_doc(join('20191004 Ontology revision letter', 'ontology_revision'), log=False,
                 git='OntologyR3', newname='20191111_RevisionLetter', usebiber=True)
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
