@@ -778,7 +778,7 @@ class ActivityDetector:
             self.data.loc[np.logical_and(self.get_t(i, "lateral_state") == samelane,
                                          self.get_t(i, "dx") == min_dx),
                           signal] = LeadVehicle.LEAD.value
-            self.data.loc[self.get_t(i, "id") == 0, signal] = LeadVehicle.NOVEHICLE
+            self.data.loc[self.get_t(i, "id") == 0, signal] = LeadVehicle.NOVEHICLE.value
 
 
 def get_from_row(row, signal, target_index: int = None):
