@@ -5,9 +5,10 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2019 08 27 Use Enums instead of strings for activities. Add activities to dataframe.
+2019 11 27 Make separate function to get the name of the signal associated with a target.
 """
 
-from typing import List, Tuple, NamedTuple, Callable, Union
+from typing import Any, List, Tuple, NamedTuple, Callable, Union
 from enum import Enum, unique
 import pandas as pd
 import numpy as np
@@ -147,6 +148,15 @@ class ActivityDetector:
         self.data[signal] = data
         return signal
 
+    @staticmethod
+    def target_signal(target_index: int, signal: str):
+        """ Return the name of the datafield.
+
+        Currently, this fieldname is of the form
+        "Target_<target_index>_<signal>".
+        """
+        return "Target_{:d}_{:s}".format(target_index, signal)
+
     def get_t(self, target_index: int, signal: str, index: float = None):
         """ Get target data.
 
@@ -156,8 +166,7 @@ class ActivityDetector:
                       passed.
         :return: The numpy array of the data.
         """
-        signal = 'Target_{:d}_{:s}'.format(target_index, signal)
-        return self.get(signal, index)
+        return self.get(self.target_signal(target_index, signal), index)
 
     def set_t(self, target_index: int, signal: str, data: Union[np.ndarray, float, str]) -> str:
         """ Set target data.
@@ -167,7 +176,7 @@ class ActivityDetector:
         :param data: The data that is set.
         :return: The name of the field of the dataframe.
         """
-        signal = 'Target_{:d}_{:s}'.format(target_index, signal)
+        signal = self.target_signal(target_index, signal)
         self.data[signal] = data
         return signal
 
@@ -582,13 +591,15 @@ class ActivityDetector:
         for row in self.data.iloc[1:].itertuples():
             follow_lane_switch -= 1
             valid = (not np.isnan(row.line_center_y) and
-                     get_from_row(row, 'line_right', i) < get_from_row(row, 'line_left', i))
+                     self.get_from_row(row, 'line_right', i) <
+                     self.get_from_row(row, 'line_left', i))
 
             # Left lane change out of ego lane: cross left_y down.
             if valid and event not in [LateralActivityTarget.LEFT_CUT_IN,
                                        LateralActivityTarget.LEFT_CUT_OUT] and \
-                    self._potential_left(get_from_row(row, 'line_left', i), lines.left[prev_index],
-                                         get_from_row(row, 'line_left_down', i)):
+                    self._potential_left(self.get_from_row(row, 'line_left', i),
+                                         lines.left[prev_index],
+                                         self.get_from_row(row, 'line_left_down', i)):
                 lineinfo = LineData(distance=lines.left, difference=lines.left_down)
                 begin_j, end_j, lane_change = self._start_end_target(i, row, lineinfo, events[-1])
                 if lane_change:
@@ -599,9 +610,9 @@ class ActivityDetector:
             # Left lane change into ego lane: cross right_y down.
             elif valid and event not in [LateralActivityTarget.LEFT_CUT_IN,
                                          LateralActivityTarget.LEFT_CUT_OUT] and \
-                    self._potential_left(get_from_row(row, 'line_right', i),
+                    self._potential_left(self.get_from_row(row, 'line_right', i),
                                          lines.right[prev_index],
-                                         get_from_row(row, 'line_right_down', i)):
+                                         self.get_from_row(row, 'line_right_down', i)):
                 lineinfo = LineData(distance=lines.right, difference=lines.right_down)
                 begin_j, end_j, lane_change = self._start_end_target(i, row, lineinfo, events[-1])
                 if lane_change:
@@ -612,8 +623,9 @@ class ActivityDetector:
             # Right lane change into ego lane: cross left_y up.
             elif valid and event not in [LateralActivityTarget.RIGHT_CUT_IN,
                                          LateralActivityTarget.RIGHT_CUT_OUT] and \
-                    self._potential_right(get_from_row(row, 'line_left', i), lines.left[prev_index],
-                                          get_from_row(row, 'line_left_up', i)):
+                    self._potential_right(self.get_from_row(row, 'line_left', i),
+                                          lines.left[prev_index],
+                                          self.get_from_row(row, 'line_left_up', i)):
                 lineinfo = LineData(distance=-lines.left, difference=lines.left_up)
                 begin_j, end_j, lane_change = self._start_end_target(i, row, lineinfo, events[-1])
                 if lane_change:
@@ -624,9 +636,9 @@ class ActivityDetector:
             # Right lane change out of ego lane: cross right_y up.
             elif valid and event not in [LateralActivityTarget.RIGHT_CUT_IN,
                                          LateralActivityTarget.RIGHT_CUT_OUT] and \
-                    self._potential_right(get_from_row(row, 'line_right', i),
+                    self._potential_right(self.get_from_row(row, 'line_right', i),
                                           lines.right[prev_index],
-                                          get_from_row(row, 'line_right_up', i)):
+                                          self.get_from_row(row, 'line_right_up', i)):
                 lineinfo = LineData(distance=-lines.right, difference=lines.right_up)
                 begin_j, end_j, lane_change = self._start_end_target(i, row, lineinfo, events[-1])
                 if lane_change:
@@ -715,8 +727,8 @@ class ActivityDetector:
         :return: The starting index, the end index, and a boolean whether there
                  is a lane change.
         """
-        fromgoal = self._goal_left_lane_change(get_from_row(row, 'line_left', i),
-                                               get_from_row(row, 'line_right', i))
+        fromgoal = self._goal_left_lane_change(self.get_from_row(row, 'line_left', i),
+                                               self.get_from_row(row, 'line_right', i))
         begin_j, lane_change = self._start_lc_target(row.Index, fromgoal, lineinfo, event)
         if lane_change:
             end_j, lane_change = self._end_lc_target(row.Index, fromgoal, lineinfo.distance)
@@ -780,17 +792,16 @@ class ActivityDetector:
                           signal] = LeadVehicle.LEAD.value
             self.data.loc[self.get_t(i, "id") == 0, signal] = LeadVehicle.NOVEHICLE.value
 
+    def get_from_row(self, row, signal, target_index: int = None) -> Any:
+        """ Get data entry from a row of data.
 
-def get_from_row(row, signal, target_index: int = None):
-    """ Get data entry from a row of data.
-
-    :param row: Row of a data. Should be a named tuple, obtained via
-                itertuples().
-    :param signal: The name of the signal.
-    :param target_index: The index of the target, if the signal corresponds
-                         to a target.
-    :return: The value of the entry.
-    """
-    if target_index is not None:
-        return getattr(row, 'Target_{:d}_{:s}'.format(target_index, signal))
-    return getattr(row, signal)
+        :param row: Row of a data. Should be a named tuple, obtained via
+                    itertuples().
+        :param signal: The name of the signal.
+        :param target_index: The index of the target, if the signal corresponds
+                             to a target.
+        :return: The value of the entry.
+        """
+        if target_index is not None:
+            return getattr(row, self.target_signal(target_index, signal))
+        return getattr(row, signal)
