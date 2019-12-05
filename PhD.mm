@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
@@ -2129,9 +2129,9 @@
 </node>
 </node>
 </node>
-<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
+<node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
-<node TEXT="Generative Adversarial Nets (GANs)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1284675129" CREATED="1516590666097" MODIFIED="1516590687904">
+<node TEXT="Generative Adversarial Nets (GANs)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1284675129" CREATED="1516590666097" MODIFIED="1516590687904">
 <node TEXT="Introduction of GANs" ID="ID_451182813" CREATED="1516591618309" MODIFIED="1534391121959" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/110%20Generative%20Adversarial%20Nets.pdf">
 <attribute NAME="key" VALUE="goodfellow2014generative"/>
 <attribute NAME="year" VALUE="2014"/>
@@ -2161,7 +2161,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Variational Auto-Encoders" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1221424051" CREATED="1516612900074" MODIFIED="1516612920703">
+<node TEXT="Variational Auto-Encoders" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1221424051" CREATED="1516612900074" MODIFIED="1516612920703">
 <node TEXT="Auto-Encoding Variational Bayes" ID="ID_1649502321" CREATED="1516612922394" MODIFIED="1534391192514" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/115%20Auto-Encoding%20Variational%20Bayes.pdf">
 <attribute NAME="key" VALUE="kingma2013auto"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1312.6114"/>
@@ -2193,7 +2193,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="using reference data (open-loop)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1767777743" CREATED="1516863517341" MODIFIED="1516863545359">
+<node TEXT="using reference data (open-loop)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1767777743" CREATED="1516863517341" MODIFIED="1516863545359">
 <node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1534390768470" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="year" VALUE="2012"/>
@@ -2237,7 +2237,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
+<node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
 <node TEXT="Evaluation of scenario-generation methods for stochastic programming" ID="ID_1027960109" CREATED="1529493643125" MODIFIED="1534390768282" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/196%20Evaluation%20of%20scenario-generation%20methods%20for%20stochastic%20programming.pdf">
 <attribute NAME="key" VALUE="kaut2007evaluation"/>
 <attribute NAME="journal" VALUE="Pacific Journal of Optimization"/>
@@ -2272,7 +2272,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
+<node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
 <node TEXT="Useful techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_24707856" CREATED="1513049420556" MODIFIED="1513049440911">
 <node TEXT="Bayesian Networks" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_223679667" CREATED="1513049535450" MODIFIED="1513049542644">
@@ -2296,6 +2296,17 @@
 <attribute NAME="authors" VALUE="Rabiner, Lawrence R."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D480C1F64BC9E22E50509312675C46ABE8EA6C0A25C5ACD52A7B732CA4B5792">
     <pdf_title>A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="N-Gram" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1752764292" CREATED="1574781093518" MODIFIED="1574781113509">
+<node TEXT="The Growing N-Gram Algorithm: A Novel Approach to String Clustering" ID="ID_562142148" CREATED="1574781120545" MODIFIED="1574781130711" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/393%20Growing%20NGram%20Algorithm.pdf">
+<attribute NAME="key" VALUE="grappiolo2019growing"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="The Growing N-Gram Algorithm: A Novel Approach to String Clustering"/>
+<attribute NAME="authors" VALUE="Grappiolo, Corrado and Verwielen, Eline and Noorman, Nils"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="189D7D1E49BD9217D5C4C8911D0305F5E9728F70EB445A2B2ADF614BD6AB2">
+    <pdf_title>The Growing N-Gram Algorithm: A Novel Approach to String Clustering</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2390,7 +2401,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
 <node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1534391328696" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
