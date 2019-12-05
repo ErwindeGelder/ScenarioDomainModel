@@ -6,63 +6,109 @@
 \subsection{Activity detection}
 \label{sec:activity detection}
 
-Here, we explain which activities we detect and how we detect activities. We distinguish between longitudinal activities and lateral activities and we distinguish between activities of the ego vehicle and other vehicles.
+Here, we explain which activities we detect and how we detect activities. We distinguish between longitudinal activities and lateral activities and we distinguish between activities of the ego vehicle and other vehicles. For the remainder of this section, we assume that the data is samples with a sample time of $\sampletime$.
 
-\subsubsection{Longitudinal activities of ego vehicle}
+
+
+\subsubsection{Longitudinal activities of the ego vehicle}
 \label{sec:longitudinal ego}
+
+\todo{Add image to illustrate the approach.}
 
 We distinguish between three different longitudinal activities: ``accelerating'', ``decelerating'', and ``cruising''. The ego vehicle is performing either one of these activities. According to \cref{def:activity}, an activity starts and ends with an event and, therefore, we call the event at the start of the activity ``accelerating'' an ``accelerating event'', and so on. To extract the activities, we first extract the events. Hence, the activity ``accelerating'' starts when an ``accelerating event'' occurs. The activity ``accelerating'' ends as soon as either a ``decelerating event'' or a ``cruising event'' occurs.
 
-To extract the longitudinal events from the data, let $\speed{\time}$ denote the speed of the ego vehicle at time $\time$. Next, let us define the minimum and maximum speed between the current time $\time$ and $\time+\timehorizon$, where $\timehorizon>0$ is a parameter:
+To extract the longitudinal events from the data, let $\speed{\sample}$ denote the speed of the ego vehicle at sample $\sample$. Next, let us define the minimum and maximum speed between the current sample $\sample$ and $\sample+\samplehorizon$, where $\samplehorizon>0$ is a parameter:
 \begin{align}
-	\speedmin{\time} &\defsym \min_{\time \leq \timedummy \leq \time+\timehorizon} \speed{\timedummy}, \\
-	\speedmax{\time} &\defsym \max_{\time \leq \timedummy \leq \time+\timehorizon} \speed{\timedummy}.
+	\speedmin{\sample} &\defsym \min_{\sample \leq \sampledummy \leq \sample+\samplehorizon} \speed{\sampledummy}, \\
+	\speedmax{\sample} &\defsym \max_{\sample \leq \sampledummy \leq \sample+\samplehorizon} \speed{\sampledummy}.
 \end{align}
-For detecting accelerating and decelerating events, the maximum speed increase $\speedinc{\time}$ and the minimum speed decrease $\speedinc{\time}$ within the same time window are used:
+For detecting accelerating and decelerating events, the maximum speed increase $\speedinc{\sample}$ and the minimum speed decrease $\speeddec{\sample}$ within the same time window are used:
 \begin{align}
-	\speedinc{\time} &\defsym \speed{\time + \timehorizon} - \speedmin{\time},\\
-	\speeddec{\time} &\defsym \speed{\time + \timehorizon} - \speedmax{\time}.
+	\speedinc{\sample} &\defsym \speed{\sample + \samplehorizon} - \speedmin{\sample},\\
+	\speeddec{\sample} &\defsym \speed{\sample + \samplehorizon} - \speedmax{\sample}.
 \end{align}
 
-First, we assume that the event at the start of the dataset is a cruising event at $\time=\timeinit$. Next, we go chronologically through the dataset. A accelerating event is happening at time $\time$ if any of the following conditions is true:
+First, we assume that the event at the start of the dataset is a cruising event at $\sample=\sampleinit$. Next, we go chronologically through the dataset. A accelerating event is happening at sample $\sample$ if any of the following conditions is true:
 \begin{itemize}
 	\item The vehicle is not performing an accelerating activity, i.e., the last event is not an accelerating event.
 	\item There is a significant acceleration, i.e., 
 	\begin{equation}
-		\speedinc{\time} \geq \accelerationstart / \timehorizon,
+		\speedinc{\sample} \geq \accelerationstart / \left( \samplehorizon\sampletime \right),
 	\end{equation}
 	where $\accelerationstart>0$ is a parameter.
-	\item There is no lower speed in the near future, i.e., $\speedmin{\time}=\speed{\time}$.
+	\item There is no lower speed in the near future, i.e., $\speedmin{\sample}=\speed{\sample}$.
 	\item There is a significant speed difference during the activity, i.e., 
 	\begin{equation}
-		\speed{\timeendinc{\time}} - \speed{\time} > \speeddiff,
+		\speed{\sampleendinc{\sample}} - \speed{\sample} > \speeddiff,
 	\end{equation}
-	where $\timeendinc{\time}$ is controlled by the parameter $\accelerationcruise$ and defined as follows:
+	where $\sampleendinc{\sample}$ is controlled by the parameter $\accelerationcruise$ and defined as follows:
 	\begin{equation}
-		\timeendinc{\time} \defsym \arg \min_{\timedummy > \time} \left\{ \timedummy: \speedinc{\timedummy} < \accelerationcruise/\timehorizon \right\}.
+		\sampleendinc{\sample} \defsym \arg \min_{\sampledummy > \sample} \left\{ \sampledummy: \speedinc{\sampledummy} < \frac{\accelerationcruise}{\samplehorizon\sampletime} \right\}.
 	\end{equation}
 \end{itemize}
 
-A decelerating event is happening at time $\time$ if any of the following conditions is true:
+A decelerating event is happening at sample $\sample$ if any of the following conditions is true:
 \begin{itemize}
 	\item The vehicle is not performing a decelerating activity, i.e., the last event is not an decelerating event.
 	\item There is a significant deceleration, i.e., 
 	\begin{equation}
-		\speeddec{\time} \leq -\accelerationstart / \timehorizon.
+		\speeddec{\time} \leq -\accelerationstart / \left( \samplehorizon\sampletime \right).
 	\end{equation}
-	\item There is no lower speed in the near future, i.e., $\speedmax{\time}=\speed{\time}$.
+	\item There is no lower speed in the near future, i.e., $\speedmax{\sample}=\speed{\sample}$.
 	\item There is a significant speed difference during the activity, i.e., 
 	\begin{equation}
-		\speed{\timeenddec{\time}} - \speed{\time} < -\speeddiff,
+		\speed{\sampleenddec{\sample}} - \speed{\sample} < -\speeddiff,
 	\end{equation}
 	with
 	\begin{equation}
-		\timeenddec{\time} \defsym \arg \min_{\timedummy > \time} \left\{ \timedummy: \speeddec{\timedummy} > -\accelerationcruise/\timehorizon \right\}.
+		\sampleenddec{\sample} \defsym \arg \min_{\sampledummy > \time} \left\{ \sampledummy: \speeddec{\sampledummy} > -\frac{\accelerationcruise}{\samplehorizon\sampletime} \right\}.
 	\end{equation}
 \end{itemize}
 
-Let $\timeaccevent$ and $\timedecevent$ denote the time of the most recent accelerating and decelerating event, respectively. A cruising event happens at time $\time$ if the the vehicle is not performing a cruising event and if any of the following conditions is true:
+Let $\sampleaccevent$ and $\sampledecevent$ denote the time of the most recent accelerating and decelerating event, respectively. A cruising event happens at time $\time$ if the the vehicle is not performing a cruising event and if any of the following conditions is true:
 \begin{itemize}
-	\item $\time > \timeendinc{\timeaccevent}$ while the vehicle is performing an accelerating activity.
-	\item $\time > \timeenddec{\timedecevent}$ while the vehicle is performing an decelerating activity.
+	\item $\time > \sampleendinc{\sampleaccevent}$ while the vehicle is performing an accelerating activity.
+	\item $\time > \sampleenddec{\sampledecevent}$ while the vehicle is performing an decelerating activity.
 \end{itemize}
+
+A result of the above described activity detection could be very short cruising activities, especially when the acceleration is around $\accelerationcruise$ or $-\accelerationcruise$. Therefore, when the longitudinal activities are extracted from a dataset using the above described method, all cruising activities shorter than $\timecruising$ are removed as well as the two events that define the start and the end of the cruising activity. Here, we consider three possibilities:
+\begin{enumerate}
+	\item Before and after the cruising activity, the vehicle performs the same activity. In that case, these activities are merged.
+	\item The vehicle decelerates before the cruising activity and accelerates afterwards. In that case, an acceleration event is defined at the lowest speed of the vehicle within the original cruising activity.
+	\item The vehicle accelerates before the cruising activity and decelerates afterwards. In that case, a deceleration event is defined at the highest speed of the vehicle within the original cruising activity.
+\end{enumerate}
+
+
+
+\subsubsection{Lateral activities of the ego vehicle}
+\label{sec:lateral ego}
+
+\todo{Add image to illustrate the approach.}
+
+We distinguish between three different lateral activities: ``lane following'', ``left lane change'', and ``right lane change''. To detect the lane changes, the lateral distances toward the left and right lane lines are used. These distances are estimated from camera images. The estimation is outside the scope of this paper.  Let $\lineleft{\sample}$ and $\lineright{\sample}$ denote the distance toward the left and right lane line, respectively. In case the distances cannot be accurately estimated, the notation $\lineleft{\sample}=\nan$ and $\lineright{\sample}=\nan$ is used, where $\nan$ stands for Not-a-Number.
+
+\todo{Describe the detection of the lateral events and, consequently, the lateral activities. Although the code produces fairly okay results, I want to update the code for the detection of the events, because the current approach is not logical in my view.}
+
+
+
+\subsubsection{Longitudinal activities of other vehicles}
+\label{sec:longitudinal other vehicles}
+
+The longitudinal activities of other vehicles are estimated in a similar manner as for the ego vehicle. However, instead of the speed of the ego vehicle, $\speed{\sample}$, the speed of the other vehicles is used. The ego vehicle measures the relative speed of other vehicles. Let $\speedtargetirel{\sample}{\indextarget}$ denote the relative speed of the $\indextarget$-th vehicles at sample $\sample$. The absolute speed of other vehicles is estimated by adding $v(k)$ to the estimated relative speed:
+\begin{equation}
+	\speedtargetiabs{\sample}{\indextarget} = \speedtargetirel{\sample}{\indextarget} + \speed{\sample}.
+\end{equation}
+To compute the longitudinal activities of the $\indextarget$-th vehicle, the approach outlined in \cref{sec:longitudinal ego} is used with $\speedtargetiabs{\sample}{\indextarget}$ substituted for $\speed{\sample}$. 
+
+
+
+\subsubsection{Lateral activities of other vehicles}
+\label{sec:lateral other vehicles}
+
+\todo{Explain that we first need to estimate the distance of the vehicle toward the lane lines by extrapolating the lane lines. Then the detection of the lateral activities is similar as for the ego vehicle as described in \cref{sec:lateral ego}.}
+	
+	
+	
+\subsection{Using activities for mining scenarios.}
+
+\todo{Explain the approach of scenario mining. For each actor, an n-gram is constructed using the detected activities. A scenario category is then defined as a sequence of nodes, where the n-grams of multiple actors can be combined if needed.}
