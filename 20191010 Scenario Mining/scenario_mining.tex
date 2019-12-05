@@ -121,6 +121,18 @@
 \newcommand{\accelerationstart}{\accelerationsymbol_\mathrm{start}}
 \newcommand{\accelerationcruise}{\accelerationsymbol_\mathrm{cruise}}
 \newcommand{\defsym}{\equiv}
+\newcommand{\indextarget}{i}
+\newcommand{\lineleft}[1]{l\left(#1\right)}
+\newcommand{\lineright}[1]{r\left(#1\right)}
+\newcommand{\nan}{\mathrm{NaN}}
+\newcommand{\sample}{k}
+\newcommand{\sampledummy}{\tau}
+\newcommand{\sampleenddec}[1]{\sample_{\mathrm{end}}^{-}\left(#1\right)}
+\newcommand{\sampleendinc}[1]{\sample_{\mathrm{end}}^{+}\left(#1\right)}
+\newcommand{\samplehorizon}{\sample_{\mathrm{h}}}
+\newcommand{\sampleinit}{\sample_{0}}
+\newcommand{\sampleaccevent}{\sample^{+}}
+\newcommand{\sampledecevent}{\sample^{-}}
 \newcommand{\speedsymbol}{v}
 \newcommand{\speed}[1]{\speedsymbol\left(#1\right)}
 \newcommand{\speedmax}[1]{\speedsymbol_{\mathrm{max}}\left(#1\right)}
@@ -128,17 +140,17 @@
 \newcommand{\speedinc}[1]{\speedsymbol^{+}\left(#1\right)}
 \newcommand{\speeddec}[1]{\speedsymbol^{-}\left(#1\right)}
 \newcommand{\speeddiff}{\Delta_{\speedsymbol}}
+\newcommand{\speedtargetiabs}[2]{\speedsymbol_{#2}^{\mathrm{abs}}\left(#1\right)}
+\newcommand{\speedtargetirel}[2]{\speedsymbol_{#2}^{\mathrm{rel}}\left(#1\right)}
 \renewcommand{\time}{t}
-\newcommand{\timeinit}{\time_{0}}
-\newcommand{\timehorizon}{\time_{\mathrm{h}}}
-\newcommand{\timedummy}{\tau}
-\newcommand{\timeendinc}[1]{\time_{\mathrm{end}}^{+}\left(#1\right)}
-\newcommand{\timeenddec}[1]{\time_{\mathrm{end}}^{-}\left(#1\right)}
-\newcommand{\timeaccevent}{\time^{+}}
-\newcommand{\timedecevent}{\time^{-}}
+\newcommand{\sampletime}{\time_\mathrm{s}}
+\newcommand{\timecruising}{\time_\mathrm{cruise}}
 
-%\usepackage{setspace}
-%\doublespacing
+
+\newcommand{\todo}[1]{\color{red}TO DO: #1 \color{black}}
+
+\usepackage{setspace}
+\doublespacing
 
 
 \begin{document}
