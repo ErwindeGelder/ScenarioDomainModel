@@ -182,7 +182,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6" MOVED="1534304323924">
+<node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6" MOVED="1534304323924">
 <edge COLOR="#ff0000"/>
 <node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1539230742839" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
 <attribute NAME="key" VALUE="yang2012estimating"/>
@@ -2323,6 +2323,16 @@
     <pdf_title>Dietmar Kasper, Galia Weidl, Thao Dang, Gabi Breuel, Andreas Tamke, and Andreas Wedel</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Using feature ranking with maximized predictive power" ID="ID_1461622366" CREATED="1575561187188" MODIFIED="1575561201304" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/400%20Lane%20Change%20Detection%20Approach.pdf">
+<attribute NAME="key" VALUE="schlechtriemen2015lanechange"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="A Lane Change Detection Approach Using Feature Ranking with Maximized Predictive Power"/>
+<attribute NAME="authors" VALUE="Schlechtriemen, Julian and Wedel, Andreas and Hillenbrand, Joerg and Breuel, Gabi and Kuhnert, Klaus-Dieter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3DAEC08F9C19EF984D71B295629C3F8CEF19DC462BD673E42A1834CB4588E58">
+    <pdf_title>A Lane Change Detection Approach using Feature Ranking with Maximized Predictive Power</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A survey that includes something on lane changes" ID="ID_248065387" CREATED="1575561382630" MODIFIED="1575561393214"/>
 </node>
 <node TEXT="Driving Maneuver Classification: Comparison of Feature Extraction Methods" ID="ID_1801389080" CREATED="1529494283347" MODIFIED="1534390768266" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/198%20Driving%20Maneuver%20Classification%20A%20Comparison%20of%20Feature%20Extraction%20Methods.pdf">
 <attribute NAME="key" VALUE="xie2017driving"/>
@@ -2334,11 +2344,14 @@
     <pdf_title>Driving Maneuver Classification: A Comparison of Feature Extraction Methods</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Automatic Identification of Critical Scenarios in a Public Dataset of 3000 km" ID="ID_1737215624" CREATED="1545082846235" MODIFIED="1545082871055">
-<attribute NAME="key" VALUE="paardekooper3000km"/>
+<node TEXT="Automatic Identification of Critical Scenarios in a Public Dataset of 3000 km" ID="ID_1737215624" CREATED="1545082846235" MODIFIED="1575558066171" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/360%20ESV%20Public%20dataset.pdf">
+<attribute NAME="key" VALUE="paardekooper2019dataset6000km"/>
 <attribute NAME="year" VALUE="2019"/>
-<attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 3000 km of Naturalistic Driving"/>
-<attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and de Gelder, Erwin and Manders, Jeroen and Op den Camp, Olaf"/>
+<attribute NAME="title" VALUE="Automatic Identification of Critical Scenarios in a Public Dataset of 6000 km of Public-Road Driving"/>
+<attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and Montfort, Sjef and Manders, Jeroen and Goos, Jorrit and de Gelder, Erwin and Op den Camp, Olaf and Bracquemond, Annie and Thiolon, Gildas"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="66498E977114BB98512D96D1E608ABEC494FC779333C9FEA68FA64E4786F3E6">
+    <pdf_title>Paardekooper 1</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Scene understanding" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1078234634" CREATED="1516851525657" MODIFIED="1516851536013">
@@ -2401,7 +2414,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
 <node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1534391328696" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
