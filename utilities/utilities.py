@@ -385,6 +385,7 @@ if __name__ == '__main__':
     compile_pr(23, usebiber=True, other=(join('20191004 Ontology revision letter',
                                               'ontology_revision'), dict(usebiber=True)))
     compile_pr(24)
+    compile_pr(25, other=(join('20191010 Scenario Mining', 'scenario_mining'), dict(usebiber=True)))
 
     # Revisions/versions
     compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',
