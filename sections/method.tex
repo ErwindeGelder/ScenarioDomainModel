@@ -1,21 +1,49 @@
 \section{Method}
 \label{sec:method}
 
+Our method of scenario mining is divided into two steps. The first step is to describe the data using \emph{tags} and the second step is to extract the scenarios based on these tags. We will first explain how the \emph{tags} are determined in \cref{sec:data tagging}. In \cref{sec:mining}, we describe how the scenarios are mined based on the \emph{tags}.
 
 
-\subsection{Activity detection}
-\label{sec:activity detection}
 
-Here, we explain which activities we detect and how we detect activities. We distinguish between longitudinal activities and lateral activities and we distinguish between activities of the ego vehicle and other vehicles. For the remainder of this section, we assume that the data is samples with a sample time of $\sampletime$.
+\subsection{Data tagging}
+\label{sec:data tagging}
+
+\todo{Show the applicable tags in a figure rather than in the text.}
+
+We consider the following tags:
+\begin{itemize}
+	\item For the ego vehicle:
+	\begin{itemize}
+		\item Longitudinal activity: accelerating, braking, cruising
+		\item Lateral activity: changing lane, following lane
+	\end{itemize}
+	\item For an other vehicle:
+	\begin{itemize}
+		\item Longitudinal activity: accelerating, braking, cruising
+		\item Lateral activity: changing lane, following lane
+		\item Longitudinal state: in front of ego, behind ego
+		\item Lateral state: left of ego, right of ego, same lane as ego, unknown
+		\item Lead vehicle: yes, no
+	\end{itemize}
+	\item Static environment:
+	\begin{itemize}
+		\item On highway: yes, no
+	\end{itemize}
+\end{itemize}
+
+
+%Here, we explain which activities we detect and how we detect activities. We distinguish between longitudinal activities and lateral activities and we distinguish between activities of the ego vehicle and other vehicles. 
+In the remainder of this subsection, we explain how the above described tags are determined. 
+For the remainder of this section, we assume that the data is sampled with a sample time of $\sampletime$.
 
 
 
 \subsubsection{Longitudinal activities of the ego vehicle}
 \label{sec:longitudinal ego}
 
-\todo{Add image to illustrate the approach.}
-
 We distinguish between three different longitudinal activities: ``accelerating'', ``decelerating'', and ``cruising''. The ego vehicle is performing either one of these activities. According to \cref{def:activity}, an activity starts and ends with an event and, therefore, we call the event at the start of the activity ``accelerating'' an ``accelerating event'', and so on. To extract the activities, we first extract the events. Hence, the activity ``accelerating'' starts when an ``accelerating event'' occurs. The activity ``accelerating'' ends as soon as either a ``decelerating event'' or a ``cruising event'' occurs.
+
+\todo{Add image to illustrate the approach.}
 
 To extract the longitudinal events from the data, let $\speed{\sample}$ denote the speed of the ego vehicle at sample $\sample$. Next, let us define the minimum and maximum speed between the current sample $\sample$ and $\sample+\samplehorizon$, where $\samplehorizon>0$ is a parameter:
 \begin{align}
@@ -83,9 +111,9 @@ A result of the above described activity detection could be very short cruising 
 \subsubsection{Lateral activities of the ego vehicle}
 \label{sec:lateral ego}
 
-\todo{Add image to illustrate the approach.}
+We distinguish between three different lateral activities: ``following lane'', ``changing lane left'', and ``changing lane right''. To detect the lane changes, the lateral distances toward the left and right lane lines are used. These distances are estimated from camera images. The estimation is outside the scope of this paper.  Let $\lineleft{\sample}$ and $\lineright{\sample}$ denote the distance toward the left and right lane line, respectively. In case the distances cannot be accurately estimated, the notation $\lineleft{\sample}=\nan$ and $\lineright{\sample}=\nan$ is used, where $\nan$ stands for Not-a-Number.
 
-We distinguish between three different lateral activities: ``lane following'', ``left lane change'', and ``right lane change''. To detect the lane changes, the lateral distances toward the left and right lane lines are used. These distances are estimated from camera images. The estimation is outside the scope of this paper.  Let $\lineleft{\sample}$ and $\lineright{\sample}$ denote the distance toward the left and right lane line, respectively. In case the distances cannot be accurately estimated, the notation $\lineleft{\sample}=\nan$ and $\lineright{\sample}=\nan$ is used, where $\nan$ stands for Not-a-Number.
+\todo{Add image to illustrate the approach.}
 
 \todo{Describe the detection of the lateral events and, consequently, the lateral activities. Although the code produces fairly okay results, I want to update the code for the detection of the events, because the current approach is not logical in my view.}
 
@@ -109,6 +137,7 @@ To compute the longitudinal activities of the $\indextarget$-th vehicle, the app
 	
 	
 	
-\subsection{Using activities for mining scenarios.}
+\subsection{Mining scenarios using tags}
+\label{sec:mining}
 
-\todo{Explain the approach of scenario mining. For each actor, an n-gram is constructed using the detected activities. A scenario category is then defined as a sequence of nodes, where the n-grams of multiple actors can be combined if needed.}
+\todo{Explain the approach of scenario mining. For each actor, an n-gram is constructed using the detected tags. A scenario category is then defined as a sequence of nodes, where the n-grams of multiple actors can be combined if needed.}

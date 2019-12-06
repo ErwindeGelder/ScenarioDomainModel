@@ -108,6 +108,38 @@
 %        {\tt\small b.d.researcher@ieee.org}}%
 }
 
+%\definecolor{TNOlightgray}{RGB}{222,222,231}
+%\tikzstyle{tag}=[text height=.8em, text depth=.1em, font=\small\sffamily, rounded corners=0.2em, fill=TNOlightgray, node distance=9em, text width=7em, align=center]
+%\tikzstyle{tag wide}=[tag, text width=12em]
+%\tikzstyle{tag next to wide}=[tag, node distance=11.5em]
+%\tikzstyle{tagemphasize}=[]
+%\tikzstyle{tagarrow}=[->, line width=0.75mm, color=TNOlightgray]
+%\ExplSyntaxOn
+%\NewDocumentCommand{\tags}{O{,}m}{
+%	\seq_set_split:Nnn \arg { #1 } { #2 }
+%	\seq_pop_left:NN \arg \argl
+%	\begin{tikzpicture}
+%	\showtag{tag~wide}{tag\arabic{tmpcounter}}{\argl};
+%	
+%	\ifnum \seq_count:N \arg > 0
+%	\seq_pop_left:NN \arg \argl
+%	\setcounter{tmpcounter2}{\value{tmpcounter}}
+%	\stepcounter{tmpcounter}
+%	\showtag{tag~next~to~wide, right~of=tag\arabic{tmpcounter2}}{tag\arabic{tmpcounter}}{\argl};
+%	\draw[tagarrow] (tag\arabic{tmpcounter2}) -- (tag\arabic{tmpcounter});
+%	
+%	\seq_map_inline:Nn \arg {
+%		\setcounter{tmpcounter2}{\value{tmpcounter}}
+%		\stepcounter{tmpcounter}
+%		\showtag{tag, right~of=tag\arabic{tmpcounter2}}{tag\arabic{tmpcounter}}{##1};
+%		\draw[tagarrow] (tag\arabic{tmpcounter2}) -- (tag\arabic{tmpcounter});
+%	}
+%	\fi
+%	\end{tikzpicture}
+%}
+%\ExplSyntaxOff
+
+
 
 \newlength\figurewidth
 \newlength\figureheight
