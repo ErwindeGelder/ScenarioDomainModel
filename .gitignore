@@ -29,6 +29,7 @@ _data/
 *.dpth
 *.md5
 *.hdf5
+*.pkl
 */tikz/*
 utilities/log2.txt
 
