@@ -2332,7 +2332,16 @@
     <pdf_title>A Lane Change Detection Approach using Feature Ranking with Maximized Predictive Power</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="A survey that includes something on lane changes" ID="ID_248065387" CREATED="1575561382630" MODIFIED="1575561393214"/>
+<node TEXT="A survey that includes something on lane changes" ID="ID_248065387" CREATED="1575561382630" MODIFIED="1575561476802" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/401%20A%20Survey%20of%20Vision-Based%20Vehicle%20Detection.pdf">
+<attribute NAME="key" VALUE="sivaraman2013looking"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Looking at Vehicles on the Road: A Survey of Vision-Based Vehicle Detection, Tracking, and Behavior Analysis"/>
+<attribute NAME="authors" VALUE="Sivaraman, Sayanan and Trivedi, Mohan Manubhai"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1295D146A8C7FDD2E7A6854A5798F9A4323F746F5BC4BEEA4B72A70EA14D6">
+    <pdf_title>Looking at Vehicles on the Road: A Survey of Vision-Based Vehicle Detection, Tracking, and Behavior Analysis</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Driving Maneuver Classification: Comparison of Feature Extraction Methods" ID="ID_1801389080" CREATED="1529494283347" MODIFIED="1534390768266" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/198%20Driving%20Maneuver%20Classification%20A%20Comparison%20of%20Feature%20Extraction%20Methods.pdf">
 <attribute NAME="key" VALUE="xie2017driving"/>
