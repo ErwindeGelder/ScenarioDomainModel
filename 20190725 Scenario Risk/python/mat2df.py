@@ -7,7 +7,7 @@ Modifications:
 """
 
 import os
-from typing import List
+from typing import Iterable, List
 import numpy as np
 import pandas as pd
 import scipy.io as sio
@@ -20,6 +20,7 @@ class Mat2DFOptions(Options):
     topics: List[str] = ["ego", "lines", "navposllh", "wm_targets", "position"]
     topic_start_end_time: str = "ego"
     fps: int = 100
+    camera_time: bool = True
 
 
 class Mat2DF:
@@ -71,6 +72,21 @@ class Mat2DF:
                                             kind="nearest", fill_value=0, bounds_error=False)
             df_topic = pd.DataFrame(index=self.data.index, columns=sorted_fieldnames,
                                     data=interpolator(self.data.index))
+            self.data = pd.concat([self.data, df_topic], axis=1)
+
+        # Add time vector.
+        if self.options.camera_time:
+            time = matfile["data"].camera.time
+            if isinstance(time, Iterable) and len(time) > 0:
+                mat_data = np.arange(len(time))
+                interpolator = sinterp.interp1d(time, mat_data, axis=0, kind="nearest", fill_value=0,
+                                                bounds_error=False)
+                video_timings = interpolator(self.data.index)
+            else:
+                print("Matfile '{:s}' does not contain video timings!".format(self.mat_path))
+                video_timings = np.zeros(len(self.data.index))
+            df_topic = pd.DataFrame(index=self.data.index, columns=["video_time"],
+                                    data=video_timings)
             self.data = pd.concat([self.data, df_topic], axis=1)
 
     def save2hdf5(self, filename: str, complevel: int = 4) -> None:

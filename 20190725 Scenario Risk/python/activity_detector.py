@@ -357,9 +357,9 @@ class ActivityDetector:
                       (self.get(self.parms.right_conf) < self.parms.min_line_quality),
                       'line_center_y_conf'] = np.nan
         self.set('line_left_y_conf_down', self.get('line_left_y_conf') -
-                 self.data['line_left_y_conf'].rolling(window=self.frequency).max())
+                 self.data['line_left_y_conf'].rolling(window=self.frequency+1).max())
         self.set('line_right_y_conf_up', self.get('line_right_y_conf') -
-                 self.data['line_right_y_conf'].rolling(window=self.frequency).min())
+                 self.data['line_right_y_conf'].rolling(window=self.frequency+1).min())
 
         event = LateralActivityHost.LANE_FOLLOWING
         events = [(self.data.index[0], event)]
@@ -375,6 +375,7 @@ class ActivityDetector:
             if event != LateralActivityHost.LEFT_LANE_CHANGE and \
                     self._potential_left(getattr(row, self.parms.y_left_line),
                                          previous_y[0], row.line_left_y_conf_down):
+                print("Potential left lane change at i={:.2f}".format(row.Index))
                 begin_i, lane_change = self._start_lane_change(row.Index, events[-1], left_y,
                                                                left_dy)
                 if lane_change:

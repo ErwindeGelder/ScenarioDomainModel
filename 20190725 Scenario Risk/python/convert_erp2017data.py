@@ -55,7 +55,11 @@ def conv_mat_file(matfile: str) -> None:
     :param matfile: Name of the file that has to be converted.
     """
     conv = Mat2DF(matfile)
-    conv.convert()
+    try:
+        conv.convert()
+    except Exception as e:
+        print("Error at matfile: {:s}".format(matfile))
+        raise e
     conv.data = conv.data.drop(columns=REMOVE)
     conv.data = conv.data.rename(columns=RENAME)
     fix_gps(conv)
