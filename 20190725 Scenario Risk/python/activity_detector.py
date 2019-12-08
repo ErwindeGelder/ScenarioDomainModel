@@ -109,6 +109,7 @@ class ActivityDetectorParameters(Options):
     max_time_lat_target = 6  # [s]
     factor_goal_y_target = 0.25  # ???
     n_targets = 8
+    diff_max_valid_time = 7  # [s]
 
 
 class ActivityDetector:
@@ -358,8 +359,19 @@ class ActivityDetector:
                       'line_center_y_conf'] = np.nan
         self.set('line_left_y_conf_down', self.get('line_left_y_conf') -
                  self.data['line_left_y_conf'].rolling(window=self.frequency+1).max())
+        self.set('line_right_y_conf_down', self.get('line_right_y_conf') -
+                 self.data['line_right_y_conf'].rolling(window=self.frequency+1).max())
+        self.set('line_left_y_conf_up', self.get('line_left_y_conf') -
+                 self.data['line_left_y_conf'].rolling(window=self.frequency+1).min())
         self.set('line_right_y_conf_up', self.get('line_right_y_conf') -
                  self.data['line_right_y_conf'].rolling(window=self.frequency+1).min())
+
+        # Compute the difference between consecutive valid lane line
+        # measurements.
+        self._set_diff(self.get(self.parms.y_left_line),
+                       self.get(self.parms.left_conf) >= self.parms.min_line_quality, "left")
+        self._set_diff(self.get(self.parms.y_right_line),
+                       self.get(self.parms.right_conf) >= self.parms.min_line_quality, "right")
 
         event = LateralActivityHost.LANE_FOLLOWING
         events = [(self.data.index[0], event)]
@@ -367,35 +379,37 @@ class ActivityDetector:
         previous_y = (self.get(self.parms.y_left_line, self.data.index[0]),
                       self.get(self.parms.y_right_line, self.data.index[0]))
         left_y = self.get(self.parms.y_left_line)
-        left_dy = self.get('line_left_y_conf_down')
         right_y = self.get(self.parms.y_right_line)
-        right_dy = self.get('line_right_y_conf_up')
+        y_down = (-self.get('line_left_y_conf_down'), -self.get('line_right_y_conf_down'))
+        y_up = (self.get('line_left_y_conf_up'), self.get('line_right_y_conf_up'))
         for row in self.data.itertuples():
             # Left lane change (out of ego lane).
             if event != LateralActivityHost.LEFT_LANE_CHANGE and \
-                    self._potential_left(getattr(row, self.parms.y_left_line),
-                                         previous_y[0], row.line_left_y_conf_down):
+                    row.left_diff > self.parms.lane_change_threshold and \
+                    row.right_diff > self.parms.lane_change_threshold:
                 print("Potential left lane change at i={:.2f}".format(row.Index))
                 begin_i, lane_change = self._start_lane_change(row.Index, events[-1], left_y,
-                                                               left_dy)
+                                                               y_down)
                 if lane_change:
                     event = LateralActivityHost.LEFT_LANE_CHANGE
                     events.append((begin_i, event))
 
             # Right lane change (out of ego lane)
             elif event != LateralActivityHost.RIGHT_LANE_CHANGE and \
-                    self._potential_right(getattr(row, self.parms.y_right_line), previous_y[1],
-                                          row.line_right_y_conf_up):
+                    row.left_diff < -self.parms.lane_change_threshold and \
+                    row.right_diff < -self.parms.lane_change_threshold:
                 begin_i, lane_change = self._start_lane_change(row.Index, events[-1], -right_y,
-                                                               -right_dy)
+                                                               y_up)
                 if lane_change:
                     event = LateralActivityHost.RIGHT_LANE_CHANGE
                     events.append((begin_i, event))
 
             # Follow-Lane
             elif event != LateralActivityHost.LANE_FOLLOWING and row.line_center_y_conf != 0 and \
-                    row.line_right_y_conf_up < self.parms.lane_conf_threshold and \
-                    row.line_left_y_conf_down > -self.parms.lane_conf_threshold:
+                    (row.line_right_y_conf_up < self.parms.lane_conf_threshold or
+                     row.line_left_y_conf_up < self.parms.lane_conf_threshold) and \
+                    (row.line_left_y_conf_down > -self.parms.lane_conf_threshold or
+                     row.line_right_y_conf_down > -self.parms.lane_conf_threshold):
                 event = LateralActivityHost.LANE_FOLLOWING
                 events.append((row.Index, event))
 
@@ -404,60 +418,75 @@ class ActivityDetector:
                           getattr(row, self.parms.y_right_line))
         return events
 
-    def _potential_left(self, current_y: float, previous_y: float,
-                        lateral_difference: float) -> bool:
-        """ Determine whether there is a potential left lane change of the host.
+    def _set_diff(self, data: pd.Series, mask: pd.Series, name: str) -> None:
+        """ Compute the difference between consecutive valid measurements.
 
-        If any of the following is true, a False is returned.
-        - The current distance toward the left lane line is larger than or
-          equal to 0.
-        - The previous distance toward the left lane line is smaller than 0.
-        - The absolute difference between the current and previous distance
-          should be smaller than "lane_change_threshold".
-        - The lateral_difference is NaN.
-        - The lateral difference is larger than minus "lane_conf_threshold"
+        The valid input is determined by the vector `mask`. The following fields
+        are created:
+        - <name>_prev: The previous valid value.
+        - <name>_next: The next valid value that is at least one sample ahead.
+        - <name>_diff: The difference between the previous two.
+        If the time between the current sample and the last (next) sample is
+        more that self.options.diff_max_valid_time, the last (next) sample is
+        set to np.nan.
 
-        :param current_y: The current distance toward the left lane line.
-        :param previous_y: The previous distance toward the left lane line.
-        :param lateral_difference: The difference in lateral distance to left
-                                   lane compared to "time_speed_difference" ago.
-        :return: A boolean whether there is a potential lane change.
+        :param data: The input data for which the difference is computed.
+        :param mask: Indicating which values are valid.
+        :param name: The name to give to the new signals.
         """
-        if current_y >= 0:
-            return False
-        if previous_y < 0:
-            return False
-        if abs(current_y - previous_y) >= self.parms.lane_change_threshold:
-            return False
-        if np.isnan(lateral_difference):
-            return False
-        if lateral_difference >= -self.parms.lane_conf_threshold:
-            return False
-        return True
+        # Initialize vectors and indices for previous and next value.
+        prev_value = np.zeros(len(data))
+        next_value = np.zeros(len(data))
+        prev_index = np.nan
+        next_index = np.nan
+        last_valid_value = np.nan
 
-    def _potential_right(self, current_y: float, previous_y: float,
-                         lateral_difference: float) -> bool:
-        """ Determine whether there is a potential right lane change of host.
+        # Loop through the vector
+        for i, (mask_now, mask_next, now, succ) in enumerate(zip(mask.iloc[:-1], mask.iloc[1:],
+                                                                 data.iloc[:-1], data.iloc[1:])):
+            if mask_now:
+                prev_index = i
+                prev_value[i] = now
+                last_valid_value = now
+            else:
+                if i - prev_index <= self.parms.diff_max_valid_time*self.frequency:
+                    prev_value[i] = last_valid_value
+                else:
+                    prev_value[i] = np.nan
+            if not next_index > i:
+                # The following if is not really needed, because this can be
+                # done with the `next` statement in the `else` code. However,
+                # because it happens so often that the next sample is valid, is
+                # saves us time if we do not need to perform the full .iloc
+                # method. Hence, it is worth checking if the next measurement is
+                # valid.
+                if mask_next:
+                    next_index = i + 1
+                    next_value[i] = succ
+                else:
+                    next_index = next((j+i+2 for j, value in enumerate(mask.iloc[i+2:]) if value),
+                                      np.nan)
+                    if next_index - i <= self.parms.diff_max_valid_time*self.frequency:
+                        next_value[i] = data.iat[next_index]
+                    else:
+                        next_value[i] = np.nan
+            else:
+                next_value[i] = next_value[i-1]
 
-        If any of the following is true, a False is returned.
-        - The current distance toward the right lane line is larger than or
-          equal to 0.
-        - The previous distance toward the left lane line is smaller than 0.
-        - The absolute difference between the current and previous distance
-          should be smaller than "lane_change_threshold".
-        - The lateral difference is NaN.
-        - The lateral difference is larger than minus "lane_conf_threshold"
+        # Set the last row
+        if mask.iat[-1]:
+            prev_value[-1] = data.iat[-1]
+        else:
+            prev_value[-1] = prev_value[-2]
+        next_value[-1] = np.nan
 
-        :param current_y: The current distance toward the right lane line.
-        :param previous_y: The previous distance toward the right lane line.
-        :param lateral_difference: The difference in lateral distance to right
-                                   lane compared to "time_speed_difference" ago.
-        :return: A boolean whether there is a potential lane change.
-        """
-        return self._potential_left(-current_y, -previous_y, -lateral_difference)
+        # Set the columns in the dataframe.
+        self.set("{:s}_prev".format(name), prev_value)
+        self.set("{:s}_next".format(name), next_value)
+        self.set("{:s}_diff".format(name), next_value-prev_value)
 
     def _start_lane_change(self, i: float, event: Tuple[float, LateralActivityHost],
-                           lateral_distance: pd.Series, lateral_difference: pd.Series) \
+                           lateral_distance: pd.Series, y_dot: Tuple[pd.Series, pd.Series]) \
             -> Tuple[float, bool]:
         """ Compute the start of a potential lane change.
 
@@ -469,17 +498,21 @@ class ActivityDetector:
         :param lateral_distance: The lateral distance toward the left side in
                                  case of a left lane change or right side in
                                  case of a right lane change.
-        :param lateral_difference: The difference of the lateral_distance
-                                   compared to "time_speed_difference" ago.
+        :param left_dot: The "speed" of the lateral_distance toward left line.
+        :param right_dot: The "speed" of the lateral distance toward right line.
         :return: starting index and whether there is a lane change.
         """
         begin_i = np.max((i - self.parms.max_time_host_lane_change, event[0]))
-        begin_i = next((j for j, value in zip(lateral_difference[begin_i:i].index[::-1],
-                                              lateral_difference[begin_i:i].values[::-1]) if
-                        value > -self.parms.lane_conf_threshold), None)
+        begin_i = next((j for j, left, right in zip(y_dot[0][begin_i:i].index[::-1],
+                                                    y_dot[0][begin_i:i].values[::-1],
+                                                    y_dot[1][begin_i:i].values[::-1]) if
+                        left < self.parms.lane_conf_threshold or
+                        right < self.parms.lane_conf_threshold), None)
         if begin_i is None:
             return 0, False
 
+        # Is the following really needed? Not sure when the condition is
+        # triggered...
         begin_i = lateral_distance[np.max((begin_i - self.parms.lane_change_magic_time,
                                            self.data.index[0])):begin_i].idxmax()
         next_y = lateral_distance.iat[self.data.index.get_loc(begin_i) + 1]
