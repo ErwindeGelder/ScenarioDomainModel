@@ -636,7 +636,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
+<node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
 <node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1534391906453" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
@@ -1673,6 +1673,26 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Splitting emergency tests from behavioural tests" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1869982012" CREATED="1576588788936" MODIFIED="1576588806166">
+<node TEXT="Strategy and architecture of a safety concept" ID="ID_849120556" CREATED="1576588816216" MODIFIED="1576588875230" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/402%20Strategy%20and%20Architecture%20of%20a%20Safety%20Concept.pdf">
+<attribute NAME="key" VALUE="horwick2010strategy"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Strategy and Architecture of a Safety Concept for Fully Automatic and Autonomous Driving Assistance Systems"/>
+<attribute NAME="authors" VALUE="H{\&quot;o}rwick, Markus and Siedersberger, Karl-Heinz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="46A95DC96DD3B013CEEB265D1A6AF8CB7222A6CFA4FD6412BC55B2103A3525">
+    <pdf_title>Strategy and Architecture of a Safety Concept for Fully Automatic and Autonomous Driving Assistance Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A fail-operational truck platooning architecture" ID="ID_411767398" CREATED="1576589317161" MODIFIED="1576590236596" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/403%20A%20Fail-Operational%20Truck%20Platooning%20Architecture.pdf">
+<attribute NAME="key" VALUE="bijlsma2017failoperational"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="A Fail-Operational Truck Platooning Architecture"/>
+<attribute NAME="authors" VALUE="Bijlsma, Tjerk and Hendriks, Teun"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1CA5AABB9117F1176EC8678350456706221A33491A7F2A58D198AEC0E78E3A">
+    <pdf_title>A Fail-Operational Truck Platooning Architecture</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Taxonomy regarding test scenarios. &apos;Famous&apos; Bosch paper." ID="ID_1394606892" CREATED="1507692581524" MODIFIED="1534391955124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
@@ -2307,6 +2327,34 @@
 <attribute NAME="authors" VALUE="Grappiolo, Corrado and Verwielen, Eline and Noorman, Nils"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="189D7D1E49BD9217D5C4C8911D0305F5E9728F70EB445A2B2ADF614BD6AB2">
     <pdf_title>The Growing N-Gram Algorithm: A Novel Approach to String Clustering</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="N-Gram-Based Text Categorization - Misschien niet het beste paper..." ID="ID_1824700273" CREATED="1577091272986" MODIFIED="1577091543402" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/404%20N-Gram-Based%20Text%20Categorization.pdf">
+<attribute NAME="key" VALUE="cavnar1994ngram"/>
+<attribute NAME="year" VALUE="1994"/>
+<attribute NAME="title" VALUE="N-Gram-Based Text Categorization"/>
+<attribute NAME="authors" VALUE="Cavnar, William B and Trenkle, John M and others"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4820C185C72172BC9EA3F9A5E262BC9BE10AF06D43C782DA5E2E152E285">
+    <pdf_title>N-Gram-Based Text Categorization</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Using Superimposed Coding Of N-Gram Lists For Efficient Inexact Matching" ID="ID_1982285498" CREATED="1577093294912" MODIFIED="1577093376968" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/405%20Using%20Superimposed%20Coding%20Of%20N-Gram%20Lists%20For%20Efficient%20Inexact%20Matching.pdf">
+<attribute NAME="key" VALUE="cavnar1992using"/>
+<attribute NAME="year" VALUE="1992"/>
+<attribute NAME="title" VALUE="Using Superimposed Coding of N-Gram Lists for Efficient Inexact Matching"/>
+<attribute NAME="authors" VALUE="Cavnar, William B and Vayda, Alan J"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="432092C49E59BCAFF95E33F956A3AB182ADB30DE9A29083D1EDD630265FE918">
+    <pdf_title>Using Superimposed Coding Of N-Gram Lists For Efficient Inexact Matching</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Experiments in Text Recognition with Binary n-Gram and Viterbi Algorithms" ID="ID_1174996421" CREATED="1577093655885" MODIFIED="1577093761418" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/406%20Experiments%20in%20Text%20Recognition%20with%20Binary%20n-Gram%20and%20Viterbi%20Algorithms.pdf">
+<attribute NAME="key" VALUE="hull1982experiments"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Pattern Analysis and Machine Intelligence"/>
+<attribute NAME="year" VALUE="1982"/>
+<attribute NAME="title" VALUE="Experiments in Text Recognition with Binary n-Gram and Viterbi Algorithms"/>
+<attribute NAME="authors" VALUE="Hull, Jonathan J. and Srihari, Sargur N."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="286BE52346EDE6E7418C9E97F2AC3C1921C3B2CBF4387C165CBEEBF238925F4">
+    <pdf_title>Recognition Binary</pdf_title>
 </pdf_annotation>
 </node>
 </node>
