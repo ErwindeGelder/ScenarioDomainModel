@@ -5,6 +5,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2019 11 01 Add arguments and the possibility to convert one single file.
+2019 12 26 Use the data handler and fix targets that get lost in blind spot.
 """
 
 import argparse
@@ -13,6 +14,8 @@ import multiprocessing as mp
 import os
 from tqdm import tqdm
 from mat2df import Mat2DF
+from data_handler import DataHandler
+from target_gluer import merge_targets
 
 
 PARSER = argparse.ArgumentParser(description="Convert .mat data to .hdf5")
@@ -57,17 +60,21 @@ def conv_mat_file(matfile: str) -> None:
     conv = Mat2DF(matfile)
     try:
         conv.convert()
-    except Exception as e:
+    except Exception as exception:
         print("Error at matfile: {:s}".format(matfile))
-        raise e
+        raise exception
     conv.data = conv.data.drop(columns=REMOVE)
     conv.data = conv.data.rename(columns=RENAME)
     fix_gps(conv)
     conv.data["Time"] = conv.data.index.values
     conv.data.index = (conv.data.index - conv.data.index[0]) / 1e9
+
+    # Safe to HDF5 file.
     filename = os.path.join("data", "1_hdf5",
                             "{:s}.hdf5".format(os.path.splitext(os.path.basename(matfile))[0]))
-    conv.save2hdf5(filename, complevel=ARGS.complevel)
+    data_handler = DataHandler(conv.data)
+    merge_targets(data_handler)
+    data_handler.to_hdf(filename, complevel=ARGS.complevel)
 
 
 def fix_gps(conv: Mat2DF) -> None:
