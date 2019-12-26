@@ -5,6 +5,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2019 12 15 Group data by target id to create separate dataframe for each target.
+2019 12 19 Provide the option to give the frequency.
 """
 
 from typing import Any, List, Union, Tuple
@@ -16,29 +17,30 @@ from tqdm import tqdm
 class DataHandler:
     """ Class for handling a dataframe for scenario mining purposes.
 
-    The dataframe needs to have the field 'Time'. Furthermore.
-
     Attributes:
         data: A pandas dataframe containing all the data OR a path to an HDF5.
         frequency: The sample frequency of the data.
         n_trackers: The number of trackers (might be 0).
         targets: List of dataframes of the targets.
     """
-    def __init__(self, data: Union[pd.DataFrame, str], targets: List[pd.DataFrame] = None):
+    def __init__(self, data: Union[pd.DataFrame, str], frequency: int = None):
         if isinstance(data, str):
             # If a string is given, we assume that the string refers to the file with the data.
             self.read_hdf(data)
         else:
             self.data = data
-            self.targets = [] if targets is None else targets  # type: List[pd.DataFrame]
 
         # Converting the frequency to an int improves speed by ~25 %.
-        self.frequency = np.round(1e9 / np.mean(np.diff(self.get('Time')))).astype(int)
+        if frequency is None:
+            self.frequency = np.round(1 / np.mean(np.diff(self.data.index))).astype(int)
+        else:
+            self.frequency = frequency
 
         # Determine the number of targets.
         self.n_trackers = 0
         while self.target_signal(self.n_trackers, "id") in self.data.keys():
             self.n_trackers += 1
+        self.targets = self.create_target_dfs()
 
     def get(self, signal: str, index: float = None):
         """ Get certain data by its name.
@@ -80,7 +82,9 @@ class DataHandler:
                       passed.
         :return: The numpy array of the data.
         """
-        return self.get(self.target_signal(target_index, signal), index)
+        if index is None:
+            return self.targets[target_index][signal]
+        return self.targets[target_index].at[index, signal]
 
     def set_t(self, target_index: int, signal: str, data: Union[np.ndarray, float, str]) -> str:
         """ Set target data.
@@ -90,8 +94,7 @@ class DataHandler:
         :param data: The data that is set.
         :return: The name of the field of the dataframe.
         """
-        signal = self.target_signal(target_index, signal)
-        self.data[signal] = data
+        self.targets[target_index][signal] = data
         return signal
 
     def get_from_row(self, row, signal, target_index: int = None) -> Any:
@@ -193,8 +196,12 @@ class DataHandler:
 
         return set_to_tracker, switches
 
-    def create_target_dfs(self) -> None:
+    def create_target_dfs(self) -> List[pd.DataFrame]:
         """ Create separate dataframes for all targets. """
+        # No need to do this if we do not have any tracker.
+        if self.n_trackers == 0:
+            return []
+
         # Collect all data from the trackers.
         signals = self.get_target_signals()
         dfsubs = []
@@ -209,7 +216,9 @@ class DataHandler:
         # Stack all data and then group it by id.
         targets = pd.concat(dfsubs)
         targets = list(targets.groupby("id"))[1:]  # Skip the first as it refers to id=0 (no target)
-        self.targets = [target[1] for target in targets]
+        targets = [target[1] for target in targets]
+        targets = [target.sort_index() for target in targets]
+        return targets
 
     def to_hdf(self, path: str, complevel: int = 4) -> None:
         """ Save the data to an HDF5 file.
@@ -219,21 +228,9 @@ class DataHandler:
         """
         self.data.to_hdf(path, "Data", mode="w", complevel=complevel)
 
-        # If we have separate dataframes for the targets, these will be stored in a big dataframe.
-        if self.targets:
-            dfbig = pd.concat(self.targets)
-            dfbig.to_hdf(path, "Targets", mode="a", complevel=complevel)
-
     def read_hdf(self, path: str) -> None:
         """ Load the data (and targets) from a HDF5 file.
 
         :param path: The path to the HDF5 file.
         """
         self.data = pd.read_hdf(path, key="Data")
-        try:
-            targets = pd.read_hdf(path, key="Targets")
-            targets = list(targets.groupby("id"))
-            self.targets = [target[1] for target in targets]
-        except KeyError:
-            # Apparently, there is no target data.
-            pass
