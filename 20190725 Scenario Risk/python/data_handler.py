@@ -6,6 +6,7 @@ Author(s): Erwin de Gelder
 Modifications:
 2019 12 15 Group data by target id to create separate dataframe for each target.
 2019 12 19 Provide the option to give the frequency.
+2019 12 26 Save targets too.
 """
 
 from typing import Any, List, Union, Tuple
@@ -23,7 +24,9 @@ class DataHandler:
         n_trackers: The number of trackers (might be 0).
         targets: List of dataframes of the targets.
     """
-    def __init__(self, data: Union[pd.DataFrame, str], frequency: int = None):
+    def __init__(self, data: Union[pd.DataFrame, str], targets: List[pd.DataFrame] = None,
+                 frequency: int = None):
+        self.targets = targets
         if isinstance(data, str):
             # If a string is given, we assume that the string refers to the file with the data.
             self.read_hdf(data)
@@ -36,11 +39,14 @@ class DataHandler:
         else:
             self.frequency = frequency
 
-        # Determine the number of targets.
+        # Determine the number of trackers.
         self.n_trackers = 0
         while self.target_signal(self.n_trackers, "id") in self.data.keys():
             self.n_trackers += 1
-        self.targets = self.create_target_dfs()
+
+        # If targets are not already given, get them from the trackers.
+        if self.targets is None:
+            self.targets = self.create_target_dfs()
 
     def get(self, signal: str, index: float = None):
         """ Get certain data by its name.
@@ -227,10 +233,18 @@ class DataHandler:
         :param complevel: Compression level, default=4.
         """
         self.data.to_hdf(path, "Data", mode="w", complevel=complevel)
+        if self.targets:
+            targets = pd.concat(self.targets)
+            targets.to_hdf(path, "Targets", mode="a", complevel=complevel)
 
     def read_hdf(self, path: str) -> None:
         """ Load the data (and targets) from a HDF5 file.
 
         :param path: The path to the HDF5 file.
         """
-        self.data = pd.read_hdf(path, key="Data")
+        hdf = pd.HDFStore(path, 'r')
+        self.data = hdf["Data"]
+        if "Targets" in hdf:
+            targets = hdf["Targets"]
+            targets = list(targets.groupby("id"))
+            self.targets = [target[1] for target in targets]
