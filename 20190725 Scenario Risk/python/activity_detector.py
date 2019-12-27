@@ -8,7 +8,7 @@ Modifications:
 2019 11 27 Make separate function to get the name of the signal associated with a target.
 2019 12 08 Improve lateral activity detection for host. For targets, it does not work yet.
 2019 12 09 Move more general functions to a superclass.
-2019 12 26 Lateral events for targets improved.
+2019 12 27 Lateral events for targets improved.
 """
 
 from typing import Callable, List, NamedTuple, Tuple, Union
@@ -706,7 +706,7 @@ class ActivityDetector(DataHandler):
                 # Why is goal_y divided by 2?
                 return 0, False
             if distance > fromgoal.from_y:
-                if begin_j == self.data.index[0]:
+                if begin_j == lineinfo.distance.index[0]:  # (= first index of target).
                     start_found = True
                     break
                 prev_begin_j = self.data.index[self.data.index.get_loc(begin_j) - 1]
