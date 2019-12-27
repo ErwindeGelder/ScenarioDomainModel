@@ -7,6 +7,7 @@ Modifications:
 2019 12 15 Group data by target id to create separate dataframe for each target.
 2019 12 19 Provide the option to give the frequency.
 2019 12 26 Save targets too.
+2019 12 27 Add functionality for computed next/previous valid measurement.
 """
 
 from typing import Any, List, Union, Tuple
@@ -225,6 +226,86 @@ class DataHandler:
         targets = [target[1] for target in targets]
         targets = [target.sort_index() for target in targets]
         return targets
+
+    def set_diff(self, mask: pd.Series, name: str, max_valid_time: float,
+                 i_target: int = None) -> None:
+        """ Compute the difference between consecutive valid measurements.
+
+        The valid input is determined by the vector `mask`. The following fields
+        are created:
+        - <name>_prev: The previous valid value.
+        - <name>_next: The next valid value that is at least one sample ahead.
+        - <name>_diff: The difference between the previous two.
+        If the time between the current sample and the last (next) sample is
+        more that <max_valid_time>, the last (next) sample is set to np.nan.
+        By default, the host data is changed. If the data, however, concerns a
+        target, its index needs to be set by <i_target>. In that case, the data
+        "targets[i_target]" will be updated.
+
+        :param mask: Indicating which values are valid.
+        :param name: The name to give to the new signals.
+        :param max_valid_time: The maximum time that a signal can be invalid.
+        :param i_target: If data concerns a target, the index of the target.
+        """
+        data = self.data[name] if i_target is None else self.targets[i_target][name]
+        prev_value, next_value = self._compute_prev_and_next(data, mask, max_valid_time)
+
+        # Set the columns in the dataframe.
+        if i_target is None:
+            self.set("{:s}_prev".format(name), prev_value)
+            self.set("{:s}_next".format(name), next_value)
+            self.set("{:s}_diff".format(name), next_value-prev_value)
+        else:
+            self.set_t(i_target, "{:s}_prev".format(name), prev_value)
+            self.set_t(i_target, "{:s}_next".format(name), next_value)
+            self.set_t(i_target, "{:s}_diff".format(name), next_value-prev_value)
+
+    def _compute_prev_and_next(self, data: pd.Series, mask: pd.Series, max_valid_time: float):
+        # Initialize vectors and indices for previous and next value.
+        prev_value = np.zeros(len(data))
+        next_value = np.zeros(len(data))
+        prev_index = -max_valid_time*self.frequency - 1  # Such that it is "too long ago".
+        next_index = np.nan
+        last_valid_value = np.nan
+
+        # Loop through the vector
+        for i, (mask_now, mask_succ, now, succ) in enumerate(zip(mask.iloc[:-1], mask.iloc[1:],
+                                                                 data.iloc[:-1], data.iloc[1:])):
+            if mask_now:
+                prev_index = i
+                prev_value[i] = now
+                last_valid_value = now
+            else:
+                if i - prev_index <= max_valid_time*self.frequency:
+                    prev_value[i] = last_valid_value
+                else:
+                    prev_value[i] = np.nan
+            if not next_index > i:
+                # The following if is not really needed, because this can be done with the `next`
+                # statement in the `else` code. However, because it happens so often that the next
+                # sample is valid, is saves us time if we do not need to perform the full .iloc
+                # method. Hence, it is worth checking if the next measurement is valid.
+                if mask_succ:
+                    next_index = i + 1
+                    next_value[i] = succ
+                else:
+                    next_index = next((j+i+2 for j, value in enumerate(mask.iloc[i+2:]) if value),
+                                      np.nan)
+                    if np.isnan(next_index) or next_index - i > max_valid_time*self.frequency:
+                        next_value[i] = np.nan
+                    else:
+                        next_value[i] = data.iat[next_index]
+            else:
+                next_value[i] = next_value[i-1]
+
+        # Set the last row
+        if mask.iat[-1]:
+            prev_value[-1] = data.iat[-1]
+        else:
+            prev_value[-1] = prev_value[-2]
+        next_value[-1] = np.nan
+
+        return prev_value, next_value
 
     def to_hdf(self, path: str, complevel: int = 4) -> None:
         """ Save the data to an HDF5 file.
