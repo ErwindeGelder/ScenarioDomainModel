@@ -302,7 +302,7 @@ class DataHandler:
         if mask.iat[-1]:
             prev_value[-1] = data.iat[-1]
         else:
-            prev_value[-1] = prev_value[-2]
+            prev_value[-1] = prev_value[-2] if len(data) > 1 else np.nan
         next_value[-1] = np.nan
 
         return prev_value, next_value
