@@ -15,20 +15,23 @@ from options import Options
 
 class TargetGluerOptions(Options):
     """ Different configuration options for the target gluer. """
-    tsec_v_avg = 1  #
-    t_min_available = 0.5  # [s]
-    x_min_visible = -10  # min x distance at which the target is (still) visible
-    x_max_visible = 20  # max x distance at which the target is (still) visible
-    minimum_speed = 1
+    tsec_v_avg: float = 1  #
+    t_min_available: float = 0.5  # [s]
+    x_min_visible: float = -10  # min x distance at which the target is (still) visible
+    x_max_visible: float = 20  # max x distance at which the target is (still) visible
+    minimum_speed: float = 1
 
-    t_max_gone = 15  # [s]
-    x_deviation = 5  # [m]
-    v_deviation = 5  # [m/s]
+    t_max_gone: float = 15  # [s]
+    x_deviation: float = 5  # [m]
+    v_deviation: float = 5  # [m/s]
 
-    fieldname_host_vx = "Host_vx"
-    fieldname_target_vx = "vx"
-    fieldname_target_dx = "dx"
-    fieldname_target_dy = "dy"
+    fieldname_host_vx: str = "Host_vx"
+    fieldname_target_vx: str = "vx"
+    fieldname_target_dx: str = "dx"
+    fieldname_target_dy: str = "dy"
+    fieldname_target_id: str = "id"
+
+    verbose: bool = False
 
 
 def merge_targets(datahandler: DataHandler, options: TargetGluerOptions = None) -> None:
@@ -107,7 +110,12 @@ class _TargetGluer:
 
         # Merge the targets and remove the candidate from the list.
         candidate = self.targets[i_best_candidate]
-        candidate['id'] = target['id'].values[0]
+        if self.options.verbose:
+            print("Merge target {:.0f} with target {:.0f}.".
+                  format(candidate[self.options.fieldname_target_id].values[0],
+                         target[self.options.fieldname_target_id].values[0]))
+        candidate[self.options.fieldname_target_id] = \
+            target[self.options.fieldname_target_id].values[0]
         new_index = np.concatenate((target.index,
                                     np.round(np.arange(info.last_t, candidate.index[0],
                                                        self.timestep)[1:], 2),
