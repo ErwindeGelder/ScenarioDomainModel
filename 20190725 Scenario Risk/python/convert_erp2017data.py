@@ -6,6 +6,7 @@ Author(s): Erwin de Gelder
 Modifications:
 2019 11 01 Add arguments and the possibility to convert one single file.
 2019 12 26 Use the data handler and fix targets that get lost in blind spot.
+2019 12 30 Remove information in trackers as it will be outdated and should not be used.
 """
 
 import argparse
@@ -69,11 +70,20 @@ def conv_mat_file(matfile: str) -> None:
     conv.data["Time"] = conv.data.index.values
     conv.data.index = (conv.data.index - conv.data.index[0]) / 1e9
 
-    # Safe to HDF5 file.
-    filename = os.path.join("data", "1_hdf5",
-                            "{:s}.hdf5".format(os.path.splitext(os.path.basename(matfile))[0]))
+    # Merge targets that get lost in the blind spot.
     data_handler = DataHandler(conv.data)
     merge_targets(data_handler)
+
+    # Remove the data in the trackers, since it is outdated anyway.
+    signals = data_handler.get_target_signals()
+    remove = []
+    for j in range(data_handler.n_trackers):
+        remove += [data_handler.target_signal(j, signal) for signal in signals]
+    data_handler.data = data_handler.data.drop(columns=remove)
+
+    # Safe to HDF file.
+    filename = os.path.join("data", "1_hdf5",
+                            "{:s}.hdf5".format(os.path.splitext(os.path.basename(matfile))[0]))
     data_handler.to_hdf(filename, complevel=ARGS.complevel)
 
 
