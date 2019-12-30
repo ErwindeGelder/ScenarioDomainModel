@@ -4,6 +4,7 @@ Creation date: 2019 12 24
 Author(s): Erwin de Gelder
 
 Modifications:
+2019 12 30 Change the way options are specified.
 """
 
 from typing import List, NamedTuple
@@ -13,7 +14,7 @@ from data_handler import DataHandler
 from options import Options
 
 
-class TargetGluerOptions(Options):
+class _TargetGluerOptions(Options):
     """ Different configuration options for the target gluer. """
     tsec_v_avg: float = 1  #
     t_min_available: float = 0.5  # [s]
@@ -34,18 +35,52 @@ class TargetGluerOptions(Options):
     verbose: bool = False
 
 
-def merge_targets(datahandler: DataHandler, options: TargetGluerOptions = None) -> None:
+def merge_targets(datahandler: DataHandler, **kwargs) -> None:
     """ Merge targets if they get lost in the sensors' blind spot.
 
     The list of the targets will be adjusted. Hence, nothing is returned.
+    With the **kwargs, the way the targets are merged can be specified. The
+    following options are available:
+    - tsec_v_avg: float, default 1
+        The time in seconds over which the speed is averaged at the end and
+        start of a target.
+    - t_min_available: float, default 0.5
+        The minimum time for a target to be considered for merging.
+    - x_min_visible: float, default -10
+        All targets with x < x_min_visible are NOT in the blind spot.
+    - x_max_visible: float, default 20
+        All targets with x > x_max_visible are NOT in the blind spot.
+    - minimum_speed: float, default 1
+        Minimum relative speed for a target vehicle when entering the blind spot
+        to be considered for merging.
+    - t_max_gone: float, default 15
+        The maximum time a target might be out of view.
+    - x_deviation: float, default 5
+        The maximum deviation in x-position for two targets to be considered for
+        merging.
+    - v_deviation: float, default 5
+        The maximum deviation in speed for two targets to be considered for
+        merging.
+    - fieldname_host_vx: str, default "Host_vx"
+        The fieldname for the speed of the host vehicle.
+    - fieldname_target_vx: str, default "vx"
+        The fieldname for the speed of the targets.
+    - fieldname_target_dx: str, default "dx"
+        The fieldname for the relative longitudinal position of the targets.
+    - fieldname_target_dy: str, default "dy"
+        The fieldname for the relative lateral position of the targets.
+    - fieldname_target_id: str, default "id"
+        The fieldname for the ID of the targets.
+    - verbose: bool, default False
+        If True, information is printed (might be useful for inspection).
 
     :param datahandler: handler of the data.
-    :param options: configuration options for the target gluer.
+    :param kwargs: Options for the target merger, see description above.
     """
     host = datahandler.data
     targets = datahandler.targets
     timestep = 1/datahandler.frequency
-    options = TargetGluerOptions() if options is None else options
+    options = _TargetGluerOptions(**kwargs)
     _TargetGluer(host, targets, timestep, options)
 
 
@@ -70,7 +105,7 @@ class _CandidateInfo(NamedTuple):
 class _TargetGluer:
     """ Glue targets together if they get lost in a blind spot. """
     def __init__(self, host: pd.DataFrame, targets: List[pd.DataFrame], timestep: float,
-                 options: TargetGluerOptions):
+                 options: _TargetGluerOptions):
         self.host = host
         self.targets = targets
         self.timestep = timestep
