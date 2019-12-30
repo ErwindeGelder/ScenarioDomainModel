@@ -1,24 +1,26 @@
-% This file was created by matplotlib2tikz v0.6.17.
+% This file was created by matplotlib2tikz v0.7.5.
 \begin{tikzpicture}
 
 \definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
 \definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
 
 \begin{axis}[
-xlabel={$x$},
-ylabel={$f(x)$},
-xmin=-3, xmax=3,
-ymin=-0.0184547497061878, ymax=0.387729405483734,
-width=\figurewidth,
 height=\figureheight,
 tick align=outside,
 tick pos=left,
-xmajorgrids,
+width=\figurewidth,
 x grid style={white!69.01960784313725!black},
+xlabel={\(\displaystyle x\)},
+xmajorgrids,
+xmin=-3, xmax=3,
+xtick style={color=black},
+y grid style={white!69.01960784313725!black},
+ylabel={\(\displaystyle f(x)\)},
 ymajorgrids,
-y grid style={white!69.01960784313725!black}
+ymin=-0.0184547497061878, ymax=0.387729405483734,
+ytick style={color=black}
 ]
-\addplot [line width=2.0pt, color0, forget plot]
+\addplot [line width=2.0pt, color0]
 table {%
 -3 0.0051667463394783
 -2.94 0.00654461880712224
@@ -122,7 +124,7 @@ table {%
 2.94 0.000687333044196065
 3 0.000463503099710759
 };
-\addplot [line width=2.0pt, color1, forget plot]
+\addplot [line width=2.0pt, color1]
 table {%
 -3 8.1664388086521e-06
 -2.94 1.32735202490426e-05
