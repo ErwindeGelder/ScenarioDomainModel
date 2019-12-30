@@ -1602,7 +1602,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Techniques for reducing test load" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1977166650" CREATED="1518001890791" MODIFIED="1518001906064">
+<node TEXT="Techniques for reducing test load" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1977166650" CREATED="1518001890791" MODIFIED="1518001906064">
 <node TEXT="Using Surrogate Models and Stochastic Optimization" ID="ID_1953096285" CREATED="1518001918988" MODIFIED="1534391955046" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/139%20Testing%20of%20AV%20Using%20Surrogate%20Models%20and%20Stochastic%20Optimization.pdf">
 <attribute NAME="key" VALUE="beglerovictesting"/>
 <attribute NAME="title" VALUE="Testing of Autonomous Vehicles Using Surrogate Models and Stochastic Optimization"/>
@@ -1693,7 +1693,8 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Taxonomy regarding test scenarios. &apos;Famous&apos; Bosch paper." ID="ID_1394606892" CREATED="1507692581524" MODIFIED="1534391955124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf">
+<node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1706874002" CREATED="1577703406808" MODIFIED="1577703419977">
+<node TEXT="Taxonomy regarding test scenarios. &apos;Famous&apos; Bosch paper." ID="ID_1394606892" CREATED="1507692581524" MODIFIED="1534391955124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/032%20Testing%20AVs%20Survey%20and%20taxonomy%20on%20existing%20approaches.pdf" MOVED="1577703427260">
 <attribute NAME="key" VALUE="stellet2015taxonomy"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions"/>
@@ -1702,7 +1703,7 @@
     <pdf_title>Testing of advanced driver assistance towards automated driving: A survey and taxonomy on existing approaches and open questions</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Review on different methods for effectiveness assessment of ADAS (P.E.A.R.S.)" ID="ID_1895491912" CREATED="1510633058460" MODIFIED="1534391955358" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
+<node TEXT="Review on different methods for effectiveness assessment of ADAS (P.E.A.R.S.)" ID="ID_1895491912" CREATED="1510633058460" MODIFIED="1534391955358" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf" MOVED="1577703427280">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Prospective Effectiveness Assessment of {ADAS} and Active Safety Systems via Virtual Simulation: A Review of the Current Practices"/>
@@ -1711,7 +1712,7 @@
     <pdf_title>Alvarez 1</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ex-ante assessment of the safety effects of intelligent transport systems" ID="ID_1214203810" CREATED="1511347293839" MODIFIED="1534391955327" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/056%20Ex-ante%20assessment%20of%20the%20safety%20effects%20of%20intelligent%20transport%20systems.pdf">
+<node TEXT="Ex-ante assessment of the safety effects of intelligent transport systems" ID="ID_1214203810" CREATED="1511347293839" MODIFIED="1534391955327" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/056%20Ex-ante%20assessment%20of%20the%20safety%20effects%20of%20intelligent%20transport%20systems.pdf" MOVED="1577703427305">
 <attribute NAME="key" VALUE="kulmala2010exanteassessment"/>
 <attribute NAME="journal" VALUE="Accident Analysis \&amp; Prevention"/>
 <attribute NAME="year" VALUE="2010"/>
@@ -1721,7 +1722,7 @@
     <pdf_title>Accident Analysis and Prevention</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Safety Performance Assessment of AD: Simulation as Knowledge Synthesis" ID="ID_1264696151" CREATED="1512378938517" MODIFIED="1534391955218" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/066%20Safety%20Performance%20Assessment%20of%20AD%20in%20Traffic.pdf">
+<node TEXT="Safety Performance Assessment of AD: Simulation as Knowledge Synthesis" ID="ID_1264696151" CREATED="1512378938517" MODIFIED="1534391955218" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/066%20Safety%20Performance%20Assessment%20of%20AD%20in%20Traffic.pdf" MOVED="1577703427320">
 <attribute NAME="key" VALUE="Helmer2017safety"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Safety Performance Assessment of Assisted and Automated Driving in Traffic: Simulation as Knowledge Synthesis"/>
@@ -1730,7 +1731,7 @@
     <pdf_title>Safety Performance Assessment of Assisted and Automated Driving in Traffic: Simulation as Knowledge Synthesis</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="eVALUE: Test Programme for Active Vehicle Safety-Detailed Discussion" ID="ID_1066674668" CREATED="1512555157446" MODIFIED="1534391955015" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/072%20eVALUE%20project.pdf">
+<node TEXT="eVALUE: Test Programme for Active Vehicle Safety-Detailed Discussion" ID="ID_1066674668" CREATED="1512555157446" MODIFIED="1534391955015" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/072%20eVALUE%20project.pdf" MOVED="1577703427340">
 <attribute NAME="key" VALUE="lesemann2011test"/>
 <attribute NAME="year" VALUE="2011"/>
 <attribute NAME="title" VALUE="A Test Programme for Active Vehicle Safety-Detailed Discussion of the e{VALUE} Testing Protocols for Longitudinal and Stability Functionality"/>
@@ -1739,7 +1740,7 @@
     <pdf_title>A TEST PROGRAMME FOR ACTIVE VEHICLE SAFETY &#x2013; DETAILED DISCUSSION OF THE EVALUE TESTING PROTOCOLS FOR LONGITUDINAL AND STABILITY FUNCTIONALITY</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="The release of AV (more general about what has to be done before AVs can be released)" ID="ID_208176436" CREATED="1512629701827" MODIFIED="1534391955093" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
+<node TEXT="The release of AV (more general about what has to be done before AVs can be released)" ID="ID_208176436" CREATED="1512629701827" MODIFIED="1534391955093" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf" MOVED="1577703427360">
 <attribute NAME="key" VALUE="wachenfeld2016release"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="The Release of Autonomous Vehicles"/>
@@ -1748,7 +1749,7 @@
     <pdf_title>The Release of Autonomous Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Design and validation of ADAS, PhD thesis from Olaf Gietelink" ID="ID_589283699" CREATED="1516270041671" MODIFIED="1534391955249" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/028%20Development%20of%20advanced%20driver%20assistance%20systems%20with%20vehicle%20hardware%20in%20the%20loop%20simulations.pdf">
+<node TEXT="Design and validation of ADAS, PhD thesis from Olaf Gietelink" ID="ID_589283699" CREATED="1516270041671" MODIFIED="1534391955249" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/028%20Development%20of%20advanced%20driver%20assistance%20systems%20with%20vehicle%20hardware%20in%20the%20loop%20simulations.pdf" MOVED="1577703427375">
 <attribute NAME="key" VALUE="gietelink2006development"/>
 <attribute NAME="journal" VALUE="Vehicle System Dynamics"/>
 <attribute NAME="year" VALUE="2006"/>
@@ -1758,7 +1759,7 @@
     <pdf_title>Development of advanced driver assistance systems with vehicle hardware-in-the-loop simulations</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="CETRAN" ID="ID_191790954" CREATED="1526434317311" MODIFIED="1534391955280" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf">
+<node TEXT="CETRAN" ID="ID_191790954" CREATED="1526434317311" MODIFIED="1534391955280" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/185%20ITS_AP_Fukuoka_2018_paper_CETRAN.pdf" MOVED="1577703427395">
 <attribute NAME="key" VALUE="ploeg2018cetran"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Scenario-Based Safety Assessment Framework for Automated Vehicles"/>
@@ -1766,6 +1767,16 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="6B31F33616AE27EBD54FD7549B19B0DFCC869DAB57C34B572167C3BE14A286">
     <pdf_title>ITS AP Forum 2018 Fukuoka</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="Towards an ODD that supports safety argumentation of an ADS" ID="ID_947631091" CREATED="1577703431027" MODIFIED="1577703513600" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/407%20Towards%20an%20ODD%20that%20supports%20safety%20argumentation%20of%20an%20ADS.pdf">
+<attribute NAME="key" VALUE="gyllenhammartowards"/>
+<attribute NAME="title" VALUE="Towards an Operational Design Domain That Supports the Safety Argumentation of an Automated Driving System"/>
+<attribute NAME="authors" VALUE="Gyllenhammar, Magnus and Johansson, Rolf and Warg, Fredrik and Chen, DeJiu and Heyn, Hans-Martin and Sanfridson, Martin and S{\&quot;o}derberg, Jan and Thors{\&apos;e}n, Anders and Ursing, Stig"/>
+<attribute NAME="year" VALUE="2020"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="23B889F2C75BC3E2EC2186A244A08C717C8173EA89BB52BD167FB3984514DA5">
+    <pdf_title>Towards an Operational Design Domain That Supports the Safety Argumentation of an Automated Driving System</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1534304355670" HGAP="70" VSHIFT="-2" MOVED="1534304246551">
