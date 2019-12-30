@@ -7,6 +7,7 @@ Modifications:
 2019 08 28 Automatically save updated dataframe. Loop through all dataframes.
 2019 10 22 Use multiprocessing to speed up the analysis.
 2019 11 01 Add possibility to mark highway data.
+2019 12 30 Use updated version of the activity detector.
 """
 
 
@@ -14,7 +15,6 @@ import argparse
 from glob import glob
 import os
 import multiprocessing as mp
-import pandas as pd
 from tqdm import tqdm
 from activity_detector import ActivityDetector
 from mark_highway import HighwayMarker
@@ -40,26 +40,26 @@ def process_file(datafile: str) -> None:
 
     :param datafile: Path of the to-be-processed file.
     """
-    dataframe = pd.read_hdf(datafile)  # type: pd.DataFrame
+    try:
+        activity_detector = ActivityDetector(datafile)
+        if ARGS.hostactivities or ARGS.targetactivities or ARGS.targetstates or ARGS.everything:
+            if ARGS.hostactivities or ARGS.everything:
+                activity_detector.set_lon_activities_host()
+                activity_detector.set_lat_activities_host()
+            if ARGS.targetactivities or ARGS.everything:
+                activity_detector.set_target_activities()
+            if ARGS.targetstates or ARGS.everything:
+                activity_detector.set_states_targets()
+                activity_detector.set_lead_vehicle()
+        if ARGS.markhighway or ARGS.everything:
+            highway_marker = HighwayMarker(activity_detector.data)
+            highway_marker.mark_highway()
 
-    if ARGS.hostactivities or ARGS.targetactivities or ARGS.targetstates or ARGS.everything:
-        activity_detector = ActivityDetector(dataframe)
-        if ARGS.hostactivities or ARGS.everything:
-            activity_detector.set_lon_activities_host()
-            activity_detector.set_lat_activities_host()
-        if ARGS.targetactivities or ARGS.everything:
-            for i in range(activity_detector.parms.n_targets):
-                activity_detector.set_target_activities(i)
-        if ARGS.targetstates or ARGS.everything:
-            for i in range(activity_detector.parms.n_targets):
-                activity_detector.set_states_target_i(i)
-            activity_detector.set_lead_vehicle()
-    if ARGS.markhighway or ARGS.everything:
-        highway_marker = HighwayMarker(dataframe)
-        highway_marker.mark_highway()
-
-    dataframe.to_hdf(os.path.join(ARGS.folder, os.path.basename(datafile)), 'Data',
-                     mode='w', complevel=ARGS.complevel)
+        activity_detector.to_hdf(os.path.join(ARGS.folder, os.path.basename(datafile)),
+                                 complevel=ARGS.complevel)
+    except Exception as exception:
+        print("Error at file: {:s}".format(datafile))
+        raise exception
 
 
 if __name__ == "__main__":
