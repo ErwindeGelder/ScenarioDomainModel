@@ -8,6 +8,7 @@ Modifications:
 2019 12 19 Provide the option to give the frequency.
 2019 12 26 Save targets too.
 2019 12 27 Add functionality for computed next/previous valid measurement.
+2019 12 30 Add functionality for converting big target dataframe to list of targets.
 """
 
 from typing import Any, List, Union, Tuple
@@ -204,7 +205,10 @@ class DataHandler:
         return set_to_tracker, switches
 
     def create_target_dfs(self) -> List[pd.DataFrame]:
-        """ Create separate dataframes for all targets. """
+        """ Create separate dataframes for all targets.
+
+        :return: List of dataframes where each dataframe refers to a target.
+        """
         # No need to do this if we do not have any tracker.
         if self.n_trackers == 0:
             return []
@@ -221,10 +225,28 @@ class DataHandler:
             dfsubs.append(dfsub)
 
         # Stack all data and then group it by id.
-        targets = pd.concat(dfsubs)
-        targets = list(targets.groupby("id"))[1:]  # Skip the first as it refers to id=0 (no target)
+        targets = pd.concat(dfsubs, sort=False)
+        return self._big_target_df_to_list(targets, skip_first=True, sort_index=True)
+
+    @staticmethod
+    def _big_target_df_to_list(targets: pd.DataFrame, skip_first: bool = False,
+                               sort_index: bool = False) -> List[pd.DataFrame]:
+        """ Convert a dataframe with all target information to separate dfs.
+
+        Each dataframe has only one value of the column "id". Therefore, each
+        dataframe should refer to only one target vehicle.
+
+        :param targets: Initial dataframe with all target information.
+        :param skip_first: Whether to skip the first target.
+        :param sort_index: Whether to sort the index for each target.
+        :return: The list of dataframes.
+        """
+        targets = list(targets.groupby("id"))
+        if skip_first:
+            targets = targets[1:]  # Skip the first as it might refer to id=0 (no target).
         targets = [target[1] for target in targets]
-        targets = [target.sort_index() for target in targets]
+        if sort_index:
+            targets = [target.sort_index() for target in targets]
         return targets
 
     def set_diff(self, mask: pd.Series, name: str, max_valid_time: float,
@@ -315,7 +337,7 @@ class DataHandler:
         """
         self.data.to_hdf(path, "Data", mode="w", complevel=complevel)
         if self.targets:
-            targets = pd.concat(self.targets)
+            targets = pd.concat(self.targets, sort=False)
             targets.to_hdf(path, "Targets", mode="a", complevel=complevel)
 
     def read_hdf(self, path: str) -> None:
@@ -323,9 +345,7 @@ class DataHandler:
 
         :param path: The path to the HDF5 file.
         """
-        hdf = pd.HDFStore(path, 'r')
-        self.data = hdf["Data"]
-        if "Targets" in hdf:
-            targets = hdf["Targets"]
-            targets = list(targets.groupby("id"))
-            self.targets = [target[1] for target in targets]
+        with pd.HDFStore(path, 'r') as hdf:
+            self.data = hdf["Data"]
+            if "Targets" in hdf:
+                self.targets = self._big_target_df_to_list(hdf["Targets"])
