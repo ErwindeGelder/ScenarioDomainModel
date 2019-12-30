@@ -9,6 +9,7 @@ Modifications:
 2019 12 08 Improve lateral activity detection for host. For targets, it does not work yet.
 2019 12 09 Move more general functions to a superclass.
 2019 12 27 Lateral events for targets improved.
+2019 12 30 Fix tags for target state (longitudinal, lateral) and lead vehicle.
 """
 
 from typing import Callable, List, NamedTuple, Tuple, Union
@@ -468,9 +469,10 @@ class ActivityDetector(DataHandler):
             for j in range(len(self.targets)):
                 self.set_activities(self.lon_activities_target_i, "longitudinal_activity",
                                     i_target=j)
+                self.set_activities(self.lat_activities_target_i, "lateral_activity", i_target=j)
         else:
             self.set_activities(self.lon_activities_target_i, "longitudinal_activity", i_target=i)
-        self.set_activities(self.lat_activities_target_i, "lateral_activity", i_target=i)
+            self.set_activities(self.lat_activities_target_i, "lateral_activity", i_target=i)
 
     def lon_activities_target_i(self, i: int, plot: bool = False) \
             -> List[Tuple[float, LongitudinalActivity]]:
@@ -734,15 +736,14 @@ class ActivityDetector(DataHandler):
         :param line_y: The distance toward the crossing.
         :return: The end index and a boolean whether there is a lane change.
         """
-        end_j = np.min((j + self.parms.max_time_lat_target, self.data.index[-1]))
+        end_j = np.min((j + self.parms.max_time_lat_target, line_y.index[-1]))
         for end_j, distance in zip(line_y[j:end_j].index, line_y[j:end_j]):
             if distance > 0:
                 return 0, False
             if distance < fromgoal.goal_y:
-                prev_end_j = self.data.index[self.data.index.get_loc(end_j) - 1]
+                prev_end_j = line_y.index[pd.Index(line_y.index).get_loc(end_j) - 1]
                 if abs(distance - line_y[prev_end_j]) < self.parms.lane_change_threshold:
                     return end_j, True
-                break
         return 0, False
 
     def _goal_left_lane_change(self, left_y: float, right_y: float) -> FromGoal:
@@ -757,45 +758,56 @@ class ActivityDetector(DataHandler):
         goal_y = -from_y
         return FromGoal(from_y=from_y, goal_y=goal_y)
 
-    def set_states_target(self, target: pd.DataFrame) -> None:
-        """ Set the longitudinal and lateral state of a target vehicle.
+    def set_states_targets(self) -> None:
+        """ Set the longitudinal and lateral state of the target vehicles."""
+        # Put all targets into one dataframe, as this will make things much, much faster.
+        targets = pd.concat(self.targets, sort=False)
 
-        :param target: The dataframe of the target.
-        """
         # Set the longitudinal state.
-        target["longitudinal_state"] = LongitudinalStateTarget.REAR.value
-        target.loc[target[self.parms.x_target] >= 0, "longitudinal_state"] = \
+        targets["longitudinal_state"] = LongitudinalStateTarget.REAR.value
+        targets.loc[targets[self.parms.x_target] >= 0, "longitudinal_state"] = \
             LongitudinalStateTarget.FRONT.value
 
         # Set the lateral state.
-        target["lateral_state"] = LateralStateTarget.UNKNOWN.value
-        target.loc[target["line_right"] > 0, "lateral_state"] = LateralStateTarget.RIGHT.value
-        target.loc[target["line_left"] < 0, "lateral_state"] = LateralStateTarget.LEFT.value
-        target.loc[np.logical_and(target["line_right"] <= 0, target["line_left"] >= 0),
-                   "lateral_state"] = LateralStateTarget.SAME.value
-        target.loc[np.logical_or(self.data.loc[target.index, self.parms.left_conf] <
-                                 self.parms.min_line_quality,
-                                 self.data.loc[target.index, self.parms.right_conf] <
-                                 self.parms.min_line_quality), "lateral_state"] = \
+        targets["lateral_state"] = LateralStateTarget.UNKNOWN.value
+        targets.loc[targets["line_right_prev"] > 0, "lateral_state"] = \
+            LateralStateTarget.RIGHT.value
+        targets.loc[targets["line_left_prev"] < 0, "lateral_state"] = LateralStateTarget.LEFT.value
+        targets.loc[np.logical_and(targets["line_right_prev"] <= 0, targets["line_left_prev"] >= 0),
+                    "lateral_state"] = LateralStateTarget.SAME.value
+        targets.loc[targets["line_left_prev"] < targets["line_right_prev"], "lateral_state"] = \
             LateralStateTarget.UNKNOWN.value
-        target.loc[target["line_left"] < target["line_right"], "lateral_state"] = \
-            LateralStateTarget.UNKNOWN.value
+
+        # Convert the big dataframe back to a list of dataframes.
+        self.targets = self._big_target_df_to_list(targets)
 
     def set_lead_vehicle(self) -> None:
         """ Determine the lead vehicle and set the tag accordingly. """
-        # Compute the distance of the lead vehicle
-        min_dx = np.ones(len(self.data)) * np.inf
+        # Create a big dataframe with all target information in it.
+        targets = pd.concat(self.targets, sort=False)
+        targets["time"] = targets.index
+        targets["new_index"] = np.arange(len(targets))
+        targets = targets.set_index("new_index")
         samelane = LateralStateTarget.SAME.value
-        for i in range(self.parms.n_targets):
-            is_candidate = np.logical_and(self.get_t(i, "lateral_state") == samelane,
-                                          self.get_t(i, "dx") > 0,
-                                          self.get_t(i, "dx").values < min_dx)
-            min_dx[is_candidate] = self.get_t(i, "dx")[is_candidate]
+        targets["_candidate"] = np.logical_and(targets["lateral_state"] == samelane,
+                                               targets[self.parms.x_target] > 0)
 
-        # Set the tag correctly.
-        for i in range(self.parms.n_targets):
-            signal = self.set_t(i, "lead_vehicle", LeadVehicle.NOLEAD.value)
-            self.data.loc[np.logical_and(self.get_t(i, "lateral_state") == samelane,
-                                         self.get_t(i, "dx") == min_dx),
-                          signal] = LeadVehicle.LEAD.value
-            self.data.loc[self.get_t(i, "id") == 0, signal] = LeadVehicle.NOVEHICLE.value
+        # Initialize the tag for the lead vehicle.
+        lead_vehicle = [LeadVehicle.NOLEAD.value for _ in range(len(targets))]
+
+        # Go through each timestep and determine the lead vehicle.
+        df_timeinstances = targets.groupby("time")
+        for _, df_timeinstance in df_timeinstances:
+            df_timeinstance = df_timeinstance[df_timeinstance["_candidate"]]
+            if len(df_timeinstance) == 1:
+                lead_vehicle[df_timeinstance.index[0]] = LeadVehicle.LEAD.value
+            elif len(df_timeinstance) > 1:
+                lead_vehicle[df_timeinstance[self.parms.x_target].idxmin()] = LeadVehicle.LEAD.value
+
+        # Add the lead vehicle tag to the target dataframe and remove the candidate column.
+        targets["lead_vehicle"] = lead_vehicle
+        targets = targets.drop(columns=["_candidate"])
+
+        # Create again the list of targets.
+        targets = targets.set_index("time")
+        self.targets = self._big_target_df_to_list(targets)
