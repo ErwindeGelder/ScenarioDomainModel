@@ -7,10 +7,9 @@ Modifications:
 2019 12 31 Change the way the n-grams are stored.
 """
 
-import json
 import os
+from typing import Any, Iterable, Tuple
 import pandas as pd
-from typing import Any, Iterable, List, NamedTuple, Tuple
 
 
 class NGram:
@@ -47,7 +46,7 @@ class NGram:
         # used. If it is used, an error will be raised as to avoid weird
         # behavior later on.
         for metafield in self.metafields:
-            if "data" == metafield[0]:
+            if metafield[0] == "data":
                 raise ValueError("The metafields cannot contain a name 'data', because that name" +
                                  " is preserved.")
 
