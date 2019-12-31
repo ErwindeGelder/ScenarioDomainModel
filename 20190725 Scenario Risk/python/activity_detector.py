@@ -711,7 +711,8 @@ class ActivityDetector(DataHandler):
                 if begin_j == lineinfo.distance.index[0]:  # (= first index of target).
                     start_found = True
                     break
-                prev_begin_j = self.data.index[self.data.index.get_loc(begin_j) - 1]
+                prev_begin_j = \
+                    lineinfo.distance.index[pd.Index(lineinfo.distance.index).get_loc(begin_j) - 1]
                 if abs(distance - lineinfo.distance[prev_begin_j]) < \
                         self.parms.lane_change_threshold:
                     start_found = True
