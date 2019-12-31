@@ -4,33 +4,43 @@ Creation date: 2019 11 27
 Author(s): Erwin de Gelder
 
 Modifications:
+2019 12 31 Change the way the n-grams are stored.
 """
 
 import json
-import numpy as np
+import os
 import pandas as pd
-from typing import Any, Iterable, NamedTuple, Tuple
-
-
-MyNGram = NamedTuple("ngram", (("meta", dict), ("data", pd.DataFrame)))
+from typing import Any, Iterable, List, NamedTuple, Tuple
 
 
 class NGram:
     """ Class for constructing multiple n-grams.
 
-    Attributes:
+    If the fieldnames contain the fieldname "id", it is assumed that there are
+    multiple n-grams provided. Hence, the attribute `ngrams` will be used and
+    the attribute `ngram` is not used. If the fieldname "id" is not provided,
+    the attributebute `ngrams` is not used and the attribute `ngram` contains
+    one dataframe.
 
+    Attributes:
+        fieldnames (Iterable[str]): Names of the fields of the n-gram.
+        metafields (Iterable[Tuple[str, Any]]): Names and types of the metadata.
+        ngrams (List[pd.DataFrame]): List of n-grams (if there are multiple).
+        ngram (pd.DataFrame): The n-gram (if there is only one).
+        metadata (pd.DataFrame): Metadata of the ngrams.
     """
     def __init__(self, fieldnames: Iterable[str], metafields: Iterable[Tuple[str, Any]]):
         self.fieldnames = fieldnames
         self.metafields = metafields
         self.ngrams = []
+        self.ngram = pd.DataFrame()
+        self.metadata = pd.DataFrame(columns=[name for name, _ in metafields])
 
         # For the fieldnames, the field "index" is preserved, so that one cannot
         # be used. If it is used, an error will be raised as to avoid weird
         # behavior later on.
         if "index" in self.fieldnames:
-            raise ValueError("The fieldnames cannot contain a name 'index', because that name"+
+            raise ValueError("The fieldnames cannot contain a name 'index', because that name" +
                              " is preserved")
 
         # For the metadata, the field "data" is preserved, so that one cannot be
@@ -41,7 +51,7 @@ class NGram:
                 raise ValueError("The metafields cannot contain a name 'data', because that name" +
                                  " is preserved.")
 
-    def ngram(self, data: pd.DataFrame, **kwargs):
+    def add_ngram(self, data: pd.DataFrame, **kwargs):
         """ Create an n-gram and add it to the list of n-grams.
 
         :param data: The dataframe that contains the events.
@@ -56,11 +66,13 @@ class NGram:
                 raise TypeError("Metadata field '{}' is op type '{}' but should be of type '{}'".
                                 format(metafield[0], type(kwargs[metafield[0]]), metafield[1]))
             metadata[metafield[0]] = kwargs[metafield[0]]
+        self.metadata = self.metadata.append(metadata, ignore_index=True)
 
         # Add the n-gram to the list of n-grams.
-        ngram = MyNGram(meta=metadata, data=data)
-        self.ngrams.append(ngram)
-        return ngram
+        if "id" in self.fieldnames:
+            self.ngrams.append(data)
+        else:
+            self.ngram = data
 
     def ngram_from_data(self, data: pd.DataFrame, **kwargs):
         """ Convert the data such that it can be used to create an n-gram.
@@ -78,13 +90,13 @@ class NGram:
 
         # Get the indices of the rows that are different from its previous rows.
         indices = [my_df.index[0]]
-        for index, row_update, row in zip(my_df.index, my_df.iloc[1:].itertuples(index=False),
+        for index, row_update, row in zip(my_df.index[1:], my_df.iloc[1:].itertuples(index=False),
                                           my_df.iloc[:-1].itertuples(index=False)):
             if row_update != row:
                 indices.append(index)
 
-        # Create and return the n-gram
-        return self.ngram(my_df.loc[indices], **kwargs)
+        # Add the n-gram.
+        self.add_ngram(my_df.loc[indices], **kwargs)
 
     def sort_ngrams(self, fieldname: str, ascending: bool = True) -> None:
         """ Sort the n-grams based on the value of the given fieldname.
@@ -92,50 +104,43 @@ class NGram:
         :param fieldname: The name of the metafield that is used for sorting.
         :param ascending: Whether to sort ascedingly (default) or not.
         """
-        values = [ngram.meta[fieldname] for ngram in self.ngrams]
-        indices = np.argsort(values)
-        if not ascending:
-            indices = indices[::-1]
-        self.ngrams = [self.ngrams[i] for i in indices]
+        # This only makes sense if multiple n-grams are used.
+        if "id" in self.fieldnames:
+            self.metadata.sort_values(fieldname, inplace=True, ascending=ascending)
+            self.ngrams = [self.ngrams[i] for i in self.metadata.index]
 
-    def to_json(self, filename: str):
-        """ Convert the n-grams to a .json file.
+    def to_hdf(self, path: str, name: str, mode="a", complevel: int = 4) -> None:
+        """ Save the n-grams to an HDF5 file.
 
-        The n-grams are converted to a .json format. Note, however, that the
-        .json format is not optimized for speed nor size. The format is meant to
-        be readable by experts.
-
-        Later, an optimized version might be added, but this is left as a to do.
-
-        :param filename: The name of the .json file (without ".json").
+        :param path: The path to the HDF5 file.
+        :param name: Name of the data.
+        :param mode: {'a', 'w'}, whether to write a new file or append file.
+        :param complevel: Compression level, default=4.
         """
-        ngrams = []
-        for ngram in self.ngrams:
-            ngram_dict = ngram.meta
-            ngram_list = []
-            for row in ngram.data.itertuples():
-                row_dict = dict(index=row.Index)
-                for fieldname in self.fieldnames:
-                    row_dict[fieldname] = getattr(row, fieldname)
-                ngram_list.append(row_dict)
-            ngram_dict["data"] = ngram_list
-            ngrams.append(ngram_dict)
+        self.metadata.to_hdf(path, "{:s}/Metadata".format(name), mode=mode, complevel=complevel)
+        if "id" in self.fieldnames:
+            ngrams = pd.concat(self.ngrams, sort=False)
+            ngrams.to_hdf(path, "{:s}/nGrams".format(name), mode="a", complevel=complevel)
+        else:
+            self.ngram.to_hdf(path, "{:s}/nGram".format(name), mode="a", complevel=complevel)
 
-        with open(filename, "w") as file:
-            json.dump(ngrams, file, indent=4)
+    def from_hdf(self, path: str, name: str) -> bool:
+        """ Read the n-gram data from an HDF5 file.
 
-    def from_json(self, filename: str):
-        """ Reads a .json file and adds it to the list of n-grams.
-
-        :param filename: The name of the .json file (without ".json").
+        :param path: The path to the HDF5 file.
+        :param name: Name of the data.
+        :return: Whether the data is succesfully loaded or not.
         """
-        with open(filename, "r") as file:
-            ngrams = json.load(file)
-            for ngram in ngrams:
-                data = pd.DataFrame(columns=ngram["data"][0].keys())
-                for row in ngram["data"]:
-                    data = data.append(row, ignore_index=True)
-                data.set_index("index")
-                ngram.pop("data")
-                self.ngram(data, **ngram)
-
+        if not os.path.exists(path):
+            return False  # File does not exist.
+        with pd.HDFStore(path) as hdf:
+            if name not in hdf:
+                return False  # Data is not in the HDF file.
+            self.metadata = hdf["{:s}/Metadata".format(name)]
+            if "id" in self.fieldnames:
+                ngrams = hdf["{:s}/nGrams".format(name)]
+                ngrams = list(ngrams.groupby("id"))
+                self.ngrams = [ngram for _, ngram in ngrams]
+            else:
+                self.ngram = hdf["{:s}/nGram".format(name)]
+            return True
