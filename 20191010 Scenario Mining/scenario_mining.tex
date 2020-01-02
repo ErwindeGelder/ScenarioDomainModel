@@ -48,7 +48,7 @@
 \usepackage{silence}  							%% For filtering warnings
 \usepackage{csquotes}
 % Add doi=false if no DOI
-\usepackage[style=ieee,isbn=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=2,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+\usepackage[style=ieee,doi=false,isbn=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 % Filter warnings issued by package biblatex starting with "Patching footnotes failed"
 \WarningFilter{biblatex}{Patching footnotes failed}
 \renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
@@ -180,6 +180,9 @@
 
 
 \newcommand{\todo}[1]{\color{red}TO DO: #1 \color{black}}
+\usepackage{changebar}
+\newcommand{\cstarta}{\cbstart \color{blue}}  % Changes since January 2, 2020
+\newcommand{\cenda}{\cbend \color{black}}     % Changes since January 2, 2020
 
 \usepackage{setspace}
 \doublespacing
@@ -199,7 +202,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{sections/introduction}
 \input{sections/background}
-\input{sections/method}
+\input{sections/tagging}
+\input{sections/mining}
 \input{sections/casestudy}
 \input{sections/conclusion}
 

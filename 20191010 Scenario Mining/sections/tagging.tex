@@ -1,12 +1,8 @@
-\section{Method}
-\label{sec:method}
+\section{Data tagging}
+\label{sec:tagging}
 
-Our method of scenario mining is divided into two steps. The first step is to describe the data using \emph{tags} and the second step is to extract the scenarios based on these tags. We will first explain how the \emph{tags} are determined in \cref{sec:data tagging}. In \cref{sec:mining}, we describe how the scenarios are mined based on the \emph{tags}.
+Our method of scenario mining is divided into two steps. The first step is to describe the data using \emph{tags} and the second step is to extract the scenarios based on these tags. In this section, we explain how the \emph{tags} are determined. The scenario mining based on these tags is explained in the next section.
 
-
-
-\subsection{Data tagging}
-\label{sec:data tagging}
 
 \todo{Show the applicable tags in a figure rather than in the text.}
 
@@ -134,10 +130,4 @@ To compute the longitudinal activities of the $\indextarget$-th vehicle, the app
 \label{sec:lateral other vehicles}
 
 \todo{Explain that we first need to estimate the distance of the vehicle toward the lane lines by extrapolating the lane lines. Then the detection of the lateral activities is similar as for the ego vehicle as described in \cref{sec:lateral ego}.}
-	
-	
-	
-\subsection{Mining scenarios using tags}
-\label{sec:mining}
 
-\todo{Explain the approach of scenario mining. For each actor, an n-gram is constructed using the detected tags. A scenario category is then defined as a sequence of nodes, where the n-grams of multiple actors can be combined if needed.}
