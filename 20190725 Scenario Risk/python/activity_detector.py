@@ -11,6 +11,7 @@ Modifications:
 2019 12 27 Lateral events for targets improved.
 2019 12 30 Fix tags for target state (longitudinal, lateral) and lead vehicle.
 2020 01 03 Let the longitudinal activities accelerating/decelerating start later.
+2020 01 03 `magic_time` removed for host lane change (lc) detection. Therefore, lc starts 1 s later.
 """
 
 from typing import Callable, List, NamedTuple, Tuple, Union
@@ -111,7 +112,6 @@ class ActivityDetectorParameters(Options):
     max_time_host_lane_change = 10  # [s]
     min_line_quality = 3
     lane_change_threshold = 1  # [m]
-    lane_change_magic_time = 1  # [s] No idea why this is one or why it is needed (i.e., why not 0?)
     lane_conf_threshold = 0.25
     max_time_lat_target = 10  # [s]
     factor_goal_y_target = 0.25  # ???
@@ -364,23 +364,19 @@ class ActivityDetector(DataHandler):
         event = LateralActivityHost.LANE_FOLLOWING
         events = [(self.data.index[0], event)]
 
-        left_y = self.get(self.parms.y_left_line)
-        right_y = self.get(self.parms.y_right_line)
         y_down = (-self.get('line_left_y_conf_down'), -self.get('line_right_y_conf_down'))
         y_up = (self.get('line_left_y_conf_up'), self.get('line_right_y_conf_up'))
         for row in self.data.itertuples():
             # Left lane change (out of ego lane).
             if event != LateralActivityHost.LEFT_LANE_CHANGE and self._potential_llc_host(row):
-                begin_i, lane_change = self._start_lane_change(row.Index, events[-1], left_y,
-                                                               y_down)
+                begin_i, lane_change = self._start_lane_change(row.Index, events[-1], y_down)
                 if lane_change:
                     event = LateralActivityHost.LEFT_LANE_CHANGE
                     events.append((begin_i, event))
 
             # Right lane change (out of ego lane)
             elif event != LateralActivityHost.RIGHT_LANE_CHANGE and self._potential_rlc_host(row):
-                begin_i, lane_change = self._start_lane_change(row.Index, events[-1], -right_y,
-                                                               y_up)
+                begin_i, lane_change = self._start_lane_change(row.Index, events[-1], y_up)
                 if lane_change:
                     event = LateralActivityHost.RIGHT_LANE_CHANGE
                     events.append((begin_i, event))
@@ -427,8 +423,7 @@ class ActivityDetector(DataHandler):
         return False
 
     def _start_lane_change(self, i: float, event: Tuple[float, LateralActivityHost],
-                           lateral_distance: pd.Series, y_dot: Tuple[pd.Series, pd.Series]) \
-            -> Tuple[float, bool]:
+                           y_dot: Tuple[pd.Series, pd.Series]) -> Tuple[float, bool]:
         """ Compute the start of a potential lane change.
 
         If there is no lane change found, (0, False) will be returned.
@@ -436,9 +431,6 @@ class ActivityDetector(DataHandler):
 
         :param i: The index at which the potential lane change is found.
         :param event: The last event (needed for the last event time).
-        :param lateral_distance: The lateral distance toward the left side in
-                                 case of a left lane change or right side in
-                                 case of a right lane change.
         :param y_dot: The "speed" of the lateral_distance toward the lines.
         :return: starting index and whether there is a lane change.
         """
@@ -450,15 +442,6 @@ class ActivityDetector(DataHandler):
                         right < self.parms.lane_conf_threshold), None)
         if begin_i is None:
             return 0, False
-
-        # Is the following really needed? Not sure when the condition is
-        # triggered...
-        begin_i = lateral_distance[np.max((begin_i - self.parms.lane_change_magic_time,
-                                           self.data.index[0])):begin_i].idxmax()
-        next_y = lateral_distance.iat[self.data.index.get_loc(begin_i) + 1]
-        if abs(lateral_distance[begin_i] - next_y) > self.parms.lane_change_threshold:
-            return 0, False
-
         return begin_i, True
 
     def set_target_activities(self, i: int = None) -> None:
