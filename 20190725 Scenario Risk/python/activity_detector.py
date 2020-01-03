@@ -10,6 +10,7 @@ Modifications:
 2019 12 09 Move more general functions to a superclass.
 2019 12 27 Lateral events for targets improved.
 2019 12 30 Fix tags for target state (longitudinal, lateral) and lead vehicle.
+2020 01 03 Let the longitudinal activities accelerating/decelerating start later.
 """
 
 from typing import Callable, List, NamedTuple, Tuple, Union
@@ -187,6 +188,7 @@ class ActivityDetector(DataHandler):
         shifted = self.data[self.parms.host_lon_vel].shift(-shift)
         filtered = shifted.rolling(shift+1).min()
         self.set('speed_inc', shifted - filtered)
+        self.set('speed_inc_past', self.get('speed_inc').shift(shift))
         self.set('speed_inc_start', self.get('speed_inc').copy())
         self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_inc_start'] = 0
 
@@ -194,6 +196,7 @@ class ActivityDetector(DataHandler):
         shifted = self.data[self.parms.host_lon_vel].shift(-shift)
         filtered = shifted.rolling(shift+1).max()
         self.set('speed_dec', shifted - filtered)
+        self.set('speed_dec_past', self.get('speed_dec').shift(shift))
         self.set('speed_dec_start', self.get('speed_dec').copy())
         self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_dec_start'] = 0
 
@@ -206,7 +209,8 @@ class ActivityDetector(DataHandler):
             # Potential acceleration signal when in minimum wrt next second, accelerating and not
             # standing still.
             if event != LongitudinalActivity.ACCELERATING and \
-                    row.speed_inc_start >= self.parms.min_speed_difference and \
+                    row.speed_inc_past >= self.parms.min_speed_difference and \
+                    row.speed_inc_start > 0 and \
                     getattr(row, self.parms.host_lon_vel) >= self.parms.min_activity_speed:
                 i, is_event = self._end_lon_activity(row.Index, speed_inc)
                 if is_event:
@@ -214,7 +218,8 @@ class ActivityDetector(DataHandler):
                     all_events.append((row.Index, event))
                     end_event_time = i
             elif event != LongitudinalActivity.DECELERATING and \
-                    row.speed_dec_start <= -self.parms.min_speed_difference:
+                    row.speed_dec_past <= -self.parms.min_speed_difference and \
+                    row.speed_dec_start < 0:
                 i, is_event = self._end_lon_activity(row.Index, speed_dec)
                 if is_event:
                     event = LongitudinalActivity.DECELERATING
