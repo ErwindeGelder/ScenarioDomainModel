@@ -2402,6 +2402,17 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Cyclist scenarios" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_275172408" CREATED="1577974273826" MODIFIED="1577974286450">
+<node TEXT="EMC2 paper with Irene" ID="ID_417585857" CREATED="1577974288850" MODIFIED="1577974306965" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/122%20Classification%20for%20Safety-Critical%20Car-Cyclist%20Scenarios%20Using%20Machine%20Learning.pdf">
+<attribute NAME="key" VALUE="cara2015carcyclist"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Classification for Safety-Critical Car-Cyclist Scenarios Using Machine Learning"/>
+<attribute NAME="authors" VALUE="Cara, Irene and de Gelder, Erwin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4FA3F3AB60FE3FA5A3FC4874A1C2CAD8D56A051284EA16CB874D8D9CE5E9A">
+    <pdf_title>Classification for safety-critical car-cyclist scenarios using machine learning</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Driving Maneuver Classification: Comparison of Feature Extraction Methods" ID="ID_1801389080" CREATED="1529494283347" MODIFIED="1534390768266" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/198%20Driving%20Maneuver%20Classification%20A%20Comparison%20of%20Feature%20Extraction%20Methods.pdf">
 <attribute NAME="key" VALUE="xie2017driving"/>
 <attribute NAME="journal" VALUE="IEEE Sensors Journal"/>

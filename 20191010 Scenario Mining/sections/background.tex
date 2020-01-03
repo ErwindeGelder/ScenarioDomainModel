@@ -1,7 +1,7 @@
 \section{Problem formulation}
 \label{sec:problem}
 
-Before formulating the scenario mining problem, we distinguish quantitative scenarios from qualitative scenarios, using the definitions of \emph{scenario} and \emph{scenario category}:
+To formulate the scenario mining problem, we distinguish quantitative scenarios from qualitative scenarios, using the definitions of \emph{scenario} and \emph{scenario category}:
 
 \begin{definition}[Scenario \autocite{degelder2018ontology}]
 	\label{def:scenario}
@@ -13,23 +13,13 @@ Before formulating the scenario mining problem, we distinguish quantitative scen
 	A scenario category is a qualitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment.
 \end{definition}
 
-As described in \cref{def:scenario}, events and activities are constituents of a scenario. In \autocite{degelder2018ontology}, the terms \emph{event} and \emph{activity} are defined as follows:
-\begin{definition}[Event \autocite{degelder2018ontology}]
-	\label{def:event}
-	An event marks the time instant at which the system reaches a specified threshold or at which a mode transition occurs, such that before and after an event, the state vector of the system corresponds to two different modes.
-\end{definition}
-\begin{definition}[Activity \autocite{degelder2018ontology}]
-	\label{def:activity}
-	An activity quantitatively describes the time evolution of one or more state variables of an actor between two events.
-\end{definition}
+\cstarta
+A scenario category is an abstraction of a scenario and, therefore, a scenario category comprises multiple scenarios \autocite{degelder2018ontology}.
+For example, the scenario category ``cut in'' comprises all possible cut-in scenarios. 
+Given such a scenario category, our goal is to find all corresponding scenarios. 
+Hence, we define the scenario mining problem as follows:
+\begin{problem}[Scenario mining]
+	Given a scenario category, how to find all scenarios that correspond to this scenario category in a given dataset?
+\end{problem}
+\cenda
 
-
-A scenario category is an abstraction of a scenario and, therefore, a scenario category comprises multiple scenarios \autocite{degelder2018ontology}. Our goal of the scenario mining is to find all scenarios in the data that a given scenario category comprises. Hence, the problem is as follows:
-
-\emph{Given a scenario category, how to find all scenarios in a given dataset that the scenario category comprises?}
-
-
-%\subsection{Scenario mining}
-%\label{sec:scenario mining}
-%
-%Here, we explain why we need scenario mining and how others did this.
