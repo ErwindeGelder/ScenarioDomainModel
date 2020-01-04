@@ -123,14 +123,24 @@
 \usetikzlibrary{arrows.meta}
 
 % Notations
+\newcommand{\symboldec}[2]{#1^{-}\left(#2\right)}
+\newcommand{\symbolinc}[2]{#1^{+}\left(#2\right)}
+
 \newcommand{\accelerationsymbol}{a}
 \newcommand{\accelerationstart}{\accelerationsymbol_\mathrm{start}}
 \newcommand{\accelerationcruise}{\accelerationsymbol_\mathrm{cruise}}
 \newcommand{\defsym}{\equiv}
 \newcommand{\indextarget}{i}
-\newcommand{\lineleft}[1]{l\left(#1\right)}
-\newcommand{\lineright}[1]{r\left(#1\right)}
-\newcommand{\nan}{\mathrm{NaN}}
+\newcommand{\lanechangethreshold}{\Delta_{\mathrm{l}}}
+\newcommand{\lanechangespeed}{v_{\mathrm{lat}}}
+\newcommand{\lineleftsymbol}{l}
+\newcommand{\lineleft}[1]{\lineleftsymbol\left(#1\right)}
+\newcommand{\lineleftdec}[1]{\symboldec{\lineleftsymbol}{#1}}
+\newcommand{\lineleftinc}[1]{\symbolinc{\lineleftsymbol}{#1}}
+\newcommand{\linerightsymbol}{r}
+\newcommand{\lineright}[1]{\linerightsymbol\left(#1\right)}
+\newcommand{\linerightdec}[1]{\symboldec{\linerightsymbol}{#1}}
+\newcommand{\linerightinc}[1]{\symbolinc{\linerightsymbol}{#1}}
 \newcommand{\sample}{k}
 \newcommand{\sampledummy}{\tau}
 \newcommand{\sampleenddec}[1]{\sample_{\mathrm{end}}^{-}\left(#1\right)}
@@ -139,18 +149,22 @@
 \newcommand{\sampleinit}{\sample_{0}}
 \newcommand{\sampleaccevent}{\sample^{+}}
 \newcommand{\sampledecevent}{\sample^{-}}
+\newcommand{\samplescruising}{\sample_\mathrm{cruise}}
+\newcommand{\sampleendleft}[1]{\sample_\mathrm{l,end}\left(#1\right)}
+\newcommand{\sampleendright}[1]{\sample_\mathrm{r,end}\left(#1\right)}
+\newcommand{\samplestartleft}[1]{\sample_\mathrm{l,start}\left(#1\right)}
+\newcommand{\samplestartright}[1]{\sample_\mathrm{r,start}\left(#1\right)}
 \newcommand{\speedsymbol}{v}
 \newcommand{\speed}[1]{\speedsymbol\left(#1\right)}
-\newcommand{\speedmax}[1]{\speedsymbol_{\mathrm{max}}\left(#1\right)}
-\newcommand{\speedmin}[1]{\speedsymbol_{\mathrm{min}}\left(#1\right)}
-\newcommand{\speedinc}[1]{\speedsymbol^{+}\left(#1\right)}
-\newcommand{\speeddec}[1]{\speedsymbol^{-}\left(#1\right)}
+\newcommand{\speedmax}[1]{\speedsymbol_\mathrm{max}\left(#1\right)}
+\newcommand{\speedmin}[1]{\speedsymbol_\mathrm{min}\left(#1\right)}
+\newcommand{\speeddec}[1]{\symboldec{\speedsymbol}{#1}}
+\newcommand{\speedinc}[1]{\symbolinc{\speedsymbol}{#1}}
 \newcommand{\speeddiff}{\Delta_{\speedsymbol}}
 \newcommand{\speedtargetiabs}[2]{\speedsymbol_{#2}^{\mathrm{abs}}\left(#1\right)}
 \newcommand{\speedtargetirel}[2]{\speedsymbol_{#2}^{\mathrm{rel}}\left(#1\right)}
 \renewcommand{\time}{t}
 \newcommand{\sampletime}{\time_\mathrm{s}}
-\newcommand{\timecruising}{\time_\mathrm{cruise}}
 
 
 \newcommand{\todo}[1]{\color{red}TO DO: #1 \color{black}}
