@@ -11,7 +11,6 @@ axis y line*=left,
 every x tick/.style={black},
 every y tick/.style={black},
 height=\figureheight,
-legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80.0!black},
 tick align=outside,
 tick pos=left,
 width=\figurewidth,
@@ -24,7 +23,7 @@ ylabel={Speed [m/s]},
 ymin=-5, ymax=17.5,
 ytick style={color=black}
 ]
-\addplot [line width=2.0pt, color0, forget plot]
+\addplot [line width=2.0pt, color0]
 table {%
 -2 7.5
 -1.99 7.5
@@ -1727,7 +1726,7 @@ table {%
 14.98 2.30868076516021
 14.99 2.30868076516021
 };
-\addplot [line width=2.0pt, color1, dashed, forget plot]
+\addplot [line width=2.0pt, color1, dashed]
 table {%
 -2 nan
 -1.99 nan
@@ -3430,7 +3429,7 @@ table {%
 14.98 nan
 14.99 nan
 };
-\addplot [line width=2.0pt, color2, dotted, forget plot]
+\addplot [line width=2.0pt, color2, dotted]
 table {%
 -2 nan
 -1.99 nan
@@ -5133,42 +5132,42 @@ table {%
 14.98 nan
 14.99 nan
 };
-\addplot [line width=1.0pt, black, forget plot]
+\addplot [line width=1.0pt, black]
 table {%
 -2 -5
 -2 17.5
 };
-\addplot [line width=1.0pt, black, forget plot]
+\addplot [line width=1.0pt, black]
 table {%
-1.91 -5
-1.91 17.5
+2.03 -5
+2.03 17.5
 };
-\addplot [line width=1.0pt, black, forget plot]
+\addplot [line width=1.0pt, black]
 table {%
-4.54 -5
-4.54 17.5
+4.38 -5
+4.38 17.5
 };
-\addplot [line width=1.0pt, black, forget plot]
+\addplot [line width=1.0pt, black]
 table {%
-8.36 -5
-8.36 17.5
+8.47 -5
+8.47 17.5
 };
-\addplot [line width=1.0pt, black, forget plot]
+\addplot [line width=1.0pt, black]
 table {%
-11.45 -5
-11.45 17.5
+11.34 -5
+11.34 17.5
 };
-\node at (axis cs:0.955,15.5)[
+\node at (axis cs:1.015,15.5)[
   anchor=base,
   text=black,
   rotate=0.0
 ]{c};
-\node at (axis cs:3.225,15.5)[
+\node at (axis cs:3.205,15.5)[
   anchor=base,
   text=black,
   rotate=0.0
 ]{a};
-\node at (axis cs:6.45,15.5)[
+\node at (axis cs:6.425,15.5)[
   anchor=base,
   text=black,
   rotate=0.0
@@ -5178,7 +5177,7 @@ table {%
   text=black,
   rotate=0.0
 ]{d};
-\node at (axis cs:12.225,15.5)[
+\node at (axis cs:12.17,15.5)[
   anchor=base,
   text=black,
   rotate=0.0

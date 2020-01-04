@@ -10,9 +10,9 @@
 		\toprule
 		Subject & Description & Section & Possible tags \\ \otoprule
 		Ego vehicle & Longitudinal activity & \cref{sec:longitudinal ego} & Accelerating, decelerating, cruising \\
-		Ego vehicle & Lateral activity & \cref{sec:lateral ego} & Changing lane, following lane \\
+		Ego vehicle & Lateral activity & \cref{sec:lateral ego} & Changing lane left, changing lane right, following lane \\
 		Any other vehicle & Longitudinal activity & \cref{sec:longitudinal other vehicles} & Accelerating, braking, cruising \\
-		Any other vehicle & Lateral activity & \cref{sec:lateral other vehicles} & Changing lane, following lane \\
+		Any other vehicle & Lateral activity & \cref{sec:lateral other vehicles} & Changing lane left, changing lane right, following lane \\
 		Any other vehicle & Longitudinal state & \cref{sec:other tags other vehicles} & In front of ego, behind ego \\
 		Any other vehicle & Lateral state & \cref{sec:other tags other vehicles} & Left of ego, right of ego, same lane as ego, unknown \\
 		Any other vehicle & Lead vehicle & \cref{sec:other tags other vehicles} & Yes, no \\
@@ -81,7 +81,8 @@ First, we assume that the event at the start of the dataset is a cruising event 
 	\item The vehicle is not performing an accelerating activity, i.e., the last event is not an accelerating event.
 	\item \cstarta There has been a significant speed increase between sample step $\sample-\samplehorizon$ and $\sample$, i.e., 
 	\begin{equation}
-		\speedinc{\sample+\samplehorizon} \geq \accelerationstart / \left( \samplehorizon\sampletime \right),
+		\label{eq:start acceleration}
+		\speedinc{\sample-\samplehorizon} \geq \accelerationstart / \left( \samplehorizon\sampletime \right),
 	\end{equation} \cenda
 	where $\accelerationstart>0$ is a parameter.
 	\item There is no lower speed in the near future, i.e., $\speedmin{\sample}=\speed{\sample}$.
@@ -91,6 +92,7 @@ First, we assume that the event at the start of the dataset is a cruising event 
 	\end{equation}
 	where $\sampleendinc{\sample}$ is controlled by the parameter $\accelerationcruise$ and \cstarta equals the first sample at which the speed increase is below a threshold\cenda:
 	\begin{equation}
+		\label{eq:end acceleration}
 		\sampleendinc{\sample} \defsym \arg \min_{\sampledummy > \sample} \left\{ \sampledummy: \speedinc{\sampledummy} < \frac{\accelerationcruise}{\samplehorizon\sampletime} \right\}.
 	\end{equation}
 \end{itemize}
@@ -100,7 +102,8 @@ A decelerating event is happening at sample $\sample$ if any of the following co
 	\item The vehicle is not performing a decelerating activity, i.e., the last event is not an decelerating event.
 	\item \cstarta There has been a significant speed decrease, i.e., 
 	\begin{equation}
-		\speeddec{\sample+\samplehorizon} \leq -\accelerationstart / \left( \samplehorizon\sampletime \right).
+		\label{eq:start deceleration}
+		\speeddec{\sample-\samplehorizon} \leq -\accelerationstart / \left( \samplehorizon\sampletime \right).
 	\end{equation} \cenda
 	\item There is no lower speed in the near future, i.e., $\speedmax{\sample}=\speed{\sample}$.
 	\item There is a significant speed difference during the activity, i.e., 
@@ -109,7 +112,8 @@ A decelerating event is happening at sample $\sample$ if any of the following co
 	\end{equation}
 	with
 	\begin{equation}
-		\sampleenddec{\sample} \defsym \arg \min_{\sampledummy > \time} \left\{ \sampledummy: \speeddec{\sampledummy} > -\frac{\accelerationcruise}{\samplehorizon\sampletime} \right\}.
+		\label{eq:end deceleration}
+		\sampleenddec{\sample} \defsym \arg \min_{\sampledummy > \sample} \left\{ \sampledummy\colon \speeddec{\sampledummy} > -\frac{\accelerationcruise}{\samplehorizon\sampletime} \right\}.
 	\end{equation}
 \end{itemize}
 
@@ -132,7 +136,7 @@ Let $\sampleaccevent$ and $\sampledecevent$ denote the sample step of the most r
 	\label{fig:longitudinal activities}
 \end{figure}
 
-A result of the above described activity detection could be very short cruising activities, especially when the acceleration is around $\accelerationcruise$ or $-\accelerationcruise$. Therefore, when the longitudinal activities are extracted from a dataset using the above described method, all cruising activities shorter than $\timecruising$ are removed as well as the two events that define the start and the end of the cruising activity. Here, we consider three possibilities:
+A result of the above described activity detection could be very short cruising activities, especially when the acceleration is around $\accelerationcruise$ or $-\accelerationcruise$. Therefore, when the longitudinal activities are extracted from a dataset using the above described method, all cruising activities shorter than $\samplescruising$ sample steps are removed as well as the two events that define the start and the end of the cruising activity. Here, we consider three possibilities:
 \begin{enumerate}
 	\item Before and after the cruising activity, the vehicle performs the same activity. In that case, these activities are merged.
 	\item The vehicle decelerates before the cruising activity and accelerates afterwards. In that case, an acceleration event is defined at the lowest speed of the vehicle within the original cruising activity.
@@ -144,11 +148,70 @@ A result of the above described activity detection could be very short cruising 
 \subsection{Lateral activities of the ego vehicle}
 \label{sec:lateral ego}
 
-We distinguish between three different lateral activities: ``following lane'', ``changing lane left'', and ``changing lane right''. To detect the lane changes, the lateral distances toward the left and right lane lines are used. These distances are estimated from camera images. The estimation is outside the scope of this paper.  Let $\lineleft{\sample}$ and $\lineright{\sample}$ denote the distance toward the left and right lane line, respectively. In case the distances cannot be accurately estimated, the notation $\lineleft{\sample}=\nan$ and $\lineright{\sample}=\nan$ is used, where $\nan$ stands for Not-a-Number.
+We distinguish between three different lateral activities: ``following lane'', ``changing lane left'', and ``changing lane right''. 
+To detect the lane changes, the lateral distances toward the left and right lane lines are used. 
+These distances are estimated from camera images. 
+The estimation is outside the scope of this paper. 
+Let $\lineleft{\sample}$ and $\lineright{\sample}$ denote the distance toward the left and right lane line, respectively. 
+%In case the distances cannot be accurately estimated, the notation $\lineleft{\sample}=\nan$ and $\lineright{\sample}=\nan$ is used, where $\nan$ stands for Not-a-Number.
+\cstarta We use the ISO coordinate system \autocite{iso8855}, so $\lineleft{\sample} \geq 0$ and $\lineright{\sample} \leq 0$. At the moment the vehicle crosses the line, the distances to the lines will change significantly. For example, during a lane change to the left, the left line becomes the right line. Hence, we detect a left lane change when the following conditions are satisfied:
+\begin{align}
+	\lineleft{\sample} - \lineleft{\sample-1} &> \lanechangethreshold, \label{eq:potential left a} \\
+	\lineright{\sample} - \lineright{\sample-1} &> \lanechangethreshold. \label{eq:potential left b}
+\end{align}
+Similarly, a right lane change is detected when the following conditions are satisfied:
+\begin{align}
+	\lineleft{\sample} - \lineleft{\sample-1} &< -\lanechangethreshold, \label{eq:potential right a}\\
+	\lineright{\sample} - \lineright{\sample-1} &< -\lanechangethreshold. \label{eq:potential right b}
+\end{align}
 
-\todo{Add image to illustrate the approach.}
+Once a lane change is detected using \cref{eq:potential left a,eq:potential left b,eq:potential right a,eq:potential right b}, the moment at which the lane change starts is determined. To do this, we make use of $\lineleftinc{\sample}$ and $\lineleftdec{\sample}$, which are similarly defined as $\speedinc{\sample}$ and $\speeddec{sample}$, i.e.,
+\begin{align}
+	\lineleftinc{\sample} \defsym \lineleft{\sample+\samplehorizon} - \min_{\sampledummy \in \left\{\sample, \ldots, \sample+\samplehorizon\right\}} \lineleft{\sampledummy},\\
+	\lineleftdec{\sample} \defsym \lineleft{\sample+\samplehorizon} - \max_{\sampledummy \in \left\{\sample, \ldots, \sample+\samplehorizon\right\}} \lineleft{\sampledummy}.
+\end{align}
+Similarly, $\linerightinc{\sample}$ and $\linerightdec{\sample}$ are defined. 
+When a lane change is detected at sample step $\sample$ using \cref{eq:potential left a,eq:potential left b,eq:potential right a,eq:potential right b}, the start of this lane change is estimated in a similar manner as the start of an acceleration or deceleration activity, see \cref{eq:start acceleration,eq:start deceleration}. 
+The start of the lane change is at the last sample step before sample step $\sample$ at which there was not a change in either of the line distances larger than a threshold controlled by the parameter $\lanechangespeed$. 
+I.e., for a right lane change detected at sample step $\sample$, the start is at $\samplestartright{\sample}$:
+\begin{multline} \label{eq:start lane change right}
+	\samplestartright{\sample} \defsym \arg \max_{\sampledummy < \sample} \left\{ \sampledummy\colon \lineleftinc{\sampledummy-\samplehorizon} < \frac{\lanechangespeed}{\samplehorizon\sampletime} \lor \right.\\
+	\left. \linerightinc{\sampledummy-\samplehorizon} < \frac{\lanechangespeed}{\samplehorizon\sampletime} \right\}.
+\end{multline}
+For a left lane change $\samplestartleft{\sample}$ is defined by substituting $-\lineleftdec{\cdot}$ and $-\linerightdec{\cdot}$ for $\lineleftinc{\cdot}$ and $\linerightinc{\cdot}$, respectively, in \cref{eq:start lane change right}.
 
-\todo{Describe the detection of the lateral events and, consequently, the lateral activities. Although the code produces fairly okay results, I want to update the code for the detection of the events, because the current approach is not logical in my view.}
+The end of an lane change activity is determined in a similar manner as the end of an acceleration or deceleration activity, see \cref{eq:end acceleration,eq:end deceleration}.
+In other words: the end of a lane change is at the sample step at which either of the line distances increase or decrease is below a threshold. For a right lane change, this is at
+\begin{equation}
+	\label{eq:end lane change right}
+	\sampleendright{\sample} \defsym \arg \max_{\sampledummy > \sample} \left\{ \sampledummy\colon \lineleftinc{\sampledummy}<\frac{\lanechangespeed}{\samplehorizon\sampletime} \lor \linerightinc{\sampledummy}<\frac{\lanechangespeed}{\samplehorizon\sampletime} \right\}
+\end{equation}
+The sample step of a left lane change, $\sampleendleft{\sample}$ is defined by substituting $-\lineleftdec{\cdot}$ and $-\linerightdec{\cdot}$ for $\lineleftinc{\cdot}$ and $\linerightinc{\cdot}$, respectively, in \cref{eq:end lane change right}.
+\cenda
+
+\setlength{\figurewidth}{\linewidth}
+\setlength{\figureheight}{0.6\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/ego_lane_change.tikz}
+	\caption{\cstarta The red line represent the hypothetical distance toward the left lane line $\lineleft{\sample}$ during a lane change of the ego vehicle. The black vertical lines represent the times of the two events. In between the two events, the ego vehicle performs right lane change. The green dashed line line represents $\lineleftinc{\sample}$.\cenda}
+	\label{fig:ego lane change}
+\end{figure}
+
+\cstarta
+\Cref{fig:ego lane change} illustrates a hypothetical lane change of the ego vehicle. It shows that the distance towards the left line changes when the ego vehicle crosses the line, such that the conditions \cref{eq:potential right a,eq:potential right b} are satisfied. In \cref{fig:ego lane change}, $\samplestartright{\sample}$ and $\samplestartleft{\sample}$ are denoted by the black vertical lines.
+
+\begin{remark}
+	It might happen that there is no accurate measurement of the line distances available. For example, in \cref{fig:glare}, there is no line information while the ego vehicle performs a lane change. By using the next available line distances instead of $\lineleft{\sample}$ and $\lineright{\sample}$ in and the previous available line distances instead of $\lineleft{\sample-1}$ and $\lineright{\sample-1}$ in \cref{eq:potential left a,eq:potential left b,eq:potential right a,eq:potential right b}, our algorithm is still able to detect lane changes.
+\end{remark}
+\cenda
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/glare}
+	\caption{\cstarta The ego vehicle passes a flyover during daytime while performing a lane change. This causes glare such that the distance to the lane lines are not available. By using the previous and next available measurements, our proposed method is still able to detect the lane change.\cenda}
+	\label{fig:glare}
+\end{figure}
 
 
 
@@ -160,6 +223,7 @@ The longitudinal activities of other vehicles are estimated in a similar manner 
 	\speedtargetiabs{\sample}{\indextarget} = \speedtargetirel{\sample}{\indextarget} + \speed{\sample}.
 \end{equation}
 To compute the longitudinal activities of the $\indextarget$-th vehicle, the approach outlined in \cref{sec:longitudinal ego} is used with $\speedtargetiabs{\sample}{\indextarget}$ substituted for $\speed{\sample}$. 
+
 
 
 
