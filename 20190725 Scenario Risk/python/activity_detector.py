@@ -12,6 +12,7 @@ Modifications:
 2019 12 30 Fix tags for target state (longitudinal, lateral) and lead vehicle.
 2020 01 03 Let the longitudinal activities accelerating/decelerating start later.
 2020 01 03 `magic_time` removed for host lane change (lc) detection. Therefore, lc starts 1 s later.
+2020 01 04 Ego lane change ends earlier, now it is consistent with other activities.
 """
 
 from typing import Callable, List, NamedTuple, Tuple, Union
@@ -102,17 +103,16 @@ class ActivityDetectorParameters(Options):
     a_target = 'ax'
 
     # Parameters that alter the activity detection.
-    time_speed_difference = 1  # [s]
-    min_speed_difference = 0.5 / 3.6  # [m/s]
+    time_horizon = 1  # [s]
+    min_speed_difference = 0.25  # [m/s]
     min_activity_speed = 0.25 / 3.6  # [m/s]
-    diffspeed_start_act = 0.25 / 3.6  # [m/s]
     min_speed_inc = 4 / 3.6  # [m/s]
     min_cruising_time = 4  # [s]
     max_time_activity = 300  # [s] This speeds up the computation hugely
     max_time_host_lane_change = 10  # [s]
     min_line_quality = 3
     lane_change_threshold = 1  # [m]
-    lane_conf_threshold = 0.25
+    lane_conf_threshold = 0.25  # [m]
     max_time_lat_target = 10  # [s]
     factor_goal_y_target = 0.25  # ???
     n_targets = 8
@@ -184,7 +184,7 @@ class ActivityDetector(DataHandler):
                  the name of the following activity.
         """
         # Compute speed increase in next second.
-        shift = np.round(self.parms.time_speed_difference * self.frequency).astype(np.int)
+        shift = np.round(self.parms.time_horizon * self.frequency).astype(np.int)
         shifted = self.data[self.parms.host_lon_vel].shift(-shift)
         filtered = shifted.rolling(shift+1).min()
         self.set('speed_inc', shifted - filtered)
@@ -249,7 +249,7 @@ class ActivityDetector(DataHandler):
         # If someone can optimize next line... That line is responsible for 75%
         # of the executing time for longitudinal activities...
         end_i = next((j for j, value in speed_difference[i:end_i].iteritems() if
-                      value < self.parms.diffspeed_start_act),
+                      value < self.parms.min_speed_difference),
                      self.data.index[-1])
 
         if abs(self.get(self.parms.host_lon_vel, end_i) - self.get(self.parms.host_lon_vel, i)) < \
@@ -345,14 +345,17 @@ class ActivityDetector(DataHandler):
         self.data.loc[(self.get(self.parms.left_conf) < self.parms.min_line_quality) |
                       (self.get(self.parms.right_conf) < self.parms.min_line_quality),
                       'line_center_y_conf'] = np.nan
-        self.set('line_left_y_conf_down', self.get('line_left_y_conf') -
+        self.set('line_left_down', self.get('line_left_y_conf') -
                  self.data['line_left_y_conf'].rolling(window=self.frequency+1).max())
-        self.set('line_right_y_conf_down', self.get('line_right_y_conf') -
+        self.set('line_right_down', self.get('line_right_y_conf') -
                  self.data['line_right_y_conf'].rolling(window=self.frequency+1).max())
-        self.set('line_left_y_conf_up', self.get('line_left_y_conf') -
+        self.set('line_left_up', self.get('line_left_y_conf') -
                  self.data['line_left_y_conf'].rolling(window=self.frequency+1).min())
-        self.set('line_right_y_conf_up', self.get('line_right_y_conf') -
+        self.set('line_right_up', self.get('line_right_y_conf') -
                  self.data['line_right_y_conf'].rolling(window=self.frequency+1).min())
+        shift = np.round(self.parms.time_horizon*self.frequency).astype(np.int)
+        for signal in ['line_left_down', 'line_right_down', 'line_left_up', 'line_right_up']:
+            self.set('{:s}_shifted'.format(signal), self.get(signal).shift(-shift))
 
         # Compute the difference between consecutive valid lane line
         # measurements.
@@ -364,8 +367,8 @@ class ActivityDetector(DataHandler):
         event = LateralActivityHost.LANE_FOLLOWING
         events = [(self.data.index[0], event)]
 
-        y_down = (-self.get('line_left_y_conf_down'), -self.get('line_right_y_conf_down'))
-        y_up = (self.get('line_left_y_conf_up'), self.get('line_right_y_conf_up'))
+        y_down = (-self.get('line_left_down'), -self.get('line_right_down'))
+        y_up = (self.get('line_left_up'), self.get('line_right_up'))
         for row in self.data.itertuples():
             # Left lane change (out of ego lane).
             if event != LateralActivityHost.LEFT_LANE_CHANGE and self._potential_llc_host(row):
@@ -383,10 +386,10 @@ class ActivityDetector(DataHandler):
 
             # Follow-Lane
             elif event != LateralActivityHost.LANE_FOLLOWING and row.line_center_y_conf != 0:
-                if (row.line_right_y_conf_up < self.parms.lane_conf_threshold or
-                        row.line_left_y_conf_up < self.parms.lane_conf_threshold) and \
-                        (row.line_left_y_conf_down > -self.parms.lane_conf_threshold or
-                         row.line_right_y_conf_down > -self.parms.lane_conf_threshold):
+                if (row.line_right_up_shifted < self.parms.lane_conf_threshold or
+                        row.line_left_up_shifted < self.parms.lane_conf_threshold) and \
+                        (row.line_left_down_shifted > -self.parms.lane_conf_threshold or
+                         row.line_right_down_shifted > -self.parms.lane_conf_threshold):
                     event = LateralActivityHost.LANE_FOLLOWING
                     events.append((row.Index, event))
 
