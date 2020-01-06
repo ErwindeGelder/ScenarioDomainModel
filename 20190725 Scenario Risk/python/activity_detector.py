@@ -103,16 +103,19 @@ class ActivityDetectorParameters(Options):
     a_target = 'ax'
 
     # Parameters that alter the activity detection.
-    time_horizon = 1  # [s]
-    min_speed_difference = 0.25  # [m/s]
+    time_horizon = 1  # [s]  In paper, we use # of samples for horizon: time_horizon*sample time.
+
+    a_start = 0.1  # [m/s2]  Acceleration at start of an acceleration/deceleration activity.
+    a_end = 0.1  # [m/s2]  Acceleration at the start of a cruising activity, i.e., end of acc/dec.
     min_activity_speed = 0.25 / 3.6  # [m/s]
-    min_speed_inc = 4 / 3.6  # [m/s]
-    min_cruising_time = 4  # [s]
-    max_time_activity = 300  # [s] This speeds up the computation hugely
+    delta_v = 4 / 3.6  # [m/s]  Minimum speed increase/decrease during an acceleration/deceleration.
+    min_cruising_time = 4  # [s]  If a cruising activity is shorter, it will be merged.
+    max_time_activity = 300  # [s] Pretty arbitrarily large, this speeds up the computation hugely.
+
     max_time_host_lane_change = 10  # [s]
     min_line_quality = 3
-    lane_change_threshold = 1  # [m]
-    lane_conf_threshold = 0.25  # [m]
+    lane_change_threshold = 1  # [m]  In paper: Delta_l
+    lateral_speed_lane_change = 0.25  # [m]  In paper: v_lat, controls start/end host lane change.
     max_time_lat_target = 10  # [s]
     factor_goal_y_target = 0.25  # ???
     n_targets = 8
@@ -188,6 +191,7 @@ class ActivityDetector(DataHandler):
         shifted = self.data[self.parms.host_lon_vel].shift(-shift)
         filtered = shifted.rolling(shift+1).min()
         self.set('speed_inc', shifted - filtered)
+        self.data['speed_inc'] /= self.parms.time_horizon  # Convert to acceleration!
         self.set('speed_inc_past', self.get('speed_inc').shift(shift))
         self.set('speed_inc_start', self.get('speed_inc').copy())
         self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_inc_start'] = 0
@@ -196,6 +200,7 @@ class ActivityDetector(DataHandler):
         shifted = self.data[self.parms.host_lon_vel].shift(-shift)
         filtered = shifted.rolling(shift+1).max()
         self.set('speed_dec', shifted - filtered)
+        self.data['speed_dec'] /= self.parms.time_horizon  # Convert to acceleration!
         self.set('speed_dec_past', self.get('speed_dec').shift(shift))
         self.set('speed_dec_start', self.get('speed_dec').copy())
         self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_dec_start'] = 0
@@ -209,7 +214,7 @@ class ActivityDetector(DataHandler):
             # Potential acceleration signal when in minimum wrt next second, accelerating and not
             # standing still.
             if event != LongitudinalActivity.ACCELERATING and \
-                    row.speed_inc_past >= self.parms.min_speed_difference and \
+                    row.speed_inc_past >= self.parms.a_start and \
                     row.speed_inc_start > 0 and \
                     getattr(row, self.parms.host_lon_vel) >= self.parms.min_activity_speed:
                 i, is_event = self._end_lon_activity(row.Index, speed_inc)
@@ -218,7 +223,7 @@ class ActivityDetector(DataHandler):
                     all_events.append((row.Index, event))
                     end_event_time = i
             elif event != LongitudinalActivity.DECELERATING and \
-                    row.speed_dec_past <= -self.parms.min_speed_difference and \
+                    row.speed_dec_past <= -self.parms.a_start and \
                     row.speed_dec_start < 0:
                 i, is_event = self._end_lon_activity(row.Index, speed_dec)
                 if is_event:
@@ -249,11 +254,11 @@ class ActivityDetector(DataHandler):
         # If someone can optimize next line... That line is responsible for 75%
         # of the executing time for longitudinal activities...
         end_i = next((j for j, value in speed_difference[i:end_i].iteritems() if
-                      value < self.parms.min_speed_difference),
+                      value < self.parms.a_end),
                      self.data.index[-1])
 
         if abs(self.get(self.parms.host_lon_vel, end_i) - self.get(self.parms.host_lon_vel, i)) < \
-                self.parms.min_speed_inc:
+                self.parms.delta_v:
             return 0, False
         return end_i, True
 
@@ -345,16 +350,18 @@ class ActivityDetector(DataHandler):
         self.data.loc[(self.get(self.parms.left_conf) < self.parms.min_line_quality) |
                       (self.get(self.parms.right_conf) < self.parms.min_line_quality),
                       'line_center_y_conf'] = np.nan
+        shift = np.round(self.parms.time_horizon * self.frequency).astype(np.int)
         self.set('line_left_down', self.get('line_left_y_conf') -
-                 self.data['line_left_y_conf'].rolling(window=self.frequency+1).max())
+                 self.data['line_left_y_conf'].rolling(window=shift+1).max())
         self.set('line_right_down', self.get('line_right_y_conf') -
-                 self.data['line_right_y_conf'].rolling(window=self.frequency+1).max())
+                 self.data['line_right_y_conf'].rolling(window=shift+1).max())
         self.set('line_left_up', self.get('line_left_y_conf') -
-                 self.data['line_left_y_conf'].rolling(window=self.frequency+1).min())
+                 self.data['line_left_y_conf'].rolling(window=shift+1).min())
         self.set('line_right_up', self.get('line_right_y_conf') -
-                 self.data['line_right_y_conf'].rolling(window=self.frequency+1).min())
+                 self.data['line_right_y_conf'].rolling(window=shift+1).min())
         shift = np.round(self.parms.time_horizon*self.frequency).astype(np.int)
         for signal in ['line_left_down', 'line_right_down', 'line_left_up', 'line_right_up']:
+            self.data[signal] = self.data[signal] / self.parms.time_horizon  # Convert to speed!
             self.set('{:s}_shifted'.format(signal), self.get(signal).shift(-shift))
 
         # Compute the difference between consecutive valid lane line
@@ -386,10 +393,10 @@ class ActivityDetector(DataHandler):
 
             # Follow-Lane
             elif event != LateralActivityHost.LANE_FOLLOWING and row.line_center_y_conf != 0:
-                if (row.line_right_up_shifted < self.parms.lane_conf_threshold or
-                        row.line_left_up_shifted < self.parms.lane_conf_threshold) and \
-                        (row.line_left_down_shifted > -self.parms.lane_conf_threshold or
-                         row.line_right_down_shifted > -self.parms.lane_conf_threshold):
+                if (row.line_right_up_shifted < self.parms.lateral_speed_lane_change or
+                        row.line_left_up_shifted < self.parms.lateral_speed_lane_change) and \
+                        (row.line_left_down_shifted > -self.parms.lateral_speed_lane_change or
+                         row.line_right_down_shifted > -self.parms.lateral_speed_lane_change):
                     event = LateralActivityHost.LANE_FOLLOWING
                     events.append((row.Index, event))
 
@@ -441,8 +448,8 @@ class ActivityDetector(DataHandler):
         begin_i = next((j for j, left, right in zip(y_dot[0][begin_i:i].index[::-1],
                                                     y_dot[0][begin_i:i].values[::-1],
                                                     y_dot[1][begin_i:i].values[::-1]) if
-                        left < self.parms.lane_conf_threshold or
-                        right < self.parms.lane_conf_threshold), None)
+                        left < self.parms.lateral_speed_lane_change or
+                        right < self.parms.lateral_speed_lane_change), None)
         if begin_i is None:
             return 0, False
         return begin_i, True
