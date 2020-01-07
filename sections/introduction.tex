@@ -3,7 +3,7 @@
 
 \cstarta
 % Introduce scenario-based testing.
-The development of Autonomous Vehicles (AVs) has made significant progress in the last years and it is expected that AVs will soon be introduced on our roads \autocite{bimbraw2015autonomous, madni2018autonomous}. 
+The development of Automated Vehicles (AVs) has made significant progress in the last years and it is expected that AVs will soon be introduced on our roads \autocite{bimbraw2015autonomous, madni2018autonomous}. 
 An essential aspect in the development of AVs is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \autocite{bengler2014threedecades, stellet2015taxonomy}. 
 Among other methods, a scenario-based approach has been proposed \autocite{elrofai2018scenario, putz2017pegasus}. 
 % Explain that these scenarios may be based on real-world scenarios.
@@ -28,7 +28,7 @@ Our method consists of two steps. First, the data is automatically tagged with r
 % 4. Scalable: many more type of scenarios could be extracted.
 Our proposed method brings several benefits. 
 First, by first tagging the data, characteristics that are shared among different type of scenarios need to be identified only once, whereas these characteristics would be identified multiple times if each of the type of scenarios would be identified completely independently.
-Secondly, by splitting the process in two parts, i.e., the tagging and the scenario mining, the scenario mining could be applied to different types of data (e.g., data from a vehicle \autocite{paardekooper2019dataset6000km} or from a drone \autocite{krajewski2018highD}). It is also possible to have manually tagged data, e.g., see \autocite{fontana2018action}. Thirdly, because the scenario mining is performed offline analysis, we do not only rely on past data, which, in turn, increases the accuracy of the scenario mining. Fourthly, our approach is easily scalable because more type of scenarios can be mined by only describing the type of scenarios as a combination of (sequential) tags.
+Secondly, by splitting the process in two parts, i.e., the tagging and the scenario mining, the scenario mining could be applied to different types of data (e.g., data from a vehicle \autocite{paardekooper2019dataset6000km} or from a drone \autocite{krajewski2018highD}). It is also possible to have manually tagged data, e.g., see \autocite{fontana2018action}. Thirdly, because the scenario mining is performed offline, we do not only rely on past data, which, in turn, increases the accuracy of the scenario mining. Fourthly, our approach is easily scalable because more type of scenarios can be mined by only describing the type of scenarios as a combination of (sequential) tags.
 
 % Structure.
 In \cref{sec:problem}, we formulate the problem of scenario mining. \Cref{sec:tagging,sec:mining} describe the two steps of our proposed method, i.e., the tagging of the data and the scenario mining based on these tags. We illustrate the scenario mining with few examples in \cref{sec:case study}. Our paper is concluded in \cref{sec:conclusions}.
