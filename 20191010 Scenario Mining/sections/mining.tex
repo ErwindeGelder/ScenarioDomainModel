@@ -2,3 +2,25 @@
 \label{sec:mining}
 
 \todo{Explain the approach of scenario mining. For each actor, an n-gram is constructed using the detected tags. A scenario category is then defined as a sequence of nodes, where the n-grams of multiple actors can be combined if needed.}
+
+\cstartb
+% Introduce n-grams and quickly explain what an n-gram is.
+For the scenario mining, we will employ n-gram models. An n-gram is a sequence of $\nofngram$ items. 
+For example, in the field of natural language processing --- where N-grams are a popular modeling technique \autocite{hull1982experiments,brown1992class} --- each item might correspond to a single word. 
+In our case, an item corresponds to a combination of tags. 
+
+% Explain that we use multiple n-gram models.
+% What are the advantages of using multiple n-grams?
+Instead of constructing one n-gram model with all tags within one dataset, we construct different n-gram models for the different subjects. 
+I.e., we construct an n-gram for the ego vehicle, the static environment, and any other vehicle separately.
+Constructing different n-gram models instead of one n-gram model bring several benefits:
+\begin{itemize}
+	\item The number of possible items is much lower when considering only one subject, such that it is more likely that most of the items are seen multiple times. As a result, analysis to predict tags or correct for wrong tags is possible \autocite{lesher1998optimal}.
+	\item If different tags are needed for mining (other) scenarios, only the n-gram models of the corresponding subjects needs to be updated.
+\end{itemize}
+
+% Show example of one n-gram.
+
+% Show how a scenario category is represented through a "template".
+
+\cendb
