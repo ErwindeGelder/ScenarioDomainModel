@@ -21,7 +21,7 @@ class HighwayMarkerOptions(Options):
 
     # Define the coordinates at which the highway is entered and exited.
     # Coordinates are in [lat, lon, angle]
-    enter: List[Tuple[float, float, float]] = [(52.1159, 5.30590, 260),
+    enter: List[Tuple[float, float, float]] = [(52.1156, 5.30350, 260),
                                                (52.1357, 5.39948, 80),
                                                (52.1948, 5.40042, 130),
                                                (52.1449, 5.41163, 60),
