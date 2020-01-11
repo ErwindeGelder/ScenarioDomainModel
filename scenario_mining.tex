@@ -65,6 +65,7 @@
 \Crefname{figure}{Fig.}{Figs.}
 \crefname{equation}{}{}
 \Crefname{equation}{Equation}{Equations}
+\newcommand{\crefrangeconjunction}{--}
 \usepackage{subcaption}
 \usepackage{xstring}
 \usepackage{xparse}
@@ -117,6 +118,33 @@
 
 \newlength\figurewidth
 \newlength\figureheight
+\definecolor{egocolor}{RGB}{220, 200, 200}
+\definecolor{othervehicle}{RGB}{200, 220, 200}
+\definecolor{staticenvironment}{RGB}{200, 200, 220}
+\newlength{\tagheight}\setlength{\tagheight}{3em}
+\newlength{\subjectwidth}\setlength{\subjectwidth}{6em}
+\newlength{\descriptionwidth}\setlength{\descriptionwidth}{7em}
+\newlength{\tagtotalwidth}\setlength{\tagtotalwidth}{27em}
+\newlength{\egovehiclecruising}\setlength{\egovehiclecruising}{6em}
+\newlength{\egovehicleaccelerating}\setlength{\egovehicleaccelerating}{10em}
+\newlength{\egovehiclefollowing}\setlength{\egovehiclefollowing}{12em}
+\newlength{\egovehiclechanging}\setlength{\egovehiclechanging}{9em}
+\newlength{\itempos}\setlength{\itempos}{2em}
+\newlength{\timepos}\setlength{\timepos}{2em}
+
+\newlength{\tagsep}\setlength{\tagsep}{0.5em}
+\newlength{\otherfollowing}\setlength{\otherfollowing}{5.5em}
+\newlength{\otherchanging}\setlength{\otherchanging}{8em}
+\newlength{\othernolead}\setlength{\othernolead}{9.5em}
+\newlength{\cutinheight}\setlength{\cutinheight}{2.2em}
+\newlength{\arrowheight}\setlength{\arrowheight}{0.8em}
+
+\tikzstyle{block}=[minimum height=\tagheight, align=center, anchor=north east]
+\tikzstyle{tag}=[block, draw, anchor=north west]
+\tikzstyle{timeline}=[ultra thick, color=black]
+\tikzstyle{showitem}=[dashed]
+\tikzstyle{cutinline}=[ultra thick, color=red]
+
 
 
 \usetikzlibrary{arrows,positioning}
