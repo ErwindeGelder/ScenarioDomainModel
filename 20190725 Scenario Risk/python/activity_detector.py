@@ -13,8 +13,11 @@ Modifications:
 2020 01 03 Let the longitudinal activities accelerating/decelerating start later.
 2020 01 03 `magic_time` removed for host lane change (lc) detection. Therefore, lc starts 1 s later.
 2020 01 04 Ego lane change ends earlier, now it is consistent with other activities.
+2020 01 11 Lead vehicle should be within 2 seconds (2 can be changed with max_thw_lead).
+2020 01 12 Bug fix. Getting longitudinal activities of target vehicles changes host_lon_vel par.
 """
 
+import copy
 from typing import Callable, List, NamedTuple, Tuple, Union
 from enum import Enum, unique
 import pandas as pd
@@ -121,6 +124,8 @@ class ActivityDetectorParameters(Options):
     n_targets = 8
     diff_max_valid_time_host = 7  # [s]
     diff_max_valid_time_target = 2  # [s]
+
+    max_thw_lead = 2  # [s]
 
     # Parameters that are changed while processing.
     follow_lane_switch = -1
@@ -486,7 +491,7 @@ class ActivityDetector(DataHandler):
         :return: A list of events, where each event is a tuple of its time and
                  the name of the following activity.
         """
-        parameters = self.parms
+        parameters = copy.deepcopy(self.parms)
         parameters.host_lon_vel = self.parms.v_target
         activity_detector = ActivityDetector(self.targets[i], parameters=parameters,
                                              frequency=self.frequency)
@@ -788,8 +793,10 @@ class ActivityDetector(DataHandler):
         targets["new_index"] = np.arange(len(targets))
         targets = targets.set_index("new_index")
         samelane = LateralStateTarget.SAME.value
-        targets["_candidate"] = np.logical_and(targets["lateral_state"] == samelane,
-                                               targets[self.parms.x_target] > 0)
+        targets["_candidate"] = np.logical_and(
+            np.logical_and(targets["lateral_state"] == samelane, targets[self.parms.x_target] > 0),
+            targets[self.parms.x_target].values <=
+            self.data.loc[targets["time"], self.parms.host_lon_vel].values*self.parms.max_thw_lead)
 
         # Initialize the tag for the lead vehicle.
         lead_vehicle = [LeadVehicle.NOLEAD.value for _ in range(len(targets))]
