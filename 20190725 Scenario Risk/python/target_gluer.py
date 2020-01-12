@@ -5,6 +5,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2019 12 30 Change the way options are specified.
+2020 01 12 Fixing issue with age of target when merging two targets.
 """
 
 from typing import List, NamedTuple
@@ -31,6 +32,7 @@ class _TargetGluerOptions(Options):
     fieldname_target_dx: str = "dx"
     fieldname_target_dy: str = "dy"
     fieldname_target_id: str = "id"
+    fieldname_target_age: str = "age"
 
     verbose: bool = False
 
@@ -71,6 +73,8 @@ def merge_targets(datahandler: DataHandler, **kwargs) -> None:
         The fieldname for the relative lateral position of the targets.
     - fieldname_target_id: str, default "id"
         The fieldname for the ID of the targets.
+    - fieldname_target_age: str, default "age"
+        The fieldname for the age of the targets.
     - verbose: bool, default False
         If True, information is printed (might be useful for inspection).
 
@@ -151,6 +155,9 @@ class _TargetGluer:
                          target[self.options.fieldname_target_id].values[0]))
         candidate[self.options.fieldname_target_id] = \
             target[self.options.fieldname_target_id].values[0]
+        candidate[self.options.fieldname_target_age] += \
+            (candidate.index[0] - target.index[-1])*1e9 + \
+            target[self.options.fieldname_target_age].values[-1]
         new_index = np.concatenate((target.index,
                                     np.round(np.arange(info.last_t, candidate.index[0],
                                                        self.timestep)[1:], 2),
