@@ -15,6 +15,7 @@ Modifications:
 2020 01 04 Ego lane change ends earlier, now it is consistent with other activities.
 2020 01 11 Lead vehicle should be within 2 seconds (2 can be changed with max_thw_lead).
 2020 01 12 Bug fix. Getting longitudinal activities of target vehicles changes host_lon_vel par.
+2020 01 16 Prev/next values shifted by one sample. Start lane change at least 1 sample before shift.
 """
 
 import copy
@@ -124,6 +125,7 @@ class ActivityDetectorParameters(Options):
     n_targets = 8
     diff_max_valid_time_host = 7  # [s]
     diff_max_valid_time_target = 2  # [s]
+    max_lat_displacement_target = 2  # [m]
 
     max_thw_lead = 2  # [s]
 
@@ -450,9 +452,10 @@ class ActivityDetector(DataHandler):
         :return: starting index and whether there is a lane change.
         """
         begin_i = np.max((i - self.parms.max_time_host_lane_change, event[0]))
-        begin_i = next((j for j, left, right in zip(y_dot[0][begin_i:i].index[::-1],
-                                                    y_dot[0][begin_i:i].values[::-1],
-                                                    y_dot[1][begin_i:i].values[::-1]) if
+        end_i = y_dot[0].index[y_dot[0].index.get_loc(i) - 1]
+        begin_i = next((j for j, left, right in zip(y_dot[0][begin_i:end_i].index[::-1],
+                                                    y_dot[0][begin_i:end_i].values[::-1],
+                                                    y_dot[1][begin_i:end_i].values[::-1]) if
                         left < self.parms.lateral_speed_lane_change or
                         right < self.parms.lateral_speed_lane_change), None)
         if begin_i is None:
@@ -541,7 +544,8 @@ class ActivityDetector(DataHandler):
             # Left lane change out of ego lane.
             if valid and event not in [LateralActivityTarget.LEFT_CUT_IN,
                                        LateralActivityTarget.LEFT_CUT_OUT] and \
-                    self._potential_left(row.line_left_next, row.line_left_prev):
+                    self._potential_left(row.line_left_next, row.line_left_prev,
+                                         row.line_left_down):
                 lineinfo = LineData(distance=lines.left, difference=lines.left_down)
                 self._update_target_lat_event(row, lineinfo, LateralActivityTarget.LEFT_CUT_OUT,
                                               events)
@@ -549,7 +553,8 @@ class ActivityDetector(DataHandler):
             # Left lane change into ego lane.
             elif valid and event not in [LateralActivityTarget.LEFT_CUT_IN,
                                          LateralActivityTarget.LEFT_CUT_OUT] and \
-                    self._potential_left(row.line_right_next, row.line_right_prev):
+                    self._potential_left(row.line_right_next, row.line_right_prev,
+                                         row.line_right_down):
                 lineinfo = LineData(distance=lines.right, difference=lines.right_down)
                 self._update_target_lat_event(row, lineinfo, LateralActivityTarget.LEFT_CUT_IN,
                                               events)
@@ -557,7 +562,7 @@ class ActivityDetector(DataHandler):
             # Right lane change into ego lane.
             elif valid and event not in [LateralActivityTarget.RIGHT_CUT_IN,
                                          LateralActivityTarget.RIGHT_CUT_OUT] and \
-                    self._potential_right(row.line_left_next, row.line_left_prev):
+                    self._potential_right(row.line_left_next, row.line_left_prev, row.line_left_up):
                 lineinfo = LineData(distance=-lines.left, difference=lines.left_up)
                 self._update_target_lat_event(row, lineinfo, LateralActivityTarget.RIGHT_CUT_IN,
                                               events)
@@ -565,7 +570,8 @@ class ActivityDetector(DataHandler):
             # Right lane change out of ego lane.
             elif valid and event not in [LateralActivityTarget.RIGHT_CUT_IN,
                                          LateralActivityTarget.RIGHT_CUT_OUT] and \
-                    self._potential_right(row.line_right_next, row.line_right_prev):
+                    self._potential_right(row.line_right_next, row.line_right_prev,
+                                          row.line_right_up):
                 lineinfo = LineData(distance=-lines.right, difference=lines.right_up)
                 self._update_target_lat_event(row, lineinfo, LateralActivityTarget.RIGHT_CUT_OUT,
                                               events)
@@ -619,8 +625,7 @@ class ActivityDetector(DataHandler):
         target["line_right_down"] = line_right - line_right.rolling(**rollings_options).max()
         target["line_right_up"] = line_right - line_right.rolling(**rollings_options).min()
 
-    @staticmethod
-    def _potential_left(current_y: float, previous_y: float) -> bool:
+    def _potential_left(self, current_y: float, previous_y: float, displacement: float) -> bool:
         """ Determine whether there is a potential left lane change of target.
 
         If any of the following is true, a False is returned.
@@ -628,9 +633,12 @@ class ActivityDetector(DataHandler):
         - The current distance toward the left lane line is larger than or
           equal to 0.
         - The previous distance toward the left lane line is smaller than 0.
+        - The displacement is more than X meters. X is defined by
+          self.parms.max_lat_displacement_target
 
         :param current_y: The current distance toward the left lane line.
         :param previous_y: The previous distance toward the left lane line.
+        :param displacement: The displacement may not be more than X meters.
         :return: A boolean whether there is a potential lane change.
         """
         if np.isnan(current_y) or np.isnan(previous_y):
@@ -639,9 +647,11 @@ class ActivityDetector(DataHandler):
             return False
         if previous_y < 0:
             return False
+        if np.abs(displacement) > self.parms.max_lat_displacement_target:
+            return False
         return True
 
-    def _potential_right(self, current_y: float, previous_y: float) -> bool:
+    def _potential_right(self, current_y: float, previous_y: float, displacement: float) -> bool:
         """ Determine whether there is a potential right lane change of host.
 
         If any of the following is true, a False is returned.
@@ -649,12 +659,15 @@ class ActivityDetector(DataHandler):
         - The current distance toward the right lane line is larger than or
           equal to 0.
         - The previous distance toward the left lane line is smaller than 0.
+        - The displacement is more than X meters. X is defined by
+          self.parms.max_lat_displacement_target
 
         :param current_y: The current distance toward the right lane line.
         :param previous_y: The previous distance toward the right lane line.
+        :param displacement: The displacement may not be more than X meters.
         :return: A boolean whether there is a potential lane change.
         """
-        return self._potential_left(-current_y, -previous_y)
+        return self._potential_left(-current_y, -previous_y, displacement)
 
     def _update_target_lat_event(self, row, lineinfo: LineData, event: LateralActivityTarget,
                                  events: List[Tuple[float, LateralActivityTarget]]):
