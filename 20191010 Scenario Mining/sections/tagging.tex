@@ -167,8 +167,8 @@ Similarly, a right lane change is detected when the following conditions are sat
 
 Once a lane change is detected using \cref{eq:potential left a,eq:potential left b,eq:potential right a,eq:potential right b}, the moment at which the lane change starts is determined. To do this, we make use of $\lineleftinc{\sample}$ and $\lineleftdec{\sample}$, which are similarly defined as $\speedinc{\sample}$ and $\speeddec{\sample}$, i.e.,
 \begin{align}
-	\lineleftinc{\sample} \defsym \lineleft{\sample} - \min_{\sampledummy \in \left\{\sample-\samplehorizon, \ldots, \sample\right\}} \lineleft{\sampledummy},\\
-	\lineleftdec{\sample} \defsym \lineleft{\sample} - \max_{\sampledummy \in \left\{\sample-\samplehorizon, \ldots, \sample\right\}} \lineleft{\sampledummy}.
+	\lineleftinc{\sample} \defsym \lineleft{\sample} - \min_{\sampledummy \in \left\{\sample-\samplehorizon, \ldots, \sample\right\}} \lineleft{\sampledummy}, \label{eq:line left inc}\\
+	\lineleftdec{\sample} \defsym \lineleft{\sample} - \max_{\sampledummy \in \left\{\sample-\samplehorizon, \ldots, \sample\right\}} \lineleft{\sampledummy}. \label{eq:line left dec}
 \end{align}
 Similarly, $\linerightinc{\sample}$ and $\linerightdec{\sample}$ are defined. 
 When a lane change is detected at sample step $\sample$ using \cref{eq:potential left a,eq:potential left b,eq:potential right a,eq:potential right b}, the start of this lane change is estimated in a similar manner as the start of an acceleration or deceleration activity, see \cref{eq:start acceleration,eq:start deceleration}. 
@@ -200,7 +200,7 @@ The sample step of a left lane change, $\sampleendleft{\sample}$ is defined by s
 \end{figure}
 
 \cstarta
-\Cref{fig:ego lane change} illustrates a hypothetical lane change of the ego vehicle. It shows that the distance towards the left line changes when the ego vehicle crosses the line, such that the conditions \cref{eq:potential right a,eq:potential right b} are satisfied. In \cref{fig:ego lane change}, $\samplestartright{\sample}$ and $\samplestartleft{\sample}$ are denoted by the black vertical lines.
+\Cref{fig:ego lane change} illustrates a hypothetical lane change of the ego vehicle. It shows that the distance towards the left line changes when the ego vehicle crosses the line, such that the conditions \cref{eq:potential right a,eq:potential right b} are satisfied. In \cref{fig:ego lane change}, $\samplestartright{\sample}$ and $\sampleendright{\sample}$ are denoted by the black vertical lines.
 
 \begin{remark}
 	It might happen that there is no accurate measurement of the line distances available at a certain sample step $\sample$. For example, in \cref{fig:glare}, there is no line information while the ego vehicle performs a lane change. By using the next available line distances instead of $\lineleft{\sample}$ and $\lineright{\sample}$ in and the previous available line distances instead of $\lineleft{\sample-1}$ and $\lineright{\sample-1}$ in \cref{eq:potential left a,eq:potential left b,eq:potential right a,eq:potential right b}, our algorithm is still able to detect lane changes.
@@ -225,20 +225,55 @@ The longitudinal activities of other vehicles are estimated in a similar manner 
 \end{equation}
 To compute the longitudinal activities of the $\indextarget$-th vehicle, the approach outlined in \cref{sec:longitudinal ego} is used with $\speedtargetiabs{\sample}{\indextarget}$ substituted for $\speed{\sample}$. 
 
-\cstarta
 \begin{remark}
 	\label{rem:no target}
-	Typically, $\speedtargetirel{\sample}{\indextarget}$ is obtained by fusing the outputs of several sensors, e.g., see \autocite{elfring2016effective}. How this is done is out of scope of this paper. If $\speedtargetirel{\sample}{\indextarget}$ is not available, e.g., because the vehicle moved out of the view of the ego vehicle's sensors, there are no activities estimated for the $\indextarget$-vehicle.
+	\cstarta Typically, $\speedtargetirel{\sample}{\indextarget}$ is obtained by fusing the outputs of several sensors, e.g., see \autocite{elfring2016effective}. 
+	How this is done is out of scope of this paper. 
+	If $\speedtargetirel{\sample}{\indextarget}$ is not available, e.g., because the vehicle moved out of the view of the ego vehicle's sensors, there are no activities estimated for the $\indextarget$-vehicle at sample step $\sample$. \cenda
+	\cstartc Consequently, no tags are applied for the the $\indextarget$-vehicle at sample step $\sample$. This applies for all tags of the other vehicles that are mentioned in \cref{tab:tags}.\cendc
 \end{remark}
-\cenda
-
 
 
 
 \subsection{Lateral activity of other vehicle}
 \label{sec:lateral other vehicles}
 
-\todo{Explain that we first need to estimate the distance of the vehicle toward the lane lines by extrapolating the lane lines. Then the detection of the lateral activities is similar as for the ego vehicle as described in \cref{sec:lateral ego}.}
+\cstartc
+For the lane changes of other vehicles, only the lane changes to and from the ego vehicle's lane are considered.
+To detect a lane change of the $\indextarget$-th vehicle, we use the distance of the $\indextarget$-th vehicle toward the ego vehicle's left and right lane lines, denoted by $\linelefttarget{\sample}{\indextarget}$ and $\linerighttarget{\sample}{\indextarget}$, respectively. 
+How $\linelefttarget{\sample}{\indextarget}$ and $\linerighttarget{\sample}{\indextarget}$ are determined is beyond the scope of this paper. 
+We define $\linelefttargetinc{\sample}{\indextarget}$, $\linerighttargetinc{\sample}{\indextarget}$, $\linelefttargetdec{\sample}{\indextarget}$, and $\linerighttargetdec{\sample}{\indextarget}$ similar as $\lineleftinc{\sample}$ and $\lineleftdec{\sample}$ in \cref{eq:line left inc,eq:line left dec}.
+
+A lane change is detected when the vehicle crosses either of the two lane lines.
+There are four possible ways this can happen.
+For now, we consider a right lane change toward the ego vehicle's lane.
+A right lane change of the $\indextarget$-th vehicle toward the ego vehicle's lane is detected at sample step $\sample$ when the vehicle is not already changing lane and
+\begin{equation}
+	\label{eq:detect lane change target}
+	\linelefttarget{\sample-1}{\indextarget} \leq 0 \land \linelefttarget{\sample}{\indextarget} > 0.
+\end{equation}
+
+To determine the start of the lane change, the lateral speed should be below a certain threshold (controlled by $\lanechangespeed$) or the lateral movement should be above a certain threshold (controlled by $\factorgoalmax$). 
+Because it might occur that the lateral speed is below the threshold during the whole lane change, a minimum lateral movement is considered as well (controlled by $\factorgoalmin$). 
+As a result, the start of a right lane change toward the ego vehicle's lane is at estimated to be at sample step
+\begin{multline}
+	\label{eq:start lane change target}
+	\arg \max_{\sampledummy < \sample} \left\{ \sampledummy: \linelefttarget{\sampledummy}{\indextarget} < -\factorgoalmax\widthlanetarget{\sample}{\indextarget} \lor \right. \\
+	\left. \left( \linelefttargetinc{\sampledummy}{\indextarget} < \lanechangespeed\samplehorizon\sampletime \land \linelefttarget{\sampledummy}{\indextarget} < -\factorgoalmin\widthlanetarget{\sample}{\indextarget} \right) \right\}.
+\end{multline}
+Here, $\widthlanetarget{\sample}{\indextarget}=\linelefttarget{\sample}{\indextarget}-\linerighttarget{\sample}{\indextarget}$ is the estimated lane width. 
+The end of the same lane change is estimated in a similar way:
+\begin{multline}
+	\label{eq:end lane change target}
+	\arg \max_{\sampledummy > \sample} \left\{ \sampledummy: \linelefttarget{\sampledummy}{\indextarget} > \factorgoalmax\widthlanetarget{\sample}{\indextarget} \lor \right. \\
+	\left. \left(\linelefttargetinc{\sampledummy+\samplehorizon}{\indextarget} < \lanechangespeed\samplehorizon\sampletime \land \linelefttarget{\sampledummy}{\indextarget} > \factorgoalmin\widthlanetarget{\sample}{\indextarget}\right) \right\}.
+\end{multline}
+
+For a right lane change from the ego vehicle's lane, $\linerighttarget{\cdot}{\indextarget}$ and $\linerighttargetinc{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}. 
+Similarly, for a left lane change to the ego vehicle's lane, $-\linerighttarget{\cdot}{\indextarget}$ and $-\linerighttargetdec{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}.
+Finally, for a left lane change from the ego vehicle's lane, $-\linelefttarget{\cdot}{\indextarget}$ and $-\linelefttargetdec{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}.
+\cendc
+
 
 
 \cstartc
@@ -248,7 +283,6 @@ To compute the longitudinal activities of the $\indextarget$-th vehicle, the app
 For the longitudinal state of any other vehicle, two possibilities are considered: in front of the ego vehicle or behind the ego vehicle. 
 Let the longitudinal position at sample step $\sample$ of the $\indextarget$-th vehicle relative to the ego vehicle be denoted by $\lontarget{\sample}{\indextarget}$. 
 The tag ``in front of ego'' applies when $\lontarget{\sample}{\indextarget}> 0$ and the tag ``behind ego'' applies when $\lontarget{\sample}{\indextarget}\leq 0$. 
-Note that \cref{rem:no target} applies here as well, i.e., if $\lontarget{\sample}{\indextarget}$ is unavailable, there is no tag applied for the longitudinal state for the $\indextarget$-th vehicle at sample step $\sample$. 
 
 
 
@@ -259,7 +293,6 @@ Four different possibilities are considered for the lateral state of any other v
 The lateral state is based on the estimated distance of the other vehicle toward the ego vehicle's lane lines, see \cref{tab:lateral state other vehicle}. 
 The situation of $\linelefttarget{\sample}{\indextarget} < 0$ and $\linerighttarget{\sample}{\indextarget} \geq 0$ would mean that the other vehicle is left of the left lane line and right of the right lane line. 
 This generally only happens when the is a large error in either $\linelefttarget{\sample}{\indextarget}$ or $\linerighttarget{\sample}{\indextarget}$ because, e.g., the other vehicle is far away from the ego vehicle.
-Note that \cref{rem:no target} applies here as well, i.e., if $\linelefttarget{\sample}{\indextarget}$ or $\linerighttarget{\sample}{\indextarget}$ is unavailable, there is no tag applied for the lateral state for the $\indextarget$-th vehicle at sample step $\sample$. 
 
 \begin{table}
 	\centering
@@ -288,8 +321,9 @@ Two possibilities are considered: a vehicle is a lead vehicle (the tag ``yes'' a
 	< \thw \speed{\sample}$.
 	\item There is no other vehicle that is closer to the ego vehicle while satisfying the above conditions, i.e., $\lontarget{\sample}{\indextarget} < \lontarget{\sample}{\indextargetother}$ for all $\indextargetother$-th vehicles with $\indextargetother \ne \indextarget$ that satisfy the above conditions.
 \end{itemize}
-
 \cendc
+
+
 
 \subsection{Static environment}
 \label{sec:static environment}

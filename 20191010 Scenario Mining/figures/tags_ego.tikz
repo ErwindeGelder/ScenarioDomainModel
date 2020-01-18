@@ -11,7 +11,7 @@
 % Lateral activity
 \node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=egocolor] at (0, -\tagheight) {Lateral activity};
 \node[tag, text width=\egovehiclefollowing-1em, minimum width=\egovehiclefollowing, fill=egocolor] at (0, -\tagheight) {Following lane};
-\node[tag, text width=\egovehiclechanging-1em, minimum width=\egovehicleaccelerating, fill=egocolor] at (\egovehiclefollowing, -\tagheight) {Changing lane left};
+\node[tag, text width=\egovehiclechanging-1em, minimum width=\egovehiclechanging, fill=egocolor] at (\egovehiclefollowing, -\tagheight) {Changing lane left};
 \node[tag, text width=\tagtotalwidth-\egovehiclechanging-\egovehiclefollowing-1em, minimum width=\tagtotalwidth-\egovehiclechanging-\egovehiclefollowing, fill=egocolor] at (\egovehiclechanging+\egovehiclefollowing, -\tagheight) {Following lane};
 
 % Items.
