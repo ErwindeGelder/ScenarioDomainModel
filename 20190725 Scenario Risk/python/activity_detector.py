@@ -16,6 +16,7 @@ Modifications:
 2020 01 11 Lead vehicle should be within 2 seconds (2 can be changed with max_thw_lead).
 2020 01 12 Bug fix. Getting longitudinal activities of target vehicles changes host_lon_vel par.
 2020 01 16 Prev/next values shifted by one sample. Start lane change at least 1 sample before shift.
+2020 01 18 Lane change detection for other vehicles improved.
 """
 
 import copy
@@ -28,11 +29,12 @@ from data_handler import DataHandler
 from options import Options
 
 
-LineData = NamedTuple("LineData", [("distance", pd.Series), ("difference", pd.Series)])
-TargetLines = NamedTuple("LineData", [("left", pd.Series), ("right", pd.Series),
-                                      ("left_up", pd.Series), ("left_down", pd.Series),
-                                      ("right_up", pd.Series), ("right_down", pd.Series)])
-FromGoal = NamedTuple("FromGoal", [("from_y", float), ("goal_y", float)])
+LineData = NamedTuple("LineData", [("distance", pd.Series),
+                                   ("distance_prev", pd.Series),
+                                   ("difference", pd.Series),
+                                   ("difference_shifted", pd.Series)])
+FromGoal = NamedTuple("FromGoal", [("from_y", float), ("goal_y", float),
+                                   ("from_y_min", float), ("goal_y_min", float)])
 
 
 @unique
@@ -121,7 +123,8 @@ class ActivityDetectorParameters(Options):
     lane_change_threshold = 1  # [m]  In paper: Delta_l
     lateral_speed_lane_change = 0.25  # [m]  In paper: v_lat, controls start/end host lane change.
     max_time_lat_target = 10  # [s]
-    factor_goal_y_target = 0.25  # ???
+    factor_goal_y_target = 0.5  # 0.5 means target's lane change start from center of original lane.
+    factor_mingoal_y_target = 0.1  # Minimum movement into other lane for lane change.
     n_targets = 8
     diff_max_valid_time_host = 7  # [s]
     diff_max_valid_time_target = 2  # [s]
@@ -531,50 +534,54 @@ class ActivityDetector(DataHandler):
 
         # We are going to grab all line data. By doing this once, we speed up the calculation at a
         # small cost of memory usage.
-        lines = TargetLines(left=target['line_left_next'],
-                            right=target['line_right_next'],
-                            left_down=target['line_left_down'],
-                            right_down=target['line_right_down'],
-                            left_up=target['line_left_up'],
-                            right_up=target['line_right_up'])
+        lane_change = [LateralActivityTarget.LEFT_CUT_IN, LateralActivityTarget.LEFT_CUT_OUT,
+                       LateralActivityTarget.RIGHT_CUT_IN, LateralActivityTarget.RIGHT_CUT_OUT]
         for row in target.iloc[1:].itertuples():
             self.parms.follow_lane_switch -= 1
             valid = not np.isnan(row.line_center) and row.line_right < row.line_left
 
             # Left lane change out of ego lane.
-            if valid and event not in [LateralActivityTarget.LEFT_CUT_IN,
-                                       LateralActivityTarget.LEFT_CUT_OUT] and \
+            if valid and event not in lane_change and \
                     self._potential_left(row.line_left_next, row.line_left_prev,
                                          row.line_left_down):
-                lineinfo = LineData(distance=lines.left, difference=lines.left_down)
-                self._update_target_lat_event(row, lineinfo, LateralActivityTarget.LEFT_CUT_OUT,
-                                              events)
+                lineinfo = LineData(distance=target["line_left"],
+                                    distance_prev=target["line_left"],
+                                    difference=-target["line_left_down"],
+                                    difference_shifted=-target["line_left_down_shifted"])
+                event = self._update_target_lat_event(row, lineinfo,
+                                                      LateralActivityTarget.LEFT_CUT_OUT, events)
 
             # Left lane change into ego lane.
-            elif valid and event not in [LateralActivityTarget.LEFT_CUT_IN,
-                                         LateralActivityTarget.LEFT_CUT_OUT] and \
+            elif valid and event not in lane_change and \
                     self._potential_left(row.line_right_next, row.line_right_prev,
                                          row.line_right_down):
-                lineinfo = LineData(distance=lines.right, difference=lines.right_down)
-                self._update_target_lat_event(row, lineinfo, LateralActivityTarget.LEFT_CUT_IN,
-                                              events)
+                lineinfo = LineData(distance=target["line_right"],
+                                    distance_prev=target["line_right"],
+                                    difference=-target["line_right_down"],
+                                    difference_shifted=-target["line_right_down_shifted"])
+                event = self._update_target_lat_event(row, lineinfo,
+                                                      LateralActivityTarget.LEFT_CUT_IN, events)
 
             # Right lane change into ego lane.
-            elif valid and event not in [LateralActivityTarget.RIGHT_CUT_IN,
-                                         LateralActivityTarget.RIGHT_CUT_OUT] and \
+            elif valid and event not in lane_change and \
                     self._potential_right(row.line_left_next, row.line_left_prev, row.line_left_up):
-                lineinfo = LineData(distance=-lines.left, difference=lines.left_up)
-                self._update_target_lat_event(row, lineinfo, LateralActivityTarget.RIGHT_CUT_IN,
-                                              events)
+                lineinfo = LineData(distance=-target["line_left"],
+                                    distance_prev=-target["line_left"],
+                                    difference=target["line_left_up"],
+                                    difference_shifted=target["line_left_up_shifted"])
+                event = self._update_target_lat_event(row, lineinfo,
+                                                      LateralActivityTarget.RIGHT_CUT_IN, events)
 
             # Right lane change out of ego lane.
-            elif valid and event not in [LateralActivityTarget.RIGHT_CUT_IN,
-                                         LateralActivityTarget.RIGHT_CUT_OUT] and \
+            elif valid and event not in lane_change and \
                     self._potential_right(row.line_right_next, row.line_right_prev,
                                           row.line_right_up):
-                lineinfo = LineData(distance=-lines.right, difference=lines.right_up)
-                self._update_target_lat_event(row, lineinfo, LateralActivityTarget.RIGHT_CUT_OUT,
-                                              events)
+                lineinfo = LineData(distance=-target["line_right"],
+                                    distance_prev=-target["line_left_prev"],
+                                    difference=target["line_right_up"],
+                                    difference_shifted=target["line_right_up_shifted"])
+                event = self._update_target_lat_event(row, lineinfo,
+                                                      LateralActivityTarget.RIGHT_CUT_OUT, events)
 
             elif events[-1][1] != LateralActivityTarget.LANE_FOLLOWING and \
                     self.parms.follow_lane_switch <= 0:
@@ -619,11 +626,14 @@ class ActivityDetector(DataHandler):
         target["line_left"] = line_left
         target["line_right"] = line_right
         target["line_center"] = line_center_y
-        rollings_options = dict(window=self.frequency, min_periods=self.frequency//3)
+        shift = np.round(self.parms.time_horizon * self.frequency).astype(np.int)
+        rollings_options = dict(window=shift+1, min_periods=shift//3)
         target["line_left_down"] = line_left - line_left.rolling(**rollings_options).max()
         target["line_left_up"] = line_left - line_left.rolling(**rollings_options).min()
         target["line_right_down"] = line_right - line_right.rolling(**rollings_options).max()
         target["line_right_up"] = line_right - line_right.rolling(**rollings_options).min()
+        for signal in ["line_left_down", "line_left_up", "line_right_down", "line_right_up"]:
+            target["{:s}_shifted".format(signal)] = target[signal].shift(shift)
 
     def _potential_left(self, current_y: float, previous_y: float, displacement: float) -> bool:
         """ Determine whether there is a potential left lane change of target.
@@ -670,13 +680,16 @@ class ActivityDetector(DataHandler):
         return self._potential_left(-current_y, -previous_y, displacement)
 
     def _update_target_lat_event(self, row, lineinfo: LineData, event: LateralActivityTarget,
-                                 events: List[Tuple[float, LateralActivityTarget]]):
+                                 events: List[Tuple[float, LateralActivityTarget]]) \
+            -> LateralActivityTarget:
         begin_j, end_j, lane_change = self._start_end_target(row, lineinfo, events[-1])
         if lane_change:
             if begin_j == events[-1][0]:
                 events.pop(-1)
             events.append((begin_j, event))
             self.parms.follow_lane_switch = (end_j - row.Index) * self.frequency
+            return event
+        return LateralActivityTarget.LANE_FOLLOWING
 
     def _start_end_target(self, row, lineinfo: LineData,
                           event: Tuple[float, LateralActivityTarget]) -> Tuple[float, float, bool]:
@@ -690,7 +703,7 @@ class ActivityDetector(DataHandler):
         and it should contain the "Index" of the row.
 
         :param row: A row of the dataframe.
-        :param lineinfo: The distance toward the crossing line and its
+        :param lineinfo: The distance toward the crossing line and its (shifted)
                          derivative.
         :param event: The last event.
         :return: The starting index, the end index, and a boolean whether there
@@ -699,7 +712,7 @@ class ActivityDetector(DataHandler):
         fromgoal = self._goal_left_lane_change(row.line_left, row.line_right)
         begin_j, lane_change = self._start_lc_target(row.Index, fromgoal, lineinfo, event)
         if lane_change:
-            end_j, lane_change = self._end_lc_target(row.Index, fromgoal, lineinfo.distance)
+            end_j, lane_change = self._end_lc_target(row.Index, fromgoal, lineinfo)
             return begin_j, end_j, lane_change
         return 0, 0, False
 
@@ -710,57 +723,56 @@ class ActivityDetector(DataHandler):
         :param j: The index at which the potential lane change is found.
         :param fromgoal: Containing the y-positions of the start and goal of the
                          target.
-        :param lineinfo: The distance toward the crossing line and its
+        :param lineinfo: The distance toward the crossing line and its (shifted)
                          derivative.
         :param event: The last event.
         :return: The starting index and a boolean whether there is a potential
                  lane change.
         """
         begin_j = np.max((j - self.parms.max_time_lat_target, event[0]))
-        start_found = False
-        for begin_j, distance in zip(lineinfo.distance[begin_j:j].index[::-1],
-                                     lineinfo.distance[begin_j:j][::-1]):
-            if begin_j != j and distance < fromgoal.goal_y/2:
-                # Why is goal_y divided by 2?
-                return 0, False
-            if distance > fromgoal.from_y:
-                if begin_j == lineinfo.distance.index[0]:  # (= first index of target).
-                    start_found = True
-                    break
-                prev_begin_j = \
-                    lineinfo.distance.index[pd.Index(lineinfo.distance.index).get_loc(begin_j) - 1]
-                if abs(distance - lineinfo.distance[prev_begin_j]) < \
-                        self.parms.lane_change_threshold:
-                    start_found = True
-                break
-        if start_found:
-            if np.any(lineinfo.difference[begin_j:j] == 0):
-                begin_j = \
-                    lineinfo.difference[begin_j:j][lineinfo.difference[begin_j:j] == 0].index[-1]
-            return begin_j, True
+        for begin_j, distance, difference in zip(lineinfo.distance[begin_j:j].index[::-1],
+                                                 lineinfo.distance[begin_j:j][::-1],
+                                                 lineinfo.difference[begin_j:j][::-1]):
+            if distance > fromgoal.from_y or (difference < self.parms.lateral_speed_lane_change and
+                                              distance > fromgoal.from_y_min):
+                return begin_j, True
         # It might be possible that the index is at the last event. In this case, it is assumed
         # that the lane change is already ongoing.
         if begin_j == event[0]:
             return begin_j, True
         return 0, False
 
-    def _end_lc_target(self, j: int, fromgoal: FromGoal, line_y):
+    def _end_lc_target(self, j: int, fromgoal: FromGoal, lineinfo: LineData):
         """ Compute the end index of a potential lane change.
 
         :param j: The index at which the potential lane change is found.
         :param fromgoal: Containing the y-positions of the start and goal of the
                          target.
-        :param line_y: The distance toward the crossing.
+        :param lineinfo: The distance toward the crossing line and its (shifted)
+                         derivative.
         :return: The end index and a boolean whether there is a lane change.
         """
-        end_j = np.min((j + self.parms.max_time_lat_target, line_y.index[-1]))
-        for end_j, distance in zip(line_y[j:end_j].index, line_y[j:end_j]):
-            if distance > 0:
-                return 0, False
-            if distance < fromgoal.goal_y:
-                prev_end_j = line_y.index[pd.Index(line_y.index).get_loc(end_j) - 1]
-                if abs(distance - line_y[prev_end_j]) < self.parms.lane_change_threshold:
+        end_j = np.min((j + self.parms.max_time_lat_target, lineinfo.distance.index[-1]))
+        last_valid_j = j
+        for end_j, distance, difference in zip(lineinfo.distance[j:end_j].index,
+                                               lineinfo.distance[j:end_j],
+                                               lineinfo.difference_shifted[j:end_j]):
+            if distance < fromgoal.goal_y or (difference < self.parms.lateral_speed_lane_change and
+                                              distance < fromgoal.goal_y_min):
+                # It could be that we reached this point because there is a jump in the distance
+                # that is caused by the ego vehicle making a lane change. In that case, there will
+                # be a big difference between the previous sample. We check for that. If that is the
+                # case, we "cancel" the lane change.
+                if np.isnan(lineinfo.distance_prev[end_j]):
+                    continue
+                if abs(distance - lineinfo.distance_prev[end_j]) <= \
+                        self.parms.lane_change_threshold:
                     return end_j, True
+                return 0, False
+            if not np.isnan(distance) and not np.isnan(difference):
+                last_valid_j = j
+        if lineinfo.distance[last_valid_j] < fromgoal.goal_y_min:
+            return last_valid_j, True
         return 0, False
 
     def _goal_left_lane_change(self, left_y: float, right_y: float) -> FromGoal:
@@ -773,7 +785,9 @@ class ActivityDetector(DataHandler):
         """
         from_y = self.parms.factor_goal_y_target * (left_y - right_y)
         goal_y = -from_y
-        return FromGoal(from_y=from_y, goal_y=goal_y)
+        from_y_min = self.parms.factor_mingoal_y_target * (left_y - right_y)
+        goal_y_min = -from_y_min
+        return FromGoal(from_y=from_y, goal_y=goal_y, from_y_min=from_y_min, goal_y_min=goal_y_min)
 
     def set_states_targets(self) -> None:
         """ Set the longitudinal and lateral state of the target vehicles."""
