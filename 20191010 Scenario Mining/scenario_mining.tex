@@ -73,7 +73,7 @@
 
 \theoremstyle{plain}
 \newtheorem{definition}{Definition}
-\newtheorem{problem}{Problem}
+\newtheorem*{problem}{Problem}
 \theoremstyle{remark}\newtheorem{remarkenv}{Remark}        %% remarks
 \newenvironment{remark}{\begin{remarkenv}}%
 	{\hfill$\lozenge$\end{remarkenv}}            %% end remark with a lozenge
@@ -159,16 +159,20 @@
 \newcommand{\accelerationcruise}{\accelerationsymbol_\mathrm{end}}
 \newcommand{\defsym}{\equiv}
 \newcommand{\indextarget}{i}
+\newcommand{\indextargetother}{j}
 \newcommand{\lanechangethreshold}{\Delta_{\mathrm{l}}}
 \newcommand{\lanechangespeed}{v_{\mathrm{lat}}}
 \newcommand{\lineleftsymbol}{l}
 \newcommand{\lineleft}[1]{\lineleftsymbol\left(#1\right)}
 \newcommand{\lineleftdec}[1]{\symboldec{\lineleftsymbol}{#1}}
 \newcommand{\lineleftinc}[1]{\symbolinc{\lineleftsymbol}{#1}}
+\newcommand{\linelefttarget}[2]{\lineleftsymbol_{#2}\left(#1\right)}
 \newcommand{\linerightsymbol}{r}
 \newcommand{\lineright}[1]{\linerightsymbol\left(#1\right)}
 \newcommand{\linerightdec}[1]{\symboldec{\linerightsymbol}{#1}}
 \newcommand{\linerightinc}[1]{\symbolinc{\linerightsymbol}{#1}}
+\newcommand{\linerighttarget}[2]{\linerightsymbol_{#2}\left(#1\right)}
+\newcommand{\lontarget}[2]{x_{#2}\left(#1\right)}
 \newcommand{\nofngram}{n}
 \newcommand{\sample}{k}
 \newcommand{\sampledummy}{\tau}
@@ -194,14 +198,17 @@
 \newcommand{\speedtargetirel}[2]{\speedsymbol_{#2}^{\mathrm{rel}}\left(#1\right)}
 \renewcommand{\time}{t}
 \newcommand{\sampletime}{\time_\mathrm{s}}
+\newcommand{\thw}{\tau_\mathrm{h}}
 
 
 \newcommand{\todo}[1]{\color{red}TO DO: #1 \color{black}}
 %\usepackage{changebar}
 \newcommand{\cstarta}{\color{black}}  % Changes since January 2, 2020
 \newcommand{\cenda}{\color{black}}     % Changes since January 2, 2020
-\newcommand{\cstartb}{\color{black}}  % Changes since January 7, 2020
+\newcommand{\cstartb}{\color{blue}}  % Changes since January 7, 2020
 \newcommand{\cendb}{\color{black}}     % Changes since January 7, 2020
+\newcommand{\cstartc}{\color{blue}}  % Changes since January 18, 2020
+\newcommand{\cendc}{\color{black}}     % Changes since January 7, 2020
 
 %\usepackage{setspace}
 %\doublespacing
