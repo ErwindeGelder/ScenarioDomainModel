@@ -48,11 +48,11 @@ To do this, the following rules apply:
 	\caption{\cstartb N-grams that describe the scenario category ``cut in''. Because $\nofngram=2$, these are also called bigrams.\cendb}
 	\label{tab:ngrams cutin}
 	\cstartb
-	\begin{tabularx}{\linewidth}{lXX}
+	\begin{tabularx}{\linewidth}{p{5.5em}XX}
 		\toprule
 		Subject & Item 1 & Item 2 \\ \otoprule
 		Ego vehicle & Lateral activity: \newline Following lane & Lateral activity: \newline Following lane \\
-		Other vehicle & Lateral activity: \newline Changing lane left OR \newline Lateral activity: \newline Changing lane right & Lateral activity: \newline Following lane AND \newline Lead vehicle: Yes \\
+		Other vehicle & Lateral activity: \newline \{Changing lane left OR \newline \phantom{\{}Changing lane right\}\newline AND Lead vehicle: No & Lateral activity: \newline \{Changing lane left OR \newline \phantom{\{}Changing lane right\}\newline AND Lead vehicle: Yes \\
 		Static environment & On highway: Yes & On highway: Yes \\
 		\bottomrule
 	\end{tabularx}

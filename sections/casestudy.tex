@@ -3,6 +3,29 @@
 
 Here we illustrate the method by applying the method to the dataset described in \autocite{paardekooper2019dataset6000km}.
 
+\begin{table}
+	\centering
+	\caption{\cstartc Values of parameters used in the case study. \cendc}
+	\label{tab:parameters}
+	\cstartc
+	\begin{tabularx}{\linewidth}{lXl}
+		\toprule
+		Parameter & Description & Value \\ \otoprule
+		$\sampletime$ & Sample time & \SI{0.01}{\second} \\
+		$\samplehorizon$ & Sample window & 100 \\
+		$\accelerationstart$ & Threshold determining the start of an acceleration or deceleration activity & \SI{0.1}{\meter\per\second\squared} \\
+		$\accelerationcruise$ & Threshold determining the end of an acceleration or deceleration activity & \SI{0.1}{\meter\per\second\squared} \\
+		$\speeddiff$ & Minimum speed increase/decrease for an acceleration/deceleration activity & \SI{1}{\meter\per\second} \\
+		$\samplescruising$ & Minimum cruising time & \SI{4}{\second} \\
+		$\lanechangethreshold$ & A lane change is detected when the difference between consecutive lane line distances is larger than this threshold & \SI{1}{\meter} \\
+		$\lanechangespeed$ & Threshold determining the start and end of a lane change & \SI{0.25}{\meter\per\second} \\
+		$\factorgoalmax$ & Maximum factor of the lane width for a lane change of any other vehicle & 0.5 \\
+		$\factorgoalmin$ & Minimum factor of the lane width for a lane change of any other vehicle & 0.1 \\
+		\bottomrule
+	\end{tabularx}
+	\cendc
+\end{table}
+
 \todo{Write case study setup}
 
 \todo{Obtain results (this will require quite some time!)}

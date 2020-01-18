@@ -1,5 +1,5 @@
 \setlength{\tagtotalwidth}{24em}
-\setlength{\egovehiclefollowing}{18em}
+\setlength{\egovehiclefollowing}{15.5em}
 \begin{tikzpicture}
 % Ego vehicle.
 \node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=egocolor] at (-\descriptionwidth, 0) {Ego vehicle};
