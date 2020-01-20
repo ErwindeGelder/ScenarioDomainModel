@@ -8,29 +8,35 @@ An essential aspect in the development of AVs is the assessment of quality and p
 Among other methods, a scenario-based approach has been proposed \autocite{elrofai2018scenario, putz2017pegasus}. 
 % Explain that these scenarios may be based on real-world scenarios.
 For scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in the test cases used for scenario-based assessment \autocite{stellet2015taxonomy}. 
-One approach for specifying these scenarios is base them on captured scenarios from real-world data collected on the level of individual vehicles \autocite{elrofai2018scenario, putz2017pegasus, roesener2016scenariobased, deGelder2017assessment}. 
+One approach for specifying these scenarios is to base them on captured scenarios from real-world data collected on the level of individual vehicles \autocite{elrofai2018scenario, putz2017pegasus, roesener2016scenariobased, deGelder2017assessment}. 
 
 % Mention other literature that tries to extract scenarios.
 Different techniques for capturing scenarios or driving maneuvers have been proposed in literature. 
 \textcite{kasper2012oobayesnetworks} use object-oriented Bayesian networks for the recognition of 27 type of driving maneuvers. 
-In \autocite{krajewski2018highD, schlechtriemen2015lanechange}, lane changes are detected. \textcite{paardekooper2019dataset6000km} present an approach for identification of scenarios and include results for scenarios labeled ``braking in front'' and ``cut in''. 
-In \cite{xie2017driving}, different methods are compared for detecting accelerating, braking, and turning.
-In \autocite{cara2015carcyclist}, safety-critical car-cyclist scenarios are extracted from data collected by a vehicle.
+In \autocite{krajewski2018highD}, lane changes are detected using lane crossings and in \autocite{schlechtriemen2015lanechange}, lane changes are detected using a naive Bayes classifier and a hidden Markov model. 
+%\textcite{paardekooper2019dataset6000km} present an approach for identification of scenarios and include results for scenarios labeled ``braking in front'' and ``cut in''. 
+In \cite{xie2017driving}, random forest classifiers are used for detecting accelerating, braking, and turning with features extracted using principal component analysis, stacked sparse auto-encoder, and statistical features.
+In \autocite{cara2015carcyclist}, safety-critical car-cyclist scenarios are extracted from data collected by a vehicle using several machine learning techniques, among which support vector machines and multiple instance learning.
 
 % Contribution of this paper.
-In this paper, we propose a new method for mining scenarios from real-world driving data. 
-Our method consists of two steps. First, the data is automatically tagged with relevant information. For example, a tag ``lane change'' is added to a vehicle at the time this vehicle is performing a lane change. Secondly, the scenarios are mined based on the aforementioned tags. To do this, n-grams are constructed based on the tags. By representing a scenario using a combination of (sequential) tags, the scenarios are mined by searching for the particular combination of (sequential) tags within the n-grams.
+In this paper, we propose a new method for mining scenarios from real-world driving data using automated tagging and searching for combination of tags. 
+Our method consists of two steps. First, the data is automatically tagged with relevant information. For example, a tag ``lane change'' is added to a vehicle at the time this vehicle is performing a lane change. Secondly, the scenarios are mined based on the aforementioned tags. To do this, n-gram models are constructed based on the tags. By representing a scenario using a combination of n-grams, i.e., sequences of tags, the scenarios are mined by searching for the n-grams with the tags within the n-gram models.
 
 % Advantages of our method:
 % 1. Tags are pretty basic --> easy.
 % 2. Tagging can be very different, depending on the type of data --> scenario mining still the same!
 % 3. Accuracy: by not only relying on past data, accuracy is improved.
 % 4. Scalable: many more type of scenarios could be extracted.
-Our proposed method brings several benefits. 
-First, by first tagging the data, characteristics that are shared among different type of scenarios need to be identified only once, whereas these characteristics would be identified multiple times if each of the type of scenarios would be identified completely independently.
-Secondly, by splitting the process in two parts, i.e., the tagging and the scenario mining, the scenario mining could be applied to different types of data (e.g., data from a vehicle \autocite{paardekooper2019dataset6000km} or from a drone \autocite{krajewski2018highD}). It is also possible to have manually tagged data, e.g., see \autocite{fontana2018action}. Thirdly, because the scenario mining is performed offline, we do not only rely on past data, which, in turn, increases the accuracy of the scenario mining. Fourthly, our approach is easily scalable because more type of scenarios can be mined by only describing the type of scenarios as a combination of (sequential) tags.
+The proposed method brings several benefits. 
+First, by first tagging the data, characteristics that are shared among different type of scenarios need to be identified only once, whereas these characteristics would be identified multiple times if each type of scenarios would be identified completely independently.
+Secondly, by splitting the process in two parts, i.e., the tagging and the scenario mining, the scenario mining can be applied to different types of data (e.g., data from a vehicle \autocite{paardekooper2019dataset6000km} or from a drone \autocite{krajewski2018highD}). 
+It is also possible to have manually tagged data, e.g., see \autocite{fontana2018action}. 
+%Thirdly, because the scenario mining is performed offline, we do not only rely on past data, which, in turn, increases the accuracy of the scenario mining. 
+Thirdly, our approach is easily scalable because additional types of scenarios can be mined by only describing the type of scenarios as a combination of (sequential) tags.
 
 % Structure.
-In \cref{sec:problem}, we formulate the problem of scenario mining. \Cref{sec:tagging,sec:mining} describe the two steps of our proposed method, i.e., the tagging of the data and the scenario mining based on these tags. We illustrate the scenario mining with few examples in \cref{sec:case study}. Our paper is concluded in \cref{sec:conclusions}.
+In \cref{sec:problem}, we formulate the problem of scenario mining. \Cref{sec:tagging,sec:mining} describe the two steps of our proposed method, i.e., the tagging of the data and the scenario mining based on these tags. 
+We illustrate the proposed scenario mining approach with few examples in \cref{sec:case study}. 
+In \cref{sec:conclusions}, we discuss next steps and draw conclusions.
 
 \cenda

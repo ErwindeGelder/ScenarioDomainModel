@@ -4,22 +4,22 @@
 \begin{figure*}
 	\centering
 	\input{figures/tags_ego.tikz}
-	\caption{\cstartb Example of tags of the ego vehicle and the associated items.\cendb}
+	\caption{\cstartc A snippet of an n-gram model of the ego vehicle describing the activities of the ego vehicle. Whenever one or more tags change, a new item starts.\cendc}
 	\label{fig:ego tags}
 \end{figure*}
 
 \cstartb
 % Introduce n-grams and quickly explain what an n-gram is.
 For the scenario mining, we will employ n-grams and n-gram models. An n-gram is a sequence of $\nofngram$ items. 
-For example, in the field of natural language processing --- where n-grams are a popular modeling technique \autocite{hull1982experiments, brown1992class} --- each item might correspond to a single word. 
+For example, in the field of natural language processing --- where n-grams are a popular modeling technique \autocite{hull1982experiments, brown1992class} --- each item might correspond to a single word.
 In our case, an item corresponds to a combination of tags. 
 
 % Explain that we use multiple n-gram models.
 % What are the advantages of using multiple n-grams?
-Instead of constructing one n-gram model with all tags within one dataset, we construct different n-gram models for the different subjects, i.e., we construct an n-gram for the ego vehicle, any other vehicle, and the static environment separately.
+Instead of constructing one n-gram model with all tags within one dataset, we construct different n-gram models for the different subjects. A subject could be, e.g., a road user or a static part of the environment. In this paper, we consider the subjects ``ego vehicle'', ``other vehicle'', and ``static environment''.
 Constructing different n-gram models instead of one n-gram model brings several benefits:
 \begin{itemize}
-	\item The number of possible items is much lower when considering only one subject, such that it is more likely that most of the items are seen multiple times. 
+	\item The number of possible items is much lower when considering only one subject that describes everything, such that it is more likely that most of the items are seen multiple times. 
 	As a result, analysis to predict tags or correct for wrong tags is possible \autocite{lesher1998optimal}.
 	\item If different tags are needed for mining (other) scenarios, only the n-gram models of the corresponding subjects need to be updated.
 	\item Searching for n-grams within the n-gram models is much faster since the n-gram models itself are much smaller.
@@ -77,7 +77,7 @@ The two vertical dashed lines indicate the start and the end of the cut in that 
 \begin{figure*}
 	\centering
 	\input{figures/tags_cutin.tikz}
-	\caption{\cstartb Example of tags describing a cut in. Note that only the tags that are relevant for the cut in, as defined in \cref{tab:ngrams cutin}, are shown.\cendb}
+	\caption{\cstartc Example of tags describing a cut in. Note that only the tags that are relevant for the cut in, as defined in \cref{tab:ngrams cutin}, are shown.\cendc}
 	\label{fig:tags cut in}
 \end{figure*}
 

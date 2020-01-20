@@ -16,7 +16,7 @@ Here we illustrate the method by applying the method to the dataset described in
 		$\accelerationstart$ & Threshold determining the start of an acceleration or deceleration activity & \SI{0.1}{\meter\per\second\squared} \\
 		$\accelerationcruise$ & Threshold determining the end of an acceleration or deceleration activity & \SI{0.1}{\meter\per\second\squared} \\
 		$\speeddiff$ & Minimum speed increase/decrease for an acceleration/deceleration activity & \SI{1}{\meter\per\second} \\
-		$\samplescruising$ & Minimum cruising time & \SI{4}{\second} \\
+		$\samplescruising$ & Minimum number of samples for cruising activity & 400 \\
 		$\lanechangethreshold$ & A lane change is detected when the difference between consecutive lane line distances is larger than this threshold & \SI{1}{\meter} \\
 		$\lanechangespeed$ & Threshold determining the start and end of a lane change & \SI{0.25}{\meter\per\second} \\
 		$\factorgoalmax$ & Maximum factor of the lane width for a lane change of any other vehicle & 0.5 \\
@@ -26,7 +26,40 @@ Here we illustrate the method by applying the method to the dataset described in
 	\cendc
 \end{table}
 
-\todo{Write case study setup}
+\begin{table*}
+	\centering
+	\caption{\cstartc N-grams that describe the scenario category ``overtaking before lane change''.\cendc}
+	\label{tab:overtaking lane change}
+	\cstartc
+	\begin{tabularx}{\linewidth}{lXXX}
+		\toprule
+		Subject & Item 1 & Item 2 & Item 3 \\ \otoprule
+		Ego vehicle & Lateral activity: Following lane & Lateral activity: Following lane & Lateral activity: Changing lane left \\
+		Other vehicle & Lateral state: Left AND \newline Longitudinal state: Rear & Lateral state: Left AND \newline Longitudinal state: Front & Lateral state: Left AND \newline  Longitudinal state: Front \\
+		Static environment & On highway: Yes & On highway: Yes & On highway: Yes \\
+		\bottomrule
+	\end{tabularx}
+	\cendc
+\end{table*}
+
+\begin{table}
+	\centering
+	\caption{\cstartc N-grams that describe the scenario category ``lead vehicle braking''. The ego vehicle is not included in this table because there are no activities defined for the ego vehicle for this scenario category. \cendc}
+	\label{tab:lead vehicle braking}
+	\cstartc
+	\begin{tabularx}{\linewidth}{lX}
+		\toprule
+		Subject & Item 1 \\ \otoprule
+		Other vehicle & Longitudinal activity: Braking AND \newline Lead vehicle: Yes \\
+		Static environment & On highway: Yes \\
+		\bottomrule
+	\end{tabularx}
+	\cendc
+\end{table}
+
+\todo{Write case study setup. I will consider three different scenarios: Cut-in (as shown in \cref{tab:ngrams cutin}), overtaking before lane change (as shown in \cref{tab:overtaking lane change}), and lead vehicle braking (as shown in \cref{tab:lead vehicle braking}).}
+
+\todo{I will consider changing the tables (\cref{tab:ngrams cutin,tab:overtaking lane change,tab:lead vehicle braking}) to figures that look more like \cref{fig:tags cut in}. It will be visually more attractive but it will also consume more space.}
 
 \todo{Obtain results (this will require quite some time!)}
 

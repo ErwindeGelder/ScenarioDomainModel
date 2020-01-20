@@ -24,29 +24,26 @@
 
 \cstarta
 Our method of scenario mining is divided into two steps. 
-The first step is to describe the data using \emph{tags} and the second step is to extract the scenarios based on these tags. 
+The first step consists in describing the data using \emph{tags} and the second step involves extracting the scenarios based on these tags. 
 In this section, we explain how the \emph{tags} are determined. 
 The scenario mining based on these tags is explained in the next section.
 
 As described in \cref{def:scenario}, events and activities are constituents of a scenario. 
 Part of the tags that we consider describe activities of the vehicles.
-Therefore, we will use the definitions of the terms \emph{event} and \emph{activity} of \autocite{degelder2018ontology}:\cenda
-\begin{definition}[Event \autocite{degelder2018ontology}]
-	\label{def:event}
-	An event marks the time instant at which the system reaches a specified threshold or at which a mode transition occurs, such that before and after an event, the state vector of the system corresponds to two different modes.
-\end{definition}
+Therefore, we will use the definition of the term and \emph{activity} of \autocite{degelder2018ontology}:\cenda
 \begin{definition}[Activity \autocite{degelder2018ontology}]
 	\label{def:activity}
 	An activity quantitatively describes the time evolution of one or more state variables of an actor between two events.
 \end{definition}
+Because an activity starts and ends with an event, for describing the activities, we will first describe how we detect the events.
 
 \cstarta
-\Cref{tab:tags} lists the tags that are considered in this paper. 
-We distinguish between tags that describe the behavior of the ego vehicle, tags that describe the behavior and state of any other vehicle, and tags that describe the static environment. 
+As an illustration, \cref{tab:tags} lists the tags that are considered for the case study in this paper. 
+We distinguish between tags that describe the behavior of the ego vehicle, tags that describe the behavior and the state of any other vehicle, and tags that describe the static environment. \cenda
 \begin{remark}
-	The tags in \cref{tab:tags} are sufficient for mining the scenarios of the scenario categories that we consider in our case study, see \cref{sec:case study}. However, when other scenario categories are considered, other tags might be necessary. The approach for mining the scenarios using the tags, see \cref{sec:mining}, however, is still the same.
+	\cstarta The tags in \cref{tab:tags} are sufficient for mining the scenarios of the scenario categories that we consider in our case study, see \cref{sec:case study}. However, when other scenario categories are considered, other tags might be necessary. The approach for mining the scenarios using the tags, see \cref{sec:mining}, however, is general and also applies when other tags are used. \cenda 
+	\cstartc For example, for this paper we do not consider other road users than vehicles, but the proposed method also works when cyclist or pedestrians are considered.\cendc
 \end{remark}
-\cenda
 
 In the remainder of this section, we explain how the tags of \cref{tab:tags} are determined. 
 For the remainder of this section, we assume that the data is sampled with a sample time of $\sampletime$.
@@ -58,19 +55,20 @@ For the remainder of this section, we assume that the data is sampled with a sam
 
 We distinguish between three different longitudinal activities: ``accelerating'', ``decelerating'', and ``cruising''. 
 The ego vehicle is performing either one of these activities. 
-According to \cref{def:activity}, an activity starts and ends with an event. 
-To extract the activities from a dataset, we first extract the events. 
+%To extract the activities from a dataset, we first extract the events.
+\cstartc An acceleration activity starts at an acceleration event, so we will first describe how we detect an acceleration event.
+\cendc
 
 \cstarta To extract the longitudinal events, we might simply examine whether the acceleration of the vehicle is above or below a certain threshold. 
 This approach, however, would be prone to sensor noise. 
-That is why we use the speed difference within a certain sample window $\samplehorizon>0$, where $\samplehorizon$ is an integer.
+That is why we use the speed difference within a certain sample window of length $\samplehorizon>0$, where $\samplehorizon$ is an integer.
 Let $\speed{\sample}$ denote the speed of the ego vehicle at sample step $\sample$. 
-Next, let us define the minimum and maximum speed between the current sample step $\sample$ and $\sample-\samplehorizon$, where  is an integer parameter:
+Next, let us define the minimum and maximum speed between the current sample step $\sample$ and $\sample-\samplehorizon$:
 \begin{align}
 	\speedmin{\sample} &\defsym \min_{\sampledummy \in \left\{ \sample-\samplehorizon, \ldots, \sample \right\} } \speed{\sampledummy}, \\
 	\speedmax{\sample} &\defsym \max_{\sampledummy \in \left\{ \sample-\samplehorizon, \ldots, \sample \right\} } \speed{\sampledummy}.
 \end{align}\cenda
-For detecting accelerating and decelerating events, the difference between the current speed and $\speedmin{\sample}$ and $\speedmax{\sample}$ are used:
+For detecting acceleration and decelerating events, the difference between the current speed and $\speedmin{\sample}$ and $\speedmax{\sample}$ are used:
 \begin{align}
 	\speedinc{\sample} &\defsym \speed{\sample} - \speedmin{\sample},\\
 	\speeddec{\sample} &\defsym \speed{\sample} - \speedmax{\sample}.
@@ -99,7 +97,7 @@ First, we assume that the event at the start of the dataset is a cruising event 
 
 A decelerating event is happening at sample $\sample$ if any of the following conditions is true:
 \begin{itemize}
-	\item The vehicle is not performing a decelerating activity, i.e., the last event is not an decelerating event.
+	\item The vehicle is not performing a decelerating activity, i.e., the last event is not a decelerating event.
 	\item \cstarta There has been a significant speed decrease, i.e., 
 	\begin{equation}
 		\label{eq:start deceleration}
@@ -117,14 +115,14 @@ A decelerating event is happening at sample $\sample$ if any of the following co
 	\end{equation}
 \end{itemize}
 
-Let $\sampleaccevent$ and $\sampledecevent$ denote the sample step of the most recent accelerating and decelerating event, respectively. A cruising event happens at sample step $\sample$ if the the vehicle is not performing a cruising activity and if any of the following conditions is true:
+Let $\sampleaccevent$ and $\sampledecevent$ denote the sample step of the most recent accelerating and decelerating event, respectively. A cruising event happens at sample step $\sample$ if the vehicle is not performing a cruising activity and if any of the following conditions is true:
 \begin{itemize}
-	\item $\sample > \sampleendinc{\sampleaccevent}$ when the vehicle is performing an accelerating activity.
-	\item $\sample > \sampleenddec{\sampledecevent}$ when the vehicle is performing an decelerating activity.
+	\item $\sample > \sampleendinc{\sampleaccevent}$ when the vehicle is performing an acceleration activity.
+	\item $\sample > \sampleenddec{\sampledecevent}$ when the vehicle is performing a decelerating activity.
 \end{itemize}
 
 \cstarta%
-\Cref{fig:longitudinal activities} illustrates the longitudinal activities given a hypothetical speed profile (solid red line). The above described algorithm produces the activities cruising, accelerating, cruising, decelerating, and cruising.
+\Cref{fig:longitudinal activities} illustrates the longitudinal activities given a hypothetical speed profile (solid red line). The algorithm above described produces the activities cruising, accelerating, cruising, decelerating, and cruising.
 \cenda
 
 \setlength{\figurewidth}{\linewidth}
@@ -132,7 +130,7 @@ Let $\sampleaccevent$ and $\sampledecevent$ denote the sample step of the most r
 \begin{figure}
 	\centering
 	\input{figures/lon_activities.tikz}
-	\caption{\cstarta Hypothetical speed profile and the corresponding activities cruising (c), accelerating (a), and decelerating (d). The black vertical lines represent the times of the events. The red solid line denotes the speed $\speed{\sample}$. The green dashed line and blue dotted line represent $\speedinc{\sample}$ and $\speeddec{\sample}$, respectively.\cenda}
+	\caption{\cstarta Hypothetical speed profile and the corresponding activities cruising (c), accelerating (a), and decelerating (d). The black vertical lines represent the events times. The red solid line indicates the speed $\speed{\sample}$. The green dashed line and blue dotted line represent $\speedinc{\sample}$ and $\speeddec{\sample}$, respectively.\cenda}
 	\label{fig:longitudinal activities}
 \end{figure}
 
@@ -154,7 +152,7 @@ These distances are estimated from camera images.
 The estimation is outside the scope of this paper. 
 Let $\lineleft{\sample}$ and $\lineright{\sample}$ denote the distance toward the left and right lane line, respectively. 
 %In case the distances cannot be accurately estimated, the notation $\lineleft{\sample}=\nan$ and $\lineright{\sample}=\nan$ is used, where $\nan$ stands for Not-a-Number.
-\cstarta We use the ISO coordinate system \autocite{iso8855}, so $\lineleft{\sample} \geq 0$ and $\lineright{\sample} \leq 0$. At the moment the vehicle crosses the line, the distances to the lines will change significantly. For example, during a lane change to the left, the left line becomes the right line. Hence, we detect a left lane change when the following conditions are satisfied:
+\cstarta We use the ISO coordinate system\cenda\cstartc\footnote{\cstartc In the ISO coordinate system, the $x$-axis points to the front of the vehicle and the $y$-axis points to the left of the vehicle, see \autocite{iso8855}.\cendc}\cendc\cstarta, so $\lineleft{\sample} \geq 0$ and $\lineright{\sample} \leq 0$. At the moment the vehicle crosses the line, the distances to the lines will change significantly. For example, during a lane change to the left, the left line becomes the right line. Hence, we detect a left lane change when the following conditions are satisfied:
 \begin{align}
 	\lineleft{\sample} - \lineleft{\sample-1} &> \lanechangethreshold, \label{eq:potential left a} \\
 	\lineright{\sample} - \lineright{\sample-1} &> \lanechangethreshold. \label{eq:potential left b}
@@ -269,7 +267,7 @@ The end of the same lane change is estimated in a similar way:
 	\left. \left(\linelefttargetinc{\sampledummy+\samplehorizon}{\indextarget} < \lanechangespeed\samplehorizon\sampletime \land \linelefttarget{\sampledummy}{\indextarget} > \factorgoalmin\widthlanetarget{\sample}{\indextarget}\right) \right\}.
 \end{multline}
 
-For a right lane change from the ego vehicle's lane, $\linerighttarget{\cdot}{\indextarget}$ and $\linerighttargetinc{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}. 
+For a right lane change from the ego vehicle's lane, $\linerighttarget{\cdot}{\indextarget}$ and $\linerighttargetinc{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$, respectively, in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}. 
 Similarly, for a left lane change to the ego vehicle's lane, $-\linerighttarget{\cdot}{\indextarget}$ and $-\linerighttargetdec{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}.
 Finally, for a left lane change from the ego vehicle's lane, $-\linelefttarget{\cdot}{\indextarget}$ and $-\linelefttargetdec{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}.
 \cendc
