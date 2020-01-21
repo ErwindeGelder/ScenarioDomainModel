@@ -6,6 +6,7 @@ Author(s): Erwin de Gelder
 Modifications:
 2019 12 30 Change the way options are specified.
 2020 01 12 Fixing issue with age of target when merging two targets.
+2020 01 21 Use the host speed when target is missing instead of assuming constant host speed.
 """
 
 from typing import List, NamedTuple
@@ -20,7 +21,7 @@ class _TargetGluerOptions(Options):
     tsec_v_avg: float = 1  #
     t_min_available: float = 0.5  # [s]
     x_min_visible: float = -10  # min x distance at which the target is (still) visible
-    x_max_visible: float = 20  # max x distance at which the target is (still) visible
+    x_max_visible: float = 25  # max x distance at which the target is (still) visible
     minimum_speed: float = 1
 
     t_max_gone: float = 15  # [s]
@@ -239,7 +240,9 @@ class _TargetGluer:
 
         # x-position should not be too much off.
         # Sign of y-position should be similar.
-        x_absoffset = abs(info.last_x + t_gone * (info.vx_target - info.vx_host) - x_candidate)
+        x_absoffset = abs(info.last_x + t_gone*info.vx_target - x_candidate -
+                          np.trapz(self.host.loc[info.last_t:candidate.index[0],
+                                                 self.options.fieldname_host_vx])*self.timestep)
         if x_absoffset > self.options.x_deviation or x_absoffset > max_offset or \
                 np.sign(info.last_y) != np.sign(candidate[self.options.fieldname_target_dy].iat[0]):
             return _CandidateInfo(False)
