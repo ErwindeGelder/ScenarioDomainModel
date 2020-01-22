@@ -4,6 +4,8 @@ Creation date: 2020 01 12
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 01 18 It only looked at first hit for first items. Now it search for new hit if second item is
+           not found. 
 """
 
 from typing import NamedTuple, Sequence
@@ -122,13 +124,15 @@ def determine_start_end(ngram: pd.DataFrame, tags: dict, previous_search: _Start
 
 
 def find_part_of_sequence(ngrams: Sequence[pd.DataFrame], tags: Sequence[dict],
-                          t_start: float = None, force_start: bool = False) -> _StartEnd:
+                          t_start: float = None, force_start: bool = False,
+                          verbose: int = 0) -> _StartEnd:
     """ Find match at which each item is found in its corresponding n-gram model.
 
     :param ngrams: The n-gram models.
     :param tags: The items, one item for each n-gram model.
     :param t_start: If provided, the starting time should be after t_start.
     :param force_start: If True, the start should be at t_start.
+    :param verbose: Level of verbosity.
     :return: Whether a match is found and, if so, the start and end time.
     """
     # Check for the first item of first n-gram model.
@@ -144,6 +148,9 @@ def find_part_of_sequence(ngrams: Sequence[pd.DataFrame], tags: Sequence[dict],
         # 4. Tag not found and at lowest level, so return False.
         search = determine_start_end(ngrams[level], tags[level], previous_search=searches[level])
         if search.is_found:  # Possibility 1 or 2.
+            if verbose > 1:
+                print("Found tags in ngram {:d}: t_start={:.2f}, t_end={:.2f}"
+                      .format(level+1, search.t_start, search.t_end))
             if force_start and search.t_start > t_start:
                 return _StartEnd(False)
             level += 1
@@ -169,24 +176,38 @@ def find_part_of_sequence(ngrams: Sequence[pd.DataFrame], tags: Sequence[dict],
 
 
 def find_sequence(ngrams: Sequence[pd.DataFrame], tags: Sequence[Sequence[dict]],
-                  t_start: float = None) -> _StartEnd:
+                  t_start: float = None, verbose: int = 0) -> _StartEnd:
     """ Find the n-grams in the n-gram models.
 
     :param ngrams: The n-gram models.
     :param tags: The tags that define the items. List of n-grams.
     :param t_start: If provided, the result should start after t_start.
+    :param verbose: Level of verbosity.
     :return: Whether a match is found and, if so, its start and end time.
     """
-    # Check for the first item for each n-gram model.
-    search = find_part_of_sequence(ngrams, [tag[0] for tag in tags], t_start)
-    if not search.is_found:
-        return _StartEnd(False)
-    t_start = search.t_start
-
-    # Go through remaining steps.
-    for j in range(1, len(tags[0])):
-        search = find_part_of_sequence(ngrams, [tag[j] for tag in tags], search.t_end,
-                                       force_start=True)
+    while True:
+        # Check for the first item for each n-gram model.
+        search = find_part_of_sequence(ngrams, [tag[0] for tag in tags], t_start, verbose=verbose)
         if not search.is_found:
             return _StartEnd(False)
-    return _StartEnd(True, t_start, search.t_end)
+        t_start = search.t_start
+        t_end = search.t_end
+        if verbose > 0:
+            print("Part 1 found, t_start={:.2f}, t_end={:.2f}".format(t_start, t_end))
+
+        # Go through remaining steps.
+        found = True
+        for j in range(1, len(tags[0])):
+            search = find_part_of_sequence(ngrams, [tag[j] for tag in tags], search.t_end,
+                                           force_start=True, verbose=verbose)
+            if not search.is_found:
+                # Start searching for the first item at the end of the first match.
+                found = False
+                break
+
+            if verbose > 0:
+                print("Part {:d} found, t_start={:.2f}, t_end={:.2f}".format(j, search.t_start,
+                                                                             search.t_end))
+        if found:
+            return _StartEnd(True, t_start, search.t_end)
+        t_start = t_end
