@@ -1,9 +1,10 @@
 """ Create plots for illustrating the scenario mining process
 
-Creation date: 2020 01 023
+Creation date: 2020 01 02
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 01 18 Definition of v+ and v- changed. Now not shifted anymore.
 """
 
 import os
@@ -109,8 +110,8 @@ if __name__ == "__main__":
     EVENTS = ACTIVITY_DETECTOR.lon_activities_host()
     plt.subplots(1, 1)
     plt.plot(DATA["Host_vx"], lw=LINEWIDTH, color=COLORS[0])
-    plt.plot(DATA["speed_inc"], ls='--', lw=LINEWIDTH, color=COLORS[1])  # = v^+
-    plt.plot(DATA["speed_dec"], ls=':', lw=LINEWIDTH, color=COLORS[2])  # = v^-
+    plt.plot(DATA["speed_inc_past"], ls='--', lw=LINEWIDTH, color=COLORS[1])  # = v^+
+    plt.plot(DATA["speed_dec_past"], ls=':', lw=LINEWIDTH, color=COLORS[2])  # = v^-
     YLIM = [-5, np.max(SPEEDS)+5]
     for event in EVENTS:
         plt.plot([event[0], event[0]], YLIM, 'k-', lw=LINEWIDTH/2)
@@ -129,7 +130,8 @@ if __name__ == "__main__":
     DATA = pd.DataFrame(data=dict(lines_0_c0=LEFT, lines_0_quality=np.ones_like(LEFT)*3,
                                   lines_1_c0=RIGHT, lines_1_quality=np.ones_like(RIGHT)*3),
                         index=TIME)
-    ACTIVITY_DETECTOR = ActivityDetector(DATA, ActivityDetectorParameters(lane_conf_threshold=0.1))
+    ACTIVITY_DETECTOR = ActivityDetector(DATA,
+                                         ActivityDetectorParameters(lateral_speed_lane_change=0.1))
     EVENTS = ACTIVITY_DETECTOR.lat_activities_host()
     plt.subplots(1, 1)
     plt.plot(DATA["lines_0_c0"], lw=LINEWIDTH, color=COLORS[0])
