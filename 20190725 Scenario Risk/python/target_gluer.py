@@ -7,6 +7,7 @@ Modifications:
 2019 12 30 Change the way options are specified.
 2020 01 12 Fixing issue with age of target when merging two targets.
 2020 01 21 Use the host speed when target is missing instead of assuming constant host speed.
+2020 01 22 Use average speed for target and candidate instead of only the target speed.
 """
 
 from typing import List, NamedTuple
@@ -240,7 +241,10 @@ class _TargetGluer:
 
         # x-position should not be too much off.
         # Sign of y-position should be similar.
-        x_absoffset = abs(info.last_x + t_gone*info.vx_target - x_candidate -
+        speed_start = candidate[self.options.fieldname_target_vx][:candidate.index[0] +
+                                                                  self.options.tsec_v_avg]
+        speed_start = np.mean(speed_start[speed_start > 0])
+        x_absoffset = abs(info.last_x + t_gone*(info.vx_target+speed_start)/2 - x_candidate -
                           np.trapz(self.host.loc[info.last_t:candidate.index[0],
                                                  self.options.fieldname_host_vx])*self.timestep)
         if x_absoffset > self.options.x_deviation or x_absoffset > max_offset or \
@@ -248,9 +252,6 @@ class _TargetGluer:
             return _CandidateInfo(False)
 
         # Speed should not be too different.
-        speed_start = candidate[self.options.fieldname_target_vx][:candidate.index[0] +
-                                                                  self.options.tsec_v_avg]
-        speed_start = np.mean(speed_start[speed_start > 0])
         if abs(speed_start - info.vx_target) > self.options.v_deviation:
             return _CandidateInfo(False)
 
