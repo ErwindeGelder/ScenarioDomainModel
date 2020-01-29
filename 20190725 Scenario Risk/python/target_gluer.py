@@ -8,6 +8,7 @@ Modifications:
 2020 01 12 Fixing issue with age of target when merging two targets.
 2020 01 21 Use the host speed when target is missing instead of assuming constant host speed.
 2020 01 22 Use average speed for target and candidate instead of only the target speed.
+2020 01 24 Increase maximum offset in longitudinal direction from 5 to 10 meters.
 """
 
 from typing import List, NamedTuple
@@ -26,7 +27,7 @@ class _TargetGluerOptions(Options):
     minimum_speed: float = 1
 
     t_max_gone: float = 15  # [s]
-    x_deviation: float = 5  # [m]
+    x_deviation: float = 10  # [m]
     v_deviation: float = 5  # [m/s]
 
     fieldname_host_vx: str = "Host_vx"
