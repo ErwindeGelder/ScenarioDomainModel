@@ -17,6 +17,7 @@ Modifications:
 2020 01 12 Bug fix. Getting longitudinal activities of target vehicles changes host_lon_vel par.
 2020 01 16 Prev/next values shifted by one sample. Start lane change at least 1 sample before shift.
 2020 01 18 Lane change detection for other vehicles improved.
+2020 01 24 Change minimal lane line quality from 3 to 2.
 """
 
 import copy
@@ -119,7 +120,7 @@ class ActivityDetectorParameters(Options):
     max_time_activity = 300  # [s] Pretty arbitrarily large, this speeds up the computation hugely.
 
     max_time_host_lane_change = 10  # [s]
-    min_line_quality = 3
+    min_line_quality = 2
     lane_change_threshold = 1  # [m]  In paper: Delta_l
     lateral_speed_lane_change = 0.25  # [m]  In paper: v_lat, controls start/end host lane change.
     max_time_lat_target = 10  # [s]
