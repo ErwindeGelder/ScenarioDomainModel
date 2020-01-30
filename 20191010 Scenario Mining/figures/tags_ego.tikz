@@ -19,7 +19,7 @@
 	\node[minimum width=\xend-(\x), align=center, minimum height=\itempos, anchor=north west] at (\x, \itempos) {Item \i};
 	\draw[showitem] (\x, 0) -- (\x, \itempos);
 }
-\draw[showitem] (\tagtotalwidth, 0) -- (\tagtotalwidth, \itempos);.
+\draw[showitem] (\tagtotalwidth, 0) -- (\tagtotalwidth, \itempos);
 
 % Timeline.
 \draw[timeline, ->] (0, -2\tagheight-\timepos) -> (\tagtotalwidth, -2\tagheight-\timepos);
