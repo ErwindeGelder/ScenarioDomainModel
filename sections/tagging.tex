@@ -14,9 +14,9 @@
 		Any other vehicle & Longitudinal activity & \cref{sec:longitudinal other vehicles} & Accelerating, braking, cruising \\
 		Any other vehicle & Lateral activity & \cref{sec:lateral other vehicles} & Changing lane left, changing lane right, following lane \\
 		Any other vehicle & Longitudinal state & \cref{sec:longitudinal state other vehicle} & In front of ego, behind ego \\
-		Any other vehicle & Lateral state & \cref{sec:lateral state other vehicle} & Left of ego, right of ego, same lane as ego, unknown \\
-		Any other vehicle & Lead vehicle & \cref{sec:lead vehicle} & Yes, no \\
-		Static environment & On highway & \cref{sec:static environment} & Yes, no \\ 
+		Any other vehicle & Lateral state & \cref{sec:lateral state other vehicle} & Left of ego, right of ego, same lane as ego, unclear \\
+		Any other vehicle & Lead vehicle & \cref{sec:lead vehicle} & Leader, no leader \\
+		Static environment & On highway & \cref{sec:static environment} & Highway, no highway \\ 
 		\bottomrule
 	\end{tabular}
 	\cenda
@@ -30,7 +30,7 @@ The scenario mining based on these tags is explained in the next section.
 
 As described in \cref{def:scenario}, events and activities are constituents of a scenario. 
 Part of the tags that we consider describe activities of the vehicles.
-Therefore, we will use the definition of the term and \emph{activity} of \autocite{degelder2018ontology}:\cenda
+Therefore, we will use the definition of the term \emph{activity} of \autocite{degelder2018ontology}:\cenda
 \begin{definition}[Activity \autocite{degelder2018ontology}]
 	\label{def:activity}
 	An activity quantitatively describes the time evolution of one or more state variables of an actor between two events.
@@ -41,12 +41,12 @@ Because an activity starts and ends with an event, for describing the activities
 As an illustration, \cref{tab:tags} lists the tags that are considered for the case study in this paper. 
 We distinguish between tags that describe the behavior of the ego vehicle, tags that describe the behavior and the state of any other vehicle, and tags that describe the static environment. \cenda
 \begin{remark}
-	\cstarta The tags in \cref{tab:tags} are sufficient for mining the scenarios of the scenario categories that we consider in our case study, see \cref{sec:case study}. However, when other scenario categories are considered, other tags might be necessary. The approach for mining the scenarios using the tags, see \cref{sec:mining}, however, is general and also applies when other tags are used. \cenda 
-	\cstartc For example, for this paper we do not consider other road users than vehicles, but the proposed method also works when cyclist or pedestrians are considered.\cendc
+	\cstarta The tags in \cref{tab:tags} are sufficient for mining the scenarios of the scenario categories that we consider in our case study, see \cref{sec:case study}. However, when other scenario categories are considered, other tags might be necessary. The approach for mining the scenarios using the tags, however, is general and also applies when other tags are used. \cenda 
+	\cstartc For example, for this paper we do not consider other road users than vehicles, but the proposed method also works if cyclists or pedestrians are considered.\cendc
 \end{remark}
 
 In the remainder of this section, we explain how the tags of \cref{tab:tags} are determined. 
-For the remainder of this section, we assume that the data is sampled with a sample time of $\sampletime$.
+Here, we assume that the data is sampled with a sample time of $\sampletime$.
 
 
 
@@ -76,19 +76,19 @@ For detecting acceleration and decelerating events, the difference between the c
 \cstartd \Cref{fig:explain symbols} illustrates how $\speedmin{\sample}$, $\speedmax{\sample}$, $\speedinc{\sample}$, and $\speeddec{\sample}$ are calculated.
 \cendd
 
-\setlength{\figurewidth}{\linewidth}
+\setlength{\figurewidth}{.9\linewidth}
 \setlength{\figureheight}{.6\linewidth}
 \begin{figure}
 	\centering
 	\input{figures/explain_symbols.tikz}
-	\caption{\cstartd An example of a speed profile and how the variables $\speedmin{\sample}$, $\speedmax{\sample}$, $\speedinc{\sample}$, and $\speeddec{\sample}$ are calculated at a certain sample step $\sample$ with $\samplehorizon=20$.\cendd}
+	\caption{\cstartd An example of a speed profile and how the variables $\speedmin{\sample}$, $\speedmax{\sample}$, $\speedinc{\sample}$, and $\speeddec{\sample}$ are calculated at a certain sample step $\sample$ with $\samplehorizon=10$.\cendd}
 	\label{fig:explain symbols}
 \end{figure}
 
 First, we assume that the event at the start of the dataset is a cruising event at $\sample=\sampleinit$. Next, we go chronologically through the dataset. An acceleration event is happening at sample $\sample$ if any of the following conditions is true:
 \begin{itemize}
 	\item The vehicle is not performing an acceleration activity, i.e., the last event is not an acceleration event.
-	\item \cstarta There has been a significant speed increase between sample step $\sample-\samplehorizon$ and $\sample$, i.e., 
+	\item \cstarta There has been a substantial speed increase between sample step $\sample-\samplehorizon$ and $\sample$, i.e., 
 	\begin{equation}
 		\label{eq:start acceleration}
 		\speedinc{\sample} \geq \accelerationstart\samplehorizon\sampletime,
@@ -99,7 +99,7 @@ First, we assume that the event at the start of the dataset is a cruising event 
 		\label{eq:acceleration condition}
 		\speedmin{\sample+\samplehorizon}=\speed{\sample}.
 	\end{equation}
-	\item There is a significant speed difference during the activity, i.e., 
+	\item There is a substantial speed difference during the activity, i.e., 
 	\begin{equation}
 		\label{eq:end acceleration condition}
 		\left|\speed{\sampleendinc{\sample}} - \speed{\sample}\right| > \speeddiff,
@@ -153,7 +153,9 @@ Let $\sampleaccevent$ and $\sampledecevent$ denote the sample step of the most r
 	\label{fig:longitudinal activities}
 \end{figure}
 
-A result of the above described activity detection could be very short cruising activities, especially when the acceleration is around $\accelerationcruise$ or $-\accelerationcruise$. Therefore, when the longitudinal activities are extracted from a dataset using the above described method, all cruising activities shorter than $\samplescruising$ sample steps are removed as well as the two events that define the start and the end of the cruising activity. Here, we consider three possibilities:
+A result of the activity detection could be very short cruising activities, especially when the acceleration is around $\accelerationcruise$ or $-\accelerationcruise$. 
+Therefore, all cruising activities shorter than $\samplescruising$ sample steps are removed as well as the two events that define the start and the end of the cruising activity. 
+Here, we consider three possibilities:
 \begin{enumerate}
 	\item Before and after the cruising activity, the vehicle performs the same activity. In that case, these activities are merged.
 	\item The vehicle decelerates before the cruising activity and accelerates afterwards. In that case, an acceleration event is defined at the lowest speed of the vehicle within the original cruising activity.
@@ -171,7 +173,10 @@ These distances are estimated from camera images.
 The estimation is outside the scope of this paper. 
 Let $\lineleft{\sample}$ and $\lineright{\sample}$ denote the distance toward the left and right lane line, respectively. 
 %In case the distances cannot be accurately estimated, the notation $\lineleft{\sample}=\nan$ and $\lineright{\sample}=\nan$ is used, where $\nan$ stands for Not-a-Number.
-\cstarta We use the ISO coordinate system\cenda\cstartc\footnote{\cstartc In the ISO coordinate system \autocite{iso8855}, the $x$-axis points to the front of the vehicle and the $y$-axis points to the left of the vehicle.\cendc\cstartd The origin of the coordinate system is often at the ground below the midpoint of the rear axle.\cendd}\cendc\cstarta, so $\lineleft{\sample} \geq 0$ and $\lineright{\sample} \leq 0$. At the moment the vehicle crosses the line, the distances to the lines will change significantly. For example, during a lane change to the left, the left lane line becomes the right lane line. Hence, we detect a left lane change \cstartd if the change in the lane line distances is more than the threshold $\lanechangethreshold>0$\cendd:
+\cstarta We use the ISO coordinate system\cenda\cstartc\footnote{\cstartc In the ISO coordinate system \autocite{iso8855}, the $x$-axis points to the front of the vehicle and the $y$-axis points to the left of the vehicle.\cendc\cstartd The origin of the coordinate system is often at the ground below the midpoint of the rear axle.\cendd}\cendc\cstarta, so $\lineleft{\sample} \geq 0$ and $\lineright{\sample} \leq 0$. 
+At the moment the vehicle crosses the line, the distances to the lines will change substantially. 
+For example, during a lane change to the left, the left lane line becomes the right lane line. 
+Hence, we detect a left lane change \cstartd if the change in the lane line distances is more than the threshold $\lanechangethreshold>0$\cendd:
 \begin{align}
 	\lineleft{\sample} - \lineleft{\sample-1} &> \lanechangethreshold, \label{eq:potential left a} \\
 	\lineright{\sample} - \lineright{\sample-1} &> \lanechangethreshold. \label{eq:potential left b}
@@ -194,16 +199,16 @@ The start of the lane change is at the last sample step before sample step $\sam
 	\label{eq:start lane change right}
 	\arg \max_{\sampledummy < \sample} \left\{ \sampledummy\colon \lineleftinc{\sampledummy} < \lanechangespeed\samplehorizon\sampletime \lor \linerightinc{\sampledummy} < \lanechangespeed\samplehorizon\sampletime \right\},
 \end{equation}
-where $\lor$ indicates that either one of the two conditions need to be satisfied.
+where $\lor$ indicates that either one of the two conditions needs to be satisfied.
 
-The end of a lane change activity is determined in a similar manner as the end of an acceleration or deceleration activity, see \cref{eq:end acceleration}.
-In other words: the end of a lane change is at the sample step at which either of the line distances increase or decrease is below a threshold. For a right lane change, this is at
+%The end of a lane change activity is determined in a similar manner as the end of an acceleration or deceleration activity, see \cref{eq:end acceleration}.
+%In other words: 
+The end of a lane change is at the sample step at which either of the lane line distances increase or decrease is below a threshold. For a right lane change, this is at
 \begin{multline}
 	\label{eq:end lane change right}
 	\arg \min_{\sampledummy > \sample} \left\{ \sampledummy\colon \lineleftinc{\sampledummy+\samplehorizon}<\lanechangespeed\samplehorizon\sampletime \lor \right.\\
 	\left. \linerightinc{\sampledummy+\samplehorizon}< \lanechangespeed\samplehorizon\sampletime \right\}
 \end{multline}
-
 For a left lane change, the start and end is defined by substituting $-\lineleftdec{\cdot}$ and $-\linerightdec{\cdot}$ for $\lineleftinc{\cdot}$ and $\linerightinc{\cdot}$, respectively, in \cref{eq:start lane change right,eq:end lane change right}.
 \cenda
 
@@ -221,7 +226,7 @@ For a left lane change, the start and end is defined by substituting $-\lineleft
 It shows that the distance towards the left lane line changes when the ego vehicle crosses the line, such that the conditions \cref{eq:potential right a,eq:potential right b} are satisfied. In \cref{fig:ego lane change}, events at the start and the end of the lane change are denoted by the black vertical lines.
 
 \begin{remark}
-	It might happen that there is no accurate measurement of the line distances available at a certain sample step $\sample$. For example, in \cref{fig:glare}, there is no line information while the ego vehicle performs a lane change. By using the next available line distances instead of $\lineleft{\sample}$ and $\lineright{\sample}$ and the previous available line distances instead of $\lineleft{\sample-1}$ and $\lineright{\sample-1}$ in \cref{eq:potential left a,eq:potential left b,eq:potential right a,eq:potential right b}, our algorithm is still able to detect lane changes.
+	It might happen that there is no accurate measurement of the lane line distances available at a certain sample step $\sample$. For example, in \cref{fig:glare}, there is no line information while the ego vehicle performs a lane change. By using the next available line distances instead of $\lineleft{\sample}$ and $\lineright{\sample}$ and the previous available line distances instead of $\lineleft{\sample-1}$ and $\lineright{\sample-1}$ in \cref{eq:potential left a,eq:potential left b,eq:potential right a,eq:potential right b}, our algorithm is still able to detect lane changes.
 \end{remark}
 \cenda
 
@@ -263,7 +268,7 @@ For the lane changes of other vehicles, only the lane changes to and from the eg
 To detect a lane change of the $\indextarget$-th vehicle, we use the distance of the $\indextarget$-th vehicle toward the ego vehicle's left and right lane lines, denoted by $\linelefttarget{\sample}{\indextarget}$ and $\linerighttarget{\sample}{\indextarget}$, respectively\cendc\cstartd\footnote{\cstartd $\linelefttarget{\sample}{\indextarget}$ and $\linerighttarget{\sample}{\indextarget}$ are determined by subtracting the estimated lane line positions from the estimated lateral position of the $\indextarget$-th vehicle. The lane line positions are based on the estimated shape of the lane lines. For more details, we refer the reader to \autocite{elfring2016effective}.\cendd}\cendd\cstartc.
 We define $\linelefttargetinc{\sample}{\indextarget}$, $\linerighttargetinc{\sample}{\indextarget}$, $\linelefttargetdec{\sample}{\indextarget}$, and $\linerighttargetdec{\sample}{\indextarget}$ similar as $\lineleftinc{\sample}$ and $\lineleftdec{\sample}$ in \cref{eq:line left inc,eq:line left dec}.
 
-A lane change is detected when the vehicle crosses either of the two lane lines.
+A lane change is detected if the vehicle crosses either of the two lane lines.
 There are four possible ways this can happen.
 For now, we consider a right lane change toward the ego vehicle's lane.
 A right lane change of the $\indextarget$-th vehicle toward the ego vehicle's lane is detected at sample step $\sample$ if the vehicle is not already changing lane and
@@ -273,16 +278,16 @@ A right lane change of the $\indextarget$-th vehicle toward the ego vehicle's la
 \end{equation}
 where $\land$ indicates that both of the two conditions need to be satisfied.
 
-To determine the start of the lane change, the lateral speed should be below a certain threshold (controlled by $\lanechangespeed$) or the lateral movement should be above a certain threshold (controlled by $\factorgoalmax$). 
+To determine the start of the lane change, the lateral speed should be below the threshold $\lanechangespeed$ or --- in case the vehicle changes several lanes --- the lateral movement should be above a certain threshold (controlled by $\factorgoalmax$).
 Because it might happen that the lateral speed is below the threshold during the whole lane change, a minimum lateral movement is considered as well (controlled by $\factorgoalmin$). 
-As a result, the start of a right lane change toward the ego vehicle's lane is at estimated to be at sample step
+As a result, the start of a right lane change toward the ego vehicle's lane is estimated to occur at sample step
 \begin{multline}
 	\label{eq:start lane change target}
 	\arg \max_{\sampledummy < \sample} \left\{ \sampledummy: \linelefttarget{\sampledummy}{\indextarget} < -\factorgoalmax\widthlanetarget{\sample}{\indextarget} \lor \right. \\
 	\left. \left( \linelefttargetinc{\sampledummy}{\indextarget} < \lanechangespeed\samplehorizon\sampletime \land \linelefttarget{\sampledummy}{\indextarget} < -\factorgoalmin\widthlanetarget{\sample}{\indextarget} \right) \right\}.
 \end{multline}
 Here, $\widthlanetarget{\sample}{\indextarget}=\linelefttarget{\sample}{\indextarget}-\linerighttarget{\sample}{\indextarget}$ is the estimated lane width. 
-The end of the same lane change is estimated in a similar way:
+The end of the same lane change is estimated, in a similar way, to occur at sample step:
 \begin{multline}
 	\label{eq:end lane change target}
 	\arg \max_{\sampledummy > \sample} \left\{ \sampledummy: \linelefttarget{\sampledummy}{\indextarget} > \factorgoalmax\widthlanetarget{\sample}{\indextarget} \lor \right. \\
@@ -311,8 +316,8 @@ The tag ``in front of ego'' applies when $\lontarget{\sample}{\indextarget}> 0$ 
 
 Four different possibilities are considered for the lateral state of any other vehicle. 
 The lateral state is based on the estimated distance of the other vehicle toward the ego vehicle's lane lines, see \cref{tab:lateral state other vehicle}. 
-The situation of $\linelefttarget{\sample}{\indextarget} < 0$ and $\linerighttarget{\sample}{\indextarget} \geq 0$ would mean that the other vehicle is left of the left lane line and right of the right lane line. 
-This generally only happens when there is a large error in either $\linelefttarget{\sample}{\indextarget}$ or $\linerighttarget{\sample}{\indextarget}$ because, e.g., the other vehicle is far away from the ego vehicle.
+The situation of $\linelefttarget{\sample}{\indextarget} < 0$ and $\linerighttarget{\sample}{\indextarget} \geq 0$ would mean that the other vehicle is left of the left lane line and right of the right lane line, so it is unclear in which lane the vehicle is.
+%This generally only happens when there is a large error in either $\linelefttarget{\sample}{\indextarget}$ or $\linerighttarget{\sample}{\indextarget}$ because, e.g., the other vehicle is far away from the ego vehicle.
 
 \begin{table}
 	\centering
@@ -322,7 +327,7 @@ This generally only happens when there is a large error in either $\linelefttarg
 	\begin{tabular}{lcc}
 		\toprule
 		& $\linelefttarget{\sample}{\indextarget} < 0$ & $\linelefttarget{\sample}{\indextarget} \geq 0$ \\ \otoprule		$\linerighttarget{\sample}{\indextarget} < 0$ & Left of ego & Same lane as ego \\
-		$\linerighttarget{\sample}{\indextarget} \geq 0$ & Unknown & Right of ego \\
+		$\linerighttarget{\sample}{\indextarget} \geq 0$ & Unclear & Right of ego \\
 		\bottomrule
 	\end{tabular}
 	\cendc
@@ -333,12 +338,11 @@ This generally only happens when there is a large error in either $\linelefttarg
 \subsection{Lead vehicle}
 \label{sec:lead vehicle}
 
-Two possibilities are considered: a vehicle is a lead vehicle (the tag ``yes'' applies) or not (the tag ``no'' applies). A vehicle $\indextarget$ is considered as a lead vehicle at sample step $\sample$ if the following conditions are satisfied:
+Two possibilities are considered: a vehicle is a lead vehicle (the tag ``leader'' applies) or not (the tag ``no leader'' applies). A vehicle $\indextarget$ is considered as a lead vehicle at sample step $\sample$ if all of the following conditions are satisfied:
 \begin{itemize}
 	\item The vehicle is in front of the ego vehicle, i.e., $\lontarget{\sample}{\indextarget}>0$.
 	\item The vehicle drives in the same lane as the ego vehicle, i.e., $\linelefttarget{\sample}{\indextarget} \geq 0$ and $\linerighttarget{\sample}{\indextarget} < 0$.
-	\item The time headway of the ego vehicle toward the other vehicle is less than the parameter $\thw>0$, i.e., $\lontarget{\sample}{\indextarget} 
-	< \thw \speed{\sample}$.
+	\item The time headway of the ego vehicle toward the other vehicle, i.e., $\lontarget{\sample}/\speed{\sample}$ is less than the parameter $\thw>0$.
 	\item There is no other vehicle that is closer to the ego vehicle while satisfying the above conditions, i.e., $\lontarget{\sample}{\indextarget} < \lontarget{\sample}{\indextargetother}$ for all $\indextargetother$-th vehicles with $\indextargetother \ne \indextarget$ that satisfy the above conditions.
 \end{itemize}
 \cendc
@@ -349,5 +353,5 @@ Two possibilities are considered: a vehicle is a lead vehicle (the tag ``yes'' a
 \label{sec:static environment}
 
 \cstartc
-The aspect of the static environment that is considered in this paper is whether the ego vehicle drives on the highway or not. The location of the ego vehicle, based on GPS measurements, is used to determine the road the ego vehicle is driving on based on OpenStreetMaps\footnote{\cstartc See \url{https://www.openstreetmap.org/}.\cendc}. If the road is classified as ``motorway'' (see \autocite{osm_highway} for all possibilities), the tag ``Yes'' is applied. Otherwise, the tag ``No'' is used.
+The aspect of the static environment that is considered in this paper is whether the ego vehicle drives on the highway or not. The location of the ego vehicle, based on GPS measurements, is used to determine the road the ego vehicle is driving on based on OpenStreetMaps\footnote{\cstartc See \url{https://www.openstreetmap.org/}.\cendc}. If the road is classified as ``motorway'' (see \autocite{osm_highway} for all possibilities), the tag ``highway'' is applied. Otherwise, the tag ``no highway'' is used.
 \cendc

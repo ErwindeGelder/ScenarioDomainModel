@@ -22,6 +22,22 @@ ylabel={Distance [m]},
 ymin=-1, ymax=4,
 ytick style={color=black}
 ]
+\node at (axis cs:3.15,3.9)[
+  anchor=north,
+  text=black,
+  rotate=0.0
+]{following lane};
+\node at (axis cs:10.045,3.9)[
+  anchor=north,
+  text=black,
+  rotate=0.0,
+  align=center
+]{changing lane\\to right};
+\node at (axis cs:16.895,3.9)[
+  anchor=north,
+  text=black,
+  rotate=0.0
+]{following lane};
 \addplot [line width=2.0pt, color0]
 table {%
 -2 1.25144642106398
@@ -4843,22 +4859,6 @@ table {%
 13.79 -1
 13.79 4
 };
-\node at (axis cs:3.15,3.9)[
-  anchor=north,
-  text=black,
-  rotate=0.0
-]{following lane};
-\node at (axis cs:10.045,3.9)[
-  anchor=north,
-  text=black,
-  rotate=0.0,
-  align=center
-]{changing lane\\to right};
-\node at (axis cs:16.895,3.9)[
-  anchor=north,
-  text=black,
-  rotate=0.0
-]{following lane};
 \end{axis}
 
 \end{tikzpicture}

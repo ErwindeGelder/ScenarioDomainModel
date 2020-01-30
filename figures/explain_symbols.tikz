@@ -13,16 +13,28 @@ tick align=outside,
 tick pos=left,
 width=\figurewidth,
 x grid style={white!69.01960784313725!black},
-xmin=0, xmax=16,
+xlabel={Sample},
+xmin=0, xmax=16.5,
 xtick style={color=black},
 xtick={3,13},
 xticklabels={\(\displaystyle k-k_h\),\(\displaystyle k\)},
 y grid style={white!69.01960784313725!black},
+ylabel={\(\displaystyle v\)},
 ymin=0, ymax=30,
 ytick style={color=black},
 ytick={6.48176150995277,26.6384896175217},
 yticklabels={\(\displaystyle v_{\mathrm{min}}(k)\),\(\displaystyle v_{\mathrm{max}}(k)\)}
 ]
+\node at (axis cs:13.6,22.404759743144)[
+  anchor=base west,
+  text=black,
+  rotate=0.0
+]{$v^-(k)$};
+\node at (axis cs:13.6,12.3263956893595)[
+  anchor=base west,
+  text=black,
+  rotate=0.0
+]{$v^+(k)$};
 \path [draw=black, fill=white]
 (axis cs:13.6,26.6384896175217)
 --(axis cs:14.1,25.1384896175217)
@@ -92,28 +104,18 @@ table {%
 \addplot [semithick, black, dashed]
 table {%
 0 6.48176150995277
-16 6.48176150995277
+16.5 6.48176150995277
 };
 \addplot [semithick, black, dashed]
 table {%
 0 26.6384896175217
-16 26.6384896175217
+16.5 26.6384896175217
 };
 \addplot [semithick, black, dashed]
 table {%
 12 18.1710298687663
 14.6 18.1710298687663
 };
-\node at (axis cs:13.6,22.404759743144)[
-  anchor=base west,
-  text=black,
-  rotate=0.0
-]{$v^-(k)$};
-\node at (axis cs:13.6,12.3263956893595)[
-  anchor=base west,
-  text=black,
-  rotate=0.0
-]{$v^+(k)$};
 \end{axis}
 
 \end{tikzpicture}
