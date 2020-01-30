@@ -1,9 +1,12 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
-
 \documentclass[3p,onecolumn,authoryear]{elsarticle}  % Comment this line out if you need a4paper
-
+\pdfoutput=1
+\makeatletter
+\def\ps@pprintTitle{%
+	\let\@oddhead\@empty
+	\let\@evenhead\@empty
+	\def\@oddfoot{}%
+	\let\@evenfoot\@oddfoot}
+\makeatother
 
 % make changes take effect
 \pagestyle{headings}
@@ -105,6 +108,7 @@
 \address[4]{2getthere, Utrecht, The Netherlands}
 \address[5]{Eindhoven University of Technology, Dept.\ of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}
 \address[6]{BMW Group, Petuelring 130, 80788 Munich, Germany}
+
 
 \newlength\figurewidth
 \newlength\figureheight
