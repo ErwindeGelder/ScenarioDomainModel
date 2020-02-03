@@ -182,7 +182,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6" MOVED="1534304323924">
+<node TEXT="Completeness" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_946145319" CREATED="1507015640610" MODIFIED="1512369817245" HGAP="75" VSHIFT="-6" MOVED="1534304323924">
 <edge COLOR="#ff0000"/>
 <node TEXT="Estimating completeness of event logs" ID="ID_575443342" CREATED="1507015737728" MODIFIED="1539230742839" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/025%20Estimating%20Completeness%20of%20Event%20Logs.pdf" HGAP="40" VSHIFT="10">
 <attribute NAME="key" VALUE="yang2012estimating"/>
@@ -397,7 +397,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="What is data used for?" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1937528963" CREATED="1539859088544" MODIFIED="1540198071221" HGAP="44" VSHIFT="-8">
+<node TEXT="What is data used for?" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1937528963" CREATED="1539859088544" MODIFIED="1540198071221" HGAP="44" VSHIFT="-8">
 <node TEXT="To determine the risks and prevalence evaluation" ID="ID_787334324" CREATED="1539859106194" MODIFIED="1539859286572" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/251%20Driver%20crash%20risk%20factors%20and%20prevalence%20evaluation%20from%20NDD.pdf">
 <attribute NAME="key" VALUE="dingus2016crashrisk"/>
 <attribute NAME="journal" VALUE="Proceedings of the National Academy of Sciences"/>
@@ -603,7 +603,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Support Vector Machines" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_843885667" CREATED="1516861995018" MODIFIED="1516862005324">
+<node TEXT="Support Vector Machines" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_843885667" CREATED="1516861995018" MODIFIED="1516862005324">
 <node TEXT="First paper about SVM" ID="ID_177634036" CREATED="1516862007224" MODIFIED="1534391906893" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/125%20Support%20Vector%20Machines.pdf">
 <attribute NAME="key" VALUE="cortes1995svm"/>
 <attribute NAME="journal" VALUE="Machine Learning"/>
@@ -1322,6 +1322,18 @@
 <attribute NAME="year" VALUE="2019"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5DCF7298A083FFBCF4746A4475A0DA8C135B724320466BE134F9FA808F5DCD">
     <pdf_title>An Introduction to the Safety Force Field</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Acceleration/jerk values" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_709679237" CREATED="1580462115971" MODIFIED="1580462137668">
+<node TEXT="Toward a Comfortable Driving Experience for a Self-Driving Shuttle Bus" ID="ID_403418036" CREATED="1580462144851" MODIFIED="1580462149438" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/412%20Comfortable%20Driving%20Experience%20for%20a%20Self-Driving%20Shuttle%20Bus.pdf">
+<attribute NAME="key" VALUE="bae2019toward"/>
+<attribute NAME="journal" VALUE="Electronics"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Toward a Comfortable Driving Experience for a Self-Driving Shuttle Bus"/>
+<attribute NAME="authors" VALUE="Bae, Il and Moon, Jaeyoung and Seo, Jeongseok"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FBEB496D21169C124694D83FE0B29A7D5E3A6CF1C1509132EFDDEB5C21369C4">
+    <pdf_title>Toward a Comfortable Driving Experience for a Self-Driving Shuttle Bus</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2291,14 +2303,25 @@
 </node>
 </node>
 <node TEXT="Reduction of parameters" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1410220571" CREATED="1550215600107" MODIFIED="1550215613614">
-<node TEXT="Scenario reduction revisited: fundamental limits and guarantees" ID="ID_1997636225" CREATED="1550215615031" MODIFIED="1550215702702" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/278%20Scenario%20reduction%20revisited%20fundamental%20limits%20and%20guarantees.pdf">
-<attribute NAME="key" VALUE="Rujeerapaiboon2018"/>
+<node TEXT="Scenario reduction revisited: fundamental limits and guarantees" ID="ID_1997636225" CREATED="1550215615031" MODIFIED="1580471063168" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/278%20Scenario%20reduction%20revisited%20fundamental%20limits%20and%20guarantees.pdf">
+<attribute NAME="key" VALUE="rujeerapaiboon2018scenario"/>
 <attribute NAME="journal" VALUE="Mathematical Programming"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="Scenario reduction revisited: fundamental limits and guarantees"/>
 <attribute NAME="authors" VALUE="Rujeerapaiboon, Napat and Schindler, Kilian and Kuhn, Daniel and Wiesemann, Wolfram"/>
 <pdf_annotation type="BOOKMARK" page="1" object_id="1101348007244982725" object_number="1448" document_hash="E916AA2E4B6EE210735747852A8C461543509C93CD71B0844FBCF6F7852135CA">
     <pdf_title>Scenario reduction revisited: fundamental limits and guarantees</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Monte Carlo" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1779539678" CREATED="1580464294679" MODIFIED="1580481781699">
+<node TEXT="Book about Monte Carlo" ID="ID_192080728" CREATED="1580481771631" MODIFIED="1580481784600" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/413%20Monte%20Carlo.pdf">
+<attribute NAME="key" VALUE="owen2013montecarlo"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Monte Carlo theory, methods and examples"/>
+<attribute NAME="authors" VALUE="Owen, Art B."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2D3925EB514296FDA6F41432AC83DABE76FC1E4D1BAD187E04B3555748647FF">
+    <pdf_title>Contents</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -3818,7 +3841,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
+<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
 <edge COLOR="#007c00"/>
 <node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
 <node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1534390623301" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
@@ -4172,6 +4195,28 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Non-parametric copulas" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_101928990" CREATED="1580651878732" MODIFIED="1580651888277">
+<node TEXT="Nonparametric Estimation of Copula Functions for Dependence Modelling" ID="ID_721654211" CREATED="1580651889572" MODIFIED="1580651976746" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/418%20Nonparametric%20Estimation%20of%20Copula%20Functions%20for%20Dependence%20Modelling.pdf">
+<attribute NAME="key" VALUE="chen2007nonparametric"/>
+<attribute NAME="journal" VALUE="Canadian Journal of Statistics"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Nonparametric Estimation of Copula Functions for Dependence Modelling"/>
+<attribute NAME="authors" VALUE="Chen, Song Xi and Huang, Tzee-Ming"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D35E675DF1C8C915576BE0178C48F6E46B29FBBA9DD4CFBC2DBCB793A679FDA">
+    <pdf_title>Nonparametric estimation of copula functions for dependence modelling</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A non-parametric copula approach to dependence modelling of shear strength" ID="ID_665022782" CREATED="1580651997618" MODIFIED="1580652142286" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/419%20A%20non-parametric%20copula%20approach%20to%20dependence%20modelling%20of%20shear%20strength.pdf">
+<attribute NAME="key" VALUE="awng2019nonparametric"/>
+<attribute NAME="journal" VALUE="Computers and Geotechnics"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="A Non-Parametric Copula Approach to Dependence Modelling of Shear Strength Parameters and its Implications for Geotechnical Reliability under Incomplete Probability Information"/>
+<attribute NAME="authors" VALUE="Wang, Fan and Li, Heng"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="312D6AECC8B08719BEEA642A63C65348A0B65699D84B17A33BE78921BEADFF21">
+    <pdf_title>Computers and Geotechnics</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Econometrics" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_414293478" CREATED="1513739564824" MODIFIED="1513739574221">
 <node TEXT="Introductory econometrics for finance" ID="ID_86705271" CREATED="1513739586343" MODIFIED="1534390671073" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/098%20Introductory%20Econometrics%20for%20Finance.pdf">
@@ -4287,11 +4332,44 @@
 </node>
 </node>
 <node TEXT="Extreme Value Statistics" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_39821948" CREATED="1542357420081" MODIFIED="1542357425327">
-<node TEXT="Example, dutch sea dikes" ID="ID_1987157892" CREATED="1542357496348" MODIFIED="1542357507546">
+<node TEXT="Example, dutch sea dikes" ID="ID_1987157892" CREATED="1542357496348" MODIFIED="1580473413569" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/414%20Extreme%20Value%20Theory%20and%20Applications.pdf">
 <attribute NAME="key" VALUE="dehaan1994extreme"/>
 <attribute NAME="year" VALUE="1994"/>
 <attribute NAME="title" VALUE="Extreme Value Statistics"/>
 <attribute NAME="authors" VALUE="de Haan, Laurens"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="60D49A79539751C010957F916AEFE330DD8A2285BB208788ACE65C3EDFB2B8B">
+    <pdf_title>EXTREME VALUE STATISTICS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A review of methods to calculate extreme wind speeds" ID="ID_760373290" CREATED="1580650449771" MODIFIED="1580651347820" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/415%20Review%20of%20methods%20to%20calculate%20extreme%20wind%20speeds.pdf">
+<attribute NAME="key" VALUE="palutikof1999review"/>
+<attribute NAME="journal" VALUE="Meteorological applications"/>
+<attribute NAME="year" VALUE="1999"/>
+<attribute NAME="title" VALUE="A Review of Methods to Calculate Extreme Wind Speeds"/>
+<attribute NAME="authors" VALUE="Palutikof, JP and Brabson, BB and Lister, DH and Adcock, ST"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D4A0477814B359A8669584EEDC7478EB76692E7E657CF5C294BA4275227F50D5">
+    <pdf_title>A review of methods to calculate extreme wind speeds</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Multivariate extremes" ID="ID_1073844262" CREATED="1580651412067" MODIFIED="1580651664634" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/416%20Multivariate%20extremes.pdf">
+<attribute NAME="key" VALUE="fougeres2004multivariate"/>
+<attribute NAME="journal" VALUE="Monographs on Statistics and Applied Probability"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Extreme Values in Finance, Telecommunications, and the Environment"/>
+<attribute NAME="authors" VALUE="Fougeres, Anne-Laure"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BB286D91FCEEA292B3FA7CC9C415E8ACA4322AC4FC5E5CF9207458C951EBD5A">
+    <pdf_title>M u l t i v a r i a t e e x t r e m e s A n n e L a u r e F o u g e r e s L a b o r a t o i r e d e S t a t i s t i q u e e t P r o b a b i l i t e s I N S A d e T o u l o u s e U n i v e r s i t e P a u l S a b a t i e r 1 I n t r o d u c t i o n A w i d e v a r i e t y o f s i t u a t i o n s c o n c e r n e d w i t h e x t r e m e e v e n t s h a s a n i n h e r e n t m u l t i v a r i a t e c h a r a c t e r a s p o i n t e d o u t b y C o l e s T a w n L e t u s c o n s i d e r f o r e x a m p l e t h e o c e a n o g r a p h i c c o n t e x t a n d f o c u s o n t h e s e a l e v e l p r o c e s s S u c h a v a r i a b l e c a n b e d i v i d e d i n t o s e v e r a l p h y s i c a l c o m p o n e n t s l i k e m e a n l e v e l t i d e s u r g e a n d w a v e w h i c h a r e d r i v e n b y d i e r e n t p h y s i c a l p h e n o m e n a s e e f o r e x a m p l e T a w n f o r d e t a i l s M o r e o v e r e x t r e m e s e a c o n d i t i o n s l e a d i n g t o d a m a g e s a r e u s u a l l y a c o n s e q u e n c e o f e x t r e m e v a l u e s j o i n t l y i n s e v e r a l c o m p o n e n t s T h e j o i n t s t r u c t u r e o f t h e p r o c e s s e s h a s t h e r e f o r e t o b e s t u d i e d A n o t h e r t y p e o f d e p e n d e n c e w h i c h c a n b e o f g r e a t i n t e r e s t i s t h e t e m p o r a l o n e H i g h s e a l e v e l s c a n b e a l l t h e m o r e d a n g e r o u s w h e n t h e y l a s t f o r a l o n g p e r i o d o f t i m e T h e r e f o r e a g i v e n v a r i a b l e o b s e r v e d a t s u c c e s s i v e t i m e s i s l i k e l y t o c o n t a i n c r u c i a l i n f o r m a t i o n O t h e r e x a m p l e s o f a p p l i c a t i o n s h a v e b e e n l i s t e d r e c e n t l y b y K o t z N a d a r a j a h c o n c e r n i n g a m o n g o t h e r s p o l l u t a n t c o n c e n t r a t i o n s J o e S m i t h W e i s s m a n r e s e r v o i r s a f e t y A n d e r s o n N a d a r a j a h o r D u t c h s e a d i k e s s a f e t y B r u u n T a w n d e H a a n d e R o n d e H i s t o r i c a l l y t h e r s t d i r e c t i o n w h i c h h a s b e e n e x p l o r e d c o n c e r n i n g m u l t i v a r i a t e e x t r e m e e v e n t s w a s t h e m o d e l i n g o f t h e a s y m p t o t i c b e h a v i o u r o f c o m p o n e n t w i s e m a x i m a 2 o f i n d e p e n d e n t a n d i d e n t i c a l l y d i s t r i b u t e d i i d o b s e r v a t i o n s K e y e a r l y c o n t r i b u t i o n s t o t h i s d o m a i n o f r e s e a r c h a r e a m o n g o t h e r s t h e p a p e r s o f T i a g o d e O l i v e i r a S i b u y a d e H a a n R e s n i c k D e h e u v e l s a n d P i c k a n d s T h e g e n e r a l s t r u c t u r e o f t h e m u l t i v a r i a t e e x t r e m e v a l u e d i s t r i b u t i o n s h a s b e e n e x p l o r e d b y d e H a a n R e s n i c k U s e f u l r e p r e s e n t a t i o n s i n t e r m s o f m a x s t a b l e d i s t r i b u t i o n s r e g u l a r v a r i a t i o n f u n c t i o n s o r p o i n t p r o c e s s e s h a v e b e e n e s t a b l i s h e d S e c t i o n i s d e v o t e d t o t h e a s y m p t o t i c m o d e l f o r c o m p o n e n t w i s e m a x i m a T h e m a i n r e s u l t s a r e s k e t c h e d i n S e c t i o n a f t e r a b r i e f s u m m a r y o f t h e u n i v a r i a t e e x t r e m e 1 D e p t G M M I N S A A v e n u e d e R a n g u e i l T o u l o u s e C e d e x F r a n c e 2 N o t e t h a t r e s u l t s o n m i n i m a c a n i m m e d i a t e l y b e d e d u c e d u s i n g t h e p r o p e r t y t h a t f o r a n y v a r i a b l e X m i n X &#xffff; m a x &#xffff; X A l l w h a t f o l l o w s w i l l j u s t b e w r i t t e n f o r m a x i m a</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="The QQ-Estimator and Heavy Tails" ID="ID_1556409358" CREATED="1580651752694" MODIFIED="1580651810560" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/417%20The%20QQ-Estimator%20and%20Heavy%20Tails.pdf">
+<attribute NAME="key" VALUE="kratz1996qq"/>
+<attribute NAME="journal" VALUE="Stochastic Models"/>
+<attribute NAME="year" VALUE="1996"/>
+<attribute NAME="title" VALUE="The QQ-Estimator and Heavy Tails"/>
+<attribute NAME="authors" VALUE="Kratz, Marie and Resnick, Sidney I"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DA9874A193A33ED7336484982A409BC05EB5927676382F689243FB94F4842EB8">
+    <pdf_title>&#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; &#xffff; ! &quot; # &#xffff; %</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 </node>
