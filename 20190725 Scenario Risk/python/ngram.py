@@ -5,6 +5,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2019 12 31 Change the way the n-grams are stored.
+2019 01 23 Add last row to n-gram. Otherwise, last item will be missed!
 """
 
 import os
@@ -93,6 +94,10 @@ class NGram:
                                           my_df.iloc[:-1].itertuples(index=False)):
             if row_update != row:
                 indices.append(index)
+
+        # Add the last row if it is not in yet.
+        if indices[-1] != my_df.index[-1]:
+            indices.append(my_df.index[-1])
 
         # Add the n-gram.
         self.add_ngram(my_df.loc[indices], **kwargs)
