@@ -55,7 +55,7 @@ Here, we assume that the data is sampled with a sample time of $\sampletime$.
 
 We distinguish between three different longitudinal activities: ``accelerating'', ``decelerating'', and ``cruising''. 
 The ego vehicle is performing either one of these activities. 
-%To extract the activities from a dataset, we first extract the events.
+%To extract the activities from a data set, we first extract the events.
 \cstartc An acceleration activity starts at an acceleration event, so we will first describe how we detect an acceleration event.
 \cendc
 
@@ -85,7 +85,9 @@ For detecting acceleration and decelerating events, the difference between the c
 	\label{fig:explain symbols}
 \end{figure}
 
-First, we assume that the event at the start of the dataset is a cruising event at $\sample=\sampleinit$. Next, we go chronologically through the dataset. An acceleration event is happening at sample $\sample$ if any of the following conditions is true:
+First, we assume that the event at the start of the data set is a cruising event at $\sample=\sampleinit$. 
+Next, we go chronologically through the data set. 
+An acceleration event is happening at sample $\sample$ if any of the following conditions is true:
 \begin{itemize}
 	\item The vehicle is not performing an acceleration activity, i.e., the last event is not an acceleration event.
 	\item \cstarta There has been a substantial speed increase between sample step $\sample-\samplehorizon$ and $\sample$, i.e., 

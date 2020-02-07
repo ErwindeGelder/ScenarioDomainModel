@@ -25,33 +25,33 @@ ytick style={color=black},
 ytick={6.48176150995277,26.6384896175217},
 yticklabels={\(\displaystyle v_{\mathrm{min}}(k)\),\(\displaystyle v_{\mathrm{max}}(k)\)}
 ]
-\node at (axis cs:13.6,22.404759743144)[
-  anchor=base west,
+\node at (axis cs:12.4,22.404759743144)[
+  anchor= east,
   text=black,
   rotate=0.0
 ]{$v^-(k)$};
 \node at (axis cs:13.6,12.3263956893595)[
-  anchor=base west,
+  anchor= west,
   text=black,
   rotate=0.0
 ]{$v^+(k)$};
 \path [draw=black, fill=white]
-(axis cs:13.6,26.6384896175217)
---(axis cs:14.1,25.1384896175217)
---(axis cs:13.6005,26.6384896175217)
---(axis cs:13.6005,18.1710298687663)
---(axis cs:13.5995,18.1710298687663)
---(axis cs:13.5995,26.6384896175217)
---(axis cs:13.1,25.1384896175217)
+(axis cs:12.4,26.6384896175217)
+--(axis cs:12.9,25.1384896175217)
+--(axis cs:12.4005,26.6384896175217)
+--(axis cs:12.4005,18.1710298687663)
+--(axis cs:12.3995,18.1710298687663)
+--(axis cs:12.3995,26.6384896175217)
+--(axis cs:11.9,25.1384896175217)
 --cycle;
 \path [draw=black, fill=white]
-(axis cs:13.6,18.1710298687663)
---(axis cs:13.1,19.6710298687663)
---(axis cs:13.5995,18.1710298687663)
---(axis cs:13.5995,26.6384896175217)
---(axis cs:13.6005,26.6384896175217)
---(axis cs:13.6005,18.1710298687663)
---(axis cs:14.1,19.6710298687663)
+(axis cs:12.4,18.1710298687663)
+--(axis cs:11.9,19.6710298687663)
+--(axis cs:12.3995,18.1710298687663)
+--(axis cs:12.3995,26.6384896175217)
+--(axis cs:12.4005,26.6384896175217)
+--(axis cs:12.4005,18.1710298687663)
+--(axis cs:12.9,19.6710298687663)
 --cycle;
 \path [draw=black, fill=white]
 (axis cs:13.6,6.48176150995277)
@@ -113,7 +113,7 @@ table {%
 };
 \addplot [semithick, black, dashed]
 table {%
-12 18.1710298687663
+11.4 18.1710298687663
 14.6 18.1710298687663
 };
 \end{axis}
