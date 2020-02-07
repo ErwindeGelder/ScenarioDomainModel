@@ -2068,6 +2068,7 @@
 <attribute NAME="key" VALUE="degelder2018ontology"/>
 <attribute NAME="title" VALUE="Ontology for Scenarios for the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Khabbaz Saberi, Arash and Elrofai, Hala and Op den Camp, Olaf and Ploeg, Jeroen and Friedman, Ludwig and De Schutter, Bart"/>
+<attribute NAME="journal" VALUE="https://arxiv.org/abs/2001.11507"/>
 </node>
 </node>
 <node TEXT="Risk" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_398321502" CREATED="1567057870946" MODIFIED="1567057884205">
@@ -2351,8 +2352,8 @@
 <attribute NAME="year" VALUE="2013"/>
 <attribute NAME="title" VALUE="Metamodel-Based Importance Sampling for Structural Reliability Analysis"/>
 <attribute NAME="authors" VALUE="Dubourg, Vincent and Sudret, Bruno and Deheeger, Franois"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1AEE1DFF1C8A681BF35B1CCCC43293E5AD32BCBB3F9E8E1C9C9ED1F1314EA6C">
-    <pdf_title>M M</pdf_title>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E0CC6FBDF63F622ED4A44DDC35547F186682422FC85A65BF549FA6047A64DC6">
+    <pdf_title>Probabilistic Engineering Mechanics</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -3959,7 +3960,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="E5C660C7C1F11B7653E1623B17B68202A3CECDB42F96CF7C56F2815DA7CDA69"/>
 </node>
 </node>
-<node TEXT="Faster KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1533871381205" MOVED="1533871471287">
+<node TEXT="Faster KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1533871381205" MOVED="1533871471287">
 <node TEXT="Kernel Density Estimation Using the Fast Fourier Transform" ID="ID_258148581" CREATED="1531796223169" MODIFIED="1534390598610" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/227%20Kernel%20Density%20Estimation%20Using%20the%20Fast%20Fourier%20Transform.pdf" MOVED="1533871385445">
 <attribute NAME="key" VALUE="silverman1982fourier"/>
 <attribute NAME="journal" VALUE="Journal of the Royal Statistical Society. Series C (Applied Statistics)"/>
@@ -4001,7 +4002,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Books" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_116736876" CREATED="1531790817148" MODIFIED="1531790822476" MOVED="1533871476417">
+<node TEXT="Books" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_116736876" CREATED="1531790817148" MODIFIED="1531790822476" MOVED="1533871476417">
 <node TEXT="Book of Silverman - rule of thumb for bandwidth selection" ID="ID_529098711" CREATED="1513311887634" MODIFIED="1534390598770" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/086%20First%20chapters%20of%20book%20Silverman%20Kernel%20Density%20Estimation.pdf" MOVED="1533871482300">
 <attribute NAME="key" VALUE="silverman1986density"/>
 <attribute NAME="year" VALUE="1986"/>
