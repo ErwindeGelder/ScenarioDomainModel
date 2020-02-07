@@ -5,6 +5,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 01 18 Definition of v+ and v- changed. Now not shifted anymore.
+2020 02 07 Put v-(k) on the left of the last sample.
 """
 
 import os
@@ -16,7 +17,7 @@ from activity_detector import ActivityDetector, ActivityDetectorParameters
 
 # General plot parameters
 LINEWIDTH = 5
-FONTSIZE = 20
+TXT_PARMS = dict(fontsize=20, zorder=1)
 FIGURES_FOLDER = os.path.join("..", "..", "20191010 Scenario Mining", "figures")
 COLORS = ((1, .2, .2),
           (.2, 1, .2),
@@ -118,7 +119,7 @@ if __name__ == "__main__":
     EVENTS += [(TOTAL_TIME, "")]
     for j, event in enumerate(EVENTS[:-1]):
         plt.text((max(event[0], 0) + EVENTS[j + 1][0]) / 2, YLIM[1] - 2, event[1].value,
-                 HorizontalAlignment="center", fontsize=FONTSIZE)
+                 HorizontalAlignment="center", **TXT_PARMS)
     plt.xlabel("Time [s]")
     plt.ylabel("Speed [m/s]")
     plt.xlim(0, TOTAL_TIME)
@@ -142,11 +143,46 @@ if __name__ == "__main__":
     for xtext, text in zip([EVENTS[1][0] / 2, (EVENTS[1][0] + EVENTS[2][0]) / 2,
                             (EVENTS[2][0]+np.sum(TIMING))/2],
                            ["following lane", "changing lane\n to right", "following lane"]):
-        plt.text(xtext, YLIM[1] - 0.1, text, fontsize=FONTSIZE, HorizontalAlignment="center",
-                 VerticalAlignment="top")
+        plt.text(xtext, YLIM[1] - 0.1, text, HorizontalAlignment="center", VerticalAlignment="top",
+                 **TXT_PARMS)
     plt.xlabel("Time [s]")
     plt.ylabel("Distance [m]")
     plt.xlim(0, np.sum(TIMING))
     plt.ylim(YLIM)
     save2tikz("ego_lane_change")
+
+    # Plot hypothetical speed to show vmin, vmax, v+ and v-.
+    SAMPLE = 13
+    HORIZON = 10
+    YLIM = [0, 30]
+    PLT_PARMS = dict(color=(0, 0, 0), ls='--')
+    ARR_PARMS = dict(head_width=1, length_includes_head=True, fc=(1, 1, 1), overhang=1)
+    ARR_POS = 0.6
+    plt.subplots(1, 1)
+    XDATA = np.arange(0, 17)
+    XLIM = [min(XDATA), max(XDATA)+0.5]
+    YDATA = 16+9*np.sin(XDATA/2) + 2*np.random.randn(len(XDATA))
+    plt.plot(XDATA, YDATA, 'o')
+    YMIN = np.min(YDATA[SAMPLE-HORIZON:SAMPLE+1])
+    YMAX = np.max(YDATA[SAMPLE-HORIZON:SAMPLE+1])
+    for xdata in [SAMPLE-HORIZON, SAMPLE]:
+        plt.plot([xdata, xdata], YLIM, **PLT_PARMS)
+    for ydata in [YMIN, YMAX]:
+        plt.plot(XLIM, [ydata, ydata], **PLT_PARMS)
+    plt.xticks([SAMPLE-HORIZON, SAMPLE], ["$k-k_h$", "$k$"])
+    plt.yticks([np.min(YDATA), np.max(YDATA)], [r"$v_{\mathrm{min}}(k)$", r"$v_{\mathrm{max}}(k)$"])
+    plt.plot([SAMPLE-ARR_POS-1, SAMPLE+ARR_POS+1], [YDATA[SAMPLE], YDATA[SAMPLE]], **PLT_PARMS)
+    plt.arrow(SAMPLE-ARR_POS, YDATA[SAMPLE], 0, YMAX-YDATA[SAMPLE], **ARR_PARMS)
+    plt.arrow(SAMPLE-ARR_POS, YMAX, 0, YDATA[SAMPLE]-YMAX, **ARR_PARMS)
+    plt.arrow(SAMPLE+ARR_POS, YDATA[SAMPLE], 0, YMIN-YDATA[SAMPLE], **ARR_PARMS)
+    plt.arrow(SAMPLE+ARR_POS, YMIN, 0, YDATA[SAMPLE]-YMIN, **ARR_PARMS)
+    plt.text(SAMPLE-ARR_POS, (YDATA[SAMPLE]+YMAX)/2, "$v^-(k)$", horizontalAlignment="right",
+             verticalAlignment="center", **TXT_PARMS)
+    plt.text(SAMPLE+ARR_POS, (YDATA[SAMPLE]+YMIN)/2, "$v^+(k)$", horizontalAlignment="left",
+             verticalAlignment="center", **TXT_PARMS)
+    plt.xlim(XLIM)
+    plt.ylim(YLIM)
+    plt.xlabel("Sample")
+    plt.ylabel(r"$v$")
+    save2tikz("explain_symbols")
     plt.show()
