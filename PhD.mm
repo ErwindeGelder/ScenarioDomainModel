@@ -634,6 +634,26 @@
     <pdf_title>h.</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="The Practical Value of N-Grams in Generation" ID="ID_735148671" CREATED="1580908587727" MODIFIED="1580908592210" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/422%20The%20Practical%20Value%20of%20N%20Grams%20in%20Generation.pdf">
+<attribute NAME="key" VALUE="langkilde1998practical"/>
+<attribute NAME="year" VALUE="1998"/>
+<attribute NAME="title" VALUE="The Practical Value of N-Grams in Generation"/>
+<attribute NAME="authors" VALUE="Langkilde, Irene and Knight, Kevin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8CC0A426182D27264F774E94DE31276C6BCFDADCCDC8EC47E9D9A38B2496E9">
+    <pdf_title>THE PRACTICAL VALUE OF N&apos;GRAN IS IN</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Principal Component Analysis" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_124130255" CREATED="1580908280141" MODIFIED="1580908294177">
+<node TEXT="Kernel Principal Component Analysis" ID="ID_1878159466" CREATED="1580908674304" MODIFIED="1580908677486" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/421%20Kernel%20Principal%20Component%20Analysis.pdf">
+<attribute NAME="key" VALUE="scholkopf1997kernel"/>
+<attribute NAME="year" VALUE="1997"/>
+<attribute NAME="title" VALUE="Kernel Principal Component Analysis"/>
+<attribute NAME="authors" VALUE="Sch{\&quot;o}lkopf, Bernhard and Smola, Alexander and M{\&quot;u}ller, Klaus-Robert"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2CBE53CB9359DDA76BB873D7709636781B3BA774FD2BCE9522FA4B4E9B4BA63">
+    <pdf_title>Kernel Principal Component Analysis</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
@@ -2322,6 +2342,39 @@
 <attribute NAME="authors" VALUE="Owen, Art B."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="2D3925EB514296FDA6F41432AC83DABE76FC1E4D1BAD187E04B3555748647FF">
     <pdf_title>Contents</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Importance sampling" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1913334735" CREATED="1580828834503" MODIFIED="1580828842564">
+<node TEXT="Metamodel-Based Importance Sampling for Structural Reliability Analysis" ID="ID_943613050" CREATED="1580828847951" MODIFIED="1580828862014" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/420%20Metamodel-based%20importance%20sampling.pdf">
+<attribute NAME="key" VALUE="dubourg2013metamodel"/>
+<attribute NAME="journal" VALUE="Probabilistic Engineering Mechanics"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Metamodel-Based Importance Sampling for Structural Reliability Analysis"/>
+<attribute NAME="authors" VALUE="Dubourg, Vincent and Sudret, Bruno and Deheeger, Franois"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1AEE1DFF1C8A681BF35B1CCCC43293E5AD32BCBB3F9E8E1C9C9ED1F1314EA6C">
+    <pdf_title>M M</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="Using n-grams" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_761327452" CREATED="1580908602944" MODIFIED="1580908609988">
+<node TEXT="The Practical Value of N-Grams in Generation" ID="ID_1752221776" CREATED="1580908610912" MODIFIED="1580908614046" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/422%20The%20Practical%20Value%20of%20N%20Grams%20in%20Generation.pdf">
+<attribute NAME="key" VALUE="langkilde1998practical"/>
+<attribute NAME="year" VALUE="1998"/>
+<attribute NAME="title" VALUE="The Practical Value of N-Grams in Generation"/>
+<attribute NAME="authors" VALUE="Langkilde, Irene and Knight, Kevin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8CC0A426182D27264F774E94DE31276C6BCFDADCCDC8EC47E9D9A38B2496E9">
+    <pdf_title>THE PRACTICAL VALUE OF N&apos;GRAN IS IN</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Stochastic natural language generation for spoken dialog systems" ID="ID_757921600" CREATED="1580909437676" MODIFIED="1580909493973" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/423%20Stochastic%20natural%20language%20generation%20for%20spoken%20dialog%20systems.pdf">
+<attribute NAME="key" VALUE="oh2002stochastic"/>
+<attribute NAME="journal" VALUE="Computer Speech \&amp; Language"/>
+<attribute NAME="year" VALUE="2002"/>
+<attribute NAME="title" VALUE="Stochastic Natural Language Generation for Spoken Dialog Systems"/>
+<attribute NAME="authors" VALUE="Oh, Alice H and Rudnicky, Alexander I"/>
+<pdf_annotation type="BOOKMARK" page="1" object_id="6650440924601650927" object_number="162" document_hash="D31941828A5E9CCCB68931D59DD41BD9B0A8EB506DB1214051F1C63527C2F3">
+    <pdf_title>Stochastic natural language generation for spoken dialog systems</pdf_title>
 </pdf_annotation>
 </node>
 </node>
