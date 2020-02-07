@@ -6,10 +6,10 @@ For the scenario mining, we formulate a scenario category using a combination of
 As an example, \cref{fig:cutin formulation tags} shows how the scenario category ``cut in'' can be formulated using tags.
 To further structure the tags, we formulate a scenario category as a sequence of \emph{items} and each \emph{item} corresponds to a combination of tags.
 The number of items may vary from scenario category to scenario category.
-This scenario category ``cut in'' in \cref{fig:cutin formulation tags} contains two items and considers a vehicle other than the ego vehicle that changes lane (other vehicle, item 1) and becomes the lead vehicle (other vehicle, item 2).
-In the meantime the ego vehicle follows its lane (ego vehicle, items 1 and 2) and the scenario category only considers highway driving (static environment, items 1 and 2).
+This scenario category ``cut in'' in \cref{fig:cutin formulation tags} contains two items and considers a vehicle other than the ego vehicle that changes lane (other vehicle, item 1 and 2) and becomes the lead vehicle (other vehicle, item 2).
+In the meantime, the ego vehicle follows its lane (ego vehicle, items 1 and 2) and the scenario category only considers highway driving (static environment, items 1 and 2).
 When describing the tags for each item, logical AND, OR, or NOT rules may be used. 
-For example, in \cref{fig:cutin formulation tags}, for the other vehicle, either the tag ``changing lane left'' \emph{or} the tag ``changing lane right'' need to apply.
+For example, for the other vehicle in \cref{fig:cutin formulation tags}, either the tag ``changing lane left'' \emph{or} the tag ``changing lane right'' need to apply.
 \cendd
 
 \begin{figure}
@@ -28,7 +28,7 @@ For example, in \cref{fig:cutin formulation tags}, for the other vehicle, either
 %
 %% Explain that we use multiple n-gram models.
 %% What are the advantages of using multiple n-grams?
-%Instead of constructing one n-gram model with all tags within one dataset, we construct different n-gram models for the different subjects. A subject could be, e.g., a road user or a static part of the environment. In this paper, we consider the subjects ``ego vehicle'', ``other vehicle'', and ``static environment''.
+%Instead of constructing one n-gram model with all tags within one data set, we construct different n-gram models for the different subjects. A subject could be, e.g., a road user or a static part of the environment. In this paper, we consider the subjects ``ego vehicle'', ``other vehicle'', and ``static environment''.
 %Constructing different n-gram models instead of one n-gram model brings several benefits:
 %\begin{itemize}
 %	\item The number of possible items is much lower when considering only one subject that describes everything, such that it is more likely that most of the items are seen multiple times. 
@@ -76,7 +76,7 @@ For example, in \cref{fig:cutin formulation tags}, for the other vehicle, either
 %In the meantime the ego vehicle follows its lane (ego vehicle, items 1 and 2) and the scenario category only considers highway driving (static environment, items 1 and 2).
 
 % How scenarios are mined using the template.
-The scenarios are mined by searching for matches of the defined items within the tags of the dataset. 
+The scenarios are mined by searching for matches of the defined items within the tags of the data set. 
 This searching is subject to two rules:
 \begin{enumerate}
 	\item For each item, there needs to be a match for all subjects \emph{at the same time}.

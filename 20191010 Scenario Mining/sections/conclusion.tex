@@ -1,4 +1,18 @@
 \section{Conclusions}
 \label{sec:conclusions}
 
-\todo{Write the conclusions. Perhaps also a short discussion?}
+\cstarte
+% Summarize two-step approach: tagging and mining based on tags.
+For the scenario-based assessment of automated vehicles, scenarios captured from real-world data collected on the level of individual vehicles can be used to define the tests.
+We have proposed a two-step approach for mining real-world scenarios from a data set.
+The first step is to provide the data with tags that describe, e.g., the activities of the different actors.
+The second step is to mine the scenarios by searching for particular combinations of tags.
+We illustrated the approach with two examples, i.e., a cut in and an overtaking before a lane change.
+
+% Improve tagging, e.g., using machine learning techniques.
+% Have more tags!
+Future work is to include more tags, e.g., ``turning left'' or ``turning right'', and to consider more actors, e.g., pedestrians and cyclists. This will enable the mining of many more scenarios. 
+% Use n-grams for mining scenarios. New possibilities: correcting mistakes, graphical representation, test case generation.
+Furthermore, the analogy between the proposed scenario mining --- searching for certain combinations of tags --- and natural language processing (NLP) --- searching for certain combinations of words --- will be explored in future research. 
+In NLP, n-gram models are successfully used to correct \autocite{hull1982experiments} and predict \autocite{brown1992class} words and to generate text \autocite{oh2002stochastic}, so n-gram models might be used to correct and predict tags and to generate new scenarios for the assessment of automated vehicles.
+\cende
