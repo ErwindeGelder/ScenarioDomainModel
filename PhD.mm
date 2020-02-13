@@ -2599,7 +2599,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
+<node TEXT="Scenario definition" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1918151571" CREATED="1507015833198" MODIFIED="1518673338506" HGAP="59" VSHIFT="10" MOVED="1511405573941">
 <edge COLOR="#7c0000"/>
 <node TEXT="Scenario Model Tree: categorize using tree based on infrastructure" ID="ID_892856496" CREATED="1507015877727" MODIFIED="1534391328696" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -2887,7 +2887,7 @@
 <attribute NAME="authors" VALUE="Bach, Johannes and Otten, Stefan and Sax, Eric"/>
 </node>
 </node>
-<node TEXT="Events in hybrid control" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_8438282" CREATED="1508311936834" MODIFIED="1511405456123">
+<node TEXT="Events in hybrid control" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_8438282" CREATED="1508311936834" MODIFIED="1511405456123">
 <node TEXT="When a continuous state hits a certain prescribed set" ID="ID_1948824813" CREATED="1508311946229" MODIFIED="1534391370850" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/034%20Hybrid%20control%20theory.pdf">
 <attribute NAME="key" VALUE="branicky1998hybridcontrol"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Automatic Control"/>
@@ -2925,6 +2925,16 @@
 <attribute NAME="authors" VALUE="De Schutter, Bart"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1F238B8111C57C243FD2B6FF17622E170A31984AA5567D76B53DE53CFD351">
     <pdf_title>Optimal control of a class of linear hybrid systems with saturation</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="The algorithmic analysis of hybrid systems" ID="ID_1614704780" CREATED="1581518109432" MODIFIED="1581518190251" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/424%20The%20algorithmic%20analysis%20of%20hybrid%20systems.pdf">
+<attribute NAME="key" VALUE="alur1995algorithmic"/>
+<attribute NAME="journal" VALUE="Theoretical Computer Science"/>
+<attribute NAME="year" VALUE="1995"/>
+<attribute NAME="title" VALUE="The Algorithmic Analysis of Hybrid Systems"/>
+<attribute NAME="authors" VALUE="Alur, Rajeev and Courcoubetis, Costas and Halbwachs, Nicolas and Henzinger, Thomas A and Ho, Pei-Hsin and Nicollin, Xavier and Olivero, Alfredo and Sifakis, Joseph and Yovine, Sergio"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F42DED24C3B4C3E989348A6D643B16BE61E40AE4AF7DFA7FE683971E193A1">
+    <pdf_title>The algorithmic analysis of hybrid systems</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -3300,7 +3310,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Mode" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1413348842" CREATED="1517036488478" MODIFIED="1517036492075">
+<node TEXT="Mode" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1413348842" CREATED="1517036488478" MODIFIED="1517036492075">
 <node TEXT="Survey of modeling analysis and control of hybrid systems" ID="ID_507276086" CREATED="1517036499734" MODIFIED="1534391438108" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/132%20Survey%20of%20modeling%20analysis%20and%20control%20of%20hybrid%20systems.pdf">
 <attribute NAME="key" VALUE="deschutter2009survey"/>
 <attribute NAME="year" VALUE="2009"/>
@@ -3351,6 +3361,12 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="44C868DDD77D6C7CE3B766FE30C49FEE40C696111F6111444F824B2C78F7F4BA">
     <pdf_title>REGULATING AND ACCELERATING DEVELOPMENT OF HIGHLY AUTOMATED AND AUTONOMOUS VEHICLES THROUGH SIMULATION AND MODELLING</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="ACM SIGSIM" ID="ID_366863028" CREATED="1581584157700" MODIFIED="1581584167348" LINK="https://www.acm-sigsim-mskr.org/glossary.htm">
+<attribute NAME="key" VALUE="sigsim2019glossary"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Modeling and Simulation Glossary"/>
+<attribute NAME="authors" VALUE="{Special Interest Group (SIG) on SImulation and Modeling (SIM)}"/>
 </node>
 </node>
 </node>
@@ -3832,7 +3848,7 @@
 <attribute NAME="authors" VALUE="Smith, Gene"/>
 </node>
 </node>
-<node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
+<node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
 <node TEXT="Deliverable D7.3 AdaptIVe: Impact Analysis for Supervised AD Applications" ID="ID_1205070616" CREATED="1526269804012" MODIFIED="1534391630281" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/182%20AdaptIVe_SP7_D7_3_Impact%20analysis%20for%20supervised%20automated%20driving%20applications.pdf">
 <attribute NAME="key" VALUE="adaptive2017d73"/>
 <attribute NAME="year" VALUE="2017"/>
