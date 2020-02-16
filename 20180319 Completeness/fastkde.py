@@ -26,12 +26,13 @@ Modifications
 2018 11 06 Improve PEP8 compliancy.
 2018 11 07 Add description of class.
 2019 08 30 Change type hinting: np.array should be np.ndarray.
-
+2020 02 14 Add function for computing the cumulative distribution function.
 """
 
 import time
 import numpy as np
 import scipy.spatial.distance as dist
+import scipy.special
 import scipy.stats
 import matplotlib.pyplot as plt
 
@@ -321,8 +322,12 @@ class KDE():
         """ Return the scores, i.e., the value of the pdf, for all the datapoints in x
 
         Note that this function will return an error when the bandwidth is not defined. The
-        bandwidth can be set using set_bw() or computed using compute_bw().
+        bandwidth can be set using set_bandwidth() or computed using compute_bandwidth().
         If no data is given, it is assumed that the data is already set by set_score_samples()!
+
+        If the input xdata is a 1D array, it is assumed that each entry corresponds to a datapoint.
+        This might result in an error if xdata is meant to be a single (multi-dimensional)
+        datapoint.
 
         :param xdata: Input data
         :return: Values of the KDE evaluated at x
@@ -335,9 +340,9 @@ class KDE():
             # The data needs to be converted to the original input shape
             return scores.reshape(self.data_helpers['newshape'])
 
-        # If the input x is a 1D array, it is assumed that each entry corresponds to a
+        # If the input xdata is a 1D array, it is assumed that each entry corresponds to a
         # datapoint
-        # This might result in an error if x is meant to be a single (multi-dimensional)
+        # This might result in an error if xdata is meant to be a single (multi-dimensional)
         # datapoint
         if len(xdata.shape) == 1:
             xdata = xdata[:, np.newaxis]
@@ -383,6 +388,42 @@ class KDE():
         const = -self.constants['d']/2*np.log(2*np.pi) - np.log(self.constants['n']) - \
             self.constants['d']*np.log(self.bandwidth)
         return const + np.log(sum_kernel)
+
+    def cdf(self, xdata: np.ndarray = None) -> np.ndarray:
+        """ Compute the cumulative distribution function of the KDE
+
+        Note that this function will return an error when the bandwidth is not defined. The
+        bandwidth can be set using set_bandwidth() or computed using compute_bandwidth().
+        If no data is given, it is assumed that the data is already set by set_score_samples()!
+
+        If the input xdata is a 1D array, it is assumed that each entry corresponds to a datapoint.
+        This might result in an error if xdata is meant to be a single (multi-dimensional)
+        datapoint.
+
+        :param xdata: Input data
+        :return: Values of the KDE evaluated at x
+        """
+        if xdata is None:
+            xdata = self.data_helpers["data_score_samples"]
+        if len(xdata.shape) == 1:
+            xdata = xdata[:, np.newaxis]
+        reshape, newshape = False, []
+        if len(xdata.shape) > 2:
+            reshape = True
+            newshape = xdata.shape[:-1]
+            xdata = xdata.reshape((np.prod(newshape), xdata.shape[-1]))
+
+        cdf = np.ones((self.constants["n"], len(xdata)))
+        data = self.data[:self.constants["n"]] / (np.sqrt(2) * self.bandwidth)
+        xdata /= (np.sqrt(2) * self.bandwidth)
+        for i in range(self.constants["d"]):
+            difference = np.subtract(*np.meshgrid(xdata[:, i], data[:, i]))
+            cdf *= (scipy.special.erf(difference) + 1) / 2
+        cdf = np.mean(cdf, axis=0)
+
+        if reshape:
+            return cdf.reshape(newshape)
+        return cdf
 
     def gradient_samples(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Compute gradient of the KDE
