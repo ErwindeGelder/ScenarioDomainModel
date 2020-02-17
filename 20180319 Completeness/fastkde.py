@@ -27,7 +27,7 @@ Modifications
 2018 11 07 Add description of class.
 2019 08 30 Change type hinting: np.array should be np.ndarray.
 2020 02 14 Add function for computing the cumulative distribution function.
-2020 02 17 Bug fix for the CDF computation.
+2020 02 17 Use special classes instead of dictionaries.
 """
 
 import time
@@ -36,9 +36,48 @@ import scipy.spatial.distance as dist
 import scipy.special
 import scipy.stats
 import matplotlib.pyplot as plt
+from options import Options
 
 
-class KDE():
+class KDEConstants(Options):
+    """ Constants that are used for the various methods.
+
+    The following constants are included:
+        ndata(int): Number of datapoints that are used (can be smaller than the number of
+                    datapoints in the data attribute.
+        const_score(float): Constant part of leave-one-out score.
+        dim(float): Dimension of data.
+        muk(float): integral [ kernel(x)^2 ]. Since Gaussian kernel is used: 1/(2pi)^(d/2).
+        invgr(float): Inverse of Golden Ratio (used for Golden Section Search).
+        invgr2(float): Inverse of squared Golden Ratio (used for Golden Section Search).
+    """
+    ndata: int = 0
+    const_score: float = 0
+    dim: int = 0
+    muk: float = 0
+    invgr: float = (np.sqrt(5) - 1) / 2
+    invgr2: float = (3 - np.sqrt(5)) / 2
+
+
+class KDEData(Options):
+    """ Several np.ndarrays that are used for the various methods.
+
+    The following variables are included:
+        mindists(np.ndarray): Negative (minus) of euclidean distances.
+        data_score_samples(np.ndarray): Scores of each sample of data.
+        newshape(np.ndarray): The new shape of the data to be returned.
+        data_dist(np.ndarray): Euclidean distance of KDE data and input data.
+        difference(np.ndarray): Difference of KDE data and input data.
+    """
+    mindists: np.ndarray = np.array([])
+    data_score_samples: np.ndarray = np.array([])
+    newshape: np.ndarray = np.array([])
+    data_dist: np.ndarray = np.array([])
+    difference: np.ndarray = np.array([])
+    # self.xhist, self.yhist, self.fft = None, None, None  # Not used at the moment
+
+
+class KDE:
     """ Kernel Density Estimation
 
     This class can be utilized to create Kernel Density Estimations (KDE) of data.
@@ -56,42 +95,14 @@ class KDE():
         bandwidth(float): The bandwidth of the KDE. If no bandwidth is set or computed,
             the bandwidth equals None.
         data(np.ndarray): The data that is used to construct the KDE.
-        constants(dict): Constants that are used for the various methods. The following
-            constants are included:
-            n(int): Number of datapoints that are used (can be smaller than the number of
-                datapoints in the data attribute.
-            const_score(float): Constant part of leave-one-out score.
-            d(float): Dimension of data.
-            muk(float): integral [ kernel(x)^2 ]. Since Gaussian kernel is used: 1/(2pi)^(d/2).
-            invgr(float): Inverse of Golden Ratio (used for Golden Section Search).
-            invgr2(float): Inverse of squared Golden Ratio (used for Golden Section Search).
-        data_helpers(dict): Several np.ndarrays that are used for the various methods. The
-            following variables are included:
-            mindists(np.ndarray): Negative (minus) of euclidean distances.
-            data_score_samples(np.ndarray): Scores of each sample of data.
-            newshape(np.ndarray): The new shape of the data to be returned.
-            data_dist(np.ndarray): Euclidean distance of KDE data and input data.
-            difference(np.ndarray): Difference of KDE data and input data.
+        constants(KDEConstants): Constants that are used for the various methods.
+        data_helpers(KDEData): Several np.ndarrays that are used for the various methods.
     """
-    def __init__(self, data=None, bandwidth=None):
+    def __init__(self, data: np.ndarray = None, bandwidth: float = None):
         self.bandwidth = bandwidth
         self.data = None
-        self.constants = {
-            'n': 0,                         # Number of datapoints
-            'const_score': 0,               # Constant part of leave-one-out score
-            'd': 0,                         # Dimension of data
-            'muk': 0,                       # integral [ kernel(x)^2 ]
-            'invgr': (np.sqrt(5) - 1) / 2,  # Inverse of Golden Ratio
-            'invgr2': (3 - np.sqrt(5)) / 2  # 1/gr^2
-        }
-        self.data_helpers = {
-            'mindists': np.array([]),               # Negative (minus) of euclidean distances
-            'data_score_samples': np.array([]),     # Scores of each sample of data
-            'newshape': np.array([]),               # The new shape of the data to be returned
-            'data_dist': np.array([]),              # Euclidean distance of KDE data and input data
-            'difference': np.array([]),             # Difference of KDE data and input data
-        }
-        # self.xhist, self.yhist, self.fft = None, None, None  # Not used at the moment
+        self.constants = KDEConstants()
+        self.data_helpers = KDEData()
         self.fit(data)
 
     def fit(self, data: np.ndarray) -> None:
@@ -113,9 +124,9 @@ class KDE():
         # validation is performed.
         # Therefore, this is not done here. Only the first time when cross validation is performed
         self.set_n(len(self.data))
-        self.constants['d'] = self.data.shape[1]
+        self.constants.dim = self.data.shape[1]
         # muk = integral[ kernel(x)^2 ]
-        self.constants['muk'] = 1 / (2**self.constants['d'] * np.sqrt(np.pi**self.constants['d']))
+        self.constants.muk = 1 / (2 ** self.constants.dim * np.sqrt(np.pi ** self.constants.dim))
 
         # # Build histogram (for using FFT for computing bandwidth)
         # sigma = np.std(self.data)
@@ -135,9 +146,9 @@ class KDE():
 
         :param ndatapoints: Number of datapoints
         """
-        self.constants['n'] = ndatapoints
-        self.constants['const_score'] = (-ndatapoints * self.constants['d'] / 2 *
-                                         np.log(2 * np.pi) - ndatapoints * np.log(ndatapoints - 1))
+        self.constants.ndata = ndatapoints
+        self.constants.const_score = (-ndatapoints * self.constants.dim / 2 *
+                                      np.log(2 * np.pi) - ndatapoints * np.log(ndatapoints - 1))
 
     def add_data(self, newdata: np.ndarray) -> None:
         """ Add extra data
@@ -153,19 +164,19 @@ class KDE():
         nnew = len(newdata)
 
         # Expand the matrix with the distances if this matrix is already defined
-        if self.data_helpers['mindists'] is not None:
+        if self.data_helpers.mindists is not None:
             newmindists = dist.squareform(dist.pdist(newdata, metric='sqeuclidean')) / 2
             newmindists *= -1  # Do it this way in order to prevent invalid warning
             oldmindists = -dist.cdist(self.data, newdata, metric='sqeuclidean') / 2
-            self.data_helpers['mindists'] = \
-                np.concatenate((np.concatenate((self.data_helpers['mindists'], oldmindists),
+            self.data_helpers.mindists = \
+                np.concatenate((np.concatenate((self.data_helpers.mindists, oldmindists),
                                                axis=1),
                                 np.concatenate((np.transpose(oldmindists), newmindists), axis=1)),
                                axis=0)
 
         # Update other stuff
         self.data = np.concatenate((self.data, newdata), axis=0)
-        self.set_n(self.constants['n'] + nnew)
+        self.set_n(self.constants.ndata + nnew)
 
     def compute_bandwidth(self, **kwargs) -> None:
         """ Compute the bandwidth
@@ -185,7 +196,7 @@ class KDE():
         :param n_bw: The number of bandwidths to look for.
         """
         bandwidths = np.linspace(min_bw, max_bw, n_bw)
-        score = np.zeros_like(bandwidths)
+        score = np.array(np.zeros_like(bandwidths))
         for i, bandwidth in enumerate(bandwidths):
             score[i] = self.score_leave_one_out(bandwidth=bandwidth)
         self.bandwidth = bandwidths[np.argmax(score)]
@@ -205,11 +216,11 @@ class KDE():
         """
         difference = max_bw - min_bw
         datapoints = np.array([min_bw, 0, 0, max_bw])
-        datapoints[1] = datapoints[0] + self.constants['invgr2'] * difference
-        datapoints[2] = datapoints[0] + self.constants['invgr'] * difference
+        datapoints[1] = datapoints[0] + self.constants.invgr2 * difference
+        datapoints[2] = datapoints[0] + self.constants.invgr * difference
 
         # required steps to achieve tolerance
-        n_iter = int(np.ceil(np.log(tol / difference) / np.log(self.constants['invgr'])))
+        n_iter = int(np.ceil(np.log(tol / difference) / np.log(self.constants.invgr)))
         n_iter = max(1, min(n_iter, max_iter))
 
         scores = [self.score_leave_one_out(bandwidth=datapoints[1]),
@@ -222,16 +233,16 @@ class KDE():
                 datapoints[3] = datapoints[2]
                 datapoints[2] = datapoints[1]
                 scores[1] = scores[0]
-                difference = self.constants['invgr'] * difference
-                datapoints[1] = datapoints[0] + self.constants['invgr2'] * difference
+                difference = self.constants.invgr * difference
+                datapoints[1] = datapoints[0] + self.constants.invgr2 * difference
                 scores[0] = self.score_leave_one_out(bandwidth=datapoints[1])
             else:
                 at_boundary_max = True
                 datapoints[0] = datapoints[1]
                 datapoints[1] = datapoints[2]
                 scores[0] = scores[1]
-                difference = self.constants['invgr'] * difference
-                datapoints[2] = datapoints[0] + self.constants['invgr'] * difference
+                difference = self.constants.invgr * difference
+                datapoints[2] = datapoints[0] + self.constants.invgr * difference
                 scores[1] = self.score_leave_one_out(bandwidth=datapoints[2])
 
         # Check if we only searched on one side
@@ -248,25 +259,25 @@ class KDE():
     def score_leave_one_out(self, bandwidth: float = None) -> float:
         """ Return the leave-one-out score.
 
-        The score is based on the first n datapoints, specified using self.constants['n'].
+        The score is based on the first n datapoints, specified using self.constants.n.
 
         :param bandwidth: Optional bandwidth to be used when computing the score.
         :return: Leave-one-out score.
         """
         # Check if the distance matrix is defined. If not, create it (this takes some time)
-        if not self.data_helpers['mindists'].size:
-            self.data_helpers['mindists'] = dist.squareform(dist.pdist(self.data,
-                                                                       metric='sqeuclidean')) / 2
-            self.data_helpers['mindists'] *= -1  # Do it this way to prevent invalid warning
+        if not self.data_helpers.mindists.size:
+            self.data_helpers.mindists = dist.squareform(dist.pdist(self.data,
+                                                                    metric='sqeuclidean')) / 2
+            self.data_helpers.mindists *= -1  # Do it this way to prevent invalid warning
 
         # Compute the one-leave-out score
         bandwidth = self.bandwidth if bandwidth is None else bandwidth
-        score = (np.sum(np.log(np.sum(np.exp(self.data_helpers['mindists']
-                                             [:self.constants['n'], :self.constants['n']] /
+        score = (np.sum(np.log(np.sum(np.exp(self.data_helpers.mindists
+                                             [:self.constants.ndata, :self.constants.ndata] /
                                              bandwidth ** 2),
                                       axis=0) - 1)) -
-                 self.constants['n'] * self.constants['d'] * np.log(bandwidth) +
-                 self.constants['const_score'])
+                 self.constants.ndata * self.constants.dim * np.log(bandwidth) +
+                 self.constants.const_score)
         return score
 
     def set_bandwidth(self, bandwidth: float) -> None:
@@ -291,20 +302,19 @@ class KDE():
         # This might result in an error if x is meant to be a single (multi-dimensional) datapoint
         if len(xdata.shape) == 1:
             xdata = xdata[:, np.newaxis]
-        self.data_helpers['newshape'] = xdata.shape[:-1]
+        self.data_helpers.newshape = xdata.shape[:-1]
         if len(xdata.shape) == 2:
-            self.data_helpers['data_score_samples'] = xdata.copy()
+            self.data_helpers.data_score_samples = xdata.copy()
         if not len(xdata.shape) == 2:
-            self.data_helpers['data_score_samples'] = \
-                xdata.reshape((np.prod(self.data_helpers['newshape']), xdata.shape[-1]))
+            self.data_helpers.data_score_samples = \
+                xdata.reshape((np.prod(self.data_helpers.newshape), xdata.shape[-1]))
 
         # Compute the distance of the datapoints in x to the datapoints of the KDE
-        # Let x have M datapoints, then the result is a (self.constants['n']-by-M)-matrix
+        # Let x have M datapoints, then the result is a (self.constants.n-by-M)-matrix
         # Reason to do this now is that this will save computations when the score needs to be
-        # computed multiple times (e.g., with different values of self.constants['n'])
-        self.data_helpers['data_dist'] = dist.cdist(self.data,
-                                                    self.data_helpers['data_score_samples'],
-                                                    metric='sqeuclidean')
+        # computed multiple times (e.g., with different values of self.constants.n)
+        self.data_helpers.data_dist = dist.cdist(self.data, self.data_helpers.data_score_samples,
+                                                 metric='sqeuclidean')
 
         # Compute the difference of the datapoints in x to the datapoints of the KDE
         # The different is a n-by-m-by-d matrix, so the vector (i,j,:) corresponds to
@@ -312,12 +322,12 @@ class KDE():
         # The difference if only needed to compute the gradient. Therefore, by default, the
         # difference is not computed
         if compute_difference:
-            self.data_helpers['difference'] = \
+            self.data_helpers.difference = \
                 np.zeros((len(self.data),
-                          len(self.data_helpers['data_score_samples']),
-                          self.constants['d']))
-            for i, xdatam in enumerate(self.data_helpers['data_score_samples']):
-                self.data_helpers['difference'][:, i, :] = self.data - xdatam
+                          len(self.data_helpers.data_score_samples),
+                          self.constants.dim))
+            for i, xdatam in enumerate(self.data_helpers.data_score_samples):
+                self.data_helpers.difference[:, i, :] = self.data - xdatam
 
     def score_samples(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Return the scores, i.e., the value of the pdf, for all the datapoints in x
@@ -339,7 +349,7 @@ class KDE():
             scores = np.exp(self._logscore_samples())
 
             # The data needs to be converted to the original input shape
-            return scores.reshape(self.data_helpers['newshape'])
+            return scores.reshape(self.data_helpers.newshape)
 
         # If the input xdata is a 1D array, it is assumed that each entry corresponds to a
         # datapoint
@@ -365,7 +375,7 @@ class KDE():
         NOTE: this function returns the LOG of the scores!!!
 
         The reason to use this function instead of score_samples from sklearn's KernelDensity is
-        that this function takes into account the number of datapoints (i.e., self.constants['n']).
+        that this function takes into account the number of datapoints (i.e., self.constants.n).
         Furthermore, for some reason, this function is approximately 10 times as fast as
         sklearn's function!!!
 
@@ -373,11 +383,11 @@ class KDE():
         Therefore, the euclidean distance will not be computed.
         """
         # Compute the distance of the datapoints in x to the datapoints of the KDE
-        # Let x have M datapoints, then the result is a (self.constants['n']-by-M)-matrix
+        # Let x have M datapoints, then the result is a (self.constants.n-by-M)-matrix
         if xdata is None:
-            eucl_dist = self.data_helpers['data_dist'][:self.constants['n']]
+            eucl_dist = self.data_helpers.data_dist[:self.constants.ndata]
         else:
-            eucl_dist = dist.cdist(self.data[:self.constants['n']], xdata, metric='sqeuclidean')
+            eucl_dist = dist.cdist(self.data[:self.constants.ndata], xdata, metric='sqeuclidean')
 
         # Note that we have f(x,n) = sum [ (2pi)^(-d/2)/(n h^d) * exp{-(x-xi)^2/(2h**2)} ]
         #                          = (2pi)^(-d/2)/(n h^d) * sum_{i=1}^n [ exp{-(x-xi)^2/(2h**2)} ]
@@ -386,8 +396,8 @@ class KDE():
         sum_kernel = np.zeros(eucl_dist.shape[1])
         for dimension in eucl_dist:
             sum_kernel += np.exp(-dimension / (2 * self.bandwidth ** 2))
-        const = -self.constants['d']/2*np.log(2*np.pi) - np.log(self.constants['n']) - \
-            self.constants['d']*np.log(self.bandwidth)
+        const = (-self.constants.dim / 2 * np.log(2 * np.pi) - np.log(self.constants.ndata) -
+                 self.constants.dim * np.log(self.bandwidth))
         return const + np.log(sum_kernel)
 
     def cdf(self, xdata: np.ndarray = None) -> np.ndarray:
@@ -406,7 +416,7 @@ class KDE():
         """
         xdata = xdata.copy()
         if xdata is None:
-            xdata = self.data_helpers["data_score_samples"]
+            xdata = self.data_helpers.data_score_samples
         if len(xdata.shape) == 1:
             xdata = xdata[:, np.newaxis]
         reshape, newshape = False, []
@@ -415,10 +425,10 @@ class KDE():
             newshape = xdata.shape[:-1]
             xdata = xdata.reshape((np.prod(newshape), xdata.shape[-1]))
 
-        cdf = np.ones((self.constants["n"], len(xdata)))
-        data = self.data[:self.constants["n"]] / (np.sqrt(2) * self.bandwidth)
+        cdf = np.ones((self.constants.ndata, len(xdata)))
+        data = self.data[:self.constants.ndata] / (np.sqrt(2) * self.bandwidth)
         xdata /= (np.sqrt(2) * self.bandwidth)
-        for i in range(self.constants["d"]):
+        for i in range(self.constants.dim):
             difference = np.subtract(*np.meshgrid(xdata[:, i], data[:, i]))
             cdf *= (scipy.special.erf(difference) + 1) / 2
         cdf = np.mean(cdf, axis=0)
@@ -441,7 +451,7 @@ class KDE():
             gradient = self._gradient_samples()
 
             # The data needs to be converted to the original input shape
-            return gradient.reshape(self.data_helpers['data_score_samples'].shape)
+            return gradient.reshape(self.data_helpers.data_score_samples.shape)
 
         # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
         # This might result in an error if x is meant to be a single (multi-dimensional) datapoint
@@ -472,28 +482,28 @@ class KDE():
         """
         if xdata is None:
             # Assume that we already did the proper calculations
-            eucl_dist = self.data_helpers['data_dist'][:self.constants['n']]
-            if self.data_helpers['difference'] is None:
-                self.set_score_samples(self.data_helpers['data_score_samples'],
+            eucl_dist = self.data_helpers.data_dist[:self.constants.ndata]
+            if self.data_helpers.difference is None:
+                self.set_score_samples(self.data_helpers.data_score_samples,
                                        compute_difference=True)
-            difference = self.data_helpers['difference'][:self.constants['n']]
+            difference = self.data_helpers.difference[:self.constants.ndata]
         else:
             # Compute the distance of the datapoints in x to the datapoints of the KDE
-            # Let x have M datapoints, then the result is a (self.constants['n']-by-M)-matrix
-            eucl_dist = dist.cdist(self.data[:self.constants['n']], xdata, metric='sqeuclidean')
+            # Let x have M datapoints, then the result is a (self.constants.n-by-M)-matrix
+            eucl_dist = dist.cdist(self.data[:self.constants.ndata], xdata, metric='sqeuclidean')
 
             # First compute "difference" = x - xi, which is now a n-by-m-by-d matrix
-            difference = np.zeros((self.constants['n'], len(xdata), self.constants['n']))
+            difference = np.zeros((self.constants.ndata, len(xdata), self.constants.ndata))
             for i, xdatam in enumerate(xdata):
-                difference[:, i, :] = self.data[:self.constants['n']] - xdatam
+                difference[:, i, :] = self.data[:self.constants.ndata] - xdatam
 
         # The gradient is defined as follows:
         # df(x,n)/dx = (2pi)^(-d/2)/(n h^(d+2)) * sum_{i=1}^n [ exp{-(x-xi)^2/(2h**2)} (x - xi) ]
         summation = np.einsum('nm,nmd->md',
                               np.exp(-eucl_dist / (2 * self.bandwidth ** 2)),
                               difference)
-        const = 1 / (self.constants['n'] * self.bandwidth ** (self.constants['d'] + 2)) / \
-            (2 * np.pi) ** (self.constants['d'] / 2)
+        const = (1 / (self.constants.ndata * self.bandwidth ** (self.constants.dim + 2)) /
+                 (2 * np.pi) ** (self.constants.dim / 2))
         return const * summation
 
     def laplacian(self, xdata: np.ndarray = None) -> np.ndarray:
@@ -510,7 +520,7 @@ class KDE():
             laplacian = self._laplacian()
 
             # The data needs to be converted to the original input shape
-            return laplacian.reshape(self.data_helpers['newshape'])
+            return laplacian.reshape(self.data_helpers.newshape)
 
         # If the input x is a 1D array, it is assumed that each entry corresponds to a datapoint
         # This might result in an error if x is meant to be a single (multi-dimensional) datapoint
@@ -539,11 +549,11 @@ class KDE():
         :return: Laplacian of each of the m datapoints
         """
         # Compute the distance of the datapoints in x to the datapoints of the KDE
-        # Let x have M datapoints, then the result is a (self.constants['n']-by-M)-matrix
+        # Let x have M datapoints, then the result is a (self.constants.n-by-M)-matrix
         if xdata is None:
-            eucl_dist = self.data_helpers['data_dist'][:self.constants['n']]
+            eucl_dist = self.data_helpers.data_dist[:self.constants.ndata]
         else:
-            eucl_dist = dist.cdist(self.data[:self.constants['n']], xdata, metric='sqeuclidean')
+            eucl_dist = dist.cdist(self.data[:self.constants.ndata], xdata, metric='sqeuclidean')
 
         # The Laplacian is defined as the trace of the Hessian
         # Let one value of a Kernel be denoted by K(u), then the Laplacian for that Kernel is:
@@ -554,10 +564,10 @@ class KDE():
         laplacian = np.zeros(eucl_dist.shape[1])
         for dimension in eucl_dist:
             pdf = np.exp(-dimension / (2 * self.bandwidth ** 2)) / \
-                ((2 * np.pi) ** (self.constants['d'] / 2) * self.bandwidth ** self.constants['d'])
-            laplacian += pdf * (dimension / self.bandwidth ** 4 - self.constants['d'] /
+                ((2 * np.pi) ** (self.constants.dim / 2) * self.bandwidth ** self.constants.dim)
+            laplacian += pdf * (dimension / self.bandwidth ** 4 - self.constants.dim /
                                 self.bandwidth ** 2)
-        return laplacian / self.constants['n']
+        return laplacian / self.constants.ndata
 
     def confidence_interval(self, xdata: np.ndarray, confidence: float = 0.95):
         """ Determine the confidence interval
@@ -570,8 +580,8 @@ class KDE():
             xdata = xdata[:, np.newaxis]
         zvalue = scipy.stats.norm.ppf(confidence/2+0.5)
         density = self.score_samples(xdata)
-        std = np.sqrt(self.constants['muk'] * density / (self.constants['n'] *
-                                                         self.bandwidth ** self.constants['d']))
+        std = np.sqrt(self.constants.muk * density / (self.constants.ndata *
+                                                      self.bandwidth ** self.constants.dim))
         lower_conf = density - zvalue*std
         upper_conf = density + zvalue*std
         return lower_conf, upper_conf
