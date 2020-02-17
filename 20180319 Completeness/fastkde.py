@@ -27,6 +27,7 @@ Modifications
 2018 11 07 Add description of class.
 2019 08 30 Change type hinting: np.array should be np.ndarray.
 2020 02 14 Add function for computing the cumulative distribution function.
+2020 02 17 Bug fix for the CDF computation.
 """
 
 import time
@@ -403,6 +404,7 @@ class KDE():
         :param xdata: Input data
         :return: Values of the KDE evaluated at x
         """
+        xdata = xdata.copy()
         if xdata is None:
             xdata = self.data_helpers["data_score_samples"]
         if len(xdata.shape) == 1:
