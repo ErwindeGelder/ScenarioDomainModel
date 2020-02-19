@@ -64,8 +64,8 @@ bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
 \titlespacing*{\paragraph}{0ex}{1ex}{1ex}
 \newcommand{\toauthor}{\paragraph*{Comment to authors:} \itshape}
 \newcommand{\fromauthor}{\paragraph*{Reply:} \normalfont}
-\newcommand{\toauthornew}{\paragraph*{New comment:} \itshape}
-\newcommand{\fromauthornew}{\paragraph*{New reply:} \normalfont}
+\newcommand{\toauthornew}{\paragraph*{Comment to authors:} \itshape}
+\newcommand{\fromauthornew}{\paragraph*{Reply:} \normalfont}
 \newcommand{\additionend}[1]{\color{black}[#1]\color{red}}
 \newcommand{\addition}[1]{\additionend{#1}\ }
 
@@ -143,32 +143,33 @@ Erwin de Gelder, Jan-Pieter Paardekooper, Arash Khabbaz Saberi, Hala Elrofai, Ol
 	
 \section*{Reviewer 1}
 
-\color{blue} Question: Should I also show the old comments? \color{black}
-
 \subsection*{A}
 
-\toauthor Novelty: Similar work has been published before, see e.g.\ \autocite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core}. Thus, it is unclear what the novelty of the presented ontology is.
-
-\fromauthor Thank you for the mentioned references. In the introduction, we have added the following sentences to explain the new addition of our work in the automotive domain and how our work differs from previous published works: 
-\cstart Ontologies have been widely used in the field of automated driving \autocite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core, maiti2017conceptualization, benvenuti2017ontologybased, bagschik2017ontology}. However, to the best of our knowledge, we are the first to propose an ontology for scenarios for the assessment of AVs. 
-From the implementation side, there are several file formats and methods for scenario ontologies, e.g., OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}. Our proposed ontology differs from these implementations as our ontology also allows for qualitative descriptions of scenarios, which is useful because it enables to group scenarios and to interpret the scenarios more easily.
-Furthermore, our ontology is supported with the definitions and justifications of each of the terms.\cend \ldots
+%\toauthor Novelty: Similar work has been published before, see e.g.\ \autocite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core}. Thus, it is unclear what the novelty of the presented ontology is.
+%
+%\fromauthor Thank you for the mentioned references. In the introduction, we have added the following sentences to explain the new addition of our work in the automotive domain and how our work differs from previous published works: 
+%\cstart Ontologies have been widely used in the field of automated driving \autocite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core, maiti2017conceptualization, benvenuti2017ontologybased, bagschik2017ontology}. However, to the best of our knowledge, we are the first to propose an ontology for scenarios for the assessment of AVs. 
+%From the implementation side, there are several file formats and methods for scenario ontologies, e.g., OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}. Our proposed ontology differs from these implementations as our ontology also allows for qualitative descriptions of scenarios, which is useful because it enables to group scenarios and to interpret the scenarios more easily.
+%Furthermore, our ontology is supported with the definitions and justifications of each of the terms.\cend \ldots
 
 \toauthornew It is unclear why qualitative descriptions are not possible for previous ontologies. Being able to precise describe the novelty is crucial for every scientific paper. 
 
-\fromauthornew The mentioned ontologies are used to describe specific tests, such that these tests can be executed in a virtual environment. In order to be used for testing in a virtual environment, these implementation describe scenarios on a quantitative level. We have updated the text to clarify this:
-\cstart From the implementation side, there are several file formats and methods for scenario ontologies, e.g., OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}. 
-These implementations are used to describe specific tests for automated vehicles that can be executed in a virtual environment and, therefore, these implementations describe scenarios at a quantitative level.
+\fromauthornew The previous ontologies are used to describe specific tests, such that these tests can be executed in a virtual environment. In order to be used for testing in a virtual environment, these implementation describe scenarios on a quantitative level. These ontologies do not provide concepts for a qualitative description of a scenario. We have updated the text to clarify this:
+
+``From the implementation side, there are several file formats and methods for scenario ontologies, e.g., OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}. 
+\cstart These implementations are used to describe specific tests for AVs that can be executed in a virtual environment.
+Because of these specific tests, these implementations describe scenarios at a quantitative level.
+These implementations do not provide concepts for a qualitative description of a scenario. \cend
 Our proposed ontology differs from these implementations as our ontology also allows for qualitative descriptions of scenarios, which is useful because it enables to group scenarios and to interpret the scenarios more easily.
-Furthermore, our ontology is supported with the definitions and justifications of each of the terms.\cend
+Furthermore, our ontology is supported with the definitions and justifications of each of the terms.''
 
 
 
 \subsection*{B}
 
-\toauthor It is unclear whether an executable implementation of the proposed ontology exists. This should be clarified in the paper.
-
-\fromauthor To clarify that we implemented the proposed ontology in a coding language, we have added to following line to the introduction (including the footnote): \cstart The implementation code of our ontology is publicly available\footnote{\cstart As a coding language, Python is used. The code is publicly available at \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.\cend}\cend.
+%\toauthor It is unclear whether an executable implementation of the proposed ontology exists. This should be clarified in the paper.
+%
+%\fromauthor To clarify that we implemented the proposed ontology in a coding language, we have added to following line to the introduction (including the footnote): \cstart The implementation code of our ontology is publicly available\footnote{\cstart As a coding language, Python is used. The code is publicly available at \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.\cend}\cend.
 
 \toauthornew I have looked at the code and could not figure out how to execute it. It would be helpful if the authors could provide information how to execute the code.
 
@@ -178,51 +179,58 @@ Furthermore, our ontology is supported with the definitions and justifications o
 
 \subsection*{C}
 
-\toauthor The paper has several mistakes: 1. event: It is written that an event requires a time step. This, however, is not required, see e.g.\ finite state machines. Only in timed automata and in hybrid systems timing information is required.
-
-\fromauthor To address this comment, we have clarified that we use a hybrid-systems setting to define events and that, therefore, an event happens at a time instant rather than a time span. However, the time does not need to be fully defined in advance: ``\cstart We considered the definitions of event in hybrid systems and control and event-based control. Therefore, an event happens at some time instant rather than taking a time span. Note, however, that the time does not need to be fully defined in advance.\cend''
+%\toauthor The paper has several mistakes: 1. event: It is written that an event requires a time step. This, however, is not required, see e.g.\ finite state machines. Only in timed automata and in hybrid systems timing information is required.
+%
+%\fromauthor To address this comment, we have clarified that we use a hybrid-systems setting to define events and that, therefore, an event happens at a time instant rather than a time span. However, the time does not need to be fully defined in advance: ``\cstart We considered the definitions of event in hybrid systems and control and event-based control. Therefore, an event happens at some time instant rather than taking a time span. Note, however, that the time does not need to be fully defined in advance.\cend''
 
 \toauthornew The authors should have provided one reference that clarifies what kind of hybrid system their model is based on, e.g., is urgent semantics used, what time model is used, etc. Proper definitions could be found here: \url{https://www.cis.upenn.edu/~alur/TCS95.pdf}
 
-\fromauthornew \color{blue}I do not understand this comment. Why do we need to mention what kind of hybrid system our definition is based on? The comment mentions ``their model'', but I do not see what the reviewer refers to.\color{black}
+\fromauthornew 
+We have now added a reference to \autocite{alur1994theory}. We have updated the text as follows:
+``\cstart For the definition of event, we consider a hybrid-systems setting with a linear time model \autocite{alur1994theory}. Therefore, an event happens at some time instant.\cend''
 
-
+%linear time model
+%discrete punten in tijd
+%left accumulation point, geen right accumulation point
+%bouncing ball -> dat tijdsmodel
+%hybride automaton -> niet autonoom
+%timed content -> wel
 
 \subsection*{D}
 
-\toauthor 4. ``an event marks a mode transition or the moment a system reaches a threshold'': This is not correct, since an event can be an external event that is broadcast or a user input.
-
-\fromauthor To address this comment, we have clarified that there are two options for defining an event and we provide an example of an event based on a user input:
-\cstart
-Definition~2 indicates that the moment of an event can be defined in two different ways: (1) by the system reaching a threshold or (2) by a mode transition. \cend [...] \cstart The second type of event, i.e., a mode transition, can, e.g., occur at the moment of a driver input.\cend
+%\toauthor 4. ``an event marks a mode transition or the moment a system reaches a threshold'': This is not correct, since an event can be an external event that is broadcast or a user input.
+%
+%\fromauthor To address this comment, we have clarified that there are two options for defining an event and we provide an example of an event based on a user input:
+%\cstart
+%Definition~2 indicates that the moment of an event can be defined in two different ways: (1) by the system reaching a threshold or (2) by a mode transition. \cend [...] \cstart The second type of event, i.e., a mode transition, can, e.g., occur at the moment of a driver input.\cend
 
 \toauthornew I do not think that defining terms by examples is a good idea. Please provide a proper definition.
 
-\fromauthornew The definition of the term \emph{event} is given in Definition~2. The added text is used to clarify the definitions by illustrating it through two short examples.
+\fromauthornew The definition of the term \emph{event} is given in Definition~2: ``An event marks the time instant at which the system reaches a specified threshold or at which a mode transition occurs, such that before and after an event, the state vector of the system corresponds to two different modes.'' The examples clarify the definitions by illustrating it through two short examples.
 
 
 
 \subsection*{E}
 
-\toauthor Also, Fig.~2 is not required to understand the difference between categories and instances. 
-
-\fromauthor The figure is a visualization of the text to improve the understanding of the reader. Therefore, we have opted to keep the figure. However, to shorten the paper, the figure is made smaller.
+%\toauthor Also, Fig.~2 is not required to understand the difference between categories and instances. 
+%
+%\fromauthor The figure is a visualization of the text to improve the understanding of the reader. Therefore, we have opted to keep the figure. However, to shorten the paper, the figure is made smaller.
 
 \toauthornew Since the figure just consists of two overlapping circles, I cannot see how this clarifies anything.
 
-\fromauthornew We have removed the figure with the overlapping circles.
+\fromauthornew We have now removed the figure with the overlapping circles.
 
 
 
 \subsection*{F}
 
-\toauthor Renaming of existing concepts. To me, an activity is a state trajectory. Why do we need a new name?
-
-\fromauthor We have chosen the name ``activity'' because --- as explained in Section III-C --- ``activity'' \autocite{elrofai2018scenario,catapult2018musicc} or ``action'' \autocite{ulbrich2015} are part of the existing literature on the subject. In the manuscript, we provide the reason why we opt for ``activity'' over ``action''. To the best of our knowledge, ``state (variable) trajectory'' is less common in the field of safety assessment of (automated) vehicles.
+%\toauthor Renaming of existing concepts. To me, an activity is a state trajectory. Why do we need a new name?
+%
+%\fromauthor We have chosen the name ``activity'' because --- as explained in Section III-C --- ``activity'' \autocite{elrofai2018scenario,catapult2018musicc} or ``action'' \autocite{ulbrich2015} are part of the existing literature on the subject. In the manuscript, we provide the reason why we opt for ``activity'' over ``action''. To the best of our knowledge, ``state (variable) trajectory'' is less common in the field of safety assessment of (automated) vehicles.
 
 \toauthornew It seems that an activity is nothing else than a state trajectory. Since the authors previously used therms from system theory (event, state, etc.) it seems odd why one would deviate from this domain for one term. This makes the paper quite inconsistent. 
 
-\fromauthornew The reviewer correctly points out that we use terms that are also used in system theory, such as \emph{event} and \emph{state}. These terms are also commonly used in the field of safety assessment. The terms that we use\footnote{In the nomenclature, we mention the terms \emph{ego vehicle}, \emph{actor}, \emph{state}, \emph{model}, \emph{mode}, \emph{act}, \emph{static environment}, and \emph{dynamic environment}. Furthermore, we define the terms \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category}.} except the term \emph{scenario category}\footnote{Note that the term \emph{scenario category} will be used in a future release of OpenSCENARIO.}, are commonly used in the field of safety assessment \autocite{catapult2018musicc,catapult2018regulating,sigsim2019glossary,openscenario,ulbrich2015,geyer2014}.  
+\fromauthornew The reviewer correctly points out that we use terms that are also used in system theory, such as \emph{event} and \emph{state}. These terms are, however, also commonly used in the field of safety assessment. Actually, the terms that we use, i.e., \emph{ego vehicle}, \emph{actor}, \emph{state}, \emph{model}, \emph{mode}, \emph{act}, \emph{static environment}, \emph{dynamic environment}, \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category}, are commonly used in the field of safety assessment \autocite{catapult2018musicc,catapult2018regulating,sigsim2019glossary,openscenario,ulbrich2015,geyer2014}\footnote{Note that the term \emph{scenario category} will be used in a future release of OpenSCENARIO.}.
 
 
 
@@ -230,7 +238,7 @@ Definition~2 indicates that the moment of an event can be defined in two differe
 
 \toauthornew Fig.\ 4., now Fig.\ 3 is sill way too large. 
 
-\fromauthornew We have made Fig.\ 3 smaller.
+\fromauthornew We have now made Fig.\ 3 smaller.
 
 
 

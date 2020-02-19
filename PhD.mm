@@ -2937,6 +2937,16 @@
     <pdf_title>The algorithmic analysis of hybrid systems</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="A theory of timed automata" ID="ID_1089900686" CREATED="1582124738936" MODIFIED="1582124787726" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/426%20A%20theory%20of%20timed%20automata.pdf">
+<attribute NAME="key" VALUE="alur1994theory"/>
+<attribute NAME="journal" VALUE="Theoretical Computer Science"/>
+<attribute NAME="year" VALUE="1994"/>
+<attribute NAME="title" VALUE="A Theory of Timed Automata"/>
+<attribute NAME="authors" VALUE="Alur, Rajeev and Dill, David L"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3DFEC38E11C315DD6458BF36C832E71E19E5F8A7AEC6657A49071586029E821">
+    <pdf_title>theory of timed automata*</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
 <node TEXT="In probability: the outcome of an experiment. For example coin &quot;tail&quot;" ID="ID_431203968" CREATED="1508810134759" MODIFIED="1531983021869">
@@ -4149,8 +4159,8 @@
     <pdf_title>On Optimal and Data-Based Histograms Author(s): David W. Scott Source: Biometrika, Vol. 66, No. 3 (Dec., 1979), pp. 605-610 Published by: Stable URL: Accessed: 26/08/2010 16:51</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Evading the curse of dimensionality in multivariate KDE with simplified vines" ID="ID_688422034" CREATED="1513918183261" MODIFIED="1534390527271" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/103%20Evading%20the%20curse%20of%20dimensionality%20in%20multivariate%20kernel%20density%20estimation%20with%20simplified%20vines.pdf">
-<attribute NAME="key" VALUE="NAGLER201669"/>
+<node TEXT="Evading the curse of dimensionality in multivariate KDE with simplified vines" ID="ID_688422034" CREATED="1513918183261" MODIFIED="1581672223896" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/103%20Evading%20the%20curse%20of%20dimensionality%20in%20multivariate%20kernel%20density%20estimation%20with%20simplified%20vines.pdf">
+<attribute NAME="key" VALUE="nagler2016evading"/>
 <attribute NAME="journal" VALUE="Journal of Multivariate Analysis"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Evading the Curse of Dimensionality in Nonparametric Density Estimation with Simplified Vine Copulas"/>
@@ -4264,6 +4274,16 @@
     <pdf_title>Pair-Copula Constructions of Multivariate Copulas</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Evading the Curse of Dimensionality in Nonparametric Density Estimation with Simplified Vine Copulas" ID="ID_774215689" CREATED="1581672208383" MODIFIED="1581672223927" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/103%20Evading%20the%20curse%20of%20dimensionality%20in%20multivariate%20kernel%20density%20estimation%20with%20simplified%20vines.pdf">
+<attribute NAME="key" VALUE="nagler2016evading"/>
+<attribute NAME="journal" VALUE="Journal of Multivariate Analysis"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Evading the Curse of Dimensionality in Nonparametric Density Estimation with Simplified Vine Copulas"/>
+<attribute NAME="authors" VALUE="Nagler, Thomas and Czado, Claudia"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F8D02A2F7B5768C319C99A46CB3BC656AA63A2A666AE9BB4F66C1EC735AE619">
+    <pdf_title>Journal of Multivariate Analysis</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Non-parametric copulas" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_101928990" CREATED="1580651878732" MODIFIED="1580651888277">
 <node TEXT="Nonparametric Estimation of Copula Functions for Dependence Modelling" ID="ID_721654211" CREATED="1580651889572" MODIFIED="1580651976746" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/418%20Nonparametric%20Estimation%20of%20Copula%20Functions%20for%20Dependence%20Modelling.pdf">
@@ -4284,6 +4304,16 @@
 <attribute NAME="authors" VALUE="Wang, Fan and Li, Heng"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="312D6AECC8B08719BEEA642A63C65348A0B65699D84B17A33BE78921BEADFF21">
     <pdf_title>Computers and Geotechnics</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Probit transformation for nonparametric kernel estimation of the copula density" ID="ID_39603925" CREATED="1581672035454" MODIFIED="1581672112129" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/425%20Probit%20transformation%20for%20nonparametric%20kernel%20estimation%20of%20the%20copula.pdf">
+<attribute NAME="key" VALUE="geenens2017probit"/>
+<attribute NAME="journal" VALUE="Bernoulli"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Probit Transformation for Nonparametric Kernel Estimation of the Copula Density"/>
+<attribute NAME="authors" VALUE="Geenens, Gery and Charpentier, Arthur and Paindaveine, Davy and others"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1C20B3CF6C338F484252267BA2879B88F18AD97F48FA2E702B44EB58E30AF37">
+    <pdf_title>Probit transformation for nonparametric kernel estimation of the copula</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -4878,7 +4908,7 @@
 </node>
 <node TEXT="Journals" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1709195997" CREATED="1566199212968" MODIFIED="1566199220596">
 <edge COLOR="#00ff00"/>
-<node TEXT="Transportation Research Part A" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1749173518" CREATED="1566199221583" MODIFIED="1566199232160">
+<node TEXT="Transportation Research Part C" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1749173518" CREATED="1566199221583" MODIFIED="1581672002041">
 <node TEXT="Ontologies for Transportation Research: A Survey" ID="ID_153077203" CREATED="1566199237387" MODIFIED="1566199240645" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/362%20Ontologies%20for%20transportation%20research.pdf">
 <attribute NAME="key" VALUE="katsumi2018ontologies"/>
 <attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
