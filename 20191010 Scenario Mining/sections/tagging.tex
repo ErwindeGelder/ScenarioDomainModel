@@ -31,7 +31,7 @@ The scenario mining based on these tags is explained in the next section.
 As described in \cref{def:scenario}, events and activities are constituents of a scenario. 
 Part of the tags that we consider describe activities of the vehicles.
 Therefore, we will use the definition of the term \emph{activity} of \autocite{degelder2018ontology}:\cenda
-\begin{definition}[Activity \autocite{degelder2018ontology}]
+\begin{definition}[Activity]
 	\label{def:activity}
 	An activity quantitatively describes the time evolution of one or more state variables of an actor between two events.
 \end{definition}
@@ -41,11 +41,11 @@ Because an activity starts and ends with an event, for describing the activities
 As an illustration, \cref{tab:tags} lists the tags that are considered for the case study in this paper. 
 We distinguish between tags that describe the behavior of the ego vehicle, tags that describe the behavior and the state of any other vehicle, and tags that describe the static environment. \cenda
 \begin{remark}
-	\cstarta The tags in \cref{tab:tags} are sufficient for mining the scenarios of the scenario categories that we consider in our case study, see \cref{sec:case study}. However, when other scenario categories are considered, other tags might be necessary. The approach for mining the scenarios using the tags, however, is general and also applies when other tags are used. \cenda 
+	\cstarta When other scenario categories are considered than the ones in our case study, other tags might be necessary. The approach for mining the scenarios using the tags, however, is general and also applies when other tags are used. \cenda 
 	\cstartc For example, for this paper we do not consider other road users than vehicles, but the proposed method also works if cyclists or pedestrians are considered.\cendc
 \end{remark}
 
-In the remainder of this section, we explain how the tags of \cref{tab:tags} are determined. 
+In the remainder of this section, we explain how the tags of \cref{tab:tags} are assigned. 
 Here, we assume that the data is sampled with a sample time of $\sampletime$.
 
 
@@ -93,9 +93,9 @@ An acceleration event is happening at sample $\sample$ if any of the following c
 	\item \cstarta There has been a substantial speed increase between sample step $\sample-\samplehorizon$ and $\sample$, i.e., 
 	\begin{equation}
 		\label{eq:start acceleration}
-		\speedinc{\sample} \geq \accelerationstart\samplehorizon\sampletime,
+		\speedinc{\sample} \geq \accelerationcruise\samplehorizon\sampletime,
 	\end{equation} \cenda
-	where $\accelerationstart>0$ is a parameter.
+	where $\accelerationcruise>0$ is a parameter \cstartf that describes the maximum average acceleration within the time window $\samplehorizon\sampletime$ for a cruising activity. \cendf
 	\item There is no lower speed in the near future, i.e.,
 	\begin{equation}
 		\label{eq:acceleration condition}
@@ -106,7 +106,7 @@ An acceleration event is happening at sample $\sample$ if any of the following c
 		\label{eq:end acceleration condition}
 		\left|\speed{\sampleendinc{\sample}} - \speed{\sample}\right| > \speeddiff,
 	\end{equation}
-	where \cstartc $\speeddiff>0$ is the minimum speed increase and \cendc $\sampleendinc{\sample}$ is controlled by the parameter $\accelerationcruise$ and \cstarta equals the first sample at which the speed increase is below a threshold\cenda:
+	where \cstartc $\speeddiff>0$ is the minimum speed increase and \cendc $\sampleendinc{\sample}$, \cstartf i.e., the last sample of the acceleration activity, \cendf is controlled by the parameter $\accelerationcruise$ and \cstarta equals the first sample at which the speed increase is below a threshold\cenda:
 	\begin{equation}
 		\label{eq:end acceleration}
 		\sampleendinc{\sample} \defsym \arg \min_{\sampledummy > \sample} \left\{ \sampledummy: \speedinc{\sampledummy+\samplehorizon} < \accelerationcruise\samplehorizon\sampletime \right\}.
@@ -114,8 +114,8 @@ An acceleration event is happening at sample $\sample$ if any of the following c
 \end{itemize}
 
 \cstartd
-A deceleration event is detected in a similar manner as an acceleration event. To detect a deceleration event, $-\speeddec{\cdot}$ substitutes $\speedinc{\cdot}$ in \cref{eq:start acceleration} and $\speedmin{\cdot}$ is substituted by $\speedmax{\cdot}$ in \cref{eq:acceleration condition}. Furthermore, $\sampleendinc{\cdot}$ in \cref{eq:end acceleration condition} is substituted by $\sampleenddec{\cdot}$, which is defined in a similar manner as $\sampleendinc{\cdot}$ in \cref{eq:end acceleration} but with $-\speeddec{\cdot}$ instead of $\speedinc{\cdot}$.\cendd
-
+A deceleration event is detected in a similar manner as an acceleration event. 
+%To detect a deceleration event, $-\speeddec{\cdot}$ substitutes $\speedinc{\cdot}$ in \cref{eq:start acceleration} and $\speedmin{\cdot}$ is substituted by $\speedmax{\cdot}$ in \cref{eq:acceleration condition}. Furthermore, $\sampleendinc{\cdot}$ in \cref{eq:end acceleration condition} is substituted by $\sampleenddec{\cdot}$, which is defined in a similar manner as $\sampleendinc{\cdot}$ in \cref{eq:end acceleration} but with $-\speeddec{\cdot}$ instead of $\speedinc{\cdot}$. \cendd
 %A deceleration event is happening at sample $\sample$ if any of the following conditions is true:
 %\begin{itemize}
 %	\item The vehicle is not performing a decelerating activity, i.e., the last event is not a decelerating event.
@@ -135,12 +135,12 @@ A deceleration event is detected in a similar manner as an acceleration event. T
 %		\sampleenddec{\sample} \defsym \arg \min_{\sampledummy > \sample} \left\{ \sampledummy\colon \speeddec{\sampledummy+\samplehorizon} > -\accelerationcruise\samplehorizon\sampletime \right\}.
 %	\end{equation}
 %\end{itemize}
-
-Let $\sampleaccevent$ and $\sampledecevent$ denote the sample step of the most recent acceleration and decelerating event, respectively. A cruising event happens at sample step $\sample$ if the vehicle is not performing a cruising activity and if any of the following conditions is true:
-\begin{itemize}
-	\item $\sample > \sampleendinc{\sampleaccevent}$ when the vehicle is performing an acceleration activity.
-	\item $\sample > \sampleenddec{\sampledecevent}$ when the vehicle is performing a decelerating activity.
-\end{itemize}
+%Let $\sampleaccevent$ and $\sampledecevent$ denote the sample step of the most recent acceleration and decelerating event, respectively. A cruising event happens at sample step $\sample$ if the vehicle is not performing a cruising activity and if any of the following conditions is true:
+%\begin{itemize}
+%	\item $\sample > \sampleendinc{\sampleaccevent}$ when the vehicle is performing an acceleration activity.
+%	\item $\sample > \sampleenddec{\sampledecevent}$ when the vehicle is performing a decelerating activity.
+%\end{itemize}
+\cstartf Now that we know the start and the end of the acceleration and deceleration activities, we simply label the remaining samples as ``cruising''. \cendf
 
 \cstarta%
 \Cref{fig:longitudinal activities} illustrates the longitudinal activities given a hypothetical speed profile (solid red line). The algorithm above described produces the activities ``cruising'', ``accelerating'', ``cruising'', ``decelerating'', and ``cruising''.
@@ -173,9 +173,10 @@ We distinguish between three different lateral activities: ``following lane'', `
 To detect the lane changes, the lateral distances toward the left and right lane lines are used. 
 These distances are estimated from camera images. 
 The estimation is outside the scope of this paper. 
+\cstartf We refer the interested reader to \cite{elfring2016effective}. \cendf
 Let $\lineleft{\sample}$ and $\lineright{\sample}$ denote the distance toward the left and right lane line, respectively. 
 %In case the distances cannot be accurately estimated, the notation $\lineleft{\sample}=\nan$ and $\lineright{\sample}=\nan$ is used, where $\nan$ stands for Not-a-Number.
-\cstarta We use the ISO coordinate system\cenda\cstartc\footnote{\cstartc In the ISO coordinate system \autocite{iso8855}, the $x$-axis points to the front of the vehicle and the $y$-axis points to the left of the vehicle.\cendc\cstartd The origin of the coordinate system is often at the ground below the midpoint of the rear axle.\cendd}\cendc\cstarta, so $\lineleft{\sample} \geq 0$ and $\lineright{\sample} \leq 0$. 
+\cstarta We use the ISO coordinate system\cenda\cstartc\footnote{\cstartc In the ISO coordinate system, the $x$-axis points to the front of the vehicle and the $y$-axis points to the left of the vehicle. \cendc\cstartd The origin of the coordinate system is often at the ground below the midpoint of the rear axle.\cendd} \autocite{iso8855}\cendc\cstarta, so $\lineleft{\sample} \geq 0$ and $\lineright{\sample} \leq 0$. 
 At the moment the vehicle crosses the line, the distances to the lines will change substantially. 
 For example, during a lane change to the left, the left lane line becomes the right lane line. 
 Hence, we detect a left lane change \cstartd if the change in the lane line distances is more than the threshold $\lanechangethreshold>0$\cendd:
@@ -267,8 +268,11 @@ To compute the longitudinal activities of the $\indextarget$-th vehicle, the app
 
 \cstartc
 For the lane changes of other vehicles, only the lane changes to and from the ego vehicle's lane are considered.
-To detect a lane change of the $\indextarget$-th vehicle, we use the distance of the $\indextarget$-th vehicle toward the ego vehicle's left and right lane lines, denoted by $\linelefttarget{\sample}{\indextarget}$ and $\linerighttarget{\sample}{\indextarget}$, respectively\cendc\cstartd\footnote{\cstartd $\linelefttarget{\sample}{\indextarget}$ and $\linerighttarget{\sample}{\indextarget}$ are determined by subtracting the estimated lane line positions from the estimated lateral position of the $\indextarget$-th vehicle. The lane line positions are based on the estimated shape of the lane lines. For more details, we refer the reader to \autocite{elfring2016effective}.\cendd}\cendd\cstartc.
-We define $\linelefttargetinc{\sample}{\indextarget}$, $\linerighttargetinc{\sample}{\indextarget}$, $\linelefttargetdec{\sample}{\indextarget}$, and $\linerighttargetdec{\sample}{\indextarget}$ similar as $\lineleftinc{\sample}$ and $\lineleftdec{\sample}$ in \cref{eq:line left inc,eq:line left dec}.
+To detect a lane change of the $\indextarget$-th vehicle, we use the distance of the $\indextarget$-th vehicle toward the ego vehicle's left and right lane lines, denoted by $\linelefttarget{\sample}{\indextarget}$ and $\linerighttarget{\sample}{\indextarget}$, respectively. \cendc
+\cstartd $\linelefttarget{\sample}{\indextarget}$ and $\linerighttarget{\sample}{\indextarget}$ are determined by subtracting the estimated lane line positions from the estimated lateral position of the $\indextarget$-th vehicle. 
+The lane line positions are based on the estimated shape of the lane lines. 
+For more details, we refer the reader to \autocite{elfring2016effective}. \cendd
+\cstartc We define $\linelefttargetinc{\sample}{\indextarget}$, $\linerighttargetinc{\sample}{\indextarget}$, $\linelefttargetdec{\sample}{\indextarget}$, and $\linerighttargetdec{\sample}{\indextarget}$ similar as $\lineleftinc{\sample}$ and $\lineleftdec{\sample}$ in \cref{eq:line left inc,eq:line left dec}.
 
 A lane change is detected if the vehicle crosses either of the two lane lines.
 There are four possible ways this can happen.
@@ -296,10 +300,11 @@ The end of the same lane change is estimated, in a similar way, to occur at samp
 	\left. \left(\linelefttargetinc{\sampledummy+\samplehorizon}{\indextarget} < \lanechangespeed\samplehorizon\sampletime \land \linelefttarget{\sampledummy}{\indextarget} > \factorgoalmin\widthlanetarget{\sample}{\indextarget}\right) \right\}.
 \end{multline}
 
-For a right lane change from the ego vehicle's lane, $\linerighttarget{\cdot}{\indextarget}$ and $\linerighttargetinc{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$, respectively, in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}. 
-Similarly, for a left lane change to the ego vehicle's lane, $-\linerighttarget{\cdot}{\indextarget}$ and $-\linerighttargetdec{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}.
-Finally, for a left lane change from the ego vehicle's lane, $-\linelefttarget{\cdot}{\indextarget}$ and $-\linelefttargetdec{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}.
+%For a right lane change from the ego vehicle's lane, $\linerighttarget{\cdot}{\indextarget}$ and $\linerighttargetinc{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$, respectively, in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}. 
+%Similarly, for a left lane change to the ego vehicle's lane, $-\linerighttarget{\cdot}{\indextarget}$ and $-\linerighttargetdec{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}.
+%Finally, for a left lane change from the ego vehicle's lane, $-\linelefttarget{\cdot}{\indextarget}$ and $-\linelefttargetdec{\cdot}{\indextarget}$ are substituted for $\linelefttarget{\cdot}{\indextarget}$ and $\linelefttargetinc{\cdot}{\indextarget}$ in \cref{eq:detect lane change target,eq:start lane change target,eq:end lane change target}.
 \cendc
+\cstartf A right lane change from the ego vehicle's lane and a left lane change from or to the ego vehicle's lane are determined in a similar manner. \cendf
 
 
 
@@ -344,8 +349,8 @@ Two possibilities are considered: a vehicle is a lead vehicle (the tag ``leader'
 \begin{itemize}
 	\item The vehicle is in front of the ego vehicle, i.e., $\lontarget{\sample}{\indextarget}>0$.
 	\item The vehicle drives in the same lane as the ego vehicle, i.e., $\linelefttarget{\sample}{\indextarget} \geq 0$ and $\linerighttarget{\sample}{\indextarget} < 0$.
-	\item The time headway of the ego vehicle toward the other vehicle, i.e., $\lontarget{\sample}/\speed{\sample}$ is less than the parameter $\thw>0$.
-	\item There is no other vehicle that is closer to the ego vehicle while satisfying the above conditions, i.e., $\lontarget{\sample}{\indextarget} < \lontarget{\sample}{\indextargetother}$ for all $\indextargetother$-th vehicles with $\indextargetother \ne \indextarget$ that satisfy the above conditions.
+	\item The time headway of the ego vehicle toward the other vehicle, i.e., $\lontarget{\sample}{\indextarget}/\speed{\sample}$ is less than the parameter $\thw>0$.
+	\item There is no other vehicle that is closer to the ego vehicle while satisfying the above conditions, i.e., $\lontarget{\sample}{\indextarget} \leq \lontarget{\sample}{\indextargetother}$ for all $\indextargetother$-th vehicles that satisfy the above conditions.
 \end{itemize}
 \cendc
 

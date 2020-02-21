@@ -163,11 +163,11 @@
 \newcommand{\symbolinctarget}[3]{#1^{+}_{#3}\left(#2\right)}
 
 \newcommand{\accelerationsymbol}{a}
-\newcommand{\accelerationstart}{\accelerationsymbol_\mathrm{start}}
-\newcommand{\accelerationcruise}{\accelerationsymbol_\mathrm{end}}
+\newcommand{\accelerationcruise}{\accelerationsymbol_\mathrm{cruise}}
 \newcommand{\defsym}{\equiv}
 \newcommand{\factorgoalmax}{\alpha_1}
 \newcommand{\factorgoalmin}{\alpha_2}
+\newcommand{\fonescore}{\mathrm{F1}}
 \newcommand{\indextarget}{i}
 \newcommand{\indextargetother}{j}
 \newcommand{\lanechangethreshold}{\Delta_{\mathrm{l}}}
@@ -188,10 +188,13 @@
 \newcommand{\linerighttarget}[2]{\linerightsymbol_{#2}\left(#1\right)}
 \newcommand{\lontarget}[2]{x_{#2}\left(#1\right)}
 \newcommand{\nofngram}{n}
+\newcommand{\precision}{\mathrm{Precision}}
+\newcommand{\recall}{\mathrm{Recall}}
 \newcommand{\sample}{k}
 \newcommand{\sampledummy}{\tau}
 \newcommand{\sampleenddec}[1]{\sample_{\mathrm{end}}^{-}\left(#1\right)}
-\newcommand{\sampleendinc}[1]{\sample_{\mathrm{end}}^{+}\left(#1\right)}
+%\newcommand{\sampleendinc}[1]{\sample_{\mathrm{end}}^{+}\left(#1\right)}
+\newcommand{\sampleendinc}[1]{\sample_{\mathrm{end}}\left(#1\right)}
 \newcommand{\samplehorizon}{\sample_{\mathrm{h}}}
 \newcommand{\sampleinit}{\sample_{0}}
 \newcommand{\sampleaccevent}{\sample^{+}}
@@ -224,21 +227,23 @@
 \newcommand{\cendb}{\color{black}}     % Changes since January 7, 2020
 \newcommand{\cstartc}{\color{black}}  % Changes since January 18, 2020
 \newcommand{\cendc}{\color{black}}     % Changes since January 18, 2020
-\newcommand{\cstartd}{\color{blue}}  % Changes since January 24, 2020
+\newcommand{\cstartd}{\color{black}}  % Changes since January 24, 2020
 \newcommand{\cendd}{\color{black}}     % Changes since January 24, 2020
-\newcommand{\cstarte}{\color{blue}}  % Changes since February 5, 2020
+\newcommand{\cstarte}{\color{black}}  % Changes since February 5, 2020
 \newcommand{\cende}{\color{black}}     % Changes since February 5, 2020
+\newcommand{\cstartf}{\color{blue}}  % Changes since February 19, 2020
+\newcommand{\cendf}{\color{black}}     % Changes since February 5, 2020
 
-\usepackage{setspace}
-\doublespacing
+%\usepackage{setspace}
+%\doublespacing
 
 
 \begin{document}
 
 
 \maketitle
-\thispagestyle{empty}
-\pagestyle{empty}
+\thispagestyle{plain}
+\pagestyle{plain}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -250,6 +255,7 @@
 \input{sections/tagging}
 \input{sections/mining}
 \input{sections/casestudy}
+\input{sections/discussion}
 \input{sections/conclusion}
 
 
