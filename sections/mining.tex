@@ -4,12 +4,12 @@
 \cstartd
 For the scenario mining, we formulate a scenario category using a combination of tags.
 As an example, \cref{fig:cutin formulation tags} shows how the scenario category ``cut in'' can be formulated using tags.
-To further structure the tags, we formulate a scenario category as a sequence of \emph{items} and each \emph{item} corresponds to a combination of tags.
+To further structure the tags, we formulate a scenario category as a sequence of \emph{items} where each \emph{item} corresponds to a combination of tags for all relevant subjects.
 The number of items may vary from scenario category to scenario category.
-This scenario category ``cut in'' in \cref{fig:cutin formulation tags} contains two items and considers a vehicle other than the ego vehicle that changes lane (other vehicle, item 1 and 2) and becomes the lead vehicle (other vehicle, item 2).
+The scenario category ``cut in'' in \cref{fig:cutin formulation tags} contains two items and considers a vehicle other than the ego vehicle that changes lane (other vehicle, item 1 and 2) and becomes the lead vehicle (other vehicle, item 2).
 In the meantime, the ego vehicle follows its lane (ego vehicle, items 1 and 2) and the scenario category only considers highway driving (static environment, items 1 and 2).
 When describing the tags for each item, logical AND, OR, or NOT rules may be used. 
-For example, for the other vehicle in \cref{fig:cutin formulation tags}, either the tag ``changing lane left'' \emph{or} the tag ``changing lane right'' need to apply.
+For example, for the other vehicle in \cref{fig:cutin formulation tags}, either the tag ``changing lane left'' \emph{or} the tag ``changing lane right'' needs to apply.
 \cendd
 
 \begin{figure}
@@ -79,17 +79,17 @@ For example, for the other vehicle in \cref{fig:cutin formulation tags}, either 
 The scenarios are mined by searching for matches of the defined items within the tags of the data set. 
 This searching is subject to two rules:
 \begin{enumerate}
-	\item For each item, there needs to be a match for all subjects \emph{at the same time}.
+	\item For each item, there needs to be a match for all relevant subjects \emph{at the same sample time}.
 	\item The different items need to occur \emph{right after each other}. 
 \end{enumerate}\cendb
-\cstartd To continue the example of the scenario category ``cut-in'', in \cref{fig:tags cut in}, an example is shown in which a cut-in scenario is found. \cendd
+\cstartd To continue the example of the scenario category ``cut in'', \cref{fig:tags cut in} shows a part of labeled data in which a cut-in scenario is found. \cendd
 \cstartb The two vertical dashed lines indicate the start and the end of the cut in that is defined in \cref{fig:cutin formulation tags}.
 \cendb
 
 \begin{figure*}
 	\centering
 	\input{figures/tags_cutin.tikz}
-	\caption{\cstartc Example of tags describing a cut in. Note that only the tags that are relevant for the cut in, as defined in \cref{fig:cutin formulation tags}, are shown.\cendc}
+	\caption{\cstartc Example of tags describing a cut in. Note that only the tags that are relevant for the cut in, as defined in \cref{fig:cutin formulation tags}, are shown. \cendc\cstartf Furthermore, whereas there are multiple other vehicles around the ego vehicle, only the other vehicle that performs the cut in is shown.\cendf}
 	\label{fig:tags cut in}
 \end{figure*}
 

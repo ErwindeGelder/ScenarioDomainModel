@@ -4,15 +4,17 @@
 \begin{figure}
 	\centering
 	\includegraphics[width=.8\linewidth]{figures/sensors}
-	\caption{\cstartd Schematic representation of the field of view of the three radars (solid area) and the camera (area filled with lines) that the ego vehicle is equipped with. The positions of vehicles on the left or the right of the ego vehicle (dotted area) are predicted based on previous measurements.\cendd}
+	\caption{\cstartd Schematic representation of the field of view of the three radars (solid area) and the camera (area filled with lines) that the ego vehicle is equipped with. The positions of vehicles on the left or the right of the ego vehicle (dotted area) are predicted based on previous measurements. \cendd}
 	\label{fig:sensors}
 \end{figure}
 
-Here we illustrate the method by applying the method to the data set described in \autocite{paardekooper2019dataset6000km}.
-\cstartd To measure the surrounding traffic, the ego vehicle is equipped with three radars and one camera, as shown in \cref{fig:sensors}.
+Here we illustrate the proposed method by applying it to the data set described in \autocite{paardekooper2019dataset6000km}.
+\cstartf The data have been recorded from a single vehicle in which different drivers were asked to drive a prescribed route.
+The majority of the route is on the highway. \cendf
+\cstartd To measure the surrounding traffic, the vehicle is equipped with three radars and one camera, as shown in \cref{fig:sensors}.
 The images from the camera are used to estimate the lane line distances \autocite{elfring2016effective}.
 Furthermore, the surrounding traffic is measured by fusing the data of the radars and the camera \autocite{elfring2016effective}.
-While fusing the data of the different sensors, the position of the vehicles that disappear from the sensors' field of view on the left and right of the ego vehicle, see the dotted area in \cref{fig:sensors}, are predicted until the vehicles appear again in the sensors' field of view.
+While fusing the data of the different sensors, the position of the vehicles that disappear from the sensors' field of view on the left and right of the ego vehicle, see the dotted areas in \cref{fig:sensors}, are predicted until the vehicles appear again in the sensors' field of view.
 In total, four hours of driving are analyzed.
 \cendd
 
@@ -38,8 +40,7 @@ In total, four hours of driving are analyzed.
 		Parameter & Description & Value \\ \otoprule
 		$\sampletime$ & Sample time & \SI{0.01}{\second} \\
 		$\samplehorizon$ & Sample window & 100 \\
-		$\accelerationstart$ & Threshold determining the start of an acceleration or deceleration activity & \SI{0.1}{\meter\per\second\squared} \\
-		$\accelerationcruise$ & Threshold determining the end of an acceleration or deceleration activity & \SI{0.1}{\meter\per\second\squared} \\
+		$\accelerationcruise$ & Threshold determining the start and end of an acceleration or deceleration activity & \SI{0.1}{\meter\per\second\squared} \\
 		$\speeddiff$ & Minimum speed increase/decrease for an acceleration/deceleration activity & \SI{1}{\meter\per\second} \\
 		$\samplescruising$ & Minimum number of samples for cruising activity & 400 \\
 		$\lanechangethreshold$ & A lane change is detected when the difference between consecutive lane line distances is larger than this threshold & \SI{1}{\meter} \\
@@ -55,8 +56,10 @@ In total, four hours of driving are analyzed.
 A false negative (FN) means that a scenario that occurred is not detected and a false positive (FP) means that the scenario mining detects a scenario whereas this scenario does not occur.
 The true positives (TP) are the scenarios that are correctly detected.
 The recall is the ratio of the number of true positives (TP) and the total number of scenarios that occur (TP+FN) and the precision is the ratio of the number of true positives (TP) and the total number of detected scenarios (FP+TP).
-The F1 score is the harmonic mean of the recall and the precision.
-\cendd
+The F1 score is the harmonic mean of the recall and the precision: \cendd
+\cstartf \begin{equation}
+	\fonescore = 2 \cdot \frac{\precision\cdot\recall}{\precision+\recall}.
+\end{equation} \cendf
 
 \begin{table}
 	\centering
@@ -76,12 +79,4 @@ The F1 score is the harmonic mean of the recall and the precision.
 \cstartd As listed in \cref{tab:results}, 33 out of 36 cut ins are correctly detected and 3 out of the 36 detected cut ins are incorrect. 
 This results in an F1 score of \SI{92}{\percent}.
 For the scenario category ``overtaking before lane change'', 18 out of 19 scenarios are correctly detected and there are no scenarios incorrectly detected.
-This results in an F1 score of \SI{97}{\percent}.
-
-%The case study illustrates that the performance of the scenario mining is limited by the quality of the data rather than the proposed approach.
-The false detections are a result of inaccurate or missing data.
-For example, in case of the four false negatives, the other vehicle is not measured at the time of the cut in or overtaking.
-For one cut in, this is because another vehicle obstructs the view toward the vehicle at the moment of the cut in. 
-For the other three false negatives, the other vehicles appear from the sensor's blind spot (dotted area in \cref{fig:sensors}).
-The three false positives of the cut-in scenario are a result of inaccurate measurements of the lane line distances.
-\cendd
+This results in an F1 score of \SI{97}{\percent}. \cendd
