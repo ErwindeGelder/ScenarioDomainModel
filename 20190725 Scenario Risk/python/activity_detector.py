@@ -18,6 +18,7 @@ Modifications:
 2020 01 16 Prev/next values shifted by one sample. Start lane change at least 1 sample before shift.
 2020 01 18 Lane change detection for other vehicles improved.
 2020 01 24 Change minimal lane line quality from 3 to 2.
+2020 02 20 Remove a_end and use a_cruise instead.
 """
 
 import copy
@@ -112,8 +113,7 @@ class ActivityDetectorParameters(Options):
     # Parameters that alter the activity detection.
     time_horizon = 1  # [s]  In paper, we use # of samples for horizon: time_horizon*sample time.
 
-    a_start = 0.1  # [m/s2]  Acceleration at start of an acceleration/deceleration activity.
-    a_end = 0.1  # [m/s2]  Acceleration at the start of a cruising activity, i.e., end of acc/dec.
+    a_cruise = 0.1  # [m/s2]  Acceleration at start/end of an acceleration/deceleration activity.
     min_activity_speed = 0.25 / 3.6  # [m/s]
     delta_v = 4 / 3.6  # [m/s]  Minimum speed increase/decrease during an acceleration/deceleration.
     min_cruising_time = 4  # [s]  If a cruising activity is shorter, it will be merged.
@@ -225,7 +225,7 @@ class ActivityDetector(DataHandler):
             # Potential acceleration signal when in minimum wrt next second, accelerating and not
             # standing still.
             if event != LongitudinalActivity.ACCELERATING and \
-                    row.speed_inc_past >= self.parms.a_start and \
+                    row.speed_inc_past >= self.parms.a_cruise and \
                     row.speed_inc_start > 0 and \
                     getattr(row, self.parms.host_lon_vel) >= self.parms.min_activity_speed:
                 i, is_event = self._end_lon_activity(row.Index, speed_inc)
@@ -234,7 +234,7 @@ class ActivityDetector(DataHandler):
                     all_events.append((row.Index, event))
                     end_event_time = i
             elif event != LongitudinalActivity.DECELERATING and \
-                    row.speed_dec_past <= -self.parms.a_start and \
+                    row.speed_dec_past <= -self.parms.a_cruise and \
                     row.speed_dec_start < 0:
                 i, is_event = self._end_lon_activity(row.Index, speed_dec)
                 if is_event:
@@ -265,7 +265,7 @@ class ActivityDetector(DataHandler):
         # If someone can optimize next line... That line is responsible for 75%
         # of the executing time for longitudinal activities...
         end_i = next((j for j, value in speed_difference[i:end_i].iteritems() if
-                      value < self.parms.a_end),
+                      value < self.parms.a_cruise),
                      self.data.index[-1])
 
         if abs(self.get(self.parms.host_lon_vel, end_i) - self.get(self.parms.host_lon_vel, i)) < \
