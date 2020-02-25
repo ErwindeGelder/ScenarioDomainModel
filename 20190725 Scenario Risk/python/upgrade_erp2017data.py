@@ -8,6 +8,7 @@ Modifications:
 2019 10 22 Use multiprocessing to speed up the analysis.
 2019 11 01 Add possibility to mark highway data.
 2019 12 30 Use updated version of the activity detector.
+2020 02 24 Print the total time duration.
 """
 
 
@@ -15,6 +16,7 @@ import argparse
 from glob import glob
 import os
 import multiprocessing as mp
+import time
 from tqdm import tqdm
 from activity_detector import ActivityDetector
 from mark_highway import HighwayMarker
@@ -63,6 +65,7 @@ def process_file(datafile: str) -> None:
 
 
 if __name__ == "__main__":
+    TSTART = time.time()
     if not os.path.exists(ARGS.folder):
         print("Provided folder '{:s}' does not exist.".format(ARGS.folder))
         exit()
@@ -77,3 +80,4 @@ if __name__ == "__main__":
                                                                              ARGS.file)))
             exit()
         process_file(os.path.join(ARGS.folder, ARGS.file))
+    i

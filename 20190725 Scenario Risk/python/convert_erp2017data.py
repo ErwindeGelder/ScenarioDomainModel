@@ -7,12 +7,14 @@ Modifications:
 2019 11 01 Add arguments and the possibility to convert one single file.
 2019 12 26 Use the data handler and fix targets that get lost in blind spot.
 2019 12 30 Remove information in trackers as it will be outdated and should not be used.
+2020 02 24 Print the total time duration.
 """
 
 import argparse
 import glob
 import multiprocessing as mp
 import os
+import time
 from tqdm import tqdm
 from mat2df import Mat2DF
 from data_handler import DataHandler
@@ -104,6 +106,7 @@ def fix_gps(conv: Mat2DF) -> None:
 
 
 if __name__ == "__main__":
+    TSTART = time.time()
     if ARGS.file is None:
         MATFILES = glob.glob(os.path.join(ARGS.matfolder, "*.mat"))
         with mp.Pool(processes=4) as POOL:
@@ -111,3 +114,4 @@ if __name__ == "__main__":
                 pass
     else:
         conv_mat_file(os.path.join(ARGS.matfolder, ARGS.file))
+    print("Total elapsed time: {:.2f} s".format(time.time() - TSTART))
