@@ -655,6 +655,28 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Kriging" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_200450452" CREATED="1582288627399" MODIFIED="1582288633800">
+<node TEXT="The Origins of Kriging" ID="ID_563539155" CREATED="1582288646570" MODIFIED="1582288707591" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/430%20The%20Origins%20of%20Kriging.pdf">
+<attribute NAME="key" VALUE="cressie1990origins"/>
+<attribute NAME="journal" VALUE="Mathematical Geology"/>
+<attribute NAME="year" VALUE="1990"/>
+<attribute NAME="title" VALUE="The Origins of Kriging"/>
+<attribute NAME="authors" VALUE="Cressie, Noel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DD075EE2D31AFFB47BBDE79248B2927BD387F4DE22BBE0BBA2EB3C77D5364">
+    <pdf_title>The Origins of Kriging 1</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A tutorial guide to geostatistics: Computing and modelling variograms and kriging" ID="ID_1294925284" CREATED="1582289199081" MODIFIED="1582294966468" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/431%20Computing%20and%20modelling%20variograms%20and%20kriging.pdf">
+<attribute NAME="key" VALUE="oliver2014tutorial"/>
+<attribute NAME="journal" VALUE="Catena"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="A Tutorial Guide to Geostatistics: Computing and Modelling Variograms and Kriging"/>
+<attribute NAME="authors" VALUE="Oliver, M A and Webster, R"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F03E76FF477DD38B1249EEBD1D2B898F95187D72D8DC6B36B2E2B12BF683540">
+    <pdf_title>Catena</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
@@ -935,7 +957,7 @@
 <node TEXT="A Review on Safety Failures, Security Attacks for AVs" ID="ID_1006939370" CREATED="1553046121772" MODIFIED="1553046140006" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/300%20Review%20safety%20faileres%20security%20attacks%20AVs.pdf" MOVED="1556117415964">
 <attribute NAME="key" VALUE="cui2018review"/>
 <attribute NAME="journal" VALUE="Ad Hoc Networks"/>
-<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="A Review on Safety Failures, Security Attacks, and Available Countermeasures for Autonomous Vehicles"/>
 <attribute NAME="authors" VALUE="Cui, Jin and Liew, Lin Shen and Sabaliauskaite, Giedre and Zhou, Fengjun"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5C4DB851193FA1DC4E805F6E4A682AD6B6313038FD21477853EFBFCFA5C055CD">
@@ -4150,13 +4172,33 @@
 </node>
 </node>
 <node TEXT="Variable bandwidth" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_133275167" CREATED="1582273508220" MODIFIED="1582273515250">
-<node TEXT="On kernel Density Esitmation without Bumps in the Tails" ID="ID_475308069" CREATED="1582273516576" MODIFIED="1582274598836" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/427%20On%20kernel%20Density%20Esitmation%20without%20Bumps%20in%20the%20Tails.pdf">
+<node TEXT="On kernel Density Esitmation without Bumps in the Tails -&gt; Niet nuttig!" ID="ID_475308069" CREATED="1582273516576" MODIFIED="1582274786068" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/427%20On%20kernel%20Density%20Esitmation%20without%20Bumps%20in%20the%20Tails.pdf">
 <attribute NAME="key" VALUE="davison2007kernel"/>
 <attribute NAME="year" VALUE="2007"/>
 <attribute NAME="title" VALUE="On Kernel Density Estimation without Bumps in the Tails"/>
 <attribute NAME="authors" VALUE="Davison, Anthony C and Hall, Peter"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="7331E9C853D6F3F16CB52A958B5C4C2AF22F284BF238C1D18827D5809EF6F1">
     <pdf_title>O N K E R N E L D E N S I T Y E S T I M A T I O N W I T H O U T B U M P S I N T H E T A I L S A n t h o n y C D a v i s o n P e t e r H a l l A B S T R A C T A n e m p i r i c a l a p p r o a c h t o b a n d w i d t h c h o i c e i s p r o p o s e d f o r n o n p a r a m e t r i c e s t i m a t i o n o f t h e t a i l s o f a p r o b a b i l i t y d e n s i t y I t i s a n e q u a l i n f o r m a t i o n m e t h o d i n t h a t i t u s e s a p p r o x i m a t e l y e q u a l a m o u n t s o f s a m p l e i n f o r m a t i o n t o e s t i m a t e t h e d e n s i t y a t a l l p o i n t s I n o n e r e s p e c t i t i s r e l a t e d t o n e a r e s t n e i g h b o u r m e t h o d s a l t h o u g h i t p r o d u c e s s u b s t a n t i a l l y s m o o t h e r e s t i m a t e s w i t h o u t t h e s p i k e s a s s o c i a t e d w i t h n e a r e s t n e i g h b o u r a n a l y s i s I n t h e t a i l s i t e n j o y s l o w r e l a t i v e e r r o r a s w e l l a s l o w a b s o l u t e e r r o r a n d a s a r e s u l t t h e t a i l e s t i m a t e s d o n o t e x h i b i t t h e f a m i l i a r b u m p y a p p e a r a n c e w h i c h i m p e d e s b o t h m o d a l a n a l y s i s a n d q u a l i t a t i v e i n t e r p r e t a t i o n o f c u r v e e s t i m a t e s I n d e e d o n e o f t h e a p p l i c a t i o n s o f o u r t e c h n i q u e i s t o b u m p h u n t i n g m e t h o d s w h e r e i t a l l o w s s t a n d a r d a p p r o a c h e s t o b e i m p r o v e d K E Y W O R D S A b r a m s o n s m e t h o d b a n d w i d t h c h o i c e b o o t s t r a p b u m p h u n t i n g e q u a l i n f o r m a t i o n m e t h o d i n v e r s e s q u a r e r o o t r u l e k e r n e l m e t h o d m o d e n e a r e s t n e i g h b o u r e s t i m a t o r s m o o t h i n g S H O R T T I T L E R a b b i t r e d u c t i o n A M S S U B J E C T C L A S S I F I C A T I O N P r i m a r y G S e c o n d a r y G D e p a r t m e n t o f M a t h e m a t i c s S w i s s F e d e r a l I n s t i t u t e o f T e c h n o l o g y D M A E c u b l e n s L a u s a n n e S w i t z e r l a n d C e n t r e f o r M a t h e m a t i c s a n d i t s A p p l i c a t i o n s A u s t r a l i a n N a t i o n a l U n i v e r s i t y C a n b e r r a A C T A u s t r a l i a</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="On Locally Adaptive Density Estimation" ID="ID_1824592780" CREATED="1582274607694" MODIFIED="1582274687168" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/428%20On%20Locally%20Adaptive%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="sain1996locally"/>
+<attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
+<attribute NAME="year" VALUE="1996"/>
+<attribute NAME="title" VALUE="On Locally Adaptive Density Estimation"/>
+<attribute NAME="authors" VALUE="Sain, Stephan R and Scott, David W"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AA33EB2429FED8CA0A6457A876F46A626722BC8B624BE5309C6273A4588B99">
+    <pdf_title>On Locally Adaptive Density Estimation</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Multivariate locally adaptive density estimation" ID="ID_977504035" CREATED="1582274765100" MODIFIED="1582274851161" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/429%20Multivariate%20locally%20adaptive%20density%20estimation.pdf">
+<attribute NAME="key" VALUE="sain2002multivariate"/>
+<attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
+<attribute NAME="year" VALUE="2002"/>
+<attribute NAME="title" VALUE="Multivariate Locally Adaptive Density Estimation"/>
+<attribute NAME="authors" VALUE="Sain, Stephan R"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B436DD7F2FE9A7F7F4082B0F2F13C53DCE9AACFC8D524F594DC38491F5DA4C">
+    <pdf_title>M u l t i v a r i a t e L o c a l l y A d a p t i v e D e n s i t y E s t i m a t i o n S t e p h a n R S a i n F e b r u a r y S U M M A R Y M u l t i v a r i a t e v e r s i o n s o f v a r i a b l e b a n d w i d t h k e r n e l d e n s i t y e s t i m a t o r s c a n b e u s e d t o c o m b a t t h e e e c t s o f t h e c u r s e o f d i m e n s i o n a l i t y T h e y a r e a l s o m o r e e x i b l e t h a n t h e x e d b a n d w i d t h e s t i m a t o r t o m o d e l c o m p l e x m u l t i m o d a l d e n s i t i e s I n t h i s w o r k t w o v a r i a b l e b a n d w i d t h e s t i m a t o r s a r e d i s c u s s e d t h e b a l l o o n e s t i m a t o r w h i c h v a r i e s t h e s m o o t h i n g m a t r i x w i t h e a c h e s t i m a t i o n p o i n t a n d t h e s a m p l e p o i n t e s t i m a t o r w h i c h u s e s a d i e r e n t s m o o t h i n g m a t r i x f o r e a c h d a t a p o i n t B i n n i n g i s u s e d t o c o m p u t e t h e m e a n i n t e g r a t e d s q u a r e d e r r o r M I S E f o r t h e s a m p l e p o i n t e s t i m a t o r T h i s a l l o w s a d i r e c t c o m p a r i s o n b e t w e e n t h e x e d s a m p l e p o i n t a n d t h e b a l l o o n e s t i m a t o r B o t h a d a p t i v e e s t i m a t o r s s h o w c o n s i d e r a b l e i m p r o v e m e n t i n t e r m s o f M I S E o v e r t h e x e d b a n d w i d t h e s t i m a t o r a n d t h e s a m p l e p o i n t e s t i m a t o r b e a t s t h e b a l l o o n e s t i m a t o r i n t w o d i m e n s i o n s w i t h m o d e r a t e s a m p l e s i z e s P a r a m e t e r i z a t i o n o f t h e s m o o t h i n g m a t r i c i e s i s a l s o d i s c u s s e d a n d i t i s s h o w n t h a t w h i l e a m o r e r e s t r i c t i v e s m o o t h i n g m a t r i x c a n l e a d t o i m p r o v e d e s t i m a t e s i n p r a c t i c e a m o r e g e n e r a l s m o o t h i n g m a t r i x c a n l e a d t o s e r i o u s p r o b l e m s K E Y W O R D S B i n n i n g C r o s s V a l i d a t i o n M e a n I n t e g r a t e d S q u a r e d E r r o r S m o o t h i n g M a t r i x V a r i a b l e B a n d w i d t h K e r n e l 1 D e p a r t m e n t o f S t a t i s t i c a l S c i e n c e S o u t h e r n M e t h o d i s t U n i v e r s i t y D a l l a s T X U S A</pdf_title>
 </pdf_annotation>
 </node>
 </node>
