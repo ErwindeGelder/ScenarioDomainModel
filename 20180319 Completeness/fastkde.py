@@ -28,9 +28,11 @@ Modifications
 2019 08 30 Change type hinting: np.array should be np.ndarray.
 2020 02 14 Add function for computing the cumulative distribution function.
 2020 02 17 Use special classes instead of dictionaries.
+2020 02 21 Add the possibility to have a variable bandwidth.
 """
 
 import time
+from typing import Callable, Union
 import numpy as np
 import scipy.spatial.distance as dist
 import scipy.special
@@ -50,6 +52,7 @@ class KDEConstants(Options):
         muk(float): integral [ kernel(x)^2 ]. Since Gaussian kernel is used: 1/(2pi)^(d/2).
         invgr(float): Inverse of Golden Ratio (used for Golden Section Search).
         invgr2(float): Inverse of squared Golden Ratio (used for Golden Section Search).
+        variable_bandwidth(bool): Whether a variable bandwidth is used.
     """
     ndata: int = 0
     const_score: float = 0
@@ -57,6 +60,7 @@ class KDEConstants(Options):
     muk: float = 0
     invgr: float = (np.sqrt(5) - 1) / 2
     invgr2: float = (3 - np.sqrt(5)) / 2
+    variable_bandwidth: bool = False
 
 
 class KDEData(Options):
@@ -280,7 +284,7 @@ class KDE:
                  self.constants.const_score)
         return score
 
-    def set_bandwidth(self, bandwidth: float) -> None:
+    def set_bandwidth(self, bandwidth: Union[float, np.ndarray]) -> None:
         """ Set the bandwidth of the KDE
 
         Nothing is done other than setting the bandwidth attribute.
@@ -288,6 +292,12 @@ class KDE:
         :param bandwidth: float
         """
         self.bandwidth = bandwidth
+        if isinstance(self.bandwidth, float):
+            self.constants.variable_bandwidth = False
+        elif isinstance(self.bandwidth, np.ndarray):
+            self.constants.variable_bandwidth = True
+        else:
+            raise TypeError("Bandwidth must be of type <float> or <np.ndarray>.")
 
     def set_score_samples(self, xdata: np.ndarray, compute_difference: bool = False) -> None:
         """ Set the data that is to be used to compute the score samples
@@ -371,6 +381,7 @@ class KDE:
 
     def _logscore_samples(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Return the scores, i.e., the value of the pdf, for all the datapoints in x.
+
         It is assumed that x is in the correct format, i.e., 2D array.
         NOTE: this function returns the LOG of the scores!!!
 
@@ -394,10 +405,18 @@ class KDE:
         # We first compute the sum. Then the log of f(x,n) is computed:
         # log(f(x,n)) = -d/2*log(2pi) - log(n) - d*log(h) + log(sum)
         sum_kernel = np.zeros(eucl_dist.shape[1])
-        for dimension in eucl_dist:
-            sum_kernel += np.exp(-dimension / (2 * self.bandwidth ** 2))
-        const = (-self.constants.dim / 2 * np.log(2 * np.pi) - np.log(self.constants.ndata) -
-                 self.constants.dim * np.log(self.bandwidth))
+        if not self.constants.variable_bandwidth:
+            for dimension in eucl_dist:
+                sum_kernel += np.exp(-dimension / (2 * self.bandwidth**2))
+            const = (-self.constants.dim/2*np.log(2*np.pi) - np.log(self.constants.ndata) -
+                     self.constants.dim * np.log(self.bandwidth))
+        else:
+            for dimension, sample_bandwidth in zip(eucl_dist,
+                                                   self.bandwidth[:self.constants.ndata]):
+                sum_kernel += (np.exp(-dimension / (2 * sample_bandwidth**2)) /
+                               sample_bandwidth**self.constants.dim)
+            const = -self.constants.dim/2*np.log(2*np.pi) - np.log(self.constants.ndata)
+
         return const + np.log(sum_kernel)
 
     def cdf(self, xdata: np.ndarray = None) -> np.ndarray:
@@ -417,14 +436,9 @@ class KDE:
         xdata = xdata.copy()
         if xdata is None:
             xdata = self.data_helpers.data_score_samples
-        if len(xdata.shape) == 1:
-            xdata = xdata[:, np.newaxis]
-        reshape, newshape = False, []
-        if len(xdata.shape) > 2:
-            reshape = True
-            newshape = xdata.shape[:-1]
-            xdata = xdata.reshape((np.prod(newshape), xdata.shape[-1]))
+        return process_reshaped_data(xdata, self._cdf)
 
+    def _cdf(self, xdata: np.ndarray) -> np.ndarray:
         cdf = np.ones((self.constants.ndata, len(xdata)))
         data = self.data[:self.constants.ndata] / (np.sqrt(2) * self.bandwidth)
         xdata /= (np.sqrt(2) * self.bandwidth)
@@ -432,9 +446,6 @@ class KDE:
             difference = np.subtract(*np.meshgrid(xdata[:, i], data[:, i]))
             cdf *= (scipy.special.erf(difference) + 1) / 2
         cdf = np.mean(cdf, axis=0)
-
-        if reshape:
-            return cdf.reshape(newshape)
         return cdf
 
     def gradient_samples(self, xdata: np.ndarray = None) -> np.ndarray:
@@ -608,6 +619,25 @@ class KDE:
 
         return np.atleast_2d(np.random.normal(self.data[i], self.bandwidth))
 
+
+def process_reshaped_data(xdata: np.ndarray, func: Callable) -> np.ndarray:
+    """ Process some data that might be reshaped first.
+
+    :param xdata: The data that serves as the input.
+    :param func: The function that is used to process the input.
+    :return: The output in the correct shape.
+    """
+    if len(xdata.shape) == 1:
+        xdata = xdata[:, np.newaxis]
+    reshape, newshape = False, []
+    if len(xdata.shape) > 2:
+        reshape = True
+        newshape = xdata.shape[:-1]
+        xdata = xdata.reshape((np.prod(newshape), xdata.shape[-1]))
+    output = func(xdata)
+    if reshape:
+        return output.reshape(newshape)
+    return output
 
 if __name__ == '__main__':
     np.random.seed(0)
