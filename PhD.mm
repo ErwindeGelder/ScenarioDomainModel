@@ -2086,11 +2086,17 @@
     <pdf_title>A METHOD FOR SCENARIO RISK QUANTIFICATION FOR AUTOMATED DRIVING SYSTEMS</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2019 Ontology of scenarios for the assessment of automated vehicles" ID="ID_176436300" CREATED="1518065217613" MODIFIED="1569410074343" MOVED="1569409945813">
+<node TEXT="2020 Ontology of scenarios for the assessment of automated vehicles" ID="ID_176436300" CREATED="1518065217613" MODIFIED="1582619114583" MOVED="1569409945813">
 <attribute NAME="key" VALUE="degelder2018ontology"/>
 <attribute NAME="title" VALUE="Ontology for Scenarios for the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Khabbaz Saberi, Arash and Elrofai, Hala and Op den Camp, Olaf and Ploeg, Jeroen and Friedman, Ludwig and De Schutter, Bart"/>
 <attribute NAME="journal" VALUE="https://arxiv.org/abs/2001.11507"/>
+</node>
+<node TEXT="2020 Scenario categories" ID="ID_217059386" CREATED="1582619100962" MODIFIED="1582619331279" LINK="http://cetran.sg/wp-content/uploads/2020/01/REP200121_Scenario_Categories_v1.7.pdf">
+<attribute NAME="key" VALUE="degelder2019scenariocategories"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Scenario Categories for the Assessment of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Op den Camp, Olaf and de Boer, Niels"/>
 </node>
 </node>
 <node TEXT="Risk" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_398321502" CREATED="1567057870946" MODIFIED="1567057884205">
