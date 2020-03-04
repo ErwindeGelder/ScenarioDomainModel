@@ -1,25 +1,29 @@
-% This file was created by matplotlib2tikz v0.6.17.
+% This file was created by matplotlib2tikz v0.7.5.
 \begin{tikzpicture}
 
 \begin{axis}[
-xlabel={Number of samples},
-ylabel={Bandwidth},
-xmin=100, xmax=5000,
-ymin=0.12073463121632, ymax=0.514133563500785,
-xmode=log,
-ymode=log,
-width=\figurewidth,
-height=\figureheight,
-tick align=outside,
-tick pos=left,
-x grid style={white!69.01960784313725!black},
-y grid style={white!69.01960784313725!black},
 axis x line*=bottom,
 axis y line*=left,
 every x tick/.style={black},
-every y tick/.style={black}
+every y tick/.style={black},
+height=\figureheight,
+log basis x={10},
+log basis y={10},
+tick align=outside,
+tick pos=left,
+width=\figurewidth,
+x grid style={white!69.01960784313725!black},
+xlabel={Number of samples},
+xmin=100, xmax=5000,
+xmode=log,
+xtick style={color=black},
+y grid style={white!69.01960784313725!black},
+ylabel={Bandwidth},
+ymin=0.12073463121632, ymax=0.514133563500785,
+ymode=log,
+ytick style={color=black}
 ]
-\addplot [line width=0.7000000000000001pt, gray, forget plot]
+\addplot [line width=0.7000000000000001pt, gray]
 table {%
 100 0.333902544590215
 108 0.334746992843899
@@ -72,7 +76,7 @@ table {%
 4616 0.152543706717652
 5000 0.148094988830411
 };
-\addplot [line width=0.7000000000000001pt, gray, dotted, forget plot]
+\addplot [line width=0.7000000000000001pt, gray, dotted]
 table {%
 100 0.345479296425376
 108 0.331495634249555
@@ -125,7 +129,7 @@ table {%
 4616 0.128953716819263
 5000 0.130361483791334
 };
-\addplot [line width=0.7000000000000001pt, black, dashed, forget plot]
+\addplot [line width=0.7000000000000001pt, black, dashed]
 table {%
 100 0.481364381859579
 108 0.464755356694629

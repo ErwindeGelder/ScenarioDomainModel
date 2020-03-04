@@ -1,23 +1,25 @@
-% This file was created by matplotlib2tikz v0.6.17.
+% This file was created by matplotlib2tikz v0.7.5.
 \begin{tikzpicture}
 
 \begin{axis}[
-xlabel={$x$},
-ylabel={Probability density},
-xmin=-3, xmax=3,
-ymin=-0.0184681719232084, ymax=0.388011272041166,
-width=\figurewidth,
-height=\figureheight,
-tick align=outside,
-tick pos=left,
-x grid style={white!69.01960784313725!black},
-y grid style={white!69.01960784313725!black},
 axis x line*=bottom,
 axis y line*=left,
 every x tick/.style={black},
-every y tick/.style={black}
+every y tick/.style={black},
+height=\figureheight,
+tick align=outside,
+tick pos=left,
+width=\figurewidth,
+x grid style={white!69.01960784313725!black},
+xlabel={\(\displaystyle x\)},
+xmin=-3, xmax=3,
+xtick style={color=black},
+y grid style={white!69.01960784313725!black},
+ylabel={Probability density},
+ymin=-0.0184681719232084, ymax=0.388011272041166,
+ytick style={color=black}
 ]
-\addplot [line width=0.7000000000000001pt, black, forget plot]
+\addplot [line width=0.7000000000000001pt, black]
 table {%
 -3 0.0051667463394783
 -2.99 0.00537706752410664
@@ -621,7 +623,7 @@ table {%
 2.99 0.000495374477399596
 3 0.000463503099710759
 };
-\addplot [line width=0.7000000000000001pt, gray, dashed, forget plot]
+\addplot [line width=0.7000000000000001pt, gray, dashed]
 table {%
 -3 8.1664388086521e-06
 -2.99 8.86176776665391e-06
