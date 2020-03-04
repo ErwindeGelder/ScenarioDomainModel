@@ -1,5 +1,4 @@
-"""
-MISE bivariate
+""" MISE bivariate
 
 This script produces figures that are used for the completeness paper. Data from two different
 distributions are created. These distributions are independent. Usnig the data,
@@ -7,24 +6,13 @@ the probability density functions (pdfs) are estimated: two univariate pdfs and 
 pdf. The real mean integrated squared error (MISE) is computed of both these estimated and the
 measure for completeness (see paper, this is an approximation of the real MISE) is computed.
 
-Author
-------
-Erwin de Gelder
+Creation data: 2018 10 09
+Author(s): Erwin de Gelder
 
-Creation
---------
-09 Oct 2018
-
-
-To do
------
-
-
-Modifications
--------------
-01 Nov 2018 Create correct plots for the completeness paper.
-07 Nov 2018 Make PEP8 compliant and update code based on update of fastkde.py.
-
+Modifications:
+2018 11 01 Create correct plots for the completeness paper.
+2018 11 07 Make PEP8 compliant and update code based on update of fastkde.py.
+2020 03 04 Import KDE and GaussianMixture from own stats library.
 """
 
 import os
@@ -33,8 +21,7 @@ from matplotlib2tikz import save
 import h5py
 from tqdm import tqdm
 import matplotlib.pyplot as plt
-from gaussianmixture import GaussianMixture
-from fastkde import KDE
+from stats import KDE, GaussianMixture
 
 # Parameters
 NMAX = 5000
@@ -72,8 +59,8 @@ XPDFAB = np.transpose(np.array(np.meshgrid(XPDF, XPDF)), [1, 2, 0])
 FILENAME = os.path.join("hdf5", "mise_bivariate.hdf5")
 if OVERWRITE or not os.path.exists(FILENAME):
     BWA = np.zeros(len(NN))
-    BWB = np.zeros_like(BWA)
-    BWAB = np.zeros_like(BWA)
+    BWB = np.array(np.zeros_like(BWA))
+    BWAB = np.array(np.zeros_like(BWA))
 
     # We use the first set of datapoints (i.e., X[0]) for determining the bandwidth
     # This has quite some influence on the remainder of the procedure...
@@ -105,8 +92,8 @@ if OVERWRITE or not os.path.exists(FILENAME):
         BWAB[i] = KDEAB.bandwidth
 
     # Get the constants mu_k
-    MUKA = KDEA.constants['muk']
-    MUKAB = KDEAB.constants['muk']
+    MUKA = KDEA.constants.muk
+    MUKAB = KDEAB.constants.muk
 
     # Compute all the nrepeats pdfs. We need to do this many times in order to determine the real
     # MISE.
@@ -115,8 +102,8 @@ if OVERWRITE or not os.path.exists(FILENAME):
     REAL_MISE_DEP = np.zeros((len(NN), NREPEAT))
     EST_MISE_DEP = np.zeros((len(NN), NREPEAT))
     # Real MISE for when data is assumed to be independent
-    REAL_MISE_IND = np.zeros_like(REAL_MISE_DEP)
-    EST_MISE_IND = np.zeros_like(EST_MISE_DEP)
+    REAL_MISE_IND = np.array(np.zeros_like(REAL_MISE_DEP))
+    EST_MISE_IND = np.array(np.zeros_like(EST_MISE_DEP))
     print("Estimate pdfs")
     for j in tqdm(range(NREPEAT)):
         # Initialize the KDE

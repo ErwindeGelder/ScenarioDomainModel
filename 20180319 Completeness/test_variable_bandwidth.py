@@ -8,8 +8,7 @@ Modifications:
 
 import matplotlib.pyplot as plt
 import numpy as np
-from fastkde import KDE
-from gaussianmixture import GaussianMixture
+from stats import KDE, GaussianMixture
 
 
 def test_kde(nsamples: int, mixture: GaussianMixture, silverman: bool = False,
