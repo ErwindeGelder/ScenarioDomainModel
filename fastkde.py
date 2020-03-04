@@ -229,13 +229,15 @@ class KDE:
                 self.score_leave_one_out(bandwidth=np.ones(len(self.data)))
             bandwidth_normalized = -np.percentile(self.data_helpers.mindists,
                                                   self.constants.percentile, axis=0)
-            bandwidth_normalized /= np.mean(bandwidth_normalized)
+            bandwidth_normalized /= np.median(bandwidth_normalized)
             bandwidth_normalized *= 10
             scores = [self.score_leave_one_out(bandwidth=datapoints[1]*bandwidth_normalized),
                       self.score_leave_one_out(bandwidth=datapoints[2]*bandwidth_normalized)]
         at_boundary_min = False  # Check if we only search at one side as this could indicate ...
         at_boundary_max = False  # ... wrong values of min_bw and max_bw
         for _ in range(n_iter):
+            # print("Datapoints: ({:7e}, {:7e}), Score: ({:7e}, {:7e})".
+            #       format(datapoints[1], datapoints[2], scores[0], scores[1]))
             if scores[0] > scores[1]:
                 at_boundary_min = True
                 datapoints[3] = datapoints[2]
