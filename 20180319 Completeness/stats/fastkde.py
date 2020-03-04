@@ -26,7 +26,7 @@ import scipy.spatial.distance as dist
 import scipy.special
 import scipy.stats
 import matplotlib.pyplot as plt
-from options import Options
+from .options import Options
 
 
 class KDEConstants(Options):
