@@ -1,31 +1,18 @@
-"""
-Copula construction
+""" Copula construction
 
-Author
-------
-Erwin de Gelder
+Creation date: 2020 02 17
+Author(s): Erwin de Gelder
 
-Creation
---------
-17 Feb 2020
-
-
-To do
------
-
-
-Modifications
--------------
+Modifications:
 2020 02 19 Add class for copula pairs.
-
 """
 
 from copy import deepcopy
 from typing import List, Sequence, Tuple
 import numpy as np
 import scipy.special
-from fastkde import KDE, process_reshaped_data
-from options import Options
+from .fastkde import KDE, process_reshaped_data
+from .options import Options
 
 
 class CopulaOptions(Options):
