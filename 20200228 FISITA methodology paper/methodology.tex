@@ -1,0 +1,214 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside,twocolumn]{article}
+
+\usepackage{blindtext} % Package to generate dummy text throughout this template 
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage{graphicx} 
+
+\usepackage[english]{babel} % Language hyphenation and typographical rules
+
+\usepackage[a4paper,left=0.71in,top=0.98in,right=0.71in,bottom=0.98in,columnsep=15pt]{geometry} % Document margins
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
+
+\usepackage[runin]{abstract} % Allows abstract customization
+\setlength{\abstitleskip}{-\parindent}
+%\newcommand{\abstitlestyle}[1]{#1}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries\MakeUppercase} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont} % Set the abstract itself to small italic text
+\abslabeldelim{:}
+
+
+\usepackage{titlesec} % Allows customization of titles
+%\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+%\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
+\titleformat{\section}[block]{\large\bfseries}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsubsection}[block]{\normalsize}{\thesubsubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhf{}% clear default for head and foot
+\fancyhead[L]{\includegraphics[scale=0.11]{figures/FISITA.png}}
+\fancyhead[R]{\thepage}
+\fancyfoot[L]{Proceedings of the FISITA 2020 World Congress, Prague, 14 - 18 September 2020}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{firstpage}{
+	\fancyhf{}% clear default for head and foot
+	\renewcommand{\headrulewidth}{0pt}
+	\pagestyle{fancy}
+	\lhead{\textbf{2020-XXX-NNN}}
+	\rhead{\includegraphics[scale=0.15]{figures/FISITA.png}}
+	\fancyfoot[L]{Proceedings of the FISITA 2020 World Congress, Prague, 14 - 18 September 2020}
+}
+\usepackage{xpatch}
+\xapptocmd{\titlepage}{\thispagestyle{firstpage}}{}{}
+
+\usepackage{titling} % Customizing the title section
+
+%\usepackage{hyperref} % For hyperlinks in the PDF
+
+\usepackage{authblk}
+
+\usepackage{caption}
+\DeclareCaptionLabelFormat{nospace}{#1#2}
+\captionsetup[table]{labelfont=normal, textfont=normal,name=Table ,labelsep=period, justification=raggedright, singlelinecheck=off}
+\captionsetup[figure]{labelfont=normal, textfont=normal,name=Figure ,labelsep=period, justification=raggedright, singlelinecheck=off}
+
+\usepackage[fleqn]{amsmath}
+
+\usepackage{xcolor}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\providecommand{\keywords}[1]{\textbf{KEY WORDS:} #1}
+
+\pretitle{\begin{center}\huge\normalfont\MakeUppercase} % Article title formatting
+\posttitle{\end{center}\vskip 1em} % Article title closing formatting
+\title{type the title of the paper here} % Article title
+
+\author[1]{\large\bfseries Main author's Name Here}
+\author[2]{\large\bfseries Co-author's Name}
+
+\affil[1]{\normalsize\textit{Technische Hochschule Ingolstadt} \authorcr \normalsize\textit{ Esplanade 10, 85049 Ingolstadt, Germany (E-mail: name@thi.de)}}
+\affil[2]{\normalsize\textit{Technical University of Munich, Department of Mechanical Engineering} \authorcr \normalsize\textit{Boltzmannstrasse 15, 85748 Garching b. Munchen, Germany}}
+\date{} % Leave empty to omit a date
+\renewcommand{\maketitlehookd}{%
+\begin{abstract}	
+\noindent Type the abstract here. Type the abstract here. Type the abstract here. Type the abstract here.  Type the abstract here.  Type the abstract here.  Type the abstract here. Type the abstract here.  Type the abstract here. Type the abstract here.  Type the abstract here.  Type the abstract here.  Type the abstract here.  Type the abstract here.  Type the abstract here.  Type the abstract here.  Type the abstract here.  Type the abstract here. Type the abstract here.  Type the abstract here.  Type the abstract here.  Type the abstract here.  Type the abstract here. Type the abstract here. Type the abstract here. % Dummy abstract text - replace \blindtext with your abstract text
+\linebreak
+\newline
+\keywords{heat engine, spark ignition engine, combustion analysis}
+\end{abstract}
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the title
+\maketitle
+\thispagestyle{firstpage}
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+
+The manuscript elements have been formatted for you through the "styles" capability of the software.  To use the styles, select the text you wish to apply a style to, then, using the mouse, point to the style box on the toolbar.  Click once on the downward pointing arrow to the right, and select the appropriate style.  
+
+%------------------------------------------------
+
+\section{Section Title}
+
+\subsection{Subheading}
+
+The "body" text portion should be organized using styles named Body \cite{Kanamori:1988}. Figure \ref{Figure} shows a figure. Table \ref{Table} shows a table. The first paragraph of the section should not be indented.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here. Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here. Type the contents of the section here. Type the contents of the section here.   Type the contents of the section here.  Type the contents of the section here.   Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here. Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here \cite{Peebles:2001}. 
+
+\subsection{Subheading}
+
+Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here. 
+
+\subsubsection{Sub-subheading}
+
+Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here. Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here. 
+
+\begin{figure}
+\includegraphics[width=8 cm]{figures/Graph.jpg}
+\caption{\label{Figure}Example figure}
+\end{figure}
+
+\begin{table}
+\caption{\label{Table}Example table}
+
+\begin{tabular}{c|c|c}
+Condition & Index & Level \\ \hline\hline
+A & AAA & D \\ \hline
+B & BBB & E \\ \hline
+C & CCC & F \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Sub-subheading}
+
+Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.
+
+\subsection{Subheading}
+Type the contents of the section [3, 4, 5] here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  Type the contents of the section here. type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here. \\ \\
+This is an example of equation (\ref{eq:ABC}):
+\begin{equation}
+\label{eq:ABC}
+A=B+C
+\end{equation}
+
+Type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.
+%------------------------------------------------
+
+\section{Section Title}
+
+Type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here. 
+\begin{equation}
+\label{eq:delta}
+x =  \dfrac{-b\pm\sqrt{b^2-4ac}}{2a}
+\end{equation}
+
+Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here.  Type the contents of the section here. 
+
+\subsection{Subheading}
+
+Type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  
+
+\section{Section Title}
+
+Type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here. type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here. 
+
+\subsection{Subheading}
+
+Type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here. type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here. type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.
+
+\subsection{Subheading}
+
+Type the contents of the section here \cite{Kanamori:1988} \cite{Peebles:2001}.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here. type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  type the contents of the section here.  
+%------------------------------------------------
+
+\section{Conclusion}
+
+Type the contents of the conclusion here, type the contents of the conclusion here. type the contents of the conclusion here. type the contents of the conclusion here. type the contents of the conclusion here. type the contents of the conclusion here.  type the contents of the conclusion here.  type the contents of the conclusion here. type the contents of the conclusion here. type the contents of the conclusion here. type the contents of the conclusion here.
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+
+\bibitem[1]{Kanamori:1988}
+Hiroo Kanamori.
+\newblock Shaking without Quaking. Science, 1988, 279 (5359): 2063-206
+\bibitem[2]{Peebles:2001}
+Peyton Z. Peebles.
+\newblock Probability, Random Variable, and Random Signal Principles [M]. New York: McGraw Hill, 2001.
+ 
+\end{thebibliography}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Acknowledgement}
+	
+Thank you.	
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
