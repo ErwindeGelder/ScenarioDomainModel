@@ -1,7 +1,7 @@
 <map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
-<node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle" zoom="1.003">
+<node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle">
     <properties show_icon_for_attributes="true" show_note_icons="true"/>
 
 <map_styles>
@@ -51,7 +51,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="4"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="5"/>
 <node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_108958345" CREATED="1551885103957" MODIFIED="1551885128015" HGAP="77" VSHIFT="-1">
 <edge COLOR="#0000ff"/>
 <node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1430726573" CREATED="1551885142947" MODIFIED="1551885148978">
@@ -1657,10 +1657,11 @@
 </node>
 </node>
 <node TEXT="Techniques for reducing test load" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1977166650" CREATED="1518001890791" MODIFIED="1518001906064">
-<node TEXT="Using Surrogate Models and Stochastic Optimization" ID="ID_1953096285" CREATED="1518001918988" MODIFIED="1534391955046" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/139%20Testing%20of%20AV%20Using%20Surrogate%20Models%20and%20Stochastic%20Optimization.pdf">
-<attribute NAME="key" VALUE="beglerovictesting"/>
+<node TEXT="Using Surrogate Models and Stochastic Optimization" ID="ID_1953096285" CREATED="1518001918988" MODIFIED="1583238184272" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/139%20Testing%20of%20AV%20Using%20Surrogate%20Models%20and%20Stochastic%20Optimization.pdf">
+<attribute NAME="key" VALUE="beglerovic2017testing"/>
 <attribute NAME="title" VALUE="Testing of Autonomous Vehicles Using Surrogate Models and Stochastic Optimization"/>
 <attribute NAME="authors" VALUE="Beglerovic, Halil and Stolz, Michael and Horn, Martin"/>
+<attribute NAME="year" VALUE="2017"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9C4A3620126DADC88FB32F1B6B510F9489AF6C839F585B4868340908275C89">
     <pdf_title>TestingofAutonomousVehiclesUsingSurrogate ModelsandStochasticOptimization</pdf_title>
 </pdf_annotation>
@@ -1971,6 +1972,18 @@
 <attribute NAME="authors" VALUE="Pogosov, Denis"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="99EF44995D21EF42A2FF1CDADC047A8E24AB514D413B343D17CCCCFF0731C">
     <pdf_title>Prediction of Road User Behavior</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Fun" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_914218614" CREATED="1583144844136" MODIFIED="1583144855763" HGAP="76">
+<edge COLOR="#00ffff"/>
+<node TEXT="Mathematics of the Rubik&apos;s Cube" ID="ID_798583941" CREATED="1583144856728" MODIFIED="1583144914802" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/432%20Mathematics%20of%20the%20Rubik&apos;s%20Cube.pdf">
+<attribute NAME="key" VALUE="joyner2008adventures"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="Adventures in Group Theory: {R}ubik&apos;s {C}ube, {M}erlin&apos;s Machine, and Other Mathematical Toys"/>
+<attribute NAME="authors" VALUE="Joyner, David"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="51F8C9E1EC1346982AFFD8C02E43F25D224F2216CF330B95FD1B2ACF4727DD5">
+    <pdf_title>Adventures in Group Theory: Rubik&#x2019;s Cube, Merlin&#x2019;s Machine, and Other Mathematical Toys</pdf_title>
 </pdf_annotation>
 </node>
 </node>
