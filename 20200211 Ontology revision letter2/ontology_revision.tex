@@ -205,7 +205,14 @@ We have now added a reference to \autocite{alur1994theory}. We have updated the 
 
 \toauthornew I do not think that defining terms by examples is a good idea. Please provide a proper definition.
 
-\fromauthornew The definition of the term \emph{event} is given in Definition~2: ``An event marks the time instant at which the system reaches a specified threshold or at which a mode transition occurs, such that before and after an event, the state vector of the system corresponds to two different modes.'' The examples clarify the definitions by illustrating it through two short examples.
+\fromauthornew We have updated the text preceding the definition of an event to further clarify the changes: ``\emph{An event marks a mode transition or the moment a system reaches a threshold:} A mode transition may be \cstart induced \cend by either an abrupt change of an input signal, a change of a parameter, a change in the model, \cstart or an external cause. \cend It is also possible that the event marks the moment that a system reaches a threshold.'' We have removed the examples in this part of the manuscript.
+
+We have updated the definition of the term \emph{event}: ``An event marks \cstart the moment a mode transition occurs or the moment a system reaches a specified threshold, where the former can be induced by both internal and external causes. \cend Before and after an event, the state vector of the system corresponds to two different modes.''
+
+We have changed the text after the definition to further clarify the meaning of the definition of an event: ``Definition~2 indicates that the moment of an event can be defined in two different ways: \cstart(1) by a mode transition or (2) by the system reaching a threshold. The first type of event, i.e., a mode transition can occur at the moment of a sudden driver input. Furthermore, an event might also be induced by an external cause, such as an environmental change. The second type of event, i.e., related to the system reaching a threshold, \cend is especially useful when describing test cases. For example, consider the ego vehicle approaching a pedestrian that is about to cross the road \autocite{seiniger2015test}. 
+Here, the event marks the moment that the distance between the vehicle and pedestrian is less than $\distancecondition$ meters. 
+At the moment of this event, the pedestrian starts to cross the road such that the vehicle impacts the pedestrian if it does not change its speed or direction \autocite{seiniger2015test}.
+By using a variable threshold $\distancecondition$, the value is flexible and can be set differently to define multiple scenarios.''
 
 
 
