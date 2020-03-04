@@ -27,6 +27,7 @@ from enum import Enum, unique
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from change_point_detector import ChangePointDetector, constant, linear, square
 from data_handler import DataHandler
 from options import Options
 
@@ -135,6 +136,7 @@ class ActivityDetectorParameters(Options):
 
     # Parameters that are changed while processing.
     follow_lane_switch = -1
+    shift = 0
 
 
 class ActivityDetector(DataHandler):
@@ -198,30 +200,31 @@ class ActivityDetector(DataHandler):
                  the name of the following activity.
         """
         # Compute speed increase in next second.
-        shift = np.round(self.parms.time_horizon * self.frequency).astype(np.int)
-        shifted = self.data[self.parms.host_lon_vel].shift(-shift)
-        filtered = shifted.rolling(shift+1).min()
+        self.parms.shift = np.round(self.parms.time_horizon * self.frequency).astype(np.int)
+        shifted = self.data[self.parms.host_lon_vel].shift(-self.parms.shift)
+        filtered = shifted.rolling(self.parms.shift+1).min()
         self.set('speed_inc', shifted - filtered)
         self.data['speed_inc'] /= self.parms.time_horizon  # Convert to acceleration!
-        self.set('speed_inc_past', self.get('speed_inc').shift(shift))
+        self.set('speed_inc_past', self.get('speed_inc').shift(self.parms.shift))
         self.set('speed_inc_start', self.get('speed_inc').copy())
         self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_inc_start'] = 0
 
         # Compute speed decrease in next second.
-        shifted = self.data[self.parms.host_lon_vel].shift(-shift)
-        filtered = shifted.rolling(shift+1).max()
+        shifted = self.data[self.parms.host_lon_vel].shift(-self.parms.shift)
+        filtered = shifted.rolling(self.parms.shift+1).max()
         self.set('speed_dec', shifted - filtered)
         self.data['speed_dec'] /= self.parms.time_horizon  # Convert to acceleration!
-        self.set('speed_dec_past', self.get('speed_dec').shift(shift))
+        self.set('speed_dec_past', self.get('speed_dec').shift(self.parms.shift))
         self.set('speed_dec_start', self.get('speed_dec').copy())
         self.data.loc[self.data[self.parms.host_lon_vel] != filtered, 'speed_dec_start'] = 0
 
         event = LongitudinalActivity.CRUISING
         all_events = [(self.data.index[0], event)]
         end_event_time = np.inf
+        speed = self.get(self.parms.host_lon_vel)
         speed_inc = self.get("speed_inc")
         speed_dec = -self.get("speed_dec")
-        for row in self.data.itertuples():
+        for irow, row in enumerate(self.data.itertuples()):
             # Potential acceleration signal when in minimum wrt next second, accelerating and not
             # standing still.
             if event != LongitudinalActivity.ACCELERATING and \
@@ -231,7 +234,8 @@ class ActivityDetector(DataHandler):
                 i, is_event = self._end_lon_activity(row.Index, speed_inc)
                 if is_event:
                     event = LongitudinalActivity.ACCELERATING
-                    all_events.append((row.Index, event))
+                    all_events.append((max(all_events[-1][0], self.find_change_point(irow, speed)),
+                                       event))
                     end_event_time = i
             elif event != LongitudinalActivity.DECELERATING and \
                     row.speed_dec_past <= -self.parms.a_cruise and \
@@ -239,7 +243,8 @@ class ActivityDetector(DataHandler):
                 i, is_event = self._end_lon_activity(row.Index, speed_dec)
                 if is_event:
                     event = LongitudinalActivity.DECELERATING
-                    all_events.append((row.Index, event))
+                    all_events.append((max(all_events[-1][0], self.find_change_point(irow, speed)),
+                                       event))
                     end_event_time = i
             elif event != LongitudinalActivity.CRUISING and row.Index >= end_event_time:
                 event = LongitudinalActivity.CRUISING
@@ -272,6 +277,22 @@ class ActivityDetector(DataHandler):
                 self.parms.delta_v:
             return 0, False
         return end_i, True
+
+    def find_change_point(self, irow: int, data: pd.Series):
+        """
+
+        :return:
+        """
+
+        cpd = ChangePointDetector([constant, linear, square],
+                                  self.data.index[irow - self.parms.shift:irow],
+                                  data.iloc[irow - self.parms.shift:irow])
+        candidate = cpd.find_candidate(cpd.xdata, cpd.ydata)
+        # tmpdata = data.iloc[irow - self.parms.shift:irow]
+        # plt.plot(tmpdata.iloc[:candidate.index], 'b')
+        # plt.plot(tmpdata.iloc[candidate.index:], 'r')
+        # plt.show()
+        return candidate.time
 
     def _remove_short_cruising(self, all_events: List[Tuple[float, LongitudinalActivity]]) -> \
             List[Tuple[float, LongitudinalActivity]]:

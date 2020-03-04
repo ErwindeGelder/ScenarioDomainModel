@@ -107,7 +107,8 @@ if __name__ == "__main__":
     # Plot for longitudinal activities
     TIME, SPEED = speed_profile()
     DATA = pd.DataFrame(data=dict(Host_vx=SPEED), index=TIME)
-    ACTIVITY_DETECTOR = ActivityDetector(DATA, ActivityDetectorParameters(min_cruising_time=1))
+    ACTIVITY_DETECTOR = ActivityDetector(DATA, ActivityDetectorParameters(min_cruising_time=1,
+                                                                          a_cruise=0.5))
     EVENTS = ACTIVITY_DETECTOR.lon_activities_host()
     plt.subplots(1, 1)
     plt.plot(DATA["Host_vx"], lw=LINEWIDTH, color=COLORS[0])
@@ -124,6 +125,8 @@ if __name__ == "__main__":
     plt.ylabel("Speed [m/s]")
     plt.xlim(0, TOTAL_TIME)
     plt.ylim(YLIM)
+    plt.show()
+    exit()
     save2tikz("lon_activities")
 
     # Plot for lateral activities.
