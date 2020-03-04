@@ -77,7 +77,7 @@ Before providing the definition of the notion of scenario, characteristics of th
 	
 	% Goals (instead of activities)
 	\item\textit{A scenario describes the goals or activities of the ego vehicle:}
-	For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} mention the activities of the ego vehicle rather than its goals. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \autocite{geyer2014}) could be specified rather than its activities \autocite{ulbrich2015}. \cstart Note that if the activities of the ego vehicle are described rather than its goals, an observer might not be able to determine whether the ego vehicle has successfully responded to the scenario.\cend
+	For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} mention the activities of the ego vehicle rather than its goals. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \autocite{geyer2014}) could be specified rather than its activities \autocite{ulbrich2015}. Note that if the activities of the ego vehicle are described rather than its goals, an observer might not be able to determine whether the ego vehicle has successfully responded to the scenario.
 \end{enumerate}
 
 
@@ -94,7 +94,7 @@ Hence, we define a scenario as follows:
 
 \textcite{geyer2014} and \textcite{ulbrich2015} use the term \emph{scene} to define a scenario, while \cref{def:scenario} describes the scenes implicitly. Thus, the scenes do not have to be described explicitly.
 
-%\Cref{fig:scenario} shows a schematic overview of the various components of a scenario. As shown in the second row of \cref{fig:scenario}, a scenario contains an ego vehicle, a dynamic environment, and a static environment. As an example, possible activities of the vehicle in front, which is part of the dynamic environment, are detailed by considering the \cstart state variables \cend `heading' and `speed'. Note that a definition of the term activity is given in \cref{sec:activity}. The two rows of the activities show more generic descriptions and more detailed descriptions, respectively, of some possible activities.
+%\Cref{fig:scenario} shows a schematic overview of the various components of a scenario. As shown in the second row of \cref{fig:scenario}, a scenario contains an ego vehicle, a dynamic environment, and a static environment. As an example, possible activities of the vehicle in front, which is part of the dynamic environment, are detailed by considering the state variables `heading' and `speed'. Note that a definition of the term activity is given in \cref{sec:activity}. The two rows of the activities show more generic descriptions and more detailed descriptions, respectively, of some possible activities.
 
 %\begin{figure}
 %	\centering
@@ -126,7 +126,7 @@ The term event is used in many different fields, e.g.:
 	%\item \textcite{kim1993supervenience}, a philosopher, writes: ``The term event ordinarily implies change''. \textcite{kim1993supervenience} states that an event is composed of three elements: objects, a property, and a time instant or a temporal interval. 
 	\item In probability theory, an event is an outcome or a set of outcomes of an experiment \autocite{pfeiffer2013concepts}. For example, a thrown coin landing on its tail is an event.
 	%\item ``In relativity, an event is any occurrence with which a definite time and a definite location are associated; it is an idealization in the sense that any actual event is bound to have a finite extent both in time and in space'' \autocite{sartori1996understanding}.
-	\item In the field of hybrid systems theory, ``the continuous and discrete dynamics interact at `event' or `trigger' times when the continuous state \cstart [vector] \cend hits certain prescribed sets in the continuous state space'' \autocite{branicky1998hybridcontrol}. ``A hybrid system can be in one of several modes, [...], and the system switches from one mode to another due to the occurrence of events'' \autocite{deschutter2000optimal}.
+	\item In the field of hybrid systems theory, ``the continuous and discrete dynamics interact at `event' or `trigger' times when the continuous state [vector] hits certain prescribed sets in the continuous state space'' \autocite{branicky1998hybridcontrol}. ``A hybrid system can be in one of several modes, [...], and the system switches from one mode to another due to the occurrence of events'' \autocite{deschutter2000optimal}.
 	\item In event-based control, a control action is computed when an event is triggered, as opposed to the more traditional approach where a control action is periodically computed \autocite{heemels2012eventcontrol}. In event-based control, the event is triggered at the moment at which the system (is about to) reach a certain threshold.
 \end{itemize}
 
@@ -135,11 +135,10 @@ Before providing the definition of an event, the following is concluded about an
 % It is a time instant
 \begin{enumerate}
 	\item\textit{An event corresponds to a time instant:}
-	\cstart We considered the definitions of event in hybrid systems and control and event-based control. Therefore, an event happens at some time instant rather than taking a time span. Note, however, that the time does not need to be fully defined in advance.\cend
+	\cstart For the definition of event, we consider a hybrid-systems setting with a linear time model \autocite{alur1994theory}. Therefore, an event happens at some time instant.\cend
 	
 	% Event should mark transition of a state from one set to another - mention relation with hybrid control
-	\item\textit{An event marks a mode transition or the moment a system reaches a threshold:}
-	A mode transition may be caused by either an abrupt change of an input signal, a change of a parameter, or a change in the model. For example, pushing the brake pedal may cause a mode transition and therefore, this may be regarded as an event. It is also possible that the event marks the moment that a system reaches a threshold. For example, a vehicle entering a tunnel can be an event.
+	\item\textit{An event marks a mode transition or the moment a system reaches a threshold:} A mode transition may be \cstart induced \cend by either an abrupt change of an input signal, a change of a parameter, a change in the model, \cstart or an external cause. \cend It is also possible that the event marks the moment that a system reaches a threshold.
 	
 	%\item\textit{An event marks (a cause of) a mode transition}
 	%Events mark the transition of mode, which is either a change of input, parameter or state. This is analogous to the way event is described in hybrid control \autocite{boel1999hybridcontrol}.
@@ -148,19 +147,15 @@ Before providing the definition of an event, the following is concluded about an
 % Give definition
 Hence, we define an event as follows:
 \begin{definition}[Event] \label{def:event}
-	An event marks the time instant at which the system reaches a specified threshold or at which a mode transition occurs, such that before and after an event, the state \cstart vector \cend of the system corresponds to two different modes.
+	An event marks \cstart the moment a mode transition occurs or the moment a system reaches a specified threshold, where the former can be induced by both internal and external causes. \cend Before and after an event, the state vector of the system corresponds to two different modes.
 \end{definition}
 
 % Mention that there are basically two definitions. First definition more suitable for triggers for test cases. Second definition more suitable for observations and inputs.
-\cstart
-Definition~2 indicates that the moment of an event can be defined in two different ways: (1) by the system reaching a threshold or (2) by a mode transition. \cend 
-Both these types of event are related to hybrid systems theory \autocite{deschutter2003hybrid, heemels2012eventcontrol}.
-The first type of event, i.e., related to the system reaching a threshold, is especially useful when describing test cases. 
-For example, consider the ego vehicle approaching a pedestrian that is about to cross the road \autocite{seiniger2015test}. 
+Definition~2 indicates that the moment of an event can be defined in two different ways: \cstart(1) by a mode transition or (2) by the system reaching a threshold. 
+The first type of event, i.e., a mode transition can occur at the moment of a sudden driver input. Furthermore, an event might also be induced by an external cause, such as an environmental change. The second type of event, i.e., related to the system reaching a threshold, \cend is especially useful when describing test cases. For example, consider the ego vehicle approaching a pedestrian that is about to cross the road \autocite{seiniger2015test}. 
 Here, the event marks the moment that the distance between the vehicle and pedestrian is less than $\distancecondition$ meters. 
 At the moment of this event, the pedestrian starts to cross the road such that the vehicle impacts the pedestrian if it does not change its speed or direction \autocite{seiniger2015test}.
-\cstart By using a variable threshold $\distancecondition$, the value is flexible and can be set differently to define multiple scenarios. 
-The second type of event, i.e., a mode transition, can, e.g., occur at the moment of a driver input.\cend 
+By using a variable threshold $\distancecondition$, the value is flexible and can be set differently to define multiple scenarios.
 
 For the practical implementation of events, a set of conditions may be specified. In that case, the event occurs at the moment that the conditions are met. A condition could be on, e.g., the distance between the vehicle and pedestrian. In \autocite{openscenario}, an extensive list of possible conditions that can be used to define an event is given.
 
@@ -185,7 +180,7 @@ Both the terms activity \autocite{geyer2014, elrofai2018scenario, childress2015u
 \begin{itemize}
 	\item According to \textcite{ulbrich2015}, actions may be specified for characterizing the temporal development in a scenario.
 	\item \textcite{elrofai2018scenario} consider an activity as a building block of the dynamic part of the scenario: ``An activity is a time evolution of state variables such as speed and heading to describe for instance a lane change, or a braking-to-standstill.''
-	\item In a glossary for a scenario catalog development \autocite{catapult2018musicc}, an activity is defined as ``the state \cstart [vector] \cend of an object over an interval of time. An activity starts with an event and ends with another event.''
+	\item In a glossary for a scenario catalog development \autocite{catapult2018musicc}, an activity is defined as ``the state [vector] of an object over an interval of time. An activity starts with an event and ends with another event.''
 %	\item According to the Cambridge Dictionary, an activity is defined as ``the doing of something, or something that you are doing, have done, or could do'' \autocite{cambridge2019activity}.
 %	\item \textcite{caspersen1985physical} define physical activity ``as any bodily movement produced by skeletal muscles that result in energy expenditure''.
 %	\item \textcite{bobick1997movement} simply states that an activity is a ``sequence of movements''. 
@@ -201,20 +196,20 @@ Before providing the definition of an activity, the following is concluded about
 	
 	% Describing the evolution of a state
 	
-	\item\textit{An activity quantitatively describes the time evolution of a state \protect\cstart variable\protect\cend:}
+	\item\textit{An activity quantitatively describes the time evolution of a state variable:}
 	Because activities are building blocks of a scenario and a scenario corresponds to a quantitative description, the activities themselves need to be quantitative as well. 
-	Therefore, an activity describes the time evolution of \cstart one or more state variables \cend, i.e., the trajectory of \cstart one or more state variables \cend over an inter-event time interval that corresponds to the activity, where the term state \cstart variable \cend is defined in \cref{sec:state variable}.
+	Therefore, an activity describes the time evolution of one or more state variables, i.e., the trajectory of one or more state variables over an inter-event time interval that corresponds to the activity, where the term state variable is defined in \cref{sec:state variable}.
 	
 	% Performed by something (an actor?)
 	\item\textit{An activity is performed by an actor:}
-	An activity quantitatively describes the time evolution of \cstart one or more state variables \cend and a state \cstart variable \cend corresponds to an actor, e.g., the acceleration of a vehicle, and, therefore, an activity is performed by an actor. Note that the actor might be the ego vehicle. 
+	An activity quantitatively describes the time evolution of one or more state variables and a state variable corresponds to an actor, e.g., the acceleration of a vehicle, and, therefore, an activity is performed by an actor. Note that the actor might be the ego vehicle. 
 	%However, it might also be the case that a state does not correspond to an actor. For example, a state describing the weather conditions does not correspond to an actor, so if an activity describes changing weather conditions, the activity is not performed by an actor.
 \end{enumerate}
 
 Hence, we define an activity as follows:
 \begin{definition}[Activity]
 	\label{def:activity}
-	An activity quantitatively describes the time evolution of \cstart one or more state variables \cend of an actor between two events.
+	An activity quantitatively describes the time evolution of one or more state variables of an actor between two events.
 \end{definition}
 
 
@@ -260,26 +255,28 @@ Introducing the concept of scenario categories brings the following benefits:
 \end{itemize}
 
 % Explain scenario category comprise scenarios
-We describe the formal relation between a scenario and a scenario category with the verb ``to \cstart comprise\cend'', denoted by \cstart$\comprises$\cend. If a specific scenario category $\scenariocategory$ is an abstraction of a specific scenario $\scenario$, then we say that the specific \cstart scenario category $\scenariocategory$ comprises that specific $\scenario$, or simply $\scenariocategory \comprises \scenario$\cend.  This is illustrated in \cref{fig:venn diagram scenario category}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenariocategorya$, $\scenariocategoryb$, and $\scenariocategoryc$ represent scenario categories. \cstart A given scenario category can comprise multiple scenarios, e.g., $\scenariocategoryb \comprises \scenarioa$ and $\scenariocategoryb \comprises \scenariob$ in \cref{fig:venn diagram scenario category}. 
+We describe the formal relation between a scenario and a scenario category with the verb ``to comprise'', denoted by $\comprises$. If a specific scenario category $\scenariocategory$ is an abstraction of a specific scenario $\scenario$, then we say that the specific scenario category $\scenariocategory$ comprises that specific $\scenario$, or simply $\scenariocategory \comprises \scenario$. 
+%This is illustrated in \cref{fig:venn diagram scenario category}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenariocategorya$, $\scenariocategoryb$, and $\scenariocategoryc$ represent scenario categories. 
+A given scenario category can comprise multiple scenarios. %, e.g., $\scenariocategoryb \comprises \scenarioa$ and $\scenariocategoryb \comprises \scenariob$ in \cref{fig:venn diagram scenario category}. 
 % Explain multiple scenario categories can comprise a scenario
-Furthermore, multiple scenario categories can comprise a specific scenario. For example, in \cref{fig:venn diagram scenario category}, we have $\scenariocategorya \comprises \scenariob$, $\scenariocategoryb \comprises \scenariob$, and $\scenariocategoryc \comprises \scenariob$. \cend
+Furthermore, multiple scenario categories can comprise a specific scenario.
+%For example, in \cref{fig:venn diagram scenario category}, we have $\scenariocategorya \comprises \scenariob$, $\scenariocategoryb \comprises \scenariob$, and $\scenariocategoryc \comprises \scenariob$. 
 
-\setlength{\venncircle}{5em}
-\begin{figure}[t]
-	\centering
-	\input{figures/venn_diagrams.tikz}
-	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. %$\scenariocategoryb$ comprises $\scenarioa$ and $\scenariob$. $\scenariocategoryb$ and $\scenariocategoryc$ include $\scenariocategorya$.
-	}
-	\label{fig:venn diagram scenario category}
-\end{figure}
+%\setlength{\venncircle}{5em}
+%\begin{figure}[t]
+%	\centering
+%	\input{figures/venn_diagrams.tikz}
+%	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. %$\scenariocategoryb$ comprises $\scenarioa$ and $\scenariob$. $\scenariocategoryb$ and $\scenariocategoryc$ include $\scenariocategorya$.
+%	}
+%	\label{fig:venn diagram scenario category}
+%\end{figure}
 
 % Explain scenario category can include scenario categories
-The verb ``to \cstart include\cend'' is used to describe the relation between two scenario categories. A scenario category $\scenariocategoryb$ is said to \cstart include \cend a scenario category $\scenariocategorya$ \cstart if $\scenariocategoryb$ comprises all scenarios that are comprised in $\scenariocategorya$. In that case, we can write $\scenariocategoryb \includes \scenariocategorya$. Thus we have
+The verb ``to include'' is used to describe the relation between two scenario categories. A scenario category $\scenariocategoryb$ is said to include a scenario category $\scenariocategorya$ if $\scenariocategoryb$ comprises all scenarios that are comprised in $\scenariocategorya$. In that case, we can write $\scenariocategoryb \includes \scenariocategorya$. Thus we have
 \begin{equation} \label{eq:scenario category include}
 	\scenariocategoryb \includes \scenariocategorya \text{ if } \scenariocategoryb \comprises \scenario\,\,\forall\,\, \{S: \scenariocategorya \comprises \scenario\}.
 \end{equation}
-In \cref{fig:venn diagram scenario category}, scenario categories $\scenariocategoryb$ and $\scenariocategoryc$ include scenario category $\scenariocategorya$; thus $\scenariocategoryb \includes \scenariocategorya$ and $\scenariocategoryc \includes \scenariocategorya$.
-\cend
+%In \cref{fig:venn diagram scenario category}, scenario categories $\scenariocategoryb$ and $\scenariocategoryc$ include scenario category $\scenariocategorya$; thus $\scenariocategoryb \includes \scenariocategorya$ and $\scenariocategoryc \includes \scenariocategorya$.
 
 % Figure is explained in last few paragraphs, but placed earlier as to appear at the right page of the paper.
 \begin{figure}[t]
@@ -305,7 +302,7 @@ Tags are often used when providing extra information on a piece of data \autocit
 %Applications are very broad, e.g., from classification of audio data \autocite{kong2017joint} capturing musical characteristics from songs \autocite{ellis2011semantic} to tagging of Wikipedia pages \autocite{voss2006collaborative}.
 The use of these tags brings several benefits:
 \begin{itemize}
-	\item  The tags of a scenario can be helpful in determining which scenario categories \cstart do and do not comprise \cend the scenario.
+	\item The tags of a scenario can be helpful in determining which scenario categories do and do not comprise the scenario.
 	%\item If a scenario category that only contains known tags is added to the database of scenario categories, it can easily be seen which scenarios the scenario category comprises by only inspecting the tags of the scenarios. Therefore, there is no need to define scenario categories a priori.
 	\item It is easy to select scenarios from a scenario database or a scenario library by using tags or a combination of tags.
 	\item As opposed to the proposed categorization of scenarios in \autocite{opdencamp2014cats, USDoT2007precrashscenarios, lenard2014typical, lara2019harmonized}, scenario categories do not need to be mutually exclusive.

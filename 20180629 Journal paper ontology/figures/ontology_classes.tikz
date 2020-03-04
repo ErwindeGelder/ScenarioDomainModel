@@ -4,16 +4,17 @@
 \newlength\blockx
 \newlength\blocky
 \newlength\legendwidth
-\setlength{\blockwidth}{8.5em}
-\setlength{\blockheight}{3em}
-\setlength{\blockx}{9.6em}
-\setlength{\blocky}{-6em}
+\setlength{\blockwidth}{6.5em}
+\setlength{\blockheight}{2.5em}
+\setlength{\blockx}{8em}
+\setlength{\blocky}{-5.5em}
 \setlength{\legendwidth}{3.5em}
 \tikzstyle{class}=[draw, text width=\blockwidth-.5em, align=center, minimum height=\blockheight, line width=1pt, minimum width=\blockwidth]
 \tikzstyle{aggregation}=[-{Diamond[width=8pt, length=12pt, fill=white]}, line width=1pt]
 \tikzstyle{falls into}=[->, line width=1pt]
 \tikzstyle{superclass}=[-{Triangle[width=8pt, length=12pt, fill=white]}, line width=1pt]
 \begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
 % Classes
 \node[class, fill=scenariocategory](scenario category) at (.5\blockx,0) {Scenario category};
 \node[class, fill=category](staticcategory) at (\blockx, \blocky) {Static environment category};
@@ -81,7 +82,7 @@
 \draw[falls into] (helper1) -- (helper3) -- node[fill=white]{includes} (helper4) -- (helper2);
 \node[coordinate, above of=scenario, node distance=\blockheight/2, xshift=-\blockwidth/4](helper1){};
 \node[coordinate, below of=scenario category, node distance=\blockheight/2, xshift=-\blockwidth/4](helper2){};
-\draw[falls into] (helper2) -- node[fill=white, align=center, text width=4.3em]{comprises} (helper1);
+\draw[falls into] (helper2) -- node[fill=white, align=center, text width=3.55em]{comprises} (helper1);
 
 % Superclass arrows
 \node[coordinate, below of=activity, node distance=-.6\blocky](helper activity){};
@@ -90,7 +91,7 @@
 
 % Legend
 \node[coordinate](legend) at (1.8\blockx, 0) {};
-\node[draw, left of=legend, node distance=0.3em, minimum height=3em, minimum width=\legendwidth+6em, anchor=west, fill=gray!10, yshift=-0.5em]{};
+\node[draw, left of=legend, node distance=0.3em, minimum height=\blockheight, minimum width=\legendwidth+6em, anchor=west, fill=gray!10, yshift=-0.5em]{};
 \node[coordinate, right of=legend, node distance=\legendwidth](legend right){};
 \draw[aggregation] (legend) -- (legend right);
 \node[right of=legend right, node distance=0em, anchor=west]{Aggregation};
