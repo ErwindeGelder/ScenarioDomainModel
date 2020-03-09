@@ -17,6 +17,7 @@ Modifications:
 2020 02 14 Add function for computing the cumulative distribution function.
 2020 02 17 Use special classes instead of dictionaries.
 2020 02 21 Add the possibility to have a variable bandwidth.
+2020 03 06 Return warning number when computing the bandwidth.
 """
 
 import time
@@ -172,14 +173,15 @@ class KDE:
         self.data = np.concatenate((self.data, newdata), axis=0)
         self.set_n(self.constants.ndata + nnew)
 
-    def compute_bandwidth(self, **kwargs) -> None:
+    def compute_bandwidth(self, **kwargs) -> int:
         """ Compute the bandwidth
 
         Currently, the Golden Section Search is used for this. See compute_bandwidth_gss for
         more details.
 
+        :return: An error/warning integer.
         """
-        self.compute_bandwidth_gss(**kwargs)
+        return self.compute_bandwidth_gss(**kwargs)
 
     def compute_bandwidth_grid(self, min_bw: float = 0.001, max_bw: float = 1.0,
                                n_bw: int = 200) -> None:
@@ -196,17 +198,23 @@ class KDE:
         self.bandwidth = bandwidths[np.argmax(score)]
 
     def compute_bandwidth_gss(self, min_bw: float = 0.001, max_bw: float = 1., max_iter: int = 100,
-                              tol: float = 1e-5) -> None:
+                              tol: float = 1e-5) -> int:
         """ Golden section search.
 
         Given a function f with a single local minimum in
         the interval [a,b], gss returns a subset interval
         [c,d] that contains the minimum with d-c <= tol.
 
+        Meaning of the returned integer:
+         - 0: no warning/error
+         - 1: searched only on the right side, so max_bw might need to be larger
+         - 2: searched only on the left side, so min_bw might need to be smaller
+
         :param min_bw: The minimum bandwidth to look for.
         :param max_bw: The maximum bandwidth to look for.
         :param max_iter: The maximum number of iterations to perform.
         :param tol: The tolerance that determines when the algorithm is terminated.
+        :return: An warning/error integer.
         """
         difference = max_bw - min_bw
         datapoints = np.array([min_bw, 0, 0, max_bw])
@@ -227,17 +235,17 @@ class KDE:
             # score_leave_one_out() once.
             if not self.data_helpers.mindists.size:
                 self.score_leave_one_out(bandwidth=np.ones(len(self.data)))
-            bandwidth_normalized = -np.percentile(self.data_helpers.mindists,
-                                                  self.constants.percentile, axis=0)
+            bandwidth_normalized = np.sqrt(-2*np.percentile(self.data_helpers.mindists,
+                                                            self.constants.percentile, axis=0))
+            bandwidth_normalized[bandwidth_normalized < np.percentile(bandwidth_normalized, 20)] = \
+                np.percentile(bandwidth_normalized, 20)
             bandwidth_normalized /= np.median(bandwidth_normalized)
-            bandwidth_normalized *= 10
+            # bandwidth_normalized *= 10
             scores = [self.score_leave_one_out(bandwidth=datapoints[1]*bandwidth_normalized),
                       self.score_leave_one_out(bandwidth=datapoints[2]*bandwidth_normalized)]
         at_boundary_min = False  # Check if we only search at one side as this could indicate ...
         at_boundary_max = False  # ... wrong values of min_bw and max_bw
         for _ in range(n_iter):
-            # print("Datapoints: ({:7e}, {:7e}), Score: ({:7e}, {:7e})".
-            #       format(datapoints[1], datapoints[2], scores[0], scores[1]))
             if scores[0] > scores[1]:
                 at_boundary_min = True
                 datapoints[3] = datapoints[2]
@@ -263,18 +271,21 @@ class KDE:
                     scores[1] = self.score_leave_one_out(
                         bandwidth=datapoints[2] * bandwidth_normalized)
 
-        # Check if we only searched on one side
-        if not at_boundary_min:
-            print("Warning: only searched on right side. Might need to increase max_bw.")
-        if not at_boundary_max:
-            print("Warning: only searched on left side. Might need to decrease min_bw.")
-
         if not self.constants.variable_bandwidth:
             self.bandwidth = (datapoints[0] + datapoints[2]) / 2 if scores[0] < scores[1] else \
                 (datapoints[3] + datapoints[1]) / 2
         else:
             self.bandwidth = (datapoints[0]+datapoints[2])/2*bandwidth_normalized \
                 if scores[0] < scores[1] else (datapoints[3]+datapoints[1])/2*bandwidth_normalized
+
+        # Check if we only searched on one side
+        if not at_boundary_min:
+            # print("Warning: only searched on right side. Might need to increase max_bw.")
+            return 1
+        if not at_boundary_max:
+            # print("Warning: only searched on left side. Might need to decrease min_bw.")
+            return 2
+        return 0
 
     def score_leave_one_out(self, bandwidth: Union[float, np.ndarray] = None,
                             include_const: bool = False) -> float:
