@@ -460,7 +460,7 @@ if __name__ == '__main__':
     compile_doc(join('20181217 Completeness paper review', 'cover_letter'))
     compile_doc(join('20190505 Assessment Strategy', 'assessment_strategy'), usebiber=True)
     compile_doc(join('20190725 Scenario Risk', 'scenariorisk'), usebiber=True)
-    compile_doc(join('20190819 Ontology revision letter', 'OntologyCoverLetter0'), usebiber=True)
+    compile_doc(join('20191004 Ontology revision letter', 'OntologyCoverLetter0'), usebiber=True)
     compile_doc(join('20191004 Ontology revision letter', 'OntologyRevisionLetter1'), usebiber=True)
     compile_doc(join('20191004 Ontology revision letter', 'OntologyHighlights'))
     compile_doc(join('20191004 Ontology revision letter', 'OntologyCoverLetter1'))
