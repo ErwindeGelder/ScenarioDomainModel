@@ -429,22 +429,14 @@ if __name__ == '__main__':
                 git='OntologyV5submitted', newname='20190816_OntologySubmitted', usebiber=True)
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
                 git='OntologyR1', newname='20190820_OntologyR1', usebiber=True)
-    compile_doc(join('20190819 Journal paper ontology cover', 'ontology_cover'), log=False,
-                git='OntologyR1', newname='20190820_OntologyCoverR1', usebiber=True)
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
                 git='OntologyR2', newname='20191111_OntologyR2', usebiber=True)
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology_limited'),
                 git='OntologyR2nochanges', newname='20191111_OntologyR2nochanges', log=False,
                 other=(join('20180629 Journal paper ontology', 'journal_ontology'),
                        dict(usebiber=True)))
-    compile_doc(join('20191004 Ontology revision letter', 'ontology_revision'), log=False,
-                git='OntologyR3', newname='20191111_RevisionLetter', usebiber=True)
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
                 git='OntologyR3', newname='20191111_OntologyR3', usebibtex=True)
-    compile_doc(join('20191004 Ontology revision letter', 'highlights'), log=False,
-                git='OntologyR3', newname='20191111_Highlights')
-    compile_doc(join('20191004 Ontology revision letter', 'revision_cover'), log=False,
-                git='OntologyR3', newname='20191111_RevisionCover')
     compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), log=False,
                 git='OntologyR3nochanges', newname='20191111_OntologyR3nochanges', usebibtex=True)
 
@@ -468,10 +460,13 @@ if __name__ == '__main__':
     compile_doc(join('20181217 Completeness paper review', 'cover_letter'))
     compile_doc(join('20190505 Assessment Strategy', 'assessment_strategy'), usebiber=True)
     compile_doc(join('20190725 Scenario Risk', 'scenariorisk'), usebiber=True)
-    compile_doc(join('20190819 Journal paper ontology cover', 'ontology_cover'), usebiber=True)
-    compile_doc(join('20191004 Ontology revision letter', 'ontology_revision'), usebiber=True)
-    compile_doc(join('20191004 Ontology revision letter', 'highlights'))
-    compile_doc(join('20191004 Ontology revision letter', 'revision_cover'))
+    compile_doc(join('20190819 Ontology revision letter', 'OntologyCoverLetter0'), usebiber=True)
+    compile_doc(join('20191004 Ontology revision letter', 'OntologyRevisionLetter1'), usebiber=True)
+    compile_doc(join('20191004 Ontology revision letter', 'OntologyHighlights'))
+    compile_doc(join('20191004 Ontology revision letter', 'OntologyCoverLetter1'))
+    compile_doc(join('20191004 Ontology revision letter', 'OntologyRevisionLetter2'), usebiber=True)
+    compile_doc(join('20191004 Ontology revision letter', 'OntologyCoverLetter2'))
+    compile_doc(join('20191004 Ontology revision letter', 'OntologyAuthorStatement'))
     compile_doc(join('20191010 Scenario Mining', 'scenario_mining'), usebiber=True)
     compile_doc(join('20191113 Journal Scenario Risk', 'scenario_risk'), usebiber=True)
 
