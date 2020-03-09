@@ -19,14 +19,14 @@ ARGS = PARSER.parse_args()
 HOMEFOLDER = os.getcwd()
 
 
-if platform.system() == "Linux":
-    PDFLATEX = "pdflatex"
-    BIBTEX = "bibtex"
-    BIBER = "biber"
-else:
+if platform.system() == "Windows":
     PDFLATEX = "pdflatex.exe"
     BIBTEX = "bibtex.exe"
     BIBER = "biber.exe"
+else:
+    PDFLATEX = "pdflatex"
+    BIBTEX = "bibtex"
+    BIBER = "biber"
 
 
 def print_line():
