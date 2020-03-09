@@ -1,82 +1,58 @@
-Comments from the editors and reviewers:
--Reviewer 1
+Reviewer 1
 
   - 
-The paper is on proposing an ontology for automated vehicles. 
+While some of my concerns have been addressed, many concerns remain. I will first list the remaining comments and answers and add a new comment for each one:
 
-a) Novelty
+a) Comment to authors: Novelty: Similar work has been published before, see e.g. (Morignot and Nashashibi 2013; Provine et al. 2004; Schleno et al. 2003; Zhao et al. 2015). Thus, it is unclear what the novelty of the presented ontology is.
 
-Similar work has been published before, see e.g.
+Reply: Thank you for the mentioned references. In the introduction, we have added the following sentences to explain the new addition of our work in the automotive domain and
+how our work differs from previous published works: Ontologies have been widely used in the field of automated driving (Bagschik et al. 2018; Benvenuti et al. 2017; Maiti et al.
+2017; Morignot and Nashashibi 2013; Provine et al. 2004; Schleno et al. 2003; Zhao et al. 2015). However, to the best of our knowledge, we are the first to propose an ontology
+for scenarios for the assessment of AVs. From the implementation side, there are several formats and methods for scenario ontologies, e.g., OpenSCENARIO ( OpenSCENARIO
+2017) and CommonRoad (Althoff et al. 2017). Our proposed ontology differs from these implementations as our ontology also allows for qualitative descriptions of scenarios, which
+is useful because it enables to group scenarios and to interpret the scenarios more easily. Furthermore, our ontology is supported with the definitions and justifications of each of the
+terms.
 
-Ron Provine, Craig Schlenoff, Stephen Balakirsky, Scott Smith, Mike Uschold,  Ontology-based methods for enhancing autonomous vehicle path planning,  Robotics and Autonomous Systems,  Volume 49, Issues 1–2,  2004,  Pages 123-133
+New comment: It is unclear why qualitative descriptions are not possible for previous ontologies. Being able to precise describe the novelty is crucial for every scientific paper. 
 
-An ontology-based approach to relax traffic regulation for autonomous vehicle assistance, Philippe Morignot (INRIA Rocquencourt), Fawzi Nashashibi (INRIA Rocquencourt), 12th IASTED International Conference on Artificial Intelligence and Applications (AIA'13), Austria (2013)
+b) Comment to authors: It is unclear whether an executable implementation of the proposed ontology exists. This should be clarified in the paper.
 
-SCHLENOFF, C., BALAKIRSKY, S., USCHOLD, M., PROVINE, R., & SMITH, S. (2003). Using ontologies to aid navigation planning in autonomous vehicles. The Knowledge Engineering Review, 18(3), 243-255. doi:10.1017/S0269888904000050
+Reply: To clarify that we implemented the proposed ontology in a coding language, we have added to following line to the introduction (including the footnote): The implementation
+code of our ontology is publicly available1.
 
-Zhao, Lihua & Ichise, Ryutaro & Mita, Seiichi & Sasaki, Yutaka. (2015). Core Ontologies for Safe Autonomous Driving. 
+New comment: I have looked at the code and could not figure out how to execute it. It would be helpful if the authors could provide information how to execute the code.
 
-Thus, it is unclear what the novelty of the presented ontology is.
+c)  Comment to authors: The paper has several mistakes: 1. event: It is written that an event requires a time step. This, however, is not required, see e.g. finite state machines.
+Only in timed automata and in hybrid systems timing information is required.
 
-b) Implementations of ontologies exist
+Reply: To address this comment, we have clarified that we use a hybrid-systems setting to define events and that, therefore, an event happens at a time instant rather than a time
+span. However, the time does not need to be fully defined in advance: We considered the definitions of event in hybrid systems and control and event-based control. Therefore, an
+event happens at some time instant rather than taking a time span. Note, however, that the time does not need to be fully defined in advance.
 
-The paper cites OpenScenario and CommonRoad, which are both implementations of ontologies. However, the authors do not mention in the introduction that these are concrete implementations with a concrete XML structure. 
+New comment: The authors should have provided one reference that clarifies what kind of hybrid system their model is based on, e.g., is urgent semantics used, what time model is used, etc. Proper definitions could be found here: https://www.cis.upenn.edu/~alur/TCS95.pdf
 
-What aspects are described in this paper that are not already implemented in OpenScenario or CommonRoad? This should be discussed in the paper.
+d) Comment to authors: 4. an event marks a mode transition or the moment a system reaches a threshold: This is not correct, since an event can be an external event that is
+broadcast or a user input.
 
-It is unclear whether an executable implementation of the proposed ontology exists. This should be clarified in the paper.
+Reply: To address this comment, we have clarified that there are two options for defining an event and we provide an example of an event based on a user input:
+Definition 2 indicates that the moment of an event can be defined in two different ways: (1) by the system reaching a threshold or (2) by a mode transition. [...] The second type of
+event, i.e., a mode transition, can, e.g., occur at the moment of a driver input.
 
-c) The paper has several mistakes
+New comment: I do not think that defining terms by examples is a good idea. Please provide a proper definition.
 
-- event: It is written that an event requires a time step. This, however, is not required, see e.g. finite state machines. Only in timed automata and in hybrid systems timing information is required.
+e) Comment to authors: Also, Fig. 2 is not required to understand the difference between categories and instances.
 
-- braking trajectory: Since a sine function is multiplied by a constant, it is hard to see why the acceleration should always be negative when t_0 can be freely chosen
+Reply: The figure is a visualization of the text to improve the understanding of the reader.
+Therefore, we have opted to keep the figure. However, to shorten the paper, the figure is made smaller.
 
-- state/state variable: A state consists of many state variables and each system has only one state. This is often confused in this paper
+New comment: Since the figure just consists of two overlapping circles, I cannot see how this clarifies anything.
 
-- "an event marks a mode transition or the moment a system reaches a threshold": This is not correct, since an event can be an external event that is broadcast or a user input.
+f) Comment to authors: Renaming of existing concepts. To me, an activity is a state trajectory. Why do we need a new name?
 
-d) Scope
+Reply: We have chosen the name activity because as explained in Section III-C activity (Elrofai et al. 2018; Frost 2018) or action (Ulbrich et al. 2015) are part of the
+existing literature on the subject. In the manuscript, we provide the reason why we opt for activity over action. To the best of our knowledge, state (variable) trajectory is less
+common in the field of safety assessment of (automated) vehicles.
 
-The paper often discusses issues that are not related to autonomous driving. E.g. ontologies on computing, security, etc. are mentioned. It is unclear why these should be relevant for this paper.
+New comment: It seems that an activity is nothing else than a state trajectory. Since the authors previously used therms from system theory (event, state, etc.) it seems odd why one would deviate from this domain for one term. This makes the paper quite inconsistent. 
 
-e) Focus
-
-The paper is not very focused and overly lengthy. For instance, the term "event" is described using almost an entire page. I would have spent around 5 sentences to explain this. Also, Fig. 2 is not required to understand the difference between categories and instances. The explanation after Def. 4 is also overly lengthy. Another example is the explanation of "category" using music styles. Most people know what a category is.
-
-One could probably write the whole paper with half the pages without loosing any information.  
-
-f) Renaming of existing concepts
-
-To me, an activity is a state trajectory. Why do we need a new name?
-
-g) Schematic overview in Fig. 4
-
-To me this is quite trivial and does not require the lengthy explanation in the paper. The figure could also be made smaller
-
-h) Example
-
-The example is not overly exciting. It would be good if the authors could share the corresponding code for other researchers.
-
-	
-	
-
--Reviewer 2
-
-  - 
-This is a very useful contribution to the AV industry. The background research is extensive, and the definition development is justified. Some thoughts:
-
-Page 1, opening paragraph: The authors mix ADAS with automation (citation of Bengler et al. (2014)). Care should be taken to distinguish between the two.
-Page 1, opening paragraph: "too much resources"
-Page 5, 6): It might be useful to mention that if the activity of the ego vehicle is described rather than its goal, that an observer might not be able to determine if the ego vehicle successfully navigated the scenario.
-Page 6, under Definition 2: The example of the event involving the vehicle and pedestrian--the point could be made that the threshold value is set by whomever is setting up the scenario, i.e., that it is flexible.
-Page 7, Definition 4: I am not sure that "scenario category" is the best choice of nomenclature. Perhaps instead of "category", "account" or "depiction" could be used. The term "category" is a grouping term, but each scenario will be unique, despite having common features to other scenarios. It's not clear to me that multiple scenarios could fall under the scenario category--an example should be provided. If the qualitative description is sufficiently detailed, multiple scenarios should not be able to "fall into" a scenario category. Further, "fall into" is colloquial, and I would use "comprises" instead (although the terms would have to be reversed).
-Page 13, Static Environment block: You should mention that there are many facets to this quantitative description--more than just number of lanes, lane width, and coordinates--e.g., road friction.
-
-
-
-
--Reviewer 3
-
-  - 
-This paper describes a proposed ontology for defining scenarios in the context of assessing automated vehicle (AV) performance. This is a timely subject as the testing and use of AVs continues to increase. The paper does a nice job of describing and summarizing existing work in this subject area and providing definitions for components of the proposed ontology. The paper is extremely well-written and provides important contributions to the research literature in the area of automated vehicle assessment.
+g) Fig. 4., now Fig. 3 is sill way too large. 
