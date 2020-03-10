@@ -222,8 +222,10 @@ class ActivityDetector(DataHandler):
         all_events = [(self.data.index[0], event)]
         end_event_time = np.inf
         speed = self.get(self.parms.host_lon_vel)
-        speed_inc = self.get("speed_inc_past")
-        speed_dec = -self.get("speed_dec_past")
+        # speed_inc = self.get("speed_inc_past")
+        # speed_dec = -self.get("speed_dec_past")
+        speed_inc = self.get("speed_inc")
+        speed_dec = -self.get("speed_dec")
         for irow, row in enumerate(self.data.itertuples()):
             # Potential acceleration signal when in minimum wrt next second, accelerating and not
             # standing still.
@@ -234,8 +236,10 @@ class ActivityDetector(DataHandler):
                 i, is_event = self._end_lon_activity(row.Index, speed_inc, speed)
                 if is_event:
                     event = LongitudinalActivity.ACCELERATING
-                    all_events.append((max(all_events[-1][0], self.find_change_point(irow, speed)),
-                                       event))
+                    # all_events.append((max(all_events[-1][0],
+                    #                        self.find_change_point(irow, speed)),
+                    #                    event))
+                    all_events.append((row.Index, event))
                     end_event_time = i
             elif event != LongitudinalActivity.DECELERATING and \
                     row.speed_dec_past <= -self.parms.a_cruise and \
@@ -273,7 +277,7 @@ class ActivityDetector(DataHandler):
         end_i = next((j for j, value in speed_difference[i:end_i].iteritems() if
                       value < self.parms.a_cruise),
                      self.data.index[-1])
-        end_i = self.find_change_point(self.data.index.get_loc(end_i), speed)
+        # end_i = self.find_change_point(self.data.index.get_loc(end_i), speed)
 
         if abs(self.get(self.parms.host_lon_vel, end_i) - self.get(self.parms.host_lon_vel, i)) < \
                 self.parms.delta_v:
