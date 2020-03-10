@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle">
@@ -2331,7 +2331,15 @@
 </node>
 </node>
 <node TEXT="For testing of AVs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_446913384" CREATED="1522996423752" MODIFIED="1522996430189">
-<node TEXT="Automated Scenario Generation of Regression Testing of AVs" ID="ID_164912009" CREATED="1522996504294" MODIFIED="1522996505122"/>
+<node TEXT="Automated Scenario Generation of Regression Testing of AVs" ID="ID_164912009" CREATED="1522996504294" MODIFIED="1583857380032" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/127%20Scenario%20Generation%20Based%20on%20Laserscanner%20Reference%20Data.pdf">
+<attribute NAME="key" VALUE="lages2013automatic"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Automatic Scenario Generation Based on Laserscanner Reference Data and Advanced Offline Processing"/>
+<attribute NAME="authors" VALUE="Lages, Ulrich and Spencer, Martin and Katz, Roman"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6B806CA93E6774D28A5D7C41582B0F5E6A34C8A56B7F2523EA883A982">
+    <pdf_title>Automatic Scenario Generation based on Laserscanner Reference Data and Advanced Offline Processing</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="EuroNCAP tests pedestrian AEB" ID="ID_1302624810" CREATED="1558350496137" MODIFIED="1558350512643" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/347%20Test%20Procedures%20and%20Results%20for%20Pedestrian%20AEB%20Systems.PDF">
 <attribute NAME="key" VALUE="seiniger2015test"/>
 <attribute NAME="year" VALUE="2015"/>
@@ -2395,6 +2403,15 @@
 <attribute NAME="authors" VALUE="Dubourg, Vincent and Sudret, Bruno and Deheeger, Franois"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="E0CC6FBDF63F622ED4A44DDC35547F186682422FC85A65BF549FA6047A64DC6">
     <pdf_title>Probabilistic Engineering Mechanics</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Testing of Autonomous Vehicles Using Surrogate Models and Stochastic Optimization" ID="ID_197184674" CREATED="1583857534850" MODIFIED="1583857539744" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/139%20Testing%20of%20AV%20Using%20Surrogate%20Models%20and%20Stochastic%20Optimization.pdf">
+<attribute NAME="key" VALUE="beglerovic2017testing"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Testing of Autonomous Vehicles Using Surrogate Models and Stochastic Optimization"/>
+<attribute NAME="authors" VALUE="Beglerovic, Halil and Stolz, Michael and Horn, Martin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9C4A3620126DADC88FB32F1B6B510F9489AF6C839F585B4868340908275C89">
+    <pdf_title>TestingofAutonomousVehiclesUsingSurrogate ModelsandStochasticOptimization</pdf_title>
 </pdf_annotation>
 </node>
 </node>
