@@ -222,8 +222,8 @@ class ActivityDetector(DataHandler):
         all_events = [(self.data.index[0], event)]
         end_event_time = np.inf
         speed = self.get(self.parms.host_lon_vel)
-        speed_inc = self.get("speed_inc")
-        speed_dec = -self.get("speed_dec")
+        speed_inc = self.get("speed_inc_past")
+        speed_dec = -self.get("speed_dec_past")
         for irow, row in enumerate(self.data.itertuples()):
             # Potential acceleration signal when in minimum wrt next second, accelerating and not
             # standing still.
@@ -231,7 +231,7 @@ class ActivityDetector(DataHandler):
                     row.speed_inc_past >= self.parms.a_cruise and \
                     row.speed_inc_start > 0 and \
                     getattr(row, self.parms.host_lon_vel) >= self.parms.min_activity_speed:
-                i, is_event = self._end_lon_activity(row.Index, speed_inc)
+                i, is_event = self._end_lon_activity(row.Index, speed_inc, speed)
                 if is_event:
                     event = LongitudinalActivity.ACCELERATING
                     all_events.append((max(all_events[-1][0], self.find_change_point(irow, speed)),
@@ -240,7 +240,7 @@ class ActivityDetector(DataHandler):
             elif event != LongitudinalActivity.DECELERATING and \
                     row.speed_dec_past <= -self.parms.a_cruise and \
                     row.speed_dec_start < 0:
-                i, is_event = self._end_lon_activity(row.Index, speed_dec)
+                i, is_event = self._end_lon_activity(row.Index, speed_dec, speed)
                 if is_event:
                     event = LongitudinalActivity.DECELERATING
                     all_events.append((max(all_events[-1][0], self.find_change_point(irow, speed)),
@@ -257,12 +257,13 @@ class ActivityDetector(DataHandler):
             self.plot_lon_activities_host(events)
         return events
 
-    def _end_lon_activity(self, i: float, speed_difference: pd.Series):
+    def _end_lon_activity(self, i: float, speed_difference: pd.Series, speed: pd.Series):
         """ Find first index where speed difference is less than significant.
 
         :param i: Index of the start of the potential longitudinal activity.
         :param speed_difference: The speed difference (up for accelerating,
                                  down for decelerating).
+        :param speed: The speed.
         :return: A tuple (end_time, is_event). If no activity, is_event is
                  False.
         """
@@ -272,18 +273,23 @@ class ActivityDetector(DataHandler):
         end_i = next((j for j, value in speed_difference[i:end_i].iteritems() if
                       value < self.parms.a_cruise),
                      self.data.index[-1])
+        end_i = self.find_change_point(self.data.index.get_loc(end_i), speed)
 
         if abs(self.get(self.parms.host_lon_vel, end_i) - self.get(self.parms.host_lon_vel, i)) < \
                 self.parms.delta_v:
             return 0, False
         return end_i, True
 
-    def find_change_point(self, irow: int, data: pd.Series):
-        """
+    def find_change_point(self, irow: int, data: pd.Series) -> float:
+        """ Find the change point in the given data around the given row.
 
-        :return:
-        """
+        Note that the change point will be found between the sample irow-shift
+        and the sample irow, where shift is an attribute of self.parms.
 
+        :param irow: The row where the change point should happen approximately.
+        :param data: The data that is used.
+        :return: The time at the change point.
+        """
         cpd = ChangePointDetector([constant, linear, square],
                                   self.data.index[irow - self.parms.shift:irow],
                                   data.iloc[irow - self.parms.shift:irow])
