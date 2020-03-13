@@ -80,4 +80,3 @@ if __name__ == "__main__":
                                                                              ARGS.file)))
             exit()
         process_file(os.path.join(ARGS.folder, ARGS.file))
-    i
