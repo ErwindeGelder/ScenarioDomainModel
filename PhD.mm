@@ -1304,7 +1304,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="ISO26262" ID="ID_350817561" CREATED="1556277759997" MODIFIED="1573548672442" LINK="https://www.iso.org/standard/68383.html">
+<node TEXT="ISO26262" ID="ID_350817561" CREATED="1556277759997" MODIFIED="1584524835170" LINK="https://www.iso.org/standard/68383.html">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road {V}ehicles -- {F}unctional {S}afety"/>
@@ -2099,8 +2099,8 @@
     <pdf_title>A METHOD FOR SCENARIO RISK QUANTIFICATION FOR AUTOMATED DRIVING SYSTEMS</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2020 Ontology of scenarios for the assessment of automated vehicles" ID="ID_176436300" CREATED="1518065217613" MODIFIED="1582619114583" MOVED="1569409945813">
-<attribute NAME="key" VALUE="degelder2018ontology"/>
+<node TEXT="2020 Ontology of scenarios for the assessment of automated vehicles" ID="ID_176436300" CREATED="1518065217613" MODIFIED="1584524031338" MOVED="1569409945813">
+<attribute NAME="key" VALUE="degelder2020ontology"/>
 <attribute NAME="title" VALUE="Ontology for Scenarios for the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Khabbaz Saberi, Arash and Elrofai, Hala and Op den Camp, Olaf and Ploeg, Jeroen and Friedman, Ludwig and De Schutter, Bart"/>
 <attribute NAME="journal" VALUE="https://arxiv.org/abs/2001.11507"/>
@@ -4649,7 +4649,7 @@
 <attribute NAME="title" VALUE="{OpenSCENARIO}"/>
 <attribute NAME="year" VALUE="2017"/>
 </node>
-<node TEXT="ISO26262" ID="ID_1345725509" CREATED="1564490785273" MODIFIED="1573548672493" LINK="https://www.iso.org/standard/68383.html">
+<node TEXT="ISO26262" ID="ID_1345725509" CREATED="1564490785273" MODIFIED="1584524835139" LINK="https://www.iso.org/standard/68383.html">
 <attribute NAME="key" VALUE="ISO26262"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="{ISO} 26262: Road {V}ehicles -- {F}unctional {S}afety"/>
@@ -4678,6 +4678,12 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1214985AFDEBB282173ED8AD3D982EE773FABE9BBAF1FA8BA9342C37719A">
     <pdf_title>ISO 8855</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="ISO34502" ID="ID_1272832462" CREATED="1584524728947" MODIFIED="1584524850920" LINK="https://www.iso.org/standard/78951.html">
+<attribute NAME="key" VALUE="ISO34502"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="{ISO} 34502: Road {V}ehicles -- {E}ngineering Framework and Process of Scenario-Based Safety Evaluation"/>
+<attribute NAME="authors" VALUE="{ISO 34502}"/>
 </node>
 </node>
 <node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">
