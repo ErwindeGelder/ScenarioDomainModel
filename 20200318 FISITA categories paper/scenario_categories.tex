@@ -73,13 +73,51 @@
 % Filter warnings issued by package biblatex starting with "Patching footnotes failed"
 \WarningFilter{biblatex}{Patching footnotes failed}
 %\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\renewcommand*{\bibfont}{\small}
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
 
 \usepackage[fleqn]{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
 \usepackage{cleveref}
-
 \usepackage{xcolor}
+\usepackage{xparse,xstring}
+\usepackage{subcaption}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	TIKZ STUFF
+%----------------------------------------------------------------------------------------
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\newlength\figurewidth
+\newlength\figureheight
+\newlength\venncircle
+\newlength\realworldwidth
+\newlength\realworldheight
+
+
+
+%----------------------------------------------------------------------------------------
+%	COMMANDS
+%----------------------------------------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}
+
+\newcommand{\scenario}{S}
+\newcommand{\scenarioa}{\scenario_{1}}
+\newcommand{\scenariob}{\scenario_{2}}
+\newcommand{\scenarioc}{\scenario_{3}}
+\newcommand{\scenariocategory}{\mathcal{C}}
+\newcommand{\scenariocategorya}{\scenariocategory_{1}}
+\newcommand{\scenariocategoryb}{\scenariocategory_{2}}
+\newcommand{\scenariocategoryc}{\scenariocategory_{3}}
+
+
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -124,8 +162,8 @@ Next to presenting the method for describing scenario categories using tags, we 
 
 \input{sections/introduction}
 \input{sections/scenariocategory}
-\input{sections/tags}
-\input{sectinos/examples}
+%\input{sections/tags}
+\input{sections/examples}
 \input{sections/conclusions}
 
 %----------------------------------------------------------------------------------------
