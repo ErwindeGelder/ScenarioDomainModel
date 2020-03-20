@@ -2111,6 +2111,12 @@
 <attribute NAME="title" VALUE="Scenario Categories for the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Op den Camp, Olaf and de Boer, Niels"/>
 </node>
+<node TEXT="2020 Scenario mining" ID="ID_346278222" CREATED="1584552278327" MODIFIED="1584552447187">
+<attribute NAME="key" VALUE="degelder2020scenariomining"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Real-World Scenario Mining for the Assessment of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Manders, Jeroen and Grappiolo, Corrado and Paardekooper, Jan-Pieter and Op den Camp, Olaf and De Schutter, Bart"/>
+</node>
 </node>
 <node TEXT="Risk" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_398321502" CREATED="1567057870946" MODIFIED="1567057884205">
 <edge COLOR="#ff00ff"/>
@@ -2347,6 +2353,15 @@
 <attribute NAME="authors" VALUE="Seiniger, Patrick and Hellmann, Adrian and Bartels, Oliver and Wisch, Marcus and Gail, Jost"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="35724E6080594D218220B75114893D9EF28B54D9ABD57F6226D0FCCBCB4AC53A">
     <pdf_title>TEST PROCEDURES AND RESULTS FOR PEDESTRIAN AEB SYSTEMS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A method for an efficient, systematic test case generation for ADAS" ID="ID_43003774" CREATED="1584692623744" MODIFIED="1584692717694" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/434%20A%20method%20for%20an%20efficient,%20systematic%20test%20case%20generation%20for%20ADAS.pdf">
+<attribute NAME="key" VALUE="schuldt2018method"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A Method for an Efficient, Systematic Test Case Generation for Advanced Driver Assistance Systems in Virtual Environments"/>
+<attribute NAME="authors" VALUE="Schuldt, Fabian and Reschka, Andreas and Maurer, Markus"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="71DD8C5BB06BE2E578DE448E518F98DA76F70BD35762C50B1F1A26097F24C50">
+    <pdf_title>A Method for an Efficient, Systematic Test Case Generation for Advanced Driver Assistance Systems in Virtual Environments</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -3752,9 +3767,10 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
-<node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
-<node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1534391705396" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
+<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
+<node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
+<node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1584552603477" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
+<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="80" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1249695869" STARTINCLINATION="40;0;" ENDINCLINATION="40;45;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <attribute NAME="key" VALUE="HighwayKeyOSM"/>
 <attribute NAME="title" VALUE="Key:highway"/>
 <attribute NAME="authors" VALUE="OpenStreetMaps"/>
@@ -3788,29 +3804,22 @@
     <pdf_title>UC Berkeley</pdf_title>
 </pdf_annotation>
 </node>
-</node>
-<node TEXT="Dynamic environment" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_985681073" CREATED="1524534298587" MODIFIED="1524534310967">
-<node TEXT="Idem as Ego vehicle, i.e., speed and heading" ID="ID_306883983" CREATED="1524559130646" MODIFIED="1524559140103"/>
-<node TEXT="Target in front/back of ego" FOLDED="true" ID="ID_422429209" CREATED="1524559176291" MODIFIED="1524559189654">
-<node TEXT="No target" ID="ID_622251175" CREATED="1524559190246" MODIFIED="1524559194373"/>
-<node TEXT="Target appearing" FOLDED="true" ID="ID_577645442" CREATED="1524559194931" MODIFIED="1524559198516">
-<node TEXT="Cut-in" ID="ID_245850417" CREATED="1524559198527" MODIFIED="1524559201605"/>
-<node TEXT="Gap-closing" ID="ID_343585746" CREATED="1524559202180" MODIFIED="1524559205493"/>
-</node>
-<node TEXT="Vehicle following" FOLDED="true" ID="ID_1209232466" CREATED="1524559206803" MODIFIED="1524559211318">
-<node TEXT="Decelerating" ID="ID_1685078160" CREATED="1524559211331" MODIFIED="1524559215893"/>
-<node TEXT="Cruising" ID="ID_1938190287" CREATED="1524559216259" MODIFIED="1524559217909"/>
-<node TEXT="Accelerating" ID="ID_1408560887" CREATED="1524559220355" MODIFIED="1524559222436"/>
-</node>
-<node TEXT="Target disappearing" FOLDED="true" ID="ID_234821103" CREATED="1524559225010" MODIFIED="1524559228260">
-<node TEXT="Cut-out" ID="ID_1634813483" CREATED="1524559229108" MODIFIED="1524559232452"/>
-<node TEXT="Gap making" ID="ID_1548186090" CREATED="1524559233043" MODIFIED="1524559237044"/>
+<node TEXT="Lighting conditions influence on AEB system" ID="ID_391098416" CREATED="1584552923275" MODIFIED="1584552933259">
+<attribute NAME="key" VALUE="lighting_IenM"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="{Influence of light conditions on detection of pedestrians by AEB systems, report for the Netherlands Ministry of Infrastructure and the Environment}"/>
+<attribute NAME="authors" VALUE="Wouters, Ron and Op den Camp, Olaf"/>
 </node>
 </node>
-<node TEXT="Target left/right of ego" FOLDED="true" ID="ID_345132789" CREATED="1524559238498" MODIFIED="1524559243732">
-<node TEXT="Ego faster than target" ID="ID_1906954524" CREATED="1524559244262" MODIFIED="1524559252821"/>
-<node TEXT="Same speed" ID="ID_177750115" CREATED="1524559253426" MODIFIED="1524559257812"/>
-<node TEXT="Target faster than ego" ID="ID_1154773029" CREATED="1524559258226" MODIFIED="1524559262340"/>
+<node TEXT="Dynamic environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_985681073" CREATED="1524534298587" MODIFIED="1524534310967">
+<node TEXT="Carriageway user type" ID="ID_1438990006" CREATED="1584548444120" MODIFIED="1584548683953" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/433%20UNECE%20Consolidated%20Resolution%20on%20the%20Construction%20of%20Vehicles.pdf">
+<attribute NAME="key" VALUE="UNECE2011consolidated"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Consolidated Resolution on the Construction of Vehicles (R.E.3), Revision 2"/>
+<attribute NAME="authors" VALUE="{World Forum for Harmonization of Vehicle Regulations}"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="435B7EC5594810C770A268D3959C42BEF3A7BC609E6B3653FA1C30368D2566F2">
+    <pdf_title>Economic and Social Council</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_194709149" CREATED="1524534303419" MODIFIED="1524534310950">
@@ -3903,7 +3912,7 @@
 <attribute NAME="key" VALUE="voss2006collaborative"/>
 <attribute NAME="journal" VALUE="arXiv preprint cs/0604036"/>
 <attribute NAME="year" VALUE="2006"/>
-<attribute NAME="title" VALUE="Collaborative thesaurus tagging the Wikipedia way"/>
+<attribute NAME="title" VALUE="Collaborative Thesaurus Tagging the {W}ikipedia Way"/>
 <attribute NAME="authors" VALUE="Voss, Jakob"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="341DDF3C156ECF722B3DC7D922B87F3F8EE4C303147C67CDD7548E4DAF1140">
     <pdf_title>Collaborative thesaurus tagging the Wikipedia way *</pdf_title>
@@ -3979,7 +3988,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
+<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
 <edge COLOR="#007c00"/>
 <node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
 <node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1534390623301" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">

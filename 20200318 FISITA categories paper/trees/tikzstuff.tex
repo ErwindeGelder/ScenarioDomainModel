@@ -1,5 +1,6 @@
 \definecolor{lightgray}{RGB}{222,222,231}
-\tikzstyle{tag}=[text height=.8em, text depth=.1em, font=\small\sffamily, rounded corners=0.2em, fill=lightgray, node distance=9em, text width=7em, align=center]
+\newlength{\hwidth}\setlength{\hwidth}{4.22em}
+\tikzstyle{tag}=[text height=.8em, text depth=.1em, font=\small\sffamily, rounded corners=0.2em, fill=lightgray, node distance=8em, text width=2*\hwidth-2em, align=center]
 \tikzstyle{tag wide}=[tag, text width=12em]
 \tikzstyle{tag next to wide}=[tag, node distance=11.5em]
 \tikzstyle{tagemphasize}=[]
@@ -17,15 +18,15 @@
 }
 \newcommand{\taga}[1]{
 	\showtag{tag~wide}{taga}{#1};
-	\node[coordinate, below~of=taga, node~distance=2em](helper){};
+	\node[coordinate, below~of=taga, node~distance=1.5em](helper){};
 }
 \newcommand{\tagb}[3]{
-	\showtag{tag, below~of=taga, node~distance=4em, xshift=#3}{tagb#2}{#1};
+	\showtag{tag, below~of=taga, node~distance=3.5em, xshift=#3}{tagb#2}{#1};
 	\draw[tagarrow] (taga) -- (helper) -| (tagb#2);
-	\node[coordinate, xshift=1em](tagb#2 helper) at (tagb#2.south~west) {};
+	\node[coordinate, xshift=.5em](tagb#2 helper) at (tagb#2.south~west) {};
 }
 \newcommand{\tagc}[4]{
-	\showtag{tag, below~of=tagb#4, node~distance=#3em, xshift=2em}{tagc#2}{#1};
+	\showtag{tag, below~of=tagb#4, node~distance=#3em, xshift=1.5em}{tagc#2}{#1};
 	\draw[tagarrow] (tagb#4 helper) |- (tagc#2);
 }
 \NewDocumentCommand{\tree}{O{} m m}{%
@@ -36,7 +37,7 @@
 	\seq_map_inline:Nn \arg {
 		\seq_set_split:Nnn \argb {,} {##1}
 		\seq_pop_left:NN \argb \argl
-		\tagb{\argl}{\arabic{tagbcounter}}{\arabic{tagbcounter}*10em-\seq_count:N \arg *5em+5em}
+		\tagb{\argl}{\arabic{tagbcounter}}{\arabic{tagbcounter}*2*\hwidth-\seq_count:N \arg *\hwidth+\hwidth}
 		\setcounter{tagccounter}{0}
 		\seq_map_inline:Nn \argb {
 			\stepcounter{tagccounter}
