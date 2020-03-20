@@ -10,10 +10,10 @@ from jinja2 import Environment
 DOCUMENTS = [("cutin", ("\\scentags{ >Ego; Ego lateral activity, Going straight; " +
                         "Vehicle longitudinal activity, Driving forward|" +
                         ">Actor; Carriageway user type, Vehicle; Initial state, " +
-                        "Direction/Same as ego, Lateral position/Same lane, " +
-                        "Long.\\ position/In front of ego; Lead vehicle, Following; " +
-                        "Vehicle lateral activity, Going straight; " +
-                        "Vehicle longitudinal activity, Driving forward/Braking}")),
+                        "Direction/Same as ego; Lead vehicle, Appearing/Cutting in; " +
+                        "Vehicle lateral activity, Changing lane; " +
+                        "Vehicle longitudinal activity, Driving forward| " +
+                        "Road layout, Straight, Merge}")),
              ("oncoming_turning", ("\\scentags{ >Ego; Vehicle lateral activity, Going straight; " +
                                    "Vehicle longitudinal activity, Driving forward|" +
                                    ">Actor; Carriageway user type, Vehicle; Initial state, " +

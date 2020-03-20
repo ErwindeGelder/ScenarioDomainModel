@@ -28,8 +28,8 @@ DOCUMENTS = [("actor_type", ("\\tree[\\node[tag] at (-3\\hwidth, -0.3em) {Vehicl
                                 "Crossing; Dynamics, Moving, Standing still; Lateral position," +
                                 " Same lane, Left of ego, Right of ego; Long.\\ position, " +
                                 "In front of ego,Side of ego,Rear of ego}")),
-             ("lead_vehicle", ("\\tree{Lead vehicle}{Appearing,Cutting-in,Gap-closing; " +
-                               "Disappearing,Cutting-out,Gap-opening;Following}")),
+             ("lead_vehicle", ("\\tree{Lead vehicle}{Appearing, Cutting in, Gap closing; " +
+                               "Disappearing, Cutting out, Gap opening; Following}")),
              ("animal", ("\\tree{Animal}{Position, On ego path, On road, Next to road; Dynamics, " +
                          "Moving, Stationary}")),
              ("road_type", ("\\tree{Road type}{Principal road, Motorway, Trunk, Primary, " +
@@ -47,7 +47,7 @@ DOCUMENTS = [("actor_type", ("\\tree[\\node[tag] at (-3\\hwidth, -0.3em) {Vehicl
                           "Suspension, Mist, Fog, Haze; Snow, Light, Moderate, Heavy}")),
              ("lighting", ("\\tree{Lighting}{Daytime, Clear sky, Cloudy, Overcast; Twilight, " +
                            "Dawn, Dusk; Dark, Street lights, No street lights; Glare, Sun, " +
-                           "Oncoming traffic}"))]
+                           "Oncom.\\ traffic}"))]
 
 
 with open('template.tex') as tpl:

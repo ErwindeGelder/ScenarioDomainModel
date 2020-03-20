@@ -1,26 +1,42 @@
 \section{Examples of scenario categories}
 \label{sec:examples}
 
-To illustrate the use of the tags proposed in \cref{sec:tags}, we present two scenario categories. For more examples, see \autocite{degelder2019scenariocategories}.
+To illustrate the use of the tags proposed in \cref{sec:tags}, we present two scenario categories\footnote{For more examples, we refer the reader to \autocite{degelder2019scenariocategories}.}.
+
+The first example is the scenario category ``cut in at merging lanes'' and is schematically shown in \cref{fig:scheme cut in}. 
+Another vehicle is driving in the same direction as the ego vehicle in an adjacent lane. The other vehicle makes a lane change because the lanes are merging. In \cref{fig:tags cut in}, the corresponding tags are shown. These tags can be roughly divided into three parts. The first part refers to the ego vehicle that is driving straight in forward direction. The second part refers to the other vehicle that changes lane. Note that the direction of the lane change is not described. This could mean that the vehicle could either change lane to the left or to the right. In any case, this actor becomes the lead vehicle, as described my the tag ``Lead vehicle''. The third part refers to the road layout.
+
 
 \setlength{\figurewidth}{22.5em}
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	\input{figures/cut-in.tikz}
-	\caption{Schematic overview of the scenario category ``cut in at merging lanes''.}
-	\label{fig:scheme cut in}
+	\caption{Schematic overview for the scenario category ``cut in at merging lanes''. The blue vehicle denotes the ego vehicle.}
+	\label{fig:scheme cut in}		
 \end{figure}
+\begin{figure}[t]
+	\centering
+	\includegraphics{figures/cutin}
+	\caption{Tags for the scenario category ``cut in at merging lanes''.}
+	\label{fig:tags cut in}
+\end{figure}
+
+
+As schematically shown in \cref{fig:scheme oncoming turning}, the second example is the scenario category ``oncoming vehicle turns right signalized junction''.
+The ego vehicle is approaching a junction that is equipped with traffic light signals. The ego vehicle intends to go straight at the crossing. Another vehicle is approaching the junction from the opposite direction. The other vehicle intends to turn right at the junction, such that the trajectories of the other vehicle and the ego vehicle intersect. Note that right-hand traffic is assumed.
+In \cref{fig:tags oncoming turning}, the corresponding tags are shown. The first part refers to the ego vehicle that intends to drive straight in forward direction. The second part refers to the other vehicle that turns right. The third part refers describes that the scenario happens at a signalized junction.
 
 
 \setlength{\figurewidth}{15.0em}
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	\input{figures/"oncoming vehicle right signalized.tikz"}
-	\caption{Schematic overview of the scenario category ``oncoming vehicle turns right at signalized junction''.}
-	\label{fig:scheme traffic light}
+	\caption{Schematic overview for the scenario category ``oncoming vehicle turns right at signalized junction''. The blue vehicle denotes the ego vehicle.}
+	\label{fig:scheme oncoming turning}
 \end{figure}
-
-\begin{figure}
+\begin{figure}[t]
 	\centering
-	\includegraphics{trees/tree}
+	\includegraphics{figures/oncoming_turning}
+	\caption{Tags for the scenario category ``oncoming vehicle turns right at signalized junction''.}
+	\label{fig:tags oncoming turning}
 \end{figure}
