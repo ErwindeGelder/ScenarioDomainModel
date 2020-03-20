@@ -24,10 +24,14 @@ Modifications
              function in Model class.
 13 Oct 2019: Update of terminology.
 04 Nov 2019: Add constant model.
+13 Mar 2020: BSplines added (since when was it removed?)
 """
 
 
 import sys
+from scipy.interpolate import splev, splrep
+from scipy.signal import lombscargle
+from sklearn.metrics import mean_squared_error
 from abc import ABC, abstractmethod
 import numpy as np
 
@@ -340,6 +344,536 @@ class Sinusoidal(Model):
         # Return the parameters
         return {"xstart": lstlq_fit[0] + lstlq_fit[1],
                 "xend": lstlq_fit[1] - lstlq_fit[0]}
+
+
+class BSplines(Model):
+    """ Parametrise velocity profiles
+
+
+    Example
+    -------
+
+    """
+    TIME = 0
+    VALUE = 1
+    MIN_VALUE = 0
+    MAX_VALUE = 1
+    DEFAULT_PERIODOGRAM_FREQUENCIES = np.linspace(0.01, 2 * np.pi * 10, 100)
+
+    def __init__(self, xdata: np.ndarray = None, ydata: np.ndarray = None, options: dict = None):
+        """Initialise the class with the filename of the input file.
+
+        Args
+        ----
+        xdata: Numpy array containing the x-VALUE to be parametrised.
+        ydata: Numpy array containing the y-VALUE to be parametrised.
+        options: Dictionary with all kinds of options.
+        """
+
+        Model.__init__(self, "BSplines")
+
+        # Define the default options
+        self.default_options = {"n_knots": 4,
+                                "degree": 3,
+                                "ls_percentile": 95,
+                                "frequencies": BSplines.DEFAULT_PERIODOGRAM_FREQUENCIES,
+                                "n_random": 1000,
+                                "min_n_knots": 4,
+                                "max_n_knots": 12,
+                                "uniform_knots": False,
+                                "cut_off_freq": None,
+                                "scaling": None,
+                                "unique_mask": None,
+                                "knot_positions": None,
+                                "tck": None,
+                                "lomb_scargle_boundary": None,
+                                "residuals": None}
+
+        # Set the options
+        self.options = Model._set_default_options(self, options)
+
+        # Set data (if provided).
+        self.data = None
+        if xdata is not None and ydata is not None:
+            self.load_data(xdata, ydata)
+
+    def __enter__(self):
+        """
+        Used for initialization inside with statement
+        """
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        """
+        Used for completion of with statement
+        """
+        pass
+
+    def load_data(self, xdata: np.ndarray, ydata: np.ndarray) -> None:
+        """ Load the data into a np.array
+
+        Args
+        ----
+        xdata(np.ndarray): Numpy array containing the x-VALUE to be parametrised.
+        ydata(np.ndarray): Numpy array containing the y-VALUE to be parametrised.
+        """
+        self._check_data(xdata, ydata)
+        self.data = np.vstack([xdata, ydata])
+        self._remove_duplicates()
+        self._compute_scaling()
+        self._scale_data()
+
+    def _set_cut_off_frequency(self, cut_off_freq):
+        """ Set the cut-off frequency"""
+
+        self.options["cut_off_freq"] = cut_off_freq
+
+    @staticmethod
+    def _check_data(xdata, ydata):
+        """ Check if the data has the correct format"""
+        for data in [xdata, ydata]:
+            if not isinstance(data, np.ndarray):
+                raise TypeError(" Expected numpy array.")
+
+            if len(data.shape) != 1:
+                raise ValueError(" Arrays xdata and ydata should be one dimensional.")
+
+        if not len(xdata) == len(ydata):
+            raise ValueError(" Length of xdata should be the same as length of ydata.")
+
+    def _remove_duplicates(self):
+        """ Remove duplicates from the data
+
+        Duplicates are possible if the data is logged at regular intervals but
+        read out at different (larger) intervals
+        """
+
+        # False for consecutive VALUE that are unique, these should be removed
+        self.options["unique_mask"] = self.data[1] != np.roll(self.data[1], 1)
+        # self.data = self.data[:,mask]
+
+    def _compute_scaling(self):
+        """ Compute the scaling for scaling between 0 and 1
+        Apply on both TIME and VALUE axes at the same time
+        (by using axis=1 in the min and max function)"""
+        self.options["scaling"] = np.transpose((np.min(self.data, axis=1),
+                                                np.max(self.data, axis=1)))
+
+    def _scale_data(self, this_data=None, axis=0):
+        """ Scale the data between 0 and 1
+
+        Args
+        ----
+        this_data : np.array(float)
+            Data to be scaled between 0 and 1
+        axis : int
+            x-param: axis=Parametrisation.TIME
+            y-param: axis=Parametrisation.VALUE
+
+        When this_data is not given, self.data is scaled in both the
+            TIME and VALUE direction
+        """
+
+        # In case no arguments are given the data of this instance is scaled
+        if this_data is None:
+            for i in (BSplines.TIME, BSplines.VALUE):
+                self.data[i] = self._scale_data(self.data[i], i)
+            return None
+        # else scale given data
+        return (this_data - self.options["scaling"][axis][BSplines.MIN_VALUE]) / \
+               (self.options["scaling"][axis][BSplines.MAX_VALUE] -
+                self.options["scaling"][axis][BSplines.MIN_VALUE])
+
+    def _rescale_data(self, this_data, axis, order=0):
+        """ Rescale the data
+
+        Args
+        ----
+        this_data : np.array(float)
+            Data between 0 and 1 to be rescaled
+        axis : int
+            x-param: axis=Parametrisation.TIME
+            y-param: axis=Parametrisation.VALUE
+        """
+        factor = (self.options["scaling"][axis][BSplines.MAX_VALUE] -
+                  self.options["scaling"][axis][BSplines.MIN_VALUE])
+        offset = self.options["scaling"][axis][BSplines.MIN_VALUE]
+        """ Due to the chain rule the derivative needs to be scaled
+            both by time and value:
+                g(x) = a f(cx + d) + b
+                g'(x) = a/c f'(cx + d)"""
+        if axis == BSplines.VALUE and order == 1:
+            offset = 0
+            # factor /= (self.options["scaling"][BSplines.TIME][BSplines.MAX_VALUE] -
+            #            self.options["scaling"][BSplines.TIME][BSplines.MIN_VALUE])
+
+        return offset + this_data * factor
+
+    def _compute_knot_positions(self):
+        """ Compute the position of the knots
+
+        Two possibilities: free knots and fixed knots
+
+        """
+
+        if self.options["uniform_knots"]:
+            # Place the knots at regular points
+            time = self.data[0, self.options["unique_mask"]]
+            self.options["knot_positions"] = \
+                np.percentile(time, np.linspace(0, 100, self.options["n_knots"]+2))[1:-1]
+        else:
+            # Place the knots at regular intervals
+            self.options["knot_positions"] = np.arange(1, self.options["n_knots"]+1) / \
+                                  (self.options["n_knots"] + 1)
+
+    def _compute_spline_representation(self):
+        """ Compute the spline representation of the data given the knot
+        positions
+
+        """
+        (time, value) = self.data[:, self.options["unique_mask"]]
+        self.options["tck"] = splrep(time, value, k=self.options["degree"],
+                                     t=self.options["knot_positions"])
+
+    def _compute_boundary(self, frequencies=None,
+                          ls_percentile=None,
+                          n_random=None):
+        """ Compute lomb scargle boundary based on 'random noise'
+            using the same time spacing as the original data.
+            There will be n_random random noise patterns computed and
+            for each pattern the max Lomb-Scargle periodogram value
+            is collected. The pertencile value of the collected VALUE
+            is returned
+
+            Args
+            ----
+            frequencies : np.array(1,float)
+                Numpy array containing the frequencies used in the
+                Lomb-Scargle periodogram
+                default value: BSplines.DEFAULT_PERIODOGRAM_FREQUENCIES
+            ls_percentile : float, 0 <= value <= 100
+                Percentile used for Lomb-Scargle max periodogram VALUE
+                this is computed over all n_random generated random patterns
+            n_random : int
+                Number of random patterns to generate for the
+                Lomb-Scargle boundary. More patterns will give
+                a more accurate boundary but slower computation time
+        """
+        if frequencies is not None:
+            self.options["frequencies"] = frequencies
+        ls_percentile = ls_percentile if ls_percentile is not None\
+            else self.default_options["ls_percentile"]
+        n_random = n_random if n_random is not None\
+            else self.default_options['n_random']
+
+        max_per = []
+        time = self.data[BSplines.TIME, self.options["unique_mask"]]
+        for _ in range(0, n_random):
+            per = lombscargle(time,
+                              np.random.normal(size=len(time)),
+                              frequencies,
+                              normalize=True)
+            max_per += [max(per)]
+        self.options["lomb_scargle_boundary"] = np.percentile(max_per, ls_percentile)
+        return self.options["lomb_scargle_boundary"]
+
+    def _compute_residuals(self):
+        """ Compute the residuals given the computed spline """
+        (time, value) = self.data
+        residual_value = value-splev(time, self.options["tck"])
+
+        self.options["residuals"] = np.vstack([time, residual_value])
+
+    # def _compute_autocorr(self):
+    #    """ Compute the autocorrelation of the residuals """
+    #    self.options["residuals"]
+
+    def _compute_error_time(self, unique_datapoints=True):
+        """ Compute the error of the spine representation in the time domain"""
+        (time, value) = self.data[:, self.options["unique_mask"]] if\
+            unique_datapoints is True else self.data
+
+        return np.sqrt(mean_squared_error(splev(time, self.options["tck"]),
+                                          value))
+
+    def _compute_error_lomb_scargle(self, frequencies=None):
+        """ Compute the Lomb-Scargle periodogram error
+            of the spine representation in the frequency domain"""
+
+        # array of frequencies for which to compute the periodogram
+        if frequencies is not None:
+            self.options["frequencies"] = frequencies
+
+        (time, residuals) = self.options["residuals"][:, self.options["unique_mask"]]
+        return max(lombscargle(time,
+                               residuals,
+                               self.options["frequencies"],
+                               normalize=True))
+
+    def _compute_error_frequency(self, cut_off_freq=None):
+        """ Compute the error of the spline representation in the frequency
+        domain
+
+        """
+        if cut_off_freq is not None:
+            self.options["cut_off_freq"] = cut_off_freq
+        (time, value) = self.data
+        y_truth = abs(np.fft.rfft(value))
+        y_pred = abs(np.fft.rfft(splev(time, self.options["tck"])))
+
+        if self.options["cut_off_freq"] is not None:
+            mask = np.arange(0, np.size(y_truth)) <= self.options["cut_off_freq"]
+        else:
+            mask = np.full(np.size(y_truth), True, dtype=bool)
+
+        return np.sqrt(mean_squared_error(y_pred[mask], y_truth[mask]))
+
+    def compute_error(self, frequencies=None,
+                      unique_datapoints=True,
+                      cut_off_freq=None):
+        """ Compute the error in the time and frequency domain
+            (fft and Lomb-Scargle)
+            Args
+            ----
+            frequencies : np.array(1,float)
+                Numpy array containing the frequencies used in the
+                Lomb-Scargle periodogram
+                default value: BSplines.DEFAULT_PERIODOGRAM_FREQUENCIES
+            unique_datapoints: boolean
+                True: Use only the unique datapoints for time error computation
+                False: Use all datapoint for time error computation
+           cut_off_freq : float
+               Cut-off frequency in the error computation in the
+               frequency domain
+        """
+
+        return (self._compute_error_time(unique_datapoints=unique_datapoints),
+                self._compute_error_frequency(cut_off_freq=cut_off_freq),
+                self._compute_error_lomb_scargle(frequencies=frequencies))
+
+    def output_fit_error(self, cut_off_freq=None):
+        """ Print fit error metrics
+        """
+
+        error = self.compute_error(cut_off_freq)
+
+        print(' Fit error in the time domain: {0:1.3f}'.format(error[0]))
+
+        if self.options["cut_off_freq"] is None:
+            print(' Fit error in the frequency domain: '
+                  '{0:1.3f}'.format(error[1]))
+
+        else:
+            print(' Fit error in the frequency domain for frequencies below '
+                  '{0:}: {1:1.3f}'.format(self.options["cut_off_freq"], error[1]))
+
+    def fit(self, time: np.ndarray = None, data: np.ndarray = None, options: dict = None):
+        """ Parametrise the data using B-splines
+
+        Args
+        ----
+        time: The x-VALUEs to be parametrised.
+        data: The y-VALUEs to be parametrised.
+        options: Dictionary with options for fit, e.g., degree, n_knots, uniform_knots.
+        """
+
+        if time is not None and data is not None:
+            self.load_data(time, data)
+
+        # Set the options. By default, use previously set options.
+        self.default_options = self.options
+        self.options = Model._set_default_options(self, options)
+
+        self._compute_knot_positions()
+        self._compute_spline_representation()
+        self._compute_residuals()
+
+        # Return the parameters
+        coefficients, scaling, n_knots, knot_positions = self.get_spline_properties()
+        return {"coefficients": coefficients.tolist(),
+                "scaling": scaling.tolist(),
+                "n_knots": n_knots,
+                "knot_positions": knot_positions.tolist()}
+
+    def _try_n_knots(self, n_knots, uniform_knots=None):
+        orig_n_knots = self.options["n_knots"]
+        try:
+            self.fit(options={"n_knots": n_knots, "uniform_knots": uniform_knots})
+            return True
+        except ValueError:
+            print('Error: not insufficient points to fit all spline segments,'
+                  'reverting to original #knots')
+            # print(self.options["knot_positions"])
+            # print(self.data[0,self.options["unique_mask"]])
+            self.fit(options={"n_knots": orig_n_knots, "uniform_knots": uniform_knots})
+            return False
+
+    def determine_n_knots(self, options: dict = None):
+        """ Compute optimal number of knots based on Lomb-Scargle
+            periodogram boundary
+        Args
+        ----
+        options: Dictionary with options for determining the
+        number of interior knots.These options include:
+            min_n_knots: int
+                Minimal number of interior knots used in the spline fit
+            max_n_knots: int
+                Maximal number of interior knots used in the spline fit
+            ls_percentile : float, 0 <= value <= 100
+                    Percentile used for Lomb-Scargle max periodogram VALUE
+                    this is computed over all n_random generated random patterns
+            uniform_knots: boolean
+                True: Distribute interior knots evenly over datapoints
+                False: Distribute interior knots evenly over time
+            n_random : int
+                    Number of random patterns to generate for the
+                    Lomb-Scargle boundar. More patterns will give a
+                    more accurate boundary but slower computation time.
+        """
+        # Set the options. By default, use previously set options.
+        self.default_options = self.options
+        self.options = Model._set_default_options(self, options)
+
+        min_n_knots = self.options["min_n_knots"]
+        max_n_knots = self.options["max_n_knots"]
+        frequencies = self.options["frequencies"]
+        ls_percentile = self.options["ls_percentile"]
+        n_random = self.options["n_random"]
+        uniform_knots = self.options["uniform_knots"]
+
+        lombscargle_boundary = self._compute_boundary(frequencies=frequencies,
+                                                      ls_percentile=ls_percentile,
+                                                      n_random=n_random)
+
+        succes = self._try_n_knots(n_knots=min_n_knots,
+                                   uniform_knots=uniform_knots)
+        max_lombscargle =\
+            self._compute_error_lomb_scargle(frequencies=frequencies)
+        while succes\
+            and max_lombscargle > lombscargle_boundary\
+                and self.options["n_knots"] < max_n_knots:
+            succes = self._try_n_knots(n_knots=self.options["n_knots"]+1,
+                                       uniform_knots=uniform_knots)
+            max_lombscargle =\
+                self._compute_error_lomb_scargle(frequencies=frequencies)
+
+        return self.options["n_knots"], lombscargle_boundary
+
+    def predict(self, x_values: np.ndarray, order=0) -> np.ndarray:
+        """ Evaluate the spline representation
+
+        If x is given, spline is evaluated at x, otherwise at self.data[0].
+
+        Args
+        ----
+        x_values : Array with VALUE between 0 and 1 at which the spline fit is evaluated
+        order : Default 0 (original fit). Computes the order derivative.
+                order should be less or equal to the spline degree
+        """
+
+        if not isinstance(x_values, np.ndarray):
+            raise TypeError(' Expected numpy array')
+
+        x_scaled = self._scale_data(x_values.copy(), BSplines.TIME)
+        return self._predict_unscaled(x_scaled, order)
+
+    def _predict_unscaled(self, x_values: np.ndarray, order=0) -> np.ndarray:
+        if not isinstance(x_values, np.ndarray):
+            raise TypeError(' Expected numpy array')
+
+        return self._rescale_data(splev(x_values, self.options["tck"], order),
+                                  BSplines.VALUE, order)
+
+    def get_state(self, pars: dict, npoints: int = 100,
+                  tstart: float = 0, tend: float = 1) -> np.ndarray:
+        self.set_spline_properties(pars["coefficients"], pars["scaling"],
+                                   pars["n_knots"], pars["knot_positions"])
+        xdata = np.linspace(tstart, tend, npoints)
+        return self._predict_unscaled(xdata)
+
+    def get_state_dot(self, pars: dict, npoints: int = 100,
+                      tstart: float = 0, tend: float = 1) -> np.ndarray:
+        self.set_spline_properties(pars["coefficients"], pars["scaling"],
+                                   pars["n_knots"], pars["knot_positions"])
+        xdata = np.linspace(tstart, tend, npoints)
+        return self._predict_unscaled(xdata, order=1)
+
+    def get_parameter(self, key):
+        """ Request a parameter value
+
+        Args
+        ----
+        key: The key of the requested parameter value
+
+        Returns
+        -------
+        The requested parameter corresponding to the "key" argument
+
+        """
+        return self.options[key]
+
+    def get_spline_properties(self):
+        """ Return the spline properties
+
+        Returns
+        -------
+        Coefficients: Numpy array with (1 + k + n_knots) values
+        Scaling: Numpy array of shape(2,2):
+            array([[x_min,x_max],[y_min, y_max]])
+        n_knots: 1 value
+        interior_positions: uniform: Empty Numpy array
+                            otherwise: Numpy array of length (n_knots)
+        k can be derived as follows: k=#coefficients - n_knots - 1
+        """
+
+        # Get spline coefficients
+        knot_positions, coefficients, degree = self.options["tck"]
+        if self.options["uniform_knots"]:
+            # Store interior knot positions
+            knot_positions = self.options["knot_positions"]
+        else:
+            # For evenly spaced knots the knot positions are not required
+            # as these can be reconstructed from the other parameters
+            knot_positions = np.array([])
+        # Remove padded coefficient values added by the splrep function
+        coefficients = coefficients[:-degree-1]
+
+        return coefficients, self.options["scaling"], self.options["n_knots"], knot_positions
+
+    def set_spline_properties(self,
+                              coefficients,
+                              scaling, n_knots,
+                              knot_positions=None):
+        """ Set the spline properties
+
+        Args
+        ----
+        coefficients: Numpy array with (1 + k + n_knots) values
+        scaling: Numpy array of shape(2,2):
+            array([[x_min,x_max],[y_min, y_max]])
+        n_knots: 1 value
+        knot_positions: uniform: Empty Numpy array
+                        otherwise: Numpy array of length (n_knots)
+        k will be derived as follows: k=#coefficients - n_knots - 1
+        """
+
+        if knot_positions is not None and knot_positions:
+            self.options["uniform_knots"] = True
+            self.options["knot_positions"] = knot_positions
+        else:
+            # Compute knot positions from other parameters
+            self.options["uniform_knots"] = False
+            self._compute_knot_positions()
+        degree = len(coefficients) - n_knots - 1
+        knot_positions = np.concatenate((
+            np.zeros(degree+1),
+            self.options["knot_positions"],
+            np.ones(degree+1)))
+        coefficients = np.concatenate((coefficients, np.zeros(degree+1)))
+        self.options["scaling"] = scaling
+        self.options["n_knots"] = n_knots
+        self.options["degree"] = degree
+        self.options["tck"] = (knot_positions, coefficients, degree)
 
 
 def model_from_json(json: str) -> Model:
