@@ -6,10 +6,12 @@ Author(s): Erwin de Gelder
 Modifications:
 2019 12 31 Change the way the n-grams are stored.
 2019 01 23 Add last row to n-gram. Otherwise, last item will be missed!
+2020 03 22 Add functionality to find start and end indices during a time frame.
 """
 
 import os
 from typing import Any, Iterable, Tuple
+import numpy as np
 import pandas as pd
 
 
@@ -112,6 +114,55 @@ class NGram:
         if "id" in self.fieldnames:
             self.metadata.sort_values(fieldname, inplace=True, ascending=ascending)
             self.ngrams = [self.ngrams[i] for i in self.metadata.index]
+
+    def start_and_end_indices(self, fieldname: str, i_ngram: int = None, i_start: float = None,
+                              i_end: float = None) -> Tuple[np.ndarray, np.ndarray]:
+        """ Find the start and end indices of parts that do not change.
+
+        Suppose, the Series of <fieldname> look like (a, a, b, b, a) for indices
+        (0, 1, 2, 3, 4). Then we have the parts (a, a), (b, b), and (a) that do
+        not change. Hence, the starting indices are [0, 2, 4], and the end
+        indices are [1, 3, 4].
+
+        :param fieldname: The name of the series that will be examined.
+        :param i_ngram: The i-th n-gram if this object contains more n-grams.
+        :param i_start: Optional, the starting index to start looking.
+        :param i_end: Optional, the end index to stop looking.
+        :return: The starting and ending indices, e.g., ([0, 2, 4], [1, 3, 4]).
+        """
+        # Select the signal that we are examining.
+        if i_ngram is None:
+            signal = self.ngram[fieldname]
+        else:
+            signal = self.ngrams[i_ngram][fieldname]
+
+        # Get starting and end index.
+        if i_start is None:
+            i_start = signal.index[0]
+        else:
+            i_start = signal.index[signal.index.get_loc(i_start, method="pad")]
+            current_value = signal.loc[i_start]
+            for i, value in signal.loc[:i_start][::-1].iteritems():
+                if not value == current_value:
+                    break
+                i_start = i
+        if i_end is None:
+            i_end = signal.index[-1]
+        else:
+            i_end = signal.index[signal.index.get_loc(i_end, method="backfill") - 1]
+
+        # Search for changes.
+        start = [i_start]
+        end = []
+        current_value = signal.loc[i_start]
+        for i, value in signal.loc[i_start:].iteritems():
+            if not value == current_value:
+                end.append(i)
+                if i >= i_end:
+                    break
+                current_value = value
+                start.append(i)
+        return np.array(start), np.array(end)
 
     def to_hdf(self, path: str, name: str, mode="a", complevel: int = 4) -> None:
         """ Save the n-grams to an HDF5 file.
