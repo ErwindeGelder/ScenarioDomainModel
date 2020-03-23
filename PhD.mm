@@ -2452,6 +2452,18 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Activity generation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1830763082" CREATED="1584948791733" MODIFIED="1584948811248">
+<node TEXT="Variable-Domain Functional Principal Component Analysis" ID="ID_1717625034" CREATED="1584948812382" MODIFIED="1584948845335" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/435%20Variable%20Domain%20Functional%20Principal%20Component%20Analysis.pdf">
+<attribute NAME="key" VALUE="johns2019variable"/>
+<attribute NAME="journal" VALUE="Journal of Computational and Graphical Statistics"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Variable-Domain Functional Principal Component Analysis"/>
+<attribute NAME="authors" VALUE="Johns, Jordan T and Crainiceanu, Ciprian and Zipunnikov, Vadim and Gellar, Jonathan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="020977D3588F47D51313ECFF1316B838275F59D0103F8521AA6775671B79D">
+    <pdf_title>Variable-Domain Functional Principal Component Analysis</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
@@ -3770,7 +3782,7 @@
 <node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
 <node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
 <node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1584552603477" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
-<arrowlink SHAPE="CUBIC_CURVE" COLOR="#000000" WIDTH="2" TRANSPARENCY="80" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1249695869" STARTINCLINATION="40;0;" ENDINCLINATION="40;45;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+<arrowlink SHAPE="LINE" COLOR="#000000" WIDTH="2" TRANSPARENCY="80" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_1249695869" STARTINCLINATION="40;0;" ENDINCLINATION="40;45;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 <attribute NAME="key" VALUE="HighwayKeyOSM"/>
 <attribute NAME="title" VALUE="Key:highway"/>
 <attribute NAME="authors" VALUE="OpenStreetMaps"/>
