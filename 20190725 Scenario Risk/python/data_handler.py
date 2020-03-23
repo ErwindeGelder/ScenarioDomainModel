@@ -10,6 +10,7 @@ Modifications:
 2019 12 27 Add functionality for computed next/previous valid measurement.
 2019 12 30 Add functionality for converting big target dataframe to list of targets.
 2020 01 16 Prev/next values shifted by one sample.
+2020 03 23 Store filename as an attribute.
 """
 
 from typing import Any, List, Union, Tuple
@@ -30,6 +31,7 @@ class DataHandler:
     def __init__(self, data: Union[pd.DataFrame, str], targets: List[pd.DataFrame] = None,
                  frequency: int = None):
         self.targets = targets
+        self.filename = None
         if isinstance(data, str):
             # If a string is given, we assume that the string refers to the file with the data.
             self.read_hdf(data)
@@ -344,6 +346,7 @@ class DataHandler:
         if self.targets:
             targets = pd.concat(self.targets, sort=False)
             targets.to_hdf(path, "Targets", mode="a", complevel=complevel)
+        self.filename = path
 
     def read_hdf(self, path: str) -> None:
         """ Load the data (and targets) from a HDF5 file.
@@ -354,3 +357,4 @@ class DataHandler:
             self.data = hdf["Data"]
             if "Targets" in hdf:
                 self.targets = self._big_target_df_to_list(hdf["Targets"])
+        self.filename = path
