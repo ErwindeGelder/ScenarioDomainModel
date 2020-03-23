@@ -12,7 +12,7 @@ from .activity import Activity, DetectedActivity, TriggeredActivity
 from .actor import Actor, EgoVehicle
 from .document_management import DocumentManagement
 from .event import Event
-from .model import Spline3Knots, Linear, Sinusoidal, Constant, BSplines
+from .model import Spline3Knots, Linear, Sinusoidal, Constant, BSplines, MultiBSplines
 from .scenario import Scenario
 from .scenario_category import ScenarioCategory
 from .state import State

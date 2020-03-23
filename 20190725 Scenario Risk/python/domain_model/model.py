@@ -25,14 +25,14 @@ Modifications
 13 Oct 2019: Update of terminology.
 04 Nov 2019: Add constant model.
 13 Mar 2020: BSplines added (since when was it removed?)
+23 Mar 2020: MultiBSplines added.
 """
 
-
+from abc import ABC, abstractmethod
 import sys
 from scipy.interpolate import splev, splrep
 from scipy.signal import lombscargle
 from sklearn.metrics import mean_squared_error
-from abc import ABC, abstractmethod
 import numpy as np
 
 
@@ -63,7 +63,7 @@ class Model(ABC):
         self.default_options = dict()
 
     def get_state(self, pars: dict, npoints: int = 100,
-                  tstart: float = 0, tend: float = 0) -> np.ndarray:
+                  tstart: float = 0, tend: float = 1) -> np.ndarray:
         """ Return state vector.
 
         The state is calculated based on the provided parameters. The time is
@@ -79,7 +79,7 @@ class Model(ABC):
         """
 
     def get_state_dot(self, pars: dict, npoints: int = 100,
-                      tstart: float = 0, tend: float = 0) -> np.ndarray:
+                      tstart: float = 0, tend: float = 1) -> np.ndarray:
         """ Return the derivative of the state vector.
 
         The state derivative is calculated based on the provided parameters.
@@ -166,11 +166,11 @@ class Linear(Model):
         Model.__init__(self, "Linear")
 
     def get_state(self, pars: dict, npoints: int = 100,
-                  tstart: float = 0, tend: float = 0) -> np.ndarray:
+                  tstart: float = 0, tend: float = 1) -> np.ndarray:
         return np.linspace(pars["xstart"], pars["xend"], npoints)
 
     def get_state_dot(self, pars: dict, npoints: int = 100,
-                      tstart: float = 0, tend: float = 0) -> np.ndarray:
+                      tstart: float = 0, tend: float = 1) -> np.ndarray:
         return np.ones(npoints) * (pars["xend"] - pars["xstart"])
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
@@ -397,18 +397,6 @@ class BSplines(Model):
         if xdata is not None and ydata is not None:
             self.load_data(xdata, ydata)
 
-    def __enter__(self):
-        """
-        Used for initialization inside with statement
-        """
-        return self
-
-    def __exit__(self, exc_type, exc_value, traceback):
-        """
-        Used for completion of with statement
-        """
-        pass
-
     def load_data(self, xdata: np.ndarray, ydata: np.ndarray) -> None:
         """ Load the data into a np.array
 
@@ -498,10 +486,10 @@ class BSplines(Model):
         factor = (self.options["scaling"][axis][BSplines.MAX_VALUE] -
                   self.options["scaling"][axis][BSplines.MIN_VALUE])
         offset = self.options["scaling"][axis][BSplines.MIN_VALUE]
-        """ Due to the chain rule the derivative needs to be scaled
-            both by time and value:
-                g(x) = a f(cx + d) + b
-                g'(x) = a/c f'(cx + d)"""
+        # Due to the chain rule the derivative needs to be scaled
+        # both by time and value:
+        #     g(x) = a f(cx + d) + b
+        #     g'(x) = a/c f'(cx + d)
         if axis == BSplines.VALUE and order == 1:
             offset = 0
             # factor /= (self.options["scaling"][BSplines.TIME][BSplines.MAX_VALUE] -
@@ -874,6 +862,66 @@ class BSplines(Model):
         self.options["n_knots"] = n_knots
         self.options["degree"] = degree
         self.options["tck"] = (knot_positions, coefficients, degree)
+
+
+class MultiBSplines(Model):
+    """ BSplines, dealing with multivariate data. """
+    def __init__(self, dimension: int, options: dict = None):
+        """Initialise the class with the filename of the input file.
+
+        Args
+        ----
+        dimension: The dimension of the data.
+        options: Dictionary with all kinds of options.
+        """
+        Model.__init__(self, "MultiBSplines")
+
+        # Initialize the b-splines.
+        self.dimension = dimension
+        self.bsplines = [BSplines(options=options) for _ in range(dimension)]
+        self.transpose = False
+
+    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None):
+        # Set data correctly.
+        n_data = len(time)
+        if data.shape == (n_data, self.dimension):
+            data = data.T
+            self.transpose = True
+        elif not data.shape == (self.dimension, n_data):
+            raise ValueError("Data should be n-by-d or d-by-n, where d is the provided dimension.")
+
+        # Loop through the different dimensions.
+        all_pars = [bspline.fit(time, data[i], options) for i, bspline in enumerate(self.bsplines)]
+        pars = dict(coefficients=[par['coefficients'] for par in all_pars],
+                    scaling=[par['scaling'] for par in all_pars],
+                    n_knots=[par["n_knots"] for par in all_pars],
+                    knot_positions=[par["knot_positions"] for par in all_pars])
+
+        return pars
+
+    def get_state(self, pars: dict, npoints: int = 100,
+                  tstart: float = 0, tend: float = 1) -> np.ndarray:
+        result = np.array([bspline.get_state(dict(coefficients=pars["coefficients"][i],
+                                                  scaling=pars["scaling"][i],
+                                                  n_knots=pars["n_knots"][i],
+                                                  knot_positions=pars["knot_positions"][i]),
+                                             npoints, tstart, tend)
+                           for i, bspline in enumerate(self.bsplines)])
+        if self.transpose:
+            return result.T
+        return result
+
+    def get_state_dot(self, pars: dict, npoints: int = 100,
+                      tstart: float = 0, tend: float = 1) -> np.ndarray:
+        result = np.array([bspline.get_state_dot(dict(coefficients=pars["coefficients"][i],
+                                                      scaling=pars["scaling"][i],
+                                                      n_knots=pars["n_knots"][i],
+                                                      knot_positions=pars["knot_positions"][i]),
+                                                 npoints, tstart, tend)
+                           for i, bspline in enumerate(self.bsplines)])
+        if self.transpose:
+            return result.T
+        return result
 
 
 def model_from_json(json: str) -> Model:
