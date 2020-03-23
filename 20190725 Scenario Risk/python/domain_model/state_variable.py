@@ -18,7 +18,7 @@ Modifications
 14 Mar 2019: StateVariables {LONGITUDINAL,LATERAL}_ROAD_POSITION added.
 11 Oct 2019: Update of terminology.
 04 Nov 2019: Add the heading as a possible state variable.
-
+23 Mar 2020: Add longitudinal and lateral target information.
 """
 
 from enum import Enum
@@ -33,6 +33,8 @@ class StateVariable(Enum):
     HEADING = "psi"
     LONGITUDINAL_ROAD_POSITION = "[ROAD_ID, ROAD_DISTANCE]"
     LATERAL_ROAD_POSITION = "[LANE_ID, LANE_OFFSET]"
+    LON_TARGET = "[vabs, dx]"
+    LAT_TARGET = 'dy'
 
     def to_json(self):
         """ When tag is exporting to JSON, this function is being called
