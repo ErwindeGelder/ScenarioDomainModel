@@ -25,6 +25,7 @@ Modifications
              desried state.
 11 Oct 2019: Update of terminology.
 04 Nov 2019: Add goals to ego vehicle.
+23 Mar 2020: Add properties attributes.
 """
 
 
@@ -49,6 +50,7 @@ class Actor(Default):
         initial_states (List[State]): Specifying the initial states.
         desired_states (List[State]): Specifying the goal/objectve of the actor.
         goal (str): A goal that cannot be formulated using the desired state.
+        proporties (dict): Properties of the actor.
         name (str): A name that serves as a short description of the qualitative
             actor.
         uid (int): A unique ID.
@@ -56,7 +58,8 @@ class Actor(Default):
             category comprises a scenario.
     """
     def __init__(self, actor_category: ActorCategory, initial_states: List[State] = None,
-                 desired_states: List[State] = None, goal: str = "", **kwargs):
+                 desired_states: List[State] = None, goal: str = "", properties: dict = None,
+                 **kwargs):
         # Check the types of the inputs
         check_for_type("actor_category", actor_category, ActorCategory)
         check_for_list("initial_states", initial_states, State)
@@ -72,6 +75,7 @@ class Actor(Default):
         self.initial_states = initial_states  # type: List[State]
         self.desired_states = desired_states  # type: List[State]
         self.goal = goal                      # type: str
+        self.properties = properties          # type: dict
 
     def get_tags(self) -> dict:
         """ Return the list of tags related to this Actor.
@@ -98,6 +102,7 @@ class Actor(Default):
                                    "uid": self.actor_category.uid}
         actor["initial_states"] = [initial_state.to_json() for initial_state in self.initial_states]
         actor["desired_states"] = [desired_state.to_json() for desired_state in self.desired_states]
+        actor["properties"] = self.properties
         return actor
 
     def to_json_full(self) -> dict:
