@@ -26,6 +26,7 @@ Modifications
 04 Nov 2019: Add constant model.
 13 Mar 2020: BSplines added (since when was it removed?)
 23 Mar 2020: MultiBSplines added.
+26 Mar 2020: Fix bug when using different number of knots when using get_state().
 """
 
 from abc import ABC, abstractmethod
@@ -828,10 +829,7 @@ class BSplines(Model):
 
         return coefficients, self.options["scaling"], self.options["n_knots"], knot_positions
 
-    def set_spline_properties(self,
-                              coefficients,
-                              scaling, n_knots,
-                              knot_positions=None):
+    def set_spline_properties(self, coefficients, scaling, n_knots, knot_positions=None):
         """ Set the spline properties
 
         Args
@@ -845,6 +843,7 @@ class BSplines(Model):
         k will be derived as follows: k=#coefficients - n_knots - 1
         """
 
+        self.options["n_knots"] = n_knots
         if knot_positions is not None and knot_positions:
             self.options["uniform_knots"] = True
             self.options["knot_positions"] = knot_positions
@@ -859,7 +858,6 @@ class BSplines(Model):
             np.ones(degree+1)))
         coefficients = np.concatenate((coefficients, np.zeros(degree+1)))
         self.options["scaling"] = scaling
-        self.options["n_knots"] = n_knots
         self.options["degree"] = degree
         self.options["tck"] = (knot_positions, coefficients, degree)
 
