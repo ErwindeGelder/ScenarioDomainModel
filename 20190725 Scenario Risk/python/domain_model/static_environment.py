@@ -21,7 +21,7 @@ Modifications
 15 Jan 2019: to_opendrive function added
 22 May 2019: Make use of type_checking.py to shorten the initialization.
 13 Oct 2019: Update of terminology.
-
+27 Mar 2020: Add the possibility to pass on the static environment category for the to_json().
 """
 
 from typing import List
@@ -111,17 +111,22 @@ class StaticEnvironment(Default):
         return static_environment
 
 
-def stat_env_from_json(json: dict) -> StaticEnvironment:
+def stat_env_from_json(json: dict, stat_env_category: StaticEnvironmentCategory = None) \
+        -> StaticEnvironment:
     """ Get StaticEnvironment object from JSON code
 
     It is assumed that all the attributes are fully defined. Hence,
     the StaticEnvironmentCategory need to be fully defined instead of only the
-    unique ID.
+    unique ID. Alternatively, the StaticEnvironmentCategory can be passed as
+    optional argument. In that case, the StaticEnvironmentCategory does not need
+    to be defined in the JSON code.
 
     :param json: JSON code of StaticEnvironment.
+    :param stat_env_category: If given, it will not be based on the JSON code.
     :return: StaticEnvironment object.
     """
-    stat_env_category = stat_env_category_from_json(json["static_environment_category"])
+    if stat_env_category is None:
+        stat_env_category = stat_env_category_from_json(json["static_environment_category"])
     stat_env = StaticEnvironment(stat_env_category,
                                  properties=json["property"],
                                  name=json["name"],
