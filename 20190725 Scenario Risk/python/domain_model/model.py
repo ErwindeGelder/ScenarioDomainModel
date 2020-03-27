@@ -27,10 +27,12 @@ Modifications
 13 Mar 2020: BSplines added (since when was it removed?)
 23 Mar 2020: MultiBSplines added.
 26 Mar 2020: Fix bug when using different number of knots when using get_state().
+27 Mar 2020: Export the initial model parameters when converting model to json.
 """
 
 from abc import ABC, abstractmethod
 import sys
+from typing import Union
 from scipy.interpolate import splev, splrep
 from scipy.signal import lombscargle
 from sklearn.metrics import mean_squared_error
@@ -372,6 +374,7 @@ class BSplines(Model):
         """
 
         Model.__init__(self, "BSplines")
+        self.init_options = options
 
         # Define the default options
         self.default_options = {"n_knots": 4,
@@ -397,6 +400,9 @@ class BSplines(Model):
         self.data = None
         if xdata is not None and ydata is not None:
             self.load_data(xdata, ydata)
+
+    def to_json(self):
+        return dict(name="MultiBSplines", init_parms=dict(options=self.init_options))
 
     def load_data(self, xdata: np.ndarray, ydata: np.ndarray) -> None:
         """ Load the data into a np.array
@@ -876,7 +882,8 @@ class MultiBSplines(Model):
 
         # Initialize the b-splines.
         self.dimension = dimension
-        self.bsplines = [BSplines(options=options) for _ in range(dimension)]
+        self.options = options
+        self.bsplines = [BSplines(options=self.options) for _ in range(dimension)]
         self.transpose = False
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None):
@@ -921,15 +928,21 @@ class MultiBSplines(Model):
             return result.T
         return result
 
+    def to_json(self):
+        return dict(name="MultiBSplines", init_parms=dict(dimension=self.dimension,
+                                                          options=self.options))
 
-def model_from_json(json: str) -> Model:
+
+def model_from_json(json: Union[str, dict]) -> Model:
     """ Get Model object from JSON code
 
     It is assumed that the JSON code of the Model is created using
     Model.to_json().
 
     :param json: JSON code of Model, which is simply a string of the name of the
-        Model.
+        Model or a dictionary that also contains the options.
     :return: Model object.
     """
-    return getattr(sys.modules[__name__], json)()
+    if isinstance(json, str):
+        return getattr(sys.modules[__name__], json)()
+    return getattr(sys.modules[__name__], json["name"])(**json["init_parms"])
