@@ -24,7 +24,7 @@ Modifications
 22 May 2019: Make use of type_checking.py to shorten the initialization.
 13 Oct 2019: Update of terminology.
 04 Nov 2019: Add options to automatically assign unique ids to actor/activities.
-
+27 Mar 2020: Enable instantiation from json without needing full json code.
 """
 
 from typing import List, Tuple
@@ -335,53 +335,65 @@ class Scenario(Default):
         return scenario
 
 
-def scenario_from_json(json: dict) -> Scenario:
+def scenario_from_json(json: dict, static_environment: StaticEnvironment = None,
+                       actors: List[Actor] = None, activities: List[Activity] = None) -> Scenario:
     """ Get Scenario object from JSON code
 
     It is assumed that all the attributes are fully defined. Hence, the
     StaticEnvironment, all Actor, and all Activity need to be defined, instead
     of only a reference to their IDs.
+    Alternatively, the actors, the activities, and static environment can be
+    passed as arguments.
 
     :param json: JSON code of Scenario.
+    :param static_environment: If given, it will not be based on the JSON code.
+    :param actors: If given, it will not be based on the JSON code.
+    :param activities: If given, it will not be based on the JSON code.
     :return: Scenario object.
     """
+    if static_environment is None:
+        static_environment = stat_env_from_json(json["static_environment"])
     scenario = Scenario(json["starttime"],
                         json["endtime"],
-                        stat_env_from_json(json["static_environment"]),
+                        static_environment,
                         name=json["name"],
                         uid=int(json["id"]),
                         tags=[tag_from_json(tag) for tag in json["tag"]])
 
     # Create the actor categories (ActorCategory) and actors (Actor).
-    actor_cats = []
-    actor_cat_uids = []
-    actors = []
-    for actor in json["actor"]:
-        if "id" in actor["actor_category"]:
-            # In this case, it is assumed that the JSON code of the ActorCategory is available.
-            actors.append(actor_from_json(actor))
-            actor_cats.append(actors[-1].actor_category)
-            actor_cat_uids.append(actor_cats[-1].uid)
-        else:
-            # In this case, the ActorCategory is already defined and we need to reuse that one.
-            actor_category = actor_cats[actor_cat_uids.index(actor["actor_category"]["uid"])]
-            actors.append(actor_from_json(actor, actor_category=actor_category))
+    if actors is None:
+        categories = []
+        categories_uid = []
+        actors = []
+        for actor in json["actor"]:
+            if "id" in actor["actor_category"]:
+                # In this case, it is assumed that the JSON code of the ActorCategory is available.
+                actors.append(actor_from_json(actor))
+                categories.append(actors[-1].actor_category)
+                categories_uid.append(categories[-1].uid)
+            else:
+                # In this case, the ActorCategory is already defined and we need to reuse that one.
+                actor_category = categories[categories_uid.index(actor["actor_category"]["uid"])]
+                actors.append(actor_from_json(actor, actor_category=actor_category))
     scenario.set_actors(actors)
 
     # Create the activity categories (ActivityCategory) and activities (Activity).
-    activity_cats = []
-    activity_cat_uids = []
-    activities = []
-    for activity in json["activity"]:
-        if "id" in activity["activity_category"]:
-            # In this case, it is assumed that the JSON code of the ActivityCategory is available.
-            activities.append(activity_from_json(activity))
-            activity_cats.append(activities[-1].activity_category)
-            activity_cat_uids.append(activity_cats[-1].uid)
-        else:
-            # In this case, the ActivityCategory is already defined and we need to reuse that one.
-            act_cat = activity_cats[activity_cat_uids.index(activity["activity_category"]["uid"])]
-            activities.append(activity_from_json(activity, activity_category=act_cat))
+    if activities is None:
+        categories = []
+        categories_uid = []
+        activities = []
+        for activity in json["activity"]:
+            if "id" in activity["activity_category"]:
+                # In this case, it is assumed that the JSON code of the ActivityCategory is
+                # available.
+                activities.append(activity_from_json(activity))
+                categories.append(activities[-1].activity_category)
+                categories_uid.append(categories[-1].uid)
+            else:
+                # In this case, the ActivityCategory is already defined and we need to reuse that
+                # one.
+                act_cat = categories[categories_uid.index(activity["activity_category"]["uid"])]
+                activities.append(activity_from_json(activity, activity_category=act_cat))
     scenario.set_activities(activities)
 
     # Create the acts.
@@ -393,5 +405,4 @@ def scenario_from_json(json: dict) -> Scenario:
             for act in json["act"]]
     scenario.set_acts(acts)
 
-    # We are done, so we can return the scenario.
     return scenario
