@@ -4,6 +4,8 @@ Creation date: 2020 03 23
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 03 27: Enable the instantiation of objects after reading in a database.
+2020 03 29: Use a variable number of knots to prevent error for very short activities.
 """
 
 import glob
@@ -107,16 +109,20 @@ def activities_target(cutin: Tuple[int, float, float], data_handler: DataHandler
              else ACC_TARGET if activity_label == LongitudinalActivity.ACCELERATING.value
              else CRU_TARGET)
         data = data_handler.targets[cutin[0]].loc[i:j, ["vx", "dx"]]
+        n_knots = min(4, len(data)//10)
         activity = DetectedActivity(activity_category, i, j-i,
-                                    activity_category.fit(np.array(data.index), data.values),
+                                    activity_category.fit(np.array(data.index), data.values,
+                                                          options=dict(n_knots=n_knots)),
                                     name=activity_category.name)
         activities.append(activity)
         acts.append((target, activity, i))
 
     # Store the lateral activity of the target.
     data = data_handler.targets[cutin[0]].loc[cutin[1]:cutin[2], "dy"]
+    n_knots = min(4, len(data)//10)
     activity = DetectedActivity(LC_TARGET, cutin[1], cutin[2]-cutin[1],
-                                LC_TARGET.fit(np.array(data.index), data.values),
+                                LC_TARGET.fit(np.array(data.index), data.values,
+                                              options=dict(n_knots=n_knots)),
                                 name="lane change target")
     activities.append(activity)
     acts.append((target, activity, cutin[1]))
@@ -146,8 +152,10 @@ def activities_ego(cutin: Tuple[int, float, float], data_handler: DataHandler,
             else:
                 activity_category = LK_EGO
             data = data_handler.data.loc[i:j, "Host_vx"]
+            n_knots = min(4, len(data)//10)
             activity = DetectedActivity(activity_category, i, j - i,
-                                        activity_category.fit(np.array(data.index), data.values),
+                                        activity_category.fit(np.array(data.index), data.values,
+                                                              options=dict(n_knots=n_knots)),
                                         name=activity_category.name)
             activities.append(activity)
             acts.append((EGO, activity, i))
@@ -199,6 +207,8 @@ def process_file(path: str, database: DataBaseEmulator):
     # Store each cut in.
     data_handler = DataHandler(os.path.join("data", "1_hdf5", os.path.basename(path)))
     for cutin in cutins:
+        if cutin[2] - cutin[1] < 0.1:
+            continue  # Skip very short scenarios.
         process_cutin(cutin, data_handler, target_ngrams, ego_ngram, database)
 
 
@@ -215,6 +225,5 @@ for item in [DEC_TARGET, ACC_TARGET, CRU_TARGET, LC_TARGET, STAT_CATEGORY, STAT,
 FILENAMES = glob.glob(os.path.join("data", "4_ngrams", "*.hdf5"))
 for filename in tqdm(FILENAMES):
     process_file(filename, DATABASE)
-    break
 
 DATABASE.to_json(os.path.join("data", "5_cutin_scenarios", "database.json"), indent=4)
