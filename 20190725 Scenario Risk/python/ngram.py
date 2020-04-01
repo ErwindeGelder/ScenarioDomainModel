@@ -7,6 +7,7 @@ Modifications:
 2019 12 31 Change the way the n-grams are stored.
 2019 01 23 Add last row to n-gram. Otherwise, last item will be missed!
 2020 03 22 Add functionality to find start and end indices during a time frame.
+2020 03 31 Bug fix for start_and_end_indices.
 """
 
 import os
@@ -155,13 +156,15 @@ class NGram:
         start = [i_start]
         end = []
         current_value = signal.loc[i_start]
+        i = None  # This suppresses a later warning that i might be undefined.
         for i, value in signal.loc[i_start:].iteritems():
             if not value == current_value:
-                end.append(i)
                 if i >= i_end:
                     break
                 current_value = value
+                end.append(i)
                 start.append(i)
+        end.append(i)
         return np.array(start), np.array(end)
 
     def to_hdf(self, path: str, name: str, mode="a", complevel: int = 4) -> None:
