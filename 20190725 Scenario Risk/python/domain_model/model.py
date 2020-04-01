@@ -28,6 +28,7 @@ Modifications
 23 Mar 2020: MultiBSplines added.
 26 Mar 2020: Fix bug when using different number of knots when using get_state().
 27 Mar 2020: Export the initial model parameters when converting model to json.
+29 Mar 2020: Enable the evaluation of the model at given time instants.
 """
 
 from abc import ABC, abstractmethod
@@ -65,21 +66,38 @@ class Model(ABC):
         self.name = modelname
         self.default_options = dict()
 
-    def get_state(self, pars: dict, npoints: int = 100,
-                  tstart: float = 0, tend: float = 1) -> np.ndarray:
+    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
         """ Return state vector.
 
         The state is calculated based on the provided parameters. The time is
-        assumed to be on the interval [0, 1], but can set differently using
-        [tstart, tend]. By default, 100 points are used to evaluate the state
-        (to be altered using npoints).
+        assumed to be uniformly distributed. By default, 100 points are used to
+        evaluate the state (to be altered using `npoints`).
+        Alternatively, the time instances can be given using the `time`
+        argument.
 
         :param pars: A dictionary with the parameters.
         :param npoints: Number of points for evaluating the state.
-        :param tstart: Starting x-VALUE, by default 0.
-        :param tend: Final x-VALUE, by default 1.
+        :param time: Time instances at which the model is to be evaluated.
         :return: Numpy array with the state.
         """
+
+    @staticmethod
+    def _get_tdata(pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
+        """ Returning the time vector for _get_state.
+
+        The time is assumed to be uniformly distributed. By default, 100 points
+        are used to evaluate the state (to be altered using `npoints`).
+        Alternatively, the time instances can be given using the `time`
+        argument.
+
+        :param pars: The parameters, should contain tstart and tend.
+        :param npoints: Number of points for evaluating the state.
+        :param time: Time instances at which the model is to be evaluated.
+        :return: Time data.
+        """
+        if time is None:
+            return np.linspace(0, 1, npoints)
+        return (time - pars["tstart"]) / (pars["tend"] - pars["tstart"])
 
     def get_state_dot(self, pars: dict, npoints: int = 100,
                       tstart: float = 0, tend: float = 1) -> np.ndarray:
@@ -148,9 +166,10 @@ class Constant(Model):
     def __init__(self):
         Model.__init__(self, "Constant")
 
-    def get_state(self, pars: dict, npoints: int = 100,
-                  tstart: float = 0, tend: float = 0) -> np.ndarray:
-        return np.ones(npoints)*pars["xstart"]
+    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
+        if time is None:
+            return np.ones(npoints)*pars["xstart"]
+        return np.ones(len(time))*pars["xstart"]
 
     def get_state_dot(self, pars: dict, npoints: int = 100,
                       tstart: float = 0, tend: float = 0) -> np.ndarray:
@@ -168,9 +187,9 @@ class Linear(Model):
     def __init__(self):
         Model.__init__(self, "Linear")
 
-    def get_state(self, pars: dict, npoints: int = 100,
-                  tstart: float = 0, tend: float = 1) -> np.ndarray:
-        return np.linspace(pars["xstart"], pars["xend"], npoints)
+    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
+        time = self._get_tdata(pars, npoints, time)
+        return pars["xstart"] + time*(pars["xend"] - pars["xstart"])
 
     def get_state_dot(self, pars: dict, npoints: int = 100,
                       tstart: float = 0, tend: float = 1) -> np.ndarray:
@@ -208,12 +227,14 @@ class Linear(Model):
             time_begin = np.min(time)
             time_end = np.max(time)
             return {"xstart": regression_result[0]*time_begin + regression_result[1],
-                    "xend": regression_result[0]*time_end + regression_result[1]}
+                    "xend": regression_result[0]*time_end + regression_result[1],
+                    "tstart": time[0], "tend": time[-1]}
         if options["method"] == "endpoints":
             # Use the end points of the data to fit the linear line.
             index_begin = np.argmin(time)
             index_end = np.argmax(time)
-            return {"xstart": data[index_begin], "xend": data[index_end]}
+            return {"xstart": data[index_begin], "xend": data[index_end],
+                    "tstart": time[0], "tend": time[-1]}
         raise ValueError("Option '{}' for method is not valid.".format(options["method"]))
 
 
@@ -226,9 +247,8 @@ class Spline3Knots(Model):
     def __init__(self):
         Model.__init__(self, "Spline3Knots")
 
-    def get_state(self, pars: dict, npoints: int = 100,
-                  tstart: float = 0, tend: float = 0) -> np.ndarray:
-        tdata = np.linspace(tstart, tend, npoints)
+    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
+        tdata = self._get_tdata(pars, npoints, time)
         tdata1 = tdata[:npoints // 2]
         tdata2 = tdata[npoints // 2:]
         ydata1 = (pars["a1"] * tdata1 ** 3 + pars["b1"] * tdata1 ** 2 + pars["c1"] * tdata1 +
@@ -298,6 +318,8 @@ class Spline3Knots(Model):
         parameters["b2"] = theta[5]
         parameters["c2"] = theta[6]
         parameters["d2"] = theta[7]
+        parameters["tstart"] = time[0]
+        parameters["tend"] = time[-1]
         return parameters
 
 
@@ -309,9 +331,8 @@ class Sinusoidal(Model):
     def __init__(self):
         Model.__init__(self, "Sinusoidal")
 
-    def get_state(self, pars: dict, npoints: int = 100,
-                  tstart: float = 0, tend: float = 0) -> np.ndarray:
-        tdata = np.linspace(tstart, tend, npoints)
+    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
+        tdata = self._get_tdata(pars, npoints, time)
         offset = (pars["xstart"] + pars["xend"]) / 2
         amplitude = (pars["xstart"] - pars["xend"]) / 2
         return amplitude*np.cos(np.pi*tdata) + offset
@@ -336,7 +357,6 @@ class Sinusoidal(Model):
         :param options: specify some model-specific options.
         :return: dictionary of the parameters.
         """
-
         # Normalize the time
         time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
 
@@ -346,7 +366,9 @@ class Sinusoidal(Model):
 
         # Return the parameters
         return {"xstart": lstlq_fit[0] + lstlq_fit[1],
-                "xend": lstlq_fit[1] - lstlq_fit[0]}
+                "xend": lstlq_fit[1] - lstlq_fit[0],
+                "tstart": time[0],
+                "tend": time[-1]}
 
 
 class BSplines(Model):
@@ -402,7 +424,7 @@ class BSplines(Model):
             self.load_data(xdata, ydata)
 
     def to_json(self):
-        return dict(name="MultiBSplines", init_parms=dict(options=self.init_options))
+        return dict(name="BSplines", init_parms=dict(options=self.init_options))
 
     def load_data(self, xdata: np.ndarray, ydata: np.ndarray) -> None:
         """ Load the data into a np.array
@@ -779,11 +801,11 @@ class BSplines(Model):
         return self._rescale_data(splev(x_values, self.options["tck"], order),
                                   BSplines.VALUE, order)
 
-    def get_state(self, pars: dict, npoints: int = 100,
-                  tstart: float = 0, tend: float = 1) -> np.ndarray:
+    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
         self.set_spline_properties(pars["coefficients"], pars["scaling"],
                                    pars["n_knots"], pars["knot_positions"])
-        xdata = np.linspace(tstart, tend, npoints)
+        xdata = self._get_tdata(dict(tstart=pars["scaling"][0][0], tend=pars["scaling"][0][1]),
+                                npoints, time)
         return self._predict_unscaled(xdata)
 
     def get_state_dot(self, pars: dict, npoints: int = 100,
@@ -884,14 +906,12 @@ class MultiBSplines(Model):
         self.dimension = dimension
         self.options = options
         self.bsplines = [BSplines(options=self.options) for _ in range(dimension)]
-        self.transpose = False
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None):
         # Set data correctly.
         n_data = len(time)
         if data.shape == (n_data, self.dimension):
             data = data.T
-            self.transpose = True
         elif not data.shape == (self.dimension, n_data):
             raise ValueError("Data should be n-by-d or d-by-n, where d is the provided dimension.")
 
@@ -904,16 +924,13 @@ class MultiBSplines(Model):
 
         return pars
 
-    def get_state(self, pars: dict, npoints: int = 100,
-                  tstart: float = 0, tend: float = 1) -> np.ndarray:
+    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
         result = np.array([bspline.get_state(dict(coefficients=pars["coefficients"][i],
                                                   scaling=pars["scaling"][i],
                                                   n_knots=pars["n_knots"][i],
                                                   knot_positions=pars["knot_positions"][i]),
-                                             npoints, tstart, tend)
+                                             npoints, time)
                            for i, bspline in enumerate(self.bsplines)])
-        if self.transpose:
-            return result.T
         return result
 
     def get_state_dot(self, pars: dict, npoints: int = 100,
@@ -924,8 +941,6 @@ class MultiBSplines(Model):
                                                       knot_positions=pars["knot_positions"][i]),
                                                  npoints, tstart, tend)
                            for i, bspline in enumerate(self.bsplines)])
-        if self.transpose:
-            return result.T
         return result
 
     def to_json(self):
