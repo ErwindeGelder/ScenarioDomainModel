@@ -26,6 +26,7 @@ Modifications
 11 Oct 2019: Update of terminology.
 04 Nov 2019: Add goals to ego vehicle.
 23 Mar 2020: Add properties attributes.
+03 Apr 2020: Consider properties when instantiating actor from json code.
 """
 
 
@@ -58,24 +59,28 @@ class Actor(Default):
             category comprises a scenario.
     """
     def __init__(self, actor_category: ActorCategory, initial_states: List[State] = None,
-                 desired_states: List[State] = None, goal: str = "", properties: dict = None,
-                 **kwargs):
+                 desired_states: List[State] = None, goal: str = "", **kwargs):
         # Check the types of the inputs
         check_for_type("actor_category", actor_category, ActorCategory)
         check_for_list("initial_states", initial_states, State)
         check_for_list("desired_states", desired_states, State)
         check_for_type("goal", goal, str)
+        if "properties" in kwargs:
+            check_for_type("properties", kwargs["properties"], dict)
         if initial_states is None:
             initial_states = []
         if desired_states is None:
             desired_states = []
 
         Default.__init__(self, **kwargs)
-        self.actor_category = actor_category  # type: ActorCategory
-        self.initial_states = initial_states  # type: List[State]
-        self.desired_states = desired_states  # type: List[State]
-        self.goal = goal                      # type: str
-        self.properties = properties          # type: dict
+        self.actor_category = actor_category        # type: ActorCategory
+        self.initial_states = initial_states        # type: List[State]
+        self.desired_states = desired_states        # type: List[State]
+        self.goal = goal                            # type: str
+        if "properties" in kwargs:
+            self.properties = kwargs["properties"]  # type: dict
+        else:
+            self.properties = dict()
 
     def get_tags(self) -> dict:
         """ Return the list of tags related to this Actor.
@@ -144,7 +149,8 @@ def actor_from_json(json: dict, actor_category: ActorCategory = None) -> Actor:
                   desired_states=derired_states,
                   name=json["name"],
                   uid=int(json["id"]),
-                  tags=[tag_from_json(tag) for tag in json["tag"]])
+                  tags=[tag_from_json(tag) for tag in json["tag"]],
+                  properties=json["properties"])
     return actor
 
 
