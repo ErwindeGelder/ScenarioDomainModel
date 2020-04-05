@@ -4008,9 +4008,9 @@
 </node>
 </node>
 </node>
-<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
+<node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
 <edge COLOR="#007c00"/>
-<node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
+<node TEXT="Measures for difference in PDFs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_32277808" CREATED="1513218360651" MODIFIED="1513218379069">
 <node TEXT="Survey on Distance and Similarity Measures between PDFs" ID="ID_970657018" CREATED="1513219392678" MODIFIED="1534390623301" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/083%20Survey%20on%20Distance%20and%20Similarity%20Measures%20between%20PDFs.pdf">
 <attribute NAME="key" VALUE="cha2007surveyPDFmeasures"/>
 <attribute NAME="journal" VALUE="International Journal of Mathematical Models and Methods in Applied Sciences"/>
@@ -4049,6 +4049,17 @@
 <attribute NAME="authors" VALUE="Kullback, Solomon and Leibler, Richard A."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC845B2D75EB751B4DE9CD0E37C8CE7ED1F91B3DF863A54608CD26CCAB6CD">
     <pdf_title>The Annals of Mathematical Statistics.</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="KL test" ID="ID_1768631010" CREATED="1585850287168" MODIFIED="1585850289268"/>
+<node TEXT="A multivariate Kolmogorov-Smirnov test of goodness of fit" ID="ID_1647225193" CREATED="1585850289712" MODIFIED="1585850407530" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/437%20Multivariate%20Kolmogorov-Smirnov%20Test.pdf">
+<attribute NAME="key" VALUE="justel1997multivariate"/>
+<attribute NAME="journal" VALUE="Statistics \&amp; Probability Letters"/>
+<attribute NAME="year" VALUE="1997"/>
+<attribute NAME="title" VALUE="A Multivariate {K}olmogorov-{S}mirnov Test of Goodness of Fit"/>
+<attribute NAME="authors" VALUE="Justel, Ana and Pe{\~n}a, Daniel and Zamar, Rub{\&apos;e}n"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8830CCB74E1D7F5595ACF0C79631B3EB1EF02C62613D64926C09862BDF">
+    <pdf_title>III</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -4414,8 +4425,8 @@
     <pdf_title>Nonparametric estimation of copula functions for dependence modelling</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="A non-parametric copula approach to dependence modelling of shear strength" ID="ID_665022782" CREATED="1580651997618" MODIFIED="1580652142286" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/419%20A%20non-parametric%20copula%20approach%20to%20dependence%20modelling%20of%20shear%20strength.pdf">
-<attribute NAME="key" VALUE="awng2019nonparametric"/>
+<node TEXT="A non-parametric copula approach to dependence modelling of shear strength" ID="ID_665022782" CREATED="1580651997618" MODIFIED="1586115684790" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/419%20A%20non-parametric%20copula%20approach%20to%20dependence%20modelling%20of%20shear%20strength.pdf">
+<attribute NAME="key" VALUE="wang2019nonparametric"/>
 <attribute NAME="journal" VALUE="Computers and Geotechnics"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="A Non-Parametric Copula Approach to Dependence Modelling of Shear Strength Parameters and its Implications for Geotechnical Reliability under Incomplete Probability Information"/>
@@ -4501,7 +4512,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_410836587" CREATED="1522285999005" MODIFIED="1522286009782">
+<node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_410836587" CREATED="1522285999005" MODIFIED="1522286009782">
 <node TEXT="1955 A mathematical theory of communication: ENTROPY defined" ID="ID_31946635" CREATED="1522286012922" MODIFIED="1534390671198" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/173%20A%20mathematical%20theory%20of%20communication.pdf">
 <attribute NAME="key" VALUE="shannon1948communication"/>
 <attribute NAME="journal" VALUE="The Bell System Technical Journal"/>
@@ -4546,6 +4557,15 @@
 <attribute NAME="authors" VALUE="Wasserman, Larry"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5E8213E4E3E6C5ECE779E13A47FA7A2FCF662C5B0E5CD35B0BD421D275878">
     <pdf_title>All of Statistics</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Nonparametric statistics with applications to science and engineering" ID="ID_1063486933" CREATED="1585855512538" MODIFIED="1585855613687" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/438%20Nonparametric%20Statistics.pdf">
+<attribute NAME="key" VALUE="kvam2007nonparametric"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Nonparametric Statistics with Applications to Science and Engineering"/>
+<attribute NAME="authors" VALUE="Kvam, Paul H and Vidakovic, Brani"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CEC946A4446428B87E92B8BB8CAFBC584996B64381C717181FD1C2C8E14FAB">
+    <pdf_title>Nonparametric Statistics with Applications to Science and Engineering</pdf_title>
 </pdf_annotation>
 </node>
 </node>
