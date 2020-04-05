@@ -6,12 +6,14 @@ Author(s): Erwin de Gelder
 Modifications:
 2020 03 27: Enable the instantiation of objects after reading in a database.
 2020 03 29: Use a variable number of knots to prevent error for very short activities.
+2020 04 04: Various bug fixes.
 """
 
 import glob
 import os
 from typing import List, NamedTuple, Tuple
 import numpy as np
+import pandas as pd
 from tqdm import tqdm
 from domain_model import MultiBSplines, BSplines, ActivityCategory, StateVariable, Tag, \
     DetectedActivity, StaticEnvironmentCategory, StaticEnvironment, Region, ActorCategory, Actor, \
@@ -88,6 +90,23 @@ def extract_cutins(target_ngrams: NGram, ego_ngram: NGram) -> List[Tuple[int, fl
     return cutins
 
 
+def fix_line_data(target: pd.DataFrame, activity: str, i: float, j: float) -> None:
+    """ A quick fix to remove any NaN from line_center of the target vehicle.
+
+    :param target: The dataframe of the target during.
+    :param activity: 'ri' or 'li'.
+    :param i: Starting index.
+    :param j: End index.
+    """
+    lanewidth = target.loc[i:j, "line_left"] - target.loc[i:j, "line_right"]
+    lanewidth = np.mean(lanewidth[np.logical_not(np.isnan(lanewidth))])
+    if target["lateral_activity"].iloc[0] == "ri":
+        target.loc[i:j, "line_center"] = target.loc[i:j, "line_right"] + lanewidth/2
+    else:
+        target.loc[i:j, "line_center"] = target.loc[i:j, "line_left"] - lanewidth/2
+    target["line_center"].interpolate(inplace=True)
+
+
 def activities_target(cutin: Tuple[int, float, float], data_handler: DataHandler,
                       target_ngrams: NGram) -> ActivitiesResult:
     """ Extract the lateral and longitudinal activities of the target vehicle.
@@ -118,12 +137,20 @@ def activities_target(cutin: Tuple[int, float, float], data_handler: DataHandler
         acts.append((target, activity, i))
 
     # Store the lateral activity of the target.
-    data = data_handler.targets[cutin[0]].loc[cutin[1]:cutin[2], "dy"]
+    data = data_handler.targets[cutin[0]].loc[cutin[1]:cutin[2]]
+    fix_line_data(data_handler.targets[cutin[0]],
+                  data_handler.targets[cutin[0]].loc[cutin[1], "lateral_activity"],
+                  cutin[1], cutin[2])
+    data = data["line_center"]
+    if np.any(np.isnan(data)):
+        raise ValueError("NaN data!!!")
     n_knots = min(4, len(data)//10)
     activity = DetectedActivity(LC_TARGET, cutin[1], cutin[2]-cutin[1],
                                 LC_TARGET.fit(np.array(data.index), data.values,
                                               options=dict(n_knots=n_knots)),
-                                name="lane change target")
+                                name="left lane change")
+    if data_handler.targets[cutin[0]].loc[cutin[1], "lateral_activity"] == "li":
+        activity.name = "right lane change"
     activities.append(activity)
     acts.append((target, activity, cutin[1]))
     return ActivitiesResult(actor=target, activities=activities, acts=acts)
