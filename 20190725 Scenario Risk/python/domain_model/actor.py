@@ -65,22 +65,19 @@ class Actor(Default):
         check_for_list("initial_states", initial_states, State)
         check_for_list("desired_states", desired_states, State)
         check_for_type("goal", goal, str)
-        if "properties" in kwargs:
-            check_for_type("properties", kwargs["properties"], dict)
+        properties = kwargs.pop("properties", dict())
+        check_for_type("properties", properties, dict)
         if initial_states is None:
             initial_states = []
         if desired_states is None:
             desired_states = []
 
         Default.__init__(self, **kwargs)
-        self.actor_category = actor_category        # type: ActorCategory
-        self.initial_states = initial_states        # type: List[State]
-        self.desired_states = desired_states        # type: List[State]
-        self.goal = goal                            # type: str
-        if "properties" in kwargs:
-            self.properties = kwargs["properties"]  # type: dict
-        else:
-            self.properties = dict()
+        self.actor_category = actor_category  # type: ActorCategory
+        self.initial_states = initial_states  # type: List[State]
+        self.desired_states = desired_states  # type: List[State]
+        self.goal = goal                      # type: str
+        self.properties = properties          # type: dict
 
     def get_tags(self) -> dict:
         """ Return the list of tags related to this Actor.
