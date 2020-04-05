@@ -115,9 +115,6 @@
 	\IfStrEq{\firstchar}{>}{\scentree{#1}{#2}}{\rowtags{#1}{#2}}%
 }
 
-\newcommand\topalign[1]{%
-	\setbox0\hbox{#1}%
-	\raisebox{\dimexpr-\ht0+\dp0\relax}{\usebox0}}
 \newcounter{rowtagcounter}
 \newcounter{rowtagcounterexternal}
 \NewDocumentCommand{\scentags}{O{1} m}{%
