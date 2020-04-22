@@ -64,7 +64,7 @@ def activities_ego(braking: Tuple[float, float], data_handler: DataHandler) -> A
     data = data_handler.data.loc[braking[0]:braking[1], "Host_vx"]
     n_knots = min(4, len(data)//10)
     try:
-        activity = DetectedActivity(DEC_EGO, braking[0], braking[1],
+        activity = DetectedActivity(DEC_EGO, braking[0], braking[1]-braking[0],
                                     DEC_EGO.fit(np.array(data.index), data.values,
                                                 options=dict(n_knots=n_knots)),
                                     name="Ego braking in file {:s}".format(data_handler.filename))
