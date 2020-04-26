@@ -94,7 +94,7 @@ class LeadVehicle(Enum):
 
 
 @unique
-class NEAR(Enum):
+class TargetNear(Enum):
     """ Tag for vehicle near or far away. """
     NEAR = 'n'  # < 50 m or < 2 s away
     FAR = 'f'
@@ -896,11 +896,11 @@ class ActivityDetector(DataHandler):
         targets = pd.concat(self.targets, sort=False)
 
         # Set the tag 'in_front_near'.
-        targets["near"] = NEAR.FAR.value
+        targets["near"] = TargetNear.FAR.value
         thw_dist = self.data.loc[targets.index, self.parms.host_lon_vel].values * max_thw
         targets.loc[np.logical_or(np.abs(targets[self.parms.x_target]) <= max_dist,
                                   np.abs(targets[self.parms.x_target]) <= thw_dist),
-                    "near"] = NEAR.NEAR.value
+                    "near"] = TargetNear.NEAR.value
 
         # Convert the big dataframe back to a list of dataframes.
         self.targets = self._big_target_df_to_list(targets)
