@@ -43,8 +43,7 @@ def extract_ego_braking(ego_ngram: NGram) -> List[Tuple[float, float]]:
     :return: A list of (start_braking, end_braking).
     """
     # Define the tags for the ego-braking scenario.
-    ego_tags = [dict(host_longitudinal_activity=[LongitudinalActivity.DECELERATING.value],
-                     is_highway=[True])]
+    ego_tags = [dict(host_longitudinal_activity=[LongitudinalActivity.DECELERATING.value])]
 
     # Extract the ego braking (=decelerating).
     braking = []
@@ -62,9 +61,12 @@ def activities_ego(braking: Tuple[float, float], data_handler: DataHandler) -> A
     :param data_handler: Handler for the data.
     """
     data = data_handler.data.loc[braking[0]:braking[1], "Host_vx"]
+    data = data[data.values > 0]
+    if len(data) < 50:
+        return ActivitiesResult(actor=EGO, activities=[], acts=[])
     n_knots = min(4, len(data)//10)
     try:
-        activity = DetectedActivity(DEC_EGO, braking[0], braking[1]-braking[0],
+        activity = DetectedActivity(DEC_EGO, data.index[0], data.index[-1] - data.index[0],
                                     DEC_EGO.fit(np.array(data.index), data.values,
                                                 options=dict(n_knots=n_knots)),
                                     name="Ego braking in file {:s}".format(data_handler.filename))
@@ -82,9 +84,6 @@ def process_ego_braking(braking: Tuple[float, float], data_handler: DataHandler,
     :param data_handler: Handler for the data.
     :param database: Database structure for storing the scenarios.
     """
-    # Create the scenario.
-    scenario = Scenario(braking[0], braking[1], STAT)
-
     # Store the longitudinal activity of the ego vehicle.
     ego_acts = activities_ego(braking, data_handler)
     if not ego_acts.acts:
@@ -93,6 +92,7 @@ def process_ego_braking(braking: Tuple[float, float], data_handler: DataHandler,
     # Write everything to the database.
     for activity in ego_acts.activities:
         database.add_item(activity)
+    scenario = Scenario(ego_acts.activities[0].tstart, ego_acts.activities[0].tend, STAT)
     scenario.set_actors([EGO])
     scenario.set_activities(ego_acts.activities)
     scenario.set_acts(ego_acts.acts)

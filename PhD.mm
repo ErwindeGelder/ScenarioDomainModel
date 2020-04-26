@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle">
@@ -1380,7 +1380,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
+<node TEXT="Infeasibility of demonstrating safety by driving in real life" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1415429795" CREATED="1521510198568" MODIFIED="1521510223654">
 <node TEXT="Driving to safety" ID="ID_1051613726" CREATED="1521510228107" MODIFIED="1534391906877" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/170%20Driving%20to%20safety%20How%20many%20miles%20to%20demonstrate%20reliability.pdf">
 <attribute NAME="key" VALUE="kalra2016driving"/>
 <attribute NAME="journal" VALUE="Transportation Research Part A: Policy and Practice"/>
@@ -2409,8 +2409,10 @@
     <pdf_title>Contents</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Importance sampling" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1913334735" CREATED="1580828834503" MODIFIED="1580828842564">
-<node TEXT="Metamodel-Based Importance Sampling for Structural Reliability Analysis" ID="ID_943613050" CREATED="1580828847951" MODIFIED="1580828862014" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/420%20Metamodel-based%20importance%20sampling.pdf">
+</node>
+<node TEXT="Importance sampling" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1913334735" CREATED="1580828834503" MODIFIED="1587030556467" MOVED="1587030544283">
+<node TEXT="Using Kriging" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_155030782" CREATED="1587030561275" MODIFIED="1587030579878">
+<node TEXT="Metamodel-Based Importance Sampling for Structural Reliability Analysis" ID="ID_943613050" CREATED="1580828847951" MODIFIED="1580828862014" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/420%20Metamodel-based%20importance%20sampling.pdf" MOVED="1587030582859">
 <attribute NAME="key" VALUE="dubourg2013metamodel"/>
 <attribute NAME="journal" VALUE="Probabilistic Engineering Mechanics"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -2420,13 +2422,25 @@
     <pdf_title>Probabilistic Engineering Mechanics</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Testing of Autonomous Vehicles Using Surrogate Models and Stochastic Optimization" ID="ID_197184674" CREATED="1583857534850" MODIFIED="1583857539744" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/139%20Testing%20of%20AV%20Using%20Surrogate%20Models%20and%20Stochastic%20Optimization.pdf">
+<node TEXT="Testing of Autonomous Vehicles Using Surrogate Models and Stochastic Optimization" ID="ID_197184674" CREATED="1583857534850" MODIFIED="1583857539744" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/139%20Testing%20of%20AV%20Using%20Surrogate%20Models%20and%20Stochastic%20Optimization.pdf" MOVED="1587030585413">
 <attribute NAME="key" VALUE="beglerovic2017testing"/>
 <attribute NAME="year" VALUE="2017"/>
 <attribute NAME="title" VALUE="Testing of Autonomous Vehicles Using Surrogate Models and Stochastic Optimization"/>
 <attribute NAME="authors" VALUE="Beglerovic, Halil and Stolz, Michael and Horn, Martin"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9C4A3620126DADC88FB32F1B6B510F9489AF6C839F585B4868340908275C89">
     <pdf_title>TestingofAutonomousVehiclesUsingSurrogate ModelsandStochasticOptimization</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Finding &quot;importance area&quot;" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_798344454" CREATED="1587030595196" MODIFIED="1587030609504">
+<node TEXT="An adaptive algorithm for efficient computation level curves" ID="ID_429800907" CREATED="1587030610525" MODIFIED="1587030691261" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/440%20An%20adaptive%20algorithm%20for%20efficient%20computation%20level%20curves.pdf">
+<attribute NAME="key" VALUE="breda2009adaptive"/>
+<attribute NAME="journal" VALUE="Numerical Algorithms"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="An Adaptive Algorithm for Efficient Computation of Level Curves of Surfaces"/>
+<attribute NAME="authors" VALUE="Breda, Dimitri and Maset, Stefano and Vermiglio, Rossana"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="EAB8D2C83FECD3DD45EF422047BD43E9AFC1C95F6BB8C34CA27879A16B5C9B">
+    <pdf_title>An adaptive algorithm for efficient computation of level curves of surfaces</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2630,6 +2644,16 @@
 <attribute NAME="authors" VALUE="Paardekooper, Jan-Pieter and Montfort, Sjef and Manders, Jeroen and Goos, Jorrit and de Gelder, Erwin and Op den Camp, Olaf and Bracquemond, Annie and Thiolon, Gildas"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="66498E977114BB98512D96D1E608ABEC494FC779333C9FEA68FA64E4786F3E6">
     <pdf_title>Paardekooper 1</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Maneuver identification using elastic template matching" ID="ID_131221508" CREATED="1587029630756" MODIFIED="1587029746466" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/439%20Maneuver%20identification%20using%20elastic%20template%20matching.pdf">
+<attribute NAME="key" VALUE="schmid2019maneuver"/>
+<attribute NAME="journal" VALUE="IFAC-PapersOnLine"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Maneuver Identification Using Elastic Template Matching: Multi-Case Study"/>
+<attribute NAME="authors" VALUE="Schmid, Christina and Tkachenko, Pavlo and Zhou, Jinwei and del Re, Luigi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="EF11972E43F6284F415C8CEF776FF6E41FBBCD7E4DF333A4F7C99279731F3B">
+    <pdf_title>ScienceDirect ScienceDirect</pdf_title>
 </pdf_annotation>
 </node>
 </node>
