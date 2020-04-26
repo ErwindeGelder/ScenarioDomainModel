@@ -9,6 +9,7 @@ Modifications:
 2019 11 01 Add possibility to mark highway data.
 2019 12 30 Use updated version of the activity detector.
 2020 02 24 Print the total time duration.
+2020 04 26 Add tag for vehicles that are somewhat near.
 """
 
 
@@ -32,6 +33,7 @@ PARSER.add_argument('--targetactivities', help="Detect host activities", action=
 PARSER.add_argument('--markhighway', help="Mark highway data", action="store_true")
 PARSER.add_argument('--targetstates', help="Create tags describing the target states",
                     action="store_true")
+PARSER.add_argument('--targetnear', help="Mark near targets", action="store_true")
 PARSER.add_argument('--everything', help="Do all possible processing", action="store_true")
 PARSER.add_argument('-file', default=None, type=str, help="If not all files, select single file")
 ARGS = PARSER.parse_args()
@@ -44,15 +46,16 @@ def process_file(datafile: str) -> None:
     """
     try:
         activity_detector = ActivityDetector(datafile)
-        if ARGS.hostactivities or ARGS.targetactivities or ARGS.targetstates or ARGS.everything:
-            if ARGS.hostactivities or ARGS.everything:
-                activity_detector.set_lon_activities_host()
-                activity_detector.set_lat_activities_host()
-            if ARGS.targetactivities or ARGS.everything:
-                activity_detector.set_target_activities()
-            if ARGS.targetstates or ARGS.everything:
-                activity_detector.set_states_targets()
-                activity_detector.set_lead_vehicle()
+        if ARGS.hostactivities or ARGS.everything:
+            activity_detector.set_lon_activities_host()
+            activity_detector.set_lat_activities_host()
+        if ARGS.targetactivities or ARGS.everything:
+            activity_detector.set_target_activities()
+        if ARGS.targetstates or ARGS.everything:
+            activity_detector.set_states_targets()
+            activity_detector.set_lead_vehicle()
+        if ARGS.targetnear or ARGS.everything:
+            activity_detector.set_near_targets()
         if ARGS.markhighway or ARGS.everything:
             highway_marker = HighwayMarker(activity_detector.data)
             highway_marker.mark_highway()

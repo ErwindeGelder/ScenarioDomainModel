@@ -19,6 +19,7 @@ Modifications:
 2020 01 18 Lane change detection for other vehicles improved.
 2020 01 24 Change minimal lane line quality from 3 to 2.
 2020 02 20 Remove a_end and use a_cruise instead.
+2020 04 26 Add tag for vehicles that are somewhat near.
 """
 
 import copy
@@ -90,6 +91,13 @@ class LeadVehicle(Enum):
     LEAD = 'y'
     NOLEAD = 'n'
     NOVEHICLE = 'na'
+
+
+@unique
+class NEAR(Enum):
+    """ Tag for vehicle near or far away. """
+    NEAR = 'n'  # < 50 m or < 2 s away
+    FAR = 'f'
 
 
 class ActivityDetectorParameters(Options):
@@ -875,4 +883,24 @@ class ActivityDetector(DataHandler):
 
         # Create again the list of targets.
         targets = targets.set_index("time")
+        self.targets = self._big_target_df_to_list(targets)
+
+    def set_near_targets(self, max_dist: float = 50.0, max_thw: float = 2.0) -> None:
+        """ Set tag for near vehicles.
+
+        :param max_dist: All vehicles closer are tagged as "near".
+        :param max_thw: All vehicles with a lower time headway are tagged as
+                        "near".
+        """
+        # Put all targets into one dataframe, as this will make things much, much faster.
+        targets = pd.concat(self.targets, sort=False)
+
+        # Set the tag 'in_front_near'.
+        targets["near"] = NEAR.FAR.value
+        thw_dist = self.data.loc[targets.index, self.parms.host_lon_vel].values * max_thw
+        targets.loc[np.logical_or(np.abs(targets[self.parms.x_target]) <= max_dist,
+                                  np.abs(targets[self.parms.x_target]) <= thw_dist),
+                    "near"] = NEAR.NEAR.value
+
+        # Convert the big dataframe back to a list of dataframes.
         self.targets = self._big_target_df_to_list(targets)
