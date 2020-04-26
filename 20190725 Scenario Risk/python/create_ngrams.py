@@ -4,6 +4,7 @@ Creation date: 2020 03 13
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 04 26 Add tag of near targets to n-gram models.
 """
 
 
@@ -11,7 +12,6 @@ import argparse
 from glob import glob
 import os
 import multiprocessing as mp
-import time
 from data_handler import DataHandler
 from ngram import NGram
 
@@ -28,7 +28,7 @@ ARGS = PARSER.parse_args()
 
 
 FIELDNAMES_TARGET = ["longitudinal_activity", "lateral_activity", "longitudinal_state",
-                     "lateral_state", "lead_vehicle", "id"]
+                     "lateral_state", "lead_vehicle", "near", "id"]
 METADATA_TARGET = (("tstart", float), ("tend", float), ("target_id", int))
 FIELDNAMES_EGO = ["host_longitudinal_activity", "host_lateral_activity", "is_highway"]
 METADATA_EGO = (("tstart", float), ("tend", float))
@@ -67,7 +67,6 @@ def process_file(filename_input: str, filename_output: str) -> None:
 
 
 if __name__ == "__main__":
-    TSTART = time.time()
     if not os.path.exists(ARGS.inputfolder):
         print("Provided folder '{:s}' does not exist.".format(ARGS.folder))
         exit()
