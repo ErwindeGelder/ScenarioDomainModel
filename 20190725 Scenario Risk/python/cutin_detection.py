@@ -253,4 +253,4 @@ if __name__ == "__main__":
     for filename in tqdm(FILENAMES):
         process_file(filename, DATABASE)
 
-    DATABASE.to_json(os.path.join("data", "5_cutin_scenarios", "database.json"), indent=4)
+    DATABASE.to_json(os.path.join("data", "5_scenarios", "cut_in_scenarios.json"), indent=4)
