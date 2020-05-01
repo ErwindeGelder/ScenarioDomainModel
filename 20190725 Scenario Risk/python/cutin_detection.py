@@ -239,18 +239,18 @@ def process_file(path: str, database: DataBaseEmulator):
         process_cutin(cutin, data_handler, target_ngrams, ego_ngram, database)
 
 
-# if __name__ == "__main__":
-# Instantiate the "database".
-DATABASE = DataBaseEmulator()
+if __name__ == "__main__":
+    # Instantiate the "database".
+    DATABASE = DataBaseEmulator()
 
-# Add standard stuff.
-for item in [DEC_TARGET, ACC_TARGET, CRU_TARGET, LC_TARGET, STAT_CATEGORY, STAT, TARGET,
-             EGO_CATEGORY, EGO, DEC_EGO, ACC_EGO, CRU_EGO, LK_EGO]:
-    DATABASE.add_item(item)
+    # Add standard stuff.
+    for item in [DEC_TARGET, ACC_TARGET, CRU_TARGET, LC_TARGET, STAT_CATEGORY, STAT, TARGET,
+                 EGO_CATEGORY, EGO, DEC_EGO, ACC_EGO, CRU_EGO, LK_EGO]:
+        DATABASE.add_item(item)
 
-# Loop through the files.
-FILENAMES = glob.glob(os.path.join("data", "4_ngrams", "*.hdf5"))
-for filename in tqdm(FILENAMES):
-    process_file(filename, DATABASE)
+    # Loop through the files.
+    FILENAMES = glob.glob(os.path.join("data", "4_ngrams", "*.hdf5"))
+    for filename in tqdm(FILENAMES):
+        process_file(filename, DATABASE)
 
-DATABASE.to_json(os.path.join("data", "5_cutin_scenarios", "database.json"), indent=4)
+    DATABASE.to_json(os.path.join("data", "5_cutin_scenarios", "database.json"), indent=4)
