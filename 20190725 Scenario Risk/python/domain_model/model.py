@@ -29,6 +29,7 @@ Modifications
 26 Mar 2020: Fix bug when using different number of knots when using get_state().
 27 Mar 2020: Export the initial model parameters when converting model to json.
 29 Mar 2020: Enable the evaluation of the model at given time instants.
+30 Apr 2020: Various fixes for BSplines model for some exceptions on the data.
 """
 
 from abc import ABC, abstractmethod
@@ -413,7 +414,8 @@ class BSplines(Model):
                                 "knot_positions": None,
                                 "tck": None,
                                 "lomb_scargle_boundary": None,
-                                "residuals": None}
+                                "residuals": None,
+                                "keep_repetition_interval": 4}
 
         # Set the options
         self.options = Model._set_default_options(self, options)
@@ -466,7 +468,16 @@ class BSplines(Model):
         """
 
         # False for consecutive VALUE that are unique, these should be removed
-        self.options["unique_mask"] = self.data[1] != np.roll(self.data[1], 1)
+        mask = self.data[1] == np.roll(self.data[1], 1)
+        sum_mask = np.zeros(len(mask))
+        for i, entry in enumerate(mask[1:], start=1):
+            if entry:
+                sum_mask[i] = sum_mask[i - 1] + 1
+                if sum_mask[i] == self.options["keep_repetition_interval"]:
+                    sum_mask[i] = 0
+
+        self.options["unique_mask"] = sum_mask == 0
+        self.options["unique_mask"][-1] = True  # Always have the last value present.
         # self.data = self.data[:,mask]
 
     def _compute_scaling(self):
@@ -475,6 +486,11 @@ class BSplines(Model):
         (by using axis=1 in the min and max function)"""
         self.options["scaling"] = np.transpose((np.min(self.data, axis=1),
                                                 np.max(self.data, axis=1)))
+
+        # If the values are constant, a small value is added to the maximum as to avoid a
+        # divide-by-zero error.
+        if self.options["scaling"][1][0] == self.options["scaling"][1][1]:
+            self.options["scaling"][1][1] += 0.0001
 
     def _scale_data(self, this_data=None, axis=0):
         """ Scale the data between 0 and 1
@@ -549,6 +565,12 @@ class BSplines(Model):
 
         """
         (time, value) = self.data[:, self.options["unique_mask"]]
+
+        # Do a very quick and dirty solution in case we have too little data.
+        if len(time) < 4:
+            time = np.concatenate((np.linspace(time[0], time[1], 6 - len(time)), time[2:]))
+            value = np.concatenate((np.linspace(value[0], value[1], 6-len(value)), value[2:]))
+
         self.options["tck"] = splrep(time, value, k=self.options["degree"],
                                      t=self.options["knot_positions"])
 
@@ -707,6 +729,8 @@ class BSplines(Model):
 
         # Return the parameters
         coefficients, scaling, n_knots, knot_positions = self.get_spline_properties()
+        if np.any(np.isnan(coefficients.tolist())):
+            raise ValueError("NaN!!!")
         return {"coefficients": coefficients.tolist(),
                 "scaling": scaling.tolist(),
                 "n_knots": n_knots,
