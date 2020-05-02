@@ -18,6 +18,7 @@ Modifications:
 2020 02 17 Use special classes instead of dictionaries.
 2020 02 21 Add the possibility to have a variable bandwidth.
 2020 03 06 Return warning number when computing the bandwidth.
+2020 05 01 Add the option of normalizing the data.
 """
 
 import time
@@ -63,12 +64,15 @@ class KDEData(Options):
         newshape(np.ndarray): The new shape of the data to be returned.
         data_dist(np.ndarray): Euclidean distance of KDE data and input data.
         difference(np.ndarray): Difference of KDE data and input data.
+        std(np.ndarray): Standard deviation of data, only calculated if data
+            must be scaled.
     """
     mindists: np.ndarray = np.array([])
     data_score_samples: np.ndarray = np.array([])
     newshape: np.ndarray = np.array([])
     data_dist: np.ndarray = np.array([])
     difference: np.ndarray = np.array([])
+    std: np.ndarray = np.array([])
     # self.xhist, self.yhist, self.fft = None, None, None  # Not used at the moment
 
 
@@ -93,11 +97,12 @@ class KDE:
         constants(KDEConstants): Constants that are used for the various methods.
         data_helpers(KDEData): Several np.ndarrays that are used for the various methods.
     """
-    def __init__(self, data: np.ndarray = None, bandwidth: float = None):
+    def __init__(self, data: np.ndarray = None, bandwidth: float = None, scaling: bool = False):
         self.bandwidth = bandwidth
         self.data = None
         self.constants = KDEConstants()
         self.data_helpers = KDEData()
+        self.scaling = scaling
         self.fit(data)
 
     def fit(self, data: np.ndarray) -> None:
@@ -114,6 +119,10 @@ class KDE:
             self.data = data[:, np.newaxis]
         else:
             self.data = data
+
+        if self.scaling:
+            self.data_helpers.std = np.std(self.data, axis=0)
+            self.data /= self.data_helpers.std
 
         # Note: creating the distance matrix takes quite some time and is only needed if cross
         # validation is performed.
@@ -156,6 +165,8 @@ class KDE:
         """
         if len(newdata.shape) == 1:
             newdata = newdata[:, np.newaxis]
+        if self.scaling:
+            newdata /= self.data_helpers.std
         nnew = len(newdata)
 
         # Expand the matrix with the distances if this matrix is already defined
@@ -356,6 +367,9 @@ class KDE:
             self.data_helpers.data_score_samples = \
                 xdata.reshape((np.prod(self.data_helpers.newshape), xdata.shape[-1]))
 
+        if self.scaling:
+            self.data_helpers.data_score_samples /= self.data_helpers.std
+
         # Compute the distance of the datapoints in x to the datapoints of the KDE
         # Let x have M datapoints, then the result is a (self.constants.n-by-M)-matrix
         # Reason to do this now is that this will save computations when the score needs to be
@@ -435,6 +449,8 @@ class KDE:
         if xdata is None:
             eucl_dist = self.data_helpers.data_dist[:self.constants.ndata]
         else:
+            if self.scaling:
+                xdata = xdata / self.data_helpers.std
             eucl_dist = dist.cdist(self.data[:self.constants.ndata], xdata, metric='sqeuclidean')
 
         # Note that we have f(x,n) = sum [ (2pi)^(-d/2)/(n h^d) * exp{-(x-xi)^2/(2h**2)} ]
@@ -453,6 +469,9 @@ class KDE:
                 sum_kernel += (np.exp(-dimension / (2 * sample_bandwidth**2)) /
                                sample_bandwidth**self.constants.dim)
             const = -self.constants.dim/2*np.log(2*np.pi) - np.log(self.constants.ndata)
+
+        if self.scaling:
+            const -= np.sum(np.log(self.data_helpers.std))
 
         return const + np.log(sum_kernel)
 
@@ -476,6 +495,8 @@ class KDE:
         return process_reshaped_data(xdata, self._cdf)
 
     def _cdf(self, xdata: np.ndarray) -> np.ndarray:
+        if self.scaling:
+            xdata /= self.data_helpers.std
         cdf = np.ones((self.constants.ndata, len(xdata)))
         data = self.data[:self.constants.ndata] / (np.sqrt(2) * self.bandwidth)
         xdata /= (np.sqrt(2) * self.bandwidth)
@@ -536,6 +557,8 @@ class KDE:
                                        compute_difference=True)
             difference = self.data_helpers.difference[:self.constants.ndata]
         else:
+            if self.scaling:
+                xdata /= self.data_helpers.std
             # Compute the distance of the datapoints in x to the datapoints of the KDE
             # Let x have M datapoints, then the result is a (self.constants.n-by-M)-matrix
             eucl_dist = dist.cdist(self.data[:self.constants.ndata], xdata, metric='sqeuclidean')
@@ -601,6 +624,8 @@ class KDE:
         if xdata is None:
             eucl_dist = self.data_helpers.data_dist[:self.constants.ndata]
         else:
+            if self.scaling:
+                xdata /= self.data_helpers.std
             eucl_dist = dist.cdist(self.data[:self.constants.ndata], xdata, metric='sqeuclidean')
 
         # The Laplacian is defined as the trace of the Hessian
@@ -626,6 +651,8 @@ class KDE:
         """
         if len(xdata.shape) == 1:
             xdata = xdata[:, np.newaxis]
+        if self.scaling:
+            xdata /= self.data_helpers.std
         zvalue = scipy.stats.norm.ppf(confidence/2+0.5)
         density = self.score_samples(xdata)
         std = np.sqrt(self.constants.muk * density / (self.constants.ndata *
@@ -651,10 +678,11 @@ class KDE:
         """
 
         uniform_vars = np.random.uniform(0, 1, size=n_samples)
-
         i = (uniform_vars * self.data.shape[0]).astype(np.int64)
-
-        return np.atleast_2d(np.random.normal(self.data[i], self.bandwidth))
+        samples = np.atleast_2d(np.random.normal(self.data[i], self.bandwidth))
+        if self.scaling:
+            samples *= self.data_helpers.std
+        return samples
 
 
 def process_reshaped_data(xdata: np.ndarray, func: Callable) -> np.ndarray:
@@ -675,6 +703,7 @@ def process_reshaped_data(xdata: np.ndarray, func: Callable) -> np.ndarray:
     if reshape:
         return output.reshape(newshape)
     return output
+
 
 if __name__ == '__main__':
     np.random.seed(0)
