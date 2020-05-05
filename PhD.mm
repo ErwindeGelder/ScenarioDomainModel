@@ -2499,6 +2499,28 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Comparing test cases/scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_339658345" CREATED="1588671276013" MODIFIED="1588671290180">
+<node TEXT="Computational Optimal Transport" ID="ID_1543804349" CREATED="1588671291746" MODIFIED="1588671776359" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/442%20Computational%20Optimal%20Transport.pdf">
+<attribute NAME="key" VALUE="peyre2019computational"/>
+<attribute NAME="journal" VALUE="Foundations and Trends in Machine Learning"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Computational Optimal Transport"/>
+<attribute NAME="authors" VALUE="Gabriel Peyr{\&apos;e} and Marco Cuturi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="483AC464A99D7ECECCAB5455DC5BC27F9BD6CF647782F51C01C8158CB6629A4">
+    <pdf_title>M M</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Computation of Optimal Transport - Wasserstein 1 distance (python)" ID="ID_277782797" CREATED="1588671491266" MODIFIED="1588671751768" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/443%20Displacement%20Interpolation%20Using%20Lagrangian%20Mass%20Transport.pdf">
+<attribute NAME="key" VALUE="bonneel2011displacement"/>
+<attribute NAME="journal" VALUE="ACM Transactions on Graphics"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Displacement Interpolation Using {L}agrangian Mass Transport"/>
+<attribute NAME="authors" VALUE="Bonneel, Nicolas and Van De Panne, Michiel and Paris, Sylvain and Heidrich, Wolfgang"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1C15AF2EEEA529AC82A7B4454C999DEAA985F0B6E797F4712935B09EE3272117">
+    <pdf_title>Displacement Interpolation Using Lagrangian Mass Transport</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
 <edge COLOR="#00007c"/>
