@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle">
@@ -2237,6 +2237,18 @@
     <pdf_title>Research on Lane Change Decision for Autonomous Vehicles Based on Multi-Kernels Least Squares Policy Iteration</pdf_title>
 </pdf_annotation>
 </node>
+</node>
+</node>
+<node TEXT="Driver models" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1772712523" CREATED="1588598901841" MODIFIED="1588598907254">
+<node TEXT="Intelligent Driver Model (IDM)" ID="ID_644301299" CREATED="1588601265010" MODIFIED="1588601412445" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/441%20Intelligent%20Driver%20Model.pdf">
+<attribute NAME="key" VALUE="treiber2000congested"/>
+<attribute NAME="journal" VALUE="Physical review E"/>
+<attribute NAME="year" VALUE="2000"/>
+<attribute NAME="title" VALUE="Congested Traffic States in Empirical Observations and Microscopic Simulations"/>
+<attribute NAME="authors" VALUE="Treiber, Martin and Hennecke, Ansgar and Helbing, Dirk"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="582A5D585C6D32C499A3EF6E5A797AE6C12EB16E98F147BEBC103F75EA83A687">
+    <pdf_title>Congested traffic states in empirical observations and microscopic simulations</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 </node>
