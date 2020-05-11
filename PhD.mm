@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1534304288777"><hook NAME="MapStyle">
@@ -2240,7 +2240,8 @@
 </node>
 </node>
 <node TEXT="Driver models" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1772712523" CREATED="1588598901841" MODIFIED="1588598907254">
-<node TEXT="Intelligent Driver Model (IDM)" ID="ID_644301299" CREATED="1588601265010" MODIFIED="1588601412445" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/441%20Intelligent%20Driver%20Model.pdf">
+<node TEXT="Longitudinal" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1269817352" CREATED="1589212055509" MODIFIED="1589212063683">
+<node TEXT="Intelligent Driver Model (IDM)" ID="ID_644301299" CREATED="1588601265010" MODIFIED="1588601412445" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/441%20Intelligent%20Driver%20Model.pdf" MOVED="1589212071508">
 <attribute NAME="key" VALUE="treiber2000congested"/>
 <attribute NAME="journal" VALUE="Physical review E"/>
 <attribute NAME="year" VALUE="2000"/>
@@ -2250,6 +2251,27 @@
     <pdf_title>Congested traffic states in empirical observations and microscopic simulations</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="IDM+" ID="ID_1270777757" CREATED="1589212307664" MODIFIED="1589212451544" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/445%20Effects%20of%20CACC%20on%20traffic%20flow%20stability.pdf">
+<attribute NAME="key" VALUE="schakel2010effects"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Effects of Cooperative Adaptive Cruise Control on Traffic Flow Stability"/>
+<attribute NAME="authors" VALUE="Schakel, Wouter J and Van Arem, Bart and Netten, Bart D"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E68164E847CF3EF740B226F63E8F937C92ED779C659998491A2C55BD8FE68B7D">
+    <pdf_title>Effects of Cooperative Adaptive Cruise Control on Traffic Flow Stability</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Enhanced intelligent driver model (fixes high decelerations)" ID="ID_152310803" CREATED="1589212814542" MODIFIED="1589212957327" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/446%20Enhanced%20intelligent%20driver%20model.pdf">
+<attribute NAME="key" VALUE="kesting2010enhanced"/>
+<attribute NAME="journal" VALUE="Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Enhanced Intelligent Driver Model to Access the Impact of Driving Strategies on Traffic Capacity"/>
+<attribute NAME="authors" VALUE="Kesting, Arne and Treiber, Martin and Helbing, Dirk"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="ECA2DBAF7D4698F65E4D53C44B5DA535CF95E45FFA85A7FA748BBD0B814">
+    <pdf_title>Enhanced intelligent driver model to access the impact of driving strategies on traffic capacity</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Lateral" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_945623169" CREATED="1589212064192" MODIFIED="1589212068532"/>
 </node>
 </node>
 <node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
@@ -2457,7 +2479,8 @@
 </node>
 </node>
 </node>
-<node TEXT="Using n-grams" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_761327452" CREATED="1580908602944" MODIFIED="1580908609988">
+<node TEXT="Generation of tags/activities" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_988403725" CREATED="1589106599112" MODIFIED="1589106617997">
+<node TEXT="Using n-grams" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_761327452" CREATED="1580908602944" MODIFIED="1589106627792" MOVED="1589106623844">
 <node TEXT="The Practical Value of N-Grams in Generation" ID="ID_1752221776" CREATED="1580908610912" MODIFIED="1580908614046" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/422%20The%20Practical%20Value%20of%20N%20Grams%20in%20Generation.pdf">
 <attribute NAME="key" VALUE="langkilde1998practical"/>
 <attribute NAME="year" VALUE="1998"/>
@@ -2475,6 +2498,17 @@
 <attribute NAME="authors" VALUE="Oh, Alice H and Rudnicky, Alexander I"/>
 <pdf_annotation type="BOOKMARK" page="1" object_id="6650440924601650927" object_number="162" document_hash="D31941828A5E9CCCB68931D59DD41BD9B0A8EB506DB1214051F1C63527C2F3">
     <pdf_title>Stochastic natural language generation for spoken dialog systems</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Regression theory for categorical time series" ID="ID_359703711" CREATED="1589106639139" MODIFIED="1589106718005" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/444%20Regression%20theory%20for%20categorical%20time%20series.pdf">
+<attribute NAME="key" VALUE="fokianos2003regression"/>
+<attribute NAME="journal" VALUE="Statistical Science"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="Regression Theory for Categorical Time Series"/>
+<attribute NAME="authors" VALUE="Fokianos, Konstantinos and Kedem, Benjamin and others"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5A52CFA1A75AAF202C6EC09B884D42BFDF766E33C4DC9386A2A1333752F431F">
+    <pdf_title>Regression Theory for Categorical Time Series</pdf_title>
 </pdf_annotation>
 </node>
 </node>
