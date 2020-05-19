@@ -1,0 +1,1050 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{madni2018autonomous}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=98ff98f54a2e1139084350297c2ed160}{%
+           family={Madni},
+           familyi={M\bibinitperiod},
+           given={Azad\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{98ff98f54a2e1139084350297c2ed160}
+      \strng{fullhash}{98ff98f54a2e1139084350297c2ed160}
+      \strng{bibnamehash}{98ff98f54a2e1139084350297c2ed160}
+      \strng{authorbibnamehash}{98ff98f54a2e1139084350297c2ed160}
+      \strng{authornamehash}{98ff98f54a2e1139084350297c2ed160}
+      \strng{authorfullhash}{98ff98f54a2e1139084350297c2ed160}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Transdisciplinary Systems Engineering}
+      \field{title}{Autonomous System-of-Systems}
+      \field{year}{2018}
+      \field{pages}{161\bibrangedash 186}
+      \range{pages}{26}
+    \endentry
+    \entry{bimbraw2015autonomous}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=3473782716bd424863e130708c87b41a}{%
+           family={Bimbraw},
+           familyi={B\bibinitperiod},
+           given={Keshav},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{3473782716bd424863e130708c87b41a}
+      \strng{fullhash}{3473782716bd424863e130708c87b41a}
+      \strng{bibnamehash}{3473782716bd424863e130708c87b41a}
+      \strng{authorbibnamehash}{3473782716bd424863e130708c87b41a}
+      \strng{authornamehash}{3473782716bd424863e130708c87b41a}
+      \strng{authorfullhash}{3473782716bd424863e130708c87b41a}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The field of autonomous automation is of interest to researchers, and much has been accomplished in this area, of which this paper presents a detailed chronology. This paper can help one understand the trends in autonomous vehicle technology for the past, present, and future. We see a drastic change in autonomous vehicle technology since 1920s, when the first radio controlled vehicles were designed. In the subsequent decades, we see fairly autonomous electric cars powered by embedded circuits in the roads. By 1960s, autonomous cars having similar electronic guide systems came into picture. 1980s saw vision guided autonomous vehicles, which was a major milestone in technology and till date we use similar or modified forms of vision and radio guided technologies. Various semi-autonomous features introduced in modern cars such as lane keeping, automatic braking and adaptive cruise control are based on such systems. Extensive network guided systems in conjunction with vision guided features is the future of autonomous vehicles. It is predicted that most companies will launch fully autonomous vehicles by the advent of next decade. The future of autonomous vehicles is an ambitious era of safe and comfortable transportation.}
+      \field{booktitle}{12th International Conference on Informatics in Control, Automation and Robotics (ICINCO)}
+      \field{month}{7}
+      \field{title}{Autonomous Cars: Past, Present and Future a Review of the Developments in the Last Century, the Present Scenario and the Expected Future of Autonomous Vehicle Technology}
+      \field{volume}{1}
+      \field{year}{2015}
+      \field{pages}{191\bibrangedash 198}
+      \range{pages}{8}
+      \keyw{automobiles;electric vehicles;embedded systems;mobile robots;radiocommunication;robot vision;time measurement;adaptive cruise control;automatic braking;autonomous automation;autonomous electric cars;autonomous vehicle technology;chronology;electronic guide systems;embedded circuits;lane keeping;radio controlled vehicles;radio guided technologies;Automobiles;Autonomous automobiles;Roads;Automation;Autonomous Cars;Autonomous Vehicles;Cars;Intelligent Transportation Technologies and Systems;Mechatronics Systems}
+    \endentry
+    \entry{chanedmiston2020itsjpo}{report}{}
+      \name{author}{4}{}{%
+        {{hash=c84de3161670e93cf72e912990367d87}{%
+           family={Chan-Edmiston},
+           familyi={C\bibinithyphendelim E\bibinitperiod},
+           given={Sharon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=34f1f3000edce294fcdcdf074fc70a77}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Stephanie},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2af47fa2fb05607bd86416010d81f975}{%
+           family={Sloan},
+           familyi={S\bibinitperiod},
+           given={Suzanne},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c31c9d254ec432f739662230943d0bec}{%
+           family={Wong},
+           familyi={W\bibinitperiod},
+           given={Melissa},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {U.S. Department of Transportation}%
+      }
+      \strng{namehash}{3f7f733f0981aaaf9fb3d638e9999fef}
+      \strng{fullhash}{39ca2c03a7c860d128176217c938c988}
+      \strng{bibnamehash}{39ca2c03a7c860d128176217c938c988}
+      \strng{authorbibnamehash}{39ca2c03a7c860d128176217c938c988}
+      \strng{authornamehash}{3f7f733f0981aaaf9fb3d638e9999fef}
+      \strng{authorfullhash}{39ca2c03a7c860d128176217c938c988}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{FHWA-JPO-18-746}
+      \field{title}{{I}ntelligent {T}ransportation {S}ystems ({ITS}) {J}oint {P}rogram {O}ffice: Strategic Plan 2020--2025}
+      \field{type}{techreport}
+      \field{year}{2020}
+    \endentry
+    \entry{bengler2014threedecades}{article}{}
+      \name{author}{6}{}{%
+        {{hash=576b75a84b9f7d56e93297519ab00f7d}{%
+           family={Bengler},
+           familyi={B\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+        {{hash=2f1c83e71a33d1c7df6e6b4962d375bb}{%
+           family={Dietmayer},
+           familyi={D\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod}}}%
+        {{hash=103ab46d41dd1ca6f401869ab13611fa}{%
+           family={F{ä}rber},
+           familyi={F\bibinitperiod},
+           given={Berthold},
+           giveni={B\bibinitperiod}}}%
+        {{hash=4494753eefa828e7273b9373b7588d9b}{%
+           family={Maurer},
+           familyi={M\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ca1de2d211c8e4a0f976b3b90a625cb8}{%
+           family={Stiller},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=27e243e6b61961a9e2d0bd20486340a4}{%
+           family={Winner},
+           familyi={W\bibinitperiod},
+           given={Hermann},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{4b23600d479ba969b66b1a4c2fcea367}
+      \strng{fullhash}{277c893aec4db30e03c1824d7c6f214f}
+      \strng{bibnamehash}{277c893aec4db30e03c1824d7c6f214f}
+      \strng{authorbibnamehash}{277c893aec4db30e03c1824d7c6f214f}
+      \strng{authornamehash}{4b23600d479ba969b66b1a4c2fcea367}
+      \strng{authorfullhash}{277c893aec4db30e03c1824d7c6f214f}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This contribution provides a review of fundamental goals, development and future perspectives of driver assistance systems. Mobility is a fundamental desire of mankind. Virtually any society strives for safe and efficient mobility at low ecological and economic costs. Nevertheless, its technical implementation significantly differs among societies, depending on their culture and their degree of industrialization. A potential evolutionary roadmap for driver assistance systems is discussed. Emerging from systems based on proprioceptive sensors, such as ABS or ESC, we review the progress incented by the use of exteroceptive sensors such as radar, video, or lidar. While the ultimate goal of automated and cooperative traffic still remains a vision of the future, intermediate steps towards that aim can be realized through systems that mitigate or avoid collisions in selected driving situations. Research extends the state-of-the-art in automated driving in urban traffic and in cooperative driving, the latter addressing communication and collaboration between different vehicles, as well as cooperative vehicle operation by its driver and its machine intelligence. These steps are considered important for the interim period, until reliable unsupervised automated driving for all conceivable traffic situations becomes available. The prospective evolution of driver assistance systems will be stimulated by several technological, societal and market trends. The paper closes with a view on current research fields.}
+      \field{issn}{1939-1390}
+      \field{journaltitle}{IEEE Intelligent Transportation Systems Magazine}
+      \field{number}{4}
+      \field{title}{Three Decades of Driver Assistance Systems: Review and Future Perspectives}
+      \field{volume}{6}
+      \field{year}{2014}
+      \field{pages}{6\bibrangedash 22}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1109/MITS.2014.2336271
+      \endverb
+      \keyw{artificial intelligence;collision avoidance;driver information systems;intelligent transportation systems;road traffic;automated traffic;collision avoidance;collision mitigation;cooperative driving;cooperative traffic;cooperative vehicle operation;driver assistance systems;exteroceptive sensors;machine intelligence;proprioceptive sensors;unsupervised automated driving;urban traffic;Advanced driver assistance systems;Automatic control;Laser radar;Research and development;Sensor systems;Technology forecasting;Vehicle dynamics;Vehicle safety}
+    \endentry
+    \entry{stellet2015taxonomy}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=ba9df4e11f4e94ccf3fbb3576ba18ecf}{%
+           family={Stellet},
+           familyi={S\bibinitperiod},
+           given={J.\bibnamedelimi E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=e7e0c6c5d022b2b173a00aefb5c0bdd0}{%
+           family={Zofka},
+           familyi={Z\bibinitperiod},
+           given={M.\bibnamedelimi R.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=d6f1491934bd226041557d3e6764c71c}{%
+           family={Schumacher},
+           familyi={S\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=67b029e6f7109c9550de56e70e440403}{%
+           family={Schamm},
+           familyi={S\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=57d094fc4992c7721b8e477220b28099}{%
+           family={Niewels},
+           familyi={N\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=73f8c4a9d45039906c71e51a3d36097b}{%
+           family={Zöllner},
+           familyi={Z\bibinitperiod},
+           given={J.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{1e75684dbf368fd6007f522408d112fa}
+      \strng{fullhash}{921e4982fc0acb5717b017d478fdd12d}
+      \strng{bibnamehash}{921e4982fc0acb5717b017d478fdd12d}
+      \strng{authorbibnamehash}{921e4982fc0acb5717b017d478fdd12d}
+      \strng{authornamehash}{1e75684dbf368fd6007f522408d112fa}
+      \strng{authorfullhash}{921e4982fc0acb5717b017d478fdd12d}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this work, we propose a novel taxonomy to partition the problem of testing advanced driver assistance systems (ADAS) into three basic dimensions. These dimensions are detailed and confirmed with recent research. Our framework permits the consideration of open research questions which have to be answered to pave the way for future highly automated driving. Despite the importance of this problem, a similarly comprehensive and structured survey has to the best of the authors' knowledge not been developed before.}
+      \field{booktitle}{IEEE 18th International Conference on Intelligent Transportation Systems}
+      \field{issn}{2153-0009}
+      \field{month}{9}
+      \field{title}{Testing of Advanced Driver Assistance Towards Automated Driving: A Survey and Taxonomy on Existing Approaches and Open Questions}
+      \field{year}{2015}
+      \field{pages}{1455\bibrangedash 1462}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/ITSC.2015.236
+      \endverb
+      \keyw{driver information systems;intelligent transportation systems;mobile robots;road vehicles;ADAS testing;advanced driver assistance system;highly automated driving;taxonomy;Measurement;Sensors;Solid modeling;Taxonomy;Testing;Vehicle dynamics;Vehicles}
+    \endentry
+    \entry{elrofai2018scenario}{report}{}
+      \name{author}{5}{}{%
+        {{hash=6e51bdc843117faf51e891d299c86baa}{%
+           family={Elrofai},
+           familyi={E\bibinitperiod},
+           given={Hala},
+           giveni={H\bibinitperiod}}}%
+        {{hash=9ef4465b973c258b22b075d22d75f9d2}{%
+           family={Paardekooper},
+           familyi={P\bibinitperiod},
+           given={Jan-Pieter},
+           giveni={J\bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=dc7a70cd4084b72520aa88a0ba77faf5}{%
+           family={Gelder},
+           familyi={G\bibinitperiod},
+           given={Erwin},
+           giveni={E\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=770c51763f238f9070fe446b3a4d9528}{%
+           family={Kalisvaart},
+           familyi={K\bibinitperiod},
+           given={Sytze},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0149dc67d5c93c41ef2f9b5acbdffc94}{%
+           family={Op\bibnamedelima den\bibnamedelima Camp},
+           familyi={O\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Olaf},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Netherlands Organization for Applied Scientific Research, TNO}%
+      }
+      \strng{namehash}{007144f5d1144b8f65f7fe1865074b29}
+      \strng{fullhash}{56e98a043f6b47eab8f31607420f8558}
+      \strng{bibnamehash}{56e98a043f6b47eab8f31607420f8558}
+      \strng{authorbibnamehash}{56e98a043f6b47eab8f31607420f8558}
+      \strng{authornamehash}{007144f5d1144b8f65f7fe1865074b29}
+      \strng{authorfullhash}{56e98a043f6b47eab8f31607420f8558}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Scenario-Based Safety Validation of Connected and Automated Driving}
+      \field{type}{techreport}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb http://publications.tno.nl/publication/34626550/AyT8Zc/TNO-2018-streetwise.pdf
+      \endverb
+      \verb{url}
+      \verb http://publications.tno.nl/publication/34626550/AyT8Zc/TNO-2018-streetwise.pdf
+      \endverb
+    \endentry
+    \entry{putz2017pegasus}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=8e6a337895f1f4ab74297378ee8d52ec}{%
+           family={Pütz},
+           familyi={P\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=cf3fd0bfdeaf971c7d48c26172124f4d}{%
+           family={Zlocki},
+           familyi={Z\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a01e5e8c9cbbc3d4211b1ecf9588fa1f}{%
+           family={Bock},
+           familyi={B\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=175f35cd7ccffb357f0e8c7a458e5508}{%
+           family={Eckstein},
+           familyi={E\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{358f140d5b35fc774be446f4bb66148a}
+      \strng{fullhash}{8b41e8b949784b69a12e33953a5c2e2c}
+      \strng{bibnamehash}{8b41e8b949784b69a12e33953a5c2e2c}
+      \strng{authorbibnamehash}{8b41e8b949784b69a12e33953a5c2e2c}
+      \strng{authornamehash}{358f140d5b35fc774be446f4bb66148a}
+      \strng{authorfullhash}{8b41e8b949784b69a12e33953a5c2e2c}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Signing off highly automated vehicles is a key challenge for the automotive industry. Applying validation methods known from assistance systems for automated vehicles cause high test efforts. Therefore, the project PEGASUS develops a validation framework for the sign off process of these vehicles. One element of this framework is a database containing relevant traffic scenarios. This database combines different database entities and a data processing chain that deduces test specifications for the sign off process based on various types of measurement input data. The paper describes these database entities as well as the steps of the processing chain and the resulting benefits for the validation, a collective approach for the sign off on a common database and with common evaluation criteria.}
+      \field{booktitle}{12th ITS European Congress}
+      \field{title}{System Validation of Highly Automated Vehicles with a Database of Relevant Traffic Scenarios}
+      \field{year}{2017}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+    \endentry
+    \entry{roesener2016scenariobased}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=cb2cc3caed2a597616d130e3e64dcf71}{%
+           family={Roesener},
+           familyi={R\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=20f04830207d35dffa02b3ec61e1c439}{%
+           family={Fahrenkrog},
+           familyi={F\bibinitperiod},
+           given={Felix},
+           giveni={F\bibinitperiod}}}%
+        {{hash=7a316ff5ff5c745d2af6d68b5900c665}{%
+           family={Uhlig},
+           familyi={U\bibinitperiod},
+           given={Axel},
+           giveni={A\bibinitperiod}}}%
+        {{hash=175f35cd7ccffb357f0e8c7a458e5508}{%
+           family={Eckstein},
+           familyi={E\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{636ec7db665b59160f01924eac2056e1}
+      \strng{fullhash}{57b57e91f2aa38ec2b9d2bb1f7a6adc9}
+      \strng{bibnamehash}{57b57e91f2aa38ec2b9d2bb1f7a6adc9}
+      \strng{authorbibnamehash}{57b57e91f2aa38ec2b9d2bb1f7a6adc9}
+      \strng{authornamehash}{636ec7db665b59160f01924eac2056e1}
+      \strng{authorfullhash}{57b57e91f2aa38ec2b9d2bb1f7a6adc9}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Automated driving functions are under intensified development by industry and academia since the last decade. Due to the large operation space and various complex scenarios automated driving functions have to cope with, assessment efforts are expected to rise dramatically. In order to quantify benefits and risks of these functions in an efficient way, this paper describes a holistic approach for the assessment of automated driving by using real world driving data. Based on a scenario definition a suitable method for identifying relevant scenarios from real world driving data is described which is able to handle scenario specific characteristics such as the temporal and spatial dependencies of all traffic participants. For quantifying the effect of automated driving within the considered driving scenarios, the statistical indicator `effect size' is applied. The basic requirement that automated driving needs to operate within mixed traffic implies that the reference for assessment needs to be human manual driving behaviour.}
+      \field{booktitle}{IEEE 19th International Conference on Intelligent Transportation Systems (ITSC)}
+      \field{month}{11}
+      \field{title}{A Scenario-Based Assessment Approach for Automated Driving by Using Time Series Classification of Human-Driving Behaviour}
+      \field{year}{2016}
+      \field{pages}{1360\bibrangedash 1365}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ITSC.2016.7795734
+      \endverb
+      \keyw{pattern classification;statistical analysis;time series;traffic engineering computing;automated driving;effect size statistical indicator;human manual driving behaviour;scenario-based assessment approach;time series classification;Automation;Classification algorithms;Feature extraction;Mathematical model;Safety;Time series analysis;Vehicles}
+    \endentry
+    \entry{deGelder2017assessment}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=dc7a70cd4084b72520aa88a0ba77faf5}{%
+           family={Gelder},
+           familyi={G\bibinitperiod},
+           given={Erwin},
+           giveni={E\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=9ef4465b973c258b22b075d22d75f9d2}{%
+           family={Paardekooper},
+           familyi={P\bibinitperiod},
+           given={Jan-Pieter},
+           giveni={J\bibinithyphendelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{ede9f7aaf2a35bd6a76b3184d3601a40}
+      \strng{fullhash}{ede9f7aaf2a35bd6a76b3184d3601a40}
+      \strng{bibnamehash}{ede9f7aaf2a35bd6a76b3184d3601a40}
+      \strng{authorbibnamehash}{ede9f7aaf2a35bd6a76b3184d3601a40}
+      \strng{authornamehash}{ede9f7aaf2a35bd6a76b3184d3601a40}
+      \strng{authorfullhash}{ede9f7aaf2a35bd6a76b3184d3601a40}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IEEE Intelligent Vehicles Symposium (IV)}
+      \field{title}{Assessment of Automated Driving Systems Using Real-Life Scenarios}
+      \field{year}{2017}
+      \field{pages}{589\bibrangedash 594}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ivs.2017.7995782
+      \endverb
+    \endentry
+    \entry{kasper2012oobayesnetworks}{article}{}
+      \name{author}{7}{}{%
+        {{hash=f19dea9fa86bcaf88b8cb0b9694b9ace}{%
+           family={Kasper},
+           familyi={K\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=192173810d7c6947b6ab63be06607761}{%
+           family={Weidl},
+           familyi={W\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=7cc2886c8379fb3061061549099eab1a}{%
+           family={Dang},
+           familyi={D\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c9e1d994ae8ab9a6ed31ebd1e3424c1f}{%
+           family={Breuel},
+           familyi={B\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c96da2cd8743d5430687149cb9ce2edb}{%
+           family={Tamke},
+           familyi={T\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=da6b3329ff619ef8fe83ae8b5dd7acfc}{%
+           family={Wedel},
+           familyi={W\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6c9b0b536ffd18444661b11c774a7e3b}{%
+           family={Rosenstiel},
+           familyi={R\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{a12734237ce7794fa0df769e91165c50}
+      \strng{fullhash}{e1584829e081404250ffbfe23be0c3ed}
+      \strng{bibnamehash}{e1584829e081404250ffbfe23be0c3ed}
+      \strng{authorbibnamehash}{e1584829e081404250ffbfe23be0c3ed}
+      \strng{authornamehash}{a12734237ce7794fa0df769e91165c50}
+      \strng{authorfullhash}{e1584829e081404250ffbfe23be0c3ed}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This article introduces a novel approach towards the recognition of typical driving maneuvers in structured highway scenarios and shows some key benefits of traffic scene modeling with object-oriented Bayesian networks (OOBNs). The approach exploits the advantages of an introduced lane-related coordinate system together with individual occupancy schedule grids for all modeled vehicles. This combination allows an efficient classification of the existing vehicle-lane and vehicle- vehicle relations in traffic scenes and thus substantially improves the understanding of complex traffic scenes. Probabilities and variances within the network are propagated systematically which results in probabilistic sets of the modeled driving maneuvers. Using this generic approach, the network is able to classify a total of 27 driving maneuvers including merging and object following.}
+      \field{issn}{1939-1390}
+      \field{journaltitle}{IEEE Intelligent Transportation Systems Magazine}
+      \field{number}{3}
+      \field{title}{Object-Oriented {B}ayesian Networks for Detection of Lane Change Maneuvers}
+      \field{volume}{4}
+      \field{year}{2012}
+      \field{pages}{19\bibrangedash 31}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/MITS.2012.2203229
+      \endverb
+      \keyw{Bayesian methods;Modeling;Object oriented modeling;Probabilistic logic;Road transportation;Traffic control;Vehicles}
+    \endentry
+    \entry{krajewski2018highD}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=413f1e27002a53ce6c8dc5269d7e09ca}{%
+           family={Krajewski},
+           familyi={K\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=a01e5e8c9cbbc3d4211b1ecf9588fa1f}{%
+           family={Bock},
+           familyi={B\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5f24cdbf5370e4f826a1a3e8608f75b3}{%
+           family={Kloeker},
+           familyi={K\bibinitperiod},
+           given={Laurent},
+           giveni={L\bibinitperiod}}}%
+        {{hash=175f35cd7ccffb357f0e8c7a458e5508}{%
+           family={Eckstein},
+           familyi={E\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{2a51368a4da77278006e577c616468be}
+      \strng{fullhash}{4cd0ec29a36aef3ab86f2778435178cc}
+      \strng{bibnamehash}{4cd0ec29a36aef3ab86f2778435178cc}
+      \strng{authorbibnamehash}{4cd0ec29a36aef3ab86f2778435178cc}
+      \strng{authornamehash}{2a51368a4da77278006e577c616468be}
+      \strng{authorfullhash}{4cd0ec29a36aef3ab86f2778435178cc}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IEEE 21st International Conference on Intelligent Transportations Systems (ITSC)}
+      \field{title}{The High{D} Dataset: A Drone Dataset of Naturalistic Vehicle Trajectories on German Highways for Validation of Highly Automated Driving Systems}
+      \field{year}{2018}
+      \field{pages}{2118\bibrangedash 2125}
+      \range{pages}{8}
+    \endentry
+    \entry{schlechtriemen2015lanechange}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=24f53c43e6452ba0396e9c8d93e7cf0b}{%
+           family={Schlechtriemen},
+           familyi={S\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=4fe4f2411042b03aef4333c121f6dab6}{%
+           family={Wedel},
+           familyi={W\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4b888b54c6c6926b7e7833c09b6fb14b}{%
+           family={Hillenbrand},
+           familyi={H\bibinitperiod},
+           given={Joerg},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1ce9265fc14284005d2691e2daa1a768}{%
+           family={Breuel},
+           familyi={B\bibinitperiod},
+           given={Gabi},
+           giveni={G\bibinitperiod}}}%
+        {{hash=bb8f9d7491605fb23ab3341e3ee9cb35}{%
+           family={Kuhnert},
+           familyi={K\bibinitperiod},
+           given={Klaus-Dieter},
+           giveni={K\bibinithyphendelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae0379495fd0c376fe85232ed1de6879}
+      \strng{fullhash}{ca7b93f567b1932c5149049f984dc99e}
+      \strng{bibnamehash}{ca7b93f567b1932c5149049f984dc99e}
+      \strng{authorbibnamehash}{ca7b93f567b1932c5149049f984dc99e}
+      \strng{authornamehash}{ae0379495fd0c376fe85232ed1de6879}
+      \strng{authorfullhash}{ca7b93f567b1932c5149049f984dc99e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IEEE Intelligent Vehicles Symposium (IV)}
+      \field{issn}{1931-0587}
+      \field{month}{6}
+      \field{title}{A Lane Change Detection Approach Using Feature Ranking with Maximized Predictive Power}
+      \field{year}{2014}
+      \field{pages}{108\bibrangedash 114}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1109/IVS.2014.6856491
+      \endverb
+      \keyw{Bayes methods;feature extraction;Gaussian processes;mixture models;object detection;object recognition;risk analysis;road safety;road traffic;road vehicles;traffic engineering computing;lane change detection approach;feature ranking;maximized predictive power;current traffic situation;safe autonomous driving system;risk estimation uncertainty;surrounding traffic participant behavior;highway scenario;acceleration change;lane change maneuver;lane change intention recognition;naive Bayesian approach;generative model;static traffic environment;conditional probabilities;Gaussian mixtures;feature reduction;feature selection;lane change event;intention prediction model;recognition performance;Vehicles;Hidden Markov models;Prediction algorithms;Vectors;Road transportation;Acceleration;Data models}
+    \endentry
+    \entry{xie2017driving}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c9bf03e1a2dee7ecd6b933a85314876d}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=71c1f11554115498620af6552cc18eae}{%
+           family={Hilal},
+           familyi={H\bibinitperiod},
+           given={Allaa\bibnamedelima R},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=63c73d0d82cd021f7b1c573eae248684}{%
+           family={Kuli{ć}},
+           familyi={K\bibinitperiod},
+           given={Dana},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{6be8785c7f8ad288b7840aad0e78a779}
+      \strng{fullhash}{37e4c1acae6f8b46cc28aa82df034e37}
+      \strng{bibnamehash}{37e4c1acae6f8b46cc28aa82df034e37}
+      \strng{authorbibnamehash}{37e4c1acae6f8b46cc28aa82df034e37}
+      \strng{authornamehash}{6be8785c7f8ad288b7840aad0e78a779}
+      \strng{authorfullhash}{37e4c1acae6f8b46cc28aa82df034e37}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Sensors Journal}
+      \field{month}{6}
+      \field{number}{12}
+      \field{title}{Driving Maneuver Classification: A Comparison of Feature Extraction Methods}
+      \field{volume}{18}
+      \field{year}{2018}
+      \field{pages}{4777\bibrangedash 4784}
+      \range{pages}{8}
+    \endentry
+    \entry{cara2015carcyclist}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=0d1c7e1c4c641a96ad4a1d7a445bd62f}{%
+           family={Cara},
+           familyi={C\bibinitperiod},
+           given={Irene},
+           giveni={I\bibinitperiod}}}%
+        {{hash=dc7a70cd4084b72520aa88a0ba77faf5}{%
+           family={Gelder},
+           familyi={G\bibinitperiod},
+           given={Erwin},
+           giveni={E\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{205350840da6dc32b2783c4a7f315203}
+      \strng{fullhash}{205350840da6dc32b2783c4a7f315203}
+      \strng{bibnamehash}{205350840da6dc32b2783c4a7f315203}
+      \strng{authorbibnamehash}{205350840da6dc32b2783c4a7f315203}
+      \strng{authornamehash}{205350840da6dc32b2783c4a7f315203}
+      \strng{authorfullhash}{205350840da6dc32b2783c4a7f315203}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The number of fatal car-cyclist accidents is increasing. Advanced Driver Assistance Systems (ADAS) can improve the safety of cyclists, but they need to be tested with realistic safety-critical car-cyclist scenarios. In order to store only relevant scenarios, an online classification algorithm is needed. We demonstrate that machine learning techniques can be used to detect and classify those scenarios based on their trajectory data. A dataset consisting of 99 realistic car-cyclist scenarios is gathered using an instrumented vehicle. We achieved a classification accuracy of the gathered data of 87.9\%. The execution time of only 45.8 us shows that the algorithm is suitable for online purposes.}
+      \field{booktitle}{IEEE 18th International Conference on Intelligent Transportation Systems}
+      \field{issn}{2153-0009}
+      \field{month}{9}
+      \field{title}{Classification for Safety-Critical Car-Cyclist Scenarios Using Machine Learning}
+      \field{year}{2015}
+      \field{pages}{1995\bibrangedash 2000}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ITSC.2015.323
+      \endverb
+      \keyw{automobiles;bicycles;feature extraction;intelligent transportation systems;learning (artificial intelligence);pattern classification;road accidents;ADAS;advanced driver assistance system;car-cyclist accident;classification algorithm;machine learning;safety-critical car-cyclist scenario;Accuracy;Classification algorithms;Hidden Markov models;Machine learning algorithms;Support vector machines;Trajectory;Vehicles}
+    \endentry
+    \entry{paardekooper2019dataset6000km}{inproceedings}{}
+      \name{author}{8}{}{%
+        {{hash=9ef4465b973c258b22b075d22d75f9d2}{%
+           family={Paardekooper},
+           familyi={P\bibinitperiod},
+           given={Jan-Pieter},
+           giveni={J\bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=e3e68d4ff49c1f7f02cf7093d515c5e7}{%
+           family={Montfort},
+           familyi={M\bibinitperiod},
+           given={Sjef},
+           giveni={S\bibinitperiod}}}%
+        {{hash=193b55ae93bb625e0cf9831f61a3d833}{%
+           family={Manders},
+           familyi={M\bibinitperiod},
+           given={Jeroen},
+           giveni={J\bibinitperiod}}}%
+        {{hash=01a9166aee35f49ac149c3d224a6d66b}{%
+           family={Goos},
+           familyi={G\bibinitperiod},
+           given={Jorrit},
+           giveni={J\bibinitperiod}}}%
+        {{hash=dc7a70cd4084b72520aa88a0ba77faf5}{%
+           family={Gelder},
+           familyi={G\bibinitperiod},
+           given={Erwin},
+           giveni={E\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=0149dc67d5c93c41ef2f9b5acbdffc94}{%
+           family={Op\bibnamedelima den\bibnamedelima Camp},
+           familyi={O\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Olaf},
+           giveni={O\bibinitperiod}}}%
+        {{hash=eae1ba9a36a941215c8a4eb5361c894f}{%
+           family={Bracquemond},
+           familyi={B\bibinitperiod},
+           given={Annie},
+           giveni={A\bibinitperiod}}}%
+        {{hash=cfa88392a00b43b58a60b20adc6179d8}{%
+           family={Thiolon},
+           familyi={T\bibinitperiod},
+           given={Gildas},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{69aeaacfb55f42762d82f01311c12e0c}
+      \strng{fullhash}{9a84424c07bff7525b7231bdedb8a36c}
+      \strng{bibnamehash}{9a84424c07bff7525b7231bdedb8a36c}
+      \strng{authorbibnamehash}{9a84424c07bff7525b7231bdedb8a36c}
+      \strng{authornamehash}{69aeaacfb55f42762d82f01311c12e0c}
+      \strng{authorfullhash}{9a84424c07bff7525b7231bdedb8a36c}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{26th International Technical Conference on the Enhanced Safety of Vehicles (ESV)}
+      \field{title}{Automatic Identification of Critical Scenarios in a Public Dataset of 6000 km of Public-Road Driving}
+      \field{year}{2019}
+    \endentry
+    \entry{kovvali2007video}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=ca5a2e3870edabb486e40a77fc7be1a4}{%
+           family={Kovvali},
+           familyi={K\bibinitperiod},
+           given={Vijay\bibnamedelima Gopal},
+           giveni={V\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=a5028009d1a68f2a93f59c14cac8f37f}{%
+           family={Alexiadis},
+           familyi={A\bibinitperiod},
+           given={Vassili},
+           giveni={V\bibinitperiod}}}%
+        {{hash=3a1f1a0016bb4e33e52e9bd0f48cfd33}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Lin},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{cb29f7bc316a72da0a2dfe67c573b536}
+      \strng{fullhash}{900bcdc066f4b3fc450abdfca21bcd7e}
+      \strng{bibnamehash}{900bcdc066f4b3fc450abdfca21bcd7e}
+      \strng{authorbibnamehash}{900bcdc066f4b3fc450abdfca21bcd7e}
+      \strng{authornamehash}{cb29f7bc316a72da0a2dfe67c573b536}
+      \strng{authorfullhash}{900bcdc066f4b3fc450abdfca21bcd7e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Transportation Research Board 86th Annual Meeting}
+      \field{title}{Video-Based Vehicle Trajectory Data Collection}
+      \field{year}{2007}
+    \endentry
+    \entry{fontana2018action}{article}{}
+      \name{author}{6}{}{%
+        {{hash=93ba501dc244107e335c2f4dc37df6f1}{%
+           family={Fontana},
+           familyi={F\bibinitperiod},
+           given={Valentina},
+           giveni={V\bibinitperiod}}}%
+        {{hash=c04a3d62d7a6e7ad2f5165665fbfb1bf}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Gurkirt},
+           giveni={G\bibinitperiod}}}%
+        {{hash=09dd066b431801f97e887f970fa72a43}{%
+           family={Akrigg},
+           familyi={A\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=37e9cba2e52ac8de6085ea0a9756e071}{%
+           family={Di\bibnamedelima Maio},
+           familyi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Manuele},
+           giveni={M\bibinitperiod}}}%
+        {{hash=82ed4c0b35d95fb65feb44af293cc1cc}{%
+           family={Saha},
+           familyi={S\bibinitperiod},
+           given={Suman},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1a17bd8884ef9452063e498646b84b42}{%
+           family={Cuzzolin},
+           familyi={C\bibinitperiod},
+           given={Fabio},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{173113e949db0fe4eb19ab4715e3c6e0}
+      \strng{fullhash}{23a7fab6b5bc665fee49b8ea618fb4de}
+      \strng{bibnamehash}{23a7fab6b5bc665fee49b8ea618fb4de}
+      \strng{authorbibnamehash}{23a7fab6b5bc665fee49b8ea618fb4de}
+      \strng{authornamehash}{173113e949db0fe4eb19ab4715e3c6e0}
+      \strng{authorfullhash}{23a7fab6b5bc665fee49b8ea618fb4de}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1807.11332}
+      \field{title}{Action Detection from a Robot-Car Perspective}
+      \field{year}{2018}
+    \endentry
+    \entry{degelder2018ontology}{article}{}
+      \name{author}{8}{}{%
+        {{hash=dc7a70cd4084b72520aa88a0ba77faf5}{%
+           family={Gelder},
+           familyi={G\bibinitperiod},
+           given={Erwin},
+           giveni={E\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=9ef4465b973c258b22b075d22d75f9d2}{%
+           family={Paardekooper},
+           familyi={P\bibinitperiod},
+           given={Jan-Pieter},
+           giveni={J\bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=49949f4b62ad6dd133938e030c5c1aff}{%
+           family={Khabbaz\bibnamedelima Saberi},
+           familyi={K\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Arash},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6e51bdc843117faf51e891d299c86baa}{%
+           family={Elrofai},
+           familyi={E\bibinitperiod},
+           given={Hala},
+           giveni={H\bibinitperiod}}}%
+        {{hash=0149dc67d5c93c41ef2f9b5acbdffc94}{%
+           family={Op\bibnamedelima den\bibnamedelima Camp},
+           familyi={O\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Olaf},
+           giveni={O\bibinitperiod}}}%
+        {{hash=f5d82f75d8ffcd191f50b4b12c6b81d1}{%
+           family={Ploeg},
+           familyi={P\bibinitperiod},
+           given={Jeroen},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0a8c05ccc46aa0657682d1d53ef8d21d}{%
+           family={Friedman},
+           familyi={F\bibinitperiod},
+           given={Ludwig},
+           giveni={L\bibinitperiod}}}%
+        {{hash=901cff7c71d170d414c34f70892fc7c0}{%
+           family={De\bibnamedelima Schutter},
+           familyi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Bart},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{7e3bff0bcea8f6171f22b69f30246e6b}
+      \strng{fullhash}{ba35596e0f009c625286fa4fcabc1dbf}
+      \strng{bibnamehash}{ba35596e0f009c625286fa4fcabc1dbf}
+      \strng{authorbibnamehash}{ba35596e0f009c625286fa4fcabc1dbf}
+      \strng{authornamehash}{7e3bff0bcea8f6171f22b69f30246e6b}
+      \strng{authorfullhash}{ba35596e0f009c625286fa4fcabc1dbf}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{https://arxiv.org/abs/2001.11507}
+      \field{title}{Ontology for Scenarios for the Assessment of Automated Vehicles}
+    \endentry
+    \entry{elfring2016effective}{article}{}
+      \name{author}{4}{}{%
+        {{hash=3daeb72758d6190bf48c2f54ad0eb268}{%
+           family={Elfring},
+           familyi={E\bibinitperiod},
+           given={Jos},
+           giveni={J\bibinitperiod}}}%
+        {{hash=7b27c2ed79275adc3efd9f9ef4ddade5}{%
+           family={Appeldoorn},
+           familyi={A\bibinitperiod},
+           given={Rein},
+           giveni={R\bibinitperiod}}}%
+        {{hash=0d0ea9ca3e979ac43004b442539eeee5}{%
+           family={Dries},
+           familyi={D\bibinitperiod},
+           given={Sjoerd},
+           giveni={S\bibinitperiod},
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+        {{hash=435fc1e4491613fc7125e4b97473cb71}{%
+           family={Kwakkernaat},
+           familyi={K\bibinitperiod},
+           given={Maurice},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Multidisciplinary Digital Publishing Institute}%
+      }
+      \strng{namehash}{5d42c2834c2e2ac47456acb98e541157}
+      \strng{fullhash}{0c2c50775c9a1a3f4b6ae129ad4c9ad1}
+      \strng{bibnamehash}{0c2c50775c9a1a3f4b6ae129ad4c9ad1}
+      \strng{authorbibnamehash}{0c2c50775c9a1a3f4b6ae129ad4c9ad1}
+      \strng{authornamehash}{5d42c2834c2e2ac47456acb98e541157}
+      \strng{authorfullhash}{0c2c50775c9a1a3f4b6ae129ad4c9ad1}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Sensors}
+      \field{number}{10}
+      \field{title}{Effective World Modeling: Multisensor Data Fusion Methodology for Automated Driving}
+      \field{volume}{16}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 27}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.3390/s16101668
+      \endverb
+    \endentry
+    \entry{iso8855}{report}{}
+      \name{author}{1}{}{%
+        {{hash=3cca15ae1d5909ced5b1b1c63cf4d83a}{%
+           family={{ISO 8855}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {International Organization for Standardization}%
+      }
+      \strng{namehash}{3cca15ae1d5909ced5b1b1c63cf4d83a}
+      \strng{fullhash}{3cca15ae1d5909ced5b1b1c63cf4d83a}
+      \strng{bibnamehash}{3cca15ae1d5909ced5b1b1c63cf4d83a}
+      \strng{authorbibnamehash}{3cca15ae1d5909ced5b1b1c63cf4d83a}
+      \strng{authornamehash}{3cca15ae1d5909ced5b1b1c63cf4d83a}
+      \strng{authorfullhash}{3cca15ae1d5909ced5b1b1c63cf4d83a}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{ISO} 8855: Road {V}ehicles -- {V}ehicle dnamics and road-holding ability}
+      \field{type}{techreport}
+      \field{year}{2011}
+    \endentry
+    \entry{osm_highway}{online}{}
+      \name{author}{1}{}{%
+        {{hash=d04fe07d5e84e98ec48ffba57c1e11e2}{%
+           family={{OpenStreetMaps}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{d04fe07d5e84e98ec48ffba57c1e11e2}
+      \strng{fullhash}{d04fe07d5e84e98ec48ffba57c1e11e2}
+      \strng{bibnamehash}{d04fe07d5e84e98ec48ffba57c1e11e2}
+      \strng{authorbibnamehash}{d04fe07d5e84e98ec48ffba57c1e11e2}
+      \strng{authornamehash}{d04fe07d5e84e98ec48ffba57c1e11e2}
+      \strng{authorfullhash}{d04fe07d5e84e98ec48ffba57c1e11e2}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: January 2020}
+      \field{title}{Key:highway}
+      \verb{urlraw}
+      \verb https://wiki.openstreetmap.org/wiki/Key:highway
+      \endverb
+      \verb{url}
+      \verb https://wiki.openstreetmap.org/wiki/Key:highway
+      \endverb
+    \endentry
+    \entry{hull1982experiments}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a470e15a084123e15717b05aa8bbc5f5}{%
+           family={Hull},
+           familyi={H\bibinitperiod},
+           given={Jonathan\bibnamedelima J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=a9c250c1b8b56bcf6c2d456b676a05cb}{%
+           family={Srihari},
+           familyi={S\bibinitperiod},
+           given={Sargur\bibnamedelima N.},
+           giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \strng{namehash}{d51be4f5c956b8ff323f56ed29480447}
+      \strng{fullhash}{d51be4f5c956b8ff323f56ed29480447}
+      \strng{bibnamehash}{d51be4f5c956b8ff323f56ed29480447}
+      \strng{authorbibnamehash}{d51be4f5c956b8ff323f56ed29480447}
+      \strng{authornamehash}{d51be4f5c956b8ff323f56ed29480447}
+      \strng{authorfullhash}{d51be4f5c956b8ff323f56ed29480447}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1939-3539}
+      \field{journaltitle}{IEEE Transactions on Pattern Analysis and Machine Intelligence}
+      \field{month}{9}
+      \field{number}{5}
+      \field{title}{Experiments in Text Recognition with Binary n-Gram and Viterbi Algorithms}
+      \field{volume}{PAMI-4}
+      \field{year}{1982}
+      \field{pages}{520\bibrangedash 530}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1109/TPAMI.1982.4767297
+      \endverb
+      \keyw{Text recognition;Viterbi algorithm;Optical character recognition software;Character recognition;Feature extraction;Text processing;Error correction;Context modeling;Optical noise;Data structures;Contextual pattern recognition;data structures;recursive algorithms;storage complexity;text processing}
+    \endentry
+    \entry{brown1992class}{article}{}
+      \name{author}{5}{}{%
+        {{hash=192e5672c3b33c632da8bebc81e7bb0c}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Peter\bibnamedelima F.},
+           giveni={P\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=1a149828c998aa56397f5c2c151c6ec2}{%
+           family={Desouza},
+           familyi={D\bibinitperiod},
+           given={Peter\bibnamedelima V.},
+           giveni={P\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=ee0d7e2bebf94d61e1313fa9d01d7dd5}{%
+           family={Mercer},
+           familyi={M\bibinitperiod},
+           given={Robert\bibnamedelima L.},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=ff9dba2f9185f42058c7bc6d548047f6}{%
+           family={Pietra},
+           familyi={P\bibinitperiod},
+           given={Vincent\bibnamedelimb J.\bibnamedelimi Della},
+           giveni={V\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=15d2cd3efb3e19c73d714598d9129066}{%
+           family={Lai},
+           familyi={L\bibinitperiod},
+           given={Jenifer\bibnamedelima C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{448d67c1ebc8097cde62d8bc86adbbb0}
+      \strng{fullhash}{f89926080ed6247ed7354f847b537dbf}
+      \strng{bibnamehash}{f89926080ed6247ed7354f847b537dbf}
+      \strng{authorbibnamehash}{f89926080ed6247ed7354f847b537dbf}
+      \strng{authornamehash}{448d67c1ebc8097cde62d8bc86adbbb0}
+      \strng{authorfullhash}{f89926080ed6247ed7354f847b537dbf}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computational Linguistics}
+      \field{number}{4}
+      \field{title}{Class-Based N-Gram Models of Natural Language}
+      \field{volume}{18}
+      \field{year}{1992}
+      \field{pages}{467\bibrangedash 479}
+      \range{pages}{13}
+    \endentry
+    \entry{oh2002stochastic}{article}{}
+      \name{author}{2}{}{%
+        {{hash=767162e10495a2155326d09867acf808}{%
+           family={Oh},
+           familyi={O\bibinitperiod},
+           given={Alice\bibnamedelima H},
+           giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=c296be16300666830e419eaa3ca22fc7}{%
+           family={Rudnicky},
+           familyi={R\bibinitperiod},
+           given={Alexander\bibnamedelima I},
+           giveni={A\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{4caff2e16b0d8dbfeb62b69890da9fcf}
+      \strng{fullhash}{4caff2e16b0d8dbfeb62b69890da9fcf}
+      \strng{bibnamehash}{4caff2e16b0d8dbfeb62b69890da9fcf}
+      \strng{authorbibnamehash}{4caff2e16b0d8dbfeb62b69890da9fcf}
+      \strng{authornamehash}{4caff2e16b0d8dbfeb62b69890da9fcf}
+      \strng{authorfullhash}{4caff2e16b0d8dbfeb62b69890da9fcf}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Speech \& Language}
+      \field{title}{Stochastic Natural Language Generation for Spoken Dialog Systems}
+      \field{volume}{16}
+      \field{year}{2002}
+      \field{pages}{387\bibrangedash 407}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1016/S0885-2308(02)00012-8
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
