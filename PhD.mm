@@ -1727,6 +1727,15 @@
     <pdf_title>Multi-Target Threat Assessment for Autonomous Emergency Braking</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Driving Safety Performance Assessment Metrics" ID="ID_196349603" CREATED="1590150685934" MODIFIED="1590150876934" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/460%20Driving%20Safety%20Performance%20Assessment%20Metrics.pdf">
+<attribute NAME="key" VALUE="wishart2020driving"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Driving Safety Performance Assessment Metrics for {ADS}-Equipped Vehicles"/>
+<attribute NAME="authors" VALUE="Wishart, Jeffrey and Como, Steven and Elli, Maria and Russo, Brendan and Weast, Jack and Altekar, Niraj and James, Emmanuel"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F813BCFB49D2D5A83362127578FDDE686BEBA3DCB5EFBC372B1A35308CEA">
+    <pdf_title>Abstract</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Splitting emergency tests from behavioural tests" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1869982012" CREATED="1576588788936" MODIFIED="1576588806166">
 <node TEXT="Strategy and architecture of a safety concept" ID="ID_849120556" CREATED="1576588816216" MODIFIED="1576588875230" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/402%20Strategy%20and%20Architecture%20of%20a%20Safety%20Concept.pdf">
@@ -1830,6 +1839,16 @@
 <attribute NAME="year" VALUE="2020"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="23B889F2C75BC3E2EC2186A244A08C717C8173EA89BB52BD167FB3984514DA5">
     <pdf_title>Towards an Operational Design Domain That Supports the Safety Argumentation of an Automated Driving System</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Survey on Scenario-Based Safety Assessment of Automated Vehicles" ID="ID_1424964816" CREATED="1590390587232" MODIFIED="1590390723585" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/461%20Survey%20on%20Scenario-Based%20Safety%20Assessment%20of%20Automated%20Vehicles.pdf">
+<attribute NAME="key" VALUE="riedmaier2020survey"/>
+<attribute NAME="journal" VALUE="IEEE Access"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Survey on Scenario-Based Safety Assessment of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Riedmaier, Stefan and Ponn, Thomas and Ludwig, Dieter and Schick, Bernhard and Diermeyer, Frank"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E5E89A811FD961E1EC5B6DF2DC279D9BA257E63C5154352ADB324A9E167C54C">
+    <pdf_title>Survey on Scenario-Based Safety Assessment of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -1951,6 +1970,15 @@
 <attribute NAME="authors" VALUE="Krajewski, Robert and Bock, Julian and Kloeker, Laurent and Eckstein, Lutz"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="2B4BC2B745349714571F2D9AE23D7327B8EB3B80796A193924B18D28EA31602C">
     <pdf_title>The highD Dataset: A Drone Dataset of Naturalistic Vehicle Trajectories on German Highways for Validation of Highly Automated Driving Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="NGSIM" ID="ID_652611887" CREATED="1589893727983" MODIFIED="1589893937484" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/457%20NGSIM.pdf">
+<attribute NAME="key" VALUE="kovvali2007video"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Video-Based Vehicle Trajectory Data Collection"/>
+<attribute NAME="authors" VALUE="Kovvali, Vijay Gopal and Alexiadis, Vassili and Zhang, Lin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4904F7D26A2871677B962727E833374EBE50EC9263AD1BCF6DDA25EDEF772C">
+    <pdf_title>Video-Based Vehicle Trajectory Data Collection</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2241,6 +2269,14 @@
 </node>
 <node TEXT="Driver models" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1772712523" CREATED="1588598901841" MODIFIED="1588598907254">
 <node TEXT="Longitudinal" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1269817352" CREATED="1589212055509" MODIFIED="1589212063683">
+<node TEXT="Behavioral car-following model (Gipps)" ID="ID_1488863154" CREATED="1589213303594" MODIFIED="1589544998383" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/447%20Behavioral%20car-following%20model.pdf">
+<attribute NAME="key" VALUE="gipps1981behavioral"/>
+<attribute NAME="journal" VALUE="Transportation Research Part B: Methodological"/>
+<attribute NAME="year" VALUE="1981"/>
+<attribute NAME="title" VALUE="Behavioral Car-Following Model for Computer Simulation"/>
+<attribute NAME="authors" VALUE="Gipps, Peter G"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
 <node TEXT="Intelligent Driver Model (IDM)" ID="ID_644301299" CREATED="1588601265010" MODIFIED="1588601412445" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/441%20Intelligent%20Driver%20Model.pdf" MOVED="1589212071508">
 <attribute NAME="key" VALUE="treiber2000congested"/>
 <attribute NAME="journal" VALUE="Physical review E"/>
@@ -2270,8 +2306,101 @@
     <pdf_title>Enhanced intelligent driver model to access the impact of driving strategies on traffic capacity</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Optimal Velocity Model (too simple!)" ID="ID_1046686769" CREATED="1589265914559" MODIFIED="1589266015478" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/448%20Optimal%20Velocity%20Model.pdf">
+<attribute NAME="key" VALUE="bando1995dynamical"/>
+<attribute NAME="journal" VALUE="Physical Review E"/>
+<attribute NAME="year" VALUE="1995"/>
+<attribute NAME="title" VALUE="Dynamical Model of Traffic Congestion and Numerical Simulation"/>
+<attribute NAME="authors" VALUE="Bando, Masako and Hasebe, Katsuya and Nakayama, Akihiro and Shibata, Akihiro and Sugiyama, Yuki"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7267953B9724B4638C25C3E4D9F8A539B1B3D423EDE69BF22BF1CB3A48FF59">
+    <pdf_title>of</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="Lateral" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_945623169" CREATED="1589212064192" MODIFIED="1589212068532"/>
+<node TEXT="Multi-anticipative car-following model (expansion of OVM)" ID="ID_1126220003" CREATED="1589266040080" MODIFIED="1589266666177" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/449%20Multi-anticipative%20car-following%20model.pdf">
+<attribute NAME="key" VALUE="lenz1999multi"/>
+<attribute NAME="journal" VALUE="The European Physical Journal B"/>
+<attribute NAME="year" VALUE="1999"/>
+<attribute NAME="title" VALUE="Multi-Anticipative Car-Following Model"/>
+<attribute NAME="authors" VALUE="Lenz, H and Wagner, CK and Sollacher, R"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7AA672B4B69B8E173D29F190F1BE1046FC7066C2988F777B479BF3936A51B6E">
+    <pdf_title>Multi-anticipative car-following model</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Reaction time: approx 1 second!" ID="ID_1854178023" CREATED="1589266667752" MODIFIED="1589266778014" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/450%20How%20Long%20Does%20It%20Take%20to%20Stop.pdf">
+<attribute NAME="key" VALUE="green2000long"/>
+<attribute NAME="journal" VALUE="Transportation Human Factors"/>
+<attribute NAME="year" VALUE="2000"/>
+<attribute NAME="title" VALUE="``How Long Does it Take to Stop?&apos;&apos; Methodological Analysis of Driver Perception-Brake Times"/>
+<attribute NAME="authors" VALUE="Green, Marc"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A99B24CBEC4C9A7358E065F45ABB29EA7FE9BFD1E3E1C49507B9A28B9458">
+    <pdf_title>University of West Virginia Medical School</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="HDM (=IDM (or any other method) with measurement noise)" ID="ID_1769024565" CREATED="1589293306075" MODIFIED="1589294984378" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/451%20Human%20Driver%20Metamodel.pdf">
+<attribute NAME="key" VALUE="treiber2006delays"/>
+<attribute NAME="journal" VALUE="Physica A: Statistical Mechanics and its Applications"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="Delays, Inaccuracies and Anticipation in Microscopic Traffic Models"/>
+<attribute NAME="authors" VALUE="Treiber, Martin and Kesting, Arne and Helbing, Dirk"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D421A384B37EE8FE848D9C3DCCBAB05344CEB7912FA6B35D51B1A879AF656AD">
+    <pdf_title>Delays, inaccuracies and anticipation in microscopic traffic models</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Multi-level framework that includes distraction" ID="ID_398708219" CREATED="1589296150845" MODIFIED="1589296326821" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/452%20A%20generic%20multi-level%20framework%20for%20microscopic%20traffic.pdf">
+<attribute NAME="key" VALUE="vanlint2018generic"/>
+<attribute NAME="journal" VALUE="Transportation Research Part B: Methodological"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A Generic Multi-Level Framework for Microscopic Traffic Simulation --- Theory and an Example Case in Modelling Driver Distraction"/>
+<attribute NAME="authors" VALUE="Van Lint, JWC and Calvert, Simeon C"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8E35557174181AAFE97B9987023A29BF040AA103753616F25AD225A713678">
+    <pdf_title>TransportationResearchPartB</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Lateral" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_945623169" CREATED="1589212064192" MODIFIED="1589212068532">
+<node TEXT="Integrated Lane Change Model" ID="ID_1571872619" CREATED="1589296342175" MODIFIED="1589296564825" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/453%20Integrated%20Lane%20Change%20Model.pdf">
+<attribute NAME="key" VALUE="schakel2012integrated"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Integrated Lane Change Model with Relaxation and Synchronization"/>
+<attribute NAME="authors" VALUE="Schakel, Wouter J and Knoop, Victor L and van Arem, Bart"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="19C83CDC971102CECABF08EC21776F6514FE963C5BC65DF6BA605FD1E2F5BD">
+    <pdf_title>Integrated Lane Change Model with Relaxation and Synchronization</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Review of Microscopic Lane-Changing Models" ID="ID_1071589634" CREATED="1589297047363" MODIFIED="1589297159430" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/454%20Review%20of%20Microscopic%20Lane-Changing%20Models.pdf">
+<attribute NAME="key" VALUE="rahman2013review"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Review of Microscopic Lane-Changing Models and Future Research Opportunities"/>
+<attribute NAME="authors" VALUE="Rahman, Mizanur and Chowdhury, Mashrur and Xie, Yuanchang and He, Yiming"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="735BB93F265E2BD7B4F342DD9AADC9775F1774A914E771B55FF29181C3E049">
+    <pdf_title>Review of Microscopic Lane-Changing Models and Future Research Opportunities</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+</node>
+<node TEXT="Estimating severity" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1312282531" CREATED="1589541323776" MODIFIED="1589541334347">
+<node TEXT="Exploration of Vehicle Impact Speed" ID="ID_1458338551" CREATED="1589541335087" MODIFIED="1589541338721" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/455%20Exploration%20of%20Vehicle%20Impact%20Speed.pdf">
+<attribute NAME="key" VALUE="jurewicz2016exploration"/>
+<attribute NAME="journal" VALUE="Transportation Research Procedia"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Exploration of Vehicle Impact Speed --- Injury Severity Relationships for Application in Safer Road Design"/>
+<attribute NAME="authors" VALUE="Jurewicz, Chris and Sobhani, Amir and Woolley, Jeremy and Dutschke, Jeff and Corben, Bruce"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="249A39785E7DD8AD504EF45AEEFB87AD632FB01571EF125BC6B8C246494D8D">
+    <pdf_title>ScienceDirect</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Severity injury risk" ID="ID_365470844" CREATED="1589543809954" MODIFIED="1589543818309" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/456%20Severity%20Injury%20Risk.pdf">
+<attribute NAME="key" VALUE="bahouth2014benefits"/>
+<attribute NAME="journal" VALUE="Traffic Injury Prevention"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="The Benefits and Tradeoffs for Varied High-Severity Injury Risk Thresholds for Advanced Automatic Crash Notification Systems"/>
+<attribute NAME="authors" VALUE="Bahouth, George and Graygo, Jill and Digges, Kennerly and Schulman, Carl and Baur, Peter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="85384ECA6FA890B2D64A6BC2F052938ED16F7AF2247854ADF2875CC438D74F">
+    <pdf_title>The Benefits and Tradeoffs for Varied High- Severity Injury Risk Thresholds for Advanced Automatic Crash Notification Systems</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
@@ -4370,6 +4499,18 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="CDF" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1756259614" CREATED="1590141893365" MODIFIED="1590141905347">
+<node TEXT="Introduction by Nadaraya into cdf of kde" ID="ID_1907979028" CREATED="1590141907558" MODIFIED="1590141920240" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/459%20Nadaraya%20KDE%20cdf.pdf">
+<attribute NAME="key" VALUE="nadaraya1964some"/>
+<attribute NAME="journal" VALUE="Theory of Probability \&amp; Its Applications"/>
+<attribute NAME="year" VALUE="1964"/>
+<attribute NAME="title" VALUE="Some New Estimates for Distribution Functions"/>
+<attribute NAME="authors" VALUE="Nadaraya, Elizbar A"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F2BF34EAE57724E3B9934B561C0BF2C8C6EE67974DC2D3840DAB993B3F067D1">
+    <pdf_title>Fn(x</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Scott rule for bandwidth: On optimal and data-based histograms" ID="ID_551784586" CREATED="1513908872666" MODIFIED="1534390526124" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/100%20Scott%20Bandwidth.pdf">
 <attribute NAME="key" VALUE="scott1979optimal"/>
 <attribute NAME="journal" VALUE="Biometrika"/>
@@ -4914,6 +5055,15 @@
 <attribute NAME="authors" VALUE="Bimbraw, Keshav"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F2DE1880F22A3B1F82673403F8A701B8CA36B21B281CC2DFD7B4CA72D2BD">
     <pdf_title>Autonomous Cars: Past, Present and Future</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="ITS Joint Programme Office Strategic Plan 2020-2025" ID="ID_1476574733" CREATED="1589893948129" MODIFIED="1589894080995" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/458%20Intelligent%20Transportation%20System%20strategic%20plan%202020%202025.pdf">
+<attribute NAME="key" VALUE="chanedmiston2020itsjpo"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Intelligent Transportation Systems (ITS) Joint Program Office: Strategic Plan 2020--2025"/>
+<attribute NAME="authors" VALUE="Chan-Edmiston, Sharon and Fischer, Stephanie and Sloan, Suzanne and Wong, Melissa"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F5FC353ADFEEDC91ADEC99AED933CDB8AFCD876F674E8D7DDC9A0B87242B6">
+    <pdf_title>Intelligent Transportation Systems Joint</pdf_title>
 </pdf_annotation>
 </node>
 </node>
