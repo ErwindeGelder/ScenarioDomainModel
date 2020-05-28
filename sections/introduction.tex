@@ -3,7 +3,7 @@
 
 \cstarta
 % Introduce scenario-based testing.
-The development of Automated Vehicles (AVs) has made significant progress in the last years and it is expected that AVs will soon be introduced on our roads \autocite{bimbraw2015autonomous, madni2018autonomous}. 
+The development of Automated Vehicles (AVs) has made significant progress in the last years and it is expected that AVs will soon be introduced on our roads \autocite{madni2018autonomous,bimbraw2015autonomous} and become an integral part of intelligent transportation systems \autocite{chanedmiston2020itsjpo}. 
 An essential aspect in the development of AVs is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \autocite{bengler2014threedecades, stellet2015taxonomy}. 
 Among other methods, a scenario-based approach has been proposed \autocite{elrofai2018scenario, putz2017pegasus}. 
 % Explain that these scenarios may be based on real-world scenarios.
@@ -33,7 +33,7 @@ Second, the scenarios are mined based on the aforementioned tags. \cenda
 \cstarta The proposed method brings several benefits. 
 First, by tagging the data, characteristics that are shared among different type of scenarios need to be identified only once, whereas these characteristics would be identified multiple times if each type of scenarios would be identified completely independently. \cenda
 \cstartf For example, a characteristic could be the presence of a lead vehicle, so if we independently identify two different types of scenarios that consider a lead vehicle, we would identify the lead vehicle two times. \cendf
-\cstarta Second, by splitting the process in two parts, i.e., the tagging and the scenario mining, the scenario mining can be applied to different types of data (e.g., data from a vehicle \autocite{paardekooper2019dataset6000km} or from a drone \autocite{krajewski2018highD}). 
+\cstarta Second, by splitting the process in two parts, i.e., the tagging and the scenario mining, the scenario mining can be applied to different types of data (e.g., data from a vehicle \autocite{paardekooper2019dataset6000km} or a measurement unit above the road \autocite{kovvali2007video,krajewski2018highD}). 
 It is also possible to have manually tagged data, e.g., see \autocite{fontana2018action}. 
 %Thirdly, because the scenario mining is performed offline, we do not only rely on past data, which, in turn, increases the accuracy of the scenario mining. 
 Third, our approach is easily scalable because additional types of scenarios can be mined by  describing them as a combination of (sequential) tags. \cenda
