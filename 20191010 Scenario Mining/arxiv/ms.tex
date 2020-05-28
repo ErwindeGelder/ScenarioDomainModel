@@ -45,12 +45,19 @@
 \usepackage{silence}  							%% For filtering warnings
 \usepackage{csquotes}
 % Add doi=false if no DOI
-\usepackage[style=ieee,doi=false,isbn=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+%\usepackage[style=ieee,doi=false,isbn=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 % Filter warnings issued by package biblatex starting with "Patching footnotes failed"
-\WarningFilter{biblatex}{Patching footnotes failed}
-\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
-\setlength{\biblabelsep}{\labelsep}
-\bibliography{references}
+%\WarningFilter{biblatex}{Patching footnotes failed}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+%\setlength{\biblabelsep}{\labelsep}
+%\bibliography{references}
+
+\usepackage{url}
+%\usepackage{natbib}
+\usepackage{letltxmacro}
+\LetLtxMacro{\autocite}{\cite}
+\LetLtxMacro{\textcite}{\cite}
+\newcommand{\etal}{\textit{et al.\ }}
 
 
 
@@ -276,8 +283,8 @@ One approach for specifying these test cases is to base them on captured scenari
 
 % Mention other literature that tries to extract scenarios.
 Different techniques for capturing scenarios and driving maneuvers have been proposed in literature. 
-\textcite{kasper2012oobayesnetworks} use object-oriented Bayesian networks for the recognition of 27 type of driving maneuvers. 
-\textcite{krajewski2018highD} detect lane changes using lane crossings and \textcite{schlechtriemen2015lanechange} detect lane changes using a naive Bayes classifier and a hidden Markov model. 
+Kasper \etal \textcite{kasper2012oobayesnetworks} use object-oriented Bayesian networks for the recognition of 27 type of driving maneuvers. 
+Krajewski \etal \textcite{krajewski2018highD} detect lane changes using lane crossings and Schlechtriemen \etal \textcite{schlechtriemen2015lanechange} detect lane changes using a naive Bayes classifier and a hidden Markov model. 
 %\textcite{paardekooper2019dataset6000km} present an approach for identification of scenarios and include results for scenarios labeled ``braking in front'' and ``cut in''. 
 In \autocite{xie2017driving}, random forest classifiers are used for detecting accelerating, braking, and turning with features extracted using principal component analysis, stacked sparse auto-encoders, and statistical features.
 In \autocite{cara2015carcyclist}, safety-critical car-cyclist scenarios are extracted from data collected by a vehicle using several machine-learning techniques, among which support vector machines and multiple instance learning.
@@ -11205,9 +11212,11 @@ Future work includes labeling the data with more tags and exploring the possibil
                                   % so it should come on the page before the last. Make
                                   % sure that you do not shorten the textheight too much.
 
-%\bibliographystyle{ieeetran}
-%\bibliography{../bib}
-\printbibliography
+\bibliographystyle{ieeetran}
+\bibliography{references}
+%\printbibliography
+%\bibliographystyle{abbrvnat}
+%\bibliography{references}
 
 
 
