@@ -200,7 +200,7 @@ class ActivityDetector(DataHandler):
         The activities accelerating, decelerating, and cruising of the host
         vehicle are detected. However, the events preceding the activities are
         returned. Each event is a tuple of the time and the name of the
-        following activity. The name can is of type LongitudinalActivity. The
+        following activity. The name is of type LongitudinalActivity. The
         returned time corresponds to an index of the dataframe.
 
         :param plot: Whether to plot the events along with the speed.
