@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from simulation import IDM, IDMParameters, LeaderBraking, LeaderBrakingParameters
+from simulation import IDMPlus, IDMParameters, LeaderBraking, LeaderBrakingParameters
 
 L = LeaderBraking()
-F = IDM()
+F = IDMPlus()
 
 
 def simulation(v0, amean, dv, plot=False):
@@ -12,10 +12,10 @@ def simulation(v0, amean, dv, plot=False):
     xl, xf = 1, 0
     deltat = 0.01
 
-    F.init_simulation(IDMParameters(free_speed=10*v0,
+    F.init_simulation(IDMParameters(free_speed=v0,
                                     init_speed=v0,
                                     dt=deltat,
-                                    n_reaction=0))
+                                    n_reaction=100))
     L.init_simulation(LeaderBrakingParameters(init_position=(F.parms.safety_distance +
                                                              v0 * F.parms.thw),
                                               init_speed=v0,
