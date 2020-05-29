@@ -32,6 +32,7 @@ class IDMState(Options):
     """ State of the IDM. """
     position: float = 0
     speed: float = 0
+    acceleration: float = 0
 
 
 class IDM:
@@ -50,7 +51,7 @@ class IDM:
         - delta: float = 4  # IDM parameter
         - v0: float = 30  # IDM parameter (free flow speed)
         - s0: float = 2  # IDM parameter (safety distance)
-        - T: float = 1  # IDM parameter (time headway)
+        - thw: float = 1  # IDM parameter (time headway)
         - amin: float = -np.inf  # Custom parameter (minimum acceleration)
         - tr: int = 0  # Custom parameter (samples of delay)
         - dt: float = 0.01  # Sample time (needed for delay)
@@ -80,42 +81,58 @@ class IDM:
         :param vlead: Speed of leading vehicle.
         :return: Position and speed.
         """
+        return self.update(xlead - self.state.position,
+                           self.state.speed,
+                           vlead - self.state.speed)
+
+    def update(self, gap: float, vhost: float, vdiff: float) -> Tuple[float, float]:
+        """ Compute a step using the inputs as stated in Treiber et al. (2006).
+
+        :param gap: Gap with preceding vehicle.
+        :param vhost: Speed of host vehicle.
+        :param vdiff: Difference in speed between leading and host vehicle.
+        :return: Position and speed.
+        """
         # Update speed
-        acceleration = np.max((self.parms.amin, self.accelerations[0]))
-        self.state.speed += acceleration * self.parms.dt
+        self.state.acceleration = np.max((self.parms.amin, self.accelerations[0]))
+        self.state.speed += self.state.acceleration * self.parms.dt
 
         # Update position
         self.state.position += self.state.speed * self.parms.dt
 
         # Calculate acceleration based on IDM
-        self.accelerations.append(self._acceleration(xlead, vlead))
+        self.accelerations.append(self._acceleration(gap, vhost, vdiff))
 
         return self.state.position, self.state.speed
 
-    def _acceleration(self, xlead: float, vlead: float) -> float:
+    def _acceleration(self, gap: float, vhost: float, vdiff: float) -> float:
         """ Compute the acceleration.
 
-        :param xlead: Position of leading vehicle.
-        :param vlead: Speed of leading vehicle.
+        :param gap: Gap with preceding vehicle.
+        :param vhost: Speed of host vehicle.
+        :param vdiff: Difference in speed between leading and host vehicle.
         :return: The acceleration.
         """
-        return self.parms.a_acc * (1 - self._freeflowpart() - self._nonfreeflowpart(xlead, vlead))
+        return self.parms.a_acc * (1 - self._freeflowpart(vhost) -
+                                   self._nonfreeflowpart(gap, vhost, vdiff))
 
-    def _freeflowpart(self) -> float:
+    def _freeflowpart(self, vhost: float) -> float:
         """ Compute the part of the IDM that does not consider the lead vehicle.
 
+        :param vhost: Speed of host vehicle.
         :return: The contribution of the free flow part.
         """
-        return (self.state.speed / self.parms.free_speed) ** self.parms.delta
+        return (vhost / self.parms.free_speed) ** self.parms.delta
 
-    def _nonfreeflowpart(self, xlead: float, vlead: float) -> float:
+    def _nonfreeflowpart(self, gap: float, vhost: float, vdiff: float) -> float:
         """ Compute the quantity of the IDM that considers the lead vehicle.
 
-        :param vlead: Speed of leading vehicle.
-        :return: s*.
+        :param gap: Gap with preceding vehicle.
+        :param vhost: Speed of host vehicle.
+        :param vdiff: Difference in speed between leading and host vehicle.
+        :return: The contribution of the non-free flow part.
         """
         sstar = (self.parms.safety_distance +
-                 self.parms.thw * self.state.speed +
-                 self.state.speed * (self.state.speed-vlead) /
-                 (2 * np.sqrt(self.parms.a_acc * self.parms.b_acc)))
-        return (sstar / (xlead - self.state.position)) ** 2
+                 self.parms.thw * vhost +
+                 vhost * vdiff / (2 * np.sqrt(self.parms.a_acc * self.parms.b_acc)))
+        return (sstar / gap) ** 2
