@@ -1,10 +1,10 @@
 \section{Introduction}
 \label{sec:introduction}
 
-\cstarta
+\cstartg
 % Introduce scenario-based testing.
-The development of Automated Vehicles (AVs) has made significant progress in the last years and it is expected that AVs will soon be introduced on our roads \autocite{madni2018autonomous,bimbraw2015autonomous} and become an integral part of intelligent transportation systems \autocite{chanedmiston2020itsjpo}. 
-An essential aspect in the development of AVs is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \autocite{bengler2014threedecades, stellet2015taxonomy}. 
+The development of Automated Vehicles (AVs) has made significant progress in the last years and it is expected that AVs will soon be introduced on our roads \autocite{madni2018autonomous,bimbraw2015autonomous} and become an integral part of intelligent transportation systems \autocite{eskandarian2012introduction,chanedmiston2020itsjpo}. \cendg
+\cstarta An essential aspect in the development of AVs is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \autocite{bengler2014threedecades, stellet2015taxonomy}. 
 Among other methods, a scenario-based approach has been proposed \autocite{elrofai2018scenario, putz2017pegasus}. 
 % Explain that these scenarios may be based on real-world scenarios.
 For scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in the test cases used for the assessment \autocite{stellet2015taxonomy}. 
@@ -38,6 +38,7 @@ It is also possible to have manually tagged data, e.g., see \autocite{fontana201
 %Thirdly, because the scenario mining is performed offline, we do not only rely on past data, which, in turn, increases the accuracy of the scenario mining. 
 Third, our approach is easily scalable because additional types of scenarios can be mined by  describing them as a combination of (sequential) tags. \cenda
 \cstartf Fourth, the approach reveals promising future possibilities, such as the generation of scenarios based on the mined scenarios. \cendf
+\cstartg The generated scenarios can be used to define the test cases for the assessment of intelligent vehicles \autocite{elrofai2018scenario, putz2017pegasus, roesener2016scenariobased, deGelder2017assessment, stellet2015taxonomy, zhao2018evaluation}. \cendg
 
 % Structure.
 \cstarta In \cref{sec:problem}, we formulate the problem of scenario mining. \Cref{sec:tagging,sec:mining} describe the two steps of our proposed method, i.e., the tagging of the data and the scenario mining based on these tags. 

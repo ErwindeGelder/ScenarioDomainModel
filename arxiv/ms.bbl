@@ -33,6 +33,10 @@ K.~Bimbraw, ``Autonomous cars: Past, present and future a review of the
   Conference on Informatics in Control, Automation and Robotics (ICINCO)},
   vol.~1, 7 2015, pp. 191--198.
 
+\bibitem{eskandarian2012introduction}
+A.~Eskandarian, \emph{Introduction to Intelligent Vehicles}.\hskip 1em plus
+  0.5em minus 0.4em\relax London: Springer London, 2012, ch.~1, pp. 1--13.
+
 \bibitem{chanedmiston2020itsjpo}
 S.~Chan-Edmiston, S.~Fischer, S.~Sloan, and M.~Wong, ``{I}ntelligent
   {T}ransportation {S}ystems ({ITS}) {J}oint {P}rogram {O}ffice: Strategic plan
@@ -122,6 +126,11 @@ V.~G. Kovvali, V.~Alexiadis, and L.~Zhang, ``Video-based vehicle trajectory
 V.~Fontana, G.~Singh, S.~Akrigg, M.~Di~Maio, S.~Saha, and F.~Cuzzolin, ``Action
   detection from a robot-car perspective,'' \emph{arXiv preprint
   arXiv:1807.11332}, 2018.
+
+\bibitem{zhao2018evaluation}
+D.~Zhao, X.~Huang, H.~Peng, H.~Lam, and D.~J. LeBlanc, ``Accelerated evaluation
+  of automated vehicles in car-following maneuvers,'' \emph{IEEE Transactions
+  on Intelligent Transportation Systems}, vol.~19, no.~3, pp. 733--744, 3 2018.
 
 \bibitem{degelder2018ontology}
 E.~de~Gelder, J.-P. Paardekooper, A.~Khabbaz~Saberi, H.~Elrofai, O.~Op~den
