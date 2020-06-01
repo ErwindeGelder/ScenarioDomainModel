@@ -392,6 +392,7 @@ if __name__ == '__main__':
     compile_pr(28, usebiber=True)
     compile_pr(29, usebiber=True)
     compile_pr(30, usebiber=True)
+    compile_pr(31)
 
     # Revisions/versions
     compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',
