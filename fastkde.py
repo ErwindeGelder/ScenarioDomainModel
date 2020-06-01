@@ -19,6 +19,7 @@ Modifications:
 2020 02 21 Add the possibility to have a variable bandwidth.
 2020 03 06 Return warning number when computing the bandwidth.
 2020 05 01 Add the option of normalizing the data.
+2020 05 31 Add the option of having weights. TODO: this is not finished yet...
 """
 
 import time
@@ -66,6 +67,7 @@ class KDEData(Options):
         difference(np.ndarray): Difference of KDE data and input data.
         std(np.ndarray): Standard deviation of data, only calculated if data
             must be scaled.
+        weights(np.ndarray): Weights of the data points.
     """
     mindists: np.ndarray = np.array([])
     data_score_samples: np.ndarray = np.array([])
@@ -73,6 +75,7 @@ class KDEData(Options):
     data_dist: np.ndarray = np.array([])
     difference: np.ndarray = np.array([])
     std: np.ndarray = np.array([])
+    weights: np.ndarray = np.array([])
     # self.xhist, self.yhist, self.fft = None, None, None  # Not used at the moment
 
 
@@ -96,16 +99,20 @@ class KDE:
         data(np.ndarray): The data that is used to construct the KDE.
         constants(KDEConstants): Constants that are used for the various methods.
         data_helpers(KDEData): Several np.ndarrays that are used for the various methods.
+        scaling(bool): Whether scaling is used.
+        weights(bool): Whether weights are used.
     """
-    def __init__(self, data: np.ndarray = None, bandwidth: float = None, scaling: bool = False):
+    def __init__(self, data: np.ndarray = None, bandwidth: float = None, scaling: bool = False,
+                 weights: np.ndarray = None):
         self.bandwidth = bandwidth
         self.data = None
         self.constants = KDEConstants()
         self.data_helpers = KDEData()
         self.scaling = scaling
-        self.fit(data)
+        self.weights = False
+        self.fit(data, weights=weights)
 
-    def fit(self, data: np.ndarray) -> None:
+    def fit(self, data: np.ndarray, weights: np.ndarray = None) -> None:
         """ Fit the data
 
         The data is stored. Furthermore, some calculations are done:
@@ -114,14 +121,24 @@ class KDE:
 
         :param data: The provided data. When multidimensional data is used, the data should be
             an n-by-d array, with n datapoints and d dimensions.
+        :param weights: If used, the weights for each data point.
         """
         if len(data.shape) == 1:
             self.data = data[:, np.newaxis]
         else:
             self.data = data
 
+        if weights is not None:
+            self.weights = True
+            self.data_helpers.weights = weights
+
         if self.scaling:
-            self.data_helpers.std = np.std(self.data, axis=0)
+            if not self.weights:
+                self.data_helpers.std = np.std(self.data, axis=0)
+            else:
+                average = np.average(self.data, axis=0, weights=self.data_helpers.weights)
+                self.data_helpers.std = np.sqrt(np.average((self.data - average)**2, axis=0,
+                                                           weights=self.data_helpers.weights))
             self.data /= self.data_helpers.std
 
         # Note: creating the distance matrix takes quite some time and is only needed if cross
