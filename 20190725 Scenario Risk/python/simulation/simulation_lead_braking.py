@@ -65,6 +65,9 @@ class SimulationLeadBraking(Simulator):
                              self.leader.state.acceleration,
                              self.follower.parms.model.state.acceleration])
 
+            if time > 100:
+                break
+
         if plot:
             _, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 5))
             data = np.array(data)

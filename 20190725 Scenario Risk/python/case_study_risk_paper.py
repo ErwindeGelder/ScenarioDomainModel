@@ -9,7 +9,10 @@ Modifications:
 import os
 import json
 import numpy as np
+import pandas as pd
+from tqdm import tqdm
 from domain_model import Scenario
+from simulation import SimulationLeadBraking
 from stats import KDE
 from databaseemulator import DataBaseEmulator
 
@@ -76,7 +79,64 @@ def kde_lead_braking() -> KDE:
     return kde
 
 
+def check_validity_lead_braking(par: np.ndarray) -> bool:
+    """ Check whether the parameters are valid.
+
+    :param par: A vector of the parameters.
+    :return: Whether the parameters are valid.
+    """
+    # Speed should be decreasing.
+    if par[2] <= 0:
+        return False
+
+    # End speed should not be negative.
+    if par[2] > par[0]:
+        return False
+
+    # Mean deceleration should be positive.
+    if par[1] <= 0:
+        return False
+
+    return True
+
+
+def simulation_lead_braking(nsim: int = 1000) -> pd.DataFrame:
+    """ Do the initial simulations for the lead braking scenario.
+
+    :param nsim: Number of simulations.
+    :return: The resulting probabilities of failures (P(B)).
+    """
+    filename_df = os.path.join("data", "7_simulation_results", "lead_braking.csv")
+
+    if os.path.exists(filename_df) and not OVERWRITE:
+        df = pd.read_csv(filename_df, index_col=0)
+    else:
+        # Obtain the KDE for sampling and generate the parameters.
+        kde = kde_lead_braking()
+        np.random.seed(0)
+        pars = np.zeros((nsim, 3))
+        i = 0
+        while i < nsim:
+            pars[i, :] = kde.sample()
+            if check_validity_lead_braking(pars[i, :]):
+                i += 1
+        df = pd.DataFrame(data=pars, columns=["v0", "amean", "dv"])
+
+        # Loop through each parameter vector and obtain the simulation result.
+        simulator = SimulationLeadBraking()
+        result = np.zeros(nsim)
+        for i, par in enumerate(tqdm(pars)):
+            result[i] = simulator.get_probability(tuple(par))
+        df["result"] = result
+
+        # Write to file.
+        # Write the KDE through a JSON file.
+        if not os.path.exists(os.path.dirname(filename_df)):
+            os.mkdir(os.path.dirname(filename_df))
+        df.to_csv(filename_df)
+
+    return df
+
+
 if __name__ == "__main__":
-    kde = kde_lead_braking()
-    print(kde.data_helpers.std)
-    print(kde.sample(10))
+    print(simulation_lead_braking())
