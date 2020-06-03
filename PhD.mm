@@ -2594,6 +2594,7 @@
     <pdf_title>Contents</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Markov Chain Monte Carlo in Practice" ID="ID_1644696633" CREATED="1591112865419" MODIFIED="1591112875193"/>
 </node>
 <node TEXT="Importance sampling" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1913334735" CREATED="1580828834503" MODIFIED="1587030556467" MOVED="1587030544283">
 <node TEXT="Using Kriging" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_155030782" CREATED="1587030561275" MODIFIED="1587030579878">
