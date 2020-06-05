@@ -58,6 +58,8 @@ class HDM:
         self.parms.decay = np.exp(-self.parms.dt / self.parms.tau)
         self.parms.model.init_simulation(parms_model)
         self.parms.delay = self.parms.dt * self.parms.model.parms.n_reaction
+        self.state.w_speed = 0
+        self.state.w_gap = 0
 
     def step_simulation(self, xlead: float, vlead: float) -> Tuple[float, float]:
         """ Compute the state (position, speed).
