@@ -24,13 +24,13 @@ class SimulationLeadBraking(Simulator):
         follower(HDM)
         follower_parameters(HDMParameters)
     """
-    def __init__(self):
+    def __init__(self, **kwargs):
         # Instantiate the vehicles.
         self.leader = LeaderBraking()
         self.follower = HDM()
         self.follower_parameters = HDMParameters(model=IDMPlus(), speed_std=0.05, tau=20, rttc=0.01,
                                                  dt=0.01)
-        Simulator.__init__(self)
+        Simulator.__init__(self, **kwargs)
 
     def simulation(self, parameters: Tuple[float, float, float], plot: bool = False,
                    seed: int = None) -> float:
@@ -105,7 +105,7 @@ class SimulationLeadBraking(Simulator):
                                                     dt=self.follower_parameters.dt,
                                                     n_reaction=100,
                                                     thw=1,
-                                                    safety_distance=0,
+                                                    safety_distance=2,
                                                     amin=-3))
         self.leader.init_simulation(
             LeaderBrakingParameters(init_position=(self.follower.parms.model.parms.safety_distance +
