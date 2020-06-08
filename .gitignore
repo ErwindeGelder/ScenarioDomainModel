@@ -32,6 +32,7 @@ _data/
 *.pkl
 */tikz/*
 utilities/log2.txt
+*.Rhistory
 
 # Other files to be ignored
 20171126 Parametrization/df.p

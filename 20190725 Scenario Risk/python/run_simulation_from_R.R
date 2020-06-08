@@ -20,3 +20,6 @@ my_func <- function(theta){
 # Vary initial speed between 5 m/s and 40 m/s
 # Vary average deceleration between 0.5 m/s^2 till 5.0 m/s^2
 # Vary speed difference between 5 m/s till the initial speed
+
+# Table
+# (initial speed, average deceleration, speed difference, result)
