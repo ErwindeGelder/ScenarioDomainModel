@@ -13,7 +13,6 @@ import json
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
-from domain_model import Scenario
 from simulation import Simulator
 from stats import KDE
 from databaseemulator import DataBaseEmulator
@@ -38,6 +37,7 @@ class CaseStudyOptions(Options):
 
     parameter_columns: List[str] = []
     init_par_mcmc: List[float] = []
+    default_parameters: dict = dict()
 
     mcmc_step: Union[float, np.ndarray] = 0.5
 
@@ -99,10 +99,10 @@ class CaseStudy:
         self.kde_is = self.mcmc_kde_computation()
         self.df_is = self.importance_simulation()
 
-        print(np.mean(self.df["result"]))
-        print(np.mean(self.df_is["result"]*self.df_is["density_orig"]/self.df_is["density_is"]) *
-              np.mean(self.df["tries"]) / np.mean(self.df_is["tries"]))
-        print(np.mean(self.df["tries"]) / np.mean(self.df_is["tries"]))
+        # print(np.mean(self.df["result"]))
+        # print(np.mean(self.df_is["result"]*self.df_is["density_orig"]/self.df_is["density_is"]) *
+        #       np.mean(self.df["tries"]) / np.mean(self.df_is["tries"]))
+        # print(np.mean(self.df["tries"]) / np.mean(self.df_is["tries"]))
 
     def get_kde(self) -> KDE:
         """ Return the KDE for the braking parameters.
@@ -157,8 +157,9 @@ class CaseStudy:
             # Loop through each parameter vector and obtain the simulation result.
             result = np.zeros(self.options.nsim)
             for i, par in enumerate(tqdm(pars)):
-                result[i] = self.options.simulator.get_probability(tuple(par),
-                                                                   seed=self.options.seed)
+                par_dict = dict(zip(self.options.parameter_columns, par))
+                par_dict.update(self.options.default_parameters)
+                result[i] = self.options.simulator.get_probability(par_dict, seed=self.options.seed)
             df["result"] = result
 
             # Write to file.
