@@ -32,7 +32,7 @@ class SimulationLeadBraking(Simulator):
                                                  dt=0.01)
         Simulator.__init__(self, **kwargs)
 
-    def simulation(self, parameters: Tuple[float, float, float], plot: bool = False,
+    def simulation(self, parameters: dict, plot: bool = False,
                    seed: int = None) -> float:
         """ Run a single simulation.
 
@@ -43,7 +43,7 @@ class SimulationLeadBraking(Simulator):
         """
         if seed is not None:
             np.random.seed(seed)
-        self.init_simulation(parameters)
+        self.init_simulation(**parameters)
         time = 0
         prev_dist = 0
         x_leader, x_follower = 100, 0
@@ -93,12 +93,14 @@ class SimulationLeadBraking(Simulator):
 
         return mindist
 
-    def init_simulation(self, parameters: Tuple[float, float, float]) -> None:
+    def init_simulation(self, **kwargs) -> None:
         """ Initialize the simulation.
 
-        :param parameters: (starting speed, average deceleration, speed difference)
+        :param kwargs: The parameters!
         """
-        init_speed, average_deceleration, speed_difference = parameters
+        init_speed = kwargs["v0"]
+        average_deceleration = kwargs["amean"]
+        speed_difference = kwargs["dv"]
         self.follower.init_simulation(self.follower_parameters,
                                       IDMParameters(free_speed=init_speed * 1.2,
                                                     init_speed=init_speed,

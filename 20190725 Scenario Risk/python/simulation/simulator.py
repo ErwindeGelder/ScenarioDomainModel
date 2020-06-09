@@ -19,7 +19,7 @@ class Simulator(ABC):
         self.min_simulations = min_simulations
         self.max_simulations = max_simulations
 
-    def simulation(self, parameters, plot=False, seed: int = None):
+    def simulation(self, parameters: dict, plot=False, seed: int = None):
         """ Run a single simulation.
 
         :param parameters: Parameters of the simulation.
