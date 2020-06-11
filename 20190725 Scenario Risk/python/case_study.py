@@ -139,33 +139,33 @@ class CaseStudy:
         filename_df = os.path.join("data", "7_simulation_results", self.options.filename_df)
 
         if os.path.exists(filename_df) and not self.options.overwrite:
-            df = pd.read_csv(filename_df, index_col=0)
-        else:
-            # Generate the parameters.
-            np.random.seed(0)
-            pars = np.zeros((self.options.nsim, len(self.options.parameter_columns)))
-            tries = np.zeros(self.options.nsim)
-            i = 0
-            while i < self.options.nsim:
-                pars[i, :] = self.kde.sample()
-                tries[i] += 1
-                if self.options.func_validity_parameters(pars[i, :]):
-                    i += 1
-            df = pd.DataFrame(data=pars, columns=self.options.parameter_columns)
-            df["tries"] = tries
+            return pd.read_csv(filename_df, index_col=0)
 
-            # Loop through each parameter vector and obtain the simulation result.
-            result = np.zeros(self.options.nsim)
-            for i, par in enumerate(tqdm(pars)):
-                par_dict = dict(zip(self.options.parameter_columns, par))
-                par_dict.update(self.options.default_parameters)
-                result[i] = self.options.simulator.get_probability(par_dict, seed=self.options.seed)
-            df["result"] = result
+        # Generate the parameters.
+        np.random.seed(0)
+        pars = np.zeros((self.options.nsim, len(self.options.parameter_columns)))
+        tries = np.zeros(self.options.nsim)
+        i = 0
+        while i < self.options.nsim:
+            pars[i, :] = self.kde.sample()
+            tries[i] += 1
+            if self.options.func_validity_parameters(pars[i, :]):
+                i += 1
+        df = pd.DataFrame(data=pars, columns=self.options.parameter_columns)
+        df["tries"] = tries
 
-            # Write to file.
-            if not os.path.exists(os.path.dirname(filename_df)):
-                os.mkdir(os.path.dirname(filename_df))
-            df.to_csv(filename_df)
+        # Loop through each parameter vector and obtain the simulation result.
+        result = np.zeros(self.options.nsim)
+        for i, par in enumerate(tqdm(pars)):
+            par_dict = dict(zip(self.options.parameter_columns, par))
+            par_dict.update(self.options.default_parameters)
+            result[i] = self.options.simulator.get_probability(par_dict, seed=self.options.seed)
+        df["result"] = result
+
+        # Write to file.
+        if not os.path.exists(os.path.dirname(filename_df)):
+            os.mkdir(os.path.dirname(filename_df))
+        df.to_csv(filename_df)
 
         return df
 
@@ -189,39 +189,39 @@ class CaseStudy:
         """
         filename_kde = os.path.join("data", "6_kde", self.options.filename_kde_mcmc)
         if os.path.exists(filename_kde) and not self.options.overwrite:
-            kde = kde_from_json(filename_kde)
-        else:
-            np.random.seed(0)
-            # Check if initial point is a valid scenario.
-            par = np.array(self.options.init_par_mcmc)
-            if not self.options.func_validity_parameters(par):
-                raise ValueError("Initial parameters for MCMC are not valid.")
+            return kde_from_json(filename_kde)
 
-            # Create the list of the parameters for the importance density.
-            init_pars = self.df[self.options.parameter_columns].values / self.kde.data_helpers.std
-            pars = np.zeros((self.options.nmcmc, len(self.options.parameter_columns)))
-            is_current = self.prob_is(init_pars, par/self.kde.data_helpers.std)
-            for i in tqdm(range(-self.options.nburnin,
-                                (self.options.nmcmc-1)*self.options.nthinning+1)):
-                while True:
-                    candidate = par + (np.random.randn(len(self.options.parameter_columns)) *
-                                       self.options.mcmc_step * self.kde.data_helpers.std)
-                    if self.options.func_validity_parameters(candidate):
-                        break
-                is_candidate = self.prob_is(init_pars, candidate/self.kde.data_helpers.std)
-                if is_candidate > 0.0 and np.random.rand()*is_current < is_candidate:
-                    par = candidate.copy()
-                    is_current = is_candidate
-                if i >= 0 and i % self.options.nthinning == 0:
-                    pars[i // self.options.nthinning, :] = par
+        np.random.seed(0)
+        # Check if initial point is a valid scenario.
+        par = np.array(self.options.init_par_mcmc)
+        if not self.options.func_validity_parameters(par):
+            raise ValueError("Initial parameters for MCMC are not valid.")
 
-            # Create the KDE.
-            kde = KDE(pars, scaling=True)
-            kde.compute_bandwidth()
-            print("KDE bandwidth: {:.3f}".format(kde.bandwidth))
+        # Create the list of the parameters for the importance density.
+        init_pars = self.df[self.options.parameter_columns].values
+        pars = np.zeros((self.options.nmcmc, len(self.options.parameter_columns)))
+        is_current = self.prob_is(init_pars, par/self.kde.data_helpers.std)
+        for i in tqdm(range(-self.options.nburnin,
+                            (self.options.nmcmc-1)*self.options.nthinning+1)):
+            while True:
+                candidate = par + (np.random.randn(len(self.options.parameter_columns)) *
+                                   self.options.mcmc_step * self.kde.data_helpers.std)
+                if self.options.func_validity_parameters(candidate):
+                    break
+            is_candidate = self.prob_is(init_pars, candidate)
+            if is_candidate > 0.0 and np.random.rand()*is_current < is_candidate:
+                par = candidate.copy()
+                is_current = is_candidate
+            if i >= 0 and i % self.options.nthinning == 0:
+                pars[i // self.options.nthinning, :] = par
 
-            # Write the KDE through a JSON file.
-            kde_to_json(filename_kde, kde)
+        # Create the KDE.
+        kde = KDE(pars, scaling=True)
+        kde.compute_bandwidth()
+        print("KDE bandwidth: {:.3f}".format(kde.bandwidth))
+
+        # Write the KDE through a JSON file.
+        kde_to_json(filename_kde, kde)
 
         return kde
 
@@ -240,33 +240,34 @@ class CaseStudy:
         filename_df = os.path.join("data", "7_simulation_results", self.options.filename_dfis)
 
         if os.path.exists(filename_df) and not self.options.overwrite:
-            df = pd.read_csv(filename_df, index_col=0)
-        else:
-            # Generate the parameters.
-            np.random.seed(0)
-            pars = np.zeros((self.options.nsimis, len(self.options.parameter_columns)))
-            tries = np.zeros(self.options.nsimis)
-            i = 0
-            while i < self.options.nsimis:
-                pars[i, :] = self.kde_is.sample()
-                tries[i] += 1
-                if self.options.func_validity_parameters(pars[i, :]):
-                    i += 1
-            df = pd.DataFrame(data=pars, columns=self.options.parameter_columns)
-            df["tries"] = tries
+            return pd.read_csv(filename_df, index_col=0)
 
-            # Obtain the original density and the importance density.
-            df["density_orig"] = self.kde.score_samples(pars)
-            df["density_is"] = self.kde_is.score_samples(pars)
+        # Generate the parameters.
+        np.random.seed(0)
+        pars = np.zeros((self.options.nsimis, len(self.options.parameter_columns)))
+        tries = np.zeros(self.options.nsimis)
+        i = 0
+        while i < self.options.nsimis:
+            pars[i, :] = self.kde_is.sample()
+            tries[i] += 1
+            if self.options.func_validity_parameters(pars[i, :]):
+                i += 1
+        df = pd.DataFrame(data=pars, columns=self.options.parameter_columns)
+        df["tries"] = tries
 
-            # Loop through each parameter vector and obtain the simulation result.
-            result = np.zeros(self.options.nsimis)
-            for i, par in enumerate(tqdm(pars)):
-                result[i] = self.options.simulator.get_probability(tuple(par),
-                                                                   seed=self.options.seed)
-            df["result"] = result
+        # Obtain the original density and the importance density.
+        df["density_orig"] = self.kde.score_samples(pars)
+        df["density_is"] = self.kde_is.score_samples(pars)
 
-            # Write to file.
-            df.to_csv(filename_df)
+        # Loop through each parameter vector and obtain the simulation result.
+        result = np.zeros(self.options.nsimis)
+        for i, par in enumerate(tqdm(pars)):
+            par_dict = dict(zip(self.options.parameter_columns, par))
+            par_dict.update(self.options.default_parameters)
+            result[i] = self.options.simulator.get_probability(par_dict, seed=self.options.seed)
+        df["result"] = result
+
+        # Write to file.
+        df.to_csv(filename_df)
 
         return df
