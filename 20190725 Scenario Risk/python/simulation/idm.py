@@ -4,6 +4,7 @@ Creation date: 2020 05 27
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 06 12 Avoid division by zero when calculating the non-free-flow part.
 """
 
 import collections
@@ -132,6 +133,8 @@ class IDM:
         :param vdiff: Difference in speed between leading and host vehicle.
         :return: The contribution of the non-free flow part.
         """
+        if gap == 0:
+            return self.parms.amin
         sstar = (self.parms.safety_distance +
                  self.parms.thw * vhost +
                  vhost * vdiff / (2 * np.sqrt(self.parms.a_acc * self.parms.b_acc)))
