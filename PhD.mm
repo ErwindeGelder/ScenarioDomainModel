@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1590912451598"><hook NAME="MapStyle" zoom="0.912">
@@ -2376,6 +2376,18 @@
 <attribute NAME="authors" VALUE="Rahman, Mizanur and Chowdhury, Mashrur and Xie, Yuanchang and He, Yiming"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="735BB93F265E2BD7B4F342DD9AADC9775F1774A914E771B55FF29181C3E049">
     <pdf_title>Review of Microscopic Lane-Changing Models and Future Research Opportunities</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Interaction with ADS" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1264664409" CREATED="1592300812185" MODIFIED="1592300824138">
+<node TEXT="Effects of ACC and HAD on Workload and Situation Awareness" ID="ID_992706801" CREATED="1592301484612" MODIFIED="1592301610012" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/466%20Effects%20of%20ACC%20and%20HAD%20on%20situational%20awareness.pdf">
+<attribute NAME="key" VALUE="DeWinter_2014"/>
+<attribute NAME="journal" VALUE="Transportation Research Part F: Traffic Psychology and Behaviour"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Effects of Adaptive Cruise Control and Highly Automated Driving on Workload and Situation Awareness: A Review of the Empirical Evidence"/>
+<attribute NAME="authors" VALUE="De Winter, J. C. F. and Happee, R. and Martens, M. H. and Stanton, N. A."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="477E76714B98D66C76E1353C5636E9ACF63B3C5BF41D6B58A0898371DBB090">
+    <pdf_title>Transportation Research Part F</pdf_title>
 </pdf_annotation>
 </node>
 </node>
