@@ -17,7 +17,7 @@ import numpy as np
 from tqdm import tqdm
 from simulation import SimulationLeadBraking
 from stats import KDE
-from case_study import CaseStudy, CaseStudyOptions, kde_from_json, kde_to_json
+from case_study import CaseStudy, CaseStudyOptions, kde_from_json, kde_to_json, index_closest
 from case_study_lead_braking import parameters_ego_braking, check_validity_lead_braking
 
 
@@ -132,13 +132,31 @@ if __name__ == "__main__" or True:
                            cmap="seismic")
     FIG.colorbar(SCATTER)
 
+    # Visualize the expected result times the original density. This should be approximately the
+    # same as the importance density.
+    AMEANS, DVS = np.meshgrid(np.linspace(AMEAN_LIM[0], AMEAN_LIM[1], 100),
+                              np.linspace(DV_LIM[0], DV_LIM[1], 50))
+    RESULT = np.array(np.zeros_like(AMEANS))
+    PARS_ORIG = CASE_STUDY.df[CASE_STUDY.options.parameters].values
+    for j in range(100):
+        for i in range(50):
+            RESULT[i, j] = CASE_STUDY.df.at[index_closest(PARS_ORIG,
+                                                          np.array([AMEANS[i, j], DVS[i, j]])),
+                                            "result"]
+    RESULT *= CASE_STUDY.kde.score_samples(np.concatenate((AMEANS[:, :, np.newaxis],
+                                                           DVS[:, :, np.newaxis]), axis=2))
+    FIG, AXES = plt.subplots(1, 1)
+    CONTOUR = AXES.contourf(AMEANS, DVS, RESULT)
+    FIG.colorbar(CONTOUR)
+    AXES.set_xlabel("Mean deceleration [m/s$^2$]")
+    AXES.set_ylabel("Speed difference [m/s]")
+    AXES.set_title("Result $\\times$ pdf")
+
     # Visualize the 2D importance density.
     SCALING_KDE = (CASE_STUDY.kde_is.cdf(np.array([[400., INIT_SPEED]]))[0] -
                    CASE_STUDY.kde_is.cdf(np.array([[400., 0.]]))[0] -
                    CASE_STUDY.kde_is.cdf(np.array([[0., INIT_SPEED]]))[0] +
                    CASE_STUDY.kde_is.cdf(np.array([[0., 0.]]))[0])
-    AMEANS, DVS = np.meshgrid(np.linspace(AMEAN_LIM[0], AMEAN_LIM[1], 100),
-                              np.linspace(DV_LIM[0], DV_LIM[1], 50))
     PDF = CASE_STUDY.kde_is.score_samples(np.concatenate((AMEANS[:, :, np.newaxis],
                                                           DVS[:, :, np.newaxis]), axis=2))
     FIG, AXES = plt.subplots(1, 1)
@@ -147,5 +165,20 @@ if __name__ == "__main__" or True:
     AXES.set_xlabel("Mean deceleration [m/s$^2$]")
     AXES.set_ylabel("Speed difference [m/s]")
     AXES.set_title("Importance density")
+
+    # Calculate the probability of a collision.
+    SCALING_PDF = (CASE_STUDY.kde.cdf(np.array([[400., INIT_SPEED]]))[0] -
+                   CASE_STUDY.kde.cdf(np.array([[400., 0.]]))[0] -
+                   CASE_STUDY.kde.cdf(np.array([[0., INIT_SPEED]]))[0] +
+                   CASE_STUDY.kde.cdf(np.array([[0., 0.]]))[0])
+    MU_F = np.sum(CASE_STUDY.df_mc["result"]) / len(CASE_STUDY.df_mc)
+    SIGMA_F = np.sum((CASE_STUDY.df_mc["result"] - MU_F)**2) / len(CASE_STUDY.df_mc)
+    MU_G = np.sum(CASE_STUDY.df_is["result"] * CASE_STUDY.df_is["density_orig"] /
+                  CASE_STUDY.df_is["density_is"]) / len(CASE_STUDY.df_is)
+    MU_G *= SCALING_KDE / SCALING_PDF
+    SIGMA_G = np.sum((CASE_STUDY.df_is["result"] * CASE_STUDY.df_is["density_orig"] /
+                      CASE_STUDY.df_is["density_is"] - MU_G)**2) / len(CASE_STUDY.df_is)
+    print("Monte Carlo:         {:.4f} +/- {:.4f}".format(MU_F, SIGMA_F))
+    print("Importance Sampling: {:.4f} +/- {:.4f}".format(MU_G, SIGMA_G))
 
     plt.show()
