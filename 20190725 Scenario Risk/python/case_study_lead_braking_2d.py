@@ -10,6 +10,7 @@ Author(s): Erwin de Gelder
 Modifications:
 """
 
+import argparse
 import os
 import matplotlib.pyplot as plt
 import numpy as np
@@ -20,6 +21,9 @@ from case_study import CaseStudy, CaseStudyOptions, kde_from_json, kde_to_json
 from case_study_lead_braking import parameters_ego_braking, check_validity_lead_braking
 
 
+PARSER = argparse.ArgumentParser()
+PARSER.add_argument("--overwrite", help="Whether to overwrite old results", action="store_true")
+ARGS = PARSER.parse_args()
 INIT_SPEED = 20  # [m/s]
 
 
@@ -50,6 +54,7 @@ def get_2d_kde(kde: KDE, overwrite: bool = False) -> KDE:
     xcdf2 = np.linspace((np.min(kde.data[:, 2])-3*kde.bandwidth)*kde.data_helpers.std[2],
                         (np.max(kde.data[:, 2])+3*kde.bandwidth)*kde.data_helpers.std[2],
                         ncdf)
+    print("Obtaining the 2D KDE")
     for i in tqdm(range(nkde)):
         data[i, 0] = np.interp(np.random.rand()*ycdf[-1], ycdf, xcdf)
         ycdf2 = ((kde.cdf(np.vstack((xone*(INIT_SPEED+1e-4), xone*(data[i, 0]+1e-4), xcdf2)).T) -
@@ -80,21 +85,24 @@ def check_validity_2d(par: np.ndarray) -> bool:
 
 
 if __name__ == "__main__" or True:
-    CASE_STUDY = CaseStudy(CaseStudyOptions(overwrite=False,
+    CASE_STUDY = CaseStudy(CaseStudyOptions(overwrite=ARGS.overwrite,
                                             filename_data="ego_braking.json",
                                             filename_kde_pars="ego_braking.json",
                                             filename_kde_mcmc="ego_braking_mcmc_2d.json",
                                             filename_df="lead_braking_2d.csv",
+                                            filename_mc="lead_braking_mc_2d.csv",
                                             filename_dfis="lead_braking_is_2d.csv",
                                             func_parameters=parameters_ego_braking,
                                             func_validity_parameters=check_validity_2d,
                                             func_kde_update=get_2d_kde,
                                             simulator=SimulationLeadBraking(),
-                                            parameter_columns=["amean", "dv"],
+                                            parameters=["amean", "dv"],
+                                            grid_parameters=[np.linspace(0.5, 5, 33),
+                                                             np.linspace(5, INIT_SPEED, 17)],
                                             default_parameters=dict(v0=INIT_SPEED),
                                             init_par_mcmc=[3., 10.],
                                             mcmc_step=np.array([0.5, 2.]),
-                                            nsim=1000,
+                                            nmc=1000,
                                             nthinning=100,
                                             nburnin=100,
                                             nmcmc=1000,

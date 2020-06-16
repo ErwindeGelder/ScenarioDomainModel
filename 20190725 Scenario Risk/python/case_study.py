@@ -5,8 +5,10 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 06 08 Perform the case studies in a separate file.
+2020 06 16 Do the initial simulations on a grid instead of via Monte Carlo.
 """
 
+import itertools
 import os
 from typing import Callable, List, Union
 import json
@@ -27,6 +29,7 @@ class CaseStudyOptions(Options):
     filename_kde_pars: str = ""
     filename_kde_mcmc: str = ""
     filename_df: str = ""
+    filename_mc: str = ""
     filename_dfis: str = ""
 
     func_parameters: Callable = None
@@ -35,14 +38,15 @@ class CaseStudyOptions(Options):
 
     simulator: Simulator = None
 
-    parameter_columns: List[str] = []
+    parameters: List[str] = []
+    grid_parameters: List[np.ndarray] = []
     init_par_mcmc: List[float] = []
     default_parameters: dict = dict()
 
     mcmc_step: Union[float, np.ndarray] = 0.5
 
     seed: int = 0
-    nsim: int = 1000
+    nmc: int = 1000
     nmcmc: int = 1000
     nburnin: int = 100
     nthinning: int = 100
@@ -96,6 +100,7 @@ class CaseStudy:
         if self.options.func_kde_update is not None:
             self.kde = self.options.func_kde_update(self.kde, overwrite=self.options.overwrite)
         self.df = self.initial_simulation()
+        self.df_mc = self.initial_mc_simulation()
         self.kde_is = self.mcmc_kde_computation()
         self.df_is = self.importance_simulation()
 
@@ -132,39 +137,74 @@ class CaseStudy:
         return kde
 
     def initial_simulation(self) -> pd.DataFrame:
-        """ Do the initial simulations.
+        """ Do the initial simulation based on the probided grid.
 
-        :return: The resulting probabilities of failures (P(B)).
+        :return: The results of the simulations.
         """
         filename_df = os.path.join("data", "7_simulation_results", self.options.filename_df)
 
         if os.path.exists(filename_df) and not self.options.overwrite:
             return pd.read_csv(filename_df, index_col=0)
 
-        # Generate the parameters.
-        np.random.seed(0)
-        pars = np.zeros((self.options.nsim, len(self.options.parameter_columns)))
-        tries = np.zeros(self.options.nsim)
-        i = 0
-        while i < self.options.nsim:
-            pars[i, :] = self.kde.sample()
-            tries[i] += 1
-            if self.options.func_validity_parameters(pars[i, :]):
-                i += 1
-        df = pd.DataFrame(data=pars, columns=self.options.parameter_columns)
-        df["tries"] = tries
-
-        # Loop through each parameter vector and obtain the simulation result.
-        result = np.zeros(self.options.nsim)
-        for i, par in enumerate(tqdm(pars)):
-            par_dict = dict(zip(self.options.parameter_columns, par))
+        # Go through the grid while storing the parameters and the result.
+        pars = np.zeros((np.prod([len(grid) for grid in self.options.grid_parameters]),
+                         len(self.options.parameters)))
+        valid = np.zeros(pars.shape[0], dtype=np.bool)
+        result = np.zeros(pars.shape[0])
+        print("Simulations with parameters on a grid")
+        for i, parameters in enumerate(tqdm(itertools.product(*self.options.grid_parameters),
+                                            total=pars.shape[0])):
+            par_dict = dict(zip(self.options.parameters, parameters))
             par_dict.update(self.options.default_parameters)
-            result[i] = self.options.simulator.get_probability(par_dict, seed=self.options.seed)
+            pars[i] = parameters
+            valid[i] = self.options.func_validity_parameters(parameters)
+            if valid[i]:
+                result[i] = self.options.simulator.get_probability(par_dict, seed=self.options.seed)
+
+        df = pd.DataFrame(data=pars, columns=self.options.parameters)
+        df["valid"] = valid
         df["result"] = result
 
         # Write to file.
         if not os.path.exists(os.path.dirname(filename_df)):
             os.mkdir(os.path.dirname(filename_df))
+        df.to_csv(filename_df)
+
+        return df
+
+    def initial_mc_simulation(self) -> pd.DataFrame:
+        """ Do the initial Monte Carlo simulations.
+
+        :return: The resulting probabilities of failures (P(B)).
+        """
+        filename_df = os.path.join("data", "7_simulation_results", self.options.filename_mc)
+
+        if os.path.exists(filename_df) and not self.options.overwrite:
+            return pd.read_csv(filename_df, index_col=0)
+
+        # Generate the parameters.
+        np.random.seed(0)
+        pars = np.zeros((self.options.nmc, len(self.options.parameters)))
+        tries = np.zeros(self.options.nmc)
+        i = 0
+        while i < self.options.nmc:
+            pars[i, :] = self.kde.sample()
+            tries[i] += 1
+            if self.options.func_validity_parameters(pars[i, :]):
+                i += 1
+        df = pd.DataFrame(data=pars, columns=self.options.parameters)
+        df["tries"] = tries
+
+        # Loop through each parameter vector and obtain the simulation result.
+        result = np.zeros(self.options.nmc)
+        print("Initial Monte Carlo simulations")
+        for i, par in enumerate(tqdm(pars)):
+            par_dict = dict(zip(self.options.parameters, par))
+            par_dict.update(self.options.default_parameters)
+            result[i] = self.options.simulator.get_probability(par_dict, seed=self.options.seed)
+        df["result"] = result
+
+        # Write to file.
         df.to_csv(filename_df)
 
         return df
@@ -198,14 +238,15 @@ class CaseStudy:
             raise ValueError("Initial parameters for MCMC are not valid.")
 
         # Create the list of the parameters for the importance density.
-        init_pars = self.df[self.options.parameter_columns].values
-        pars = np.zeros((self.options.nmcmc, len(self.options.parameter_columns)))
+        init_pars = self.df[self.options.parameters].values
+        pars = np.zeros((self.options.nmcmc, len(self.options.parameters)))
         is_current = self.prob_is(init_pars, par/self.kde.data_helpers.std)
+        print("Monte Carlo Markov Chain")
         for i in tqdm(range(-self.options.nburnin,
                             (self.options.nmcmc-1)*self.options.nthinning+1)):
             while True:
-                candidate = par + (np.random.randn(len(self.options.parameter_columns)) *
-                                   self.options.mcmc_step * self.kde.data_helpers.std)
+                candidate = par + (np.random.randn(len(self.options.parameters))*
+                                   self.options.mcmc_step*self.kde.data_helpers.std)
                 if self.options.func_validity_parameters(candidate):
                     break
             is_candidate = self.prob_is(init_pars, candidate)
@@ -244,7 +285,7 @@ class CaseStudy:
 
         # Generate the parameters.
         np.random.seed(0)
-        pars = np.zeros((self.options.nsimis, len(self.options.parameter_columns)))
+        pars = np.zeros((self.options.nsimis, len(self.options.parameters)))
         tries = np.zeros(self.options.nsimis)
         i = 0
         while i < self.options.nsimis:
@@ -252,7 +293,7 @@ class CaseStudy:
             tries[i] += 1
             if self.options.func_validity_parameters(pars[i, :]):
                 i += 1
-        df = pd.DataFrame(data=pars, columns=self.options.parameter_columns)
+        df = pd.DataFrame(data=pars, columns=self.options.parameters)
         df["tries"] = tries
 
         # Obtain the original density and the importance density.
@@ -261,8 +302,9 @@ class CaseStudy:
 
         # Loop through each parameter vector and obtain the simulation result.
         result = np.zeros(self.options.nsimis)
+        print("Simulations with importance density")
         for i, par in enumerate(tqdm(pars)):
-            par_dict = dict(zip(self.options.parameter_columns, par))
+            par_dict = dict(zip(self.options.parameters, par))
             par_dict.update(self.options.default_parameters)
             result[i] = self.options.simulator.get_probability(par_dict, seed=self.options.seed)
         df["result"] = result
