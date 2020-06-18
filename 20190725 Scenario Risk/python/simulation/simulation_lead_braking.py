@@ -89,7 +89,6 @@ class SimulationLeadBraking(Simulator):
             ax4.set_ylabel("Acceleration [m/s$^2$]")
             ax4.legend()
             plt.tight_layout()
-            plt.show()
 
         return mindist
 
