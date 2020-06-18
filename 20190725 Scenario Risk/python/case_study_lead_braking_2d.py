@@ -171,14 +171,30 @@ if __name__ == "__main__" or True:
                    CASE_STUDY.kde.cdf(np.array([[400., 0.]]))[0] -
                    CASE_STUDY.kde.cdf(np.array([[0., INIT_SPEED]]))[0] +
                    CASE_STUDY.kde.cdf(np.array([[0., 0.]]))[0])
-    MU_F = np.sum(CASE_STUDY.df_mc["result"]) / len(CASE_STUDY.df_mc)
-    SIGMA_F = np.sum((CASE_STUDY.df_mc["result"] - MU_F)**2) / len(CASE_STUDY.df_mc)
-    MU_G = np.sum(CASE_STUDY.df_is["result"] * CASE_STUDY.df_is["density_orig"] /
-                  CASE_STUDY.df_is["density_is"]) / len(CASE_STUDY.df_is)
+    MU_F = np.mean(CASE_STUDY.df_mc["result"])
+    SIGMA_F = np.sqrt(np.sum((CASE_STUDY.df_mc["result"] - MU_F)**2)) / len(CASE_STUDY.df_mc)
+    n = 100
+    VALUES = (CASE_STUDY.df_is["result"].loc[:n] * CASE_STUDY.df_is["density_orig"].loc[:n] /
+              CASE_STUDY.df_is["density_is"].loc[:n])
+    MU_G = np.mean(VALUES)
     MU_G *= SCALING_KDE / SCALING_PDF
-    SIGMA_G = np.sum((CASE_STUDY.df_is["result"] * CASE_STUDY.df_is["density_orig"] /
-                      CASE_STUDY.df_is["density_is"] - MU_G)**2) / len(CASE_STUDY.df_is)
+    SIGMA_G = np.sqrt(np.sum((VALUES - MU_G)**2)) / len(VALUES)
     print("Monte Carlo:         {:.4f} +/- {:.4f}".format(MU_F, SIGMA_F))
     print("Importance Sampling: {:.4f} +/- {:.4f}".format(MU_G, SIGMA_G))
+
+    # Show a single simulation result.
+    SIMULATOR = SimulationLeadBraking()
+    SIMULATOR.simulation(dict(v0=20, amean=1.5, dv=15), plot=True, seed=0)
+
+    # Show how the probability is calculated.
+    _, (AX1, AX2, AX3) = plt.subplots(1, 3, figsize=(12, 5))
+    SIMULATOR.get_probability(dict(v0=20, amean=1.5, dv=15), plot=AX1, seed=0)
+    SIMULATOR.get_probability(dict(v0=20, amean=2, dv=15), plot=AX2, seed=0)
+    SIMULATOR.get_probability(dict(v0=20, amean=2.5, dv=15), plot=AX3, seed=0)
+
+    for i in range(6):
+        fig = plt.gcf()
+        fig.savefig("figure_{:d}.png".format(i+1))
+        plt.close(fig)
 
     plt.show()
