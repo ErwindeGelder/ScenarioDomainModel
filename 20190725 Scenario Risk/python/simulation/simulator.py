@@ -4,9 +4,12 @@ Creation date: 2020 05 29
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 06 18 Make it possible to pass an Axes for plotting with get_probability.
 """
 
 from abc import ABC
+from typing import Union
+from matplotlib.axes import Axes
 import matplotlib.pyplot as plt
 import numpy as np
 from .fastkde import KDE
@@ -28,11 +31,12 @@ class Simulator(ABC):
         :return: Result of the simulation.
         """
 
-    def get_probability(self, parameters, plot=False, seed: int = None) -> float:
+    def get_probability(self, parameters: dict, plot: Union[bool, Axes] = False,
+                        seed: int = None) -> float:
         """ Run multiple simulations in order to get the probability of failure.
 
         :param parameters: Parameters of the simulation.
-        :param plot: Whether to make a plot.
+        :param plot: Whether to make a plot. If so, axes can be provided as well.
         :param seed: Specify in order to simulate with a fixed seed.
         :return: Result of the simulation.
         """
@@ -55,16 +59,19 @@ class Simulator(ABC):
             n_simulations += 1
 
         if plot:
+            if isinstance(plot, Axes):
+                axes = plot
+            else:
+                _, axes = plt.subplots(1, 1)
             minx = min(np.min(kde.data), 0) - 2*kde.bandwidth
             maxx = max(np.max(kde.data), 0) + 2*kde.bandwidth
             x_cdf = np.linspace(minx, maxx)
             y_cdf = kde.cdf(x_cdf)
-            plt.plot(x_cdf, y_cdf)
-            plt.xlim(minx, maxx)
-            plt.plot(kde.data, np.zeros_like(kde.data), '|')
-            plt.title("N={:d}, F(0)={:.3f} +/- {:.3f}".format(n_simulations, cdf_zero,
-                                                              np.sqrt(cdf_zero*(1-cdf_zero) /
-                                                                      n_simulations)))
-            plt.show()
+            axes.plot(x_cdf, y_cdf)
+            axes.set_xlim(minx, maxx)
+            axes.plot(kde.data, np.zeros_like(kde.data), '|')
+            axes.set_title("N={:d}, F(0)={:.3f} +/- {:.3f}".format(n_simulations, cdf_zero,
+                                                                   np.sqrt(cdf_zero*(1-cdf_zero) /
+                                                                           n_simulations)))
 
         return cdf_zero
