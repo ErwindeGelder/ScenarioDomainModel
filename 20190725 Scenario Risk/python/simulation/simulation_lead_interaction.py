@@ -1,6 +1,6 @@
-""" Simulation of the scenario "lead vehicle braking".
+""" Simulation the situation in which the host vehicle interacts with its lead vehicle.
 
-Creation date: 2020 05 29
+Creation date: 2020 06 18
 Author(s): Erwin de Gelder
 
 Modifications:
@@ -15,7 +15,7 @@ from .leader_braking import LeaderBraking, LeaderBrakingParameters
 from .simulator import Simulator
 
 
-class SimulationLeadBraking(Simulator):
+class SimulationLeadInteraction(Simulator):
     """ Class for simulation the scenario "lead vehicle braking".
 
     Attributes:
@@ -31,11 +31,10 @@ class SimulationLeadBraking(Simulator):
                                                  dt=0.01)
         Simulator.__init__(self, **kwargs)
 
-    def simulation(self, parameters: dict, plot: bool = False,
-                   seed: int = None) -> float:
+    def simulation(self, parameters: dict, plot: bool = False, seed: int = None) -> float:
         """ Run a single simulation.
 
-        :param parameters: (starting speed, average deceleration, speed difference)
+        :param parameters: (vlead, vego, gap)
         :param plot: Whether to make a plot or not.
         :param seed: Specify in order to simulate with a fixed seed.
         :return: The minimum distance (negative means collision).
@@ -50,9 +49,9 @@ class SimulationLeadBraking(Simulator):
         data = []
         mindist = 100
 
-        # Run the simulation for at least 10 seconds. Stop the simulation if the
+        # Run the simulation for at least 1 second. Stop the simulation if the
         # distance increases.
-        while time < 10 or prev_dist > x_leader - x_follower:
+        while time < 1 or prev_dist > x_leader - x_follower:
             prev_dist = x_leader - x_follower
             mindist = min(prev_dist, mindist)
             time += self.follower.parms.dt
@@ -96,9 +95,7 @@ class SimulationLeadBraking(Simulator):
 
         :param kwargs: The parameters!
         """
-        init_speed = kwargs["v0"]
-        average_deceleration = kwargs["amean"]
-        speed_difference = kwargs["dv"]
+        init_speed = kwargs["vego"]
         self.follower.init_simulation(self.follower_parameters,
                                       IDMParameters(free_speed=init_speed * 1.2,
                                                     init_speed=init_speed,
@@ -107,10 +104,12 @@ class SimulationLeadBraking(Simulator):
                                                     thw=1,
                                                     safety_distance=2,
                                                     amin=-3))
+        delay = self.follower.parms.model.parms.n_reaction * self.follower_parameters.dt
+        init_gap = kwargs["gap"] + delay*init_speed-kwargs["vlead"]
+        init_speed_lead = kwargs["vlead"]
         self.leader.init_simulation(
-            LeaderBrakingParameters(init_position=(self.follower.parms.model.parms.safety_distance +
-                                                   init_speed*self.follower.parms.model.parms.thw),
-                                    init_speed=init_speed,
-                                    average_deceleration=average_deceleration,
-                                    speed_difference=speed_difference,
-                                    tconst=5))
+            LeaderBrakingParameters(init_position=init_gap,
+                                    init_speed=init_speed_lead,
+                                    average_deceleration=kwargs["amean"],
+                                    speed_difference=init_speed_lead,
+                                    tconst=1))
