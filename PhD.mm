@@ -2380,14 +2380,101 @@
 </node>
 </node>
 <node TEXT="Interaction with ADS" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1264664409" CREATED="1592300812185" MODIFIED="1592300824138">
-<node TEXT="Effects of ACC and HAD on Workload and Situation Awareness" ID="ID_992706801" CREATED="1592301484612" MODIFIED="1592301610012" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/466%20Effects%20of%20ACC%20and%20HAD%20on%20situational%20awareness.pdf">
-<attribute NAME="key" VALUE="DeWinter_2014"/>
+<node TEXT="Effects of ACC and HAD on Workload and Situation Awareness" ID="ID_992706801" CREATED="1592301484612" MODIFIED="1592301652659" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/466%20Effects%20of%20ACC%20and%20HAD%20on%20situational%20awareness.pdf">
+<attribute NAME="key" VALUE="dewinter2014effects"/>
 <attribute NAME="journal" VALUE="Transportation Research Part F: Traffic Psychology and Behaviour"/>
 <attribute NAME="year" VALUE="2014"/>
 <attribute NAME="title" VALUE="Effects of Adaptive Cruise Control and Highly Automated Driving on Workload and Situation Awareness: A Review of the Empirical Evidence"/>
 <attribute NAME="authors" VALUE="De Winter, J. C. F. and Happee, R. and Martens, M. H. and Stanton, N. A."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="477E76714B98D66C76E1353C5636E9ACF63B3C5BF41D6B58A0898371DBB090">
     <pdf_title>Transportation Research Part F</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Tactical Driving Behavior with Different Levels of Automation" ID="ID_641082255" CREATED="1592301704804" MODIFIED="1592301857802" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/467%20Tactical%20Driving%20Behavior%20with%20Different%20Levels%20of%20Automation.pdf">
+<attribute NAME="key" VALUE="kircher2014tactical"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Tactical Driving Behavior with Different Levels of Automation"/>
+<attribute NAME="authors" VALUE="Kircher, K. and Larsson, A. and Hultgren, J. A."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="646A9C1AAA15ABF4D775A50E74288DD2AE5B7C77DE9B572A15597B7C624FB81">
+    <pdf_title>Tactical Driving Behavior With Different Levels of Automation</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Driver Behavior Analysis During ACC Activation and Deactivation" ID="ID_970785930" CREATED="1592301958871" MODIFIED="1592302758412" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/468%20Driver%20Behavior%20Analysis%20During%20ACC%20Activation%20and%20Deactivation.pdf">
+<attribute NAME="key" VALUE="pauwelussen2010driver"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Driver Behavior Analysis During {ACC} Activation and Deactivation in a Real Traffic Environment"/>
+<attribute NAME="authors" VALUE="Pauwelussen, J. and Feenstra, P.J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="46BC91CA48E6B9DEC9C64D7F67D06B0223EB083A7DABED0983A3E92248C9E">
+    <pdf_title>Driver Behavior Analysis During ACC Activation and Deactivation in a Real Traffic Environment</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Effects of deactivation and (re)activation of ACC" ID="ID_1736609898" CREATED="1592302888475" MODIFIED="1592303052933" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/470%20Effects%20of%20(de)(re)activation%20ACC.pdf">
+<attribute NAME="key" VALUE="pauwelussen2008effects"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="The Effects of Deactivation and (Re)activation of {ACC} on Driver Behaviour Analyzed in Real Traffic"/>
+<attribute NAME="authors" VALUE="Pauwelussen, J. and Minderhoud, M."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="27AEBE694FD29E4F71C544AEAC8CEB8CC802417F62A6287A7B0FE75E6238465">
+    <pdf_title>The effects of deactivation and (re)activation of ACC on driver behaviour analyzed in real traffic</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A Simulator Evaluation of Different Forms of Intelligent Cruise Control" ID="ID_1073095810" CREATED="1592302685232" MODIFIED="1592302730972" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/469%20A%20Simulator%20Evaluation%20of%20Different%20Forms%20of%20Intelligent%20CC.pdf">
+<attribute NAME="key" VALUE="hogema1994simulator"/>
+<attribute NAME="year" VALUE="1994"/>
+<attribute NAME="title" VALUE="A Simulator Evaluation of Different Forms of Intelligent Cruise Control"/>
+<attribute NAME="authors" VALUE="Hogema, J.H. and Van der Horst, A.R.A. and Janssen, W.H."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="88CA13697DB5CF12AC9FFB89FFFC5BFF96C2A553FF5CE21ECF6D5A67DFCA9">
+    <pdf_title>Til:ffi#e4</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Exploring end-user experiences of ACC" ID="ID_1672544493" CREATED="1592303155357" MODIFIED="1592303263535" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/471%20Exploring%20end-user%20experiences%20of%20ACC.pdf">
+<attribute NAME="key" VALUE="strand2011exploring"/>
+<attribute NAME="journal" VALUE="IET Intelligent Transport Systems"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Exploring End-User Experiences: Self-Perceived Notions on Use of Adaptive Cruise Control Systems"/>
+<attribute NAME="authors" VALUE="Strand, N. and Nilsson, J. and Karlsson, I. C. M. and Nilsson, L."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A1C587B8EB9CACEC19C93879E794FCB971A0D0704B6E81ABD823944572482">
+    <pdf_title>Exploring end-user experiences: self-perceived notions on use of adaptive cruise control systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Resuming Manual Control or Not?" ID="ID_1038081009" CREATED="1592303361869" MODIFIED="1592303402267" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/472%20Resuming%20Manual%20Control%20or%20Not.pdf">
+<attribute NAME="key" VALUE="varotto2017resuming"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Resuming Manual Control or Not? Modeling Choices of Control Transitions in Full-Range Adaptive Cruise Control"/>
+<attribute NAME="authors" VALUE="Varotto, S.F. and Farah, H. and Toledo, T. and Van Arem, B. and Hoogendoorn, S.P."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="EA73AB2F8916314A481337DC63BDDA851E4C36703E55D8E186377E3A511CF1C6">
+    <pdf_title>Resuming Manual Control or Not?</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Modelling Decisions of Control Transitions" ID="ID_1674135645" CREATED="1592303532463" MODIFIED="1592303722177" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/473%20Modelling%20Decisions%20of%20Control%20Transitions.pdf">
+<attribute NAME="key" VALUE="varotto2018modelling"/>
+<attribute NAME="journal" VALUE="Transportation Research Part B: Methodological"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Modelling Decisions of Control Transitions and Target Speed Regulations in Full-Range Adaptive Cruise Control Based on Risk Allostasis Theory"/>
+<attribute NAME="authors" VALUE="Varotto, S.F. and Farah, H. and Toledo, T. and van Arem, B. and Hoogendoorn, S.P."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="362A853411AF2A618F96FB7B9310E3B5861C33F762493F8C7C826826D945">
+    <pdf_title>TransportationResearchPartB</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Driver Behaviour during Control Transitions" ID="ID_1260620415" CREATED="1592734174330" MODIFIED="1592734240587" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/474%20Transition%20ADS%20and%20driver.pdf">
+<attribute NAME="key" VALUE="varotto2019driver"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Driver Behaviour during Control Transitions between Adaptive Cruise Control and Manual Driving: Empirics and Models"/>
+<attribute NAME="authors" VALUE="Silvia Francesca Varotto"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F3F495A6C1E3332357352703031302A3B6B4122AD6C929238B3B5BCBE76">
+    <pdf_title>Driver Behaviour during Control Transitions between Adaptive Cruise Control and Manual Driving: Empirics and Models</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Empirical Longitudinal Driving Behavior ACC vs Manual Driving" ID="ID_1023285473" CREATED="1592734322197" MODIFIED="1592734413862" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/475%20Empirical%20Longitudinal%20Driving%20Behavior%20ACC%20vs%20Manual%20Driving.pdf">
+<attribute NAME="key" VALUE="varotto2015empirical"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Empirical longitudinal driving behavior in authority transitions between adaptive cruise control and manual driving"/>
+<attribute NAME="authors" VALUE="Varotto, S. F. and Hoogendoorn, R. G. and van Arem, B. . and Hoogendoorn, S. P."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5011FE4D1F4EC2293C2D3749B66A22E895171621E2F1CC90E78CA523A4">
+    <pdf_title>Empirical Longitudinal Driving Behavior in Authority Transitions Between Adaptive Cruise Control and Manual Driving</pdf_title>
 </pdf_annotation>
 </node>
 </node>
