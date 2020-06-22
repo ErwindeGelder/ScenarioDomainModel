@@ -5,6 +5,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 06 12 Avoid division by zero when calculating the non-free-flow part.
+2020 06 22 A seperate function for the integration of the acceleration.
 """
 
 import collections
@@ -84,7 +85,7 @@ class IDM:
         """
         return self.update(xlead - self.state.position,
                            self.state.speed,
-                           vlead - self.state.speed)
+                           self.state.speed - vlead)
 
     def update(self, gap: float, vhost: float, vdiff: float) -> Tuple[float, float]:
         """ Compute a step using the inputs as stated in Treiber et al. (2006).
@@ -94,17 +95,24 @@ class IDM:
         :param vdiff: Difference in speed between leading and host vehicle.
         :return: Position and speed.
         """
+        self.integration_step()
+
+        # Calculate acceleration based on IDM
+        self.accelerations.append(self._acceleration(gap, vhost, vdiff))
+
+        return self.state.position, self.state.speed
+
+    def integration_step(self) -> None:
+        """ Integrate the acceleration to obtain speed and position.
+
+        Because the state will be updated, there is nothing to return.
+        """
         # Update speed
         self.state.acceleration = np.max((self.parms.amin, self.accelerations[0]))
         self.state.speed += self.state.acceleration * self.parms.dt
 
         # Update position
         self.state.position += self.state.speed * self.parms.dt
-
-        # Calculate acceleration based on IDM
-        self.accelerations.append(self._acceleration(gap, vhost, vdiff))
-
-        return self.state.position, self.state.speed
 
     def _acceleration(self, gap: float, vhost: float, vdiff: float) -> float:
         """ Compute the acceleration.
