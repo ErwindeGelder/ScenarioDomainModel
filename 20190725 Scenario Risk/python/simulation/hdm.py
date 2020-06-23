@@ -4,18 +4,21 @@ Creation date: 2020 05 27
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 06 23 Provide the parameters of the underlying model as part of the HDM parameters. Add
+           position, speed, and acceleration to own state.
 """
 
 from typing import Tuple, Union
 import numpy as np
 from .options import Options
-from .idm import IDM, IDMParameters
+from .idm import IDM, IDMParameters, IDMState
 from .idmplus import IDMPlus
 
 
 class HDMParameters(Options):
     """ Parameters for the HDM. """
     model: Union[IDM, IDMPlus] = None
+    parms_model: IDMParameters = None
     speed_std: float = 0.05
     tau: float = 20
     rttc: float = 0.01  # Estimation error of reciprocal ttc
@@ -25,10 +28,13 @@ class HDMParameters(Options):
     delay: float = None  # Calculated based on dt and n_reaction (from model parameters)
 
 
-class HDMState(Options):
+class HDMState(IDMState):
     """ State of the HDM. """
     w_gap: float = 0
     w_speed: float = 0
+
+    def __init__(self, **kwargs):
+        IDMState.__init__(self, **kwargs)
 
 
 class HDM:
@@ -37,7 +43,7 @@ class HDM:
         self.parms = HDMParameters()
         self.state = HDMState()
 
-    def init_simulation(self, parms: HDMParameters, parms_model: IDMParameters) -> None:
+    def init_simulation(self, parms: HDMParameters) -> None:
         """ Initialize the simulation.
 
         The following parameters can be set:
@@ -47,7 +53,6 @@ class HDM:
         - rttc
 
         :param parms: The parameters listed above.
-        :param parms_model: The parameters for the underlying model that is used.
         """
         # Set parameters.
         self.parms.model = parms.model
@@ -56,10 +61,13 @@ class HDM:
         self.parms.rttc = parms.rttc
         self.parms.contribution_noise = np.sqrt(2*self.parms.dt / self.parms.tau)
         self.parms.decay = np.exp(-self.parms.dt / self.parms.tau)
-        self.parms.model.init_simulation(parms_model)
+        self.parms.model.init_simulation(parms.parms_model)
         self.parms.delay = self.parms.dt * self.parms.model.parms.n_reaction
         self.state.w_speed = 0
         self.state.w_gap = 0
+        self.state.speed = self.parms.model.state.speed
+        self.state.position = self.parms.model.state.position
+        self.state.acceleration = self.parms.model.accelerations
 
     def step_simulation(self, xlead: float, vlead: float) -> Tuple[float, float]:
         """ Compute the state (position, speed).
@@ -73,7 +81,11 @@ class HDM:
         """
         gap_est, vlead = self._estimate_gap_speed(xlead, vlead)
         gap, vhost, vdiff = self._temporal_anticipation(gap_est, vlead)
-        return self.parms.model.update(gap, vhost, vdiff)
+        position, speed = self.parms.model.update(gap, vhost, vdiff)
+        self.state.position = self.parms.model.state.position
+        self.state.speed = self.parms.model.state.speed
+        self.state.acceleration = self.parms.model.state.acceleration
+        return position, speed
 
     def _update_wiener(self) -> None:
         """ Do an update of the Wiener process. """
