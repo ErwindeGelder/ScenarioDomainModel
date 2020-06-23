@@ -4,10 +4,13 @@ Creation date: 2020 05 29
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 06 22 Parameters based on Treiber et al. (2006).
+2020 06 23 Add possibility to use any driver model for follower.
 """
 
 import matplotlib.pyplot as plt
 import numpy as np
+from .eidm import EIDMParameters
 from .hdm import HDM, HDMParameters
 from .idm import IDMParameters
 from .idmplus import IDMPlus
@@ -15,20 +18,69 @@ from .leader_braking import LeaderBraking, LeaderBrakingParameters
 from .simulator import Simulator
 
 
+def hdm_parameters(**kwargs):
+    """ Define the follower parameters based on the scenario parameters.
+
+    :return: Parameter object that can be passed via init_simulation.
+    """
+    init_speed = kwargs["v0"]
+    steptime = 0.01
+    safety_distance = 2.0
+    thw = 1.1
+    init_distance = safety_distance + init_speed * thw
+    parameters = HDMParameters(model=IDMPlus(), speed_std=0.05, tau=20, rttc=0.01, dt=steptime,
+                               parms_model=IDMParameters(free_speed=init_speed*1.2,
+                                                         init_speed=init_speed,
+                                                         init_position=-init_distance,
+                                                         dt=0.01,
+                                                         n_reaction=100,
+                                                         thw=1.1,
+                                                         safety_distance=2,
+                                                         amin=-8,
+                                                         a_acc=1,
+                                                         b_acc=1.5))
+    return parameters
+
+
+def eidm_parameters(**kwargs):
+    """ Define the follower parameters based on the scenario parameters.
+
+    :return: Parameter object that can be passed via init_simulation.
+    """
+    init_speed = kwargs["v0"]
+    safety_distance = 2.0
+    thw = 1.1
+    init_distance = safety_distance + init_speed * thw
+    parameters = EIDMParameters(free_speed=init_speed*1.2,
+                                init_speed=init_speed,
+                                init_position=-init_distance,
+                                dt=0.01,
+                                n_reaction=0,
+                                thw=1.1,
+                                safety_distance=2,
+                                amin=-8,
+                                a_acc=1,
+                                b_acc=1.5,
+                                coolness=0.99)
+    return parameters
+
+
 class SimulationLeadBraking(Simulator):
     """ Class for simulation the scenario "lead vehicle braking".
 
     Attributes:
         leader(LeaderBraking)
-        follower(HDM)
-        follower_parameters(HDMParameters)
+        follower - any given driver model (by default, HDM is used)
+        follower_parameters - function for obtaining the parameters.
     """
-    def __init__(self, **kwargs):
+    def __init__(self, follower=None, follower_parameters=None, **kwargs):
         # Instantiate the vehicles.
         self.leader = LeaderBraking()
-        self.follower = HDM()
-        self.follower_parameters = HDMParameters(model=IDMPlus(), speed_std=0.05, tau=20, rttc=0.01,
-                                                 dt=0.01)
+        self.follower = HDM() if follower is None else follower
+        if follower_parameters is None:
+            self.follower_parameters = hdm_parameters
+        else:
+            self.follower_parameters = follower_parameters
         Simulator.__init__(self, **kwargs)
 
     def simulation(self, parameters: dict, plot: bool = False,
@@ -62,7 +114,7 @@ class SimulationLeadBraking(Simulator):
             if plot:
                 data.append([x_leader, x_follower, v_leader, v_follower,
                              self.leader.state.acceleration,
-                             self.follower.parms.model.state.acceleration])
+                             self.follower.state.acceleration])
 
             if time > 100:
                 break
@@ -94,22 +146,14 @@ class SimulationLeadBraking(Simulator):
     def init_simulation(self, **kwargs) -> None:
         """ Initialize the simulation.
 
-        :param kwargs: The parameters!
+        :param kwargs: The parameters: v0, amean, dv.
         """
         init_speed = kwargs["v0"]
         average_deceleration = kwargs["amean"]
         speed_difference = kwargs["dv"]
-        self.follower.init_simulation(self.follower_parameters,
-                                      IDMParameters(free_speed=init_speed * 1.2,
-                                                    init_speed=init_speed,
-                                                    dt=self.follower_parameters.dt,
-                                                    n_reaction=100,
-                                                    thw=1,
-                                                    safety_distance=2,
-                                                    amin=-3))
+        self.follower.init_simulation(self.follower_parameters(**kwargs))
         self.leader.init_simulation(
-            LeaderBrakingParameters(init_position=(self.follower.parms.model.parms.safety_distance +
-                                                   init_speed*self.follower.parms.model.parms.thw),
+            LeaderBrakingParameters(init_position=0,
                                     init_speed=init_speed,
                                     average_deceleration=average_deceleration,
                                     speed_difference=speed_difference,
