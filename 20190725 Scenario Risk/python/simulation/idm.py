@@ -75,6 +75,7 @@ class IDM:
         # Set state.
         self.state.position = parms.init_position
         self.state.speed = parms.init_speed
+        self.state.acceleration = 0
 
     def step_simulation(self, xlead: float, vlead: float) -> Tuple[float, float]:
         """ Compute the state (position, speed).
