@@ -18,7 +18,7 @@ from .fastkde import KDE
 
 class Simulator(ABC):
     """ Generic functions for a simulator. """
-    def __init__(self, tolerance=0.01, min_simulations=5, max_simulations=100, stochastic=True):
+    def __init__(self, tolerance=0.05, min_simulations=5, max_simulations=100, stochastic=True):
         self.tolerance = tolerance
         self.min_simulations = min_simulations
         self.max_simulations = max_simulations
