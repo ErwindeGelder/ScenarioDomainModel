@@ -97,22 +97,22 @@ class SimulationLeadBraking(Simulator):
         self.init_simulation(**parameters)
         time = 0
         prev_dist = 0
-        x_leader, x_follower = 100, 0
 
         data = []
         mindist = 100
 
         # Run the simulation for at least 10 seconds. Stop the simulation if the
         # distance increases.
-        while time < 10 or prev_dist > x_leader - x_follower:
-            prev_dist = x_leader - x_follower
+        while time < 10 or prev_dist > self.leader.state.position - self.follower.state.position:
+            prev_dist = self.leader.state.position - self.follower.state.position
             mindist = min(prev_dist, mindist)
             time += self.follower.parms.dt
-            x_leader, v_leader = self.leader.step_simulation(time)
-            x_follower, v_follower = self.follower.step_simulation(x_leader, v_leader)
+            self.leader.step_simulation(time)
+            self.follower.step_simulation(self.leader)
 
             if plot:
-                data.append([x_leader, x_follower, v_leader, v_follower,
+                data.append([self.leader.state.position, self.follower.state.position,
+                             self.leader.state.speed, self.follower.state.speed,
                              self.leader.state.acceleration,
                              self.follower.state.acceleration])
 
