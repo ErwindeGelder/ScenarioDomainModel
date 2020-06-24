@@ -5,6 +5,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 06 18 Make it possible to pass an Axes for plotting with get_probability.
+2020 06 24 Add possibility of having a deterministic output (prob=1 or prob=0).
 """
 
 from abc import ABC
@@ -17,10 +18,11 @@ from .fastkde import KDE
 
 class Simulator(ABC):
     """ Generic functions for a simulator. """
-    def __init__(self, tolerance=0.01, min_simulations=5, max_simulations=100):
+    def __init__(self, tolerance=0.01, min_simulations=5, max_simulations=100, stochastic=True):
         self.tolerance = tolerance
         self.min_simulations = min_simulations
         self.max_simulations = max_simulations
+        self.stochastic = stochastic
 
     def simulation(self, parameters: dict, plot=False, seed: int = None):
         """ Run a single simulation.
@@ -40,6 +42,11 @@ class Simulator(ABC):
         :param seed: Specify in order to simulate with a fixed seed.
         :return: Result of the simulation.
         """
+        if not self.stochastic:
+            if self.simulation(parameters) > 0:
+                return 1
+            return 0
+
         if seed is not None:
             np.random.seed(seed)
 
