@@ -6,6 +6,7 @@ Author(s): Erwin de Gelder
 Modifications:
 2020 06 23 Provide the parameters of the underlying model as part of the HDM parameters. Add
            position, speed, and acceleration to own state.
+2020 06 24 Do not return speed and position with an update step.
 """
 
 from typing import Tuple, Union
@@ -69,23 +70,20 @@ class HDM:
         self.state.position = self.parms.model.state.position
         self.state.acceleration = self.parms.model.accelerations
 
-    def step_simulation(self, xlead: float, vlead: float) -> Tuple[float, float]:
+    def step_simulation(self, leader) -> None:
         """ Compute the state (position, speed).
 
         This will call the update function of the model, using the inputs
         calculated by self._temporal_anticipation.
 
-        :param xlead: Position of leading vehicle.
-        :param vlead: Speed of leading vehicle.
-        :return: Position and speed.
+        :param leader: Leader that contains a position and speed
         """
-        gap_est, vlead = self._estimate_gap_speed(xlead, vlead)
+        gap_est, vlead = self._estimate_gap_speed(leader.state.position, leader.state.speed)
         gap, vhost, vdiff = self._temporal_anticipation(gap_est, vlead)
-        position, speed = self.parms.model.update(gap, vhost, vdiff)
+        self.parms.model.update(gap, vhost, vdiff)
         self.state.position = self.parms.model.state.position
         self.state.speed = self.parms.model.state.speed
         self.state.acceleration = self.parms.model.state.acceleration
-        return position, speed
 
     def _update_wiener(self) -> None:
         """ Do an update of the Wiener process. """

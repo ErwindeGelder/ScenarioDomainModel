@@ -4,9 +4,9 @@ Creation date: 2020 05 27
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 06 24 Do not return speed and position with an update step.
 """
 
-from typing import Tuple
 import numpy as np
 from .options import Options
 
@@ -59,11 +59,10 @@ class LeaderBraking:
         self.parms.init_speed = parms.init_speed
         self.parms.tconst = parms.tconst
 
-    def step_simulation(self, time: float) -> Tuple[float, float]:
+    def step_simulation(self, time: float) -> None:
         """ Compute the state (position, speed) at time t.
 
         :param time: The time of the simulation.
-        :return: Position and speed.
         """
         if time <= self.parms.tconst:
             acceleration = 0
@@ -88,4 +87,3 @@ class LeaderBraking:
         self.state.position = distance
         self.state.speed = speed
         self.state.acceleration = acceleration
-        return distance, speed

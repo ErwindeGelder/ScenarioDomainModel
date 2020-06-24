@@ -4,9 +4,9 @@ Creation date: 2020 06 22
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 06 24 Do not return speed and position with an update step.
 """
 
-from typing import Tuple
 import numpy as np
 from .idm import IDM, IDMParameters, IDMState
 
@@ -48,27 +48,41 @@ class EIDM(IDM):
         # Set speed of leading vehicle at None, because it is unknown.
         self.state.speed_leader = 0
 
-    def update(self, gap: float, vhost: float, vdiff: float) -> Tuple[float, float]:
+    def step_simulation(self, leader) -> None:
+        """ Compute the state (position, speed).
+
+        :param leader: The leading vehicle that contains position, speed, and
+                       acceleration.
+        """
+        self.update_eidm(leader.state.position - self.state.position,
+                         self.state.speed,
+                         self.state.speed - leader.state.speed,
+                         self.state.acceleration)
+
+    def update_eidm(self, gap: float, vhost: float, vdiff: float, alead: float) -> None:
         """ Compute a step using the inputs as stated in Kesting et al. (2010).
 
         :param gap: Gap with preceding vehicle.
         :param vhost: Speed of host vehicle.
         :param vdiff: Difference in speed between leading and host vehicle.
-        :return: Position and speed.
+        :param alead: The acceleration of the leading vehicle.
         """
         self.integration_step()
+
+        # In case of a negative gap, brake as much as possible.
+        if gap <= 0:
+            self.accelerations.append(min(-10., self.parms.amin))
+            return
 
         # Calculate acceleration based on IDM.
         a_idm = self._acceleration(gap, vhost, vdiff)
 
         # Calculate acceleration according to the Constant-Acceleration Heuristic (CAH).
-        a_lead = (vhost - vdiff) - self.state.speed_leader
-        self.state.speed_leader = vhost - vdiff
-        a_lead = min(a_lead, self.state.acceleration)
-        if self.state.speed_leader*vdiff < -2*gap*a_lead:
-            a_cah = vhost**2 * a_lead / (vhost**2 - 2*gap*a_lead)
+        alead = min(alead, self.state.acceleration)
+        if self.state.speed_leader*vdiff < -2*gap*alead:
+            a_cah = vhost**2 * alead / (vhost**2 - 2*gap*alead)
         else:
-            a_cah = a_lead
+            a_cah = alead
             if vdiff > 0:
                 a_cah -= vdiff*2 / (2*gap)
 
@@ -79,5 +93,3 @@ class EIDM(IDM):
             a_acc = ((1-self.parms.coolness)*a_idm + self.parms.coolness *
                      (a_cah+self.parms.b_acc*np.tanh((a_idm - a_cah) / self.parms.b_acc)))
         self.accelerations.append(a_acc)
-
-        return self.state.position, self.state.speed

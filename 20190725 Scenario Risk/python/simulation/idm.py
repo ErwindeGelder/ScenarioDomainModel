@@ -6,10 +6,10 @@ Author(s): Erwin de Gelder
 Modifications:
 2020 06 12 Avoid division by zero when calculating the non-free-flow part.
 2020 06 22 A seperate function for the integration of the acceleration.
+2020 06 24 Do not return speed and position with an update step.
 """
 
 import collections
-from typing import Tuple
 import numpy as np
 from .options import Options
 
@@ -77,31 +77,26 @@ class IDM:
         self.state.speed = parms.init_speed
         self.state.acceleration = 0
 
-    def step_simulation(self, xlead: float, vlead: float) -> Tuple[float, float]:
+    def step_simulation(self, leader) -> None:
         """ Compute the state (position, speed).
 
-        :param xlead: Position of leading vehicle.
-        :param vlead: Speed of leading vehicle.
-        :return: Position and speed.
+        :param leader: The leading vehicle that contains position and speed.
         """
-        return self.update(xlead - self.state.position,
-                           self.state.speed,
-                           self.state.speed - vlead)
+        self.update(leader.state.position - self.state.position,
+                    self.state.speed,
+                    self.state.speed - leader.state.speed)
 
-    def update(self, gap: float, vhost: float, vdiff: float) -> Tuple[float, float]:
+    def update(self, gap: float, vhost: float, vdiff: float) -> None:
         """ Compute a step using the inputs as stated in Treiber et al. (2006).
 
         :param gap: Gap with preceding vehicle.
         :param vhost: Speed of host vehicle.
         :param vdiff: Difference in speed between leading and host vehicle.
-        :return: Position and speed.
         """
         self.integration_step()
 
         # Calculate acceleration based on IDM
         self.accelerations.append(self._acceleration(gap, vhost, vdiff))
-
-        return self.state.position, self.state.speed
 
     def integration_step(self) -> None:
         """ Integrate the acceleration to obtain speed and position.
