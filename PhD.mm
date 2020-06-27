@@ -2500,6 +2500,60 @@
     <pdf_title>The Benefits and Tradeoffs for Varied High- Severity Injury Risk Thresholds for Advanced Automatic Crash Notification Systems</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Injury prediction models" ID="ID_1106027561" CREATED="1593154505477" MODIFIED="1593154741946" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/476%20Injury%20prediction%20models.pdf">
+<attribute NAME="key" VALUE="yoshida2016development"/>
+<attribute NAME="journal" VALUE="International Journal of Crashworthiness"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Development of Injury Prediction Models for Advanced Automatic Collision Motification Based on {J}apanese Accident Data"/>
+<attribute NAME="authors" VALUE="Yoshida, S. and Hasegawa, T. and Tominaga, S. and Nishimoto, T."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9FAB8AD1BBC3B98ECAD01A757BEA41E515586EA9FE20BFF67EFC1F0220268A">
+    <pdf_title>Development of injury prediction models for advanced automatic collision notification based on Japanese accident data</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Regression model for MAIS3+ injuries" ID="ID_385927748" CREATED="1593262353606" MODIFIED="1593262501214" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/477%20Characteristics%20of%20Crashes.pdf">
+<attribute NAME="key" VALUE="augenstein2003characteristics"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="Characteristics of Crashes That Increase the Risk of Serious Injuries"/>
+<attribute NAME="authors" VALUE="Augenstein, Jeffrey and Perdeck, Elana and Stratton, James and Digges, Kennerly and Bahouth, George"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7C74B6023C23A95F84ED39B72F35962E395FA114EE7D373267BCBABBEC60">
+    <pdf_title>47th ANNUAL PROCEEDINGS ASSOCIATION FOR THE ADVANCEMENT OF AUTOMOTIVE MEDICINE September 22-24, 2003</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Very similar as the one above, but from ESV conference" ID="ID_1775660619" CREATED="1593262704506" MODIFIED="1593262840673" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/478%20Augenstein_2005_ESV_Methodology%20for%20the%20development%20and%20validation%20of%20injury%20predicting%20algorithms.pdf">
+<attribute NAME="key" VALUE="augenstein2003methodology"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="Methodology for the Development and Validation of Injury Predicting Algorithms"/>
+<attribute NAME="authors" VALUE="Augenstein, Jeffrey and Perdeck, Elana and Stratton, James and Digges, Kennerly and Bahouth, George and Borchers, Nils and Baur, Peter"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+<node TEXT="Regression with only the impact velocity and/or occupant impact velocity" ID="ID_1473235564" CREATED="1593263164140" MODIFIED="1593263317743" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/479%20Gabauer_2006_APAAAM_Comparison%20of%20Delta%20V%20and%20occupant%20velocity%20crash%20severity%20metrics%20using%20event%20data%20recorders.pdf">
+<attribute NAME="key" VALUE="gabauer2006comparison"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="Comparison of Delta-V and Occupant Impact Velocity Crash Severity Metrics Using Event Data Recorders"/>
+<attribute NAME="authors" VALUE="Gabauer, Douglas J and Gabler, Hampton Clay"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D6B8FCBFF11458E1958E39DB5771982E860BD763977D3870A2FC1F6F76658">
+    <pdf_title>COMPARISON OF DELTA-V AND OCCUPANT IMPACT VELOCITY CRASH SEVERITY METRICS USING EVENT DATA RECORDERS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Estimating injury based on peak acceleration (might be better, but is not useable for us)" ID="ID_1202832005" CREATED="1593263424254" MODIFIED="1593263587099" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/480%20Gabauer_2008_BSI_Acceleration%20based%20occupant%20injury%20criteria%20for%20predicting%20injury%20in%20real%20world%20crashes.pdf">
+<attribute NAME="key" VALUE="gabauer2008acceleration"/>
+<attribute NAME="journal" VALUE="Biomedical Sciences Instrumentation"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="Acceleration-Based Occupant Injury Criteria For Predicting Injury In Real-World Crashes"/>
+<attribute NAME="authors" VALUE="Gabauer, Douglas J and Gabler, Hampton C"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7CE285F763BB3095A613EB4BF1AE284E3C5A70B5DF7030ADAC8BCD17A25E920">
+    <pdf_title>ACCELERATION-BASED OCCUPANT INJURY CRITERIA FOR PREDICTING INJURY IN REAL-WORLD CRASHES</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="PhD thesis on predicting occupant injury" ID="ID_1050415002" CREATED="1593264387941" MODIFIED="1593264404083" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/481%20Gabauer_2008_PhD_Dissertation_Predicting%20occupant%20injury%20with%20vehicle%20based%20injury%20criteria%20in%20roadside%20crashes.pdf">
+<attribute NAME="key" VALUE="gabauer2008predicting"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="Predicting Occupant Injury with Vehicle-Based Injury Criteria in Roadside Crashes"/>
+<attribute NAME="authors" VALUE="Gabauer, Douglas John"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2BC6925D4CF284CAB4D39C641A7B28AD67C3107F33F2FDBAFDE99366FB2521">
+    <pdf_title>Predicting Occupant Injury with Vehicle-Based Injury Criteria in Roadside Crashes Douglas J. Gabauer Dissertation submitted to the faculty of the Virginia Polytechnic Institute and State University in</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Subjectivity ASIL rating" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1031766422" CREATED="1590760633978" MODIFIED="1590760648677">
 <node TEXT="The two distinct short-comings of the current ISO 26262-2011 standard are guided by the subjective nature of the experts&#x2019; mental models leading to unreliable ratings and the ability to identify a hazard (including the black swan events)" ID="ID_1126217608" CREATED="1590760678830" MODIFIED="1590912449253" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/205%20Towards%20increased%20reliability%20by%20objectification%20of%20HARA.pdf">
@@ -3984,7 +4038,7 @@
     <pdf_title>Dimensions of knowledge sharing and reuse</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ontology for applications" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1504253001" CREATED="1531293489079" MODIFIED="1531294181571">
+<node TEXT="Ontology for applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1504253001" CREATED="1531293489079" MODIFIED="1531294181571">
 <node TEXT="Specifying domains of International Entrepreneurship research" ID="ID_1080604173" CREATED="1531293527245" MODIFIED="1534391630188" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/215%20International%20Entrepreneurship%20research%201989-2009%20domain%20ontology%20and%20thematic%20analysis.pdf">
 <attribute NAME="key" VALUE="jones2011international"/>
 <attribute NAME="journal" VALUE="Journal of Business Venturing"/>
