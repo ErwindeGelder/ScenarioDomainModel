@@ -20,10 +20,11 @@ Modifications:
 2020 03 06 Return warning number when computing the bandwidth.
 2020 05 01 Add the option of normalizing the data.
 2020 05 31 Add the option of having weights. TODO: this is not finished yet...
+2020 06 29 Compute the leave-one-out score differently for large n to lower memory usage.
 """
 
 import time
-from typing import Callable, Union
+from typing import Callable, List, Union
 import numpy as np
 import scipy.spatial.distance as dist
 import scipy.special
@@ -245,7 +246,7 @@ class KDE:
         :return: An warning/error integer.
         """
         difference = max_bw - min_bw
-        datapoints = np.array([min_bw, 0, 0, max_bw])
+        datapoints = np.array([min_bw, 0, 0, max_bw], dtype=float)
         datapoints[1] = datapoints[0] + self.constants.invgr2 * difference
         datapoints[2] = datapoints[0] + self.constants.invgr * difference
 
@@ -334,11 +335,22 @@ class KDE:
         # Compute the one-leave-out score
         bandwidth = self.bandwidth if bandwidth is None else bandwidth
         if not self.constants.variable_bandwidth:
-            score = (np.sum(np.log(np.sum(np.exp(self.data_helpers.mindists
-                                                 [:self.constants.ndata, :self.constants.ndata] /
-                                                 bandwidth ** 2),
-                                          axis=0) - 1)) -
-                     self.constants.ndata * self.constants.dim * np.log(bandwidth))
+            if self.constants.ndata > 10000:
+                # Do this to save memory
+                score = 0
+                for i in range(self.constants.ndata):
+                    score += np.exp(self.data_helpers.mindists[i, :self.constants.ndata] /
+                                    bandwidth**2)
+                score -= 1
+                score = np.sum(np.log(score))
+                score -= self.constants.ndata*self.constants.dim*np.log(bandwidth)
+            else:
+                score = (np.sum(np.log(np.sum(np.exp(self.data_helpers.mindists
+                                                     [:self.constants.ndata,
+                                                      :self.constants.ndata] /
+                                                     bandwidth ** 2),
+                                              axis=0) - 1)) -
+                         self.constants.ndata * self.constants.dim * np.log(bandwidth))
         else:
             bandwidth_dim = bandwidth**self.constants.dim
             score = np.sum(np.log(np.sum(np.exp(self.data_helpers.mindists
@@ -678,20 +690,13 @@ class KDE:
         upper_conf = density + zvalue*std
         return lower_conf, upper_conf
 
-    def sample(self, n_samples=1):
+    def sample(self, n_samples: int = 1) -> np.ndarray:
         """ Generates random samples from the model
 
         Based on the scikit learn implementation
 
-        Args
-        ----
-        n_samples : int, optional
-            Number of samples to generate. Defaults to 1.
-
-        Returns
-        -------
-        X : array_like, shape (n_samples, n_features)
-            List of samples.
+        :param n_samples: Number of samples to generate. Defaults to 1.
+        :return: array with shape (n_samples, n_features).
         """
 
         uniform_vars = np.random.uniform(0, 1, size=n_samples)
@@ -700,6 +705,10 @@ class KDE:
         if self.scaling:
             samples *= self.data_helpers.std
         return samples
+
+#    def conditional_sample(self, i_given: Union[List[int], int],
+#                           values: Union[List[float], np.ndarray, float], n_samples: int = 1) \
+#            -> np.ndarray:
 
 
 def process_reshaped_data(xdata: np.ndarray, func: Callable) -> np.ndarray:
