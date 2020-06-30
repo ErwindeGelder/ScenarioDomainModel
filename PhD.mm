@@ -2782,6 +2782,26 @@
     <pdf_title>An adaptive algorithm for efficient computation of level curves of surfaces</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Marching cubes" ID="ID_1862075367" CREATED="1593539032804" MODIFIED="1593539080099" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/482%20%20Marching%20cubes%20A%20high%20resolution%203d%20surface.pdf">
+<attribute NAME="key" VALUE="lorensen1987marching"/>
+<attribute NAME="journal" VALUE="ACM SIGGRAPH computer graphics"/>
+<attribute NAME="year" VALUE="1987"/>
+<attribute NAME="title" VALUE="Marching Cubes: A High Resolution {3D} Surface Construction Algorithm"/>
+<attribute NAME="authors" VALUE="Lorensen, William E and Cline, Harvey E"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B4CF32AE85A4C4BAB82BE251172D6C2C2B1EB0289773768BFF2319DE492B20">
+    <pdf_title>C&#x2022;&apos;&#x2022;CT</pdf_title>
+</pdf_annotation>
+<node TEXT="Extension to multi dimensions" ID="ID_1460660494" CREATED="1593539091377" MODIFIED="1593539199986" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/483%20Isosurface%20Construction%20In%20Any%20Dimension.pdf">
+<attribute NAME="key" VALUE="bhaniramka2004isosurface"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Visualization and Computer Graphics"/>
+<attribute NAME="year" VALUE="2004"/>
+<attribute NAME="title" VALUE="Isosurface Construction in Any Dimension Using Convex Hulls"/>
+<attribute NAME="authors" VALUE="Bhaniramka, Praveen and Wenger, Rephael and Crawfis, Roger"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1363BB19589124CAF6DC8BBD924AB4DFEEB393EB33D668CE0262BE758D70F6">
+    <pdf_title>Isosurface Construction In Any Dimension</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 </node>
 <node TEXT="Generation of tags/activities" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_988403725" CREATED="1589106599112" MODIFIED="1589106617997">
@@ -4481,7 +4501,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="E5C660C7C1F11B7653E1623B17B68202A3CECDB42F96CF7C56F2815DA7CDA69"/>
 </node>
 </node>
-<node TEXT="Faster KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1533871381205" MOVED="1533871471287">
+<node TEXT="Faster KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1876100189" CREATED="1513917427695" MODIFIED="1533871381205" MOVED="1533871471287">
 <node TEXT="Kernel Density Estimation Using the Fast Fourier Transform" ID="ID_258148581" CREATED="1531796223169" MODIFIED="1534390598610" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/227%20Kernel%20Density%20Estimation%20Using%20the%20Fast%20Fourier%20Transform.pdf" MOVED="1533871385445">
 <attribute NAME="key" VALUE="silverman1982fourier"/>
 <attribute NAME="journal" VALUE="Journal of the Royal Statistical Society. Series C (Applied Statistics)"/>
