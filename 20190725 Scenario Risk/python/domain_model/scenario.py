@@ -25,12 +25,14 @@ Modifications
 13 Oct 2019: Update of terminology.
 04 Nov 2019: Add options to automatically assign unique ids to actor/activities.
 27 Mar 2020: Enable instantiation from json without needing full json code.
+03 Jul 2020: Enable evaluating a state variable of an actor.
 """
 
-from typing import List, Tuple
+from typing import List, Tuple, Union
 import fnmatch
 import numpy as np
 from .default_class import Default
+from .state import StateVariable
 from .static_environment import StaticEnvironment, stat_env_from_json
 from .activity import Activity, activity_from_json
 from .actor import Actor, actor_from_json
@@ -163,6 +165,48 @@ class Scenario(Default):
                           " not defined in the list of activities.")
                     print("Therefore, the activity is added to the list of activities.")
                 self.activities.append(activity)
+
+    def get_state(self, actor: Actor, state: StateVariable, time: Union[float, List, np.ndarray]) \
+            -> Union[None, float, np.ndarray]:
+        """ Obtain the values of the state variable at the given time instants.
+
+        :param actor: The actor of which the state variable is to be retrieved.
+        :param state: The state variable that is to be retrieved.
+        :param time: The time instance(s).
+        :return: The value of the state variable at the given time instants.
+        """
+        if isinstance(time, float):
+            vec_time = np.array([time])
+        elif isinstance(time, List):
+            vec_time = np.array(time)
+        elif isinstance(time, np.ndarray):
+            vec_time = time
+        else:
+            raise TypeError("<time> needs to be of type <float>, <List>, or <np.ndarray>.")
+        is_valid = False
+
+        # Loop through the acts.
+        for my_actor, my_activity, _ in self.acts:
+            # Only continue with right actor and activity.
+            if my_actor == actor and my_activity.activity_category.state == state:
+                # Check if the time span contains time instances that we want to evaluate.
+                mask = np.logical_and(vec_time >= my_activity.tstart,
+                                      vec_time <= my_activity.tend)
+                if np.any(mask):
+                    tmp_values = my_activity.get_state(time=vec_time[mask])
+                    if not is_valid:
+                        if len(tmp_values.shape) == 1:
+                            values = np.ones(len(vec_time)) * np.nan
+                        else:
+                            values = np.ones((len(vec_time), tmp_values.shape[0])) * np.nan
+                        is_valid = True
+                    values[mask] = tmp_values.T
+
+        if not is_valid:
+            return
+        if isinstance(time, float):
+            return values[0]
+        return values
 
     def derived_tags(self) -> dict:
         """ Return all tags, including the tags of the attributes.
