@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1590912451598"><hook NAME="MapStyle" zoom="0.912">
@@ -2356,6 +2356,16 @@
     <pdf_title>TransportationResearchPartB</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="A parsimonious model for the formation of oscillations" ID="ID_140417573" CREATED="1593771261181" MODIFIED="1593771414801" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/485%20A%20parsimonious%20model%20for%20the%20formation%20of%20oscillations.pdf">
+<attribute NAME="key" VALUE="laval2014parsimonious"/>
+<attribute NAME="journal" VALUE="Transportation Research Part B: Methodological"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="A Parsimonious Model for the Formation of Oscillations in Car-Following Models"/>
+<attribute NAME="authors" VALUE="Laval, Jorge A and Toth, Christopher S and Zhou, Yi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8CCD707F53B4B3E40987A33675ADBEBA111781651FDB9666683A1B42BBB0B8">
+    <pdf_title>Transportation Research Part B</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Lateral" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_945623169" CREATED="1589212064192" MODIFIED="1589212068532">
 <node TEXT="Integrated Lane Change Model" ID="ID_1571872619" CREATED="1589296342175" MODIFIED="1590912450469" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/453%20Integrated%20Lane%20Change%20Model.pdf">
@@ -4704,6 +4714,18 @@
 <attribute NAME="authors" VALUE="Nadaraya, Elizbar A"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="F2BF34EAE57724E3B9934B561C0BF2C8C6EE67974DC2D3840DAB993B3F067D1">
     <pdf_title>Fn(x</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Conditional sampling" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_600523662" CREATED="1593770968693" MODIFIED="1593771011896">
+<node TEXT="Fast Nonparametric Conditional Density Estimation" ID="ID_1399978384" CREATED="1593771003197" MODIFIED="1593771030597" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/484%20Fast%20Nonparametric%20Conditional%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="holmes2012fast"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1206.5278"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Fast Nonparametric Conditional Density Estimation"/>
+<attribute NAME="authors" VALUE="Holmes, Michael P and Gray, Alexander G and Isbell, Charles Lee"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="35FF52720C26DBCF0156886E9CF706EDB243D5E856CB1582D3B4B422B381CB5">
+    <pdf_title>Fast Nonparametric Conditional Density Estimation</pdf_title>
 </pdf_annotation>
 </node>
 </node>
