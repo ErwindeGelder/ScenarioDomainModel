@@ -24,7 +24,7 @@ class Simulator(ABC):
         self.max_simulations = max_simulations
         self.stochastic = stochastic
 
-    def simulation(self, parameters: dict, plot=False, seed: int = None):
+    def simulation(self, parameters: dict, plot=False, seed: int = None) -> float:
         """ Run a single simulation.
 
         :param parameters: Parameters of the simulation.
@@ -44,8 +44,8 @@ class Simulator(ABC):
         """
         if not self.stochastic:
             if self.simulation(parameters) > 0:
-                return 1
-            return 0
+                return 0
+            return 1
 
         if seed is not None:
             np.random.seed(seed)
