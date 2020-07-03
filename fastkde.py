@@ -21,6 +21,7 @@ Modifications:
 2020 05 01 Add the option of normalizing the data.
 2020 05 31 Add the option of having weights. TODO: this is not finished yet...
 2020 06 29 Compute the leave-one-out score differently for large n to lower memory usage.
+2020 07 03 Enable conditional sampling of the KDE.
 """
 
 import time
@@ -698,17 +699,43 @@ class KDE:
         :param n_samples: Number of samples to generate. Defaults to 1.
         :return: array with shape (n_samples, n_features).
         """
-
         uniform_vars = np.random.uniform(0, 1, size=n_samples)
         i = (uniform_vars * self.data.shape[0]).astype(np.int64)
-        samples = np.atleast_2d(np.random.normal(self.data[i], self.bandwidth))
+        samples = np.random.normal(self.data[i], self.bandwidth)
         if self.scaling:
             samples *= self.data_helpers.std
         return samples
 
-#    def conditional_sample(self, i_given: Union[List[int], int],
-#                           values: Union[List[float], np.ndarray, float], n_samples: int = 1) \
-#            -> np.ndarray:
+    def conditional_sample(self, i_given: Union[List[int], int],
+                           values: Union[List[float], np.ndarray, float], n_samples: int = 1) \
+            -> np.ndarray:
+        """ Generate samples from the model, while some parameters are already given.
+
+        :param i_given: Index/indices of the parameters that are already given.
+        :param values: Value/values of the given parameters.
+        :param n_samples: Number of samples o generate. Defaults to 1.
+        :return: Array of parameters.
+        """
+        if self.scaling:
+            values = values / self.data_helpers.std[i_given]
+        norm = (self.data[:self.constants.ndata, i_given] - values)**2
+        if len(norm.shape) > 1:
+            norm = np.sum(norm, axis=1)
+        marginal_prob = np.exp(-norm / (2 * self.bandwidth**2))
+        marginal_prob /= np.sum(marginal_prob)
+        i = np.ones(self.constants.dim, dtype=np.bool)
+        i[i_given] = False
+        means = np.random.choice(np.arange(self.constants.ndata), size=n_samples, replace=True,
+                                 p=marginal_prob)  # This gives just the indices.
+        # Doing this directly with np.random.choice gives error if dimension samples > 1.
+        means = self.data[means][:, i]
+        samples = np.random.normal(means, self.bandwidth)
+        if len(samples.shape) == 1:
+            samples = samples[:, np.newaxis]
+
+        if self.scaling:
+            samples *= self.data_helpers.std[i]
+        return samples
 
 
 def process_reshaped_data(xdata: np.ndarray, func: Callable) -> np.ndarray:
