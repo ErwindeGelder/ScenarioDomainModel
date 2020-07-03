@@ -4,6 +4,7 @@ Creation date: 2020 03 23
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 07 01 Change way how UID is assigned. Enable deleting an item.
 """
 
 import os
@@ -84,21 +85,17 @@ class DataBaseEmulator:
         if item.uid >= 0:
             print("Warning: object already has an ID, but ID will be overwritten.")
 
-        item.uid = len(self.collections[collection])
+        item.uid = self.collections[collection][-1].uid + 1
         self.collections[collection].append(item.to_json())
 
-    def get_json(self, name: str, uid: int) -> object:
-        """ Obtain an item of the database.
+    def delete_item(self, name: str, uid: int) -> None:
+        """ Delete an item of the database.
 
         :param name: Name of the object.
         :param uid: The ID.
-        :return: The json code of the item.
         """
-        if name not in self.possible_objects:
-            raise KeyError("Invalid 'name'.")
-        if uid > len(self.collections[name]):
-            raise KeyError("ID does not exist.")
-        return self.collections[name][uid]
+        i = self._get_i_from_uid(name, uid)
+        self.collections[name].pop(i)
 
     def get_item(self, name: str, uid: int):
         """ Obtain an item of the database.
@@ -109,8 +106,39 @@ class DataBaseEmulator:
         """
         if uid in self.realizations[name]:
             return self.realizations[name][uid]
-        item = self.possible_objects[name].from_json(self.get_json(name, uid))
-        self.realizations[name][uid] = item
+
+        return self._get_ordered_item(name, self._get_i_from_uid(name, uid))
+
+    def _get_i_from_uid(self, name: str, uid: int) -> int:
+        i = min(uid, len(self.collections[name])-1)
+        maxi = i
+        mini = -1
+        while True:
+            if int(self.collections[name][i]["id"]) == uid:
+                # We have found our object we are looking for!
+                return i
+            i = max(0, i+uid-int(self.collections[name][i]["id"]))
+            if i <= mini or i >= maxi:
+                raise KeyError("Item '{:s}' with ID={:d} does not exist.".format(name, uid))
+
+    def get_ordered_item(self, name: str, i: int):
+        """ Obtain the i-th item, order on its uid.
+
+        :param name: Name of the object.
+        :param i: The i-th item.
+        :return: The item
+        """
+        if i >= len(self.collections[name]):
+            raise ValueError("Requesting item i={:d}, but only {:d} items available"
+                             .format(i, len(self.collections[name])))
+        uid = self.collections[name][i]["id"]
+        if uid in self.realizations[name]:
+            return self.realizations[name][uid]
+        return self._get_ordered_item(name, i)
+
+    def _get_ordered_item(self, name: str, i: int):
+        item = self.possible_objects[name].from_json(self.collections[name][i])
+        self.realizations[name][item.uid] = item
         return item
 
     def _actor_from_json(self, json_code: dict):
