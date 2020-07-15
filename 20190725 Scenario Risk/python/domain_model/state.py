@@ -1,22 +1,11 @@
-"""
-Class State
+""" Class State
 
+Creation date: 2018 03 14
+Author(s): Erwin de Gelder
 
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-14 Mar 2018
-
-To do
------
-
-Modifications
--------------
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-
+Modifications:
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2020 07 15: Provide functionality to print the state to something meaningful.
 """
 
 
@@ -64,6 +53,10 @@ class State:
         is not fully described in to_json().
         """
         return self.to_json()
+
+    def __str__(self):
+        return "{0}({1}): {2}".format(self.state_variable.name, self.state_variable.value,
+                                      self.value)
 
 
 def state_from_json(json: dict) -> State:
