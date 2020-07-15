@@ -1,31 +1,23 @@
-"""
-Class Scenario
+""" Class Scenario
 
+Creation date: 2018 11 05
+Author(s): Erwin de Gelder
 
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-5 Nov 2018
-
-To do
------
+To do:
 Move falls_into method to ScenarioCategory and rename it to "comprises".
 
-Modifications
--------------
-22 Nov 2018 Make is possible to instantiate a Scenario from JSON code.
-06 Dec 2018: Add functionality to return the derived Tags.
-06 Dec 2018: Make it possible to return full JSON code (incl. attributes' JSON code).
-06 Dec 2018: to_openscenario function added.
-07 Dec 2018: fall_into method for checking if Scenario falls into ScenarioCategory.
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-13 Oct 2019: Update of terminology.
-04 Nov 2019: Add options to automatically assign unique ids to actor/activities.
-27 Mar 2020: Enable instantiation from json without needing full json code.
-03 Jul 2020: Enable evaluating a state variable of an actor.
+Modifications:
+2018 11 22 Make is possible to instantiate a Scenario from JSON code.
+2018 12 06: Add functionality to return the derived Tags.
+2018 12 06: Make it possible to return full JSON code (incl. attributes' JSON code).
+2018 12 06: to_openscenario function added.
+2018 12 07: fall_into method for checking if Scenario falls into ScenarioCategory.
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 10 13: Update of terminology.
+2019 11 04: Add options to automatically assign unique ids to actor/activities.
+2020 03 27: Enable instantiation from json without needing full json code.
+2020 07 03: Enable evaluating a state variable of an actor.
+2020 07 15: Check for unique actor names and provide functionality to get actor by its name.
 """
 
 from typing import List, Tuple, Union
@@ -108,7 +100,8 @@ class Scenario(Default):
         if update_uids:
             create_unique_ids(self.activities)
 
-    def set_actors(self, actors: List[Actor], update_uids: bool = False) -> None:
+    def set_actors(self, actors: List[Actor], update_uids: bool = False,
+                   check_names: bool = True) -> None:
         """ Set the actors.
 
         Check whether the actors are correctly defined. Actors should be a list
@@ -116,9 +109,21 @@ class Scenario(Default):
 
         :param actors: List of actors that participate in the Scenario.
         :param update_uids: Automatically assign uids if they are similar.
+        :param check_names: Whether to check if the names are unique.
         """
         # Check whether the actors are correctly defined.
         check_for_list("actors", actors, Actor)
+
+        # Check whether the names are unique.
+        if check_names:
+            names = []
+            for actor in actors:
+                if actor.name in names:
+                    print("WARNING: There are multiple actors with the name '{0}'. This might")
+                    print("         result in errors when using .get_actor_by_name.")
+                    print("         To eliminate this warning, provide actors with unique names")
+                    print("         or set checknames=False in the .set_actors function.")
+                names.append(actor.name)
 
         # Assign actors to an attribute.
         self.actors = actors  # Type: List[Actor]
@@ -308,6 +313,22 @@ class Scenario(Default):
             n_matches = 1
 
         return True
+
+    def get_actor_by_name(self, name: str) -> Union[Actor, None]:
+        """ Get the actor with the provided name.
+
+        If there is no actor with the given name, None is returned. Note that
+        as soon as an actor is found with the given name, this actor is retuned.
+        Therefore, this function might fail if there are multiple actors with
+        the same name.
+
+        :param name: The name of the actor that is to be returned.
+        :return: The actor with the given name.
+        """
+        for actor in self.actors:
+            if actor.name == name:
+                return actor
+        return None
 
     @staticmethod
     def _check_tags(sc_tags: dict, s_tags: dict,
