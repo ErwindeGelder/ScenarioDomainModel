@@ -680,7 +680,7 @@
 </node>
 <node TEXT="Assessment methodology" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_533265062" CREATED="1507091062481" MODIFIED="1519207388938" MOVED="1534304310157" HGAP="77" VSHIFT="-5">
 <edge COLOR="#007c00"/>
-<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
+<node TEXT="Papers that address the need for research on assessment methodologies" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_693944075" CREATED="1512370229160" MODIFIED="1512378925125">
 <node TEXT="&quot;To not delay the development of ADS, the assessment methods need to develop as well&quot;" ID="ID_1402474042" CREATED="1512370266631" MODIFIED="1534391906453" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
 <attribute NAME="key" VALUE="deGelder2017assessment"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -1718,7 +1718,7 @@
     <pdf_title>TIME-TO-COLLISION AND COLLISION AVOIDANCE SYSTEMS</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Break/Steer Threat Number" ID="ID_453164835" CREATED="1569577774941" MODIFIED="1590912450938" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/388%20Multi-Target%20Threat%20Assessment%20for%20Autonomous%20Emergency%20Braking.pdf">
+<node TEXT="Brake/Steer Threat Number" ID="ID_453164835" CREATED="1569577774941" MODIFIED="1594996445367" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/388%20Multi-Target%20Threat%20Assessment%20for%20Autonomous%20Emergency%20Braking.pdf">
 <attribute NAME="key" VALUE="andersson2016multitarget"/>
 <attribute NAME="year" VALUE="2016"/>
 <attribute NAME="title" VALUE="Multi-Target Threat Assessment for Autonomous Emergency Braking"/>
@@ -4806,7 +4806,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329">
+<node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329" MOVED="1594717451424">
 <node TEXT="Explanation of what copulas are" ID="ID_1206112239" CREATED="1513683703860" MODIFIED="1590912449579" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/092%20Coping%20with%20Copulas.pdf">
 <attribute NAME="key" VALUE="Schmidt2007"/>
 <attribute NAME="year" VALUE="2007"/>
