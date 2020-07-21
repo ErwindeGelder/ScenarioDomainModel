@@ -21,7 +21,7 @@
 	state: Speed ($\egospeed$)\\
 	tags: Stationary};
 
-\node[object, fill=category, right=of ego qualitative.north east, anchor=north west](accelerating){{\bfseries Accelerating::Activity category}\\
+\node[object, fill=category, below=of stationary.south](accelerating){{\bfseries Accelerating::Activity category}\\
 	model: Linear, see \cref{eq:ego accelerating}\\
 	state: Speed ($\egospeed$)\\
 	tags: Accelerating};
@@ -31,7 +31,7 @@
 %	state: Lateral position\\
 %	tags: Driving straight};
 
-\node[object, fill=category, below=of accelerating.south](walking){{\bfseries Walking straight::Activity category}\\
+\node[object, fill=category, right=of ego qualitative.north east, anchor=north west](walking){{\bfseries Walking straight::Activity category}\\
 	model: Linear, see \cref{eq:pedestrian walking}\\
 	state: Position ($\pednorth$)\\
 	tags: Walking straight};
@@ -41,7 +41,7 @@
 	\leavevmode\phantom{description: }pedestrian crossing\\
 	tags: Non-signalized zebra crossing};
 
-\node[object, fill=scenariocategory, right=of accelerating.north east, anchor=north west](scenario category){{\bfseries Crossing pedestrian::Scenario category}\\
+\node[object, fill=scenariocategory, below=of static category.south](scenario category){{\bfseries Crossing pedestrian::Scenario category}\\
 	description: A pedestrian is crossing the road \\
 	\leavevmode\phantom{description: }on a zebra crossing in front of the \\
 	\leavevmode\phantom{description: }ego vehicle\\

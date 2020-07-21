@@ -19,7 +19,7 @@
 \node[object, fill=otherclass, right=of scenario category.north east, anchor=north west](event){{\bfseries Start walking::Event}\\
 conditions: $|\egoeast/\egospeed| \leq \SI{2.5}{\second}$};
 
-\node[object, fill=otherclass, below=of event.south](ego){{\bfseries Ego::Actor}\\
+\node[object, fill=otherclass, below=of scenario category.south](ego){{\bfseries Ego::Actor}\\
 	actor category: Ego qualitative\\
 	initial state vector: $\egoeast=\SI{-40}{\meter}$, \\
 	\leavevmode\phantom{initial state vector: }$\egonorth=\SI{-1.5}{\meter}$, \\
@@ -32,7 +32,7 @@ conditions: $|\egoeast/\egospeed| \leq \SI{2.5}{\second}$};
 	goals: \\
 	tags: };
 
-\node[object, fill=otherclass, right=of event.north east, anchor=north west](walking){{\bfseries Pedestrian walking::Triggered activity}\\
+\node[object, fill=otherclass, below=of event.south](walking){{\bfseries Pedestrian walking::Triggered activity}\\
 	activity category: Walking\\
 	parameters: $\slopepedestrian=\SI{1}{\meter\per\second}$, $\pednorthinit=\SI{-6}{\meter}$\\
 	trigger: Start walking \\

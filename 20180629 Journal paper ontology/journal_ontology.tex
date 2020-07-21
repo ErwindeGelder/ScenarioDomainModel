@@ -2,7 +2,7 @@
 %2345678901234567890123456789012345678901234567890123456789012345678901234567890
 %        1         2         3         4         5         6         7         8
 
-\documentclass[3p,onecolumn,authoryear]{elsarticle}  % Comment this line out if you need a4paper
+\documentclass[3p,onecolumn,authoryear]{article}  % Comment this line out if you need a4paper
 
 
 % make changes take effect
@@ -45,6 +45,7 @@
 \usepackage[utf8]{inputenc}    % utf8 support
 \usepackage[T1]{fontenc}       % code for pdf file
 \usepackage[USenglish]{babel}             %% language support
+\usepackage{authblk}
 
 \usepackage{url}
 \usepackage{natbib}
@@ -58,7 +59,7 @@
 \pgfplotsset{compat=1.9}  % Prevent warning, pgf running in backwards compatibility mode anyway%\usetikzlibrary{external}                       %% Create pdf figures from TikZ. Use PDFTeXify ...
 %\tikzexternalize[prefix=tikz/]                  %% ... with --tex-option=--shell-escape switch.
 \usepackage[capitalize]{cleveref}
-\Crefname{figure}{Fig.}{Figs.}
+\Crefname{figure}{Figure}{Figures}
 \crefname{equation}{}{}
 \Crefname{equation}{Equation}{Equations}
 \usepackage{subcaption}
@@ -78,33 +79,6 @@
 %Images path 
 \graphicspath{ {figures/} }
 
-
-%\author{Erwin de Gelder$^{a,b*}$, Jan-Pieter Paardekooper$^{a,c}$, Arash Khabbaz Saberi$^{a}$, Hala Elrofai$^{a}$, Olaf Op den Camp$^{a}$, \\ Jeroen Ploeg$^{d,e}$, Ludwig Friedmann$^{f}$, Bart De Schutter$^{b}$%
-%\thanks{$^{a}$TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}%
-%\thanks{$^{b}$Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
-%\thanks{$^{c}$Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
-%\thanks{$^{d}$2getthere, Utrecht, The Netherlands}%
-%\thanks{$^{e}$Eindhoven University of Technology, Department of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}%
-%\thanks{$^{f}$BMW Group, Petuelring 130, 80788 Munich, Germany}%
-%\thanks{$^{*}$Corresponding author. E-mail address: {\tt\small erwin.degelder@tno.nl}}%
-%}
-
-\author[1,2]{Erwin de Gelder\corref{cor1}}
-\ead{erwin.degelder@tno.nl}
-\author[1,3]{Jan-Pieter Paardekooper}
-\author[1]{Arash Khabbaz Saberi}
-\author[1]{Hala Elrofai}
-\author[1]{Olaf Op den Camp}
-\author[4,5]{Jeroen Ploeg}
-\author[6]{Ludwig Friedmann}
-\author[2]{Bart De Schutter}
-\cortext[cor1]{Corresponding author, e-mail: \url{erwin.degelder@tno.nl}}
-\address[1]{TNO, Dept.\ of Integrated Vehicle Safety, Helmond, The Netherlands}
-\address[2]{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}
-\address[3]{Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}
-\address[4]{2getthere, Utrecht, The Netherlands}
-\address[5]{Eindhoven University of Technology, Dept.\ of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}
-\address[6]{BMW Group, Petuelring 130, 80788 Munich, Germany}
 
 \newlength\figurewidth
 \newlength\figureheight
@@ -214,8 +188,10 @@
 \newcommand{\hasn}{$N$}
 
 \usepackage{changebar}
-\newcommand{\cstart}{\cbstart\color{red}}  % Revision 2 changes (from 11 Jan 2019)
-\newcommand{\cend}{\color{black}\cbend}
+\newcommand{\cstart}{}  % Revision 2 changes (from 11 Jan 2020)
+\newcommand{\cend}{}
+\newcommand{\cstartb}{\cbstart\color{red}}  % Changes since July 14, 2020
+\newcommand{\cendb}{\color{black}\cbend}
 %\newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
 
 %\usepackage{setspace}
@@ -223,16 +199,33 @@
 
 
 \begin{document}
+\date{}
 
 
 %\thispagestyle{empty}
 %\pagestyle{empty}
 \title{Ontology for Scenarios for the Assessment of Automated Vehicles}
 
+\author[1,2,*]{Erwin de Gelder}
+\author[1,3]{Jan-Pieter Paardekooper}
+\author[1]{Arash Khabbaz Saberi}
+\author[1]{Hala Elrofai}
+\author[1]{Olaf Op den Camp}
+\author[4,5]{Jeroen Ploeg}
+\author[6]{Ludwig Friedmann}
+\author[2]{Bart De Schutter}
+\affil[1]{TNO, Dept.\ of Integrated Vehicle Safety, Helmond, The Netherlands}
+\affil[2]{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}
+\affil[3]{Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}
+\affil[4]{2getthere, Utrecht, The Netherlands}
+\affil[5]{Eindhoven University of Technology, Dept.\ of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}
+\affil[6]{BMW Group, Petuelring 130, 80788 Munich, Germany}
+\affil[*]{Corresponding author: \textit{erwin.degelder@tno.nl}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{sections/abstract}
 \maketitle
+\input{sections/abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

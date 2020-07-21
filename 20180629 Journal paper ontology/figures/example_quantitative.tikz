@@ -27,7 +27,7 @@
 	duration: \SI{4}{\second} \\
 	tags: };
 
-\node[object, fill=otherclass, right=of ego.north east, anchor=north west](ego stationary){{\bfseries Ego stationary::Set activity}\\
+\node[object, fill=otherclass, below=of ego braking.south](ego stationary){{\bfseries Ego stationary::Set activity}\\
 	activity category: Stationary \\
 	parameters: $\egospeedinitb=\SI{0}{\meter\per\second}$ \\
 	\attrtstart: $\inittimeb = \SI{4}{\second}$ \\
@@ -46,14 +46,14 @@
 %	state: Lateral position\\
 %	tags: Driving straight};
 
-\node[object, fill=otherclass, below=of ego accelerating.south](pedestrian walking){{\bfseries Pedestrian walking::Set activity}\\
+\node[object, fill=otherclass, right=of ego.north east, anchor=north west](pedestrian walking){{\bfseries Pedestrian walking::Set activity}\\
 	activity category: Walking \\
 	parameters: $\slopepedestrian=\SI{1}{\meter\per\second}$, $\pednorthinit=\SI{-6}{\meter}$\\
 	\attrtstart: $\inittime = \SI{0}{\second}$ \\
 	duration: \SI{12}{\second} \\
 	tags: };
 
-\node[object, fill=otherclass, right=of ego stationary.north east, anchor=north west](static environment){{\bfseries Pedestrian crossing::Static environment}\\
+\node[object, fill=otherclass, below=of pedestrian walking.south](static environment){{\bfseries Pedestrian crossing::Static environment}\\
 	static environment category: Pedestrian crossing qualitative\\
 	properties: \{road: \{lanes: 2, lanewidth: \SI{3}{\meter}, \\
 	\leavevmode\phantom{properties: \{road: \{}xy: [(-60, 0), (60, 0)]\}, \\
