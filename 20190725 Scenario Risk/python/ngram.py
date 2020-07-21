@@ -150,7 +150,7 @@ class NGram:
         if i_end is None:
             i_end = signal.index[-1]
         else:
-            i_end = signal.index[signal.index.get_loc(i_end, method="backfill") - 1]
+            i_end = signal.index[signal.index.get_loc(i_end, method="backfill")]
 
         # Search for changes.
         start = [i_start]
