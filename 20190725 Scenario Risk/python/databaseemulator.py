@@ -85,7 +85,10 @@ class DataBaseEmulator:
         if item.uid >= 0:
             print("Warning: object already has an ID, but ID will be overwritten.")
 
-        item.uid = self.collections[collection][-1].uid + 1
+        if self.collections[collection]:
+            item.uid = int(self.collections[collection][-1]["id"]) + 1
+        else:
+            item.uid = 0
         self.collections[collection].append(item.to_json())
 
     def delete_item(self, name: str, uid: int) -> None:
