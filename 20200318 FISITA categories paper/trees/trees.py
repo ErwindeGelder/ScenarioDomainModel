@@ -24,12 +24,11 @@ DOCUMENTS = [("actor_type", ("\\tree[\\node[tag] at (-3\\hwidth, -0.3em) {Vehicl
              ("cyc_lon_activity", ("\\tree{Cyclist longitudinal activity}{Riding forward, " +
                                    "Decelerating, Cruising, Accelerating; Stopping; " +
                                    "Standing still}")),
-             ("initial_state", ("\\tree{Initial state}{Direction, Same as ego, Oncoming, " +
+             ("initial_state", ("\\tree{(Initial) state}{Direction, Same as ego, Oncoming, " +
                                 "Crossing; Dynamics, Moving, Standing still; Lateral position," +
                                 " Same lane, Left of ego, Right of ego; Long.\\ position, " +
                                 "In front of ego,Side of ego,Rear of ego}")),
-             ("lead_vehicle", ("\\tree{Lead vehicle}{Appearing, Cutting in, Gap closing; " +
-                               "Disappearing, Cutting out, Gap opening; Following}")),
+             ("lead_vehicle", "\\tree{Lead vehicle}{No leader; Leader} "),
              ("animal", ("\\tree{Animal}{Position, On ego path, On road, Next to road; Dynamics, " +
                          "Moving, Stationary}")),
              ("road_type", ("\\tree{Road type}{Principal road, Motorway, Trunk, Primary, " +

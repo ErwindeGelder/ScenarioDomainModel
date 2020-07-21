@@ -1,28 +1,25 @@
 \section{Examples of scenario categories}
 \label{sec:examples}
 
-To illustrate the use of the tags proposed in \cref{sec:tags}, we present two scenario categories\footnote{For more examples, we refer the reader to \autocite{degelder2019scenariocategories}.}.
+In this section, three different ways are presented to use the tags, presented in \cref{sec:tags}, for defining scenario categories. To illustrate this, we present three scenario categories\footnote{For more examples, we refer the reader to \autocite{degelder2019scenariocategories}.}. 
 
-The first example is the scenario category ``cut in at merging lanes'' and is schematically shown in \cref{fig:scheme cut in}. 
-Another vehicle is driving in the same direction as the ego vehicle in an adjacent lane. The other vehicle makes a lane change because the lanes are merging. In \cref{fig:tags cut in}, the corresponding tags are shown. These tags can be roughly divided into three parts. The first part refers to the ego vehicle that is driving straight in forward direction. The second part refers to the other vehicle that changes lane. Note that the direction of the lane change is not described. This could mean that the vehicle could either change lane to the left or to the right. In any case, this actor becomes the lead vehicle, as described my the tag ``Lead vehicle''. The third part refers to the road layout.
+The first way to define a scenario category using tags is to list the tags that are applicable. To avoid ambiguity, first the top-level tag is mentioned and, next, the lower-level tags that apply. To illustrate this, see the scenario category ``driving on a straight road'' that is schematically shown in \cref{fig:scheme straight}.
 
-
-\setlength{\figurewidth}{22.5em}
+\setlength{\figurewidth}{15em}
 \begin{figure}[t]
 	\centering
-	\input{figures/cut-in.tikz}
-	\caption{Schematic overview for the scenario category ``cut in at merging lanes''. The blue vehicle denotes the ego vehicle.}
-	\label{fig:scheme cut in}		
+	\input{figures/straight_slippery_road.tikz}
+	\caption{Schematic overview for the scenario category ``driving on a straight road''.}
+	\label{fig:scheme straight}
 \end{figure}
 \begin{figure}[t]
 	\centering
-	\includegraphics{figures/cutin}
-	\caption{Tags for the scenario category ``cut in at merging lanes''.}
-	\label{fig:tags cut in}
+	\includegraphics{figures/straight}
+	\caption{Tags for the scenario category ``driving on a straight road''.}
+	\label{fig:tags straight}
 \end{figure}
 
-
-As schematically shown in \cref{fig:scheme oncoming turning}, the second example is the scenario category ``oncoming vehicle turns right signalized junction''.
+It might be that the way to list the tags as shown in \cref{fig:tags straight} is too limited. For example, if multiple vehicles are involved, it might be useful to describe the activities of these vehicles separately. To accommodate this, a selection of tags of a scenario category may be grouped in order to indicate that these tags apply to the same actor. This is illustrated with the example shown in \cref{fig:scheme oncoming turning}: the scenario category ``oncoming vehicle turns right signalized junction''.
 The ego vehicle is approaching a junction that is equipped with traffic light signals. The ego vehicle intends to go straight at the crossing. Another vehicle is approaching the junction from the opposite direction. The other vehicle intends to turn right at the junction, such that the trajectories of the other vehicle and the ego vehicle intersect. Note that right-hand traffic is assumed.
 In \cref{fig:tags oncoming turning}, the corresponding tags are shown. The first part refers to the ego vehicle that intends to drive straight in forward direction. The second part refers to the other vehicle that turns right. The third part refers describes that the scenario happens at a signalized junction.
 
@@ -40,3 +37,23 @@ In \cref{fig:tags oncoming turning}, the corresponding tags are shown. The first
 	\caption{Tags for the scenario category ``oncoming vehicle turns right at signalized junction''.}
 	\label{fig:tags oncoming turning}
 \end{figure}
+
+A third way to define a scenario category using tags is presented in case the order in which the tags apply matter. To illustrate this, consider the scenario category ``cut in at merging lanes'' that is schematically shown in \cref{fig:scheme cut in}. 
+Another vehicle is driving in the same direction as the ego vehicle in an adjacent lane. The other vehicle makes a lane change because the lanes are merging. In \cref{fig:tags cut in}, the corresponding tags are shown. Most notably, the tag for the ``lead vehicle'' changes from ``no leader'' to ``leader. Note that the direction of the lane change is not described. This could mean that the vehicle could either change lane to the left or to the right. In any case, this actor becomes the lead vehicle, as described my the tag ``lead vehicle''. 
+
+\setlength{\figurewidth}{22.5em}
+\begin{figure}[t]
+	\centering
+	\input{figures/cut-in.tikz}
+	\caption{Schematic overview for the scenario category ``cut in at merging lanes''. The blue vehicle denotes the ego vehicle.}
+	\label{fig:scheme cut in}		
+\end{figure}
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{figures/cut-in_tags}
+	\caption{Tags for the scenario category ``cut in at merging lanes''.}
+	\label{fig:tags cut in}
+\end{figure}
+
+
+

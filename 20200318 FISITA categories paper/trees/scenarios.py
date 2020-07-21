@@ -20,7 +20,10 @@ DOCUMENTS = [("cutin", ("\\scentags{ >Ego; Ego lateral activity, Going straight;
                                    "Direction/Oncoming, Lateral position/Right of ego, " +
                                    "Long.\\ position/In front of ego; Vehicle lateral activity, " +
                                    "Turning/Right|" +
-                                   "Road layout, Junction, Traffic light }"))]
+                                   "Road layout, Junction, Traffic light }")),
+             ("straight", ("\\scentags{Longitudinal activity, Driving forward|" +
+                           "Lateral activity, Following lane|" +
+                           "Road layour, Straight }"))]
 
 
 with open('template_scenario.tex') as tpl:

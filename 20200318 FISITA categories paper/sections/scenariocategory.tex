@@ -85,27 +85,27 @@ We use the term scenario for a description of a situation that can happen or has
 \begin{figure}
 	\centering
 	\begin{tikzpicture}	
-	% Test cases?
-	\begin{scope}
-	\clip (.1\realworldwidth, 0) ellipse (.7\realworldwidth/2 and .8\realworldheight/2); 
-	\fill[testcases] (-.1\realworldwidth, 0) ellipse (.7\realworldwidth/2 and .8\realworldheight/2);
-	\end{scope}
-	
-	% The real world
-	\node[ellipse, minimum height=\realworldheight, minimum width=\realworldwidth, realworld, draw, thickness](real world) at (0, 0) {};
-	\node(real world text) at (.45\realworldwidth, .5\realworldheight) {Real world};
-	\draw[thickness, realworld](real world) -- (real world text);
-	
-	% Set of scenarios
-	\node[ellipse, minimum height=0.8\realworldheight, minimum width=.7\realworldwidth, scenarios, draw, thickness](scenarios) at (-.1\realworldwidth, 0) {};
-	\node(scenarios text) at (-.45\realworldwidth, .5\realworldheight) {Scenarios};
-	\draw[thickness, scenarios](scenarios) -- (scenarios text);
-	
-	% ODD
-	\node[ellipse, minimum height=.8\realworldheight, minimum width=.7\realworldwidth, ODD, draw, thickness](odd) at (.1\realworldwidth, 0) {};
-	\node(odd text) at (.45\realworldwidth, -.45\realworldheight) {ODD};
-	\draw[thickness, ODD](odd) -- (odd text);
-	\node at (0, 0) {Test cases};
+		% Test cases?
+		\begin{scope}
+		\clip (.1\realworldwidth, 0) ellipse (.7\realworldwidth/2 and .8\realworldheight/2); 
+		\fill[testcases] (-.1\realworldwidth, 0) ellipse (.7\realworldwidth/2 and .8\realworldheight/2);
+		\end{scope}
+		
+		% The real world
+		\node[ellipse, minimum height=\realworldheight, minimum width=\realworldwidth, realworld, draw, thickness](real world) at (0, 0) {};
+		\node(real world text) at (.45\realworldwidth, .5\realworldheight) {Real world};
+		\draw[thickness, realworld](real world) -- (real world text);
+		
+		% Set of scenarios
+		\node[ellipse, minimum height=0.8\realworldheight, minimum width=.7\realworldwidth, scenarios, draw, thickness](scenarios) at (-.1\realworldwidth, 0) {};
+		\node(scenarios text) at (-.45\realworldwidth, .5\realworldheight) {Scenarios};
+		\draw[thickness, scenarios](scenarios) -- (scenarios text);
+		
+		% ODD
+		\node[ellipse, minimum height=.8\realworldheight, minimum width=.7\realworldwidth, ODD, draw, thickness](odd) at (.1\realworldwidth, 0) {};
+		\node(odd text) at (.45\realworldwidth, -.45\realworldheight) {ODD};
+		\draw[thickness, ODD](odd) -- (odd text);
+		\node at (0, 0) {Test cases};
 	\end{tikzpicture}
 	\caption{The relation between the real world, the ODD, the scenarios, and test cases.
 		%The set of scenarios (red) is a subset of what can happen or can be encountered in the real world (blue). The Operational Design Domain (ODD, green) is also part of the real world (blue), but is not necessarily aligned with the set of scenarios (red). The set of test cases (shaded yellow region) is a subset of the set of scenarios and, ideally, the ODD (green) fully fits within the set of scenarios (red) and there are no test cases that are outside the ODD (green).

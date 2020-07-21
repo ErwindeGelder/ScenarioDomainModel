@@ -95,12 +95,12 @@ Due to the typical dynamics for pedestrians and cyclists, separate tag trees are
 
 
 
-\subsubsection{Initial state}
+\subsubsection{State or initial state}
 \label{sec:initial state}
 
-\Cref{fig:tree initial state} shows tags for the initial state of the potential other road users with respect to the ego vehicle. A distinction is made in the initial direction of orientation of the road user, the initial dynamics, and the initial longitudinal and lateral position. Three tags, i.e., ``Same as ego'', ``Oncoming'', and ``Crossing'', refer to the initial direction of the road user with respect to the initial direction of the ego vehicle. %Obviously, the tag ``Same as ego'' refers to road users that are oriented in the same direction as the ego vehicle. The tag ``Oncoming'' refers to road users that approach the ego vehicle from the opposite direction. For the other road users, the tag ``Crossing'' is applicable.
-The tag ``Dynamics'' refers to the initial dynamics of the road user; the tag distinguishes between initially moving and standing still at the start of the scenario. 
-Finally, two tags are used to describe the initial position of the actor with respect to the ego vehicle, in longitudinal and lateral direction. 
+\Cref{fig:tree initial state} shows tags for the state or the initial state of the potential other road users with respect to the ego vehicle. A distinction is made in the direction of orientation of the road user, the dynamics, and the longitudinal and lateral position. Three tags, i.e., ``Same as ego'', ``Oncoming'', and ``Crossing'', refer to the direction of the road user with respect to the direction of the ego vehicle. %Obviously, the tag ``Same as ego'' refers to road users that are oriented in the same direction as the ego vehicle. The tag ``Oncoming'' refers to road users that approach the ego vehicle from the opposite direction. For the other road users, the tag ``Crossing'' is applicable.
+The tag ``Dynamics'' distinguishes between moving and standing still. 
+Finally, two tags are used to describe the position of the actor with respect to the ego vehicle, in longitudinal and lateral direction. 
 
 %Note that the relative direction of a road user might change during the course of a scenario. For example, a vehicle that approaches from the left of the ego vehicle will drive in the same direction as the ego vehicle if it turns left while the ego vehicle continues to drive straight and does not change its direction. To avoid ambiguity, the tags, describing the relative position and activities of road users, refer to the initial position and movement of the corresponding road user with respect to the initial position and movement of the ego vehicle. 
 %A distinction is made between road users approaching from the left side (nearside in Singapore) and from the right side (farside in Singapore). There are several reasons to make the distinction between a nearside or farside approach:
@@ -133,7 +133,7 @@ Finally, two tags are used to describe the initial position of the actor with re
 \subsubsection{Lead vehicle}
 \label{sec:lead vehicle}
 
-\Cref{fig:tree lead vehicle} contains the tags that are specifically related to a lead vehicle, i.e., a vehicle that is driving directly in front of the ego vehicle. Two different ways of an appearing lead vehicle are considered. The tag ``Cutting-in'' refers to a vehicle that changes lane such that it ends at the ego vehicle's lane and a ``Gap-closing'' refers to a vehicle that is already in the ego vehicle's lane and appears in the ego vehicle's field of view. In a similar manner, two different ways of a disappearing lead vehicle are considered, ``Cutting-out'' and ``Gap-opening'' respectively. An additional tag ``Following'' is added to describe the situation that the ego vehicle is continuously following the lead vehicle for the duration of a scenario.
+\Cref{fig:tree lead vehicle} contains the tags that are used to mark specific actors as either being a leading vehicle or not.
 
 \begin{figure}
 	\centering
