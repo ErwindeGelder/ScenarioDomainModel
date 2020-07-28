@@ -22,9 +22,12 @@ Modifications:
 2020 06 29 Compute the leave-one-out score differently for large n to lower memory usage.
 2020 07 03 Enable conditional sampling of the KDE.
 2020 07 26 Add the option of having integer weights.
-2020 07 28 Add the clustering method.
+2020 07 27 Add the clustering method. Version 1.1.
+2020 07 28 Enable storing the KDE in a pickle file and restoring it from a pickle file.
 """
 
+import os
+import pickle
 import time
 from typing import Callable, List, Union
 import numpy as np
@@ -39,6 +42,8 @@ class KDEConstants(Options):
     """ Constants that are used for the various methods.
 
     The following constants are included:
+        version(str): When pickling, this can be used to see which version was
+                      using at the time of pickling.
         ndata(int): Number of datapoints that are used (can be smaller than the number of
                     datapoints in the data attribute.
         const_looscore(float): Constant part of leave-one-out score.
@@ -51,6 +56,8 @@ class KDEConstants(Options):
         sumweights(int): The sum of the weights (if weights are used).
         epsilon(float): The distance in one 'bin' in case weighted samples are used.
     """
+    version: str = "1.1"
+
     ndata: int = 0
     const_looscore: float = 0
     const_score: float = 0
@@ -870,6 +877,27 @@ class KDE:
         if self.scaling:
             samples *= self.data_helpers.std[i]
         return samples
+
+    def pickle(self, filename: str) -> None:
+        """ Write the KDE to a file.
+
+        :param filename: Name of the file to which the KDE is written.
+        """
+        if os.path.dirname(filename) and not os.path.exists(os.path.dirname(filename)):
+            os.mkdir(os.path.dirname(filename))
+        with open(filename, "wb") as file:
+            pickle.dump(self, file)
+
+
+def kde_from_file(filename: str) -> KDE:
+    """ Read KDE object from a file.
+
+    :param filename: Name of the file that contains the KDE object.
+    :return: The KDE object that is stored in the file.
+    """
+    with open(filename, "rb") as file:
+        kde = pickle.load(file)
+    return kde
 
 
 def process_reshaped_data(xdata: np.ndarray, func: Callable) -> np.ndarray:
