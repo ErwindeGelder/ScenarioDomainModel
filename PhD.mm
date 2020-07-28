@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1590912451598"><hook NAME="MapStyle" zoom="0.912">
@@ -2235,6 +2235,38 @@
 </node>
 </node>
 <node TEXT="(Simplified) models for AVs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_779185092" CREATED="1567137605189" MODIFIED="1567137616583">
+<node TEXT="Adaptive Cruise Control" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_42237479" CREATED="1595510214005" MODIFIED="1595510228127">
+<node TEXT="ACC with Stop&amp;Go" ID="ID_1401743785" CREATED="1595510234390" MODIFIED="1595510471316" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/486%20ACC%20with%20Stop%20and%20Go.pdf">
+<attribute NAME="key" VALUE="shakouri2012adaptive"/>
+<attribute NAME="journal" VALUE="ISA Transactions"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Adaptive Cruise Control with Stop\&amp;Go Function Using the State-Dependent Nonlinear Model Predictive Control Approach"/>
+<attribute NAME="authors" VALUE="Shakouri, Payman and Ordys, Andrzej and Askari, Mohamad R"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="456A95C2F5C16BD48E9E523A9CCC5B787A618C16BCFF587B5C7B593E78E">
+    <pdf_title>ISA Transactions</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Realistic Car-Following Models for Microscopic Simulation of (C)ACC" ID="ID_135854281" CREATED="1595510457588" MODIFIED="1595510581806" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/487%20Realistic%20Car-Following%20Models%20for%20Microscopic%20Simulation%20of%20(C)ACC.pdf">
+<attribute NAME="key" VALUE="xiao2017realistic"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Realistic Car-Following Models for Microscopic Simulation of Adaptive and Cooperative Adaptive Cruise Control Vehicles"/>
+<attribute NAME="authors" VALUE="Xiao, Lin and Wang, Meng and van Arem, Bart"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8A305649CD2C2C53CF8D8CC7CD215A2389C7BD1B55DF8F041A74576E7915A6">
+    <pdf_title>Realistic Car-Following Models for Microscopic Simulation of Adaptive and Cooperative Adaptive Cruise Control Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Simplified Energy-Efficient ACC based on MPC" ID="ID_1119925937" CREATED="1595510593750" MODIFIED="1595510691018" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/488%20Simplified%20Energy-Efficient%20ACC%20based%20on%20MPC.pdf">
+<attribute NAME="key" VALUE="lin2017simplified"/>
+<attribute NAME="journal" VALUE="IFAC-PapersOnLine"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Simplified energy-efficient adaptive cruise control based on model predictive control"/>
+<attribute NAME="authors" VALUE="Lin, Xiaohai and G{\&quot;o}rges, Daniel and Wei{\ss}mann, Andreas"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="625112A88B1246946F333C41A7E11208C255382A5A81315C87BAE565424">
+    <pdf_title>ScienceDirect</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Lane change" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_84636491" CREATED="1567137618260" MODIFIED="1567137626233">
 <node TEXT="Lane Change Scheduling for Autonomous Vehicles" ID="ID_302371769" CREATED="1567137638452" MODIFIED="1590912450552" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/383%20Lane%20Change%20Scheduling%20for%20Autonomous%20Vehicles.pdf">
 <attribute NAME="key" VALUE="atagoziyev2016lanechange"/>
