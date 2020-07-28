@@ -19,9 +19,10 @@ Modifications:
 2020 02 21 Add the possibility to have a variable bandwidth.
 2020 03 06 Return warning number when computing the bandwidth.
 2020 05 01 Add the option of normalizing the data.
-2020 05 31 Add the option of having weights. TODO: this is not finished yet...
 2020 06 29 Compute the leave-one-out score differently for large n to lower memory usage.
 2020 07 03 Enable conditional sampling of the KDE.
+2020 07 26 Add the option of having integer weights.
+2020 07 28 Add the clustering method.
 """
 
 import time
@@ -40,14 +41,18 @@ class KDEConstants(Options):
     The following constants are included:
         ndata(int): Number of datapoints that are used (can be smaller than the number of
                     datapoints in the data attribute.
-        const_score(float): Constant part of leave-one-out score.
+        const_looscore(float): Constant part of leave-one-out score.
+        const_looscore(float): Constant part of the score.
         dim(float): Dimension of data.
         muk(float): integral [ kernel(x)^2 ]. Since Gaussian kernel is used: 1/(2pi)^(d/2).
         invgr(float): Inverse of Golden Ratio (used for Golden Section Search).
         invgr2(float): Inverse of squared Golden Ratio (used for Golden Section Search).
         variable_bandwidth(bool): Whether a variable bandwidth is used.
+        sumweights(int): The sum of the weights (if weights are used).
+        epsilon(float): The distance in one 'bin' in case weighted samples are used.
     """
     ndata: int = 0
+    const_looscore: float = 0
     const_score: float = 0
     dim: int = 0
     muk: float = 0
@@ -56,6 +61,8 @@ class KDEConstants(Options):
     variable_bandwidth: bool = False
     percentile: float = 95
     bandwidth_factor: float = 1
+    sumweights: int = 0
+    epsilon: float = 0
 
 
 class KDEData(Options):
@@ -95,6 +102,11 @@ class KDE:
     because of the same reason: the euclidean distance between the datapoints is only calculated
     once.
 
+    If weights are used, it is assumed that the weight corresponds to the number
+    of data points that have the same value. As such, the weights should be
+    integers. The weights can be used to merge data points that are close to
+    each other. This can result in a significant faster result.
+
     Attributes:
         bandwidth(float): The bandwidth of the KDE. If no bandwidth is set or computed,
             the bandwidth equals None.
@@ -114,7 +126,7 @@ class KDE:
         self.weights = False
         self.fit(data, weights=weights)
 
-    def fit(self, data: np.ndarray, weights: np.ndarray = None) -> None:
+    def fit(self, data: Union[List, np.ndarray], weights: Union[List, np.ndarray] = None) -> None:
         """ Fit the data
 
         The data is stored. Furthermore, some calculations are done:
@@ -125,6 +137,8 @@ class KDE:
             an n-by-d array, with n datapoints and d dimensions.
         :param weights: If used, the weights for each data point.
         """
+        if isinstance(data, List):
+            data = np.array(data)
         if len(data.shape) == 1:
             self.data = data[:, np.newaxis]
         else:
@@ -132,6 +146,11 @@ class KDE:
 
         if weights is not None:
             self.weights = True
+            if isinstance(weights, List):
+                weights = np.array(weights)
+            if weights.dtype != np.int:
+                raise TypeError("Weights must be integers but are of type '{0}'.".
+                                format(weights.dtype))
             self.data_helpers.weights = weights
 
         if self.scaling:
@@ -141,7 +160,7 @@ class KDE:
                 average = np.average(self.data, axis=0, weights=self.data_helpers.weights)
                 self.data_helpers.std = np.sqrt(np.average((self.data - average)**2, axis=0,
                                                            weights=self.data_helpers.weights))
-            self.data /= self.data_helpers.std
+            self.data = self.data / self.data_helpers.std
 
         # Note: creating the distance matrix takes quite some time and is only needed if cross
         # validation is performed.
@@ -162,6 +181,51 @@ class KDE:
         # self.xhist = (bin_edges[:-1] + bin_edges[1:]) / 2
         # self.fft = np.fft.fft(self.yhist)
 
+    def clustering(self, maxdist: float = None) -> None:
+        """ Cluster the data.
+
+        Clustering the data can result in a huge performance boost. It will also
+        result in a lower memory usage.
+        If no `maxdist` is given, it will be computed as follows:
+            maxdist = (1/5) * (4/(d+2))**(1/(d+4)) * n**(-1/(d+4)) * sigma
+        with:
+            d: dimension of the data.
+            n: number of datapoints.
+            sigma: the standard deviation (averaged over the dimensions).
+        The factor (1/5) is pretty arbritary.
+        In this case, the maxdist equals one fifth of the Silverman bandwidth.
+
+        :param maxdist: The maximum distance a point may be away from the
+                        cluster center.
+        """
+        if maxdist is None:
+            maxdist = (0.2 * (4/(self.constants.dim+2))**(1/(self.constants.dim+4)) *
+                       self.constants.ndata**(-1/(self.constants.dim+4)) *
+                       np.mean(np.std(self.data, axis=0)))
+
+        if self.weights:
+            raise ValueError("Cannot do clustering with weighted data.")
+
+        # Do the clustering.
+        counts = []
+        clusters = []
+        for sample in self.data:
+            found_cluster = False
+            for i, cluster in enumerate(clusters):
+                if np.max(np.abs(sample-cluster)) < maxdist:
+                    # Sample is close the this cluster, so increase the count number and stop
+                    # searching further.
+                    counts[i] += 1
+                    found_cluster = True
+                    break
+            if not found_cluster:
+                # There is no cluster found, so create a new cluster.
+                clusters.append(sample)
+                counts.append(1)
+
+        # Apply the data to this KDE.
+        self.fit(clusters, weights=counts)
+
     def set_n(self, ndatapoints: int) -> None:
         """ Set the number of datapoints to be used when evaluating the one-leave-out score.
 
@@ -170,8 +234,17 @@ class KDE:
         :param ndatapoints: Number of datapoints
         """
         self.constants.ndata = ndatapoints
-        self.constants.const_score = (-ndatapoints*self.constants.dim/2 * np.log(2 * np.pi) -
-                                      ndatapoints*np.log(ndatapoints-1))
+        self.constants.const_looscore = -ndatapoints*(self.constants.dim/2*np.log(2*np.pi) +
+                                                      np.log(ndatapoints-1))
+        if self.scaling:
+            self.constants.const_looscore -= ndatapoints*np.sum(np.log(self.data_helpers.std))
+        if self.weights:
+            nsum = np.sum(self.data_helpers.weights[:ndatapoints])
+            self.constants.const_looscore = -nsum*(self.constants.dim/2*np.log(2*np.pi) +
+                                                   np.log(nsum-1))
+            if self.scaling:
+                self.constants.const_looscore -= nsum*np.sum(np.log(self.data_helpers.std))
+            self.constants.sumweights = nsum
 
     def add_data(self, newdata: np.ndarray) -> None:
         """ Add extra data
@@ -302,11 +375,12 @@ class KDE:
                         bandwidth=datapoints[2] * bandwidth_normalized)
 
         if not self.constants.variable_bandwidth:
-            self.bandwidth = (datapoints[0] + datapoints[2]) / 2 if scores[0] < scores[1] else \
-                (datapoints[3] + datapoints[1]) / 2
+            self.set_bandwidth((datapoints[0] + datapoints[2]) / 2 if scores[0] < scores[1] else
+                               (datapoints[3] + datapoints[1]) / 2)
         else:
-            self.bandwidth = (datapoints[0]+datapoints[2])/2*bandwidth_normalized \
-                if scores[0] < scores[1] else (datapoints[3]+datapoints[1])/2*bandwidth_normalized
+            self.set_bandwidth((datapoints[0]+datapoints[2])/2*bandwidth_normalized
+                               if scores[0] < scores[1] else
+                               (datapoints[3]+datapoints[1])/2*bandwidth_normalized)
 
         # Check if we only searched on one side
         if not at_boundary_min:
@@ -329,29 +403,43 @@ class KDE:
         """
         # Check if the distance matrix is defined. If not, create it (this takes some time)
         if not self.data_helpers.mindists.size:
-            self.data_helpers.mindists = dist.squareform(dist.pdist(self.data,
-                                                                    metric='sqeuclidean')) / 2
+            distances = dist.pdist(self.data, metric='sqeuclidean')
+            if self.weights:
+                self.constants.epsilon = np.sqrt(np.min(distances))
+            self.data_helpers.mindists = dist.squareform(distances) / 2
             self.data_helpers.mindists *= -1  # Do it this way to prevent invalid warning
 
         # Compute the one-leave-out score
         bandwidth = self.bandwidth if bandwidth is None else bandwidth
         if not self.constants.variable_bandwidth:
-            if self.constants.ndata > 10000:
-                # Do this to save memory
-                score = 0
-                for i in range(self.constants.ndata):
-                    score += np.exp(self.data_helpers.mindists[i, :self.constants.ndata] /
-                                    bandwidth**2)
-                score -= 1
-                score = np.sum(np.log(score))
-                score -= self.constants.ndata*self.constants.dim*np.log(bandwidth)
+            if not self.weights:
+                if self.constants.ndata > 10000:
+                    # Do this to save memory
+                    score = 0
+                    for i in range(self.constants.ndata):
+                        score += np.exp(self.data_helpers.mindists[i, :self.constants.ndata] /
+                                        bandwidth**2)
+                    score -= 1
+                    score = np.sum(np.log(score))
+                    score -= self.constants.ndata*self.constants.dim*np.log(bandwidth)
+                else:
+                    score = (np.sum(np.log(np.sum(np.exp(self.data_helpers.mindists
+                                                         [:self.constants.ndata,
+                                                          :self.constants.ndata] /
+                                                         bandwidth ** 2),
+                                                  axis=0) - 1)) -
+                             self.constants.ndata * self.constants.dim * np.log(bandwidth))
             else:
-                score = (np.sum(np.log(np.sum(np.exp(self.data_helpers.mindists
+                corr_factor = ((3*bandwidth**2/(self.constants.epsilon**2+3*bandwidth**2)) **
+                               (self.constants.dim/2))
+                score = (np.sum(np.log(np.dot(self.data_helpers.weights[:self.constants.ndata],
+                                              np.exp(self.data_helpers.mindists
                                                      [:self.constants.ndata,
-                                                      :self.constants.ndata] /
-                                                     bandwidth ** 2),
-                                              axis=0) - 1)) -
-                         self.constants.ndata * self.constants.dim * np.log(bandwidth))
+                                                      :self.constants.ndata] / bandwidth**2))
+                                       - (self.data_helpers.weights[:self.constants.ndata] *
+                                          (1-corr_factor)+corr_factor)) *
+                                self.data_helpers.weights[:self.constants.ndata]) -
+                         self.constants.sumweights * self.constants.dim * np.log(bandwidth))
         else:
             bandwidth_dim = bandwidth**self.constants.dim
             score = np.sum(np.log(np.sum(np.exp(self.data_helpers.mindists
@@ -359,7 +447,7 @@ class KDE:
                                                 bandwidth**2) / bandwidth_dim, axis=1) -
                                   1/bandwidth_dim))
         if include_const:
-            score += self.constants.const_score
+            score += self.constants.const_looscore
         return score
 
     def set_bandwidth(self, bandwidth: Union[float, np.ndarray]) -> None:
@@ -372,10 +460,21 @@ class KDE:
         self.bandwidth = bandwidth
         if isinstance(self.bandwidth, float):
             self.constants.variable_bandwidth = False
+            self.constants.const_score = (-self.constants.dim/2*np.log(2*np.pi) -
+                                          self.constants.dim*np.log(self.bandwidth))
+            if not self.weights:
+                self.constants.const_score -= np.log(self.constants.ndata)
+            else:
+                self.constants.const_score -= np.log(self.constants.sumweights)
         elif isinstance(self.bandwidth, np.ndarray):
             self.constants.variable_bandwidth = True
+            self.constants.const_score = (-self.constants.dim/2*np.log(2*np.pi) -
+                                          np.log(self.constants.ndata))
         else:
             raise TypeError("Bandwidth must be of type <float> or <np.ndarray>.")
+
+        if self.scaling:
+            self.constants.const_score -= np.sum(np.log(self.data_helpers.std))
 
     def set_score_samples(self, xdata: np.ndarray, compute_difference: bool = False) -> None:
         """ Set the data that is to be used to compute the score samples
@@ -488,22 +587,20 @@ class KDE:
         # We first compute the sum. Then the log of f(x,n) is computed:
         # log(f(x,n)) = -d/2*log(2pi) - log(n) - d*log(h) + log(sum)
         sum_kernel = np.zeros(eucl_dist.shape[1])
-        if not self.constants.variable_bandwidth:
+        if not self.constants.variable_bandwidth and not self.weights:
             for dimension in eucl_dist:
                 sum_kernel += np.exp(-dimension / (2 * self.bandwidth**2))
-            const = (-self.constants.dim/2*np.log(2*np.pi) - np.log(self.constants.ndata) -
-                     self.constants.dim * np.log(self.bandwidth))
+        elif self.weights:
+            for dimension, weight in zip(eucl_dist,
+                                         self.data_helpers.weights[:self.constants.ndata]):
+                sum_kernel += np.exp(-dimension/(2*self.bandwidth**2))*weight
         else:
             for dimension, sample_bandwidth in zip(eucl_dist,
                                                    self.bandwidth[:self.constants.ndata]):
                 sum_kernel += (np.exp(-dimension / (2 * sample_bandwidth**2)) /
                                sample_bandwidth**self.constants.dim)
-            const = -self.constants.dim/2*np.log(2*np.pi) - np.log(self.constants.ndata)
 
-        if self.scaling:
-            const -= np.sum(np.log(self.data_helpers.std))
-
-        return const + np.log(sum_kernel)
+        return self.constants.const_score + np.log(sum_kernel)
 
     def cdf(self, xdata: np.ndarray = None) -> np.ndarray:
         """ Compute the cumulative distribution function of the KDE
@@ -533,7 +630,10 @@ class KDE:
         for i in range(self.constants.dim):
             difference = np.subtract(*np.meshgrid(xdata[:, i], data[:, i]))
             cdf *= (scipy.special.erf(difference) + 1) / 2
-        cdf = np.mean(cdf, axis=0)
+        if not self.weights:
+            cdf = np.mean(cdf, axis=0)
+        else:
+            cdf = np.average(cdf, axis=0, weights=self.data_helpers.weights[:self.constants.ndata])
         return cdf
 
     def gradient_samples(self, xdata: np.ndarray = None) -> np.ndarray:
@@ -541,6 +641,8 @@ class KDE:
 
         If no data is given, it is assumed that the data is already set by set_score_samples().
         Therefore, the euclidean distance will not be computed.
+
+        NOTE: Seems to not work in all cases.
 
         :param xdata: np.ndarray with the datapoints.
         :return: gradient of the KDE
@@ -613,6 +715,12 @@ class KDE:
         If no data is given, it is assumed that the data is already set by set_score_samples().
         Therefore, the euclidean distance will not be computed.
 
+        NOTE: The Laplacian is not correctly determined if the data is scaled.
+              The reason that fixing this is a low priority, is because the
+              Laplacian is now only used to compute the completeness metric. For
+              the completeness metric to make sense, it is better to first scale
+              the data outside the KDE functionality.
+
         :param xdata: m-by-d array with m datapoints
         :return: Laplacian of each of the m datapoints
         """
@@ -654,8 +762,8 @@ class KDE:
         if xdata is None:
             eucl_dist = self.data_helpers.data_dist[:self.constants.ndata]
         else:
-            if self.scaling:
-                xdata /= self.data_helpers.std
+            # if self.scaling:
+            #     xdata /= self.data_helpers.std
             eucl_dist = dist.cdist(self.data[:self.constants.ndata], xdata, metric='sqeuclidean')
 
         # The Laplacian is defined as the trace of the Hessian
@@ -665,12 +773,16 @@ class KDE:
         # u^2 is the squared euclidean distance divided by h^2, hence, u^2=eucl_dist/kde.bw**2
         # d is the dimension of the data and h is the bandwidth
         laplacian = np.zeros(eucl_dist.shape[1])
-        for dimension in eucl_dist:
+        for i, dimension in enumerate(eucl_dist):
             pdf = np.exp(-dimension / (2 * self.bandwidth ** 2)) / \
                 ((2 * np.pi) ** (self.constants.dim / 2) * self.bandwidth ** self.constants.dim)
+            if self.weights:
+                pdf *= self.data_helpers.weights[i]
             laplacian += pdf * (dimension / self.bandwidth ** 4 - self.constants.dim /
                                 self.bandwidth ** 2)
-        return laplacian / self.constants.ndata
+        if not self.weights:
+            return laplacian / self.constants.ndata
+        return laplacian / self.constants.sumweights
 
     def confidence_interval(self, xdata: np.ndarray, confidence: float = 0.95):
         """ Determine the confidence interval
@@ -699,9 +811,15 @@ class KDE:
         :param n_samples: Number of samples to generate. Defaults to 1.
         :return: array with shape (n_samples, n_features).
         """
-        uniform_vars = np.random.uniform(0, 1, size=n_samples)
-        i = (uniform_vars * self.data.shape[0]).astype(np.int64)
-        samples = np.random.normal(self.data[i], self.bandwidth)
+        if not self.weights:
+            uniform_vars = np.random.uniform(0, 1, size=n_samples)
+            i = (uniform_vars * self.data.shape[0]).astype(np.int64)
+        else:
+            i = np.random.choice(np.arange(self.constants.ndata), size=n_samples, replace=True,
+                                 p=(self.data_helpers.weights[:self.constants.ndata] /
+                                    self.constants.sumweights))
+        selected_data = self.data[i]
+        samples = np.random.normal(selected_data, self.bandwidth)
         if self.scaling:
             samples *= self.data_helpers.std
         return samples
@@ -722,6 +840,8 @@ class KDE:
         if len(norm.shape) > 1:
             norm = np.sum(norm, axis=1)
         marginal_prob = np.exp(-norm / (2 * self.bandwidth**2))
+        if self.weights:
+            marginal_prob *= self.data_helpers.weights[:self.constants.ndata]
         marginal_prob /= np.sum(marginal_prob)
         i = np.ones(self.constants.dim, dtype=np.bool)
         i[i_given] = False
