@@ -133,16 +133,19 @@ class KDE:
         self.weights = False
         self.fit(data, weights=weights)
 
-    def fit(self, data: Union[List, np.ndarray], weights: Union[List, np.ndarray] = None) -> None:
+    def fit(self, data: Union[List, np.ndarray], weights: Union[List, np.ndarray] = None,
+            std: Union[float, np.ndarray] = None) -> None:
         """ Fit the data
 
         The data is stored. Furthermore, some calculations are done:
          - Computing the dimension of the data.
          - Computing the corresponding constant muk = integral[ kernel(x)^2 ]
+         - Computing some offsets for the score.
 
         :param data: The provided data. When multidimensional data is used, the data should be
             an n-by-d array, with n datapoints and d dimensions.
         :param weights: If used, the weights for each data point.
+        :param std: The standard deviation could be given.
         """
         if isinstance(data, List):
             data = np.array(data)
@@ -161,13 +164,16 @@ class KDE:
             self.data_helpers.weights = weights
 
         if self.scaling:
-            if not self.weights:
-                self.data_helpers.std = np.std(self.data, axis=0)
+            if std is None:
+                if not self.weights:
+                    self.data_helpers.std = np.std(self.data, axis=0)
+                else:
+                    average = np.average(self.data, axis=0, weights=self.data_helpers.weights)
+                    self.data_helpers.std = np.sqrt(np.average((self.data - average)**2, axis=0,
+                                                               weights=self.data_helpers.weights))
+                self.data = self.data / self.data_helpers.std
             else:
-                average = np.average(self.data, axis=0, weights=self.data_helpers.weights)
-                self.data_helpers.std = np.sqrt(np.average((self.data - average)**2, axis=0,
-                                                           weights=self.data_helpers.weights))
-            self.data = self.data / self.data_helpers.std
+                self.data_helpers.std = std
 
         # Note: creating the distance matrix takes quite some time and is only needed if cross
         # validation is performed.
@@ -229,7 +235,7 @@ class KDE:
                 counts.append(1)
 
         # Apply the data to this KDE.
-        self.fit(clusters, weights=counts)
+        self.fit(clusters, weights=counts, std=self.data_helpers.std)
 
     def _maxdist(self) -> float:
         return (0.2*(4/(self.constants.dim+2))**(1/(self.constants.dim+4)) *
