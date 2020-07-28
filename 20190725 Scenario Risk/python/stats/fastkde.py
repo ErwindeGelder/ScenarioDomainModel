@@ -199,9 +199,7 @@ class KDE:
                         cluster center.
         """
         if maxdist is None:
-            maxdist = (0.2 * (4/(self.constants.dim+2))**(1/(self.constants.dim+4)) *
-                       self.constants.ndata**(-1/(self.constants.dim+4)) *
-                       np.mean(np.std(self.data, axis=0)))
+            maxdist = self._maxdist()
 
         if self.weights:
             raise ValueError("Cannot do clustering with weighted data.")
@@ -225,6 +223,11 @@ class KDE:
 
         # Apply the data to this KDE.
         self.fit(clusters, weights=counts)
+
+    def _maxdist(self) -> float:
+        return (0.2*(4/(self.constants.dim+2))**(1/(self.constants.dim+4)) *
+                self.constants.ndata**(-1/(self.constants.dim+4)) *
+                np.mean(np.std(self.data, axis=0)))
 
     def set_n(self, ndatapoints: int) -> None:
         """ Set the number of datapoints to be used when evaluating the one-leave-out score.
@@ -284,6 +287,14 @@ class KDE:
 
         :return: An error/warning integer.
         """
+        # If clustering is used, make sure that the minimum bandwidth is larger than the
+        # cluster width.
+        min_bw = max(0.001, self._maxdist())
+        if min_bw in kwargs:
+            kwargs["min_bw"] = max(kwargs["min_bw"], min_bw)
+        else:
+            kwargs["min_bw"] = min_bw
+
         return self.compute_bandwidth_gss(**kwargs)
 
     def compute_bandwidth_grid(self, min_bw: float = 0.001, max_bw: float = 1.0,
@@ -323,6 +334,9 @@ class KDE:
         datapoints = np.array([min_bw, 0, 0, max_bw], dtype=float)
         datapoints[1] = datapoints[0] + self.constants.invgr2 * difference
         datapoints[2] = datapoints[0] + self.constants.invgr * difference
+        if difference <= 0:
+            raise ValueError("Maximum bandwidth must be larger than minimum bandwidth. Now " +
+                             "min_bw={0}, max_bw={1}.".format(min_bw, max_bw))
 
         # required steps to achieve tolerance
         n_iter = int(np.ceil(np.log(tol / difference) / np.log(self.constants.invgr)))
