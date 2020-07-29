@@ -2,15 +2,15 @@
 \label{sec:introduction}
 
 % Our contribution
-An essential aspect in the development of automated vehicles (AVs) is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \autocite{bengler2014threedecades, stellet2015taxonomy, Helmer2017safety, putz2017pegasus, roesener2017comprehensive, gietelink2006development, wachenfeld2016release}.
+An essential aspect in the development of automated vehicles (AVs) is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \autocite{gietelink2006development, bengler2014threedecades, stellet2015taxonomy, wachenfeld2016release, Helmer2017safety, putz2017pegasus, roesener2017comprehensive, riedmaier2020survey}.
 For legal and public acceptance of AVs, a clear definition of system performance is important, as well as quantitative measures for system quality. 
 Traditional methods, such as \autocite{response2006code, ISO26262}, used for the evaluation of driver assistance systems, are no longer sufficient for the assessment of quality and performance aspects of an AV, because they would require too many resources \autocite{wachenfeld2016release}. 
-Therefore, among other methods, a scenario-based approach has been proposed \autocite{elrofai2018scenario, putz2017pegasus}. 
+Therefore, among other methods, a scenario-based approach has been proposed \autocite{putz2017pegasus, elrofai2018scenario, riedmaier2020survey}. 
 For scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in the test cases used for scenario-based assessment \autocite{stellet2015taxonomy}. 
 
 % Explain importance/relevance
-The notion of scenario is frequently used in the context of automated driving \autocite{putz2017pegasus, roesener2017comprehensive, gietelink2006development, hulshof2013autonomous, ebner2011identifying, ploeg2017GCDC, zofka2015datadrivetrafficscenarios, xiong2015orchestration, shao2019evaluating}, despite the fact that an explicit definition is often not provided. 
-However, as mentioned by various authors \autocite{stellet2015taxonomy, Helmer2017safety, alvarez2017prospective, zofka2015datadrivetrafficscenarios, aparicio2013pre, putz2017pegasus, geyer2014, ulbrich2015}, using a scenario in the context of the development or assessment of AVs requires a clear definition of a scenario. 
+The notion of scenario is frequently used in the context of automated driving \autocite{gietelink2006development, ebner2011identifying, hulshof2013autonomous, xiong2015orchestration, zofka2015datadrivetrafficscenarios, putz2017pegasus, roesener2017comprehensive, ploeg2017GCDC, shao2019evaluating}, despite the fact that an explicit definition is often not provided. 
+However, as mentioned by various authors \autocite{aparicio2013pre, geyer2014, ulbrich2015, stellet2015taxonomy, zofka2015datadrivetrafficscenarios, alvarez2017prospective, Helmer2017safety, putz2017pegasus}, using a scenario in the context of the development or assessment of AVs requires a clear definition of a scenario. 
 To this end, some definitions of a scenario in the context of (automated) driving have been proposed in literature \autocite{geyer2014, ulbrich2015, elrofai2016scenario}.
 These definitions, however, leave room for interpretation because, firstly, the definitions themselves are ambiguous and, secondly, the definitions use other undefined terms.
 For the context of the assessment of AVs, scenarios are used to describe the test conditions \autocite{stellet2015taxonomy} and this requires a more concrete definition of a scenario to minimize any ambiguity.
@@ -22,28 +22,33 @@ For the context of the assessment of AVs, scenarios are used to describe the tes
 % - More complete (also event defined etc.)
 % - Backed up with literature (should we mention this???)
 % - Real example given
-We aim for a definition of a scenario that is, on the one hand, broadly consistent with existing definitions \autocite{geyer2014, ulbrich2015, elrofai2016scenario} while, on the other hand, more concrete, such that it is applicable for scenario mining \autocite{elrofai2016scenario} and scenario-based assessment \autocite{stellet2015taxonomy, deGelder2017assessment}. We propose a definition that is concrete enough to be used in quantitative analysis required for the assessment of AVs. This is achieved by defining quantitative building blocks of a scenario in the form of activities, actors, and the static environment. In addition, we introduce the concept of a \emph{scenario category}  
+We aim for a definition of a scenario that is, on the one hand, broadly consistent with existing definitions \autocite{geyer2014, ulbrich2015, elrofai2016scenario} while, on the other hand, more concrete, such that it is applicable for scenario mining \autocite{elrofai2016scenario} and scenario-based assessment \autocite{stellet2015taxonomy, deGelder2017assessment, pegasus2019}. We propose a definition that is concrete enough to be used in quantitative analysis required for the assessment of AVs. This is achieved by defining quantitative building blocks of a scenario in the form of activities, actors, and the static environment. In addition, we introduce the concept of a \emph{scenario category}  
 that is used to qualitatively describe scenarios, i.e., an abstraction of a scenario. 
-\cstart To define the terms \emph{scenario} and \emph{scenario category}, we use terms that are commonly used in the field of the safety assessment of AVs \autocite{catapult2018musicc,catapult2018regulating,sigsim2019glossary,openscenario,ulbrich2015,geyer2014}. For an unambiguous formulation, some definitions from the field of control theory are adopted.\cend
+\cstart To define the terms \emph{scenario} and \emph{scenario category}, we use terms that are commonly used in the field of the safety assessment of AVs \autocite{geyer2014, ulbrich2015, catapult2018musicc, catapult2018regulating, sigsim2019glossary, openscenario}. For an unambiguous formulation, some definitions from the field of control theory are adopted.\cend
 
 
-Besides defining the notion of scenario, its building blocks, and the notion of scenario category, an ontology is presented that formalizes the description of a scenario and a scenario category. 
-This ontology describes the relation between the different terms such as scenarios, activities, and actors.
-Furthermore, the ontology enables the translation of the terms to object-oriented code.
-This, in turn, is used to describe the scenarios in a coding language that can be understood by various software agents, such as simulation tools. The implementation code of our ontology is publicly available\footnote{As a coding language, Python is used. The code is publicly available at \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.}. 
-The ontology is also used as a schema for a database system for storing the scenarios and scenario categories.
-An example is provided that illustrates the use of the ontology with a real-world case.
+Besides defining the notion of scenario, its building blocks, and the notion of scenario category, an \cstartb object-oriented framework \cendb is presented that formalizes the description of a scenario and a scenario category. 
+This \cstartb framework \cendb describes the relation between the different terms such as scenarios, activities, and actors.
+Furthermore, the \cstartb framework \cendb enables the translation of the terms to object-oriented code.
+This, in turn, is used to describe the scenarios in a coding language that can be understood by various software agents, such as simulation tools. 
+The implementation code of our ontology is publicly available\footnote{As a coding language, Python is used. The code is publicly available at \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.}. 
+The \cstartb framework \cendb is also used as a schema for a database system for storing the scenarios and scenario categories.
+An example is provided that illustrates the use of the \cstartb object-oriented framework \cendb with a real-world case.
 
-Ontologies have been widely used in the field of automated driving \autocite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core, maiti2017conceptualization, benvenuti2017ontologybased, bagschik2017ontology}. However, to the best of our knowledge, we are the first to propose an ontology for scenarios for the assessment of AVs. 
-From the implementation side, there are several file formats and methods for scenario ontologies, e.g., OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}. 
+\cstartb An object-oriented approach is often used in the field of the assessment of AVs, especially for model-based testing \autocite{tsai2003scenario, utting2012taxonomy, zofka2016testing, wittmann2017method}. \cendb
+%Ontologies have been widely used in the field of automated driving \autocite{provine2004ontology, morignot2013ontology, schlenoff2003using, zhao2015core, maiti2017conceptualization, benvenuti2017ontologybased, bagschik2017ontology}. 
+However, to the best of our knowledge, we are the first to propose an \cstartb object-oriented framework for the definition of \cendb scenarios for the assessment of AVs. 
+From the implementation side, there are several file formats and methods for \cstartb defining scenarios for the assessment of AVs\cendb, e.g., OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}. 
 \cstart These implementations are used to describe specific tests for AVs that can be executed in a virtual environment.
-Because of the focus on scenarios that can be simulated, these implementations describe scenarios at a quantitative level and, consequently, they do not provide concepts for a qualitative description of a scenario. \cend
-Our proposed ontology differs from these implementations as our ontology also allows for qualitative descriptions of scenarios, which is useful because it enables to group scenarios and to interpret the scenarios more easily.
-Furthermore, our ontology is supported with the definitions and justifications of each of the terms.
+\cstartb This paper complements these implementations in three different ways. 
+First, because of the focus of these implementations on scenarios that can be simulated, these implementations describe scenarios at a quantitative level and, consequently, they do not provide concepts for a qualitative description of a scenario. 
+We propose a concept for qualitative descriptions of scenarios, which is useful because it enables to group scenarios and to interpret the scenarios more easily.
+Second, the object-oriented framework allows for straightforward reusing and maintaining of (the building blocks of) a scenario as well as performing operations on and interacting with (the building blocks of) a scenario.
+Third, our ontology is supported with the definitions and justifications of each of the terms. \cendb
 
 % Outline
-The outline of the paper is as follows. In \cref{sec:background}, we explain why an ontology is useful, what the context is, and we provide some definitions of terms that are adopted from literature. 
+The outline of the paper is as follows. In \cref{sec:background}, we explain why an \cstartb object-oriented framework \cendb is useful, what the context is, and we provide some definitions of terms that are adopted from literature. 
 Using these definitions and considering the context, we define the notions of \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category}  in \cref{sec:definitions}. 
-The ontology that formalizes these definitions is presented in \cref{sec:ontology}. 
-In \cref{sec:example}, an application example is provided to illustrate the use of the ontology with a real-world scenario. 
+The \cstartb object-oriented framework \cendb that formalizes these definitions is presented in \cref{sec:oo framework}. 
+In \cref{sec:example}, an application example is provided to illustrate the use of the \cstartb framework \cendb with a real-world scenario. 
 The paper is concluded in \cref{sec:conclusion}.

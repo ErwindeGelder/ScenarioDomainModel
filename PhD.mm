@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
+<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1590912451598"><hook NAME="MapStyle" zoom="0.912">
@@ -1401,6 +1401,24 @@
     <pdf_title>Autonomous Vehicle Safety: An Interdisciplinary Challenge</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="The Release of Autonomous Vehicles" ID="ID_558865340" CREATED="1595581883857" MODIFIED="1595581893655" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/075%20The%20Release%20of%20Autonomous%20Vehicles.pdf">
+<attribute NAME="key" VALUE="wachenfeld2016release"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="The Release of Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="Wachenfeld, Walther and Winner, Hermann"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AD2E246D97E43D87D1AF3FB7E8A13D5E3D34FD83C99CCA2694FD9C6286686">
+    <pdf_title>The Release of Autonomous Vehicles</pdf_title>
+</pdf_annotation>
+<node TEXT="Die Freigabe des autonomen Fahrens" ID="ID_1033278050" CREATED="1595581738022" MODIFIED="1595581828065" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/489%20Die%20Freigabe%20des%20autonomen%20Fahrens.pdf" MOVED="1595581887480">
+<attribute NAME="key" VALUE="wachenfeld2015freigabe"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Die {F}reigabe des Autonomen {F}ahrens"/>
+<attribute NAME="authors" VALUE="Wachenfeld, Walther and Winner, Hermann"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="2B66BE8491BD73D098134C32119FCBFAB4EE40EDA7C6E39EEE1B4FBD5061E62B">
+    <pdf_title>Die Freigabe des autonomen Fahrens</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Simulation framework" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_478733171" CREATED="1512630149312" MODIFIED="1512630167717">
 <node TEXT="Book on fundamentals of traffic simulation" ID="ID_1323580842" CREATED="1551718970600" MODIFIED="1590912451178" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/283%20Book%20on%20traffic%20simulations.pdf">
@@ -1559,6 +1577,25 @@
 <attribute NAME="authors" VALUE="Staplin, L. and Mastromatto, T. and Lococo, K. H. and Kenneth, W. and Gish, K. W. and Brooks, J. O."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC74C7F23B38FB7FDFE7E9BFD74714E42830A85D43D4992A4137E3E9C4BE">
     <pdf_title>A Framework for Automated Driving System Testable Cases and Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="MUSICC: Pass-Fail Criteria for Scenario-Based Testing for ADS" ID="ID_1743029397" CREATED="1595583328677" MODIFIED="1595583379993" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/492%20Pass-Fail%20Criteria%20for%20Scenario-Based%20Testing%20for%20ADS.pdf">
+<attribute NAME="key" VALUE="myers2020pass"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:2005.09417"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Pass-Fail Criteria for Scenario-Based Testing of Automated Driving Systems"/>
+<attribute NAME="authors" VALUE="Myers, Robert and Saigol, Zeyn"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B56E53A0EBD66D95AA4D9BCE7D6E0D45FE1DDBF20B17A9FA4E2CEF81118B7">
+    <pdf_title>Pass-Fail Criteria for Scenario-Based Testing of Automated Driving Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Japan" ID="ID_1715499456" CREATED="1595589079683" MODIFIED="1595589187328" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/494%20Development%20of%20a%20Safety%20Assurance%20Process%20for%20AVs%20in%20Japan.pdf">
+<attribute NAME="key" VALUE="jacobo2019development"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Development of a Safety Assurance Process for Autonomous Vehicles in Japan"/>
+<attribute NAME="authors" VALUE="Antona-Makoshi, Jacobo and Uchida, Nobuyuki and Yamazaki, Kunio and Ozawa, Koichiro and Kitahara, Eiichi and Taniguchi, Satoshi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F3C314CFED48456FF61B63591C06129EF167EF5EF0F85E31A16768909D085">
+    <pdf_title>Antona-Makoshi 1</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="PEGASUS" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1615434539" CREATED="1555470126855" MODIFIED="1590912451053" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/304%20PEGASUS%20Approach.pdf">
@@ -4045,7 +4082,7 @@
 </node>
 </node>
 </node>
-<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
 <node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1590912449994" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
@@ -4244,6 +4281,73 @@
 <attribute NAME="authors" VALUE="Kiko, Kilian and Atkinson, Colin"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="98EE9C8BEB61A38B574ED8B5557E6293C4CFE764FFEC9ABA28341321B101">
     <pdf_title>ADetailed Comparison of UML and OWL</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="In general about &quot;object-oriented&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1406053831" CREATED="1596016318125" MODIFIED="1596016328541">
+<node TEXT="Concepts and Paradigms of Object-Oriented Programming" ID="ID_1769300570" CREATED="1596016425258" MODIFIED="1596016428444" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/498%20Concepts%20and%20paradigms%20of%20object-oriented%20programming.pdf">
+<attribute NAME="key" VALUE="wegner1990concepts"/>
+<attribute NAME="journal" VALUE="ACM SIGPLAN OOPS Messenger"/>
+<attribute NAME="year" VALUE="1990"/>
+<attribute NAME="title" VALUE="Concepts and Paradigms of Object-Oriented Programming"/>
+<attribute NAME="authors" VALUE="Wegner, Peter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F758AC57E4A9B0EDED91D1CFC8A339E9B94582DF595EFFC6529D2C8739EC5AB9">
+    <pdf_title>Concepts and Paradigms of Object-Oriented Programming Expansion of Oct 400PSLA-89 Keynote Talk Peter Wegner, Brown University</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Design Patterns: Abstraction and Reuse of Object-Oriented Design" ID="ID_808032088" CREATED="1596023837706" MODIFIED="1596023850365" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/499%20Design%20patterns.pdf">
+<attribute NAME="key" VALUE="gamma1993design"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Design Patterns: Abstraction and Reuse of Object-Oriented Design"/>
+<attribute NAME="authors" VALUE="Gamma, Erich and Helm, Richard and Johnson, Ralph and Vlissides, John"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F7DB9F158F137284B35E5E1D87C6D2575290836A64886DD12A9590CC4143D8B3"/>
+</node>
+<node TEXT="Encapsulation and inheritance in OO programming languages" ID="ID_245249672" CREATED="1596025738638" MODIFIED="1596025812256" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/500%20Encapsulation%20and%20inheritance%20in%20object-oriented%20programming.pdf">
+<attribute NAME="key" VALUE="snyder1986encapsulation"/>
+<attribute NAME="year" VALUE="1986"/>
+<attribute NAME="title" VALUE="Encapsulation and Inheritance in Object-Oriented Programming Languages"/>
+<attribute NAME="authors" VALUE="Snyder, Alan"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A11F65C3FB5E187B35362BFA579ACC18738D4C3D2EFFE933BD1CF4D446AA88">
+    <pdf_title>Encapsulation and Inheritance in Object-Orlented Programming Languages</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="&quot;object-oriented&quot; in relation to testing" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_993268028" CREATED="1596006527379" MODIFIED="1596006553162">
+<node TEXT="Simulation Framework for Traffic Scenarios" ID="ID_1036695762" CREATED="1596006567729" MODIFIED="1596006571221" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
+<attribute NAME="key" VALUE="zofka2016testing"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Testing and Validating High Level Components for Automated Driving: Simulation Framework for Traffic Scenarios"/>
+<attribute NAME="authors" VALUE="Zofka, Marc Ren{\&apos;e} and Klemm, Sebastian and Kuhnt, Florian and Schamm, Thomas and Z{\&quot;o}llner, J Marius"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6A8F4FFC63FCCDC88EE2EB2BC9BC2DCAA54BE11AB1FCB1B1192DA1606445D3">
+    <pdf_title>Testing and Validating High Level Components for Automated Driving: Simulation Framework for Traffic Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Scenario-Based Object-Oriented Testing Framework" ID="ID_491037115" CREATED="1596006870430" MODIFIED="1596006873863" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/495%20Scenario-based%20Object-Oriented%20Testing%20Framework.pdf">
+<attribute NAME="key" VALUE="tsai2003scenario"/>
+<attribute NAME="year" VALUE="2003"/>
+<attribute NAME="title" VALUE="Scenario-Based Object-Oriented Testing Framework"/>
+<attribute NAME="authors" VALUE="Tsai, Wei-tek and Saimi, Akihiro and Yu, Lian and Paul, Raymond"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A83646B6B1BCAB8EAF45AEE2CE9289CA243F0F42D5D8C84B132B9365A844D35">
+    <pdf_title>Scenario-based Object-Oriented Testing Framework</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A taxonomy of model-based testing approaches" ID="ID_831908735" CREATED="1596007238563" MODIFIED="1596007318696" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/496%20A%20taxonomy%20of%20model-based%20testing%20approaches.pdf">
+<attribute NAME="key" VALUE="utting2012taxonomy"/>
+<attribute NAME="journal" VALUE="Software Testing, Verification and Reliability"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="A Taxonomy of Model-Based Testing Approaches"/>
+<attribute NAME="authors" VALUE="Utting, Mark and Pretschner, Alexander and Legeard, Bruno"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5699618019CCEC892A13EF94FD6AB2F0DBA7B079EEFDC8993F471B1E3643F29D">
+    <pdf_title>A taxonomyof model-based testing approaches</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Method for Comprehensive and Adaptive Risk Analysis" ID="ID_420763914" CREATED="1596007836738" MODIFIED="1596007905705" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/497%20Method%20for%20Comprehensive%20and%20Adaptive%20Risk%20Analysis.pdf">
+<attribute NAME="key" VALUE="wittmann2017method"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Method for Comprehensive and Adaptive Risk Analysis for the Development of Automated Driving"/>
+<attribute NAME="authors" VALUE="Wittmann, David and Lienkamp, Markus and Wang, Cheng"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="588534525E0BE1B4849B08FE7B13BE484E1E05625AD4059526E7E126AA4FC8">
+    <pdf_title>Method for Comprehensive and Adaptive Risk Analysis for the Development of Automated Driving</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -5217,6 +5321,12 @@
 <attribute NAME="title" VALUE="{ISO} 34502: Road {V}ehicles -- {E}ngineering Framework and Process of Scenario-Based Safety Evaluation"/>
 <attribute NAME="authors" VALUE="{ISO 34502}"/>
 </node>
+<node TEXT="ISO9001" ID="ID_1233270810" CREATED="1595591103524" MODIFIED="1595591109680">
+<attribute NAME="key" VALUE="ISO9001"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Quality management systems --- Requirements"/>
+<attribute NAME="authors" VALUE="{ISO 9001:2015}"/>
+</node>
 </node>
 <node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">
 <node TEXT="Design and Evaluation of Automated MoD in Singapore" ID="ID_639563276" CREATED="1513224335345" MODIFIED="1534391744397" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/084%20Design%20and%20Evaluation%20of%20Automated%20Mobility%20on%20Demand%20in%20Singapore.pdf">
@@ -5250,6 +5360,40 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="DED378123F95BE5F7DE0AA89CABD9DB5F9E65A6A2B4E6F37774BAB252EC43A">
     <pdf_title>Effective World Modeling: Multisensor Data Fusion Methodology for Automated Driving</pdf_title>
 </pdf_annotation>
+</node>
+</node>
+<node TEXT="Projects with assessment" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_177248508" CREATED="1595582458606" MODIFIED="1595588432896">
+<node TEXT="ENABLE-S3" ID="ID_958013665" CREATED="1595582470573" MODIFIED="1595582478721" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/490%20Validation%20and%20Verification%20of%20Automated%20Systems.pdf">
+<attribute NAME="key" VALUE="leitner2019validation"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Validation and Verification of Automated Systems"/>
+<attribute NAME="authors" VALUE="Leitner, Andrea and Watzenig, Daniel and Ibanez-Guzma, Javier"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="CE2DA5FA63A3221EC621023E8585592E9E8908E23AB39F16962B197B48DFF66">
+    <pdf_title>Validation and Veri&#xffff; cation of Automated Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="HEADSTART" ID="ID_1102906551" CREATED="1595582570175" MODIFIED="1595583137827" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/491%20HEADSTART%20D2.1.pdf">
+<attribute NAME="key" VALUE="wagener2020headstart"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Common Methodology for Test, Validation and Certification"/>
+<attribute NAME="authors" VALUE="Wagener, Nicolas and Coget, Jean-Baptiste and Ballis, Athanasios and Wei{\ss}ensteiner, Patrick and Morandin, Giulia and Sellar, Xavier and Nieto, Marcos and Bartels, Oliver and Feddes, Gerben"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3575B5C5CFF5F99B8681AB0E020FF32A84EECE097ED6633983014E68457F86A">
+    <pdf_title>HEADSTART D2.1. Common methodology for test, validation and certification</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="PEGASUS" ID="ID_990138765" CREATED="1595588436030" MODIFIED="1595588764935" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/493%20PEGASUS%20METHOD.pdf">
+<attribute NAME="key" VALUE="pegasus2019"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="{PEGASUS} Method: An Overview"/>
+<attribute NAME="authors" VALUE="{PEGASUS}"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7220D05DCFD6779D742C98E932A19D04B1D10E42D2CB2FA9CFDBD103548F426">
+    <pdf_title>PEGASUS METHOD</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="CETRAN" ID="ID_1421701469" CREATED="1595589396416" MODIFIED="1595589502209" LINK="https://cetran.sg/">
+<attribute NAME="key" VALUE="cetran2020"/>
+<attribute NAME="authors" VALUE="CETRAN"/>
+<attribute NAME="title" VALUE="Centre of {E}xcellence for {T}esting \&amp; {R}esearch of {A}utonomous {V}ehicles -- {NTU}"/>
 </node>
 </node>
 <node TEXT="AV: Guide for policymakers" ID="ID_1427027601" CREATED="1511348288860" MODIFIED="1590912449354" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/057%20Autonomous%20Vehicle%20Technology%20a%20Guide%20for%20Policymakers.pdf">

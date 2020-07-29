@@ -47,11 +47,23 @@
 \usepackage[USenglish]{babel}             %% language support
 \usepackage{authblk}
 
-\usepackage{url}
-\usepackage{natbib}
-\usepackage{letltxmacro}
-\LetLtxMacro{\autocite}{\citep}
-\LetLtxMacro{\textcite}{\citet}
+
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{silence}  							%% For filtering warnings
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
+\WarningFilter{biblatex}{Patching footnotes failed}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\renewcommand*{\bibfont}{\small}
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../bib}
+
+
+%\usepackage{url}
+%\usepackage{natbib}
+%\usepackage{letltxmacro}
+%\LetLtxMacro{\autocite}{\citep}
+%\LetLtxMacro{\textcite}{\citet}
 
 
 
@@ -204,22 +216,24 @@
 
 %\thispagestyle{empty}
 %\pagestyle{empty}
-\title{Ontology for Scenarios for the Assessment of Automated Vehicles}
+\title{\cstartb Scenarios for the Assessment of Automated Vehicles: An Object-Oriented Framework\cendb}
 
 \author[1,2,*]{Erwin de Gelder}
 \author[1,3]{Jan-Pieter Paardekooper}
 \author[1]{Arash Khabbaz Saberi}
 \author[1]{Hala Elrofai}
 \author[1]{Olaf Op den Camp}
-\author[4,5]{Jeroen Ploeg}
-\author[6]{Ludwig Friedmann}
+\author[4]{\color{red} Steven Kraines}
+\author[5,6]{\color{black}Jeroen Ploeg}
+\author[7]{Ludwig Friedmann}
 \author[2]{Bart De Schutter}
 \affil[1]{TNO, Dept.\ of Integrated Vehicle Safety, Helmond, The Netherlands}
 \affil[2]{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}
 \affil[3]{Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}
-\affil[4]{2getthere, Utrecht, The Netherlands}
-\affil[5]{Eindhoven University of Technology, Dept.\ of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}
-\affil[6]{BMW Group, Petuelring 130, 80788 Munich, Germany}
+\affil[4]{TBD}
+\affil[5]{2getthere, Utrecht, The Netherlands}
+\affil[6]{Eindhoven University of Technology, Dept.\ of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}
+\affil[7]{BMW Group, Petuelring 130, 80788 Munich, Germany}
 \affil[*]{Corresponding author: \textit{erwin.degelder@tno.nl}}
 
 
@@ -247,10 +261,9 @@
                                   % so it should come on the page before the last. Make
                                   % sure that you do not shorten the textheight too much.
 
-%\bibliographystyle{ieeetran}
-\bibliographystyle{abbrvnat}
-\bibliography{ontologybib}
-%\printbibliography
+\printbibliography
+%\bibliographystyle{abbrvnat}
+%\bibliography{../bib}
 
 %\appendix
 %\appendices

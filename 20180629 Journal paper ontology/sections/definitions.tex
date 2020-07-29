@@ -1,17 +1,15 @@
 \section{Definitions}
 \label{sec:definitions}
 
-One of the main reasons to introduce an ontology is to enable sharing of knowledge between researchers, developers, and users. 
+One of the main reasons to introduce an \cstartb object-oriented framework \cendb is to enable sharing of knowledge between researchers, developers, and users. 
 Therefore, it is important that the terms we use are clearly defined. 
-When presenting our ontology in \cref{sec:ontology}, we will formalize the terms such that they can be used by software agents.
+When presenting our \cstartb object-oriented framework \cendb in \cref{sec:oo framework}, we will formalize the terms such that they can be used by software agents.
 In this section, we will define the terms linguistically, thereby providing insight into the terms used in the next section.
 We will first define the concept of a scenario in \cref{sec:scenario}. 
 Next, we will define two important attributes of a scenario: events and activities, in \cref{sec:event,sec:activity}, respectively. 
 Lastly, we will present the definition of a scenario category in \cref{sec:scenario category}.
 
-
 In each of the \cref{sec:scenario,sec:event,sec:activity,sec:scenario category}, we start with background information. Next, we draw conclusions that lead to our proposed definition of the corresponding terms. After proposing a definition, we finish each section with remarks and implications of our proposed definition.
-
 
 
 
@@ -51,10 +49,13 @@ Before providing the definition of the notion of scenario, characteristics of th
 \begin{enumerate}
 	\item \textit{A scenario corresponds to a time interval:}
 	The aforementioned definitions \autocite{go2004blind, geyer2014, ulbrich2015, elrofai2016scenario} state that a scenario corresponds to a time interval. \textcite{vannotten2003updated} call such a scenario a chain scenario (``like movies''), as opposed to a snapshot scenario, i.e., a scenario that describes the state at a time instant (``like photos''). %The duration of a scenario is in the order of seconds, as explicitly mentioned by \textcite{elrofai2016scenario}. Though the duration is not mentioned by \textcite{ulbrich2015}, the presented example is in the order of seconds. Furthermore, other scenarios regarding (automated) driving are also in the order of seconds, e.g., see \autocite{gietelink2006development, zofka2015datadrivetrafficscenarios, roesener2017comprehensive, karaduman2013interactivebehavior, hulshof2013autonomous, englund2016grand}.
+	\cstartb Because a scenario corresponds to a time interval, in our object-oriented framework, a scenario is a subclass of the concept \emph{time interval}. \cendb
 
 	% Scenarios consists of one or several events
-	\item \textit{A scenario consists of one or several events \autocite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962}:}
-	It can be helpful to develop scenarios using events \autocite{bishop2007scentechniques}. Thus, a scenario could be defined as a particular sequence of events or, as \textcite[p.~143]{kahn1962} writes, ``a scenario results from an attempt to describe in more or less detail some hypothetical sequence of events''. Furthermore, \textcite{geyer2014} and \textcite{ulbrich2015} use the notion of event for describing a scenario, although they do not provide a definition of the term \emph{event}. In \cref{sec:event}, we will elaborate on the notion of \emph{event}.
+	\item \textit{A scenario consists of \cstartb two or more \cendb events \autocite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962}:}
+	It can be helpful to develop scenarios using events \autocite{bishop2007scentechniques}. Thus, a scenario could be defined as a particular sequence of events or, as \textcite[p.~143]{kahn1962} writes, ``a scenario results from an attempt to describe in more or less detail some hypothetical sequence of events''. Furthermore, \textcite{geyer2014} and \textcite{ulbrich2015} use the notion of event for describing a scenario, although they do not provide a definition of the term \emph{event}. 
+	\cstartb Because a scenario contains at least a start event and an end event, the minimum number of events is two. \cendb
+	In \cref{sec:event}, we will elaborate on the notion of \emph{event}.
 
 	% Semantically described
 	\item \textit{Real-world traffic scenarios are quantitative scenarios:}
@@ -66,18 +67,25 @@ Before providing the definition of the notion of scenario, characteristics of th
 	According to \textcite{geyer2014}, ``the end of a scenario is defined by the first irrelevant situation with respect to the scenario''. In a similar manner, we require that the time interval of a scenario should contain all relevant events. Note that `relevant' is subjective and, therefore, an event is considered to be relevant, if it is relevant to the ego vehicle.
 	% Next to that, an event is regarded as irrelevant, if it is independent of the relevant events.
 
-	% Description of static environment
+	% Description of environment
 	\item\textit{A scenario includes the description of the environment:}
 	A scenario should include the description of the static and dynamic environment.
 	Although the description of the static environment is not a general prerequisite of a scenario, this is often included when speaking about traffic scenarios \autocite{geyer2014, ulbrich2015, elrofai2016scenario, ebner2011identifying, althoff2017CommonRoad}.
 	%The static environment does not change during a scenario.
 	The description of the dynamic environment includes a description of the type of actors and the goals and/or activities of the actors.
 	
+	\cstartb
+	\item\textit{A scenario includes one ego vehicle \autocite{geyer2014, elrofai2016scenario}:}
+	Because of the two previously mentioned characteristics, a scenario is required to include an ego vehicle.
+	\cendb
+	
 	%Everything that changes during the time interval of a scenario is considered to be part of the dynamic environment. 
 	
 	% Goals (instead of activities)
-	\item\textit{A scenario describes the goals or activities of the ego vehicle:}
-	For describing a scenario in real-world data, it is not necessary to describe the goals and therefore, \textcite{elrofai2016scenario} mention the activities of the ego vehicle rather than its goals. When describing a scenario that an AV has to cope with, however, its goals (i.e., its driving mission \autocite{geyer2014}) could be specified rather than its activities \autocite{ulbrich2015}. Note that if the activities of the ego vehicle are described rather than its goals, an observer might not be able to determine whether the ego vehicle has successfully responded to the scenario.
+	\item\textit{A scenario describes the goals or activities of the \cstartb actors:\cendb}
+	\cstartb Either the activities, the goals, or a combination of activities and goals are required to determine the response of the actor. \cendb
+	Note that this also holds for the ego vehicle since the ego vehicle is an actor.
+	For describing a scenario in real-world data, it is not necessary to describe the goals and, therefore, \textcite{elrofai2016scenario} mention the activities of the \cstartb actors \cendb rather than the goals. When describing a scenario that an AV has to cope with, however, the ego vehicle's goals (i.e., its driving mission \autocite{geyer2014}) could be specified rather than its activities \autocite{ulbrich2015}. Note that if the activities of \cstartb an actor \cendb are described rather than its goals, an observer might not be able to determine whether the \cstartb actor \cendb has successfully responded to the scenario.
 \end{enumerate}
 
 
@@ -109,8 +117,7 @@ When it comes to applying this definition in an ontology, it is possible that ``
 This also holds for the other parts of a scenario. 
 A reference could be, for example, the full name of a file, a pointer pointing to a specific part of the computer memory, or an identifier that addresses a specific entry in a database.
 The advantage of references is that these parts of the scenario can be exchanged across different scenarios, as these scenarios can use the same references. 
-As an example, an OpenSCENARIO file allows to provide a reference to an OpenDRIVE file which describes a road network \autocite{dupuis2010opendrive}. As we will see in \cref{sec:ontology}, in our proposed ontology, a scenario may contain references to a static environment, activities, actors, and events.
-
+As an example, an OpenSCENARIO file allows to provide a reference to an OpenDRIVE file which describes a road network \autocite{dupuis2010opendrive}. As we will see in \cref{sec:oo framework}, in our proposed \cstartb framework\cendb, a scenario may contain references to a static environment, activities, actors, and events.
 
 
 
