@@ -1,0 +1,127 @@
+%% This is V2.0 of the TNO's beamer presentation template.
+%% Developed by Arturo Tejada Ruiz, TNO, Integrated Vehicle Safety dept., Helmond
+%% September 28, 2015; modified by Jeroen Ploeg because he couldn't resist the
+%% temptation, May 16, 2016.
+
+%% Feel free to distribute and improve these files.
+%% However, please email me a copy of your modifications (arturo.tejadaruiz@tno.nl)
+%% to keep a complete repository of the improvements.
+
+%% The template consists of the following files:
+%%  Style files:
+%%      beamercolorthemeTNO.sty
+%%      beamerthemeTNO.sty
+%%      beamerouterthemeTNO.sty (requires TNOtopBannerBlue.pdf)
+%%      beamerinnerthemeTNO.sty (requires TNObannerWhite.pdf and TNObannerBlack.pdf)
+%%  Logos:
+%%      TNOtopBannerBlue.pdf (for outer theme)
+%%      TNOtopBannerWhite.pdf (for outer theme)
+%%      TNObannerWhite.pdf (for inner theme)
+%%      TNObannerBlack.pdf (for inner theme)
+%%  Auxiliary files:
+%%      print2x2.tex (print handout in a 2 x 2 layout)
+%%      TNO-example.tex (example presentation)
+%%      primeNumbers.jpg (used in example presentation)
+
+%% The template is best used in 16:9 aspect ratio using PDFLATEX to compile.
+%% The traditional aspect ratio of 4:3 is also available.
+
+\mode<presentation>
+
+%% Implement user-defined layout
+\newif\ifcustombg\custombgfalse             %% boolean for switching between custom and default title page backgroud
+\newif\ifblacktitle\blacktitlefalse         %% boolean for setting black text on the title page
+\newcommand*{\blacktitle}{\blacktitletrue}
+\newcommand*{\titlebackground}[1]{\custombgtrue\usebackgroundtemplate{\includegraphics[width=\paperwidth]{#1}}}
+
+\setbeamertemplate{background}{
+    \begin{tikzpicture}
+        \ifblacktitle
+            \def\titleColor{black}
+            \def\TNObanner{TNObannerBlack}
+        \else
+            \def\titleColor{white}
+            \def\TNObanner{TNObannerWhite}
+        \fi
+
+        %% Insert black banners and gray background
+        \fill[color=black] (0,0) rectangle (\paperwidth,0.105\paperheight);
+        \fill[color=black] (0,0.895\paperheight) rectangle (\paperwidth,\paperheight);
+
+        %% Insert TNO banner
+        \setlength{\unitlength}{\paperheight}
+        \put(0,0.3){\includegraphics[keepaspectratio=true,width=\paperwidth]{\TNObanner}}
+        \setlength{\unitlength}{1pt}
+
+        %% Place the > sign
+        \draw[color=\titleColor,thin] (0.078\paperwidth,0.342\paperheight) -- (0.078\paperwidth,0.678\paperheight);
+        \node at (0.08\paperwidth,0.72\paperheight) {\small\color{\titleColor}$\pmb{\rangle\!\!\rangle\!\!\!\rangle}$};
+
+        %% Make a white background for all other slides
+        \ifnum\thepage>1\relax
+            \fill[white,opacity=1] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+        \fi
+    \end{tikzpicture}
+}
+
+% Title page
+\defbeamertemplate*{title page}{TNO}[1][]{%
+    \begin{tikzpicture}
+        \ifblacktitle
+            \def\titleColor{black}
+        \else
+            \def\titleColor{white}
+        \fi
+        \ifnum\AspectR=169\relax
+            \def\vTitlePos{0.765}
+        \else
+            \def\vTitlePos{0.72}
+        \fi
+        \useasboundingbox (0,0) rectangle (0.999\linewidth,0.95\paperheight);
+        \node[anchor=north west,white] at (0.05\linewidth,\vTitlePos\paperheight){%
+            \begin{minipage}{0.88\linewidth}
+                {\usebeamerfont{title}\color{\titleColor}\MakeUppercase{\expandafter\inserttitle}}
+                \ifx\insertsubtitle\empty
+                    {}
+                \else
+                    {}\\[0.25em]
+                    \usebeamerfont{subtitle}\color{\titleColor}\insertsubtitle
+                \fi
+                \ifx\insertauthor\empty
+                    {}
+                \else
+                    {}\\[1em]
+                    \usebeamerfont{author}\color{\titleColor}\insertauthor
+                \fi
+                \ifx\insertdate\empty
+                    {}
+                \else
+                    {}\\
+                    \usebeamerfont{author}\color{\titleColor}\insertdate
+                \fi
+            \end{minipage}};
+    \end{tikzpicture}}
+
+%% Take care of items
+\setbeamertemplate{itemize items}{%
+	\tiny\raise2pt\hbox{\donotcoloroutermaths$\pmb{\rangle\!\!\rangle\!\!\!\rangle}$}
+}
+\setbeamertemplate{enumerate items}[default]
+
+%% Define font for table of contents
+\setbeamertemplate{section in toc}{%
+	\color{TNOblue}%
+	\leavevmode\leftskip=2ex%
+	\llap{%
+		\usebeamerfont*{section number projected}%
+		\usebeamercolor{section number projected}%
+		\begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
+			\tiny\raise2pt\hbox{\donotcoloroutermaths$\pmb{\rangle\!\!\rangle\!\!\!\rangle}$}
+		\end{pgfpicture}\kern1.25ex%
+	}%
+	\inserttocsection\par
+}
+%\setbeamerfont{section in toc}{shape=\normalfont}  % Makes text normal instead of bold
+\setbeamerfont{subsection in toc}{size=\footnotesize}
+
+\mode<all>

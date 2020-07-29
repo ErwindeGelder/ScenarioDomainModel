@@ -1,0 +1,11 @@
+Initial score: 8614.939
+ 1 Score: 8171.55, Parameter: mu(0), feature: df['x']
+ 2 Score: 8038.21, Parameter: mu(0), feature: df['x']**2
+ 3 Score: 7970.31, Parameter: mu(0), feature: df['x']*df['y']
+ 4 Score: 7895.17, Parameter: sigma(0,0), feature: df['x']
+ 5 Score: 7710.21, Parameter: sigma(0,0), feature: df['x']**2
+ 6 Score: 7703.33, Parameter: sigma(0,0), feature: df['x']*df['y']
+ 7 Score: 7691.26, Parameter: sigma(0,0), feature: df['y']
+ 8 Score: 7687.25, Parameter: mu(0), feature: df['y']
+ 9 Score: 7685.15, Parameter: sigma(0,0), feature: df['y']**2
+10 Score: 7684.35, Parameter: mu(0), feature: df['y']**2

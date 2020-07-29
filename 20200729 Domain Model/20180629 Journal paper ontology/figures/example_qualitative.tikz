@@ -1,0 +1,59 @@
+%\newlength\objectwidth\setlength{\objectwidth}{24em}
+%\tikzstyle{object}=[draw, text width=\objectwidth-.5em, align=left, line width=1pt, minimum width=\objectwidth, anchor=north west, node distance=3pt]
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+\node[object, fill=category](ego qualitative){{\bfseries Ego qualitative::Actor category}\\
+	type: Vehicle\\
+	tags: Ego vehicle, Passenger car};
+
+\node[object, fill=category, below=of ego qualitative.south](pedestrian qualitative){{\bfseries Pedestrian qualitative::Actor category}\\
+	type: Pedestrian\\
+	tags: Pedestrian};
+
+\node[object, fill=category, below=of pedestrian qualitative.south](braking){{\bfseries Braking::Activity category}\\
+	model: Sinusoid, see \cref{eq:sinusoidal}\\
+	state: Speed ($\egospeed$)\\
+	tags: Braking};
+
+\node[object, fill=category, below=of braking.south](stationary){{\bfseries Stationary::Activity category}\\
+	model: Constant, see \cref{eq:constant model}\\
+	state: Speed ($\egospeed$)\\
+	tags: Stationary};
+
+\node[object, fill=category, below=of stationary.south](accelerating){{\bfseries Accelerating::Activity category}\\
+	model: Linear, see \cref{eq:ego accelerating}\\
+	state: Speed ($\egospeed$)\\
+	tags: Accelerating};
+
+%\node[object, fill=category, below=of accelerating.south](straight){{\bfseries Driving straight::Activity category}\\
+%	model: Linear\\
+%	state: Lateral position\\
+%	tags: Driving straight};
+
+\node[object, fill=category, right=of ego qualitative.north east, anchor=north west](walking){{\bfseries Walking straight::Activity category}\\
+	model: Linear, see \cref{eq:pedestrian walking}\\
+	state: Position ($\pednorth$)\\
+	tags: Walking straight};
+
+\node[object, fill=category, below=of walking.south](static category){{\bfseries Pedestrian crossing qualitative::Static environment category}\\
+	description: Straight road with two lanes and a\\
+	\leavevmode\phantom{description: }pedestrian crossing\\
+	tags: Non-signalized zebra crossing};
+
+\node[object, fill=scenariocategory, below=of static category.south](scenario category){{\bfseries Crossing pedestrian::Scenario category}\\
+	description: A pedestrian is crossing the road \\
+	\leavevmode\phantom{description: }on a zebra crossing in front of the \\
+	\leavevmode\phantom{description: }ego vehicle\\
+	static environment category: Pedestrian \\
+	\leavevmode\phantom{static environment category: }crossing \\
+	\leavevmode\phantom{static environment category: }qualitative\\
+	actors: Ego qualitative, Pedestrian qualitative\\
+	activities: Braking, Stationary, Accelerating, Walking straight\\
+	acts: (Ego qualitative, Braking), , \\
+	\leavevmode\phantom{acts: }(Ego qualitative, Stationary), \\
+	\leavevmode\phantom{acts: }(Ego qualitative, Accelerating), \\
+	\leavevmode\phantom{acts: }(Pedestrian qualitative, Walking straight)\\
+	tags:};
+\end{tikzpicture}
+}

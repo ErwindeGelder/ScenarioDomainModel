@@ -1,0 +1,54 @@
+\section{Application example}
+\label{sec:example}
+
+To illustrate the ontology, a real-world example is presented. A schematic overview of the example is shown in \cref{fig:example schematic}. Two vehicles are considered: a pickup truck and a sedan. The example can be described in words as follows. The ego vehicle (i.e., the sedan) accelerates towards its predecessor (i.e., the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. At some point, the ego vehicle brakes, such that it reaches approximately the same speed as the pickup truck's speed. From then on, the ego vehicle cruises, such that the distance between the two vehicles remains approximately constant. The pickup truck drives at a constant speed.
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{121pt}
+	\setlength\figurewidth{260pt}
+	\input{figures/scenario_simplified.tikz}%
+	\caption{Schematic overview of the traffic scenarios. The sedan (red, right vehicle) is defined as the ego vehicle. Initially, the ego vehicle accelerates towards the pickup truck (blue, left vehicle).}
+	\label{fig:example schematic}
+	\spaceaftercaption
+\end{figure}
+
+In the presented example, two scenarios are identified. The scenarios can be qualitatively described as `gap-closing on rural road with clear weather' and `cruising behind target vehicle on rural road with clear weather', respectively. The first scenario ends when the ego vehicle starts cruising. 
+% Note that, when testing an AV, the first scenario might end later in case it takes longer for the AV to start the cruising activity.
+
+The activities of the ego vehicle are shown in \cref{fig:example ego states}, in which the speed is shown with respect to time $t$. Regarding the speed, two events are identified. At the first event, the ego vehicle's longitudinal acceleration transits from being positive to negative, i.e., the ego vehicle starts braking. As there are two events identified regarding the speed, three different activities are to be modeled, qualitatively described as `accelerating', `braking', and `cruising', respectively. 
+
+Whereas the definitions from Geyer~et~al.~\cite{geyer2014}, Ulbrich~et~al.~\cite{ulbrich2015}, and Elrofai~et~al.~\cite{elrofai2016scenario} do not state when a scenario ends, \cref{def:scenario} states that a scenario contains all the relevant events. Therefore, it follows from \cref{def:scenario} that the first scenario ends at the second event.
+
+For a scenario-based assessment, test cases have to be defined. These test cases can be derived from real-world scenarios \cite{zofka2015datadrivetrafficscenarios,stellet2015taxonomy,deGelder2017assessment}. For example, based on the first scenario, a test case can be defined where the ego vehicle's objective is to follow the pickup truck while maintaining a safe distance and where the ego vehicle's initial speed is higher than the speed of the pickup truck. Other conditions can be applied for the test case, e.g., bad weather conditions that might cause a late detection, to assess the driving capabilities of the AV in different scenarios.
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{130pt}
+	\setlength\figurewidth{248pt}
+	\input{figures/lon_vel2.tikz}%
+	\caption{Activities of the ego vehicle considering its speed. The black vertical lines indicate the events. The three different activities that can be qualitatively described as `accelerating', `braking', and `cruising', respectively.}
+	\label{fig:example ego states}
+	\spaceaftercaption
+\end{figure}
+
+%Figure~\ref{fig:example dynamic environment} shows the longitudinal and lateral position of the pickup truck and the station wagon with respect to the ego vehicle. The station wagon accelerates and performs a lane change at approximately $t\approx10$ s. At $t\approx12$ s, the station wagon overtakes the ego vehicle. The ego vehicle overtakes the pickup truck at $t\approx25$ s, as can be seen by the relative longitudinal distance of the pickup truck in Figure~\ref{fig:example dynamic environment}a, which becomes negative at $t\approx25$ s. The events related to the pickup truck and the station wagon are shown in Figure~\ref{fig:example events}. Here, it can be seen that the pickup truck is in the field of view of the ego vehicle's sensors from $t=1$ s until $t=34$ s. The station wagon is in the field of view of the ego vehicle's sensors from $t=0$ s until $t=18$ s.
+
+%\begin{figure}
+%	\centering
+%	\setlength\figureheight{150pt}
+%	\setlength\figurewidth{248pt}
+%	\subfloat[Longitudinal distance of other vehicles with respect to ego vehicle.]{\input{figures/rel_lon_pos.tikz}}\\
+%	\subfloat[Lateral distance of other vehicles with respect to ego vehicle.]{\input{figures/rel_lat_pos.tikz}}
+%	\caption{States of the dynamic environment.}
+%	\label{fig:example dynamic environment}
+%\end{figure}
+
+%\begin{figure*}
+%	\centering
+%	\setlength\figureheight{170pt}
+%	\setlength\figurewidth{520pt}
+%	\input{figures/events.tikz}
+%	\caption{Complete overview of the events and activities of the example. Every vertical black line represents an event. The end of the first scenario and the start of the second scenario is at the moment the ego vehicle starts the first lane change, i.e., at $t=17\ \textup{s}$.}
+%	\label{fig:example events}
+%\end{figure*}

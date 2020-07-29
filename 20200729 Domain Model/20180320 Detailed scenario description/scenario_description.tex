@@ -1,0 +1,602 @@
+%%==========================================================================
+%% This is the very first version of a Streetwise LaTeX template. By
+%% chosing the document class, it is easily convertible to a two-column IEEE
+%% paper format, provided any conflicting packages and (new)commmands are
+%% removed.
+%%
+%% Erwin de Gelder, January 6, 2018
+%%==========================================================================
+
+%%==========================================================================
+%% Title:
+%% Author(s):
+%% To be published in:
+%% Date of submission:
+%% Date of submission R1:
+%% Date of submission R2:
+%% Date of final submission:
+%%==========================================================================
+
+
+%% Generic
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%% IEEE
+%% Document class options: replace "draftcls" by "final" for final document.
+%% All other options may just as well be omitted because they are the default values.
+%\documentclass[10pt,final,journal,letterpaper,twoside,twocolumn]{IEEEtran}
+
+
+%%==========================================================================
+%% Document automation
+%%==========================================================================
+
+\def\reptitle{Storage of real-world scenarios}
+\def\repauthor{Erwin de Gelder, Jan-Pieter Paardekooper}
+
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+%\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+            bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage{lmodern} 
+\usepackage{etoolbox}							%% Needed for apptocmd later
+\usepackage[capitalize]{cleveref}
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+\usepackage{units}
+\usepackage{subcaption}
+
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../bib}
+
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+
+\newtoggle{standalone}
+\toggletrue{standalone}
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\iftoggle{standalone}{%
+	\fancyhead[L]{\includegraphics[width=15mm]{Streetwise}} %% define headers (LE: left field/even pages, etc.)
+	\fancyhead[R]{\small\emph{\reptitle}}                   %% similar
+	\fancyfoot[C]{\thepage}                                 %% define footer
+	\setlength{\headheight}{18pt}                           %% increase head height to accommodate an oversized picture in the header
+	\renewcommand*{\headrulewidth}{0.25pt}                  %% header line width
+	%% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
+	\fancypagestyle{plain}{%
+		\fancyhf{}
+		\fancyhead[C]{\includegraphics[width=30mm]{Streetwise}}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+		\setlength{\headheight}{36pt}
+	}
+}{%
+	\renewcommand*{\headrulewidth}{0pt}                  	%% No line in this case
+	%% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
+	\fancypagestyle{plain}{%
+		\fancyhf{}
+	}
+}
+\renewcommand*{\footrulewidth}{0pt}                     %% footer line width
+
+
+%%==========================================================================
+%% TikZ figures
+%%==========================================================================
+
+\newlength\figurewidth
+\setlength\figurewidth{0.35\textwidth}              %% set figure width
+\newlength\figureheight
+\setlength\figureheight{0.3\textwidth}              %% set figure height
+\pgfplotsset{every axis/.append style={
+    scaled y ticks=false,
+    scaled x ticks=false,
+    y tick label style={/pgf/number format/fixed},
+    x tick label style={/pgf/number format/fixed},
+    legend style={font=\small}},
+    compat=1.9}                                     %% PGFPlots package options
+\usetikzlibrary{shapes.geometric, arrows, arrows.meta}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{external}                           %% Create pdf figures from TikZ. Use PDFTeXify ...
+\tikzexternalize[prefix=./tikz/]                    %% ... with --tex-option=--shell-escape switch.
+%\tikzset{external/force remake}                    %% force pdf figure update
+
+
+%%==========================================================================
+%% User-defined commands
+%%==========================================================================
+
+\newcommand*{\mat}[1]{\mathbf{#1}}                              %% matrix/vector notation
+\newcommand*{\matsym}[1]{\boldsymbol{#1}}                       %% matrix/vector notation for Greek letters
+\newcommand*{\T}{^{\scriptscriptstyle\mathsf{T}}}               %% transpose operator
+\newcommand*{\Hr}{^{\scriptscriptstyle\mathsf{H}}}              %% conjugate transpose operator
+\newcommand*{\ud}{\mathrm{\,d}}                                 %% differential operator (upright d)
+\newcommand*{\defeq}{\mathrel{\mathop:}=}                       %% definition sign :=
+\newcommand*{\eqdef}{=\mathrel{\mathop:}}                       %% definition sign =:
+\newcommand*{\ip}[2]{\left\langle#1\,{,}\,#2\right\rangle}      %% inner product
+\newcommand*{\real}[1]{\mathrm{Re}(#1)}                         %% real part
+\newcommand*{\imag}[1]{\mathrm{Im}(#1)}                         %% imaginary part
+\newcommand*{\lsup}[1]{{}^{#1}\!}                               %% left superscript
+\newcommand*{\hi}[1]{$^\text{#1}$}                              %% superscript in normal text
+\newcommand*{\lo}[1]{$_\text{#1}$}                              %% subscript in normal text
+\newcommand*{\w}[1]{\mathrm{#1}}                                %% multiple character super-/subscript in math mode
+\newcommand*{\Ln}{{\ensuremath{\mathcal{L}}}\xspace}            %% L norm
+\newcommand*{\Lone}{{\ensuremath{\mathcal{L}_1}}\xspace}        %% L_1 norm
+\newcommand*{\Ltwo}{{\ensuremath{\mathcal{L}_2}}\xspace}        %% L_2 norm
+\newcommand*{\Linf}{{\ensuremath{\mathcal{L}_\infty}}\xspace}   %% L_inf norm
+\newcommand*{\Lp}{{\ensuremath{\mathcal{L}_p}}\xspace}          %% L_p norm
+\newcommand*{\Htwo}{{\ensuremath{\mathcal{H}_2}}\xspace}        %% H_2 norm
+\newcommand*{\Hinf}{{\ensuremath{\mathcal{H}_\infty}}\xspace}   %% H_inf norm
+\newcommand*{\Hp}{{\ensuremath{\mathcal{H}_p}}\xspace}          %% H_p norm
+\newcommand*{\capskip}{\vspace{-12pt}}                          %% caption skip for figures with subfloats
+\newcommand*{\etal}{et al.}                                     %% may be required for Natbib bibliography styles
+\renewcommand*{\qedsymbol}{$\blacksquare$}                      %% redefine the end-of-proof symbol
+\renewcommand*{\labelitemi}{$\bullet$}                          %% first level item list bullet
+\renewcommand*{\labelitemii}{$-$}                               %% second level item list bullet
+%\renewcommand*{\theenumi}{\textit{\roman{enumi}}}               %% first level enumerator
+\renewcommand*{\labelenumi}{\theenumi.}
+\renewcommand*{\theenumii}{\textit{\alph{enumii}}}              %% second level enumerator
+\renewcommand*{\labelenumii}{\theenumii.}
+\DeclareMathOperator{\tr}{tr}                                   %% trace of a matrix
+\DeclareMathOperator{\sgn}{sgn}                                 %% signum function
+\DeclareMathOperator{\atan}{atan}                               %% arc tangent
+
+\newcommand{\deuclid}{d_{\textup{Euclidian}}}
+\newcommand{\ddtw}{d_{\textup{DTW}}}
+\newcommand{\imagi}{\textbf{j}}
+\newcommand{\profile}[1]{\textbf{v}_{#1}}
+\newcommand{\barprofile}[1]{\bar{\textbf{v}}_{#1}}
+\newcommand{\parvstart}{v_{\textup{start}}}
+\newcommand{\parvend}{v_{\textup{end}}}
+\newcommand{\pardv}{v_{\Delta}}
+\newcommand{\pardt}{t_{\textup{duration}}}
+
+
+%%==========================================================================
+%% User-defined environments
+%%==========================================================================
+
+\theoremstyle{plain}\newtheorem{definition}{Definition}[section]    %% definition
+                    \newtheorem{theorem}{Theorem}[section]          %% theorem
+                    \newtheorem{lemma}[theorem]{Lemma}              %% lemma
+                    \newtheorem{corollary}[theorem]{Corollary}      %% corollary
+                    \newtheorem{assumption}{Assumption}[section]    %% assumption
+                    \newtheorem{condition}{Condition}[section]      %% condition
+\theoremstyle{definition}\newtheorem{example}{Example}[section]     %% examples
+\theoremstyle{remark}\newtheorem{remarkenv}{Remark}[section]        %% remarks
+\newenvironment{remark}{\begin{remarkenv}}%
+                       {\hfill$\blacklozenge$\end{remarkenv}}       %% end remark with a lozenge
+\newenvironment{reviewer}{\itshape}{\upshape}                       %% environment for reviewer's comments
+
+
+%%==========================================================================
+%% Miscellaneous
+%%==========================================================================
+
+\graphicspath{{./../}{./figures/}{./more_figures/}} %% (graphicx) directory path for figures
+%\setlength{\parindent}{0pt}                        %% no paragraph indentation
+%\setlength{\parskip}{2ex}                          %% create empty line between paragraphs
+%\interdisplaylinepenalty=2500                      %% (amsmath) allow for page breaks within multiline equations
+%\numberwithin{equation}{section}                   %% (amsmath) include section number in equation numbering
+%\numberwithin{figure}{section}                     %% (amsmath) include section number in figure numbering
+%\numberwithin{table}{section}                      %% (amsmath) include section number in table numbering
+\addtolength{\arraycolsep}{-0.5mm}                  %% squeeze matrix columns a little
+\fnbelowfloat                                       %% (stfloats) put footnote below a float at the page bottom
+\urlstyle{same}                                     %% (hyperref) use current font for URLs
+\hypersetup{pdftitle={\reptitle},
+            pdfauthor={\repauthor}}                 %% (hyperref) pdf properties title and author
+%\raggedbottom                                      %% don't add inter-paragraph spacing to achieve \textheight
+%\setlength\subfigcapskip{-3pt}                     %% (subfigure) distance between subfloat and subcaption
+%\setlength\subfigbottomskip{-3pt}                  %% (subfigure) distance between subcaption and caption
+%\renewcommand*{\subcapsize}{\small}                %% (subfigure) subcaption font size
+\renewcommand*{\thesubfigure}{(\alph{subfigure})}   %% (subfig) implement 1(a) instead of 1a ...as subfigure reference
+\captionsetup[subfloat]{labelformat=simple}        %% ... as subfigure reference
+%\captionsetup[subfloat]{
+%    farskip=0pt,
+%    nearskip=8pt,
+%    captionskip=1.5pt,
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig) subfloat caption format
+%\captionsetup[figure]{
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig/caption) figure caption format
+%\captionsetup[table]{
+%    aboveskip=2pt,
+%    labelfont={small,bf},
+%    textfont={small,sc}}                           %% (subfig/caption) table caption format
+
+
+% Table stuff
+\usepackage{booktabs}
+\usepackage{tabularx}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+%%==========================================================================
+%% Begin document
+%%==========================================================================
+
+\begin{document}
+
+\selectlanguage{USenglish}
+
+\title{\textbf{\reptitle}}
+\author{\repauthor}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+\label{sec:introduction}
+
+The goal of Streetwise is the storage of real-world scenarios mined from naturalistic driving data. This document provides an example (an extension of the example described in \cite{degelder2018ontology}) of several scenarios found in a approximately 40 seconds of naturalistic driving data.
+
+
+\section{Scenario description}
+
+A schematic overview of the example is shown in \cref{fig:example schematic}. Three vehicles are present in the example: a pickup truck, a sedan, and a station wagon, see \cref{fig:example schematic a} from left to right, respectively. The ego vehicle (the sedan), is displayed in red. The example can be described in words as follows. The ego vehicle accelerates towards its predecessor (the pickup truck), such that the distance between the ego vehicle and its predecessor becomes smaller. In the meantime, the car behind the ego vehicle (the station wagon) accelerates and takes over both other vehicles (the ego vehicle and the pickup truck). When the station wagon has passed both vehicles, the ego vehicle accelerates and performs a lane change after which it overtakes the pickup truck.
+
+\setlength\figureheight{106pt}
+\setlength\figurewidth{260pt}
+\begin{figure}[b]
+	\begin{minipage}[b]{\linewidth}
+		\centering
+		\input{figures/scenario_situation_1.tikz}%
+		\subcaption{Last vehicle overtakes other vehicles.}
+		\label{fig:example schematic a}
+	\end{minipage}
+	\setlength\figureheight{100pt}
+	\begin{minipage}[b]{\linewidth}
+		\centering
+		\input{figures/scenario_situation_2.tikz}%
+		\subcaption{Another overtaking.}
+		\label{fig:example schematic b}
+	\end{minipage}
+	\caption{Schematic overview of the traffic scenarios. The sedan (red, the middle car in (a)) is the defined as the ego vehicle. First, the station wagon (i.e., the last car in (a)) overtakes both vehicles. Next, the ego vehicle overtakes the pickup truck (first vehicle in (a)).}
+	\label{fig:example schematic}
+\end{figure}
+
+Several different scenarios can be identified:
+\begin{itemize} 
+    \item \textbf{Ego gap closing}: Starts at the beginning of the example and ends when the lane change starts.
+    \item \textbf{Ego overtaking 1}: Starts at the lane change, ends when ego vehicle completes overtaking of the pickup truck.
+    \item \textbf{Ego overtaking 2}: Starts at the lane change of the station wagon, ends when ego vehicle completes overtaking of the pickup truck.
+    \item \textbf{Pickup free driving}: Starts at beginning of example, ends when the station wagon makes a cut-in.
+    \item \textbf{Pickup cut-in 1}: Starts either when the station wagon starts changing lane, or when the station wagon comes into sensor range of the pickup. Ends when the station wagon in the same lane in front of the pickup.
+    \item \textbf{Pickup cut-in 2}: Starts either when the sedan starts changing lane, or when the sedan comes into sensor range of the pickup. Ends when the sedan in the same lane in front of the pickup.
+    \item \textbf{Station car following}: Starts at the beginning of the example and ends when the lane change starts.
+    \item \textbf{Station overtaking}: Starts at the lane change, ends when the station completes overtaking both cars and is back in the right lane.
+\end{itemize}
+The scenarios include all `relevant' events. In case of the `ego overtaking' scenarios, it might be relevant that another car is already overtaking, because it means that the ego cannot change lane as long as it is occupied. In the end, during test case generation, what is `relevant' depends on the system under test. In this particular example, suppose that we are testing an automatic lane change function. If the function needs to decide whether it is safe to overtake, the second scenario is the most relevant. If not, the first might be more relevant.
+
+\section{Ego vehicle}
+
+The activities of the ego vehicle are shown in \cref{fig:example ego states}, in which the longitudinal velocity and lateral position are shown with respect to time $t$. Here, the longitudinal and lateral positions are expressed in the Road Coordinate System \cite{zofka2015datadrivetrafficscenarios}. Regarding the longitudinal velocity, four events are identified. At the first event, the ego vehicle's longitudinal acceleration transits from being positive to negative, i.e., the ego vehicle starts braking. As there are four events identified regarding the longitudinal velocity, five different activities are to be modeled, denoted by A, B, C, D, and E in \cref{fig:example ego states lon}. During the time intervals A, B, C, D, and E, the ego vehicle accelerates, brakes, cruises, accelerates, and cruises, respectively. Regarding the lateral position, see \cref{fig:example ego states lat}, also four events are identified, such that at each event time the ego vehicle starts or completes a lane change. During the second and fourth activity (i.e., time intervals G and I in \cref{fig:example ego states lat}) the ego vehicle performs the lane change, while in the remaining time (i.e., time intervals F, H and J in \cref{fig:example ego states lat}) the ego vehicles drives straight ahead. An complete overview of the events is presented in \cref{fig:example events}.
+
+\setlength\figureheight{170pt}
+\setlength\figurewidth{0.49\linewidth}
+\begin{figure}
+	\centering
+	\begin{minipage}[b]{0.49\linewidth}
+		\centering
+		\input{figures/lon_vel.tikz}%
+		\subcaption{Longitudinal velocity ego vehicle. During the time intervals A and D, the ego vehicle accelerates, during the time interval B, the ego vehicle brakes and during the time intervals C and E, the ego vehicles cruises.}
+		\label{fig:example ego states lon}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}[b]{0.49\linewidth}
+		\centering
+		\input{figures/lat_pos.tikz}%
+		\subcaption{Lateral position ego vehicle. During the time intervals F, H and J, the ego vehicles drives straight ahead while during the time intervals G and I, the ego vehicle performs a lane change.}
+		\label{fig:example ego states lat}
+	\end{minipage}%
+	\caption{Activities of the ego vehicle. The blue line shows the measured data and the orange dashed line shows the output of the model fitted to the data. The black vertical lines indicate the events.}
+	\label{fig:example ego states}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{170pt}
+	\setlength\figurewidth{\linewidth}
+	\input{figures/events.tikz}%
+	\caption{Complete overview of the events and activities of the example. Every vertical black line represents an event. The end of the 'ego gap closing' scenario and the start of the 'ego overtaking 1' scenario is at the moment the ego vehicle starts the first lane change, i.e., at $t=17\ \textup{s}$ as indicated by the red line.}
+	\label{fig:example events}
+\end{figure}
+
+For parametrization of the acceleration, braking, and lane change activities, splines are employed. First, the position is scaled such that it starts at $0$ and ends at $1$. For this, the starting position $x_{\textup{start}}$ and end position $x_{\textup{end}}$ are used. Next, the time is scaled, such that the scaled time is on the interval $[0, 1]$. For this, the start time $t_{\textup{start}}$ and duration $t_{\textup{duration}}$ are used. The scaled position is modeled using the splines. In total, two splines are used. The first spline for the interval $[0, 0.5]$ and the second spline for the interval $[0.5, 1]$. Each spline takes the following form:
+
+\begin{equation}
+	x = at^3 + bt^2 + ct + d,
+\end{equation}
+where $a$, $b$, $c$, and $d$ are the spline coefficients and $x$ and $t$ refer to the scaled position and time, respectively. 
+
+For the cruising and straight-driving activities, a constant velocity is assumed. Hence, only the normalization parameters are enough to model these activities. The parameters for the acceleration activities A and C are presented in \cref{tab:parameters ego A} and \cref{tab:parameters ego D}, respectively. The parameters for the braking activity are presented in \cref{tab:parameters ego B}. The parameters for the cruising activities are presented in \cref{tab:parameters ego cruising}.
+
+\begin{table}
+	\centering
+	\caption{Parameters of the first acceleration activity of the ego vehicle, denoted by A in \cref{fig:example ego states lon}.}
+	\label{tab:parameters ego A}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Normalization parameters.}
+		\input{tabular/event1_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.5\linewidth}
+		\centering
+		\subcaption{Spline coefficients.}
+		\input{tabular/event1}%
+	\end{minipage}%
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Parameters of the braking activity of the ego vehicle, denoted by B in \cref{fig:example ego states lon}.}
+	\label{tab:parameters ego B}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Normalization parameters.}
+		\input{tabular/event2_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.5\linewidth}
+		\centering
+		\subcaption{Spline coefficients.}
+		\input{tabular/event2}%
+	\end{minipage}%
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Parameters of the second acceleration activity of the ego vehicle, denoted by D in \cref{fig:example ego states lon}.}
+	\label{tab:parameters ego D}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Normalization parameters.}
+		\input{tabular/event4_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.5\linewidth}
+		\centering
+		\subcaption{Spline coefficients.}
+		\input{tabular/event4}%
+	\end{minipage}%
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Normalization parameters of the two cruising activities of the ego vehicle.}
+	\label{tab:parameters ego cruising}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Event C of \cref{fig:example ego states lon}.}
+		\input{tabular/event3_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Event E of \cref{fig:example ego states lon}.}
+		\input{tabular/event5_normalization}%
+	\end{minipage}%
+\end{table}
+
+The parameters of the two lane change activities are presented in \cref{tab:parameters ego G} and \cref{tab:parameters ego I}, respectively. The parameters for the straight-driving activities are presented in \cref{tab:parameters ego straight}.
+
+\begin{table}
+	\centering
+	\caption{Parameters of the first lane change activity of the ego vehicle, denoted by G in \cref{fig:example ego states lat}.}
+	\label{tab:parameters ego G}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Normalization parameters.}
+		\input{tabular/event12_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.5\linewidth}
+		\centering
+		\subcaption{Spline coefficients.}
+		\input{tabular/event12}%
+	\end{minipage}%
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Parameters of the second lane change activity of the ego vehicle, denoted by I in \cref{fig:example ego states lat}.}
+	\label{tab:parameters ego I}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Normalization parameters.}
+		\input{tabular/event14_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.5\linewidth}
+		\centering
+		\subcaption{Spline coefficients.}
+		\input{tabular/event14}%
+	\end{minipage}%
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Normalization parameters of straight-driving activities of the ego vehicle.}
+	\label{tab:parameters ego straight}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Event F of \cref{fig:example ego states lat}.}
+		\input{tabular/event11_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Event H of \cref{fig:example ego states lat}.}
+		\input{tabular/event13_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Event J of \cref{fig:example ego states lat}.}
+		\input{tabular/event15_normalization}%
+	\end{minipage}%
+\end{table}
+
+\cref{fig:example ego states pos acc} show the longitudinal position and acceleration of the ego vehicle. \Cref{fig:example ego states lon acc} shows that by employing splines the acceleration is automatically smoothed. 
+
+\setlength\figureheight{170pt}
+\setlength\figurewidth{0.475\linewidth}
+\begin{figure}
+	\centering
+	\begin{minipage}[b]{0.49\linewidth}
+		\centering
+		\input{figures/lon_pos.tikz}%
+		\subcaption{Longitudinal position.}
+		\label{fig:example ego states lon pos}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}[b]{0.49\linewidth}
+		\centering
+		\input{figures/lon_acc.tikz}%
+		\subcaption{Longitudinal acceleration.}
+		\label{fig:example ego states lon acc}
+	\end{minipage}%
+	\caption{Longitudinal position and acceleration of the ego vehicle. The blue dots show the measurements and the orange dotted line show the result of the models that are employed for modeling the position.}
+	\label{fig:example ego states pos acc}
+\end{figure}
+
+
+\section{Dynamic environment}
+
+\Cref{fig:example dynamic environment} shows the longitudinal and lateral position of the pickup truck and the station wagon with respect to the ego vehicle. The station wagon accelerates and performs a lane change at approximately $t\approx10$ s. At $t\approx12$ s, the station wagon overtakes the ego vehicle. The ego vehicle overtakes the pickup truck at $t\approx25$ s, as can be seen by the relative longitudinal distance of the pickup truck in \cref{fig:example dynamic environment lon}, which becomes negative at $t\approx25$ s. The events related to the pickup truck and the station wagon are shown in Figure~\ref{fig:example events}. Here, it can be seen that the pickup truck is in the field of view of the ego vehicle's sensors from $t=1$ s until $t=34$ s. The station wagon is in the field of view of the ego vehicle's sensors from $t=0$ s until $t=18$ s.
+
+\setlength\figureheight{150pt}
+\setlength\figurewidth{0.49\linewidth}
+\begin{figure}
+	\centering
+	\begin{minipage}[b]{0.499\linewidth}
+		\centering
+		\input{figures/rel_lon_pos.tikz}%
+		\subcaption{Longitudinal distance of other vehicles with respect to ego vehicle.}
+		\label{fig:example dynamic environment lon}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}[b]{0.49\linewidth}
+		\centering
+		\input{figures/rel_lat_pos.tikz}%
+		\subcaption{Lateral distance of other vehicles with respect to ego vehicle.}
+		\label{fig:example dynamic environment lat}
+	\end{minipage}%
+	\caption{States of the dynamic environment.}
+	\label{fig:example dynamic environment}
+\end{figure}
+
+The station wagon starts with acceleration. The parameters for this activity are shown in \cref{tab:parameters acceleration station wagon}. After accelerating, the station wagon starts cruising, for which the parameters are presented in \cref{tab:parameters station wagon cruising}. The parameters for the lane change of the station wagon are presented in \cref{tab:parameters lane change station wagon} and the parameters for the straight-driving activities are presented in \cref{tab:parameters station wagon straight 1} and \cref{tab:parameters station wagon straight 2}. The pickup truck is driving straight and at a constant speed. The normalization parameters are presented in \cref{tab:parameters pickup}.
+
+\begin{table}
+	\centering
+	\caption{Parameters of the acceleration activity of the station wagon.}
+	\label{tab:parameters acceleration station wagon}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Normalization parameters.}
+		\input{tabular/event20_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.5\linewidth}
+		\centering
+		\subcaption{Spline coefficients.}
+		\input{tabular/event20}%
+	\end{minipage}%
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Parameters of the lane change activity of the station wagon.}
+	\label{tab:parameters lane change station wagon}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Normalization parameters.}
+		\input{tabular/event31_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.5\linewidth}
+		\centering
+		\subcaption{Spline coefficients.}
+		\input{tabular/event31}%
+	\end{minipage}%
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Normalization parameters of the cruising and straight-driving activities of the station wagon.}
+	\label{tab:parameters station wagon cruising and straight}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Cruising.}
+		\label{tab:parameters station wagon cruising}
+		\input{tabular/event21_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Straight before lane change.}
+		\label{tab:parameters station wagon straight 1}
+		\input{tabular/event30_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Straight after lane change.}
+		\label{tab:parameters station wagon straight 2}
+		\input{tabular/event32_normalization}%
+	\end{minipage}%
+\end{table}
+
+\begin{table}
+	\centering
+	\caption{Normalization parameters of the cruising and straight-driving activities of the pickup truck.}
+	\label{tab:parameters pickup}
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Cruising.}
+		\label{tab:parameters pickup cruising}
+		\input{tabular/event40_normalization}%
+	\end{minipage}%
+	\begin{minipage}[b]{.33\linewidth}
+		\centering
+		\subcaption{Straight driving.}
+		\label{tab:parameters pickup straight}
+		\input{tabular/event50_normalization}%
+	\end{minipage}%
+\end{table}
+
+
+\section{Scenarios}
+
+Scenarios are constructed by combining the activities of all road users (ego + dynamic environment) with the static environment. Since currently we don't have enough reliable information on the static environment, we focus on the ego and its dynamic environment for constructing the first scenarios. As an example, we take the 'ego overtaking 1' scenario. The first relevant event is the start of the lane change of the ego vehicle, indicated by the red vertical line in \cref{fig:example events}. The scenario ends at the end of the second lane change. The relevant activities are therefore G,H,I for the lateral ego activities and accordingly C,D,E for the longitudinal ego activities. Similarly, the scenario contains the activities of the pickup (cruising + lane following). 
+
+\printbibliography
+
+\end{document} 

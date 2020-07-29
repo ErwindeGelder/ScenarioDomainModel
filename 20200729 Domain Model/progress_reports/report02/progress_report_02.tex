@@ -1,0 +1,207 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage[noadjust]{cite}                     %% citations; noadjust removes leading spaces
+%\usepackage[round]{natbib}                     %% Author-year citations (remove package cite)
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\pgfplotsset{compat=1.9}
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{2}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{16 November 2017}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-life driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item We had a discussion about the definition of \emph{event}. As an event (or action) is not clearly defined in automotive papers, the suggestion is to look for definitions/ontology for a wider scope. For example, in hybrid control, when the dynamic behaviour changes, you can go from one mode to another. Note that \emph{event} might be confusing, as in control this is usually a point in time (i.e. it does not have a start time and an end time). Furthermore, the term \emph{actor} should be defined.
+	\item We shortly discussed the idea of scenarios. No specific comments on this subject.
+	\item We discussed about a possible paper. Probably IV2018 is most suitable (deadline 15 January).
+	\item Bart checks summary of PhD research topic. Title and start time needs to be added.
+	\item Agreement between TU Delft and TNO is being processed by TU Delft. 
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item I mainly worked on the definition of a scenario and event within the automotive context (see section \ref{sec:scenario definition}). After a (literature) study, I concluded the following regarding a \emph{scenario}:
+	\begin{itemize}
+		\item A scenario corresponds to a time interval. 
+		\item A scenario consists of one or several events.
+		\item Real-life traffic scenarios are quantitative scenarios.
+		\item The time interval of a scenario contains all relevant events.
+		\item A scenario includes the description of the static environment.
+	\end{itemize}
+	\item As a result, I came to the following definition of a \emph{scenario}: \\
+	\emph{A scenario is a quantitative description of the activity of the ego vehicle, the dynamic environment of the ego vehicle and the static environment of the ego vehicle. From the perspective of the ego vehicle, it contains the relevant events. The scenario can be described by qualitative manners.}
+	\item Regarding an event, I concluded the following (see section \ref{sec:events}):
+	\begin{itemize}
+		\item An event corresponds to a time instant.
+		\item An event marks the transition of a state.
+		\item An event should mark the start and end of a time interval that can be qualitatively described.
+	\end{itemize}
+	\item As a result, I came to the following definition of an \emph{event}: \\
+	\emph{An event marks the time instant at which a transition of a state occurs, such that before and after an event, the state is described by a different model\footnote{See footnote \ref{note:model}}. Furthermore, it marks the start and end of a time interval that can be qualitatively described.}
+	\item I worked out an example to demonstrate what a scenario is and how it can be decomposed into events. Right now it is a python notebook and therefore not documented in a report, so I will be able to show it next time.
+\end{itemize}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item Agree with `Helmond' about the proposed definitions and the contents of the paper. 
+	\item As soon as there is consensus, we can start writing the paper. The paper will include section \ref{sec:scenario definition} and \ref{sec:events}).
+	\begin{itemize}
+		\item Title: \emph{On ontology of real-life scenario for automotive applications}.
+		\item Authors (?): Erwin de Gelder, Jan-Pieter Paardekooper, Jeroen Ploeg, Hala Elrofai, Arash Khabbaz Saberi, Olaf Op den Camp, Bart De Schutter.
+		\item What would be the added value of the paper (compared to existing papers)? The proposed ontology is more concrete than existing ones. Therefore, it is easier to apply when we want to do event/scenario mining. Furtermore, this will be an important step towards the quantification of the completeness.
+	\end{itemize}
+	\item Document the example which I want to use to apply the ontology. I want to include this in the paper.
+	\item A strong point of the proposed ontology is that it is much more applicable than other definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario}. To demonstrate this, I want to apply the event/scenario mining on a larger dataset. Hopefully, we can soon make use of the dataset within CETRAN.
+\end{itemize}
+
+\section{Questions}
+
+\begin{itemize}
+	\item Are there any comments/remarks regarding the definition of a scenario, section \ref{sec:scenario definition}?
+	\item Are there any comments/remarks regarding the definition of an event, section \ref{sec:events}?
+	\item Would it be good to write a conference paper for this topic?
+\end{itemize}
+
+\section{Definition of scenario}
+
+\label{sec:scenario definition}
+% Scenario typology according to Van Notten et al.
+Van Notten et al.\ \cite{vannotten2003updated} present an overview of the diversity in the scenarios. Van Notten et al.\ state that ``in view of the observed variety in scenario approaches'', it is assumed ``that there is no `correct' scenario definition or approach. However, the typology uses the following broad working definition: scenarios are descriptions of possible futures that reflect different perspectives on the past, the present and the future.''
+
+% Techniques for scenario development
+Where the contribution of Van Notten et al.\ \cite{vannotten2003updated} relate more to the overall scenario project, Bishop et al.\ \cite{bishop2007scentechniques} focus more on the scenario techniques, i.e.\ the process of creating scenarios. These scenario development techniques vary from genius forecasting, event sequences with probability trees and sensitivity analysis \cite{bishop2007scentechniques}.
+
+% How to apply to real-life traffic scenarios
+If it was not clear yet, the contributions of Van Notten et al.\ \cite{vannotten2003updated} and Bishop et al.\ \cite{bishop2007scentechniques} point out that the notion of \emph{scenario} is very broad. We are interested in scenarios that can be used in the context of (automotive) driving, which limits the scope of what a scenario is. The description of a scenario by Go and Carroll \cite{go2004blind} is more related to our needs.
+% Definition according to Go and Carroll
+Go and Carroll \cite{go2004blind} describe a scenario within the field of system design as ``a description that contains (1) actors, (2) background information on the actors and assumptions about their environment, (3) actors' goals or objectives, and (4) sequences of actions and events. Some applications may omit one of the elements or they may simply or implicitly express it. Although, in general, the elements of scenarios are the same in any field, the use of scenarios is quite different.'' 
+
+% Definition according to Geyer et al.
+Several definitions of a scenario can be directly applied to traffic scenarios. For example, Geyer et al.\ \cite{geyer2014} uses the metaphor of a movie or a storybook for describing a scenario. Geyer et al.\ states that ``a scenario includes at least one situation within a scene including the scenery and dynamic elements. However, [a] scenario further includes the ongoing activity of one or both actors.'' For a further explanation of the terms situation, scene and scenery, see \cite{geyer2014}. It is mentioned that the action of the driver and/or automation might be predefined. Here, the meaning of action is not detailed. In an example of a so-called crossway scenario, they mention that the course of events might be different. For example, when a car keeps constant speed and then turns right, the scenario consists of one situation. The car might also first deceleration, acceleration and decelerate before turning right. In this case, the scenario consists of four situations.
+
+% Definition according to Ulbrich et al.
+Ulbrich et al.\ \cite{ulbrich2015} define a scenario in the context of automated driving. They define a scenario as ``the temporal development between several scenes in a sequence of scenes. Every scenario starts with an initial scene. Actions \& events as well as goals \& values may be specified to characterize this temporal development in a scenario. Other than a scene, a scenario spans a certain amount of time.'' They state that actions and events link the different scenes. A further description of actions and events is not given.
+
+% Definition according to Elrofai et al.
+Another definition of a scenario in the context of automated driving is given by Elrofai et al.\ \cite{elrofai2016scenario}. They define scenario as ``the combination of actions and manoeuvres of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and manoeuvres of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
+
+% "Requirements"
+Based on the aforementioned references, the following is concluded about a scenario:
+\begin{itemize}
+	% Order of seconds
+	\item A scenario corresponds to a time interval. \\
+	Van Notten et al.\ \cite{vannotten2003updated} call such a scenario a chain scenario (``like movies''), as opposed to a snapshot scenario, i.e. a scenario that describes the state at a time instant (``like photos''). The definitions mentioned above mention that a scenario corresponds to a time interval \cite{go2004blind, geyer2014, ulbrich2015, elrofai2016scenario}. The duration of a scenario is in the order of seconds, as explicitly mentioned by Elrofai et al.\ \cite{elrofai2016scenario}. Though the duration is not mentioned by Ulbrich et al.\ \cite{ulbrich2015}, the presented example is in the order of seconds. Furthermore, other scenarios regarding (automated) driving are also in the order of seconds, e.g., see \cite{gietelink2006development, zofka2015datadrivetrafficscenarios, roesener2017comprehensive, karaduman2013interactivebehavior, hulshof2013autonomous, englund2016grand}.
+	
+	% Events
+	\item A scenario consists of one or several events \cite{vannotten2003updated, go2004blind, geyer2014, ulbrich2015, kahn1962, englund2016grand, schoemaker1993multiple, cuppens2002alert}. \\
+	As already stated by Bishop et al.\ \cite{bishop2007scentechniques}, it can be helpful to develop scenarios using events. Thus, a scenario could be defined as a particular sequence of events.  Kahn writes that ``a scenario results from an attempt to describe in more or less detail some hypothetical sequence of events'' \cite{kahn1962}. Geyer et al.\ \cite{geyer2014} and Ulbrich et al.\ \cite{ulbrich2015} use the term event (``course of events'' and ``events \& actions'', respectively), although they do not provide a definition of the term \emph{event}. In the next section, we will elaborate on the notion of \emph{event}.
+	
+	% Semantically described
+	\item Real-life traffic scenarios are quantitative scenarios. \\
+	Regarding the nature of the data, a scenario can be either qualitative or quantitative \cite{vannotten2003updated}. Real-life traffic scenarios are quantitative scenarios, such that it is, e.g., suitable for simulation purposes. It is required, however, that a scenario can be qualitatively described, such that it is readable and understandable for human experts and. This has become known as a Story-and-Simulation approach \cite{alcamo2001scenarios}. Note that several quantitative scenarios might have the same qualitative description, thus a qualitative description of a scenario does not uniquely define a quantitative scenario. A qualitative description can be regarded as an abstraction of the quantitative scenario.
+	
+	% Some relevance between events	
+	\item The time interval of a scenario contains all relevant events. \\
+	According to Geyer et al.\ \cite{geyer2014}, ``the end of a scenario is defined by the first irrelevant situation with respect to the scenario''. In a similar manner, we require that the time interval of a scenario should contain all relevant events. For practical reasons, the term `relevant' must be detailed. First of all, it is important to note that `relevant' is subjective. Therefore, an event is considered to be relevant for the scenario, if it is relevant for the ego vehicle. Next to that, an event is regarded as irrelevant, if it is independent of the relevant events.
+	
+	% Description of static environment
+	\item A scenario includes the description of the static environment. \\
+	A scenario should include the description of the static environment, e.g., road layout and weather information. It is assumed that the static environment does not change during a scenario. Although this is not a general prerequisite of a scenario, the description of the static environment is often included when speaking about traffic scenarios \cite{geyer2014, ulbrich2015, elrofai2016scenario, hulshof2013autonomous, ebner2011identifying, schuldt2013effiziente, althoff2017CommonRoad}.
+\end{itemize}
+
+% Definition
+A scenario is defined as follows: \emph{A scenario is a quantitative description of the activity of the ego vehicle, the dynamic environment of the ego vehicle and the static environment of the ego vehicle. From the perspective of the ego vehicle, it contains the relevant events. The scenario can be described by qualitative manners.}
+
+\section{Event}
+\label{sec:events}
+% Introduction of this section
+A scenario, for which the definition is proposed in section \ref{sec:scenario definition}, consists of events. Events can be seen as the `building blocks' of a scenario. The notion of event is extensively used in literature. In this section, a selected number of descriptions are presented. Next, a definition of event is given such that it suits the context of (automotive) driving.
+
+% Literature review
+The term event is used in many different fields, e.g.:
+\begin{itemize}
+	\item In computing, an event is an action or occurrence recognized by software. A common source of events are its users. An event may trigger a state transition \cite{breu1997towards}.
+	\item Jeagwon Kim, a philosopher, writes: ``The term event ordinarily implies change'' \cite{kim1993supervenience}. Kim states that an event is composed of three things: Objects ($x$), a property ($P$) and a time or a temporal interval ($t$). 
+	\item In probability theory, an event is an outcome or a set of outcomes of an experiment \cite{pfeiffer2013concepts}. For example, a thrown coin landing on its tail is an event.
+	\item ``In relativity, an event is any occurrence with which a definite time and a definite location are associated; it is an idealization in the sense that any actual event is bound to have a finite extent both in time and in space'' \cite{sartori1996understanding}.
+	\item In the field of hybrid control theory, ``the continuous and discrete dynamics interact at `event' or `trigger' times when the continuous state hits certain prescribed sets in the continuous state space'' \cite{branicky1998hybridcontrol}. ``A hybrid system can be in one of several modes of operation, whereby in each mode the behaviour of the system can be described by a system of difference or differential equations, and that the system switches from one mode to another due to the occurrence of events.'' \cite{deschutter2003hybrid}.
+	\item In event-based control, a control action is computed when an event is triggered, as opposed to the more traditional approach where a control action is periodically computed \cite{heemels2012eventcontrol}. 
+\end{itemize}
+
+Before providing the definition of an event, the following items need to be taken into account:
+\begin{itemize}
+	% It is a time instant
+	\item An event corresponds to a time instant.\\
+	Whether it is regarding computing \cite{breu1997towards}, philosophy \cite{kim1993supervenience}, relativity \cite{sartori1996understanding}, hybrid control \cite{branicky1998hybridcontrol,deschutter2003hybrid} or event-based control \cite{heemels2012eventcontrol}, an event is happening at a time instant. Therefore, when defining an event in the scope of real-life traffic scenarios, this is taken into account.
+	
+	% Event should mark transition of a state from one set to another - mention relation with hybrid control
+	\item An event marks the transition of a state.\\
+	During a traffic scenario, the so-called state is continuously evolving. For example, when a vehicle moves from A to B, the position changes. For the assessment methodology, it is required to parametrize the way the state evolves over time \cite{deGelder2017assessment}. Therefore, specific models\footnote{\label{note:model}In this context, a model describes the dynamics of the state. Let the state be denoted by $x$, then the state could be described by a parametrized function, i.e. $x = f_{\theta}(t)$ with parameters $\theta$ and time $t$. Another possibility is that the a parametrized differential equation is used, i.e. $\dot{x} = f_{\theta}(x, t)$.} will be employed to describe this. These models, each with a fixed number of parameters, will only be valid for a certain time interval. Therefore, events should mark the transition from one model that is describing the state to another model describing the state. In some way, this is analogous to the way event is described in hybrid control \cite{deschutter2003hybrid}. Here, an event describes the transition from one mode of operation to another mode of operation, where the behaviour of the system in each mode can be described by a system of difference or differential equations. In our application, i.e. events in traffic scenarios, ``mode of operation'' is described by a certain model with parameters assigned to it.
+	
+	% also semantically different
+	\item An event should mark the start and end of a time interval that can be qualitatively described.\\
+	The last item is possibly the most abstract item. Events will be the building blocks of scenarios. It is desired that the scenarios can be qualitatively described, i.e. it can be described by semantics. Therefore, it is desired that the events can be described by semantics too, such that the time intervals between events are readable and understandable for human experts. For example, the start and end of a `braking action' should be marked by an event. 
+\end{itemize}
+
+% Give definition
+An event is defined as follows: \emph{An event marks the time instant at which a transition of a state occurs, such that before and after an event, the state is described by a different model\footnote{See footnote \ref{note:model}}. Furthermore, it marks the start and end of a time interval that can be qualitatively described.}
+
+\bibliographystyle{ieeetr}
+\bibliography{../../bib}
+
+\end{document}

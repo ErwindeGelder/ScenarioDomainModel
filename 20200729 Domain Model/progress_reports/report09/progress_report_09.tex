@@ -1,0 +1,166 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab/Python)
+\pgfplotsset{compat=1.14}						%% Run in backwards compatibility mode
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+\usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
+\usepackage{units}								%% Appropriate behavior of units
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../../bib}
+
+\usepackage{tabularx}
+%\newcolumntype{b}{X}
+%\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+%%==========================================================================
+%% Define reference stuff
+%%==========================================================================
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{9}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{3 July, 2018}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-world driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+
+\newcommand*{\ud}{\mathrm{\,d}}                                 %% differential operator (upright d)
+\newcommand{\kl}[2]{\textup{KL} \left( #1 || #2 \right)}
+\newcommand{\intinf}{\int_{-\infty}^{\infty}}
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item We agreed on the scope of the first journal paper, which will be an extension of the submitted conference paper about the ontology regarding the scenarios for the assessment of automated vehicles. Some comments regarding this journal paper:
+	\begin{itemize}
+		\item It is fine to refer to other work like the TNO white paper and the report on the definition of several ``scenario classes''. However, the journal paper should be understandable without needing to read the other material, because the reviewers will most likely not look at these references. Hence, the paper should be stand-alone.
+		\item My main focus will be on writing this journal paper. As a result, I will not work further on the quantification of the completeness.
+	\end{itemize}
+	\item Bart suggested Bernd Heidengott from the Vrije Universiteit Amsterdam and Frank Redig from the TU Delft for their expertise with statistics.
+	\item For the mathematical notation (e.g., of the entropy of a stochastic variable), it is best to adopt the notation of a well-known reference.
+	\item The Go/No Go meeting will be in or around September. A date will be set in August.
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item I had a discussion with two TNO colleagues about the quantification of \emph{completeness}. I explained that Wang~et~al.\ \cite{wang2017much} approaches this problem by comparing the estimated probability density function (PDF) using $n$ samples and the estimated PDF using $n+m$ samples by employing the Kullback-Leibler divergence. A few take aways from that meeting:
+	\begin{itemize}
+		\item Whereas Wang~et~al.\ only compare the two PDFs using the first $n$ samples and the $n+m$ samples, it would be better to use cross validation. By employing cross validation, the method becomes less dependent (or even invariant if one-leave-out cross validation is used) of the order in which the data is obtained. 
+		\item When comparing two estimated PDFs, it is of big influence how these PDFs are estimated. For example, when the estimated PDFs are oversmoothed, the estimated PDFs will look more similar, resulting in an overconfidence regarding the completeness of the data. Therefore, it is suggested to look into \emph{goodness of fits} methods. The goodness of fit of a statistical model describes how well it fits a set of observations. Examples are the Kolmogorov-Smirnov test, the Shapiro-Wilk test, and the chi-squared test.
+	\end{itemize}
+	\item I looked at different journals that might be suitable for submitting the journal paper I want to write. \Cref{tab:journals} lists some suitable journals in alphabetical order.
+	\begin{itemize}
+		\item I think the more technical papers (i.e., a lot of mathematics involved) are not suitable, as our paper will not be very technical. As a result, the journals 2 and 3 are not applicable.
+		\item Due to the low quality, I think journal 5 is not applicable.
+		\item All other journals are applicable I think. 
+	\end{itemize}
+	\item The conference paper about the definition of a scenario is (again) rejected. The main criticism is that the contribution is too little. One reviewer mentions the following:
+	\begin{enumerate}
+		\item Ontologies are formal concepts for modeling domain knowledge. The given attempt of the authors lacks any formalization. It is merely a collection of definitions of descriptions.
+		\item The authors should use a specific logic for formalizing their ontology. Examples for such languages include recently defined variants of Ontology Web Language and extensions. The actual language should be chosen according to the expressivity required for the discussed use case. Given that the use case is not well formalized, it is not possible to estimate the complexity and appropriate language.
+		\item The authors partly miss the goal of ontological formalization. The idea is *not* to make all subsumptions explicit, as largely done in Section III. All concepts/classes should be defined according to their properties and then a taxonomy is obtained by *reasoning* over the class definitions.
+	\end{enumerate}
+	Based on this feedback, I think it would be good if I write the ontology according to the Ontology Web Language. I have no experience with this, so I will see if there is a colleague who can help me with this. 
+	
+	I do not entirely understand the third point. I need to spend more time on this to fully grasp the meaning of this comment.
+	
+	Another possibility is that I do not mention ``ontology'', but I think that will limit the overall contribution too much.
+	
+	\item I worked on the journal paper. The current version (which is very much work in progress) is attached. Gray bars indicate the texts that I added.
+\end{itemize}
+
+\begin{table}[t]
+	\caption{Possible journals for submitting the journal paper in alphabetical order.}
+	\label{tab:journals}
+	\begin{tabularx}{\textwidth}{lXlX}
+		\hline
+		\# & \heading{Journal name} & \heading{Relevant references} & Comment \\ \hline
+		1 & IEEE Intelligent Transportation Systems Magazine & \cite{bengler2014threedecades, bertozzi2013vaic, kasper2012oobayesnetworks} &  Technical papers \cite{kasper2012oobayesnetworks} and non-technical papers \cite{bengler2014threedecades, bertozzi2013vaic} \\
+		2 & IEEE Transactions on Intelligent Transportation Systems & \cite{Bonnin2014, morales2017cooperativeintersection, ploeg2017GCDC, zhao2018evaluation} & ITS, Technical papers \\
+		3 & IEEE Transactions on Intelligent Vehicles & \cite{wang2017much} & Technical paper \\
+		4 & IET Intelligent Transport Systems & \cite{geyer2014, wang2018compression} & ITS, seems of a bit lower quality (e.g., not that long, relatively small reference lists) \\
+		5 & International Journal of Intelligent Transportation Systems Research & \cite{ebner2011identifying} & Seems of a bit lower quality, very low impact factor (0.6) \\
+		6 & Safety Science & \cite{khastgir2017towards, rae2017forecast} & About safety in general\\
+		7 & Transportation Research Part A: Policy and Practice & \cite{kalra2016driving, fagnant2015preparing} & Not very technical papers \\ 
+		\hline
+	\end{tabularx}
+\end{table}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item Formalize the notions using a dedicated tool. Probably Prot{\'e}g{\'e} can be used for that purpose ({\tt https://protege.stanford.edu}).
+	\item Further work on the journal paper. My first focus will be on Section III (the ontology). Furthermore, I want to work on the case study. This requires data analysis for acquiring real-world scenarios. 
+\end{itemize}
+%
+%\section{Questions}
+%
+%\begin{itemize}
+%	\item 
+%\end{itemize}
+
+
+\printbibliography
+
+
+\newpage
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20180639 Journal paper ontology"/journal_ontology.pdf}
+
+\end{document}

@@ -1,0 +1,97 @@
+\section{Mining scenarios using tags}
+\label{sec:mining}
+
+\cstartd
+For the scenario mining, we formulate a scenario category using a combination of tags.
+As an example, \cref{fig:cutin formulation tags} shows how the scenario category ``cut in'' can be formulated using tags.
+To further structure the tags, we formulate a scenario category as a sequence of \emph{items} where each \emph{item} corresponds to a combination of tags for all relevant subjects.
+The number of items may vary from scenario category to scenario category.
+The scenario category ``cut in'' in \cref{fig:cutin formulation tags} contains two items and considers a vehicle other than the ego vehicle that changes lane (other vehicle, item 1 and 2) and becomes the lead vehicle (other vehicle, item 2).
+In the meantime, the ego vehicle follows its lane (ego vehicle, items 1 and 2) and the scenario category only considers highway driving (static environment, items 1 and 2).
+When describing the tags for each item, logical AND, OR, or NOT rules may be used. 
+For example, for the other vehicle in \cref{fig:cutin formulation tags}, either the tag ``changing lane left'' \emph{or} the tag ``changing lane right'' needs to apply.
+\cendd
+
+\begin{figure}
+	\centering
+	\input{figures/cutin_template.tikz}
+	\caption{\cstartd Formulation of the scenario category ``cut in'' using tags.\cendd}
+	\label{fig:cutin formulation tags}
+\end{figure}
+
+
+\cstartb
+% Introduce n-grams and quickly explain what an n-gram is.
+%For the scenario mining, we will employ n-grams and n-gram models. An n-gram is a sequence of $\nofngram$ items. 
+%For example, in the field of natural language processing --- where n-grams are a popular modeling technique \autocite{hull1982experiments, brown1992class} --- each item might correspond to a single word.
+%In our case, an item corresponds to a combination of tags. 
+%
+%% Explain that we use multiple n-gram models.
+%% What are the advantages of using multiple n-grams?
+%Instead of constructing one n-gram model with all tags within one data set, we construct different n-gram models for the different subjects. A subject could be, e.g., a road user or a static part of the environment. In this paper, we consider the subjects ``ego vehicle'', ``other vehicle'', and ``static environment''.
+%Constructing different n-gram models instead of one n-gram model brings several benefits:
+%\begin{itemize}
+%	\item The number of possible items is much lower when considering only one subject that describes everything, such that it is more likely that most of the items are seen multiple times. 
+%	As a result, analysis to predict tags or correct for wrong tags is possible \autocite{lesher1998optimal}.
+%	\item If different tags are needed for mining (other) scenarios, only the n-gram models of the corresponding subjects need to be updated.
+%	\item Searching for n-grams within the n-gram models is much faster since the n-gram models itself are much smaller.
+%\end{itemize}
+%
+%% Explain items
+%As mentioned before, an item corresponds to a combination of tags. 
+%To further explain this, consider the following example: The ego vehicle cruises while following its lane. 
+%At some point, the ego vehicle starts to accelerate before changing lane to the left. 
+%Next, the ego vehicle starts cruising before the lane change is finished. 
+%The corresponding tags are shown in \cref{fig:ego tags}.
+%This example contains five items and each item starts and ends with an event, i.e., the start or end of an activity.
+%The first item contains the tags ``cruising'' and ``following lane'', the second item contains the tags ``accelerating'' and ``following lane'', etc.
+
+% Show how a scenario category is represented through a "template".
+%To mine scenarios of a specific scenario category, we write a scenario category using n-grams. 
+%To do this, the following rules apply:
+%\begin{itemize}
+%	\item For each subject that is considered in the scenario category, an n-gram is defined.
+%	\item Each n-gram uses the same number of items ($\nofngram$). However, $\nofngram$ may vary from scenario category to scenario category.
+%	\item For each item, the tags that apply are described. Logical AND or OR rules may apply.
+%\end{itemize}
+%
+%\begin{table}
+%	\centering
+%	\caption{\cstartb N-grams that describe the scenario category ``cut in''. Because $\nofngram=2$, these are also called bigrams.\cendb}
+%	\label{tab:ngrams cutin}
+%	\cstartb
+%	\begin{tabularx}{\linewidth}{p{5.5em}XX}
+%		\toprule
+%		Subject & Item 1 & Item 2 \\ \otoprule
+%		Ego vehicle & Lateral activity: \newline Following lane & Lateral activity: \newline Following lane \\
+%		Other vehicle & Lateral activity: \newline \{Changing lane left OR \newline \phantom{\{}Changing lane right\}\newline AND Lead vehicle: No & Lateral activity: \newline \{Changing lane left OR \newline \phantom{\{}Changing lane right\}\newline AND Lead vehicle: Yes \\
+%		Static environment & On highway: Yes & On highway: Yes \\
+%		\bottomrule
+%	\end{tabularx}
+%	\cendb
+%\end{table}
+%
+%In \cref{tab:ngrams cutin}, the n-grams are shown for the scenario category ``cut-in''. 
+%This scenario category considers a vehicle other than the ego vehicle that changes lane (other vehicle, item 1) and becomes the lead vehicle (other vehicle, item 2). 
+%In the meantime the ego vehicle follows its lane (ego vehicle, items 1 and 2) and the scenario category only considers highway driving (static environment, items 1 and 2).
+
+% How scenarios are mined using the template.
+The scenarios are mined by searching for matches of the defined items within the tags of the data set. 
+This searching is subject to two rules:
+\begin{enumerate}
+	\item For each item, there needs to be a match for all relevant subjects \emph{at the same sample time}.
+	\item The different items need to occur \emph{right after each other}. 
+\end{enumerate}\cendb
+\cstartd To continue the example of the scenario category ``cut in'', \cref{fig:tags cut in} shows a part of labeled data in which a cut-in scenario is found. \cendd
+\cstartb The two vertical dashed lines indicate the start and the end of the cut in that is defined in \cref{fig:cutin formulation tags}.
+\cendb
+
+\begin{figure*}
+	\centering
+	\input{figures/tags_cutin.tikz}
+	\caption{\cstartc Example of tags describing a cut in. Note that only the tags that are relevant for the cut in, as defined in \cref{fig:cutin formulation tags}, are shown. \cendc\cstartf Furthermore, whereas there are multiple other vehicles around the ego vehicle, only the other vehicle that performs the cut in is shown.\cendf}
+	\label{fig:tags cut in}
+\end{figure*}
+
+
+

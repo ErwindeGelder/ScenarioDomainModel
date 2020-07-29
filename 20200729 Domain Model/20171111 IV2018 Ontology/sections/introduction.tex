@@ -1,0 +1,28 @@
+\section{Introduction}
+\label{sec:introduction}
+
+% For validating all traffic scenarios
+An important aspect in the development of automated vehicles (AVs) is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \cite{bengler2014threedecades, stellet2015taxonomy, Helmer2017safety, putz2017pegasus, roesener2017comprehensive, gietelink2006development, roesener2016scenariobased, wachenfeld2016release}. 
+For legal and public acceptance of AVs, it is important that there is a clear definition of system performance and that there are quantitative measures for the system quality. 
+The more traditional methods \cite{response2006code, ISO26262}, used for evaluation of driver assistance systems, are no longer valid for the assessment of quality and performance aspects of an AV \cite{wachenfeld2016release}. 
+Therefore, a scenario-based approach is proposed \cite{roesener2016scenariobased, putz2017pegasus}. 
+For the scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in test cases used for scenario-based assessment \cite{stellet2015taxonomy}. 
+This paper proposes an ontology for these \emph{scenarios}.
+
+% Explain importance/relevance
+The notion of scenario is frequently used in the context of automated driving \cite{putz2017pegasus, roesener2017comprehensive, gietelink2006development, hulshof2013autonomous, karaduman2013interactivebehavior, englund2016grand, xu2002effects, ebner2011identifying, ploeg2017GCDC, zofka2015datadrivetrafficscenarios}, despite the fact that an explicit definition is often not provided. However, as mentioned by various authors \cite{stellet2015taxonomy, Helmer2017safety, alvarez2017prospective, zofka2015datadrivetrafficscenarios, aparicio2013pre, lesemann2011test, putz2017pegasus, geyer2014, ulbrich2015}, using a scenario in the context of the development or assessment of AVs requires a clear definition of a scenario. To this end, few definitions of a scenario in the context of (automated) driving have been proposed \cite{geyer2014, ulbrich2015, elrofai2016scenario}. For the context of the assessment of AVs, however, a more concrete definition of a scenario is required to minimize any ambiguity regarding the scenarios.
+
+% What is the added value of this paper w.r.t. other work
+% - Easier to apply event/scenario mining, because more concrete
+% - Important step towards quantification of completeness
+% - More complete (also event defined etc.)
+% - Backed up with literature (should we mention this???)
+% - Real example given
+We aim for a definition of a scenario that is, on the one hand, broadly consistent with existing definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} while, on the other hand, more concrete, such that it is applicable for scenario mining \cite{elrofai2016scenario} and scenario-based assessment \cite{stellet2015taxonomy, deGelder2017assessment}. We propose a definition that is concrete enough to be used in quantitative analysis required for assessment of AVs. This is achieved by defining quantitative building blocks of scenarios in the form of activities and events. An example is provided that illustrates the use of the ontology with a real-world case.
+
+% Outline
+The outline of the paper is as follows. 
+\Cref{sec:nomenclature} specifies notions that are adopted from literature to define a scenario. \Cref{sec:ontology} describes the ontology of real-world scenarios in the context of automated driving. 
+%First, a definition of a \emph{scenario} is provided and next the more abstract and generic concept of \emph{scenario classes} is explained. 
+In \Cref{sec:example}, an application example is provided to illustrate the use of the ontology with a real-world scenario. 
+The paper is concluded in \Cref{sec:conclusion}.

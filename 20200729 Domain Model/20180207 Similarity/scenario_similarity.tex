@@ -1,0 +1,519 @@
+%%==========================================================================
+%% This is the very first version of a Streetwise LaTeX template. By
+%% chosing the document class, it is easily convertible to a two-column IEEE
+%% paper format, provided any conflicting packages and (new)commmands are
+%% removed.
+%%
+%% Erwin de Gelder, January 6, 2018
+%%==========================================================================
+
+%%==========================================================================
+%% Title:
+%% Author(s):
+%% To be published in:
+%% Date of submission:
+%% Date of submission R1:
+%% Date of submission R2:
+%% Date of final submission:
+%%==========================================================================
+
+
+%% Generic
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%% IEEE
+%% Document class options: replace "draftcls" by "final" for final document.
+%% All other options may just as well be omitted because they are the default values.
+%\documentclass[10pt,final,journal,letterpaper,twoside,twocolumn]{IEEEtran}
+
+
+%%==========================================================================
+%% Document automation
+%%==========================================================================
+
+\def\reptitle{Similarity measures for traffic scenarios}
+\def\repauthor{Erwin de Gelder, etc.}
+
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../bib}
+
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+%\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab)
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+            bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage{lmodern} 
+\usepackage{etoolbox}							%% Needed for apptocmd later
+\usepackage[capitalize]{cleveref}
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+\usepackage{units}
+\usepackage{subcaption}
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+
+\newtoggle{standalone}
+\toggletrue{standalone}
+% Uncomment next line when document should be included in Progress report
+\toggletrue{standalone}
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\iftoggle{standalone}{%
+	\fancyhead[L]{\includegraphics[width=15mm]{Streetwise}} %% define headers (LE: left field/even pages, etc.)
+	\fancyhead[R]{\small\emph{\reptitle}}                   %% similar
+	\fancyfoot[C]{\thepage}                                 %% define footer
+	\setlength{\headheight}{18pt}                           %% increase head height to accommodate an oversized picture in the header
+	\renewcommand*{\headrulewidth}{0.25pt}                  %% header line width
+	%% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
+	\fancypagestyle{plain}{%
+		\fancyhf{}
+		\fancyhead[C]{\includegraphics[width=30mm]{Streetwise}}
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+		\setlength{\headheight}{36pt}
+	}
+}{%
+	\renewcommand*{\headrulewidth}{0pt}                  	%% No line in this case
+	%% Redefine the default "plain" page style (automatically activated by \maketitle, \section, ...)
+	\fancypagestyle{plain}{%
+		\fancyhf{}
+	}
+}
+\renewcommand*{\footrulewidth}{0pt}                     %% footer line width
+
+
+%%==========================================================================
+%% TikZ figures
+%%==========================================================================
+
+\newlength\figurewidth
+\setlength\figurewidth{0.35\textwidth}              %% set figure width
+\newlength\figureheight
+\setlength\figureheight{0.3\textwidth}              %% set figure height
+\pgfplotsset{every axis/.append style={
+    scaled y ticks=false,
+    scaled x ticks=false,
+    y tick label style={/pgf/number format/fixed},
+    x tick label style={/pgf/number format/fixed},
+    legend style={font=\small}},
+    compat=1.9}                                     %% PGFPlots package options
+\usetikzlibrary{shapes.geometric, arrows, arrows.meta}
+\usepgfplotslibrary{groupplots}
+%\usetikzlibrary{external}                           %% Create pdf figures from TikZ. Use PDFTeXify ...
+%\tikzexternalize[prefix=./tikz/]                    %% ... with --tex-option=--shell-escape switch.
+%\tikzset{external/force remake}                    %% force pdf figure update
+
+
+%%==========================================================================
+%% User-defined commands
+%%==========================================================================
+
+\newcommand*{\mat}[1]{\mathbf{#1}}                              %% matrix/vector notation
+\newcommand*{\matsym}[1]{\boldsymbol{#1}}                       %% matrix/vector notation for Greek letters
+\newcommand*{\T}{^{\scriptscriptstyle\mathsf{T}}}               %% transpose operator
+\newcommand*{\Hr}{^{\scriptscriptstyle\mathsf{H}}}              %% conjugate transpose operator
+\newcommand*{\ud}{\mathrm{\,d}}                                 %% differential operator (upright d)
+\newcommand*{\defeq}{\mathrel{\mathop:}=}                       %% definition sign :=
+\newcommand*{\eqdef}{=\mathrel{\mathop:}}                       %% definition sign =:
+\newcommand*{\ip}[2]{\left\langle#1\,{,}\,#2\right\rangle}      %% inner product
+\newcommand*{\real}[1]{\mathrm{Re}(#1)}                         %% real part
+\newcommand*{\imag}[1]{\mathrm{Im}(#1)}                         %% imaginary part
+\newcommand*{\lsup}[1]{{}^{#1}\!}                               %% left superscript
+\newcommand*{\hi}[1]{$^\text{#1}$}                              %% superscript in normal text
+\newcommand*{\lo}[1]{$_\text{#1}$}                              %% subscript in normal text
+\newcommand*{\w}[1]{\mathrm{#1}}                                %% multiple character super-/subscript in math mode
+\newcommand*{\Ln}{{\ensuremath{\mathcal{L}}}\xspace}            %% L norm
+\newcommand*{\Lone}{{\ensuremath{\mathcal{L}_1}}\xspace}        %% L_1 norm
+\newcommand*{\Ltwo}{{\ensuremath{\mathcal{L}_2}}\xspace}        %% L_2 norm
+\newcommand*{\Linf}{{\ensuremath{\mathcal{L}_\infty}}\xspace}   %% L_inf norm
+\newcommand*{\Lp}{{\ensuremath{\mathcal{L}_p}}\xspace}          %% L_p norm
+\newcommand*{\Htwo}{{\ensuremath{\mathcal{H}_2}}\xspace}        %% H_2 norm
+\newcommand*{\Hinf}{{\ensuremath{\mathcal{H}_\infty}}\xspace}   %% H_inf norm
+\newcommand*{\Hp}{{\ensuremath{\mathcal{H}_p}}\xspace}          %% H_p norm
+\newcommand*{\capskip}{\vspace{-12pt}}                          %% caption skip for figures with subfloats
+\newcommand*{\etal}{et al.}                                     %% may be required for Natbib bibliography styles
+\renewcommand*{\qedsymbol}{$\blacksquare$}                      %% redefine the end-of-proof symbol
+\renewcommand*{\labelitemi}{$\bullet$}                          %% first level item list bullet
+\renewcommand*{\labelitemii}{$-$}                               %% second level item list bullet
+%\renewcommand*{\theenumi}{\textit{\roman{enumi}}}               %% first level enumerator
+\renewcommand*{\labelenumi}{\theenumi.}
+\renewcommand*{\theenumii}{\textit{\alph{enumii}}}              %% second level enumerator
+\renewcommand*{\labelenumii}{\theenumii.}
+\DeclareMathOperator{\tr}{tr}                                   %% trace of a matrix
+\DeclareMathOperator{\sgn}{sgn}                                 %% signum function
+\DeclareMathOperator{\atan}{atan}                               %% arc tangent
+
+\newcommand{\deuclid}{d_{\textup{Euclidian}}}
+\newcommand{\ddtw}{d_{\textup{DTW}}}
+\newcommand{\imagi}{\textbf{j}}
+\newcommand{\profile}[1]{\textbf{v}_{#1}}
+\newcommand{\barprofile}[1]{\bar{\textbf{v}}_{#1}}
+\newcommand{\parvstart}{v_{\textup{start}}}
+\newcommand{\parvend}{v_{\textup{end}}}
+\newcommand{\pardv}{v_{\Delta}}
+\newcommand{\pardt}{t_{\textup{duration}}}
+
+
+%%==========================================================================
+%% User-defined environments
+%%==========================================================================
+
+\theoremstyle{plain}\newtheorem{definition}{Definition}[section]    %% definition
+                    \newtheorem{theorem}{Theorem}[section]          %% theorem
+                    \newtheorem{lemma}[theorem]{Lemma}              %% lemma
+                    \newtheorem{corollary}[theorem]{Corollary}      %% corollary
+                    \newtheorem{assumption}{Assumption}[section]    %% assumption
+                    \newtheorem{condition}{Condition}[section]      %% condition
+\theoremstyle{definition}\newtheorem{example}{Example}[section]     %% examples
+\theoremstyle{remark}\newtheorem{remarkenv}{Remark}[section]        %% remarks
+\newenvironment{remark}{\begin{remarkenv}}%
+                       {\hfill$\blacklozenge$\end{remarkenv}}       %% end remark with a lozenge
+\newenvironment{reviewer}{\itshape}{\upshape}                       %% environment for reviewer's comments
+
+
+%%==========================================================================
+%% Miscellaneous
+%%==========================================================================
+
+\graphicspath{{./../}{./figures/}{./more_figures/}} %% (graphicx) directory path for figures
+%\setlength{\parindent}{0pt}                        %% no paragraph indentation
+%\setlength{\parskip}{2ex}                          %% create empty line between paragraphs
+%\interdisplaylinepenalty=2500                      %% (amsmath) allow for page breaks within multiline equations
+%\numberwithin{equation}{section}                   %% (amsmath) include section number in equation numbering
+%\numberwithin{figure}{section}                     %% (amsmath) include section number in figure numbering
+%\numberwithin{table}{section}                      %% (amsmath) include section number in table numbering
+\addtolength{\arraycolsep}{-0.5mm}                  %% squeeze matrix columns a little
+\fnbelowfloat                                       %% (stfloats) put footnote below a float at the page bottom
+\urlstyle{same}                                     %% (hyperref) use current font for URLs
+\hypersetup{pdftitle={\reptitle},
+            pdfauthor={\repauthor}}                 %% (hyperref) pdf properties title and author
+%\raggedbottom                                      %% don't add inter-paragraph spacing to achieve \textheight
+%\setlength\subfigcapskip{-3pt}                     %% (subfigure) distance between subfloat and subcaption
+%\setlength\subfigbottomskip{-3pt}                  %% (subfigure) distance between subcaption and caption
+%\renewcommand*{\subcapsize}{\small}                %% (subfigure) subcaption font size
+\renewcommand*{\thesubfigure}{(\alph{subfigure})}   %% (subfig) implement 1(a) instead of 1a ...as subfigure reference
+\captionsetup[subfloat]{labelformat=simple}        %% ... as subfigure reference
+%\captionsetup[subfloat]{
+%    farskip=0pt,
+%    nearskip=8pt,
+%    captionskip=1.5pt,
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig) subfloat caption format
+%\captionsetup[figure]{
+%    labelfont={small,bf},
+%    textfont=small}                                %% (subfig/caption) figure caption format
+%\captionsetup[table]{
+%    aboveskip=2pt,
+%    labelfont={small,bf},
+%    textfont={small,sc}}                           %% (subfig/caption) table caption format
+\apptocmd{\thebibliography}{\raggedright}{}{}		%% Suppress badness warnings in bibliography
+
+
+% Table stuff
+\usepackage{booktabs}
+\usepackage{tabularx}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+%%==========================================================================
+%% Begin document
+%%==========================================================================
+
+\begin{document}
+
+\selectlanguage{USenglish}
+
+\title{\textbf{\reptitle}}
+\author{\repauthor}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+\label{sec:introduction}
+% Scenario-based approach for assessment of AVs -> this scenarios are important
+An important aspect in the development of automated vehicles (AVs) is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency \cite{bengler2014threedecades, stellet2015taxonomy, wachenfeld2016release, putz2017pegasus, roesener2016scenariobased, kompass2015sicherheitsveranderung}. 
+For legal and public acceptance, it is important that there is a clear definition of system performance and that there are quantitative measures for the system quality. 
+The more traditional methods \cite{response2006code, ISO26262}, used for evaluation of driver assistance systems, are no longer valid for the assessment of quality and performance aspects of an AV \cite{wachenfeld2016release}. 
+Therefore, a scenario-based approach is proposed \cite{roesener2016scenariobased, putz2017pegasus, kompass2015sicherheitsveranderung}. 
+For the scenario-based assessment, proper specification of scenarios is crucial since they are directly reflected in test cases used for scenario-based assessment \cite{stellet2015taxonomy}.
+
+% Purpose of document
+To structure the variety of scenarios, the notion of scenarios classes is introduced \cite{degelder2018ontology}. Whereas a scenario is a quantitative description, a scenario class is a qualitative description \cite{degelder2018ontology}. This document describes different measures to quantify the (dis)similarity between two different scenarios that belong to the same scenario class. An appropriate (dis)similarity measure for scenarios would be useful for at least two reasons.
+
+% Use of a measure for completeness
+The first use of a (dis)similarity measure is for quantifying the so-called \emph{completeness}. In order to draw conclusions on how an automated vehicle would perform in real-world traffic, it is necessary to know how representative the scenario database, which is used for the scenario-based assessment of the automated vehicle, is. Therefore it is important to quantify how complete the scenario database is \cite{geyer2014, alvarez2017prospective, stellet2015taxonomy}. A (dis)similarity measure for scenarios is useful for quantifying the completeness. For example, if newly collected scenarios are not similar to earlier collected scenarios, it is an indicated that the set of collected scenarios is not \emph{complete}. To achieve a complete set of scenarios, this process could be repeated until the newly collected scenarios are - to a certain extent - similar to the early collected scenarios. This process of achieving a complete set of scenarios is visualized in \cref{fig:completeness collection}.
+
+\begin{figure}[b]
+	\centering
+	\tikzstyle{startstop}=[rectangle, rounded corners, minimum width=4em, minimum height=4em, text centered, draw=black, fill=red!30, text width=4em]
+	\tikzstyle{process} = [rectangle, minimum width=9em, text width=8.5em, minimum height=4em, text centered, draw=black, fill=orange!30, node distance=10em]
+	\tikzstyle{decision} = [diamond, minimum width=4em, text width=4em, minimum height=4em, text centered, draw=black, fill=green!30, node distance=10em]
+	\tikzstyle{arrow} = [-{Triangle[width=2mm, length=3mm, round]}, line width=0.6mm] % rounded corners=0.4em
+	\begin{tikzpicture}
+		% Draw the blocks
+		\node[startstop](start){Start};
+		\node[process, right of=start, node distance=7em, text width=5em, minimum width=5.5em](collect){Collect new scenarios};
+		\node[process, right of=collect, node distance=9em](compare){Compare new scenarios with scenario database};
+		\node[decision, right of=compare](similar){New scenarios similar?};
+		\node[startstop, right of=similar, node distance=9em](stop){Scenario database complete};
+		\node[process, below of=compare, node distance=7em](add){Add collected scenarios to scenario database};
+		
+		% Arrows
+		\draw[arrow] (start) -- (collect);
+		\draw[arrow] (collect) -- (compare);
+		\draw[arrow] (compare) -- (similar);
+		\draw[arrow] (similar) -- node[anchor=south]{Yes} (stop);
+		\draw[arrow] (similar) |- node[anchor=north]{No} (add);
+		\draw[arrow] (add) -| (collect);
+	\end{tikzpicture}
+	\caption{Schematic process of collecting scenarios of a specific \emph{scenario class} until a certain level of completeness is reached.}
+	\label{fig:completeness collection}
+\end{figure}
+
+% Use of a measure for scenario generation
+The second use of a (dis)similarity measure is for the generation of test scenarios. Using collected real-world scenarios, one might want to generate an additional set of scenarios to be used for the scenario-based assessment in order to emphasize safety-critical or performance-critical scenarios (cf. \cite{zofka2015datadrivetrafficscenarios, deGelder2017assessment}). Although the generated scenarios are different from the collected scenarios, it is still desirable that the generated scenarios are reflecting what might be encountered in real life. For this purpose, a (dis)similarity measure can be used. For example, if the generated scenarios is similar to one or several collected real-world scenarios, it is more conceivable that this generated scenario is a realistic scenario compared to a scenario that does not show high similarities with any of the collected real-world scenarios. 
+
+
+\section{Dissimilarity measures}
+\label{sec:dissimilarity}
+
+In this section, several dissimilarity measures are presented. They can be divided into four different categories \cite{serra2014empirical}: lock-step measures, feature-based measures, model-based measures, and elastic measures. Before discussing these different categories, some necessary notation details are described.
+
+\subsection{Notation and example}
+\label{sec:dissimilarity notation}
+
+It is assumed that the scenario is described by means of a time series. Therefore, the dissimilarity measures compare the time series $\textbf{x}$ and $\textbf{y}$. The i-th element of $\textbf{x}$ and $\textbf{y}$ are denoted by $x[i]$ and $y[i]$, respectively. For the sake of simplicity, $x[i]$ and $y[i]$ are scalars. The length of the time series $\textbf{x}$ and $\textbf{y}$ is $N$ and $M$, respectively. Note that the time series do not necessarily have the same length, i.e., $N$ might be different than $M$. It is assumed, however, that the sample time is constant and similar for both time series.
+
+To illustrate the dissimilarity measures, four different velocity profiles are considered, see \cref{fig:example time series}. All four velocity profiles describe the velocity of a vehicle while braking. The average deceleration is $\unit[3.19]{m/s^2}$, $\unit[1.72]{m/s^2}$, $\unit[1.63]{m/s^2}$, and $\unit[1.64]{m/s^2}$ respectively. We will refer to the the profiles with $\profile{1}$, $\profile{2}$, $\profile{3}$, and $\profile{4}$, respectively. 
+
+The time series are chosen for the sake of illustrating the features of the dissimilarity measures. Time series $\profile{1}$ has the same start and end speed as the time series $\profile{2}$ and $\profile{3}$, but the end speed is earlier achieved, i.e., the deceleration is higher. The time series $\profile{2}$ and $\profile{3}$ are reasonably similar, so a low dissimilarity score is expected when comparing $\profile{2}$ and $\profile{3}$. The fourth time series, i.e., $\profile{4}$, is chosen because its average deceleration almost equals the average deceleration of $\profile{3}$, but the number of samples of $\profile{4}$ is much less.
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{0.4\linewidth}
+	\setlength\figurewidth{0.7\linewidth}
+	\input{figures/velocity_profile_example.tikz}
+	\caption{Four examples of time series which will be used to illustrate the dissimilarity measures. The velocity is sampled with $\unit[10]{Hz}$.}
+	\label{fig:example time series}
+\end{figure}
+
+\subsection{Lock-step measures}
+\label{sec:lock step}
+
+Lock-step measures estimate the dissimilarity between two time series by comparing each time instant. This, however, does only work if the two time series have equal length. In case that the time series $\textbf{x}$ and $\textbf{y}$ do not have the same length, one of the time series can be re-sampled. This works well for a number of data sources \cite{keogh2003survey}. Let the time series $\bar{\textbf{y}}$ denote the re-sampled time series $\textbf{y}$, such that $\bar{\textbf{y}}$ contains $N$ samples, e.g., using linear interpolation. As a consequence, the elements $\bar{y}[i]$ of $\bar{\textbf{y}}$ are not sampled with the same frequency as the time series $\textbf{x}$ and $\textbf{y}$. 
+
+A straightforward way to estimate the dissimilarity between two time series is to use an $L_p$ norm:
+\begin{equation} \label{eq:lp norm}
+	d_{L_p}(\textbf{x}, \bar{\textbf{y}}) = \left( \sum_{i=0}^{N-1} |x[i] - \bar{y}[i]|^p \right)^{\frac{1}{p}},
+\end{equation}
+where $p \geq 1$. Not that with $p=2$, we obtain the Euclidean distance:
+\begin{equation} \label{eq:euclidian}
+	\deuclid(\textbf{x}, \bar{\textbf{y}}) = \sqrt{\sum_{i=0}^{N-1} (x[i] - \bar{y}[i])^2}.
+\end{equation}
+The Euclidean distance is often applied due to its computational simplicity \cite{xing2010survey}. Even if there might be better dissimilarity measures for certain applications, the Euclidean distance serves as a good benchmark \cite{keogh2003survey}.
+
+For our purposes, the Euclidean distances is not suitable. Because, in general, we have $N \ne M$, we need to re-sample at least one time series. Because of this, a strong braking action might look `similar' to very smooth braking, see \cref{fig:resampled profiles}. In \cref{fig:resampled profiles}, $\textbf{v}_1$ and $\textbf{v}_3$ are re-sample, such that they have the same amount of samples as $\profile{2}$, resulting in $\barprofile{1}$ and $\barprofile{3}$, respectively. This results in $\deuclid(\profile{2}, \barprofile{1})=\unit[4.7]{m/s}$ and $\deuclid(\profile{2}, \barprofile{3})=\unit[4.2]{m/s}$. So even though $\profile{3}$ looks much more similar to $\profile{2}$ than $\profile{1}$, the Euclidean distance \cref{eq:euclidian} gives not a significant difference between $\deuclid(\profile{2}, \barprofile{3})$ and $\deuclid(\profile{2}, \barprofile{1})$.
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{0.4\linewidth}
+	\setlength\figurewidth{0.46\linewidth}
+	\begin{minipage}{0.46\linewidth}
+		\centering
+		\input{figures/velocity_profiles_resampled21.tikz}
+		\subcaption{$\deuclid(\textbf{v}_2, \bar{\textbf{v}}_1)=\unit[13.3]{m/s}$, $\textbf{v}_2$ in blue and $\bar{\textbf{v}}_1$ in orange.}
+	\end{minipage}
+	\hspace{0.04\linewidth}
+	\begin{minipage}{0.46\linewidth}
+		\input{figures/velocity_profiles_resampled23.tikz}
+		\subcaption{$\deuclid(\textbf{v}_2, \bar{\textbf{v}}_3)=\unit[14.7]{m/s}$, $\textbf{v}_2$ in blue and $\bar{\textbf{v}}_3$ in orange.}
+	\end{minipage}
+	\caption{Comparison of the different profiles, where one of the two profiles is re-sampled.}
+	\label{fig:resampled profiles}
+\end{figure}
+
+
+\subsection{Feature-based measures}
+\label{sec:feature based}
+
+The Euclidean distance of \cref{eq:euclidian} is not of direct use for our application. A simple extension, however, is useful. This extension is to compute the Euclidean distance not directly using the (re-sampled) time series, but using features extracted from it \cite{serra2014empirical}. Let $\hat{x}_k$ and $\hat{y}_k$ with $k \in \{0, \ldots, \theta-1\}$ denote features extracted from the time series $\textbf{x}$ and $\textbf{y}$, respectively. The dissimilarity can be formulated as follows:
+
+\begin{equation}\label{eq:eucl features}
+	d_{\textup{F}}(\textbf{x}, \textbf{y}) = \sqrt{ \sum_{k=0}^{\theta-1} w_k \left( \hat{x}_k - \hat{y}_k \right)^2 }.
+\end{equation}
+Here, $w_k$ denote weights that can be chosen to emphasize the $k$-th parameter less or more. 
+
+
+\subsubsection{Fourier coefficients}
+\label{sec:fourier coefficient}
+One possibility is to use the Fourier coefficients as parameters \cite{agrawal1993similarity, faloutsos1994fast}. The Fourier coefficients are obtained with the Discrete Fourier Transform \cite{oppenheim1999discrete}. The $n$-th Fourier coefficient, i.e.,
+\begin{equation}
+	X[n] = \sum_{i=0}^{N-1} x[i] e^{-\imagi\frac{2\pi i n}{N}},
+\end{equation}
+correspond to a frequency of $f_n = n/Nt_s$, where $N$ is the total number of samples and $t_s$ is the sample time. When only the Fourier coefficients corresponding to the lower frequencies are used as parameters, this automatically has the effect of removing rapidly-fluctuating components of the time series \cite{serra2014empirical}.
+
+Note that the Fourier coefficients of different time series correspond to different frequencies, due to the dependency of the number of samples. In order to compare the different time series of \cref{fig:example time series}, linear interpolation is used to retrieve the Fourier coefficients at $\unit[0]{Hz}$, $\unit[0.5]{Hz}$, $\unit[1]{Hz}$, and $\unit[1.5]{Hz}$. Furthermore, the resulting coefficients are divided over the number of samples. The resulting Fourier coefficients are presented in \cref{tab:fourier coefficients}.
+
+\begin{table}
+	\centering
+	\caption{Interpolated Fourier coefficients for the different time series (see \cref{fig:example time series}) divided over the number of samples.}
+	\label{tab:fourier coefficients}
+	\input{tabular/fourier_coefficients}
+\end{table}
+
+\Cref{tab:dissimilarities} shows resulting feature-based distance of \cref{eq:eucl features} using the Fourier coefficients of \cref{tab:fourier coefficients} and weights 
+\input{tex/FC_weights} 
+The weights are the reciprocal of variance of the different coefficients. The variance is based on all time series (around 3000). 
+Based on this, it can be seen that $\profile{1}$ differs quite a bit from the other time series. The time series $\profile{2}$ and $\profile{3}$ show the lowest dissimilarity, which matches the (subjective) observation when examining \cref{fig:example time series}. However, although $\profile{4}$ differs significantly from the other time series, it also gets a relatively low dissimilarity score. This shows the disadvantage of this method in that it does not take the differences of the time series' length into account.
+
+\begin{table}
+	\centering
+	\caption{Dissimilarity measures according to \cref{eq:eucl features}, with Fourier coefficients (see \cref{sec:fourier coefficient}), custom scenario features (see \cref{sec:custom features}), parameters of an auto-regression model fit (see \cref{sec:auto regression models}), and splines parameters (see \cref{sec:spline models}). The last column shows the dissimilarity measure of \cref{eq:dtw cost} divided over the sum of the number of samples of both time series (see \cref{sec:elastic measures}).}
+	\label{tab:dissimilarities}
+	\input{tabular/feature_based}
+\end{table}
+
+
+\subsubsection{Custom scenario features}
+\label{sec:custom features}
+
+Instead of using the Fourier coefficients, it is possible to use scenario parameters. Using custom parameters provides a freedom in choosing parameters that are relevant. A disadvantage is that these parameters need to be determined for every scenario class, as the parameters are specific for a certain scenario class. For example, the total reduced speed is only relevant when a braking activity is involved. In \cref{tab:custom parameters}, four parameters are listed for describing the time series of \cref{fig:example time series}, namely the starting speed $\parvstart$, the final speed $\parvend$, the reduced speed $\pardv=\parvstart-\parvend$, and the total time $\pardt$ of the time series.
+
+\begin{table}
+	\centering
+	\caption{Custom parameters for describing the time series of \cref{fig:example time series}.}
+	\label{tab:custom parameters}
+	\input{tabular/scenario_parameters}
+\end{table}
+
+For comparing the different time series, the parameters $\parvend$, $\pardv$, and $\pardt$ are used. The associated weights are \input{tex/custom_par_weights}
+The weights are the reciprocal of the variance of the different parameters based on all time series. The resulting dissimilarity measure is shown in \cref{tab:dissimilarities}. Note that using the aforementioned parameters, only the starting speed, end speed, and total time determines the dissimilarity between two time series. In order to take the `shape' of the time series into account, other parameters are needed. One possibility is to combine the custom parameters with the Fourier coefficients. 
+
+
+\subsection{Model-based measures}
+\label{sec:model based}
+
+With model-based measures, time series models are employed. The idea is to compare the parameters obtained from learning a model of the two time series. For the comparison of the obtained parameters, we will use the Euclidean distance of \cref{eq:eucl features} \cite{serra2014empirical}. It is shown that this method works well for auto-regression (AR) models \cite{piccolo1990distance, corduas2008autoregressive}, which is demonstrated in the next section. The use of spline models is explained in \cref{sec:spline models}.
+
+
+\subsubsection{Auto-regression models}
+\label{sec:auto regression models}
+An AR model approximates the time series using the model 
+\begin{equation}
+	\label{eq:auto-regression}
+	\hat{x}[i] = a_0 + \sum_{j=1}^{\eta-1} a_j \hat{x}[i-j],
+\end{equation}
+where $\eta$ denotes the number of parameters. \Cref{tab:ar coefficients} lists the parameters of the AR model with $\eta=3$ for the time series of \cref{fig:example time series}. The parameters are computed using ordinary least squares (an alternative would be to use the Yule-Walker equations, see \cite{gardner1988spectral}). As with the previous measures, the weights are the reciprocal of the variance of the parameters, based on the model fits of all available time series. The weights are \input{tex/ar_weights}
+
+\begin{table}
+	\centering
+	\caption{Coefficients of auto-regression model \cref{eq:auto-regression} with $\eta=3$ for the three time series of \cref{fig:example time series}.}
+	\label{tab:ar coefficients}
+	\input{tabular/ar_coefficients}
+\end{table}
+
+\Cref{tab:dissimilarities} shows the dissimilarity measures based on the AR parameters. It does not match with the expectation that the dissimilarity score between the time series $\profile{2}$ and $\profile{3}$ would be low. For example, the dissimilarity score between the time series $\profile{1}$ and $\profile{2}$ is lower. Hence, the AR parameters seem to be inappropriate for measuring the dissimilarity between two time series for this application.
+
+
+\subsubsection{Spline models}
+\label{sec:spline models}
+
+Splines can be employed to model and/or smooth time series data \cite{dierckx1993splines, deboor1978practical}. In its most general definition, a spline is a piece-wise polynomial function. It is defined by a degree $d$, which is the maximal degree of the polynomial functions, a set of contiguous intervals with knots $k_0 < k_1 < \ldots < k_n$ as start and end points, and polynomials on each of these intervals. In addition to the basic elements, continuity conditions can be set at the points where the polynomials are stitched together. 
+
+For modeling the time series of the speed, B-splines are used. B-splines are splines written as a linear combination of $n+d$ basis functions, such that the spline is continuous up to the $(d-1)$-th derivative. Efficient algorithms for the computation of the optimal representation of a curve by B-splines are described in \cite{dierckx1993splines}. We use $d=3$ and $n=2$. The knots are evenly distributed over the entire interval of the corresponding time series.
+
+The spline parameters, denoted by $c_1$ through $c_5$, of the time series of \cref{fig:example time series} are shown in \cref{tab:spline coefficients}. Because the time series have different length, the knots are placed at different locations for each time series. As a result, the spline coefficients are invariant regarding the length of the time series. Therefore, the length of the time series is added as a parameter when using the euclidean distance of \cref{eq:eucl features} between the parameters. For completeness, the length of the time series is shown in \cref{tab:spline coefficients}. 
+\input{tex/spl_weights}
+
+\begin{table}
+	\centering
+	\caption{Coefficients of the B-splines of the time series of \cref{fig:example time series}. Because the length of the time series is not reflected by the spline coefficients, the duration of the time series is added to the table.}
+	\label{tab:spline coefficients}
+	\input{tabular/spline_parameters}
+\end{table}
+
+The resulting dissimilarity measures using the length of the time series and the spline coefficients, as shown in \cref{tab:spline coefficients}, is shown in \cref{tab:dissimilarities}. The dissimilarity score between $\profile{2}$ and $\profile{3}$ is, as expected, low.
+
+
+\subsection{Elastic measures}
+\label{sec:elastic measures}
+
+Elastic measures allows an elastic shifting of the time axis, to accommodate sequences that are similar but out of phase \cite{keogh2005exactDTW}. Elastic measures have extensively been used for speech recognition \cite{rabiner1993speech, muller2007information}. Due to its success, it is nowadays used in many other applications \cite{serra2014empirical, wang2013distancemeasures}. Dynamic Time Warping (DTW) \cite{sakoe1978dynamic, berndt1994using} belongs to the group of elastic dissimilarity measures \cite{wang2013distancemeasures}.
+
+With DTW, a cost function $D(x[i], y[j])$ is used to compare samples $x[i]$ and $y[j]$, with $i \in \{0, \ldots, N-1\}$ and $j \in \{0, \ldots, M-1\}$. Usually, the cost function is simply the square difference, i.e., $D(x[i], y[j]) = (x[i]-y[j])^2$, or the absolute difference \cite{berndt1994using}, i.e., $D(x[i], y[j])=|x[i] - y[j]|$. Next, a warping path $(\textbf{w}_x, \textbf{w}_y)$, with elements $(w_x[k], w_y[k]),\,k \in \{0, \ldots, K-1\}$, is defined, such that the dissimilarity measure between two time series is the accumulated sum of the cost function along the optimal warping path, i.e.,
+\begin{equation} \label{eq:dtw cost}
+	\ddtw(\textbf{x}, \textbf{y}) = \min_{\textbf{w}_x, \textbf{w}_y} \sum_{k=0}^{K-1} D(x[w_x[k]], y[w_y[k]]).
+\end{equation}
+
+The warping path is typically subjected to the following constraints \cite{keogh2005exactDTW}:
+\begin{itemize}
+	\item \emph{Boundary conditions:} The warping functions are required to start at the first sample of both time series and end at the last sample of both time series, i.e. $w_x[0]=w_y[0]=0$, $w_x[K-1]=N-1$, and $w_y[K-1]=M-1$. 
+	\item \emph{Continuity:} To restrict the allowable steps in the warping path to adjacent cells (including diagonally adjacent cells), the constraints $w_x[k] - w_x[k-1] \leq 1$ and $w_y[k] - w_y[k-1] \leq 1$ are used with $k=1, \ldots, K-1$.
+	\item \emph{Monotonicity:} The points of the warping path are forces to be monotonically spaced in time using the constraints $w_x[k] - w_x[k-1] \geq 0$ and $w_y[k] - w_y[k-1] \geq 0$ for $k=1, \ldots, K-1$. 
+\end{itemize}
+
+Given these constraints, the accumulated sum of \cref{eq:dtw cost} can be computed by recursively applying
+\begin{equation}
+	A(i, j) = \begin{cases}
+		A(i, j) = D(x[i], y[j]) & \textup{for}\,\, i=0 \cap j=0 \\
+		A(i, j) = D(x[i], y[j]) + A(i-1, j) & \textup{for}\,\, i>0 \cap j=0 \\
+		A(i, j) = D(x[i], y[j]) + A(i, j-1) & \textup{for}\,\, i=0 \cap j>0 \\
+		A(i, j) = D(x[i], y[j]) + & \textup{otherwise} \\
+		\qquad \min(A(i-1, j), A(i, j-1), A(i-1, j-1)) & 
+	\end{cases}
+\end{equation}
+
+To prevent pathological warping paths, the warping path is often constrained in a global sense by limiting how far it may stretch from the diagonal $w_x[k]=w_y[k]$ \cite{keogh2005exactDTW}. The Sakoe and Chiba band \cite{sakoe1978dynamic} and Itakura parallelogram \cite{itakura1975minimum} are most frequently used. Furthermore, additional constraints can be applied in order to ensure that the local slope of the warping function is between certain bounds. This is referred to as local continuity constraints, see \cite{rabiner1993speech}. Other ways to limit the warping is to add an extra cost for the total stretch from the diagonal, i.e., a cost as a function of $|w_x[k] - w_y[k]|$ to the minimization of \cref{eq:dtw cost}, cf., \cite{roberts1987enhancements, wang1997alignment}.
+
+\Cref{tab:dissimilarities} shows the total cost computed using \cref{eq:dtw cost} divided over $N+M$. It shows a low score for $\ddtw(\profile{2}, \profile{3})$, which is expected because $\profile{2}$ and $\profile{3}$ look very similar (see \cref{fig:example time series}). Furthermore, $\ddtw(\profile{1}, \profile{2})$ and $\ddtw(\profile{1}, \profile{3})$ have low scores. This is because the start and end speeds are similar. Therefore, when the warping is applied, the time series look very similar, see \cref{fig:example dtw}. A solution would be to also take the acceleration into account.
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{0.4\linewidth}
+	\setlength\figurewidth{0.7\linewidth}
+	\input{figures/dtw_warped_series.tikz}
+	\caption{The time series $\profile{1}$ and $\profile{3}$ look very similar after warping using Dynamic Time Warping.}
+	\label{fig:example dtw}
+\end{figure}
+
+
+\printbibliography
+
+\end{document} 

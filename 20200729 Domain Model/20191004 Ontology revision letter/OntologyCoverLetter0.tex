@@ -1,0 +1,80 @@
+\documentclass{article}
+\setlength\parindent{0pt}  % No indent for first line of paragraph.
+\usepackage[margin=1.5in]{geometry}  % Have smaller page margins.
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{silence}  							%% For filtering warnings
+\usepackage[style=authoryear-comp,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
+\WarningFilter{biblatex}{Patching footnotes failed}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../bib}
+\renewcommand{\cite}[1]{\parencite{#1}}
+
+
+
+\begin{document}
+
+Erwin de Gelder
+
+TNO, Integrated Vehicle Safety, Helmond, The Netherlands
+
+Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands
+
+erwin.degelder@tno.nl
+
+\vspace{1em}
+
+Prof.\ dr.\ Yafeng Yin
+
+University of Michigan, Ann Arbor, Michigan, USA
+
+Editor-in-Chief of Transportation Research Part C: Emerging Technologies
+
+\vspace{1em}
+
+August 20, 2019
+
+\vspace{2em}
+
+
+Dear prof.\ dr.\ Yafeng Yin,
+
+\vspace{1em}
+
+I am pleased to submit our research article titled “Ontology for scenarios for the assessment of automated vehicles” by Erwin de Gelder, Jan-Pieter Paardekooper, Arash Khabbaz Saberi, Hala Elrofai, Olaf Op den Camp, Jeroen Ploeg, Ludwig Friedmann, and Bart De Schutter. In this manuscript, we propose an ontology for the scenarios for the scenario-based assessment of automated vehicles. A scenario-based assessment is deemed essential for speeding up the development and for enabling the deployment of automated vehicles and is widely supported by many players in the automotive field. Since scenarios are essential for the scenario-based assessment, the proposed ontology will be helpful for the assessment of automated vehicles.
+
+Our proposed ontology brings the following benefits:
+\begin{itemize}
+	\item We provide more concrete definitions of the notion of scenario and its building blocks, that are consistent with existing, less concrete definitions. This concreteness is essential for reducing confusion among experts when talking about scenarios for the assessment of automated vehicles and the building blocks of these scenarios.
+	\item We clearly separate quantitative scenarios from qualitative scenarios and we explain the relation between the two. This allows for discussing scenarios on either a concrete or an abstract level.
+	\item Our ontology does not only help for communicating among experts, it also enables the description of scenarios to a coding language. This allows for sharing the scenarios among computer agents, such as simulation software that is used for the assessment of automated vehicles.
+	\item The ontology can be directly translated to a schema for a database system for storing the scenarios.
+\end{itemize}
+
+We believe that our manuscript will appeal to the readers of Transportation Research Part C: Emerging Technologies because of the following reasons:
+\begin{itemize}
+	\item Our paper addresses the field of automated driving, which is an emerging technology that gets much attention in your journal. The queries ``autonomous vehicle'' and ``automated vehicle'' already give 372 and 561 results from your journal, respectively, from which 81 and 82 results, respectively, in 2019. More specifically, scenario-based assessment methods for automated driving are still in development, see, e.g., \textcite{hou2019framework, shao2019evaluating, ge2018experimental, cui2018development, sepulcre2013cooperative}.
+	\item One of the research fields mentioned in the description of this journal is computer science and in general ontologies are considered part of this field, see, e.g., \textcite{katsumi2018ontologies, benvenuti2017ontologybased, choi2015ontological, maiti2017conceptualization, ali2017fuzzy}. Hence, this also applies for our manuscript.
+	\item It is mentioned that emerging technologies on transportation system performance are of particular interest. The proposed manuscript describes an important tool, i.e., the scenarios (cf.\ \textcite{xiong2015orchestration, bhatti2015design}) for the assessment of automated vehicles, for assessing the system performance of automated vehicles. These scenarios can be an important input for simulators that are used for evaluating the transportation system performance \cite{hou2019framework, cui2018development, ma2017twodimensional, mcconky2019dontpass}.
+	\item When referring to other application of ontologies, the manuscript cites \textcite{maiti2017conceptualization, katsumi2018ontologies, benvenuti2017ontologybased}. In the manuscript, we also refer to the use of scenarios by \textcite{xiong2015orchestration, shao2019evaluating}. \textcite{hou2019framework, shao2019evaluating} are cited as to give examples of simulation tools for the assessment of automated systems.
+\end{itemize}
+
+No part of the manuscript has been published before, nor is any part of it under consideration for publication at another journal. There are no conflicts of interest to disclose. Additionally, all of the authors have approved the content of this paper.
+
+\vspace{1em}
+
+Thank you for your consideration.
+
+\vspace{1em}
+
+Sincerely,
+
+Erwin de Gelder
+
+\printbibliography
+
+
+\end{document}

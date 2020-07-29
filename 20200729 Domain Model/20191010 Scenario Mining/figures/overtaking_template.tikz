@@ -1,0 +1,31 @@
+\setlength{\descriptionwidth}{7em}
+\begin{tikzpicture}
+% Ego vehicle.
+\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=egocolor] at (-\descriptionwidth, 0) {Ego vehicle};
+\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=egocolor] at (0, 0) {Lateral activity};
+\node[tagitemtwo, fill=egocolor] at (0, 0) {Following lane};
+\node[tagitemtwo, fill=egocolor] at (2\itemwidth, 0) {Changing lane left};
+
+% Other vehicle, lateral state.
+\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=othervehicle, minimum height=2\tagheight] at (-\descriptionwidth, -\tagheight-\tagsep) {Other vehicle};
+\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -\tagheight-\tagsep) {Lateral state};
+\node[tagitemthree, fill=othervehicle] at (0, -\tagheight-\tagsep) {Left of ego};
+\node[tagitem, fill=othervehicle] at (3\itemwidth, -\tagheight-\tagsep) {Same lane as ego};
+
+% Other vehicle, longitudinal state.
+\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -2\tagheight-\tagsep) {Longitudinal state};
+\node[tagitem, fill=othervehicle] at (0, -2\tagheight-\tagsep) {Behind ego};
+\node[tagitemthree, fill=othervehicle] at (\itemwidth, -2\tagheight-\tagsep) {In front of ego};
+
+% Static environment.
+\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=staticenvironment] at (-\descriptionwidth, -3\tagheight-2\tagsep) {Static environment};
+\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {On highway};
+\node[tagitemfour, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {Highway};
+
+% Items.
+\foreach \i in {1, 2, 3, 4} {%
+	\node[minimum width=\itemwidth, align=center, minimum height=\itempos, anchor=north east] at (\i\itemwidth, \itempos) {Item \i};
+	\draw[showitem] (\i\itemwidth, 0) -- (\i\itemwidth, \itempos);
+}
+\draw[showitem] (0, 0) -- (0, \itempos);
+\end{tikzpicture}

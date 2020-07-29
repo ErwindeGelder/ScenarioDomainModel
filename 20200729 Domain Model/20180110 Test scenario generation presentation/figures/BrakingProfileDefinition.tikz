@@ -1,0 +1,54 @@
+\begin{tikzpicture}
+% Definition of the constants
+\newcommand*{\tStartBraking}{10}  	% [s]
+\newcommand*{\vReduction}{40}     	% [km/h]
+\newcommand*{\vEnd}{40}				% [km/h]
+\newcommand*{\tDurationBraking}{10} % [s]
+\pgfmathsetmacro{\tEnd}{\tStartBraking+\tDurationBraking + 10}
+\pgfmathsetmacro{\tAnnotationVEnd}{\tStartBraking+\tDurationBraking + 5}
+\definecolor{mycolor1}{rgb}{0.20000,0.40000,0.60000}
+\tikzstyle{my annotation}=[<->, line width=1.5pt]
+
+\begin{axis}
+% Define properties of axis
+[
+width=0.6*\linewidth,
+height=0.35*\linewidth,
+xmajorgrids,
+ymajorgrids, 
+xmin=0, 
+xmax=\tEnd, 
+ymin=0, 
+ymax=90, 
+xlabel={Time [s]}, 
+ylabel={Speed [km/h]}
+]
+
+% Plot the velocity
+\addplot[color=mycolor1, line width=2.0pt, domain=0:\tStartBraking]{\vEnd + \vReduction};
+\addplot[color=mycolor1, line width=2.0pt, domain=\tStartBraking:(\tDurationBraking+\tStartBraking)]{\vEnd + \vReduction/2 - (6*\vReduction/\tDurationBraking^5) * (x - \tStartBraking - \tDurationBraking/2)^5 + (5*\vReduction/\tDurationBraking^3) * (x - \tStartBraking - \tDurationBraking/2)^3 - (15*\vReduction/(8*\tDurationBraking)) * (x - \tStartBraking - \tDurationBraking/2)};
+\addplot[color=mycolor1, line width=2.0pt, domain=(\tStartBraking+\tDurationBraking):\tEnd]{\vEnd};
+
+% Do the annotations
+% Show vEnd
+\draw[my annotation] (axis cs:\tAnnotationVEnd,0) -- +(0, 10*\vEnd) node[midway, right, yshift=3]{$v_{\textup{end}}$};
+
+% Show tDurationBraking
+\addplot[color=black, dashed] table[row sep=crcr]{%
+	10	18.2\\
+	10	83.6\\
+};
+\addplot [color=black, dashed] table[row sep=crcr]{%
+	20	18.2\\
+	20	43.6\\
+};
+\draw[my annotation] (axis cs:10,20) -- +(100, 0) node[midway, yshift=-10]{$t_{\textup{brake}}$};
+
+% Show vReduction
+\addplot [color=black, dashed] table[row sep=crcr]{%
+	7	40\\
+	20	40\\
+};
+\draw[my annotation](axis cs:8.5,40) -- +(0, 400) node[midway, left,yshift=3]{$\Delta v$};
+\end{axis}
+\end{tikzpicture}

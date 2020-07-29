@@ -1,0 +1,159 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab/Python)
+\pgfplotsset{compat=1.14}						%% Run in backwards compatibility mode
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+\usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
+\usepackage{units}								%% Appropriate behavior of units
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../../bib}
+
+%%==========================================================================
+%% Define reference stuff
+%%==========================================================================
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{7}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{16 May, 2018}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-world driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item We discussed about the quantification of the \emph{completeness} of the driving data. Completeness of the data can refer to different aspects. E.g., having recorded all the variety of one specific activity/scenario or having recorded all different types of scenarios. It would be good to write down these different aspects of \emph{completeness} in a more formal manner. 
+	\item We discussed the work of Wang et al.\ \cite{wang2017much}. Wang et al.\ quantify the completeness using the samples. We agreed that it would be more appropriate to use the activities instead of the individual samples for our application.
+	\item We agreed to improve the work regarding the completeness, i.e., 
+	\begin{itemize}
+		\item apply multivariate distributions (because data is not independent),
+		\item instead of using the Silverman rule for determination of the bandwidth, look at different methods,
+		\item and look at different methods for determining the difference between two probability distribution functions (instead of the Kullback-Leibler divergence).
+	\end{itemize}
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item Regarding the different aspects of \emph{completeness}, I wrote a few paragraphs to clarify the problem:
+	
+	To quantify how complete a scenario database is, a few assumptions are made. First, it is assumed that a scenario is a quantitative description, whereas a \emph{scenario class} refers to a qualitative description \cite{degelder2018ontology}. As such, a specific scenario class refers to multiple scenarios. The problem of quantifying the completeness can now be divided into two subproblems.
+	
+	The first subproblem deals with the quantification of the completeness regarding the scenario classes. To tackle this problem, each scenario class is described by a set of \emph{tags}. For example, the scenario class ``lead vehicle braking at straight road, in daylight, under clear weather conditions'' can be described by the tags ``lead vehicle braking'', ``straight road'', ``daylight'', and ``clear weather''. It is assumed that a scenario class is unambiguously defined by a set of tags. Therefore, the problem of quantifying the completeness regarding the scenario classes boils down to a combinatorial problem.
+	
+	The second subproblem deals with the quantification of the completeness regarding the scenarios of a specific scenario class. It is assumed that all scenarios of a specific scenario class can be parametrized in a similar manner. Though these parameters can be either discrete or continuous, is it expected that at least one parameter is continuous. As a result, there are infinite number of scenarios that belong to a specific scenario class. Therefore, it is expected that the problem of quantifying the completeness regarding the scenarios of a specific scenario class boils down to a statistical problem. 
+	
+	\item I hardly worked on the quantification of the completeness. As such, I propose to further discuss the technical details (except of what is written above) in the next meeting.
+	
+	\item For my work at the NTU in Singapore, there is a need to define 30 \emph{scenario classes}. Originally, the plan was to define the 30 scenario classes based on the data gathered in Singapore. However, due to access limitations, a different approach is used. Literature (amongst others, \cite{USDoT2007precrashscenarios, opdencamp2014cats, adaptive2017d73}) is used to see which scenarios lead to traffic accidents. Though this is not optimal because scenarios classes that did not result in accidents might still be relevant when testing an automated vehicle, it provides at least a rationale for each scenario class. It is also useful for my research, as the scenario ontology is used to define the different scenario classes.
+	
+	The document regarding these 30 scenario classes will be extensively reviewed in Singapore, so I think no further review is required.
+	
+	\item Unfortunately, the paper ``Ontology of scenarios for the assessment of automated vehicles'' is rejected for the Intelligent Vehicles Symposium 2018. In summary, the following comments are made (in \textit{italics} my response with possible improvement of paper):
+	\begin{enumerate}
+		\item More elaboration is needed to demonstrate the usefulness.\\
+		\textit{Currently, the example only describes two simple scenarios. We can improve this section by describing what the benefits are of the presented ontology over other definitions \cite{geyer2014, ulbrich2015, elrofai2016scenario} when describing these scenarios.}
+		
+		\item It is not clear how the presented ontology can be of use regarding the assessment of automated vehicles (2 reviewers made this comment).\\
+		\textit{The ontology is of use regarding the assessment of automated vehicles because the assessment is based on scenarios. The fact that a scenario-based approach is adopted is already explained and references are provided \cite{stellet2015taxonomy, Helmer2017safety, putz2017pegasus, zofka2015datadrivetrafficscenarios, alvarez2017prospective, aparicio2013pre, lesemann2011test, geyer2014, ulbrich2015, deGelder2017assessment}, so I do not think we need to improve on that. However, regarding the application example, it might be useful to describe how the scenarios can be used to define test cases for the assessment. We can then also refer to OpenSCENARIO\footnote{OpenSCENARIO is a open file format for the description of the dynamic environment of scenarios for simulation purposes, see \url{http://www.openscenario.org/}. OpenSCENARIO is most likely going to be the standard that will be used by the majority of the automotive industry.}. OpenSCENARIO describes the dynamic environment by all the activities of each actor one by one, so this matches with our definition of a scenario.}
+		
+		\item The paper does not fully deliver what is mentioned in the	title of the article, namely in the assessment of AV	scenarios. For instance, the authors do not provide metrics, methodology or tools (e.g., simulation) for the	assessment of AVs. \\
+		\textit{The title of the paper is ``Ontology of scenarios for the assessment of automated vehicles'', so it is not an ontology regarding assessment itself, but regarding the scenarios only. Hence, I think the comment if not completely fair.\\
+		In the introduction of the paper, we provide a reference to the methodology for the assessment \cite{stellet2015taxonomy}. I definitely think we should not elaborate on this, as this is not the subject of the paper, but we can easily provide some references to metrics, methodologies and tools for the assessment of AVs to give a complete picture.}
+		
+		\item More scenario classes should be presented.\\
+		\textit{I think a paper is not suitable to describe a comprehensive list of tags. I plan to elaborate on this in the report regarding the 30 scenario classes. I am not yet sure, though, if we can refer to this report. Even if we can refer to this report, a final report will not be ready on short term. Therefore, I do not know how to address this comment on short term.}
+		
+		\item Scenarios should be of use to assess wide impact of autonomous vehicles (e.g., travel time, emissions), refer to WISE-ACT Cost.\\
+		\textit{I cannot find any documents regarding WISE-ACT Cost\footnote{See \url{http://www.cost.eu/COST_Actions/ca/CA16222}}, so I do not think we can refer to this in the paper. Furthermore, the assessment is about the performance of an automated vehicle itself, rather than the wider impact of autonomous vehicles. Perhaps we can emphasize this in the paper to prevent misunderstandings like this. Note that ``autonomous vehicles'' is not mentioned throughout the paper, so I find the comment a bit strange.}
+		
+		\item Road side infrastructure is not mentioned.\\
+		\textit{We can add a few sentences on this when describing the dynamic environment in Section~II of the paper.}
+		
+		\item How could different sensing capabilities (e.g., radar, lidar) be incorporated?\\
+		\textit{I do not understand this comment. The paper is about the scenarios itself. For assessing different sensing capabilities, one can simulate test cases with a radar or a lidar to see the difference. This comment gives me the feeling that the reviewer has no idea what he/she is talking about.}
+		
+		\item It is subjective. \\
+		\textit{I do not understand this comment either. We provided 45 references, so to me it seems a bit unfair to qualify the paper as subjective.}
+	\end{enumerate}
+\end{itemize}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item In the beginning of June, I will travel to the Netherlands for a few weeks. I would like to go at least one day to the TU between the 11th of June and the 22nd of June (with exception of the 12th of June).
+	
+	\item The future plans from the previous progress report (see the minutes above) are still applicable. Due to holidays and other deadlines, I could hardly work on this the past weeks. To prevent that this will happen again, I dedicated several days to work on this the coming weeks.
+\end{itemize}
+
+\section{Questions}
+
+\begin{itemize}
+	\item Regarding the rejected paper, what could be the next step? Bart suggested to go directly for a journal. Jeroen and Jan-Pieter indicated that it would be good to have a conference paper before a journal paper. I think it should be possible to address most of the comments (as described above in \textit{italics}) in short time. Therefore, I am willing to submitting the paper to the 2018 IEEE International Conference on Vehicular Electronics and Safety (ICVES), September 12-14, 2018, Madrid, Spain, deadline 20th of May (no more extensions). I have no experience with rejected papers, so any advice is welcome.
+	\item After my first year, a Go/No Go review needs to be organized\footnote{See \url{https://intranet.tudelft.nl/fileadmin/Files/medewerkersportal/graduateschool/GoNoGo_procedure.pdf}}. The aim of this review is to explicitly state the expectation of successfully obtaining a PhD within four years and, on the basis of this, to decide whether to continue the program (Go) or terminate it prematurely (No Go).
+	\begin{itemize}
+		\item Could we already set a date for this review? The first two weeks of September (i.e., 3-14 September), I expect to be in the Netherlands. If we submit a paper to the ICVES, then 3-11 September would be suitable.
+		\item As already seven months passed (start date was the 1st of October), I would appreciate any feedback on what my expectations should be regarding the result of the Go/No Go review.
+		\item According to the Go/No Go procedure, I need to prepare a portfolio that may consist of (1) an overview of the results achieved, (2) a vision for the next three years, (3) an update of the PhD agreement, and (4) a self-reflection. What is exactly expected from me regarding the Go/No Go meeting?
+	\end{itemize}
+\end{itemize}
+
+
+\printbibliography
+
+\end{document}

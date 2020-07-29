@@ -1,0 +1,98 @@
+\section{Examples}
+\label{sec:results}
+
+In this section, the proposed method of \cref{sec:method} is illustrated by means of two examples. The first example applies the method with data generated from a known distribution. Because the distribution is known, the real MISE can be accurately approximated and compared with the results from \cref{eq:measure,eq:measure independent}. Secondly, in \cref{sec:result real}, the proposed method is applied on a dataset containing naturalistic driving data.
+
+\subsection{Example with known underlying distribution}
+\label{sec:result artificial}
+
+In this example, the data samples $Y_i$ with $i \in \{1, \ldots, n\}$ are independently and identically distributed random variables that are distributed according to the pdf $g(\cdot)$. Each data sample $Y_i$ corresponds to a scalar, i.e., $d_y=1$. Similarly, the data samples $Z_i$ with $i \in \{1, \ldots, n\}$ are independently and identically distributed random variables that are distributed according to the pdf $h(\cdot)$. The data samples are combined, similar to \cref{eq:combine}, such that the likelihood of $X_i$ is $f(X_i)=g(Y_i)h(Z_i)$. 
+
+\Cref{fig:true pdf} shows the distributions $g(\cdot)$ (black solid line) and $h(\cdot)$ (gray dashed line). Both distributions are Gaussian mixtures, i.e., both pdfs equal the sum of multiple weighted Gaussian distributions. The pdf $g(\cdot)$ corresponds to the average of two Gaussian distributions with means of $-1$ and $1$ and standard deviations $0.5$ and $0.3$, respectively. The pdf $h(\cdot)$ corresponds to the average of three Gaussian distributions with means $-0.5$, $0.5$, and $1.5$, and standard deviations $0.3$, $0.5$, and $0.3$, respectively. 
+
+\setlength\figurewidth{0.98\linewidth}
+\setlength\figureheight{0.7\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/true_pdf.tikz}
+	\caption{The true probability density functions $g(\cdot)$ (black solid line) and $h(\cdot)$ (gray dashed line) that are used to illustrate the quantification of the completeness.}
+	\label{fig:true pdf}
+\end{figure}
+
+The expectation $\expectation{\cdot}$ of \cref{eq:mise} is estimated by repeating the estimation of the pdf 200 times, such that the real MISE is approximated:
+\begin{equation}
+	\label{eq:approx mise}
+	\mise{f}{n} \approx \frac{1}{m} \sum_{j=1}^m \int \left( f(x) - \hat{f}_j(x;n)\right)^2 \ud x,
+\end{equation}
+where $\hat{f}_j(x;n)$ is the $j$-th estimate and $m=200$. 
+
+All three pdfs are estimated using \cref{eq:kde}. We use leave-one-out cross validation to compute the bandwidth $h$ (see also \textcite{duin1976parzen}) because this minimizes the Kullback-Leibler divergence between the real pdf $f(\cdot)$ and the estimated pdf $\hat{f}(\cdot;n)$ \cite{turlach1993bandwidthselection,zambom2013review}. Note that although the estimation of the pdfs is repeated 200 times to accurately approximate the MISE using \cref{eq:approx mise}, the bandwidth is only determined once for a specific number of samples. All the other 199 times, the same bandwidths are adopted. The resulting bandwidths are shown in \cref{fig:bandwidth}. The bandwidth of $\hat{f}(\cdot;n)$ (black dashed line) is significantly larger than the bandwidths of $\hat{g}(\cdot;n)$ (gray solid line) and $\hat{h}(\cdot;n)$ (gray dotted line). This result is not surprising: because $\hat{f}(\cdot;n)$ represents a bivariate distribution, it requires more data to have a similar bandwidth compared with a univariate distribution \cite{scott2005multidimensional}.
+
+\setlength\figurewidth{0.97\linewidth}
+\setlength\figureheight{0.7\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/bandwidth.tikz}
+	\caption{The bandwidths of $\hat{f}(x;n)$ (black dashed line), $\hat{g}(y;n)$ (gray solid line), and $\hat{h}(z;n)$ (gray dotted line) for the example of \cref{sec:result artificial}. The bandwidths are computed using leave-one-out cross validation for different number of samples $n$.}
+	\label{fig:bandwidth}
+\end{figure}
+
+\Cref{fig:mise example} shows the results of this example. The black lines show the real MISEs, approximated using \cref{eq:approx mise}, where the black solid line represents the MISE when $f(\cdot)$ is directly estimated and the black dashed line represented the MISE when use is made of \cref{eq:independency}. The MISE is significantly lower when it is correctly assumed that the two parameters are independent. One way to look at this is that the degree of freedom of $f(\cdot)$ is reduced when assuming that the two parameters are independent and this lower degree in freedom leads to a more certain estimate. Hence, the MISE is lower.
+
+\setlength\figurewidth{0.98\linewidth}
+\setlength\figureheight{0.7\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/mise_example.tikz}
+	\caption{The real MISEs (black lines) of the example of \cref{sec:result artificial}, approximated using \cref{eq:approx mise}, and the measures that are used to quantify the completeness (gray lines). The solid lines show the result of estimating a bivariate pdf, so here \cref{eq:measure} is used to quantify the completeness. The dashed lines show the result of estimating two univariate pdfs and combining them according to \cref{eq:independency} to create a bivariate pdf, so \cref{eq:measure independent} is used to quantify the completeness. The gray areas show the interval $[\mu-3\sigma,\mu+3\sigma]$, where $\mu$ and $\sigma$ denote the mean and standard deviation, respectively, of the measures of \cref{eq:measure,eq:measure independent} when repeating the experiment 200 times.} 
+	\label{fig:mise example}
+\end{figure}
+
+The gray lines in \cref{fig:mise example} show the measures to quantify the completeness of the data. The gray solid line shows the result of applying \cref{eq:measure} and the gray dashed line shows the result of applying \cref{eq:measure independent}. Both lines follow the same trend as the black solid line and the black dashed line, respectively. This illustrates that the measures \cref{eq:measure,eq:measure independent} are applicable for estimating the real MISE of \cref{eq:mise}. To show that this is not a mere coincidence, the gray areas in \cref{fig:mise example} show the interval $[\mu-3\sigma,\mu+3\sigma]$, where $\mu$ and $\sigma$ denote the mean and standard deviation, respectively, of the measures of \cref{eq:measure,eq:measure independent} when repeating the experiment 200 times. Note that the measures of completeness are consistently higher than the real MISE. This can be explained from the fact that the measures of completeness are approximations of the AMISE and the AMISE itself is always higher than the real MISE under some mild conditions, see Theorem 4.2 of \textcite{marron1992exact}.
+
+\subsection{Example with real data}
+\label{sec:result real}
+
+In this example, 60 hours of naturalistic driving data from 20 different drivers (see also \textcite{deGelder2017assessment}) is used to extract approximately 2800 braking activities. Three parameters are used to describe each braking activity: the average deceleration, the total speed difference, and the end speed. A histogram of each of these parameters is shown in \cref{fig:histogram}. Note that these braking activities do not include full stops, i.e., activities where the end speed is zero, because the distribution of the end speed will have a large peak at zero. The AMISE of \cref{eq:amise} deviates more from the real MISE of \cref{eq:mise}, especially for larger bandwidths, when such peaks are present in the underlying distribution \cite{marron1992exact}. Because the measure \cref{eq:measure} we use for quantification of completeness is based on the AMISE of \cref{eq:amise}, we want to avoid these peaks as much as possible. Therefore, the full stops are excluded.
+Note, however, that the method can be applied separately for the full stops. In fact, the analysis for full stops will be simpler, because a full stop activity can be parametrized using only two parameters because the end speed always equals zero. 
+
+\setlength\figurewidth{0.98\linewidth}
+\setlength\figureheight{0.5\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/histogram2.tikz}
+	\caption{Histogram of the data that is used for the example with the real data.}
+	\label{fig:histogram}
+\end{figure}
+
+The three parameters are correlated so this advocates the use of a multivariate KDE. However, as we have seen in the first example, the higher the dimension, the higher the measure for completeness will generally be. So there is a trade-off: Assuming that certain parameters are independent results in an error of the estimated pdf but the resulting MISE, and hence the measure of completeness, will be lower. To illustrate this, we estimate the pdf while assuming all parameters to be dependent and we estimate the pdf while assuming that the average deceleration is independent from the other two parameters. Note that the correlation between the average deceleration and the other parameters is fairly low, so this justifies this choice. The speed difference and end speed are highly correlated, so we will not assume that these two parameters are independent. Before estimating the pdfs, the parameters are translated and rescaled such that each parameter has a sample mean of zero and a sample variance of one. In this example, $\hat{f}(\cdot;n)$ denotes the estimated 3-dimensional pdf using all three parameters, $\hat{g}(\cdot;n)$ denotes the estimated univariate pdf of the average deceleration, and $\hat{h}(\cdot;n)$ denotes the estimated bivariate pdf of the speed difference and the end speed.
+
+\Cref{fig:bandwidth real} shows the bandwidths of the three estimated pdfs for different number of samples, starting from $n=600$ samples to approximately 2800 samples. As opposed to the bandwidths of our previous example, see \cref{fig:bandwidth}, the bandwidth of $\hat{f}(\cdot;n)$ (black dashed line) is not larger than the bandwidth of $\hat{g}(\cdot;n)$ (gray solid line) for low values of $n$. This is caused by some outliers of the average deceleration, because these outliers have a large influence on the bandwidth of $\hat{g}(\cdot;n)$ \cite{hall1992global}. These outliers also influence the bandwidth of $\hat{f}(\cdot;n)$, but this influence is less because the bandwidth of $\hat{f}(\cdot;n)$ is also influences by the other parameters.
+
+\setlength\figurewidth{0.97\linewidth}
+\setlength\figureheight{0.7\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/bandwidth_real.tikz}
+	\caption{The bandwidths of $\hat{f}(\cdot;n)$ (black dashed line), $\hat{g}(\cdot;n)$ (gray solid line), and $\hat{h}(\cdot;n)$ (gray dotted line) for the example of \cref{sec:result real}. The bandwidths are computed using leave-one-out cross validation for different number of samples $n$.}
+	\label{fig:bandwidth real}
+\end{figure}
+
+The measures of completeness of the data of the braking activities are shown in \cref{fig:mise real}. The solid gray line results from the estimated 3-dimensional pdf, i.e., $\hat{f}(\cdot;n)$, where \cref{eq:measure} is used to quantify the completeness. The dashed gray line results from the estimated univariate and bivariate pdfs $\hat{g}(\cdot;n)$ and $\hat{h}(\cdot;n)$, where \cref{eq:measure independent} is used to quantify the completeness. The measure for the completeness is much lower for the latter case, indicating that the the uncertainty of the pdf is much lower when it is assumed that the average deceleration is independent from the other two parameters.
+
+\setlength\figurewidth{0.96\linewidth}
+\setlength\figureheight{\linewidth}
+\begin{figure}
+	\centering
+	\input{figures/mise_real.tikz}
+	\caption{The measures of completeness for the example of \cref{sec:result real} with the assumption that all three parameters depend on each other (gray solid line) and with the assumption that the first parameter, i.e., the average deceleration, does not depend on the other two parameters (gray dashed line). The corresponding black lines represent the least squares logarithmic fits given by \cref{eq:log mise dependent,eq:log mise independent}.}
+	\label{fig:mise real}
+\end{figure}
+
+Whether it is better to assume that all parameters are dependent or not depends on the threshold that defines the desired measure and the amount of data. If the threshold is not met, the result can be used to guess how much more data is required by extrapolating the result. To illustrate this, the straight black lines in \cref{fig:mise real} represent the least squares logarithmic fits of the corresponding gray lines that can be used for extrapolation. These straight solid and dashed black lines are described by the formulas
+\begin{align}
+	0.019 \cdot n^{-0.18}, \label{eq:log mise dependent} \\
+	0.017 \cdot n^{-0.26}, \label{eq:log mise independent}
+\end{align}
+respectively. As an example, let us assume that the threshold equals $0.003$. In that case, $n \approx 800$ would suffice if we assume that the average deceleration is independent from the speed difference and end speed, see the dashed lines in \cref{fig:mise real} and \cref{eq:log mise independent}. This threshold, however, is not yet reached when assuming that all parameters are dependent, see the solid lines in \cref{fig:mise real}. Extrapolating the result using \cref{eq:log mise dependent} provides a rough estimate of the required number of samples: $n \approx 28000$, i.e., ten times as many samples as we used in this example.
+

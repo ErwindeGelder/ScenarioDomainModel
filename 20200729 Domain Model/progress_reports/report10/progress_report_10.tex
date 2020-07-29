@@ -1,0 +1,211 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab/Python)
+\pgfplotsset{compat=1.14}						%% Run in backwards compatibility mode
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+\usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
+\usepackage{units}								%% Appropriate behavior of units
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../../bib}
+
+
+% Table stuff
+\usepackage{booktabs}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+%%==========================================================================
+%% Define reference stuff
+%%==========================================================================
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{10}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{5 september, 2018}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-world driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\newlength{\figurewidth}
+\newlength{\figureheight}
+
+\newcommand{\expectation}[1]{\textup{E} \left[ #1 \right]}
+\newcommand{\mise}[1]{\textup{MISE} \left( #1 \right)}
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item We discussed the take aways from a meeting I had with two TNO colleagues about the quantification of \emph{completeness}. They suggested to look into \emph{goodness of fits} methods, i.e., methods that describe how well a statistical model fits a set of observations. 
+	\begin{itemize}
+		\item Bart suggested that this might even be enough for the quantification of \emph{completeness}. I.e., does the method that Wang~et~al.\ \cite{wang2017much} use (comparing the estimated probability density function (PDF) using $n$ samples with the estimated PDF using $n+m$ samples) make sense?
+		\item Jan-Pieter argued that \emph{completeness} is more than only knowing how good an estimated PDF fits the data. For example, it might be possible that an estimated PDF using $n$ samples fits very well the obtained data, but that the PDF significantly changes when $n+m$ samples are used.
+	\end{itemize}
+	\item We discussed several journals for the publication of the \emph{ontology paper}. IET Intelligent Transport Systems is one possibility, because the paper of Geyer~et~al.\ \cite{geyer2014} is also published in this journal. Transportation Research Part A to E have a higher impact factor, so I will also look whether one of these is suitable (e.g., Transportation Research Part A: Policy and Practice \cite{kalra2016driving, fagnant2015preparing}). Bart suggested to look at recent issues and see whether papers have a similar scope as the paper we want to write.
+	\item For the \emph{ontology} paper, Bart suggested to look at other papers that present an ontology and/or a formalization in other applications (so not only traffic), e.g., see \cite{vanDamPhDThesis2009, vanDam2010model}.
+	\item Besides the work on the journal paper, it would be good to work on another topic in parallel. Therefore, I will continue working on the quantification of \emph{completeness}. Jan-Pieter and I aim to submit a conference paper on this topic this year or the beginning of next year.
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item Together with a colleague (Arash), I worked on the ontology regarding the scenarios. The following conclusions are drawn:
+	\begin{itemize}
+		\item ``An ontology consists of classes (abstract specification of concepts, with their possible properties) and instances (concrete specification of concepts with specific properties)'' \cite{vanDamPhDThesis2009}. Other work in which ontologies for specific applications are presented usually present all the classes and the relations among these classes, e.g., see \cite{jones2011international, gkoutos2004mouse, kim2005security, chen2003ontology, golemati2007creating, lee2017location, matsokis2010plm, vanDamPhDThesis2009}. For illustration purposes, some instances (but not all) of the presented classes are usually presented. To be consistent with other works, we aim to obtain an ontology for which all the classes and its relations are defined too.
+		
+		\item Previously, we used the notions of \emph{scenario class} and \emph{scenario}, where a \emph{scenario} would be an instance of one or multiple \emph{scenario classes}. An example of a \emph{scenario class} could have the name ``lead vehicle braking'' (i.e., it qualitatively describes a scenario in which a vehicle in front of the ego vehicle brakes) whereas an actual (real-world) scenario with a lead vehicle braking would be an instance of this scenario class. The problem with this approach is that it is practically impossible to define all the \emph{scenario classes}.
+		
+		Therefore, a different approach is used: both \emph{scenario class} and a \emph{scenario} are classes (i.e., abstract specifications of concepts). Because the word class in \emph{scenario class} might be confusing, we will name this class \emph{qualitative scenario} instead. As a result, the aforementioned ``lead vehicle braking'' is an instance of a \emph{qualitative scenario} and the actual (real-world) scenario is an instance of a (quantitative) \emph{scenario}. To maintain the relation between the actual (real-world) scenario and the qualitative scenario, a \emph{scenario} has as a property a list of qualitative scenarios.
+		
+		\item Similarly to the classes \emph{qualitative scenario} and \emph{scenario}, the ontology consists of the classes \emph{qualitative activity} and \emph{activity}, \emph{qualitative actor} and \emph{actor}, and \emph{qualitative static environment} and \emph{static environment}. 
+		
+		\item Representing ontologies is usually done by either the Unified Modeling Language (UML) or the Web Ontology Language (OWL) (see \cite{atkinson2005detailed} for a comparison). As my colleague (Arash) has experience with UML, we use this language to describe the ontology. This is ongoing, so no results are shared in this progress report. At the same time, I am preparing some examples using the object-oriented language Python. I hope to share the results of this next time.
+	\end{itemize}
+
+	\item I worked on quantifying the completeness of a dataset. The following conclusions are drawn.
+	\begin{itemize}
+		\item I assume that we can simplify the discussion by stating that it is enough to quantify the uncertainty of estimated probability density functions (pdfs). As mentioned during previous meetings, it needs to be clearly stated why this assumption is correct. I leave this as future work, so for now I simply assume that we are interested in estimating the mean integrated squared error (MISE), i.e., 
+		\begin{equation} \label{eq:mise}
+			\mise{n} = \expectation{ \int_{\mathbb{R}^d} \left(\hat{f}(x;n) - f(x)\right)^2 \, \textup{d}x} = \int_{\mathbb{R}^d} \expectation{\left(\hat{f}(x;n) - f(x)\right)^2} \, \textup{d}x,
+		\end{equation}
+		where $x \in \mathbb{R}^d$ is the $d$-dimensional parameter vector, $n$ denotes the number of datapoints that are used to estimated the underlying pdf $f(x)$, and $\hat{f}(x;n)$ denotes the estimated pdf.
+		
+		\item It is assumed that the pdf is estimated using Kernel Density Estimation (KDE) \cite{rosenblatt1956remarks, parzen1962estimation}, i.e.,
+		\begin{equation}
+			\hat{f}(x;n) = \frac{1}{nh^d} \sum_{i=1}^n K \left( \frac{x - X_i}{h} \right),
+		\end{equation}
+		where $h$ denotes the bandwidth, $K(\cdot)$ denotes the kernel function, and $X_i$ denotes the $i$-th datapoint. Furthermore, one-leave-out cross validation is used to compute the bandwidth $h$ because this minimizes the Kullback-Leibler divergence between the real pdf $f(x)$ and the estimated pdf $\hat{f}(x;n)$ \cite{turlach1993bandwidthselection}.
+		
+		\item Chen \cite{chen2017tutorial} describes how the MISE \cref{eq:mise} can be estimated when KDE is used to estimate a pdf. To do this, Chen considers the pointwise error at $x$:
+		\begin{equation} \label{eq:pdf error}
+			\hat{f}(x;n) - f(x) = \underbrace{\expectation{\hat{f}(x;n)} - f(x)}_{B(x)} + \underbrace{\hat{f}(x;n) - \expectation{\hat{f}(x;n)}}_{E(x)},
+		\end{equation}
+		with a bias $B(x)$ and a variance $E(x)$ (it actually is the square root of the variance) defined as follows:
+		\begin{align}
+			B(x) &= \frac{h^2}{2} \sigma_K^2 \nabla^2 f(x) + O(h^2), \label{eq:bias} \\
+			E(x) &= \sqrt{ \frac{\mu_K f(x)}{nh^d} } N(0, I_d) + O\left( \sqrt{\frac{1}{nh^d}} \right). \label{eq:variance}
+		\end{align}
+		Here, $\sigma_K^2 = \int_{\mathbb{R}^d} ||x||^2 K(x) \, \textup{d}x$ and $\mu_K = \int_{\mathbb{R}^d} K(x)^2 \, \textup{d}x$ are constants that depend on the choice of the kernel function $K(\cdot)$. In \cref{eq:bias}, $\nabla^2 f(x)$ denotes the Laplacian of $f(x)$, i.e., $\nabla^2 f(x) = \sum_{i=1}^d \frac{\partial^2 f(x)}{\partial x_l^2}$ (this is similar to the trace of the Hessian of $f(x)$). In \cref{eq:variance}, $N(0, I_d)$ denotes a $d$ dimensional normal distribution with a variance equal to the identity matrix. Finally, $O(\cdot)$ refers to higher order terms.
+		
+		Note that I verified \cref{eq:bias,eq:variance} (using a Taylor expansion) because the proof is not presented in \cite{chen2017tutorial}, but, for the sake of brevity, the proof is omitted in this progress report. For the 1-dimensional case (i.e., $d=1$), the proof can be found in \cite{scott1992multivariate}.
+		
+%		\item In \cite{chen2017tutorial}, the uncertainty of $\hat{f}(x;n)$ at $x$ is estimated by using only the second term of \cref{eq:pdf error}, i.e., $E(x)$. The so-called plug-in method uses the term $\sqrt{\frac{\mu_K f(x)}{nh^d}}$ while substituting the estimated pdf $\hat{f}(x;n)$ for $f(x)$. An example in \cref{fig:confidence interval} illustrates that the plug-in method 
+%		
+%		\setlength{\figurewidth}{\linewidth}
+%		\setlength{\figureheight}{.7\linewidth}
+%		\begin{figure}
+%			\centering
+%			\input{confidence_interval.tikz}
+%			\caption{Illustration of the estimation of the confidence intervals of an estimated probability density function. The real pdf $f(x)$ (blue solid line) is a mixture of two normal distributions (with means of $-1$ and $1$ and standard deviations $0.5$ and $0.3$). The estimated pdf $\hat{f}(x;n)$ (orange dash-dotted line) is estimated using $n=500$ datapoints while optimizing the one-leave-out cross validation with respect to the bandwidth $h$. The $\unit[95]{\%}$ confidence interval is estimated using the plug-in method of \cite{chen2017tutorial} (red dashed lines) and the real $\unit[95]{\%}$ confidence interval (shaded region) is computed by repeating the estimation of $f(x)$ 1000 times.}
+%			\label{fig:confidence interval}
+%		\end{figure}
+
+		\item When integrating the squared expectation of \cref{eq:pdf error} while ignoring the higher order terms, we obtain the estimate of the MISE \cref{eq:mise} \cite{chen2017tutorial}:
+		\begin{equation} \label{eq:mise approximation}
+		\mise{n} \approx \frac{h^4}{4} \sigma_K^4 \int_{\mathbb{R}^d} (\nabla^2 f(x))^2 \, \textup{d}x + \frac{\mu_K}{nh^d}.
+		\end{equation}
+		
+		The first term of the right-hand side of \cref{eq:mise approximation} corresponds to the bias introduced by smoothing the pdf. Therefore, this term approaches zero when $h \rightarrow 0$. However, when $h \rightarrow 0$, the variance goes to infinity, as can be seen by the second term of the right-hand side of \cref{eq:mise approximation}. Therefore, the optimal bandwidth is such that $h \rightarrow 0$ while $nh^d \rightarrow \infty$. Obviously, this is only achieved by having infinite data ($n \rightarrow \infty$).
+		
+		\item The problem of the MISE in \cref{eq:mise approximation} is that it involves the real pdf $f(x)$. This term can be approximated, however, by using the estimated pdf $\hat{f}(x;n)$ \cite{calonico2018effect}. 
+		
+		\item In \cref{tab:example}, results are shown of an experiment. In total, $n=1000$ datapoints are generated from a pdf $f(x)$. The pdf $f(x)$ corresponds to a mixture of two normal distributions (with means of $-1$ and $1$ and standard deviations $0.5$ and $0.3$). The real MISE is computed by estimating the distribution $100$ times. 
+		
+		\Cref{tab:example} shows that the real MISE equals 0.00168. When approximating the MISE using $\hat{f}(x)$, the result is 0.00202. Although this is a little higher, it is in the same order of magnitude. The next row in \cref{tab:example} shows a similar result for the pdf $g(y)$. This pdf is similar to $f(x)$, i.e., $g(x)=f(x)$, so it is expected that the result is the same. Because of the randomness of the data, the results are slightly different.
+		
+		\begin{table}
+			\centering
+			\caption{Example of estimated MISE using \cref{eq:mise approximation}.}
+			\label{tab:example}
+			\begin{tabular}{lrr}
+				\toprule
+				Description & Real MISE & Approximated MISE \\ \otoprule
+				$\hat{f}(x)$ & 0.00168 & 0.00202 \\
+				$\hat{g}(y)$ & 0.00171 & 0.00190 \\
+				$\hat{h}(x, y)$ & 0.00176 & 0.00206 \\
+				$\hat{f}(x) \hat{g}(y)$ & 0.00084 & 0.00097 \\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	
+		A multivariate distribution is estimated using the datapoints from $f(x)$ and $g(y)$ in two different ways. First, a multivariate KDE is used, i.e., $\hat{h}(x, y)$. Second, the estimations of $f(x)$ and $g(y)$ are used, i.e., $\hat{f}(x)\hat{g}(y)$ as it is (correctly) assumed that the datapoints are independent. \Cref{tab:example} shows that both the real MISE and the approximated MISE are significant lower for $\hat{f}(x)\hat{g}(y)$. This result is expected, since generally more datapoints are required when estimating a multivariate pdf instead of (two) univariate pdfs.
+	\end{itemize}
+
+	\item An abstract is submitted to ESV 2019 for peer review. Peer Review abstracts undergo a more rigorous review and editing process, and may be published in a special issue of the journal, Traffic Injury Prevention, which will feature approximately 15 papers from the 26th ESV Conference. Abstracts/papers submitted to the peer review process, but not selected to	be published in Traffic Injury Prevention will be returned to the Traditional abstract/paper submission process.
+\end{itemize}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item Regarding the ontology, I plan to do the following:
+	\begin{itemize}
+		\item Finish the description of the ontology in UML (next month).
+		\item Finish the examples of instances of the defined classes in Python. Because Python is an object-oriented language, the examples should indicate whether the defined ontology is complete or not (next month).
+		\item When the previous steps are completed, we want to create a database with \emph{qualitative scenarios} (using the list of qualitative scenarios that are defined for the project in Singapore) and quantitative \emph{scenarios} (using real-world scenarios from recorded data) while adopting the defined ontology (next couple of months).
+	\end{itemize}
+	\item I want to discuss my findings regarding the quantification of the completeness with a statistician. 
+	\item Given that the (approximated) MISE is a good measure for quantifying completeness, I still do not know how to choose the thresholds. There are at least to issues:
+	\begin{itemize}
+		\item When the standard deviation is higher, the MISE tend to be lower (this might be solved by scaling the data such that the standard deviation equals $1$).
+		\item Multivariate distributions tend to have a lower MISE, so I think the threshold might need to be dependent on the dimension $d$ of the data.
+	\end{itemize}
+\end{itemize}
+
+\printbibliography
+
+\end{document}

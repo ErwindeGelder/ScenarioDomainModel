@@ -1,0 +1,100 @@
+\section{Terms and definitions}
+\label{sec:definitions}
+
+This section describes the different terms used throughout this paper to limit the ambiguity regarding the terms used throughout this report. The details of this section are based on previous work conducted at CETRAN \cite{degelder2018ontology} and SAE's J3016 \cite{sae2018j3016}.
+
+
+
+\subsection{Operational Design Domain (ODD)}
+
+According to \cite{sae2018j3016}, the Operational Design Domain (ODD) refers to the ``operating conditions under which a given driving automation system or feature thereof is specifically designed to function, including, but not limited to, environmental, geographical, and time-of-day restrictions, and/or the requisite presence or absence of certain traffic or roadway characteristics.''
+
+
+
+\subsection{Dynamic Driving Task (DDT) and DDT fallback}
+
+According to \cite{sae2018j3016}, the Dynamic Driving Task (DDT) refers to ``all of the real-time operational and tactical functions required to operate a vehicle in on-road traffic, excluding the strategic functions such as trip scheduling and selection of destinations and waypoints''
+	
+Another function of an ADS is the DDT fallback. The DDT fallback is ``the response by an automated driving system (ADS) to achieve [a] minimal risk condition [...] after [the] occurrence of a DDT performance-relevant system failure(s) or upon ODD exit'' \cite{sae2018j3016}. For example, an ``ADS-dedicated vehicle performs the DDT fallback by turning on the hazard flashers, manoeuvring the vehicle to the road shoulder and parking it, before automatically summoning emergency assistance'' \cite{sae2018j3016}.
+
+
+
+\subsection{Autonomous Vehicle} 
+
+An Autonomous Vehicle (AV) refers to a vehicle equipped with a level 4 or level 5 automated driving system (ADS). Here, a level 4 or level 5 automated driving system are defined according to SAE's J3016 \cite{sae2018j3016}:
+\begin{itemize}
+	\item A level 4 automated driving system is called ``high driving automation'' and defined as ``the sustained and ODD-specific performance by an ADS of the entire DDT and DDT fallback without any expectation that a user will respond to a request to intervene.''
+	\item A level 5 automated driving system is called ``full driving automation'' and defined as ``The sustained and unconditional (i.e., not ODD-specific) performance by an ADS of the entire DDT and DDT fallback without any expectation that a user will respond to a request to intervene.''
+\end{itemize}
+
+Thus, for both a level 4 ADS and a level 5 ADS, the system is responsible for the entire DDT and the DDT fallback. The difference between a level 4 ADS and a level 5 ADS is the ODD, which is limited for a level 4 ADS and unlimited for a level 5 ADS.
+
+
+
+\subsection{Scenario}
+
+%For the definition of a scenario, the work of \textcite{degelder2018ontology} is adopted, as it is more applicable for the context of the assessment of the AVs \cite{ploeg2018cetran}. Before providing the definition of the term \emph{scenario}, a few concepts are introduced.
+%
+%\begin{itemize}
+%	\item \textit{Ego vehicle:} The ego vehicle refers to the perspective from which the world is seen. Usually, the ego vehicle refers to the vehicle that is perceiving the world through its sensors or the vehicle that has to perform a specific task. The ego vehicle is often referred to as the system-under-test or the vehicle-under-test (VUT) -- in our case the AV-under-test.
+%	
+%	\item \textit{Activity:} An activity refers to the behaviour of a particular mode of a system. For example, an activity could be described by the label `braking' or `changing lane'. 
+%	
+%	\item \textit{Event:} An event marks the time instant at which a transition of state occurs, such that before and after an event, the state corresponds to two different activities. For example, an event could be described by the label `initiate braking'.
+%	
+%	\item \textit{Actor:} An element of a scenario acting on its own behalf. The ego vehicle and other road users are examples of actors in a scenario.
+%	
+%	\item \textit{Static environment:} The static environment refers to the part of a scenario that does not change during a scenario. This includes geo-spatially stationary elements, such as the infrastructure layout, the road layout and the type of road. Also the presence of buildings near the road side that act as a view-blocking obstruction are considered part of the static environment. 
+%	
+%	\item \textit{Dynamic environment:}	As opposed to the static environment, the dynamic environment refers to the part of a scenario that changes during the time frame of a scenario. The dynamic environment is described using activities, the way the state of actors evolve over time. In practice, the dynamic environment mainly consists of the moving actors (other than the ego vehicle) that are relevant to the ego vehicle.
+%	
+%	Note that it might not always be obvious whether a part of a scenario belongs to the static or dynamic environment. For example, the post of a traffic light can be considered as part of the static environment, while the signal of the traffic light can be considered as part of the dynamic environment. Most important, however, is that all parts of the environment that are relevant to the assessment are described in either the static or the dynamic environment.
+%	
+%	\item \textit{Conditions:} Important for the description of a scenario are also the weather and lighting conditions as these also have an influence on the ego vehicle. For instance, precipitation can have a large influence on sensor performance and vehicle dynamics. Lighting conditions also influence sensor performance. Cameras, for instance, might have difficulty in detecting and classifying objects during night-time in the absence of artificial light. Although one might argue whether light and weather conditions are dynamic or not, it is reasonable to assume that these conditions are in most cases not subject to significant changes during the time frame of a scenario. 
+%\end{itemize}
+
+The definition of ``Scenario'' is taken from \textcite{elrofai2018scenario}: ``A scenario is a quantitative description of the ego vehicle, its activities and/or goals, its dynamic environment (consisting of traffic environment and conditions) and its static environment. From the perspective of the ego vehicle, a scenario contains all relevant events.'' 
+Note that this definition is closely related to the definitions of \textcite{geyer2014, ulbrich2015, elrofai2016scenario}. The definition from \textcite{elrofai2018scenario} deviates from the other definitions in the fact that it explicitly states that a scenario is a quantitative description. 
+
+
+
+\subsection{Scenario class}
+\label{sec:scenario class}
+
+Although a scenario is a quantitative description, there also exists a qualitative description of a scenario. We refer to the qualitative description of a scenario as a \emph{scenario class}. The qualitative description can be regarded as an abstraction of the quantitative scenario.
+
+%Scenarios fall into scenario classes. Multiple scenarios can fall into a single scenario class. On the other hand, a scenario may fall into one or multiple scenario classes. As an example, consider all scenarios that occur during the day. These scenarios fall into the scenario class ``Day''. Similarly, all scenarios with rain fall into the scenario class ``Rain'', see \cref{fig:venn diagram scenario class}. A scenario that occurs during the night without rain does not fall into any of the previously defined scenario classes. Likewise, a scenario that occurs during the day with rain falls into both scenario classes ``Day'' and ``Rain''. 
+%
+%\newlength\venncircle
+%\setlength{\venncircle}{10em}
+%\begin{figure}
+%	\centering
+%	\begin{tikzpicture}
+%	\fill[red, fill opacity=0.5] (-\venncircle/2, 0) circle (\venncircle);
+%	\fill[green, fill opacity=0.5] (\venncircle/2, 0) circle (\venncircle);
+%	\draw (-\venncircle/2, 0) circle (\venncircle);
+%	\draw (\venncircle/2, 0) circle (\venncircle);
+%	
+%	\node[anchor=east](daylight) at (-4/3*\venncircle, 3/4*\venncircle) {Day};
+%	\draw (daylight) -- ({(-sqrt(3)/2-1/2)*\venncircle}, \venncircle/2);
+%	\node[anchor=west](rain) at (4/3*\venncircle, 3/4*\venncircle) {Rain};
+%	\draw (rain) -- ({(sqrt(3)/2+1/2)*\venncircle}, \venncircle/2);
+%	
+%	\node[text width=\venncircle, align=center] at (-\venncircle, 0) {Scenarios without rain during day};
+%	\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during day};
+%	\node[text width=\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain during night};
+%	\end{tikzpicture}
+%	\caption{The two circles correspond to the two scenario classes ``Day'' and ``Rain'', respectively. Scenarios that occur during the day with rain fall into both scenario classes ``Day'' and ``Rain''. The new scenario class ``Day and rain'' can be defined as the class that in which all scenarios that occur during the day with rain fall. The scenario class ``Day and rain'' is falls into the scenario classes ``Day'' and ``Rain''.}
+%	\label{fig:venn diagram scenario class}
+%\end{figure}
+%
+%A scenario class can fall into another scenario class. For example, when we continue our previous example and consider the scenario class ``Day and rain'', this scenario class falls into the scenario classes ``Day'' and ``Rain''. Also, a scenario that occurs during the day with rain now falls into three scenario classes: ``Day'', ``Rain'', and ``Day and rain''.
+
+
+
+\subsection{Test case}
+\label{sec:test case}
+
+A test case is considered a special case of a scenario, since it is describing the conditions in which a test is performed. Hence, the activities of the ego vehicle are not specified. Instead, the objective of the ego vehicle is stated.
+
+Note that \textcite{stellet2015taxonomy} use the term \emph{test scenario}. We prefer the usage of \emph{test case} to avoid any ambiguity with the term \emph{scenario}.

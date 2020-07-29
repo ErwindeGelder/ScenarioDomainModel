@@ -1,0 +1,134 @@
+\documentclass[10pt,final,a4paper,oneside,onecolumn]{article}
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage[a4paper,left=3.5cm,right=3.5cm,top=3cm,bottom=3cm]{geometry} %% change page layout; remove for IEEE paper format
+\usepackage[T1]{fontenc}                        %% output font encoding for international characters (e.g., accented)
+\usepackage[cmex10]{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                            %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                             %% theorem styles
+\usepackage{dsfont}                             %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                           %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage[pdftex]{graphicx}                   %% graphics control; use dvips for TeXify; use pdftex for PDFTeXify
+\usepackage{array}                              %% array functionality (array, tabular)
+\usepackage{upgreek}                            %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                           %% improved handling of floats
+\usepackage{multirow}                           %% cells spanning multiple rows in tables
+%\usepackage{subfigure}                         %% subfigures and corresponding captions (for use with IEEEconf.cls)
+\usepackage{subfig}                             %% subfigures (IEEEtran.cls: set caption=false)
+\usepackage{fancyhdr}                           %% page headers and footers
+\usepackage[official,left]{eurosym}             %% the euro symbol; command: \euro
+\usepackage{appendix}                           %% appendix layout
+\usepackage{xspace}                             %% add space after macro depending on context
+\usepackage{verbatim}                           %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}             %% language support
+\usepackage{wrapfig}                            %% wrapping text around figures
+\usepackage{longtable}                          %% tables spanning multiple pages
+\usepackage{pgfplots}                           %% support for TikZ figures (Matlab/Python)
+\pgfplotsset{compat=1.14}						%% Run in backwards compatibility mode
+\usepackage[breaklinks=true,hidelinks,          %% implement hyperlinks (dvips yields minor problems with breaklinks;
+bookmarksnumbered=true]{hyperref}   %% IEEEtran: set bookmarks=false)
+%\usepackage[hyphenbreaks]{breakurl}            %% allow line breaks in URLs (don't use with PDFTeX)
+\usepackage[final]{pdfpages}                    %% Include other pdfs
+\usepackage[capitalize]{cleveref}				%% Referensing to figures, equations, etc.
+\usepackage{units}								%% Appropriate behavior of units
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{csquotes}							%% Quoted texts are typeset according to rules of main language
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,minbibnames=15,maxbibnames=15,backend=biber]{biblatex}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../../bib}
+
+%%==========================================================================
+%% Define reference stuff
+%%==========================================================================
+\crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+
+%%==========================================================================
+%% Define header/title stuff
+%%==========================================================================
+\newcommand{\progressreportnumber}{15}
+\renewcommand{\author}{Erwin de Gelder}
+\renewcommand{\date}{January 30, 2019}
+\renewcommand{\title}{Performance assessment of automated vehicles using real-world driving scenarios}
+
+%%==========================================================================
+%% Fancy headers and footers
+%%==========================================================================
+\pagestyle{fancy}                                       %% set page style
+\fancyhf{}                                              %% clear all header & footer fields
+\fancyhead[L]{Progress report \progressreportnumber}    %% define headers (LE: left field/even pages, etc.)
+\fancyhead[R]{\author, \date}                           %% similar
+\fancyfoot[C]{\thepage}                                 %% define footer
+
+\begin{document}
+	
+\begin{center}
+	\begin{tabular}{c}
+		\title \\ \\
+		\textbf{\huge Progress report \progressreportnumber} \\ \\
+		\author \\ 
+		\date
+	\end{tabular}
+\end{center}
+
+\section{Previous meeting minutes}
+
+\begin{itemize}
+	\item We agreed for the ontology paper that the different classes will be presented in a figure and described shortly in the text. The figure for showing the classes and their relations will be in a similar style as is used by Van Dam \cite{vanDamPhDThesis2009}. A description of all the attributes of the classes will be added in an appendix. 
+	\item A revision for the completeness paper together with the accompanying cover letter was proposed. Bart suggested to make the cover letter stand alone, such that the reviewer do not need to read the revised paper to see how their comments are addressed.
+\end{itemize}
+
+\section{Summary of work}
+
+\begin{itemize}
+	\item A revision of the completeness paper is submitted. I did not receive any feedback since the submitted revision.
+	\item I continued working on the paper about the ontology (attached below). I propose the following structure of the paper:
+	\begin{enumerate}
+		\item Introduction
+		\item Definition of scenario
+		\item Scenario classes
+		\item Ontology
+		\item Example
+		\item Conclusion
+		\item Appendix A: Full domain model
+		\item Appendix B: Example scenario class
+		\item Appendix C: Example scenario
+	\end{enumerate}
+	\item For some reason, the changebar package does not work when using a page width image using the figure* environment. Hence, I highlighted the changes using \color{blue}blue\color{black}\ text instead of a ``changebar'' next to the text.
+	\item Any to do items are in \color{red}red\color{black}.
+	\item I discussed the option of publishing and maintaining the code for the domain model (i.e., the representation of the ontology) on a public repository, e.g., github. I will discuss it with few other people of TNO. Furthermore, I need to make add a proper readme document and perhaps few examples.
+	\item At the CETRAN project in Singapore, we are busy with the ``Milestone 3'' document, i.e., describing the assessment of autonomous vehicles. We need to have a draft report on February 15. After acceptance of that document (probably one month later), I want to start with turning the report to a paper.
+	\item Regarding my doctoral education:
+	\begin{itemize}	
+		\item I completed the course on R, so I obtained 5 Graduate School (GS) credits for the discipline-related skills.
+		\item I discussed with Mascha Toppenberg (graduate school from 3me faculty) if I can get an exemption for few GS credits (max 7 gs credits) for the transferable skills because I followed some TNO courses just before starting my PhD. She seemed very cooperative, so I assume this is possible.
+		\item I will follow the course ``How to become effective in a network conversation'' on the 10th of May (1 GS credit for transferable skills).
+	\end{itemize}
+\end{itemize}
+
+\section{Future plans}
+
+\begin{itemize}
+	\item Progress with the ontology paper. I plan to have a complete paper next meeting.
+	\item I want to start on a new subject: generation of test cases using a scenario database with recorded scenarios.
+\end{itemize}
+
+\section{Questions}
+
+\begin{itemize}
+	\item I give few examples of trees with tags. These examples are enough to illustrate the ontology. Should we, however, add more trees with tags in the appendix?
+	\item When I look at the portal of my doctoral education, it shows that the Go/No Go meeting is not yet completed. Why is the Go/No Go not yet completed?
+	\item Can we have the next meeting on March 14 or 15, or the week after (March 18 -- 22)?
+\end{itemize}
+
+
+\printbibliography
+
+
+\newpage
+\includepdf[pages=-,pagecommand={},width=\paperwidth]{../../"20180639 Journal paper ontology"/journal_ontology.pdf}
+
+\end{document}

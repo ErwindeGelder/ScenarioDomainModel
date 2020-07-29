@@ -1,0 +1,111 @@
+\section{Method}
+\label{sec:method}
+
+% Introduce f(x) and fhat(x;n)
+In this section, we present how to quantify the completeness regarding the activities. As explained in \cref{sec:problem}, all scenarios that fall into a specific scenario class are parametrized similarly. Therefore, all similar types of activities are also parametrized similarly. For example, all activities labeled ``braking'' are parametrized similarly. In the remainder of this section, we assume that all activities that we are dealing with are a similar type of activities, such that they are parametrized similarly. 
+
+Let $n$ denote the number of activities such that we have $n$ parameter vectors that describe these activities, denoted by $X_i \in \mathbb{R}^d$ with $i\in \{1,\ldots,n\}$ and $d$ denoting the number of parameters for one activity. We will estimate the underlying distribution of $X_i$. Let $f(\cdot)$ denote the true probability density function (pdf) and let $f(x)$ denote the probability density evaluated at $x$. Similarly, let $\hat{f}(\cdot;n)$ denote the estimated pdf using $n$ parameter vectors.
+
+% Introduce MISE
+To quantify the completeness of the collection of the $n$ activities, we use the estimated pdf $\hat{f}(\cdot;n)$. For example, suppose that $\hat{f}(x;n)$ equals $f(x)$ for all $x \in \mathbb{R}^d$. In this case, it would be reasonable to say that the $n$ activities give a complete view of the variety and the distribution of the different activities that are labeled similarly. On the other hand, when $\hat{f}(x;n)$ is very different from $f(x)$, it would be reasonable to say that the opposite is the case, i.e., the $n$ scenarios do not give a complete view. One common measure for comparing the estimated pdf with the true pdf is the Mean Integrated Squared Error (MISE):
+\begin{equation}
+	\label{eq:mise}
+	\mise{f}{n} = \expectation{\int_{\mathbb{R}^d} \left( f(x) - \hat{f}(x;n) \right)^2 \ud x}.
+\end{equation}
+The index $f$ indicates that the MISE is calculated with respect to the pdf $f(\cdot)$.
+
+A low MISE indicates a high degree of completeness whereas a high MISE indicates a low degree of completeness, because the expected integrated squared error is high. Therefore, the MISE can be used to quantify the completeness of set of activities that are of a similar type. The problem is, however, that \cref{eq:mise} depends on the true pdf $f(\cdot)$ which is unknown. So the MISE of \cref{eq:mise} cannot be evaluated.
+
+In the remainder of this section, we will explain how the MISE of \cref{eq:mise} can be estimated when Kernel Density Estimation (KDE) is employed. First, KDE will be explained. Next, in \cref{sec:mise dependent}, a method is presented for estimating the MISE when assuming that the $d$ parameters are correlated. \Cref{sec:mise independent} shows how the MISE can be approximated when some of the $d$ parameters are independent from each other.
+
+% Explain everything about KDE
+\subsection{Estimating the distribution using Kernel Density Estimation}
+\label{sec:kde}
+
+The shape of the probability densities is unknown beforehand. Furthermore, the shape of the estimated pdf might change as more data are acquired. Assuming a functional form of the pdf and fitting the parameters of the pdf to the data may therefore lead to inaccurate fits unless a lot of hand-tuning is applied. We employ a non-parametric approach using Kernel Density Estimation (KDE) \cite{rosenblatt1956remarks, parzen1962estimation} because the shape of the pdf is automatically computed and KDE is highly flexible regarding the shape of the pdf.
+
+In KDE, the estimated pdf is given by
+\begin{equation}
+	\label{eq:kde}
+	\hat{f}(x;n) = \frac{1}{nh^d} \sum_{i=1}^n K\left(\frac{x - X_i}{h}\right).
+\end{equation}
+Here, $K(\cdot)$ is an appropriate kernel function and $h$ denotes the bandwidth. The choice of the kernel $K(\cdot)$ is not as important as the choice of the bandwidth $h$ \cite{turlach1993bandwidthselection}. We use a Gaussian kernel because it will simplify some of our calculations. The Gaussian kernel is given by
+\begin{equation}
+	\label{eq:gaussian kernel}
+	K(u) = \frac{1}{\left( 2\pi \right)^{d/2}} \exp \left\{ -\frac{1}{2} \|u\|^2 \right\},
+\end{equation}
+where $\|u\|^2$ denotes the squared 2-norm of $u$, i.e., $u^T u$.
+
+The bandwidth $h$ controls the amount of smoothing. For the kernel of \cref{eq:gaussian kernel}, the same amount of smoothing is applied in every direction, although our method can easily be extended to a multi-dimensional bandwidth, see, e.g., \textcite{scott2005multidimensional, chen2017tutorial}. There are many different ways of estimating the bandwidth, ranging from simple reference rules like, e.g., Scott's rule of thumb \cite{scott2015multivariate} or Silverman's rule of thumb \cite{silverman1986density} to more elaborate methods; see \textcite{turlach1993bandwidthselection, bashtannyk2001bandwidth, jones1996brief, chiu1996comparative} for reviews of different bandwidth selection methods. 
+
+% Explain how MISE is computed
+\subsection{Estimating the Mean Integrated Squared Error for dependent parameters}
+\label{sec:mise dependent}
+
+As an approximation of the MISE of \cref{eq:mise}, the asymptotic mean integrated squared error (AMISE) is often used. With the KDE of \cref{eq:kde} employed, the AMISE is defined as follows \cite{marron1992exact}:
+\begin{equation}
+	\label{eq:amise}
+	\amise{f}{n} = \frac{h^4}{4} \sigma_K^4 \int_{\mathbb{R}^d} \left( \nabla^2 f(x) \right)^2 \ud x + \frac{\mu_K}{nh^d}.
+\end{equation}
+Here, $\sigma_K$ and $\mu_K$ are constants that depend on the choice of the kernel $K(\cdot)$:
+\begin{align}
+	\sigma_K &= \int_{\mathbb{R}^d} \|u\|^2 K(u) \ud u, \label{eq:sigmak} \\
+	\mu_K &= \int_{\mathbb{R}^d} K(u)^2 \ud u.
+\end{align}
+Because we use the Gaussian kernel of \cref{eq:gaussian kernel}, we have $\sigma_K=1$ and $\mu_K=(2\sqrt{\pi})^{-d}$. In \cref{eq:amise}, $\nabla^2 f(x)$ denotes the Laplacian of $f(x)$, i.e., 
+\begin{equation}
+	\nabla^2 f(x) = \sum_{l=1}^d \frac{\partial^2 f(x)}{\partial x_l^2}.
+\end{equation}
+Note that the Laplacian equals the trace of the Hessian. Assuming that $h \rightarrow 0$ and $nh^d \rightarrow \infty$ as $n \rightarrow \infty$, the AMISE only differs from the MISE by higher-order terms under some mild conditions\footnote{The pdf $f(\cdot)$ needs to comply with the regularity conditions, $K(u) \geq 0, \forall u$, $\int_{\mathbb{R}^d} K(u) \ud u = 1$ and $\sigma_K$ from \cref{eq:sigmak} is not infinite.} \cite{silverman1986density}.
+
+The influence of the bandwidth $h$ is demonstrated in an illustrative way by the AMISE of \cref{eq:amise}. The first term of the AMISE of \cref{eq:amise} corresponds to the asymptotic bias introduced by smoothing the pdf. Therefore, this term approaches zero when $h \rightarrow 0$. However, when $h \rightarrow 0$, the variance goes to infinity, as can be seen by the second term of the AMISE, which corresponds to the asymptotic variance. 
+
+As with the MISE, we cannot evaluate the AMISE because it depends on the true pdf $f(\cdot)$. As suggested by \textcite{chen2017tutorial, calonico2018effect}, we can estimate the quantity $\nabla^2 f(x)$ by $\nabla^2 \hat{f}(x;n)$, with $\hat{f}(x;n)$ defined in \cref{eq:kde}. 
+%Given that the Gaussian kernel of \cref{eq:gaussian kernel} is used, we have
+%\begin{equation}
+%	\label{eq:laplacian gaussian}
+%	\nabla^2 \hat{f}(x;n) = \frac{1}{nh^{d+2}} \sum_{i=1}^n K\left( \frac{x - X_i}{h} \right) \left( \frac{\left(x-X_i\right)^2}{h^2} - d \right).
+%\end{equation}
+Substituting $f(x)$ in \cref{eq:amise} with $\hat{f}(x;n)$ gives the measure that we will use to quantify the completeness:
+\begin{equation}
+	\label{eq:measure}
+	\measure{f}{n} = \frac{h^4}{4} \sigma_K^4 \int_{\mathbb{R}^d} \left( \nabla^2 \hat{f}(x;n) \right)^2 \ud x + \frac{\mu_K}{nh^d}.
+\end{equation}
+
+In summary, the measure \cref{eq:measure} is an estimation of the MISE of \cref{eq:mise} given that the pdf is estimated using the KDE of \cref{eq:kde}. Because the MISE cannot be directly evaluated, the asymptotic MISE is used with the estimated pdf substituted for the real pdf. 
+
+% Explain how MISE can be estimated with independent data
+\subsection{Estimating the Mean Integrated Squared Error for independent parameters}
+\label{sec:mise independent}
+
+As explained in \cref{sec:kde}, KDE is employed because the KDE is highly flexible regarding the shape of the pdf. However, when a large number of parameters are used, i.e., for large values of $d$, the KDE becomes unreliable due to the curse of dimensionality \cite{scott2015multivariate}. One way to overcome this, is to assume that certain parameters are independent. 
+In that case, the joint distribution is not modeled using only one multivariate KDE, but using a combinations of KDEs.
+
+Without loss of generality, consider the parameter vector $x$ that can be decomposed into two parts:
+\begin{equation}
+	\label{eq:combine}
+	x = \begin{bmatrix}
+		y \\ z
+	\end{bmatrix},
+\end{equation}
+such that $y \in \mathbb{R}^{d_y}$ and $z \in \mathbb{R}^{d_z}$ with $d_y+d_z=d$. If the parameter vectors $y$ and $z$ are independent, the probability density of $x$ equals
+\begin{equation}
+	\label{eq:independency}
+	f(x) = g(y) h(z),
+\end{equation}
+where $g(\cdot)$ and $h(\cdot)$ are pdfs.
+Because $y$ and $z$ have a lower dimensionality than $x$, the estimated pdfs of $g(\cdot)$ and $h(\cdot)$ will be more reliable. However, we cannot use the measure of \cref{eq:measure} to quantify the completeness anymore. Therefore, we will show in this section how $\measure{f}{n}$ can be computed in case the real distribution is assumed to take the form \cref{eq:independency}.
+
+The first step is to estimate $g(\cdot)$ and $h(\cdot)$ using $\hat{g}(\cdot;n)$ and $\hat{h}(\cdot;n)$, respectively, where $\hat{g}(\cdot;n)$ and $\hat{h}(\cdot;n)$ are also estimated using KDE, see \cref{eq:kde}. Note that the bandwidths of $\hat{g}(\cdot;n)$ and $\hat{h}(\cdot;n)$ are generally different. Now let the MISE of $g(\cdot)$ and $h(\cdot)$ be defined similar as the MISE of $f(\cdot)$ in \cref{eq:mise}. It can be shown\footnote{For the sake of brevity, the proof is omitted from this paper. The main idea is based on the variance of the product of two independent variables, see \textcite{goodman1960exact}, and the assumptions $\expectation{\hat{g}(y;n)} \approx g(y)$ for all $y$ and $\expectation{\hat{h}(z;n)} \approx h(z)$ for all $z$.} that if \cref{eq:independency} holds, then the MISE of $f(x)$ approximately equals
+\begin{dmath}
+	\label{eq:mise independent}
+	\mise{f}{n} \approx \mise{g}{n} \int_{\mathbb{R}^{d_z}} h(z)^2 \ud z + \mise{h}{n} \int_{\mathbb{R}^{d_y}} g(y)^2 \ud y + \mise{g}{n} \cdot \mise{h}{n}.
+\end{dmath}
+
+We can estimate the MISE of $g(\cdot)$ and $h(\cdot)$ in a similar manner as we did for the MISE of $f(\cdot)$ in \cref{sec:mise dependent}, such that we obtain $\measure{g}{n}$ and $\measure{h}{n}$. Since we cannot evaluate the integrals of \cref{eq:mise independent}, we estimate them by substituting the estimated pdfs. As a result, we have
+\begin{dmath}
+	\label{eq:measure independent}
+	\measure{f}{n} = \measure{g}{n} \int_{\mathbb{R}^{d_z}} \hat{h}(z;n)^2 \ud z + \measure{h}{n} \int_{\mathbb{R}^{d_y}} \hat{g}(y;n)^2 \ud y + \measure{g}{n} \cdot \measure{h}{n}.
+\end{dmath}
+
+In this section, we assumed that the parameters $x$ can be split into two partitions that are independent. It is straightforward to extend the result of \cref{eq:measure independent} in case that the parameters $x$ can be split into three of more partitions. 

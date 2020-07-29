@@ -1,0 +1,80 @@
+%\newlength\objectwidth\setlength{\objectwidth}{24em}
+%\tikzstyle{object}=[draw, text width=\objectwidth-.5em, align=left, line width=1pt, minimum width=\objectwidth, anchor=north west, node distance=3pt]
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+\node[object, fill=otherclass](ego){{\bfseries Ego::Actor}\\
+	actor category: Ego qualitative\\
+	initial state vector: $\egoeast=\SI{-20}{\meter}$, \\
+	\leavevmode\phantom{initial state vector: }$\egonorth=\SI{-1.5}{\meter}$, \\
+	\leavevmode\phantom{initial state vector: }$\egoheading=\ang{90}$\\
+	desired state vector: \\
+	goals: \\
+	tags: };
+
+\node[object, fill=otherclass, below=of ego.south](pedestrian){{\bfseries Pedestrian::Actor}\\
+	actor category: Pedestrian qualitative\\
+	initial state vector: $\pedeast=\SI{0}{\meter}$, $\pedheading=\ang{0}$\\
+	desired state vector: \\
+	goals: \\
+	tags: };
+
+\node[object, fill=otherclass, below=of pedestrian.south](ego braking){{\bfseries Ego braking::Set activity}\\
+	activity category: Braking \\
+	parameters: $\amplitude=\SI{-8}{\meter\per\second}$, $\duration=\SI{4}{\second}$,\\
+	\leavevmode\phantom{parameters: } $\egospeedinit=\SI{8}{\meter\per\second}$ \\
+	\attrtstart: $\inittime = \SI{0}{\second}$ \\
+	duration: \SI{4}{\second} \\
+	tags: };
+
+\node[object, fill=otherclass, below=of ego braking.south](ego stationary){{\bfseries Ego stationary::Set activity}\\
+	activity category: Stationary \\
+	parameters: $\egospeedinitb=\SI{0}{\meter\per\second}$ \\
+	\attrtstart: $\inittimeb = \SI{4}{\second}$ \\
+	duration: \SI{3}{\second} \\
+	tags:};
+
+\node[object, fill=otherclass, below=of ego stationary.south](ego accelerating){{\bfseries Ego accelerating::Set activity}\\
+	activity category: Accelerating \\
+	parameters: $\slopeego=\SI{1.5}{\meter\per\second\squared}$, $\egospeedinitc=\SI{0}{\meter\per\second}$ \\
+	\attrtstart: $\inittimec = \SI{7}{\second}$ \\
+	duration: \SI{5}{\second} \\
+	tags:};
+
+%\node[object, fill=category, below=of accelerating.south](straight){{\bfseries Driving straight::Activity category}\\
+%	model: Linear\\
+%	state: Lateral position\\
+%	tags: Driving straight};
+
+\node[object, fill=otherclass, right=of ego.north east, anchor=north west](pedestrian walking){{\bfseries Pedestrian walking::Set activity}\\
+	activity category: Walking \\
+	parameters: $\slopepedestrian=\SI{1}{\meter\per\second}$, $\pednorthinit=\SI{-6}{\meter}$\\
+	\attrtstart: $\inittime = \SI{0}{\second}$ \\
+	duration: \SI{12}{\second} \\
+	tags: };
+
+\node[object, fill=otherclass, below=of pedestrian walking.south](static environment){{\bfseries Pedestrian crossing::Static environment}\\
+	static environment category: Pedestrian crossing qualitative\\
+	properties: \{road: \{lanes: 2, lanewidth: \SI{3}{\meter}, \\
+	\leavevmode\phantom{properties: \{road: \{}xy: [(-60, 0), (60, 0)]\}, \\
+	\leavevmode\phantom{properties: \{}footway: \{width: \SI{3}{\meter}, \\
+	\leavevmode\phantom{properties: \{footway: \{}xy: [(0, 6), (0, -6)]\}\}\\
+	tags: };
+
+\node[object, fill=scenario, below=of static environment](scenario){{\bfseries Ego brakes for pedestrian::Scenario}\\
+	static environment: Pedestrian crossing\\
+	actors: Ego, Pedestrian\\
+	activities: Ego braking, Ego stationary, \\
+	\leavevmode\phantom{activities: }Ego accelerating, Pedestrian walking\\
+	acts: (Ego, Ego braking), \\
+	\leavevmode\phantom{acts: }(Ego, Ego stationary), \\
+	\leavevmode\phantom{acts: }(Ego, Ego accelerating), \\
+	\leavevmode\phantom{acts: }(Pedestrian, Pedestrian walking)\\
+	events: Start braking, End braking, \\
+	\leavevmode\phantom{events: }Start accelerating, End accelerating, \\
+	\leavevmode\phantom{events: }Start walking, Stop walking\\
+	\attrtstart: \SI{0}{\second} \\
+	\attrtend: \SI{12}{\second} \\
+	tags:};
+\end{tikzpicture}
+}

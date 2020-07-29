@@ -1,0 +1,42 @@
+# Ignore stuff that is automatically created
+*.bib.sav
+*.aux
+*.auxlock
+*.bbl
+*.bcf
+*.blg
+*.cb
+*.cb2
+*.csv
+*.log
+*.out
+*.pdf
+*.run.xml
+*.spl
+*.synctex.gz
+*.toc
+*.bib.bak
+_data/
+*/.ipynb_checkpoints/*
+*/*/.ipynb_checkpoints/*
+*/*/*/.ipynb_checkpoints/*
+*.idea*
+*__pycache__*
+*/pickles/*
+*.mp4
+*.nav
+*.snm
+*.dpth
+*.md5
+*.hdf5
+*.pkl
+*/tikz/*
+utilities/log2.txt
+*.Rhistory
+
+# Other files to be ignored
+20171126 Parametrization/df.p
+20190725 Scenario risk/python/data/
+20191014 Scenario mining/data/
+20191014 Scenario mining/Corrado/dev/_old/
+20190725 Scenario Risk/python/figs/

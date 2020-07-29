@@ -1,0 +1,361 @@
+%%==========================================================================
+%% Title: There Is No Largest Prime Number
+%% Author: Euclid of Alexandria
+%% Published: 27th International Symposium of Prime Numbers, 1980
+%%==========================================================================
+
+\def\AspectR{169} %% Uncomment for 16:9 aspect ratio
+%\def\AspectR{43} %% Uncomment for 4:3 aspect ratio
+
+\documentclass[aspectratio=\AspectR,10pt,compress,t]{beamer} %% use option 'handout' for printable output, 
+														     %% Use option 'compress' to get navigation dots horizontally
+														     %% Use option 't' to align text on top of the slides
+
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage{lmodern}                    %% Use Latin Modern font type
+%\usepackage{helvet}                    %% Use Helvetica font type
+\usepackage[T1]{fontenc}                %% support for special characters (e.g., accented)
+\usepackage{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                    %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                     %% theorem styles
+\usepackage{dsfont}                     %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                   %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage{array}                      %% array functionality (array, tabular)
+\usepackage{upgreek}                    %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                   %% improved handling of floats
+\usepackage{multirow}                   %% cells spanning multiple rows in tables
+\usepackage[caption=false]{subfig}      %% subfigures
+\usepackage{xspace}                     %% add space after macro depending on context
+\usepackage{verbatim}                   %% provides the comment environment
+\usepackage[UKenglish]{babel}     %% language support
+\usepackage{multimedia}                 %% include movies
+\usepackage{wrapfig}                    %% wrapping text around figures
+\usepackage{pgfplots}                   %% support for TikZ figures (Matlab)
+\usepackage{hyperref}                   %% implement hyperlinks
+\usepackage{booktabs}					%% Use for tables
+\usepackage{tabularx}					%% Use for tables
+\usepackage{ifthen}						%% For usage of ifthenelse
+\usetikzlibrary{shapes.callouts,shapes.misc} 
+
+
+%%==========================================================================
+%% TikZ figures
+%%==========================================================================
+\newlength\figurewidth
+\setlength\figurewidth{0.25\linewidth}  %% set figure height
+\newlength\figureheight
+\setlength\figureheight{0.2\linewidth}  %% set figure width
+\pgfplotsset{every axis/.append style={
+    scaled y ticks=false,
+    scaled x ticks=false,
+    y tick label style={/pgf/number format/fixed},
+    x tick label style={/pgf/number format/fixed},
+    legend style={font=\small}},
+    compat=1.9}                         %% PGFPlots package options
+\usetikzlibrary{calc}                   %% coordinate calculations
+%% Note: The TikZ overlay option does not work with external TikZ!
+%\usetikzlibrary{external}              %% Create pdf figures from TikZ. Use PDFTeXify ...
+%\tikzexternalize[prefix=./tikz/]       %% ... with --tex-option=--shell-escape switch.
+%\tikzset{external/force remake}        %% Force pdf figure update
+
+
+%%==========================================================================
+%% User-defined commands
+%%==========================================================================
+\newcommand*{\mat}[1]{\mathbf{#1}}                              %% matrix/vector notation
+\newcommand*{\matsym}[1]{\boldsymbol{#1}}                       %% matrix/vector notation for Greek letters
+\newcommand*{\T}{^{\scriptscriptstyle{\mathrm{T}}}}             %% transpose operator
+\newcommand*{\Hr}{^{\scriptscriptstyle{\mathrm{H}}}}            %% conjugate transpose operator
+\newcommand*{\ud}{\mathrm{\,d}}                                 %% differential operator (upright d)
+\newcommand*{\defeq}{\mathrel{\mathop:}=}                       %% definition sign :=
+\newcommand*{\eqdef}{=\mathrel{\mathop:}}                       %% definition sign =:
+\newcommand*{\ip}[2]{\left\langle#1\,{,}\,#2\right\rangle}      %% inner product
+\newcommand*{\real}[1]{\mathrm{Re}(#1)}                         %% real part
+\newcommand*{\imag}[1]{\mathrm{Im}(#1)}                         %% imaginary part
+\newcommand*{\lsup}[1]{{}^{#1}\!}                               %% left superscript
+\newcommand*{\hi}[1]{$^\text{#1}$}                              %% superscript in normal text
+\newcommand*{\w}[1]{\mathrm{#1}}                                %% multiple character super-/subscript in math mode
+\newcommand*{\Ln}{{\ensuremath{\mathcal{L}}}\xspace}            %% L norm
+\newcommand*{\Lone}{{\ensuremath{\mathcal{L}_1}}\xspace}        %% L_1 norm
+\newcommand*{\Ltwo}{{\ensuremath{\mathcal{L}_2}}\xspace}        %% L_2 norm
+\newcommand*{\Linf}{{\ensuremath{\mathcal{L}_\infty}}\xspace}   %% L_inf norm
+\newcommand*{\Lp}{{\ensuremath{\mathcal{L}_p}}\xspace}          %% L_p norm
+\newcommand*{\Htwo}{{\ensuremath{\mathcal{H}_2}}\xspace}        %% H_2 norm
+\newcommand*{\Hinf}{{\ensuremath{\mathcal{H}_\infty}}\xspace}   %% H_inf norm
+\newcommand*{\Hp}{{\ensuremath{\mathcal{H}_p}}\xspace}          %% H_p norm
+\renewcommand*{\qedsymbol}{$\blacksquare$}                      %% redefine the end-of-proof symbol
+\DeclareMathOperator{\tr}{tr}                                   %% trace of a matrix
+\DeclareMathOperator{\sgn}{sgn}                                 %% signum function
+\DeclareMathOperator{\atan}{atan}                               %% arc tangent
+\setlength{\heavyrulewidth}{0.1em}								%% Table stuff
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}				%% Table stuff
+
+
+%%==========================================================================
+%% Miscellaneous
+%%==========================================================================
+\graphicspath{{figures/}{more_figures/}}        %% (graphicx) directory path for figures
+\addtolength{\arraycolsep}{-0.5mm}              %% squeeze matrix columns a little
+\fnbelowfloat                                   %% (stfloats) put footnote below a float at the page bottom
+\urlstyle{same}                                 %% (hyperref) use current font for URLs
+\hypersetup{pdftitle={Title},
+            pdfauthor={Author},
+            colorlinks=true,linkcolor=black}  %% (hyperref) pdf properties title and author
+%\captionsetup[subfloat]{
+%    farskip=0pt,
+%    nearskip=0pt,
+%    captionskip=0pt,
+%    textfont=normalsize,
+%    labelformat=empty}                         %% (subfig) subfloat caption format
+%\captionsetup[figure]{
+%    textfont=normalsize,
+%    labelformat=empty}                         %% (subfig/caption) figure caption format
+%\captionsetup[table]{
+%    aboveskip=2pt,
+%    labelfont={small,bf},
+%    textfont={small,sc}}                       %% (subfig/caption) table caption format
+\usetheme{TNO}                                  %% TNO presentation theme
+\newif\ifshow\showfalse                         %% allow to skip slides using an if-then(-else) construct
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+%%==========================================================================
+%% Newcommands for this specific presentation
+%%==========================================================================
+\newcommand{\ontologytable}[1]{%
+	\begin{table}
+		\begin{center}
+			\footnotesize
+			\begin{tabularx}{\linewidth}{p{3em} X X}
+				\toprule
+				Term & Characteristics & ``has'' \\ \otoprule
+				\ifthenelse{\equal{#1}{2}}{\leavevmode\color{red}}{} Scenario class & \ifthenelse{\equal{#1}{2}}{\leavevmode\color{red}}{} Qualitative description of scenario & \ifthenelse{\equal{#1}{2}}{\leavevmode\color{red}}{} Scenarios \newline Other (less generic) scenario classes \newline One or multiple tags \\
+				\ifthenelse{\equal{#1}{1}}{\leavevmode\color{red}}{} Scenario & \ifthenelse{\equal{#1}{1}}{\leavevmode\color{red}}{} Quantitative description \newline Time interval & \ifthenelse{\equal{#1}{1}}{\leavevmode\color{red}}{} One or multiple events \newline One or multiple activities \newline Ego vehicle \newline Static environment \newline Dynamic environment \\
+				\ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Event & \ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Time instant \newline State transition & \\
+				\ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Activity & \ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Inter-event time interval \newline Quantitative description of (changing) state & \ifthenelse{\equal{#1}{3}}{\leavevmode\color{red}}{} Model that describes the way the state evolves \\
+				\bottomrule
+			\end{tabularx}
+		\end{center}
+	\end{table}
+}
+
+%%==========================================================================
+%% Document meta data
+%%==========================================================================
+\title[Test scenario generation | \insertsubtitle]{Test scenario generation}
+\subtitle{for the Assessment of Automated Vehicles}
+\author[deGelder]{Erwin de Gelder \texttt{erwin.degelder@tno.nl}}
+\date[11th of January]{Streetwise workshop}
+
+%%==========================================================================
+%% Begin document
+%%
+%% In case of colored elements, please use the standard TNO colors TNOred,
+%% TNOgreen, TNOblue, TNOdarkblue, TNOorange, TNOyellow, TNOgray, and
+%% TNOlightgray.
+%%==========================================================================
+
+\begin{document}
+
+{\setbeamertemplate{footline}{} %% no footer on title page
+%\titlebackground{Streetwise.pdf}  %% custom background (comment for default background)
+\blacktitle                     %% black text & banner on title page (comment for white text & banner)
+\begin{frame}
+    \titlepage
+    \begin{tikzpicture}[overlay, remember picture]
+	    \useasboundingbox (current page.north west) rectangle (current page.south east);
+	    \node at (-3.3, 4.7) {\includegraphics[scale=0.55]{Streetwise.pdf}};
+    \end{tikzpicture}
+\end{frame}}
+
+\begin{frame}{Table of contents}
+	\tableofcontents
+	%\begin{tikzpicture}[overlay, remember picture]
+	%	\useasboundingbox (current page.north west) rectangle (current page.south east);
+	%	\node at (9.3, 3.5) {\includegraphics[scale=0.9]{Streetwise.pdf}};
+	%\end{tikzpicture}
+\end{frame}
+
+\section{Introduction}
+\stepcounter{subsection}
+\begin{frame}{Introduction}
+	Why generating new test scenarios?
+	\begin{itemize}
+		\item Probabilistic results
+		\item Emphasize critical scenarios
+		\item Prevent repetition
+		\item Test scenarios that are not yet encountered on the road
+	\end{itemize}
+	\pause
+	The following approach is used:
+	\begin{itemize}
+		\item Parametrize recorded real-life scenarios
+		\item Estimate probability density function (PDF) of parameters
+		\item Draw samples from the PDF
+		\item Turn parameters into a real-life test scenario
+	\end{itemize}
+\end{frame}
+
+\section{Current status}
+\stepcounter{subsection}
+\begin{frame}{Braking predecessor}{Parametrization}
+	\begin{figure}
+		\centering
+		\input{figures/BrakingProfileDefinition.tikz}
+		\vspace{-0.5em}
+		\caption{Velocity profile of predecessor is modeled with three parameters: $\Delta v$, $t_{\textup{brake}}$, and $v_{\textup{end}}$.}
+	\end{figure}
+	\vspace{-0.5em}
+	\begin{flushright}
+		For more details, see \cite{deGelder2017assessment}.
+	\end{flushright}
+\end{frame}
+
+\begin{frame}{Braking predecessor}{PDF estimation using Kernel Density Estimation}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			PDF is estimated using Kernel Density Estimation (KDE):
+			\begin{equation}
+				f_h(x) = \frac{1}{nh} \sum_{i=1}^n K\left( \frac{x-x_i}{h} \right)
+			\end{equation}
+			\begin{itemize}
+				\item Bandwidth $h$ determined with cross validation.
+				\item A Gaussian kernel $K(\cdot)$ is used.
+				\item $x_i$ represent parameter vectors from recorded scenarios.
+			\end{itemize}
+			Right figure shows marginal distributions (red lines) and histogram of data.
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\vspace{-1em}
+				\includegraphics[width=\linewidth]{KDE_regular.pdf}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Braking predecessor}{Test results}
+	\begin{figure}
+		\centering
+		\input{figures/parameter_plot.tikz}
+		\vspace{-0.5em}
+		\caption{Result of Crude Monte Carlo.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Braking predecessor}{Importance sampling}
+	\begin{figure}
+		\centering
+		\input{figures/parameter_plot_is.tikz}
+		\vspace{-0.5em}
+		\caption{Result of Monte Carlo with Importance Sampling.}
+	\end{figure}
+\end{frame}
+
+\section{Exploration}
+\stepcounter{subsection}
+\begin{frame}{Challenges}
+	How should we do the parametrization?
+	\begin{itemize}
+		\item Less parameters means high loss of information.
+		\item Many parameters results in problems with estimation the PDF (curse of dimensionality).
+	\end{itemize}
+	How to estimate the PDF?
+	\pause
+	\begin{figure}
+		\centering
+		\input{figures/velocity_profile_example_normalized.tikz}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Measure performance}
+	We can use the following performance measure:
+	\begin{equation}
+		J = \prod_{i=1}^n \int f(z,y_i) p(z) dz = \prod_{i=1}^n E[f(z,y_i)]
+	\end{equation}
+	\begin{itemize}
+		\item $y_i$ denotes a normalized test curve (from real-life data).
+		\item $z$ denotes generated (spline) parameters.
+		\item $f(z,y_i)$ is a \emph{similarity function} that \emph{measures} how well the generated curve (using $z$) looks like the test curve $y_i$.
+	\end{itemize}
+	\pause
+	Why such a strange function? Consider $f(z,y_i) = \delta(z-y_i)$ (assume we can subtract $y_i$ from $z$, $\delta(\cdot)$ represents Dirac function) and we get `just' cross-validation with likelihood:
+	\begin{equation}
+		J = \prod_{i=1}^n p(y_i)
+	\end{equation}
+\end{frame}
+
+
+\begin{frame}{Measure performance}
+	We can estimate $J$ using a Monte Carlo approach with large $N$:
+	\begin{equation}
+		J \approx \prod_{i=1}^n \sum_{j=1}^N f(z_j, y_i), \quad z_j \sim p(Z)
+	\end{equation}
+	How to define $f(z,y)$? \pause One approach involves the product integral ($g_z(t)$ is the spline generated with parameters $z$):
+	\begin{equation}
+		f(z, y) = \prod_{t=0}^1 \left( \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left\{ -\frac{\left(y(t) - g_z(t)\right)^2}{2\sigma^2} \right\} \right)^{dt}
+	\end{equation}
+	The intuition behind this function is that the generated curve should match everywhere, not at only one time instant (then a normal integral would suffice).
+\end{frame}
+
+\begin{frame}{Simple case example}
+	\begin{figure}
+		\centering
+		\input{figures/simple_case_scores.tikz}
+		\vspace{-0.5em}
+		\caption{Normalized score versus the bandwidth for a simple case study with different values for $\sigma$.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Future work}
+	\begin{columns}
+		\begin{column}{0.46\textwidth}
+			Use Singular Value Decomposition (SVD) to
+			\begin{itemize}
+				\item lower the number of parameters;
+				\item effectively change kernel.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.55\textwidth}
+			\begin{figure}
+				\vspace{-2em}
+				\input{figures/svd2.tikz}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Future work}
+	Use of copulas \cite{Schmidt2007, scaillet2007estimationcopulas, aas2009paircopula}
+	\begin{itemize}
+		\item Copulas are well-known for being good in estimating the tails of PDFs.
+		\item Work in progress...
+		\item Theory is promising, but no good working example so far.
+	\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\stepcounter{subsection}
+\begin{frame}{Conclusion}
+	\begin{itemize}
+		\item Parametrization and PDF estimation are crucial for the scenario generation.
+		\item We need a good measure to quantify how good the parametrization and PDF estimation are.
+		\item Lots of future work...
+	\end{itemize}
+\end{frame}
+
+\section{References}
+\stepcounter{subsection}
+\begin{frame}{References}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	%\frametitle{References}  % This gives an error...
+	\scriptsize{\bibliographystyle{ieeetran}}
+	\bibliography{../bib}
+\end{frame}
+
+\end{document}

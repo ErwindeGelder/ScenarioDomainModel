@@ -1,0 +1,28 @@
+%\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=egocolor, minimum height=2\tagheight] at (-\descriptionwidth, 0) {Ego vehicle};
+
+% Longitudinal activity.
+\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=egocolor] at (0, 0) {Longitudinal activity};
+\node[tag, text width=\egovehiclecruising-1em, minimum width=\egovehiclecruising, fill=egocolor] at (0, 0) {Cruising};
+\node[tag, text width=\egovehicleaccelerating-1em, minimum width=\egovehicleaccelerating, fill=egocolor] at (\egovehiclecruising, 0) {Accelerating};
+\node[tag, text width=\tagtotalwidth-\egovehicleaccelerating-\egovehiclecruising-1em, minimum width=\tagtotalwidth-\egovehicleaccelerating-\egovehiclecruising, fill=egocolor] at (\egovehicleaccelerating+\egovehiclecruising, 0) {Cruising};
+
+% Lateral activity
+\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=egocolor] at (0, -\tagheight) {Lateral activity};
+\node[tag, text width=\egovehiclefollowing-1em, minimum width=\egovehiclefollowing, fill=egocolor] at (0, -\tagheight) {Following lane};
+\node[tag, text width=\egovehiclechanging-1em, minimum width=\egovehiclechanging, fill=egocolor] at (\egovehiclefollowing, -\tagheight) {Changing lane left};
+\node[tag, text width=\tagtotalwidth-\egovehiclechanging-\egovehiclefollowing-1em, minimum width=\tagtotalwidth-\egovehiclechanging-\egovehiclefollowing, fill=egocolor] at (\egovehiclechanging+\egovehiclefollowing, -\tagheight) {Following lane};
+
+% Items.
+\foreach \x/\xend [count=\i] in {0/\egovehiclecruising, \egovehiclecruising/\egovehiclefollowing, \egovehiclefollowing/\egovehiclecruising+\egovehicleaccelerating, \egovehiclecruising+\egovehicleaccelerating/\egovehiclefollowing+\egovehiclechanging, \egovehiclefollowing+\egovehiclechanging/\tagtotalwidth} {%
+	\node[minimum width=\xend-(\x), align=center, minimum height=\itempos, anchor=north west] at (\x, \itempos) {Item \i};
+	\draw[showitem] (\x, 0) -- (\x, \itempos);
+}
+\draw[showitem] (\tagtotalwidth, 0) -- (\tagtotalwidth, \itempos);
+
+% Timeline.
+\draw[timeline, ->] (0, -2\tagheight-\timepos) -> (\tagtotalwidth, -2\tagheight-\timepos);
+\node[minimum width=\tagtotalwidth, align=center, anchor=north west, minimum height=\timepos] at (0, -2\tagheight) {Time};
+\end{tikzpicture}
+%}

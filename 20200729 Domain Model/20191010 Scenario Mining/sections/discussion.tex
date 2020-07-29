@@ -1,0 +1,25 @@
+\cstartf\section{Discussion}\cendf
+\label{sec:discussion}
+
+%The case study illustrates that the performance of the scenario mining is limited by the quality of the data rather than the proposed approach.
+\cstartd The false detections are a result of inaccurate or missing data.
+For example, in case of the four false negatives, the other vehicle is not detected at the time of the cut in or overtaking.
+For one cut in, this is because another vehicle obstructs the view toward the vehicle at the moment of the cut in. 
+For the other three false negatives, the other vehicles appear from the sensor's blind spot (dotted area in \cref{fig:sensors}).
+The three false positives of the cut-in scenario are a result of inaccurate measurements of the lane line distances. \cendd
+\cstartf On the one hand, it might be interpreted as that the false detections are due to limitations of the data.
+On the other hand, for future work, we can expand our work to deal with these limitations of the data.
+For example, using techniques used for correcting the interpretation of natural language \autocite{hull1982experiments}, we might be able to correct wrong tags or to add missing tags. \cendf
+
+% Elaborate on advantages of this work.
+\cstartf To mine scenarios from a scenario category, the scenario category needs to be represented by a a certain combination of tags, such as shown in \cref{fig:cutin formulation tags,fig:overtaking template}.
+Provided that there are no new tags required, there are no new algorithms required for mining scenarios from new scenario categories. 
+As a result, it is relatively straightforward to apply the proposed approach for mining scenarios from other scenario categories than the ones presented in our case study. \cendf
+\cstarte Future work includes more tags, e.g., ``turning left'' or ``turning right'', and to consider more actors, e.g., pedestrians and cyclists. This will enable the mining of many more scenarios. \cende
+
+% Elaborate on NLP work.
+% Use n-grams for mining scenarios. New possibilities: correcting mistakes, graphical representation, test case generation.
+\cstartf For future research, the analogy between the proposed scenario mining and natural language processing (NLP) could be explored. 
+In NLP, natural language is analyzed by searching for certain combination of words or syllables. 
+Similarly, we are searching for certain combinations of tags. \cendf
+\cstarte In NLP, n-gram models are successfully used to correct \autocite{hull1982experiments} and predict \autocite{brown1992class} words and to generate text \autocite{oh2002stochastic}; so n-gram models might be used to correct and predict tags and to generate new scenarios for the assessment of automated vehicles. \cende
