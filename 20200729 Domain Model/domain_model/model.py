@@ -1,31 +1,17 @@
+""" Class Model
+
+Creation date: 2018 10 30
+Author(s): Erwin de Gelder
+
+Modifications:
+2018 11 05: Make code PEP8 compliant.
+2018 11 07: Make seperate classes for each type of model. Model itself becomes abstract class.
+2018 11 12: Add fit method to all models.
+2018 11 19: Make it possible to instantiate models from JSON code.
+2019 01 14: Add optional parameters tstart=0 and tend=2 to get_state and get_state_dor.
+2019 10 13: Update of terminology.
+2019 11 04: Add constant model.
 """
-Class Model
-
-
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-30 Oct 2018
-
-To do
------
-
-Modifications
--------------
-05 Nov 2018: Make code PEP8 compliant.
-07 Nov 2018: Make seperate classes for each type of model. Model itself becomes abstract class.
-12 Nov 2018: Add fit method to all models.
-19 Nov 2018: Make it possible to instantiate models from JSON code.
-14 Jan 2019: Add optional parameters tstart=0 and tend=2 to get_state and get_state_dor.
-17 Jan 2019: @Joost Bosman: Fix options dictionary modified when using _set_default_options
-             function in Model class.
-13 Oct 2019: Update of terminology.
-04 Nov 2019: Add constant model.
-"""
-
 
 import sys
 from abc import ABC, abstractmethod

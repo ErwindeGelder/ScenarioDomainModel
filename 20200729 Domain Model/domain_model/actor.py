@@ -1,32 +1,20 @@
+""" Class Actor
+
+Creation date: 2018 10 30
+Author(s): Erwin de Gelder
+
+Modifications:
+2018 11 05: Make code PEP8 compliant.
+2018 11 22: Remove example. For example, see example_actor.py.
+2018 11 22: Make it possible to instantiate Actor from JSON code.
+2018 12 06: Make it possible to return full JSON code (incl. attributes' JSON code).
+2019 03 13: Add initial/desired state attributes of Actor.
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 05 23: Add goal attribute to actor. This can be used when goal cannot be formulated as a
+            desried state.
+2019 10 11: Update of terminology.
+2019 11 04: Add goals to ego vehicle.
 """
-Class Actor
-
-
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-30 Oct 2018
-
-To do
------
-
-Modifications
--------------
-05 Nov 2018: Make code PEP8 compliant.
-22 Nov 2018: Remove example. For example, see example_actor.py.
-22 Nov 2018: Make it possible to instantiate Actor from JSON code.
-06 Dec 2018: Make it possible to return full JSON code (incl. attributes' JSON code).
-13 Mar 2019: Add initial/desired state attributes of Actor.
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-23 May 2019: Add goal attribute to actor. This can be used when goal cannot be formulated as a
-             desried state.
-11 Oct 2019: Update of terminology.
-04 Nov 2019: Add goals to ego vehicle.
-"""
-
 
 from typing import List
 from .default_class import Default

@@ -1,32 +1,19 @@
+""" Class Activity
+
+Creation date: 2018 10 30
+Author(s): Erwin de Gelder
+
+Modifications:
+2018 11 05: Make code PEP8 compliant.
+2018 11 07: Change use of models.
+2018 11 12: Demonstrate fit method of the different models.
+2018 11 20: Remove example. For example, see example_activity.py.
+2018 11 22: Make it possible to instantiate Actor from JSON code.
+2018 12 06: Make it possible to return full JSON code (incl. attributes' JSON code).
+2019 02 28: The start of a triggered activity is at an event.
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 10 11: Update of terminology.
 """
-Class Activity
-
-
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-30 Oct 2018
-
-To do
------
-
-Modifications
--------------
-05 Nov 2018: Make code PEP8 compliant.
-07 Nov 2018: Change use of models.
-12 Nov 2018: Demonstrate fit method of the different models.
-22 Nov 2018: Remove example. For example, see example_activity.py.
-22 Nov 2018: Make it possible to instantiate Actor from JSON code.
-06 Dec 2018: Make it possible to return full JSON code (incl. attributes' JSON code).
-28 Feb 2019: The start of a triggered activity is at an event.
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-11 Oct 2019: Update of terminology.
-
-"""
-
 
 import numpy as np
 import matplotlib.pyplot as plt

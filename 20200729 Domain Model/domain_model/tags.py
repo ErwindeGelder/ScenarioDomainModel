@@ -1,32 +1,18 @@
-"""
-Enumeration of allowed tags in the StreetWise database.
+""" Enumeration of allowed tags in the StreetWise database.
 
+Creation date: 2018 10 29
+Author(s): Erwin de Gelder, Jeroen Broos
 
-Author
-------
-Erwin de Gelder, Jeroen Broos
-
-Creation
---------
-29 Oct 2018
-
-To do
------
-
-Modifications
--------------
-31 Oct 2018: Tags renamed according to "Scenario classes for the assessment of automated vehicles"
-                by Erwin de Gelder and Olaf Op den Camp
-08 Nov 2018: Tags added:
-                - VehicleLateralActivity_ChangingLane
-                - InitialState_LateralPosition_OtherLane
-12 Nov 2018: Add tag_from_json method.
-29 Nov 2018: Add functionality to convert Tag to a Str (string).
-07 Dec 2018: Many "supertags" added.
-07 Dec 2018: Functionality for determining whether a Tag is a subtag of another Tag.
-10 Dec 2018: Region tags added.
-04 Nov 2019: Add str() around tag.name as to avoid Pylint from complaining.
-
+Modifications:
+2018 10 13: Tags renamed according to "Scenario classes for the assessment of automated vehicles"
+            by Erwin de Gelder and Olaf Op den Camp.
+2018 11 08: Tags added: VehicleLateralActivity_ChangingLane & InitialState_LateralPosition_OtherLane
+2018 11 12: Add tag_from_json method.
+2018 11 29: Add functionality to convert Tag to a Str (string).
+2018 12 07: Many "supertags" added.
+2018 12 07: Functionality for determining whether a Tag is a subtag of another Tag.
+2018 12 10: Region tags added.
+2019 11 04: Add str() around tag.name as to avoid Pylint from complaining.
 """
 
 from enum import Enum, unique

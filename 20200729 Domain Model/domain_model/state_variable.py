@@ -1,24 +1,12 @@
-"""
-Class StateVariable
+""" Class StateVariable
 
+Creation date: 2018 11 05
+Author(s): Erwin de Gelder
 
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-05 Nov 2018
-
-To do
------
-
-Modifications
--------------
-14 Mar 2019: StateVariables {LONGITUDINAL,LATERAL}_ROAD_POSITION added.
-11 Oct 2019: Update of terminology.
-04 Nov 2019: Add the heading as a possible state variable.
-
+Modifications:
+2019 03 14: StateVariables {LONGITUDINAL,LATERAL}_ROAD_POSITION added.
+2019 10 11: Update of terminology.
+2019 11 04: Add the heading as a possible state variable.
 """
 
 from enum import Enum

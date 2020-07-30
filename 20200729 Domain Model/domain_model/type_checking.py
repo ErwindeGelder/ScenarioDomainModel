@@ -1,21 +1,9 @@
-"""
-Functions for type checking
+""" Functions for type checking
 
+Creation date: 2019 05 22
+Author(s): Erwin de Gelder
 
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-22 May 2019
-
-To do
------
-
-Modifications
--------------
-
+Modifications:
 """
 
 from typing import List
