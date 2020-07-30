@@ -16,6 +16,7 @@ Modifications:
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 11: Update of terminology.
 2019 11 04: Add options to automatically assign unique ids to actor/activities.
+2020 07 30: Update conversion of scenario category to a string.
 """
 
 
@@ -216,10 +217,10 @@ class ScenarioCategory(Default):
         line = ""
         for word in words:
             if len(line) + len(word) < 80:
-                line += " {:s}".format(word)
+                line += "  {:s}".format(word)
             else:
                 string += "{:s}\n".format(line)
-                line = " {:s}".format(word)
+                line = "  {:s}".format(word)
         if line:
             string += "{:s}\n".format(line)
 
@@ -229,7 +230,16 @@ class ScenarioCategory(Default):
             string += "Not available\n"
         else:
             for tag in self.tags:
-                string += {" - {:s}".format(tag.name)}
+                string += u"\u2502\u2500 {:s}\n".format(tag)
+        derived_tags = self.derived_tags()
+        for i, (key, tags) in enumerate(derived_tags.items(), start=1):
+            string += u"{}\u2500 {:s}\n".format(u"\u2514" if i == len(derived_tags) else u"\u251C",
+                                                key)
+            for j, tag in enumerate(tags, start=1):
+                string += "{}  {}\u2500 {:s}\n".format(" " if i == len(derived_tags) else u"\u2502",
+                                                       "\u2514" if j == len(tags) else "\u251C",
+                                                       tag)
+
         return string
 
     def to_json(self) -> dict:
