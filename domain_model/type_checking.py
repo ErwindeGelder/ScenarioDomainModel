@@ -50,7 +50,7 @@ def check_for_list(input_name, var_to_check, required_type, can_be_none=True, at
         for element in var_to_check:
             if not isinstance(element, required_type):
                 raise TypeError("Items of input '{0}' should be of type ".format(input_name) +
-                                "{0} but at least one item is of type {1}.".
+                                "'{0}' but at least one item is of type '{1}'.".
                                 format(required_type, type(element)))
     else:
         if not can_be_none:

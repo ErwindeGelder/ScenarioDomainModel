@@ -291,7 +291,7 @@ class ScenarioCategory(Default):
         return scenario_category
 
 
-def scenario_class_from_json(json: dict) -> ScenarioCategory:
+def scenario_category_from_json(json: dict) -> ScenarioCategory:
     """ Get ScenarioCategory object from JSON code.
 
     It is assumed that all the attributes are fully defined. Hence, the
@@ -329,7 +329,7 @@ def derive_actor_tags(actors: List, acts: List, tags: dict = None) -> dict:
 
     :param actors: The Actors of the Scenario(Category).
     :param acts: The acts of the Scenario(Category).
-    :param tags: Initial that will be amended with tags of the actors.
+    :param tags: Initial tags that will be amended with tags of the actors.
     :return: Dictionary with each actor as a key and the corresponding values
         denote the tags.
     """
