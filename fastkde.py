@@ -158,7 +158,7 @@ class KDE:
             self.weights = True
             if isinstance(weights, List):
                 weights = np.array(weights)
-            if weights.dtype != np.int:
+            if weights.dtype not in [np.int, np.int64]:
                 raise TypeError("Weights must be integers but are of type '{0}'.".
                                 format(weights.dtype))
             self.data_helpers.weights = weights
@@ -218,21 +218,9 @@ class KDE:
             raise ValueError("Cannot do clustering with weighted data.")
 
         # Do the clustering.
-        counts = []
-        clusters = []
-        for sample in self.data:
-            found_cluster = False
-            for i, cluster in enumerate(clusters):
-                if np.max(np.abs(sample-cluster)) < maxdist:
-                    # Sample is close the this cluster, so increase the count number and stop
-                    # searching further.
-                    counts[i] += 1
-                    found_cluster = True
-                    break
-            if not found_cluster:
-                # There is no cluster found, so create a new cluster.
-                clusters.append(sample)
-                counts.append(1)
+        clusters, counts = np.unique(np.round(self.data / maxdist / 2).astype(np.int),
+                                     axis=0, return_counts=True)
+        clusters = clusters * (2 * maxdist)
 
         # Apply the data to this KDE.
         self.fit(clusters, weights=counts, std=self.data_helpers.std)
