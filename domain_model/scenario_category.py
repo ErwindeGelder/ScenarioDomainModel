@@ -216,7 +216,7 @@ class ScenarioCategory(Default):
         words = self.description.split(' ')
         line = ""
         for word in words:
-            if len(line) + len(word) < 80:
+            if len(line) + len(word) <= self.maxprintlength:
                 line += "  {:s}".format(word)
             else:
                 string += "{:s}\n".format(line)
