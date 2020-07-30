@@ -40,7 +40,7 @@ def check_for_list(input_name, var_to_check, required_type, can_be_none=True, at
     :param var_to_check: The actual variable that will be checked.
     :param required_type: The required type of each of the elements of the list.
     :param can_be_none: By default, if the variable to check is None, no error is raised.
-    :param at_least_one: By deafult, the list can be empty. Set to True if at least one element.
+    :param at_least_one: By default, the list can be empty. Set to True if at least one element.
     """
 
     if var_to_check is not None:
