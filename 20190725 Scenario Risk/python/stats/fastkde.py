@@ -23,7 +23,8 @@ Modifications:
 2020 07 03 Enable conditional sampling of the KDE.
 2020 07 26 Add the option of having integer weights.
 2020 07 27 Add the clustering method. Version 1.1.
-2020 07 28 Enable storing the KDE in a pickle file and restoring it from a pickle file.
+2020 07 28 Version 1.1: Enable storing the KDE in a pickle file and restoring it from a pickle file.
+2020 07 30 Version 1.2: Make the clustering extremely faster (now in a blink of an eye).
 """
 
 import os
@@ -56,7 +57,7 @@ class KDEConstants(Options):
         sumweights(int): The sum of the weights (if weights are used).
         epsilon(float): The distance in one 'bin' in case weighted samples are used.
     """
-    version: str = "1.1"
+    version: str = "1.2"
 
     ndata: int = 0
     const_looscore: float = 0
