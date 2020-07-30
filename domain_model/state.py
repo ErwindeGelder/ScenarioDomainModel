@@ -1,24 +1,11 @@
+""" Class State
+
+Creation date: 2018 03 14
+Author(s): Erwin de Gelder
+
+Modifications:
+2019 05 22: Make use of type_checking.py to shorten the initialization.
 """
-Class State
-
-
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-14 Mar 2018
-
-To do
------
-
-Modifications
--------------
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-
-"""
-
 
 from typing import Union, List
 from .activity_category import StateVariable, state_variable_from_json

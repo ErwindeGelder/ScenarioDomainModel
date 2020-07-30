@@ -1,32 +1,21 @@
-"""
-Class ScenarioCategory
+""" Class ScenarioCategory
 
+Creation date: 2018 10 30
+Author(s): Erwin de Gelder
 
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-30 Oct 2018
-
-To do
------
+To do:
 Add "comprises" method based on the "fall_into" method that is defined for Scenario.
 Add "includes" method.
 
-Modifications
--------------
-05 Nov 2018: Make code PEP8 compliant.
-07 Nov 2018: Change use of models.
-16 Nov 2018: Typo.
-22 Nov 2018: Enable instantiation using JSON code.
-29 Nov 2018: Add functionality to return the derived Tags.
-06 Dec 2018: Make it possible to return full JSON code (incl. attributes' JSON code).
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-11 Oct 2019: Update of terminology.
-04 Nov 2019: Add options to automatically assign unique ids to actor/activities.
-
+Modifications:
+2018 11 05: Make code PEP8 compliant.
+2018 11 07: Change use of models.
+2018 11 22: Enable instantiation using JSON code.
+2018 11 29: Add functionality to return the derived Tags.
+2018 12 06: Make it possible to return full JSON code (incl. attributes' JSON code).
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 10 11: Update of terminology.
+2019 11 04: Add options to automatically assign unique ids to actor/activities.
 """
 
 

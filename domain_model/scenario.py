@@ -1,30 +1,20 @@
-"""
-Class Scenario
+""" Class Scenario
 
+Creation date: 2018 11 05
+Author(s): Erwin de Gelder
 
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-5 Nov 2018
-
-To do
------
+To do:
 Move falls_into method to ScenarioCategory and rename it to "comprises".
 
-Modifications
--------------
-22 Nov 2018 Make is possible to instantiate a Scenario from JSON code.
-06 Dec 2018: Add functionality to return the derived Tags.
-06 Dec 2018: Make it possible to return full JSON code (incl. attributes' JSON code).
-06 Dec 2018: to_openscenario function added.
-07 Dec 2018: fall_into method for checking if Scenario falls into ScenarioCategory.
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-13 Oct 2019: Update of terminology.
-04 Nov 2019: Add options to automatically assign unique ids to actor/activities.
-
+Modifications:
+2018 11 22: Make is possible to instantiate a Scenario from JSON code.
+2018 12 06: Add functionality to return the derived Tags.
+2018 12 06: Make it possible to return full JSON code (incl. attributes' JSON code).
+2018 12 06: to_openscenario function added.
+2018 12 07: fall_into method for checking if Scenario falls into ScenarioCategory.
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 10 13: Update of terminology.
+2019 11 04: Add options to automatically assign unique ids to actor/activities.
 """
 
 from typing import List, Tuple

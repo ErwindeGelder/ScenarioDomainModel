@@ -1,23 +1,11 @@
-"""
-Class Event
+""" Class Event
 
+Creation date: 2019 02 28
+Author(s): Erwin de Gelder
 
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-28 Feb 2019
-
-To do
------
-
-Modifications
--------------
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-13 Oct 2019: Update of terminology.
-
+Modifications:
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 10 13: Update of terminology.
 """
 
 from .default_class import Default

@@ -1,27 +1,14 @@
+""" Class ActorCategory
+
+Creation date: 2018 10 30
+Author(s): Erwin de Gelder
+
+Modifications:
+2018 11 05: Make code PEP8 compliant.
+2018 11 19: Enable instantiation using JSON code.
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 10 11: Update of terminology.
 """
-Class ActorCategory
-
-
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-30 Oct 2018
-
-To do
------
-
-Modifications
--------------
-05 Nov 2018: Make code PEP8 compliant.
-19 Nov 2018: Enable instantiation using JSON code.
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-11 Oct 2019: Update of terminology.
-
-"""
-
 
 from enum import Enum
 from .tags import Tag, tag_from_json

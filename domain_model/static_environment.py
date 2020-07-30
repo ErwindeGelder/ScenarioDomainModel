@@ -1,27 +1,15 @@
-"""
-Class StaticEnvironment
+""" Class StaticEnvironment
 
+Creation date: 2018 10 30
+Author(s): Erwin de Gelder, Jeroen Broos
 
-Author
-------
-Erwin de Gelder, Jeroen Broos
-
-Creation
---------
-30 Oct 2018
-
-To do
------
-
-Modifications
--------------
-05 Nov 2018: Make code PEP8 compliant.
-22 Nov 2018: Make it possible to instantiate StaticEnvironment from JSON code.
-06 Dec 2018: Make it possible to return full JSON code (incl. attributes' JSON code).
-15 Jan 2019: to_opendrive function added
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-13 Oct 2019: Update of terminology.
-
+Modifications:
+2018 11 05: Make code PEP8 compliant.
+2018 11 22: Make it possible to instantiate StaticEnvironment from JSON code.
+2018 12 06: Make it possible to return full JSON code (incl. attributes' JSON code).
+2019 01 15: to_opendrive function added
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 10 13: Update of terminology.
 """
 
 from typing import List
