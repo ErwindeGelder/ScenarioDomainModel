@@ -101,6 +101,7 @@
 \usetikzlibrary{arrows,positioning}
 \usetikzlibrary{arrows.meta}
 \definecolor{TNOlightgray}{RGB}{222,222,231}
+\definecolor{abstractclass}{RGB}{255, 255, 200}
 \definecolor{scenariocategory}{RGB}{137, 197, 255}
 \definecolor{category}{RGB}{121, 221, 255}
 \definecolor{scenario}{RGB}{255, 157, 121}
@@ -145,6 +146,22 @@
 	\end{tikzpicture}
 }
 \ExplSyntaxOff
+
+% Needed for the class diagrams
+\newlength\blockwidth
+\newlength\blockheight
+\newlength\blockx
+\newlength\blocky
+\newlength\legendwidth
+\setlength{\blockwidth}{6.5em}
+\setlength{\blockheight}{2.5em}
+\setlength{\blockx}{8em}
+\setlength{\blocky}{-5.5em}
+\setlength{\legendwidth}{3.5em}
+\tikzstyle{class}=[draw, text width=\blockwidth-.5em, align=center, minimum height=\blockheight, line width=1pt, minimum width=\blockwidth]
+\tikzstyle{aggregation}=[-{Diamond[width=8pt, length=12pt, fill=white]}, line width=1pt]
+\tikzstyle{falls into}=[->, line width=1pt]
+\tikzstyle{superclass}=[-{Triangle[width=8pt, length=12pt, fill=white]}, line width=1pt]
 
 % Notations
 \newcommand{\amplitude}{\Delta v}
@@ -197,6 +214,7 @@
 \newcommand{\inittimeb}{\time_{1}}
 \newcommand{\inittimec}{\time_{2}}
 \newcommand{\hasone}{$1$}
+\newcommand{\hastwo}{$2$}
 \newcommand{\hasn}{$N$}
 
 \usepackage{changebar}
@@ -246,7 +264,7 @@
 \input{sections/introduction}
 \input{sections/background}
 \input{sections/definitions}
-\input{sections/ontology}
+\input{sections/framework}
 \input{sections/example}
 %\input{sections/discussion}
 
