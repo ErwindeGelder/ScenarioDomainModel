@@ -9,6 +9,7 @@ Modifications:
 2018 12 06: Make it possible to return full JSON code (incl. attributes' JSON code).
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 13: Update of terminology.
+2020 07 31: Return a copy of the list of tags when using get_tags().
 """
 
 from abc import ABC, abstractmethod
@@ -51,7 +52,7 @@ class Default(ABC):
 
         :return: List of tags.
         """
-        return self.tags
+        return self.tags.copy()
 
     def to_json(self) -> dict:
         """ Get JSON code of object.
