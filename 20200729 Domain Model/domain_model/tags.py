@@ -13,6 +13,7 @@ Modifications:
 2018 12 07: Functionality for determining whether a Tag is a subtag of another Tag.
 2018 12 10: Region tags added.
 2019 11 04: Add str() around tag.name as to avoid Pylint from complaining.
+2020 07 31: Change is_subtag to is_supertag_of to make it more descriptive.
 """
 
 from enum import Enum, unique
@@ -218,7 +219,7 @@ class Tag(Enum):
     def __str__(self):
         return self.name
 
-    def is_subtag(self, subtag) -> bool:
+    def is_supertag_of(self, subtag) -> bool:
         """ Check whether the provided Tag is a subtag of the current Tag.
 
         :param subtag: The potential subtag.
