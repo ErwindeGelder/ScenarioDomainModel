@@ -5,7 +5,6 @@ Author(s): Erwin de Gelder
 
 To do:
 Add "comprises" method based on the "fall_into" method that is defined for Scenario.
-Add "includes" method.
 
 Modifications:
 2018 11 05: Make code PEP8 compliant.
@@ -17,10 +16,12 @@ Modifications:
 2019 10 11: Update of terminology.
 2019 11 04: Add options to automatically assign unique ids to actor/activities.
 2020 07 30: Update conversion of scenario category to a string.
+2020 07 31: Add the includes method.
 """
 
-
+from __future__ import annotations
 from typing import List, Tuple
+import fnmatch
 import numpy as np
 from .default_class import Default
 from .tags import tag_from_json
@@ -202,6 +203,50 @@ class ScenarioCategory(Default):
         # Return the tags.
         return tags
 
+    def includes(self, scenario_category: ScenarioCategory) -> bool:
+        """ Determine whether the this scenario category "includes" the given scenario category.
+
+        It is checked whether the passed ScenarioCategory is included in this
+        scenario category. To determine whether this is the case, the derived
+        tags are used. The derived tags from this scenario category should be at
+        least present (or subtags of the tags) in the provided ScenarioCategory.
+
+        :param scenario_category: The potential ScenarioCategory that is
+            included in this scenario category.
+        :return: Whether or not the ScenarioCategory is included.
+        """
+        # Determine the derived tags of this and the other scenario category.
+        own_tags = self.derived_tags()
+        other_tags = scenario_category.derived_tags()
+
+        # Check for tags directly related to the ScenarioCategory. These tags should be directly
+        # present for the scenario.
+        if not _check_tags(own_tags, other_tags, "ScenarioCategory", "ScenarioCategory"):
+            return False
+
+        # Check for tags related to the StaticEnvironment.
+        if not _check_tags(own_tags, other_tags, "StaticEnvironmentCategory",
+                           "StaticEnvironmentCategory"):
+            return False
+
+        # Check for the actors
+        own_actors = fnmatch.filter(own_tags, "*::ActorCategory")
+        other_actors = fnmatch.filter(other_tags, "*::ActorCategory")
+        if len(own_actors) > len(other_actors):  # There must be equal or more actors in other SC.
+            return False
+
+        # Create a boolean matrix, where the (i,j)-th element is True if the i-th actor of the
+        # provided ScenarioCategory might correspond to the j-th actor of our own scenario category.
+        match = np.zeros((len(other_actors), len(own_actors)), dtype=np.bool)
+        for i, other_actor in enumerate(other_actors):
+            for j, own_actor in enumerate(own_actors):
+                match[i, j] = all(any(map(tag.is_supertag_of, other_tags[other_actor]))
+                                  for tag in own_tags[own_actor])
+
+        # Check if all actors of this scenario category can be matched with the actos in the
+        # provided ScenarioCategory
+        return _check_match_matrix(match)
+
     def __str__(self) -> str:
         """ Method that will be called when printing the scenario category.
 
@@ -377,3 +422,60 @@ def create_unique_ids(items: List) -> None:
             highest_uid += 1
             item.uid = highest_uid
         uids.append(item.uid)
+
+
+def _check_tags(tags: dict, subtags: dict, tags_class: str = "ScenarioCategory",
+                subtags_class: str = "ScenarioCategory") -> bool:
+    """ Check whether (sub)tags of <tags> are present in <subtags>.
+
+    The tags are provided as dictionaries, where each item corresponds to the
+    tags of one object that is part of the scenario (category). This function
+    checks whether all tags in <tags> of the class <tags_class> are present in
+    the tags in <subtags> of the class <subtags_class> (or subtags of the
+    <tags>).
+
+    :param tags: Dictionary of the derived tags of the ScenarioCategory.
+    :param subtags: Dictionary of the derived tags of the Scenario.
+    :param tags_class: Specify attribute to be used of the ScenarioCategory.
+    :param subtags_class: Specify attribute to be used of the Scenario.
+    :return: Whether the tags of the ScenarioCategory are found in the tags
+        of the Scenario.
+    """
+    sc_keys = fnmatch.filter(tags, "*::{:s}".format(tags_class))
+    if sc_keys:  # In this case, there are tags in <tags> related to <tags_class>.
+        s_keys = fnmatch.filter(subtags, "*::{:s}".format(subtags_class))
+        if s_keys:  # There are tags in <subtags> related to <subtags_class>.
+            for tag in tags[sc_keys[0]]:
+                if not any(map(tag.is_supertag_of, subtags[s_keys[0]])):
+                    return False  # A tag of <tags> is not found in the <subtags>.
+        else:  # There are no tags in <subtags> related to <subtags_class>.
+            return False
+    return True
+
+
+def _check_match_matrix(match: np.array) -> bool:
+    # The matching of the actors need to be done. If a match is found, the corresponding
+    # row and column will be removed from the match matrix.
+    n_matches = 1  # Number of matches to look for.
+    while match.size:
+        # If there is at least one ActorCategory left that has no match, a False will be
+        # returned.
+        if not all(np.any(match, axis=1)):
+            return False
+
+        sum_match_actor = np.sum(match, axis=0)
+        j = next((j for j in range(match.shape[1]) if sum_match_actor[j] == n_matches), -1)
+        if j >= 0:  # We found an actor of our own scenario category with n matches.
+            i = next(i for i in range(match.shape[0]) if match[i, j])
+        else:
+            sum_match_actor = np.sum(match, axis=1)
+            i = next((i for i in range(match.shape[0]) if sum_match_actor[i] == n_matches), -1)
+            if i >= 0:  # We found an actor of the ScenarioCategory with n matches
+                j = next(j for j in range(match.shape[1]) if match[i, j])
+            else:
+                # Try again for higher n (number of matches)
+                n_matches = n_matches + 1
+                continue
+        match = np.delete(np.delete(match, i, axis=0), j, axis=1)
+        n_matches = 1
+    return True
