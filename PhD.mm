@@ -3538,7 +3538,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
+<node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
 <node TEXT="In probability: the outcome of an experiment. For example coin &quot;tail&quot;" ID="ID_431203968" CREATED="1508810134759" MODIFIED="1531983021869">
 <attribute NAME="key" VALUE="pfeiffer2013concepts"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -3584,6 +3584,16 @@
 <attribute NAME="year" VALUE="1993"/>
 <attribute NAME="title" VALUE="Supervenience and Mind: Selected Philosophical Essays"/>
 <attribute NAME="authors" VALUE="Kim, Jaegwon"/>
+</node>
+<node TEXT="ECM: An [event] is a [possible_individual] with zero extent in time.&#xa;An [event] is the temporal boundary of one or more [possible_individual]s, although there may be no knowledge of these [possible_individual]s." ID="ID_248632663" CREATED="1596187881255" MODIFIED="1596187919207" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/503%20An%20upper%20ontology%20based%20on%20ISO%2015926.pdf">
+<attribute NAME="key" VALUE="batres2007upper"/>
+<attribute NAME="journal" VALUE="Computers \&amp; Chemical Engineering"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="An Upper Ontology Based on {ISO} 15926"/>
+<attribute NAME="authors" VALUE="Batres, Rafael and West, Matthew and Leal, David and Price, David and Masaki, Katsube and Shimada, Yukiyasu and Fuchino, Tetsuo and Naka, Yuji"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="FF9BD294F1573CA411315D5DFC70E76676C7D02AA0AE459F43A76516932149E">
+    <pdf_title>An upper ontology based on ISO 15926</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Activities" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1082116712" CREATED="1551888033535" MODIFIED="1551888044349">
@@ -3774,7 +3784,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
 <node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
 <node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1534391438326" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -3845,7 +3855,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
+<node TEXT="State" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1178447297" CREATED="1511405223114" MODIFIED="1512374893464">
 <node TEXT="We can define more state variables than the minimal set; however, within this minimal set the state variables must be linearly independent." ID="ID_443992000" CREATED="1511405225130" MODIFIED="1534391438170" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/058%20Control_System_Engineering_Norman.pdf">
 <attribute NAME="key" VALUE="norman2011control"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -3853,7 +3863,7 @@
 <attribute NAME="authors" VALUE="Norman, S. Nise"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
-<node TEXT="(1) A condition or mode of existence that a system, component, or simulation may be in; for example, the pre-flight state of an aircraft navigation program or the input state of given channel.&#xa;(2) The values assumed at a given instant by the variables that define the characteristics of a system, component, or simulation." ID="ID_648362426" CREATED="1512374908165" MODIFIED="1534391438295" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/065%20IEEE%20Standard%20Glossary%20of%20Software%20Engineering%20Terminology.pdf">
+<node TEXT="(1) A condition or mode of existence that a system, component, or simulation may be in; for example, the pre-flight state of an aircraft navigation program or the input state of given channel.&#xa;(2) The values assumed at a given instant by the variables that define the characteristics of a system, component, or simulation." ID="ID_648362426" CREATED="1512374908165" MODIFIED="1596035820259" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/065%20IEEE%20Standard%20Glossary%20of%20Software%20Engineering%20Terminology.pdf">
 <attribute NAME="key" VALUE="ieee1990glossary"/>
 <attribute NAME="journal" VALUE="IEEE Std 610.12-1990"/>
 <attribute NAME="year" VALUE="1990"/>
@@ -3910,7 +3920,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Mode" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1413348842" CREATED="1517036488478" MODIFIED="1517036492075">
+<node TEXT="Mode" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1413348842" CREATED="1517036488478" MODIFIED="1517036492075">
 <node TEXT="Survey of modeling analysis and control of hybrid systems" ID="ID_507276086" CREATED="1517036499734" MODIFIED="1534391438108" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/132%20Survey%20of%20modeling%20analysis%20and%20control%20of%20hybrid%20systems.pdf">
 <attribute NAME="key" VALUE="deschutter2009survey"/>
 <attribute NAME="year" VALUE="2009"/>
@@ -3943,7 +3953,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Glossaries" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1560004196" CREATED="1552469581889" MODIFIED="1552469593138">
+<node TEXT="Glossaries" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1560004196" CREATED="1552469581889" MODIFIED="1552469593138">
 <node TEXT="Catapult: MUSICC" ID="ID_290746102" CREATED="1552469594155" MODIFIED="1552469604841" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/297%20MUSICC-Workshop-Glossary.pdf">
 <attribute NAME="key" VALUE="catapult2018musicc"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -4311,6 +4321,17 @@
     <pdf_title>Encapsulation and Inheritance in Object-Orlented Programming Languages</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Designing Reusable Classes" ID="ID_641523536" CREATED="1596033321675" MODIFIED="1596033324808" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/501%20Designing%20Reusable%20Classes.pdf">
+<attribute NAME="key" VALUE="johnson1988designing"/>
+<attribute NAME="journal" VALUE="Journal of Object-Oriented Programming"/>
+<attribute NAME="year" VALUE="1988"/>
+<attribute NAME="title" VALUE="Designing Reusable Classes"/>
+<attribute NAME="authors" VALUE="Johnson, Ralph E and Foote, Brian"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="782148EB7776E91D6B89774FBA81B9A51D4C67C9F0508E53E48908DCA1160">
+    <pdf_title>Designing Reusable Classes</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Reusability: The Case for Object-Oriented Design" ID="ID_1365786335" CREATED="1596033525032" MODIFIED="1596033526093"/>
 </node>
 <node TEXT="&quot;object-oriented&quot; in relation to testing" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_993268028" CREATED="1596006527379" MODIFIED="1596006553162">
 <node TEXT="Simulation Framework for Traffic Scenarios" ID="ID_1036695762" CREATED="1596006567729" MODIFIED="1596006571221" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
