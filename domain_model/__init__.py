@@ -9,7 +9,7 @@ attributes.
 from .activity_category import ActivityCategory
 from .actor_category import ActorCategory, VehicleType
 from .model import Spline3Knots, Linear, Sinusoidal, Constant
-from .activity import Activity, DetectedActivity, TriggeredActivity
+from .activity import Activity, SetActivity, TriggeredActivity
 from .actor import Actor, EgoVehicle
 from .scenario import Scenario
 from .scenario_category import ScenarioCategory
