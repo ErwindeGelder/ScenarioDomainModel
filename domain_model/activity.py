@@ -13,6 +13,7 @@ Modifications:
 2019 02 28: The start of a triggered activity is at an event.
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 11: Update of terminology.
+2020 07 31: Change name of DetectedActivity to SetActivity.
 """
 
 import numpy as np
@@ -140,11 +141,11 @@ class Activity(Default):
         return activity
 
 
-class DetectedActivity(Activity):
-    """ Detected activity.
+class SetActivity(Activity):
+    """ Set activity.
 
-    The only difference between DetectedActivity and Activity is that with
-    DetectedActivity, the starting time (tstart) and the end time (tend) can be
+    The only difference between SetActivity and Activity is that with
+    SetActivity, the starting time (tstart) and the end time (tend) can be
     defined.
 
     Attributes:
@@ -173,7 +174,7 @@ class DetectedActivity(Activity):
         activity = Activity.to_json(self)
         activity['tstart'] = self.tstart
         activity['tend'] = self.tend
-        activity["type"] = "DetectedActivity"
+        activity["type"] = "SetActivity"
         return activity
 
 
@@ -231,13 +232,13 @@ def activity_from_json(json: dict, activity_category: ActivityCategory = None) \
                  "uid": int(json["id"]),
                  "tags": [tag_from_json(tag) for tag in json["tag"]]}
 
-    # Instantiate the Activity object. It can be a regular Activity, a DetectedActivity or a
+    # Instantiate the Activity object. It can be a regular Activity, a SetActivity or a
     # TriggeredActivity
     if json["type"] == "Activity":
         return Activity(**arguments)
-    if json["type"] == "DetectedActivity":
+    if json["type"] == "SetActivity":
         arguments["tstart"] = json["tstart"]
-        return DetectedActivity(**arguments)
+        return SetActivity(**arguments)
     if json["type"] == "TriggeredActivity":
         arguments["conditions"] = json["conditions"]
         return TriggeredActivity(**arguments)
