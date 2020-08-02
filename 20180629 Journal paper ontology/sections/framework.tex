@@ -26,9 +26,9 @@ The arrows in \cref{fig:framework overview} represent the relations of the diffe
 The arrow with the diamond is best described by the verb ``to have''\footnote{In UML, this is called an aggregation.  This is typically implemented using pointers. For example, if object A ``has'' B, it means that A contains a pointer to B.}. 
 \cstartb Here, the ``\hasone'' at the start of the arrow from \textit{ego vehicle} to \textit{scenario} indicates that a \textit{scenario} ``has'' one \textit{ego vehicle}. Similarly, ``\hastwo'' at the start of the other aggregation arrow indicates that a \textit{time interval} ``has'' two \textit{events}, i.e., the events that define the start and the end of the time interval. 
 
-The other arrow in \cref{fig:framework overview} denotes a subclass relation as is best described by the verb ``is''. Because all other classes in \cref{fig:framework overview} are subclasses of a \textit{thing}, these classes inherit the attributes and procedures of a \textit{thing}. In our framework, a \textit{thing} has a human-interpretable name, a unique ID, and possibly predefined tags that are also interpretable by a software agent, so all other classes in \cref{fig:framework overview} also have there attributes.
+The other arrow in \cref{fig:framework overview} denotes a subclass relation as is best described by the verb ``is''. Because all other classes in \cref{fig:framework overview} are subclasses of a \textit{thing}, these classes inherit the attributes and procedures of a \textit{thing}. In our framework, a \textit{thing} has a human-interpretable name, a unique ID, and possibly predefined tags that are also interpretable by a software agent. So, all other classes in \cref{fig:framework overview} also have there attributes.
 
-\Cref{fig:framework classes} shows the classes that are used to represent the scenarios and the relation between these classes. \cendb
+\Cref{fig:framework classes} shows the relation between the classes that are used to represent a scenario. \cendb
 The arrow with the text ``comprises'' and ``includes'' represent methods that are explained in \cref{sec:scenario category}. Here, ``comprises'' can be denoted by $\comprises$ and ``includes'' can be denoted by $\includes$, see \cref{eq:scenario category include}. 
 A ``\hasn'' at the start of an aggregation arrow indicates that an object ``has'' zero, one, or multiple objects of the corresponding class.
 
@@ -97,13 +97,13 @@ According to \cref{def:activity}, an activity quantitatively describes the evolu
 %%Here, the starting time of the activity of the pedestrian, i.e., walking on the pedestrian crossing, is not defined beforehand and depends on, e.g., the speed of the ego vehicle \autocite{seiniger2015test}. 
 %Both the \textit{set activity} and the \textit{triggered activity} are subclasses of the \textit{activity}, as shown in \cref{fig:framework classes}. Additionally, the \textit{set activity} ``has'' a starting time and the \textit{triggered activity} ``has'' an \textit{event} that triggers the activity.
 
-% Actor
-Similar to the \textit{static environment} and the \textit{activity}, the \textit{actor} ``has'' its qualitative counterpart, the \textit{actor category}. Additionally, because the \textit{actor} involves a quantitative description, it may have multiple properties defined, such as its size, weight, color, radar cross section, etc. The \textit{actor} may have an initial and desired state vector. The desired state vector can be used to formulate the goals of the actor. This is especially useful for defining a test case that describes the objective of the ego vehicle rather than its activities. Additionally, the goals can be formulated as text if they cannot be formulated using a desired state vector.
-%Note that the goals are typically on a strategic level, such as destinations and waypoints, as opposed to the tactical and operational levels\footnote{ See \autocite[p.~7, Figure 1]{sae2018j3016} for an overview of the difference between the strategic, tactical, and operational functions.}.
-
-
 % Event
 Following the definition of an event (\cref{def:event}), an \textit{event} contains conditions that describe the threshold or mode transition at the time of the event.
+
+% Actor
+Similar to the \textit{static environment} and the \textit{activity}, the \textit{actor} ``has'' its qualitative counterpart, the \textit{actor category}. Additionally, because the \textit{actor} involves a quantitative description, it may have multiple properties defined, such as its size, weight, color, radar cross section, etc. The \textit{actor} may have an initial and desired state vector. \cstartb The goals of the actor can be used to specify the desired state vector. \cendb This is especially useful for defining a test case that describes the objective of the ego vehicle rather than its activities. 
+%Additionally, the goals can be formulated as text if they cannot be formulated using a desired state vector.
+%Note that the goals are typically on a strategic level, such as destinations and waypoints, as opposed to the tactical and operational levels\footnote{ See \autocite[p.~7, Figure 1]{sae2018j3016} for an overview of the difference between the strategic, tactical, and operational functions.}.
 
 %According to \cref{def:event}, an events marks the time instant at which the system reaches a specified boundary or at which a mode transition occurs. To describe this time instant, one or more conditions are specified. For example, a condition could be that the distance of the ego vehicle and a pedestrian crossing should be less than \SI{30}{\meter}. For this example, the moment at which this condition is met for the first time corresponds to the event.
 
