@@ -26,7 +26,11 @@ In \autocite{geyer2014}, the meaning of activity is not detailed.
 %In an example of a so-called crossway scenario, they mention that the course of events might be different. For example, when a car keeps constant speed and then turns right, the scenario consists of one situation. The car might also first decelerate, accelerate and decelerate before turning right. In this case, the scenario consists of four situations.
 
 % Definition according to Ulbrich et al.
-\textcite{ulbrich2015} also define a scenario in the context of automated driving. They define a scenario as ``the temporal development between several scenes in a sequence of scenes. Every scenario starts with an initial scene. Actions \& events as well as goals \& values may be specified to characterize this temporal development in a scenario. Other than a scene, a scenario spans a certain amount of time.'' The authors of \autocite{ulbrich2015} state that actions and events link the different scenes. A further description of actions and events is not given in \autocite{ulbrich2015}.
+\textcite{ulbrich2015} also define a scenario in the context of automated driving. They define a scenario as ``the temporal development between several scenes in a sequence of scenes. Every scenario starts with an initial scene. Actions \& events as well as goals \& values may be specified to characterize this temporal development in a scenario. Other than a scene, a scenario spans a certain amount of time.'' The authors of \autocite{ulbrich2015} state that actions and events link the different scenes. A further description of actions and events is not given in \autocite{ulbrich2015}
+
+%\cstartb We consider scenes to correspond to a temporal snap shot of the entire scenario. Although a further description of actions and events is not given in \autocite{ulbrich2015}, we assume that they an event is marking a time point in the scenario. Therefore, each event  has a corresponding scene, and we can interpret this definition of scenario as meaning that
+%a scenario has a start event (marking the scene at the start of the scenario), an end event which defines the time duration of the scenario, and a temporal sequence of events (corresponding to scenes) between the start event and the end event that mark the beginning/end of the ``actions''. 
+%In particular, we understand that the existence of a scene is implied by the existence of an event, since the scene is just the temporal cross-section of the entire scenario at the time point of the event. \cendb
 
 % Definition according to Elrofai et al.
 Another definition of a scenario in the context of automated driving is given by \textcite{elrofai2016scenario}. They define a scenario as ``the combination of actions and maneuvers of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and maneuvers of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
@@ -100,7 +104,9 @@ Hence, we define a scenario as follows:
 % - notion of scene not used. Scene follows from description, but is not explicitely used
 %\Cref{def:scenario} deviates from existing definitions \autocite{geyer2014, ulbrich2015, elrofai2016scenario} in that it explicitly mentions that a scenario is quantitative. We use the term \emph{scenario class} to refer to the qualitative description, see \cref{sec:scenario class}.
 
-\textcite{geyer2014} and \textcite{ulbrich2015} use the term \emph{scene} to define a scenario, while \cref{def:scenario} describes the scenes implicitly. Thus, the scenes do not have to be described explicitly.
+\textcite{geyer2014} and \textcite{ulbrich2015} use the term \emph{scene} to define a scenario.
+\cstartb Since we consider a scene to correspond to a temporal snapshot of the entire scenario, a scene can be obtained by taking a temporal cross-section of the entire scenario as described in \cref{def:scenario}. As such\cendb, the scenes do not have to be described explicitly.
+
 
 %\Cref{fig:scenario} shows a schematic overview of the various components of a scenario. As shown in the second row of \cref{fig:scenario}, a scenario contains an ego vehicle, a dynamic environment, and a static environment. As an example, possible activities of the vehicle in front, which is part of the dynamic environment, are detailed by considering the state variables `heading' and `speed'. Note that a definition of the term activity is given in \cref{sec:activity}. The two rows of the activities show more generic descriptions and more detailed descriptions, respectively, of some possible activities.
 
