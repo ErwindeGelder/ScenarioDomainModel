@@ -11,7 +11,10 @@ Assessment of Automated Vehicles", 2019. *In preparation.*
 More details on the terms and definitions can also be found in the 
 aforementioned publication. 
 
-We will soon add more information.
+The best way to learn more about this code is to have a look at the tutorials:
+
+1. [Instatiating a *scenario category*](./Tutorial%201%20Scenario%20category.ipynb)
+2. [Instatiating a *scenario*](./Tutorial%202%20Scenario.ipynb)
 
 # Running the code
 
