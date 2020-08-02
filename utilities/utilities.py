@@ -457,7 +457,10 @@ if __name__ == '__main__':
                 usebiber=True)
     compile_doc(join('20180319 Completeness', 'completeness'), usebiber=True)
     compile_doc(join('20180521 Summary GoNoGo', 'phd_summary'), usebiber=True)
-    compile_doc(join('20180629 Journal paper ontology', 'journal_ontology'), usebibtex=True)
+    compile_doc(join('20180629 Journal scenario framework', 'framework_scenarios'), usebibtex=True)
+    compile_doc(join('20180629 Journal scenario framework', 'framework_scenarios_limited'),
+                other=(join('20180629 Journal scenario framework', 'framework_scenarios'),
+                       dict(usebiber=True)))
     compile_doc(join('20180710 Ontology', 'ontology'), usebiber=True)
     compile_doc(join('20180806 Risk paper', 'RiskPaper_ESV2019-Format'), usebiber=True)
     compile_doc(join('20180917 GoNoGo', 'GoNoGo'), usebiber=True)
