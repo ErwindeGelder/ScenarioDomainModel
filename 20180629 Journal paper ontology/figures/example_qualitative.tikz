@@ -50,7 +50,7 @@
 	\leavevmode\phantom{static environment category: }qualitative\\
 	actors: Ego qualitative, Pedestrian qualitative\\
 	activities: Braking, Stationary, Accelerating, Walking straight\\
-	acts: (Ego qualitative, Braking), , \\
+	acts: (Ego qualitative, Braking), \\
 	\leavevmode\phantom{acts: }(Ego qualitative, Stationary), \\
 	\leavevmode\phantom{acts: }(Ego qualitative, Accelerating), \\
 	\leavevmode\phantom{acts: }(Pedestrian qualitative, Walking straight)\\

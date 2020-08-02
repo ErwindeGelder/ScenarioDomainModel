@@ -8,58 +8,61 @@
 	initial state vector: $\egoeast=\SI{-20}{\meter}$, \\
 	\leavevmode\phantom{initial state vector: }$\egonorth=\SI{-1.5}{\meter}$, \\
 	\leavevmode\phantom{initial state vector: }$\egoheading=\ang{90}$\\
-	desired state vector: \\
-	goals: \\
-	tags: };
+	desired state vector:};
 
 \node[object, fill=otherclass, below=of ego.south](pedestrian){{\bfseries Pedestrian::Actor}\\
 	actor category: Pedestrian qualitative\\
 	initial state vector: $\pedeast=\SI{0}{\meter}$, $\pedheading=\ang{0}$\\
-	desired state vector: \\
-	goals: \\
-	tags: };
+	desired state vector:};
 
-\node[object, fill=otherclass, below=of pedestrian.south](ego braking){{\bfseries Ego braking::Set activity}\\
+\node[object, fill=otherclass, below=of pedestrian.south](start){{\bfseries Start scenario::Event}\\
+	time: \SI{0}{\second}};
+
+\node[object, fill=otherclass, below=of start.south](end braking){{\bfseries End braking::Event}\\
+	time: \SI{4}{\second}};
+
+\node[object, fill=otherclass, below=of end braking.south](start accelerating){{\bfseries Start accelerating::Event}\\
+	time: \SI{7}{\second}};
+
+\node[object, fill=otherclass, below=of start accelerating.south](end scenario){{\bfseries End scenario::Event}\\
+	time: \SI{12}{\second}};
+
+\node[object, fill=otherclass, below=of end scenario.south](ego braking){{\bfseries Ego braking::Activity}\\
 	activity category: Braking \\
 	parameters: $\amplitude=\SI{-8}{\meter\per\second}$, $\duration=\SI{4}{\second}$,\\
 	\leavevmode\phantom{parameters: } $\egospeedinit=\SI{8}{\meter\per\second}$ \\
-	\attrtstart: $\inittime = \SI{0}{\second}$ \\
-	duration: \SI{4}{\second} \\
-	tags: };
+	\attrtstart: Start scenario \\
+	\attrtend: End braking};
 
-\node[object, fill=otherclass, below=of ego braking.south](ego stationary){{\bfseries Ego stationary::Set activity}\\
+\node[object, fill=otherclass, below=of ego braking.south](ego stationary){{\bfseries Ego stationary::Activity}\\
 	activity category: Stationary \\
 	parameters: $\egospeedinitb=\SI{0}{\meter\per\second}$ \\
-	\attrtstart: $\inittimeb = \SI{4}{\second}$ \\
-	duration: \SI{3}{\second} \\
-	tags:};
+	\attrtstart: End braking \\
+	\attrtend: Start accelerating};
 
-\node[object, fill=otherclass, below=of ego stationary.south](ego accelerating){{\bfseries Ego accelerating::Set activity}\\
+\node[object, fill=otherclass, right=of ego.north east, anchor=north west](ego accelerating){{\bfseries Ego accelerating::Activity}\\
 	activity category: Accelerating \\
 	parameters: $\slopeego=\SI{1.5}{\meter\per\second\squared}$, $\egospeedinitc=\SI{0}{\meter\per\second}$ \\
-	\attrtstart: $\inittimec = \SI{7}{\second}$ \\
-	duration: \SI{5}{\second} \\
-	tags:};
+	\attrtstart: Start accelerating \\
+	\attrtend: End scenario};
 
 %\node[object, fill=category, below=of accelerating.south](straight){{\bfseries Driving straight::Activity category}\\
 %	model: Linear\\
 %	state: Lateral position\\
 %	tags: Driving straight};
 
-\node[object, fill=otherclass, right=of ego.north east, anchor=north west](pedestrian walking){{\bfseries Pedestrian walking::Set activity}\\
+\node[object, fill=otherclass, below=of ego accelerating.south](pedestrian walking){{\bfseries Pedestrian walking::Activity}\\
 	activity category: Walking \\
 	parameters: $\slopepedestrian=\SI{1}{\meter\per\second}$, $\pednorthinit=\SI{-6}{\meter}$\\
-	\attrtstart: $\inittime = \SI{0}{\second}$ \\
-	duration: \SI{12}{\second} \\
-	tags: };
+	\attrtstart: Start scenario \\
+	\attrtend: End scenario};
 
 \node[object, fill=otherclass, below=of pedestrian walking.south](static environment){{\bfseries Pedestrian crossing::Static environment}\\
 	static environment category: Pedestrian crossing qualitative\\
 	properties: \{road: \{lanes: 2, lanewidth: \SI{3}{\meter}, \\
 	\leavevmode\phantom{properties: \{road: \{}xy: [(-60, 0), (60, 0)]\}, \\
 	\leavevmode\phantom{properties: \{}footway: \{width: \SI{3}{\meter}, \\
-	\leavevmode\phantom{properties: \{footway: \{}xy: [(0, 6), (0, -6)]\}\}\\
-	tags: };
+	\leavevmode\phantom{properties: \{footway: \{}xy: [(0, 6), (0, -6)]\}\}};
 
 \node[object, fill=scenario, below=of static environment](scenario){{\bfseries Ego brakes for pedestrian::Scenario}\\
 	static environment: Pedestrian crossing\\
@@ -73,8 +76,7 @@
 	events: Start braking, End braking, \\
 	\leavevmode\phantom{events: }Start accelerating, End accelerating, \\
 	\leavevmode\phantom{events: }Start walking, Stop walking\\
-	\attrtstart: \SI{0}{\second} \\
-	\attrtend: \SI{12}{\second} \\
-	tags:};
+	\attrtstart: Start scenario \\
+	\attrtend: End scenario};
 \end{tikzpicture}
 }

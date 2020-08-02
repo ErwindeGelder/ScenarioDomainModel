@@ -13,40 +13,43 @@
 	\leavevmode\phantom{static environment category: }qualitative\\
 	actors: Ego qualitative, Pedestrian qualitative\\
 	activities: Walking straight\\
-	acts: (Pedestrian qualitative, Walking straight)\\
-	tags:};
-
-\node[object, fill=otherclass, right=of scenario category.north east, anchor=north west](event){{\bfseries Start walking::Event}\\
-conditions: $|\egoeast/\egospeed| \leq \SI{2.5}{\second}$};
+	acts: (Pedestrian qualitative, Walking straight)};
 
 \node[object, fill=otherclass, below=of scenario category.south](ego){{\bfseries Ego::Actor}\\
-	actor category: Ego qualitative\\
-	initial state vector: $\egoeast=\SI{-40}{\meter}$, \\
+actor category: Ego qualitative\\
+	initial state vector: $\egoeast=\SI{-60}{\meter}$, \\
 	\leavevmode\phantom{initial state vector: }$\egonorth=\SI{-1.5}{\meter}$, \\
 	\leavevmode\phantom{initial state vector: }$\egoheading=\ang{90}$, \\
 	\leavevmode\phantom{initial state vector: }$\egospeed=\SI{8}{\meter\per\second}$\\
 	desired state vector: $\egoeast=\SI{20}{\meter}$, \\ 
 	\leavevmode\phantom{desired state vector: }$\egonorth=\SI{-1.5}{\meter}$, \\ 
 	\leavevmode\phantom{desired state vector: }$\egoheading=\ang{90}$, \\ 
-	\leavevmode\phantom{desired state vector: }$\egospeed=\SI{8}{\meter\per\second}$\\
-	goals: \\
-	tags: };
+	\leavevmode\phantom{desired state vector: }$\egospeed=\SI{8}{\meter\per\second}$};
 
-\node[object, fill=otherclass, below=of event.south](walking){{\bfseries Pedestrian walking::Triggered activity}\\
+\node[object, fill=otherclass, right=of scenario category.north east, anchor=north west](start walking){{\bfseries Start walking::Event}\\
+	condition: $|\egoeast/\egospeed| \leq \SI{2.5}{\second}$};
+
+\node[object, fill=otherclass, below=of start walking.south](end walking){{\bfseries End walking::Event}\\
+	contition: $\pednorth = \SI{6}{\meter}$};
+
+\node[object, fill=otherclass, below=of end walking.south](walking){{\bfseries Pedestrian walking::Activity}\\
 	activity category: Walking\\
 	parameters: $\slopepedestrian=\SI{1}{\meter\per\second}$, $\pednorthinit=\SI{-6}{\meter}$\\
-	trigger: Start walking \\
-	duration: \SI{12}{\second} \\
-	tags: };
+	\attrtstart: Start walking \\
+	\attrtend: End walking};
 
-\node[object, fill=scenario, below=of walking.south](scenario){{\bfseries Ego brakes for pedestrian::Scenario}\\
+\node[object, fill=otherclass, below=of walking.south](end){{\bfseries End scenario::Event}\\
+	condition: $\egoeast \geq \SI{20}{\meter}$ OR \textit{collision} OR\\
+	\leavevmode\phantom{condition: }$\egonorth \leq \SI{-2}{\meter}$ OR $\egonorth \geq \SI{-1}{\meter}$ OR \\
+	\leavevmode\phantom{condition: }$\time > \SI{100}{\second}$.};
+
+\node[object, fill=scenario, below=of end.south](scenario){{\bfseries Ego must brake for pedestrian::Scenario}\\
 	static environment: Pedestrian crossing\\
 	actors: Ego, Pedestrian\\
 	activities: Pedestrian walking\\
 	acts: (Pedestrian, Pedestrian walking)\\
 	events: Start walking, Stop walking\\
-	\attrtstart: \SI{0}{\second} \\
-	\attrtend: \SI{100}{\second}\\
-	tags:};
+	\attrtstart: Start scenario \\
+	\attrtend: End scenario};
 \end{tikzpicture}
 }
