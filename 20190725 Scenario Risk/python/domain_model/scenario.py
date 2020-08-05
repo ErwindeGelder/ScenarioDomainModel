@@ -18,6 +18,7 @@ Modifications:
 2020 03 27: Enable instantiation from json without needing full json code.
 2020 07 03: Enable evaluating a state variable of an actor.
 2020 07 15: Check for unique actor names and provide functionality to get actor by its name.
+2020 07 30: Enable evaluating the derivative of a state variable of an actor.
 """
 
 from typing import List, Tuple, Union
@@ -180,14 +181,22 @@ class Scenario(Default):
         :param time: The time instance(s).
         :return: The value of the state variable at the given time instants.
         """
-        if isinstance(time, float):
-            vec_time = np.array([time])
-        elif isinstance(time, List):
-            vec_time = np.array(time)
-        elif isinstance(time, np.ndarray):
-            vec_time = time
-        else:
-            raise TypeError("<time> needs to be of type <float>, <List>, or <np.ndarray>.")
+        return self._get_state(actor, state, time)
+
+    def get_state_dot(self, actor: Actor, state: StateVariable,
+                      time: Union[float, List, np.ndarray]) -> Union[None, float, np.ndarray]:
+        """ Obtain the derivative of the values of the state variable at the given time instants.
+
+        :param actor: The actor of which the state variable is to be retrieved.
+        :param state: The state variable that is to be retrieved.
+        :param time: The time instance(s).
+        :return: The value of the state variable at the given time instants.
+        """
+        return self._get_state(actor, state, time, derivative=True)
+
+    def _get_state(self, actor: Actor, state: StateVariable, time: Union[float, List, np.ndarray],
+                   derivative=False) -> Union[None, float, np.ndarray]:
+        vec_time = self._time2vec(time)
         is_valid = False
 
         # Loop through the acts.
@@ -198,7 +207,10 @@ class Scenario(Default):
                 mask = np.logical_and(vec_time >= my_activity.tstart,
                                       vec_time <= my_activity.tend)
                 if np.any(mask):
-                    tmp_values = my_activity.get_state(time=vec_time[mask])
+                    if not derivative:
+                        tmp_values = my_activity.get_state(time=vec_time[mask])
+                    else:
+                        tmp_values = my_activity.get_state_dot(time=vec_time[mask])
                     if not is_valid:
                         if len(tmp_values.shape) == 1:
                             values = np.ones(len(vec_time)) * np.nan
@@ -208,10 +220,22 @@ class Scenario(Default):
                     values[mask] = tmp_values.T
 
         if not is_valid:
-            return
+            return None
         if isinstance(time, float):
             return values[0]
         return values
+
+    @staticmethod
+    def _time2vec(time: Union[float, List, np.ndarray]) -> np.ndarray:
+        if isinstance(time, float):
+            vec_time = np.array([time])
+        elif isinstance(time, List):
+            vec_time = np.array(time)
+        elif isinstance(time, np.ndarray):
+            vec_time = time
+        else:
+            raise TypeError("<time> needs to be of type <float>, <List>, or <np.ndarray>.")
+        return vec_time
 
     def derived_tags(self) -> dict:
         """ Return all tags, including the tags of the attributes.

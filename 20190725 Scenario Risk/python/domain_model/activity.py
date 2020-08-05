@@ -24,8 +24,8 @@ Modifications
 28 Feb 2019: The start of a triggered activity is at an event.
 22 May 2019: Make use of type_checking.py to shorten the initialization.
 11 Oct 2019: Update of terminology.
-29 Mar 2020: Make it possible to evaluate the model to get the state values.
-
+2020 03 29: Make it possible to evaluate the model to get the state values.
+2020 07 30: Make it possible to evaluate the model to get the state derivative values.
 """
 
 
@@ -121,11 +121,22 @@ class Activity(Default):
         :param time: Time instance(s) at which the model is to be evaluated.
         :return: Numpy array with the state.
         """
-        if isinstance(time, List):
-            time = np.array(time)
-        elif isinstance(time, float):
-            time = np.array([time])
         return self.activity_category.model.get_state(self.parameters, npoints, time)
+
+    def get_state_dot(self, npoints: int = 100, time: Union[np.ndarray, float, List] = None) \
+            -> np.ndarray:
+        """ Obtain the derivative of a state evaluated at given time instances.
+
+        By default, the state derivative is returned for 100 points equally
+        distributed over time. To change the number of points, the argument
+        `npoints` can be used. Alternatively, if the argument `time` is used,
+        the state is evaluated at the provided time instances.
+
+        :param npoints: Number of points for evaluating the state derivative.
+        :param time: Time instance(s) at which the model is to be evaluated.
+        :return: Numpy array with the state.
+        """
+        return self.activity_category.model.get_state_dot(self.parameters, npoints, time)
 
     def get_tags(self) -> dict:
         """ Return the list of tags related to this Activity.

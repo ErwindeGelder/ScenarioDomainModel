@@ -30,11 +30,12 @@ Modifications
 27 Mar 2020: Export the initial model parameters when converting model to json.
 29 Mar 2020: Enable the evaluation of the model at given time instants.
 30 Apr 2020: Various fixes for BSplines model for some exceptions on the data.
+2020 07 30: Update get_state_dot functionality, such that it is consistent with get_state().
 """
 
 from abc import ABC, abstractmethod
 import sys
-from typing import Union
+from typing import List, Union
 from scipy.interpolate import splev, splrep
 from scipy.signal import lombscargle
 from sklearn.metrics import mean_squared_error
@@ -98,10 +99,14 @@ class Model(ABC):
         """
         if time is None:
             return np.linspace(0, 1, npoints)
+
+        if isinstance(time, List):
+            time = np.array(time)
+        elif isinstance(time, float):
+            time = np.array([time])
         return (time - pars["tstart"]) / (pars["tend"] - pars["tstart"])
 
-    def get_state_dot(self, pars: dict, npoints: int = 100,
-                      tstart: float = 0, tend: float = 1) -> np.ndarray:
+    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
         """ Return the derivative of the state vector.
 
         The state derivative is calculated based on the provided parameters.
@@ -111,8 +116,7 @@ class Model(ABC):
 
         :param pars: A dictionary with the parameters.
         :param npoints: Number of points for evaluating the state.
-        :param tstart: Starting x-VALUE, by default 0.
-        :param tend: Final x-VALUE, by default 1.
+        :param time: Time instances at which the model is to be evaluated.
         :return: Numpy array with the derivative of the state.
         """
 
@@ -172,8 +176,7 @@ class Constant(Model):
             return np.ones(npoints)*pars["xstart"]
         return np.ones(len(time))*pars["xstart"]
 
-    def get_state_dot(self, pars: dict, npoints: int = 100,
-                      tstart: float = 0, tend: float = 0) -> np.ndarray:
+    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
         return np.zeros(npoints)
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
@@ -192,8 +195,7 @@ class Linear(Model):
         time = self._get_tdata(pars, npoints, time)
         return pars["xstart"] + time*(pars["xend"] - pars["xstart"])
 
-    def get_state_dot(self, pars: dict, npoints: int = 100,
-                      tstart: float = 0, tend: float = 1) -> np.ndarray:
+    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
         return np.ones(npoints) * (pars["xend"] - pars["xstart"])
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
@@ -259,9 +261,8 @@ class Spline3Knots(Model):
         ydata = np.concatenate((ydata1, ydata2))
         return pars["xstart"] + ydata * (pars["xend"] - pars["xstart"])
 
-    def get_state_dot(self, pars: dict, npoints: int = 100,
-                      tstart: float = 0, tend: float = 0) -> np.ndarray:
-        tdata = np.linspace(tstart, tend, npoints)
+    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
+        tdata = self._get_tdata(pars, npoints, time)
         tdata1 = tdata[:npoints // 2]
         tdata2 = tdata[npoints // 2:]
         ydata1 = 3 * pars["a1"] * tdata1 ** 2 + 2 * pars["b1"] * tdata1 + pars["c1"]
@@ -338,9 +339,8 @@ class Sinusoidal(Model):
         amplitude = (pars["xstart"] - pars["xend"]) / 2
         return amplitude*np.cos(np.pi*tdata) + offset
 
-    def get_state_dot(self, pars: dict, npoints: int = 100,
-                      tstart: float = 0, tend: float = 0) -> np.ndarray:
-        tdata = np.linspace(tstart, tend, npoints)
+    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
+        tdata = self._get_tdata(pars, npoints, time)
         amplitude = (pars["xstart"] - pars["xend"]) / 2
         return -np.pi*amplitude*np.sin(np.pi*tdata)
 
@@ -537,8 +537,8 @@ class BSplines(Model):
         #     g'(x) = a/c f'(cx + d)
         if axis == BSplines.VALUE and order == 1:
             offset = 0
-            # factor /= (self.options["scaling"][BSplines.TIME][BSplines.MAX_VALUE] -
-            #            self.options["scaling"][BSplines.TIME][BSplines.MIN_VALUE])
+            factor /= (self.options["scaling"][BSplines.TIME][BSplines.MAX_VALUE] -
+                       self.options["scaling"][BSplines.TIME][BSplines.MIN_VALUE])
 
         return offset + this_data * factor
 
@@ -832,11 +832,11 @@ class BSplines(Model):
                                 npoints, time)
         return self._predict_unscaled(xdata)
 
-    def get_state_dot(self, pars: dict, npoints: int = 100,
-                      tstart: float = 0, tend: float = 1) -> np.ndarray:
+    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
         self.set_spline_properties(pars["coefficients"], pars["scaling"],
                                    pars["n_knots"], pars["knot_positions"])
-        xdata = np.linspace(tstart, tend, npoints)
+        xdata = self._get_tdata(dict(tstart=pars["scaling"][0][0], tend=pars["scaling"][0][1]),
+                                npoints, time)
         return self._predict_unscaled(xdata, order=1)
 
     def get_parameter(self, key):
@@ -957,13 +957,12 @@ class MultiBSplines(Model):
                            for i, bspline in enumerate(self.bsplines)])
         return result
 
-    def get_state_dot(self, pars: dict, npoints: int = 100,
-                      tstart: float = 0, tend: float = 1) -> np.ndarray:
+    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
         result = np.array([bspline.get_state_dot(dict(coefficients=pars["coefficients"][i],
                                                       scaling=pars["scaling"][i],
                                                       n_knots=pars["n_knots"][i],
                                                       knot_positions=pars["knot_positions"][i]),
-                                                 npoints, tstart, tend)
+                                                 npoints, time)
                            for i, bspline in enumerate(self.bsplines)])
         return result
 
