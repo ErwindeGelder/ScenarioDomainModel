@@ -8,7 +8,6 @@ Modifications:
 2020 06 22 Add EIDM+.
 """
 
-import numpy as np
 from .eidm import EIDM
 from .idm import IDM
 
@@ -18,11 +17,11 @@ class IDMPlus(IDM):
     def __init__(self):
         IDM.__init__(self)
 
-    def _acceleration(self, gap: float, vhost: float, vdiff: float) -> float:
+    def acceleration(self, gap: float, vhost: float, vdiff: float) -> float:
         if gap < 0:
             return max(self.parms.amin, -10)
-        return self.parms.a_acc * np.min((1 - self._freeflowpart(vhost),
-                                          1 - self._nonfreeflowpart(gap, vhost, vdiff)))
+        return self.parms.a_acc * min(1 - self._freeflowpart(vhost),
+                                      1 - self._nonfreeflowpart(gap, vhost, vdiff))
 
 
 class EIDMPlus(EIDM):
@@ -30,8 +29,8 @@ class EIDMPlus(EIDM):
     def __init__(self):
         EIDM.__init__(self)
 
-    def _acceleration(self, gap: float, vhost: float, vdiff: float) -> float:
+    def acceleration(self, gap: float, vhost: float, vdiff: float) -> float:
         if gap < 0:
             return max(self.parms.amin, -10)
-        return self.parms.a_acc * np.min((1 - self._freeflowpart(vhost),
-                                          1 - self._nonfreeflowpart(gap, vhost, vdiff)))
+        return self.parms.a_acc * min(1 - self._freeflowpart(vhost),
+                                      1 - self._nonfreeflowpart(gap, vhost, vdiff))
