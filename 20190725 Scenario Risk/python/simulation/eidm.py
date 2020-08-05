@@ -75,7 +75,7 @@ class EIDM(IDM):
             return
 
         # Calculate acceleration based on IDM.
-        a_idm = self._acceleration(gap, vhost, vdiff)
+        a_idm = self.acceleration(gap, vhost, vdiff)
 
         # Calculate acceleration according to the Constant-Acceleration Heuristic (CAH).
         alead = min(alead, self.state.acceleration)
