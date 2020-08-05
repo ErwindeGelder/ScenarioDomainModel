@@ -10,6 +10,7 @@ Modifications:
 
 import matplotlib.pyplot as plt
 import numpy as np
+from .acc import ACC, ACCParameters
 from .eidm import EIDMParameters
 from .hdm import HDM, HDMParameters
 from .idm import IDMParameters
@@ -28,11 +29,12 @@ def hdm_parameters(**kwargs):
     safety_distance = 2.0
     thw = 1.1
     init_distance = safety_distance + init_speed * thw
-    parameters = HDMParameters(model=IDMPlus(), speed_std=0.05, tau=20, rttc=0.01, dt=steptime,
+    parameters = HDMParameters(model=IDMPlus(), speed_std=0.05, tau=20, rttc=0.01,
+                               timestep=steptime,
                                parms_model=IDMParameters(speed=init_speed*1.2,
                                                          init_speed=init_speed,
                                                          init_position=-init_distance,
-                                                         dt=0.01,
+                                                         timestep=0.01,
                                                          n_reaction=100,
                                                          thw=1.1,
                                                          safety_distance=2,
@@ -54,7 +56,7 @@ def eidm_parameters(**kwargs):
     parameters = EIDMParameters(free_speed=init_speed*1.2,
                                 init_speed=init_speed,
                                 init_position=-init_distance,
-                                dt=0.01,
+                                timestep=0.01,
                                 n_reaction=0,
                                 thw=1.1,
                                 safety_distance=2,
@@ -62,6 +64,23 @@ def eidm_parameters(**kwargs):
                                 a_acc=1,
                                 b_acc=1.5,
                                 coolness=0.99)
+    return parameters
+
+
+def acc_parameters(**kwargs):
+    """ Define the follower parameters based on the scenario parameters.
+
+    :return: Parameter object that can be passed via init_simulation.
+    """
+    init_speed = kwargs["v0"]
+    safety_distance = ACC.safety_distance(init_speed)
+    default_parameters = ACCParameters()
+    thw = default_parameters.thw
+    init_distance = safety_distance + init_speed * thw
+    parameters = ACCParameters(speed=init_speed,
+                               init_speed=init_speed,
+                               init_position=-init_distance,
+                               n_reaction=0)
     return parameters
 
 
@@ -106,7 +125,7 @@ class SimulationLeadBraking(Simulator):
         while time < 10 or prev_dist > self.leader.state.position - self.follower.state.position:
             prev_dist = self.leader.state.position - self.follower.state.position
             mindist = min(prev_dist, mindist)
-            time += self.follower.parms.dt
+            time += self.follower.parms.timestep
             self.leader.step_simulation(time)
             self.follower.step_simulation(self.leader)
 
@@ -122,7 +141,7 @@ class SimulationLeadBraking(Simulator):
         if plot:
             _, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10, 5))
             data = np.array(data)
-            time = np.arange(len(data)) * self.follower.parms.dt
+            time = np.arange(len(data)) * self.follower.parms.timestep
             ax1.plot(time, data[:, 0] - data[:, 1])
             ax1.set_xlabel("Time [s]")
             ax1.set_ylabel("Distance [m]")
