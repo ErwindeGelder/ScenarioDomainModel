@@ -99,12 +99,12 @@ class SimulationLeadInteraction(Simulator):
         self.follower.init_simulation(self.follower_parameters,
                                       IDMParameters(free_speed=init_speed * 1.2,
                                                     init_speed=init_speed,
-                                                    dt=self.follower_parameters.dt,
+                                                    dt=self.follower_parameters.timestep,
                                                     n_reaction=100,
                                                     thw=1,
                                                     safety_distance=2,
                                                     amin=-3))
-        delay = self.follower.parms.model.parms.n_reaction * self.follower_parameters.dt
+        delay = self.follower.parms.model.parms.n_reaction * self.follower_parameters.timestep
         init_gap = kwargs["gap"] + delay*init_speed-kwargs["vlead"]
         init_speed_lead = kwargs["vlead"]
         self.leader.init_simulation(
