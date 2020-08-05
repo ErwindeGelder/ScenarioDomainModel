@@ -25,7 +25,8 @@ from .static_environment import StaticEnvironment, stat_env_from_json
 from .activity import Activity, activity_from_json
 from .actor import Actor, actor_from_json
 from .tags import tag_from_json
-from .scenario_category import ScenarioCategory, derive_actor_tags, create_unique_ids
+from .scenario_category import ScenarioCategory, derive_actor_tags, create_unique_ids, \
+    _check_match_matrix
 from .type_checking import check_for_type, check_for_list, check_for_tuple
 
 
@@ -225,35 +226,10 @@ class Scenario(Default):
         match = np.zeros((len(sc_actors), len(s_actors)), dtype=np.bool)
         for i, sc_actor in enumerate(sc_actors):
             for j, s_actor in enumerate(s_actors):
-                match[i, j] = (all(any(map(tag.is_subtag, s_tags[s_actor]))
+                match[i, j] = (all(any(map(tag.is_supertag_of, s_tags[s_actor]))
                                    for tag in sc_tags[sc_actor]))
 
-        # The matching of the actors need to be done. If a match is found, the corresponding
-        # ActorCategory (=row) and Actor (=column) will be removed from the match matrix.
-        n_matches = 1  # Number of matches to look for.
-        while match.size:
-            # If there is at least one ActorCategory left that has no match, a False will be
-            # returned.
-            if not all(np.any(match, axis=1)):
-                return False
-
-            sum_match_actor = np.sum(match, axis=0)
-            j = next((j for j in range(match.shape[1]) if sum_match_actor[j] == n_matches), -1)
-            if j >= 0:  # We found an Actor with only n corresponding ActorCategories.
-                i = next(i for i in range(match.shape[0]) if match[i, j])
-            else:  # True for an ActorCategory with only n corresponding Actors.
-                sum_match_actor = np.sum(match, axis=1)
-                i = next((i for i in range(match.shape[0]) if sum_match_actor[i] == n_matches), -1)
-                if i >= 0:  # We found an ActorCategory with only n corresponding Actors.
-                    j = next(j for j in range(match.shape[1]) if match[i, j])
-                else:
-                    # Try again for higher n (number of matches)
-                    n_matches = n_matches + 1
-                    continue
-            match = np.delete(np.delete(match, i, axis=0), j, axis=1)
-            n_matches = 1
-
-        return True
+        return _check_match_matrix(match)
 
     @staticmethod
     def _check_tags(sc_tags: dict, s_tags: dict,
@@ -278,7 +254,7 @@ class Scenario(Default):
             s_keys = fnmatch.filter(s_tags, "*::{:s}".format(s_class))
             if s_keys:  # There are tags directly related to the Scenario.
                 for tag in sc_tags[sc_keys[0]]:
-                    if not any(map(tag.is_subtag, s_tags[s_keys[0]])):
+                    if not any(map(tag.is_supertag_of, s_tags[s_keys[0]])):
                         return False  # A tag of the ScenarioCategory is not found in the Scenario.
             else:  # There are no tags at all directly related to the Scenario.
                 return False
