@@ -70,6 +70,7 @@ class StandardModel(ABC):
 
         :param leader: The leading vehicle that contains position and speed.
         """
+        self.integration_step()
         self.update(leader.state.position - self.state.position,
                     self.state.speed,
                     self.state.speed - leader.state.speed)
@@ -81,9 +82,7 @@ class StandardModel(ABC):
         :param vhost: Speed of host vehicle.
         :param vdiff: Difference in speed between leading and host vehicle.
         """
-        self.integration_step()
-
-        # Calculate acceleration based on IDM
+        # Calculate acceleration based on the model.
         self.accelerations.append(self.acceleration(gap, vhost, vdiff))
 
     def acceleration(self, gap: float, vhost: float, vdiff: float) -> float:

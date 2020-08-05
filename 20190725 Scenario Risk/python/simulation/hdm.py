@@ -23,7 +23,7 @@ class HDMParameters(Options):
     speed_std: float = 0.05
     tau: float = 20
     rttc: float = 0.01  # Estimation error of reciprocal ttc
-    dt: float = 0.01  # Sample time (needed for Wiener process)
+    timestep: float = 0.01  # Sample time (needed for Wiener process)
     decay: float = None  # Calculated based on dt and tau
     contribution_noise: float = None  # Calculated based on dt and tau
     delay: float = None  # Calculated based on dt and n_reaction (from model parameters)
@@ -48,10 +48,15 @@ class HDM:
         """ Initialize the simulation.
 
         The following parameters can be set:
-        - model
-        - speed_std
-        - tau
-        - rttc
+        model: Union[IDM, IDMPlus] = None
+        parms_model: IDMParameters = None
+        speed_std: float = 0.05
+        tau: float = 20
+        rttc: float = 0.01  # Estimation error of reciprocal ttc
+        timestep: float = 0.01  # Sample time (needed for Wiener process)
+        decay: float = None  # Calculated based on dt and tau
+        contribution_noise: float = None  # Calculated based on dt and tau
+        delay: float = None  # Calculated based on dt and n_reaction (from model parameters)
 
         :param parms: The parameters listed above.
         """
@@ -60,10 +65,10 @@ class HDM:
         self.parms.speed_std = parms.speed_std
         self.parms.tau = parms.tau
         self.parms.rttc = parms.rttc
-        self.parms.contribution_noise = np.sqrt(2*self.parms.dt / self.parms.tau)
-        self.parms.decay = np.exp(-self.parms.dt / self.parms.tau)
+        self.parms.contribution_noise = np.sqrt(2*self.parms.timestep/self.parms.tau)
+        self.parms.decay = np.exp(-self.parms.timestep/self.parms.tau)
         self.parms.model.init_simulation(parms.parms_model)
-        self.parms.delay = self.parms.dt * self.parms.model.parms.n_reaction
+        self.parms.delay = self.parms.timestep*self.parms.model.parms.n_reaction
         self.state.w_speed = 0
         self.state.w_gap = 0
         self.state.speed = self.parms.model.state.speed
@@ -78,6 +83,7 @@ class HDM:
 
         :param leader: Leader that contains a position and speed
         """
+        self.parms.model.integration_step()
         gap_est, vlead = self._estimate_gap_speed(leader.state.position, leader.state.speed)
         gap, vhost, vdiff = self._temporal_anticipation(gap_est, vlead)
         self.parms.model.update(gap, vhost, vdiff)
