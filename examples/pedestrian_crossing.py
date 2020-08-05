@@ -106,14 +106,14 @@ def scenario() -> dm.Scenario:
                                   name="Pedestrian crossing")
 
     # Define the activities.
-    braking = dm.DetectedActivity(category.activity_categories[0], 0, 4, dict(xstart=8, xend=0),
-                                  name="Ego braking")
-    stationary = dm.DetectedActivity(category.activity_categories[1], 4, 3, dict(xstart=0),
-                                     name="Ego stationary")
-    accelerating = dm.DetectedActivity(category.activity_categories[2], 7, 5,
-                                       dict(xstart=0, xend=7.5), name="Ego accelerating")
-    walking = dm.DetectedActivity(category.activity_categories[3], 0, 12, dict(xstart=-6, xend=6),
-                                  name="Pedestrian walking")
+    braking = dm.SetActivity(category.activity_categories[0], 0, 4, dict(xstart=8, xend=0),
+                             name="Ego braking")
+    stationary = dm.SetActivity(category.activity_categories[1], 4, 3, dict(xstart=0),
+                                name="Ego stationary")
+    accelerating = dm.SetActivity(category.activity_categories[2], 7, 5,
+                                  dict(xstart=0, xend=7.5), name="Ego accelerating")
+    walking = dm.SetActivity(category.activity_categories[3], 0, 12, dict(xstart=-6, xend=6),
+                             name="Pedestrian walking")
 
     # Define the scenario.
     scen = dm.Scenario(0, 12, static, name="Ego braking for crossing pedestrian")
