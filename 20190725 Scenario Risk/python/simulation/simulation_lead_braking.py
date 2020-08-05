@@ -29,7 +29,7 @@ def hdm_parameters(**kwargs):
     thw = 1.1
     init_distance = safety_distance + init_speed * thw
     parameters = HDMParameters(model=IDMPlus(), speed_std=0.05, tau=20, rttc=0.01, dt=steptime,
-                               parms_model=IDMParameters(free_speed=init_speed*1.2,
+                               parms_model=IDMParameters(speed=init_speed*1.2,
                                                          init_speed=init_speed,
                                                          init_position=-init_distance,
                                                          dt=0.01,
