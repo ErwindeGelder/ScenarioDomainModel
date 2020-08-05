@@ -2292,6 +2292,16 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="8A305649CD2C2C53CF8D8CC7CD215A2389C7BD1B55DF8F041A74576E7915A6">
     <pdf_title>Realistic Car-Following Models for Microscopic Simulation of Adaptive and Cooperative Adaptive Cruise Control Vehicles</pdf_title>
 </pdf_annotation>
+<node TEXT="FCW" ID="ID_1926278095" CREATED="1596464656704" MODIFIED="1596464706815" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/505%20FCW%20modeling.pdf">
+<attribute NAME="key" VALUE="kiefer2005developing"/>
+<attribute NAME="journal" VALUE="Accident Analysis \&amp; Prevention"/>
+<attribute NAME="year" VALUE="2005"/>
+<attribute NAME="title" VALUE="Developing an Inverse Time-to-Collision Crash Alert Timing Approach Based on Drivers&#x2019; Last-Second Braking and Steering Judgments"/>
+<attribute NAME="authors" VALUE="Kiefer, Raymond J and LeBlanc, David J and Flannagan, Carol A"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="75DEA5E1517C689B632663B3B882FA387561B2D28B70284CE090DDA0807B4225">
+    <pdf_title>Developing an inverse time-to-collision crash alert timing approach based on drivers&#x2019; last-second braking and steering judgments</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Simplified Energy-Efficient ACC based on MPC" ID="ID_1119925937" CREATED="1595510593750" MODIFIED="1595510691018" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/488%20Simplified%20Energy-Efficient%20ACC%20based%20on%20MPC.pdf">
 <attribute NAME="key" VALUE="lin2017simplified"/>
@@ -5347,6 +5357,15 @@
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Quality management systems --- Requirements"/>
 <attribute NAME="authors" VALUE="{ISO 9001:2015}"/>
+</node>
+<node TEXT="ISO704" ID="ID_1391586401" CREATED="1596445015452" MODIFIED="1596445092683" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/504%20ISO704.pdf">
+<attribute NAME="key" VALUE="ISO704"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Terminology work --- Principles and methods"/>
+<attribute NAME="authors" VALUE="{ISO 704:2009}"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="35E180213B4A481BAA561279A239E71E747917DCF6E26A9C751FE16C62A65933">
+    <pdf_title>ISO 704</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Mobility on Demand (MoD)" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1185737859" CREATED="1513224148079" MODIFIED="1513224185406">
