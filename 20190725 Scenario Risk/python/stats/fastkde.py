@@ -25,8 +25,10 @@ Modifications:
 2020 07 27 Add the clustering method. Version 1.1.
 2020 07 28 Version 1.1: Enable storing the KDE in a pickle file and restoring it from a pickle file.
 2020 07 30 Version 1.2: Make the clustering extremely faster (now in a blink of an eye).
+2020 08 06 Version 1.3: Add possibility to get integrated probability on hypercube.
 """
 
+from itertools import combinations
 import os
 import pickle
 import time
@@ -57,7 +59,7 @@ class KDEConstants(Options):
         sumweights(int): The sum of the weights (if weights are used).
         epsilon(float): The distance in one 'bin' in case weighted samples are used.
     """
-    version: str = "1.2"
+    version: str = "1.3"
 
     ndata: int = 0
     const_looscore: float = 0
@@ -872,6 +874,36 @@ class KDE:
         if self.scaling:
             samples *= self.data_helpers.std[i]
         return samples
+
+    def probability(self, lower_bound: Union[List, np.ndarray],
+                    upper_bound: Union[List, np.ndarray]) -> float:
+        """ Get the total probability over the area spanned by the given bounds.
+
+        :param lower_bound: One extreme point of the hypercube.
+        :param upper_bound: The other extreme point of the hypercube.
+        :return: The probability of the hypercube spanned between the two points.
+        """
+        if isinstance(lower_bound, List):
+            lower_bound = np.array(lower_bound)
+        if isinstance(upper_bound, List):
+            upper_bound = np.array(upper_bound)
+
+        # Create data points for which the cdf should be obtained.
+        points = np.zeros((2**self.constants.dim, self.constants.dim))
+        multipliers = np.zeros(2**self.constants.dim, dtype=np.int)
+        i_point = 0
+        multiplier = 1
+        for i in range(self.constants.dim+1):
+            for combination in combinations(range(self.constants.dim), i):
+                points[i_point] = upper_bound
+                for j in combination:
+                    points[i_point, j] = lower_bound[j]
+                multipliers[i_point] = multiplier
+                i_point += 1
+            multiplier *= -1
+
+        # Get results from the cdf and sum them to get the final result.
+        return (self.cdf(points) * multipliers).sum()
 
     def pickle(self, filename: str) -> None:
         """ Write the KDE to a file.
