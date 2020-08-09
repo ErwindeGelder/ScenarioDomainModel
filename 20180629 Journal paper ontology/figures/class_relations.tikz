@@ -1,0 +1,93 @@
+\setlength{\blockwidth}{7.1em}
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+
+% Qualitative classes
+\node[class, fill=scenariocategory](scenario category) at (.5\blockx,0) {Scenario category};
+\node[class, fill=category](dynamiccategory) at (\blockx, \blocky) {Dynamic physical thing category};
+\node[class, fill=category](actorcategory) at (2\blockx, \blocky) {Actor category};
+\node[class, fill=category](activitycategory) at (3\blockx, \blocky) {Activity category};
+\node[class, fill=abstractclass](model) at (2.5\blockx+0.25\blockwidth, 2\blocky) {Model};
+\node[class, fill=category](staticcategory) at (4\blockx, \blocky) {Static environment category};
+\node[class, fill=category](staticthingcategory) at (3.5\blockx+0.25\blockwidth, 2\blocky) {Static physical thing category};
+
+% Quantitative classes
+\node[class, fill=scenario](scenario) at (.5\blockx, 2\blocky) {Scenario};
+\node[class, fill=otherclass](dynamic) at (\blockx, 3\blocky) {Dynamic physical thing};
+\node[class, fill=otherclass](actor) at (2\blockx, 3\blocky) {Actor};
+\node[class, fill=otherclass](activity) at (3\blockx, 3\blocky) {Activity};
+\node[class, fill=otherclass](static) at (4\blockx, 3\blocky) {Static environment};
+\node[class, fill=otherclass](event) at (0.5\blockx, 4\blocky) {Event};
+\node[class, fill=abstractclass](timeinterval) at (1.5\blockx+0.25\blockwidth, 4\blocky) {Time interval};
+\node[class, fill=otherclass](staticthing) at (3.5\blockx+0.25\blockwidth, 4\blocky) {Static physical thing};
+
+% Aggregation arrows for the scenario category
+\node[coordinate, below of=scenario category, node distance=-\blocky/2, xshift=\blockwidth/3](helper scenario category){};
+\node[coordinate, below of=scenario category, node distance=\blockheight/2, xshift=\blockwidth/3](aggregation scenario category){};
+\foreach \class in {dynamic, actor, activity, static}
+{
+	\node[coordinate, above of=\class category, node distance=\blockheight/2](helper \class){};  % Needed for later
+	\draw[aggregation] (\class category) |- (helper scenario category) -- (aggregation scenario category);
+}
+\node[anchor=south east] at (helper dynamic) {\hasn};
+\node[anchor=south east] at (helper actor) {\hasn};
+\node[anchor=south east] at (helper static) {\hasone};
+\node[anchor=south east] at (helper activity) {\hasn};
+
+% Aggregation arrow for the model and static thing category
+\foreach \fromclass/\toclass in {model/activitycategory, 
+								 staticthingcategory/staticcategory,
+								 staticthing/static} {
+	\node[coordinate, above of=\fromclass, node distance=\blockheight/2, xshift=-\blockwidth/8+\blockx/4](aggregation \fromclass){};
+	\node[coordinate, below of=\toclass, node distance=\blockheight/2, xshift=\blockwidth/8-\blockx/4](aggregation \toclass){};
+	\draw[aggregation] (aggregation \fromclass) -- (aggregation \toclass);
+}
+\node[anchor=south east] at (aggregation model) {\hasone};
+\node[anchor=south east] at (aggregation staticthingcategory) {\hasn};
+\node[anchor=south east] at (aggregation staticthing) {\hasn};
+
+% Aggregation arrow for scenario
+\node[coordinate, below of=scenario, node distance=-\blocky/2](helper scenario){};
+\node[coordinate, below of=scenario, node distance=\blockheight/2](aggregation scenario){};
+\foreach \class in {dynamic, actor, activity, static, event}
+{
+	\node[coordinate, above of=\class, node distance=\blockheight/2, xshift=-\blockwidth/4](helper \class){};
+	\draw[aggregation] (helper \class) |- (helper scenario) -- (aggregation scenario);
+}
+\node[anchor=south east] at (helper dynamic) {\hasn};
+\node[anchor=south east] at (helper actor) {\hasn};
+\node[anchor=south east] at (helper activity) {\hasn};
+\node[anchor=south east] at (helper static) {\hasone};
+\node[anchor=south east] at (helper event) {\hasn};
+
+% Aggregations for static environment, activity, and actor
+\foreach \class in {dynamic, static, activity, actor}
+{
+	\node[coordinate, below of=\class category, node distance=\blockheight/2, xshift=\blockwidth/4](category helper){};
+	\node[coordinate, above of=\class, node distance=\blockheight/2, xshift=\blockwidth/4](helper){};
+	\draw[aggregation] (category helper) -- (helper);
+	\node[anchor=north east] at (category helper) {\hasone};
+}
+
+% Aggregation for static physical thing category -> static physical thing
+\node[coordinate, below of=staticthingcategory, node distance=\blockheight/2, xshift=-\blockwidth/4](category helper){};
+\node[coordinate, above of=staticthing, node distance=\blockheight/2, xshift=-\blockwidth/4](helper){};
+\draw[aggregation] (category helper) -- (helper);
+\node[anchor=north east] at (category helper) {\hasone};
+
+% Aggregation for event -> time interval
+\draw[aggregation] (event) -- (timeinterval);
+\node[coordinate, right of=event, node distance=\blockwidth/2](helper event) {};
+\node[anchor=south west] at (helper event) {\hastwo};
+
+% falls into arrows
+\node[coordinate, right of=scenario category, node distance=\blockwidth/2+1pt, yshift=-\blockheight/3](helper1){};
+\node[coordinate, right of=scenario category, node distance=\blockwidth/2+1pt, yshift=\blockheight/3](helper2){};
+\node[coordinate, right of=helper1, node distance=\blockwidth/2](helper3){};
+\node[coordinate, right of=helper2, node distance=\blockwidth/2](helper4){};
+\draw[falls into] (helper1) -- (helper3) -- node[fill=white]{includes} (helper4) -- (helper2);
+\node[coordinate, above of=scenario, node distance=\blockheight/2, xshift=-.28\blockwidth](helper1){};
+\node[coordinate, below of=scenario category, node distance=\blockheight/2, xshift=-.28\blockwidth](helper2){};
+\draw[falls into] (helper2) -- node[fill=white, align=center, text width=3.55em]{comprises} (helper1);
+
+\end{tikzpicture}

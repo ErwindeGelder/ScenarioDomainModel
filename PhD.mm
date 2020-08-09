@@ -2836,7 +2836,13 @@
     <pdf_title>Contents</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Markov Chain Monte Carlo in Practice" ID="ID_1644696633" CREATED="1591112865419" MODIFIED="1591112875193"/>
+<node TEXT="Markov Chain Monte Carlo in Practice" ID="ID_1644696633" CREATED="1591112865419" MODIFIED="1596628708597" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/464%20Markov%20Chain%20Monte%20Carlo%20in%20Practice.pdf">
+<attribute NAME="key" VALUE="Gilks1996"/>
+<attribute NAME="year" VALUE="1995"/>
+<attribute NAME="title" VALUE="Markov Chain Monte Carlo in Practice"/>
+<attribute NAME="authors" VALUE="Gilks, W. R. and Richardson, S. and Spiegelhalter, D. J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="70F0963867844B56899C7D7CAE3B4E28F4A4D75C7B712D46DCC722F9E5E4FA"/>
+</node>
 </node>
 <node TEXT="Importance sampling" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1913334735" CREATED="1580828834503" MODIFIED="1587030556467" MOVED="1587030544283">
 <node TEXT="Using Kriging" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_155030782" CREATED="1587030561275" MODIFIED="1587030579878">
@@ -4102,7 +4108,7 @@
 </node>
 </node>
 </node>
-<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
 <node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1590912449994" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
@@ -4157,7 +4163,7 @@
     <pdf_title>Dimensions of knowledge sharing and reuse</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Ontology for applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1504253001" CREATED="1531293489079" MODIFIED="1531294181571">
+<node TEXT="Ontology for applications" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1504253001" CREATED="1531293489079" MODIFIED="1531294181571">
 <node TEXT="Specifying domains of International Entrepreneurship research" ID="ID_1080604173" CREATED="1531293527245" MODIFIED="1534391630188" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/215%20International%20Entrepreneurship%20research%201989-2009%20domain%20ontology%20and%20thematic%20analysis.pdf">
 <attribute NAME="key" VALUE="jones2011international"/>
 <attribute NAME="journal" VALUE="Journal of Business Venturing"/>
@@ -4253,7 +4259,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="Ontology related to AD" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1906835029" CREATED="1570356422699" MODIFIED="1570356430848">
+<node TEXT="Ontology related to AD" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1906835029" CREATED="1570356422699" MODIFIED="1570356430848">
 <node TEXT="Ontology-Based Methods for Enhancing Autonomous Vehicle Path Planning" ID="ID_735920762" CREATED="1570356464201" MODIFIED="1590912449844" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/389%20Ontology-Based%20Methods%20for%20Enhancing%20Autonomous%20Vehicle%20Path%20Planning.pdf">
 <attribute NAME="key" VALUE="provine2004ontology"/>
 <attribute NAME="journal" VALUE="Robotics and Autonomous Systems"/>
@@ -5311,10 +5317,15 @@
     <pdf_title>Driving Simulation Conference Europe 2010 Proceedings Arts et M&#xe9;tiers ParisTech September 9 &#x2013;10, 2010</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="OpenSCENARIO" ID="ID_1907137131" CREATED="1554350973364" MODIFIED="1590912449411" LINK="http://www.openscenario.org">
+<node TEXT="OpenSCENARIO" ID="ID_1907137131" CREATED="1554350973364" MODIFIED="1596873944270" LINK="http://www.openscenario.org">
 <attribute NAME="key" VALUE="openscenario"/>
 <attribute NAME="title" VALUE="{OpenSCENARIO}"/>
-<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="year" VALUE="2019"/>
+<node TEXT="OpenSCENARIO2.0" ID="ID_874280647" CREATED="1596875074151" MODIFIED="1596875203117" LINK="https://releases.asam.net/OpenSCENARIO/2.0-concepts/ASAM_OpenSCENARIO_2-0_Concept_Paper.html">
+<attribute NAME="key" VALUE="OpenSCENARIO2"/>
+<attribute NAME="title" VALUE="{OpenSCENARIO 2.0}"/>
+<attribute NAME="year" VALUE="2020"/>
+</node>
 </node>
 <node TEXT="ISO26262" ID="ID_1345725509" CREATED="1564490785273" MODIFIED="1590912449404" LINK="https://www.iso.org/standard/68383.html">
 <attribute NAME="key" VALUE="ISO26262"/>
@@ -5507,6 +5518,15 @@
 <attribute NAME="authors" VALUE="Eskandarian, Azim"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="131C7749DB5F9ECB8A84D69B964745CADDE8584505FC4929DEA8158E9C85CA">
     <pdf_title>1 Introduction to Intelligent Vehicles</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Safety First for Automated Driving" ID="ID_1715967213" CREATED="1596793276097" MODIFIED="1596793432641" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/506%20Safety%20First%20for%20Automated%20Driving.pdf">
+<attribute NAME="key" VALUE="wood2019safety"/>
+<attribute NAME="title" VALUE="Safety First for Automated Driving"/>
+<attribute NAME="authors" VALUE="Wood, Matthew and Robbel, Phillip and Maass, Michael and Tebbens, Radboud Duintjer and Meijs, Marc and Harb, Mohamed and Reach, Jonathon and Robinson, Karl and Wittmann, David and Srivastave, Toshika and Bouzouraa, Mohamed Essayed and Liu, Siyuan and Wang, Yali and Knobel, Christian and Boymanns, David and L{\&quot;o}hning, Matthias and Dehlink, Bernhard and Kaule, Dirk and Kr{\&quot;u}ger, Richard and Frtunikj, Jelena and Raisch, Florian and Gruber, Miriam and Steck, Jessica and Mejia-Hernandez, Julia and Syguda, Sandro and Bl{\&quot;u}her, Pierre and Klonecki, Kamil and Schnarz, Pierre and Wiltschki, Thomas and Pukallus, Stefan and Sedlaczek, Kai and Garbacik, Neil and Smerza, David and Li, Dalong and Timmons, Adam and Bellotti, Marco and O&apos;Brien, Michael and Sch{\&quot;o}llhorn, Michael and Dannebaum, Udo and Weast, Jack and Tatourian, Alan and Dornieden, Bernd and Schnetter, Philipp and Themann, Philipp and Weidner, Thomas and Schlicht, Peter"/>
+<attribute NAME="year" VALUE="2019"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BD1D81C328A29912A479A03A74614F557A35DC4142A5A776B68AE6D5F1F34C4">
+    <pdf_title>SAFETY FIRST FOR AUTOMATED DRIVING</pdf_title>
 </pdf_annotation>
 </node>
 </node>

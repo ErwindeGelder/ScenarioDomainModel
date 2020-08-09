@@ -35,21 +35,22 @@ In \autocite{geyer2014}, the meaning of activity is not detailed.
 % Definition according to Elrofai et al.
 Another definition of a scenario in the context of automated driving is given by \textcite{elrofai2016scenario}. They define a scenario as ``the combination of actions and maneuvers of the host vehicle in the passive [i.e., static] environment, and the ongoing activities and maneuvers of the immediate surrounding active [i.e., dynamic] environment for a certain period of time.'' They further mention that the duration of a scenario typically is in the order of seconds.
 
+\cstartb
+\textcite{catapult2018regulating} define a scenario as ``a description of a short interaction between an AV and other road users and/or road infrastructure''. 
+
+In a concept paper on OpenSCENARIO 2.0 \autocite{OpenSCENARIO2}, a scenario is defined as ``a `description of the temporal development' of road users (actor entities) defined by their actions, where temporal activation (defining when) `is regulated by' conditional `triggers'. A scenario comprises both scenery and dynamic elements.'' \cendb
+
 % What is missing in the definitions?
 % 1. No difference between qualitative and quantitative. I.e., definitions are ambiguous.
 % 2. There are undefined terms.
 % 3. Definitions are not detailed enough to reflect into code.
 
-Although the aforementioned definitions of scenario \autocite{geyer2014, ulbrich2015, elrofai2016scenario} are in the context of automated driving, we require a more concrete definition. First, the aforementioned definitions do not specify the level of detail. 
+%Although the aforementioned definitions of scenario \autocite{geyer2014, ulbrich2015, elrofai2016scenario} are in the context of automated driving, we require a more concrete definition. First, the aforementioned definitions do not specify the level of detail. 
 %We experience much confusion where one group thinks a discussion is about a very specific scenario whereas another group thinks the same discussion is about a collection of scenarios that share some characteristics. 
-Secondly, the aforementioned definitions use undefined terms, such as ``action'' and ``event''. Thirdly, because scenarios are used to specify test cases for the assessment of AVs, a clear and unambiguous specification of these scenarios is important and the aforementioned definitions are not concrete enough to be directly reflected into a coding language.
-
-
+%Secondly, the aforementioned definitions use undefined terms, such as ``action'' and ``event''. Thirdly, because scenarios are used to specify test cases for the assessment of AVs, a clear and unambiguous specification of these scenarios is important and the aforementioned definitions are not concrete enough to be directly reflected into a coding language.
 
 % "Requirements"
 Before providing the definition of the notion of scenario, characteristics of the notion of scenario based on literature are listed as follows:
-%
-% Order of seconds
 \begin{enumerate}
 	\item \textit{A scenario corresponds to a time interval:}
 	The aforementioned definitions \autocite{go2004blind, geyer2014, ulbrich2015, elrofai2016scenario} state that a scenario corresponds to a time interval. \textcite{vannotten2003updated} call such a scenario a chain scenario (``like movies''), as opposed to a snapshot scenario, i.e., a scenario that describes the state at a time instant (``like photos''). %The duration of a scenario is in the order of seconds, as explicitly mentioned by \textcite{elrofai2016scenario}. Though the duration is not mentioned by \textcite{ulbrich2015}, the presented example is in the order of seconds. Furthermore, other scenarios regarding (automated) driving are also in the order of seconds, e.g., see \autocite{gietelink2006development, zofka2015datadrivetrafficscenarios, roesener2017comprehensive, karaduman2013interactivebehavior, hulshof2013autonomous, englund2016grand}.
@@ -77,6 +78,7 @@ Before providing the definition of the notion of scenario, characteristics of th
 	Although the description of the static environment is not a general prerequisite of a scenario, this is often included when speaking about traffic scenarios \autocite{geyer2014, ulbrich2015, elrofai2016scenario, ebner2011identifying, althoff2017CommonRoad}.
 	%The static environment does not change during a scenario.
 	The description of the dynamic environment includes a description of the type of actors and the goals and/or activities of the actors.
+	\cstartb The static environment consists of all relevant physical things that do not have relevant changes with respect to the ego vehicle. The dynamic environment consists of all relevant physical things -- including actors -- that have changes that are relevant to the ego vehicle. For example, the road may be part of the static environment, but if the change in the road temperature is relevant to the ego vehicle, the road is part of the dynamic environment.\cendb
 	
 	\cstartb
 	\item\textit{A scenario includes one ego vehicle \autocite{geyer2014, elrofai2016scenario}:}
@@ -125,6 +127,7 @@ A reference could be, for example, the full name of a file, a pointer pointing t
 The advantage of references is that these parts of the scenario can be exchanged across different scenarios, as these scenarios can use the same references. 
 As an example, an OpenSCENARIO file allows to provide a reference to an OpenDRIVE file which describes a road network \autocite{dupuis2010opendrive}. As we will see in \cref{sec:oo framework}, in our proposed \cstartb framework\cendb, a scenario may contain references to a static environment, activities, actors, and events.
 
+\cstartb 
 
 
 \subsection{Event}
