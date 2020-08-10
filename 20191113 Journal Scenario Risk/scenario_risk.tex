@@ -1,8 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
-
-\documentclass[letterpaper, conference]{ieeeconf}  % Comment this line out if you need a4paper
+\documentclass{article}  % Comment this line out if you need a4paper
 
 
 % make changes take effect
@@ -12,12 +8,6 @@
 \addtolength{\textheight}{-1\baselineskip}
 
 
-
-
-%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
-
-\IEEEoverridecommandlockouts                              % This command is only needed if 
-                                                          % you want to use the \thanks command
 
 % See the \addtolength command later in the file to balance the column lengths
 % on the last page of the document
@@ -33,6 +23,7 @@
 \usepackage{amsmath} % assumes amsmath package installed
 \usepackage{amsthm}  % For special theorem style
 \usepackage{amsfonts}
+\usepackage{dsfont}
 %\usepackage{amssymb}  % assumes amsmath package installed
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
@@ -45,6 +36,8 @@
 \usepackage[utf8]{inputenc}    % utf8 support
 \usepackage[T1]{fontenc}       % code for pdf file
 \usepackage[USenglish]{babel}             %% language support
+\usepackage{authblk}
+\usepackage[nolist,nohyperlinks]{acronym}
 \usepackage{silence}  							%% For filtering warnings
 \usepackage{csquotes}
 % Add doi=false if no DOI
@@ -72,6 +65,7 @@
 
 \theoremstyle{plain}
 \newtheorem{definition}{Definition}
+\newtheorem{problem}{Problem}
 \theoremstyle{remark}\newtheorem{remarkenv}{Remark}        %% remarks
 \newenvironment{remark}{\begin{remarkenv}}%
 	{\hfill$\lozenge$\end{remarkenv}}            %% end remark with a lozenge
@@ -89,41 +83,71 @@
 %Images path 
 \graphicspath{ {figures/} }
 
-
-\title{\LARGE \bf
-	Real-world scenario mining for the assessment of automated vehicles
-}
-
-\author{Erwin de Gelder$^{1,2*}$, Arash-Khabbaz Saberi$^{1}$, Hala Elrofai$^{1}$, Jan-Pieter Paardekooper$^{1,3}$, Bart De Schutter$^{2}$%
-\thanks{$^{1}$TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}%
-\thanks{$^{2}$Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
-\thanks{$^{3}$Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
-\thanks{$^{*}$Corresponding author. \newline E-mail address: {\tt\small erwin.degelder@tno.nl}}%
-%\thanks{*This work was not supported by any organization}% <-this % stops a space
-%\thanks{$^{1}$Albert Author is with Faculty of Electrical Engineering, Mathematics and Computer Science,
-%        University of Twente, 7500 AE Enschede, The Netherlands
-%        {\tt\small albert.author@papercept.net}}%
-%\thanks{$^{2}$Bernard D. Researcheris with the Department of Electrical Engineering, Wright State University,
-%        Dayton, OH 45435, USA
-%        {\tt\small b.d.researcher@ieee.org}}%
-}
-
-
 \newlength\figurewidth
 \newlength\figureheight
-
-
 \usetikzlibrary{arrows,positioning}
 \usetikzlibrary{arrows.meta}
 
 % Notations
+\newcommand{\bandwidthmatrix}{H}
+\newcommand{\e}[1]{\exp \left\{ #1 \right\}}
+\newcommand{\expectation}[1]{\mathrm{E}\left[ #1 \right]}
+\newcommand{\expectationwrt}[2]{\mathrm{E}_{#1}\left[ #2 \right]}
+\newcommand{\density}[1]{f\left( #1 \right)}
+\newcommand{\densitycond}[2]{\density{ #1 | #2 }}
+\newcommand{\densityest}[1]{\hat{f}\left( #1 \right)}
+\newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
+\newcommand{\densityimportance}[1]{g\left( #1 \right)}
+\newcommand{\dummyvar}{u}
+\newcommand{\dummystochastic}{\nu}
+\newcommand{\harm}{\text{harm}}
+\newcommand{\indexa}{i}
+\newcommand{\indexb}{j}
+\newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
+\newcommand{\normalizationkde}{\tilde{n}}
+\newcommand{\nscenarios}{n}
+\newcommand{\nsim}{n_{\mathrm{sim}}}
+\newcommand{\pardim}{d}
+\newcommand{\parvector}{\theta}
+\newcommand{\parvectorscen}[1]{\parvector_{#1}}
+\newcommand{\parspace}{\Theta}
+\newcommand{\probability}[1]{\mathds{P}\left( #1 \right)}
+\newcommand{\probabilitycond}[2]{\probability{ #1 | #2 }}
+\newcommand{\realnumbers}{\mathds{R}}
+\newcommand{\scenariocategory}{\mathcal{C}}
+\newcommand{\simulation}[1]{s\left( #1 \right)}
+\newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\variance}[1]{\mathrm{Var}\left[ #1 \right]}
 
 
 %\usepackage{setspace}
 %\doublespacing
-
+\newcommand{\todo}[1]{\color{red}TO DO: #1 \color{black}}
 
 \begin{document}
+	
+% Acronyms
+\begin{acronym}[AAAAAAAA]
+	\acro{odd}[ODD]{Operational Design Domain}
+	\acroindefinite{odd}{an}{an}
+	\acro{pdf}[pdf]{probability density function}
+	\acro{kde}[KDE]{Kernel Density Estimation}
+	\acro{mcmc}[MCMC]{Markov chain Monte Carlo}
+\end{acronym}
+
+\date{}
+\title{Scenario Risk Quantification for Automated Driving}
+
+\author[1,2,*]{Erwin de Gelder}
+\author[1]{Hala Elrofai}
+\author[1,3]{Jan-Pieter Paardekooper}
+\author[1]{Olaf Op den Camp}
+\author[2]{Bart De Schutter}
+\affil[1]{TNO, Dept.\ of Integrated Vehicle Safety, Helmond, The Netherlands}
+\affil[2]{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}
+\affil[3]{Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}
+\affil[*]{Corresponding author: \textit{erwin.degelder@tno.nl}}
+
 
 
 \maketitle
@@ -139,7 +163,7 @@
 \input{sections/background}
 \input{sections/method}
 \input{sections/casestudy}
-\input{sections/conclusion}
+\input{sections/conclusions}
 
 
 %\addtolength{\textheight}{-12cm}  % This command serves to balance the column lengths

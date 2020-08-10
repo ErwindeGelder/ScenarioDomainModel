@@ -1,0 +1,121 @@
+% This file was created by tikzplotlib v0.8.7.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+
+\begin{axis}[
+axis x line*=bottom,
+axis y line*=left,
+every x tick/.style={black},
+every y tick/.style={black},
+height=\figureheight,
+tick align=outside,
+tick pos=left,
+width=\figurewidth,
+x grid style={white!69.01960784313725!black},
+xlabel={Sample},
+xmin=0, xmax=16.5,
+xtick style={color=black},
+xtick={3,13},
+xticklabels={\(\displaystyle k-k_h\),\(\displaystyle k\)},
+y grid style={white!69.01960784313725!black},
+ylabel={\(\displaystyle v\)},
+ymin=0, ymax=30,
+ytick style={color=black},
+ytick={6.48176150995277,26.6384896175217},
+yticklabels={\(\displaystyle v_{\mathrm{min}}(k)\),\(\displaystyle v_{\mathrm{max}}(k)\)}
+]
+\node at (axis cs:12.4,22.404759743144)[
+  anchor= east,
+  text=black,
+  rotate=0.0
+]{$v^-(k)$};
+\node at (axis cs:13.6,12.3263956893595)[
+  anchor= west,
+  text=black,
+  rotate=0.0
+]{$v^+(k)$};
+\path [draw=black, fill=white]
+(axis cs:12.4,26.6384896175217)
+--(axis cs:12.9,25.1384896175217)
+--(axis cs:12.4005,26.6384896175217)
+--(axis cs:12.4005,18.1710298687663)
+--(axis cs:12.3995,18.1710298687663)
+--(axis cs:12.3995,26.6384896175217)
+--(axis cs:11.9,25.1384896175217)
+--cycle;
+\path [draw=black, fill=white]
+(axis cs:12.4,18.1710298687663)
+--(axis cs:11.9,19.6710298687663)
+--(axis cs:12.3995,18.1710298687663)
+--(axis cs:12.3995,26.6384896175217)
+--(axis cs:12.4005,26.6384896175217)
+--(axis cs:12.4005,18.1710298687663)
+--(axis cs:12.9,19.6710298687663)
+--cycle;
+\path [draw=black, fill=white]
+(axis cs:13.6,6.48176150995277)
+--(axis cs:13.1,7.98176150995277)
+--(axis cs:13.5995,6.48176150995277)
+--(axis cs:13.5995,18.1710298687663)
+--(axis cs:13.6005,18.1710298687663)
+--(axis cs:13.6005,6.48176150995277)
+--(axis cs:14.1,7.98176150995277)
+--cycle;
+\path [draw=black, fill=white]
+(axis cs:13.6,18.1710298687663)
+--(axis cs:14.1,16.6710298687663)
+--(axis cs:13.6005,18.1710298687663)
+--(axis cs:13.6005,6.48176150995277)
+--(axis cs:13.5995,6.48176150995277)
+--(axis cs:13.5995,18.1710298687663)
+--(axis cs:13.1,16.6710298687663)
+--cycle;
+\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, only marks]
+table {%
+0 12.2953146866099
+1 18.8881758666537
+2 20.0487810681893
+3 26.6384896175217
+4 25.7460113737956
+5 19.6348856424945
+6 18.4980426894777
+7 11.6900416448795
+8 9.09754897667893
+9 7.94614004414408
+10 6.48176150995277
+11 10.4865437671727
+12 10.1138044152746
+13 18.1710298687663
+14 21.8429753436936
+15 20.3492135184764
+16 21.2848438341475
+};
+\addplot [semithick, black, dashed]
+table {%
+3 0
+3 30
+};
+\addplot [semithick, black, dashed]
+table {%
+13 0
+13 30
+};
+\addplot [semithick, black, dashed]
+table {%
+0 6.48176150995277
+16.5 6.48176150995277
+};
+\addplot [semithick, black, dashed]
+table {%
+0 26.6384896175217
+16.5 26.6384896175217
+};
+\addplot [semithick, black, dashed]
+table {%
+11.4 18.1710298687663
+14.6 18.1710298687663
+};
+\end{axis}
+
+\end{tikzpicture}

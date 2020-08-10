@@ -1,3 +1,120 @@
 \section{Method}
 \label{sec:method}
 
+% Write some introductory text for the method section
+\todo{Explain structure of this section}
+
+In the remainder of this article, the probability of $\cdot$ is denoted by $\probability{\cdot}$ and the probability density of $\cdot$ is denoted by $\density{\cdot}$. 
+
+\subsection{Estimating the exposure}
+\label{sec:exposure}
+
+\todo{Write method for estimating the exposure}
+% \input{sections/tagging}
+
+
+
+\subsection{Estimating the probability of harm}
+\label{sec:controllability}
+
+To determine whether any harm can be avoided, tests can be performed. In a test, a system is evaluated under specific conditions that are described by a specific scenario. Because a scenario category comprises multiple scenarios, multiple tests are needed to estimate the probability of a harmful outcome given a scenario category $\scenariocategory$, denoted by $\probabilitycond{\harm}{\scenariocategory}$. 
+
+To use the results of multiple tests to estimate $\probabilitycond{\harm}{\scenariocategory}$, we assume that the scenarios comprised in the scenario category $\scenariocategory$ can be parameterized using a parameter vector $\parvector\in\parspace\subseteq\realnumbers^\pardim$. Here, $\pardim$ denotes the number of parameters and $\parspace$ is the set of possible parameter vectors. $\probabilitycond{\harm}{\parvector,\scenariocategory}$ denotes the probability of harm in a specific scenario. Let $\densitycond{\parvector}{\scenariocategory}$ denote the probability density of $\parvector$ given the scenario category $\scenariocategory$. By taking  over $\parvector$, we can obtain the probability of harm given a scenario category:
+\begin{equation}
+	\label{eq:prob harm}
+	\probabilitycond{\harm}{\scenariocategory} = \int_{\parspace} \probabilitycond{\harm}{\parvector,\scenariocategory} \densitycond{\parvector}{\scenariocategory} \ud\parvector.
+\end{equation}
+
+We will first present how we obtain an estimate the \ac{pdf} $\densitycond{\parvector}{\scenariocategory}$. Next, we will show how Monte Carlo simulations are used to approximate the integral \cref{eq:prob harm}. Finally, we propose a method to lower the number of required simulations, especially if $\probabilitycond{\harm}{\scenariocategory}$ is small.
+
+
+
+\subsubsection{Estimating $\densitycond{\parvector}{\scenariocategory}$}
+\label{sec:estimating parameter distribution}
+
+When estimating the exposure (\cref{sec:exposure}), scenarios are extracted from a data set. Let $\parvectorscen{\indexa}$ denote the parameter vector that approximately describes the $\indexa$-th scenario. Thus, if $\nscenarios$ denotes the number of scenarios, we have $\nscenarios$ parameter vectors that can be used to approximate the \ac{pdf} $\probabilitycond{\harm}{\scenariocategory}$.
+
+The shape of the \ac{pdf} is unknown beforehand. Furthermore, the shape of the estimated \ac{pdf} might change as more data are acquired. Assuming a functional form of the \ac{pdf} and fitting the parameters of the \ac{pdf} to the data may therefore lead to inaccurate fits unless a lot of hand-tuning is applied. We employ a non-parametric approach using \ac{kde} \autocite{rosenblatt1956remarks, parzen1962estimation} because the shape of the \ac{pdf} is automatically computed and \ac{kde} is highly flexible regarding the shape of the \ac{pdf}.
+
+In \ac{kde}, the estimated \ac{pdf} is given by:
+\begin{equation}
+	\label{eq:kde}
+	\densityestcond{\parvector}{\scenariocategory} = 
+	\frac{1}{\normalizationkde} \sum_{\indexa=1}^{\nscenarios} \kernelfuncnormalized{\bandwidthmatrix}{\parvector - \parvectorscen{\indexa}},
+\end{equation}
+where $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ denotes the normalized kernel function that depends on the positive definite bandwidth matrix $\bandwidthmatrix$ and $\normalizationkde$ denotes a normalization constant. In particular, we have
+\begin{align}
+	\kernelfuncnormalized{\bandwidthmatrix}{\dummyvar} &= 
+	\frac{1}{\left(2\pi\right)^{\pardim/2} \left\| \bandwidthmatrix \right\|^{1/2}}
+	\e{-\frac{1}{2} \dummyvar^T \bandwidthmatrix^{-1} \dummyvar}, \\
+	\normalizationkde &= \int_{\parspace} \sum_{\indexa=1}^{\nscenarios}
+	\kernelfuncnormalized{\bandwidthmatrix}{\parvector - \parvectorscen{\indexa}} \ud\parvector.
+\end{align}
+
+
+
+\subsubsection{Monte Carlo simulations}
+\label{sec:monte carlo}
+
+To determine whether a particular scenario leads to harm, a simulation can be carried out. Due to the stochastic nature of such simulations, e.g., because of the presence of sensor noise, two simulations of the same scenario might lead to a different result. If $\dummystochastic\sim\density{\dummystochastic}$ represents the stochasticity of a simulation, then we can denote the result of a simulation of a parameterized scenario $\parvector$ of scenario category $\scenariocategory$ by $\simulation{\parvector, \scenariocategory, \dummystochastic} \in \{0, 1\}$, where $\simulation{\parvector, \scenariocategory, \dummystochastic}=1$ if the particular simulation results in a harmful outcome and $\simulation{\parvector, \scenariocategory, \dummystochastic}=0$ otherwise. Thus, if we would take the expectation of $\simulation{\parvector, \scenariocategory, \dummystochastic}=0$ with respect to $\dummystochastic$, we obtain $\probabilitycond{\harm}{\parvector,\scenariocategory}$:
+\begin{equation}
+	\label{eq:prob simulation}
+	\probabilitycond{\harm}{\parvector,\scenariocategory} =
+	\expectationwrt{\dummystochastic}{\simulation{\parvector, \scenariocategory, \dummystochastic}}.
+\end{equation}
+
+We can rewrite \cref{eq:prob harm} as the expectation with respect to $\parvector$:
+\begin{equation}
+	\probabilitycond{\harm}{\scenariocategory} =
+	\expectationwrt{\parvector}{\probabilitycond{\harm}{\parvector,\scenariocategory}}.
+\end{equation}
+Substituting the right-hand-side of \cref{eq:prob simulation} gives us
+\begin{equation}
+	\label{eq:expectation harm}
+	\probabilitycond{\harm}{\scenariocategory} =
+	\expectationwrt{\parvector}{\expectationwrt{\dummystochastic}{\simulation{\parvector, \scenariocategory, \dummystochastic}}} =
+	\expectationwrt{\parvector,\dummystochastic}{\simulation{\parvector, \scenariocategory, \dummystochastic}}.
+\end{equation}
+This expectation can be approximated using a Monte Carlo simulation:
+\begin{equation}
+	\label{eq:monte carlo}
+	\probabilitycond{\harm}{\scenariocategory} \approx 
+	\frac{1}{\nsim} \sum_{\indexb=1}^{\nsim} \simulation{\parvectorscen{\indexb}, \scenariocategory, \dummystochastic_{\indexb}}, \quad 
+	\parvectorscen{\indexb}\sim\densityestcond{\parvector}{\scenariocategory},
+	\dummystochastic_{\indexb}\sim\density{\dummystochastic},
+\end{equation}
+where $\nsim$ denotes the number of simulations.
+
+
+
+\subsubsection{Markov chain Monte Carlo simulations}
+\label{sec:mcmc}
+
+If $\probabilitycond{\harm}{\scenariocategory}$ is small, a large number of simulation might be needed to estimate this probability using \cref{eq:monte carlo}. A common way to reduce the number of simulations is to use importance sampling \autocite{rubinstein2016simulation}. The idea of importance sampling is to sample $\parvector$ from a different distribution $\densityimportance{\cdot}$ and to correct the simulation result using the ratio of the original density $\densitycond{\cdot}{\scenariocategory}$ and the importance density $\densityimportance{\cdot}$:
+\begin{equation}
+	\label{eq:importance sampling}
+	\probabilitycond{\harm}{\scenariocategory} \approx 
+	\frac{1}{\nsim} \sum_{\indexb=1}^{\nsim} \simulation{\parvectorscen{\indexb}, \scenariocategory, \dummystochastic_{\indexb}}
+	\frac{\densitycond{\parvectorscen{\indexb}}{\scenariocategory}}{\densityimportance{\parvectorscen{\indexb}}}, \quad 
+	\parvectorscen{\indexb}\sim\densityimportance{\scenariocategory},
+	\dummystochastic_{\indexb}\sim\density{\dummystochastic},
+\end{equation}
+
+It is easy to see that the expectation of the right-hand-side of \cref{eq:importance sampling} equals $\probabilitycond{\harm}{\scenariocategory}$ if $\densityimportance{\dummyvar}>0, \forall \{u: \simulation{\dummyvar, \scenariocategory, \dummystochastic_{\indexb}}\densitycond{\dummyvar}{\scenariocategory}>0\}$. The goal is to choose $\densityimportance{\cdot}$ in such a way that the variance of the right-hand-side of \cref{eq:importance sampling} is minimized. It can be shown that the variance is minimized if \autocite{rubinstein2016simulation}:
+\begin{equation}
+	\label{eq:optimal importance density}
+	\densityimportance{\dummyvar} \propto \simulation{\dummyvar, \scenariocategory, \dummystochastic_{\indexb}}\densitycond{\dummyvar}{\scenariocategory}.
+\end{equation}
+
+There are two problems why we cannot use \cref{eq:optimal importance density} directly. First, $\densitycond{\cdot}{\scenariocategory}$ is unknown. We could use the approximation $\densityestcond{\cdot}{\scenariocategory}$ instead. Second, we do not have a functional form of $\simulation{\cdot, \scenariocategory, \dummystochastic_{\indexb}}$ and evaluating $\simulation{\cdot, \scenariocategory, \dummystochastic_{\indexb}}$ generally requires expensive simulations. Therefore, direct sampling from a distribution like \cref{eq:optimal importance density} is impossible.
+
+To solve these issues, we can employ \ac{mcmc} \autocite{rubinstein2016simulation} to approximately generate samples from the distribution \cref{eq:optimal importance density}.
+
+\todo{Describe the MCMC algorithm that is used.}
+
+
+
+\subsection{Estimating the severity}
+\label{sec:severity}
+
+\todo{Explain how we compute the severity.}

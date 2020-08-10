@@ -4309,6 +4309,15 @@
     <pdf_title>ADetailed Comparison of UML and OWL</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Business Objects: Re-Engineering for Re-Use" ID="ID_239407192" CREATED="1596986891625" MODIFIED="1596986895737" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/507%20Re-Engineering%20for%20Re-Use.pdf">
+<attribute NAME="key" VALUE="patridge2005business"/>
+<attribute NAME="year" VALUE="2005"/>
+<attribute NAME="title" VALUE="Business Objects: Re-Engineering for Re-Use"/>
+<attribute NAME="authors" VALUE="Patridge, Chris"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AD55C136563E34032895188F897382E8FD9614399474D29C6D8C6D8773819">
+    <pdf_title>OO</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="In general about &quot;object-oriented&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1406053831" CREATED="1596016318125" MODIFIED="1596016328541">
 <node TEXT="Concepts and Paradigms of Object-Oriented Programming" ID="ID_1769300570" CREATED="1596016425258" MODIFIED="1596016428444" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/498%20Concepts%20and%20paradigms%20of%20object-oriented%20programming.pdf">
