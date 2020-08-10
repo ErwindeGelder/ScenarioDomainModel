@@ -394,6 +394,11 @@ if __name__ == '__main__':
     compile_pr(30, usebiber=True)
     compile_pr(31)
     compile_pr(32, usebiber=True)
+    compile_pr(33, usebiber=True,
+               other=[(join('20180629 Journal paper ontology', 'framework_scenarios'),
+                       dict(usebiber=True)),
+                      (join('20191113 Journal Scenario Risk', 'scenario_risk'),
+                       dict(usebiber=True))])
 
     # Revisions/versions
     compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',
