@@ -137,7 +137,7 @@ class CaseStudy:
     def mc_result(self) -> None:
         """ Print the Monte Carlo result. """
         prob = np.mean(self.df_mc["kpi"])
-        sigma = np.sqrt(np.mean((self.df_mc["kpi"] - prob)**2) / self.options.nmc)
+        sigma = np.sqrt(np.sum((self.df_mc["kpi"] - prob)**2)) / self.options.nmc
         print("Monte Carlo:         Probability of collision: {:.2f} %".format(prob*100), end="")
         print(" +/- {:.2f} %".format(sigma*100))
 
@@ -240,7 +240,7 @@ class CaseStudy:
         # Compute the Monte Carlo result
         result = self.df_is["kpi"] * self.df_is["orig_density"] / self.df_is["impo_density"]
         prob = np.mean(result)
-        sigma = np.sqrt(np.mean((result - prob)**2) / len(result))
+        sigma = np.sqrt(np.sum((result - prob)**2)) / len(result)
         print("Importance sampling: Probability of collision: {:.2f} %".format(prob*100), end="")
         print(" +/- {:.2f} %".format(sigma*100))
 
