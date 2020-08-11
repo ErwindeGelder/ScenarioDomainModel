@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from databaseemulator import DataBaseEmulator
 from domain_model import Scenario
-from simulation import SimulationLeadBraking, ACC, acc_parameters
+from simulation import SimulationLeadBraking, ACC, acc_lead_braking_pars
 from case_study import CaseStudy, CaseStudyOptions, default_process_result
 
 
@@ -163,6 +163,6 @@ if __name__ == "__main__":
     print("ACC:")
     acc_pars = dict(filename_prefix="lead_braking_acc.p",
                     simulator=SimulationLeadBraking(follower=ACC(),
-                                                    follower_parameters=acc_parameters),)
+                                                    follower_parameters=acc_lead_braking_pars), )
     acc_pars.update(default_pars)
     CaseStudy(CaseStudyOptions(**acc_pars))
