@@ -9,6 +9,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 08 06 Use correct data. Update case study.
+2020 08 11 Update case study.
 """
 
 import argparse
@@ -59,20 +60,19 @@ def check_validity_2d(par: np.ndarray) -> bool:
 
 if __name__ == "__main__" or True:
     CS_DRIVER = CaseStudy(CaseStudyOptions(overwrite=ARGS.overwrite,
-                                           filename_kde_pars="lead_braking.p",
-                                           filename_mc="lead_braking_mc_2d.csv",
-                                           filename_is="lead_braking_is_2d.csv",
-                                           filename_kde_is="lead_braking_is_2d.p",
+                                           filename_prefix="lead_braking_2d",
                                            func_parameters=parameters_lead_braking,
                                            func_kde_update=get_2d_kde,
                                            func_validity_parameters=check_validity_2d,
                                            func_process_result=default_process_result,
                                            simulator=SimulationLeadBraking(),
                                            parameters=["amean", "dv"],
+                                           grid_parameters=[np.linspace(0.5, 5, 33),
+                                                            np.linspace(5, INIT_SPEED, 17)],
                                            default_parameters=dict(v0=INIT_SPEED),
                                            init_par_is=[2, 20],
                                            mcmc_step=np.array([0.3, 2.0]),
-                                           nmc=1000, nis=1000))
+                                           nmc=5000, nis=1000))
 
     # Visualize the 2D density of the parameters.
     SCALING_KDE = CS_DRIVER.kde.probability([0, 0], [400., INIT_SPEED])
