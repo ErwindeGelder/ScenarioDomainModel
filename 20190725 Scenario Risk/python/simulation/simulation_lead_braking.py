@@ -6,6 +6,7 @@ Author(s): Erwin de Gelder
 Modifications:
 2020 06 22 Parameters based on Treiber et al. (2006).
 2020 06 23 Add possibility to use any driver model for follower.
+2020 08 11 Allow to use option 'ratio_dv_v0' instead of 'dv'.
 """
 
 import matplotlib.pyplot as plt
@@ -169,7 +170,11 @@ class SimulationLeadBraking(Simulator):
         """
         init_speed = kwargs["v0"]
         average_deceleration = kwargs["amean"]
-        speed_difference = kwargs["dv"]
+        if "dv" in kwargs:
+            speed_difference = kwargs["dv"]
+        else:
+            speed_difference = init_speed * kwargs["ratio_dv_v0"]
+
         self.follower.init_simulation(self.follower_parameters(**kwargs))
         self.leader.init_simulation(
             LeaderBrakingParameters(init_position=0,
