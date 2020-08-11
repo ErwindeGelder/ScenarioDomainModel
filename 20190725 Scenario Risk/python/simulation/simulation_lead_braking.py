@@ -12,6 +12,7 @@ Modifications:
 import matplotlib.pyplot as plt
 import numpy as np
 from .acc import ACC, ACCParameters
+from .cacc import CACC, CACCParameters
 from .eidm import EIDMParameters
 from .hdm import HDM, HDMParameters
 from .idm import IDMParameters
@@ -20,7 +21,7 @@ from .leader_braking import LeaderBraking, LeaderBrakingParameters
 from .simulator import Simulator
 
 
-def hdm_parameters(**kwargs):
+def hdm_lead_braking_pars(**kwargs):
     """ Define the follower parameters based on the scenario parameters.
 
     :return: Parameter object that can be passed via init_simulation.
@@ -45,7 +46,7 @@ def hdm_parameters(**kwargs):
     return parameters
 
 
-def eidm_parameters(**kwargs):
+def eidm_lead_braking_pars(**kwargs):
     """ Define the follower parameters based on the scenario parameters.
 
     :return: Parameter object that can be passed via init_simulation.
@@ -68,8 +69,8 @@ def eidm_parameters(**kwargs):
     return parameters
 
 
-def acc_parameters(**kwargs):
-    """ Define the follower parameters based on the scenario parameters.
+def acc_lead_braking_pars(**kwargs):
+    """ Define the ACC parameters of the follower based on scenario parameters.
 
     :return: Parameter object that can be passed via init_simulation.
     """
@@ -82,6 +83,23 @@ def acc_parameters(**kwargs):
                                init_speed=init_speed,
                                init_position=-init_distance,
                                n_reaction=0)
+    return parameters
+
+
+def cacc_lead_braking_pars(**kwargs):
+    """ Define the CACC parameters of the follower based on scenario parameters.
+
+    :return: Parameter object that can be passed via init_simulation.
+    """
+    init_speed = kwargs["v0"]
+    safety_distance = CACC.safety_distance(init_speed)
+    default_parameters = CACCParameters()
+    thw = default_parameters.thw
+    init_distance = safety_distance + init_speed * thw
+    parameters = CACCParameters(speed=init_speed,
+                                init_speed=init_speed,
+                                init_position=-init_distance,
+                                n_reaction=0)
     return parameters
 
 
@@ -98,7 +116,7 @@ class SimulationLeadBraking(Simulator):
         self.leader = LeaderBraking()
         self.follower = HDM() if follower is None else follower
         if follower_parameters is None:
-            self.follower_parameters = hdm_parameters
+            self.follower_parameters = hdm_lead_braking_pars
         else:
             self.follower_parameters = follower_parameters
         Simulator.__init__(self, **kwargs)

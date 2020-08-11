@@ -80,7 +80,7 @@ class StandardModel(ABC):
 
         :param gap: Gap with preceding vehicle.
         :param vhost: Speed of host vehicle.
-        :param vdiff: Difference in speed between leading and host vehicle.
+        :param vdiff: Difference in speed (vhost - vlead).
         """
         # Calculate acceleration based on the model.
         self.accelerations.append(self.acceleration(gap, vhost, vdiff))
