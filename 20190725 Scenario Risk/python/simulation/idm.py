@@ -7,7 +7,8 @@ Modifications:
 2020 06 12 Avoid division by zero when calculating the non-free-flow part.
 2020 06 22 A seperate function for the integration of the acceleration.
 2020 06 24 Do not return speed and position with an update step.
-2020 08 05 Make use of the StandardModel
+2020 08 05 Make use of the StandardModel.
+2020 08 12 Add options of having a maximum view. Targets further away are not considered.
 """
 
 import numpy as np
@@ -21,6 +22,7 @@ class IDMParameters(StandardParameters):
     b_acc: float = 1.67  # IDM parameter (preferred minimum acceleration)
     delta: float = 4  # IDM parameter
     safety_distance: float = 2  # IDM parameter (safety distance)
+    max_view: float = 150  # [m] Maximum distance to see a target
 
 
 class IDMState(StandardState):
@@ -43,6 +45,7 @@ class IDM(StandardModel):
         - b_acc: float = 1.67  # IDM parameter (preferred minimum acceleration)
         - delta: float = 4  # IDM parameter
         - safety_distance: float = 2  # IDM parameter (safety distance)
+        - max_view: float = 150  # [m] Maximum distance to see a target
 
         :param parms: The parameters listed above.
         """
@@ -61,6 +64,8 @@ class IDM(StandardModel):
         :param vdiff: Difference in speed between leading and host vehicle.
         :return: The acceleration.
         """
+        if gap > self.parms.max_view:
+            return self.parms.a_acc * (1 - self._freeflowpart(vhost))
         return self.parms.a_acc * (1 - self._freeflowpart(vhost) -
                                    self._nonfreeflowpart(gap, vhost, vdiff))
 
