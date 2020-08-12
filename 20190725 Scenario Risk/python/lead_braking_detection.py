@@ -75,13 +75,9 @@ def process_file(path: str, database: DataBaseEmulator):
 
     # Store each scenario.
     data_handler = DataHandler(os.path.join("data", "1_hdf5", os.path.basename(path)))
-    skipped = 0
     for braking in brakings:
-        if braking[2] - braking[1] < 0.1:
-            skipped += 1
-            continue  # Skip very short scenarios.
         process_scenario(braking, data_handler, target_ngrams, ego_ngram, database)
-    return len(brakings) - skipped
+    return len(brakings)
 
 
 def extract_lead_braking(target_ngrams: NGram) -> List[Tuple[int, float, float]]:
@@ -99,7 +95,8 @@ def extract_lead_braking(target_ngrams: NGram) -> List[Tuple[int, float, float]]
     for i, target in enumerate(target_ngrams.ngrams):
         search = find_sequence((target,), (target_tags,))
         while search.is_found:
-            scenarios.append((i, search.t_start, search.t_end))
+            if search.t_end - search.t_start > 0.1:  # Skip very short scenarios.
+                scenarios.append((i, search.t_start, search.t_end))
             search = find_sequence((target,), (target_tags,), t_start=search.t_end+0.1)
 
     return scenarios
