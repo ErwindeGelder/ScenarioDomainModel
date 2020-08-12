@@ -2283,7 +2283,7 @@
     <pdf_title>ISA Transactions</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Realistic Car-Following Models for Microscopic Simulation of (C)ACC" ID="ID_135854281" CREATED="1595510457588" MODIFIED="1595510581806" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/487%20Realistic%20Car-Following%20Models%20for%20Microscopic%20Simulation%20of%20(C)ACC.pdf">
+<node TEXT="Realistic Car-Following Models for Microscopic Simulation of (C)ACC" FOLDED="true" ID="ID_135854281" CREATED="1595510457588" MODIFIED="1595510581806" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/487%20Realistic%20Car-Following%20Models%20for%20Microscopic%20Simulation%20of%20(C)ACC.pdf">
 <attribute NAME="key" VALUE="xiao2017realistic"/>
 <attribute NAME="journal" VALUE="Transportation Research Record"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -2303,6 +2303,16 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="ACC &amp; CACC model (used in the above mentioned paper)" ID="ID_483363946" CREATED="1597070550081" MODIFIED="1597070564830" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/511%20Modeling%20cooperative%20and%20autonomous%20ACC%20and%20CACC.pdf">
+<attribute NAME="key" VALUE="milanes2014modeling"/>
+<attribute NAME="journal" VALUE="Transportation Research Part C: Emerging Technologies"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Modeling Cooperative and Autonomous Adaptive Cruise Control Dynamic Responses Using Experimental Data"/>
+<attribute NAME="authors" VALUE="Milan{\&apos;e}s, Vicente and Shladover, Steven E"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3FB1139C43D776BA3F94D3FAD3660DA356B49EDD98A6403492415AC5506F">
+    <pdf_title>Transportation Research Part C</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="Simplified Energy-Efficient ACC based on MPC" ID="ID_1119925937" CREATED="1595510593750" MODIFIED="1595510691018" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/488%20Simplified%20Energy-Efficient%20ACC%20based%20on%20MPC.pdf">
 <attribute NAME="key" VALUE="lin2017simplified"/>
 <attribute NAME="journal" VALUE="IFAC-PapersOnLine"/>
@@ -2311,6 +2321,16 @@
 <attribute NAME="authors" VALUE="Lin, Xiaohai and G{\&quot;o}rges, Daniel and Wei{\ss}mann, Andreas"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="625112A88B1246946F333C41A7E11208C255382A5A81315C87BAE565424">
     <pdf_title>ScienceDirect</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Delay ACC: 300 ms" ID="ID_1876584373" CREATED="1597061358543" MODIFIED="1597061512525" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/510%20A%20Safe%20Longitudinal%20Control%20for%20ACC.pdf">
+<attribute NAME="key" VALUE="martinez2007safe"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Control Systems Technology"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="A Safe Longitudinal Control for Adaptive Cruise Control and Stop-and-Go Scenarios"/>
+<attribute NAME="authors" VALUE="Martinez, John-Jairo and Canudas-de-Wit, Carlos"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3EEA252879F2B468471B9C81C149F17FC6335C122356A702E58DBD192F9B77">
+    <pdf_title>A Safe Longitudinal Control for Adaptive Cruise Control and Stop-and-Go Scenarios</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2564,6 +2584,17 @@
 <attribute NAME="authors" VALUE="Varotto, S. F. and Hoogendoorn, R. G. and van Arem, B. . and Hoogendoorn, S. P."/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5011FE4D1F4EC2293C2D3749B66A22E895171621E2F1CC90E78CA523A4">
     <pdf_title>Empirical Longitudinal Driving Behavior in Authority Transitions Between Adaptive Cruise Control and Manual Driving</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Vehicle model" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1081732918" CREATED="1597061233166" MODIFIED="1597061238599">
+<node TEXT="Model in CACC paper Jeroen Ploeg" ID="ID_1467860182" CREATED="1597061239998" MODIFIED="1597061310188" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/509%20Design%20and%20Experimental%20Evaluation%20of%20Cooperative%20Adaptive%20Cruise%20Control.pdf">
+<attribute NAME="key" VALUE="ploeg2011design"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Design and Experimental Evaluation of Cooperative Adaptive Cruise Control"/>
+<attribute NAME="authors" VALUE="Ploeg, Jeroen and Scheepers, Bart TM and Van Nunen, Ellen and Van de Wouw, Nathan and Nijmeijer, Henk"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D8C12F399E22B36DD8961BF9A81A8DF3510FBB21EF0BF4C9E93B0EF7CDCE1FD">
+    <pdf_title>Design and Experimental Evaluation of Cooperative Adaptive Cruise Control</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -2827,6 +2858,13 @@
 </node>
 </node>
 <node TEXT="Monte Carlo" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1779539678" CREATED="1580464294679" MODIFIED="1580481781699">
+<node TEXT="Simulation and the Monte Carlo method" ID="ID_1299781280" CREATED="1597045859138" MODIFIED="1597046076820" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/508%20Simulation%20and%20the%20Monte%20Carlo%20Method.pdf">
+<attribute NAME="key" VALUE="rubinstein2016simulation"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Simulation and the {M}onte {C}arlo Method"/>
+<attribute NAME="authors" VALUE="Rubinstein, Reuven Y. and Kroese, Dirk P."/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
 <node TEXT="Book about Monte Carlo" ID="ID_192080728" CREATED="1580481771631" MODIFIED="1590912450288" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/413%20Monte%20Carlo.pdf">
 <attribute NAME="key" VALUE="owen2013montecarlo"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -4673,7 +4711,7 @@
 </node>
 </node>
 <node TEXT="Kernel Density Estimation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_500468896" CREATED="1513311876271" MODIFIED="1513311886206">
-<node TEXT="Invention of KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_754407193" CREATED="1513312193327" MODIFIED="1513312239799">
+<node TEXT="Invention of KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_754407193" CREATED="1513312193327" MODIFIED="1513312239799">
 <node TEXT="Rosenblatt (1956)" ID="ID_245750230" CREATED="1513312276939" MODIFIED="1534390598239" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/087%20Kernel%20Density%20Estimation%20-%20Rosenblatt.pdf">
 <attribute NAME="key" VALUE="rosenblatt1956remarks"/>
 <attribute NAME="journal" VALUE="The Annals of Mathematical Statistics"/>
