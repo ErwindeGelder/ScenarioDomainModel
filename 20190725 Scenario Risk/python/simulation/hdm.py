@@ -7,6 +7,7 @@ Modifications:
 2020 06 23 Provide the parameters of the underlying model as part of the HDM parameters. Add
            position, speed, and acceleration to own state.
 2020 06 24 Do not return speed and position with an update step.
+2020 08 12 Fix important bug when computing the temporal anticipation.
 """
 
 from typing import Tuple, Union
@@ -119,7 +120,7 @@ class HDM:
         :param vlead_est: Estimated speed of lead vehicle.
         :return: Anticipated gap, speed host vehicle, and speed difference with lead.
         """
-        gap_corr = gap_est - self.parms.delay*(vlead_est - self.parms.model.state.speed)
+        gap_corr = gap_est - self.parms.delay*(self.parms.model.state.speed - vlead_est)
         speed_corr = (self.parms.model.state.speed +
                       self.parms.delay*self.parms.model.state.acceleration)
         speed_diff_corr = self.parms.model.state.speed - vlead_est
