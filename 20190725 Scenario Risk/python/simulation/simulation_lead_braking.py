@@ -7,10 +7,9 @@ Modifications:
 2020 06 22 Parameters based on Treiber et al. (2006).
 2020 06 23 Add possibility to use any driver model for follower.
 2020 08 11 Allow to use option 'ratio_dv_v0' instead of 'dv'.
+2020 08 13 Use SimulationLongitudinal as superclass to do the actual simulation.
 """
 
-import matplotlib.pyplot as plt
-import numpy as np
 from .acc import ACC, ACCParameters
 from .acc_hdm import ACCHDM, ACCHDMParameters
 from .cacc import CACC, CACCParameters
