@@ -6,6 +6,7 @@ Author(s): Erwin de Gelder
 Modifications:
 2020 08 06 Use correct data. Update case study.
 2020 08 11 Update the case study. Use meta-model to get importance density.
+2020 08 12 Provide plot functionality for each case study.
 """
 
 import argparse
@@ -15,7 +16,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from databaseemulator import DataBaseEmulator
 from domain_model import Scenario
-from simulation import SimulationLeadBraking, ACC, acc_lead_braking_pars
+from simulation import SimulationLeadBraking, ACC, acc_lead_braking_pars, ACCHDM, \
+    acc_hdm_lead_braking_pars
 from case_study import CaseStudy, CaseStudyOptions, default_process_result
 
 
@@ -124,45 +126,69 @@ def check_validity_lead_braking_alt(par: Union[List, np.ndarray]) -> bool:
     return check_validity_lead_braking([par[0], par[1], par[2]*par[0]])
 
 
+def plot_result(case_study: CaseStudy, title: str = ""):
+    """ Plot some results. """
+
+    _, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 5))
+    ax1.scatter(case_study.df_mc["v0"], case_study.df_mc["ratio_dv_v0"], c=case_study.df_mc["kpi"])
+    ax1.set_xlabel("Initial speed [m/s]")
+    ax1.set_ylabel("Speed reduction ratio")
+    ax1.set_title("{:s}\nMonte Carlo, yellow = collision".format(title))
+    xlim = ax1.get_xlim()
+    ylim = ax1.get_ylim()
+
+    ax2.scatter(case_study.df_is["v0"], case_study.df_is["ratio_dv_v0"], c=case_study.df_is["kpi"])
+    ax2.set_xlabel("Initial speed [m/s]")
+    ax2.set_ylabel("Speed reduction ratio")
+    ax2.set_title("{:s}\nImportance sampling, yellow = collision".format(title))
+    ax2.set_xlim(xlim)
+    ax2.set_ylim(ylim)
+
+    values, indices = np.unique(case_study.df_grid[['v0', 'ratio_dv_v0']].values, axis=0,
+                                return_inverse=True)
+    collisions = np.zeros(len(values))
+    for i in range(len(values)):
+        collisions[i] = np.sum(case_study.df_grid.loc[indices == i, "kpi"])
+    ax3.scatter(values[:, 0], values[:, 1], c=collisions)
+    ax3.set_xlabel("Initial speed [m/s]")
+    ax3.set_ylabel("Speed reduction ratio")
+    ax3.set_title("{:s}\nyellower = more collision (total={:.0f})".format(title, sum(collisions)))
+
+
 if __name__ == "__main__":
-    default_pars = dict(overwrite=ARGS.overwrite,
+    DEFAULT_PARS = dict(overwrite=ARGS.overwrite,
                         func_parameters=par_lead_braking_alternative,
                         func_validity_parameters=check_validity_lead_braking_alt,
                         func_process_result=default_process_result,
                         parameters=["v0", "amean", "ratio_dv_v0"],
-                        init_par_is=[20, 2, 1.0],
+                        init_par_is=[20, 6, 1.0],
                         mcmc_step=np.array([2.0, 0.3, 0.1]),
-                        nmc=10000,
+                        nmc=1000,
                         grid_parameters=[np.linspace(5, 60, 12),
                                          np.linspace(0.5, 6, 12),
                                          np.linspace(0.1, 1, 10)])
     print("HDM:")
-    hdm_pars = dict(filename_prefix="lead_braking_hdm",
+    HDM_PARS = dict(filename_prefix="lead_braking_hdm",
                     simulator=SimulationLeadBraking())
-    hdm_pars.update(default_pars)
-    cs = CaseStudy(CaseStudyOptions(**hdm_pars))
-
-    plt.subplots(1, 1)
-    plt.scatter(cs.df_mc["v0"], cs.df_mc["ratio_dv_v0"], c=cs.df_mc["kpi"])
-    plt.xlabel("Initial speed [m/s]")
-    plt.ylabel("Speed reduction ratio")
-    plt.title("Monte Carlo, yellow = collision")
-    xlim = plt.xlim()
-    ylim = plt.ylim()
-
-    plt.subplots(1, 1)
-    plt.scatter(cs.df_is["v0"], cs.df_is["ratio_dv_v0"], c=cs.df_is["kpi"])
-    plt.xlabel("Initial speed [m/s]")
-    plt.ylabel("Speed reduction ratio")
-    plt.title("Importance sampling, yellow = collision")
-    plt.xlim(xlim)
-    plt.ylim(ylim)
-    plt.show()
+    HDM_PARS.update(DEFAULT_PARS)
+    CASE_STUDY = CaseStudy(CaseStudyOptions(**HDM_PARS))
+    plot_result(CASE_STUDY, "HDM")
 
     print()
     print("ACC:")
-    acc_pars = dict(filename_prefix="lead_braking_acc.p",
+    ACC_PARS = dict(filename_prefix="lead_braking_acc",
                     simulator=SimulationLeadBraking(follower=ACC(),
-                                                    follower_parameters=acc_lead_braking_pars), )
-    acc_pars.update(default_pars)
-    CaseStudy(CaseStudyOptions(**acc_pars))
+                                                    follower_parameters=acc_lead_braking_pars))
+    ACC_PARS.update(DEFAULT_PARS)
+    CASE_STUDY = CaseStudy(CaseStudyOptions(**ACC_PARS))
+    plot_result(CASE_STUDY, "ACC")
+
+    print()
+    print("ACC, FCW, and HDM:")
+    ACC_HDM_PARS = dict(filename_prefix="lead_braking_acchdm",
+                        simulator=SimulationLeadBraking(
+                            follower=ACCHDM(), follower_parameters=acc_hdm_lead_braking_pars))
+    ACC_HDM_PARS.update(DEFAULT_PARS)
+    CASE_STUDY = CaseStudy(CaseStudyOptions(**ACC_HDM_PARS))
+    plot_result(CASE_STUDY, "ACC, FCW, and HDM")
+    plt.show()
