@@ -4,6 +4,7 @@ Creation date: 2020 08 05
 Author(s): Erwin de Gelder
 
 Modifications:
+2018 08 13 To compute the acceleration, take the minimum of the CC and the ACC.
 """
 
 from .standard_model import StandardParameters, StandardState, StandardModel
@@ -61,7 +62,8 @@ class ACC(StandardModel):
         # If target is out of range, use the cruise control.
         if gap > self.parms.sensor_range:
             return self._acceleration_cc(vhost)
-        return self._acceleration_acc(gap, vhost, vdiff)
+        return min(self._acceleration_cc(vhost),
+                   self._acceleration_acc(gap, vhost, vdiff))
 
     def _acceleration_cc(self, vhost: float) -> float:
         return self.parms.k_cruise * (self.parms.speed - vhost)
