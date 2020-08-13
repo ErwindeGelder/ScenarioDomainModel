@@ -154,9 +154,9 @@ class CaseStudy:
     def mc_result(self) -> None:
         """ Print the Monte Carlo result. """
         prob = np.mean(self.df_mc["kpi"])
-        sigma = np.sqrt(np.sum((self.df_mc["kpi"] - prob)**2)) / self.options.nmc
-        print("Monte Carlo:         Probability of collision: {:.2f} %".format(prob*100), end="")
-        print(" +/- {:.2f} %".format(sigma*100), end="")
+        sigma = np.sqrt(np.sum((self.df_mc["kpi"] - prob)**2)) / len(self.df_mc)
+        print("Monte Carlo:         Probability of collision: {:.4f} %".format(prob*100), end="")
+        print(" +/- {:.4f} %".format(sigma*100), end="")
         print(" ({:d} simulations)".format(len(self.df_mc)))
 
     def grid_simulation(self) -> pd.DataFrame:
@@ -316,8 +316,8 @@ class CaseStudy:
         values /= np.sum(self.df_is["tries"]) / len(self.df_is)
         prob = np.mean(values)
         sigma = np.sqrt(np.sum((values - prob)**2)) / len(values)
-        print("Importance sampling: Probability of collision: {:.2f} %".format(prob*100), end="")
-        print(" +/- {:.2f} %".format(sigma*100), end="")
+        print("Importance sampling: Probability of collision: {:.4f} %".format(prob*100), end="")
+        print(" +/- {:.4f} %".format(sigma*100), end="")
         print(" ({:d} simulations)".format(len(values)))
 
     def direct_importance_simulation(self) -> pd.DataFrame:
@@ -425,8 +425,8 @@ class CaseStudy:
                   self.df_is_direct["impo_density"])
         prob = np.mean(result)
         sigma = np.sqrt(np.sum((result - prob)**2)) / len(result)
-        print("Alternative IS:      Probability of collision: {:.2f} %".format(prob*100), end="")
-        print(" +/- {:.2f} %".format(sigma*100), end="")
+        print("Alternative IS:      Probability of collision: {:.4f} %".format(prob*100), end="")
+        print(" +/- {:.4f} %".format(sigma*100), end="")
         print(" ({:d} simulations)".format(len(result)))
 
         return kde_is
