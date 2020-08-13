@@ -4,11 +4,12 @@ Creation date: 2020 05 31
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 08 12 Update functions a bit. Same result, but now it can also be used for other scenarios.
 """
 
 import glob
 import os
-from typing import List, NamedTuple, Tuple
+from typing import Callable, List, NamedTuple, Tuple
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
@@ -60,18 +61,19 @@ TARGET = ActorCategory(VehicleType.Vehicle, name="lead vehicle",
                              Tag.InitialState_Direction_SameAsEgo],)
 
 
-def process_file(path: str, database: DataBaseEmulator):
+def process_file(path: str, database: DataBaseEmulator, func_scen_extraction: Callable):
     """ Process a single HDF5 file.
 
     :param path: Path of the file with the n-grams.
     :param database: Database structure for storing the scenarios.
+    :param func_scen_extraction: Function that is used to extract the scenarios from the n-grams.
     """
     # Extract the deceleration activities of the ego vehicle.
     target_ngrams = NGram(FIELDNAMES_TARGET, METADATA_TARGET)
     target_ngrams.from_hdf(path, "targets")
     ego_ngram = NGram(FIELDNAMES_EGO, METADATA_EGO)
     ego_ngram.from_hdf(path, "ego")
-    brakings = extract_lead_braking(target_ngrams)
+    brakings = func_scen_extraction(ego_ngram, target_ngrams)
 
     # Store each scenario.
     data_handler = DataHandler(os.path.join("data", "1_hdf5", os.path.basename(path)))
@@ -80,12 +82,14 @@ def process_file(path: str, database: DataBaseEmulator):
     return len(brakings)
 
 
-def extract_lead_braking(target_ngrams: NGram) -> List[Tuple[int, float, float]]:
+def extract_lead_braking(ego_ngram: NGram, target_ngrams: NGram) -> List[Tuple[int, float, float]]:
     """ Extract cut ins.
 
+    :param ego_ngram: The n-gram of the ego vehicle (not used).
     :param target_ngrams: The n-gram of the target vehicles.
     :return: A list of (itarget, start_braking, end_braking).
     """
+    _ = ego_ngram
     # Define the tags for the ego-braking scenario.
     target_tags = [dict(lead_vehicle=[LeadVehicle.LEAD.value],
                         longitudinal_activity=[LongitudinalActivity.DECELERATING.value])]
@@ -242,7 +246,7 @@ if __name__ == "__main__":
     FILENAMES = glob.glob(os.path.join("data", "4_ngrams", "*.hdf5"))
     N_SCENARIOS = 0
     for filename in tqdm(FILENAMES):
-        N_SCENARIOS += process_file(filename, DATABASE)
+        N_SCENARIOS += process_file(filename, DATABASE, extract_lead_braking)
     print("Number of scenarios: {:d}".format(N_SCENARIOS))
 
     FOLDER = os.path.join("data", "5_scenarios")
