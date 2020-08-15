@@ -4394,7 +4394,16 @@
     <pdf_title>Designing Reusable Classes</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Reusability: The Case for Object-Oriented Design" ID="ID_1365786335" CREATED="1596033525032" MODIFIED="1596033526093"/>
+<node TEXT="Reusability: The Case for Object-Oriented Design" ID="ID_1365786335" CREATED="1596033525032" MODIFIED="1597496916112" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/502%20Reusability%20object%20oriented%20programming.pdf">
+<attribute NAME="key" VALUE="meyer1987reusability"/>
+<attribute NAME="journal" VALUE="IEEE Software"/>
+<attribute NAME="year" VALUE="1987"/>
+<attribute NAME="title" VALUE="Reusability: The Case for Object-Oriented Design"/>
+<attribute NAME="authors" VALUE="Meyer, Bertrand"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="94FBA1F28874986E7F70E284FA91A589106FD717A8946C12A135819195A367A">
+    <pdf_title>Object-Oriented</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="&quot;object-oriented&quot; in relation to testing" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_993268028" CREATED="1596006527379" MODIFIED="1596006553162">
 <node TEXT="Simulation Framework for Traffic Scenarios" ID="ID_1036695762" CREATED="1596006567729" MODIFIED="1596006571221" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
