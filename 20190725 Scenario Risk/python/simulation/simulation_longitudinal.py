@@ -4,6 +4,7 @@ Creation date: 2020 08 12
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 08 14 Minimum simulation time is now an attribute of the object, rather than hardcoded.
 """
 
 import matplotlib.pyplot as plt
@@ -24,6 +25,7 @@ class SimulationLongitudinal(Simulator):
         # Instantiate the vehicles.
         self.leader, self.leader_parameters = leader, leader_parameters
         self.follower, self.follower_parameters = follower, follower_parameters
+        self.min_simulation_time = 10
         Simulator.__init__(self, **kwargs)
 
     def simulation(self, parameters: dict, plot: bool = False,
@@ -46,7 +48,8 @@ class SimulationLongitudinal(Simulator):
 
         # Run the simulation for at least 10 seconds. Stop the simulation if the
         # distance increases.
-        while time < 10 or prev_dist > self.leader.state.position - self.follower.state.position:
+        while time < self.min_simulation_time \
+                or prev_dist > self.leader.state.position - self.follower.state.position:
             prev_dist = self.leader.state.position - self.follower.state.position
             mindist = min(prev_dist, mindist)
             time += self.follower.parms.timestep
