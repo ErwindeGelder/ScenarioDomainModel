@@ -54,6 +54,7 @@ class EIDM(IDM):
         :param leader: The leading vehicle that contains position, speed, and
                        acceleration.
         """
+        self.integration_step()
         self.update_eidm(leader.state.position - self.state.position,
                          self.state.speed,
                          self.state.speed - leader.state.speed,
@@ -67,8 +68,6 @@ class EIDM(IDM):
         :param vdiff: Difference in speed between leading and host vehicle.
         :param alead: The acceleration of the leading vehicle.
         """
-        self.integration_step()
-
         # In case of a negative gap, brake as much as possible.
         if gap <= 0:
             self.accelerations.append(min(-10., self.parms.amin))
