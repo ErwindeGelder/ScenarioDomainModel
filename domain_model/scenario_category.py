@@ -23,7 +23,7 @@ from __future__ import annotations
 from typing import List, Tuple
 import fnmatch
 import numpy as np
-from .default_class import Default
+from .thing import Thing
 from .tags import tag_from_json
 from .static_environment_category import StaticEnvironmentCategory, stat_env_category_from_json
 from .actor_category import ActorCategory, actor_category_from_json
@@ -32,7 +32,7 @@ from .actor import Actor
 from .type_checking import check_for_type, check_for_list, check_for_tuple
 
 
-class ScenarioCategory(Default):
+class ScenarioCategory(Thing):
     """ ScenarioCategory - A qualitative description
 
     Although a scenario is a quantitative description, there also exists a
@@ -78,7 +78,7 @@ class ScenarioCategory(Default):
         check_for_type("static_environment", static_environment, StaticEnvironmentCategory)
 
         # Assign the attributes
-        Default.__init__(self, **kwargs)
+        Thing.__init__(self, **kwargs)
         self.description = description
         self.image = image
         self.static_environment = static_environment  # Type: StaticEnvironmentCategory
@@ -296,7 +296,7 @@ class ScenarioCategory(Default):
 
         :return: dictionary that can be converted to a json file.
         """
-        scenario_category = Default.to_json(self)
+        scenario_category = Thing.to_json(self)
         scenario_category["description"] = self.description
         scenario_category["image"] = self.image
         scenario_category["static_environment_category"] = {'name': self.static_environment.name,

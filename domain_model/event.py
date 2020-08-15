@@ -8,12 +8,12 @@ Modifications:
 2019 10 13: Update of terminology.
 """
 
-from .default_class import Default
+from .thing import Thing
 from .tags import tag_from_json
 from .type_checking import check_for_type
 
 
-class Event(Default):
+class Event(Thing):
     """ Event
 
     An event refers to a time instant at which a notable change happens. This
@@ -39,7 +39,7 @@ class Event(Default):
         # Check the types of the inputs.
         check_for_type("conditions", conditions, dict)
 
-        Default.__init__(self, **kwargs)
+        Thing.__init__(self, **kwargs)
         self.conditions = conditions  # type: dict
 
     def to_json(self) -> dict:
@@ -50,7 +50,7 @@ class Event(Default):
 
         :return: dictionary that can be converted to a json file.
         """
-        event = Default.to_json(self)
+        event = Thing.to_json(self)
         event["conditions"] = self.conditions
         return event
 

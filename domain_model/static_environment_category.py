@@ -11,7 +11,7 @@ Modifications:
 """
 
 from enum import Enum
-from .default_class import Default
+from .thing import Thing
 from .tags import Tag, tag_from_json
 from .type_checking import check_for_type
 
@@ -40,7 +40,7 @@ class Region(Enum):
         return {"name": self.name, "value": self.value}
 
 
-class StaticEnvironmentCategory(Default):
+class StaticEnvironmentCategory(Thing):
     """ Static environment category
 
     The static environment refers to the part of a scenario that does not change
@@ -67,7 +67,7 @@ class StaticEnvironmentCategory(Default):
         check_for_type("region", region, Region)
         check_for_type("description", description, str)
 
-        Default.__init__(self, **kwargs)
+        Thing.__init__(self, **kwargs)
         self.region = region  # type: Region
         self.description = description
 
@@ -80,7 +80,7 @@ class StaticEnvironmentCategory(Default):
 
         :return: dictionary that can be converted to a json file.
         """
-        static_environment_category = Default.to_json(self)
+        static_environment_category = Thing.to_json(self)
         static_environment_category["region"] = self.region.to_json()
         static_environment_category["description"] = self.description
         return static_environment_category

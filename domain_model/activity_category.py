@@ -12,13 +12,13 @@ Modifications:
 
 import numpy as np
 from .model import Model, model_from_json
-from .default_class import Default
+from .thing import Thing
 from .state_variable import StateVariable, state_variable_from_json
 from .tags import tag_from_json
 from .type_checking import check_for_type
 
 
-class ActivityCategory(Default):
+class ActivityCategory(Thing):
     """ Category of activity
 
     An activity specified the evolution of a state over time. The activity
@@ -41,7 +41,7 @@ class ActivityCategory(Default):
         check_for_type("model", model, Model)
         check_for_type("state", state, StateVariable)
 
-        Default.__init__(self, **kwargs)
+        Thing.__init__(self, **kwargs)
         self.model = model  # type: Model
         self.state = state  # type: StateVariable
 
@@ -68,7 +68,7 @@ class ActivityCategory(Default):
 
         :return: dictionary that can be converted to a json file.
         """
-        activity_category = Default.to_json(self)
+        activity_category = Thing.to_json(self)
         activity_category["model"] = self.model.to_json()
         activity_category["state"] = self.state.to_json()
         return activity_category

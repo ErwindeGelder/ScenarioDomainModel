@@ -12,7 +12,7 @@ Modifications:
 
 from enum import Enum
 from .tags import Tag, tag_from_json
-from .default_class import Default
+from .thing import Thing
 from .type_checking import check_for_type
 
 
@@ -44,7 +44,7 @@ class VehicleType(Enum):
         return {"name": self.name, "value": self.value}
 
 
-class ActorCategory(Default):
+class ActorCategory(Thing):
     """ ActorCategory: Category of actor
 
     An actor is an agent in a scenario acting on its own behalf. "Ego vehicle"
@@ -64,7 +64,7 @@ class ActorCategory(Default):
         # Check the types of the inputs
         check_for_type("vehicle_type", vehicle_type, VehicleType)
 
-        Default.__init__(self, **kwargs)
+        Thing.__init__(self, **kwargs)
         self.vehicle_type = vehicle_type  # type: VehicleType
 
     def to_json(self) -> dict:
@@ -76,7 +76,7 @@ class ActorCategory(Default):
 
         :return: dictionary that can be converted to a json file.
         """
-        actor_category = Default.to_json(self)
+        actor_category = Thing.to_json(self)
         actor_category["vehicle_type"] = self.vehicle_type.to_json()
         return actor_category
 
