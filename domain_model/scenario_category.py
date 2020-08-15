@@ -17,22 +17,24 @@ Modifications:
 2019 11 04: Add options to automatically assign unique ids to actor/activities.
 2020 07 30: Update conversion of scenario category to a string.
 2020 07 31: Add the includes method.
+2020 08 15: Remove static_environment and add static_physical_things.
 """
 
 from __future__ import annotations
 from typing import List, Tuple
 import fnmatch
 import numpy as np
-from .thing import Thing
-from .tags import tag_from_json
-from .static_environment_category import StaticEnvironmentCategory, stat_env_category_from_json
-from .actor_category import ActorCategory, actor_category_from_json
 from .activity_category import ActivityCategory, activity_category_from_json
 from .actor import Actor
+from .actor_category import ActorCategory, actor_category_from_json
+from .qualitative_thing import QualitativeThing
+from .static_physical_thing_category import StaticPhysicalThingCategory, \
+    static_physical_thing_category_from_json
+from .tags import tag_from_json
 from .type_checking import check_for_type, check_for_list, check_for_tuple
 
 
-class ScenarioCategory(Thing):
+class ScenarioCategory(QualitativeThing):
     """ ScenarioCategory - A qualitative description
 
     Although a scenario is a quantitative description, there also exists a
@@ -44,19 +46,20 @@ class ScenarioCategory(Thing):
     multiple scenarios. On the other hand, multiple scenario categories may
     comprise the same scenario.
 
-    A scenario category can encompass another scenario class.
+    A scenario category can include another scenario class.
 
     When instantiating the ScenarioCategory object, the name, description,
-    image, static environment, unique id (uid), and tags are passed. To set the
-    activities, actors, and acts, use the corresponding methods, i.e.,
-    set_activities(), set_actors(), and set_acts(), respectively.
+    image, unique id (uid), and tags are passed. To set the static physical
+    things, activities, actors, and acts, use the corresponding methods, i.e.,
+    set_static_physical_things(), set_activities(), set_actors(), and
+    set_acts(), respectively.
 
     Attributes:
         description (str): A description of the scenario class. The objective of
             the description is to make the scenario class human interpretable.
         image (str): Path to image that schematically shows the class.
-        static_environment (StaticEnvironmentCategory): Static environment of
-            the Scenario.
+        static_physical_things (List[StaticEnvironmentCategory]): Static
+            environment of the Scenario.
         activity_categories (List[ActivityCategory]): List of activities that
             are used for this ScenarioCategory.
         actor_categories (List[ActorCategory]): List of actors that participate
@@ -70,18 +73,14 @@ class ScenarioCategory(Thing):
             category. These tags determine whether scenarios fall into this
             scenario category or not.
     """
-    def __init__(self, description: str, image: str, static_environment: StaticEnvironmentCategory,
-                 **kwargs):
+    def __init__(self, description: str, image: str, **kwargs):
         # Check the types of the inputs
-        check_for_type("description", description, str)
         check_for_type("image", image, str)
-        check_for_type("static_environment", static_environment, StaticEnvironmentCategory)
 
         # Assign the attributes
-        Thing.__init__(self, **kwargs)
-        self.description = description
+        QualitativeThing.__init__(self, description=description, **kwargs)
         self.image = image
-        self.static_environment = static_environment  # Type: StaticEnvironmentCategory
+        self.static_physical_things = []  # Type: List[StaticPhysicalThingCategory]
         self.activity_categories = []  # Type: List[ActivityCategory]
         self.actor_categories = []  # Type: List[ActorCategory]
         self.acts = []  # Type: List[Tuple[ActorCategory, ActivityCategory]]
@@ -89,6 +88,27 @@ class ScenarioCategory(Thing):
         # Some parameters
         # Maximum number of characters that are used when printing the general description
         self.maxprintlength = 80
+
+    def set_static_physical_things(self, static_physical_things: List[StaticPhysicalThingCategory],
+                                   update_uids: bool = False) -> None:
+        """ Set the static physical things
+
+        Check whether the physical things are correctly defined.
+
+        :param static_physical_things: List of static physical thing categories
+            that define the static environment qualitatively.
+        :param update_uids: Automatically assign uids if they are similar.
+        """
+        # Check whether the static physical things are correctly defined.
+        check_for_list("static_physical_things", static_physical_things,
+                       StaticPhysicalThingCategory, can_be_none=False)
+
+        # Assign static physical thing categories to an attribute.
+        self.static_physical_things = static_physical_things
+
+        # Update the uids of the static physical thing categories.
+        if update_uids:
+            create_unique_ids(self.static_physical_things)
 
     def set_activities(self, activity_categories: List[ActivityCategory],
                        update_uids: bool = False) -> None:
@@ -195,10 +215,11 @@ class ScenarioCategory(Thing):
         # Provide the tags for each ActorCategory.
         tags = derive_actor_tags(self.actor_categories, self.acts, tags=tags)
 
-        # Provide the tags of the StaticEnvironmentCategory.
-        if self.static_environment.tags:
-            tags["{:s}::StaticEnvironmentCategory".format(self.static_environment.name)] = \
-                self.static_environment.tags
+        # Provide the tags of the StaticPhysicalThingCategories.
+        for static_physical_thing in self.static_physical_things:
+            if static_physical_thing.tags:
+                tags["{:s}::StaticPhysicalThingCategory".format(static_physical_thing.name)] = \
+                    static_physical_thing.tags
 
         # Return the tags.
         return tags
@@ -229,23 +250,11 @@ class ScenarioCategory(Thing):
                            "StaticEnvironmentCategory"):
             return False
 
-        # Check for the actors
-        own_actors = fnmatch.filter(own_tags, "*::ActorCategory")
-        other_actors = fnmatch.filter(other_tags, "*::ActorCategory")
-        if len(own_actors) > len(other_actors):  # There must be equal or more actors in other SC.
+        # Check for the actors and static physical things
+        if not _check_multiple_tags(own_tags, other_tags, "ActorCategory") or \
+                not _check_multiple_tags(own_tags, other_tags, "StaticPhysicalThingCategory"):
             return False
-
-        # Create a boolean matrix, where the (i,j)-th element is True if the i-th actor of the
-        # provided ScenarioCategory might correspond to the j-th actor of our own scenario category.
-        match = np.zeros((len(other_actors), len(own_actors)), dtype=np.bool)
-        for i, other_actor in enumerate(other_actors):
-            for j, own_actor in enumerate(own_actors):
-                match[i, j] = all(any(map(tag.is_supertag_of, other_tags[other_actor]))
-                                  for tag in own_tags[own_actor])
-
-        # Check if all actors of this scenario category can be matched with the actos in the
-        # provided ScenarioCategory
-        return _check_match_matrix(match)
+        return True
 
     def __str__(self) -> str:
         """ Method that will be called when printing the scenario category.
@@ -296,11 +305,10 @@ class ScenarioCategory(Thing):
 
         :return: dictionary that can be converted to a json file.
         """
-        scenario_category = Thing.to_json(self)
-        scenario_category["description"] = self.description
+        scenario_category = QualitativeThing.to_json(self)
         scenario_category["image"] = self.image
-        scenario_category["static_environment_category"] = {'name': self.static_environment.name,
-                                                            'uid': self.static_environment.uid}
+        scenario_category["static_physical_thing_category"] = \
+            [{'name': thing.name, 'uid': thing.uid} for thing in self.static_physical_things]
         scenario_category["actor_category"] = [{'name': actor.name, 'uid': actor.uid}
                                                for actor in self.actor_categories]
         scenario_category["activity_category"] = [{'name': activity.name, 'uid': activity.uid}
@@ -326,8 +334,8 @@ class ScenarioCategory(Thing):
         :return: dictionary that can be converted to a json file.
         """
         scenario_category = self.to_json()
-        scenario_category["static_environment_category"] = \
-            self.static_environment.to_json_full()
+        scenario_category["static_physical_thing_category"] = \
+            [thing.to_json_full() for thing in self.static_physical_things]
         scenario_category["actor_category"] = [actor.to_json_full() for actor in
                                                self.actor_categories]
         scenario_category["activity_category"] = [activity.to_json_full() for activity in
@@ -345,11 +353,12 @@ def scenario_category_from_json(json: dict) -> ScenarioCategory:
     :param json: JSON code of ScenarioCategory.
     :return: ScenarioCategory object.
     """
-    static_environment = stat_env_category_from_json(json["static_environment_category"])
-    scenario_category = ScenarioCategory(json["description"], json["image"],
-                                         static_environment, name=json["name"],
+    scenario_category = ScenarioCategory(json["description"], json["image"], name=json["name"],
                                          uid=int(json["id"]),
                                          tags=[tag_from_json(tag) for tag in json["tag"]])
+    static_physical_things = [static_physical_thing_category_from_json(thing)
+                              for thing in json["static_physical_thing_category"]]
+    scenario_category.set_static_physical_things(static_physical_things)
     actors = [actor_category_from_json(actor) for actor in json["actor_category"]]
     scenario_category.set_actors(actors)
     activities = [activity_category_from_json(activity)
@@ -451,6 +460,39 @@ def _check_tags(tags: dict, subtags: dict, tags_class: str = "ScenarioCategory",
         else:  # There are no tags in <subtags> related to <subtags_class>.
             return False
     return True
+
+
+def _check_multiple_tags(own_tags: dict, other_tags: dict, attribute: str) -> bool:
+    """ Check if all tags in <own_tags> are present in <other_tags>.
+
+    This is done for a specific attribute (e.g., actor_categories). For example,
+    with actor categories, there is a list made, where each item is a list
+    itself with the tags of the corresponding actor category. For each the
+    actor category in <own_tags>, there needs to be a (different) actor category
+    in <other_tags> that has the same tags (or more tags, or corresponding
+    subtags).
+
+    :param own_tags: The tags of the own scenario category.
+    :param other_tags: The tags of the scenario category that is potentially
+        'included' in the former.
+    :param attribute: Check for which attribute we need to check.
+    """
+    own_actors = fnmatch.filter(own_tags, "*::{:s}".format(attribute))
+    other_actors = fnmatch.filter(other_tags, "*::{:s}".format(attribute))
+    if len(own_actors) > len(other_actors):  # There must be equal or more actors in other SC.
+        return False
+
+    # Create a boolean matrix, where the (i,j)-th element is True if the i-th actor of the
+    # provided ScenarioCategory might correspond to the j-th actor of our own scenario category.
+    match = np.zeros((len(other_actors), len(own_actors)), dtype=np.bool)
+    for i, other_actor in enumerate(other_actors):
+        for j, own_actor in enumerate(own_actors):
+            match[i, j] = all(any(map(tag.is_supertag_of, other_tags[other_actor]))
+                              for tag in own_tags[own_actor])
+
+    # Check if all actors of this scenario category can be matched with the actos in the
+    # provided ScenarioCategory
+    return _check_match_matrix(match)
 
 
 def _check_match_matrix(match: np.array) -> bool:
