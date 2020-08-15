@@ -38,8 +38,8 @@ class StaticPhysicalThingCategory(PhysicalThingCategory):
 def static_physical_thing_category_from_json(json: dict) -> StaticPhysicalThingCategory:
     """ Get StaticPhysicalThingCategory object from JSON code
 
-    It is assumed that the JSON code of the StaticPhysicalThingCategory is created using
-    StaticPhysicalThingCategory.to_json().
+    It is assumed that the JSON code of the StaticPhysicalThingCategory is
+    created using StaticPhysicalThingCategory.to_json().
 
     :param json: JSON code of StaticEnvironmentCategory.
     :return: StaticPhysicalThingCategory object.
