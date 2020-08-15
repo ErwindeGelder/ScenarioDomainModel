@@ -9,6 +9,7 @@ from .idmplus import IDMPlus, EIDMPlus
 from .leader_braking import LeaderBraking, LeaderBrakingParameters
 from .simulation_approaching import SimulationApproaching, hdm_approaching_pars, \
     acc_approaching_pars, acc_hdm_approaching_pars
+from .simulation_cutin import SimulationCutIn, hdm_cutin_pars, acc_cutin_pars, acc_hdm_cutin_pars
 from .simulation_lead_braking import SimulationLeadBraking, hdm_lead_braking_pars, \
     eidm_lead_braking_pars, acc_lead_braking_pars, acc_hdm_lead_braking_pars
 from .simulation_lead_interaction import SimulationLeadInteraction
