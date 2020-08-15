@@ -12,7 +12,7 @@ from .type_checking import check_for_type
 
 
 class QualitativeThing(Thing):
-    """ Thing that is used for most the qualitative classes.
+    """ Thing that is used for most qualitative classes.
 
     Next to the attributes of Thing, a QualitativeThing also has a description
     that can be used to qualitatively describe the thing. This is an abstract
