@@ -6,11 +6,11 @@ Author(s): Erwin de Gelder
 Modifications:
 """
 
-from .qualitative_thing import QualitativeThing
+from .physical_thing_category import PhysicalThingCategory
 from .tags import tag_from_json
 
 
-class StaticPhysicalThingCategory(QualitativeThing):
+class StaticPhysicalThingCategory(PhysicalThingCategory):
     """ Static Physical Thing Category
 
     The static environment refers to the part of a scenario that does not change
@@ -32,7 +32,7 @@ class StaticPhysicalThingCategory(QualitativeThing):
             category comprises a scenario.
     """
     def __init__(self, description: str = "", **kwargs):
-        QualitativeThing.__init__(self, description=description, **kwargs)
+        PhysicalThingCategory.__init__(self, description=description, **kwargs)
 
 
 def static_physical_thing_category_from_json(json: dict) -> StaticPhysicalThingCategory:
