@@ -11,6 +11,7 @@ Modifications:
 2019 01 14: Add optional parameters tstart=0 and tend=2 to get_state and get_state_dor.
 2019 10 13: Update of terminology.
 2019 11 04: Add constant model.
+2020 08 15: Make sure that each model has the functions `get_state`, `get_state_dot`, and `fit`.
 """
 
 import sys
@@ -44,6 +45,7 @@ class Model(ABC):
         self.name = modelname
         self.default_options = dict()
 
+    @abstractmethod
     def get_state(self, pars: dict, npoints: int = 100,
                   tstart: float = 0, tend: float = 0) -> np.ndarray:
         """ Return state vector.
@@ -60,6 +62,7 @@ class Model(ABC):
         :return: Numpy array with the state.
         """
 
+    @abstractmethod
     def get_state_dot(self, pars: dict, npoints: int = 100,
                       tstart: float = 0, tend: float = 0) -> np.ndarray:
         """ Return the derivative of the state vector.
@@ -76,6 +79,7 @@ class Model(ABC):
         :return: Numpy array with the derivative of the state.
         """
 
+    @abstractmethod
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
         """ Fit the data to the model and return the parameters
 
