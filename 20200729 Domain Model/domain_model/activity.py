@@ -19,14 +19,14 @@ Modifications:
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
-from .default_class import Default
+from .thing import Thing
 from .activity_category import ActivityCategory, activity_category_from_json
 from .tags import tag_from_json
 from .event import Event
 from .type_checking import check_for_type
 
 
-class Activity(Default):
+class Activity(Thing):
     """ Activity
 
     An activity specifies the evolution of a state (defined by ActivityCategory)
@@ -54,7 +54,7 @@ class Activity(Default):
         check_for_type("duration", duration, float)
         check_for_type("parameters", parameters, dict)
 
-        Default.__init__(self, **kwargs)
+        Thing.__init__(self, **kwargs)
         self.activity_category = activity_category  # type: ActivityCategory
         self.tduration = duration
         self.parameters = parameters
@@ -115,7 +115,7 @@ class Activity(Default):
 
         :return: dictionary that can be converted to a json file.
         """
-        activity = Default.to_json(self)
+        activity = Thing.to_json(self)
         activity["activity_category"] = {"name": self.activity_category.name,
                                          "uid": self.activity_category.uid}
         activity["tduration"] = self.tduration

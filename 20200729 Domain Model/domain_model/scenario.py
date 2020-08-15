@@ -20,7 +20,7 @@ Modifications:
 from typing import List, Tuple
 import fnmatch
 import numpy as np
-from .default_class import Default
+from .thing import Thing
 from .static_environment import StaticEnvironment, stat_env_from_json
 from .activity import Activity, activity_from_json
 from .actor import Actor, actor_from_json
@@ -30,7 +30,7 @@ from .scenario_category import ScenarioCategory, derive_actor_tags, create_uniqu
 from .type_checking import check_for_type, check_for_list, check_for_tuple
 
 
-class Scenario(Default):
+class Scenario(Thing):
     """ Scenario - either a real-world scenario or a test case.
 
     A scenario is a quantitative description of the ego vehicle, its activities
@@ -71,7 +71,7 @@ class Scenario(Default):
         check_for_type("static_environment", static_environment, StaticEnvironment)
 
         # Assign the attributes
-        Default.__init__(self, **kwargs)
+        Thing.__init__(self, **kwargs)
         self.time = {"start": tstart, "end": tend}
         self.actors = []      # Type: List[Actor]
         self.activities = []  # Type: List{Activity]
@@ -268,7 +268,7 @@ class Scenario(Default):
 
         :return: dictionary that can be converted to a json file.
         """
-        scenario = Default.to_json(self)
+        scenario = Thing.to_json(self)
         scenario["starttime"] = self.time["start"]
         scenario["endtime"] = self.time["end"]
         scenario["duration"] = self.time["end"] - self.time["start"]

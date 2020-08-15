@@ -13,13 +13,13 @@ Modifications:
 """
 
 from typing import List
-from .default_class import Default
+from .thing import Thing
 from .static_environment_category import StaticEnvironmentCategory, stat_env_category_from_json
 from .tags import Tag, tag_from_json
 from .type_checking import check_for_type
 
 
-class StaticEnvironment(Default):
+class StaticEnvironment(Thing):
     """ Static environment
 
     The static environment refers to the part of a scenario that does not change
@@ -48,7 +48,7 @@ class StaticEnvironment(Default):
         if properties is not None:
             check_for_type("properties", properties, dict)
 
-        Default.__init__(self, **kwargs)
+        Thing.__init__(self, **kwargs)
         self.static_environment_category = static_environment_category
         self.properties = {} if properties is None else properties
 
@@ -73,7 +73,7 @@ class StaticEnvironment(Default):
 
         :return: dictionary that can be converted to a json file.
         """
-        static_environment = Default.to_json(self)
+        static_environment = Thing.to_json(self)
         static_environment["static_environment_category"] = \
             {"name": self.static_environment_category.name,
              "uid": self.static_environment_category.uid}

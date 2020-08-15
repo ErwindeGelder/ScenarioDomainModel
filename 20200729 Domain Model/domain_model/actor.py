@@ -17,14 +17,14 @@ Modifications:
 """
 
 from typing import List
-from .default_class import Default
+from .thing import Thing
 from .actor_category import ActorCategory, actor_category_from_json
 from .tags import Tag, tag_from_json
 from .state import State, state_from_json
 from .type_checking import check_for_type, check_for_list
 
 
-class Actor(Default):
+class Actor(Thing):
     """ Category of actor
 
     An actor is an agent in a scenario acting on its own behalf. "Ego vehicle"
@@ -55,7 +55,7 @@ class Actor(Default):
         if desired_states is None:
             desired_states = []
 
-        Default.__init__(self, **kwargs)
+        Thing.__init__(self, **kwargs)
         self.actor_category = actor_category  # type: ActorCategory
         self.initial_states = initial_states  # type: List[State]
         self.desired_states = desired_states  # type: List[State]
@@ -81,7 +81,7 @@ class Actor(Default):
 
         :return: dictionary that can be converted to a json file.
         """
-        actor = Default.to_json(self)
+        actor = Thing.to_json(self)
         actor["actor_category"] = {"name": self.actor_category.name,
                                    "uid": self.actor_category.uid}
         actor["initial_states"] = [initial_state.to_json() for initial_state in self.initial_states]

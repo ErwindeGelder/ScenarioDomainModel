@@ -1,4 +1,4 @@
-""" Class Default
+""" Class Thing
 
 Creation date: 2018 10 30
 Author(s): Erwin de Gelder
@@ -10,6 +10,7 @@ Modifications:
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 13: Update of terminology.
 2020 07 31: Return a copy of the list of tags when using get_tags().
+2020 08 15: Change Default to Thing.
 """
 
 from abc import ABC, abstractmethod
@@ -18,8 +19,8 @@ from .tags import Tag
 from .type_checking import check_for_type, check_for_list
 
 
-class Default(ABC):
-    """ Default that is used for most classes.
+class Thing(ABC):
+    """ Thing that is used for most classes.
 
     Because most classes contain the attributes 'name' and 'tags', a default
     class is created that contains these attributes. This class also does type
