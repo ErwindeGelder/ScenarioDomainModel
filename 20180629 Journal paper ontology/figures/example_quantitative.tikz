@@ -57,21 +57,17 @@
 	\attrtstart: Start scenario \\
 	\attrtend: End scenario};
 
-\node[object, fill=otherclass, below=of pedestrian walking.south](ped crossing){{\bfseries Road layout::Static physical thing}\\
-	static physical thing category: Road layout\\
+\node[object, fill=otherclass, below=of pedestrian walking.south](ped crossing){{\bfseries Pedestrian crossing::Static physical thing}\\
+	static physical thing category: pedestrian\\
+	\leavevmode\phantom{static physical thing category: }crossing\\
 	\leavevmode\phantom{static physical thing category: }qualitative\\
 	properties: \{road: \{lanes: 2, lanewidth: \SI{3}{\meter}, \\
 	\leavevmode\phantom{properties: \{road: \{}xy: [(-60, 0), (60, 0)]\}, \\
 	\leavevmode\phantom{properties: \{}footway: \{width: \SI{3}{\meter}, \\
 	\leavevmode\phantom{properties: \{footway: \{}xy: [(0, 6), (0, -6)]\}\}};
-	
-\node[object, fill=otherclass, below=of ped crossing.south](static environment){{\bfseries Pedestrian crossing::Static environment}\\
-	static environment category: Pedestrian cross-\\
-	\leavevmode\phantom{static environment category: }ing qualitative\\
-	physical things: Road layout};
 
-\node[object, fill=scenario, below=of static environment](scenario){{\bfseries Ego brakes for pedestrian::Scenario}\\
-	static environment: Pedestrian crossing\\
+\node[object, fill=scenario, below=of ped crossing.south](scenario){{\bfseries Ego brakes for pedestrian::Scenario}\\
+	static physical things: Pedestrian crossing\\
 	actors: Ego, Pedestrian\\
 	activities: Ego braking, Ego stationary, \\
 	\leavevmode\phantom{activities: }Ego accelerating, Pedestrian walking\\

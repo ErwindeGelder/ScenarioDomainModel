@@ -5,49 +5,45 @@
 \node[class, fill=abstractclass](thing) at (0, 0) {Thing};
 \node[class, fill=abstractclass](qualitative) at (-\blockx, 0) {Qualitative thing};
 \node[class, fill=abstractclass](quantitative) at (\blockx, 0) {Quantitative thing};
-\node[class, fill=abstractclass](physicalcat) at (-1.5\blockx, 3\blocky) {Physical thing category};
+\node[class, fill=abstractclass](physicalcat) at (-1.5\blockx, 2\blocky) {Physical thing category};
 \node[class, fill=abstractclass](timeinterval) at (.5\blockx, \blocky) {Time interval};
-\node[class, fill=abstractclass](physical) at (1.5\blockx, 3\blocky) {Physical thing};
+\node[class, fill=abstractclass](physical) at (1.5\blockx, 2\blocky) {Physical thing};
 
 % Qualitative classes
 \node[class, fill=scenariocategory](scencat) at (-1.5\blockx, \blocky) {Scenario category};
 \node[class, fill=category](activitycat) at (-.5\blockx, \blocky) {Activity category};
-\node[class, fill=category](statenvcat) at (-1.5\blockx, 2\blocky) {Static environment category};
-\node[class, fill=category](dynamiccat) at (-0.5\blockx, 3\blocky) {Dynamic physical thing category};
-\node[class, fill=category](staticcat) at (-1.5\blockx, 4\blocky) {Static physical thing category};
-\node[class, fill=category](actorcat) at (-.5\blockx, 4\blocky) {Actor category};
+\node[class, fill=category](dynamiccat) at (-1.5\blockx, 3\blocky) {Dynamic physical thing category};
+\node[class, fill=category](staticcat) at (-.5\blockx, 3\blocky) {Static physical thing category};
+\node[class, fill=category](actorcat) at (-1.5\blockx, 4\blocky) {Actor category};
 
 % Quantitative classes
 \node[class, fill=scenario](scenario) at (-.5\blockx, 2\blocky) {Scenario};
 \node[class, fill=otherclass](activity) at (.5\blockx, 2\blocky) {Activity};
-\node[class, fill=otherclass](statenv) at (1.5\blockx, \blocky) {Static environment};
-\node[class, fill=otherclass](event) at (1.5\blockx, 2\blocky) {Event};
-\node[class, fill=otherclass](dynamic) at (.5\blockx, 3\blocky) {Dynamic physical thing};
-\node[class, fill=otherclass](actor) at (.5\blockx, 4\blocky) {Actor};
-\node[class, fill=otherclass](static) at (1.5\blockx, 4\blocky) {Static physical thing};
+\node[class, fill=otherclass](event) at (1.5\blockx, \blocky) {Event};
+\node[class, fill=otherclass](dynamic) at (1.5\blockx, 3\blocky) {Dynamic physical thing};
+\node[class, fill=otherclass](actor) at (1.5\blockx, 4\blocky) {Actor};
+\node[class, fill=otherclass](static) at (.5\blockx, 3\blocky) {Static physical thing};
 
 % Superclass arrows
 \foreach \fromclass/\toclass in {scencat/qualitative,
 								 activitycat/qualitative,
-								 statenvcat/qualitative,
 								 physicalcat/qualitative,
+								 staticcat/physicalcat,
 								 timeinterval/quantitative,
 								 scenario/timeinterval,
-								 statenv/quantitative,
 								 event/quantitative,
-								 physical/quantitative} {
+								 physical/quantitative,
+								 static/physical} {
 	\node[coordinate, above of=\fromclass, node distance=-.4\blocky](helper){};
 	\draw[superclass] (\fromclass) -- (helper) -| (\toclass);
 }
 \foreach \fromclass/\toclass in {qualitative/thing, 
 								 quantitative/thing,
 								 dynamiccat/physicalcat,
-								 staticcat/physicalcat,
 								 actorcat/dynamiccat,
 								 activity/timeinterval,
 								 dynamic/physical,
-								 actor/dynamic,
-								 static/physical} {
+								 actor/dynamic} {
 	\draw[superclass] (\fromclass) -- (\toclass);
 }
 

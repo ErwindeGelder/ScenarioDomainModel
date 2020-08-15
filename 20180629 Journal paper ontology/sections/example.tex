@@ -49,7 +49,7 @@ Here, the parameters $\slopeego$ and $\slopepedestrian$ describe the rate of cha
 \end{figure}
 
 
-The two \textit{actor categories}, the four \textit{activity categories}, and the \textit{static environment category}, are used by the \textit{scenario category}. The \textit{scenario category} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian. 
+The two \textit{actor categories}, the four \textit{activity categories}, and the \cstartc\textit{static physical thing category}\cendc, are used by the \textit{scenario category}. The \textit{scenario category} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian. 
 
 
 
@@ -74,9 +74,9 @@ There are four \textit{activities} defined and each of these \textit{activities}
 The \textit{activities} contain the values of the parameters as well as \cstartb the events that mark the start and the end\cendb. 
 As described by the first \textit{activity} (\emph{ego braking}), the ego vehicle starts with a speed of \SI{8}{\meter\per\second} and brakes in \SI{4}{\second} to come to a full stop. By integrating the sinusoidal function of \cref{eq:sinusoidal} twice, it can be shown that the ego vehicle stops at \SI{4}{\meter} from the center of the pedestrian crossing. After waiting for \SI{3}{\second}, see the second \textit{activity} (\emph{ego stationary}), the ego vehicle accelerates with \SI{1.5}{\meter\per\second\squared} towards a speed of \SI{7.5}{\meter\per\second}, see the third \textit{activity} (\emph{ego accelerating}). The fourth activity describes the position of the pedestrian.
 
-The \textit{road layout} describes the main road the ego vehicle is driving on and the footway the pedestrian is walking on. The example in \cref{fig:example quantitative} shows some properties of the road layout to illustrate how the static environment can be described. Note that, in practice, the quantitative description of the static environment may contain many more facets than the ones mentioned in \cref{fig:example quantitative}. As mentioned in \cref{sec:scenario}, it is possible to refer to another source that contains a description of (part of) the static environment, see, e.g., \autocite{dupuis2010opendrive}. 
+The \textit{pedestrian crossing} describes the main road the ego vehicle is driving on and the footway the pedestrian is walking on. The example in \cref{fig:example quantitative} shows some properties of the road layout to illustrate how the static environment can be described. Note that, in practice, the quantitative description of the static environment may contain many more facets than the ones mentioned in \cref{fig:example quantitative}. As mentioned in \cref{sec:scenario}, it is possible to refer to another source that contains a description of (part of) the static environment, see, e.g., \autocite{dupuis2010opendrive}. 
 
-The \textit{scenario}, the last object in \cref{fig:example quantitative}, ``has'' the previously defined \textit{static environment}, \textit{actors}, and \textit{activities}. The acts are used to assign the first three \textit{activities} to the ego vehicle and the last \textit{activity} to the pedestrian. 
+The \textit{scenario}, the last object in \cref{fig:example quantitative}, ``has'' the previously defined \cstartc\textit{static physical thing}\cendc, \textit{actors}, and \textit{activities}. The acts are used to assign the first three \textit{activities} to the ego vehicle and the last \textit{activity} to the pedestrian. 
 The scenario also ``has'' \cstartb events marking the start and the end of the scenario\cendb.
 A different scenario can be defined by, e.g., changing the parameter values. This illustrates that the scenario category in \cref{fig:example qualitative} comprises multiple scenarios, namely all scenarios that only differ from the scenario in \cref{fig:example quantitative} because of different parameter values.
 
