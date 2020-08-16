@@ -8,11 +8,12 @@ Modifications:
 2018 11 19: Enable instantiation using JSON code.
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 11: Update of terminology.
+2020 08 16: Make ActorCategory a subclass of DynamicPhysicalThingCategory.
 """
 
 from enum import Enum
+from .dynamic_physical_thing_category import DynamicPhysicalThingCategory
 from .tags import Tag, tag_from_json
-from .thing import Thing
 from .type_checking import check_for_type
 
 
@@ -44,7 +45,7 @@ class VehicleType(Enum):
         return {"name": self.name, "value": self.value}
 
 
-class ActorCategory(Thing):
+class ActorCategory(DynamicPhysicalThingCategory):
     """ ActorCategory: Category of actor
 
     An actor is an agent in a scenario acting on its own behalf. "Ego vehicle"
@@ -64,7 +65,7 @@ class ActorCategory(Thing):
         # Check the types of the inputs
         check_for_type("vehicle_type", vehicle_type, VehicleType)
 
-        Thing.__init__(self, **kwargs)
+        DynamicPhysicalThingCategory.__init__(self, **kwargs)
         self.vehicle_type = vehicle_type  # type: VehicleType
 
     def to_json(self) -> dict:
@@ -76,7 +77,7 @@ class ActorCategory(Thing):
 
         :return: dictionary that can be converted to a json file.
         """
-        actor_category = Thing.to_json(self)
+        actor_category = DynamicPhysicalThingCategory.to_json(self)
         actor_category["vehicle_type"] = self.vehicle_type.to_json()
         return actor_category
 
@@ -91,7 +92,8 @@ def actor_category_from_json(json: dict) -> ActorCategory:
     :return: ActorCategory object.
     """
     vehicle_type = vehicle_type_from_json(json["vehicle_type"])
-    actor_category = ActorCategory(vehicle_type, name=json["name"], uid=int(json["id"]),
+    actor_category = ActorCategory(vehicle_type, description=json["description"], name=json["name"],
+                                   uid=int(json["id"]),
                                    tags=[tag_from_json(tag) for tag in json["tag"]])
     return actor_category
 
