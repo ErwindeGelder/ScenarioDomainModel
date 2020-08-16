@@ -8,17 +8,18 @@ Modifications:
 2019 11 19: Enable instantiation using JSON code.
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 11: Update of terminology.
+2020 08 16: Make ActivityCategory a subclass of QualitativeThing.
 """
 
 import numpy as np
 from .model import Model, model_from_json
-from .thing import Thing
+from .qualitative_thing import QualitativeThing
 from .state_variable import StateVariable, state_variable_from_json
 from .tags import tag_from_json
 from .type_checking import check_for_type
 
 
-class ActivityCategory(Thing):
+class ActivityCategory(QualitativeThing):
     """ Category of activity
 
     An activity specified the evolution of a state over time. The activity
@@ -35,13 +36,15 @@ class ActivityCategory(Thing):
         uid (int): A unique ID.
         tags (List[Tag]): The tags are used to determine whether a scenario
             category comprises a scenario.
+        description(str): A string that qualitatively describes the activity
+            category.
     """
     def __init__(self, model: Model, state: StateVariable, **kwargs):
         # Check the types of the inputs
         check_for_type("model", model, Model)
         check_for_type("state", state, StateVariable)
 
-        Thing.__init__(self, **kwargs)
+        QualitativeThing.__init__(self, **kwargs)
         self.model = model  # type: Model
         self.state = state  # type: StateVariable
 
@@ -68,7 +71,7 @@ class ActivityCategory(Thing):
 
         :return: dictionary that can be converted to a json file.
         """
-        activity_category = Thing.to_json(self)
+        activity_category = QualitativeThing.to_json(self)
         activity_category["model"] = self.model.to_json()
         activity_category["state"] = self.state.to_json()
         return activity_category
@@ -85,6 +88,7 @@ def activity_category_from_json(json: dict) -> ActivityCategory:
     """
     model = model_from_json(json["model"])
     state = state_variable_from_json(json["state"])
-    activity_category = ActivityCategory(model, state, name=json["name"], uid=int(json["id"]),
+    activity_category = ActivityCategory(model, state, description=json["description"],
+                                         name=json["name"], uid=int(json["id"]),
                                          tags=[tag_from_json(tag) for tag in json["tag"]])
     return activity_category
