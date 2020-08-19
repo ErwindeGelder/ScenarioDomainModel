@@ -28,6 +28,8 @@ class PhysicalThing(QuantitativeThing):
     """
     @abstractmethod
     def __init__(self, properties: dict = None, **kwargs):
+        if properties is None:
+            properties = dict()
         check_for_type("properties", properties, dict)
 
         QuantitativeThing.__init__(self, **kwargs)
