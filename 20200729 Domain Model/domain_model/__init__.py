@@ -10,6 +10,7 @@ from .activity import Activity, SetActivity, TriggeredActivity, activity_from_js
 from .activity_category import ActivityCategory, activity_category_from_json
 from .actor import Actor, EgoVehicle, actor_from_json
 from .actor_category import ActorCategory, VehicleType, actor_category_from_json
+from .dynamic_physical_thing import DynamicPhysicalThing, dynamic_physical_thing_from_json
 from .dynamic_physical_thing_category import DynamicPhysicalThingCategory, \
     dynamic_physical_thing_category_from_json
 from .event import Event, event_from_json
