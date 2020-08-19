@@ -232,11 +232,12 @@ class ScenarioCategory(QualitativeThing):
         """ Return all tags, including the tags of the attributes.
 
         The ScenarioCategory has tags, but also its attributes can have tags.
-        More specifically, the StaticEnvironmentCategory, each ActorCategory,
-        and each ActivityCategory might have tags. A dictionary will be
-        returned. Each item of the dictionary contains a list of tags
-        corresponding to either the own object (i.e., ScenarioCategory), an
-        ActorCategory, or the StaticEnvironment.
+        More specifically, the each StaticPhysicalThingCategory, ActorCategory,
+        DynamicPhysicalThingCategory, and ActivityCategory might have tags. A
+        dictionary will be returned. Each item of the dictionary contains a list
+        of tags corresponding to either the own object (i.e., ScenarioCategory),
+        an StaticPhysicalThingCategory, ActorCategory, or
+        DynamicPhysicalThingCategory.
 
         The tags that might be associated with the ActivityCategory are returned
         with the ActorCategory if the corresponding ActorCategory is performing
