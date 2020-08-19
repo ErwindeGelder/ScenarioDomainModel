@@ -7,9 +7,11 @@ Modifications:
 """
 
 from typing import List
-from .dynamic_physical_thing_category import DynamicPhysicalThingCategory
+from .dynamic_physical_thing_category import DynamicPhysicalThingCategory, \
+    dynamic_physical_thing_category_from_json
 from .physical_thing import PhysicalThing
-from .state import State
+from .state import State, state_from_json
+from .tags import tag_from_json
 from .type_checking import check_for_type, check_for_list
 
 
@@ -35,6 +37,7 @@ class DynamicPhysicalThing(PhysicalThing):
         initial_states (List[State]): Specifying the initial states.
         category (DynamicPhysicalThingCategory): The qualitative counterpart.
     """
+
     def __init__(self, dynamic_physical_thing_category: DynamicPhysicalThingCategory,
                  initial_states: List[State] = None,
                  properties: dict = None, **kwargs):
@@ -43,8 +46,8 @@ class DynamicPhysicalThing(PhysicalThing):
         check_for_list("initial_states", initial_states, State)
 
         PhysicalThing.__init__(self, properties=properties, **kwargs)
-        self.category = dynamic_physical_thing_category
-        self.initial_states = [] if initial_states is None else initial_states
+        self.category = dynamic_physical_thing_category  # type: DynamicPhysicalThingCategory
+        self.initial_states = [] if initial_states is None else initial_states  # type: List[State]
 
     def get_tags(self) -> dict:
         """ Return the list of tags related to this DynamicPhysicalThing.
@@ -59,7 +62,7 @@ class DynamicPhysicalThing(PhysicalThing):
         return tags
 
     def to_json(self) -> dict:
-        dynamic_physical_thing = DynamicPhysicalThing.to_json(self)
+        dynamic_physical_thing = PhysicalThing.to_json(self)
         dynamic_physical_thing["category"] = {"name": self.category.name, "uid": self.category.uid}
         dynamic_physical_thing["initial_states"] = [initial_state.to_json()
                                                     for initial_state in self.initial_states]
@@ -69,3 +72,32 @@ class DynamicPhysicalThing(PhysicalThing):
         dynamic_physical_thing = self.to_json()
         dynamic_physical_thing["category"] = self.category.to_json_full()
         return dynamic_physical_thing
+
+
+def dynamic_physical_thing_from_json(
+        json: dict, dynamic_physical_thing_category: DynamicPhysicalThingCategory = None) \
+        -> DynamicPhysicalThing:
+    """ Get DynamicPhysicalThing object from JSON code
+
+    It is assumed that all the attributes are fully defined. Hence, the
+    DynamicPhysicalThingCategory needs to be fully defined instead of only the
+    unique ID. Alternatively, the DynamicPhysicalThingCategory can be passed as
+    optional argument. In that case, the DynamicPhysicalThingCategory does not
+    need to be defined in the JSON code.
+
+    :param json: JSON code of Actor.
+    :param dynamic_physical_thing_category: If given, it will not be based on
+        the JSON code.
+    :return: Actor object.
+    """
+    if dynamic_physical_thing_category is None:
+        dynamic_physical_thing_category = \
+            dynamic_physical_thing_category_from_json(json["category"])
+    initial_states = [state_from_json(state) for state in json["initial_states"]]
+    actor = DynamicPhysicalThing(dynamic_physical_thing_category,
+                                 initial_states=initial_states,
+                                 properties=json["properties"],
+                                 name=json["name"],
+                                 uid=int(json["id"]),
+                                 tags=[tag_from_json(tag) for tag in json["tag"]])
+    return actor
