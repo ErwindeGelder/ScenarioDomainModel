@@ -1,0 +1,612 @@
+%%==========================================================================
+%% Title: There Is No Largest Prime Number
+%% Author: Euclid of Alexandria
+%% Published: 27th International Symposium of Prime Numbers, 1980
+%%==========================================================================
+
+\def\AspectR{169} %% Uncomment for 16:9 aspect ratio
+%\def\AspectR{43} %% Uncomment for 4:3 aspect ratio
+
+% The following options can be chosen for the TNO beamer template
+% - corporate: change the layout with, amongst others, the TNO logo at the bottom
+% - shownavigation: a navigation bar is shown on top of each slide. At this moment, this
+%                   does not work properly when the corporate style is used.
+% - hidetotalframenumber: The total number of slides is not shown on each slide.
+\documentclass[aspectratio=\AspectR,10pt,corporate]{beamer} %% use option 'handout' for printable output
+
+
+%%==========================================================================
+%% Packages
+%%==========================================================================
+\usepackage{lmodern}                    %% Use Latin Modern font type
+%\usepackage{helvet}                    %% Use Helvetica font type
+\usepackage[T1]{fontenc}                %% support for special characters (e.g., accented)
+\usepackage{amsmath}                    %% math typesetting; consider using the [cmex10] option
+\usepackage{amssymb}                    %% special (symbol) fonts for math typesetting
+\usepackage{amsthm}                     %% theorem styles
+\usepackage{dsfont}                     %% double stroke roman fonts: the real numbers R: $\mathds{R}$
+\usepackage{mathrsfs}                   %% formal script fonts: the Laplace transform L: $\mathscr{L}$
+\usepackage{array}                      %% array functionality (array, tabular)
+\usepackage{upgreek}                    %% upright Greek letters; add the prefix 'up', e.g. \upphi
+\usepackage{stfloats}                   %% improved handling of floats
+\usepackage{multirow}                   %% cells spanning multiple rows in tables
+\usepackage[caption=false]{subfig}      %% subfigures
+\usepackage{xspace}                     %% add space after macro depending on context
+\usepackage{verbatim}                   %% provides the comment environment
+\usepackage[dutch,USenglish]{babel}     %% language support
+\usepackage{multimedia}                 %% include movies
+\usepackage{wrapfig}                    %% wrapping text around figures
+\usepackage{pgfplots}                   %% support for TikZ figures (Matlab)
+\usepackage{hyperref}                   %% implement hyperlinks
+\usepackage{siunitx}
+
+%%==========================================================================
+%% TikZ figures
+%%==========================================================================
+\newlength\figurewidth
+\setlength\figurewidth{0.25\linewidth}  %% set figure height
+\newlength\figureheight
+\setlength\figureheight{0.2\linewidth}  %% set figure width
+\pgfplotsset{every axis/.append style={
+    scaled y ticks=false,
+    scaled x ticks=false,
+    y tick label style={/pgf/number format/fixed},
+    x tick label style={/pgf/number format/fixed},
+    legend style={font=\small}},
+    compat=1.9}                         %% PGFPlots package options
+\usetikzlibrary{calc}                   %% coordinate calculations
+%% Note: The TikZ overlay option does not work with external TikZ!
+%\usetikzlibrary{external}              %% Create pdf figures from TikZ. Use PDFTeXify ...
+%\tikzexternalize[prefix=./tikz/]       %% ... with --tex-option=--shell-escape switch.
+%\tikzset{external/force remake}        %% Force pdf figure update
+
+
+%%==========================================================================
+%% User-defined commands
+%%==========================================================================
+\newcommand*{\mat}[1]{\mathbf{#1}}                              %% matrix/vector notation
+\newcommand*{\matsym}[1]{\boldsymbol{#1}}                       %% matrix/vector notation for Greek letters
+\newcommand*{\T}{^{\scriptscriptstyle{\mathrm{T}}}}             %% transpose operator
+\newcommand*{\Hr}{^{\scriptscriptstyle{\mathrm{H}}}}            %% conjugate transpose operator
+\newcommand*{\ud}{\mathrm{\,d}}                                 %% differential operator (upright d)
+\newcommand*{\defeq}{\mathrel{\mathop:}=}                       %% definition sign :=
+\newcommand*{\eqdef}{=\mathrel{\mathop:}}                       %% definition sign =:
+\newcommand*{\ip}[2]{\left\langle#1\,{,}\,#2\right\rangle}      %% inner product
+\newcommand*{\real}[1]{\mathrm{Re}(#1)}                         %% real part
+\newcommand*{\imag}[1]{\mathrm{Im}(#1)}                         %% imaginary part
+\newcommand*{\lsup}[1]{{}^{#1}\!}                               %% left superscript
+\newcommand*{\hi}[1]{$^\text{#1}$}                              %% superscript in normal text
+\newcommand*{\w}[1]{\mathrm{#1}}                                %% multiple character super-/subscript in math mode
+\newcommand*{\Ln}{{\ensuremath{\mathcal{L}}}\xspace}            %% L norm
+\newcommand*{\Lone}{{\ensuremath{\mathcal{L}_1}}\xspace}        %% L_1 norm
+\newcommand*{\Ltwo}{{\ensuremath{\mathcal{L}_2}}\xspace}        %% L_2 norm
+\newcommand*{\Linf}{{\ensuremath{\mathcal{L}_\infty}}\xspace}   %% L_inf norm
+\newcommand*{\Lp}{{\ensuremath{\mathcal{L}_p}}\xspace}          %% L_p norm
+\newcommand*{\Htwo}{{\ensuremath{\mathcal{H}_2}}\xspace}        %% H_2 norm
+\newcommand*{\Hinf}{{\ensuremath{\mathcal{H}_\infty}}\xspace}   %% H_inf norm
+\newcommand*{\Hp}{{\ensuremath{\mathcal{H}_p}}\xspace}          %% H_p norm
+\renewcommand*{\qedsymbol}{$\blacksquare$}                      %% redefine the end-of-proof symbol
+\DeclareMathOperator{\tr}{tr}                                   %% trace of a matrix
+\DeclareMathOperator{\sgn}{sgn}                                 %% signum function
+\DeclareMathOperator{\atan}{atan}                               %% arc tangent
+
+
+
+
+
+\usetikzlibrary{shapes.callouts,shapes.misc,backgrounds,arrows.meta,arrows,positioning} 
+\newlength\nwidth                                   %% minimum block width
+\newlength\nheight                                  %% minimum block height
+\newlength\nsep                                     %% block separation distance
+\definecolor{TNOred}{RGB}{204,0,0}                  %% TNO red
+\definecolor{TNOlightblue}{RGB}{153,204,255}        %% TNO light blue
+\definecolor{TNOlightgray}{RGB}{222,222,231}        %% TNO light gray
+\tikzstyle{blockblue}=[%
+	node distance=\nwidth+\nsep,
+	text width=0.88\nwidth,
+	minimum height=\nheight,
+	minimum width=\nwidth,
+	align=center,
+	font=\footnotesize\sffamily,
+	fill=TNOlightblue,
+	rounded corners=0.4em,
+	anchor=south west]               %% basic block
+\tikzstyle{arrow}=[%
+	-{Triangle[width=3mm, length=5mm, round]}, 
+	line width=1mm, 
+	TNOlightblue, 
+	rounded corners=0.4em]
+\setlength\nwidth{6em}    %% default minimum block width
+\setlength\nheight{5em}     %% default minimum block height
+\setlength\nsep{2em}      %% default block separation
+\definecolor{egocolor}{RGB}{220, 200, 200}
+\definecolor{othervehicle}{RGB}{200, 220, 200}
+\definecolor{staticenvironment}{RGB}{200, 200, 220}
+\newlength{\tagheight}\setlength{\tagheight}{3em}
+\newlength{\subjectwidth}\setlength{\subjectwidth}{6em}
+\newlength{\descriptionwidth}\setlength{\descriptionwidth}{6em}
+\newlength{\tagtotalwidth}\setlength{\tagtotalwidth}{27em}
+\newlength{\egovehiclecruising}\setlength{\egovehiclecruising}{6em}
+\newlength{\egovehicleaccelerating}\setlength{\egovehicleaccelerating}{10em}
+\newlength{\egovehiclefollowing}\setlength{\egovehiclefollowing}{12em}
+\newlength{\egovehiclechanging}\setlength{\egovehiclechanging}{9em}
+\newlength{\itempos}\setlength{\itempos}{1.5em}
+\newlength{\timepos}\setlength{\timepos}{2em}
+\newlength{\itemwidth}\setlength{\itemwidth}{5.5em}
+
+\newlength{\tagsep}\setlength{\tagsep}{0.5em}
+\newlength{\otherfollowing}\setlength{\otherfollowing}{5.5em}
+\newlength{\otherchanging}\setlength{\otherchanging}{11em}
+\newlength{\othernolead}\setlength{\othernolead}{9.5em}
+\newlength{\cutinheight}\setlength{\cutinheight}{2.2em}
+\newlength{\arrowheight}\setlength{\arrowheight}{0.8em}
+
+\tikzstyle{block}=[minimum height=\tagheight, align=center, anchor=north east]
+\tikzstyle{tag}=[block, draw, anchor=north west]
+\tikzstyle{tagitem}=[tag, minimum width=\itemwidth, text width=\itemwidth-1em]
+\tikzstyle{tagitemtwo}=[tag, minimum width=2\itemwidth, text width=2\itemwidth-1em]
+\tikzstyle{tagitemthree}=[tag, minimum width=3\itemwidth, text width=3\itemwidth-1em]
+\tikzstyle{tagitemfour}=[tag, minimum width=4\itemwidth, text width=4\itemwidth-1em]
+\tikzstyle{timeline}=[ultra thick, color=black]
+\tikzstyle{showitem}=[dashed]
+\tikzstyle{cutinline}=[ultra thick, color=red]
+
+\newcommand{\tagtable}[2]{\hspace{-1em}\begin{tabular}{l}\tikz{\node[fill=#1, rounded corners=0.2em](tag){#2};}\end{tabular}\hspace{-.2em}}
+
+
+\newcommand{\fonescore}{\mathrm{F1\,\, score}}
+\newcommand{\precision}{\mathrm{Precision}}
+\newcommand{\recall}{\mathrm{Recall}}
+
+%%==========================================================================
+%% Miscellaneous
+%%==========================================================================
+\graphicspath{{figures/}{more_figures/}}        %% (graphicx) directory path for figures
+\addtolength{\arraycolsep}{-0.5mm}              %% squeeze matrix columns a little
+\fnbelowfloat                                   %% (stfloats) put footnote below a float at the page bottom
+\urlstyle{same}                                 %% (hyperref) use current font for URLs
+\hypersetup{pdftitle={Scenario Mining},
+            pdfauthor={Erwin de Gelder},
+            colorlinks=true,linkcolor=TNOgray}  %% (hyperref) pdf properties title and author
+%\captionsetup[subfloat]{
+%    farskip=0pt,
+%    nearskip=0pt,
+%    captionskip=0pt,
+%    textfont=normalsize,
+%    labelformat=empty}                         %% (subfig) subfloat caption format
+%\captionsetup[figure]{
+%    textfont=normalsize,
+%    labelformat=empty}                         %% (subfig/caption) figure caption format
+%\captionsetup[table]{
+%    aboveskip=2pt,
+%    labelfont={small,bf},
+%    textfont={small,sc}}                       %% (subfig/caption) table caption format
+\usetheme{TNO}                                  %% TNO presentation theme
+% options (example):
+% \usetheme[corporate, shownavigation, showtotalframenumber=false]{TNO}
+\newif\ifshow\showfalse                         %% allow to skip slides using an if-then(-else) construct
+
+
+%%==========================================================================
+%% Document meta data
+%%==========================================================================
+\title[Real-World Scenario Mining for the Assessment of Automated Vehicles]{Real-World Scenario Mining for the Assessment of Automated Vehicles}
+\subtitle{}
+\author[De Gelder et al.]{Erwin de Gelder \texttt{erwin.degelder@tno.nl}, \newline Jeroen Manders, Corrado Grappiolo, Jan-Pieter Paardekooper, \newline Olaf Op den Camp, Bart De Schutter}
+\date[ITSC2020]{The 23rd IEEE International Conference on Intelligent Transportation Systems
+September 20 –- 23, 2020}
+
+
+%%==========================================================================
+%% Begin document
+%%
+%% In case of colored elements, please use the standard TNO colors TNOred,
+%% TNOgreen, TNOblue, TNOdarkblue, TNOorange, TNOyellow, TNOgray, and
+%% TNOlightgray.
+%%==========================================================================
+
+\begin{document}
+
+{\setbeamertemplate{footline}{} %% no footer on title page
+\titlebackground{figures/background}  %% custom background (comment for default background)
+\blacktitle                     %% black text & banner on title page (comment for white text & banner)
+\begin{frame}
+    \titlepage
+\end{frame}}
+
+\begin{frame}{Table of contents}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+\stepcounter{subsection}
+\begin{frame}{Introduction}{Why do we need scenario mining?}
+    Use scenarios collected from real-world data as the basis for the test cases for the scenario-based assessment of Automated Vehicles (AVs).
+    \vspace{2em}
+    \begin{figure}
+    	\centering
+    	\begin{tikzpicture}[scale=1.2, every node/.style={scale=1.2}]
+	    	\node[blockblue](data){Real-world data};
+	    	\node[blockblue, right of=data](mining){Mining scenarios};
+	    	\node[blockblue, right of=mining](generation){Test case generation};
+	    	\node[blockblue, right of=generation](assessment){Assessment of Automated Vehicles (AVs)};
+	    	\draw[arrow](data) -- (mining);
+	    	\draw[arrow](mining) -- (generation);
+	    	\draw[arrow](generation) -- (assessment);
+	    	
+	    	\node[below of=mining, node distance=6em](text){This paper};
+	    	\draw[arrow, color=black, line width=.5mm](text) -- (mining);
+	    \end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+
+
+
+
+\section{Problem formulation}
+\stepcounter{subsection}
+\begin{frame}{Problem formulation}
+	\begin{definition}[Scenario]
+		A scenario is a quantitative description of the relevant characteristics of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment. In addition, a scenario contains all events that are relevant to the ego vehicle.
+	\end{definition}
+	
+	\begin{definition}[Scenario category]
+		A scenario category is a qualitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment.
+	\end{definition}
+	
+	In simple words: A scenario category is an abstraction of a scenario.
+\end{frame}
+
+\begin{frame}{Problem formulation}
+	\begin{example}[Scenario]
+		The cut-in scenario that has been recorded with vehicle X on the highway at 10:15 on September 20, 2020.
+	\end{example}
+	\begin{example}[Scenario category]
+		``Cut in on highway.'' This scenario category comprises all cut-in scenarios, e.g., the cut-in scenario mentioned in the example.
+	\end{example}
+	
+	\begin{problem}[Scenario mining]
+		Given a scenario category, how to find all scenarios that correspond to this scenario category in a given data set?
+	\end{problem}
+\end{frame}
+
+
+
+
+
+\section{Step 1: Data tagging}
+\stepcounter{subsection}
+\begin{frame}{Method}
+	\begin{figure}
+		\setlength\nwidth{7em}    %% default minimum block width
+		\setlength\nheight{5em}     %% default minimum block height
+		\setlength\nsep{2em}      %% default block separation
+	   	\centering
+	   	\begin{tikzpicture}[scale=1.5, every node/.style={scale=1.5}]
+	    	\node[blockblue](tagging){Step 1: \\ Data tagging};
+	    	\node[blockblue, right of=tagging]{Step 2: \\ Mining scenarios using tags};
+	    \end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Step 1: Data tagging}
+	Tags are used to \emph{annotate} the data. In this paper, the tags describe:
+	\begin{itemize}
+		\item the behavior of the ego vehicle,
+		\item the behavior and state of any other vehicle, and
+		\item the static environment.
+	\end{itemize}
+	
+%	\begin{block}{Remark}
+%		If necessary, more tags could be considered. The same approach presented here applies.
+%	\end{block}
+\end{frame}
+
+\begin{frame}{Step 1: Data tagging}{Example of tags}
+	\setlength{\tagtotalwidth}{24em}
+	\setlength{\egovehiclefollowing}{15.5em}
+	\begin{figure}
+		\begin{tikzpicture}
+			% Ego vehicle.
+			\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=egocolor] at (-\descriptionwidth, 0) {Ego vehicle};
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=egocolor] at (0, 0) {Lateral activity};
+			\node[tag, minimum width=\egovehiclefollowing, fill=egocolor] at (0, 0) {Following lane};
+			\node[tag, minimum width=\tagtotalwidth-\egovehiclefollowing, text width=\tagtotalwidth-\egovehiclefollowing-1em, fill=egocolor] at (\egovehiclefollowing, 0) {Changing lane left};
+			
+			% Other vehicle, lateral activity.
+			\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=othervehicle, minimum height=2\tagheight] at (-\descriptionwidth, -\tagheight-\tagsep) {Other vehicle};
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -\tagheight-\tagsep) {Lateral activity};
+			\node[tag, text width=\otherfollowing-1em, minimum width=\otherfollowing, fill=othervehicle] at (0, -\tagheight-\tagsep) {Following lane};
+			\node[tag, text width=\otherchanging-1em, minimum width=\otherchanging, fill=othervehicle] at (\otherfollowing, -\tagheight-\tagsep) {Changing lane right};
+			\node[tag, text width=\tagtotalwidth-\otherfollowing-\otherchanging-1em, minimum width=\tagtotalwidth-\otherfollowing-\otherchanging, fill=othervehicle] at (\otherfollowing+\otherchanging, -\tagheight-\tagsep) {Following lane};
+			
+			% Other vehicle, lead vehicle.
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -2\tagheight-\tagsep) {Lead vehicle};
+			\node[tag, minimum width=\othernolead, fill=othervehicle] at (0, -2\tagheight-\tagsep) {No leader};
+			\node[tag, minimum width=\tagtotalwidth-\othernolead, fill=othervehicle] at (\othernolead, -2\tagheight-\tagsep) {Leader};
+			
+			% Static environment.
+			\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=staticenvironment] at (-\descriptionwidth, -3\tagheight-2\tagsep) {Static environment};
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {On highway};
+			\node[tag, minimum width=\tagtotalwidth, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {Highway};
+			
+			% Timeline.
+			\draw[timeline, ->] (0, -4\tagheight-2\tagsep-\timepos) -> (\tagtotalwidth, -4\tagheight-2\tagsep-\timepos);
+			\node[minimum width=\tagtotalwidth, align=center, anchor=north west, minimum height=\timepos] at (0, -4\tagheight-2\tagsep) {Time};
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Step 1: Data tagging}{Which tags do we consider?}
+	\begin{table}
+		\begin{tabular}[t]{lll}
+			\textbf{Subject} & \textbf{Description} & \textbf{Possible tags} \\
+			Ego vehicle & Longitudinal activity \hspace{-.7em} & 
+			\tagtable{egocolor}{Accelerating}
+			\tagtable{egocolor}{Decelerating}
+			\tagtable{egocolor}{Cruising} \\
+			Ego vehicle & Lateral activity & 
+			\tagtable{egocolor}{Changing lane left}
+			\tagtable{egocolor}{Changing lane right}
+			\tagtable{egocolor}{Following lane} \\
+			Any other vehicle \hspace{-1em} & Longitudinal activity \hspace{-.7em} & 
+			\tagtable{othervehicle}{Accelerating}
+			\tagtable{othervehicle}{Decelerating}
+			\tagtable{othervehicle}{Cruising} \\
+			Any other vehicle \hspace{-1em} & Lateral activity & 
+			\tagtable{othervehicle}{Changing lane left}
+			\tagtable{othervehicle}{Changing lane right}
+			\tagtable{othervehicle}{Following lane} \\
+			Any other vehicle \hspace{-1em} & Longitudinal state & 
+			\tagtable{othervehicle}{In front of ego}
+			\tagtable{othervehicle}{Behind ego}\\
+			Any other vehicle \hspace{-1em} & Lateral state & 
+			\tagtable{othervehicle}{Left of ego}
+			\tagtable{othervehicle}{Right of ego}
+			\tagtable{othervehicle}{Same lane as ego}
+			\tagtable{othervehicle}{Unclear} \\
+			Any other vehicle \hspace{-1em} & Lead vehicle & 
+			\tagtable{othervehicle}{Leader}
+			\tagtable{othervehicle}{No leader} \\
+			Static environment \hspace{-1em} & On highway & 
+			\tagtable{staticenvironment}{Highway}
+			\tagtable{staticenvironment}{No highway}
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}{Step 1: Data tagging}{Longitudinal activity}
+	\setlength{\figurewidth}{14cm}
+	\setlength{\figureheight}{6cm}
+	\begin{figure}
+		\input{figures/lon_activities.tikz}
+	\end{figure}
+\end{frame}
+
+%\begin{frame}{Step 1: Data tagging}{Lateral activity}
+%	\setlength{\figurewidth}{10cm}
+%	\setlength{\figureheight}{6cm}
+%	\begin{figure}
+%		\input{figures/ego_lane_change.tikz}
+%	\end{figure}
+%\end{frame}
+
+
+
+
+
+\section{Step 2: Mining scenarios using tags}
+\stepcounter{subsection}
+\begin{frame}{Step 2: Mining scenarios using tags}
+	\begin{columns}
+		\begin{column}{.3\linewidth}
+			\begin{itemize}
+				\item Formulate each scenario category using a combination of tags.
+				\item Search in the tagged data set for the same combination of tags.
+			\end{itemize}
+		\end{column}
+		\pause
+		\begin{column}{.7\linewidth}
+			\begin{figure}
+				\setlength{\itemwidth}{5.5em}
+				\begin{tikzpicture}
+					% Ego vehicle.
+					\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=egocolor] at (-\descriptionwidth, 0) {Ego vehicle};
+					\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=egocolor] at (0, 0) {Lateral activity};
+					\node[tagitemtwo, fill=egocolor] at (0, 0) {Following lane};
+					
+					% Other vehicle, lateral activity.
+					\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=othervehicle, minimum height=2\tagheight] at (-\descriptionwidth, -\tagheight-\tagsep) {Other vehicle};
+					\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -\tagheight-\tagsep) {Lateral activity};
+					\node[tagitemtwo, fill=othervehicle] at (0, -\tagheight-\tagsep) {Changing lane left OR Changing lane right};
+					
+					% Other vehicle, lead vehicle.
+					\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -2\tagheight-\tagsep) {Lead vehicle};
+					\node[tagitem, fill=othervehicle] at (0, -2\tagheight-\tagsep) {No leader};
+					\node[tagitem, fill=othervehicle] at (\itemwidth, -2\tagheight-\tagsep) {Leader};
+					
+					% Static environment.
+					\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=staticenvironment] at (-\descriptionwidth, -3\tagheight-2\tagsep) {Static environment};
+					\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {On highway};
+					\node[tagitemtwo, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {Highway};
+					
+					% Items.
+					\foreach \i in {1, 2} {%
+						\node[minimum width=\itemwidth, align=center, minimum height=\itempos, anchor=north east] at (\i\itemwidth, \itempos) {Item \i};
+						\draw[showitem] (\i\itemwidth, 0) -- (\i\itemwidth, \itempos);
+					}
+					\draw[showitem] (0, 0) -- (0, \itempos);
+				\end{tikzpicture}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Step 2: Mining scenarios using tags}{Example of ``cut in''}
+	\begin{figure}
+		\setlength{\tagtotalwidth}{24em}
+		\setlength{\egovehiclefollowing}{15.5em}
+		\begin{tikzpicture}
+			% Ego vehicle.
+			\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=egocolor] at (-\descriptionwidth, 0) {Ego vehicle};
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=egocolor] at (0, 0) {Lateral activity};
+			\node[tag, minimum width=\egovehiclefollowing, fill=egocolor] at (0, 0) {Following lane};
+			\node[tag, minimum width=\tagtotalwidth-\egovehiclefollowing, text width=\tagtotalwidth-\egovehiclefollowing-1em, fill=egocolor] at (\egovehiclefollowing, 0) {Changing lane left};
+			
+			% Other vehicle, lateral activity.
+			\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=othervehicle, minimum height=2\tagheight] at (-\descriptionwidth, -\tagheight-\tagsep) {Other vehicle};
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -\tagheight-\tagsep) {Lateral activity};
+			\node[tag, text width=\otherfollowing-1em, minimum width=\otherfollowing, fill=othervehicle] at (0, -\tagheight-\tagsep) {Following lane};
+			\node[tag, text width=\otherchanging-1em, minimum width=\otherchanging, fill=othervehicle] at (\otherfollowing, -\tagheight-\tagsep) {Changing lane right};
+			\node[tag, text width=\tagtotalwidth-\otherfollowing-\otherchanging-1em, minimum width=\tagtotalwidth-\otherfollowing-\otherchanging, fill=othervehicle] at (\otherfollowing+\otherchanging, -\tagheight-\tagsep) {Following lane};
+			
+			% Other vehicle, lead vehicle.
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -2\tagheight-\tagsep) {Lead vehicle};
+			\node[tag, minimum width=\othernolead, fill=othervehicle] at (0, -2\tagheight-\tagsep) {No leader};
+			\node[tag, minimum width=\tagtotalwidth-\othernolead, fill=othervehicle] at (\othernolead, -2\tagheight-\tagsep) {Leader};
+			
+			% Static environment.
+			\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=staticenvironment] at (-\descriptionwidth, -3\tagheight-2\tagsep) {Static environment};
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {On highway};
+			\node[tag, minimum width=\tagtotalwidth, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {Highway};
+			
+			% Show where the cut in is.
+			\draw[cutinline, dashed] (\otherfollowing, \cutinheight) -- (\otherfollowing, -4\tagheight-2\tagsep);
+			\draw[cutinline, dashed] (\egovehiclefollowing, \cutinheight) -- (\egovehiclefollowing, -4\tagheight-2\tagsep);
+			\draw[cutinline, <->] (\otherfollowing, \arrowheight) -- (\egovehiclefollowing, \arrowheight);
+			\node[anchor=north west, text width=\egovehiclefollowing-\otherfollowing-1em, minimum width=\egovehiclefollowing-\otherfollowing, minimum height=\cutinheight-\arrowheight, align=center] at (\otherfollowing, \cutinheight) {Cut in};
+			
+			% Timeline.
+			\draw[timeline, ->] (0, -4\tagheight-2\tagsep-\timepos) -> (\tagtotalwidth, -4\tagheight-2\tagsep-\timepos);
+			\node[minimum width=\tagtotalwidth, align=center, anchor=north west, minimum height=\timepos] at (0, -4\tagheight-2\tagsep) {Time};
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+
+
+
+
+\section{Case study}
+\stepcounter{subsection}
+\begin{frame}{Case study}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Data has been recorded from a vehicle equipped with 3 radars and a camera.
+				\item Two different scenario categories are considered:
+				\begin{itemize}
+					\item Cut in 
+					\item Overtaking before lane change
+				\end{itemize}
+				\item Scenarios are extracted using the described method.
+				\item Ground truth: manually extraction of scenarios.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}  %%<--- here
+			\vspace{-5em}
+			\begin{figure}
+				\setlength{\figurewidth}{\textwidth}
+				\input{figures/cutin.tikz}
+				\vspace{-2em}
+				\caption{Schematic overview of a ``cut-in'' scenario.}
+			\end{figure}
+			\vspace{-3em}
+			\begin{figure}
+				\setlength{\figurewidth}{\textwidth}
+				\input{figures/overtaking.tikz}
+				\vspace{-2em}
+				\caption{Schematic overview of a ``overtaking before lane change'' scenario.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Case study}{Formulation of ``overtaking before lane change'' using tags}
+	\begin{figure}
+		\setlength{\descriptionwidth}{7em}
+		\begin{tikzpicture}
+			% Ego vehicle.
+			\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=egocolor] at (-\descriptionwidth, 0) {Ego vehicle};
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=egocolor] at (0, 0) {Lateral activity};
+			\node[tagitemtwo, fill=egocolor] at (0, 0) {Following lane};
+			\node[tagitemtwo, fill=egocolor] at (2\itemwidth, 0) {Changing lane left};
+			
+			% Other vehicle, lateral state.
+			\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=othervehicle, minimum height=2\tagheight] at (-\descriptionwidth, -\tagheight-\tagsep) {Other vehicle};
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -\tagheight-\tagsep) {Lateral state};
+			\node[tagitemthree, fill=othervehicle] at (0, -\tagheight-\tagsep) {Left of ego};
+			\node[tagitem, fill=othervehicle] at (3\itemwidth, -\tagheight-\tagsep) {Same lane as ego};
+			
+			% Other vehicle, longitudinal state.
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=othervehicle] at (0, -2\tagheight-\tagsep) {Longitudinal state};
+			\node[tagitem, fill=othervehicle] at (0, -2\tagheight-\tagsep) {Behind ego};
+			\node[tagitemthree, fill=othervehicle] at (\itemwidth, -2\tagheight-\tagsep) {In front of ego};
+			
+			% Static environment.
+			\node[block, text width=\subjectwidth-1em, minimum width=\subjectwidth, fill=staticenvironment] at (-\descriptionwidth, -3\tagheight-2\tagsep) {Static environment};
+			\node[block, text width=\descriptionwidth-1em, minimum width=\descriptionwidth, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {On highway};
+			\node[tagitemfour, fill=staticenvironment] at (0, -3\tagheight-2\tagsep) {Highway};
+			
+			% Items.
+			\foreach \i in {1, 2, 3, 4} {%
+				\node[minimum width=\itemwidth, align=center, minimum height=\itempos, anchor=north east] at (\i\itemwidth, \itempos) {Item \i};
+				\draw[showitem] (\i\itemwidth, 0) -- (\i\itemwidth, \itempos);
+			}
+			\draw[showitem] (0, 0) -- (0, \itempos);
+		\end{tikzpicture}
+	\end{figure}	
+\end{frame}
+
+\begin{frame}{Case study}{Results}
+	\begin{table}
+		\centering
+		\caption{Results of the scenario mining.}
+		\begin{tabular}{lllllll}
+			\textbf{Scenario category} & \textbf{FN} & \textbf{FP} & \textbf{TP} & \textbf{Recall} & \textbf{Precision} & \textbf{F1 score} \\ 
+			Cut in & 3 & 3 & 33 & \SI{92}{\percent} & \SI{92}{\percent} & \SI{92}{\percent}  \\
+			Overtaking before lane change & 1 & 0 & 18 & \SI{95}{\percent} & \SI{100}{\percent} & \SI{97}{\percent}
+		\end{tabular}
+	\end{table}
+	\begin{equation*}
+		\fonescore = 2 \cdot \frac{\precision\cdot\recall}{\precision+\recall}.
+	\end{equation*}
+\end{frame}
+
+
+
+
+
+\section{Conclusions and outlook}
+\stepcounter{subsection}
+\begin{frame}{Conclusions and outlook}
+	Conclusions:
+	\begin{itemize}
+		\item We have proposed a two-step approach for mining real-world scenarios from a data set.
+		\begin{itemize}
+			\item Step 1: Tagging the data
+			\item Step 2: Search for particular patterns of the tags
+		\end{itemize}
+		\item Using this approach, no new algorithms have to be developed if new scenario categories are considered.
+		\item We have illustrated the approach with two examples.
+	\end{itemize}
+	
+	\pause
+	Future work:
+	\begin{itemize}
+		\item Extend the list of possible tags.
+		\item Explore the analogy between the proposed scenario mining and natural language processing (tags can be regarded as ``words'').
+	\end{itemize}
+\end{frame}
+
+{\setbeamertemplate{footline}{} %% no footer on title page
+\titlepagebck
+\titlebackground{figures/background}  %% custom background (comment for default background)
+\blacktitle                     %% black text & banner on title page (comment for white text & banner)
+\title{Thanks for you attention}
+\begin{frame}
+	\titlepage
+\end{frame}}
+
+\end{document}
