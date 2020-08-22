@@ -4,19 +4,18 @@
     "tag": [],
     "description": "Cut-in at the motorway",
     "image": "./examples/images/cut-in.png",
-    "static_environment_category": {
-        "name": "motorway",
-        "id": "-1",
-        "tag": [
-            "RoadLayout_Straight",
-            "RoadType_PrincipleRoad_Motorway"
-        ],
-        "region": {
-            "name": "EU_WestCentral",
-            "value": 144
-        },
-        "description": "Motorway with multiple lanes"
-    },
+    "static_physical_thing_category": [
+        {
+            "name": "Motorway",
+            "id": "-1",
+            "tag": [
+                "RoadLayout_Straight",
+                "RoadType_PrincipleRoad_Motorway"
+            ],
+            "description": "Motorway with multiple lanes"
+        }
+    ],
+    "dynamic_physical_thing_category": [],
     "actor_category": [
         {
             "name": "Ego vehicle",
@@ -25,6 +24,7 @@
                 "EgoVehicle",
                 "RoadUserType_Vehicle"
             ],
+            "description": "",
             "vehicle_type": {
                 "name": "Vehicle",
                 "value": 1
@@ -36,6 +36,7 @@
             "tag": [
                 "RoadUserType_Vehicle"
             ],
+            "description": "",
             "vehicle_type": {
                 "name": "Vehicle",
                 "value": 1
@@ -49,6 +50,7 @@
             "tag": [
                 "VehicleLateralActivity_GoingStraight"
             ],
+            "description": "",
             "model": "Constant",
             "state": {
                 "name": "LATERAL_POSITION",
@@ -61,6 +63,7 @@
             "tag": [
                 "VehicleLateralActivity_ChangingLane"
             ],
+            "description": "",
             "model": "Sinusoidal",
             "state": {
                 "name": "LATERAL_POSITION",
@@ -73,6 +76,7 @@
             "tag": [
                 "VehicleLongitudinalActivity_DrivingForward"
             ],
+            "description": "",
             "model": "Spline3Knots",
             "state": {
                 "name": "SPEED",
@@ -101,8 +105,8 @@
     "derived_tags": {
         "Ego vehicle::ActorCategory": [
             "VehicleLateralActivity_GoingStraight",
-            "EgoVehicle",
             "VehicleLongitudinalActivity_DrivingForward",
+            "EgoVehicle",
             "RoadUserType_Vehicle"
         ],
         "Target vehicle::ActorCategory": [
@@ -110,7 +114,7 @@
             "VehicleLongitudinalActivity_DrivingForward",
             "RoadUserType_Vehicle"
         ],
-        "motorway::StaticEnvironmentCategory": [
+        "Motorway::StaticPhysicalThingCategory": [
             "RoadLayout_Straight",
             "RoadType_PrincipleRoad_Motorway"
         ]
