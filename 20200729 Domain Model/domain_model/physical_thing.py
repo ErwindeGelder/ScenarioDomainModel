@@ -4,10 +4,11 @@ Creation date: 2020 08 19
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 08 22: Add function to obtain properties from a dictionary.
 """
 
 from abc import abstractmethod
-from .quantitative_thing import QuantitativeThing
+from .quantitative_thing import QuantitativeThing, _quantitative_thing_props_from_json
 from .type_checking import check_for_type
 
 
@@ -39,3 +40,9 @@ class PhysicalThing(QuantitativeThing):
         thing = QuantitativeThing.to_json(self)
         thing["properties"] = self.properties
         return thing
+
+
+def _physical_thing_props_from_json(json: dict) -> dict:
+    props = dict(properties=json["properties"])
+    props.update(_quantitative_thing_props_from_json(json))
+    return props
