@@ -20,8 +20,7 @@ class QuantitativeThing(Thing):
 
     Attributes:
         uid (int): A unique ID.
-        name (str): A name that serves as a short description of the actor
-            category.
+        name (str): A name that serves as a short description of the thing.
         tags (List[Tag]): The tags are used to determine whether a scenario
             category comprises a scenario.
     """
