@@ -6,10 +6,10 @@ Author(s): Erwin de Gelder
 Modifications:
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 13: Update of terminology.
+2020 08 22: Change how an event is created from json code. Result is the same.
 """
 
-from .thing import Thing
-from .tags import tag_from_json
+from .thing import Thing, _thing_props_from_json
 from .type_checking import check_for_type
 
 
@@ -55,6 +55,12 @@ class Event(Thing):
         return event
 
 
+def _event_props_from_json(json: dict) -> dict:
+    props = dict(conditions=json["conditions"])
+    props.update(_thing_props_from_json(json))
+    return props
+
+
 def event_from_json(json: dict) -> Event:
     """ Get Event object from JSON code.
 
@@ -64,8 +70,4 @@ def event_from_json(json: dict) -> Event:
     :param json: JSON code of Event.
     :return: Event object.
     """
-    event = Event(json["conditions"],
-                  name=json["name"],
-                  uid=int(json["id"]),
-                  tags=[tag_from_json(tag) for tag in json["tag"]])
-    return event
+    return Event(**_event_props_from_json(json))
