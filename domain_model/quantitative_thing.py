@@ -4,10 +4,11 @@ Creation date: 2020 08 15
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 08 22: Add function to obtain properties from a dictionary.
 """
 
 from abc import abstractmethod
-from .thing import Thing
+from .thing import Thing, _thing_props_from_json
 
 
 class QuantitativeThing(Thing):
@@ -27,3 +28,7 @@ class QuantitativeThing(Thing):
     @abstractmethod
     def __init__(self, **kwargs):
         Thing.__init__(self, **kwargs)
+
+
+def _quantitative_thing_props_from_json(json: dict) -> dict:
+    return _thing_props_from_json(json)
