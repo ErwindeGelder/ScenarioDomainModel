@@ -22,9 +22,10 @@ Modifications:
 """
 
 from __future__ import annotations
-from typing import List, Tuple
+from typing import List, Tuple, Union
 import fnmatch
 import numpy as np
+from .activity import Activity
 from .activity_category import ActivityCategory, activity_category_from_json
 from .actor import Actor
 from .actor_category import ActorCategory, actor_category_from_json
@@ -208,25 +209,8 @@ class ScenarioCategory(QualitativeThing):
 
         # Set the acts.
         self.acts = acts_scenario_category
-
-        # Check whether the actors/activities defined with the acts are already listed. If not,
-        # the corresponding actor/activity will be added and a warning will be shown.
-        for thing, activity in self.acts:
-            if thing not in self.actors + self.dynamic_physical_things:
-                if verbose:
-                    print("Actor/dynamic physical thing with name '{:s}' ".format(thing.name) +
-                          "is used with acts but not defined in the list of actors.")
-                    print("Therefore, the actor is added to the list of actors.")
-                if isinstance(thing, ActorCategory):
-                    self.actors.append(thing)
-                else:
-                    self.dynamic_physical_things.append(thing)
-            if activity not in self.activities:
-                if verbose:
-                    print("Activity with name '{:s}' is used with acts but".format(activity.name) +
-                          " not defined in the list of activities.")
-                    print("Therefore, the activity is added to the list of activities.")
-                self.activities.append(activity)
+        _check_acts(self.acts, self.dynamic_physical_things, self.actors, self.activities,
+                    verbose=verbose)
 
     def derived_tags(self) -> dict:
         """ Return all tags, including the tags of the attributes.
@@ -391,6 +375,33 @@ class ScenarioCategory(QualitativeThing):
         scenario_category["activity_category"] = [activity.to_json_full() for activity in
                                                   self.activities]
         return scenario_category
+
+
+def _check_acts(acts: Union[List[Tuple[DynamicPhysicalThingCategory, ActivityCategory]],
+                            List[Tuple[DynamicPhysicalThing, Activity]]],
+                dynamic_physical_things: Union[List[DynamicPhysicalThingCategory],
+                                               List[DynamicPhysicalThing]],
+                actors: Union[List[ActorCategory], List[Actor]],
+                activities: Union[List[ActivityCategory], List[Activity]],
+                verbose: bool = True):
+    # Check whether the actors/activities defined with the acts are already listed. If not,
+    # the corresponding actor/activity will be added and a warning will be shown.
+    for thing, activity in acts:
+        if thing not in actors + dynamic_physical_things:
+            if verbose:
+                print("Actor/dynamic physical thing with name '{:s}' ".format(thing.name) +
+                      "is used with acts but not defined in the list of actors.")
+                print("Therefore, the actor is added to the list of actors.")
+            if isinstance(thing, ActorCategory):
+                actors.append(thing)
+            else:
+                dynamic_physical_things.append(thing)
+        if activity not in activities:
+            if verbose:
+                print("Activity with name '{:s}' is used with acts but".format(activity.name) +
+                      " not defined in the list of activities.")
+                print("Therefore, the activity is added to the list of activities.")
+            activities.append(activity)
 
 
 def scenario_category_from_json(json: dict) -> ScenarioCategory:
