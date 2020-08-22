@@ -14,14 +14,15 @@ Modifications:
             desried state.
 2019 10 11: Update of terminology.
 2019 11 04: Add goals to ego vehicle.
-2020 08 19: Make Actor a subclass of DynamicPhysicalThing
+2020 08 19: Make Actor a subclass of DynamicPhysicalThing.
+2020 08 22: Add function to obtain properties from a dictionary.
 """
 
 from typing import List
 from .actor_category import ActorCategory, actor_category_from_json
-from .dynamic_physical_thing import DynamicPhysicalThing
+from .dynamic_physical_thing import DynamicPhysicalThing, _dynamic_physical_thing_props_from_json
 from .state import State, state_from_json
-from .tags import Tag, tag_from_json
+from .tags import Tag
 from .type_checking import check_for_type, check_for_list
 
 
@@ -42,13 +43,13 @@ class Actor(DynamicPhysicalThing):
         desired_states (List[State]): Specifying the goal/objectve of the actor.
         category (ActorCategory): The qualitative counterpart.
     """
-    def __init__(self, actor_category: ActorCategory, desired_states: List[State] = None,
+    def __init__(self, category: ActorCategory, desired_states: List[State] = None,
                  initial_states: List[State] = None, properties: dict = None, **kwargs):
         # Check the types of the inputs
-        check_for_type("actor_category", actor_category, ActorCategory)
+        check_for_type("actor_category", category, ActorCategory)
         check_for_list("desired_states", desired_states, State)
 
-        DynamicPhysicalThing.__init__(self, actor_category, initial_states, properties, **kwargs)
+        DynamicPhysicalThing.__init__(self, category, initial_states, properties, **kwargs)
         self.desired_states = [] if desired_states is None else desired_states  # type: List[State]
 
     def to_json(self) -> dict:
@@ -57,7 +58,13 @@ class Actor(DynamicPhysicalThing):
         return actor
 
 
-def actor_from_json(json: dict, actor_category: ActorCategory = None) -> Actor:
+def _actor_props_from_json(json: dict) -> dict:
+    props = dict(desired_states=[state_from_json(state) for state in json["desired_states"]])
+    props.update(_dynamic_physical_thing_props_from_json(json))
+    return props
+
+
+def actor_from_json(json: dict, category: ActorCategory = None) -> Actor:
     """ Get Actor object from JSON code
 
     It is assumed that all the attributes are fully defined. Hence, the
@@ -66,21 +73,12 @@ def actor_from_json(json: dict, actor_category: ActorCategory = None) -> Actor:
     case, the ActorCategory does not need to be defined in the JSON code.
 
     :param json: JSON code of Actor.
-    :param actor_category: If given, it will not be based on the JSON code.
+    :param category: If given, it will not be based on the JSON code.
     :return: Actor object.
     """
-    if actor_category is None:
-        actor_category = actor_category_from_json(json["category"])
-    initial_states = [state_from_json(state) for state in json["initial_states"]]
-    derired_states = [state_from_json(state) for state in json["desired_states"]]
-    actor = Actor(actor_category,
-                  initial_states=initial_states,
-                  desired_states=derired_states,
-                  properties=json["properties"],
-                  name=json["name"],
-                  uid=int(json["id"]),
-                  tags=[tag_from_json(tag) for tag in json["tag"]])
-    return actor
+    if category is None:
+        category = actor_category_from_json(json["category"])
+    return Actor(category, **_actor_props_from_json(json))
 
 
 class EgoVehicle(Actor):
@@ -90,8 +88,9 @@ class EgoVehicle(Actor):
     that it contains the tag "Ego vehicle".
 
     """
-    def __init__(self, actor_category: ActorCategory, initial_states: List[State] = None,
+    def __init__(self, category: ActorCategory, initial_states: List[State] = None,
                  desired_states: List[State] = None, goal: str = "", **kwargs):
-        Actor.__init__(self, actor_category, initial_states=initial_states,
+        Actor.__init__(self, category, initial_states=initial_states,
                        desired_states=desired_states, goal=goal, **kwargs)
-        self.tags += [Tag.EgoVehicle]
+        if Tag.EgoVehicle not in self.tags:
+            self.tags += [Tag.EgoVehicle]
