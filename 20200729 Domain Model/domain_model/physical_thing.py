@@ -21,8 +21,8 @@ class PhysicalThing(QuantitativeThing):
 
     Attributes:
         uid (int): A unique ID.
-        name (str): A name that serves as a short description of the actor
-            category.
+        name (str): A name that serves as a short description of the physical
+            thing.
         tags (List[Tag]): The tags are used to determine whether a scenario
             category comprises a scenario.
         properties(dict): All properties of the physical thing.
