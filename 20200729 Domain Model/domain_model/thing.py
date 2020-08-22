@@ -11,11 +11,12 @@ Modifications:
 2019 10 13: Update of terminology.
 2020 07 31: Return a copy of the list of tags when using get_tags().
 2020 08 15: Change Default to Thing.
+2020 08 22: Add function to obtain properties from a dictionary.
 """
 
 from abc import ABC, abstractmethod
 from typing import List
-from .tags import Tag
+from .tags import Tag, tag_from_json
 from .type_checking import check_for_type, check_for_list
 
 
@@ -82,3 +83,9 @@ class Thing(ABC):
         :return: dictionary that can be converted to a json file.
         """
         return self.to_json()
+
+
+def _thing_props_from_json(json: dict) -> dict:
+    return dict(name=json["name"],
+                uid=int(json["id"]),
+                tags=[tag_from_json(tag) for tag in json["tag"]])
