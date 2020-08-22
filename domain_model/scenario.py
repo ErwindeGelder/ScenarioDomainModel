@@ -158,8 +158,8 @@ class Scenario(Thing):
     def derived_tags(self) -> dict:
         """ Return all tags, including the tags of the attributes.
 
-        The ScenarioCategory has tags, but also its attributes can have tags.
-        More specifically, the StaticEnvironmentCategory, each ActorCategory,
+        The Scenario has tags, but also its attributes can have tags. More
+        specifically, the StaticEnvironmentCategory, each ActorCategory,
         and each ActivityCategory might have tags. A dictionary will be
         returned. Each item of the dictionary contains a list of tags
         corresponding to either the own object (i.e., ScenarioCategory), an
