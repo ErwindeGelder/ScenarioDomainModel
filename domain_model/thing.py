@@ -12,10 +12,12 @@ Modifications:
 2020 07 31: Return a copy of the list of tags when using get_tags().
 2020 08 15: Change Default to Thing.
 2020 08 22: Add function to obtain properties from a dictionary.
+2020 08 23: If no uid is given, generate one.
 """
 
 from abc import ABC, abstractmethod
 from typing import List
+import uuid
 from .tags import Tag, tag_from_json
 from .type_checking import check_for_type, check_for_list
 
@@ -37,13 +39,17 @@ class Thing(ABC):
             category comprises a scenario.
     """
     @abstractmethod
-    def __init__(self, name: str = "", uid: int = -1, tags: List[Tag] = None):
+    def __init__(self, name: str = "", uid: int = None, tags: List[Tag] = None):
         # Check the types of the inputs
-        check_for_type("uid", uid, int)
+        if uid is not None:
+            check_for_type("uid", uid, int)
         check_for_type("name", name, str)
         check_for_list("tags", tags, Tag)
 
-        self.uid = uid  # type: int
+        if uid is None:
+            self.uid = uuid.uuid4().int  # type: int
+        else:
+            self.uid = uid  # type: int
         self.name = name  # type: str
         self.tags = [] if tags is None else tags
 
