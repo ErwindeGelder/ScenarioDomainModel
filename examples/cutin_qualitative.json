@@ -1,13 +1,13 @@
 {
     "name": "Cut-in",
-    "id": "-1",
+    "id": "180793784360560331534174501303992341822",
     "tag": [],
     "description": "Cut-in at the motorway",
     "image": "./examples/images/cut-in.png",
     "static_physical_thing_category": [
         {
             "name": "Motorway",
-            "id": "-1",
+            "id": "69021242432237568116806664274287842141",
             "tag": [
                 "RoadLayout_Straight",
                 "RoadType_PrincipleRoad_Motorway"
@@ -19,7 +19,7 @@
     "actor_category": [
         {
             "name": "Ego vehicle",
-            "id": "1",
+            "id": "95932808596787815189344256217244852429",
             "tag": [
                 "EgoVehicle",
                 "RoadUserType_Vehicle"
@@ -32,7 +32,7 @@
         },
         {
             "name": "Target vehicle",
-            "id": "2",
+            "id": "57144423303190095747150460655536554303",
             "tag": [
                 "RoadUserType_Vehicle"
             ],
@@ -46,7 +46,7 @@
     "activity_category": [
         {
             "name": "Following lane",
-            "id": "1",
+            "id": "142689597454738184183382427954702549278",
             "tag": [
                 "VehicleLateralActivity_GoingStraight"
             ],
@@ -59,7 +59,7 @@
         },
         {
             "name": "Changing lane",
-            "id": "2",
+            "id": "192453017647138050953267243789381688678",
             "tag": [
                 "VehicleLateralActivity_ChangingLane"
             ],
@@ -72,7 +72,7 @@
         },
         {
             "name": "Driving forward",
-            "id": "3",
+            "id": "154206546998919282253477574189167667980",
             "tag": [
                 "VehicleLongitudinalActivity_DrivingForward"
             ],
@@ -86,28 +86,28 @@
     ],
     "act": [
         {
-            "actor": 1,
-            "activity": 3
+            "actor": 95932808596787815189344256217244852429,
+            "activity": 154206546998919282253477574189167667980
         },
         {
-            "actor": 1,
-            "activity": 1
+            "actor": 95932808596787815189344256217244852429,
+            "activity": 142689597454738184183382427954702549278
         },
         {
-            "actor": 2,
-            "activity": 3
+            "actor": 57144423303190095747150460655536554303,
+            "activity": 154206546998919282253477574189167667980
         },
         {
-            "actor": 2,
-            "activity": 2
+            "actor": 57144423303190095747150460655536554303,
+            "activity": 192453017647138050953267243789381688678
         }
     ],
     "derived_tags": {
         "Ego vehicle::ActorCategory": [
             "VehicleLateralActivity_GoingStraight",
             "VehicleLongitudinalActivity_DrivingForward",
-            "EgoVehicle",
-            "RoadUserType_Vehicle"
+            "RoadUserType_Vehicle",
+            "EgoVehicle"
         ],
         "Target vehicle::ActorCategory": [
             "VehicleLateralActivity_ChangingLane",
