@@ -56,9 +56,7 @@ class DynamicPhysicalThing(PhysicalThing):
 
         :return: List of tags.
         """
-        tags = self.tags
-        tags += self.category.get_tags()
-        return tags
+        return self.tags + self.category.get_tags()
 
     def to_json(self) -> dict:
         dynamic_physical_thing = PhysicalThing.to_json(self)
