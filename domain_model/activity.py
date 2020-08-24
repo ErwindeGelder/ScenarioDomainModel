@@ -51,7 +51,7 @@ class Activity(TimeInterval):
         check_for_type("parameters", parameters, dict)
 
         TimeInterval.__init__(self, **kwargs)
-        self.activity_category = category  # type: ActivityCategory
+        self.category = category  # type: ActivityCategory
         self.parameters = parameters  # type: dict
 
     def get_state(self, npoints: int = 100, time: Union[np.ndarray, float, List] = None) \
@@ -67,8 +67,8 @@ class Activity(TimeInterval):
         :param time: Time instance(s) at which the model is to be evaluated.
         :return: Numpy array with the state.
         """
-        return self.activity_category.model.get_state(self.parameters,
-                                                      self._get_time(npoints, time))
+        return self.category.model.get_state(self.parameters,
+                                             self._get_time(npoints, time))
 
     def get_state_dot(self, npoints: int = 100, time: Union[np.ndarray, float, List] = None) \
             -> np.ndarray:
@@ -83,8 +83,8 @@ class Activity(TimeInterval):
         :param time: Time instance(s) at which the model is to be evaluated.
         :return: Numpy array with the state.
         """
-        state_dot = self.activity_category.model.get_state_dot(self.parameters,
-                                                               self._get_time(npoints, time))
+        state_dot = self.category.model.get_state_dot(self.parameters,
+                                                      self._get_time(npoints, time))
         duration = self.get_duration()
         if duration is not None:
             return state_dot / duration
@@ -117,18 +117,18 @@ class Activity(TimeInterval):
 
         :return: List of tags.
         """
-        return self.tags + self.activity_category.get_tags()
+        return self.tags + self.category.get_tags()
 
     def to_json(self) -> dict:
         activity = TimeInterval.to_json(self)
-        activity["activity_category"] = {"name": self.activity_category.name,
-                                         "uid": self.activity_category.uid}
+        activity["category"] = dict(name=self.category.name,
+                                    uid=self.category.uid)
         activity["parameters"] = self.parameters
         return activity
 
     def to_json_full(self) -> dict:
         activity = TimeInterval.to_json_full(self)
-        activity["activity_category"] = self.activity_category.to_json_full()
+        activity["category"] = self.category.to_json_full()
         activity["parameters"] = self.parameters
         return activity
 
@@ -161,6 +161,6 @@ def activity_from_json(json: dict, activity_category: ActivityCategory = None, s
     :return: Activity object.
     """
     if activity_category is None:
-        activity_category = activity_category_from_json(json["activity_category"])
+        activity_category = activity_category_from_json(json["category"])
     arguments = _activity_props_from_json(json, start=start, end=end)
     return Activity(activity_category, **arguments)
