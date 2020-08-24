@@ -16,7 +16,6 @@ Modifications:
 """
 
 import sys
-from typing import List
 from abc import ABC, abstractmethod
 import numpy as np
 
@@ -48,7 +47,7 @@ class Model(ABC):
         self.default_options = dict()
 
     @abstractmethod
-    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         """ Return state vector.
 
         The state is calculated based on the provided parameters. The default
@@ -61,7 +60,7 @@ class Model(ABC):
         """
 
     @abstractmethod
-    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
         """ Return the derivative of the state vector.
 
         The state derivative is calculated based on the provided parameters.
@@ -125,10 +124,10 @@ class Constant(Model):
     def __init__(self):
         Model.__init__(self, "Constant")
 
-    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return np.ones(len(time))*pars["xstart"]
 
-    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return np.zeros(len(time))
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
@@ -143,10 +142,10 @@ class Linear(Model):
     def __init__(self):
         Model.__init__(self, "Linear")
 
-    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return pars["xstart"] + time*(pars["xend"] - pars["xstart"])
 
-    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return np.ones(len(time)) * (pars["xend"] - pars["xstart"])
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
@@ -198,7 +197,7 @@ class Spline3Knots(Model):
     def __init__(self):
         Model.__init__(self, "Spline3Knots")
 
-    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         tdata1 = time[time < .5]
         tdata2 = time[time >= .5]
         ydata1 = (pars["a1"] * tdata1 ** 3 + pars["b1"] * tdata1 ** 2 + pars["c1"] * tdata1 +
@@ -208,7 +207,7 @@ class Spline3Knots(Model):
         ydata = np.concatenate((ydata1, ydata2))
         return pars["xstart"] + ydata * (pars["xend"] - pars["xstart"])
 
-    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
         tdata1 = time[time < .5]
         tdata2 = time[time >= .5]
         ydata1 = 3 * pars["a1"] * tdata1 ** 2 + 2 * pars["b1"] * tdata1 + pars["c1"]
@@ -276,12 +275,12 @@ class Sinusoidal(Model):
     def __init__(self):
         Model.__init__(self, "Sinusoidal")
 
-    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         offset = (pars["xstart"] + pars["xend"]) / 2
         amplitude = (pars["xstart"] - pars["xend"]) / 2
         return amplitude*np.cos(np.pi*time) + offset
 
-    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+    def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
         amplitude = (pars["xstart"] - pars["xend"]) / 2
         return -np.pi*amplitude*np.sin(np.pi*time)
 
