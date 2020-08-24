@@ -49,13 +49,6 @@ class DynamicPhysicalThing(PhysicalThing):
         self.initial_states = [] if initial_states is None else initial_states  # type: List[State]
 
     def get_tags(self) -> dict:
-        """ Return the list of tags related to this DynamicPhysicalThing.
-
-        It returns the tags associated to this DynamicPhysicalThing and the tags
-        associated with the DynamicPhysicalThingCategory.
-
-        :return: List of tags.
-        """
         return self.tags + self.category.get_tags()
 
     def to_json(self) -> dict:
