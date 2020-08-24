@@ -6,7 +6,7 @@ attributes.
 """
 
 # imports to make easy access possible after importing domain_model
-from .activity import Activity, SetActivity, TriggeredActivity, activity_from_json
+from .activity import Activity, activity_from_json
 from .activity_category import ActivityCategory, activity_category_from_json
 from .actor import Actor, EgoVehicle, actor_from_json
 from .actor_category import ActorCategory, VehicleType, actor_category_from_json
