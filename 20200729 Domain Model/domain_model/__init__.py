@@ -19,7 +19,7 @@ from .scenario import Scenario, scenario_from_json
 from .scenario_category import ScenarioCategory, scenario_category_from_json
 from .state import State, state_from_json
 from .state_variable import StateVariable, state_variable_from_json
-from .static_environment import StaticEnvironment, stat_env_from_json
+from .static_physical_thing import StaticPhysicalThing, static_physical_thing_from_json
 from .static_physical_thing_category import StaticPhysicalThingCategory, \
     static_physical_thing_category_from_json
 from .tags import Tag, tag_from_json
