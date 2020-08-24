@@ -6,7 +6,6 @@ Author(s): Erwin de Gelder
 Modifications:
 """
 
-from typing import List
 from .static_physical_thing_category import StaticPhysicalThingCategory, \
     static_physical_thing_category_from_json
 from .physical_thing import PhysicalThing, _physical_thing_props_from_json
@@ -40,24 +39,17 @@ class StaticPhysicalThing(PhysicalThing):
         self.category = category  # type: StaticPhysicalThingCategory
 
     def get_tags(self) -> dict:
-        """ Return the list of tags related to this StaticPhysicalThing.
-
-        It returns the tags associated to this StaticPhysicalThing and the tags
-        associated with the StaticPhysicalThingCategory.
-
-        :return: List of tags.
-        """
         return self.tags + self.category.get_tags()
 
     def to_json(self) -> dict:
-        dynamic_physical_thing = PhysicalThing.to_json(self)
-        dynamic_physical_thing["category"] = {"name": self.category.name, "uid": self.category.uid}
-        return dynamic_physical_thing
+        static_physical_thing = PhysicalThing.to_json(self)
+        static_physical_thing["category"] = {"name": self.category.name, "uid": self.category.uid}
+        return static_physical_thing
 
     def to_json_full(self) -> dict:
-        dynamic_physical_thing = self.to_json()
-        dynamic_physical_thing["category"] = self.category.to_json_full()
-        return dynamic_physical_thing
+        static_physical_thing = self.to_json()
+        static_physical_thing["category"] = self.category.to_json_full()
+        return static_physical_thing
 
 
 def _static_physical_thing_props_from_json(json: dict) -> dict:
