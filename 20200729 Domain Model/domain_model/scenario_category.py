@@ -404,17 +404,7 @@ def scenario_category_from_json(json: dict,
     scenario_category.set_activities(activities)
 
     # The acts.
-    dynamic_thing_uids = [dynamic_thing.uid for dynamic_thing in dynamic_physical_things]
-    actor_uids = [actor.uid for actor in actors]
-    activity_uids = [activity.uid for activity in activities]
-    acts = []
-    for act in json["act"]:
-        if "actor" in act:
-            dynamic_thing = actors[actor_uids.index(act["actor"])]
-        else:
-            dynamic_thing = dynamic_physical_things[dynamic_thing_uids.index(act["dynamic_thing"])]
-        acts.append((dynamic_thing, activities[activity_uids.index(act["activity"])]))
-    scenario_category.set_acts(acts)
+    scenario_category.set_acts(_get_acts(json, dynamic_physical_things, actors, activities))
     return scenario_category
 
 
@@ -566,3 +556,17 @@ def _print_tags(derived_tags: dict) -> str:
                                                    "\u2514" if j == len(tags) else "\u251C",
                                                    tag)
     return string
+
+
+def _get_acts(json, dynamic_physical_things, actors, activities):
+    dynamic_thing_uids = [dynamic_thing.uid for dynamic_thing in dynamic_physical_things]
+    actor_uids = [actor.uid for actor in actors]
+    activity_uids = [activity.uid for activity in activities]
+    acts = []
+    for act in json["act"]:
+        if "actor" in act:
+            dynamic_thing = actors[actor_uids.index(act["actor"])]
+        else:
+            dynamic_thing = dynamic_physical_things[dynamic_thing_uids.index(act["dynamic_thing"])]
+        acts.append((dynamic_thing, activities[activity_uids.index(act["activity"])]))
+    return acts
