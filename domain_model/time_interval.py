@@ -8,8 +8,8 @@ Modifications:
 
 from abc import abstractmethod
 from typing import Union
-from .event import Event
-from .quantitative_thing import QuantitativeThing
+from .event import Event, event_from_json
+from .quantitative_thing import QuantitativeThing, _quantitative_thing_props_from_json
 from .type_checking import check_for_type
 
 
@@ -43,3 +43,10 @@ class TimeInterval(QuantitativeThing):
         QuantitativeThing.__init__(self, **kwargs)
         self.start = start
         self.end = end
+
+
+def _time_interval_props_from_json(json: dict, start: Event = None, end: Event = None) -> dict:
+    props = dict(start=event_from_json(json["start"]) if start is None else start,
+                 end=event_from_json(json["end"]) if end is None else end)
+    props.update(_quantitative_thing_props_from_json(json))
+    return props
