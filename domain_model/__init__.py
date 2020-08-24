@@ -14,7 +14,7 @@ from .dynamic_physical_thing import DynamicPhysicalThing, dynamic_physical_thing
 from .dynamic_physical_thing_category import DynamicPhysicalThingCategory, \
     dynamic_physical_thing_category_from_json
 from .event import Event, event_from_json
-from .model import Spline3Knots, Linear, Sinusoidal, Constant, model_from_json
+from .model import Constant, Linear, Spline3Knots, Sinusoidal, Splines, model_from_json
 from .scenario import Scenario, scenario_from_json
 from .scenario_category import ScenarioCategory, scenario_category_from_json
 from .state import State, state_from_json
