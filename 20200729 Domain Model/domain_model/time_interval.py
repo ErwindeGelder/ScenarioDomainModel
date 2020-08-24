@@ -4,6 +4,7 @@ Creation date: 2020 08 22
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 08 24 Add functionality to obtain the start time, the end time, and the duration.
 """
 
 from abc import abstractmethod
@@ -43,6 +44,36 @@ class TimeInterval(QuantitativeThing):
         QuantitativeThing.__init__(self, **kwargs)
         self.start = start
         self.end = end
+
+    def get_tstart(self) -> Union[float, None]:
+        """ Obtain the start time (if it is available).
+
+        :return: The start time - if it is available. Otherwise, None.
+        """
+        try:
+            return self.start.conditions["time"]
+        except KeyError:
+            return None
+
+    def get_tend(self) -> Union[float, None]:
+        """ Obtain the end time (if it is available).
+
+        :return: The end time - if it is available. Otherwise, None.
+        """
+        try:
+            return self.end.conditions["time"]
+        except KeyError:
+            return None
+
+    def get_duration(self) -> Union[float, None]:
+        """ Obtain the duration (if it is available).
+
+        :return: The duration - if it is available. Otherwise, None.
+        """
+        try:
+            return self.end.conditions["time"] - self.start.conditions["time"]
+        except KeyError:
+            return None
 
 
 def _time_interval_props_from_json(json: dict, start: Event = None, end: Event = None) -> dict:
