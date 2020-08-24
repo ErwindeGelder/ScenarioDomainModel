@@ -75,7 +75,7 @@ class Model(ABC):
         """
 
     @abstractmethod
-    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
+    def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
         """ Fit the data to the model and return the parameters
 
         The data is to be fit to the model and the resulting parameters are
@@ -85,7 +85,7 @@ class Model(ABC):
 
         :param time: the time instants of the data.
         :param data: the data that will be fit to the model.
-        :param options: specify some model-specific options.
+        :param kwargs: specify some model-specific options.
         :return: dictionary of the parameters.
         """
 
@@ -132,7 +132,7 @@ class Constant(Model):
     def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return np.zeros(len(time))
 
-    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
+    def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
         return dict(xstart=np.mean(data))
 
 
@@ -157,9 +157,9 @@ class Linear(Model):
     def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return np.ones(len(time)) * (pars["xend"] - pars["xstart"])
 
-    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
+    def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
         # Set the options correctly
-        options = Model._set_default_options(self, options)
+        options = Model._set_default_options(self, kwargs)
 
         if options["method"] == "least_squares":
             # Use least squares regression to find the slope of the linear line.
@@ -194,7 +194,7 @@ class Sinusoidal(Model):
         amplitude = (pars["xstart"] - pars["xend"]) / 2
         return -np.pi*amplitude*np.sin(np.pi*time)
 
-    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
+    def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
         # Normalize the time
         time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
 
@@ -235,8 +235,8 @@ class Spline3Knots(Model):
         ydata2 = 3*pars["a2"]*tdata2**2 + 2*pars["b2"]*tdata2 + pars["c2"]
         return np.concatenate((ydata1, ydata2))
 
-    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
-        options = self._set_default_options(options)
+    def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
+        options = self._set_default_options(kwargs)
 
         # Normalize the time
         time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
@@ -262,20 +262,18 @@ class Spline3Knots(Model):
         # And create the nullspace which is used for fitting the model
         v_matrix = np.linalg.svd(constraint_matrix)[2]
         nullspace_constraint_matrix = v_matrix[constraint_matrix.shape[0]:]
-        lstsq_fit = np.linalg.lstsq(np.dot(matrix, nullspace_constraint_matrix.T), data,
-                                    rcond=None)[0]
-        theta = np.dot(nullspace_constraint_matrix.T, lstsq_fit)
+        theta = np.dot(nullspace_constraint_matrix.T,
+                       np.linalg.lstsq(np.dot(matrix, nullspace_constraint_matrix.T), data,
+                                       rcond=None)[0])
 
         # Add default solution (only needed if endpoints need to match).
         if options["endpoints"]:
-            constraint_vector = np.array([0, 0, 0, data[0], data[-1]])
             theta_default = np.linalg.solve(np.dot(constraint_matrix, v_matrix[:5].T),
-                                            constraint_vector)
+                                            np.array([0, 0, 0, data[0], data[-1]]))
             theta += np.dot(v_matrix[:5].T, theta_default)
 
-        parameters = dict(a1=theta[0], b1=theta[1], c1=theta[2], d1=theta[3],
-                          a2=theta[4], b2=theta[5], c2=theta[6], d2=theta[7])
-        return parameters
+        return dict(a1=theta[0], b1=theta[1], c1=theta[2], d1=theta[3],
+                    a2=theta[4], b2=theta[5], c2=theta[6], d2=theta[7])
 
 
 class Splines(Model):
@@ -299,12 +297,12 @@ class Splines(Model):
     def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return splev(time, (pars["knots"], pars["coefficients"], pars["degree"]), 1)
 
-    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
+    def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
         # Normalize the time
         time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
 
         # Set options.
-        options = self._set_default_options(options)
+        options = self._set_default_options(kwargs)
 
         # Set interior knots.
         knots = np.arange(1, options["n_knots"]+1) / (options["n_knots"] + 1)
