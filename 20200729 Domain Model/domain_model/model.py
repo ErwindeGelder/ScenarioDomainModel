@@ -13,11 +13,13 @@ Modifications:
 2019 11 04: Add constant model.
 2020 08 15: Make sure that each model has the functions `get_state`, `get_state_dot`, and `fit`.
 2020 08 23: Enable the evaluation of the model at given time instants.
+2020 08 24: Spline model added.
 """
 
 import sys
 from abc import ABC, abstractmethod
 import numpy as np
+from scipy.interpolate import splrep, splev
 
 
 class Model(ABC):
@@ -138,9 +140,16 @@ class Linear(Model):
     """ Linear model
 
     Linear relation between time and state. Parameters: xstart, xend.
+
+    As options for fitting, the "method" can be passed. Two different methods
+    are possible:
+     - least_squares: make a least squares fit (default).
+     - endpoints: Only the starting point and the end point are used to fit
+       the model.
     """
     def __init__(self):
         Model.__init__(self, "Linear")
+        self.default_options = dict(method="least_squares")
 
     def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return pars["xstart"] + time*(pars["xend"] - pars["xstart"])
@@ -149,27 +158,7 @@ class Linear(Model):
         return np.ones(len(time)) * (pars["xend"] - pars["xstart"])
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
-        """ Fit the data to the model and return the parameters.
-
-        The data is to be fit to the model and the resulting parameters are
-        returned in a dictionary. The input data needs to be a n-by-m array,
-        where n denotes the number of datapoints and each datapoint has
-        dimension m. The time should be an vector with length of n. For this
-        model (Linear), only m=1 is supported.
-
-        As options, the "method" can be passed. Two different methods are
-        possible:
-         - least_squares: make a least squares fit.
-         - endpoints: Only the starting point and the end point are used to fit
-           the model.
-
-        :param time: the time instants of the data.
-        :param data: the data that will be fit to the model.
-        :param options: specify some model-specific options.
-        :return: dictionary of the parameters.
-        """
         # Set the options correctly
-        self.default_options["method"] = "least_squares"
         options = Model._set_default_options(self, options)
 
         if options["method"] == "least_squares":
@@ -186,85 +175,6 @@ class Linear(Model):
             index_end = np.argmax(time)
             return {"xstart": data[index_begin], "xend": data[index_end]}
         raise ValueError("Option '{}' for method is not valid.".format(options["method"]))
-
-
-class Spline3Knots(Model):
-    """ Spline model with 3 knots (one interior knot)
-
-    Two third order splines are used.
-    Parameters: xstart, xend, a1, b1, c1, d1, a2, b2, c2, d2.
-    """
-    def __init__(self):
-        Model.__init__(self, "Spline3Knots")
-
-    def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
-        tdata1 = time[time < .5]
-        tdata2 = time[time >= .5]
-        ydata1 = (pars["a1"] * tdata1 ** 3 + pars["b1"] * tdata1 ** 2 + pars["c1"] * tdata1 +
-                  pars["d1"])
-        ydata2 = (pars["a2"] * tdata2 ** 3 + pars["b2"] * tdata2 ** 2 + pars["c2"] * tdata2 +
-                  pars["d2"])
-        ydata = np.concatenate((ydata1, ydata2))
-        return pars["xstart"] + ydata * (pars["xend"] - pars["xstart"])
-
-    def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
-        tdata1 = time[time < .5]
-        tdata2 = time[time >= .5]
-        ydata1 = 3 * pars["a1"] * tdata1 ** 2 + 2 * pars["b1"] * tdata1 + pars["c1"]
-        ydata2 = 3 * pars["a2"] * tdata2 ** 2 + 2 * pars["b2"] * tdata2 + pars["c2"]
-        ydata = np.concatenate((ydata1, ydata2))
-        return ydata * (pars["xend"] - pars["xstart"])
-
-    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
-        """ Fit the data to the model and return the parameters.
-
-        The data is to be fit to the model and the resulting parameters are
-        returned in a dictionary. The input data needs to be a n-by-m array,
-        where n denotes the number of datapoints and each datapoint has
-        dimension m. The time should be an vector with length of n. For this
-        model (Spline3Knots), only m=1 is supported.
-
-        :param time: the time instants of the data.
-        :param data: the data that will be fit to the model.
-        :param options: specify some model-specific options.
-        :return: dictionary of the parameters.
-        """
-        # Normalize the time
-        time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
-
-        # Scale the data
-        parameters = {"xstart": np.max(data),
-                      "xend": np.min(data)}
-        scaled_data = (data - parameters["xstart"]) / (parameters["xend"] - parameters["xstart"])
-
-        # Create the matrix that will be used for the least squares regression
-        matrix = np.array([time_normalized**3, time_normalized**2, time_normalized**1,
-                           np.ones(len(time_normalized))]).T
-        matrix_left_spline = matrix.copy()
-        matrix_left_spline[time >= 0.5] = 0
-        matrix_right_spline = matrix.copy()
-        matrix_right_spline[time < 0.5] = 0
-        matrix = np.concatenate((matrix_left_spline, matrix_right_spline), axis=1)
-
-        # Construct the constraint matrix, 3 constraints, 8 coefficients
-        constraint_matrix = np.array([[1, 1, 1, 1, -1, -1, -1, -1],
-                                      [3, 2, 1, 0, -3, -2, -1, 0],
-                                      [6, 2, 0, 0, -6, -2, 0, 0]])
-        # And create the nullspace which is used for fitting the model
-        nullspace_constraint_matrix = np.linalg.svd(constraint_matrix)[2][3:]
-
-        lstsq_fit = np.linalg.lstsq(np.dot(matrix, nullspace_constraint_matrix.T), scaled_data,
-                                    rcond=None)[0]
-        theta = np.dot(nullspace_constraint_matrix.T, lstsq_fit)
-        parameters["a1"] = theta[0]
-        parameters["b1"] = theta[1]
-        parameters["c1"] = theta[2]
-        parameters["d1"] = theta[3]
-        parameters["a2"] = theta[4]
-        parameters["b2"] = theta[5]
-        parameters["c2"] = theta[6]
-        parameters["d2"] = theta[7]
-        return parameters
 
 
 class Sinusoidal(Model):
@@ -285,19 +195,6 @@ class Sinusoidal(Model):
         return -np.pi*amplitude*np.sin(np.pi*time)
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
-        """ Fit the data to the model and return the parameters.
-
-        The data is to be fit to the model and the resulting parameters are
-        returned in a dictionary. The input data needs to be a n-by-m array,
-        where n denotes the number of datapoints and each datapoint has
-        dimension m. The time should be an vector with length of n. For this
-        model (Sinusoidal), only m=1 is supported.
-
-        :param time: the time instants of the data.
-        :param data: the data that will be fit to the model.
-        :param options: specify some model-specific options.
-        :return: dictionary of the parameters.
-        """
         # Normalize the time
         time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
 
@@ -308,6 +205,114 @@ class Sinusoidal(Model):
         # Return the parameters
         return {"xstart": lstlq_fit[0] + lstlq_fit[1],
                 "xend": lstlq_fit[1] - lstlq_fit[0]}
+
+
+class Spline3Knots(Model):
+    """ Spline model with 3 knots (one interior knot)
+
+    Two third order splines are used.
+    Parameters: a1, b1, c1, d1, a2, b2, c2, d2.
+
+    For fitting, the options `endpoints` (default: False) can be set to True if
+    the spline function should ensure that the start and end values are the same
+    as for the provided data.
+    """
+    def __init__(self):
+        Model.__init__(self, "Spline3Knots")
+        self.default_options = dict(endpoints=False)
+
+    def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
+        tdata1 = time[time < .5]
+        tdata2 = time[time >= .5]
+        ydata1 = (pars["a1"]*tdata1**3 + pars["b1"]*tdata1**2 + pars["c1"]*tdata1 + pars["d1"])
+        ydata2 = (pars["a2"]*tdata2**3 + pars["b2"]*tdata2**2 + pars["c2"]*tdata2 + pars["d2"])
+        return np.concatenate((ydata1, ydata2))
+
+    def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
+        tdata1 = time[time < .5]
+        tdata2 = time[time >= .5]
+        ydata1 = 3*pars["a1"]*tdata1**2 + 2*pars["b1"]*tdata1 + pars["c1"]
+        ydata2 = 3*pars["a2"]*tdata2**2 + 2*pars["b2"]*tdata2 + pars["c2"]
+        return np.concatenate((ydata1, ydata2))
+
+    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
+        options = self._set_default_options(options)
+
+        # Normalize the time
+        time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
+
+        # Create the matrix that will be used for the least squares regression
+        matrix = np.array([time_normalized**3, time_normalized**2, time_normalized**1,
+                           np.ones(len(time_normalized))]).T
+        matrix_left_spline = matrix.copy()
+        matrix_left_spline[time >= 0.5] = 0
+        matrix_right_spline = matrix.copy()
+        matrix_right_spline[time < 0.5] = 0
+        matrix = np.concatenate((matrix_left_spline, matrix_right_spline), axis=1)
+
+        # Construct the constraint matrix, 3 constraints, 8 coefficients
+        constraint_matrix = np.array([[1, 2, 4, 8, -1, -2, -4, -8],
+                                      [3, 4, 4, 0, -3, -4, -4, 0],
+                                      [3, 2, 0, 0, -3, -2, 0, 0]])
+        if options["endpoints"]:
+            constraint_matrix = np.concatenate((constraint_matrix,
+                                                [[0, 0, 0, 1, 0, 0, 0, 0],
+                                                 [0, 0, 0, 0, 1, 1, 1, 1]]))
+
+        # And create the nullspace which is used for fitting the model
+        v_matrix = np.linalg.svd(constraint_matrix)[2]
+        nullspace_constraint_matrix = v_matrix[constraint_matrix.shape[0]:]
+        lstsq_fit = np.linalg.lstsq(np.dot(matrix, nullspace_constraint_matrix.T), data,
+                                    rcond=None)[0]
+        theta = np.dot(nullspace_constraint_matrix.T, lstsq_fit)
+
+        # Add default solution (only needed if endpoints need to match).
+        if options["endpoints"]:
+            constraint_vector = np.array([0, 0, 0, data[0], data[-1]])
+            theta_default = np.linalg.solve(np.dot(constraint_matrix, v_matrix[:5].T),
+                                            constraint_vector)
+            theta += np.dot(v_matrix[:5].T, theta_default)
+
+        parameters = dict(a1=theta[0], b1=theta[1], c1=theta[2], d1=theta[3],
+                          a2=theta[4], b2=theta[5], c2=theta[6], d2=theta[7])
+        return parameters
+
+
+class Splines(Model):
+    """ Spline model with a variable number of knots.
+
+    Model using the spline functionality of scipy's splrep and splev.
+    Parameters: knots, coefficients, degree
+
+    When using the fit-function, the following options can be used:
+    - degree: the degree of the splines (default=3).
+    - n_knots: the number of interior knots (default=3).
+    The interior knots will be evenly distributed.
+    """
+    def __init__(self):
+        Model.__init__(self, "Splines")
+        self.default_options = dict(degree=3, n_knots=3)
+
+    def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
+        return splev(time, (pars["knots"], pars["coefficients"], pars["degree"]))
+
+    def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
+        return splev(time, (pars["knots"], pars["coefficients"], pars["degree"]), 1)
+
+    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
+        # Normalize the time
+        time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
+
+        # Set options.
+        options = self._set_default_options(options)
+
+        # Set interior knots.
+        knots = np.arange(1, options["n_knots"]+1) / (options["n_knots"] + 1)
+
+        # Compute spline coefficients.
+        tck = splrep(time_normalized, data, k=options["degree"], t=knots)
+        pars = dict(knots=tck[0], coefficients=tck[1], degree=tck[2])
+        return pars
 
 
 def model_from_json(json: str) -> Model:
