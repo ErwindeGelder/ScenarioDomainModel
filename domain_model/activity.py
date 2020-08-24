@@ -117,8 +117,6 @@ class Activity(TimeInterval):
 
         :return: List of tags.
         """
-        tags = self.tags
-        tags += self.activity_category.get_tags()
         return self.tags + self.activity_category.get_tags()
 
     def to_json(self) -> dict:
