@@ -7,13 +7,14 @@ Modifications:
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 13: Update of terminology.
 2020 08 22: Change how an event is created from json code. Result is the same.
+2020 08 24: Change superclass from Thing to QuantitativeThing.
 """
 
-from .thing import Thing, _thing_props_from_json
+from .quantitative_thing import QuantitativeThing, _quantitative_thing_props_from_json
 from .type_checking import check_for_type
 
 
-class Event(Thing):
+class Event(QuantitativeThing):
     """ Event
 
     An event refers to a time instant at which a notable change happens. This
@@ -39,7 +40,7 @@ class Event(Thing):
         # Check the types of the inputs.
         check_for_type("conditions", conditions, dict)
 
-        Thing.__init__(self, **kwargs)
+        QuantitativeThing.__init__(self, **kwargs)
         self.conditions = conditions  # type: dict
 
     def to_json(self) -> dict:
@@ -50,14 +51,14 @@ class Event(Thing):
 
         :return: dictionary that can be converted to a json file.
         """
-        event = Thing.to_json(self)
+        event = QuantitativeThing.to_json(self)
         event["conditions"] = self.conditions
         return event
 
 
 def _event_props_from_json(json: dict) -> dict:
     props = dict(conditions=json["conditions"])
-    props.update(_thing_props_from_json(json))
+    props.update(_quantitative_thing_props_from_json(json))
     return props
 
 
