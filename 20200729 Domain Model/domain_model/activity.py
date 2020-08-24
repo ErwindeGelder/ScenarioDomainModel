@@ -15,8 +15,11 @@ Modifications:
 2019 10 11: Update of terminology.
 2020 07 31: Change name of DetectedActivity to SetActivity.
 2020 08 23: Make Activity a subclass of TimeInterval.
+2020 08 24: Add functionality to obtain the values of the state variables (and the derivative).
 """
 
+from typing import List, Union
+import numpy as np
 from .activity_category import ActivityCategory, activity_category_from_json
 from .tags import tag_from_json
 from .time_interval import TimeInterval
@@ -51,6 +54,61 @@ class Activity(TimeInterval):
         self.activity_category = category  # type: ActivityCategory
         self.parameters = parameters  # type: dict
 
+    def get_state(self, npoints: int = 100, time: Union[np.ndarray, float, List] = None) \
+            -> np.ndarray:
+        """ Obtain the state evaluated at given time instances.
+
+        By default, the state is returned for 100 points equally distributed
+        over time. To change the number of points, the argument `npoints` can be
+        used. Alternatively, if the argument `time` is used, the state is
+        evaluated at the provided time instances.
+
+        :param npoints: Number of points for evaluating the state.
+        :param time: Time instance(s) at which the model is to be evaluated.
+        :return: Numpy array with the state.
+        """
+        return self.activity_category.model.get_state(self.parameters,
+                                                      self._get_time(npoints, time))
+
+    def get_state_dot(self, npoints: int = 100, time: Union[np.ndarray, float, List] = None) \
+            -> np.ndarray:
+        """ Obtain the derivative of a state evaluated at given time instances.
+
+        By default, the state derivative is returned for 100 points equally
+        distributed over time. To change the number of points, the argument
+        `npoints` can be used. Alternatively, if the argument `time` is used,
+        the state is evaluated at the provided time instances.
+
+        :param npoints: Number of points for evaluating the state derivative.
+        :param time: Time instance(s) at which the model is to be evaluated.
+        :return: Numpy array with the state.
+        """
+        state_dot = self.activity_category.model.get_state_dot(self.parameters,
+                                                               self._get_time(npoints, time))
+        duration = self.get_duration()
+        if duration is not None:
+            return state_dot / duration
+        return state_dot
+
+    def _get_time(self, npoints: int = 100, time: Union[np.ndarray, float, List] = None) \
+            -> np.ndarray:
+        if time is None:
+            return np.linspace(0, 1, npoints)
+
+        # Make sure that the time vector is an numpy array.
+        if isinstance(time, (float, int)):
+            time = np.array([time])
+        elif isinstance(time, List):
+            time = np.array(time)
+
+        # See if we have enough information to scale the time data. This is only possible if the
+        # start and end time of the activity are known.
+        tstart = self.get_tstart()
+        tend = self.get_tend()
+        if tstart is not None and tend is not None:
+            return (time - tstart) / (tend - tstart)
+        return time
+
     def get_tags(self) -> dict:
         """ Return the list of tags related to this Activity.
 
@@ -61,7 +119,7 @@ class Activity(TimeInterval):
         """
         tags = self.tags
         tags += self.activity_category.get_tags()
-        return tags
+        return self.tags + self.activity_category.get_tags()
 
     def to_json(self) -> dict:
         activity = TimeInterval.to_json(self)
