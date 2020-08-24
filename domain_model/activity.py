@@ -21,8 +21,8 @@ Modifications:
 from typing import List, Union
 import numpy as np
 from .activity_category import ActivityCategory, activity_category_from_json
-from .tags import tag_from_json
-from .time_interval import TimeInterval
+from .event import Event
+from .time_interval import TimeInterval, _time_interval_props_from_json
 from .type_checking import check_for_type
 
 
@@ -127,12 +127,20 @@ class Activity(TimeInterval):
         return activity
 
     def to_json_full(self) -> dict:
-        activity = self.to_json()
+        activity = TimeInterval.to_json_full(self)
         activity["activity_category"] = self.activity_category.to_json_full()
+        activity["parameters"] = self.parameters
         return activity
 
 
-def activity_from_json(json: dict, activity_category: ActivityCategory = None) \
+def _activity_props_from_json(json: dict, start: Event = None, end: Event = None):
+    props = dict(parameters=json["parameters"])
+    props.update(_time_interval_props_from_json(json, start=start, end=end))
+    return props
+
+
+def activity_from_json(json: dict, activity_category: ActivityCategory = None, start: Event = None,
+                       end: Event = None) \
         -> Activity:
     """ Get Activity object from JSON code
 
@@ -141,17 +149,18 @@ def activity_from_json(json: dict, activity_category: ActivityCategory = None) \
     Alternatively, the ActivityCategory can be passed as optional argument. In
     that case, the ActivityCategory does not need to be defined in the JSON
     code.
+    The same applies for the Event that defines the start of the activity and
+    the Event that defines the end of the activity.
 
     :param json: JSON code of Activity.
     :param activity_category: If given, it will not be based on the JSON code.
+    :param start: Event that defines the start. If given, it will not be based
+        on the JSON code.
+    :param end: Event that defines the end. If given, it will not be based on
+        the JSON code.
     :return: Activity object.
     """
     if activity_category is None:
         activity_category = activity_category_from_json(json["activity_category"])
-    arguments = {"activity_category": activity_category,
-                 "duration": json["tduration"],
-                 "parameters": json["parameters"],
-                 "name": json["name"],
-                 "uid": int(json["id"]),
-                 "tags": [tag_from_json(tag) for tag in json["tag"]]}
-    return Activity(**arguments)
+    arguments = _activity_props_from_json(json, start=start, end=end)
+    return Activity(activity_category, **arguments)
