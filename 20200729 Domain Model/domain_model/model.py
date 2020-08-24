@@ -48,31 +48,27 @@ class Model(ABC):
         self.default_options = dict()
 
     @abstractmethod
-    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
+    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
         """ Return state vector.
 
-        The state is calculated based on the provided parameters. The time is
-        assumed to be on the interval [0, 1], but can set differently using
-        [tstart, tend]. By default, 100 points are used to evaluate the state
-        (to be altered using npoints).
+        The state is calculated based on the provided parameters. The default
+        time of the model is always on the interval [0, 1], so any time values
+        outside this interval can be regarded as extrapolation.
 
         :param pars: A dictionary with the parameters.
-        :param npoints: Number of points for evaluating the state.
         :param time: Time instances at which the model is to be evaluated.
         :return: Numpy array with the state.
         """
 
     @abstractmethod
-    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
+    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
         """ Return the derivative of the state vector.
 
         The state derivative is calculated based on the provided parameters.
-        The time is assumed to be on the interval [0, 1], but can set
-        differently using [tstart, tend]. By default, 100 points are used to
-        evaluate the state (to be altered using npoints).
+        The default time of the model is always on the interval [0, 1], so any
+        time values outside this interval can be regarded as extrapolation.
 
         :param pars: A dictionary with the parameters.
-        :param npoints: Number of points for evaluating the state.
         :param time: Time instances at which the model is to be evaluated.
         :return: Numpy array with the derivative of the state.
         """
@@ -120,29 +116,6 @@ class Model(ABC):
                 options[key] = value
         return options
 
-    @staticmethod
-    def _get_tdata(pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
-        """ Returning the time vector for _get_state.
-
-        The time is assumed to be uniformly distributed. By default, 100 points
-        are used to evaluate the state (to be altered using `npoints`).
-        Alternatively, the time instances can be given using the `time`
-        argument.
-
-        :param pars: The parameters, should contain tstart and tend.
-        :param npoints: Number of points for evaluating the state.
-        :param time: Time instances at which the model is to be evaluated.
-        :return: Time data.
-        """
-        if time is None:
-            return np.linspace(0, 1, npoints)
-
-        if isinstance(time, List):
-            time = np.array(time)
-        elif isinstance(time, float):
-            time = np.array([time])
-        return (time - pars["tstart"]) / (pars["tend"] - pars["tstart"])
-
 
 class Constant(Model):
     """ Constant model
@@ -152,12 +125,10 @@ class Constant(Model):
     def __init__(self):
         Model.__init__(self, "Constant")
 
-    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
-        time = self._get_tdata(pars, npoints, time)
+    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
         return np.ones(len(time))*pars["xstart"]
 
-    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
-        time = self._get_tdata(pars, npoints, time)
+    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
         return np.zeros(len(time))
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
@@ -172,12 +143,10 @@ class Linear(Model):
     def __init__(self):
         Model.__init__(self, "Linear")
 
-    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
-        time = self._get_tdata(pars, npoints, time)
+    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
         return pars["xstart"] + time*(pars["xend"] - pars["xstart"])
 
-    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
-        time = self._get_tdata(pars, npoints, time)
+    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
         return np.ones(len(time)) * (pars["xend"] - pars["xstart"])
 
     def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
@@ -200,7 +169,6 @@ class Linear(Model):
         :param options: specify some model-specific options.
         :return: dictionary of the parameters.
         """
-
         # Set the options correctly
         self.default_options["method"] = "least_squares"
         options = Model._set_default_options(self, options)
@@ -230,10 +198,9 @@ class Spline3Knots(Model):
     def __init__(self):
         Model.__init__(self, "Spline3Knots")
 
-    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
-        time = self._get_tdata(pars, npoints, time)
-        tdata1 = time[:npoints // 2]
-        tdata2 = time[npoints // 2:]
+    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+        tdata1 = time[time < .5]
+        tdata2 = time[time >= .5]
         ydata1 = (pars["a1"] * tdata1 ** 3 + pars["b1"] * tdata1 ** 2 + pars["c1"] * tdata1 +
                   pars["d1"])
         ydata2 = (pars["a2"] * tdata2 ** 3 + pars["b2"] * tdata2 ** 2 + pars["c2"] * tdata2 +
@@ -241,10 +208,9 @@ class Spline3Knots(Model):
         ydata = np.concatenate((ydata1, ydata2))
         return pars["xstart"] + ydata * (pars["xend"] - pars["xstart"])
 
-    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
-        time = self._get_tdata(pars, npoints, time)
-        tdata1 = time[:npoints // 2]
-        tdata2 = time[npoints // 2:]
+    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+        tdata1 = time[time < .5]
+        tdata2 = time[time >= .5]
         ydata1 = 3 * pars["a1"] * tdata1 ** 2 + 2 * pars["b1"] * tdata1 + pars["c1"]
         ydata2 = 3 * pars["a2"] * tdata2 ** 2 + 2 * pars["b2"] * tdata2 + pars["c2"]
         ydata = np.concatenate((ydata1, ydata2))
@@ -310,14 +276,12 @@ class Sinusoidal(Model):
     def __init__(self):
         Model.__init__(self, "Sinusoidal")
 
-    def get_state(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
-        time = self._get_tdata(pars, npoints, time)
+    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
         offset = (pars["xstart"] + pars["xend"]) / 2
         amplitude = (pars["xstart"] - pars["xend"]) / 2
         return amplitude*np.cos(np.pi*time) + offset
 
-    def get_state_dot(self, pars: dict, npoints: int = 100, time: np.ndarray = None) -> np.ndarray:
-        time = self._get_tdata(pars, npoints, time)
+    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
         amplitude = (pars["xstart"] - pars["xend"]) / 2
         return -np.pi*amplitude*np.sin(np.pi*time)
 
