@@ -45,6 +45,18 @@ class TimeInterval(QuantitativeThing):
         self.start = start
         self.end = end
 
+    def to_json(self) -> dict:
+        time_interval = QuantitativeThing.to_json(self)
+        time_interval["start"] = dict(uid=self.start.uid)
+        time_interval["end"] = dict(uid=self.end.uid)
+        return time_interval
+
+    def to_json_full(self) -> dict:
+        time_interval = self.to_json()
+        time_interval["start"] = self.start.to_json_full()
+        time_interval["end"] = self.end.to_json_full()
+        return time_interval
+
     def get_tstart(self) -> Union[float, None]:
         """ Obtain the start time (if it is available).
 
