@@ -9,13 +9,13 @@ Modifications:
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 11: Update of terminology.
 2020 08 16: Make ActivityCategory a subclass of QualitativeThing.
+2020 08 25: Add function to obtain properties from a dictionary.
 """
 
 import numpy as np
 from .model import Model, model_from_json
-from .qualitative_thing import QualitativeThing
+from .qualitative_thing import QualitativeThing, _qualitative_thing_props_from_json
 from .state_variable import StateVariable, state_variable_from_json
-from .tags import tag_from_json
 from .type_checking import check_for_type
 
 
@@ -77,6 +77,13 @@ class ActivityCategory(QualitativeThing):
         return activity_category
 
 
+def _activity_category_props_from_json(json: dict) -> dict:
+    props = dict(model=model_from_json(json["model"]),
+                 state=state_variable_from_json(json["state"]))
+    props.update(_qualitative_thing_props_from_json(json))
+    return props
+
+
 def activity_category_from_json(json: dict) -> ActivityCategory:
     """ Get ActivityCategory object from JSON code.
 
@@ -86,9 +93,4 @@ def activity_category_from_json(json: dict) -> ActivityCategory:
     :param json: JSON code of ActorCategory.
     :return: ActivityCategory object.
     """
-    model = model_from_json(json["model"])
-    state = state_variable_from_json(json["state"])
-    activity_category = ActivityCategory(model, state, description=json["description"],
-                                         name=json["name"], uid=int(json["id"]),
-                                         tags=[tag_from_json(tag) for tag in json["tag"]])
-    return activity_category
+    return ActivityCategory(**_activity_category_props_from_json(json))
