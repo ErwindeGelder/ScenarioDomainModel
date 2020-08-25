@@ -9,11 +9,13 @@ Modifications:
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 11: Update of terminology.
 2020 08 16: Make ActorCategory a subclass of DynamicPhysicalThingCategory.
+2020 08 25: Add function to obtain properties from a dictionary.
 """
 
 from enum import Enum
-from .dynamic_physical_thing_category import DynamicPhysicalThingCategory
-from .tags import Tag, tag_from_json
+from .dynamic_physical_thing_category import DynamicPhysicalThingCategory, \
+    _dynamic_physical_thing_category_props_from_json
+from .tags import Tag
 from .type_checking import check_for_type
 
 
@@ -60,6 +62,7 @@ class ActorCategory(DynamicPhysicalThingCategory):
         uid (int): A unique ID.
         tags (List[Tag]): The tags are used to determine whether a scenario
             category comprises a scenario.
+        description(str): A string that qualitatively describes this actor.
     """
     def __init__(self, vehicle_type: VehicleType, **kwargs):
         # Check the types of the inputs
@@ -82,6 +85,12 @@ class ActorCategory(DynamicPhysicalThingCategory):
         return actor_category
 
 
+def _actor_category_props_from_json(json: dict) -> dict:
+    props = dict(vehicle_type=vehicle_type_from_json(json["vehicle_type"]))
+    props.update(_dynamic_physical_thing_category_props_from_json(json))
+    return props
+
+
 def actor_category_from_json(json: dict) -> ActorCategory:
     """ Get ActorCategory object from JSON code
 
@@ -91,11 +100,7 @@ def actor_category_from_json(json: dict) -> ActorCategory:
     :param json: JSON code of Actor.
     :return: ActorCategory object.
     """
-    vehicle_type = vehicle_type_from_json(json["vehicle_type"])
-    actor_category = ActorCategory(vehicle_type, description=json["description"], name=json["name"],
-                                   uid=int(json["id"]),
-                                   tags=[tag_from_json(tag) for tag in json["tag"]])
-    return actor_category
+    return ActorCategory(**_actor_category_props_from_json(json))
 
 
 def vehicle_type_from_json(json: dict) -> VehicleType:
@@ -107,5 +112,4 @@ def vehicle_type_from_json(json: dict) -> VehicleType:
     :param json: JSON code of VehicleType.
     :return: Tag object.
     """
-
     return getattr(VehicleType, json["name"])
