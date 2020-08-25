@@ -1,0 +1,122 @@
+{
+    "name": "Cut-in from left",
+    "id": "145735763567256333134769451397212181046",
+    "tag": [],
+    "description": "Cut-in from the left at the motorway",
+    "image": "./examples/images/cut-in.png",
+    "static_physical_thing_category": [
+        {
+            "name": "Motorway",
+            "id": "163997849802476894658052287334790009546",
+            "tag": [
+                "RoadLayout_Straight",
+                "RoadType_PrincipleRoad_Motorway"
+            ],
+            "description": "Motorway with multiple lanes"
+        }
+    ],
+    "dynamic_physical_thing_category": [],
+    "actor_category": [
+        {
+            "name": "Ego vehicle",
+            "id": "258546250493829367812597402166829006478",
+            "tag": [
+                "EgoVehicle",
+                "RoadUserType_Vehicle"
+            ],
+            "description": "",
+            "vehicle_type": {
+                "name": "Vehicle",
+                "value": 1
+            }
+        },
+        {
+            "name": "Target vehicle",
+            "id": "315659009941306647994421192110584734244",
+            "tag": [
+                "RoadUserType_Vehicle"
+            ],
+            "description": "",
+            "vehicle_type": {
+                "name": "Vehicle",
+                "value": 1
+            }
+        }
+    ],
+    "activity_category": [
+        {
+            "name": "Following lane",
+            "id": "145527752318814474713969600580990622649",
+            "tag": [
+                "VehicleLateralActivity_GoingStraight"
+            ],
+            "description": "",
+            "model": "Constant",
+            "state": {
+                "name": "LATERAL_POSITION",
+                "value": "y"
+            }
+        },
+        {
+            "name": "Changing lane right",
+            "id": "130725111764872532366051137689843741696",
+            "tag": [
+                "VehicleLateralActivity_ChangingLane_Right"
+            ],
+            "description": "",
+            "model": "Sinusoidal",
+            "state": {
+                "name": "LATERAL_POSITION",
+                "value": "y"
+            }
+        },
+        {
+            "name": "Driving forward",
+            "id": "133269073241775663216131260292176042280",
+            "tag": [
+                "VehicleLongitudinalActivity_DrivingForward"
+            ],
+            "description": "",
+            "model": "Spline3Knots",
+            "state": {
+                "name": "SPEED",
+                "value": "v"
+            }
+        }
+    ],
+    "act": [
+        {
+            "actor": 258546250493829367812597402166829006478,
+            "activity": 133269073241775663216131260292176042280
+        },
+        {
+            "actor": 258546250493829367812597402166829006478,
+            "activity": 145527752318814474713969600580990622649
+        },
+        {
+            "actor": 315659009941306647994421192110584734244,
+            "activity": 133269073241775663216131260292176042280
+        },
+        {
+            "actor": 315659009941306647994421192110584734244,
+            "activity": 130725111764872532366051137689843741696
+        }
+    ],
+    "derived_tags": {
+        "Ego vehicle::ActorCategory": [
+            "RoadUserType_Vehicle",
+            "EgoVehicle",
+            "VehicleLongitudinalActivity_DrivingForward",
+            "VehicleLateralActivity_GoingStraight"
+        ],
+        "Target vehicle::ActorCategory": [
+            "RoadUserType_Vehicle",
+            "VehicleLateralActivity_ChangingLane_Right",
+            "VehicleLongitudinalActivity_DrivingForward"
+        ],
+        "Motorway::StaticPhysicalThingCategory": [
+            "RoadLayout_Straight",
+            "RoadType_PrincipleRoad_Motorway"
+        ]
+    }
+}
