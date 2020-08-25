@@ -6,8 +6,7 @@ Author(s): Erwin de Gelder
 Modifications:
 """
 
-from .physical_thing_category import PhysicalThingCategory
-from .tags import tag_from_json
+from .physical_thing_category import PhysicalThingCategory, _physical_thing_category_props_from_json
 
 
 class StaticPhysicalThingCategory(PhysicalThingCategory):
@@ -35,6 +34,10 @@ class StaticPhysicalThingCategory(PhysicalThingCategory):
         PhysicalThingCategory.__init__(self, description=description, **kwargs)
 
 
+def _static_physical_thing_category_props_from_json(json: dict) -> dict:
+    return _physical_thing_category_props_from_json(json)
+
+
 def static_physical_thing_category_from_json(json: dict) -> StaticPhysicalThingCategory:
     """ Get StaticPhysicalThingCategory object from JSON code
 
@@ -44,8 +47,4 @@ def static_physical_thing_category_from_json(json: dict) -> StaticPhysicalThingC
     :param json: JSON code of StaticEnvironmentCategory.
     :return: StaticPhysicalThingCategory object.
     """
-    stat_env = StaticPhysicalThingCategory(description=json["description"],
-                                           name=json["name"],
-                                           uid=int(json["id"]),
-                                           tags=[tag_from_json(tag) for tag in json["tag"]])
-    return stat_env
+    return StaticPhysicalThingCategory(**_static_physical_thing_category_props_from_json(json))
