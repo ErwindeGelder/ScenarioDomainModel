@@ -4,10 +4,10 @@ Creation date: 2020 08 16
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 08 25: Add function to obtain properties from a dictionary.
 """
 
-from .physical_thing_category import PhysicalThingCategory
-from .tags import tag_from_json
+from .physical_thing_category import PhysicalThingCategory, _physical_thing_category_props_from_json
 
 
 class DynamicPhysicalThingCategory(PhysicalThingCategory):
@@ -31,6 +31,10 @@ class DynamicPhysicalThingCategory(PhysicalThingCategory):
         PhysicalThingCategory.__init__(self, description=description, **kwargs)
 
 
+def _dynamic_physical_thing_category_props_from_json(json: dict) -> dict:
+    return _physical_thing_category_props_from_json(json)
+
+
 def dynamic_physical_thing_category_from_json(json: dict) -> DynamicPhysicalThingCategory:
     """ Get DynamicPhysicalThingCategory object from JSON code
 
@@ -40,8 +44,4 @@ def dynamic_physical_thing_category_from_json(json: dict) -> DynamicPhysicalThin
     :param json: JSON code of DynamicPhysicalThingCategory.
     :return: DynamicPhysicalThingCategory object.
     """
-    dyn_env = DynamicPhysicalThingCategory(description=json["description"],
-                                           name=json["name"],
-                                           uid=int(json["id"]),
-                                           tags=[tag_from_json(tag) for tag in json["tag"]])
-    return dyn_env
+    return DynamicPhysicalThingCategory(**_dynamic_physical_thing_category_props_from_json(json))
