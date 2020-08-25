@@ -4,10 +4,11 @@ Creation date: 2020 08 15
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 08 25: Add function to obtain properties from a dictionary.
 """
 
 from abc import abstractmethod
-from .thing import Thing
+from .thing import Thing, _thing_props_from_json
 from .type_checking import check_for_type
 
 
@@ -38,3 +39,9 @@ class QualitativeThing(Thing):
         thing = Thing.to_json(self)
         thing["description"] = self.description
         return thing
+
+
+def _qualitative_thing_props_from_json(json: dict) -> dict:
+    props = dict(description=json["description"])
+    props.update(_thing_props_from_json(json))
+    return props
