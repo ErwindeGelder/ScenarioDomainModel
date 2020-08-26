@@ -78,6 +78,7 @@
 \usepackage{xstring}
 \usepackage{xparse}
 \usepackage{siunitx}
+\usepackage[nolist,nohyperlinks]{acronym}
 
 \theoremstyle{plain}
 \newtheorem{definition}{Definition}
@@ -216,6 +217,14 @@
 \newcommand{\hasone}{$1$}
 \newcommand{\hastwo}{$2$}
 \newcommand{\hasn}{$N$}
+
+% Acronyms
+\begin{acronym}[AAAAAAAA]
+	\acro{odd}[ODD]{Operational Design Domain}
+	\acroindefinite{odd}{an}{an}
+	\acro{av}[AV]{Automated Vehicle}
+	\acroindefinite{av}{an}{an}
+\end{acronym}
 
 \usepackage{changebar}
 \newcommand{\cstart}{}  % Revision 2 changes (from 11 Jan 2020)

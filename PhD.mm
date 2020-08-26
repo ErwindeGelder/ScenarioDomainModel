@@ -4034,7 +4034,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
+<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
 <node TEXT="Alvarez et al." ID="ID_747880869" CREATED="1512448020922" MODIFIED="1534391438311" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -4106,6 +4106,25 @@
 <attribute NAME="authors" VALUE="P\&quot;{u}tz, Andreas and Zlocki, Adrian and Bock, Julian and Eckstein, Lutz"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="2FE6A6E16D6D155F521CAE9E4BD053F863D6C8F25F510AB74D79DD5CCB0DF">
     <pdf_title>System validation of highly automated vehicles with a database of relevant traffic scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Weber et al." ID="ID_815194640" CREATED="1597908678690" MODIFIED="1597908722857" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/512%20A%20framework%20for%20definition%20of%20logical%20scenarios.pdf">
+<attribute NAME="key" VALUE="weber2019framework"/>
+<attribute NAME="journal" VALUE="Traffic Injury Prevention"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="A Framework for Definition of Logical Scenarios for Safety Assurance of Automated Driving"/>
+<attribute NAME="authors" VALUE="Weber, Hendrik and Bock, Julian and Klimke, Jens and Roesener, Christian and Hiller, Johannes and Krajewski, Robert and Zlocki, Adrian and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B293A771571FED74F18930C1D6CB43679D142381A609982D0253FE514BB3">
+    <pdf_title>A framework for definition of logical scenarios for safety assurance of automated driving</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Gyllenhammar et al." ID="ID_999619854" CREATED="1597908929675" MODIFIED="1597908934642" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/513%20Towards%20an%20ODD%20that%20supports%20Safety%20Argumentation.pdf">
+<attribute NAME="key" VALUE="gyllenhammar2020towards"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Towards an Operational Design Domain That Supports the Safety Argumentation of an Automated Driving System"/>
+<attribute NAME="authors" VALUE="Gyllenhammar, Magnus and Johansson, Rolf and Warg, Fredrik and Chen, DeJiu and Heyn, Hans-Martin and Sanfridson, Martin and S{\&quot;o}derberg, Jan and Thors{\&apos;e}n, Anders and Ursing, Stig"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="23B889F2C75BC3E2EC2186A244A08C717C8173EA89BB52BD167FB3984514DA5">
+    <pdf_title>Towards an Operational Design Domain That Supports the Safety Argumentation of an Automated Driving System</pdf_title>
 </pdf_annotation>
 </node>
 </node>
