@@ -1,26 +1,11 @@
-"""
-Example of a scenario category and scenario from the article.
+""" Example of a scenario category and scenario from the article.
 
-For more details on this example, see the following article:
-E. de Gelder, J.-P. Paardekooper, A. Khabbaz Saberi, H. Elrofai, O. Op den Camp,
-J. Ploeg, L. Friedmann, and B. De Schutter, "Ontology for Scenarios for the
-Assessment of Automated Vehicle", 2019, To be published.
+Creation data: 2019 05 05
+Author(s): Erwin de Gelder
 
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-05 May 2019
-
-To do
------
-
-Modification
-------------
-04 Nov 2019 Update based on updates of the domain model.
-
+Modifications:
+2019 11 04 Update based on updates of the domain model.
+2020 08 26 Update based on revision of the domain model.
 """
 
 import json
@@ -42,8 +27,8 @@ def scenario_category() -> dm.ScenarioCategory:
 
     # Define the static environment category.
     static_description = "Straight road with two lanes and a pedestrian crossing"
-    crossing = dm.StaticEnvironmentCategory(
-        region=dm.Region.EU_WestCentral, description=static_description,
+    crossing = dm.StaticPhysicalThingCategory(
+        description=static_description,
         name="Pedestrian crossing qualitative",
         tags=[dm.Tag.RoadLayout_PedestrianCrossing_NoTrafficLight]
     )
@@ -69,11 +54,12 @@ def scenario_category() -> dm.ScenarioCategory:
     # Define the scenario category.
     category = dm.ScenarioCategory(
         "Straight road with two lanes and a pedestrian crossing",
-        os.path.join("images", "pedestrian_crossing.pdf"), crossing,
+        os.path.join("images", "pedestrian_crossing.pdf"),
         name="Pedestrian crossing"
     )
-    category.set_actors([ego, pedestrian], update_uids=True)
-    category.set_activities([braking, stationary, accelerating, walking], update_uids=True)
+    category.set_static_physical_things([crossing])
+    category.set_actors([ego, pedestrian])
+    category.set_activities([braking, stationary, accelerating, walking])
     category.set_acts([(ego, braking), (ego, stationary), (ego, accelerating),
                        (pedestrian, walking)])
     return category
@@ -87,42 +73,53 @@ def scenario() -> dm.Scenario:
     category = scenario_category()
 
     # Define the actors.
-    ego = dm.EgoVehicle(category.actor_categories[0],
+    ego = dm.EgoVehicle(category.actors[0],
                         initial_states=[dm.State(dm.StateVariable.LONGITUDINAL_POSITION, -20),
                                         dm.State(dm.StateVariable.LATERAL_POSITION, -1.5),
                                         dm.State(dm.StateVariable.HEADING, np.pi / 2)],
                         name="Ego")
-    pedestrian = dm.Actor(category.actor_categories[1],
+    pedestrian = dm.Actor(category.actors[1],
                           initial_states=[dm.State(dm.StateVariable.LONGITUDINAL_POSITION, 0),
                                           dm.State(dm.StateVariable.HEADING, 0)],
                           name="Pedestrian")
 
     # Define the static environment.
-    static = dm.StaticEnvironment(category.static_environment,
-                                  properties=dict(road=dict(lanes=2, lanewidth=3,
-                                                            xy=[(-60, 0), (60, 0)]),
-                                                  footway=dict(width=3,
-                                                               xy=[(0, 6), (0, -6)])),
-                                  name="Pedestrian crossing")
+    static = dm.StaticPhysicalThing(category.static_physical_things[0],
+                                    properties=dict(road=dict(lanes=2, lanewidth=3,
+                                                              xy=[(-60, 0), (60, 0)]),
+                                                    footway=dict(width=3,
+                                                                 xy=[(0, 6), (0, -6)])),
+                                    name="Pedestrian crossing")
 
     # Define the activities.
-    braking = dm.SetActivity(category.activity_categories[0], 0, 4, dict(xstart=8, xend=0),
-                             name="Ego braking")
-    stationary = dm.SetActivity(category.activity_categories[1], 4, 3, dict(xstart=0),
-                                name="Ego stationary")
-    accelerating = dm.SetActivity(category.activity_categories[2], 7, 5,
-                                  dict(xstart=0, xend=7.5), name="Ego accelerating")
-    walking = dm.SetActivity(category.activity_categories[3], 0, 12, dict(xstart=-6, xend=6),
-                             name="Pedestrian walking")
+    braking = dm.Activity(category.activities[0], dict(xstart=8, xend=0), start=0, end=4,
+                          name="Ego braking")
+    stationary = dm.Activity(category.activities[1], dict(xstart=0), start=braking.end, end=7,
+                             name="Ego stationary")
+    accelerating = dm.Activity(category.activities[2], dict(xstart=0, xend=7.5),
+                               start=stationary.end, end=12, name="Ego accelerating")
+    walking = dm.Activity(category.activities[3], dict(xstart=-6, xend=6), start=braking.start,
+                          end=accelerating.end, name="Pedestrian walking")
 
     # Define the scenario.
-    scen = dm.Scenario(0, 12, static, name="Ego braking for crossing pedestrian")
-    scen.set_actors([ego, pedestrian], update_uids=True)
-    scen.set_activities([braking, stationary, accelerating, walking], update_uids=True)
-    scen.set_acts([(ego, braking, 0), (ego, stationary, 4), (ego, accelerating, 7),
-                   (pedestrian, walking, 0)])
+    scen = dm.Scenario(start=braking.start, end=accelerating.end,
+                       name="Ego braking for crossing pedestrian")
+    scen.set_static_physical_things([static])
+    scen.set_actors([ego, pedestrian])
+    scen.set_activities([braking, stationary, accelerating, walking])
+    scen.set_acts([(ego, braking), (ego, stationary), (ego, accelerating), (pedestrian, walking)])
     return scen
 
 
 if __name__ == "__main__":
-    print(json.dumps(scenario().to_json_full(), indent=4))
+    CATEGORY = scenario_category()
+    SCENARIO = scenario()
+
+    print("JSON code of the scenario:")
+    print(json.dumps(SCENARIO.to_json_full(), indent=4))
+    print()
+    print("JSON code of the scenario category:")
+    print(json.dumps(CATEGORY.to_json_full(), indent=4))
+    print()
+    print("Does the scenario category comprise the scenario?")
+    print(CATEGORY.comprises(SCENARIO))
