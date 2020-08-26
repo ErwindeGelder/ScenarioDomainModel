@@ -1,20 +1,10 @@
-"""
-Two scenario categories with a low speed curve.
+""" Two scenario categories with a low speed curve.
 
-Author
-------
-Erwin de Gelder
+Creation date: 2019 11 12
+Author(s): Erwin de Gelder
 
-Creation
---------
-12 Nov 2019
-
-To do
------
-Demonstrate the "includes" method of ScenarioCategory.
-
-Modification
-------------
+Modification:
+2020 08 26 Update based on revision of the domain model.
 """
 
 import json
@@ -37,8 +27,8 @@ def scenario_category(left: bool = False, right: bool = False) -> dm.ScenarioCat
     # Define the static environment category.
     bend = "{:s}bend".format("left " if left else "right " if right else "")
     static_description = "Road with a {:s}".format(bend)
-    crossing = dm.StaticEnvironmentCategory(
-        region=dm.Region.OtherCountries, description=static_description, name=bend,
+    road_layout = dm.StaticPhysicalThingCategory(
+        description=static_description, name=bend,
         tags=[(dm.Tag.RoadLayout_Curved_Left if left else
                dm.Tag.RoadLayout_Curved_Right if right else dm.Tag.RoadLayout_Curved)]
     )
@@ -51,12 +41,27 @@ def scenario_category(left: bool = False, right: bool = False) -> dm.ScenarioCat
                                    os.path.join("images",
                                                 "low speed curve1.pdf" if right else
                                                 "low speed curve2.pdf"),
-                                   crossing,
                                    name="Maneuvering a {:s}".format(bend))
-    category.set_actors([ego], update_uids=True)
+    category.set_static_physical_things([road_layout])
+    category.set_actors([ego])
     return category
 
 
 if __name__ == "__main__":
-    LEFT_BEND = scenario_category(left=False)
+    LEFT_BEND = scenario_category(left=True)
+    RIGHT_BEND = scenario_category(right=True)
+    BEND = scenario_category()
+    CATEGORIES = [LEFT_BEND, RIGHT_BEND, BEND]
+    NAMES = ["left bend", "right bend", "bend"]
+
+    print("JSON code of the LEFT BEND:")
     print(json.dumps(LEFT_BEND.to_json_full(), indent=4))
+    print()
+
+    print("Demonstration of the 'includes' function:")
+    for i in range(3):
+        for j in range(3):
+            if i == j:
+                continue
+            print("{:34s} {}".format("'{:s}' includes '{:s}':".format(NAMES[i], NAMES[j]),
+                                     CATEGORIES[i].includes(CATEGORIES[j])))
