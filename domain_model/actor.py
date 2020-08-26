@@ -88,8 +88,8 @@ class EgoVehicle(Actor):
 
     """
     def __init__(self, category: ActorCategory, initial_states: List[State] = None,
-                 desired_states: List[State] = None, goal: str = "", **kwargs):
+                 desired_states: List[State] = None, properties: dict = None, **kwargs):
         Actor.__init__(self, category, initial_states=initial_states,
-                       desired_states=desired_states, goal=goal, **kwargs)
+                       desired_states=desired_states, properties=properties, **kwargs)
         if Tag.EgoVehicle not in self.tags:
             self.tags += [Tag.EgoVehicle]
