@@ -294,10 +294,11 @@ class KDE:
         # If clustering is used, make sure that the minimum bandwidth is larger than the
         # cluster width.
         min_bw = max(0.001, self._maxdist())
-        if min_bw in kwargs:
-            kwargs["min_bw"] = max(kwargs["min_bw"], min_bw)
-        else:
+        if min_bw not in kwargs:
             kwargs["min_bw"] = min_bw
+        max_bw = max(1., self._maxdist()*25)
+        if max_bw not in kwargs:
+            kwargs["max_bw"] = max_bw
 
         return self.compute_bandwidth_gss(**kwargs)
 
