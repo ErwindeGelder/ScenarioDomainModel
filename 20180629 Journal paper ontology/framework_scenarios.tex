@@ -66,6 +66,13 @@
 %\LetLtxMacro{\textcite}{\citet}
 
 
+% Table stuff
+\usepackage{booktabs}
+\usepackage{tabularx}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.9}  % Prevent warning, pgf running in backwards compatibility mode anyway%\usetikzlibrary{external}                       %% Create pdf figures from TikZ. Use PDFTeXify ...
@@ -229,8 +236,8 @@
 \usepackage{changebar}
 \newcommand{\cstart}{}  % Revision 2 changes (from 11 Jan 2020)
 \newcommand{\cend}{}
-\newcommand{\cstartb}{}  % Changes since July 14, 2020
-\newcommand{\cendb}{}
+\newcommand{\cstartb}{\cbstart\color{red}}  % Changes since July 14, 2020
+\newcommand{\cendb}{\color{black}\cbend}
 \newcommand{\cstartc}{\cbstart\color{red}}  % Changes since August 15, 2020
 \newcommand{\cendc}{\color{black}\cbend}
 %\newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
@@ -294,9 +301,8 @@
 %\bibliographystyle{abbrvnat}
 %\bibliography{../bib}
 
-%\appendix
-%\appendices
-%\input{sections/domain_model}
+\appendix
+\input{sections/nomenclature}
 
 
 \end{document}

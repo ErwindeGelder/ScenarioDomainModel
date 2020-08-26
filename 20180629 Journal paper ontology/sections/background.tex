@@ -1,7 +1,7 @@
 \section{Background}
 \label{sec:background}
 
-We first explain in \cref{sec:why oo framework} why we want to present an ontology for describing scenarios and  scenario categories. Next, in \cref{sec:context}, we provide some information on the context for which we want to define scenarios. In \cref{sec:nomenclature}, we describe notions that are adopted from literature to define our ontology.
+We first explain in \cref{sec:why oo framework} why we want to present an \cstartc object-oriented framework \cendc for describing scenarios and  scenario categories. Next, in \cref{sec:context}, we provide some information on the context for which we want to define scenarios. 
 
 
 \cstartb
@@ -13,7 +13,7 @@ The object orientation is used for ``a representation, modeling, and abstraction
 \begin{itemize}
 	\item \cendb\cstartc\emph{Clarity:} \cendc\cstartb It provides ``a common vocabulary for designers to communicate, document, and explore design alternatives'' \autocite{gamma1993design}.
 	\item \cendb\cstartc\emph{Modularity:} By decomposing a scenario into components, the complexity of a scenario itself is reduced. Thus, ``modularity makes it easier to understand the effect of changes'' \cite{johnson1988designing}.
-	\item \emph{Reuseability:} \cendc\cstartb An object-oriented framework promotes reusability \autocite{snyder1986encapsulation, meyer1987reusability, johnson1988designing}. E.g., if two classes share certain procedures and/or properties, these procedures and/or properties could be provided by a so-called superclass from which these two classes inherit the procedures and properties, such that these procedures and properties need to be defined only once.
+	\item \emph{Reusability:} \cendc\cstartb An object-oriented framework promotes reusability \autocite{snyder1986encapsulation, meyer1987reusability, johnson1988designing}. E.g., if two classes share certain procedures and/or properties, these procedures and/or properties could be provided by a so-called superclass from which these two classes inherit the procedures and properties, such that these procedures and properties need to be defined only once.
 	\item \cendb\cstartc\emph{Encapsulation:} \cendc\cstartb It offers the so-called encapsulation of data and procedures. This assures ``that compatible changes can be made safely, which facilitates program evolution and maintenance'' \autocite{snyder1986encapsulation}.
 	\item \cendb\cstartc\emph{Translatable to object-oriented programming languages:} \cendc\cstartb As the framework consists of a set of classes, it can be directly used in an object-oriented coding language. The framework then specifies the relationships between the different classes and provided information on the properties of a class and the possible values.
 \end{itemize}
@@ -51,83 +51,3 @@ The ultimate goal is to build a database with all relevant scenarios that an AV 
 
 
 
-\subsection{Nomenclature}
-\label{sec:nomenclature}
-
-For the definition of \emph{scenario}, several notions are adopted from literature. 
-In this section, the concepts of \emph{ego vehicle}, \emph{actor}, \emph{state variable}, \emph{state vector}, \emph{model}, \emph{mode}, \emph{act}, \emph{static environment}, and \emph{dynamic environment}, \cstartb which are adopted from literature\cendb, are detailed. 
-
-\subsubsection{Ego vehicle}
-\label{sec:ego vehicle}
-
-The ego vehicle refers to the perspective from which the world is seen. In particular, the ego vehicle refers to the vehicle that is perceiving the world through its sensors (e.g., see \autocite{Bonnin2014}). When performing tests, the ego vehicle also refers to the vehicle that must perform a specific task (e.g., see \autocite{althoff2017CommonRoad}). In this case, the ego vehicle is often referred to as the system under test \autocite{stellet2015taxonomy}, the vehicle under test \autocite{gietelink2006development}, or the host vehicle \autocite{gietelink2006development}.
-%The ontology presented by Geyer~et~al.\ ``is described from the ego-vehicle's point of view'' \autocite{geyer2014}. 
-%Note that in case a sensor-equipped vehicle is used to extract scenarios from real-world driving, the ego vehicle in an extracted scenario does not necessarily have to correspond to the sensor-equipped vehicle that is used to acquire the real-world data.
-
-\subsubsection{Actor}
-\label{sec:actor}
-
-According to \textcite{catapult2018musicc}, ``actors are all dynamic components of a scenario, excluding the ego vehicle itself.'' In practice, this can be, for example, a driver of a car, a cyclist, a pedestrian, a driving automation system, or a combination of a driver and a driving automation system \autocite{geyer2014}. Note that, in contrast to \autocite{catapult2018musicc}, in the current paper, the ego vehicle's driver, and/or automation system are considered as actors, similar to \autocite{geyer2014},  because they have the same properties as another driver or automation system.
-
-%: ``in this case, [the actor is] the ego-vehicle with driver/automation.''
-%An actor is an element of a scenario acting on its own behalf \autocite{ulbrich2015}. 
-% Traffic light?
- 
-\subsubsection{State variable} 
-\label{sec:state variable}
-\textcite[p.~163]{dorf2011modern} write that ``the state variables describe the present configuration of a system and can be used to determine the future response, given the excitation inputs and the equations describing the dynamics.'' In our case, ``the system'' could refer to an actor, a component, or a simulation. E.g., a state variable could be the acceleration of an actor.
-
-\subsubsection{State vector}
-\label{sec:state vector}
-A state vector refers to ``the vector containing all $n$ state variables'' \autocite[p.~233]{dorf2011modern}.
-
-\subsubsection{Model}
-\label{sec:model}
-
-Typically, a dynamical system is modeled using a differential equation of the form $\statedot(\time)=\function_{\parameter}(\state(\time), \inputsystem(\time), \time)$ \autocite{norman2011control}, where $\state(\time)$ represents the state vector at time $\time$, $\inputsystem(\time)$ represents an external input vector, and the function $\function_{\parameter}(\cdot)$ is parameterized by $\parameter$.  Note that, technically speaking, $\state(\cdot)$, $\inputsystem(\cdot)$, $\time$, and $\parameter$ are inputs of the function $\function$, but $\parameter$ is assumed to be constant for a certain time interval. For example, the following first-order model is parameterized by $\parameter=(\parametera,\parameterb)$:
-\begin{equation}
-	\statedot(\time) = \parametera \state(\time) + \parameterb \inputsystem(\time).
-\end{equation}
-
-% The input $u$ is a function of time, that needs to be quantified. For this purpose, a parametrized function can be used, i.e. $u=g_{\theta}(t)$ with parameter vector $\theta$, such that the differential equation can be rewritten to $\dot{x}=h_{\theta}(x,t)$. In the context of this paper, model refers to a parametrized function, such as $h_{\theta}(x,t)$. It might be more practical to directly model the state (i.e., the result of the differential equation) using a function $x=k_{\theta}(t)$, such that no explicit information is required about the system dynamics. For example, see \autocite{deGelder2017assessment}.
-
-\subsubsection{Mode}
-\label{sec:mode}
-
-In some systems, the behavior of the system may suddenly change abruptly, e.g., due to a sudden change in an input, a model parameter, or the model function. Such a transition is called a mode switch.
-In each mode, the behavior of the system is described by a model with a fixed function $f_{\theta}$ and smooth input $u(\cdot)$ \autocite{deschutter2000optimal}.
-
-%\subsubsection{Activity}
-%\label{sec:activity}
-%An activity refers to the behavior of a particular mode. For example, an activity could be described by the label `braking' or `changing lane'.
-%A scenario contains the quantitative description of the ongoing activity of the ego vehicle and its dynamic environment. Here, the description refers to the changing states that are relevant for the scenario, e.g., acceleration and velocity. The activity is described using the models that describe the way the state evolves over time.
-
-
-\subsubsection{Act}
-\label{sec:act}
-
-We define act as the combination of actors and the activities that are performed by the actors. %Additionally, the act can contain conditions that mark the start or end of the act.
-This is in accordance with the use of the term \emph{act} in \autocite{openscenario}. 
-
-
-\subsubsection{Static environment}
-\label{sec:static environment}
-
-The static environment refers to the part of the environment that does not change during a scenario. This includes geo-spatially stationary elements \autocite{ulbrich2015},  such as the road network.
-%Although one might argue whether light and weather conditions are dynamic or not \autocite{geyer2014,bach2016modelbased}, in most cases it is reasonable to assume that these conditions are not subject to significant changes during the time frame of a scenario. 
-%Hence, light and weather conditions are usually part of the static environment.
-
-\subsubsection{Dynamic environment}
-\label{sec:dynamic environment}
-
-As opposed to the static environment, the dynamic environment refers to the part of a scenario that changes during the time frame of a scenario. 
-%The dynamic environment is described using the activities that describe the way the states evolve over time. 
-In practice, the dynamic environment mainly consists of the moving actors (other than the ego vehicle) that are relevant to the ego vehicle.
-For example, the primary use case of OpenSCENARIO, a file format for the description of the dynamic content of driving simulations, is to describe ``complex, synchronized maneuvers that involve multiple entities like vehicles, pedestrians, and other traffic participants'' \autocite{openscenario}, so for OpenSCENARIO, these maneuvers represent the dynamic environment.
-Roadside units that communicate with vehicles within the communication range \autocite{alsultan2014comprehensive} are also part of the dynamic environment. Furthermore, changing (weather) conditions are part of the dynamic environment.
-
-\begin{remark}
-	Note that it might not always be obvious whether an element of the environment belongs to the static or dynamic environment. 
-	%For example, the post of a traffic light can be considered as part of the static environment, while the signal of the traffic light can be considered as part of the dynamic environment.
-	Most important, however, is that all parts of the environment that are relevant to the assessment of an AV are described in either the static or the dynamic environment.
-\end{remark}
