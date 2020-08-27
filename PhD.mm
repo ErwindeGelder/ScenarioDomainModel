@@ -2465,6 +2465,26 @@
     <pdf_title>Transportation Research Part B</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="From behavioral psychology to acceleration modeling" ID="ID_291378218" CREATED="1598548329185" MODIFIED="1598548467892" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/516%20From%20behavioral%20psychology%20to%20acceleration%20modeling.pdf">
+<attribute NAME="key" VALUE="hamdar2015behavioral"/>
+<attribute NAME="journal" VALUE="Transportation Research Part B: Methodological"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="From Behavioral Psychology to Acceleration Modeling: Calibration, Validation, and Exploration of Drivers&#x2019; Cognitive and Safety Parameters in a Risk-Taking Environment"/>
+<attribute NAME="authors" VALUE="Hamdar, Samer H and Mahmassani, Hani S and Treiber, Martin"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E53B58EB50804C8E3F62B1CA10A4F459358BA5C8F971FBD293C7E55F509D89">
+    <pdf_title>Transportation Research Part B</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Modeling Driver Behavior as Sequential Risk-Taking Task" ID="ID_1372470402" CREATED="1598548474669" MODIFIED="1598548567846" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/517%20Modeling%20Driver%20Behavior%20as%20Sequential%20Risk-Taking%20Task.pdf">
+<attribute NAME="key" VALUE="hamdar2008modeling"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="Modeling Driver Behavior as Sequential Risk-Taking Task"/>
+<attribute NAME="authors" VALUE="Hamdar, Samer H and Treiber, Martin and Mahmassani, Hani S and Kesting, Arne"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="996D21DACDCF6821EEEAC2273AA9DC2467E23AEABE1220AD5D84BB34BC8C2C">
+    <pdf_title>Modeling Driver Behavior as Sequential Risk-Taking Task</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Lateral" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_945623169" CREATED="1589212064192" MODIFIED="1589212068532">
 <node TEXT="Integrated Lane Change Model" ID="ID_1571872619" CREATED="1589296342175" MODIFIED="1590912450469" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/453%20Integrated%20Lane%20Change%20Model.pdf">
