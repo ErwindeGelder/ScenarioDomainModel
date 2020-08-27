@@ -13,7 +13,7 @@ For a scenario-based assessment, proper specification of scenarios is crucial be
 	\item an unambiguous description of a scenario is crucial for providing a standardized, repeatable, and reproducible test \autocite{aparicio2013pre},
 	\item standardized descriptions of scenarios can be more easily compared and classified \autocite{degelder2019scenariocategories},
 	\item the descriptions of scenarios are the basis for evaluating the coverage of the assessment \autocite{putz2017pegasus}, and
-	\item scenarios enables us to translate the result of a test into an assessment of the \ac{av} performance with regards to a particular \ac{odd} \autocite{weber2019framework, gyllenhammar2020towards}.
+	\item scenarios enable us to translate the result of a test into an assessment of the \ac{av} performance with regards to a particular \ac{odd} \autocite{weber2019framework, gyllenhammar2020towards}.
 \end{itemize}
 
 % What is currently missing
@@ -28,7 +28,7 @@ Furthermore, these implementations and other object-oriented approaches used in 
 In this article, we propose an object-oriented framework for the definition of scenarios. While this framework is broadly consistent with existing definitions \autocite{geyer2014, ulbrich2015, elrofai2016scenario}, it is more concrete because it enables the formalization of a scenario description. 
 Furthermore, the framework provides explicit guidelines for the construction of scenario descriptions that are able to effectively assess the \ac{av} performance.
 We achieve this by describing the essential building blocks of a scenario (such as activities, actors, and events), the characteristics of those components, and how those components interrelate. 
-We define components of a scenario as classes of objects having attributes, methods, and relationships with objects that are members of other classes.
+We provide an intensional definitions of a scenario and its components, i.e., all properties of the things to which the terms apply. We achieve this by defining the terms as classes of objects having attributes, methods, and relationships with objects that are members of other classes.
 For each of the components, we provide definitions that are commonly used in the field of the safety assessment of \acp{av} \autocite{geyer2014, ulbrich2015, catapult2018musicc, catapult2018regulating, sigsim2019glossary, openscenario}. 
 %For an unambiguous formulation, some definitions from the field of control theory are adopted. 
 In addition to the definition of a scenario, we introduce the concept of a \emph{scenario category} that is used to qualitatively describe scenarios, i.e., an abstraction of a scenario. Scenario categories enable the categorization of scenarios in terms of the categories of their typical components.
@@ -45,7 +45,7 @@ This, in turn, is used to describe the scenarios in a coding language that can b
 To illustrate the use of the presented object-oriented framework, we have implemented the framework in a coding language that is publicly available\footnote{As a coding language, Python is used. The code is publicly available at \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.}.
 The framework is also used as a schema for a database system for storing the scenarios and scenario categories.
 Furthermore, an example is provided to illustrate the use of the object-oriented framework with a real-world case.
-The proposed object-oriented framework provides a first step towards an ontology for scenarios for the assessment of \acp{av}. In a subsequent study, the formalized concepts presented in this article are used to design an ontology with logical constraints that enable a computer to perform reasoning on scenarios.
+The proposed object-oriented framework provides a first step towards an ontology \autocite{siricharoen2009ontology} for scenarios for the assessment of \acp{av}. In a subsequent study, the formalized concepts presented in this article are used to design an ontology with logical constraints that enable a computer to perform reasoning on scenarios.
 \cendc
 
 % Outline

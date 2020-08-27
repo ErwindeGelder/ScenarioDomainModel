@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
+<map version="docear 1.1" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
 <node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1590912451598"><hook NAME="MapStyle" zoom="0.912">
@@ -3592,7 +3592,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
+<node TEXT="More on events" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1093414638" CREATED="1508810117740" MODIFIED="1511405456131">
 <node TEXT="In probability: the outcome of an experiment. For example coin &quot;tail&quot;" ID="ID_431203968" CREATED="1508810134759" MODIFIED="1531983021869">
 <attribute NAME="key" VALUE="pfeiffer2013concepts"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -3927,7 +3927,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="State variable" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_906086455" CREATED="1571315480437" MODIFIED="1571315488221">
+<node TEXT="State variable" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_906086455" CREATED="1571315480437" MODIFIED="1571315488221">
 <node TEXT="The smallest set of linearly independent system variables such that the values of the members of the set at time to along with known forcing functions completely determine the value of all system variables for all t&gt;t_0." ID="ID_1034026453" CREATED="1571315721041" MODIFIED="1571315734266" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/058%20Control_System_Engineering_Norman.pdf">
 <attribute NAME="key" VALUE="norman2011control"/>
 <attribute NAME="year" VALUE="2011"/>
@@ -4007,7 +4007,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Glossaries" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1560004196" CREATED="1552469581889" MODIFIED="1552469593138">
+<node TEXT="Glossaries" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1560004196" CREATED="1552469581889" MODIFIED="1552469593138">
 <node TEXT="Catapult: MUSICC" ID="ID_290746102" CREATED="1552469594155" MODIFIED="1552469604841" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/297%20MUSICC-Workshop-Glossary.pdf">
 <attribute NAME="key" VALUE="catapult2018musicc"/>
 <attribute NAME="year" VALUE="2018"/>
@@ -4034,7 +4034,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
+<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
 <node TEXT="Alvarez et al." ID="ID_747880869" CREATED="1512448020922" MODIFIED="1534391438311" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -4165,7 +4165,7 @@
 </node>
 </node>
 </node>
-<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
 <node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1590912449994" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
@@ -4423,8 +4423,28 @@
     <pdf_title>Object-Oriented</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Ontologies and Object models in Object Oriented" ID="ID_607798158" CREATED="1598519193303" MODIFIED="1598519241557" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/514%20Ontologies%20and%20Object%20models%20in%20Object%20Oriented.pdf">
+<attribute NAME="key" VALUE="siricharoen2007ontologies"/>
+<attribute NAME="journal" VALUE="IAENG International Journal of Computer Science"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="Ontologies and Object Models in Object Oriented Software Engineering"/>
+<attribute NAME="authors" VALUE="Siricharoen, Waralak V"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9922F6B863243E96AB48EC0568534401A732B28EB2D8FEBE36FBB83CDB22C">
+    <pdf_title>Ontologies and Object models in Object Oriented Software Engineering</pdf_title>
+</pdf_annotation>
 </node>
-<node TEXT="&quot;object-oriented&quot; in relation to testing" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_993268028" CREATED="1596006527379" MODIFIED="1596006553162">
+<node TEXT="Ontology Modeling and Object Modeling in Software Engineering" ID="ID_1191815045" CREATED="1598520479201" MODIFIED="1598520637416" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/515%20Ontology%20Modeling%20and%20Object%20Modeling%20in%20Software%20Engineering.pdf">
+<attribute NAME="key" VALUE="siricharoen2009ontology"/>
+<attribute NAME="journal" VALUE="International Journal of Software Engineering and Its Applications"/>
+<attribute NAME="year" VALUE="2009"/>
+<attribute NAME="title" VALUE="Ontology Modeling and Object Modeling in Software Engineering"/>
+<attribute NAME="authors" VALUE="Siricharoen, Waralak V"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="15B7A71FB45392B8788A62E59FBF29427E3588F35325412553EB8DE4F29">
+    <pdf_title>Ontology Modeling and Object Modeling in Software Engineering</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="&quot;object-oriented&quot; in relation to testing" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_993268028" CREATED="1596006527379" MODIFIED="1596006553162">
 <node TEXT="Simulation Framework for Traffic Scenarios" ID="ID_1036695762" CREATED="1596006567729" MODIFIED="1596006571221" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/077%20Simulation%20Framework%20for%20Traffic%20Scenarios.pdf">
 <attribute NAME="key" VALUE="zofka2016testing"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -4463,7 +4483,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
+<node TEXT="Trees of tags" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1966690287" CREATED="1524534206735" MODIFIED="1524534219157">
 <node TEXT="Static environment" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1840903641" CREATED="1524534290399" MODIFIED="1524534310960">
 <node TEXT="Road type according to OpenStreetMaps" ID="ID_1249695869" CREATED="1524534329126" MODIFIED="1590912449809" LINK="https://wiki.openstreetmap.org/wiki/Key:highway">
 <attribute NAME="key" VALUE="HighwayKeyOSM"/>
