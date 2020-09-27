@@ -4,32 +4,32 @@
 % Introduce scenario-based approach and why scenario definition is important.
 An essential aspect in the development of \acp{av} is the assessment of quality and performance aspects of the \acp{av}, such as safety, comfort, and efficiency \autocite{bengler2014threedecades, wachenfeld2016release, Helmer2017safety, stellet2015taxonomy, gietelink2006development, putz2017pegasus, roesener2017comprehensive, riedmaier2020survey}.
 For legal and public acceptance of \acp{av}, a clear definition of system performance is important, as well as quantitative measures for system quality. 
-Traditional methods, such as \autocite{response2006code, ISO26262}, used for the evaluation of driver assistance systems, are no longer sufficient for the assessment of quality and performance aspects of an AV, because they would require too many resources \autocite{wachenfeld2016release}. 
-\cstartc Therefore, a scenario-based approach is seen as the only viable way to perform the \ac{av} assessment \autocite{putz2017pegasus, elrofai2018scenario, riedmaier2020survey}. 
+According to \autocite{wachenfeld2016release}, traditional methods for evaluating driver assistance systems, such as \autocite{response2006code, ISO26262}, cannot sufficiently assess quality and performance aspects of an AV, because they would require too many resources. 
+\cstartc A scenario-based approach could be a viable way to perform the \ac{av} assessment \autocite{putz2017pegasus, elrofai2018scenario, riedmaier2020survey}. 
 % Explain importance/relevance
 For a scenario-based assessment, proper specification of scenarios is crucial because 
 \begin{itemize}
-	\item scenarios are directly reflected in the tests used for the scenario-based assessment \autocite{stellet2015taxonomy, aparicio2013pre, ulbrich2015, geyer2014, putz2017pegasus, zofka2015datadrivetrafficscenarios},
+	\item scenarios \cendc\cstartd provide the basis and justification for \cendd\cstartc the tests used for the scenario-based assessment \autocite{stellet2015taxonomy, aparicio2013pre, ulbrich2015, geyer2014, putz2017pegasus, zofka2015datadrivetrafficscenarios},
 	\item an unambiguous description of a scenario is crucial for providing a standardized, repeatable, and reproducible test \autocite{aparicio2013pre},
-	\item standardized descriptions of scenarios can be more easily compared and classified \autocite{degelder2019scenariocategories},
+	\item standardized descriptions of scenarios can be more easily compared and classified \cendc\cstartd automatically \cendd\cstartc\autocite{degelder2019scenariocategories},
 	\item the descriptions of scenarios are the basis for evaluating the coverage of the assessment \autocite{putz2017pegasus}, and
 	\item scenarios enable us to translate the result of a test into an assessment of the \ac{av} performance with regards to a particular \ac{odd} \autocite{weber2019framework, gyllenhammar2020towards}.
 \end{itemize}
 
 % What is currently missing
-Although the notion of scenario is frequently used in the context of automated driving \autocite{gietelink2006development, ebner2011identifying, hulshof2013autonomous, xiong2015orchestration, zofka2015datadrivetrafficscenarios, putz2017pegasus, roesener2017comprehensive, ploeg2017GCDC, shao2019evaluating}, an explicit definition is often not provided. \cendc
-Some definitions of a scenario in the context of (automated) driving have been proposed in literature \autocite{geyer2014, ulbrich2015, elrofai2016scenario}.
-These definitions, however, leave room for interpretation because, firstly, the definitions themselves are ambiguous and, secondly, the definitions use other undefined terms.
-\cstartc From the implementation side, there are several file formats and methods for defining scenarios for the assessment of \acp{av}, such as OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad},
-Because of the focus these implementations is on scenarios that can be simulated, these implementations describe scenarios at a quantitative level and, consequently, they do not provide concepts for a qualitative description of a scenario.
+Although the notion of scenario is frequently used in the context of automated driving \autocite{gietelink2006development, ebner2011identifying, hulshof2013autonomous, xiong2015orchestration, zofka2015datadrivetrafficscenarios, putz2017pegasus, roesener2017comprehensive, ploeg2017GCDC, shao2019evaluating}, \cendc\cstartd only rarely is an explicit definition actually given. 
+Furthermore, even those definitions are unclear because of ambiguities and the use of other undefined terms. \cendd
+\cstartc From the implementation side, there are several file formats and methods for defining scenarios for the assessment of \acp{av}, such as OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}.
+Because the focus of these implementations is on scenarios that can be simulated, these implementations describe scenarios at a quantitative level and, consequently, they do not provide concepts for a qualitative description of a scenario.
 Furthermore, these implementations and other object-oriented approaches used in the field of the assessment of \acp{av} \autocite{tsai2003scenario, utting2012taxonomy, zofka2016testing, wittmann2017method} lack the definitions and justifications of each of the terms.
 
 % Our proposal
-In this article, we propose an object-oriented framework for the definition of scenarios. While this framework is broadly consistent with existing definitions \autocite{geyer2014, ulbrich2015, elrofai2016scenario}, it is more concrete because it enables the formalization of a scenario description. 
+In this article, we propose an object-oriented framework for the definition of scenarios \cendc\cstartd as a starting point to developing a full ontology of scenarios. 
+This framework aims to be sufficiently explicit to enable the formalization of a scenario description while being broadly consistent with existing definitions \autocite{geyer2014, ulbrich2015, elrofai2016scenario}. \cendd\cstartc 
 Furthermore, the framework provides explicit guidelines for the construction of scenario descriptions that are able to effectively assess the \ac{av} performance.
-We achieve this by describing the essential building blocks of a scenario (such as activities, actors, and events), the characteristics of those components, and how those components interrelate. 
-We provide an intensional definitions of a scenario and its components, i.e., all properties of the things to which the terms apply. We achieve this by defining the terms as classes of objects having attributes, methods, and relationships with objects that are members of other classes.
-For each of the components, we provide definitions that are commonly used in the field of the safety assessment of \acp{av} \autocite{geyer2014, ulbrich2015, catapult2018musicc, catapult2018regulating, sigsim2019glossary, openscenario}. 
+To achieve this, \cendc\cstartd we provide intensional definitions (i.e., the meaning of the terms by specifying necessary and sufficient conditions for when the terms should be used) for concepts corresponding to a scenario and all of its \cendd\cstartc essential building blocks (such as activities, actors, and events), \cendc\cstartd we give \cendd\cstartc the characteristics of those components, and \cendc\cstartd we specify \cendd\cstartc how those components interrelate. 
+\cendc\cstartd Specifically, we define the scenario components \cendd\cstartc as classes of objects having attributes, methods, and relationships with objects that are members of other classes.
+\cendc\cstartd Furthermore, we base the definitions of each of the components on definitions \cendd\cstartc that are commonly used in the field of the safety assessment of \acp{av} \autocite{geyer2014, ulbrich2015, catapult2018musicc, catapult2018regulating, sigsim2019glossary, openscenario}. 
 %For an unambiguous formulation, some definitions from the field of control theory are adopted. 
 In addition to the definition of a scenario, we introduce the concept of a \emph{scenario category} that is used to qualitatively describe scenarios, i.e., an abstraction of a scenario. Scenario categories enable the categorization of scenarios in terms of the categories of their typical components.
 
@@ -37,12 +37,12 @@ In addition to the definition of a scenario, we introduce the concept of a \emph
 The proposed approach brings several benefits.
 First, we provide concepts for a qualitative description of a scenario, which is useful because it enables to group scenarios and to interpret the scenarios more easily. 
 Second, the object-oriented framework allows for straightforward reusing and maintaining of (the building blocks of) a scenario as well as performing operations on and interacting with (the building blocks of) a scenario.
-Third, our framework is supported with the definitions and justifications of each of the terms.
-Fourth, the framework enables the translation of the terms to object-oriented code.
-This, in turn, is used to describe the scenarios in a coding language that can be understood by various software agents, such as simulation tools. 
+Third, our framework is supported with the definitions and justifications of each of the \cendc\cstartd concepts\cendd\cstartc.
+Fourth, the framework enables the translation of the \cendc\cstartd concepts and their relationships \cendd\cstartc to object-oriented code.
+This, in turn, is used to describe the scenarios in a coding language that can be understood by various software agents, such as simulation tools\cendc\cstartd, and can be ported to already available formats like OpenSCENARIO \cite{openscenario}. \cendd
 
 % Results
-To illustrate the use of the presented object-oriented framework, we have implemented the framework in a coding language that is publicly available\footnote{As a coding language, Python is used. The code is publicly available at \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.}.
+\cstartc To illustrate the use of the presented object-oriented framework, we have implemented the framework in a coding language that is publicly available\footnote{As a coding language, Python is used. The code is publicly available at \url{https://github.com/ErwindeGelder/ScenarioDomainModel}.}.
 The framework is also used as a schema for a database system for storing the scenarios and scenario categories.
 Furthermore, an example is provided to illustrate the use of the object-oriented framework with a real-world case.
 The proposed object-oriented framework provides a first step towards an ontology \autocite{siricharoen2009ontology} for scenarios for the assessment of \acp{av}. In a subsequent study, the formalized concepts presented in this article are used to design an ontology with logical constraints that enable a computer to perform reasoning on scenarios.
