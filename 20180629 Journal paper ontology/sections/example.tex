@@ -3,7 +3,7 @@
 
 To illustrate the use of the \cstartb object-oriented framework\cendb, we describe a scenario using the \cstartb classes \cendb presented in \cref{sec:oo framework}. The scenario is schematically shown in \cref{fig:scenario overview}. The ego vehicle is driving on the right lane of a two-lane road and a pedestrian is walking on a footway that intersects the road the ego vehicle is driving on. Both the ego vehicle and the pedestrian are initially approaching the pedestrian crossing. The ego vehicle brakes and comes to a full stop in front of the pedestrian crossing. While the ego vehicle is stationary, the pedestrian crosses the road using the pedestrian crossing. When the pedestrian has passed the ego vehicle, the ego vehicle accelerates. The code of this example is publicly available\footnote{See \url{https://github.com/ErwindeGelder/ScenarioDomainModel}. The repository also contains other examples.}.
 
-\setlength{\figurewidth}{0.4\linewidth}
+\setlength{\figurewidth}{0.6\linewidth}
 \begin{figure}[t]
 	\centering
 	\input{figures/example_overview.tikz}
@@ -43,12 +43,12 @@ Both the activities \emph{accelerating} and \emph{walking straight} are describe
 Here, the parameters $\slopeego$ and $\slopepedestrian$ describe the rate of change of $\egospeed$ and $\pednorth$, respectively. The parameters $\egospeedinitc$ and $\pednorthinit$ describe the initial value of $\egospeed$ and $\pednorth$, respectively.
 
 
-\begin{figure}[t]
+\begin{figure*}[t]
 	\centering
 	\input{figures/example_qualitative.tikz}
 	\caption{The objects that are used to qualitatively describe the scenario that is schematically shown in \cref{fig:scenario overview}. The first line of each block shows the name (before the double colon) and the class from which the object is instantiated. The following lines show the attributes of the object with the name and value of the attribute before and after the colon, respectively. For the sake of brevity, the unique ID of each object is omitted.}
 	\label{fig:example qualitative}
-\end{figure}
+\end{figure*}
 
 
 The two \textit{actor categories}, the four \textit{activity categories}, and the \cstartc\textit{static physical thing category}\cendc, are used by the \textit{scenario category}. The \textit{scenario category} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian. 
@@ -63,12 +63,12 @@ The objects to describe the scenario quantitatively are shown in \cref{fig:examp
 Since we are describing a real-world scenario, there is no need to define desired state vectors for the actors.
 
 
-\begin{figure}[t]
+\begin{figure*}[t]
 	\centering
 	\input{figures/example_quantitative.tikz}
 	\caption{The objects that are used to quantitatively describe the scenario that is schematically shown in \cref{fig:scenario overview}. For the sake of brevity, the tags and the unique ID of each object are omitted.}
 	\label{fig:example quantitative}
-\end{figure}
+\end{figure*}
 
 \cstartb There are four \textit{events} defined. These events mark the time instants that define the start and the end of the \textit{activities}. For simplicity, it is assumed that the start of the scenario happens at \SI{0}{\second}. \cendb
 
@@ -95,12 +95,12 @@ A different scenario can be defined by, e.g., changing the parameter values. Thi
 % - Scenario does not describe activities of ego vehicle anymore
 
 
-\begin{figure}[t]
+\begin{figure*}[t]
 	\centering
 	\input{figures/example_test_case.tikz}
 	\caption{The objects that, next to the objects \emph{Ego qualitative}, \emph{Pedestrian qualitative}, \emph{Walking straight}, and \emph{Pedestrian crossing qualitative} from \cref{fig:example qualitative} and \emph{Pedestrian} and \emph{Pedestrian crossing} from \cref{fig:example quantitative}, describe a test case that is schematically shown in \cref{fig:scenario overview}. For the sake of brevity, the tags and the unique ID of each object are omitted.}
 	\label{fig:example test case}
-\end{figure}
+\end{figure*}
 
 
 In this example, we consider a test case based on the previously illustrated real-world scenario, see \cref{fig:scenario overview}. \Cref{fig:example test case} shows the objects that are used to describe this test case. Additionally, the two \textit{actor categories} (\emph{ego qualitative} and \emph{pedestrian qualitative}) are shown in \cref{fig:example qualitative} and the \textit{actor} describing the pedestrian (\emph{pedestrian crossing}) is shown in \cref{fig:example quantitative}.

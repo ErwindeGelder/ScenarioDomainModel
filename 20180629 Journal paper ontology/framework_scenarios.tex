@@ -1,8 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
-
-\documentclass[3p,onecolumn,authoryear]{article}  % Comment this line out if you need a4paper
+\documentclass[journal]{IEEEtran}
 
 
 % make changes take effect
@@ -33,6 +29,7 @@
 \usepackage{amsmath} % assumes amsmath package installed
 \usepackage{amsthm}  % For special theorem style
 \usepackage{amsfonts}
+%\usepackage{breqn}
 %\usepackage{amssymb}  % assumes amsmath package installed
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
@@ -45,7 +42,7 @@
 \usepackage[utf8]{inputenc}    % utf8 support
 \usepackage[T1]{fontenc}       % code for pdf file
 \usepackage[USenglish]{babel}  % language support
-\usepackage{authblk}
+%\usepackage{authblk}
 
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
@@ -53,7 +50,7 @@
 \usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 % Filter warnings issued by package biblatex starting with "Patching footnotes failed"
 \WarningFilter{biblatex}{Patching footnotes failed}
-%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
 \renewcommand*{\bibfont}{\small}
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
@@ -103,7 +100,7 @@
 \newlength\figurewidth
 \newlength\figureheight
 \newlength\venncircle
-\newlength\objectwidth\setlength{\objectwidth}{18.5em}
+\newlength\objectwidth\setlength{\objectwidth}{16.2em}
 
 
 \usetikzlibrary{arrows,positioning}
@@ -233,13 +230,15 @@
 	\acroindefinite{av}{an}{an}
 \end{acronym}
 
-\usepackage{changebar}
+%\usepackage{changebar}
 \newcommand{\cstart}{}  % Revision 2 changes (from 11 Jan 2020)
 \newcommand{\cend}{}
 \newcommand{\cstartb}{}  % Changes since July 14, 2020
 \newcommand{\cendb}{}
 \newcommand{\cstartc}{}  % Changes since August 15, 2020
 \newcommand{\cendc}{}
+\newcommand{\cstartd}{\color{red}}  % Changes since September 22, 2020
+\newcommand{\cendd}{\color{black}}
 %\newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
 
 %\usepackage{setspace}
@@ -252,25 +251,25 @@
 
 %\thispagestyle{empty}
 %\pagestyle{empty}
-\title{\cstartb Towards an Ontology of Scenarios for the Assessment of Automated Vehicles: An Object-Oriented Framework \cendb}
+\title{\cstartd Towards an Ontology for the Scenario Definition for the Assessment of Automated Vehicles: An Object-Oriented Framework \cendd}
 
-\author[1,2,*]{Erwin de Gelder}
-\author[1,3]{Jan-Pieter Paardekooper}
-\author[1]{Arash Khabbaz Saberi}
-\author[1]{Hala Elrofai}
-\author[1]{Olaf Op den Camp}
-\author[4]{Steven Kraines}
-\author[5,6]{Jeroen Ploeg}
-\author[7]{Ludwig Friedmann}
-\author[2]{Bart De Schutter}
-\affil[1]{TNO, Dept.\ of Integrated Vehicle Safety, Helmond, The Netherlands}
-\affil[2]{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}
-\affil[3]{Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}
-\affil[4]{TBD}
-\affil[5]{2getthere, Utrecht, The Netherlands}
-\affil[6]{Eindhoven University of Technology, Dept.\ of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}
-\affil[7]{BMW Group, Petuelring 130, 80788 Munich, Germany}
-\affil[*]{Corresponding author: \textit{erwin.degelder@tno.nl}}
+\author{Erwin~de~Gelder$^{1,2,*}$,
+	    Jan-Pieter~Paardekooper$^{1,3}$,
+	    Arash~Khabbaz~Saberi$^{1}$,
+	    Hala~Elrofai$^{1}$,
+	    Olaf~Op~den~Camp$^{1}$,
+	    Steven~Kraines$^{4}$,
+	    Jeroen~Ploeg$^{5,6}$,
+	    Ludwig~Friendmann$^{7}$,
+	    Bart~De~Schutter$^{2}$%
+\thanks{$^1$ TNO, Dept.\ of Integrated Vehicle Safety, Helmond, The Netherlands}%
+\thanks{$^2$ Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
+\thanks{$^3$ Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
+\thanks{$^4$ TBD}%
+\thanks{$^5$ 2getthere, Utrecht, The Netherlands}%
+\thanks{$^6$ Eindhoven University of Technology, Dept.\ of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}%
+\thanks{$^7$ BMW Group, Petuelring 130, 80788 Munich, Germany}%
+\thanks{$^*$ Corresponding author: \textit{erwin.degelder@tno.nl}}}%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

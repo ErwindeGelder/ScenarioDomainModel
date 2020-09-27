@@ -1,6 +1,6 @@
 %\newlength\objectwidth\setlength{\objectwidth}{24em}
 %\tikzstyle{object}=[draw, text width=\objectwidth-.5em, align=left, line width=1pt, minimum width=\objectwidth, anchor=north west, node distance=3pt]
-\resizebox{\textwidth}{!}{%
+%\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}
 \tikzstyle{every node}=[font=\footnotesize]
 
@@ -14,8 +14,18 @@
 	actors: Ego qualitative, Pedestrian qualitative\\
 	activities: Walking straight\\
 	acts: (Pedestrian qualitative, Walking straight)};
+	
+	
+\node[object, fill=scenario, right=of scenario category.north east, anchor=north west](scenario){{\bfseries Ego must brake for pedestrian::Scenario}\\
+	static environment: Pedestrian crossing\\
+	actors: Ego, Pedestrian\\
+	activities: Pedestrian walking\\
+	acts: (Pedestrian, Pedestrian walking)\\
+	events: Start walking, Stop walking\\
+	\attrtstart: Start scenario \\
+	\attrtend: End scenario};
 
-\node[object, fill=otherclass, below=of scenario category.south](ego){{\bfseries Ego::Actor}\\
+\node[object, fill=otherclass, below=of scenario.south](ego){{\bfseries Ego::Actor}\\
 actor category: Ego qualitative\\
 	initial state vector: $\egoeast=\SI{-60}{\meter}$, \\
 	\leavevmode\phantom{initial state vector: }$\egonorth=\SI{-1.5}{\meter}$, \\
@@ -26,7 +36,7 @@ actor category: Ego qualitative\\
 	\leavevmode\phantom{desired state vector: }$\egoheading=\ang{90}$, \\ 
 	\leavevmode\phantom{desired state vector: }$\egospeed=\SI{8}{\meter\per\second}$};
 
-\node[object, fill=otherclass, right=of scenario category.north east, anchor=north west](start walking){{\bfseries Start walking::Event}\\
+\node[object, fill=otherclass, right=of scenario.north east, anchor=north west](start walking){{\bfseries Start walking::Event}\\
 	condition: $|\egoeast/\egospeed| \leq \SI{2.5}{\second}$};
 
 \node[object, fill=otherclass, below=of start walking.south](end walking){{\bfseries End walking::Event}\\
@@ -43,13 +53,5 @@ actor category: Ego qualitative\\
 	\leavevmode\phantom{condition: }$\egonorth \leq \SI{-2}{\meter}$ OR $\egonorth \geq \SI{-1}{\meter}$ OR \\
 	\leavevmode\phantom{condition: }$\time > \SI{100}{\second}$.};
 
-\node[object, fill=scenario, below=of end.south](scenario){{\bfseries Ego must brake for pedestrian::Scenario}\\
-	static environment: Pedestrian crossing\\
-	actors: Ego, Pedestrian\\
-	activities: Pedestrian walking\\
-	acts: (Pedestrian, Pedestrian walking)\\
-	events: Start walking, Stop walking\\
-	\attrtstart: Start scenario \\
-	\attrtend: End scenario};
 \end{tikzpicture}
-}
+%}

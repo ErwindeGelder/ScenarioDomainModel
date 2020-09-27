@@ -15,12 +15,12 @@ The \cstartb overview of the framework \cendb is formally represented through \c
 The classes that are used to define a scenario and a scenario category are shown in \cref{fig:class overview}, where each block represents a class\footnote{In the remainder of this paper, when referring to (an instance of) a class, italic font is used.}.
 The blue blocks represent the classes that are used to qualitatively describe a scenario whereas the orange blocks represent the classes that are used to quantitatively describe a scenario. \cstartb The yellow blocks represents so-called abstract classes. Abstract classes cannot be instantiated. \cendb
 
-\begin{figure}[t]
+\begin{figure*}[t]
 	\centering
 	\input{figures/class_overview.tikz}
-	\caption{\color{red}Schematic overview of most classes of our object-oriented framework.\color{black}}
+	\caption{Schematic overview of most classes of our object-oriented framework.}
 	\label{fig:class overview}
-\end{figure}
+\end{figure*}
 
 The arrows in \cref{fig:class overview} denote subclass relations as is best described by the verb ``is''. Because all other classes in \cref{fig:class overview} are subclasses of a \textit{thing}, these classes inherit the attributes and procedures of a \textit{thing}. In our framework, a \textit{thing} has a human-interpretable name, a unique ID, and possibly predefined tags that are also interpretable by a software agent. So, all other classes in \cref{fig:class overview} also have these attributes. 
 
@@ -29,12 +29,12 @@ The arrow with the diamond in \cref{fig:class relations} is best described by th
 \cstartb Here, the ``\hasone'' at the start of the arrow from \textit{actor category} to \textit{actor} indicates that an \textit{actor} ``has'' one \textit{actor category}. Similarly, ``\hastwo'' at the aggregation arrow from \textit{event} to \textit{time interval} indicates that a \textit{time interval} ``has'' two \textit{events}, i.e., the events that define the start and the end of the time interval. \cendb 
 An ``\hasn'' at the start of an aggregation arrow indicates that an object ``has'' zero, one, or multiple objects of the corresponding class.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 	\centering
 	\input{figures/class_relations.tikz}
 	\caption{Schematic overview of the relation between the classes for representing the scenarios for the assessment of automated vehicles.}
 	\label{fig:class relations}
-\end{figure}
+\end{figure*}
 
 The arrow with the text ``comprises'' and ``includes'' represent methods that are explained in \cref{sec:scenario category}. Here, ``comprises'' can be denoted by $\comprises$ and ``includes'' can be denoted by $\includes$, see \cref{eq:scenario category include}. 
 
@@ -51,7 +51,8 @@ Because the \cstartc\textit{static physical thing categories} \cendc qualitative
 
 In line with the definition of an activity (\cref{def:activity}), the \textit{activity category} includes the state variable(s).
 The \textit{model} that is used to describe the time evolution of the state  variable(s) is specified. For example, the \textit{model} to describe the speed of the ego vehicle during a braking activity could be a sinusoidal function:
-\begin{equation} \label{eq:sinusoidal}
+\begin{equation} 
+	\label{eq:sinusoidal}
 	\egoacceleration(\time) = \frac{\pi \amplitude}{2\duration} \sin \left( \frac{\pi \left( \time - \inittime\right)}{\duration} \right),\ \egospeed(\inittime) = \egospeedinit,\ \time \in [\inittime, \inittime+\duration].
 \end{equation}
 Here, $\egospeed$ and $\egoacceleration$ denote the speed and acceleration of the ego vehicle, respectively. Thus, in this case, the state variable corresponds to the speed. 

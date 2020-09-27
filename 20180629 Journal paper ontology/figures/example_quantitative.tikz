@@ -1,9 +1,22 @@
 %\newlength\objectwidth\setlength{\objectwidth}{24em}
 %\tikzstyle{object}=[draw, text width=\objectwidth-.5em, align=left, line width=1pt, minimum width=\objectwidth, anchor=north west, node distance=3pt]
-\resizebox{\textwidth}{!}{%
+%\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}
 \tikzstyle{every node}=[font=\footnotesize]
-\node[object, fill=otherclass](ego){{\bfseries Ego::Actor}\\
+
+\node[object, fill=scenario](scenario){{\bfseries Ego brakes for pedestrian::Scenario}\\
+	static physical things: Pedestrian crossing\\
+	actors: Ego, Pedestrian\\
+	activities: Ego braking, Ego stationary, \\
+	\leavevmode\phantom{activities: }Ego accelerating, Pedestrian walking\\
+	acts: (Ego, Ego braking), \\
+	\leavevmode\phantom{acts: }(Ego, Ego stationary), \\
+	\leavevmode\phantom{acts: }(Ego, Ego accelerating), \\
+	\leavevmode\phantom{acts: }(Pedestrian, Pedestrian walking)\\
+	\attrtstart: Start scenario \\
+	\attrtend: End scenario};
+
+\node[object, fill=otherclass, below=of scenario.south](ego){{\bfseries Ego::Actor}\\
 	actor category: Ego qualitative\\
 	initial state vector: $\egoeast=\SI{-20}{\meter}$, \\
 	\leavevmode\phantom{initial state vector: }$\egonorth=\SI{-1.5}{\meter}$, \\
@@ -15,7 +28,7 @@
 	initial state vector: $\pedeast=\SI{0}{\meter}$, $\pedheading=\ang{0}$\\
 	desired state vector:};
 
-\node[object, fill=otherclass, below=of pedestrian.south](start){{\bfseries Start scenario::Event}\\
+\node[object, fill=otherclass, right=of scenario.north east, anchor=north west](start){{\bfseries Start scenario::Event}\\
 	time: \SI{0}{\second}};
 
 \node[object, fill=otherclass, below=of start.south](end braking){{\bfseries End braking::Event}\\
@@ -40,7 +53,7 @@
 	\attrtstart: End braking \\
 	\attrtend: Start accelerating};
 
-\node[object, fill=otherclass, right=of ego.north east, anchor=north west](ego accelerating){{\bfseries Ego accelerating::Activity}\\
+\node[object, fill=otherclass, right=of start.north east, anchor=north west](ego accelerating){{\bfseries Ego accelerating::Activity}\\
 	activity category: Accelerating \\
 	parameters: $\slopeego=\SI{1.5}{\meter\per\second\squared}$, $\egospeedinitc=\SI{0}{\meter\per\second}$ \\
 	\attrtstart: Start accelerating \\
@@ -66,16 +79,5 @@
 	\leavevmode\phantom{properties: \{}footway: \{width: \SI{3}{\meter}, \\
 	\leavevmode\phantom{properties: \{footway: \{}xy: [(0, 6), (0, -6)]\}\}};
 
-\node[object, fill=scenario, below=of ped crossing.south](scenario){{\bfseries Ego brakes for pedestrian::Scenario}\\
-	static physical things: Pedestrian crossing\\
-	actors: Ego, Pedestrian\\
-	activities: Ego braking, Ego stationary, \\
-	\leavevmode\phantom{activities: }Ego accelerating, Pedestrian walking\\
-	acts: (Ego, Ego braking), \\
-	\leavevmode\phantom{acts: }(Ego, Ego stationary), \\
-	\leavevmode\phantom{acts: }(Ego, Ego accelerating), \\
-	\leavevmode\phantom{acts: }(Pedestrian, Pedestrian walking)\\
-	\attrtstart: Start scenario \\
-	\attrtend: End scenario};
 \end{tikzpicture}
-}
+%}
