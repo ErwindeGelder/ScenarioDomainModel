@@ -107,9 +107,11 @@
 \usetikzlibrary{arrows.meta}
 \definecolor{TNOlightgray}{RGB}{222,222,231}
 \definecolor{abstractclass}{RGB}{255, 255, 200}
-\definecolor{scenariocategory}{RGB}{137, 197, 255}
+%\definecolor{scenariocategory}{RGB}{137, 197, 255}
+\definecolor{scenariocategory}{RGB}{121, 221, 255}
 \definecolor{category}{RGB}{121, 221, 255}
-\definecolor{scenario}{RGB}{255, 157, 121}
+%\definecolor{scenario}{RGB}{255, 157, 121}
+\definecolor{scenario}{RGB}{255, 188, 163}
 \definecolor{otherclass}{RGB}{255, 188, 163}
 \tikzstyle{tag}=[text height=.8em, text depth=.1em, font=\small\sffamily, rounded corners=0.2em, fill=TNOlightgray, node distance=9em, text width=7em, align=center]
 \tikzstyle{tag wide}=[tag, text width=12em]
@@ -180,12 +182,12 @@
 \newcommand{\egosub}{ego}
 \newcommand{\egoeast}{\east_{\mathrm{\egosub}}}
 \newcommand{\egonorth}{\north_{\mathrm{\egosub}}}
-\newcommand{\egospeed}{\dot{\east}_{\mathrm{\egosub}}}
+\newcommand{\egospeed}{v_{\mathrm{\egosub}}}
 \newcommand{\egospeedinitsymbol}{v}
 \newcommand{\egospeedinit}{\egospeedinitsymbol_{0}}
 \newcommand{\egospeedinitb}{\egospeedinitsymbol_{0}}
 \newcommand{\egospeedinitc}{\egospeedinitsymbol_{0}}
-\newcommand{\egoacceleration}{\ddot{\east}_{\mathrm{\egosub}}}
+\newcommand{\egoacceleration}{a_{\mathrm{\egosub}}}
 \newcommand{\egoheading}{\head_{\mathrm{\egosub}}}
 \newcommand{\function}{f}
 \newcommand{\inputsystem}{u}
@@ -198,7 +200,7 @@
 \newcommand{\pednorth}{\north_{\mathrm{\pedsub}}}
 \newcommand{\pednorthinit}{\north_{0}}
 \newcommand{\pedheading}{\head_{\mathrm{\pedsub}}}
-\newcommand{\pedspeed}{\dot{\north}_{\mathrm{\pedsub}}}
+\newcommand{\pedspeed}{v_{\mathrm{\pedsub}}}
 \newcommand{\origin}{O}
 \newcommand{\scenario}{S}
 \newcommand{\scenarioa}{\scenario_{1}}
@@ -210,8 +212,8 @@
 \newcommand{\scenariocategoryb}{\scenariocategory_{2}}
 \newcommand{\scenariocategoryc}{\scenariocategory_{3}}
 \newcommand{\includes}{\supseteq}
-\newcommand{\slopeego}{a_{\mathrm{\egosub}}}
-\newcommand{\slopepedestrian}{v_{\mathrm{\pedsub}}}
+\newcommand{\slopeego}{s_{\mathrm{\egosub}}}
+\newcommand{\slopepedestrian}{s_{\mathrm{\pedsub}}}
 \newcommand{\state}{x}
 \newcommand{\statedot}{\dot{\state}}
 \renewcommand{\time}{t}
@@ -220,7 +222,7 @@
 \newcommand{\inittimec}{\time_{2}}
 \newcommand{\hasone}{$1$}
 \newcommand{\hastwo}{$2$}
-\newcommand{\hasn}{$N$}
+\newcommand{\hasn}{$0,1,\ldots$}
 
 % Acronyms
 \begin{acronym}[AAAAAAAA]

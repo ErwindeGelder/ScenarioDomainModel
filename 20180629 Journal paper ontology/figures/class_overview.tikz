@@ -1,50 +1,54 @@
 \begin{tikzpicture}
 \tikzstyle{every node}=[font=\footnotesize]
 
-% Top classes
+% Abstract classes
 \node[class, fill=abstractclass](thing) at (0, 0) {Thing};
-\node[class, fill=abstractclass](qualitative) at (-\blockx, 0) {Qualitative thing};
-\node[class, fill=abstractclass](quantitative) at (\blockx, 0) {Quantitative thing};
-\node[class, fill=abstractclass](physicalcat) at (-1.5\blockx, 2\blocky) {Physical thing category};
+\node[class, fill=abstractclass](qualitative) at (-1.5\blockx, 0) {Qualitative thing};
+\node[class, fill=abstractclass](quantitative) at (1.5\blockx, 0) {Quantitative thing};
+\node[class, fill=abstractclass](physicalcat) at (-2.5\blockx, \blocky) {Physical thing category};
 \node[class, fill=abstractclass](timeinterval) at (.5\blockx, \blocky) {Time interval};
-\node[class, fill=abstractclass](physical) at (1.5\blockx, 2\blocky) {Physical thing};
+\node[class, fill=abstractclass](physical) at (2.5\blockx, \blocky) {Physical thing};
+\node[class, fill=abstractclass](model) at (-1.5\blockx, \blocky) {Model};
 
 % Qualitative classes
-\node[class, fill=scenariocategory](scencat) at (-1.5\blockx, \blocky) {Scenario category};
-\node[class, fill=category](activitycat) at (-.5\blockx, \blocky) {Activity category};
-\node[class, fill=category](dynamiccat) at (-1.5\blockx, 3\blocky) {Dynamic physical thing category};
-\node[class, fill=category](staticcat) at (-.5\blockx, 3\blocky) {Static physical thing category};
-\node[class, fill=category](actorcat) at (-1.5\blockx, 4\blocky) {Actor category};
+\node[class, fill=scenariocategory](scencat) at (-0.5\blockx, \blocky) {Scenario category};
+\node[class, fill=category](activitycat) at (-0.5\blockx, 2\blocky) {Activity category};
+\node[class, fill=category](dynamiccat) at (-2.5\blockx, 2\blocky) {Dynamic physical thing category};
+\node[class, fill=category](staticcat) at (-1.5\blockx, 2\blocky) {Static physical thing category};
+\node[class, fill=category](actorcat) at (-2.5\blockx, 3\blocky) {Actor category};
 
 % Quantitative classes
-\node[class, fill=scenario](scenario) at (-.5\blockx, 2\blocky) {Scenario};
-\node[class, fill=otherclass](activity) at (.5\blockx, 2\blocky) {Activity};
+\node[class, fill=scenario](scenario) at (.5\blockx, 2\blocky) {Scenario};
+\node[class, fill=otherclass](activity) at (1.5\blockx, 2\blocky) {Activity};
 \node[class, fill=otherclass](event) at (1.5\blockx, \blocky) {Event};
-\node[class, fill=otherclass](dynamic) at (1.5\blockx, 3\blocky) {Dynamic physical thing};
-\node[class, fill=otherclass](actor) at (1.5\blockx, 4\blocky) {Actor};
-\node[class, fill=otherclass](static) at (.5\blockx, 3\blocky) {Static physical thing};
+\node[class, fill=otherclass](dynamic) at (2.5\blockx, 2\blocky) {Dynamic physical thing};
+\node[class, fill=otherclass](actor) at (2.5\blockx, 3\blocky) {Actor};
+\node[class, fill=otherclass](static) at (1.5\blockx, 3\blocky) {Static physical thing};
 
 % Superclass arrows
 \foreach \fromclass/\toclass in {scencat/qualitative,
-								 activitycat/qualitative,
+								 model/qualitative,
 								 physicalcat/qualitative,
-								 staticcat/physicalcat,
 								 timeinterval/quantitative,
+								 dynamiccat/physicalcat,
+								 staticcat/physicalcat,
 								 scenario/timeinterval,
+								 activity/timeinterval,
 								 event/quantitative,
 								 physical/quantitative,
-								 static/physical} {
-	\node[coordinate, above of=\fromclass, node distance=-.4\blocky](helper){};
-	\draw[superclass] (\fromclass) -- (helper) -| (\toclass);
+								 dynamic/physical} {
+	\node[coordinate, above of=\fromclass, node distance=-.4\blocky](helper \fromclass){};
+	\draw[superclass] (\fromclass) -- (helper \fromclass) -| (\toclass);
 }
 \foreach \fromclass/\toclass in {qualitative/thing, 
 								 quantitative/thing,
-								 dynamiccat/physicalcat,
 								 actorcat/dynamiccat,
-								 activity/timeinterval,
-								 dynamic/physical,
 								 actor/dynamic} {
 	\draw[superclass] (\fromclass) -- (\toclass);
 }
+\node[coordinate, above of=activitycat, node distance=-.4\blocky, xshift=-.5\blockx](helper activitycat){};
+\draw[superclass] (activitycat) |- (helper activitycat) |- (helper model) -- (qualitative);
+\node[coordinate, above of=static, node distance=-.4\blocky, xshift=.5\blockx](helper static){};
+\draw[superclass] (static) |- (helper static) |- (helper dynamic) -- (physical);
 
 \end{tikzpicture}

@@ -16,8 +16,8 @@
 \node[class, fill=otherclass](actor) at (2\blockx, 3\blocky) {Actor};
 \node[class, fill=otherclass](activity) at (3\blockx, 3\blocky) {Activity};
 \node[class, fill=otherclass](staticthing) at (4\blockx, 3\blocky) {Static physical thing};
-\node[class, fill=otherclass](event) at (0.5\blockx, 4\blocky) {Event};
-\node[class, fill=abstractclass](timeinterval) at (1.5\blockx+0.25\blockwidth, 4\blocky) {Time interval};
+\node[class, fill=otherclass](event) at (5\blockx, 3\blocky) {Event};
+\node[class, fill=abstractclass](timeinterval) at (5\blockx, 2\blocky) {Time interval};
 
 % Aggregation arrows for the scenario category
 \node[coordinate, below of=scenario category, node distance=-\blocky/2, xshift=\blockwidth/3](helper scenario category){};
@@ -42,7 +42,7 @@
 \node[coordinate, below of=scenario, node distance=\blockheight/2](aggregation scenario){};
 \foreach \class in {dynamic, actor, activity, staticthing, event}
 {
-	\node[coordinate, above of=\class, node distance=\blockheight/2, xshift=-\blockwidth/4](helper \class){};
+	\node[coordinate, above of=\class, node distance=\blockheight/2](helper \class){};
 	\draw[aggregation] (helper \class) |- (helper scenario) -- (aggregation scenario);
 	\node[anchor=south east] at (helper \class) {\hasn};
 }
@@ -57,9 +57,10 @@
 }
 
 % Aggregation for event -> time interval
-\draw[aggregation] (event) -- (timeinterval);
-\node[coordinate, right of=event, node distance=\blockwidth/2](helper event) {};
-\node[anchor=south west] at (helper event) {\hastwo};
+\node[coordinate, above of=event, node distance=\blockheight/2, xshift=\blockwidth/4](helper event){};
+\node[coordinate, below of=timeinterval, node distance=\blockheight/2, xshift=\blockwidth/4](helper timeinterval){};
+\draw[aggregation] (helper event) -- (helper timeinterval);
+\node[anchor=south east] at (helper event) {\hastwo};
 
 % falls into arrows
 \node[coordinate, right of=scenario category, node distance=\blockwidth/2+1pt, yshift=-\blockheight/3](helper1){};

@@ -43,7 +43,7 @@
 \node[object, fill=otherclass, below=of end scenario.south](ego braking){{\bfseries Ego braking::Activity}\\
 	activity category: Braking \\
 	parameters: $\amplitude=\SI{-8}{\meter\per\second}$, $\duration=\SI{4}{\second}$,\\
-	\leavevmode\phantom{parameters: } $\egospeedinit=\SI{8}{\meter\per\second}$ \\
+	\leavevmode\phantom{parameters: } $\egospeedinit=\SI{8}{\meter\per\second}$, $\inittime=\SI{0}{\second}$ \\
 	\attrtstart: Start scenario \\
 	\attrtend: End braking};
 
@@ -55,7 +55,8 @@
 
 \node[object, fill=otherclass, right=of start.north east, anchor=north west](ego accelerating){{\bfseries Ego accelerating::Activity}\\
 	activity category: Accelerating \\
-	parameters: $\slopeego=\SI{1.5}{\meter\per\second\squared}$, $\egospeedinitc=\SI{0}{\meter\per\second}$ \\
+	parameters: $\slopeego=\SI{1.5}{\meter\per\second\squared}$, $\egospeedinitc=\SI{0}{\meter\per\second}$,\\
+	\leavevmode\phantom{parameters: } $\inittimec=\SI{7}{\second}$ \\
 	\attrtstart: Start accelerating \\
 	\attrtend: End scenario};
 

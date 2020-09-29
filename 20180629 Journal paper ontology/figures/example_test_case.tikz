@@ -50,8 +50,8 @@ actor category: Ego qualitative\\
 
 \node[object, fill=otherclass, below=of walking.south](end){{\bfseries End scenario::Event}\\
 	condition: $\egoeast \geq \SI{20}{\meter}$ OR \textit{collision} OR\\
-	\leavevmode\phantom{condition: }$\egonorth \leq \SI{-2}{\meter}$ OR $\egonorth \geq \SI{-1}{\meter}$ OR \\
-	\leavevmode\phantom{condition: }$\time > \SI{100}{\second}$.};
+	\leavevmode\phantom{condition: }$\egonorth \leq \SI{-2}{\meter}$ OR $\egonorth \geq \SI{-1}{\meter}$ \\
+	\leavevmode\phantom{condition: }OR $\time > \SI{100}{\second}$.};
 
 \end{tikzpicture}
 %}

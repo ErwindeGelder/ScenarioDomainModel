@@ -30,15 +30,15 @@ In \cref{sec:example test case}, we show the differences if a test case is consi
 \subsection{Qualitative description of the pedestrian crossing}
 \label{sec:example qualitative}
 
-To describe the scenario according to the presented domain model, objects are instantiated from the classes presented in \cref{fig:class overview,fig:class relations}. \Cref{fig:example qualitative} shows the objects for describing the scenario qualitatively. There are two \textit{actor categories}: one for the ego vehicle and one for the pedestrian. Four different activity categories are defined: \emph{braking}, \emph{stationary}, \emph{accelerating}, and \emph{walking straight}. The braking activity is described with the sinusoidal model of \cref{eq:sinusoidal}. The stationary activity is simply modeled using a constant, i.e.:
+To describe the scenario according to the presented domain model, objects are instantiated from the classes presented in \cref{fig:class overview,fig:class relations}. \Cref{fig:example qualitative} shows the objects for describing the scenario qualitatively. There are two \textit{actor categories}: one for the ego vehicle and one for the pedestrian. Four different activity categories are defined: \emph{braking}, \emph{stationary}, \emph{accelerating}, and \emph{walking straight}. The braking activity is described with the sinusoidal model of \cref{eq:sinusoidala,eq:sinusoidalb}. The stationary activity is simply modeled using a constant, i.e.:
 \begin{equation} \label{eq:constant model}
-	\egoacceleration(t) = 0,\ \egospeed(\inittimeb) = \egospeedinitb,
+	\egospeed(\time) = \egospeedinitb,
 \end{equation}
 with $\egospeedinitb$ being the only parameter.
 Both the activities \emph{accelerating} and \emph{walking straight} are described using a linear model:
 \begin{align}
-	\egoacceleration(t) &= \slopeego,\ \egospeed(\inittimec) = \egospeedinitc, \label{eq:ego accelerating} \\
-	\pedspeed(t) &= \slopepedestrian,\ \pednorth(\inittime) = \pednorthinit. \label{eq:pedestrian walking}
+	\egoacceleration(\time) &= \slopeego,\ \egospeed(\inittimec) = \egospeedinitc, \label{eq:ego accelerating} \\
+	\pedspeed(\time) &= \slopepedestrian,\ \pednorth(\inittime) = \pednorthinit. \label{eq:pedestrian walking}
 \end{align}
 Here, the parameters $\slopeego$ and $\slopepedestrian$ describe the rate of change of $\egospeed$ and $\pednorth$, respectively. The parameters $\egospeedinitc$ and $\pednorthinit$ describe the initial value of $\egospeed$ and $\pednorth$, respectively.
 
@@ -51,7 +51,7 @@ Here, the parameters $\slopeego$ and $\slopepedestrian$ describe the rate of cha
 \end{figure*}
 
 
-The two \textit{actor categories}, the four \textit{activity categories}, and the \cstartc\textit{static physical thing category}\cendc, are used by the \textit{scenario category}. The \textit{scenario category} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian. 
+The two \textit{actor categories}, the four \textit{activity categories}, and the \cstartc\textit{static physical thing category} \cendc\cstartd that represents the crosswalk\cendd, are used by the \textit{scenario category}. The \textit{scenario category} has four acts. The first three acts assign the first three activity categories to the ego vehicle. The last act assigns the activity category \emph{Walking straight} to the pedestrian. 
 
 
 
@@ -74,12 +74,12 @@ Since we are describing a real-world scenario, there is no need to define desire
 
 There are four \textit{activities} defined and each of these \textit{activities} refers to its qualitative counterpart.
 The \textit{activities} contain the values of the parameters as well as \cstartb the events that mark the start and the end\cendb. 
-As described by the first \textit{activity} (\emph{ego braking}), the ego vehicle starts with a speed of \SI{8}{\meter\per\second} and brakes in \SI{4}{\second} to come to a full stop. By integrating the sinusoidal function of \cref{eq:sinusoidal} twice, it can be shown that the ego vehicle stops at \SI{4}{\meter} from the center of the pedestrian crossing. After waiting for \SI{3}{\second}, see the second \textit{activity} (\emph{ego stationary}), the ego vehicle accelerates with \SI{1.5}{\meter\per\second\squared} towards a speed of \SI{7.5}{\meter\per\second}, see the third \textit{activity} (\emph{ego accelerating}). The fourth activity describes the position of the pedestrian.
+As described by the first \textit{activity} (\emph{ego braking}), the ego vehicle starts with a speed of \SI{8}{\meter\per\second} and brakes in \SI{4}{\second} to come to a full stop. By integrating the sinusoidal function of \cref{eq:sinusoidala} twice, it can be shown that the ego vehicle stops at \SI{4}{\meter} from the center of the pedestrian crossing. After waiting for \SI{3}{\second}, see the second \textit{activity} (\emph{ego stationary}), the ego vehicle accelerates with \SI{1.5}{\meter\per\second\squared} towards a speed of \SI{7.5}{\meter\per\second}, see the third \textit{activity} (\emph{ego accelerating}). The fourth activity describes the position of the pedestrian.
 
-The \textit{pedestrian crossing} describes the main road the ego vehicle is driving on and the footway the pedestrian is walking on. The example in \cref{fig:example quantitative} shows some properties of the road layout to illustrate how the static environment can be described. Note that, in practice, the quantitative description of the static environment may contain many more facets than the ones mentioned in \cref{fig:example quantitative}. As mentioned in \cref{sec:scenario}, it is possible to refer to another source that contains a description of (part of) the static environment, see, e.g., \autocite{dupuis2010opendrive}. 
+The \textit{pedestrian crossing} describes \cstartd the entire static environment, including \cendd the main road the ego vehicle is driving on and the footway the pedestrian is walking on. The example in \cref{fig:example quantitative} shows some properties of the road layout to illustrate how the static environment can be described. Note that, in practice, the quantitative description of the static environment may contain many more facets than the ones mentioned in \cref{fig:example quantitative}. As mentioned in \cref{sec:scenario}, it is possible to refer to another source that contains a description of (part of) the static environment, see, e.g., \autocite{dupuis2010opendrive}. 
 
-The \textit{scenario}, the last object in \cref{fig:example quantitative}, ``has'' the previously defined \cstartc\textit{static physical thing}\cendc, \textit{actors}, and \textit{activities}. The acts are used to assign the first three \textit{activities} to the ego vehicle and the last \textit{activity} to the pedestrian. 
-The scenario also ``has'' \cstartb events marking the start and the end of the scenario\cendb.
+The \textit{scenario}, the last object in \cref{fig:example quantitative}, has the previously defined \cstartc\textit{static physical thing}\cendc, \textit{actors}, and \textit{activities} as attributes. The acts are used to assign the first three \textit{activities} to the ego vehicle and the last \textit{activity} to the pedestrian. 
+The scenario also has \cstartb events marking the start and the end of the scenario\cendb.
 A different scenario can be defined by, e.g., changing the parameter values. This illustrates that the scenario category in \cref{fig:example qualitative} comprises multiple scenarios, namely all scenarios that only differ from the scenario in \cref{fig:example quantitative} because of different parameter values.
 
 
@@ -98,7 +98,7 @@ A different scenario can be defined by, e.g., changing the parameter values. Thi
 \begin{figure*}[t]
 	\centering
 	\input{figures/example_test_case.tikz}
-	\caption{The objects that, next to the objects \emph{Ego qualitative}, \emph{Pedestrian qualitative}, \emph{Walking straight}, and \emph{Pedestrian crossing qualitative} from \cref{fig:example qualitative} and \emph{Pedestrian} and \emph{Pedestrian crossing} from \cref{fig:example quantitative}, describe a test case that is schematically shown in \cref{fig:scenario overview}. For the sake of brevity, the tags and the unique ID of each object are omitted.}
+	\caption{The objects that, together with the objects \emph{Ego qualitative}, \emph{Pedestrian qualitative}, \emph{Walking straight}, and \emph{Pedestrian crossing qualitative} from \cref{fig:example qualitative} and \emph{Pedestrian} and \emph{Pedestrian crossing} from \cref{fig:example quantitative}, describe a test case that is schematically shown in \cref{fig:scenario overview}. For the sake of brevity, the tags and the unique ID of each object are omitted.}
 	\label{fig:example test case}
 \end{figure*}
 
@@ -120,4 +120,6 @@ The \textit{event} that marks the start of the walking activity of the pedestria
 
 As with the \textit{scenario category}, the \textit{scenario} does not contain \textit{activities} of the ego vehicle. 
 \cstartb Furthermore, the end event of the scenario is differently defined: now the scenario ends if the ego vehicle either reaches its destination ($\egoeast \geq \SI{20}{\meter}$), collides with the pedestrian, deviates too much from its path ($\egonorth \leq \SI{-2}{\meter}$ or $\egonorth \geq \SI{1}{\meter}$), or it takes too long to reach the destination ($\time > \SI{100}{\second}$). \cendb
+
+\cstartd This example illustrates the benefits of an object-oriented approach for defining a scenario. The modularity makes it easy to understand the changes from the scenario in \cref{fig:example quantitative} to the test case in \cref{fig:example test case}. Several objects, such as the \textit{events}, are used more than once, which illustrates the reusability. Furthermore, each object listed in \cref{fig:example qualitative,fig:example quantitative,fig:example test case} is directly translatable to an object in an object-oriented programming language. \cendd
 
