@@ -139,7 +139,7 @@ def _activity_props_from_json(json: dict, start: Event = None, end: Event = None
     return props
 
 
-def activity_from_json(json: dict, activity_category: ActivityCategory = None, start: Event = None,
+def activity_from_json(json: dict, category: ActivityCategory = None, start: Event = None,
                        end: Event = None) \
         -> Activity:
     """ Get Activity object from JSON code
@@ -153,14 +153,14 @@ def activity_from_json(json: dict, activity_category: ActivityCategory = None, s
     the Event that defines the end of the activity.
 
     :param json: JSON code of Activity.
-    :param activity_category: If given, it will not be based on the JSON code.
+    :param category: If given, it will not be based on the JSON code.
     :param start: Event that defines the start. If given, it will not be based
         on the JSON code.
     :param end: Event that defines the end. If given, it will not be based on
         the JSON code.
     :return: Activity object.
     """
-    if activity_category is None:
-        activity_category = activity_category_from_json(json["category"])
+    if category is None:
+        category = activity_category_from_json(json["category"])
     arguments = _activity_props_from_json(json, start=start, end=end)
-    return Activity(activity_category, **arguments)
+    return Activity(category, **arguments)
