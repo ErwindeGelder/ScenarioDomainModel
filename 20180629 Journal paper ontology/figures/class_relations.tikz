@@ -40,12 +40,15 @@
 % Aggregation arrow for scenario
 \node[coordinate, below of=scenario, node distance=-\blocky/2](helper scenario){};
 \node[coordinate, below of=scenario, node distance=\blockheight/2](aggregation scenario){};
-\foreach \class in {dynamic, actor, activity, staticthing, event}
+\foreach \class in {dynamic, actor, activity, staticthing}
 {
 	\node[coordinate, above of=\class, node distance=\blockheight/2](helper \class){};
 	\draw[aggregation] (helper \class) |- (helper scenario) -- (aggregation scenario);
 	\node[anchor=south east] at (helper \class) {\hasn};
 }
+\node[coordinate, above of=event, node distance=\blockheight/2](helper event){};
+\draw[aggregation] (helper event) |- (helper scenario) -- (aggregation scenario);
+\node[anchor=south east] at (helper event) {$2,3,\ldots$};
 
 % Aggregations for static thing, activity, and actor
 \foreach \class in {dynamic, staticthing, activity, actor}

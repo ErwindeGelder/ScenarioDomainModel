@@ -23,7 +23,7 @@ To illustrate the use of the \cstartb object-oriented framework\cendb, we descri
 \cstartc This particular scenario can be used to formulate a test case for the assessment of \iac{av}. For example, when assessing a pedestrian automatic emergency braking system \autocite{seiniger2015test}, we are interested in the behavior of the system in case the driver or automation system of the ego vehicle does not brake. We will demonstrate the difference between such a test case and the original scenario. \cendc
 
 We first describe the scenario qualitatively using our proposed \cstartb framework\cendb. Next, the scenario is described quantitatively in \cref{sec:example quantitative}. 
-In \cref{sec:example test case}, we show the differences if a test case is considered with a crossing pedestrian.
+In \cref{sec:example test case}, we show \cstarte which objects are reused and which objects are different if we consider an actual test case with a crossing pedestrian. \cende
 
 
 
@@ -60,7 +60,7 @@ The two \textit{actor categories}, the four \textit{activity categories}, and th
 
 The objects to describe the scenario quantitatively are shown in \cref{fig:example quantitative}. The two \textit{actors} refer to the quantitative counterparts of the \textit{actor categories} in \cref{fig:example qualitative}. Initial state vectors are listed for each \textit{actor} using the coordinate frame that is shown in \cref{fig:scenario overview}. 
 %It is not necessary to describe the initial northing position of the pedestrian, because it will be described by an activity. For a similar reason, the initial speed of both actors is not included. 
-Since we are describing a real-world scenario, there is no need to define desired state vectors for the actors.
+Since we are describing a real-world scenario, there is no need to define \cstarte goals or intents \cende for the actors.
 
 
 \begin{figure*}[t]
@@ -74,13 +74,15 @@ Since we are describing a real-world scenario, there is no need to define desire
 
 There are four \textit{activities} defined and each of these \textit{activities} refers to its qualitative counterpart.
 The \textit{activities} contain the values of the parameters as well as \cstartb the events that mark the start and the end\cendb. 
-As described by the first \textit{activity} (\emph{ego braking}), the ego vehicle starts with a speed of \SI{8}{\meter\per\second} and brakes in \SI{4}{\second} to come to a full stop. By integrating the sinusoidal function of \cref{eq:sinusoidala} twice, it can be shown that the ego vehicle stops at \SI{4}{\meter} from the center of the pedestrian crossing. After waiting for \SI{3}{\second}, see the second \textit{activity} (\emph{ego stationary}), the ego vehicle accelerates with \SI{1.5}{\meter\per\second\squared} towards a speed of \SI{7.5}{\meter\per\second}, see the third \textit{activity} (\emph{ego accelerating}). The fourth activity describes the position of the pedestrian.
+As described by the first \textit{activity} (\emph{ego braking}), the ego vehicle starts with a speed of \SI{8}{\meter\per\second} and brakes in \SI{4}{\second} to come to a full stop. By integrating the sinusoidal function of \cref{eq:sinusoidala} twice, it can be shown that the ego vehicle stops at \SI{4}{\meter} from the center of the pedestrian crossing. 
+After waiting for \SI{3}{\second} \cstarte as described by \cende the second \textit{activity} (\emph{ego stationary}), the ego vehicle accelerates with \SI{1.5}{\meter\per\second\squared} towards a speed of \SI{7.5}{\meter\per\second} \cstarte as described by \cende the third \textit{activity} (\emph{ego accelerating}). 
+The fourth activity describes the position \cstarte and speed \cende of the pedestrian.
 
 The \textit{pedestrian crossing} describes \cstartd the entire static environment, including \cendd the main road the ego vehicle is driving on and the footway the pedestrian is walking on. The example in \cref{fig:example quantitative} shows some properties of the road layout to illustrate how the static environment can be described. Note that, in practice, the quantitative description of the static environment may contain many more facets than the ones mentioned in \cref{fig:example quantitative}. As mentioned in \cref{sec:scenario}, it is possible to refer to another source that contains a description of (part of) the static environment, see, e.g., \autocite{dupuis2010opendrive}. 
 
-The \textit{scenario}, the last object in \cref{fig:example quantitative}, has the previously defined \cstartc\textit{static physical thing}\cendc, \textit{actors}, and \textit{activities} as attributes. The acts are used to assign the first three \textit{activities} to the ego vehicle and the last \textit{activity} to the pedestrian. 
-The scenario also has \cstartb events marking the start and the end of the scenario\cendb.
-A different scenario can be defined by, e.g., changing the parameter values. This illustrates that the scenario category in \cref{fig:example qualitative} comprises multiple scenarios, namely all scenarios that only differ from the scenario in \cref{fig:example quantitative} because of different parameter values.
+The \textit{scenario} has the previously defined \cstartc\textit{static physical thing}\cendc, \textit{actors}, and \textit{activities} as attributes. The acts are used to assign the first three \textit{activities} to the ego vehicle and the last \textit{activity} to the pedestrian. 
+The \textit{scenario} also has \cstartb \textit{events} marking the start and the end of the \textit{scenario}\cendb.
+A different \textit{scenario} can be defined by, e.g., changing the parameter values. This illustrates that the \textit{scenario category} in \cref{fig:example qualitative} comprises multiple \textit{scenarios}, namely all \textit{scenarios} that only differ from the \textit{scenario} in \cref{fig:example quantitative} because of different parameter values.
 
 
 
@@ -103,7 +105,9 @@ A different scenario can be defined by, e.g., changing the parameter values. Thi
 \end{figure*}
 
 
-In this example, we consider a test case based on the previously illustrated real-world scenario, see \cref{fig:scenario overview}. \Cref{fig:example test case} shows the objects that are used to describe this test case. Additionally, the two \textit{actor categories} (\emph{ego qualitative} and \emph{pedestrian qualitative}) are shown in \cref{fig:example qualitative} and the \textit{actor} describing the pedestrian (\emph{pedestrian crossing}) is shown in \cref{fig:example quantitative}.
+In this example, we consider a test case based on the previously illustrated real-world scenario, see \cref{fig:scenario overview}. 
+\cstarte To describe the test case, we reuse the two \textit{actor categories} from \cref{fig:example qualitative} (\emph{ego qualitative} and \emph{pedestrian qualitative}) and the \textit{actor} describing the pedestrian from \cref{fig:example quantitative} (\emph{pedestrian crossing}). \cende
+\Cref{fig:example test case} shows the \cstarte other \cende objects that are used to describe this test case. 
 
 
 %\Cref{fig:example test case} shows the objects that change when describing a test case instead of the scenario that is described in \cref{fig:example qualitative,fig:example quantitative}. There are five objects that are different:
