@@ -44,7 +44,8 @@ actor category: Ego qualitative\\
 
 \node[object, fill=otherclass, below=of end walking.south](walking){{\bfseries Pedestrian walking::Activity}\\
 	activity category: Walking\\
-	parameters: $\slopepedestrian=\SI{1}{\meter\per\second}$, $\pednorthinit=\SI{-6}{\meter}$\\
+	parameters: $\slope=\SI{1}{\meter\per\second}$, $\stateinit=\SI{-6}{\meter}$,\\
+	\leavevmode\phantom{parameters: }$\timeinit=\text{At Start walking}$\\
 	\attrtstart: Start walking \\
 	\attrtend: End walking};
 

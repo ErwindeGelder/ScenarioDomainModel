@@ -8,14 +8,17 @@
 \node[class, fill=abstractclass](physicalcat) at (-2.5\blockx, \blocky) {Physical thing category};
 \node[class, fill=abstractclass](timeinterval) at (.5\blockx, \blocky) {Time interval};
 \node[class, fill=abstractclass](physical) at (2.5\blockx, \blocky) {Physical thing};
-\node[class, fill=abstractclass](model) at (-1.5\blockx, \blocky) {Model};
+\node[class, fill=abstractclass](model) at (-0.5\blockx, 2\blocky) {Model};
 
 % Qualitative classes
 \node[class, fill=scenariocategory](scencat) at (-0.5\blockx, \blocky) {Scenario category};
-\node[class, fill=category](activitycat) at (-0.5\blockx, 2\blocky) {Activity category};
+\node[class, fill=category](activitycat) at (-1.5\blockx, \blocky) {Activity category};
 \node[class, fill=category](dynamiccat) at (-2.5\blockx, 2\blocky) {Dynamic physical thing category};
 \node[class, fill=category](staticcat) at (-1.5\blockx, 2\blocky) {Static physical thing category};
 \node[class, fill=category](actorcat) at (-2.5\blockx, 3\blocky) {Actor category};
+\node[class, fill=category](sinusoidal) at (-1.5\blockx, 3\blocky) {Sinusoidal};
+\node[class, fill=category](linear) at (-0.5\blockx, 3\blocky) {Linear};
+\node[class, fill=category](constant) at (0.5\blockx, 3\blocky) {Constant};
 
 % Quantitative classes
 \node[class, fill=scenario](scenario) at (.5\blockx, 2\blocky) {Scenario};
@@ -27,11 +30,14 @@
 
 % Superclass arrows
 \foreach \fromclass/\toclass in {scencat/qualitative,
-								 model/qualitative,
+								 activitycat/qualitative,
 								 physicalcat/qualitative,
 								 timeinterval/quantitative,
 								 dynamiccat/physicalcat,
 								 staticcat/physicalcat,
+								 sinusoidal/model,
+								 linear/model,
+								 constant/model,
 								 scenario/timeinterval,
 								 activity/timeinterval,
 								 event/quantitative,
@@ -46,8 +52,8 @@
 								 actor/dynamic} {
 	\draw[superclass] (\fromclass) -- (\toclass);
 }
-\node[coordinate, above of=activitycat, node distance=-.4\blocky, xshift=-.5\blockx](helper activitycat){};
-\draw[superclass] (activitycat) |- (helper activitycat) |- (helper model) -- (qualitative);
+\node[coordinate, above of=model, node distance=-.4\blocky, xshift=-.5\blockx](helper model){};
+\draw[superclass] (model) |- (helper model) |- (helper activitycat) -- (qualitative);
 \node[coordinate, above of=static, node distance=-.4\blocky, xshift=.5\blockx](helper static){};
 \draw[superclass] (static) |- (helper static) |- (helper dynamic) -- (physical);
 

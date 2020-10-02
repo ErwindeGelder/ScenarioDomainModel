@@ -33,12 +33,12 @@
 	tags: Braking};
 
 \node[object, fill=category, below=of braking.south](stationary){{\bfseries Stationary::Activity category}\\
-	model: Constant, see \cref{eq:constant model}\\
+	model: Constant, see \cref{eq:constant}\\
 	state variable: Speed ($\egospeed$)\\
 	tags: Stationary};
 
 \node[object, fill=category, right=of ego qualitative.north east, anchor=north west](accelerating){{\bfseries Accelerating::Activity category}\\
-	model: Linear, see \cref{eq:ego accelerating}\\
+	model: Linear, see \cref{eq:linear}\\
 	state variable: Speed ($\egospeed$)\\
 	tags: Accelerating};
 
@@ -48,7 +48,7 @@
 %	tags: Driving straight};
 
 \node[object, fill=category, below=of accelerating.south](walking){{\bfseries Walking straight::Activity category}\\
-	model: Linear, see \cref{eq:pedestrian walking}\\
+	model: Linear, see \cref{eq:linear}\\
 	state variable: Position ($\pednorth$)\\
 	tags: Walking straight};
 

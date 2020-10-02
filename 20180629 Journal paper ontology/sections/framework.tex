@@ -42,22 +42,28 @@ The arrow with the text ``comprises'' and ``includes'' represent methods that ar
 \subsection{Scenario category and its attributes}
 \label{sec:domain scenario category}
 
-\cstartb Because all other classes in \cref{fig:class overview} are subclasses of a \textit{thing}, these classes inherit the attributes and procedures of a \textit{thing}. In our framework, a \textit{thing} has a human-interpretable name, a unique ID, and possibly predefined tags that are also interpretable by a software agent. So, all other classes in \cref{fig:class overview} also have these attributes. \cendb
+\cstartb Because all other classes in \cref{fig:class overview} are subclasses of a \textit{thing}\cendb\cstarte\footnote{\cstarte It is common practice to call the most general class in an ontology `thing'.\cende}\cende\cstartb, these classes inherit the attributes and procedures of a \textit{thing}. In our framework, a \textit{thing} has a human-interpretable name, a unique ID, and possibly predefined tags that are also interpretable by a software agent. So, all other classes in \cref{fig:class overview} also have these attributes. \cendb
 
 The static environment is qualitatively described by \cstarte one or more \cende\cstartc \textit{static physical thing categories}. \cendc
 Because the \cstartc\textit{static physical thing categories} \cendc qualitatively describe the static environment, they contain a human-interpretable description of the \cstartc physical things they describe\cendc.
 
 The ego vehicle\cstartd(s) \cendd and the dynamic environment are qualitatively described by \textit{activity categories}, \cstartb\textit{dynamic physical thing categories}\cendb, and \textit{actor categories}. 
 In line with \cref{def:activity}, the \textit{activity category} includes the state variable(s).
-The \textit{model} that is used to describe the time evolution of the state  variable(s) is specified. For example, the \textit{model} to describe the speed of the ego vehicle during a braking activity could be a sinusoidal function:
-\begin{align} 
-	\egoacceleration(\time) &= \frac{\pi \amplitude}{2\duration} \sin \left( \frac{\pi \left( \time - \inittime\right)}{\duration} \right),\ \time \in [\inittime, \inittime+\duration], \label{eq:sinusoidala} \\
-	\egospeed(\inittime) &= \egospeedinit. \label{eq:sinusoidalb}
+The \textit{model} that is used to describe the time evolution of the state variable(s) is specified. 
+\cstarte Note that a \textit{model} is an abstract class that serves as a template for different models, such as the three examples shown in \cref{fig:class overview}: \textit{Sinusoidal}, \textit{linear}, and \textit{constant}. 
+Let $\state(\time)$ denote the state variable(s) at time $\time$, then the \textit{sinusoidal} model is defined as follows:
+\begin{align}
+	\statedot(\time) &= \frac{\pi \amplitude}{2\duration} \sin \left( \frac{\pi \left( \time - \timeinit\right)}{\duration} \right),\ \time \in [\timeinit, \timeinit+\duration], \label{eq:sinusoidala} \\
+	\state(\timeinit) &= \stateinit. \label{eq:sinusoidalb}
 \end{align}
-Here, $\egospeed$ and $\egoacceleration$ denote the speed and acceleration of the ego vehicle, respectively. Thus, in this case, the state variable corresponds to the speed. 
-The parameters of the \textit{model} are the total speed difference ($\amplitude$) between the start of the activity and the end of the activity, the duration of the braking activity ($\duration$), and the initial speed ($\egospeedinit$) at the initial time $\inittime$. 
-The \textit{model} of \cref{eq:sinusoidala,eq:sinusoidalb} describes the evolution of the state variable $\egospeed$ from time $\time=\inittime$ until $\time=\inittime+\duration$. Since the \textit{activity category} is a qualitative description, the values of these parameters of the \textit{model} are not included.
-\cstartb Note that a \textit{model} is an abstract class that serves as a template for different models, such as the \textit{sinusoidal model} class as described in \cref{eq:sinusoidala,eq:sinusoidalb}. \cendb
+Here, the amplitude ($\amplitude$), duration ($\duration$), initial time ($\timeinit$), and initial state ($\stateinit$) are parameters. 
+The \textit{linear} and \textit{constant} model are described by the following equations, respectively:
+\begin{align}
+	\statedot(\time) &= \slope,\ \state(\timeinit) = \stateinit, \label{eq:linear} \\
+	\state(\time) &= \stateinit. \label{eq:constant}
+\end{align}
+The \textit{linear} model contains three parameters, i.e., the slope ($\slope$), initial time ($\timeinit$), and initial state ($\stateinit$). The \textit{constant} model only has the parameter $\stateinit$.
+Since the \textit{activity category} is a qualitative description, the values of the parameters of the \textit{model} are not part of the \textit{activity category}. \cende
 
 The \cstartb \textit{dynamic physical thing category} and \cendb \textit{actor category} have an attribute that specifies the type of object.
 \cstartb The difference between an \textit{actor category} and a \textit{dynamic physical thing category} is that an \textit{actor category} has \cendb\cstarte one or more \cende\cstartb (possibly unknown) intents. \cendb

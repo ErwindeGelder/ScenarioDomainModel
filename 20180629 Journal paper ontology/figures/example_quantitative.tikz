@@ -43,20 +43,20 @@
 \node[object, fill=otherclass, below=of end scenario.south](ego braking){{\bfseries Ego braking::Activity}\\
 	activity category: Braking \\
 	parameters: $\amplitude=\SI{-8}{\meter\per\second}$, $\duration=\SI{4}{\second}$,\\
-	\leavevmode\phantom{parameters: } $\egospeedinit=\SI{8}{\meter\per\second}$, $\inittime=\SI{0}{\second}$ \\
+	\leavevmode\phantom{parameters: } $\stateinit=\SI{8}{\meter\per\second}$, $\timeinit=\SI{0}{\second}$ \\
 	\attrtstart: Start scenario \\
 	\attrtend: End braking};
 
 \node[object, fill=otherclass, below=of ego braking.south](ego stationary){{\bfseries Ego stationary::Activity}\\
 	activity category: Stationary \\
-	parameters: $\egospeedinitb=\SI{0}{\meter\per\second}$ \\
+	parameters: $\stateinit=\SI{0}{\meter\per\second}$ \\
 	\attrtstart: End braking \\
 	\attrtend: Start accelerating};
 
 \node[object, fill=otherclass, right=of start.north east, anchor=north west](ego accelerating){{\bfseries Ego accelerating::Activity}\\
 	activity category: Accelerating \\
-	parameters: $\slopeego=\SI{1.5}{\meter\per\second\squared}$, $\egospeedinitc=\SI{0}{\meter\per\second}$,\\
-	\leavevmode\phantom{parameters: } $\inittimec=\SI{7}{\second}$ \\
+	parameters: $\slope=\SI{1.5}{\meter\per\second\squared}$, $\stateinit=\SI{0}{\meter\per\second}$,\\
+	\leavevmode\phantom{parameters: } $\timeinit=\SI{7}{\second}$ \\
 	\attrtstart: Start accelerating \\
 	\attrtend: End scenario};
 
@@ -67,7 +67,8 @@
 
 \node[object, fill=otherclass, below=of ego accelerating.south](pedestrian walking){{\bfseries Pedestrian walking::Activity}\\
 	activity category: Walking \\
-	parameters: $\slopepedestrian=\SI{1}{\meter\per\second}$, $\pednorthinit=\SI{-6}{\meter}$\\
+	parameters: $\slope=\SI{1}{\meter\per\second}$, $\stateinit=\SI{-6}{\meter}$\\
+	\leavevmode\phantom{parameters: } $\timeinit=\SI{0}{\second}$ \\
 	\attrtstart: Start scenario \\
 	\attrtend: End scenario};
 

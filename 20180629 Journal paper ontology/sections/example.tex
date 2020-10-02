@@ -30,18 +30,9 @@ In \cref{sec:example test case}, we show \cstarte which objects are reused and w
 \subsection{Qualitative description of the pedestrian crossing}
 \label{sec:example qualitative}
 
-To describe the scenario according to the presented domain model, objects are instantiated from the classes presented in \cref{fig:class overview,fig:class relations}. \Cref{fig:example qualitative} shows the objects for describing the scenario qualitatively. There are two \textit{actor categories}: one for the ego vehicle and one for the pedestrian. Four different activity categories are defined: \emph{braking}, \emph{stationary}, \emph{accelerating}, and \emph{walking straight}. The braking activity is described with the sinusoidal model of \cref{eq:sinusoidala,eq:sinusoidalb}. The stationary activity is simply modeled using a constant, i.e.:
-\begin{equation} \label{eq:constant model}
-	\egospeed(\time) = \egospeedinitb,
-\end{equation}
-with $\egospeedinitb$ being the only parameter.
-Both the activities \emph{accelerating} and \emph{walking straight} are described using a linear model:
-\begin{align}
-	\egoacceleration(\time) &= \slopeego,\ \egospeed(\inittimec) = \egospeedinitc, \label{eq:ego accelerating} \\
-	\pedspeed(\time) &= \slopepedestrian,\ \pednorth(\inittime) = \pednorthinit. \label{eq:pedestrian walking}
-\end{align}
-Here, the parameters $\slopeego$ and $\slopepedestrian$ describe the rate of change of $\egospeed$ and $\pednorth$, respectively. The parameters $\egospeedinitc$ and $\pednorthinit$ describe the initial value of $\egospeed$ and $\pednorth$, respectively.
-
+To describe the scenario according to the presented domain model, objects are instantiated from the classes presented in \cref{fig:class overview,fig:class relations}. \Cref{fig:example qualitative} shows the objects for describing the scenario qualitatively. There are two \textit{actor categories}: one for the ego vehicle and one for the pedestrian. Four different activity categories are defined: \textit{braking}, \textit{stationary}, \textit{accelerating}, and \emph{walking straight}. 
+\cstarte The \textit{braking}, \textit{stationary}, and \textit{accelerating activity categories} contain the state variable $\egospeed$, i.e., the speed of the ego vehicle, and use the \textit{sinusoidal model} of \cref{eq:sinusoidala,eq:sinusoidalb}, the \textit{constant} model of \cref{eq:constant}, and the \textit{linear} model of \cref{eq:linear}, respectively. 
+The \textit{activity category walking straight} has the position of the pedestrian ($\pednorth$) as its state variable and uses \textit{linear} model of \cref{eq:linear}. \cende 
 
 \begin{figure*}[t]
 	\centering
