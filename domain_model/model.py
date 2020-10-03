@@ -14,15 +14,17 @@ Modifications:
 2020 08 15: Make sure that each model has the functions `get_state`, `get_state_dot`, and `fit`.
 2020 08 23: Enable the evaluation of the model at given time instants.
 2020 08 24: Spline model added.
+2020 10 02: Make Model a subclass of QualitativeThing
 """
 
 import sys
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 import numpy as np
 from scipy.interpolate import splrep, splev
+from .qualitative_thing import QualitativeThing, _qualitative_thing_props_from_json
 
 
-class Model(ABC):
+class Model(QualitativeThing):
     """ Model
 
     Parameter Model describes the relation between the states variables and the
@@ -38,15 +40,22 @@ class Model(ABC):
     It is assumed that the time t runs from 0 to 1.
 
     Attributes:
-        name(str): The name of the model which is used to describe the relation
-            between the state and time.
+        modelname(str): The name of the model which is used to describe the
+            relation between the state and time.
         default_options(dict): Dictionary with the default options that are used
             for fitting data to the model.
+        uid (int): A unique ID.
+        name (str): A name that serves as a short description of the actor
+            category.
+        tags (List[Tag]): The tags are used to determine whether a scenario
+            category comprises a scenario.
+        description(str): A string that qualitatively describes this thing.
     """
     @abstractmethod
-    def __init__(self, modelname: str):
-        self.name = modelname
+    def __init__(self, modelname: str, **kwargs):
+        self.modelname = modelname
         self.default_options = dict()
+        QualitativeThing.__init__(self, **kwargs)
 
     @abstractmethod
     def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
@@ -89,14 +98,11 @@ class Model(ABC):
         :return: dictionary of the parameters.
         """
 
-    def to_json(self):
-        """ Function that can be called when exporting Model to JSON.
-
-        Currently, only the name of the model is returned. This might change
-        later. For example, a short description (e.g., the formula) might be
-        given as well.
-        """
-        return self.name
+    def to_json(self) -> dict:
+        model = QualitativeThing.to_json(self)
+        model["modelname"] = self.modelname
+        model["default_options"] = self.default_options
+        return model
 
     def _set_default_options(self, options: dict = None) -> dict:
         if options is None:
@@ -123,8 +129,8 @@ class Constant(Model):
 
     The output is a constant value. Parameters: xstart.
     """
-    def __init__(self):
-        Model.__init__(self, "Constant")
+    def __init__(self, **kwargs):
+        Model.__init__(self, "Constant", **kwargs)
 
     def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return np.ones(len(time))*pars["xstart"]
@@ -147,9 +153,9 @@ class Linear(Model):
      - endpoints: Only the starting point and the end point are used to fit
        the model.
     """
-    def __init__(self):
-        Model.__init__(self, "Linear")
-        self.default_options = dict(method="least_squares")
+    def __init__(self, method="least_squares", **kwargs):
+        Model.__init__(self, "Linear", **kwargs)
+        self.default_options = dict(method=method)
 
     def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return pars["xstart"] + time*(pars["xend"] - pars["xstart"])
@@ -182,8 +188,8 @@ class Sinusoidal(Model):
 
     A sinusoidal model. Parameters: xstart, xend.
     """
-    def __init__(self):
-        Model.__init__(self, "Sinusoidal")
+    def __init__(self, **kwargs):
+        Model.__init__(self, "Sinusoidal", **kwargs)
 
     def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         offset = (pars["xstart"] + pars["xend"]) / 2
@@ -217,9 +223,9 @@ class Spline3Knots(Model):
     the spline function should ensure that the start and end values are the same
     as for the provided data.
     """
-    def __init__(self):
-        Model.__init__(self, "Spline3Knots")
-        self.default_options = dict(endpoints=False)
+    def __init__(self, endpoints=False, **kwargs):
+        Model.__init__(self, "Spline3Knots", **kwargs)
+        self.default_options = dict(endpoints=endpoints)
 
     def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         tdata1 = time[time < .5]
@@ -287,9 +293,9 @@ class Splines(Model):
     - n_knots: the number of interior knots (default=3).
     The interior knots will be evenly distributed.
     """
-    def __init__(self):
-        Model.__init__(self, "Splines")
-        self.default_options = dict(degree=3, n_knots=3)
+    def __init__(self, degree=3, n_knots=3, **kwargs):
+        Model.__init__(self, "Splines", **kwargs)
+        self.default_options = dict(degree=degree, n_knots=n_knots)
 
     def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         return splev(time, (pars["knots"], pars["coefficients"], pars["degree"]))
@@ -313,14 +319,19 @@ class Splines(Model):
         return pars
 
 
-def model_from_json(json: str) -> Model:
+def _model_props_from_json(json: dict) -> dict:
+    props = json["default_options"]
+    props.update(_qualitative_thing_props_from_json(json))
+    return props
+
+
+def model_from_json(json: dict) -> Model:
     """ Get Model object from JSON code
 
     It is assumed that the JSON code of the Model is created using
     Model.to_json().
 
-    :param json: JSON code of Model, which is simply a string of the name of the
-        Model.
+    :param json: JSON code of Model.
     :return: Model object.
     """
-    return getattr(sys.modules[__name__], json)()
+    return getattr(sys.modules[__name__], json["modelname"])(**_model_props_from_json(json))
