@@ -5,9 +5,11 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 08 25: Add function to obtain properties from a dictionary.
+2020 10 04: Change way of creating object from JSON code.
 """
 
 from .physical_thing_category import PhysicalThingCategory, _physical_thing_category_props_from_json
+from .thing import DMObjects, _object_from_json
 
 
 class DynamicPhysicalThingCategory(PhysicalThingCategory):
@@ -35,13 +37,23 @@ def _dynamic_physical_thing_category_props_from_json(json: dict) -> dict:
     return _physical_thing_category_props_from_json(json)
 
 
-def dynamic_physical_thing_category_from_json(json: dict) -> DynamicPhysicalThingCategory:
+def _dynamic_physical_thing_category_from_json(
+        json: dict,
+        attribute_objects: DMObjects  # pylint: disable=unused-argument
+) -> DynamicPhysicalThingCategory:
+    return DynamicPhysicalThingCategory(**_dynamic_physical_thing_category_props_from_json(json))
+
+
+def dynamic_physical_thing_category_from_json(json: dict, attribute_objects: DMObjects = None) \
+        -> DynamicPhysicalThingCategory:
     """ Get DynamicPhysicalThingCategory object from JSON code
 
     It is assumed that the JSON code of the DynamicPhysicalThingCategory is
     created using DynamicPhysicalThingCategory.to_json().
 
     :param json: JSON code of DynamicPhysicalThingCategory.
+    :param attribute_objects: A structure for storing all objects (optional).
     :return: DynamicPhysicalThingCategory object.
     """
-    return DynamicPhysicalThingCategory(**_dynamic_physical_thing_category_props_from_json(json))
+    return _object_from_json(json, _dynamic_physical_thing_category_from_json,
+                             "dynamic_physical_thing_category", attribute_objects)
