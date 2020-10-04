@@ -4,9 +4,11 @@ Creation date: 2020 08 15
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 10 04: Change way of creating object from JSON code.
 """
 
 from .physical_thing_category import PhysicalThingCategory, _physical_thing_category_props_from_json
+from .thing import DMObjects, _object_from_json
 
 
 class StaticPhysicalThingCategory(PhysicalThingCategory):
@@ -38,13 +40,23 @@ def _static_physical_thing_category_props_from_json(json: dict) -> dict:
     return _physical_thing_category_props_from_json(json)
 
 
-def static_physical_thing_category_from_json(json: dict) -> StaticPhysicalThingCategory:
+def _static_physical_thing_category_from_json(
+        json: dict,
+        attribute_objects: DMObjects  # pylint: disable=unused-argument
+) -> StaticPhysicalThingCategory:
+    return StaticPhysicalThingCategory(**_static_physical_thing_category_props_from_json(json))
+
+
+def static_physical_thing_category_from_json(json: dict, attribute_objects: DMObjects = None) \
+        -> StaticPhysicalThingCategory:
     """ Get StaticPhysicalThingCategory object from JSON code
 
     It is assumed that the JSON code of the StaticPhysicalThingCategory is
     created using StaticPhysicalThingCategory.to_json().
 
     :param json: JSON code of StaticEnvironmentCategory.
+    :param attribute_objects: A structure for storing all objects (optional).
     :return: StaticPhysicalThingCategory object.
     """
-    return StaticPhysicalThingCategory(**_static_physical_thing_category_props_from_json(json))
+    return _object_from_json(json, _static_physical_thing_category_from_json,
+                             "static_physical_thing_category", attribute_objects)
