@@ -14,7 +14,8 @@ Modifications:
 2020 08 15: Make sure that each model has the functions `get_state`, `get_state_dot`, and `fit`.
 2020 08 23: Enable the evaluation of the model at given time instants.
 2020 08 24: Spline model added.
-2020 10 02: Make Model a subclass of QualitativeThing
+2020 10 02: Make Model a subclass of QualitativeThing.
+2020 10 04: Change way of creating object from JSON code.
 """
 
 import sys
@@ -22,6 +23,7 @@ from abc import abstractmethod
 import numpy as np
 from scipy.interpolate import splrep, splev
 from .qualitative_thing import QualitativeThing, _qualitative_thing_props_from_json
+from .thing import DMObjects, _object_from_json
 
 
 class Model(QualitativeThing):
@@ -53,7 +55,7 @@ class Model(QualitativeThing):
     """
     @abstractmethod
     def __init__(self, modelname: str, **kwargs):
-        self.modelname = modelname
+        self._modelname = modelname
         self.default_options = dict()
         QualitativeThing.__init__(self, **kwargs)
 
@@ -100,7 +102,7 @@ class Model(QualitativeThing):
 
     def to_json(self) -> dict:
         model = QualitativeThing.to_json(self)
-        model["modelname"] = self.modelname
+        model["modelname"] = self._modelname
         model["default_options"] = self.default_options
         return model
 
@@ -325,13 +327,21 @@ def _model_props_from_json(json: dict) -> dict:
     return props
 
 
-def model_from_json(json: dict) -> Model:
+def _model_from_json(
+        json: dict,
+        attribute_objects: DMObjects  # pylint: disable=unused-argument
+) -> Model:
+    return getattr(sys.modules[__name__], json["modelname"])(**_model_props_from_json(json))
+
+
+def model_from_json(json: dict, attribute_objects: DMObjects = None) -> Model:
     """ Get Model object from JSON code
 
     It is assumed that the JSON code of the Model is created using
     Model.to_json().
 
     :param json: JSON code of Model.
+    :param attribute_objects: A structure for storing all objects (optional).
     :return: Model object.
     """
-    return getattr(sys.modules[__name__], json["modelname"])(**_model_props_from_json(json))
+    return _object_from_json(json, _model_from_json, "model", attribute_objects)
