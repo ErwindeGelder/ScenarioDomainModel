@@ -10,12 +10,14 @@ Modifications:
 2019 10 11: Update of terminology.
 2020 08 16: Make ActorCategory a subclass of DynamicPhysicalThingCategory.
 2020 08 25: Add function to obtain properties from a dictionary.
+2020 10 04: Change way of creating object from JSON code.
 """
 
 from enum import Enum
 from .dynamic_physical_thing_category import DynamicPhysicalThingCategory, \
     _dynamic_physical_thing_category_props_from_json
 from .tags import Tag
+from .thing import DMObjects, _object_from_json
 from .type_checking import check_for_type
 
 
@@ -91,16 +93,24 @@ def _actor_category_props_from_json(json: dict) -> dict:
     return props
 
 
-def actor_category_from_json(json: dict) -> ActorCategory:
+def _actor_category_from_json(
+        json: dict,
+        attribute_objects: DMObjects  # pylint: disable=unused-argument
+) -> ActorCategory:
+    return ActorCategory(**_actor_category_props_from_json(json))
+
+
+def actor_category_from_json(json: dict, attribute_objects: DMObjects = None) -> ActorCategory:
     """ Get ActorCategory object from JSON code
 
     It is assumed that the JSON code of the ActorCategory is created using
     ActorCategory.to_json().
 
     :param json: JSON code of Actor.
+    :param attribute_objects: A structure for storing all objects (optional).
     :return: ActorCategory object.
     """
-    return ActorCategory(**_actor_category_props_from_json(json))
+    return _object_from_json(json, _actor_category_from_json, "actor_category", attribute_objects)
 
 
 def vehicle_type_from_json(json: dict) -> VehicleType:
