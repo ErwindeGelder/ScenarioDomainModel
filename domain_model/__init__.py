@@ -23,3 +23,4 @@ from .static_physical_thing import StaticPhysicalThing, static_physical_thing_fr
 from .static_physical_thing_category import StaticPhysicalThingCategory, \
     static_physical_thing_category_from_json
 from .tags import Tag, tag_from_json
+from .thing import DMObjects, get_empty_dm_object
