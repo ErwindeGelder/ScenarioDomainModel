@@ -13,10 +13,11 @@ Modifications:
 2020 08 15: Change Default to Thing.
 2020 08 22: Add function to obtain properties from a dictionary.
 2020 08 23: If no uid is given, generate one.
+2020 10 04: Provide functions for creating objects from JSON code.
 """
 
 from abc import ABC, abstractmethod
-from typing import List
+from typing import Callable, Dict, List, NamedTuple, Tuple, Union
 import uuid
 from .tags import Tag, tag_from_json
 from .type_checking import check_for_type, check_for_list
@@ -39,7 +40,7 @@ class Thing(ABC):
             category comprises a scenario.
     """
     @abstractmethod
-    def __init__(self, name: str = "", uid: int = None, tags: List[Tag] = None):
+    def __init__(self, name: str = "", uid: int = None, tags: List[Tag] = None, **kwargs):
         # Check the types of the inputs
         if uid is not None:
             check_for_type("uid", uid, int)
@@ -72,7 +73,7 @@ class Thing(ABC):
         """
         default_class = {"name": self.name,
                          "id": "{:d}".format(self.uid),
-                         "tag": [tag.to_json() for tag in self.tags]}
+                         "tags": [tag.to_json() for tag in self.tags]}
         return default_class
 
     def to_json_full(self) -> dict:
@@ -94,4 +95,77 @@ class Thing(ABC):
 def _thing_props_from_json(json: dict) -> dict:
     return dict(name=json["name"],
                 uid=int(json["id"]),
-                tags=[tag_from_json(tag) for tag in json["tag"]])
+                tags=[tag_from_json(tag) for tag in json["tags"]])
+
+
+DMObjects = NamedTuple("dm_objects", [("event", Dict),
+                                      ("static_physical_thing", Dict),
+                                      ("static_physical_thing_category", Dict),
+                                      ("dynamic_physical_thing", Dict),
+                                      ("dynamic_physical_thing_category", Dict),
+                                      ("actor", Dict),
+                                      ("actor_category", Dict),
+                                      ("activity", Dict),
+                                      ("activity_category", Dict),
+                                      ("model", Dict),
+                                      ("scenario_category", Dict),
+                                      ("scenario", Dict)])
+
+
+def get_empty_dm_object() -> NamedTuple:
+    """ Return an empty NamedTuple to store all objects.
+
+    :return: The empty NamedTuple in which all objects can be stored.
+    """
+    return DMObjects(event=dict(),
+                     static_physical_thing=dict(),
+                     static_physical_thing_category=dict(),
+                     dynamic_physical_thing=dict(),
+                     dynamic_physical_thing_category=dict(),
+                     actor=dict(),
+                     actor_category=dict(),
+                     activity=dict(),
+                     activity_category=dict(),
+                     model=dict(),
+                     scenario_category=dict(),
+                     scenario=dict())
+
+
+def _attributes_from_json(json: dict, attribute_objects: DMObjects,
+                          attribute_structure: Dict[str, Tuple[Callable, str]], **kwargs) \
+        -> Union[dict, Tuple[dict, NamedTuple]]:
+    attributes = kwargs
+
+    # Loop through all attributes and create them only if they were not provided by kwargs.
+    for key, (func_from_json, class_name) in attribute_structure.items():
+        if key not in attributes or attributes[key] is None:
+            # Check if it is a list or a single object.
+            if isinstance(json[key], List):  # List of objects
+                attributes[key] = [_object_from_json(json_item, func_from_json, class_name,
+                                                     attribute_objects)
+                                   for json_item in json[key]]
+            else:  # Single object
+                attributes[key] = _object_from_json(json[key], func_from_json, class_name,
+                                                    attribute_objects)
+
+    return attributes
+
+
+def _object_from_json(json: Union[dict, List[dict]], func_from_json: Callable, class_name: str,
+                      attribute_objects: DMObjects = None, **kwargs):
+    # Make sure that we have a structure to store all attributes.
+    if attribute_objects is None:
+        attribute_objects = get_empty_dm_object()
+
+    # Check if we already have the object in `attribute_objects` and if so, return that one.
+    if int(json["id"]) in getattr(attribute_objects, class_name):
+        return getattr(attribute_objects, class_name)[int(json["id"])]
+
+    # Run the function that returns the object.
+    json_object = func_from_json(json, attribute_objects, **kwargs)  # type: Thing
+
+    # Add object to the 'database' (i.e., `attribute_objects`).
+    getattr(attribute_objects, class_name)[json_object.uid] = json_object
+
+    # Return the object.
+    return json_object
