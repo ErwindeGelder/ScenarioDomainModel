@@ -8,9 +8,11 @@ Modifications:
 2019 10 13: Update of terminology.
 2020 08 22: Change how an event is created from json code. Result is the same.
 2020 08 24: Change superclass from Thing to QuantitativeThing.
+2020 10 05: Change way of getting properties of the time interval.
 """
 
 from .quantitative_thing import QuantitativeThing, _quantitative_thing_props_from_json
+from .thing import DMObjects, _object_from_json
 from .type_checking import check_for_type
 
 
@@ -62,13 +64,21 @@ def _event_props_from_json(json: dict) -> dict:
     return props
 
 
-def event_from_json(json: dict) -> Event:
+def _event_from_json(
+        json: dict,
+        attribute_objects: DMObjects  # pylint: disable=unused-argument
+) -> Event:
+    return Event(**_event_props_from_json(json))
+
+
+def event_from_json(json: dict, attribute_objects: DMObjects = None) -> Event:
     """ Get Event object from JSON code.
 
     It is assumed that the JSON code of the Event is created using
     Event.to_json().
 
     :param json: JSON code of Event.
+    :param attribute_objects: A structure for storing all objects (optional).
     :return: Event object.
     """
-    return Event(**_event_props_from_json(json))
+    return _object_from_json(json, _event_from_json, "event", attribute_objects)
