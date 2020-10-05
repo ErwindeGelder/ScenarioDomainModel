@@ -4,13 +4,15 @@ Creation date: 2020 08 22
 Author(s): Erwin de Gelder
 
 Modifications:
-2020 08 24 Add functionality to obtain the start time, the end time, and the duration.
+2020 08 24: Add functionality to obtain the start time, the end time, and the duration.
+2020 10 05: Change way of getting properties of the time interval.
 """
 
 from abc import abstractmethod
 from typing import Union
-from .event import Event, event_from_json
+from .event import Event, _event_from_json
 from .quantitative_thing import QuantitativeThing, _quantitative_thing_props_from_json
+from .thing import DMObjects, _attributes_from_json
 from .type_checking import check_for_type
 
 
@@ -88,8 +90,10 @@ class TimeInterval(QuantitativeThing):
             return None
 
 
-def _time_interval_props_from_json(json: dict, start: Event = None, end: Event = None) -> dict:
-    props = dict(start=event_from_json(json["start"]) if start is None else start,
-                 end=event_from_json(json["end"]) if end is None else end)
-    props.update(_quantitative_thing_props_from_json(json))
+def _time_interval_props_from_json(json: dict, attribute_objects: DMObjects, start: Event = None,
+                                   end: Event = None) -> dict:
+    props = _quantitative_thing_props_from_json(json)
+    props.update(_attributes_from_json(json, attribute_objects,
+                                       dict(start=(_event_from_json, "event"),
+                                            end=(_event_from_json, "event")), start=start, end=end))
     return props
