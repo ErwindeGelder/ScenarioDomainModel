@@ -19,17 +19,19 @@ Modifications:
 2020 08 24: Make Scenario a subclass of TimeInterval.
 2020 08 24: Enable instantiation of Scenario from json without needing full json code.
 2020 08 25: Add functionality to evaluate the state variables (+derivatives) at given times.
+2020 10 05: Change way of creating object from JSON code.
 """
 
 from typing import Callable, List, Tuple, Union
 import numpy as np
-from .activity import Activity, activity_from_json
-from .actor import Actor, actor_from_json
-from .dynamic_physical_thing import DynamicPhysicalThing, dynamic_physical_thing_from_json
+from .activity import Activity, _activity_from_json
+from .actor import Actor, _actor_from_json
+from .dynamic_physical_thing import DynamicPhysicalThing, _dynamic_physical_thing_from_json
 from .scenario_category import derive_actor_tags, _check_acts, _print_tags, _get_acts
 from .state_variable import StateVariable
-from .static_physical_thing import StaticPhysicalThing, static_physical_thing_from_json
+from .static_physical_thing import StaticPhysicalThing, _static_physical_thing_from_json
 from .time_interval import TimeInterval, _time_interval_props_from_json
+from .thing import DMObjects, _attributes_from_json, _object_from_json
 from .type_checking import check_for_list, check_for_tuple
 
 
@@ -76,6 +78,18 @@ class Scenario(TimeInterval):
         self.actors = []                   # Type: List[Actor]
         self.activities = []               # Type: List[Activity]
         self.acts = []                     # Type: List[tuple(DynamicPhysicalThing, Activity)]
+
+        # Set attributes if provided by kwargs.
+        if "static_physical_things" in kwargs:
+            self.set_static_physical_things(kwargs["static_physical_things"])
+        if "dynamic_physical_things" in kwargs:
+            self.set_dynamic_physical_things(kwargs["dynamic_physical_things"])
+        if "actors" in kwargs:
+            self.set_actors(kwargs["actors"])
+        if "activities" in kwargs:
+            self.set_activities(kwargs["activities"])
+        if "acts" in kwargs:
+            self.set_acts(kwargs["acts"])
 
     def set_static_physical_things(self, static_physical_things: List[StaticPhysicalThing]) -> None:
         """ Set the static physical things.
@@ -281,17 +295,17 @@ class Scenario(TimeInterval):
 
     def to_json(self) -> dict:
         scenario = TimeInterval.to_json(self)
-        scenario["static_physical_thing"] = [dict(name=thing.name, uid=thing.uid)
-                                             for thing in self.static_physical_things]
-        scenario["dynamic_physical_thing"] = [dict(name=thing.name, uid=thing.uid)
-                                              for thing in self.dynamic_physical_things]
-        scenario["actor"] = [dict(name=actor.name, uid=actor.uid) for actor in self.actors]
-        scenario["activity"] = [dict(name=activity.name, uid=activity.uid)
-                                for activity in self.activities]
-        scenario["act"] = []
+        scenario["static_physical_things"] = [dict(name=thing.name, uid=thing.uid)
+                                              for thing in self.static_physical_things]
+        scenario["dynamic_physical_things"] = [dict(name=thing.name, uid=thing.uid)
+                                               for thing in self.dynamic_physical_things]
+        scenario["actors"] = [dict(name=actor.name, uid=actor.uid) for actor in self.actors]
+        scenario["activities"] = [dict(name=activity.name, uid=activity.uid)
+                                  for activity in self.activities]
+        scenario["acts"] = []
         for dynamic_thing, activity in self.acts:
             key_name = "actor" if isinstance(dynamic_thing, Actor) else "dynamic_thing"
-            scenario["act"].append({key_name: dynamic_thing.uid, "activity": activity.uid})
+            scenario["acts"].append({key_name: dynamic_thing.uid, "activity": activity.uid})
         scenario["derived_tags"] = self.derived_tags()
         for key, tags in scenario["derived_tags"].items():
             scenario["derived_tags"][key] = [tag.to_json() for tag in tags]
@@ -300,16 +314,36 @@ class Scenario(TimeInterval):
     def to_json_full(self) -> dict:
         scenario = self.to_json()
         scenario.update(TimeInterval.to_json_full(self))
-        scenario["static_physical_thing"] = [thing.to_json_full()
-                                             for thing in self.static_physical_things]
-        scenario["dynamic_physical_thing"] = [thing.to_json_full()
-                                              for thing in self.dynamic_physical_things]
-        scenario["actor"] = [actor.to_json_full() for actor in self.actors]
-        scenario["activity"] = [activity.to_json_full() for activity in self.activities]
+        scenario["static_physical_things"] = [thing.to_json_full()
+                                              for thing in self.static_physical_things]
+        scenario["dynamic_physical_things"] = [thing.to_json_full()
+                                               for thing in self.dynamic_physical_things]
+        scenario["actors"] = [actor.to_json_full() for actor in self.actors]
+        scenario["activities"] = [activity.to_json_full() for activity in self.activities]
         return scenario
 
 
-def scenario_from_json(json: dict, **kwargs) -> Scenario:
+def _scenario_props_from_json(json: dict, attribute_objects: DMObjects, **kwargs) -> dict:
+    props = _time_interval_props_from_json(json, attribute_objects,
+                                           start=None if "start" not in kwargs else kwargs["start"],
+                                           end=None if "end" not in kwargs else kwargs["end"])
+    props.update(_attributes_from_json(
+        json, attribute_objects,
+        dict(static_physical_things=(_static_physical_thing_from_json, "static_physical_thing"),
+             dynamic_physical_things=(_dynamic_physical_thing_from_json, "dynamic_physical_thing"),
+             actors=(_actor_from_json, "actor"),
+             activities=(_activity_from_json, "activity")),
+        **kwargs))
+    props["acts"] = _get_acts(json, props["static_physical_things"], props["actors"],
+                              props["activities"])
+    return props
+
+
+def _scenario_from_json(json: dict, attribute_objects: DMObjects, **kwargs) -> Scenario:
+    return Scenario(**_scenario_props_from_json(json, attribute_objects, **kwargs))
+
+
+def scenario_from_json(json: dict, attribute_objects: DMObjects = None, **kwargs) -> Scenario:
     """ Get Scenario object from JSON code
 
     It is assumed that all the attributes are fully defined. Alternatively,
@@ -317,55 +351,19 @@ def scenario_from_json(json: dict, **kwargs) -> Scenario:
     arguments are allowed:
     - start: The start event.
     - end: The end event.
-    - static_physical_things: The static physical things that define the static
+    - static_physical_thing: The static physical things that define the static
         environment.
-    - dynamic_physical_things: The dynamic physical things that do not have an
+    - dynamic_physical_thing: The dynamic physical things that do not have an
         intent.
-    - actors: The dynamic physical things that do have an intent.
-    - activities: The activities that describe the evolution of the dynamic
+    - actor: The dynamic physical things that do have an intent.
+    - activity: The activities that describe the evolution of the dynamic
         environment.
 
     :param json: JSON code of Scenario.
+    :param attribute_objects: A structure for storing all objects (optional).
     :return: Scenario object.
     """
-    objects = dict(start=None,
-                   end=None,
-                   static_physical_things=None,
-                   dynamic_physical_things=None,
-                   actors=None,
-                   activities=None)
-    objects.update(kwargs)
-    scenario = Scenario(**_time_interval_props_from_json(json, start=objects["start"],
-                                                         end=objects["end"]))
-
-    # The static physical things.
-    if objects["static_physical_things"] is None:
-        objects["static_physical_things"] = _create_scenario_attributes(
-            json, "static_physical_thing", static_physical_thing_from_json)
-    scenario.set_static_physical_things(objects["static_physical_things"])
-
-    # The dynamic physical things.
-    if objects["dynamic_physical_things"] is None:
-        objects["dynamic_physical_things"] = _create_scenario_attributes(
-            json, "dynamic_physical_thing", dynamic_physical_thing_from_json)
-    scenario.set_dynamic_physical_things(objects["dynamic_physical_things"])
-
-    # The actors.
-    if objects["actors"] is None:
-        objects["actors"] = _create_scenario_attributes(json, "actor", actor_from_json)
-    scenario.set_actors(objects["actors"])
-
-    # The activities.
-    if objects["activities"] is None:
-        objects["activities"] = _create_scenario_attributes(json, "activity", activity_from_json)
-    scenario.set_activities(objects["activities"])
-
-    # Create the acts.
-    scenario.set_acts(_get_acts(json, objects["dynamic_physical_things"], objects["actors"],
-                                objects["activities"]))
-
-    # We are done, so we can return the scenario.
-    return scenario
+    return _object_from_json(json, _scenario_from_json, "scenario", attribute_objects, **kwargs)
 
 
 def _create_scenario_attributes(json: dict, class_name: str, func_from_json: Callable) -> List:
@@ -388,6 +386,6 @@ def _create_scenario_attributes(json: dict, class_name: str, func_from_json: Cal
             objects.append(func_from_json(json_object, category=category))
         else:
             objects.append(func_from_json(json_object))
-            categories.append(objects[-1].category)
+            categories.append(objects[-1].category)  # This category has just been created
             categories_ids.append(categories[-1].uid)
     return objects
