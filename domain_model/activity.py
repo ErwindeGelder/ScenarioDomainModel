@@ -16,13 +16,15 @@ Modifications:
 2020 07 31: Change name of DetectedActivity to SetActivity.
 2020 08 23: Make Activity a subclass of TimeInterval.
 2020 08 24: Add functionality to obtain the values of the state variables (and the derivative).
+2020 10 05: Change way of creating object from JSON code.
 """
 
 from typing import List, Union
 import numpy as np
-from .activity_category import ActivityCategory, activity_category_from_json
+from .activity_category import ActivityCategory, _activity_category_from_json
 from .event import Event
 from .time_interval import TimeInterval, _time_interval_props_from_json
+from .thing import DMObjects, _object_from_json, _attributes_from_json
 from .type_checking import check_for_type
 
 
@@ -133,15 +135,23 @@ class Activity(TimeInterval):
         return activity
 
 
-def _activity_props_from_json(json: dict, start: Event = None, end: Event = None):
+def _activity_props_from_json(json: dict, attribute_objects: DMObjects, start: Event = None,
+                              end: Event = None, category: ActivityCategory = None) -> dict:
     props = dict(parameters=json["parameters"])
-    props.update(_time_interval_props_from_json(json, start=start, end=end))
+    props.update(_time_interval_props_from_json(json, attribute_objects, start=start, end=end))
+    props.update(_attributes_from_json(json, attribute_objects,
+                                       dict(category=(_activity_category_from_json,
+                                                      "activity_category")), category=category))
     return props
 
 
-def activity_from_json(json: dict, category: ActivityCategory = None, start: Event = None,
-                       end: Event = None) \
-        -> Activity:
+def _activity_from_json(json: dict, attribute_objects: DMObjects, start: Event = None,
+                        end: Event = None, category: ActivityCategory = None) -> Activity:
+    return Activity(**_activity_props_from_json(json, attribute_objects, start, end, category))
+
+
+def activity_from_json(json: dict, attribute_objects: DMObjects = None, start: Event = None,
+                       end: Event = None, category: ActivityCategory = None) -> Activity:
     """ Get Activity object from JSON code
 
     It is assumed that all the attributes are fully defined. Hence, the
@@ -153,14 +163,13 @@ def activity_from_json(json: dict, category: ActivityCategory = None, start: Eve
     the Event that defines the end of the activity.
 
     :param json: JSON code of Activity.
-    :param category: If given, it will not be based on the JSON code.
+    :param attribute_objects: A structure for storing all objects (optional).
     :param start: Event that defines the start. If given, it will not be based
         on the JSON code.
     :param end: Event that defines the end. If given, it will not be based on
         the JSON code.
+    :param category: If given, it will not be based on the JSON code.
     :return: Activity object.
     """
-    if category is None:
-        category = activity_category_from_json(json["category"])
-    arguments = _activity_props_from_json(json, start=start, end=end)
-    return Activity(category, **arguments)
+    return _object_from_json(json, _activity_from_json, "activity", attribute_objects, start=start,
+                             end=end, category=category)
