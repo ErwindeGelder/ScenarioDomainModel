@@ -16,13 +16,15 @@ Modifications:
 2019 11 04: Add goals to ego vehicle.
 2020 08 19: Make Actor a subclass of DynamicPhysicalThing.
 2020 08 22: Add function to obtain properties from a dictionary.
+2020 10 05: Change way of creating object from JSON code.
 """
 
 from typing import List
-from .actor_category import ActorCategory, actor_category_from_json
+from .actor_category import ActorCategory, _actor_category_from_json
 from .dynamic_physical_thing import DynamicPhysicalThing, _dynamic_physical_thing_props_from_json
 from .state import State, state_from_json
 from .tags import Tag
+from .thing import DMObjects, _object_from_json, _attributes_from_json
 from .type_checking import check_for_type, check_for_list
 
 
@@ -57,13 +59,24 @@ class Actor(DynamicPhysicalThing):
         return actor
 
 
-def _actor_props_from_json(json: dict) -> dict:
+def _actor_props_from_json(json: dict, attribute_objects: DMObjects,
+                           category: ActorCategory = None) -> dict:
     props = dict(desired_states=[state_from_json(state) for state in json["desired_states"]])
-    props.update(_dynamic_physical_thing_props_from_json(json))
+    props.update(_dynamic_physical_thing_props_from_json(json, attribute_objects, False))
+    props.update(_attributes_from_json(json, attribute_objects,
+                                       dict(category=(_actor_category_from_json,
+                                                      "actor_category")),
+                                       category=category))
     return props
 
 
-def actor_from_json(json: dict, category: ActorCategory = None) -> Actor:
+def _actor_from_json(json: dict, attribute_objects: DMObjects, category: ActorCategory = None) \
+        -> Actor:
+    return Actor(**_actor_props_from_json(json, attribute_objects, category))
+
+
+def actor_from_json(json: dict, attribute_objects: DMObjects = None,
+                    category: ActorCategory = None) -> Actor:
     """ Get Actor object from JSON code
 
     It is assumed that all the attributes are fully defined. Hence, the
@@ -72,12 +85,11 @@ def actor_from_json(json: dict, category: ActorCategory = None) -> Actor:
     case, the ActorCategory does not need to be defined in the JSON code.
 
     :param json: JSON code of Actor.
+    :param attribute_objects: A structure for storing all objects (optional).
     :param category: If given, it will not be based on the JSON code.
     :return: Actor object.
     """
-    if category is None:
-        category = actor_category_from_json(json["category"])
-    return Actor(category, **_actor_props_from_json(json))
+    return _object_from_json(json, _actor_from_json, "actor", attribute_objects, category=category)
 
 
 class EgoVehicle(Actor):
