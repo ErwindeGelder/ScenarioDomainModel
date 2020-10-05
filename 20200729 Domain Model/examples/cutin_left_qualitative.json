@@ -1,26 +1,26 @@
 {
     "name": "Cut-in from left",
-    "id": "145735763567256333134769451397212181046",
-    "tag": [],
+    "id": "186296209412435248915402606306411450485",
+    "tags": [],
     "description": "Cut-in from the left at the motorway",
     "image": "./examples/images/cut-in.png",
-    "static_physical_thing_category": [
+    "static_physical_thing_categories": [
         {
             "name": "Motorway",
-            "id": "163997849802476894658052287334790009546",
-            "tag": [
+            "id": "46309889875226733948792971863613697832",
+            "tags": [
                 "RoadLayout_Straight",
                 "RoadType_PrincipleRoad_Motorway"
             ],
             "description": "Motorway with multiple lanes"
         }
     ],
-    "dynamic_physical_thing_category": [],
-    "actor_category": [
+    "dynamic_physical_thing_categories": [],
+    "actor_categories": [
         {
             "name": "Ego vehicle",
-            "id": "258546250493829367812597402166829006478",
-            "tag": [
+            "id": "189091669666746676870622991383518253424",
+            "tags": [
                 "EgoVehicle",
                 "RoadUserType_Vehicle"
             ],
@@ -32,8 +32,8 @@
         },
         {
             "name": "Target vehicle",
-            "id": "315659009941306647994421192110584734244",
-            "tag": [
+            "id": "116506032439908288282034512503752908810",
+            "tags": [
                 "RoadUserType_Vehicle"
             ],
             "description": "",
@@ -43,15 +43,22 @@
             }
         }
     ],
-    "activity_category": [
+    "activity_categories": [
         {
             "name": "Following lane",
-            "id": "145527752318814474713969600580990622649",
-            "tag": [
+            "id": "292128226613861045737395145005313836441",
+            "tags": [
                 "VehicleLateralActivity_GoingStraight"
             ],
             "description": "",
-            "model": "Constant",
+            "model": {
+                "name": "",
+                "id": "202955032683235224085351512976562808243",
+                "tags": [],
+                "description": "",
+                "modelname": "Constant",
+                "default_options": {}
+            },
             "state": {
                 "name": "LATERAL_POSITION",
                 "value": "y"
@@ -59,12 +66,19 @@
         },
         {
             "name": "Changing lane right",
-            "id": "130725111764872532366051137689843741696",
-            "tag": [
+            "id": "195208183645128451740758795805206501175",
+            "tags": [
                 "VehicleLateralActivity_ChangingLane_Right"
             ],
             "description": "",
-            "model": "Sinusoidal",
+            "model": {
+                "name": "",
+                "id": "36915099442783140995666851178915413171",
+                "tags": [],
+                "description": "",
+                "modelname": "Sinusoidal",
+                "default_options": {}
+            },
             "state": {
                 "name": "LATERAL_POSITION",
                 "value": "y"
@@ -72,47 +86,56 @@
         },
         {
             "name": "Driving forward",
-            "id": "133269073241775663216131260292176042280",
-            "tag": [
+            "id": "125533061647354053249957957477637969156",
+            "tags": [
                 "VehicleLongitudinalActivity_DrivingForward"
             ],
             "description": "",
-            "model": "Spline3Knots",
+            "model": {
+                "name": "",
+                "id": "315253673451837707325632731433441807979",
+                "tags": [],
+                "description": "",
+                "modelname": "Spline3Knots",
+                "default_options": {
+                    "endpoints": false
+                }
+            },
             "state": {
                 "name": "SPEED",
                 "value": "v"
             }
         }
     ],
-    "act": [
+    "acts": [
         {
-            "actor": 258546250493829367812597402166829006478,
-            "activity": 133269073241775663216131260292176042280
+            "actor": 189091669666746676870622991383518253424,
+            "activity": 125533061647354053249957957477637969156
         },
         {
-            "actor": 258546250493829367812597402166829006478,
-            "activity": 145527752318814474713969600580990622649
+            "actor": 189091669666746676870622991383518253424,
+            "activity": 292128226613861045737395145005313836441
         },
         {
-            "actor": 315659009941306647994421192110584734244,
-            "activity": 133269073241775663216131260292176042280
+            "actor": 116506032439908288282034512503752908810,
+            "activity": 125533061647354053249957957477637969156
         },
         {
-            "actor": 315659009941306647994421192110584734244,
-            "activity": 130725111764872532366051137689843741696
+            "actor": 116506032439908288282034512503752908810,
+            "activity": 195208183645128451740758795805206501175
         }
     ],
     "derived_tags": {
         "Ego vehicle::ActorCategory": [
-            "RoadUserType_Vehicle",
-            "EgoVehicle",
             "VehicleLongitudinalActivity_DrivingForward",
-            "VehicleLateralActivity_GoingStraight"
+            "VehicleLateralActivity_GoingStraight",
+            "RoadUserType_Vehicle",
+            "EgoVehicle"
         ],
         "Target vehicle::ActorCategory": [
-            "RoadUserType_Vehicle",
+            "VehicleLongitudinalActivity_DrivingForward",
             "VehicleLateralActivity_ChangingLane_Right",
-            "VehicleLongitudinalActivity_DrivingForward"
+            "RoadUserType_Vehicle"
         ],
         "Motorway::StaticPhysicalThingCategory": [
             "RoadLayout_Straight",
