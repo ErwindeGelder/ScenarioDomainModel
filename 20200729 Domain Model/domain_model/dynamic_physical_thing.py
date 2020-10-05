@@ -5,13 +5,15 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 08 22: Add function to obtain properties from a dictionary.
+2020 10 05: Change way of creating object from JSON code.
 """
 
-from typing import List
+from typing import List, Union
 from .dynamic_physical_thing_category import DynamicPhysicalThingCategory, \
-    dynamic_physical_thing_category_from_json
+    _dynamic_physical_thing_category_from_json
 from .physical_thing import PhysicalThing, _physical_thing_props_from_json
 from .state import State, state_from_json
+from .thing import DMObjects, _object_from_json, _attributes_from_json
 from .type_checking import check_for_type, check_for_list
 
 
@@ -64,13 +66,28 @@ class DynamicPhysicalThing(PhysicalThing):
         return dynamic_physical_thing
 
 
-def _dynamic_physical_thing_props_from_json(json: dict) -> dict:
+def _dynamic_physical_thing_props_from_json(
+        json: dict, attribute_objects: DMObjects,
+        category: Union[bool, DynamicPhysicalThingCategory] = None) -> dict:
     props = dict(initial_states=[state_from_json(state) for state in json["initial_states"]])
     props.update(_physical_thing_props_from_json(json))
+    if category is not False:
+        props.update(_attributes_from_json(
+            json, attribute_objects, dict(category=(_dynamic_physical_thing_category_from_json,
+                                                    "dynamic_physical_thing_category")),
+            category=category))
     return props
 
 
-def dynamic_physical_thing_from_json(json: dict, category: DynamicPhysicalThingCategory = None) \
+def _dynamic_physical_thing_from_json(json: dict, attribute_objects: DMObjects,
+                                      category: DynamicPhysicalThingCategory = None) \
+        -> DynamicPhysicalThing:
+    return DynamicPhysicalThing(**_dynamic_physical_thing_props_from_json(json, attribute_objects,
+                                                                          category))
+
+
+def dynamic_physical_thing_from_json(json: dict, attribute_objects: DMObjects = None,
+                                     category: DynamicPhysicalThingCategory = None) \
         -> DynamicPhysicalThing:
     """ Get DynamicPhysicalThing object from JSON code
 
@@ -81,9 +98,9 @@ def dynamic_physical_thing_from_json(json: dict, category: DynamicPhysicalThingC
     need to be defined in the JSON code.
 
     :param json: JSON code of DynamicPhysicalThing.
+    :param attribute_objects: A structure for storing all objects (optional).
     :param category: If given, it will not be based on the JSON code.
     :return: DynamicPhysicalThing object.
     """
-    if category is None:
-        category = dynamic_physical_thing_category_from_json(json["category"])
-    return DynamicPhysicalThing(category, **_dynamic_physical_thing_props_from_json(json))
+    return _object_from_json(json, _dynamic_physical_thing_from_json, "dynamic_physical_thing",
+                             attribute_objects, category=category)
