@@ -4,11 +4,13 @@ Creation date: 2020 08 24
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 10 05: Change way of creating object from JSON code.
 """
 
 from .static_physical_thing_category import StaticPhysicalThingCategory, \
-    static_physical_thing_category_from_json
+    _static_physical_thing_category_from_json
 from .physical_thing import PhysicalThing, _physical_thing_props_from_json
+from .thing import DMObjects, _object_from_json, _attributes_from_json
 from .type_checking import check_for_type
 
 
@@ -52,11 +54,25 @@ class StaticPhysicalThing(PhysicalThing):
         return static_physical_thing
 
 
-def _static_physical_thing_props_from_json(json: dict) -> dict:
-    return _physical_thing_props_from_json(json)
+def _static_physical_thing_props_from_json(json: dict, attribute_objects: DMObjects,
+                                           category: StaticPhysicalThingCategory = None) -> dict:
+    props = _physical_thing_props_from_json(json)
+    props.update(_attributes_from_json(json, attribute_objects,
+                                       dict(category=(_static_physical_thing_category_from_json,
+                                                      "static_physical_thing_category")),
+                                       category=category))
+    return props
 
 
-def static_physical_thing_from_json(json: dict, category: StaticPhysicalThingCategory = None) \
+def _static_physical_thing_from_json(json: dict, attribute_objects: DMObjects,
+                                     category: StaticPhysicalThingCategory = None) \
+        -> StaticPhysicalThing:
+    return StaticPhysicalThing(**_static_physical_thing_props_from_json(json, attribute_objects,
+                                                                        category))
+
+
+def static_physical_thing_from_json(json: dict, attribute_objects: DMObjects = None,
+                                    category: StaticPhysicalThingCategory = None) \
         -> StaticPhysicalThing:
     """ Get StaticPhysicalThing object from JSON code
 
@@ -67,9 +83,9 @@ def static_physical_thing_from_json(json: dict, category: StaticPhysicalThingCat
     need to be defined in the JSON code.
 
     :param json: JSON code of StaticPhysicalThing.
+    :param attribute_objects: A structure for storing all objects (optional).
     :param category: If given, it will not be based on the JSON code.
     :return: DynamicPhysicalThing object.
     """
-    if category is None:
-        category = static_physical_thing_category_from_json(json["category"])
-    return StaticPhysicalThing(category, **_static_physical_thing_props_from_json(json))
+    return _object_from_json(json, _static_physical_thing_from_json, "static_physical_thing",
+                             attribute_objects, category=category)
