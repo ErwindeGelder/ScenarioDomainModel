@@ -103,6 +103,24 @@ def acc_hdm_lead_braking_pars(**kwargs):
     return parameters
 
 
+def rtbm_lead_braking_pars(**kwargs):
+    """ Define the parameters for the RTBM model.
+
+    :return: Parameter object that can be passed via init_simulation.
+    """
+    init_speed = kwargs["v0"]
+    safety_distance = 2
+    default_parameters = ACCHDMParameters()
+    thw = default_parameters.thw
+    init_distance = safety_distance + init_speed * thw
+    parameters = ACCHDMParameters(speed=init_speed,
+                                  init_speed=init_speed,
+                                  init_position=-init_distance,
+                                  n_reaction=0,
+                                  driver_parms=hdm_lead_braking_pars(**kwargs))
+    return parameters
+
+
 def cacc_lead_braking_pars(**kwargs):
     """ Define the CACC parameters of the follower based on scenario parameters.
 
