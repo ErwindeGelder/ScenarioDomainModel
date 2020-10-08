@@ -90,7 +90,7 @@ class StandardModel(ABC):
 
         :param gap: Gap with preceding vehicle.
         :param vhost: Speed of host vehicle.
-        :param vdiff: Difference in speed between leading and host vehicle.
+        :param vdiff: Speed of host vehicle minus speed leading vehicle.
         :return: The acceleration.
         """
 
