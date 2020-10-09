@@ -28,14 +28,6 @@ Introducing the concept of scenario categories brings the following benefits \au
 	This is easier because scenario categories are discrete by nature whereas scenarios are continuous. See \autocite{degelder2019completeness} for more details.
 \end{itemize}
 
-\setlength{\venncircle}{4em}
-\begin{figure}[t]
-	\centering
-	\input{figures/venn_diagrams.tikz}
-	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$.}
-	\label{fig:venn diagram scenario category}
-\end{figure}
-
 To describe the relation between a scenario and a scenario category, the verb ``to comprise'' is used \autocite{degelder2020ontology}.
 If a specific scenario category $\scenariocategory$ is an abstraction of a specific scenario $\scenario$, then we say that the specific scenario category $\scenariocategory$ comprises that specific $\scenario$. 
 To describe the relation between two scenario categories, the verb ``to include'' is used \autocite{degelder2020ontology}. 
@@ -46,6 +38,14 @@ The following principles apply for these relations:
 	\item Multiple scenario categories can comprise a specific scenario, e.g., in \cref{fig:venn diagram scenario category}, both $\scenariocategorya$ and $\scenariocategoryb$ comprise $\scenariob$. 
 	\item A scenario category includes another scenario category if it comprises all scenarios that the other scenario category comprises, e.g., in \cref{fig:venn diagram scenario category}, $\scenariocategoryb$ includes $\scenariocategorya$.
 \end{itemize}
+
+\setlength{\venncircle}{6em}
+\begin{figure}[h]
+	\centering
+	\input{figures/venn_diagrams.tikz}
+	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$.}
+	\label{fig:venn diagram scenario category}
+\end{figure}
 
 
 
@@ -82,7 +82,7 @@ We use the term scenario for a description of a situation that can happen or has
 \setlength{\realworldwidth}{15em}
 \setlength{\realworldheight}{9em}
 \tikzstyle{thickness}=[ultra thick]
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	\begin{tikzpicture}	
 		% Test cases?
