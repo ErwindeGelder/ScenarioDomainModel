@@ -23,6 +23,7 @@ Modifications:
 2020 08 24: Enable instantiation of ScenarioCategory from json without needing full json code.
 2020 08 25: Add comprises() function.
 2020 10 04: Change way of creating object from JSON code.
+2020 10 12: Remove Dynamic/StaticPhysicalThing and use PhysicalThing instead.
 """
 
 from __future__ import annotations
@@ -33,12 +34,9 @@ from .activity import Activity
 from .activity_category import ActivityCategory, _activity_category_from_json
 from .actor import Actor
 from .actor_category import ActorCategory, _actor_category_from_json
-from .dynamic_physical_thing import DynamicPhysicalThing
-from .dynamic_physical_thing_category import DynamicPhysicalThingCategory, \
-    _dynamic_physical_thing_category_from_json
+from .physical_thing import PhysicalThing
+from .physical_thing_category import PhysicalThingCategory, _physical_thing_category_from_json
 from .qualitative_thing import QualitativeThing, _qualitative_thing_props_from_json
-from .static_physical_thing_category import StaticPhysicalThingCategory, \
-    _static_physical_thing_category_from_json
 from .thing import DMObjects, _attributes_from_json, _object_from_json
 from .type_checking import check_for_type, check_for_list, check_for_tuple
 
@@ -67,12 +65,10 @@ class ScenarioCategory(QualitativeThing):
         description (str): A description of the scenario class. The objective of
             the description is to make the scenario class human interpretable.
         image (str): Path to image that schematically shows the class.
-        static_physical_things (List[StaticPhysicalThingCategory]): Static
-            environment of the Scenario.
         activities (List[ActivityCategory]): List of activities that
             are used for this ScenarioCategory.
-        dynamic_physical_thing (List[DynamicPhysicalThingCategories]): List of
-            dynamic physical things that participate in the Scenario.
+        physical_things (List[PhysicalThingCategories]): List of physical things
+            that participate in the Scenario. Could be both static and dynamic.
         actors (List[ActorCategory]): List of actors that participate in the
             Scenario.
         acts (List[Tuple[ActorCategory, ActivityCategory]]): The acts describe
@@ -92,16 +88,13 @@ class ScenarioCategory(QualitativeThing):
         QualitativeThing.__init__(self, description=description, **kwargs)
         self.image = image
         self.activities = []  # Type: List[ActivityCategory]
-        self.static_physical_things = []  # Type: List[StaticPhysicalThingCategory]
-        self.dynamic_physical_things = []  # Type: List[DynamicPhysicalThingCategories]
+        self.physical_things = []  # Type: List[PhysicalThingCategory]
         self.actors = []  # Type: List[ActorCategory]
         self.acts = []  # Type: List[Tuple[ActorCategory, ActivityCategory]]
 
         # Set attributes if provided by kwargs.
-        if "static_physical_thing_categories" in kwargs:
-            self.set_static_physical_things(kwargs["static_physical_thing_categories"])
-        if "dynamic_physical_thing_categories" in kwargs:
-            self.set_dynamic_physical_things(kwargs["dynamic_physical_thing_categories"])
+        if "physical_thing_categories" in kwargs:
+            self.set_physical_things(kwargs["physical_thing_categories"])
         if "actor_categories" in kwargs:
             self.set_actors(kwargs["actor_categories"])
         if "activity_categories" in kwargs:
@@ -113,21 +106,20 @@ class ScenarioCategory(QualitativeThing):
         # Maximum number of characters that are used when printing the general description
         self.maxprintlength = 80
 
-    def set_static_physical_things(
-            self, static_physical_things: List[StaticPhysicalThingCategory]) -> None:
-        """ Set the static physical things
+    def set_physical_things(self, physical_things: List[PhysicalThingCategory]) -> None:
+        """ Set the physical things
 
         Check whether the physical things are correctly defined.
 
-        :param static_physical_things: List of static physical thing categories
-            that define the static environment qualitatively.
+        :param physical_things: List of physical thing categories that define
+            the static environment and part of the dynamic environment
+            qualitatively.
         """
         # Check whether the static physical things are correctly defined.
-        check_for_list("static_physical_things", static_physical_things,
-                       StaticPhysicalThingCategory, can_be_none=False)
+        check_for_list("physical_things", physical_things, PhysicalThingCategory, can_be_none=False)
 
         # Assign static physical thing categories to an attribute.
-        self.static_physical_things = static_physical_things
+        self.physical_things = physical_things
 
     def set_activities(self, activity_categories: List[ActivityCategory]) -> None:
         """ Set the activities
@@ -144,24 +136,6 @@ class ScenarioCategory(QualitativeThing):
         # Assign activity categories to an attribute.
         self.activities = activity_categories  # Type: List[ActivityCategory]
 
-    def set_dynamic_physical_things(
-            self, dynamic_physical_things: List[DynamicPhysicalThingCategory]) -> None:
-        """ Set the dynamic physical things
-
-        Check whether the dynamic physical things are correctly defined. Dynamic
-        physical things should be a list with instantiations of
-        DynamicPhysicalThingCategory.
-
-        :param dynamic_physical_things: List of dynamic physical things that
-            participate in the Scenario.
-        """
-        # Check whether the actors are correctly defined.
-        check_for_list("dynamic_physical_things", dynamic_physical_things,
-                       DynamicPhysicalThingCategory, can_be_none=False)
-
-        # Assign actor categories to an attribute.
-        self.dynamic_physical_things = dynamic_physical_things
-
     def set_actors(self, actor_categories: List[ActorCategory]) -> None:
         """ Set the actors
 
@@ -177,44 +151,39 @@ class ScenarioCategory(QualitativeThing):
         # Assign actor categories to an attribute.
         self.actors = actor_categories  # Type: List[ActorCategory]
 
-    def set_acts(self, acts_scenario_category: List[Tuple[DynamicPhysicalThingCategory,
-                                                          ActivityCategory]],
+    def set_acts(self, acts_scenario_category: List[Tuple[ActorCategory, ActivityCategory]],
                  verbose: bool = True) -> None:
         """ Set the acts
 
         Check whether the acts are correctly defined. Each act should be a tuple
-        with a dynamic physical thing and an activity category, i.e.,
-        (DynamicPhysicalThingCategory, ActivityCategory). Acts is a list
-        containing multiple tuples
-        (DynamicPhysicalThingCategory, ActivityCategory).
+        with a physical thing and an activity category, i.e.,
+        (ActorCategory, ActivityCategory). Acts is a list
+        containing multiple tuples (ActorCategory, ActivityCategory).
 
-        :param acts_scenario_category: The acts describe which dynamic physical
-            things perform which activities. The dynamic physical things and
-            activities that are used in acts should also be passed with the
-            dynamic physical things and activities arguments. If not, a warning
-            will be shown and the corresponding dynamic physical thing/activity
-            will be added to the list of dynamic physical thing/activities.
+        :param acts_scenario_category: The acts describe which actors perform
+            which activities. The actors and activities that are used in acts
+            should also be passed with the actors and activities arguments. If
+            not, a warning will be shown and the corresponding actor/activity
+            will be added to the list of actors/activities.
         :param verbose: Set to False if warning should be surpressed.
         """
         check_for_list("acts", acts_scenario_category, tuple)
         for act in acts_scenario_category:
-            check_for_tuple("act", act, (DynamicPhysicalThingCategory, ActivityCategory))
+            check_for_tuple("act", act, (ActorCategory, ActivityCategory))
 
         # Set the acts.
         self.acts = acts_scenario_category
-        _check_acts(self.acts, self.dynamic_physical_things, self.actors, self.activities,
-                    verbose=verbose)
+        _check_acts(self.acts, self.actors, self.activities, verbose=verbose)
 
     def derived_tags(self) -> dict:
         """ Return all tags, including the tags of the attributes.
 
         The ScenarioCategory has tags, but also its attributes can have tags.
-        More specifically, the each StaticPhysicalThingCategory, ActorCategory,
-        DynamicPhysicalThingCategory, and ActivityCategory might have tags. A
-        dictionary will be returned. Each item of the dictionary contains a list
-        of tags corresponding to either the own object (i.e., ScenarioCategory),
-        an StaticPhysicalThingCategory, ActorCategory, or
-        DynamicPhysicalThingCategory.
+        More specifically, the each PhysicalThingCategory, ActorCategory, and
+        ActivityCategory might have tags. A dictionary will be returned. Each
+        item of the dictionary contains a list of tags corresponding to either
+        the own object (i.e., ScenarioCategory), a PhysicalThingCategory, or an
+        ActorCategory.
 
         The tags that might be associated with the ActivityCategory are returned
         with the ActorCategory if the corresponding ActorCategory is performing
@@ -229,17 +198,14 @@ class ScenarioCategory(QualitativeThing):
         if self.tags:
             tags["{:s}::ScenarioCategory".format(self.name)] = self.tags
 
-        # Provide the tags for each DynamicPhysicalThingCategory.
-        tags = derive_actor_tags(self.dynamic_physical_things, self.acts, tags=tags)
-
         # Provide the tags for each ActorCategory.
         tags = derive_actor_tags(self.actors, self.acts, tags=tags)
 
-        # Provide the tags for each StaticPhysicalThingCategory.
-        for static_physical_thing in self.static_physical_things:
-            if static_physical_thing.tags:
-                tags["{:s}::StaticPhysicalThingCategory".format(static_physical_thing.name)] = \
-                    static_physical_thing.tags
+        # Provide the tags for each PhysicalThingCategory.
+        for physical_thing in self.physical_things:
+            if physical_thing.tags:
+                tags["{:s}::PhysicalThingCategory".format(physical_thing.name)] = \
+                    physical_thing.tags
 
         # Return the tags.
         return tags
@@ -267,8 +233,7 @@ class ScenarioCategory(QualitativeThing):
 
         # Check for the actors, dynamic physical things, and static physical things.
         if not _check_multiple_tags(own_tags, other_tags, "ActorCategory") or \
-                not _check_multiple_tags(own_tags, other_tags, "DynamicPhysicalThingCategory") or \
-                not _check_multiple_tags(own_tags, other_tags, "StaticPhysicalThingCategory"):
+                not _check_multiple_tags(own_tags, other_tags, "PhysicalThingCategory"):
             return False
         return True
 
@@ -295,10 +260,8 @@ class ScenarioCategory(QualitativeThing):
 
         # Check for the actors, dynamic physical things, and static physical things.
         if not _check_multiple_tags(own_tags, other_tags, "ActorCategory", "Actor") or \
-                not _check_multiple_tags(own_tags, other_tags, "DynamicPhysicalThingCategory",
-                                         "DynamicPhysicalThing") or \
-                not _check_multiple_tags(own_tags, other_tags, "StaticPhysicalThingCategory",
-                                         "StaticPhysicalThing"):
+                not _check_multiple_tags(own_tags, other_tags, "PhysicalThingCategory",
+                                         "PhysicalThing"):
             return False
         return True
 
@@ -331,18 +294,15 @@ class ScenarioCategory(QualitativeThing):
     def to_json(self) -> dict:
         scenario_category = QualitativeThing.to_json(self)
         scenario_category["image"] = self.image
-        scenario_category["static_physical_thing_categories"] = \
-            [dict(name=thing.name, uid=thing.uid) for thing in self.static_physical_things]
-        scenario_category["dynamic_physical_thing_categories"] = \
-            [dict(name=thing.name, uid=thing.uid) for thing in self.dynamic_physical_things]
+        scenario_category["physical_thing_categories"] = \
+            [dict(name=thing.name, uid=thing.uid) for thing in self.physical_things]
         scenario_category["actor_categories"] = [dict(name=actor.name, uid=actor.uid)
                                                  for actor in self.actors]
         scenario_category["activity_categories"] = [dict(name=activity.name, uid=activity.uid)
                                                     for activity in self.activities]
         scenario_category["acts"] = []
-        for dynamic_thing, activity in self.acts:
-            key_name = "actor" if isinstance(dynamic_thing, ActorCategory) else "dynamic_thing"
-            scenario_category["acts"].append({key_name: dynamic_thing.uid,
+        for actor, activity in self.acts:
+            scenario_category["acts"].append({"actor": actor.uid,
                                               "activity": activity.uid})
         scenario_category["derived_tags"] = self.derived_tags()
         for key, tags in scenario_category["derived_tags"].items():
@@ -351,10 +311,8 @@ class ScenarioCategory(QualitativeThing):
 
     def to_json_full(self) -> dict:
         scenario_category = self.to_json()
-        scenario_category["static_physical_thing_categories"] = \
-            [thing.to_json_full() for thing in self.static_physical_things]
-        scenario_category["dynamic_physical_thing_categories"] = \
-            [thing.to_json_full() for thing in self.dynamic_physical_things]
+        scenario_category["physical_thing_categories"] = [thing.to_json_full() for thing in
+                                                          self.physical_things]
         scenario_category["actor_categories"] = [actor.to_json_full() for actor in
                                                  self.actors]
         scenario_category["activity_categories"] = [activity.to_json_full() for activity in
@@ -362,25 +320,20 @@ class ScenarioCategory(QualitativeThing):
         return scenario_category
 
 
-def _check_acts(acts: Union[List[Tuple[DynamicPhysicalThingCategory, ActivityCategory]],
-                            List[Tuple[DynamicPhysicalThing, Activity]]],
-                dynamic_physical_things: Union[List[DynamicPhysicalThingCategory],
-                                               List[DynamicPhysicalThing]],
+def _check_acts(acts: Union[List[Tuple[ActorCategory, ActivityCategory]],
+                            List[Tuple[Actor, Activity]]],
                 actors: Union[List[ActorCategory], List[Actor]],
                 activities: Union[List[ActivityCategory], List[Activity]],
                 verbose: bool = True):
     # Check whether the actors/activities defined with the acts are already listed. If not,
     # the corresponding actor/activity will be added and a warning will be shown.
     for thing, activity in acts:
-        if thing not in actors + dynamic_physical_things:
+        if thing not in actors:
             if verbose:
-                print("Actor/dynamic physical thing with name '{:s}' ".format(thing.name) +
+                print("Actor with name '{:s}' ".format(thing.name) +
                       "is used with acts but not defined in the list of actors.")
                 print("Therefore, the actor is added to the list of actors.")
-            if isinstance(thing, ActorCategory):
-                actors.append(thing)
-            else:
-                dynamic_physical_things.append(thing)
+            actors.append(thing)
         if activity not in activities:
             if verbose:
                 print("Activity with name '{:s}' is used with acts but".format(activity.name) +
@@ -394,15 +347,12 @@ def _scenario_category_props_from_json(json: dict, attribute_objects: DMObjects,
     props["image"] = json["image"]
     props.update(_attributes_from_json(
         json, attribute_objects,
-        dict(static_physical_thing_categories=(_static_physical_thing_category_from_json,
-                                               "static_physical_thing_category"),
-             dynamic_physical_thing_categories=(_dynamic_physical_thing_category_from_json,
-                                                "dynamic_physical_thing_category"),
+        dict(physical_thing_categories=(_physical_thing_category_from_json,
+                                        "physical_thing_category"),
              actor_categories=(_actor_category_from_json, "actor_category"),
              activity_categories=(_activity_category_from_json, "activity_category")),
         **kwargs))
-    props["acts"] = _get_acts(json, props["static_physical_thing_categories"],
-                              props["actor_categories"], props["activity_categories"])
+    props["acts"] = _get_acts(json, props["actor_categories"], props["activity_categories"])
     return props
 
 
@@ -423,10 +373,8 @@ def scenario_category_from_json(json: dict, attribute_objects: DMObjects = None,
     categories, actor categories, and activity categories can be passed as
     arguments.
     Further optional arguments (provided by kwargs) are:
-    - static_physical_things (List[StaticPhysicalThingCategory]): The static
-        physical thing categories.
-    - dynamic_physical_things (List[DynamicPhysicalThingCategory]): The dynamic
-        physical thing categories.
+    - physical_things (List[PhysicalThingCategory]): The dynamic physical thing
+        categories.
     - actors (List[ActorCategory]): The actor categories.
     - activities (List[ActivityCategory]): The activity categories.
     For all these arguments: If given, it will not be based on the JSON code.
@@ -439,18 +387,16 @@ def scenario_category_from_json(json: dict, attribute_objects: DMObjects = None,
                              attribute_objects, **kwargs)
 
 
-def derive_actor_tags(dynamic_things: List, acts: List, tags: dict = None) -> dict:
+def derive_actor_tags(physical_things: List, acts: List, tags: dict = None) -> dict:
     """ Derive the tags that are associated with the actors.
 
-    The tags of an DynamicPhysicalThing(Category) or Actor(Category) will be
-    added to the dictionary "tags". The key equals <name of actor>::<class>,
-    where class is supposed to be either DynamicPhysicalThing,
-    DynamicPhysicalThingCategory, Actor, or ActorCategory, whereas the value
-    will be the list of tags that are associated with the dynamic physical
-    thing.
+    The tags of a PhysicalThing(Category) or Actor(Category) will be added to
+    the dictionary "tags". The key equals <name of actor>::<class>, where class
+    is supposed to be either PhysicalThing, PhysicalThingCategory, Actor, or
+    ActorCategory, whereas the value will be the list of tags that are
+    associated with the physical thing.
 
-    :param dynamic_things: The dynamic physical things of the
-        Scenario(Category).
+    :param physical_things: The physical things of the Scenario(Category).
     :param acts: The acts of the Scenario(Category).
     :param tags: Initial tags that will be amended with tags of the actors.
     :return: Dictionary with each actor as a key and the corresponding values
@@ -460,30 +406,29 @@ def derive_actor_tags(dynamic_things: List, acts: List, tags: dict = None) -> di
     if tags is None:
         tags = {}
 
-    for dynamic_thing in dynamic_things:
-        actor_tags = dynamic_thing.get_tags()
+    for physical_thing in physical_things:
+        actor_tags = physical_thing.get_tags()
         for act in acts:
-            if act[0] == dynamic_thing:
+            if act[0] == physical_thing:
                 actor_tags += act[1].get_tags()
         if actor_tags:
-            if isinstance(dynamic_thing, ActorCategory):
+            if isinstance(physical_thing, ActorCategory):
                 class_name = "ActorCategory"
-            elif isinstance(dynamic_thing, Actor):
+            elif isinstance(physical_thing, Actor):
                 class_name = "Actor"
-            elif isinstance(dynamic_thing, DynamicPhysicalThingCategory):
-                class_name = "DynamicPhysicalThingCategory"
-            elif isinstance(dynamic_thing, DynamicPhysicalThing):
-                class_name = "DynamicPhysicalThing"
+            elif isinstance(physical_thing, PhysicalThingCategory):
+                class_name = "PhysicalThingCategory"
+            elif isinstance(physical_thing, PhysicalThing):
+                class_name = "PhysicalThing"
             else:
-                raise TypeError("Dynamic physical thing is of type " +
-                                "'{}' while it should be of type ".format(type(dynamic_thing)) +
-                                "DynamicPhysicalThingCategory, DynamicPhysicalThing, " +
-                                "ActorCategory, or Actor.")
-            key = "{:s}::{:s}".format(dynamic_thing.name, class_name)
+                raise TypeError("Physical thing is of type " +
+                                "'{}' while it should be of type ".format(type(physical_thing)) +
+                                "PhysicalThingCategory, PhysicalThing, ActorCategory, or Actor.")
+            key = "{:s}::{:s}".format(physical_thing.name, class_name)
             i = 1
             while key in tags:  # Make sure that a unique key is used.
                 i += 1
-                key = "{:s}{:d}::{:s}".format(dynamic_thing.name, i, class_name)
+                key = "{:s}{:d}::{:s}".format(physical_thing.name, i, class_name)
             tags[key] = list(set(actor_tags))  # list(set()) makes sure that tags are unique.
     return tags
 
@@ -593,15 +538,11 @@ def _print_tags(derived_tags: dict) -> str:
     return string
 
 
-def _get_acts(json, dynamic_physical_things, actors, activities):
-    dynamic_thing_uids = [dynamic_thing.uid for dynamic_thing in dynamic_physical_things]
+def _get_acts(json, actors, activities):
     actor_uids = [actor.uid for actor in actors]
     activity_uids = [activity.uid for activity in activities]
     acts = []
     for act in json["acts"]:
-        if "actor" in act:
-            dynamic_thing = actors[actor_uids.index(act["actor"])]
-        else:
-            dynamic_thing = dynamic_physical_things[dynamic_thing_uids.index(act["dynamic_thing"])]
-        acts.append((dynamic_thing, activities[activity_uids.index(act["activity"])]))
+        acts.append((actors[actor_uids.index(act["actor"])],
+                     activities[activity_uids.index(act["activity"])]))
     return acts
