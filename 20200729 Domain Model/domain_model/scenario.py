@@ -20,16 +20,16 @@ Modifications:
 2020 08 24: Enable instantiation of Scenario from json without needing full json code.
 2020 08 25: Add functionality to evaluate the state variables (+derivatives) at given times.
 2020 10 05: Change way of creating object from JSON code.
+2020 10 12: Remove Dynamic/StaticPhysicalThing and use PhysicalThing instead.
 """
 
 from typing import Callable, List, Tuple, Union
 import numpy as np
 from .activity import Activity, _activity_from_json
 from .actor import Actor, _actor_from_json
-from .dynamic_physical_thing import DynamicPhysicalThing, _dynamic_physical_thing_from_json
+from .physical_thing import PhysicalThing, _physical_thing_from_json
 from .scenario_category import derive_actor_tags, _check_acts, _print_tags, _get_acts
 from .state_variable import StateVariable
-from .static_physical_thing import StaticPhysicalThing, _static_physical_thing_from_json
 from .time_interval import TimeInterval, _time_interval_props_from_json
 from .thing import DMObjects, _attributes_from_json, _object_from_json
 from .type_checking import check_for_list, check_for_tuple
@@ -51,10 +51,8 @@ class Scenario(TimeInterval):
     respectively.
 
     Attributes:
-        static_physical_things (List[StaticPhysicalThings]): All the things that
-            make up the static environment.
-        dynamic_physical_things (List[DynamicPhysicalThing]): All dynamic
-            physical things that are no actors.
+        physical_things (List[PhysicalThings]): All the things that make up the
+            static environment and part of the dynamic environment.
         actors (List[Actor]): Actors that are participating in this scenario.
             This list should always include the ego vehicle.
         activities (List[Activity]): Activities that are relevant for this
@@ -73,17 +71,14 @@ class Scenario(TimeInterval):
     def __init__(self, **kwargs):
         # Assign the attributes
         TimeInterval.__init__(self, **kwargs)
-        self.static_physical_things = []   # Type: List[StaticPhysicalThing]
-        self.dynamic_physical_things = []  # Type: List[DynamicPhysicalThing]
+        self.physical_things = []          # Type: List[PhysicalThing]
         self.actors = []                   # Type: List[Actor]
         self.activities = []               # Type: List[Activity]
         self.acts = []                     # Type: List[tuple(DynamicPhysicalThing, Activity)]
 
         # Set attributes if provided by kwargs.
-        if "static_physical_things" in kwargs:
-            self.set_static_physical_things(kwargs["static_physical_things"])
-        if "dynamic_physical_things" in kwargs:
-            self.set_dynamic_physical_things(kwargs["dynamic_physical_things"])
+        if "physical_things" in kwargs:
+            self.set_physical_things(kwargs["physical_things"])
         if "actors" in kwargs:
             self.set_actors(kwargs["actors"])
         if "activities" in kwargs:
@@ -91,20 +86,18 @@ class Scenario(TimeInterval):
         if "acts" in kwargs:
             self.set_acts(kwargs["acts"])
 
-    def set_static_physical_things(self, static_physical_things: List[StaticPhysicalThing]) -> None:
-        """ Set the static physical things.
+    def set_physical_things(self, physical_things: List[PhysicalThing]) -> None:
+        """ Set the physical things.
 
-        Check whether the static physical things are correctly defined.
+        Check whether the physical things are correctly defined.
 
-        :param static_physical_things: List of static physical things that
-            define the static environment.
+        :param physical_things: List of physical things.
         """
-        # Check whether the static physical things are correctly defined.
-        check_for_list("static_physical_things", static_physical_things, StaticPhysicalThing,
-                       can_be_none=False)
+        # Check whether the physical things are correctly defined.
+        check_for_list("physical_things", physical_things, PhysicalThing, can_be_none=False)
 
         # Assign static physical things to an attribute.
-        self.static_physical_things = static_physical_things
+        self.physical_things = physical_things
 
     def set_activities(self, activities: List[Activity]) -> None:
         """ Set the activities.
@@ -120,24 +113,6 @@ class Scenario(TimeInterval):
         # Assign actitivies to an attribute.
         self.activities = activities  # Type: List[Activity]
 
-    def set_dynamic_physical_things(self, dynamic_physical_things: List[DynamicPhysicalThing]) \
-            -> None:
-        """ Set the dynamic physical things.
-
-        Check whether the dynamic physical things are correctly defined. The
-        dynamic physical things are physical things that have at least one state
-        variable that changes while having no intent. For dynamic physical
-        things with intent, see `set_actors()`.
-
-        :param dynamic_physical_things: List of dynamic physical things.
-        """
-        # Check whether the static physical things are correctly defined.
-        check_for_list("dynamic_physical_things", dynamic_physical_things, DynamicPhysicalThing,
-                       can_be_none=False)
-
-        # Assign static physical things to an attribute.
-        self.dynamic_physical_things = dynamic_physical_things
-
     def set_actors(self, actors: List[Actor]) -> None:
         """ Set the actors.
 
@@ -152,14 +127,12 @@ class Scenario(TimeInterval):
         # Assign actors to an attribute.
         self.actors = actors  # Type: List[Actor]
 
-    def set_acts(self, acts_scenario: List[Tuple[DynamicPhysicalThing, Activity]],
-                 verbose: bool = True) -> None:
+    def set_acts(self, acts_scenario: List[Tuple[Actor, Activity]], verbose: bool = True) -> None:
         """ Set the acts
 
         Check whether the acts are correctly defined. Each act should be a tuple
-        with an actor, an activity, and a starting time, i.e., (Actor, Activity,
-        float). Acts is a list containing multiple tuples (Actor, Activity,
-        float).
+        with an actor and an activity, i.e., (Actor, Activity). Acts is a list
+        containing multiple tuples (Actor, Activity).
 
         :param acts_scenario: The acts describe which actors perform which
             activities and a certain time. The actors and activities that are
@@ -170,15 +143,14 @@ class Scenario(TimeInterval):
         """
         check_for_list("acts", acts_scenario, tuple)
         for act in acts_scenario:
-            check_for_tuple("act", act, (DynamicPhysicalThing, Activity))
+            check_for_tuple("act", act, (Actor, Activity))
 
         # Set the acts.
         self.acts = acts_scenario
 
         # Check whether the actors/activities defined with the acts are already listed. If not,
         # the corresponding actor/activity will be added and a warning will be shown.
-        _check_acts(self.acts, self.dynamic_physical_things, self.actors, self.activities,
-                    verbose=verbose)
+        _check_acts(self.acts, self.actors, self.activities, verbose=verbose)
 
     def derived_tags(self) -> dict:
         """ Return all tags, including the tags of the attributes.
@@ -203,17 +175,14 @@ class Scenario(TimeInterval):
         if self.tags:
             tags["{:s}::Scenario".format(self.name)] = self.tags
 
-        # Provide the tags for each DynamicPhysicalThing.
-        tags = derive_actor_tags(self.dynamic_physical_things, self.acts, tags=tags)
-
         # Provide the tags for each Actor.
         tags = derive_actor_tags(self.actors, self.acts, tags=tags)
 
-        # Provide the tags for each StaticPhysicalThing.
-        for static_physical_thing in self.static_physical_things:
-            if static_physical_thing.get_tags():
-                tags["{:s}::StaticPhysicalThing".format(static_physical_thing.name)] = \
-                    static_physical_thing.get_tags()
+        # Provide the tags for each PhysicalThing.
+        for physical_thing in self.physical_things:
+            if physical_thing.get_tags():
+                tags["{:s}::StaticPhysicalThing".format(physical_thing.name)] = \
+                    physical_thing.get_tags()
 
         # Return the tags.
         return tags
@@ -222,33 +191,31 @@ class Scenario(TimeInterval):
         """ Print the derived tags. """
         print(_print_tags(self.derived_tags()))
 
-    def get_state(self, actor: DynamicPhysicalThing, state: StateVariable,
-                  time: Union[float, List, np.ndarray]) -> Union[None, float, np.ndarray]:
+    def get_state(self, actor: Actor, state: StateVariable, time: Union[float, List, np.ndarray]) \
+            -> Union[None, float, np.ndarray]:
         """ Obtain the values of the state variable at the given time instants.
 
-        :param actor: The actor or dynamic physical thing of which the state
-            variable is to be retrieved.
+        :param actor: The actor of which the state variable is to be retrieved.
         :param state: The state variable that is to be retrieved.
         :param time: The time instance(s).
         :return: The value of the state variable at the given time instants.
         """
         return self._get_state(actor, state, time)
 
-    def get_state_dot(self, actor: DynamicPhysicalThing, state: StateVariable,
+    def get_state_dot(self, actor: Actor, state: StateVariable,
                       time: Union[float, List, np.ndarray]) -> Union[None, float, np.ndarray]:
         """ Obtain the derivative of the values of the state variable at the given time instants.
 
-        :param actor: The actor or dynamic physical thing of which the state
-            variable derivative is to be retrieved.
+        :param actor: The actor of which the state variable derivative is to be
+            retrieved.
         :param state: The state variable that is to be retrieved.
         :param time: The time instance(s).
         :return: The value of the state variable at the given time instants.
         """
         return self._get_state(actor, state, time, derivative=True)
 
-    def _get_state(self, actor: DynamicPhysicalThing, state: StateVariable,
-                   time: Union[float, List, np.ndarray], derivative=False) -> \
-            Union[None, float, np.ndarray]:
+    def _get_state(self, actor: Actor, state: StateVariable, time: Union[float, List, np.ndarray],
+                   derivative=False) -> Union[None, float, np.ndarray]:
         vec_time = self._time2vec(time)
         is_valid = False
 
@@ -295,17 +262,14 @@ class Scenario(TimeInterval):
 
     def to_json(self) -> dict:
         scenario = TimeInterval.to_json(self)
-        scenario["static_physical_things"] = [dict(name=thing.name, uid=thing.uid)
-                                              for thing in self.static_physical_things]
-        scenario["dynamic_physical_things"] = [dict(name=thing.name, uid=thing.uid)
-                                               for thing in self.dynamic_physical_things]
+        scenario["physical_things"] = [dict(name=thing.name, uid=thing.uid)
+                                       for thing in self.physical_things]
         scenario["actors"] = [dict(name=actor.name, uid=actor.uid) for actor in self.actors]
         scenario["activities"] = [dict(name=activity.name, uid=activity.uid)
                                   for activity in self.activities]
         scenario["acts"] = []
-        for dynamic_thing, activity in self.acts:
-            key_name = "actor" if isinstance(dynamic_thing, Actor) else "dynamic_thing"
-            scenario["acts"].append({key_name: dynamic_thing.uid, "activity": activity.uid})
+        for actor, activity in self.acts:
+            scenario["acts"].append({"actor": actor.uid, "activity": activity.uid})
         scenario["derived_tags"] = self.derived_tags()
         for key, tags in scenario["derived_tags"].items():
             scenario["derived_tags"][key] = [tag.to_json() for tag in tags]
@@ -314,10 +278,7 @@ class Scenario(TimeInterval):
     def to_json_full(self) -> dict:
         scenario = self.to_json()
         scenario.update(TimeInterval.to_json_full(self))
-        scenario["static_physical_things"] = [thing.to_json_full()
-                                              for thing in self.static_physical_things]
-        scenario["dynamic_physical_things"] = [thing.to_json_full()
-                                               for thing in self.dynamic_physical_things]
+        scenario["physical_things"] = [thing.to_json_full() for thing in self.physical_things]
         scenario["actors"] = [actor.to_json_full() for actor in self.actors]
         scenario["activities"] = [activity.to_json_full() for activity in self.activities]
         return scenario
@@ -329,13 +290,11 @@ def _scenario_props_from_json(json: dict, attribute_objects: DMObjects, **kwargs
                                            end=None if "end" not in kwargs else kwargs["end"])
     props.update(_attributes_from_json(
         json, attribute_objects,
-        dict(static_physical_things=(_static_physical_thing_from_json, "static_physical_thing"),
-             dynamic_physical_things=(_dynamic_physical_thing_from_json, "dynamic_physical_thing"),
+        dict(physical_things=(_physical_thing_from_json, "physical_thing"),
              actors=(_actor_from_json, "actor"),
              activities=(_activity_from_json, "activity")),
         **kwargs))
-    props["acts"] = _get_acts(json, props["static_physical_things"], props["actors"],
-                              props["activities"])
+    props["acts"] = _get_acts(json, props["actors"], props["activities"])
     return props
 
 
@@ -351,11 +310,9 @@ def scenario_from_json(json: dict, attribute_objects: DMObjects = None, **kwargs
     arguments are allowed:
     - start: The start event.
     - end: The end event.
-    - static_physical_thing: The static physical things that define the static
+    - physical_thing: The static physical things that define the static
         environment.
-    - dynamic_physical_thing: The dynamic physical things that do not have an
-        intent.
-    - actor: The dynamic physical things that do have an intent.
+    - actor: The physical things that are dynamic.
     - activity: The activities that describe the evolution of the dynamic
         environment.
 
