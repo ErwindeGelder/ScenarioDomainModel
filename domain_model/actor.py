@@ -17,22 +17,23 @@ Modifications:
 2020 08 19: Make Actor a subclass of DynamicPhysicalThing.
 2020 08 22: Add function to obtain properties from a dictionary.
 2020 10 05: Change way of creating object from JSON code.
+2020 10 12: Make Actor a subclass of PhysicalThing instead of DynamicPhysicalThing.
 """
 
 from typing import List
 from .actor_category import ActorCategory, _actor_category_from_json
-from .dynamic_physical_thing import DynamicPhysicalThing, _dynamic_physical_thing_props_from_json
+from .physical_thing import PhysicalThing, _physical_thing_props_from_json
 from .state import State, state_from_json
 from .tags import Tag
 from .thing import DMObjects, _object_from_json, _attributes_from_json
 from .type_checking import check_for_type, check_for_list
 
 
-class Actor(DynamicPhysicalThing):
+class Actor(PhysicalThing):
     """ Actor
 
-    An actor is a dynamic physical thing that can have an intent. "Ego vehicle"
-    and "Other Road User" are types of actors in a scenario.
+    An actor is a physical thing that can have an intent. "Ego vehicle" and
+    "Other Road User" are types of actors in a scenario.
 
     Attributes:
         uid (int): A unique ID.
@@ -48,21 +49,25 @@ class Actor(DynamicPhysicalThing):
                  initial_states: List[State] = None, properties: dict = None, **kwargs):
         # Check the types of the inputs
         check_for_type("actor_category", category, ActorCategory)
+        check_for_list("initial_states", desired_states, State)
         check_for_list("desired_states", desired_states, State)
 
-        DynamicPhysicalThing.__init__(self, category, initial_states, properties, **kwargs)
+        PhysicalThing.__init__(self, category, properties, **kwargs)
+        self.initial_states = [] if initial_states is None else initial_states  # type: List[State]
         self.desired_states = [] if desired_states is None else desired_states  # type: List[State]
 
     def to_json(self) -> dict:
-        actor = DynamicPhysicalThing.to_json(self)
+        actor = PhysicalThing.to_json(self)
+        actor["initial_states"] = [initial_state.to_json() for initial_state in self.initial_states]
         actor["desired_states"] = [desired_state.to_json() for desired_state in self.desired_states]
         return actor
 
 
 def _actor_props_from_json(json: dict, attribute_objects: DMObjects,
                            category: ActorCategory = None) -> dict:
-    props = dict(desired_states=[state_from_json(state) for state in json["desired_states"]])
-    props.update(_dynamic_physical_thing_props_from_json(json, attribute_objects, False))
+    props = dict(initial_states=[state_from_json(state) for state in json["initial_states"]],
+                 desired_states=[state_from_json(state) for state in json["desired_states"]])
+    props.update(_physical_thing_props_from_json(json, attribute_objects, False))
     props.update(_attributes_from_json(json, attribute_objects,
                                        dict(category=(_actor_category_from_json,
                                                       "actor_category")),
