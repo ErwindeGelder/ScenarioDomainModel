@@ -14,6 +14,7 @@ Modifications:
 2020 08 22: Add function to obtain properties from a dictionary.
 2020 08 23: If no uid is given, generate one.
 2020 10 04: Provide functions for creating objects from JSON code.
+2020 10 12: Remove Static/DynamicPhysicalThing(Category) and add PhysicalThing(Category) to objects.
 """
 
 from abc import ABC, abstractmethod
@@ -99,10 +100,8 @@ def _thing_props_from_json(json: dict) -> dict:
 
 
 DMObjects = NamedTuple("dm_objects", [("event", Dict),
-                                      ("static_physical_thing", Dict),
-                                      ("static_physical_thing_category", Dict),
-                                      ("dynamic_physical_thing", Dict),
-                                      ("dynamic_physical_thing_category", Dict),
+                                      ("physical_thing", Dict),
+                                      ("physical_thing_category", Dict),
                                       ("actor", Dict),
                                       ("actor_category", Dict),
                                       ("activity", Dict),
@@ -118,10 +117,8 @@ def get_empty_dm_object() -> NamedTuple:
     :return: The empty NamedTuple in which all objects can be stored.
     """
     return DMObjects(event=dict(),
-                     static_physical_thing=dict(),
-                     static_physical_thing_category=dict(),
-                     dynamic_physical_thing=dict(),
-                     dynamic_physical_thing_category=dict(),
+                     physical_thing=dict(),
+                     physical_thing_category=dict(),
                      actor=dict(),
                      actor_category=dict(),
                      activity=dict(),
