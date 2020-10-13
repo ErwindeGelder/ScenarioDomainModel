@@ -181,8 +181,7 @@ class Scenario(TimeInterval):
         # Provide the tags for each PhysicalThing.
         for physical_thing in self.physical_things:
             if physical_thing.get_tags():
-                tags["{:s}::StaticPhysicalThing".format(physical_thing.name)] = \
-                    physical_thing.get_tags()
+                tags["{:s}::PhysicalThing".format(physical_thing.name)] = physical_thing.get_tags()
 
         # Return the tags.
         return tags
