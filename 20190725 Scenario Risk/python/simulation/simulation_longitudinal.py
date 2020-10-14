@@ -46,10 +46,16 @@ class SimulationLongitudinal(Simulator):
         data = []
         mindist = 100
 
-        # Run the simulation for at least 10 seconds. Stop the simulation if the
+        # Run the simulation for at least some time. Stop the simulation if the
         # distance increases.
         while time < self.min_simulation_time \
                 or prev_dist > self.leader.state.position - self.follower.state.position:
+
+            # Also stop if speed of leader and host are approximately the same.
+            if np.abs(self.leader.state.speed - self.follower.state.speed) < 0.01:
+                if time >= self.min_simulation_time:
+                    break
+
             prev_dist = self.leader.state.position - self.follower.state.position
             mindist = min(prev_dist, mindist)
             time += self.follower.parms.timestep
