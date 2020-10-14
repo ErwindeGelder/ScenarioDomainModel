@@ -37,6 +37,7 @@ class LeaderInteraction:
         self.polycoefficients = (0, 0, 0, 1)
         self.polycoefficients_der = (0, 0, 1)
         self.polycoefficients_int = (0, 0, 0, 0, 1)
+        self.lasttime = 0
 
     def init_simulation(self, parms: LeaderInteractionParameters) -> None:
         """ Initialize the simulation.
@@ -71,6 +72,8 @@ class LeaderInteraction:
                                      self.polycoefficients[2] / 2,
                                      self.polycoefficients[3],
                                      parms.init_position)
+        self.state.position = parms.init_position
+        self.lasttime = 0
 
     def step_simulation(self, time: float) -> None:
         """ Compute the state (position, speed) at time t.
@@ -80,10 +83,15 @@ class LeaderInteraction:
         if time < self.parms.duration:
             self.state.acceleration = np.polyval(self.polycoefficients_der, time)
             self.state.speed = np.polyval(self.polycoefficients, time)
-            self.state.position = np.polyval(self.polycoefficients_int, time)
+            # self.state.position = np.polyval(self.polycoefficients_int, time)
+            if self.state.speed < 0:
+                self.state.speed = 0
+                self.state.acceleration = 0
         else:
             self.state.acceleration = 0
             self.state.speed = self.parms.init_speed + self.parms.speed_difference
-            self.state.position = (np.polyval(self.polycoefficients_int, self.parms.duration) +
-                                   (self.parms.init_speed + self.parms.speed_difference) *
-                                   (time - self.parms.duration))
+            # self.state.position = (np.polyval(self.polycoefficients_int, self.parms.duration) +
+            #                        (self.parms.init_speed + self.parms.speed_difference) *
+            #                        (time - self.parms.duration))
+        self.state.position += self.state.speed * (time - self.lasttime)
+        self.lasttime = time
