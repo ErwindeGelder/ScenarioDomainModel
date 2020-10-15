@@ -21,6 +21,7 @@ Modifications:
 2020 08 25: Add functionality to evaluate the state variables (+derivatives) at given times.
 2020 10 05: Change way of creating object from JSON code.
 2020 10 12: Remove Dynamic/StaticPhysicalThing and use PhysicalThing instead.
+2020 10 15: Add function get_actor_by_name.
 """
 
 from typing import Callable, List, Tuple, Union
@@ -258,6 +259,22 @@ class Scenario(TimeInterval):
         else:
             raise TypeError("<time> needs to be of type <float>, <List>, or <np.ndarray>.")
         return vec_time
+
+    def get_actor_by_name(self, name: str) -> Union[Actor, None]:
+        """ Get the actor with the provided name.
+
+        If there is no actor with the given name, None is returned. Note that
+        as soon as an actor is found with the given name, this actor is retuned.
+        Therefore, this function might fail if there are multiple actors with
+        the same name.
+
+        :param name: The name of the actor that is to be returned.
+        :return: The actor with the given name.
+        """
+        for actor in self.actors:
+            if actor.name == name:
+                return actor
+        return None
 
     def to_json(self) -> dict:
         scenario = TimeInterval.to_json(self)
