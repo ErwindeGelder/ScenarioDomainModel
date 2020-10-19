@@ -167,12 +167,12 @@ class Linear(Model):
 
     def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
         # Set the options correctly
-        options = Model._set_default_options(self, kwargs)
+        options = Model._set_default_options(self, **kwargs)
 
         if options["method"] == "least_squares":
             # Use least squares regression to find the slope of the linear line.
             matrix = np.array([time, np.ones(len(time))]).T
-            regression_result = np.linalg.lstsq(matrix, data)[0]
+            regression_result = np.linalg.lstsq(matrix, data, rcond=None)[0]
             time_begin = np.min(time)
             time_end = np.max(time)
             return {"xstart": regression_result[0]*time_begin + regression_result[1],
@@ -244,7 +244,7 @@ class Spline3Knots(Model):
         return np.concatenate((ydata1, ydata2))
 
     def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
-        options = self._set_default_options(kwargs)
+        options = self._set_default_options(**kwargs)
 
         # Normalize the time
         time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
@@ -253,9 +253,9 @@ class Spline3Knots(Model):
         matrix = np.array([time_normalized**3, time_normalized**2, time_normalized**1,
                            np.ones(len(time_normalized))]).T
         matrix_left_spline = matrix.copy()
-        matrix_left_spline[time >= 0.5] = 0
+        matrix_left_spline[time_normalized >= 0.5] = 0
         matrix_right_spline = matrix.copy()
-        matrix_right_spline[time < 0.5] = 0
+        matrix_right_spline[time_normalized < 0.5] = 0
         matrix = np.concatenate((matrix_left_spline, matrix_right_spline), axis=1)
 
         # Construct the constraint matrix, 3 constraints, 8 coefficients
@@ -310,7 +310,7 @@ class Splines(Model):
         time_normalized = (time - np.min(time)) / (np.max(time) - np.min(time))
 
         # Set options.
-        options = self._set_default_options(kwargs)
+        options = self._set_default_options(**kwargs)
 
         # Set interior knots.
         knots = np.arange(1, options["n_knots"]+1) / (options["n_knots"] + 1)
