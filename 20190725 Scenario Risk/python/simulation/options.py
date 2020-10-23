@@ -1,6 +1,6 @@
 """ Class that does not allow for creating new attributes.
 
-Creation data: 2019 06 26
+Creation date: 2019 06 26
 Author(s): Erwin de Gelder
 
 Modifications:
