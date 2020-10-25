@@ -83,6 +83,25 @@
 \usepackage{xparse}
 \usepackage{siunitx}
 \usepackage[nolist,nohyperlinks]{acronym}
+\makeatletter
+\newcommand*{\org@overidelabel}{}
+\let\org@overridelabel\@verridelabel
+\@ifpackagelater{acronym}{2015/03/21}{% v1.41
+  \renewcommand*{\@verridelabel}[1]{%
+    \@bsphack
+    \protected@write\@auxout{}{\string\AC@undonewlabel{#1@cref}}%
+    \org@overridelabel{#1}%
+    \@esphack
+  }%
+}{% older versions
+  \renewcommand*{\@verridelabel}[1]{%
+    \@bsphack
+    \protected@write\@auxout{}{\string\undonewlabel{#1@cref}}%
+    \org@overridelabel{#1}%
+    \@esphack
+  }%
+}
+\makeatother
 
 \theoremstyle{plain}
 \newtheorem{definition}{Definition}
@@ -209,7 +228,7 @@
 \newcommand{\scenariocategoryb}{\scenariocategory_{2}}
 \newcommand{\scenariocategoryc}{\scenariocategory_{3}}
 \newcommand{\slope}{s}
-\newcommand{\state}{x}
+\newcommand{\state}{z}
 \newcommand{\statedot}{\dot{\state}}
 \newcommand{\stateinit}{\state_{0}}
 \renewcommand{\time}{t}
@@ -217,10 +236,12 @@
 
 % Acronyms
 \begin{acronym}[AAAAAAAA]
-	\acro{odd}[ODD]{Operational Design Domain}
-	\acroindefinite{odd}{an}{an}
 	\acro{av}[AV]{Automated Vehicle}
 	\acroindefinite{av}{an}{an}
+	\acro{odd}[ODD]{Operational Design Domain}
+	\acroindefinite{odd}{an}{an}
+	\acro{oof}[OOF]{Object-Oriented Framework}
+	\acroindefinite{oof}{an}{an}
 \end{acronym}
 
 %\usepackage{changebar}
@@ -232,8 +253,8 @@
 \newcommand{\cendc}{}
 \newcommand{\cstartd}{}  % Changes since September 22, 2020
 \newcommand{\cendd}{}
-\newcommand{\cstarte}{}  % Changes since September 30, 2020
-\newcommand{\cende}{}
+\newcommand{\cstarte}{\color{red}}  % Changes since September 30, 2020
+\newcommand{\cende}{\color{black}}
 %\newcommand{\todo}[1]{\color{red}TODO: #1\color{black}}
 
 %\usepackage{setspace}
@@ -255,22 +276,20 @@
 	    Olaf~Op~den~Camp$^{1}$,
 	    Steven~Kraines$^{4}$,
 	    Jeroen~Ploeg$^{5,6}$,
-	    Ludwig~Friendmann$^{7}$,
 	    Bart~De~Schutter$^{2}$%
 \thanks{$^1$ TNO, Dept.\ of Integrated Vehicle Safety, Helmond, The Netherlands}%
 \thanks{$^2$ Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
 \thanks{$^3$ Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
-\thanks{$^4$ TBD}%
+\thanks{$^4$ Symphony Co.\ Tokyo, Japan}%
 \thanks{$^5$ 2getthere, Utrecht, The Netherlands}%
 \thanks{$^6$ Eindhoven University of Technology, Dept.\ of Mechanical Engineering Dynamics and Control group, Eindhoven, The Netherlands}%
-\thanks{$^7$ BMW Group, Petuelring 130, 80788 Munich, Germany}%
 \thanks{$^*$ Corresponding author: \textit{erwin.degelder@tno.nl}}}%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \maketitle
 \input{sections/abstract}
-
+\acresetall
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{sections/introduction}

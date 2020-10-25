@@ -8,8 +8,8 @@
 	description: A pedestrian is crossing the road \\
 	\leavevmode\phantom{description: }on a zebra crossing in front of the \\
 	\leavevmode\phantom{description: }ego vehicle\\
-	static physical things: Pedestrian crossing\\
-	\leavevmode\phantom{static physical things: }qualitative\\
+	physical element: Pedestrian crossing\\
+	\leavevmode\phantom{physical element: }qualitative\\
 	actors: Ego qualitative, Pedestrian qualitative\\
 	activities: Braking, Stationary, Accelerating, \\
 	\leavevmode\phantom{activities: }Walking straight\\
@@ -52,7 +52,7 @@
 	state variable: Position ($\pednorth$)\\
 	tags: Walking straight};
 
-\node[object, fill=category, below=of walking.south](static physical){{\bfseries Pedestrian crossing qualitative::Static physical thing category}\\
+\node[object, fill=category, below=of walking.south](static physical){{\bfseries Pedestrian crossing qualitative::Physical element category}\\
 	description: Straight road with two lanes and a\\
 	\leavevmode\phantom{description: }pedestrian crossing\\
 	tags: Non-signalized zebra crossing};

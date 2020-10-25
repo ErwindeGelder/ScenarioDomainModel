@@ -5,7 +5,7 @@
 \tikzstyle{every node}=[font=\footnotesize]
 
 \node[object, fill=scenario](scenario){{\bfseries Ego brakes for pedestrian::Scenario}\\
-	static physical things: Pedestrian crossing\\
+	physical element: Pedestrian crossing\\
 	actors: Ego, Pedestrian\\
 	activities: Ego braking, Ego stationary, \\
 	\leavevmode\phantom{activities: }Ego accelerating, Pedestrian walking\\
@@ -18,6 +18,7 @@
 
 \node[object, fill=otherclass, below=of scenario.south](ego){{\bfseries Ego::Actor}\\
 	actor category: Ego qualitative\\
+	properties: \{width=\SI{1.8}{\meter}, length=\SI{4.5}{\meter}\}\\
 	initial state vector: $\egoeast=\SI{-20}{\meter}$, \\
 	\leavevmode\phantom{initial state vector: }$\egonorth=\SI{-1.5}{\meter}$, \\
 	\leavevmode\phantom{initial state vector: }$\egoheading=\ang{90}$\\
@@ -25,6 +26,7 @@
 
 \node[object, fill=otherclass, below=of ego.south](pedestrian){{\bfseries Pedestrian::Actor}\\
 	actor category: Pedestrian qualitative\\
+	properties: \{width=\SI{0.5}{\meter}, color=blue\}\\
 	initial state vector: $\pedeast=\SI{0}{\meter}$, $\pedheading=\ang{0}$\\
 	desired state vector:};
 
@@ -72,10 +74,9 @@
 	\attrtstart: Start scenario \\
 	\attrtend: End scenario};
 
-\node[object, fill=otherclass, below=of pedestrian walking.south](ped crossing){{\bfseries Pedestrian crossing::Static physical thing}\\
-	static physical thing category: pedestrian\\
-	\leavevmode\phantom{static physical thing category: }crossing\\
-	\leavevmode\phantom{static physical thing category: }qualitative\\
+\node[object, fill=otherclass, below=of pedestrian walking.south](ped crossing){{\bfseries Pedestrian crossing::Physical element}\\
+	physical element category: pedestrian crossing\\
+	\leavevmode\phantom{physical element category: }qualitative\\
 	properties: \{road: \{lanes: 2, lanewidth: \SI{3}{\meter}, \\
 	\leavevmode\phantom{properties: \{road: \{}xy: [(-60, 0), (60, 0)]\}, \\
 	\leavevmode\phantom{properties: \{}footway: \{width: \SI{3}{\meter}, \\

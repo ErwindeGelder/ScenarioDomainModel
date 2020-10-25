@@ -36,30 +36,42 @@ Roadside units that communicate with vehicles within the communication range \au
 
 
 
-\cstartc
-\subsection{Static physical thing}
-\label{sec:static physical thing}
-
-A static physical thing is a physical thing that does not experience a (relevant) change during a scenario. All static physical things form the static environment.
+\cstarte
+\subsection{Physical element}
+\label{sec:physical element}
 
 
+A physical element refers to an object that exists in the three-dimensional space.
+\cende
 
-\subsection{Dynamic physical thing}
-\label{sec:dynamic physical thing}
 
-A dynamic physical thing is a physical thing that experiences a (relevant) change during a scenario. 
-\cendc
+%\cstartc
+%\subsection{Static physical thing}
+%\label{sec:static physical thing}
+%
+%A static physical thing is a physical thing that does not experience a (relevant) change during a scenario. All static physical things form the static environment.
+%
+%
+%
+%\subsection{Dynamic physical thing}
+%\label{sec:dynamic physical thing}
+%
+%A dynamic physical thing is a physical thing that experiences a (relevant) change during a scenario. 
+%\cendc
 
 
 
 \subsection{Actor}
 \label{sec:actor}
 
-According to \textcite{catapult2018musicc}, ``actors are all dynamic components of a scenario, excluding the ego vehicle itself.'' \cstartc In this paper, we distinguish between dynamic components that might have an intent (e.g., a driver of a car, a cyclist, a pedestrian, a driving automation system, or a combination of a driver and a driving automation system \autocite{geyer2014}) and dynamic components that do not necessarily have an intent (e.g., moving tumbleweed, loose tire that got off a car). The former is called an actor where the latter is a dynamic physical thing. \cendc Note that, in contrast to \autocite{catapult2018musicc}, in the current paper, the ego vehicle's driver, and/or automation system are considered as actors, similar to \autocite{geyer2014},  because they have the same properties as another driver or automation system.
+According to \textcite{catapult2018musicc}, ``actors are all dynamic components of a scenario, excluding the ego vehicle itself.'' 
+%\cstartc In this paper, we distinguish between dynamic components that might have an intent (e.g., a driver of a car, a cyclist, a pedestrian, a driving automation system, or a combination of a driver and a driving automation system \autocite{geyer2014}) and dynamic components that do not necessarily have an intent (e.g., moving tumbleweed, loose tire that got off a car). The former is called an actor where the latter is a dynamic physical thing. \cendc 
+Note that, in contrast to \autocite{catapult2018musicc}, in the current paper, the ego vehicle's driver, and/or automation system are considered as actors, similar to \autocite{geyer2014},  because they have the same properties as another driver or automation system.
+\cstarte While the aforementioned definition of \textcite{catapult2018musicc} provides a good idea of what an actor could be, we use another definition in order to avoid a circular definition: an actor is a dynamic physical element, i.e., a physical element that experiences change. \cende
 
 \cstartc
 \begin{remark}
-	An actor is also a dynamic physical thing whereas a dynamic physical thing is not necessarily an actor.
+	An actor is also a physical element whereas a physical element is not necessarily an actor.
 \end{remark}
 \cendc
 
@@ -68,7 +80,7 @@ According to \textcite{catapult2018musicc}, ``actors are all dynamic components 
 \subsection{Act}
 \label{sec:act}
 
-We define acts as the combination of \cstartc dynamic physical things \cendc and the activities that are performed by the dynamic physical things or the combination of dynamic physical things and the activities they are subjected to.  %Additionally, the act can contain conditions that mark the start or end of the act.
+We define acts as the combination of \cstarte actors \cende and the activities that are performed by the \cstarte actors \cende or the combination of \cstarte actors \cende and the activities they are subjected to.  %Additionally, the act can contain conditions that mark the start or end of the act.
 This is in accordance with the use of the term \emph{act} in \autocite{openscenario}. 
 
 %: ``in this case, [the actor is] the ego-vehicle with driver/automation.''
@@ -79,9 +91,13 @@ This is in accordance with the use of the term \emph{act} in \autocite{openscena
 \label{sec:state variable}
 \textcite[p.~163]{dorf2011modern} write that ``the state variables describe the present configuration of a system and can be used to determine the future response, given the excitation inputs and the equations describing the dynamics.'' In our case, ``the system'' could refer to an actor, a component, or a simulation. E.g., a state variable could be the acceleration of an actor.
 
+
+
 \subsection{State vector}
 \label{sec:state vector}
 A state vector refers to ``the vector containing all $n$ state variables'' \autocite[p.~233]{dorf2011modern}.
+
+
 
 \subsection{Model}
 \label{sec:model}
@@ -92,6 +108,8 @@ Typically, a dynamical system is modeled using a differential equation of the fo
 \end{equation}
 
 % The input $u$ is a function of time, that needs to be quantified. For this purpose, a parametrized function can be used, i.e. $u=g_{\theta}(t)$ with parameter vector $\theta$, such that the differential equation can be rewritten to $\dot{x}=h_{\theta}(x,t)$. In the context of this paper, model refers to a parametrized function, such as $h_{\theta}(x,t)$. It might be more practical to directly model the state (i.e., the result of the differential equation) using a function $x=k_{\theta}(t)$, such that no explicit information is required about the system dynamics. For example, see \autocite{deGelder2017assessment}.
+
+
 
 \subsection{Mode}
 \label{sec:mode}

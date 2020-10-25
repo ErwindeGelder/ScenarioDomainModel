@@ -3,7 +3,7 @@
 \label{sec:oo framework}
 \cendb
 
-We have already explained the use of an \cstartb object-oriented framework \cendb in \cref{sec:why oo framework}. In this section, we present our \cstartb object-oriented framework \cendb for scenarios for the assessment of AVs. 
+We have already explained the use of \cstartb \iac{oof} \cendb in \cref{sec:why oo framework}. In this section, we present our \cstartb \ac{oof} \cendb for scenarios for the assessment of \acp{av}. 
 The \cstartb overview of the framework \cendb is formally represented through \cstartb class diagrams \cendb that are briefly presented in \cref{sec:class diagram}. Next, in \cref{sec:domain scenario category}, we explain how a scenario category is formally represented \cstartb in our framework\cendb. Similarly, in \cref{sec:domain scenario}, we describe how a scenario is formally represented. 
 
 
@@ -12,28 +12,28 @@ The \cstartb overview of the framework \cendb is formally represented through \c
 \subsection{Class diagrams}\cendb
 \label{sec:class diagram}
 
-In \cref{fig:class overview,fig:class relations}, the blue blocks represent the classes that are used to describe a scenario category according to \cref{def:scenario category} and the orange blocks represent the classes that are used to describe a scenario according to \cref{def:scenario}. \cstartb The yellow blocks represent so-called abstract classes. Abstract classes cannot be instantiated. \cendb
+In \cref{fig:class overview,fig:class relations}, the blue blocks represent the classes\footnote{In the remainder of this paper, when referring to (an instance of) a class, italic font is used. \cstarte Additionally, class names start with capital letters and instance names with lowercase letters.\cende} that are used to describe a scenario category according to \cref{def:scenario category} and the orange blocks represent the classes that are used to describe a scenario according to \cref{def:scenario}. \cstartb The yellow blocks represent so-called abstract classes. Abstract classes cannot be instantiated. \cendb
 
 \cstartd \Cref{fig:class overview} shows the class-level relationships while \cref{fig:class relations} shows the instance-level relationships.
-In \cref{fig:class overview}, the arrow from, e.g., \textit{scenario} to \textit{time interval}, denotes that the class \textit{scenario} is a subclass of the class \textit{time interval}. Therefore, all properties of the class \textit{time interval} are inherited by the class \textit{scenario}. 
+In \cref{fig:class overview}, the arrow from, e.g., \textit{Scenario} to \textit{Time interval}, denotes that \textit{Scenario} is a subclass of \textit{Time interval}. Therefore, all properties of the \textit{Time interval} are inherited by \textit{Scenario}. 
 The arrow with the diamond in \cref{fig:class relations} denotes an aggregation\footnote{This is typically implemented using pointers. For example, an aggregation arrow from \textit{B} to \textit{A} means that an object of class \textit{A} contains a pointer to an object of class \textit{B}.}.
-This means that, e.g., an \textit{actor} object, which is an instance of the \textit{actor} class, has an \textit{actor category} object as an attribute. \cendd
-Here, the ``\hasone'' at the start of the arrow from \textit{actor category} to \textit{actor} indicates that an \textit{actor} has \cstartd exactly \cendd one \textit{actor category}.
-\cstartb Similarly, ``\hastwo'' at the aggregation arrow from \textit{event} to \textit{time interval} indicates that a \textit{time interval} contains two \textit{events}, i.e., the events that define the start and the end of the time interval. \cendb 
+This means that, e.g., an \textit{actor}, which is an instance of the \textit{Actor} class, has an \textit{actor category} as an attribute. \cendd
+Here, the ``\hasone'' at the start of the arrow from \textit{Actor category} to \textit{Actor} indicates that an \textit{actor} has \cstartd exactly \cendd one \textit{actor category}.
+\cstartb Similarly, ``\hastwo'' at the aggregation arrow from \textit{Event} to \textit{Time interval} indicates that a \textit{time interval} contains two \textit{events}, i.e., the events that define the start and the end of the time interval. \cendb 
 A ``\hasn'' at the start of an aggregation arrow indicates that an object has zero, one, or multiple objects of the corresponding class.
 The arrow with the text ``comprises'' and ``includes'' represent methods that are explained in \cref{sec:scenario category}. Here, ``comprises'' can be denoted by $\comprises$ and ``includes'' can be denoted by $\includes$, see \cref{eq:scenario category include}. 
 
 \begin{figure*}[t]
 	\centering
 	\input{figures/class_overview.tikz}
-	\caption{Schematic overview of most classes of our object-oriented framework.}
+	\caption{Schematic overview of most classes of our \acf{oof}.}
 	\label{fig:class overview}
 \end{figure*}
 
 \begin{figure*}[t]
 	\centering
 	\input{figures/class_relations.tikz}
-	\caption{Schematic overview of the relation between the classes for representing the scenarios for the assessment of automated vehicles.}
+	\caption{Schematic overview of the relation between the classes for representing the scenarios for the assessment of \acp{av}.}
 	\label{fig:class relations}
 \end{figure*}
 
@@ -42,38 +42,37 @@ The arrow with the text ``comprises'' and ``includes'' represent methods that ar
 \subsection{Scenario category and its attributes}
 \label{sec:domain scenario category}
 
-\cstartb Because all other classes in \cref{fig:class overview} are subclasses of a \textit{thing}\cendb\cstarte\footnote{\cstarte It is common practice to call the most general class in an ontology `thing'.\cende}\cende\cstartb, these classes inherit the attributes and procedures of a \textit{thing}. In our framework, a \textit{thing} has a human-interpretable name, a unique ID, and possibly predefined tags that are also interpretable by a software agent. So, all other classes in \cref{fig:class overview} also have these attributes. \cendb
+\cstartb Because all other classes in \cref{fig:class overview} are subclasses of \textit{Scenario element}, these classes inherit the attributes and procedures of \textit{Scenario element}. In our framework, a \textit{scenario element} has a human-interpretable name, a unique ID, and possibly predefined tags that are also interpretable by a software agent. So, all other classes in \cref{fig:class overview} also have these attributes. \cendb
 
-The static environment is qualitatively described by \cstarte one or more \cende\cstartc \textit{static physical thing categories}. \cendc
-Because the \cstartc\textit{static physical thing categories} \cendc qualitatively describe the static environment, they contain a human-interpretable description of the \cstartc physical things they describe\cendc.
+The static environment is qualitatively described by \cstarte one or more \textit{physical element categories}. \cende
+Because the \cstarte\textit{physical element categories} \cende qualitatively describe the static environment, they contain a human-interpretable description of the \cstartc physical things they describe\cendc.
 
-The ego vehicle\cstartd(s) \cendd and the dynamic environment are qualitatively described by \textit{activity categories}, \cstartb\textit{dynamic physical thing categories}\cendb, and \textit{actor categories}. 
-In line with \cref{def:activity}, the \textit{activity category} includes the state variable(s).
-The \textit{model} that is used to describe the time evolution of the state variable(s) is specified. 
-\cstarte Note that a \textit{model} is an abstract class that serves as a template for different models, such as the three examples shown in \cref{fig:class overview}: \textit{Sinusoidal}, \textit{linear}, and \textit{constant}. 
-Let $\state(\time)$ denote the state variable(s) at time $\time$, then the \textit{sinusoidal} model is defined as follows:
+The ego vehicle\cstartd(s) \cendd and the dynamic environment are qualitatively described by \textit{activity categories} and \textit{actor categories}. 
+In line with \cref{def:activity}, \textit{Activity category} includes the state variable(s).
+The \textit{Model} that is used to describe the time evolution of the state variable(s) is specified. 
+\cstarte Note that a \textit{model} is an abstract class that serves as a template for different models, such as the three examples shown in \cref{fig:class overview}: \textit{Sinusoidal}, \textit{Linear}, and \textit{Constant}. 
+Let $\state(\time)$ denote the state variable(s) at time $\time$, then the \textit{Sinusoidal} model is defined as follows:
 \begin{align}
 	\statedot(\time) &= \frac{\pi \amplitude}{2\duration} \sin \left( \frac{\pi \left( \time - \timeinit\right)}{\duration} \right),\ \time \in [\timeinit, \timeinit+\duration], \label{eq:sinusoidala} \\
 	\state(\timeinit) &= \stateinit. \label{eq:sinusoidalb}
 \end{align}
 Here, the amplitude ($\amplitude$), duration ($\duration$), initial time ($\timeinit$), and initial state ($\stateinit$) are parameters. 
-The \textit{linear} and \textit{constant} model are described by the following equations, respectively:
+The \textit{Linear} and \textit{Constant} models are described by the following equations, respectively:
 \begin{align}
 	\statedot(\time) &= \slope,\ \state(\timeinit) = \stateinit, \label{eq:linear} \\
 	\state(\time) &= \stateinit. \label{eq:constant}
 \end{align}
-The \textit{linear} model contains three parameters, i.e., the slope ($\slope$), initial time ($\timeinit$), and initial state ($\stateinit$). The \textit{constant} model only has the parameter $\stateinit$.
-Since the \textit{activity category} is a qualitative description, the values of the parameters of the \textit{model} are not part of the \textit{activity category}. \cende
+The \textit{Linear} model contains three parameters, i.e., the slope ($\slope$), initial time ($\timeinit$), and initial state ($\stateinit$). The \textit{Constant} model only has the parameter $\stateinit$.
+Since an \textit{activity category} is a qualitative description, the values of the parameters of its \textit{model} are not part of the \textit{activity category}. \cende
 
-The \cstartb \textit{dynamic physical thing category} and \cendb \textit{actor category} have an attribute that specifies the type of object.
-\cstartb The difference between an \textit{actor category} and a \textit{dynamic physical thing category} is that an \textit{actor category} has \cendb\cstarte one or more \cende\cstartb (possibly unknown) intents. \cendb
+The \textit{Actor category} has an attribute that specifies the type of object.
 To indicate that an actor is an ego vehicle, the tag ``Ego vehicle'' is added to the list of tags of the \textit{actor category}.
 
 % Scenario category
-The \textit{scenario category} has \cstartc \textit{static physical thing categories}\cendc, \textit{activity categories}, \cstartb \textit{dynamic physical thing categories}, \cendb and \textit{actor categories} as attributes. 
+The \textit{Scenario category} has \cstarte \textit{physical element categories}\cende, \textit{activity categories}, and \textit{actor categories} as attributes. 
 %As with the other classes, a \textit{scenario category} contains a name and may contain predefined tags that describe parts of the scenario that are not described by the other classes.
-Another attribute of the scenario category is the list of acts. %\footnote{ In line with the definition of \emph{act} in \cref{sec:act}, for a \textit{scenario category}, an \emph{act} is a combination of \textit{activity categories} and \textit{actor categories}.}. 
-These acts describe which \cstartb dynamic things and \cendb actors perform which activities. Naturally, it is possible that one \cstartb dynamic thing or \cendb actor performs multiple activities and that one activity is performed by multiple \cstartb dynamic things and \cendb actors.
+Another attribute of the \textit{Scenario category} is the list of acts. %\footnote{ In line with the definition of \emph{act} in \cref{sec:act}, for a \textit{scenario category}, an \emph{act} is a combination of \textit{activity categories} and \textit{actor categories}.}. 
+These acts describe which actors perform which activities. Naturally, it is possible that one actor performs multiple activities and that one activity is performed by multiple actors.
 
 % Explain why we have these different classes
 The reader might wonder why we introduce the different classes for describing a scenario category, i.e., the blue blocks, instead of only one class for modeling a scenario category. 
@@ -84,15 +83,15 @@ The main advantage of the different classes is the re-usability of the instances
 \subsection{Scenario and its attributes}
 \label{sec:domain scenario}
 
-\cstartb The class scenario is a subclass of \textit{time interval} and, therefore, it has events that define the start and the end of the scenario. \cendb
-A \textit{scenario} has \cstartc\textit{static physical things}\cendc, \textit{activities}, \cstartb \textit{dynamic physical things}, \cendb \textit{actors}, and \textit{events} as attributes. 
+\cstartb The class \textit{Scenario} is a subclass of \textit{Time interval} and, therefore, it has \textit{events} that define the start and the end of the scenario. \cendb
+The \textit{Scenario} also has \cstarte\textit{physical element}\cende, \textit{activities}, \textit{actors}, and \textit{events} as attributes. 
 %The ego vehicle and the dynamic environment are quantitatively described by activities and actors. 
-It is similar to a \textit{scenario category}, as the \cstartc\textit{static physical things}\cendc, \textit{activities}, \cstartb \textit{dynamic physical things}, \cendb and \textit{actors} are the quantitative counterparts of the \cstartc\textit{static physical thing categories}\cendc, \textit{activity categories}, \cstartb \textit{dynamic physical thing categories}, \cendb and \textit{actor categories}, just as a \textit{scenario} is the quantitative counterpart of a \textit{scenario category}. 
-As with a \textit{scenario category}, a \textit{scenario} contains a list of acts that describe which \cstartb \textit{dynamic physical things} and \cendb actors perform which activities.
+It is similar to the \textit{Scenario category}, as the \cstarte\textit{physical elements}\cende, \textit{activities}, and \textit{actors} are the quantitative counterparts of the \cstarte\textit{physical element categories}\cende, \textit{activity categories}, \cendb and \textit{actor categories}, just as a \textit{scenario} is the quantitative counterpart of a \textit{scenario category}. 
+As with the \textit{Scenario category}, the \textit{Scenario} contains a list of acts that describe which actors perform which activities.
 
 % Static environment
 %The \textit{static environment} ``has'' a \textit{static environment category}. The most notable difference between the \textit{static environment category} and the \textit{static environment}, is that the \textit{static environment} \cstartb ``has'' \textit{static physical things} instead of \textit{static physical thing categories}. \cendb
-\cstartb A \textit{static physical thing} has a \textit{static physical thing category} and it may have multiple properties that quantitatively define the static object. \cendb These properties define, the road layout, static weather and lighting conditions, and infrastructural elements, etc.
+\cstartb A \textit{physical element} has a \textit{physical element category} and it may have multiple properties that quantitatively define the object, such as its \cendb size, weight, color, radar cross section, etc.  \cendb Physical elements can be used to define, e.g., the road layout, static weather and lighting conditions, and infrastructural elements.
 
 % Activity
 According to \cref{def:activity}, an activity quantitatively describes the evolution of one or more state variables in a time interval. The state variable(s) are defined by the \textit{activity category} that the \textit{activity} has as an attribute. Together with the \textit{model} that is contained by the \textit{activity category}, the time evolution of the state variable is described by a set of parameters. The values of the parameters are part of the \textit{activity}. 
@@ -108,12 +107,13 @@ According to \cref{def:activity}, an activity quantitatively describes the evolu
 Following \cref{def:event}, an \textit{event} contains conditions that describe the threshold or mode transition at the time of the \textit{event}.
 
 % Actor
-Similar to the \textit{static physical thing} and the \textit{activity}, the \cstartb\textit{dynamic physical thing} and \textit{actor} have their qualitative counterparts as an attribute, the \textit{dynamic physical thing category} and \textit{actor category}, respectively. Additionally, because the \textit{dynamic physical thing} and \textit{actor} involve a quantitative description, they may have an initial state vector and multiple properties defined, such as their \cendb size, weight, color, radar cross section, etc. \cstartb The intent of the \textit{actor} can be used to specify the desired state vector. \cendb This is especially useful for defining a test case in terms of the objective of the ego vehicle rather than its activities. 
+Similar to a \textit{physical element} and an \textit{activity}, an \textit{actor} has its qualitative counterpart --- an \textit{actor category} --- as an attribute. Additionally, the \textit{Actor} contains an initial state vector and a desired state vector, that can be used to specify the intent, as attributes.
+\cendb Describing the intent is especially useful for defining a test case in terms of the objective of the ego vehicle rather than its activities. \cendb
 %Additionally, the goals can be formulated as text if they cannot be formulated using a desired state vector.
 %Note that the goals are typically on a strategic level, such as destinations and waypoints, as opposed to the tactical and operational levels\footnote{ See \autocite[p.~7, Figure 1]{sae2018j3016} for an overview of the difference between the strategic, tactical, and operational functions.}.
 
 %According to \cref{def:event}, an events marks the time instant at which the system reaches a specified boundary or at which a mode transition occurs. To describe this time instant, one or more conditions are specified. For example, a condition could be that the distance of the ego vehicle and a pedestrian crossing should be less than \SI{30}{\meter}. For this example, the moment at which this condition is met for the first time corresponds to the event.
 
 % Another advantage of the blue blocks -> only one activity category for multiple activities
-An advantage of having the qualitative counterparts of the \textit{static environment}, \cstartb \textit{static physical thing}\cendb, \textit{activity}, \cstartb \textit{dynamic physical thing}, \cendb and \textit{actor} is that the qualitative description can be reused and exchanged. For example, there can be many different braking activities, but there needs to be only one \textit{activity category} for qualitatively defining the braking activity. Here, it is assumed that all braking activities are modeled with the same model and that similar tags apply. If this is not the case, multiple \textit{activity categories} need to be defined, but the number of \textit{activity categories} will still be significantly lower than the number of activities.
+An advantage of having the qualitative counterparts of the \cstarte \textit{Physical element}\cende, \textit{Activity}, and \textit{Actor} is that the qualitative description can be reused and exchanged. For example, there can be many different braking activities, but there needs to be only one \textit{activity category} for qualitatively defining the braking activity. Here, it is assumed that all braking activities are modeled with the same model and that similar tags apply. If this is not the case, multiple \textit{activity categories} need to be defined, but the number of \textit{activity categories} will still be substantially lower than the number of activities.
 

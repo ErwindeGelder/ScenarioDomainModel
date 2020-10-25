@@ -1,9 +1,9 @@
 \section{Definitions}
 \label{sec:definitions}
 
-One of the main reasons to introduce an \cstartb object-oriented framework \cendb is to enable sharing of knowledge between researchers, developers, and users. 
+One of the main reasons to introduce \cstartb \iac{oof} \cendb is to enable sharing of knowledge between researchers, developers, and users. 
 Therefore, it is important that the terms we use are clearly defined. 
-When presenting our \cstartb object-oriented framework \cendb in \cref{sec:oo framework}, we will formalize the terms such that they can be used by software agents.
+When presenting our \cstartb \ac{oof} \cendb in \cref{sec:oo framework}, we will formalize the terms such that they can be used by software agents.
 In this section, we will define the terms linguistically, thereby providing insight into the terms used in the next section.
 We will first define the concept of a scenario in \cref{sec:scenario}. 
 Next, we will define two important components of a scenario: events and activities, in \cref{sec:event,sec:activity}, respectively. 
@@ -21,13 +21,14 @@ In each of the \cref{sec:scenario,sec:event,sec:activity,sec:scenario category},
 		Term & Definition \\ \otoprule
 		Ego vehicle & Vehicle from which the world is perceived and/or vehicle that must perform a certain task during a test \\
 		Static environment & Part of the environment that does not change \\
-		Dynamic environment & Part of the environment that does change and that comprises all dynamic physical things and actors \\
-		Static physical thing & Physical thing that does not experience a (relevant) change during a scenario \\
-		& Note: All relevant static physical things together form the static environment. \\
-		Dynamic physical thing & Physical thing that experiences a (relevant) change during a scenario \\
-		Actor & Dynamic \cstarte physical thing \cende that has an intention \\
-		& Note: An actor is a dynamic physical thing, but a dynamic physical thing is not necessarily an actor. \\
-		Act & Combination of a dynamic physical thing and an activity \\
+		Dynamic environment & Part of the environment that does change and that comprises all actors \\
+		Physical element & Object that exists in the three-dimensional space \\
+		%Static physical thing & Physical thing that does not experience a (relevant) change during a scenario \\
+		% & Note: All relevant static physical things together form the static environment. \\
+		%Dynamic physical thing & Physical thing that experiences a (relevant) change during a scenario \\
+		Actor & Physical element that experiences change \\
+		& Note: An actor is a physical element, but a physical element is not necessarily an actor. \\
+		Act & Combination of an \cstarte actor \cende and an activity \\
 		State variables & Description of the present configuration of a system that can be used to determine the future response, given the excitation inputs and the equations describing the dynamics \\	
 		State vector & Vector containing all $n$ state variables \\
 		Model & Differential \cendc\cstartd and algebraic \cendd\cstartc equations that describe the dynamics \\
@@ -104,7 +105,7 @@ In a concept paper on OpenSCENARIO 2.0 \autocite{OpenSCENARIO2}, a scenario is d
 	Although the description of the static environment is not a general prerequisite of a scenario, this is often included when speaking about traffic scenarios \autocite{geyer2014, ulbrich2015, elrofai2016scenario, ebner2011identifying, althoff2017CommonRoad}.
 	%The static environment does not change during a scenario.
 	%The description of the dynamic environment includes a description of the type of actors and the goals and/or activities of the actors.
-	\cstartb The static environment consists of all relevant physical things that do not have relevant changes with respect to the ego vehicle\cendb\cstartd (s) within the time interval between the start and the end of the scenario\cendd\cstartb. The dynamic environment consists of all relevant physical things -- including actors -- that \cendb\cstartd undergo \cendd\cstartb changes that are relevant to the ego vehicle\cendb\cstartd (s)\cendd\cstartb. For example, the road may be part of the static environment, but if the change in the road temperature is relevant to the ego vehicle\cendb\cstartd (s)\cendd\cstartb, the road is part of the dynamic environment.\cendb
+	\cstartb The static environment consists of all relevant physical elements that do not have relevant changes with respect to the ego vehicle\cendb\cstartd (s) within the time interval between the start and the end of the scenario\cendd\cstartb. The dynamic environment consists of all relevant actors that \cendb\cstartd undergo \cendd\cstartb changes that are relevant to the ego vehicle\cendb\cstartd (s)\cendd\cstartb. For example, the road may be part of the static environment, but if the change in the road temperature is relevant to the ego vehicle\cendb\cstartd (s)\cendd\cstartb, the road is part of the dynamic environment.\cendb
 	
 	\cstartb
 	\item\textit{A scenario includes \cendb\cstartd at least one \cendd\cstartb ego vehicle \autocite{geyer2014, elrofai2016scenario}.}
@@ -144,11 +145,11 @@ Hence, we define a scenario as follows:
 %\end{figure}
 
 
-\cstartc When applying \cref{def:scenario} in an object-oriented framework, it is possible 
+\cstartc When applying \cref{def:scenario} in \iac{oof}, it is possible 
 to give the ``description'' of a component of a scenario simply by providing a reference to that component. \cendc
 A reference could be, for example, the full name of a file, a pointer pointing to a specific part of the computer memory, or an identifier that addresses a specific entry in a database.
 The advantage of references is that these parts of the scenario can be exchanged across different scenarios, as these scenarios can use the same references. 
-As an example, an OpenSCENARIO file allows to provide a reference to an OpenDRIVE file which describes a road network \autocite{dupuis2010opendrive}. As we will see in \cref{sec:oo framework}, in our proposed \cstartb framework\cendb, a scenario may contain references to \cstartc static and dynamic physical things\cendc, activities, actors, and events.
+As an example, an OpenSCENARIO file allows to provide a reference to an OpenDRIVE file which describes a road network \autocite{dupuis2010opendrive}. As we will see in \cref{sec:oo framework}, in our proposed \cstartb framework\cendb, a scenario may contain references to \cstartc physical elements\cendc, activities, actors, and events.
  
 
 
@@ -253,15 +254,15 @@ Before providing the definition of an activity, the following is concluded about
 	Therefore, an activity describes the time evolution of one or more state variables, i.e., the trajectory of one or more state variables over an inter-event time interval that corresponds to the activity, where the term state variable is defined in \cref{sec:state variable}.
 	
 	% Performed by something (an actor?)
-	\item\textit{An activity is performed by a \cstartd dynamic physical thing\cendd.}
-	An activity describes the time evolution of one or more state variables and a state variable corresponds to a \cstartd dynamic physical thing\cendd, e.g., the acceleration of a vehicle. Note that the \cstartd dynamic physical thing \cendd might be an actor or ego vehicle. 
+	\item\textit{An activity is performed by an actor.}
+	An activity describes the time evolution of one or more state variables and a state variable corresponds to an actor, e.g., the acceleration of a vehicle. Note that the actor might be an actor or ego vehicle. 
 	%However, it might also be the case that a state does not correspond to an actor. For example, a state describing the weather conditions does not correspond to an actor, so if an activity describes changing weather conditions, the activity is not performed by an actor.
 \end{enumerate}
 
 Hence, we define an activity as follows:
 \begin{definition}[Activity]
 	\label{def:activity}
-	Quantitative description of the time evolution of one or more state variables of \cstartc a dynamic physical thing \cendc between two events.
+	Quantitative description of the time evolution of one or more state variables of an actor between two events.
 \end{definition}
 
 
@@ -308,21 +309,21 @@ Introducing the concept of scenario categories brings the following benefits:
 
 % Explain scenario category comprise scenarios
 We describe the formal relation between a scenario and a scenario category with the verb ``to comprise'', denoted by $\comprises$. If a specific scenario category $\scenariocategory$ is an abstraction of a specific scenario $\scenario$, then we say that the specific scenario category $\scenariocategory$ comprises that specific $\scenario$, or simply $\scenariocategory \comprises \scenario$. 
-This is illustrated in \cref{fig:venn diagram scenario category}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenariocategorya$, $\scenariocategoryb$, and $\scenariocategoryc$ represent scenario categories. 
-A given scenario category can comprise multiple scenarios, e.g., $\scenariocategoryb \comprises \scenarioa$ and $\scenariocategoryb \comprises \scenariob$ in \cref{fig:venn diagram scenario category}. 
+%This is illustrated in \cref{fig:venn diagram scenario category}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenariocategorya$, $\scenariocategoryb$, and $\scenariocategoryc$ represent scenario categories. 
+A given scenario category can comprise multiple scenarios. %, e.g., $\scenariocategoryb \comprises \scenarioa$ and $\scenariocategoryb \comprises \scenariob$ in \cref{fig:venn diagram scenario category}. 
 % Explain multiple scenario categories can comprise a scenario
 Furthermore, multiple scenario categories can comprise a specific scenario. 
-For example, in \cref{fig:venn diagram scenario category}, we have $\scenariocategorya \comprises \scenariob$, $\scenariocategoryb \comprises \scenariob$, and $\scenariocategoryc \comprises \scenariob$. 
+%For example, in \cref{fig:venn diagram scenario category}, we have $\scenariocategorya \comprises \scenariob$, $\scenariocategoryb \comprises \scenariob$, and $\scenariocategoryc \comprises \scenariob$. 
 \cstartd As a consequence, as opposed to the proposed categorization of scenarios in \autocite{opdencamp2014cats, USDoT2007precrashscenarios, lenard2014typical, lara2019harmonized}, scenario categories do not need to be mutually exclusive. \cendd
 
-\setlength{\venncircle}{5em}
-\begin{figure}[t]
-	\centering
-	\input{figures/venn_diagrams.tikz}
-	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. %$\scenariocategoryb$ comprises $\scenarioa$ and $\scenariob$. $\scenariocategoryb$ and $\scenariocategoryc$ include $\scenariocategorya$.
-	}
-	\label{fig:venn diagram scenario category}
-\end{figure}
+%\setlength{\venncircle}{5em}
+%\begin{figure}[t]
+%	\centering
+%	\input{figures/venn_diagrams.tikz}
+%	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$. %$\scenariocategoryb$ comprises $\scenarioa$ and $\scenariob$. $\scenariocategoryb$ and $\scenariocategoryc$ include $\scenariocategorya$.
+%	}
+%	\label{fig:venn diagram scenario category}
+%\end{figure}
 
 % Explain scenario category can include scenario categories
 The verb ``to include'' is used to describe the relation between two scenario categories. A scenario category $\scenariocategoryb$ is said to include a scenario category $\scenariocategorya$ if $\scenariocategoryb$ comprises all scenarios that are comprised in $\scenariocategorya$. In that case, we can write $\scenariocategoryb \includes \scenariocategorya$. Thus we have

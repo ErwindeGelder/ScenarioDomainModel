@@ -4,25 +4,23 @@
 
 % Qualitative classes
 \node[class, fill=scenariocategory](scenario category) at (.5\blockx,0) {Scenario category};
-\node[class, fill=category](dynamiccategory) at (\blockx, \blocky) {Dynamic physical thing category};
-\node[class, fill=category](actorcategory) at (2\blockx, \blocky) {Actor category};
-\node[class, fill=category](activitycategory) at (3\blockx, \blocky) {Activity category};
-\node[class, fill=abstractclass](model) at (2.5\blockx+0.25\blockwidth, 2\blocky) {Model};
-\node[class, fill=category](staticthingcategory) at (4\blockx, \blocky) {Static physical thing category};
+\node[class, fill=category](actorcategory) at (\blockx, \blocky) {Actor category};
+\node[class, fill=category](activitycategory) at (2\blockx, \blocky) {Activity category};
+\node[class, fill=abstractclass](model) at (1.5\blockx+0.25\blockwidth, 2\blocky) {\textit{Model}};
+\node[class, fill=category](elementcategory) at (3\blockx, \blocky) {Physical element category};
 
 % Quantitative classes
 \node[class, fill=scenario](scenario) at (.5\blockx, 2\blocky) {Scenario};
-\node[class, fill=otherclass](dynamic) at (\blockx, 3\blocky) {Dynamic physical thing};
-\node[class, fill=otherclass](actor) at (2\blockx, 3\blocky) {Actor};
-\node[class, fill=otherclass](activity) at (3\blockx, 3\blocky) {Activity};
-\node[class, fill=otherclass](staticthing) at (4\blockx, 3\blocky) {Static physical thing};
-\node[class, fill=otherclass](event) at (5\blockx, 3\blocky) {Event};
-\node[class, fill=abstractclass](timeinterval) at (5\blockx, 2\blocky) {Time interval};
+\node[class, fill=otherclass](actor) at (\blockx, 3\blocky) {Actor};
+\node[class, fill=otherclass](activity) at (2\blockx, 3\blocky) {Activity};
+\node[class, fill=otherclass](element) at (3\blockx, 3\blocky) {Physical element};
+\node[class, fill=otherclass](event) at (4\blockx, 3\blocky) {Event};
+\node[class, fill=abstractclass](timeinterval) at (4\blockx, 2\blocky) {\textit{Time interval}};
 
 % Aggregation arrows for the scenario category
 \node[coordinate, below of=scenario category, node distance=-\blocky/2, xshift=\blockwidth/3](helper scenario category){};
 \node[coordinate, below of=scenario category, node distance=\blockheight/2, xshift=\blockwidth/3](aggregation scenario category){};
-\foreach \class in {dynamic, actor, activity, staticthing}
+\foreach \class in {actor, activity, element}
 {
 	\node[coordinate, above of=\class category, node distance=\blockheight/2](helper \class){};  % Needed for later
 	\draw[aggregation] (\class category) |- (helper scenario category) -- (aggregation scenario category);
@@ -40,7 +38,7 @@
 % Aggregation arrow for scenario
 \node[coordinate, below of=scenario, node distance=-\blocky/2](helper scenario){};
 \node[coordinate, below of=scenario, node distance=\blockheight/2](aggregation scenario){};
-\foreach \class in {dynamic, actor, activity, staticthing}
+\foreach \class in {actor, activity, element}
 {
 	\node[coordinate, above of=\class, node distance=\blockheight/2](helper \class){};
 	\draw[aggregation] (helper \class) |- (helper scenario) -- (aggregation scenario);
@@ -51,7 +49,7 @@
 \node[anchor=south east] at (helper event) {$2,3,\ldots$};
 
 % Aggregations for static thing, activity, and actor
-\foreach \class in {dynamic, staticthing, activity, actor}
+\foreach \class in {element, activity, actor}
 {
 	\node[coordinate, below of=\class category, node distance=\blockheight/2, xshift=\blockwidth/4](category helper){};
 	\node[coordinate, above of=\class, node distance=\blockheight/2, xshift=\blockwidth/4](helper){};
@@ -74,5 +72,12 @@
 \node[coordinate, above of=scenario, node distance=\blockheight/2, xshift=-.28\blockwidth](helper1){};
 \node[coordinate, below of=scenario category, node distance=\blockheight/2, xshift=-.28\blockwidth](helper2){};
 \draw[falls into] (helper2) -- node[fill=white, align=center, text width=3.55em]{comprises} (helper1);
+
+% Legend
+\node[class, fill=TNOlightgray, minimum height=6.5em, text width=2\blockwidth+1em](legend) at (4.5\blockx, .4\blocky) {};
+\node[yshift=2.65em] at (legend) {Legend};
+\node[class, fill=abstractclass, minimum height=1.5em, text width=2\blockwidth, yshift=1.3em](abstract) at (legend) {\textit{Abstract class}};
+\node[class, fill=category, minimum height=1.5em, text width=2\blockwidth, yshift=-.4em](category) at (legend) {Class for qualitative description};
+\node[class, fill=otherclass, minimum height=1.5em, text width=2\blockwidth, yshift=-2.1em](category) at (legend) {Class for quantitative description};
 
 \end{tikzpicture}
