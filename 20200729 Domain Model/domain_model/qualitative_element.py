@@ -8,14 +8,14 @@ Modifications:
 """
 
 from abc import abstractmethod
-from .thing import Thing, _thing_props_from_json
+from .scenario_element import ScenarioElement, _thing_props_from_json
 from .type_checking import check_for_type
 
 
-class QualitativeThing(Thing):
-    """ Thing that is used for most qualitative classes.
+class QualitativeThing(ScenarioElement):
+    """ ScenarioElement that is used for most qualitative classes.
 
-    Next to the attributes of Thing, a QualitativeThing also has a description
+    Next to the attributes of ScenarioElement, a QualitativeThing also has a description
     that can be used to qualitatively describe the thing. This is an abstract
     class, so it is not possible to instantiate objects from this class.
 
@@ -33,10 +33,10 @@ class QualitativeThing(Thing):
         check_for_type("description", description, str)
 
         self.description = description  # type: str
-        Thing.__init__(self, **kwargs)
+        ScenarioElement.__init__(self, **kwargs)
 
     def to_json(self) -> dict:
-        thing = Thing.to_json(self)
+        thing = ScenarioElement.to_json(self)
         thing["description"] = self.description
         return thing
 

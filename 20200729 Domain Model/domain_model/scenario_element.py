@@ -1,4 +1,4 @@
-""" Class Thing
+""" Class ScenarioElement
 
 Creation date: 2018 10 30
 Author(s): Erwin de Gelder
@@ -10,11 +10,12 @@ Modifications:
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 13: Update of terminology.
 2020 07 31: Return a copy of the list of tags when using get_tags().
-2020 08 15: Change Default to Thing.
+2020 08 15: Change Default to ScenarioElement.
 2020 08 22: Add function to obtain properties from a dictionary.
 2020 08 23: If no uid is given, generate one.
 2020 10 04: Provide functions for creating objects from JSON code.
-2020 10 12: Remove Static/DynamicPhysicalThing(Category) and add PhysicalThing(Category) to objects.
+2020 10 12: Remove Static/DynamicPhysicalThing(Category), add PhysicalElement(Category) to objects.
+2020 10 25: Change name of Thing to ScenarioElement.
 """
 
 from abc import ABC, abstractmethod
@@ -24,8 +25,8 @@ from .tags import Tag, tag_from_json
 from .type_checking import check_for_type, check_for_list
 
 
-class Thing(ABC):
-    """ Thing that is used for most classes.
+class ScenarioElement(ABC):
+    """ ScenarioElement that is used for most classes.
 
     Because most classes contain the attributes 'name' and 'tags', a default
     class is created that contains these attributes. This class also does type
@@ -93,15 +94,15 @@ class Thing(ABC):
         return self.to_json()
 
 
-def _thing_props_from_json(json: dict) -> dict:
+def _scenario_element_props_from_json(json: dict) -> dict:
     return dict(name=json["name"],
                 uid=int(json["id"]),
                 tags=[tag_from_json(tag) for tag in json["tags"]])
 
 
 DMObjects = NamedTuple("dm_objects", [("event", Dict),
-                                      ("physical_thing", Dict),
-                                      ("physical_thing_category", Dict),
+                                      ("physical_element", Dict),
+                                      ("physical_element_category", Dict),
                                       ("actor", Dict),
                                       ("actor_category", Dict),
                                       ("activity", Dict),
@@ -117,8 +118,8 @@ def get_empty_dm_object() -> NamedTuple:
     :return: The empty NamedTuple in which all objects can be stored.
     """
     return DMObjects(event=dict(),
-                     physical_thing=dict(),
-                     physical_thing_category=dict(),
+                     physical_element=dict(),
+                     physical_element_category=dict(),
                      actor=dict(),
                      actor_category=dict(),
                      activity=dict(),
@@ -159,7 +160,7 @@ def _object_from_json(json: Union[dict, List[dict]], func_from_json: Callable, c
         return getattr(attribute_objects, class_name)[int(json["id"])]
 
     # Run the function that returns the object.
-    json_object = func_from_json(json, attribute_objects, **kwargs)  # type: Thing
+    json_object = func_from_json(json, attribute_objects, **kwargs)  # type: ScenarioElement
 
     # Add object to the 'database' (i.e., `attribute_objects`).
     getattr(attribute_objects, class_name)[json_object.uid] = json_object
