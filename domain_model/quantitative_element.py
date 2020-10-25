@@ -1,22 +1,23 @@
-""" Class QuantitativeThing
+""" Class QuantitativeElement
 
 Creation date: 2020 08 15
 Author(s): Erwin de Gelder
 
 Modifications:
 2020 08 22: Add function to obtain properties from a dictionary.
+2020 10 25: Change QuantitativeElement to QuantitativeElement.
 """
 
 from abc import abstractmethod
-from .scenario_element import ScenarioElement, _thing_props_from_json
+from .scenario_element import ScenarioElement, _scenario_element_props_from_json
 
 
-class QuantitativeThing(ScenarioElement):
+class QuantitativeElement(ScenarioElement):
     """ ScenarioElement that is used for the quantitative classes.
 
-    There are no additional attributes than the one inherited from ScenarioElement. This
-    is an abstract class, so it is not possible to instantiate objects from this
-    class.
+    There are no additional attributes than the one inherited from
+    ScenarioElement. This is an abstract class, so it is not possible to
+    instantiate objects from this class.
 
     Attributes:
         uid (int): A unique ID.
@@ -29,5 +30,5 @@ class QuantitativeThing(ScenarioElement):
         ScenarioElement.__init__(self, **kwargs)
 
 
-def _quantitative_thing_props_from_json(json: dict) -> dict:
-    return _thing_props_from_json(json)
+def _quantitative_element_props_from_json(json: dict) -> dict:
+    return _scenario_element_props_from_json(json)
