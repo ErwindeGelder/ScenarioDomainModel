@@ -14,7 +14,7 @@ Modifications:
 2020 08 15: Make sure that each model has the functions `get_state`, `get_state_dot`, and `fit`.
 2020 08 23: Enable the evaluation of the model at given time instants.
 2020 08 24: Spline model added.
-2020 10 02: Make Model a subclass of QualitativeThing.
+2020 10 02: Make Model a subclass of QualitativeElement.
 2020 10 04: Change way of creating object from JSON code.
 """
 
@@ -22,11 +22,11 @@ import sys
 from abc import abstractmethod
 import numpy as np
 from scipy.interpolate import splrep, splev
-from .qualitative_thing import QualitativeThing, _qualitative_thing_props_from_json
-from .thing import DMObjects, _object_from_json
+from .qualitative_element import QualitativeElement, _qualitative_element_props_from_json
+from .scenario_element import DMObjects, _object_from_json
 
 
-class Model(QualitativeThing):
+class Model(QualitativeElement):
     """ Model
 
     Parameter Model describes the relation between the states variables and the
@@ -57,7 +57,7 @@ class Model(QualitativeThing):
     def __init__(self, modelname: str, **kwargs):
         self._modelname = modelname
         self.default_options = dict()
-        QualitativeThing.__init__(self, **kwargs)
+        QualitativeElement.__init__(self, **kwargs)
 
     @abstractmethod
     def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
@@ -101,7 +101,7 @@ class Model(QualitativeThing):
         """
 
     def to_json(self) -> dict:
-        model = QualitativeThing.to_json(self)
+        model = QualitativeElement.to_json(self)
         model["modelname"] = self._modelname
         model["default_options"] = self.default_options
         return model
@@ -323,7 +323,7 @@ class Splines(Model):
 
 def _model_props_from_json(json: dict) -> dict:
     props = json["default_options"]
-    props.update(_qualitative_thing_props_from_json(json))
+    props.update(_qualitative_element_props_from_json(json))
     return props
 
 
