@@ -11,13 +11,14 @@ Modifications:
 2020 08 16: Make ActorCategory a subclass of DynamicPhysicalThingCategory.
 2020 08 25: Add function to obtain properties from a dictionary.
 2020 10 04: Change way of creating object from JSON code.
-2020 10 12: ActorCategory is subclass of PhysicalThingCategory (was DynamicPhysicalThingCategory).
+2020 10 12: ActorCategory is subclass of PhysicalElementCategory (was DynamicPhysicalThingCategory).
 """
 
 from enum import Enum
-from .physical_thing_category import PhysicalThingCategory, _physical_thing_category_props_from_json
+from .physical_element_category import PhysicalElementCategory, \
+    _physical_element_category_props_from_json
+from .scenario_element import DMObjects, _object_from_json
 from .tags import Tag
-from .thing import DMObjects, _object_from_json
 from .type_checking import check_for_type
 
 
@@ -49,7 +50,7 @@ class VehicleType(Enum):
         return {"name": self.name, "value": self.value}
 
 
-class ActorCategory(PhysicalThingCategory):
+class ActorCategory(PhysicalElementCategory):
     """ ActorCategory: Category of actor
 
     An actor is an agent in a scenario acting on its own behalf. "Ego vehicle"
@@ -70,7 +71,7 @@ class ActorCategory(PhysicalThingCategory):
         # Check the types of the inputs
         check_for_type("vehicle_type", vehicle_type, VehicleType)
 
-        PhysicalThingCategory.__init__(self, **kwargs)
+        PhysicalElementCategory.__init__(self, **kwargs)
         self.vehicle_type = vehicle_type  # type: VehicleType
 
     def to_json(self) -> dict:
@@ -82,14 +83,14 @@ class ActorCategory(PhysicalThingCategory):
 
         :return: dictionary that can be converted to a json file.
         """
-        actor_category = PhysicalThingCategory.to_json(self)
+        actor_category = PhysicalElementCategory.to_json(self)
         actor_category["vehicle_type"] = self.vehicle_type.to_json()
         return actor_category
 
 
 def _actor_category_props_from_json(json: dict) -> dict:
     props = dict(vehicle_type=vehicle_type_from_json(json["vehicle_type"]))
-    props.update(_physical_thing_category_props_from_json(json))
+    props.update(_physical_element_category_props_from_json(json))
     return props
 
 

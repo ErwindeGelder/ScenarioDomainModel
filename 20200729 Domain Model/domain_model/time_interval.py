@@ -11,13 +11,13 @@ Modifications:
 from abc import abstractmethod
 from typing import Union
 from .event import Event, _event_from_json
-from .quantitative_thing import QuantitativeThing, _quantitative_thing_props_from_json
-from .thing import DMObjects, _attributes_from_json
+from .quantitative_element import QuantitativeElement, _quantitative_element_props_from_json
+from .scenario_element import DMObjects, _attributes_from_json
 from .type_checking import check_for_type
 
 
-class TimeInterval(QuantitativeThing):
-    """ Thing that is used for the quantitative classes.
+class TimeInterval(QuantitativeElement):
+    """ ScenarioElement that is used for the quantitative classes.
 
     A time interval has a start and an end. Both the start and the end are
     defined by an Event. To initialize the time interval, the time can be passed
@@ -43,12 +43,12 @@ class TimeInterval(QuantitativeThing):
         if isinstance(end, (float, int)):
             end = Event(conditions=dict(time=end))
 
-        QuantitativeThing.__init__(self, **kwargs)
+        QuantitativeElement.__init__(self, **kwargs)
         self.start = start
         self.end = end
 
     def to_json(self) -> dict:
-        time_interval = QuantitativeThing.to_json(self)
+        time_interval = QuantitativeElement.to_json(self)
         time_interval["start"] = dict(uid=self.start.uid)
         time_interval["end"] = dict(uid=self.end.uid)
         return time_interval
@@ -92,7 +92,7 @@ class TimeInterval(QuantitativeThing):
 
 def _time_interval_props_from_json(json: dict, attribute_objects: DMObjects, start: Event = None,
                                    end: Event = None) -> dict:
-    props = _quantitative_thing_props_from_json(json)
+    props = _quantitative_element_props_from_json(json)
     props.update(_attributes_from_json(json, attribute_objects,
                                        dict(start=(_event_from_json, "event"),
                                             end=(_event_from_json, "event")), start=start, end=end))

@@ -23,8 +23,8 @@ from typing import List, Union
 import numpy as np
 from .activity_category import ActivityCategory, _activity_category_from_json
 from .event import Event
+from .scenario_element import DMObjects, _object_from_json, _attributes_from_json
 from .time_interval import TimeInterval, _time_interval_props_from_json
-from .thing import DMObjects, _object_from_json, _attributes_from_json
 from .type_checking import check_for_type
 
 

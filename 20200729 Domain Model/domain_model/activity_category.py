@@ -8,20 +8,20 @@ Modifications:
 2019 11 19: Enable instantiation using JSON code.
 2019 05 22: Make use of type_checking.py to shorten the initialization.
 2019 10 11: Update of terminology.
-2020 08 16: Make ActivityCategory a subclass of QualitativeThing.
+2020 08 16: Make ActivityCategory a subclass of QualitativeElement.
 2020 08 25: Add function to obtain properties from a dictionary.
 2020 10 04: Change way of creating object from JSON code.
 """
 
 import numpy as np
 from .model import Model, _model_from_json
-from .qualitative_thing import QualitativeThing, _qualitative_thing_props_from_json
+from .qualitative_element import QualitativeElement, _qualitative_element_props_from_json
+from .scenario_element import DMObjects, _object_from_json, _attributes_from_json
 from .state_variable import StateVariable, state_variable_from_json
-from .thing import DMObjects, _object_from_json, _attributes_from_json
 from .type_checking import check_for_type
 
 
-class ActivityCategory(QualitativeThing):
+class ActivityCategory(QualitativeElement):
     """ Category of activity
 
     An activity specified the evolution of a state over time. The activity
@@ -46,7 +46,7 @@ class ActivityCategory(QualitativeThing):
         check_for_type("model", model, Model)
         check_for_type("state", state, StateVariable)
 
-        QualitativeThing.__init__(self, **kwargs)
+        QualitativeElement.__init__(self, **kwargs)
         self.model = model  # type: Model
         self.state = state  # type: StateVariable
 
@@ -65,7 +65,7 @@ class ActivityCategory(QualitativeThing):
         return self.model.fit(time, data, options=options)
 
     def to_json(self) -> dict:
-        activity_category = QualitativeThing.to_json(self)
+        activity_category = QualitativeElement.to_json(self)
         activity_category["model"] = {"name": self.model.name, "uid": self.model.uid}
         activity_category["state"] = self.state.to_json()
         return activity_category
@@ -79,7 +79,7 @@ class ActivityCategory(QualitativeThing):
 def _activity_category_props_from_json(json: dict, attribute_objects: DMObjects,
                                        model: Model = None) -> dict:
     props = dict(state=state_variable_from_json(json["state"]))
-    props.update(_qualitative_thing_props_from_json(json))
+    props.update(_qualitative_element_props_from_json(json))
     props.update(_attributes_from_json(json, attribute_objects,
                                        dict(model=(_model_from_json, "model")), model=model))
     return props
