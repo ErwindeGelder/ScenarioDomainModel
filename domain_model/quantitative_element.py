@@ -8,13 +8,13 @@ Modifications:
 """
 
 from abc import abstractmethod
-from .thing import Thing, _thing_props_from_json
+from .scenario_element import ScenarioElement, _thing_props_from_json
 
 
-class QuantitativeThing(Thing):
-    """ Thing that is used for the quantitative classes.
+class QuantitativeThing(ScenarioElement):
+    """ ScenarioElement that is used for the quantitative classes.
 
-    There are no additional attributes than the one inherited from Thing. This
+    There are no additional attributes than the one inherited from ScenarioElement. This
     is an abstract class, so it is not possible to instantiate objects from this
     class.
 
@@ -26,7 +26,7 @@ class QuantitativeThing(Thing):
     """
     @abstractmethod
     def __init__(self, **kwargs):
-        Thing.__init__(self, **kwargs)
+        ScenarioElement.__init__(self, **kwargs)
 
 
 def _quantitative_thing_props_from_json(json: dict) -> dict:
