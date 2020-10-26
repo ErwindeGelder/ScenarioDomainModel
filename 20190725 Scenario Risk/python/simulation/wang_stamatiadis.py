@@ -9,7 +9,7 @@ Modifications:
 from typing import Union
 import numpy as np
 from scipy.special import erf  # pylint: disable=no-name-in-module
-from .options import Options
+from options import Options
 
 
 class WangStamatiadisParameters(Options):
@@ -51,9 +51,8 @@ class WangStamatiadis:
         self.d_braking_rate = self.vec_braking_rate[1]-self.vec_braking_rate[0]
         self.vec_braking_rate += self.d_braking_rate/2
         self.prob_density_braking_rate = \
-            (np.exp(-(self.vec_braking_rate-self.parms.mean_braking_rate)**2/
-                    (2*self.parms.std_braking_rate**2))/
-             (np.sqrt(2*np.pi)*self.parms.std_braking_rate))
+            np.exp(-(self.vec_braking_rate-self.parms.mean_braking_rate)**2 /
+                   (2*self.parms.std_braking_rate**2))
         self.prob_density_braking_rate /= np.sum(self.prob_density_braking_rate)*self.d_braking_rate
 
         # Calculate mu for the log-normal distribution.
@@ -65,7 +64,8 @@ class WangStamatiadis:
             self.parms.sigma_reaction_time = np.sqrt(np.log(
                 1 + self.parms.normal_sigma_reaction_time**2/self.parms.normal_mu_reaction_time**2))
 
-    def cdf_reaction_time(self, reaction_time: Union[float, np.ndarray]) -> float:
+    def cdf_reaction_time(self, reaction_time: Union[float, np.ndarray]) \
+            -> Union[float, np.ndarray]:
         """ Calculate the cumulative distribution function of the reaction time.
 
         In other words, we calculate the probability that the actual reaction
@@ -74,8 +74,8 @@ class WangStamatiadis:
         :param reaction_time: Value for which the CDF is to be evaluated.
         :return: The CDF of the reaction time.
         """
-        return (.5+.5*erf((np.log(reaction_time)-self.parms.mu_reaction_time)/
-                          (np.sqrt(2)*self.parms.sigma_reaction_time)))
+        return (.5 + .5*erf((np.log(reaction_time) - self.parms.mu_reaction_time) /
+                            (np.sqrt(2)*self.parms.sigma_reaction_time)))
 
     @staticmethod
     def required_reaction_time(ttc: float, speed_diff: float,
@@ -139,10 +139,50 @@ class WangStamatiadis:
         """
         return 1 - self.prob_no_collision(ttc, speed_diff)
 
+    def groupa(self, ttc: Union[float, np.ndarray]) -> Union[float, np.ndarray]:
+        """ Calculate the size of "Group-A".
+
+        Group A is the group for which the reaction time is larger than the
+        current TTC. It is simply the complement of the CDF of the reaction
+        time.
+
+        :param ttc: The current TTC. Can be an array.
+        :return: The ratio of drivers with a reaction time larger than the TTC.
+        """
+        return 1 - self.cdf_reaction_time(ttc)
+
+    def groupb1(self, ttc: float, speed_diff: float) -> float:
+        """ Calculate the size of "Group-B1".
+
+        Group B1 is the group of people that are able to prevent a collision.
+        Hence, it is equal to the result of the `prob_no_collision` function.
+
+        :param ttc: The current time-to-collision.
+        :param speed_diff: The current speed difference.
+        :return: Probability of avoiding a collision.
+        """
+        return self.prob_no_collision(ttc, speed_diff)
+
+    def groupb2(self, ttc: float, speed_diff: float) -> float:
+        """ Calculate the size of "Group-B2".
+
+        Group B2 is the group of people that are able to react before the
+        collision but unable to prevent the collision. That means that their
+        reaction time is less than the TTC, but their braking capacity is not
+        enough to prevent the collision.
+
+        :param ttc: The current time-to-collision.
+        :param speed_diff: The current speed difference.
+        :return: Probability of avoiding a collision.
+        """
+        return 1.0 - self.groupa(ttc) - self.groupb1(ttc, speed_diff)
+
 
 if __name__ == "__main__":
     WS = WangStamatiadis()
+    print("TTC  Speed diff   % Group A  % Group B1  % Group B2")
     for TTC, SPEEDDIFF in zip([1, 1, 1, 2, 2, 2, 3, 3, 3],
                               [5, 10, 15, 5, 10, 15, 10, 15, 20]):
-        print("TTC: {:.1f}, Speed difference: {:2.0f}, Collision probability: {:.3f}"
-              .format(TTC, SPEEDDIFF, WS.prob_collision(TTC, SPEEDDIFF)))
+        print("{:3.1f}  {:10.1f}  {:10.1f}  {:10.1f}  {:10.1f}".
+              format(TTC, SPEEDDIFF, WS.groupa(TTC)*100, WS.groupb1(TTC, SPEEDDIFF)*100,
+                     WS.groupb2(TTC, SPEEDDIFF)*100))
