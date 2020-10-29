@@ -1,0 +1,681 @@
+{
+    "name": "cut-in scenario",
+    "id": "267142911577445020585056142698969083557",
+    "tags": [],
+    "start": {
+        "name": "",
+        "id": "85814028117873413078134263208553561322",
+        "tags": [],
+        "conditions": {
+            "time": 0
+        }
+    },
+    "end": {
+        "name": "",
+        "id": "234076266978354427588914819419909563743",
+        "tags": [],
+        "conditions": {
+            "time": 15
+        }
+    },
+    "physical_elements": [
+        {
+            "name": "Motorway",
+            "id": "176956867201725716816116173697698940564",
+            "tags": [],
+            "properties": {
+                "nlanes": 2,
+                "lanewidth": 3,
+                "xydata": [
+                    [
+                        0,
+                        0
+                    ],
+                    [
+                        400,
+                        0
+                    ]
+                ]
+            },
+            "category": {
+                "name": "Motorway",
+                "id": "204669130427861859313157330832365827232",
+                "tags": [
+                    "RoadLayout_Straight",
+                    "RoadType_PrincipleRoad_Motorway"
+                ],
+                "description": "Motorway with multiple lanes"
+            }
+        }
+    ],
+    "actors": [
+        {
+            "name": "ego vehicle",
+            "id": "61467068605284589542464152844119231707",
+            "tags": [],
+            "properties": {
+                "color": "blue"
+            },
+            "category": {
+                "name": "Ego vehicle",
+                "id": "327463761354967276488463728456118315939",
+                "tags": [
+                    "EgoVehicle",
+                    "RoadUserType_Vehicle"
+                ],
+                "description": "",
+                "vehicle_type": {
+                    "name": "Vehicle",
+                    "value": 1
+                }
+            },
+            "initial_states": [
+                {
+                    "state_variable": {
+                        "name": "LONGITUDINAL_POSITION",
+                        "value": "x [m]"
+                    },
+                    "value": [
+                        0.0
+                    ]
+                }
+            ],
+            "desired_states": [
+                {
+                    "state_variable": {
+                        "name": "LONGITUDINAL_POSITION",
+                        "value": "x [m]"
+                    },
+                    "value": [
+                        400.0
+                    ]
+                },
+                {
+                    "state_variable": {
+                        "name": "LATERAL_POSITION",
+                        "value": "y [m]"
+                    },
+                    "value": [
+                        0.0
+                    ]
+                },
+                {
+                    "state_variable": {
+                        "name": "SPEED",
+                        "value": "v [m/s]"
+                    },
+                    "value": [
+                        28.0
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "target vehicle",
+            "id": "321653465247956022045271566850469290847",
+            "tags": [],
+            "properties": {
+                "color": "red"
+            },
+            "category": {
+                "name": "Target vehicle",
+                "id": "272777254695267092530578398650457949524",
+                "tags": [
+                    "RoadUserType_Vehicle"
+                ],
+                "description": "",
+                "vehicle_type": {
+                    "name": "Vehicle",
+                    "value": 1
+                }
+            },
+            "initial_states": [
+                {
+                    "state_variable": {
+                        "name": "LONGITUDINAL_POSITION",
+                        "value": "x [m]"
+                    },
+                    "value": [
+                        70.0
+                    ]
+                }
+            ],
+            "desired_states": [
+                {
+                    "state_variable": {
+                        "name": "LONGITUDINAL_POSITION",
+                        "value": "x [m]"
+                    },
+                    "value": [
+                        400.0
+                    ]
+                },
+                {
+                    "state_variable": {
+                        "name": "LATERAL_POSITION",
+                        "value": "y [m]"
+                    },
+                    "value": [
+                        0.0
+                    ]
+                },
+                {
+                    "state_variable": {
+                        "name": "SPEED",
+                        "value": "v [m/s]"
+                    },
+                    "value": [
+                        22.0
+                    ]
+                }
+            ]
+        }
+    ],
+    "activities": [
+        {
+            "name": "Initial cruising ego",
+            "id": "299909496276177267284909400843436276767",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "85814028117873413078134263208553561322",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "122226284421646706343190576586324843654",
+                "tags": [],
+                "conditions": {
+                    "time": 5
+                }
+            },
+            "category": {
+                "name": "Cruising",
+                "id": "16376651386476836655354312068926621787",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward_Cruising"
+                ],
+                "description": "Cruising at a constant positive speed",
+                "model": {
+                    "name": "",
+                    "id": "128633580856441014309026799684456568550",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Constant",
+                    "default_options": {}
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "xstart": 28
+            }
+        },
+        {
+            "name": "Braking ego",
+            "id": "183556237765450202611390362094133840297",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "122226284421646706343190576586324843654",
+                "tags": [],
+                "conditions": {
+                    "time": 5
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "340142924341011804179619496883887593396",
+                "tags": [],
+                "conditions": {
+                    "time": 10
+                }
+            },
+            "category": {
+                "name": "Braking",
+                "id": "333860442337324982372066593061190651325",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward_Braking"
+                ],
+                "description": "Decelerating to a lower speed",
+                "model": {
+                    "name": "",
+                    "id": "84177727658257364723463491003200598347",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Sinusoidal",
+                    "default_options": {}
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "xstart": 28,
+                "xend": 20
+            }
+        },
+        {
+            "name": "Accelerating ego",
+            "id": "249354271175847484651876093307743756812",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "340142924341011804179619496883887593396",
+                "tags": [],
+                "conditions": {
+                    "time": 10
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "314736875502186042302494564782991344836",
+                "tags": [],
+                "conditions": {
+                    "time": 13
+                }
+            },
+            "category": {
+                "name": "Acccelerating",
+                "id": "61556770349847967859535565130437333422",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward_Accelerating"
+                ],
+                "description": "Accelerating to a higher speed",
+                "model": {
+                    "name": "",
+                    "id": "236105020136754227646475587670867472906",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Splines",
+                    "default_options": {
+                        "degree": 3,
+                        "n_knots": 1
+                    }
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "knots": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0.5,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "coefficients": [
+                    20,
+                    20,
+                    21,
+                    22,
+                    22,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "degree": 3
+            }
+        },
+        {
+            "name": "Final cruising ego",
+            "id": "301685615595441209891031228865661745906",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "314736875502186042302494564782991344836",
+                "tags": [],
+                "conditions": {
+                    "time": 13
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "234076266978354427588914819419909563743",
+                "tags": [],
+                "conditions": {
+                    "time": 15
+                }
+            },
+            "category": {
+                "name": "Cruising",
+                "id": "16376651386476836655354312068926621787",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward_Cruising"
+                ],
+                "description": "Cruising at a constant positive speed",
+                "model": {
+                    "name": "",
+                    "id": "128633580856441014309026799684456568550",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Constant",
+                    "default_options": {}
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "xstart": 22
+            }
+        },
+        {
+            "name": "Following lane ego",
+            "id": "57773223636703278554108666645129407707",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "85814028117873413078134263208553561322",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "234076266978354427588914819419909563743",
+                "tags": [],
+                "conditions": {
+                    "time": 15
+                }
+            },
+            "category": {
+                "name": "Following lane",
+                "id": "239226772227662215772812568142533964112",
+                "tags": [
+                    "VehicleLateralActivity_GoingStraight"
+                ],
+                "description": "Stay in one lane",
+                "model": {
+                    "name": "",
+                    "id": "266486642192113922719789976461051900899",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Linear",
+                    "default_options": {
+                        "method": "least_squares"
+                    }
+                },
+                "state": {
+                    "name": "LATERAL_POSITION",
+                    "value": "y [m]"
+                }
+            },
+            "parameters": {
+                "xstart": 1.4,
+                "xend": 1.6
+            }
+        },
+        {
+            "name": "Cruising target",
+            "id": "194133048821592014982681810050794229203",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "85814028117873413078134263208553561322",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "234076266978354427588914819419909563743",
+                "tags": [],
+                "conditions": {
+                    "time": 15
+                }
+            },
+            "category": {
+                "name": "Cruising",
+                "id": "16376651386476836655354312068926621787",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward_Cruising"
+                ],
+                "description": "Cruising at a constant positive speed",
+                "model": {
+                    "name": "",
+                    "id": "128633580856441014309026799684456568550",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Constant",
+                    "default_options": {}
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "xstart": 22
+            }
+        },
+        {
+            "name": "Initial following lane target",
+            "id": "139460267527263908985944213907164576094",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "85814028117873413078134263208553561322",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "13345991950926626702170758284419252702",
+                "tags": [],
+                "conditions": {
+                    "time": 3
+                }
+            },
+            "category": {
+                "name": "Following lane",
+                "id": "239226772227662215772812568142533964112",
+                "tags": [
+                    "VehicleLateralActivity_GoingStraight"
+                ],
+                "description": "Stay in one lane",
+                "model": {
+                    "name": "",
+                    "id": "266486642192113922719789976461051900899",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Linear",
+                    "default_options": {
+                        "method": "least_squares"
+                    }
+                },
+                "state": {
+                    "name": "LATERAL_POSITION",
+                    "value": "y [m]"
+                }
+            },
+            "parameters": {
+                "xstart": -1.6,
+                "xend": -1.5
+            }
+        },
+        {
+            "name": "Lane change target",
+            "id": "18985098569002700923849308899571081038",
+            "tags": [
+                "VehicleLateralActivity_ChangingLane_Left"
+            ],
+            "start": {
+                "name": "",
+                "id": "13345991950926626702170758284419252702",
+                "tags": [],
+                "conditions": {
+                    "time": 3
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "109766654034413324394983080763234142468",
+                "tags": [],
+                "conditions": {
+                    "time": 7
+                }
+            },
+            "category": {
+                "name": "Changing lane",
+                "id": "46720018518433106574829984422202040735",
+                "tags": [
+                    "VehicleLateralActivity_ChangingLane"
+                ],
+                "description": "Change one lane to the left or to the right",
+                "model": {
+                    "name": "",
+                    "id": "297120750021765860842760060201589045437",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Spline3Knots",
+                    "default_options": {
+                        "endpoints": false,
+                        "description": "",
+                        "name": "",
+                        "uid": 297120750021765860842760060201589045437,
+                        "tags": []
+                    }
+                },
+                "state": {
+                    "name": "LATERAL_POSITION",
+                    "value": "y [m]"
+                }
+            },
+            "parameters": {
+                "a1": 12,
+                "b1": 0,
+                "c1": 0,
+                "d1": -1.5,
+                "a2": 12,
+                "b2": -36,
+                "c2": 36,
+                "d2": -10.5
+            }
+        },
+        {
+            "name": "Final following lane target",
+            "id": "237618810957761549611352527457797846749",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "109766654034413324394983080763234142468",
+                "tags": [],
+                "conditions": {
+                    "time": 7
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "234076266978354427588914819419909563743",
+                "tags": [],
+                "conditions": {
+                    "time": 15
+                }
+            },
+            "category": {
+                "name": "Following lane",
+                "id": "239226772227662215772812568142533964112",
+                "tags": [
+                    "VehicleLateralActivity_GoingStraight"
+                ],
+                "description": "Stay in one lane",
+                "model": {
+                    "name": "",
+                    "id": "266486642192113922719789976461051900899",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Linear",
+                    "default_options": {
+                        "method": "least_squares"
+                    }
+                },
+                "state": {
+                    "name": "LATERAL_POSITION",
+                    "value": "y [m]"
+                }
+            },
+            "parameters": {
+                "xstart": 1.5,
+                "xend": 1.6
+            }
+        }
+    ],
+    "acts": [
+        {
+            "actor": 61467068605284589542464152844119231707,
+            "activity": 299909496276177267284909400843436276767
+        },
+        {
+            "actor": 61467068605284589542464152844119231707,
+            "activity": 183556237765450202611390362094133840297
+        },
+        {
+            "actor": 61467068605284589542464152844119231707,
+            "activity": 249354271175847484651876093307743756812
+        },
+        {
+            "actor": 61467068605284589542464152844119231707,
+            "activity": 301685615595441209891031228865661745906
+        },
+        {
+            "actor": 61467068605284589542464152844119231707,
+            "activity": 57773223636703278554108666645129407707
+        },
+        {
+            "actor": 321653465247956022045271566850469290847,
+            "activity": 194133048821592014982681810050794229203
+        },
+        {
+            "actor": 321653465247956022045271566850469290847,
+            "activity": 139460267527263908985944213907164576094
+        },
+        {
+            "actor": 321653465247956022045271566850469290847,
+            "activity": 18985098569002700923849308899571081038
+        },
+        {
+            "actor": 321653465247956022045271566850469290847,
+            "activity": 237618810957761549611352527457797846749
+        }
+    ],
+    "derived_tags": {
+        "ego vehicle::Actor": [
+            "VehicleLongitudinalActivity_DrivingForward_Braking",
+            "VehicleLongitudinalActivity_DrivingForward_Cruising",
+            "EgoVehicle",
+            "VehicleLongitudinalActivity_DrivingForward_Accelerating",
+            "RoadUserType_Vehicle",
+            "VehicleLateralActivity_GoingStraight"
+        ],
+        "target vehicle::Actor": [
+            "VehicleLongitudinalActivity_DrivingForward_Cruising",
+            "VehicleLateralActivity_ChangingLane",
+            "VehicleLateralActivity_ChangingLane_Left",
+            "RoadUserType_Vehicle",
+            "VehicleLateralActivity_GoingStraight"
+        ],
+        "Motorway::PhysicalElement": [
+            "RoadLayout_Straight",
+            "RoadType_PrincipleRoad_Motorway"
+        ]
+    }
+}
