@@ -7,6 +7,7 @@ Modifications:
 2019 03 14: StateVariables {LONGITUDINAL,LATERAL}_ROAD_POSITION added.
 2019 10 11: Update of terminology.
 2019 11 04: Add the heading as a possible state variable.
+2020 10 29: Add units to state variable descriptions.
 """
 
 from enum import Enum
@@ -15,10 +16,11 @@ from enum import Enum
 class StateVariable(Enum):
     """ Enumeration for state variables.
     """
-    LONGITUDINAL_POSITION = "x"
-    LATERAL_POSITION = "y"
-    SPEED = "v"
-    HEADING = "psi"
+    LONGITUDINAL_POSITION = "x [m]"
+    LATERAL_POSITION = "y [m]"
+    SPEED = "v [m/s]"
+    HEADING = "psi [rad]"
+    YAWRATE = "psidot [rad/s]"
     LONGITUDINAL_ROAD_POSITION = "[ROAD_ID, ROAD_DISTANCE]"
     LATERAL_ROAD_POSITION = "[LANE_ID, LANE_OFFSET]"
 
