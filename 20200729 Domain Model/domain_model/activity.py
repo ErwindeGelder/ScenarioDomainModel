@@ -17,9 +17,12 @@ Modifications:
 2020 08 23: Make Activity a subclass of TimeInterval.
 2020 08 24: Add functionality to obtain the values of the state variables (and the derivative).
 2020 10 05: Change way of creating object from JSON code.
+2020 10 29: Add plot functionality.
 """
 
 from typing import List, Union
+from matplotlib.axes import Axes
+import matplotlib.pyplot as plt
 import numpy as np
 from .activity_category import ActivityCategory, _activity_category_from_json
 from .event import Event
@@ -110,6 +113,23 @@ class Activity(TimeInterval):
         if tstart is not None and tend is not None:
             return (time - tstart) / (tend - tstart)
         return time
+
+    def plot(self, axes: Axes = None, **kwargs) -> Axes:
+        if axes is None:
+            axes = plt.axes()
+            axes.set_xlabel("Time [s]")
+            axes.set_ylabel(self.category.state.value)
+
+        # Show the state.
+        time = self._get_time()
+        tstart = self.get_tstart()
+        tend = self.get_tend()
+        if tstart is not None and tend is not None:
+            time = time * (tend - tstart) + tstart
+        state = self.get_state()
+        axes.plot(time, state, **kwargs)
+
+        return axes
 
     def get_tags(self) -> dict:
         """ Return the list of tags related to this Activity.
