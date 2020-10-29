@@ -2018,6 +2018,15 @@
     <pdf_title>Video-Based Vehicle Trajectory Data Collection</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Waymo open dataset" ID="ID_157171563" CREATED="1602574693977" MODIFIED="1602574965935" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/520%20Waymo%20Open%20Dataset.pdf">
+<attribute NAME="key" VALUE="sun2020scalability"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Scalability in Perception for Autonomous Driving: {W}aymo Open Dataset"/>
+<attribute NAME="authors" VALUE="Sun, Pei and Kretzschmar, Henrik and Dotiwalla, Xerxes and Chouard, Aurelien and Patnaik, Vijaysai and Tsui, Paul and Guo, James and Zhou, Yin and Chai, Yuning and Caine, Benjamin and Vasudevan, Vijay and Han, Wei and Ngiam, Jiquan and Zhao, Hang and Timofeev, Aleksei and Ettinger, Scott and Krivokon, Maxim and Gao, Amy and Joshi, Aditya and Zhang, Yu and Shlens, Jonathon and Chen, Zhifeng and Anguelov, Dragomir"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3DE1E1D315C57BEEF0EFE0436A7EACD5FF41BAF9252197309F49B6DF34274C18">
+    <pdf_title>X V D</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Master Thesises" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_1200522400" CREATED="1536234494309" MODIFIED="1536234527959" HGAP="78" VSHIFT="-4">
 <edge COLOR="#ff0000"/>
@@ -2715,6 +2724,28 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1BC1AAC1749AC0C378893CC14D241E815B46244E694157FAB5B5121D570189">
     <pdf_title>CovEr story</pdf_title>
 </pdf_annotation>
+</node>
+</node>
+<node TEXT="Collision risk" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_333782068" CREATED="1602744988608" MODIFIED="1602744995471">
+<node TEXT="Surrogate safety measure for simulation-based conflict study" ID="ID_65543" CREATED="1602745023961" MODIFIED="1602745112103" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/521%20Surrogate%20Safety%20Measure%20for%20Simulation-Based%20Conflict%20Study.pdf">
+<attribute NAME="key" VALUE="wang2013surrogate"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Surrogate Safety Measure for Simulation-Based Conflict Study"/>
+<attribute NAME="authors" VALUE="Wang, Chen and Stamatiadis, Nikiforos"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5ECD5A8C7CE28DFBEF1499B7F5E1391CE08180A56834BF3F7D778428BF24">
+    <pdf_title>Surrogate Safety Measure for Simulation-Based Conflict Study</pdf_title>
+</pdf_annotation>
+<node TEXT="Alternative paper; better journal" ID="ID_670727296" CREATED="1603804100098" MODIFIED="1603804240455" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/522%20Evaluation%20of%20a%20simulation-based%20surrogate%20safety%20metric.pdf">
+<attribute NAME="key" VALUE="wang2014evaluation"/>
+<attribute NAME="journal" VALUE="Accident Analysis \&amp; Prevention"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Evaluation of a Simulation-Based Surrogate Safety Metric"/>
+<attribute NAME="authors" VALUE="Wang, Chen and Stamatiadis, Nikiforos"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="24BBE8BDD5425E4183F475222D58359BCF1D0C18EF2934067FA116561F32FE8">
+    <pdf_title>Evaluation of a simulation-based surrogate safety metric</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 </node>
@@ -5487,11 +5518,20 @@
 <attribute NAME="title" VALUE="{ISO} 34502: Road {V}ehicles -- {E}ngineering Framework and Process of Scenario-Based Safety Evaluation"/>
 <attribute NAME="authors" VALUE="{ISO 34502}"/>
 </node>
-<node TEXT="ISO9001" ID="ID_1233270810" CREATED="1595591103524" MODIFIED="1595591109680">
+<node TEXT="ISO9001" ID="ID_1233270810" CREATED="1595591103524" MODIFIED="1602253600053">
 <attribute NAME="key" VALUE="ISO9001"/>
 <attribute NAME="year" VALUE="2015"/>
 <attribute NAME="title" VALUE="Quality management systems --- Requirements"/>
 <attribute NAME="authors" VALUE="{ISO 9001:2015}"/>
+<node TEXT="IATF 16949:2016 (ISO9001 for automotive industry)" ID="ID_213732204" CREATED="1602252929636" MODIFIED="1602253610618" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/519%20IATF_16949___2016_WhitePaper.pdf">
+<attribute NAME="key" VALUE="IATF16949"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="International Standard for Automotive Quality Management Systems"/>
+<attribute NAME="authors" VALUE="{IATF 16949:2016}"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B49767B621233BDD861A6AD33A8489A5E41F6A9297DBA5F275DD517F7D396B">
+    <pdf_title>IATF 16949:2016</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="ISO704" ID="ID_1391586401" CREATED="1596445015452" MODIFIED="1596445092683" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/504%20ISO704.pdf">
 <attribute NAME="key" VALUE="ISO704"/>
