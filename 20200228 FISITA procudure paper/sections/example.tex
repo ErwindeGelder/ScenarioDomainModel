@@ -21,7 +21,7 @@ In this section, we present a hypothetical example to illustrate how the safety 
 		2.3             & \fair       & -           & \pass    & \pass   &        \\
 		2.4             & \fair       & \fair       & \pass    & \pass   &     \observation \\
 		3.1             & \fair       & \acceptable & \nopass  & \pass   & \nonconformity     \\
-		3.2             & \fair       & -           & \pass    & \pass   &       \\
+		3.2             & \fair       & \good       & \pass    & \pass   &       \\
 		3.3             & \fail       & -           & \pass    & \nopass &       \\
 		4.1             & \fair       & -           & \pass    & \pass   &       \\
 		4.2             & \acceptable & -           & \pass    & \pass   & \nonconformity      \\
@@ -34,6 +34,6 @@ The applicant reports a good result for the first test (test ID 1.1). Because th
 
 The tests 2.1 till 2.4 are all passed. However, the applicant reports a better result for test 2.2 than the assessor. Therefore, the fidelity check failed, and an NC is issued. For test 2.4, an OB is made. This could be, e.g., because during the test that is performed by the assessor the AV showed erratic behavior even though safety has not been compromised.
 
-For the next three tests (3.1 till 3.3), an NC is issued, and one test is failed. The NC is issued for two reasons: the assessor reports an acceptable result and the fidelity check has failed. The applicant reports a fail for test 3.3. There is no reason for the assessor to also perform this test, because regardless of that result, the applicant has failed the test. As mentioned in Section 3.4, this might lead to a failed assessment or to some restrictions for the deployment of the AV. 
+For the next three tests (3.1 till 3.3), an NC is issued, and one test is failed. The NC is issued for two reasons: the assessor reports an acceptable result and the fidelity check has failed. The applicant reports a fail for test 3.3. There is no reason for the assessor to also perform this test, because regardless of that result, the applicant has failed the test. As mentioned in Section 3.4, this might lead to a failed assessment or to some restrictions for the deployment of the AV. Note that for test 3.2, the result of the assessor is better than the reported result of the applicant. This might be caused by the applicant reporting the worst-case outcome, e.g., the outcome with a relatively long detection delay of an object while the detection delay is shorter during the test performed by the assessor. Because the result of the assessor is better, this does not lead to an NC.
 
 For the last three tests, again an NC is issued, and a test is failed. The NC is issued because the applicant reports an acceptable result. Test 4.3 is failed even though the applicant has not reported to fail this test. This might lead to additional measures that need to be taken before the applicant can proceed with the deployment of the AV.

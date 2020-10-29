@@ -81,6 +81,16 @@
 \usepackage[capitalize]{cleveref}
 \crefname{figure}{Figure}{Figures}
 
+
+\usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amsthm}  % For special theorem style
+\usepackage{amsfonts}
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}\newtheorem{remarkenv}{Remark}        %% remarks
+\newenvironment{remark}{\begin{remarkenv}}%
+	{\hfill$\lozenge$\end{remarkenv}}            %% end remark with a lozenge
+
 % Table stuff
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -104,6 +114,7 @@
 \newcommand{\nopass}{\textcolor{red}{\ding{55}}}
 \newcommand{\nonconformity}{\mysquare{black}{yellow}}
 \newcommand{\observation}{\mysquare{black}{blue}}
+
 
 
 
@@ -132,7 +143,7 @@
 \begin{abstract}	
 \noindent The development of Autonomous Vehicles (AVs) has made significant progress in the last years and it is expected that AVs will soon be introduced on our roads. An important aspect in the development of AVs is the assessment of their safety. As traditional methods for safety assessment of vehicles are not feasible to be performed for AVs within reasonable time and cost, new approaches need to be worked out. Among these, real-world scenario-based assessment is widely supported by many players in the automotive field. Scenario-based assessment allows for using virtual simulation tools in addition to physical tests, such as on a test track, proving ground, or public road.
 
-We propose a procedure for real-world scenario-based road-approval assessment considering three stakeholders: the applicant, the assessor, and the (road or vehicle) authority. In this procedure, the applicant applies for the approval of one specific AV, the assessor assesses this AV and advises the authority, and the authority sets the requirements for the AV and decides whether this specific AV is approved for road testing The challenges are as follows. Firstly, the tests need to be tailored to the operational design domain (ODD) and dynamic driving task (DDT) description of the AV. Secondly, it is assumed that the applicant does not want to disclose all of the detailed test results because of proprietary or confidential information contained in these results. Thirdly, due to the complex ODD and DDT, many test scenarios are required to obtain sufficient confidence in the assessment of the AV. Consequently, it is assumed that due to limited resources, it is infeasible for the assessor to conduct all (physical) tests. 
+We propose a procedure for real-world scenario-based road-approval assessment considering three stakeholders: the applicant, the assessor, and the (road or vehicle) authority. In this procedure, the applicant applies for the approval of one specific AV, the assessor assesses this AV and advises the authority, and the authority sets the requirements for the AV and decides whether this specific AV is approved for road testing. The challenges are as follows. Firstly, the tests need to be tailored to the operational design domain (ODD) and dynamic driving task (DDT) description of the AV. Secondly, it is assumed that the applicant does not want to disclose all of the detailed test results because of proprietary or confidential information contained in these results. Thirdly, due to the complex ODD and DDT, many test scenarios are required to obtain sufficient confidence in the assessment of the AV. Consequently, it is assumed that due to limited resources, it is infeasible for the assessor to conduct all (physical) tests. 
 
 We propose a systematic approach for determining the tests that are based on the requirements set by the authority and the AV’s ODD and DDT description, such that the tests are tailored to the applicable ODD and DDT. Each test comes with metrics that enables the applicant to provide a performance rating of the AV for each of the tests. By only providing a performance rating for each test, the applicant does not need to disclose the details of the test results. In our proposed procedure, the assessor only conducts a limited number of tests. The main purpose of these tests is to verify the fidelity of the results provided by the applicant. Still, the applicant needs to conduct many tests, but this is assumed to be feasible because the applicant can utilize virtual simulation tools to conduct (a part of) the tests whereas this is not possible for the assessor due to proprietary or confidential information. To illustrate the proposed procedure, an example is presented.
 
