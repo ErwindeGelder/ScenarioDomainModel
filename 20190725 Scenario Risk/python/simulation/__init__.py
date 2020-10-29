@@ -17,3 +17,4 @@ from .simulation_lead_braking import SimulationLeadBraking, hdm_lead_braking_par
 from .simulation_lead_interaction import SimulationLeadInteraction
 from .simulation_longitudinal import SimulationLongitudinal
 from .simulator import Simulator
+from .wang_stamatiadis import WangStamatiadis, WangStamatiadisParameters
