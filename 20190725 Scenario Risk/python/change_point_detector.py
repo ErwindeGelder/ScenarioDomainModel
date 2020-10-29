@@ -37,7 +37,7 @@ class ChangePointDetector:
         self.functions = functions
         self.xdata = xdata
         if len(ydata.shape) == 1:
-            self.ydata = ydata[:, np.newaxis]
+            self.ydata = np.atleast_2d(ydata).T
         elif len(ydata.shape) == 2:
             self.ydata = ydata
         else:
