@@ -1,22 +1,31 @@
-""" Class Event
+"""
+Class Event
 
-Creation date: 2019 02 28
-Author(s): Erwin de Gelder
 
-Modifications:
-2019 05 22: Make use of type_checking.py to shorten the initialization.
-2019 10 13: Update of terminology.
-2020 08 22: Change how an event is created from json code. Result is the same.
-2020 08 24: Change superclass from ScenarioElement to QuantitativeElement.
-2020 10 05: Change way of getting properties of the time interval.
+Author
+------
+Erwin de Gelder
+
+Creation
+--------
+28 Feb 2019
+
+To do
+-----
+
+Modifications
+-------------
+22 May 2019: Make use of type_checking.py to shorten the initialization.
+13 Oct 2019: Update of terminology.
+
 """
 
-from .quantitative_element import QuantitativeElement, _quantitative_element_props_from_json
-from .scenario_element import DMObjects, _object_from_json
+from .default_class import Default
+from .tags import tag_from_json
 from .type_checking import check_for_type
 
 
-class Event(QuantitativeElement):
+class Event(Default):
     """ Event
 
     An event refers to a time instant at which a notable change happens. This
@@ -42,7 +51,7 @@ class Event(QuantitativeElement):
         # Check the types of the inputs.
         check_for_type("conditions", conditions, dict)
 
-        QuantitativeElement.__init__(self, **kwargs)
+        Default.__init__(self, **kwargs)
         self.conditions = conditions  # type: dict
 
     def to_json(self) -> dict:
@@ -53,32 +62,22 @@ class Event(QuantitativeElement):
 
         :return: dictionary that can be converted to a json file.
         """
-        event = QuantitativeElement.to_json(self)
+        event = Default.to_json(self)
         event["conditions"] = self.conditions
         return event
 
 
-def _event_props_from_json(json: dict) -> dict:
-    props = dict(conditions=json["conditions"])
-    props.update(_quantitative_element_props_from_json(json))
-    return props
-
-
-def _event_from_json(
-        json: dict,
-        attribute_objects: DMObjects  # pylint: disable=unused-argument
-) -> Event:
-    return Event(**_event_props_from_json(json))
-
-
-def event_from_json(json: dict, attribute_objects: DMObjects = None) -> Event:
+def event_from_json(json: dict) -> Event:
     """ Get Event object from JSON code.
 
     It is assumed that the JSON code of the Event is created using
     Event.to_json().
 
     :param json: JSON code of Event.
-    :param attribute_objects: A structure for storing all objects (optional).
     :return: Event object.
     """
-    return _object_from_json(json, _event_from_json, "event", attribute_objects)
+    event = Event(json["conditions"],
+                  name=json["name"],
+                  uid=int(json["id"]),
+                  tags=[tag_from_json(tag) for tag in json["tag"]])
+    return event

@@ -1,46 +1,37 @@
+""" Class Activity
+
+Creation date: 2018 10 30
+Author(s): Erwin de Gelder
+
+Modifications:
+2018 11 05: Make code PEP8 compliant.
+2018 11 07: Change use of models.
+2018 11 12: Demonstrate fit method of the different models.
+2018 11 20: Remove example. For example, see example_activity.py.
+2018 11 22: Make it possible to instantiate Actor from JSON code.
+2018 12 06: Make it possible to return full JSON code (incl. attributes' JSON code).
+2019 02 28: The start of a triggered activity is at an event.
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 10 11: Update of terminology.
+2020 07 31: Change name of DetectedActivity to SetActivity.
+2020 08 23: Make Activity a subclass of TimeInterval.
+2020 08 24: Add functionality to obtain the values of the state variables (and the derivative).
+2020 10 05: Change way of creating object from JSON code.
+2020 10 29: Add plot functionality.
 """
-Class Activity
-
-
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-30 Oct 2018
-
-To do
------
-
-Modifications
--------------
-05 Nov 2018: Make code PEP8 compliant.
-07 Nov 2018: Change use of models.
-12 Nov 2018: Demonstrate fit method of the different models.
-22 Nov 2018: Remove example. For example, see example_activity.py.
-22 Nov 2018: Make it possible to instantiate Actor from JSON code.
-06 Dec 2018: Make it possible to return full JSON code (incl. attributes' JSON code).
-28 Feb 2019: The start of a triggered activity is at an event.
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-11 Oct 2019: Update of terminology.
-2020 03 29: Make it possible to evaluate the model to get the state values.
-2020 07 30: Make it possible to evaluate the model to get the state derivative values.
-"""
-
 
 from typing import List, Union
-import numpy as np
-import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
-from .default_class import Default
-from .activity_category import ActivityCategory, activity_category_from_json
-from .tags import tag_from_json
+import matplotlib.pyplot as plt
+import numpy as np
+from .activity_category import ActivityCategory, _activity_category_from_json
 from .event import Event
+from .scenario_element import DMObjects, _object_from_json, _attributes_from_json
+from .time_interval import TimeInterval, _time_interval_props_from_json
 from .type_checking import check_for_type
 
 
-class Activity(Default):
+class Activity(TimeInterval):
     """ Activity
 
     An activity specifies the evolution of a state (defined by ActivityCategory)
@@ -48,65 +39,25 @@ class Activity(Default):
     ActivityCategory) and parameters.
 
     Attributes:
-        activity_category(ActivityCategory): The category of the activity
-            defines the state and the model.
-        duration(float): The duration of the activity.
-        parameters(dict): A dictionary of the parameters that quantifies the
-            activity.
-        tstart(float): By default, the starting time tstart is 0.
-        tend(float): By default, the end time is the same as the duration.
         name (str): A name that serves as a short description of the activity.
         uid (int): A unique ID.
         tags (List[Tag]): The tags are used to determine whether a scenario
             category comprises a scenario.
+        start (Event): The starting event.
+        end (Event): The end event.
+        category(ActivityCategory): The category of the activity
+            defines the state and the model.
+        parameters(dict): A dictionary of the parameters that quantifies the
+            activity.
     """
-    def __init__(self, activity_category: ActivityCategory, duration: float, parameters: dict,
-                 **kwargs):
+    def __init__(self, category: ActivityCategory, parameters: dict, **kwargs):
         # Check the types of the inputs
-        check_for_type("activity_category", activity_category, ActivityCategory)
-        duration = float(duration) if isinstance(duration, int) else duration
-        check_for_type("duration", duration, float)
+        check_for_type("activity_category", category, ActivityCategory)
         check_for_type("parameters", parameters, dict)
 
-        Default.__init__(self, **kwargs)
-        self.activity_category = activity_category  # type: ActivityCategory
-        self.tduration = duration
-        self.parameters = parameters
-        self.tstart = 0
-        self.tend = self.tduration
-
-    def plot_state(self, axes: Axes = None, **kwargs) -> None:
-        """ Plot the state over time.
-
-        The state is plotted over the time interval of the Activity. If no axes
-        is provided in the arguments, then an axes is created.
-
-        :param axes: Optional axes for plotting.
-        """
-        if axes is None:
-            _, axes = plt.subplots(1, 1)
-        xdata = np.linspace(self.tstart, self.tend, 100)
-        ydata = self.activity_category.model.get_state(self.parameters, npoints=len(xdata))
-        axes.plot(xdata, ydata, **kwargs)
-        axes.set_xlabel("Time")
-        axes.set_ylabel(self.activity_category.state.name)
-
-    def plot_state_dot(self, axes: Axes = None, **kwargs) -> None:
-        """ Plot the state derivative over time.
-
-        The state derivative is plotted over the time interval of the Activity.
-        If no axes is provided in the arguments, then an axes is created.
-
-        :param axes: Optional axes for plotting.
-        """
-        if axes is None:
-            _, axes = plt.subplots(1, 1)
-        xdata = np.linspace(self.tstart, self.tend, 100)
-        ydata = (self.activity_category.model.get_state_dot(self.parameters, npoints=len(xdata)) /
-                 self.tduration)
-        axes.plot(xdata, ydata, **kwargs)
-        axes.set_xlabel("Time")
-        axes.set_ylabel("{:s} dot".format(self.activity_category.state.name))
+        TimeInterval.__init__(self, **kwargs)
+        self.category = category  # type: ActivityCategory
+        self.parameters = parameters  # type: dict
 
     def get_state(self, npoints: int = 100, time: Union[np.ndarray, float, List] = None) \
             -> np.ndarray:
@@ -121,7 +72,8 @@ class Activity(Default):
         :param time: Time instance(s) at which the model is to be evaluated.
         :return: Numpy array with the state.
         """
-        return self.activity_category.model.get_state(self.parameters, npoints, time)
+        return self.category.model.get_state(self.parameters,
+                                             self._get_time(npoints, time))
 
     def get_state_dot(self, npoints: int = 100, time: Union[np.ndarray, float, List] = None) \
             -> np.ndarray:
@@ -136,7 +88,48 @@ class Activity(Default):
         :param time: Time instance(s) at which the model is to be evaluated.
         :return: Numpy array with the state.
         """
-        return self.activity_category.model.get_state_dot(self.parameters, npoints, time)
+        state_dot = self.category.model.get_state_dot(self.parameters,
+                                                      self._get_time(npoints, time))
+        duration = self.get_duration()
+        if duration is not None:
+            return state_dot / duration
+        return state_dot
+
+    def _get_time(self, npoints: int = 100, time: Union[np.ndarray, float, List] = None) \
+            -> np.ndarray:
+        if time is None:
+            return np.linspace(0, 1, npoints)
+
+        # Make sure that the time vector is an numpy array.
+        if isinstance(time, (float, int)):
+            time = np.array([time])
+        elif isinstance(time, List):
+            time = np.array(time)
+
+        # See if we have enough information to scale the time data. This is only possible if the
+        # start and end time of the activity are known.
+        tstart = self.get_tstart()
+        tend = self.get_tend()
+        if tstart is not None and tend is not None:
+            return (time - tstart) / (tend - tstart)
+        return time
+
+    def plot(self, axes: Axes = None, **kwargs) -> Axes:
+        if axes is None:
+            axes = plt.axes()
+            axes.set_xlabel("Time [s]")
+            axes.set_ylabel(self.category.state.value)
+
+        # Show the state.
+        time = self._get_time()
+        tstart = self.get_tstart()
+        tend = self.get_tend()
+        if tstart is not None and tend is not None:
+            time = time * (tend - tstart) + tstart
+        state = self.get_state()
+        axes.plot(time, state, **kwargs)
+
+        return axes
 
     def get_tags(self) -> dict:
         """ Return the list of tags related to this Activity.
@@ -146,115 +139,39 @@ class Activity(Default):
 
         :return: List of tags.
         """
-        tags = self.tags
-        tags += self.activity_category.get_tags()
-        return tags
+        return self.tags + self.category.get_tags()
 
     def to_json(self) -> dict:
-        """ Get JSON code of object.
-
-        For storing scenarios into the database, the scenarios need to be
-        converted to JSON. This method converts the attributes of Activity to
-        JSON.
-
-        :return: dictionary that can be converted to a json file.
-        """
-        activity = Default.to_json(self)
-        activity["activity_category"] = {"name": self.activity_category.name,
-                                         "uid": self.activity_category.uid}
-        activity["tduration"] = self.tduration
+        activity = TimeInterval.to_json(self)
+        activity["category"] = dict(name=self.category.name,
+                                    uid=self.category.uid)
         activity["parameters"] = self.parameters
-        activity["type"] = "Activity"
         return activity
 
     def to_json_full(self) -> dict:
-        """ Get full JSON code of object.
-
-        As opposed to the to_json() method, this method can be used to fully
-        construct the object. It might be that the to_json() code links to its
-        attributes with only a unique id and name. With this information the
-        corresponding object can be looked up into the database. This method
-        returns all information, which is not meant for the database, but can be
-        used instead for describing a scenario without the need of referring to
-        the database.
-
-        :return: dictionary that can be converted to a json file.
-        """
-        activity = self.to_json()
-        activity["activity_category"] = self.activity_category.to_json_full()
+        activity = TimeInterval.to_json_full(self)
+        activity["category"] = self.category.to_json_full()
+        activity["parameters"] = self.parameters
         return activity
 
 
-class DetectedActivity(Activity):
-    """ Detected activity.
-
-    The only difference between DetectedActivity and Activity is that with
-    DetectedActivity, the starting time (tstart) and the end time (tend) can be
-    defined.
-
-    Attributes:
-        tstart(float): The starting time of the activity.
-        tend(float): The end time of the activity.
-    """
-    def __init__(self, activity_category: ActivityCategory, tstart: float, duration: float,
-                 parameters: dict, **kwargs):
-        # Check the types of the inputs
-        tstart = float(tstart) if isinstance(tstart, int) else tstart
-        check_for_type("tstart", tstart, float)
-
-        Activity.__init__(self, activity_category, duration, parameters, **kwargs)
-        self.tstart = tstart
-        self.tend = self.tstart + self.tduration
-
-    def to_json(self) -> dict:
-        """ Get JSON code of object.
-
-        For storing scenarios into the database, the scenarios need to be
-        converted to JSON. This method converts the attributes of Activity to
-        JSON.
-
-        :return: dictionary that can be converted to a json file.
-        """
-        activity = Activity.to_json(self)
-        activity['tstart'] = self.tstart
-        activity['tend'] = self.tend
-        activity["type"] = "DetectedActivity"
-        return activity
+def _activity_props_from_json(json: dict, attribute_objects: DMObjects, start: Event = None,
+                              end: Event = None, category: ActivityCategory = None) -> dict:
+    props = dict(parameters=json["parameters"])
+    props.update(_time_interval_props_from_json(json, attribute_objects, start=start, end=end))
+    props.update(_attributes_from_json(json, attribute_objects,
+                                       dict(category=(_activity_category_from_json,
+                                                      "activity_category")), category=category))
+    return props
 
 
-class TriggeredActivity(Activity):
-    """ Triggered activity
-
-    A triggered activity is similarly defined as an activity with, in addition,
-    an event that triggers (starts) the activity.
-
-    Attributes:
-        trigger(Event): An event that starts this activity.
-    """
-    def __init__(self, activity_category, duration, parameters, trigger, **kwargs):
-        # Check the types of the inputs
-        check_for_type("trigger", trigger, Event)
-
-        Activity.__init__(self, activity_category, duration, parameters, **kwargs)
-        self.trigger = trigger
-
-    def to_json(self) -> dict:
-        """ Get JSON code of object.
-
-        For storing scenarios into the database, the scenarios need to be
-        converted to JSON. This method converts the attributes of Activity to
-        JSON.
-
-        :return: dictionary that can be converted to a json file.
-        """
-        activity = Activity.to_json(self)
-        activity["trigger"] = self.trigger.to_json()
-        activity["type"] = "TriggeredActivity"
-        return activity
+def _activity_from_json(json: dict, attribute_objects: DMObjects, start: Event = None,
+                        end: Event = None, category: ActivityCategory = None) -> Activity:
+    return Activity(**_activity_props_from_json(json, attribute_objects, start, end, category))
 
 
-def activity_from_json(json: dict, activity_category: ActivityCategory = None) \
-        -> Activity:
+def activity_from_json(json: dict, attribute_objects: DMObjects = None, start: Event = None,
+                       end: Event = None, category: ActivityCategory = None) -> Activity:
     """ Get Activity object from JSON code
 
     It is assumed that all the attributes are fully defined. Hence, the
@@ -262,28 +179,17 @@ def activity_from_json(json: dict, activity_category: ActivityCategory = None) \
     Alternatively, the ActivityCategory can be passed as optional argument. In
     that case, the ActivityCategory does not need to be defined in the JSON
     code.
+    The same applies for the Event that defines the start of the activity and
+    the Event that defines the end of the activity.
 
     :param json: JSON code of Activity.
-    :param activity_category: If given, it will not be based on the JSON code.
+    :param attribute_objects: A structure for storing all objects (optional).
+    :param start: Event that defines the start. If given, it will not be based
+        on the JSON code.
+    :param end: Event that defines the end. If given, it will not be based on
+        the JSON code.
+    :param category: If given, it will not be based on the JSON code.
     :return: Activity object.
     """
-    if activity_category is None:
-        activity_category = activity_category_from_json(json["activity_category"])
-    arguments = {"activity_category": activity_category,
-                 "duration": json["tduration"],
-                 "parameters": json["parameters"],
-                 "name": json["name"],
-                 "uid": int(json["id"]),
-                 "tags": [tag_from_json(tag) for tag in json["tag"]]}
-
-    # Instantiate the Activity object. It can be a regular Activity, a DetectedActivity or a
-    # TriggeredActivity
-    if json["type"] == "Activity":
-        return Activity(**arguments)
-    if json["type"] == "DetectedActivity":
-        arguments["tstart"] = json["tstart"]
-        return DetectedActivity(**arguments)
-    if json["type"] == "TriggeredActivity":
-        arguments["conditions"] = json["conditions"]
-        return TriggeredActivity(**arguments)
-    raise ValueError("Type of activity '{:s}' is not valid.".format(json["type"]))
+    return _object_from_json(json, _activity_from_json, "activity", attribute_objects, start=start,
+                             end=end, category=category)

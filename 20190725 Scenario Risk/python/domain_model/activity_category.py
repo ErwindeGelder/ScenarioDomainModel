@@ -1,37 +1,27 @@
+""" Class ActivityCategory
+
+Creation date: 2018 10 30
+Author(s): Erwin de Gelder
+
+Modifications:
+2018 05 11: Make code PEP8 compliant.
+2019 11 19: Enable instantiation using JSON code.
+2019 05 22: Make use of type_checking.py to shorten the initialization.
+2019 10 11: Update of terminology.
+2020 08 16: Make ActivityCategory a subclass of QualitativeElement.
+2020 08 25: Add function to obtain properties from a dictionary.
+2020 10 04: Change way of creating object from JSON code.
 """
-Class ActivityCategory
-
-
-Author
-------
-Erwin de Gelder
-
-Creation
---------
-30 Oct 2018
-
-To do
------
-
-Modifications
--------------
-05 Nov 2018: Make code PEP8 compliant.
-19 Nov 2018: Enable instantiation using JSON code.
-22 May 2019: Make use of type_checking.py to shorten the initialization.
-11 Oct 2019: Update of terminology.
-
-"""
-
 
 import numpy as np
-from .model import Model, model_from_json
-from .default_class import Default
+from .model import Model, _model_from_json
+from .qualitative_element import QualitativeElement, _qualitative_element_props_from_json
+from .scenario_element import DMObjects, _object_from_json, _attributes_from_json
 from .state_variable import StateVariable, state_variable_from_json
-from .tags import tag_from_json
 from .type_checking import check_for_type
 
 
-class ActivityCategory(Default):
+class ActivityCategory(QualitativeElement):
     """ Category of activity
 
     An activity specified the evolution of a state over time. The activity
@@ -48,13 +38,15 @@ class ActivityCategory(Default):
         uid (int): A unique ID.
         tags (List[Tag]): The tags are used to determine whether a scenario
             category comprises a scenario.
+        description(str): A string that qualitatively describes the activity
+            category.
     """
     def __init__(self, model: Model, state: StateVariable, **kwargs):
         # Check the types of the inputs
         check_for_type("model", model, Model)
         check_for_type("state", state, StateVariable)
 
-        Default.__init__(self, **kwargs)
+        QualitativeElement.__init__(self, **kwargs)
         self.model = model  # type: Model
         self.state = state  # type: StateVariable
 
@@ -73,31 +65,45 @@ class ActivityCategory(Default):
         return self.model.fit(time, data, options=options)
 
     def to_json(self) -> dict:
-        """ Get JSON code of object.
-
-        For storing scenarios into the database, the scenarios need to be
-        converted to JSON. This method converts the attributes of
-        ActivityCategory to JSON.
-
-        :return: dictionary that can be converted to a json file.
-        """
-        activity_category = Default.to_json(self)
-        activity_category["model"] = self.model.to_json()
+        activity_category = QualitativeElement.to_json(self)
+        activity_category["model"] = {"name": self.model.name, "uid": self.model.uid}
         activity_category["state"] = self.state.to_json()
         return activity_category
 
+    def to_json_full(self) -> dict:
+        activity_category = self.to_json()
+        activity_category["model"] = self.model.to_json_full()
+        return activity_category
 
-def activity_category_from_json(json: dict) -> ActivityCategory:
+
+def _activity_category_props_from_json(json: dict, attribute_objects: DMObjects,
+                                       model: Model = None) -> dict:
+    props = dict(state=state_variable_from_json(json["state"]))
+    props.update(_qualitative_element_props_from_json(json))
+    props.update(_attributes_from_json(json, attribute_objects,
+                                       dict(model=(_model_from_json, "model")), model=model))
+    return props
+
+
+def _activity_category_from_json(json: dict, attribute_objects: DMObjects, model: Model = None) \
+        -> ActivityCategory:
+    return ActivityCategory(**_activity_category_props_from_json(json, attribute_objects, model))
+
+
+def activity_category_from_json(json: dict, attribute_objects: DMObjects = None,
+                                model: Model = None) -> ActivityCategory:
     """ Get ActivityCategory object from JSON code.
 
     It is assumed that the JSON code of the ActivityCategory is created using
-    ActivityCategory.to_json().
+    ActivityCategory.to_json(). Hence, the Model needs to be fully defined
+    instead of only the unique ID. Alternatively, the Model can be passed as
+    optional argument. In that case, the Model does not need to be defined in
+    the JSON code.
 
     :param json: JSON code of ActorCategory.
+    :param attribute_objects: A structure for storing all objects (optional).
+    :param model: If given, it will not be based on the JSON code.
     :return: ActivityCategory object.
     """
-    model = model_from_json(json["model"])
-    state = state_variable_from_json(json["state"])
-    activity_category = ActivityCategory(model, state, name=json["name"], uid=int(json["id"]),
-                                         tags=[tag_from_json(tag) for tag in json["tag"]])
-    return activity_category
+    return _object_from_json(json, _activity_category_from_json, "activity_category",
+                             attribute_objects, model=model)

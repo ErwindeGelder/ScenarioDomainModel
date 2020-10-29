@@ -1,13 +1,24 @@
-""" Class StateVariable
+"""
+Class StateVariable
 
-Creation date: 2018 11 05
-Author(s): Erwin de Gelder
 
-Modifications:
-2019 03 14: StateVariables {LONGITUDINAL,LATERAL}_ROAD_POSITION added.
-2019 10 11: Update of terminology.
-2019 11 04: Add the heading as a possible state variable.
-2020 10 29: Add units to state variable descriptions.
+Author
+------
+Erwin de Gelder
+
+Creation
+--------
+05 Nov 2018
+
+To do
+-----
+
+Modifications
+-------------
+14 Mar 2019: StateVariables {LONGITUDINAL,LATERAL}_ROAD_POSITION added.
+11 Oct 2019: Update of terminology.
+04 Nov 2019: Add the heading as a possible state variable.
+23 Mar 2020: Add longitudinal and lateral target information.
 """
 
 from enum import Enum
@@ -16,13 +27,14 @@ from enum import Enum
 class StateVariable(Enum):
     """ Enumeration for state variables.
     """
-    LONGITUDINAL_POSITION = "x [m]"
-    LATERAL_POSITION = "y [m]"
-    SPEED = "v [m/s]"
-    HEADING = "psi [rad]"
-    YAWRATE = "psidot [rad/s]"
+    LONGITUDINAL_POSITION = "x"
+    LATERAL_POSITION = "y"
+    SPEED = "v"
+    HEADING = "psi"
     LONGITUDINAL_ROAD_POSITION = "[ROAD_ID, ROAD_DISTANCE]"
     LATERAL_ROAD_POSITION = "[LANE_ID, LANE_OFFSET]"
+    LON_TARGET = "[vabs, dx]"
+    LAT_TARGET = 'dy'
 
     def to_json(self):
         """ When tag is exporting to JSON, this function is being called

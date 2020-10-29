@@ -1,24 +1,31 @@
-""" Class ActorCategory
+"""
+Class ActorCategory
 
-Creation date: 2018 10 30
-Author(s): Erwin de Gelder
 
-Modifications:
-2018 11 05: Make code PEP8 compliant.
-2018 11 19: Enable instantiation using JSON code.
-2019 05 22: Make use of type_checking.py to shorten the initialization.
-2019 10 11: Update of terminology.
-2020 08 16: Make ActorCategory a subclass of DynamicPhysicalThingCategory.
-2020 08 25: Add function to obtain properties from a dictionary.
-2020 10 04: Change way of creating object from JSON code.
-2020 10 12: ActorCategory is subclass of PhysicalElementCategory (was DynamicPhysicalThingCategory).
+Author
+------
+Erwin de Gelder
+
+Creation
+--------
+30 Oct 2018
+
+To do
+-----
+
+Modifications
+-------------
+05 Nov 2018: Make code PEP8 compliant.
+19 Nov 2018: Enable instantiation using JSON code.
+22 May 2019: Make use of type_checking.py to shorten the initialization.
+11 Oct 2019: Update of terminology.
+
 """
 
+
 from enum import Enum
-from .physical_element_category import PhysicalElementCategory, \
-    _physical_element_category_props_from_json
-from .scenario_element import DMObjects, _object_from_json
-from .tags import Tag
+from .tags import Tag, tag_from_json
+from .default_class import Default
 from .type_checking import check_for_type
 
 
@@ -50,7 +57,7 @@ class VehicleType(Enum):
         return {"name": self.name, "value": self.value}
 
 
-class ActorCategory(PhysicalElementCategory):
+class ActorCategory(Default):
     """ ActorCategory: Category of actor
 
     An actor is an agent in a scenario acting on its own behalf. "Ego vehicle"
@@ -65,13 +72,12 @@ class ActorCategory(PhysicalElementCategory):
         uid (int): A unique ID.
         tags (List[Tag]): The tags are used to determine whether a scenario
             category comprises a scenario.
-        description(str): A string that qualitatively describes this actor.
     """
     def __init__(self, vehicle_type: VehicleType, **kwargs):
         # Check the types of the inputs
         check_for_type("vehicle_type", vehicle_type, VehicleType)
 
-        PhysicalElementCategory.__init__(self, **kwargs)
+        Default.__init__(self, **kwargs)
         self.vehicle_type = vehicle_type  # type: VehicleType
 
     def to_json(self) -> dict:
@@ -83,35 +89,24 @@ class ActorCategory(PhysicalElementCategory):
 
         :return: dictionary that can be converted to a json file.
         """
-        actor_category = PhysicalElementCategory.to_json(self)
+        actor_category = Default.to_json(self)
         actor_category["vehicle_type"] = self.vehicle_type.to_json()
         return actor_category
 
 
-def _actor_category_props_from_json(json: dict) -> dict:
-    props = dict(vehicle_type=vehicle_type_from_json(json["vehicle_type"]))
-    props.update(_physical_element_category_props_from_json(json))
-    return props
-
-
-def _actor_category_from_json(
-        json: dict,
-        attribute_objects: DMObjects  # pylint: disable=unused-argument
-) -> ActorCategory:
-    return ActorCategory(**_actor_category_props_from_json(json))
-
-
-def actor_category_from_json(json: dict, attribute_objects: DMObjects = None) -> ActorCategory:
+def actor_category_from_json(json: dict) -> ActorCategory:
     """ Get ActorCategory object from JSON code
 
     It is assumed that the JSON code of the ActorCategory is created using
     ActorCategory.to_json().
 
     :param json: JSON code of Actor.
-    :param attribute_objects: A structure for storing all objects (optional).
     :return: ActorCategory object.
     """
-    return _object_from_json(json, _actor_category_from_json, "actor_category", attribute_objects)
+    vehicle_type = vehicle_type_from_json(json["vehicle_type"])
+    actor_category = ActorCategory(vehicle_type, name=json["name"], uid=int(json["id"]),
+                                   tags=[tag_from_json(tag) for tag in json["tag"]])
+    return actor_category
 
 
 def vehicle_type_from_json(json: dict) -> VehicleType:
@@ -123,4 +118,5 @@ def vehicle_type_from_json(json: dict) -> VehicleType:
     :param json: JSON code of VehicleType.
     :return: Tag object.
     """
+
     return getattr(VehicleType, json["name"])
