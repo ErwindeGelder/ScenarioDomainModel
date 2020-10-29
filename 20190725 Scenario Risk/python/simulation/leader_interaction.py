@@ -4,6 +4,7 @@ Creation date: 2020 10 08
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 10 28: Make sure that final speed is not negative.
 """
 
 import numpy as np
@@ -89,7 +90,7 @@ class LeaderInteraction:
                 self.state.acceleration = 0
         else:
             self.state.acceleration = 0
-            self.state.speed = self.parms.init_speed + self.parms.speed_difference
+            self.state.speed = max(self.parms.init_speed + self.parms.speed_difference, 0)
             # self.state.position = (np.polyval(self.polycoefficients_int, self.parms.duration) +
             #                        (self.parms.init_speed + self.parms.speed_difference) *
             #                        (time - self.parms.duration))
