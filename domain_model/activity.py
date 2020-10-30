@@ -115,6 +115,14 @@ class Activity(TimeInterval):
         return time
 
     def plot(self, axes: Axes = None, **kwargs) -> Axes:
+        """ Plot the state variable over time.
+
+        :param axes: Optional. If provided, the state will be plotted using the
+            provided axes.
+        :param kwargs: Optional arguments that are passed to matplotlib's plot
+            function.
+        :return: The axes that are used for plotting.
+        """
         if axes is None:
             axes = plt.axes()
             axes.set_xlabel("Time [s]")
