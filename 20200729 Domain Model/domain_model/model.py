@@ -16,6 +16,7 @@ Modifications:
 2020 08 24: Spline model added.
 2020 10 02: Make Model a subclass of QualitativeElement.
 2020 10 04: Change way of creating object from JSON code.
+2020 10 30: For using options for the fit functions, use **kwargs instead of options.
 """
 
 import sys
@@ -174,7 +175,7 @@ class Linear(Model):
             time_end = np.max(time)
             return {"xstart": regression_result[0]*time_begin + regression_result[1],
                     "xend": regression_result[0]*time_end + regression_result[1]}
-        
+
         # Use the end points of the data to fit the linear line.
         index_begin = np.argmin(time)
         index_end = np.argmax(time)
