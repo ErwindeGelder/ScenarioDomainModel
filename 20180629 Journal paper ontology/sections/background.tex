@@ -1,23 +1,23 @@
 \section{Background}
 \label{sec:background}
 
-We first explain in \cref{sec:why oo framework} why we want to present an \cstartc object-oriented framework \cendc for describing scenarios and  scenario categories. Next, in \cref{sec:context}, we provide some information on the context for which we want to define scenarios. 
+We first explain in \cref{sec:why oo framework} why we want to present \cstartc \iac{oof} \cendc for describing scenarios and  scenario categories. Next, in \cref{sec:context}, we provide some information on the context for which we want to define scenarios. 
 
 
 \cstartb
 \subsection{Why an  object-oriented framework?}
 \label{sec:why oo framework}
 
-According to \textcite{johnson1988designing}, an object-oriented framework is a ``set of classes that embodies an abstract design for solutions to a family of related problems.''
+According to \textcite{johnson1988designing}, \iac{oof} is a ``set of classes that embodies an abstract design for solutions to a family of related problems.''
 The object orientation is used for ``a representation, modeling, and abstraction formalism'' \autocite{wegner1990concepts}, which is why it is considered ``not only useful but also fundamental'' \autocite{wegner1990concepts}. \cendb
-\cstartd In addition, \textcite{patridge2005business} notes that object-oriented modeling can provide a bridge from traditional entity-relation based data modeling to data modeling that is fully grounded in a formalized ontology. \cendd
-\cstartb An object-orientated framework offers the following benefits:
+\cstartd In addition, \textcite{patridge2005business} notes that object-oriented modeling can provide a bridge from traditional entity-relation-based data modeling to data modeling that is fully grounded in a formalized ontology. \cendd
+\cstartb \Iac{oof} offers the following benefits:
 \begin{itemize}
 	\item \cendb\cstartc\emph{Clarity:} \cendc\cstartb It provides ``a common vocabulary for designers to communicate, document, and explore design alternatives'' \autocite{gamma1993design}.
 	\item \cendb\cstartc\emph{Modularity:} By decomposing a scenario into components, the complexity of a scenario itself is reduced. Thus, ``modularity makes it easier to understand the effect of changes'' \cite{johnson1988designing}.
-	\item \emph{Reusability:} \cendc\cstartb An object-oriented framework promotes reusability \autocite{snyder1986encapsulation, meyer1987reusability, johnson1988designing}. E.g., if two classes share certain procedures and/or properties, these procedures and/or properties could be provided by a so-called superclass from which these two classes inherit the procedures and properties, such that these procedures and properties need to be defined only once.
-	\item \cendb\cstartc\emph{Encapsulation:} \cendc\cstartb It offers the so-called encapsulation of data and procedures. This assures ``that compatible changes can be made safely, which facilitates program evolution and maintenance'' \autocite{snyder1986encapsulation}.
-	\item \cendb\cstartc\emph{Translatable to object-oriented programming languages:} \cendc\cstartb As the framework consists of a set of classes, it can be directly used in an object-oriented coding language. The framework then specifies the relationships between the different classes and provided information on the properties of a class and the possible values.
+	\item \emph{Reusability:} \cendc\cstartb \Iac{oof} promotes reusability \autocite{snyder1986encapsulation, meyer1987reusability, johnson1988designing}. E.g., if two classes share certain procedures and/or properties, these procedures and/or properties could be provided by a so-called superclass from which these two classes inherit the procedures and properties, such that these procedures and properties need to be defined only once.
+	\item \cendb\cstartc\emph{Encapsulation:} \cendc\cstartb Encapsulation assures ``that compatible changes can be made safely, which facilitates program evolution and maintenance'' \autocite{snyder1986encapsulation}.
+	\item \cendb\cstartc\emph{Possibility to translatable to object-oriented programming languages:} \cendc\cstartb As the framework consists of a set of classes, it can be directly used in an object-oriented coding language. The framework then specifies the relationships between the different classes and provides information on the properties of a class and the possible values.
 \end{itemize}
 \cendb
 %According to Gruber \autocite{gruber1993ontology}, ``an ontology is an explicit specification of a conceptualization'', where a conceptualization refers to ``an abstract, simplified view of the world that we wish to represent for some purpose''. Ontologies are widely applied in all kinds of research areas, e.g., computing \autocite{chen2004soupa}, vehicle platooning \autocite{maiti2017conceptualization}, system performance \autocite{benvenuti2017ontologybased}, transportation \autocite{katsumi2018ontologies}, and vehicle path planning \autocite{provine2004ontology, schlenoff2003using}. 
@@ -46,7 +46,7 @@ In this paper, the context of a scenario is the assessment of \acp{av}, where \a
 It is assumed that the assessment methodology uses scenario-based test cases. %(i.e., test cases) 
 %for which some resulting metrics are compared with a reference \autocite{stellet2015taxonomy}. 
 % - Scenarios that an (automated) vehicle can encounter
-The ultimate goal is to build a database with all relevant scenarios that \iac{av} has to cope with when driving in the real world \autocite{putz2017pegasus}. Hence, a scenario should be a description of a potential use case of \iac{av}. 
+The ultimate goal is to build a database with \cstartf almost \cendf all relevant scenarios that \iac{av} has to cope with when driving in the real world \autocite{putz2017pegasus}. Hence, a scenario should be a description of a potential use case of \iac{av}. 
 % Whether these scenarios are obtained with a knowledge-based approach \autocite{gietelink2004systemvalidation, stellet2015taxonomy} or with a data-driven approach \autocite{deGelder2017assessment, stellet2015taxonomy}, a clear and unambiguous definition of such a test scenario is required. 
 
 %In this paper, \emph{scenario} can refer to either an observed scenario in (real-world driving) data, i.e., a real-world scenario, or a scenario that is used for testing AVs, i.e., a test case. Note that, typically, the difference between the two is that with a real-world scenario, the activity of all actors is described, while for a test case, some goals are specified for the system under test (e.g., the goal could be to drive from A to B) instead of its activity. 
