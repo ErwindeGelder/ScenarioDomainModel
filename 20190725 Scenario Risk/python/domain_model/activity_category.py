@@ -11,6 +11,7 @@ Modifications:
 2020 08 16: Make ActivityCategory a subclass of QualitativeElement.
 2020 08 25: Add function to obtain properties from a dictionary.
 2020 10 04: Change way of creating object from JSON code.
+2020 10 30: For using options for the fit functions, use **kwargs instead of options.
 """
 
 import numpy as np
@@ -50,7 +51,7 @@ class ActivityCategory(QualitativeElement):
         self.model = model  # type: Model
         self.state = state  # type: StateVariable
 
-    def fit(self, time: np.ndarray, data: np.ndarray, options: dict = None) -> dict:
+    def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
         """ Fit the data to the model and return the parameters.
 
         The data is to be fit to the model that is set for this ActivityCategory
@@ -59,10 +60,10 @@ class ActivityCategory(QualitativeElement):
 
         :param time: the time instants of the data.
         :param data: the data that will be fit to the model.
-        :param options: specify some model-specific options.
+        :param kwargs: specify some model-specific options.
         :return: dictionary of the parameters.
         """
-        return self.model.fit(time, data, options=options)
+        return self.model.fit(time, data, **kwargs)
 
     def to_json(self) -> dict:
         activity_category = QualitativeElement.to_json(self)

@@ -10,8 +10,10 @@ from .activity import Activity, activity_from_json
 from .activity_category import ActivityCategory, activity_category_from_json
 from .actor import Actor, EgoVehicle, actor_from_json
 from .actor_category import ActorCategory, VehicleType, actor_category_from_json
+from .document_management import DocumentManagement
 from .event import Event, event_from_json
-from .model import Constant, Linear, Spline3Knots, Sinusoidal, Splines, model_from_json
+from .model import Constant, Linear, Spline3Knots, Sinusoidal, Splines, MultiBSplines, \
+    model_from_json
 from .physical_element import PhysicalElement, physical_element_from_json
 from .physical_element_category import PhysicalElementCategory, physical_element_category_from_json
 from .scenario import Scenario, scenario_from_json
