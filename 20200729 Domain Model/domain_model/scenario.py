@@ -327,10 +327,10 @@ def scenario_from_json(json: dict, attribute_objects: DMObjects = None, **kwargs
     arguments are allowed:
     - start: The start event.
     - end: The end event.
-    - physical_element: The physical elements that define the static
+    - physical_elements: The physical elements that define the static
         environment.
-    - actor: The physical elements that are dynamic.
-    - activity: The activities that describe the evolution of the dynamic
+    - actors: The physical elements that are dynamic.
+    - activities: The activities that describe the evolution of the dynamic
         environment.
 
     :param json: JSON code of Scenario.
