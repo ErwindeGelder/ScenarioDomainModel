@@ -4,28 +4,28 @@ Creation date: 2018 07 18
 Author(s): Erwin de Gelder
 
 Modifications:
-2018 08 08 Add functionality for adding data.
-2018 08 10 Fixed mistakes for computing one-leave-out score.
-2018 09 27 Several improvements. Score now computed with only the first n datapoints. Speed
-           improved.
-2018 10 01 Some comments added.
-2018 10 09 Added computation of gradient and laplacian of the KDE.
-2018 10 13 Changed computation of scores and laplacian such that less memory is used.
-2018 11 06 Improve PEP8 compliancy.
-2018 11 07 Add description of class.
-2019 08 30 Change type hinting: np.array should be np.ndarray.
-2020 02 14 Add function for computing the cumulative distribution function.
-2020 02 17 Use special classes instead of dictionaries.
-2020 02 21 Add the possibility to have a variable bandwidth.
-2020 03 06 Return warning number when computing the bandwidth.
-2020 05 01 Add the option of normalizing the data.
-2020 06 29 Compute the leave-one-out score differently for large n to lower memory usage.
-2020 07 03 Enable conditional sampling of the KDE.
-2020 07 26 Add the option of having integer weights.
-2020 07 27 Add the clustering method. Version 1.1.
-2020 07 28 Version 1.1: Enable storing the KDE in a pickle file and restoring it from a pickle file.
-2020 07 30 Version 1.2: Make the clustering extremely faster (now in a blink of an eye).
-2020 08 06 Version 1.3: Add possibility to get integrated probability on hypercube.
+2018 08 08: Add functionality for adding data.
+2018 08 10: Fixed mistakes for computing one-leave-out score.
+2018 09 27: Several improvements. Score now computed with only the first n datapoints. Speed
+            improved.
+2018 10 01: Some comments added.
+2018 10 09: Added computation of gradient and laplacian of the KDE.
+2018 10 13: Changed computation of scores and laplacian such that less memory is used.
+2018 11 06: Improve PEP8 compliancy.
+2018 11 07: Add description of class.
+2019 08 30: Change type hinting: np.array should be np.ndarray.
+2020 02 14: Add function for computing the cumulative distribution function.
+2020 02 17: Use special classes instead of dictionaries.
+2020 02 21: Add the possibility to have a variable bandwidth.
+2020 03 06: Return warning number when computing the bandwidth.
+2020 05 01: Add the option of normalizing the data.
+2020 06 29: Compute the leave-one-out score differently for large n to lower memory usage.
+2020 07 03: Enable conditional sampling of the KDE.
+2020 07 26: Add the option of having integer weights.
+2020 07 27: Add the clustering method. Version 1.1.
+2020 07 28: Version 1.1: Enable storing KDE in a pickle file and restoring it from a pickle file.
+2020 07 30: Version 1.2: Make the clustering extremely faster (now in a blink of an eye).
+2020 08 06: Version 1.3: Add possibility to get integrated probability on hypercube.
 """
 
 from itertools import combinations
@@ -101,16 +101,18 @@ class KDEData(Options):
 class KDE:
     """ Kernel Density Estimation
 
-    This class can be utilized to create Kernel Density Estimations (KDE) of data.
+    This class can be utilized to create Kernel Density Estimations (KDE) of
+    data.
 
-    Inference of the KDE is significantly faster than existing KDE tools from, e.g.,
-    sklearn and scipy. This is especially the case when one needs to infer at the same
-    datapoints (e.g., each time with a different bandwidth), because the squared euclidean
-    distance between the points at which  the KDE needs to be evaluated and the points that are
-    used to construct the KDE is only calculated once (if the method set_score_samples() is used).
-    Also the leave-one-out cross validation is significantly faster than existing KDE tools,
-    because of the same reason: the euclidean distance between the datapoints is only calculated
-    once.
+    Inference of the KDE is significantly faster than existing KDE tools from,
+    e.g., sklearn and scipy. This is especially the case when one needs to infer
+    at the same datapoints (e.g., each time with a different bandwidth), because
+    the squared euclidean distance between the points at which  the KDE needs to
+    be evaluated and the points that are used to construct the KDE is only
+    calculated once (if the method set_score_samples() is used). Also the
+    leave-one-out cross validation is significantly faster than existing KDE
+    tools, because of the same reason: the euclidean distance between the
+    datapoints is only calculated once.
 
     If weights are used, it is assumed that the weight corresponds to the number
     of data points that have the same value. As such, the weights should be
@@ -118,11 +120,11 @@ class KDE:
     each other. This can result in a significant faster result.
 
     Attributes:
-        bandwidth(float): The bandwidth of the KDE. If no bandwidth is set or computed,
-            the bandwidth equals None.
+        bandwidth(float): The bandwidth of the KDE. If no bandwidth is set or
+            computed, the bandwidth equals None.
         data(np.ndarray): The data that is used to construct the KDE.
-        constants(KDEConstants): Constants that are used for the various methods.
-        data_helpers(KDEData): Several np.ndarrays that are used for the various methods.
+        constants(KDEConstants): Constants that are used for various methods.
+        data_helpers(KDEData): np.ndarrays that are used for various methods.
         scaling(bool): Whether scaling is used.
         weights(bool): Whether weights are used.
     """
@@ -145,8 +147,8 @@ class KDE:
          - Computing the corresponding constant muk = integral[ kernel(x)^2 ]
          - Computing some offsets for the score.
 
-        :param data: The provided data. When multidimensional data is used, the data should be
-            an n-by-d array, with n datapoints and d dimensions.
+        :param data: The provided data. When multidimensional data is used, the
+            data should be an n-by-d array, with n datapoints and d dimensions.
         :param weights: If used, the weights for each data point.
         :param std: The standard deviation could be given.
         """
