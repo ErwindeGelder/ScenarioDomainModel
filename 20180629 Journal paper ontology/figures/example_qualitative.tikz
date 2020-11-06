@@ -28,7 +28,7 @@
 	tags: Pedestrian};
 
 \node[object, fill=category, below=of pedestrian qualitative.south](braking){{\bfseries Braking::Activity category}\\
-	model: Sinusoid, see \cref{eq:sinusoidala,eq:sinusoidalb}\\
+	model: Sinusoidal, see \cref{eq:sinusoidala,eq:sinusoidalb}\\
 	state variable: Speed ($\egospeed$)\\
 	tags: Braking};
 

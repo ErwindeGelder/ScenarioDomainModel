@@ -51,7 +51,7 @@ The ego vehicle\cstartd(s) \cendd and the dynamic environment are qualitatively 
 In line with \cref{def:activity}, \textit{Activity category} includes the state variable(s).
 The \textit{Model} that is used to describe the time evolution of the state variable(s) is specified. 
 \cstarte Note that a \textit{model} is an abstract class that serves as a template for different models, such as the three examples shown in \cref{fig:class overview}: \textit{Sinusoidal}, \textit{Linear}, and \textit{Constant}. 
-Let $\state(\time)$ denote the state variable(s) at time $\time$, then the \textit{Sinusoidal} model is defined as follows:
+Let $\state(\time)$ denote the state variable at time $\time$, then the \textit{Sinusoidal} model is defined as follows:
 \begin{align}
 	\statedot(\time) &= \frac{\pi \amplitude}{2\duration} \sin \left( \frac{\pi \left( \time - \timeinit\right)}{\duration} \right),\ \time \in [\timeinit, \timeinit+\duration], \label{eq:sinusoidala} \\
 	\state(\timeinit) &= \stateinit. \label{eq:sinusoidalb}
@@ -72,7 +72,7 @@ To indicate that an actor is an ego vehicle, the tag ``Ego vehicle'' is added to
 The \textit{Scenario category} has \cstarte \textit{physical element categories}\cende, \textit{activity categories}, and \textit{actor categories} as attributes. 
 %As with the other classes, a \textit{scenario category} contains a name and may contain predefined tags that describe parts of the scenario that are not described by the other classes.
 Another attribute of the \textit{Scenario category} is the list of acts. %\footnote{ In line with the definition of \emph{act} in \cref{sec:act}, for a \textit{scenario category}, an \emph{act} is a combination of \textit{activity categories} and \textit{actor categories}.}. 
-These acts describe which actors perform which activities. Naturally, it is possible that one actor performs multiple activities and that one activity is performed by multiple actors.
+These acts describe which actors perform which activities. Note that it is possible that one actor performs multiple activities and that one activity is performed by multiple actors.
 
 % Explain why we have these different classes
 The reader might wonder why we introduce the different classes for describing a scenario category, i.e., the blue blocks, instead of only one class for modeling a scenario category. 
