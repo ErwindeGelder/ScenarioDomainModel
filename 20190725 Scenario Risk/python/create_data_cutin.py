@@ -24,6 +24,7 @@ def get_noise(nsamples, tau=0.1):
     :return: Noise data.
     """
     output = np.random.randn(nsamples)
+    output[0] = tau*output[0]
     for i in range(1, nsamples):
         output[i] = (1-tau)*output[i-1] + tau*output[i]
     return output
