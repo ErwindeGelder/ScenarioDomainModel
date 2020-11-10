@@ -5,8 +5,9 @@ for the assessment of automated vehicles. Whenever one uses this repository,
 please refer to the following publication:
 
 E. de Gelder, J.-P. Paardekooper, A. Khabbaz Saberi, H. Elrofai, O. Op den Camp, 
-J. Ploeg, L. Friedmann, and B. De Schutter, "Ontology for Scenarios for the 
-Assessment of Automated Vehicles", 2019. *In preparation.*
+S. Kraines, J. Ploeg, and B. De Schutter, "Towards an Ontology for Scenario 
+Definition for the Assessment of Automated Vehicles: An Object-Oriented 
+Framework", 2020. *In preparation.*
 
 More details on the terms and definitions can also be found in the 
 aforementioned publication. 
@@ -15,6 +16,8 @@ The best way to learn more about this code is to have a look at the tutorials:
 
 1. [Instatiating a *scenario category*](./Tutorial%201%20Scenario%20category.ipynb)
 2. [Instatiating a *scenario*](./Tutorial%202%20Scenario.ipynb)
+3. [Creating a *scenario* from data](./Tutorial%203%20Scenario%20from%20data.ipynb)
+4. [Scenario database](./Tutorial%204%20Scenario%20database.ipynb)
 
 # Running the code
 
