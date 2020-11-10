@@ -17,6 +17,7 @@ Modifications:
 2020 10 02: Make Model a subclass of QualitativeElement.
 2020 10 04: Change way of creating object from JSON code.
 2020 10 30: For using options for the fit functions, use **kwargs instead of options.
+2020 11 06: Add Model MultiBSplines.
 """
 
 import sys
@@ -317,6 +318,53 @@ class Splines(Model):
         tck = splrep(time_normalized, data, k=options["degree"], t=knots)
         pars = dict(knots=tck[0], coefficients=tck[1], degree=tck[2])
         return pars
+
+
+class MultiBSplines(Model):
+    """ BSplines, dealing with multivariate data. """
+    def __init__(self, dimension: int, **kwargs):
+        Model.__init__(self, "MultiBSplines")
+
+        # Initialize the b-splines.
+        self.dimension = dimension
+        self.options = kwargs
+        self.splines = [Splines(**kwargs) for _ in range(dimension)]
+
+    def fit(self, time: np.ndarray, data: np.ndarray, **kwargs):
+        # Set data correctly.
+        n_data = len(time)
+        if data.shape == (n_data, self.dimension):
+            data = data.T
+        elif not data.shape == (self.dimension, n_data):
+            raise ValueError("Data should be n-by-d or d-by-n, where d is the provided dimension.")
+
+        # Loop through the different dimensions.
+        all_pars = [spline.fit(time, data[i], **kwargs) for i, spline in enumerate(self.splines)]
+        pars = dict(coefficients=[par['coefficients'] for par in all_pars],
+                    knots=[par["knots"] for par in all_pars],
+                    degree=[par["degree"] for par in all_pars])
+
+        return pars
+
+    def get_state(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+        result = np.array([spline.get_state(dict(coefficients=pars["coefficients"][i],
+                                                 degree=pars["degree"][i],
+                                                 knots=pars["knots"][i]),
+                                            time)
+                           for i, spline in enumerate(self.splines)])
+        return result
+
+    def get_state_dot(self, pars: dict, time: np.ndarray = None) -> np.ndarray:
+        result = np.array([spline.get_state_dot(dict(coefficients=pars["coefficients"][i],
+                                                     degree=pars["degree"][i],
+                                                     knots=pars["knots"][i]),
+                                                time)
+                           for i, spline in enumerate(self.splines)])
+        return result
+
+    def to_json(self):
+        return dict(name="MultiBSplines", init_parms=dict(dimension=self.dimension,
+                                                          options=self.options))
 
 
 def _model_props_from_json(json: dict) -> dict:
