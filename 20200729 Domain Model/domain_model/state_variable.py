@@ -23,6 +23,8 @@ class StateVariable(Enum):
     YAWRATE = "psidot [rad/s]"
     LONGITUDINAL_ROAD_POSITION = "[ROAD_ID, ROAD_DISTANCE]"
     LATERAL_ROAD_POSITION = "[LANE_ID, LANE_OFFSET]"
+    LON_TARGET = "[vabs [m/s], dx [m]]"
+    LAT_TARGET = 'dy [m]'
 
     def to_json(self):
         """ When tag is exporting to JSON, this function is being called
