@@ -5,9 +5,10 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 11 01: Update class based on the update of the domain model.
+2020 11 06: Add option of also adding attributes to the database.
 """
 
-from typing import Callable, List, NamedTuple, Union
+from typing import Callable, NamedTuple, Union
 import json
 from .actor import Actor, actor_from_json
 from .actor_category import ActorCategory, actor_category_from_json
@@ -97,7 +98,8 @@ class DocumentManagement:
 
     def add_item(self, item: Union[Actor, ActorCategory, Activity, ActivityCategory, Event, Model,
                                    PhysicalElement, PhysicalElementCategory, Scenario,
-                                   ScenarioCategory], overwrite: bool = True) -> None:
+                                   ScenarioCategory], include_attributes: bool = False,
+                 overwrite: bool = True, _verbose: bool = True) -> None:
         """ Write an item to the database.
 
         If an similar object with the same ID is already stored in the database,
@@ -107,7 +109,10 @@ class DocumentManagement:
         updated.
 
         :param item: The item that has to be written to the database.
+        :param include_attributes: Whether to also add attributes of the item.
         :param overwrite: Whether to overwrite the database entry.
+        :param _verbose: Whether to provide a warning is object is not written
+            to the database because another entry with the same uid exists.
         """
         # Obtain name of collection.
         collection = None
@@ -120,13 +125,36 @@ class DocumentManagement:
 
         # See if we already have an object with this ID.
         if not overwrite and item.uid in self.collections[collection]:
-            print("Warning: object with same ID is already in database.")
+            if _verbose:
+                print("Warning: object with same ID is already in database.")
             return
 
         # Write object to the database.
         json_code = item.to_json()
-        json_code['_version'] = self.version
+        json_code["_version"] = self.version
         self.collections[collection][item.uid] = json_code
+        if include_attributes:  # Write attributes of object also to the database if needed.
+            self._include_attributes(item, collection)
+
+    def _include_attributes(self, item, collection):
+        if collection == "actor":
+            self.add_item(item.category, _verbose=False)
+        elif collection == "activity":
+            self.add_item(item.category, include_attributes=True, _verbose=False)
+            self.add_item(item.start, _verbose=False)
+            self.add_item(item.end, _verbose=False)
+        elif collection == "activity_category":
+            self.add_item(item.model, _verbose=True)
+        elif collection == "physical_element":
+            self.add_item(item.category, _verbose=True)
+        elif collection == "scenario":
+            for attribute in item.actors+item.activities+item.physical_elements:
+                self.add_item(attribute, include_attributes=True, _verbose=False)
+            self.add_item(item.start, _verbose=False)
+            self.add_item(item.end, _verbose=False)
+        elif collection == "scenario_category":
+            for attribute in item.actors+item.activities+item.physical_elements:
+                self.add_item(attribute, include_attributes=True, _verbose=False)
 
     def delete_item(self, name: str, uid: int) -> None:
         """ Delete an item of the database.
@@ -180,7 +208,8 @@ class DocumentManagement:
     def _physical_element_from_json(self, json_code: dict, realizations: DMObjects):
         physical_element_category = self.get_item("physical_element_category",
                                                   json_code["category"]["uid"])
-        return physical_element_from_json(json_code, realizations, category=physical_element_category)
+        return physical_element_from_json(json_code, realizations,
+                                          category=physical_element_category)
 
     def _scenario_from_json(self, json_code: dict, realizations: DMObjects):
         actors = [self.get_item("actor", actor["uid"]) for actor in json_code["actor"]]
