@@ -4,7 +4,8 @@ Creation date: 2019 11 12
 Author(s): Erwin de Gelder
 
 Modification:
-2020 08 26 Update based on revision of the domain model.
+2020 08 26: Update based on revision of the domain model.
+2020 11 11: Update based on revision of the domain model.
 """
 
 import json
@@ -27,7 +28,7 @@ def scenario_category(left: bool = False, right: bool = False) -> dm.ScenarioCat
     # Define the static environment category.
     bend = "{:s}bend".format("left " if left else "right " if right else "")
     static_description = "Road with a {:s}".format(bend)
-    road_layout = dm.StaticPhysicalThingCategory(
+    road_layout = dm.PhysicalElementCategory(
         description=static_description, name=bend,
         tags=[(dm.Tag.RoadLayout_Curved_Left if left else
                dm.Tag.RoadLayout_Curved_Right if right else dm.Tag.RoadLayout_Curved)]
@@ -42,7 +43,7 @@ def scenario_category(left: bool = False, right: bool = False) -> dm.ScenarioCat
                                                 "low speed curve1.pdf" if right else
                                                 "low speed curve2.pdf"),
                                    name="Maneuvering a {:s}".format(bend))
-    category.set_static_physical_things([road_layout])
+    category.set_physical_elements([road_layout])
     category.set_actors([ego])
     return category
 
