@@ -316,7 +316,7 @@ class Splines(Model):
 
         # Compute spline coefficients.
         tck = splrep(time_normalized, data, k=options["degree"], t=knots)
-        pars = dict(knots=tck[0], coefficients=tck[1], degree=tck[2])
+        pars = dict(knots=tck[0].tolist(), coefficients=tck[1].tolist(), degree=tck[2])
         return pars
 
 
