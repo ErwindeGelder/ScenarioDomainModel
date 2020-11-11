@@ -133,10 +133,9 @@ class DocumentManagement:
         json_code = item.to_json()
         json_code["_version"] = self.version
         self.collections[collection][item.uid] = json_code
-        if include_attributes:
+        if include_attributes:  # Write attributes of object also to the database if needed.
             self._include_attributes(item, collection)
 
-        # Write attributes of object also to the database if needed.
     def _include_attributes(self, item, collection):
         if collection == "actor":
             self.add_item(item.category, _verbose=False)
