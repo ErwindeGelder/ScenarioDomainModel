@@ -17,7 +17,7 @@ For a scenario-based assessment, proper specification of scenarios is crucial be
 \end{itemize}
 
 % What is currently missing
-Although the notion of scenario is frequently used in the context of automated driving \autocite{gietelink2006development, ebner2011identifying, hulshof2013autonomous, xiong2015orchestration, zofka2015datadrivetrafficscenarios, putz2017pegasus, roesener2017comprehensive, ploeg2017GCDC, shao2019evaluating}, \cendc\cstartd only rarely is an explicit definition actually given. 
+Although the notion of scenario is frequently used in the context of automated driving \autocite{gietelink2006development, ebner2011identifying, hulshof2013autonomous, xiong2015orchestration, zofka2015datadrivetrafficscenarios, putz2017pegasus, roesener2017comprehensive, shao2019evaluating}, \cendc\cstartd only rarely is an explicit definition actually given. 
 Furthermore, even those definitions are unclear because of ambiguities and the use of other undefined terms. \cendd
 \cstartf Moreover, \cendf\cstartc from the implementation perspective, there are several file formats and methods for defining scenarios for the assessment of \acp{av}, such as OpenSCENARIO \autocite{openscenario} and CommonRoad \autocite{althoff2017CommonRoad}.
 Because the focus of these implementations is on scenarios that can be simulated, these implementations describe scenarios at a quantitative level and, consequently, they do not provide concepts for a qualitative description of a scenario.
@@ -28,10 +28,10 @@ In this article, we propose \iac{oof} for the definition of scenarios \cendc\cst
 This framework aims to be sufficiently explicit to enable the formalization of a scenario description while being broadly consistent with existing definitions \autocite{geyer2014, ulbrich2015, elrofai2016scenario}. \cendd\cstartc 
 Furthermore, the framework provides explicit guidelines for the construction of scenario descriptions that are able to effectively assess the \ac{av} performance.
 To achieve this, \cendc\cstartd we provide intensional definitions for concepts corresponding to scenarios and all of their \cendd\cstartc essential building blocks (such as activities, actors, and events). \cendc
-\cstartf These intentional definitions gives the meaning of the terms by specifying necessary and sufficient conditions for when the terms should be used.
-Furthermore, \cendf\cstartd we give \cendd\cstartc the characteristics of those concepts and \cendc\cstartd we specify \cendd\cstartc how those components interrelate. 
-\cendc\cstartd Specifically, we define the scenario components \cendd\cstartc as classes of objects having attributes, methods, and relationships with objects that are members of other classes.
-\cendc\cstartd Furthermore, we base the definitions of each of the components on definitions \cendd\cstartc that are commonly used in the field of the safety assessment of \acp{av} \autocite{geyer2014, ulbrich2015, catapult2018musicc, catapult2018regulating, sigsim2019glossary, openscenario}. 
+\cstartf These intentional definitions gives the meaning of the terms by specifying necessary and sufficient conditions for when the terms should be used. \cendf
+\cstartc We also give the characteristics of the concepts corresponding to scenarios and we specify how those concepts interrelate. 
+\cendc\cstartd More specifically, we define the scenario components \cendd\cstartc as objects of classes having attributes, methods, and relationships with objects that are members of other classes.
+\cendc\cstartd In addition, we base the definitions of each of the components on definitions \cendd\cstartc that are commonly used in the field of the safety assessment of \acp{av} \autocite{geyer2014, ulbrich2015, catapult2018musicc, catapult2018regulating, sigsim2019glossary, openscenario}. 
 %For an unambiguous formulation, some definitions from the field of control theory are adopted. 
 In addition to the definition of a scenario, we introduce the concept of a \emph{scenario category} that is used to qualitatively describe scenarios, i.e., an abstraction of a scenario. Scenario categories enable the categorization of scenarios in terms of the categories of their typical components.
 
@@ -51,8 +51,8 @@ The proposed \ac{oof} provides a first step towards an ontology \autocite{sirich
 \cendc
 
 % Outline
-The outline of the paper is as follows. In \cref{sec:background}, we explain why \cstartb \iac{oof} \cendb is useful and what the context is. 
+The outline of the article is as follows. In \cref{sec:background}, we explain why \cstartb \iac{oof} \cendb is useful and what the context is. 
 We define the notions of \emph{scenario}, \emph{event}, \emph{activity}, and \emph{scenario category}  in \cref{sec:definitions}. 
 The \cstartb \ac{oof} \cendb that formalizes these definitions is presented in \cref{sec:oo framework}. 
 In \cref{sec:example}, an application example is provided to illustrate the use of the \cstartb framework \cendb with a real-world scenario. 
-The paper is concluded in \cref{sec:conclusion}.
+The article is concluded in \cref{sec:conclusion}.
