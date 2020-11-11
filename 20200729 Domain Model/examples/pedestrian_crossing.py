@@ -1,11 +1,12 @@
 """ Example of a scenario category and scenario from the article.
 
-Creation data: 2019 05 05
+Creation date: 2019 05 05
 Author(s): Erwin de Gelder
 
 Modifications:
-2019 11 04 Update based on updates of the domain model.
-2020 08 26 Update based on revision of the domain model.
+2019 11 04: Update based on updates of the domain model.
+2020 08 26: Update based on revision of the domain model.
+2020 11 11: Update based on revision of the domain model.
 """
 
 import json
@@ -27,7 +28,7 @@ def scenario_category() -> dm.ScenarioCategory:
 
     # Define the static environment category.
     static_description = "Straight road with two lanes and a pedestrian crossing"
-    crossing = dm.StaticPhysicalThingCategory(
+    crossing = dm.PhysicalElementCategory(
         description=static_description,
         name="Pedestrian crossing qualitative",
         tags=[dm.Tag.RoadLayout_PedestrianCrossing_NoTrafficLight]
@@ -57,7 +58,7 @@ def scenario_category() -> dm.ScenarioCategory:
         os.path.join("images", "pedestrian_crossing.pdf"),
         name="Pedestrian crossing"
     )
-    category.set_static_physical_things([crossing])
+    category.set_physical_elements([crossing])
     category.set_actors([ego, pedestrian])
     category.set_activities([braking, stationary, accelerating, walking])
     category.set_acts([(ego, braking), (ego, stationary), (ego, accelerating),
@@ -84,12 +85,11 @@ def scenario() -> dm.Scenario:
                           name="Pedestrian")
 
     # Define the static environment.
-    static = dm.StaticPhysicalThing(category.static_physical_things[0],
-                                    properties=dict(road=dict(lanes=2, lanewidth=3,
-                                                              xy=[(-60, 0), (60, 0)]),
-                                                    footway=dict(width=3,
-                                                                 xy=[(0, 6), (0, -6)])),
-                                    name="Pedestrian crossing")
+    static = dm.PhysicalElement(category.physical_elements[0],
+                                properties=dict(road=dict(lanes=2, lanewidth=3,
+                                                          xy=[(-60, 0), (60, 0)]),
+                                                footway=dict(width=3, xy=[(0, 6), (0, -6)])),
+                                name="Pedestrian crossing")
 
     # Define the activities.
     braking = dm.Activity(category.activities[0], dict(xstart=8, xend=0), start=0, end=4,
@@ -104,7 +104,7 @@ def scenario() -> dm.Scenario:
     # Define the scenario.
     scen = dm.Scenario(start=braking.start, end=accelerating.end,
                        name="Ego braking for crossing pedestrian")
-    scen.set_static_physical_things([static])
+    scen.set_physical_elements([static])
     scen.set_actors([ego, pedestrian])
     scen.set_activities([braking, stationary, accelerating, walking])
     scen.set_acts([(ego, braking), (ego, stationary), (ego, accelerating), (pedestrian, walking)])
@@ -120,6 +120,9 @@ if __name__ == "__main__":
     print()
     print("JSON code of the scenario category:")
     print(json.dumps(CATEGORY.to_json_full(), indent=4))
+    print()
+    print("print(category):")
+    print(CATEGORY)
     print()
     print("Does the scenario category comprise the scenario?")
     print(CATEGORY.comprises(SCENARIO))
