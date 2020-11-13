@@ -51,7 +51,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="5"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="6"/>
 <node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.topic" FOLDED="true" POSITION="right" ID="ID_108958345" CREATED="1551885103957" MODIFIED="1551885128015" HGAP="77" VSHIFT="-1">
 <edge COLOR="#0000ff"/>
 <node TEXT="General" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1430726573" CREATED="1551885142947" MODIFIED="1551885148978">
@@ -2178,6 +2178,7 @@
 <attribute NAME="title" VALUE="Ontology for Scenarios for the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter and Khabbaz Saberi, Arash and Elrofai, Hala and Op den Camp, Olaf and Ploeg, Jeroen and Friedman, Ludwig and De Schutter, Bart"/>
 <attribute NAME="journal" VALUE="https://arxiv.org/abs/2001.11507"/>
+<attribute NAME="year" VALUE="2020"/>
 </node>
 <node TEXT="2020 Scenario categories" ID="ID_217059386" CREATED="1582619100962" MODIFIED="1590912450622" LINK="http://cetran.sg/wp-content/uploads/2020/01/REP200121_Scenario_Categories_v1.7.pdf">
 <attribute NAME="key" VALUE="degelder2019scenariocategories"/>
@@ -2185,11 +2186,14 @@
 <attribute NAME="title" VALUE="Scenario Categories for the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Op den Camp, Olaf and de Boer, Niels"/>
 </node>
-<node TEXT="2020 Scenario mining" ID="ID_346278222" CREATED="1584552278327" MODIFIED="1590912450615">
+<node TEXT="2020 Scenario mining" ID="ID_346278222" CREATED="1584552278327" MODIFIED="1605085782697" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/523%20Scenario%20mining%20ITSC2020.pdf">
 <attribute NAME="key" VALUE="degelder2020scenariomining"/>
 <attribute NAME="year" VALUE="2020"/>
 <attribute NAME="title" VALUE="Real-World Scenario Mining for the Assessment of Automated Vehicles"/>
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Manders, Jeroen and Grappiolo, Corrado and Paardekooper, Jan-Pieter and Op den Camp, Olaf and De Schutter, Bart"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="4C18E4B37E819D71C6C306A1E1BFF625AA638481F0F6EE5CC576E221838A9D">
+    <pdf_title>Real-World Scenario Mining for the Assessment of Automated Vehicles</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Risk" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_398321502" CREATED="1567057870946" MODIFIED="1567057884205">
@@ -2845,36 +2849,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="For testing of AVs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_446913384" CREATED="1522996423752" MODIFIED="1522996430189">
-<node TEXT="Automated Scenario Generation of Regression Testing of AVs" ID="ID_164912009" CREATED="1522996504294" MODIFIED="1590912450352" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/127%20Scenario%20Generation%20Based%20on%20Laserscanner%20Reference%20Data.pdf">
-<attribute NAME="key" VALUE="lages2013automatic"/>
-<attribute NAME="year" VALUE="2013"/>
-<attribute NAME="title" VALUE="Automatic Scenario Generation Based on Laserscanner Reference Data and Advanced Offline Processing"/>
-<attribute NAME="authors" VALUE="Lages, Ulrich and Spencer, Martin and Katz, Roman"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6B806CA93E6774D28A5D7C41582B0F5E6A34C8A56B7F2523EA883A982">
-    <pdf_title>Automatic Scenario Generation based on Laserscanner Reference Data and Advanced Offline Processing</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="EuroNCAP tests pedestrian AEB" ID="ID_1302624810" CREATED="1558350496137" MODIFIED="1590912450340" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/347%20Test%20Procedures%20and%20Results%20for%20Pedestrian%20AEB%20Systems.PDF">
-<attribute NAME="key" VALUE="seiniger2015test"/>
-<attribute NAME="year" VALUE="2015"/>
-<attribute NAME="title" VALUE="Test Procedures and Results for Pedestrian {AEB} Systems"/>
-<attribute NAME="authors" VALUE="Seiniger, Patrick and Hellmann, Adrian and Bartels, Oliver and Wisch, Marcus and Gail, Jost"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="35724E6080594D218220B75114893D9EF28B54D9ABD57F6226D0FCCBCB4AC53A">
-    <pdf_title>TEST PROCEDURES AND RESULTS FOR PEDESTRIAN AEB SYSTEMS</pdf_title>
-</pdf_annotation>
-</node>
-<node TEXT="A method for an efficient, systematic test case generation for ADAS" ID="ID_43003774" CREATED="1584692623744" MODIFIED="1590912450328" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/434%20A%20method%20for%20an%20efficient,%20systematic%20test%20case%20generation%20for%20ADAS.pdf">
-<attribute NAME="key" VALUE="schuldt2018method"/>
-<attribute NAME="year" VALUE="2018"/>
-<attribute NAME="title" VALUE="A Method for an Efficient, Systematic Test Case Generation for Advanced Driver Assistance Systems in Virtual Environments"/>
-<attribute NAME="authors" VALUE="Schuldt, Fabian and Reschka, Andreas and Maurer, Markus"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="71DD8C5BB06BE2E578DE448E518F98DA76F70BD35762C50B1F1A26097F24C50">
-    <pdf_title>A Method for an Efficient, Systematic Test Case Generation for Advanced Driver Assistance Systems in Virtual Environments</pdf_title>
-</pdf_annotation>
-</node>
-</node>
-<node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
+<node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
 <node TEXT="Evaluation of scenario-generation methods for stochastic programming" ID="ID_1027960109" CREATED="1529493643125" MODIFIED="1590912450317" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/196%20Evaluation%20of%20scenario-generation%20methods%20for%20stochastic%20programming.pdf">
 <attribute NAME="key" VALUE="kaut2007evaluation"/>
 <attribute NAME="journal" VALUE="Pacific Journal of Optimization"/>
@@ -2896,7 +2871,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Reduction of parameters" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1410220571" CREATED="1550215600107" MODIFIED="1550215613614">
+<node TEXT="Reduction of parameters" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1410220571" CREATED="1550215600107" MODIFIED="1550215613614">
 <node TEXT="Scenario reduction revisited: fundamental limits and guarantees" ID="ID_1997636225" CREATED="1550215615031" MODIFIED="1590912450296" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/278%20Scenario%20reduction%20revisited%20fundamental%20limits%20and%20guarantees.pdf">
 <attribute NAME="key" VALUE="rujeerapaiboon2018scenario"/>
 <attribute NAME="journal" VALUE="Mathematical Programming"/>
@@ -2908,7 +2883,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Monte Carlo" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1779539678" CREATED="1580464294679" MODIFIED="1580481781699">
+<node TEXT="Monte Carlo" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1779539678" CREATED="1580464294679" MODIFIED="1580481781699">
 <node TEXT="Simulation and the Monte Carlo method" ID="ID_1299781280" CREATED="1597045859138" MODIFIED="1597046076820" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/508%20Simulation%20and%20the%20Monte%20Carlo%20Method.pdf">
 <attribute NAME="key" VALUE="rubinstein2016simulation"/>
 <attribute NAME="year" VALUE="2016"/>
@@ -2933,7 +2908,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="70F0963867844B56899C7D7CAE3B4E28F4A4D75C7B712D46DCC722F9E5E4FA"/>
 </node>
 </node>
-<node TEXT="Importance sampling" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1913334735" CREATED="1580828834503" MODIFIED="1587030556467" MOVED="1587030544283">
+<node TEXT="Importance sampling" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1913334735" CREATED="1580828834503" MODIFIED="1587030556467" MOVED="1587030544283">
 <node TEXT="Using Kriging" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_155030782" CREATED="1587030561275" MODIFIED="1587030579878">
 <node TEXT="Metamodel-Based Importance Sampling for Structural Reliability Analysis" ID="ID_943613050" CREATED="1580828847951" MODIFIED="1590912450281" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/420%20Metamodel-based%20importance%20sampling.pdf" MOVED="1587030582859">
 <attribute NAME="key" VALUE="dubourg2013metamodel"/>
@@ -2988,7 +2963,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Generation of tags/activities" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_988403725" CREATED="1589106599112" MODIFIED="1589106617997">
+<node TEXT="Generation of tags/activities" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_988403725" CREATED="1589106599112" MODIFIED="1589106617997">
 <node TEXT="Using n-grams" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_761327452" CREATED="1580908602944" MODIFIED="1589106627792" MOVED="1589106623844">
 <node TEXT="The Practical Value of N-Grams in Generation" ID="ID_1752221776" CREATED="1580908610912" MODIFIED="1590912450260" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/422%20The%20Practical%20Value%20of%20N%20Grams%20in%20Generation.pdf">
 <attribute NAME="key" VALUE="langkilde1998practical"/>
@@ -3021,7 +2996,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Activity generation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1830763082" CREATED="1584948791733" MODIFIED="1584948811248">
+<node TEXT="Activity generation" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1830763082" CREATED="1584948791733" MODIFIED="1584948811248">
 <node TEXT="Variable-Domain Functional Principal Component Analysis" ID="ID_1717625034" CREATED="1584948812382" MODIFIED="1590912450239" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/435%20Variable%20Domain%20Functional%20Principal%20Component%20Analysis.pdf">
 <attribute NAME="key" VALUE="johns2019variable"/>
 <attribute NAME="journal" VALUE="Journal of Computational and Graphical Statistics"/>
@@ -3032,7 +3007,7 @@
     <pdf_title>Variable-Domain Functional Principal Component Analysis</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Probability Distribution Of Functional Random Variable With A Functional Data Analysis Application" ID="ID_1616150405" CREATED="1585555884386" MODIFIED="1590912450232" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/436%20Probability%20Distribution%20Of%20Functional%20Random%20Variable%20With%20A%20Functional.pdf">
+<node TEXT="Probability Distribution Of Functional Random Variable With A Functional Data Analysis Application" ID="ID_1616150405" CREATED="1585555884386" MODIFIED="1604928757136" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/436%20Probability%20Distribution%20Of%20Functional%20Random%20Variable%20With%20A%20Functional.pdf">
 <attribute NAME="key" VALUE="cuvelier2006probability"/>
 <attribute NAME="year" VALUE="2006"/>
 <attribute NAME="title" VALUE="A Probability Distribution of Functional Random Variable with a Functional Data Analysis Application"/>
@@ -3042,7 +3017,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Comparing test cases/scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_339658345" CREATED="1588671276013" MODIFIED="1588671290180">
+<node TEXT="Comparing test cases/scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_339658345" CREATED="1588671276013" MODIFIED="1588671290180">
 <node TEXT="Computational Optimal Transport" ID="ID_1543804349" CREATED="1588671291746" MODIFIED="1590912450224" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/442%20Computational%20Optimal%20Transport.pdf">
 <attribute NAME="key" VALUE="peyre2019computational"/>
 <attribute NAME="journal" VALUE="Foundations and Trends in Machine Learning"/>
@@ -3061,6 +3036,35 @@
 <attribute NAME="authors" VALUE="Bonneel, Nicolas and Van De Panne, Michiel and Paris, Sylvain and Heidrich, Wolfgang"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="1C15AF2EEEA529AC82A7B4454C999DEAA985F0B6E797F4712935B09EE3272117">
     <pdf_title>Displacement Interpolation Using Lagrangian Mass Transport</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="For testing of AVs" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_446913384" CREATED="1522996423752" MODIFIED="1604929006815" MOVED="1604929006819">
+<node TEXT="Automated Scenario Generation of Regression Testing of AVs" ID="ID_164912009" CREATED="1522996504294" MODIFIED="1590912450352" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/127%20Scenario%20Generation%20Based%20on%20Laserscanner%20Reference%20Data.pdf">
+<attribute NAME="key" VALUE="lages2013automatic"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Automatic Scenario Generation Based on Laserscanner Reference Data and Advanced Offline Processing"/>
+<attribute NAME="authors" VALUE="Lages, Ulrich and Spencer, Martin and Katz, Roman"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6B806CA93E6774D28A5D7C41582B0F5E6A34C8A56B7F2523EA883A982">
+    <pdf_title>Automatic Scenario Generation based on Laserscanner Reference Data and Advanced Offline Processing</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="EuroNCAP tests pedestrian AEB" ID="ID_1302624810" CREATED="1558350496137" MODIFIED="1590912450340" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/347%20Test%20Procedures%20and%20Results%20for%20Pedestrian%20AEB%20Systems.PDF">
+<attribute NAME="key" VALUE="seiniger2015test"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Test Procedures and Results for Pedestrian {AEB} Systems"/>
+<attribute NAME="authors" VALUE="Seiniger, Patrick and Hellmann, Adrian and Bartels, Oliver and Wisch, Marcus and Gail, Jost"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="35724E6080594D218220B75114893D9EF28B54D9ABD57F6226D0FCCBCB4AC53A">
+    <pdf_title>TEST PROCEDURES AND RESULTS FOR PEDESTRIAN AEB SYSTEMS</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="A method for an efficient, systematic test case generation for ADAS" ID="ID_43003774" CREATED="1584692623744" MODIFIED="1590912450328" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/434%20A%20method%20for%20an%20efficient,%20systematic%20test%20case%20generation%20for%20ADAS.pdf">
+<attribute NAME="key" VALUE="schuldt2018method"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="A Method for an Efficient, Systematic Test Case Generation for Advanced Driver Assistance Systems in Virtual Environments"/>
+<attribute NAME="authors" VALUE="Schuldt, Fabian and Reschka, Andreas and Maurer, Markus"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="71DD8C5BB06BE2E578DE448E518F98DA76F70BD35762C50B1F1A26097F24C50">
+    <pdf_title>A Method for an Efficient, Systematic Test Case Generation for Advanced Driver Assistance Systems in Virtual Environments</pdf_title>
 </pdf_annotation>
 </node>
 </node>
