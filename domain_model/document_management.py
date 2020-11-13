@@ -96,6 +96,11 @@ class DocumentManagement:
         with open(path, "r") as file:
             self.collections = json.load(file)
 
+        for name in self.possible_objects:
+            keys = list(self.collections[name].keys())
+            for key in keys:
+                self.collections[name][int(key)] = self.collections[name].pop(key)
+
     def add_item(self, item: Union[Actor, ActorCategory, Activity, ActivityCategory, Event, Model,
                                    PhysicalElement, PhysicalElementCategory, Scenario,
                                    ScenarioCategory], include_attributes: bool = False,
@@ -177,19 +182,6 @@ class DocumentManagement:
         return self.possible_objects[name].from_json(self.collections[name][uid],
                                                      self.realizations)
 
-    def get_ordered_item(self, name: str, i: int):
-        """ Obtain the i-th item, based on sorted IDs.
-
-        :param name: Name of the object.
-        :param i: The i-th item.
-        :return: The item.
-        """
-        if i >= len(self.collections[name]):
-            raise ValueError("Requesting item i={:d}, but only {:d} items available"
-                             .format(i, len(self.collections[name])))
-        uid = sorted(self.collections[name].keys())[i]
-        return self.get_item(name, uid)
-
     def _actor_from_json(self, json_code: dict, realizations: DMObjects):
         actor_category = self.get_item("actor_category", json_code["category"]["uid"])
         return actor_from_json(json_code, realizations, category=actor_category)
@@ -212,9 +204,9 @@ class DocumentManagement:
                                           category=physical_element_category)
 
     def _scenario_from_json(self, json_code: dict, realizations: DMObjects):
-        actors = [self.get_item("actor", actor["uid"]) for actor in json_code["actor"]]
+        actors = [self.get_item("actor", actor["uid"]) for actor in json_code["actors"]]
         activities = [self.get_item("activity", activity["uid"])
-                      for activity in json_code["activity"]]
+                      for activity in json_code["activities"]]
         physical_elements = [self.get_item("physical_element", physical_element["uid"])
                              for physical_element in json_code["physical_elements"]]
         start = self.get_item("event", json_code["start"]["uid"])
