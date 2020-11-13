@@ -134,7 +134,7 @@ def activities_target(cutin: Tuple[int, float, float], data_handler: DataHandler
         activity = Activity(activity_category,
                             activity_category.fit(np.array(data.index), data.values,
                                                   n_knots=n_knots),
-                            start=i if start is None else start, end=j-i,
+                            start=i if start is None else start, end=j,
                             name=activity_category.name)
         start = activity.end  # Store end event for potential next activity.
         activities.append(activity)
@@ -151,7 +151,7 @@ def activities_target(cutin: Tuple[int, float, float], data_handler: DataHandler
     n_knots = min(4, len(data)//10)
     activity = Activity(LC_TARGET, LC_TARGET.fit(np.array(data.index), data.values,
                                                  n_knots=n_knots),
-                        start=cutin[1], end=cutin[2]-cutin[1], name="left lane change")
+                        start=cutin[1], end=cutin[2], name="left lane change")
     if data_handler.targets[cutin[0]].loc[cutin[1], "lateral_activity"] == "li":
         activity.name = "right lane change"
     activities.append(activity)
@@ -187,7 +187,7 @@ def activities_ego(cutin: Tuple[int, float, float], data_handler: DataHandler,
             activity = Activity(activity_category,
                                 activity_category.fit(np.array(data.index), data.values,
                                                       n_knots=n_knots),
-                                start=i if start is None else start, end=j - i,
+                                start=i if start is None else start, end=j,
                                 name=activity_category.name)
             start = activity.end  # Store end event for potential next activity.
             activities.append(activity)
