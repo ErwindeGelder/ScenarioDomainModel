@@ -26,6 +26,7 @@ Modifications:
 2020 07 28: Version 1.1: Enable storing KDE in a pickle file and restoring it from a pickle file.
 2020 07 30: Version 1.2: Make the clustering extremely faster (now in a blink of an eye).
 2020 08 06: Version 1.3: Add possibility to get integrated probability on hypercube.
+2020 11 19: Version 1.4: Add function to compute Silverman's bandwidth.
 """
 
 from itertools import combinations
@@ -59,7 +60,7 @@ class KDEConstants(Options):
         sumweights(int): The sum of the weights (if weights are used).
         epsilon(float): The distance in one 'bin' in case weighted samples are used.
     """
-    version: str = "1.3"
+    version: str = "1.4"
 
     ndata: int = 0
     const_looscore: float = 0
@@ -231,7 +232,14 @@ class KDE:
         self.fit(clusters, weights=counts, std=self.data_helpers.std)
 
     def _maxdist(self) -> float:
-        return (0.2*(4/(self.constants.dim+2))**(1/(self.constants.dim+4)) *
+        return 0.2*self.silverman()
+
+    def silverman(self) -> float:
+        """ Compute the Silverman bandwidth.
+
+        :return: The silverman bandwidth.
+        """
+        return ((4/(self.constants.dim+2))**(1/(self.constants.dim+4)) *
                 self.constants.ndata**(-1/(self.constants.dim+4)) *
                 np.mean(np.std(self.data, axis=0)))
 
