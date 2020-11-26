@@ -28,7 +28,8 @@ Modifications:
 2020 08 06: Version 1.3: Add possibility to get integrated probability on hypercube.
 2020 11 19: Version 1.4: Add function to compute Silverman's bandwidth.
 2020 11 26: Version 1.5: Scale data by default. Use min(std,IQR/1.349) for scaling. Make bandwidth
-            private: Use get_bandwidth/set_bandwidth to retrieve or update the bandwidth.
+            private: Use get_bandwidth/set_bandwidth to retrieve or update the bandwidth. data_info
+            dict added to store information regarding data used (for kde store)
 """
 
 from itertools import combinations
@@ -60,20 +61,20 @@ class KDEConstants(Options):
         sumweights(int): The sum of the weights (if weights are used).
         epsilon(float): The distance in one 'bin' in case weighted samples are used.
     """
-    version: str = "1.5"
+    version = str("1.5")
 
-    ndata: int = 0
-    const_looscore: float = 0
-    const_score: float = 0
-    dim: int = 0
-    muk: float = 0
-    invgr: float = (np.sqrt(5) - 1) / 2
-    invgr2: float = (3 - np.sqrt(5)) / 2
-    variable_bandwidth: bool = False
-    percentile: float = 95
-    bandwidth_factor: float = 1
-    sumweights: int = 0
-    epsilon: float = 0
+    ndata = int(0)
+    const_looscore = float(0)
+    const_score = float(0)
+    dim = int(0)
+    muk = float(0)
+    invgr = float((np.sqrt(5) - 1) / 2)
+    invgr2 = float((3 - np.sqrt(5)) / 2)
+    variable_bandwidth = False
+    percentile = float(95)
+    bandwidth_factor = float(1)
+    sumweights = int(0)
+    epsilon = float(0)
 
 
 class KDEData(Options):
@@ -89,13 +90,13 @@ class KDEData(Options):
             must be scaled.
         weights(np.ndarray): Weights of the data points.
     """
-    mindists: np.ndarray = np.array([])
-    data_score_samples: np.ndarray = np.array([])
-    newshape: np.ndarray = np.array([])
-    data_dist: np.ndarray = np.array([])
-    difference: np.ndarray = np.array([])
-    std: np.ndarray = np.array([])
-    weights: np.ndarray = np.array([])
+    mindists = np.array([])
+    data_score_samples = np.array([])
+    newshape = np.array([])
+    data_dist = np.array([])
+    difference = np.array([])
+    std = np.array([])
+    weights = np.array([])
     # self.xhist, self.yhist, self.fft = None, None, None  # Not used at the moment
 
 
@@ -128,9 +129,11 @@ class KDE:
         data_helpers(KDEData): np.ndarrays that are used for various methods.
         scaling(bool): Whether scaling is used.
         weights(bool): Whether weights are used.
+        data_info(dict): Data information
+
     """
     def __init__(self, data: np.ndarray = None, bandwidth: float = None, scaling: bool = True,
-                 weights: np.ndarray = None):
+                 weights: np.ndarray = None, data_info: dict = {}):
         self._bandwidth = bandwidth
         self.data = None
         self.constants = KDEConstants()
@@ -138,6 +141,7 @@ class KDE:
         self.scaling = scaling
         self.weights = False
         self.fit(data, weights=weights)
+        self.data_info = data_info
 
     def fit(self, data: Union[List, np.ndarray], weights: Union[List, np.ndarray] = None,
             std: Union[float, np.ndarray] = None) -> None:
