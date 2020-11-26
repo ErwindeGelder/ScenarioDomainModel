@@ -1570,11 +1570,11 @@
     <pdf_title>A Methodology for Scenario-based Safety Assessment of Highly Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="NHTSA: Framework for ADS testable cases/scenarios" ID="ID_1002798072" CREATED="1552988474486" MODIFIED="1590912451060" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/299%20Framework%20ADS%20Testable%20cases%20and%20scenarios.pdf">
+<node TEXT="NHTSA: Framework for ADS testable cases/scenarios" ID="ID_1002798072" CREATED="1552988474486" MODIFIED="1605695232875" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/299%20Framework%20ADS%20Testable%20cases%20and%20scenarios.pdf">
 <attribute NAME="key" VALUE="nhtsa2018framework"/>
 <attribute NAME="year" VALUE="2018"/>
 <attribute NAME="title" VALUE="A Framework for Automated Driving System Testable Cases and Scenarios"/>
-<attribute NAME="authors" VALUE="Staplin, L. and Mastromatto, T. and Lococo, K. H. and Kenneth, W. and Gish, K. W. and Brooks, J. O."/>
+<attribute NAME="authors" VALUE="Thorn, Eric and Kimmel, Shawn and Chaka, Michelle"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="AC74C7F23B38FB7FDFE7E9BFD74714E42830A85D43D4992A4137E3E9C4BE">
     <pdf_title>A Framework for Automated Driving System Testable Cases and Scenarios</pdf_title>
 </pdf_annotation>
@@ -2731,7 +2731,7 @@
 </node>
 </node>
 <node TEXT="Collision risk" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_333782068" CREATED="1602744988608" MODIFIED="1602744995471">
-<node TEXT="Surrogate safety measure for simulation-based conflict study" ID="ID_65543" CREATED="1602745023961" MODIFIED="1602745112103" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/521%20Surrogate%20Safety%20Measure%20for%20Simulation-Based%20Conflict%20Study.pdf">
+<node TEXT="Surrogate safety measure for simulation-based conflict study" FOLDED="true" ID="ID_65543" CREATED="1602745023961" MODIFIED="1602745112103" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/521%20Surrogate%20Safety%20Measure%20for%20Simulation-Based%20Conflict%20Study.pdf">
 <attribute NAME="key" VALUE="wang2013surrogate"/>
 <attribute NAME="journal" VALUE="Transportation Research Record"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -2750,6 +2750,16 @@
     <pdf_title>Evaluation of a simulation-based surrogate safety metric</pdf_title>
 </pdf_annotation>
 </node>
+</node>
+<node TEXT="On a Formal Model of Safe and Scalable Self-Driving Cars" ID="ID_827422195" CREATED="1606387657701" MODIFIED="1606387671860" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/229%20On%20a%20Formal%20Model%20of%20Safe%20and%20Scalable%20Self-driving%20Cars.pdf">
+<attribute NAME="key" VALUE="shalev2017formal"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:1708.06374"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="On a Formal Model of Safe and Scalable Self-Driving Cars"/>
+<attribute NAME="authors" VALUE="Shalev-Shwartz, Shai and Shammah, Shaked and Shashua, Amnon"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5F760B70AA3859ECAFB7AA49608E9129EC6BD34503F5B53987A2AAC835E7E">
+    <pdf_title>On a Formal Model of Safe and Scalable Self-driving Cars</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 </node>
@@ -2818,7 +2828,7 @@
 </node>
 </node>
 <node TEXT="using reference data (open-loop)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1767777743" CREATED="1516863517341" MODIFIED="1516863545359">
-<node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1590912450379" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
+<node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1605691943533" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
 <attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
 <attribute NAME="year" VALUE="2012"/>
 <attribute NAME="title" VALUE="Object-Oriented {B}ayesian Networks for Detection of Lane Change Maneuvers"/>
@@ -2849,7 +2859,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
+<node TEXT="General scenario generation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1703682059" CREATED="1529493625373" MODIFIED="1529493633388">
 <node TEXT="Evaluation of scenario-generation methods for stochastic programming" ID="ID_1027960109" CREATED="1529493643125" MODIFIED="1590912450317" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/196%20Evaluation%20of%20scenario-generation%20methods%20for%20stochastic%20programming.pdf">
 <attribute NAME="key" VALUE="kaut2007evaluation"/>
 <attribute NAME="journal" VALUE="Pacific Journal of Optimization"/>
@@ -3017,7 +3027,28 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Comparing test cases/scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_339658345" CREATED="1588671276013" MODIFIED="1588671290180">
+<node TEXT="Based on real-world scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_630665648" CREATED="1605691882279" MODIFIED="1605691892313">
+<node TEXT="2015 Zofka et al. Data-Driven Simulation and Parametrization" ID="ID_325230266" CREATED="1605691933871" MODIFIED="1605691953023" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/027%20Data-driven%20simulation%20and%20parametrization%20of%20traffic%20scenarios.pdf">
+<attribute NAME="key" VALUE="zofka2015datadrivetrafficscenarios"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Data-driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems"/>
+<attribute NAME="authors" VALUE="Zofka, Marc Ren{\&apos;e} and Kuhnt, Florian and Kohlhaas, Ralf and Rist, Christoph and Schamm, Thomas and Z\&quot;{o}llner, J. Marius"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F91B4B237B607197EFC2BD5C7A836F87F289E47CFAF66BFE19F3A3F8DFFB694">
+    <pdf_title>Data-Driven Simulation and Parametrization of Traffic Scenarios for the Development of Advanced Driver Assistance Systems</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="2017 de Gelder &amp; Paardekooper Using real-life scenarios" ID="ID_1798622317" CREATED="1605691954236" MODIFIED="1605691990595" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/050%20Assessment%20of%20ADS%20AdaptIVe%20IV2017.pdf">
+<attribute NAME="key" VALUE="deGelder2017assessment"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Assessment of Automated Driving Systems Using Real-Life Scenarios"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
+    <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="2020 Thal et al. based on data collected in Germany" ID="ID_1875429082" CREATED="1605694219418" MODIFIED="1605694350031"/>
+</node>
+<node TEXT="Comparing test cases/scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_339658345" CREATED="1588671276013" MODIFIED="1588671290180">
 <node TEXT="Computational Optimal Transport" ID="ID_1543804349" CREATED="1588671291746" MODIFIED="1590912450224" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/442%20Computational%20Optimal%20Transport.pdf">
 <attribute NAME="key" VALUE="peyre2019computational"/>
 <attribute NAME="journal" VALUE="Foundations and Trends in Machine Learning"/>
@@ -5700,8 +5731,8 @@
 </node>
 <node TEXT="Scenario similarity" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_241166301" CREATED="1518000690565" MODIFIED="1518000924227">
 <edge COLOR="#ff00ff"/>
-<node TEXT="Similarity measures for time series" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1080321734" CREATED="1518000705702" MODIFIED="1518000929563">
-<node TEXT="Surveys" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1108172693" CREATED="1518000949311" MODIFIED="1518001009771">
+<node TEXT="Similarity measures for time series" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1080321734" CREATED="1518000705702" MODIFIED="1518000929563">
+<node TEXT="Surveys" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1108172693" CREATED="1518000949311" MODIFIED="1518001009771">
 <node TEXT="An Empirical Evaluation of Similarity Measures for Time Series Classification" ID="ID_1585992208" CREATED="1518000721561" MODIFIED="1534391795839" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/138%20An%20Empirical%20Evaluation%20of%20Similarity%20Measures%20for%20Time%20Series%20Classification.pdf">
 <attribute NAME="key" VALUE="serra2014empirical"/>
 <attribute NAME="journal" VALUE="Knowledge-Based Systems"/>
@@ -5733,7 +5764,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Euclidian distance" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_11157457" CREATED="1518157328265" MODIFIED="1518157343019">
+<node TEXT="Euclidian distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_11157457" CREATED="1518157328265" MODIFIED="1518157343019">
 <node TEXT="re-sample data so that it has equal length" ID="ID_1686113559" CREATED="1518157344748" MODIFIED="1534391796330" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/144%20On%20the%20need%20for%20time%20series%20data%20mining%20benchmarks.pdf">
 <attribute NAME="key" VALUE="keogh2003survey"/>
 <attribute NAME="journal" VALUE="Data Mining and Knowledge Discovery"/>
@@ -5755,7 +5786,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Feature-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1643428776" CREATED="1518168788173" MODIFIED="1518920914141">
+<node TEXT="Feature-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1643428776" CREATED="1518168788173" MODIFIED="1518920914141">
 <node TEXT="Fourier transform, see book &quot;Discrete-Time Signal Processing&quot;" ID="ID_422840287" CREATED="1518168800416" MODIFIED="1534391796314" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/146%20Discrete%20time%20signal%20processing.pdf">
 <attribute NAME="key" VALUE="oppenheim1999discrete"/>
 <attribute NAME="year" VALUE="1999"/>
@@ -5789,7 +5820,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B029A7781C2411CCC5FA85953958D788A143ECFF4391E7C9BB608AC5DD7AC1"/>
 </node>
 </node>
-<node TEXT="Model-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1061375636" CREATED="1518920893299" MODIFIED="1518920910671">
+<node TEXT="Model-based distance" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1061375636" CREATED="1518920893299" MODIFIED="1518920910671">
 <node TEXT="Using auto-regression model coefficients (original paper)" FOLDED="true" ID="ID_118891723" CREATED="1518502176763" MODIFIED="1519100203383">
 <attribute NAME="key" VALUE="piccolo1990distance"/>
 <attribute NAME="journal" VALUE="Journal of Time Series Analysis"/>
@@ -5815,7 +5846,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="48CBE523332E6B31EA4545204C5ECD8F601CB27E49B25DD918B41DCB7C38D65"/>
 </node>
 </node>
-<node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484" MOVED="1518157326491">
+<node TEXT="Dynamic Time Warping (DTW)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_808274739" CREATED="1518104374456" MODIFIED="1518104389484" MOVED="1518157326491">
 <node TEXT="Dynamic programming optimization (original paper, but DTW not explicitly mentioned)" ID="ID_1407935713" CREATED="1518104424971" MODIFIED="1534391796267" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/141%20Dynamic%20programming%20algorithm%20optimization%20for%20spoken%20Word%20Recognition.pdf">
 <attribute NAME="key" VALUE="sakoe1978dynamic"/>
 <attribute NAME="journal" VALUE="IEEE Transactions on Acoustics, Speech, and Signal Processing"/>
