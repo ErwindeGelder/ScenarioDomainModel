@@ -101,7 +101,7 @@ class CaseStudy:
             pars = self.options.func_parameters()
             kde = KDE(pars, scaling=True)
             kde.compute_bandwidth()
-            print("KDE bandwidth: {:.3f}".format(kde.bandwidth))
+            print("KDE bandwidth: {:.3f}".format(kde.get_bandwidth()))
 
             if self.options.func_kde_update is not None:
                 kde = self.options.func_kde_update(kde)
@@ -252,7 +252,7 @@ class CaseStudy:
         kde = KDE(pars, scaling=True)
         kde.clustering()
         kde.compute_bandwidth()
-        print("KDE bandwidth: {:.3f}".format(kde.bandwidth))
+        print("KDE bandwidth: {:.3f}".format(kde.get_bandwidth()))
         kde.pickle(filename_kde)
         return kde
 
