@@ -34,13 +34,11 @@ Modifications:
 from itertools import combinations
 import os
 import pickle
-import time
 from typing import Callable, List, Union
 import numpy as np
 import scipy.spatial.distance as dist
 import scipy.special
 import scipy.stats
-import matplotlib.pyplot as plt
 from .options import Options
 
 
@@ -172,29 +170,7 @@ class KDE:
             self.data_helpers.weights = weights
 
         if self.scaling:
-            if std is None:
-                if not self.weights:
-                    # Take minimum of "standard deviation" and "interquartile range / 1.349".
-                    self.data_helpers.std = np.minimum(np.std(self.data, axis=0),
-                                                       scipy.stats.iqr(self.data, axis=0)/1.349)
-                else:
-                    # First compute the standard deviation.
-                    average = np.average(self.data, axis=0, weights=self.data_helpers.weights)
-                    self.data_helpers.std = np.sqrt(np.average((self.data - average)**2, axis=0,
-                                                               weights=self.data_helpers.weights))
-                    # Check if the "interquartile range / 1.349" is smaller (if so, update std).
-                    for i in range(self.data.shape[1]):
-                        sorter = np.argsort(self.data[:, i])
-                        values = self.data[sorter, i]
-                        weights = (self.data_helpers.weights[sorter] /
-                                   np.sum(self.data_helpers.weights)).cumsum()
-                        iqr = np.interp(.75, weights, values) - np.interp(.25, weights, values)
-                        if iqr/1.349 < self.data_helpers.std[i]:
-                            self.data_helpers.std[i] = iqr/1.349
-
-                self.data = self.data / self.data_helpers.std
-            else:
-                self.data_helpers.std = std
+            self._scaling(std)
 
         # Note: creating the distance matrix takes quite some time and is only needed if cross
         # validation is performed.
@@ -204,16 +180,30 @@ class KDE:
         # muk = integral[ kernel(x)^2 ]
         self.constants.muk = 1 / (2 ** self.constants.dim * np.sqrt(np.pi ** self.constants.dim))
 
-        # # Build histogram (for using FFT for computing bandwidth)
-        # sigma = np.std(self.data)
-        # self.yhist, bin_edges = np.histogram(self.data,
-        #                                      int((np.max(self.data) - np.min(self.data) /
-        #                                           (sigma/100))),
-        #                                      range=(np.min(self.data) - 3*sigma,
-        #                                             np.max(self.data) + 3*sigma),
-        #                                      density=True)
-        # self.xhist = (bin_edges[:-1] + bin_edges[1:]) / 2
-        # self.fft = np.fft.fft(self.yhist)
+    def _scaling(self, std: Union[float, np.ndarray] = None) -> None:
+        if std is None:
+            if not self.weights:
+                # Take minimum of "standard deviation" and "interquartile range / 1.349".
+                self.data_helpers.std = np.minimum(np.std(self.data, axis=0),
+                                                   scipy.stats.iqr(self.data, axis=0)/1.349)
+            else:
+                # First compute the standard deviation.
+                average = np.average(self.data, axis=0, weights=self.data_helpers.weights)
+                self.data_helpers.std = np.sqrt(np.average((self.data - average)**2, axis=0,
+                                                           weights=self.data_helpers.weights))
+                # Check if the "interquartile range / 1.349" is smaller (if so, update std).
+                for i in range(self.data.shape[1]):
+                    sorter = np.argsort(self.data[:, i])
+                    values = self.data[sorter, i]
+                    weights = (self.data_helpers.weights[sorter] /
+                               np.sum(self.data_helpers.weights)).cumsum()
+                    iqr = np.interp(.75, weights, values) - np.interp(.25, weights, values)
+                    if iqr/1.349 < self.data_helpers.std[i]:
+                        self.data_helpers.std[i] = iqr/1.349
+
+            self.data = self.data / self.data_helpers.std
+        else:
+            self.data_helpers.std = std
 
     def clustering(self, maxdist: float = None) -> None:
         """ Cluster the data.
@@ -331,7 +321,7 @@ class KDE:
         if "max_bw" not in kwargs:
             kwargs["max_bw"] = max_bw
 
-        return self.compute_bandwidth_gss(**kwargs)
+        return self._compute_bandwidth_gss(**kwargs)
 
     def compute_bandwidth_grid(self, min_bw: float = 0.001, max_bw: float = 1.0,
                                n_bw: int = 200) -> None:
@@ -347,8 +337,8 @@ class KDE:
             score[i] = self.score_leave_one_out(bandwidth=bandwidth)
         self._bandwidth = bandwidths[np.argmax(score)]
 
-    def compute_bandwidth_gss(self, min_bw: float = 0.001, max_bw: float = 1., max_iter: int = 100,
-                              tol: float = 1e-5) -> int:
+    def _compute_bandwidth_gss(self, min_bw: float = 0.001, max_bw: float = 1., max_iter: int = 100,
+                               tol: float = 1e-5) -> int:
         """ Golden section search.
 
         Given a function f with a single local minimum in
@@ -984,45 +974,3 @@ def process_reshaped_data(xdata: np.ndarray, func: Callable) -> np.ndarray:
     if reshape:
         return output.reshape(newshape)
     return output
-
-
-if __name__ == '__main__':
-    np.random.seed(0)
-
-    XDATA = np.random.rand(200)
-    KERNEL_DENSITY = KDE(data=XDATA)
-    KERNEL_DENSITY.compute_bandwidth()
-
-    print(KERNEL_DENSITY.sample(10))
-    print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.get_bandwidth()))
-    NSTART = 50
-    KERNEL_DENSITY = KDE(data=XDATA[:NSTART])
-    KERNEL_DENSITY.compute_bandwidth()
-    print("Bandwidth n={:d}: {:.5f}".format(NSTART, KERNEL_DENSITY.get_bandwidth()))
-    KERNEL_DENSITY.add_data(XDATA[NSTART:])
-    KERNEL_DENSITY.compute_bandwidth()
-    print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.get_bandwidth()))
-
-    NDATAPOINTS = [100, 500]
-    FIGURE, AXS = plt.subplots(1, len(NDATAPOINTS), figsize=(12, 5))
-
-    for ndatapoint, ax in zip(NDATAPOINTS, AXS):
-        XDATA = np.random.randn(ndatapoint)
-        KERNEL_DENSITY = KDE(data=XDATA)
-        t0 = time.time()
-        KERNEL_DENSITY.compute_bandwidth()
-        t1 = time.time()
-        print("Elapsed time: {:.3f} s".format(t1 - t0))
-        print("Bandwidth: {:.5f}".format(KERNEL_DENSITY.get_bandwidth()))
-
-        xpdf = np.linspace(-3, 3, 301)
-        ypdf = np.exp(-xpdf**2/2) / np.sqrt(2*np.pi)
-        ax.plot(xpdf, ypdf, label='Real')
-        ax.plot(xpdf, KERNEL_DENSITY.score_samples(xpdf), label='Estimated')
-        low, up = KERNEL_DENSITY.confidence_interval(xpdf)
-        ax.fill_between(xpdf, low, up, facecolor=[0.5, 0.5, 1], alpha=0.5, label='95% Confidence')
-
-        ax.legend()
-        ax.set_title('{:d} datapoints'.format(ndatapoint))
-        ax.grid(True)
-    plt.show()
