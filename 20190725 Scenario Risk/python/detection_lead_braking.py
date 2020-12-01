@@ -5,6 +5,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 08 12 Update functions a bit. Same result, but now it can also be used for other scenarios.
+2020 12 01 Update based on updated domain model.
 """
 
 import glob
@@ -13,20 +14,19 @@ from typing import Callable, List, NamedTuple, Tuple
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
-from domain_model import BSplines, ActivityCategory, StateVariable, Tag, \
-    DetectedActivity, StaticEnvironmentCategory, StaticEnvironment, Region, ActorCategory, Actor, \
-    VehicleType, EgoVehicle, Scenario, MultiBSplines
+from domain_model import Splines, ActivityCategory, StateVariable, Tag, \
+    Activity, PhysicalElementCategory, PhysicalElement, ActorCategory, Actor, \
+    VehicleType, EgoVehicle, Scenario, MultiBSplines, DocumentManagement
 from activity_detector import LeadVehicle, LongitudinalActivity, LateralActivityTarget
 from create_ngrams import FIELDNAMES_EGO, METADATA_EGO, FIELDNAMES_TARGET, METADATA_TARGET
-from databaseemulator import DataBaseEmulator
 from data_handler import DataHandler
 from ngram import NGram
 from ngram_search import find_sequence
 
 
 ActivitiesResult = NamedTuple("ActivitiesResult",
-                              [("actor", Actor), ("activities", List[DetectedActivity]),
-                               ("acts", List[Tuple[Actor, DetectedActivity, float]])])
+                              [("actor", Actor), ("activities", List[Activity]),
+                               ("acts", List[Tuple[Actor, Activity]])])
 
 
 DEC_TARGET = ActivityCategory(MultiBSplines(2), StateVariable.LON_TARGET,
@@ -37,23 +37,24 @@ ACC_TARGET = ActivityCategory(MultiBSplines(2), StateVariable.LON_TARGET,
                               tags=[Tag.VehicleLongitudinalActivity_DrivingForward_Accelerating])
 CRU_TARGET = ActivityCategory(MultiBSplines(2), StateVariable.LON_TARGET, name="cruising target",
                               tags=[Tag.VehicleLongitudinalActivity_DrivingForward_Cruising])
-DEC_EGO = ActivityCategory(BSplines(), StateVariable.SPEED, name="deceleration ego",
+SPLINES = Splines()
+DEC_EGO = ActivityCategory(SPLINES, StateVariable.SPEED, name="deceleration ego",
                            tags=[Tag.VehicleLongitudinalActivity_DrivingForward_Braking])
-ACC_EGO = ActivityCategory(BSplines(), StateVariable.SPEED, name="acceleration ego",
+ACC_EGO = ActivityCategory(SPLINES, StateVariable.SPEED, name="acceleration ego",
                            tags=[Tag.VehicleLongitudinalActivity_DrivingForward_Accelerating])
-CRU_EGO = ActivityCategory(BSplines(), StateVariable.SPEED, name="cruising ego",
+CRU_EGO = ActivityCategory(SPLINES, StateVariable.SPEED, name="cruising ego",
                            tags=[Tag.VehicleLongitudinalActivity_DrivingForward_Cruising])
-LK_TARGET = ActivityCategory(BSplines(), StateVariable.LATERAL_POSITION, name="lane keeping target",
+LK_TARGET = ActivityCategory(SPLINES, StateVariable.LATERAL_POSITION, name="lane keeping target",
                              tags=[Tag.VehicleLateralActivity_GoingStraight])
-LC_TARGET = ActivityCategory(BSplines(), StateVariable.LAT_TARGET, name="lane change target",
+LC_TARGET = ActivityCategory(SPLINES, StateVariable.LAT_TARGET, name="lane change target",
                              tags=[Tag.VehicleLateralActivity_ChangingLane])
-LK_EGO = ActivityCategory(BSplines(), StateVariable.LATERAL_POSITION, name="lane keeping ego",
+LK_EGO = ActivityCategory(SPLINES, StateVariable.LATERAL_POSITION, name="lane keeping ego",
                           tags=[Tag.VehicleLateralActivity_GoingStraight])
-LC_EGO = ActivityCategory(BSplines(), StateVariable.LATERAL_POSITION, name="lane change ego",
+LC_EGO = ActivityCategory(SPLINES, StateVariable.LATERAL_POSITION, name="lane change ego",
                           tags=[Tag.VehicleLateralActivity_ChangingLane])
-STAT_CATEGORY = StaticEnvironmentCategory(Region.EU_WestCentral, description="Highway",
-                                          name="Highway", tags=[Tag.RoadLayout_Straight])
-STAT = StaticEnvironment(STAT_CATEGORY)
+STAT_CATEGORY = PhysicalElementCategory(description="Highway", name="Highway",
+                                        tags=[Tag.RoadLayout_Straight])
+STAT = PhysicalElement(STAT_CATEGORY)
 EGO_CATEGORY = ActorCategory(VehicleType.CategoryM_PassengerCar, name="ego vehicle category")
 EGO = EgoVehicle(EGO_CATEGORY, name="ego vehicle")
 TARGET = ActorCategory(VehicleType.Vehicle, name="lead vehicle",
@@ -61,7 +62,7 @@ TARGET = ActorCategory(VehicleType.Vehicle, name="lead vehicle",
                              Tag.InitialState_Direction_SameAsEgo],)
 
 
-def process_file(path: str, database: DataBaseEmulator, func_scen_extraction: Callable):
+def process_file(path: str, database: DocumentManagement, func_scen_extraction: Callable):
     """ Process a single HDF5 file.
 
     :param path: Path of the file with the n-grams.
@@ -107,7 +108,7 @@ def extract_lead_braking(ego_ngram: NGram, target_ngrams: NGram) -> List[Tuple[i
 
 
 def process_scenario(scenario: Tuple[int, float, float], data_handler: DataHandler,
-                     target_ngrams: NGram, ego_ngram: NGram, database: DataBaseEmulator) -> None:
+                     target_ngrams: NGram, ego_ngram: NGram, database: DocumentManagement) -> None:
     """ Process one scenario and add the data to the database.
 
     :param scenario: Information of the scenario: (target_id, start_time, end_time).
@@ -117,7 +118,7 @@ def process_scenario(scenario: Tuple[int, float, float], data_handler: DataHandl
     :param database: Database structure for storing the scenarios.
     """
     # Create the scenario.
-    scenario_object = Scenario(scenario[1], scenario[2], STAT)
+    scenario_object = Scenario(start=scenario[1], end=scenario[2], physical_elements=[STAT])
 
     # Store the longitudinal activities of the target vehicle.
     target_acts = activities_target(scenario, data_handler, target_ngrams)
@@ -150,6 +151,7 @@ def activities_target(scenario: Tuple[int, float, float], data_handler: DataHand
     for type_of_activity in ["lateral_activity", "longitudinal_activity"]:
         i_start, i_end = target_ngrams.start_and_end_indices(type_of_activity, i_ngram=scenario[0],
                                                              i_start=scenario[1], i_end=scenario[2])
+        start = i_start[0]
         for i, j in zip(i_start, i_end):
             activity_label = target_ngrams.ngrams[scenario[0]].loc[i, type_of_activity]
             if type_of_activity == "longitudinal_activity":
@@ -169,12 +171,13 @@ def activities_target(scenario: Tuple[int, float, float], data_handler: DataHand
             if np.any(np.isnan(data)):
                 raise ValueError("NaN data!!!")
             n_knots = min(4, len(data)//10)
-            activity = DetectedActivity(activity_category, i, j-i,
-                                        activity_category.fit(np.array(data.index), data.values,
-                                                              options=dict(n_knots=n_knots)),
-                                        name=activity_category.name)
+            activity = Activity(activity_category, start=start, end=j,
+                                parameters=activity_category.fit(np.array(data.index), data.values,
+                                                                 n_knots=n_knots),
+                                name=activity_category.name)
+            start = activity.end
             activities.append(activity)
-            acts.append((target, activity, i))
+            acts.append((target, activity))
     return ActivitiesResult(actor=target, activities=activities, acts=acts)
 
 
@@ -207,6 +210,7 @@ def activities_ego(scenario: Tuple[int, float, float], data_handler: DataHandler
     for type_of_activity in ["host_lateral_activity", "host_longitudinal_activity"]:
         i_start, i_end = ego_ngram.start_and_end_indices(type_of_activity, i_start=scenario[1],
                                                          i_end=scenario[2])
+        start = i_start[0]
         for i, j in zip(i_start, i_end):
             activity_label = ego_ngram.ngram.loc[i, type_of_activity]
             if type_of_activity == "host_longitudinal_activity":
@@ -223,18 +227,19 @@ def activities_ego(scenario: Tuple[int, float, float], data_handler: DataHandler
                 raise ValueError("NaN data!!!")
 
             n_knots = min(4, len(data)//10)
-            activity = DetectedActivity(activity_category, i, j - i,
-                                        activity_category.fit(np.array(data.index), data.values,
-                                                              options=dict(n_knots=n_knots)),
-                                        name=activity_category.name)
+            activity = Activity(activity_category, start=start, end=j,
+                                parameters=activity_category.fit(np.array(data.index), data.values,
+                                                                 n_knots=n_knots),
+                                name=activity_category.name)
+            start = activity.end
             activities.append(activity)
-            acts.append((EGO, activity, i))
+            acts.append((EGO, activity))
     return ActivitiesResult(actor=EGO, activities=activities, acts=acts)
 
 
 if __name__ == "__main__":
     # Instantiate the "database".
-    DATABASE = DataBaseEmulator()
+    DATABASE = DocumentManagement()
 
     # Add standard stuff.
     for item in [STAT_CATEGORY, STAT, EGO_CATEGORY, EGO, TARGET,
@@ -252,4 +257,4 @@ if __name__ == "__main__":
     FOLDER = os.path.join("data", "5_scenarios")
     if not os.path.exists(FOLDER):
         os.mkdir(FOLDER)
-    DATABASE.to_json(os.path.join(FOLDER, "lead_braking.json"), indent=4)
+    DATABASE.to_json(os.path.join(FOLDER, "lead_braking2.json"), indent=4)
