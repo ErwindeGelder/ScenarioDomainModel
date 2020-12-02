@@ -1,0 +1,710 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside,twocolumn,9pt]{extarticle}
+
+\usepackage{blindtext} % Package to generate dummy text throughout this template 
+
+%\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage{graphicx} 
+\usepackage{flafter}
+\setcounter{totalnumber}{5}
+\setcounter{topnumber}{5}
+\renewcommand{\topfraction}{1}
+
+\usepackage[english]{babel} % Language hyphenation and typographical rules
+
+\usepackage[a4paper,left=0.71in,top=0.98in,right=0.71in,bottom=0.98in,columnsep=15pt]{geometry} % Document margins
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
+
+\usepackage[runin]{abstract} % Allows abstract customization
+\setlength{\abstitleskip}{-\parindent}
+%\newcommand{\abstitlestyle}[1]{#1}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries\MakeUppercase} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont} % Set the abstract itself to small italic text
+\abslabeldelim{:}
+
+
+\usepackage{titlesec} % Allows customization of titles
+%\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+%\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
+\titleformat{\section}[block]{\large\bfseries}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsubsection}[block]{\normalsize}{\thesubsubsection.}{1em}{} % Change the look of the section titles
+
+%\usepackage{fancyhdr} % Headers and footers
+%\pagestyle{fancy} % All pages have headers and footers
+%\fancyhf{}% clear default for head and foot
+%\fancyhead[L]{\includegraphics[scale=0.11]{figures/FISITA.png}}
+%\fancyhead[R]{\thepage}
+%\fancyfoot[L]{Proceedings of the FISITA 2020 World Congress, Prague, 14 - 18 September 2020}
+%\renewcommand{\headrulewidth}{0pt}
+%\fancypagestyle{firstpage}{
+%	\fancyhf{}% clear default for head and foot
+%	\renewcommand{\headrulewidth}{0pt}
+%	\pagestyle{fancy}
+%	\lhead{\textbf{F2020-VES-014}}
+%	\rhead{\includegraphics[scale=0.15]{figures/FISITA.png}}
+%	\fancyfoot[L]{Proceedings of the FISITA 2020 World Congress, Prague, 14 - 18 September 2020}
+%}
+%\usepackage{xpatch}
+%\xapptocmd{\titlepage}{\thispagestyle{firstpage}}{}{}
+
+\usepackage{titling} % Customizing the title section
+
+%\usepackage{hyperref} % For hyperlinks in the PDF
+
+\usepackage{authblk}
+
+\usepackage{caption}
+\DeclareCaptionLabelFormat{nospace}{#1#2}
+\captionsetup[table]{labelfont=normal, textfont=normal,name=Table ,labelsep=period, justification=raggedright, singlelinecheck=off}
+\captionsetup[figure]{labelfont=normal, textfont=normal,name=Figure ,labelsep=period, justification=raggedright, singlelinecheck=off}
+
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{silence}  							%% For filtering warnings
+%\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+%% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
+%\WarningFilter{biblatex}{Patching footnotes failed}
+%%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+%\renewcommand*{\bibfont}{\small}
+%\setlength{\biblabelsep}{\labelsep}
+%\bibliography{../bib}
+
+\usepackage{url}
+%\usepackage{natbib}
+\usepackage{letltxmacro}
+\LetLtxMacro{\autocite}{\cite}
+\LetLtxMacro{\textcite}{\cite}
+\newcommand{\etal}{\textit{et al.\ }}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[capitalize]{cleveref}
+\crefname{equation}{}{}
+\usepackage{xcolor}
+\usepackage{xparse,xstring}
+\usepackage{subcaption}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	TIKZ STUFF
+%----------------------------------------------------------------------------------------
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{pgfplots}
+\newlength\figurewidth
+\newlength\figureheight
+\newlength\venncircle
+\newlength\realworldwidth
+\newlength\realworldheight
+
+
+
+%----------------------------------------------------------------------------------------
+%	COMMANDS
+%----------------------------------------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}
+
+\newcommand{\scenario}{s}
+\newcommand{\scenarioa}{a}
+\newcommand{\scenariob}{b}
+\newcommand{\scenarioc}{c}
+\newcommand{\scenariocategory}{S}
+\newcommand{\scenariocategorya}{A}
+\newcommand{\scenariocategoryb}{B}
+\newcommand{\scenariocategoryc}{C}
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\providecommand{\keywords}[1]{\textbf{KEY WORDS:} #1}
+
+\pretitle{\begin{center}\huge\normalfont\MakeUppercase} % Article title formatting
+\posttitle{\end{center}\vskip 1em} % Article title closing formatting
+\title{Tagging Real-World Scenarios for the Assessment of Autonomous Vehicles} % Article title
+
+\author[1,2]{\large\bfseries Erwin de Gelder}
+\author[1]{\large\bfseries Olaf Op den Camp}
+
+\affil[1]{\normalsize\textit{TNO, Integrated Vehicle Safety, Helmond, The Netherlands (E-mail: erwin.degelder@tno.nl, olaf.opdencamp@tno.nl)}}
+\affil[2]{\normalsize\textit{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}}
+\date{} % Leave empty to omit a date
+\renewcommand{\maketitlehookd}{%
+\begin{abstract}	
+\noindent The development of Autonomous Vehicles (AVs) has made significant progress in the last years and it is expected that AVs will soon be introduced on our roads. An essential aspect in the development of AVs is the assessment of quality and performance aspects of the AVs, such as safety, comfort, and efficiency. Among other methods, a scenario-based approach has been proposed. With scenario-based testing, the AV is subjected to a collection of scenarios that represent real-world situations. 
+
+The collection of scenarios needs to cover the variety of what an AV can encounter in real traffic. As a result, many different scenarios are considered, that are grouped into so-called scenario categories. We propose a method for defining the scenario categories using a system of tags, where each tag describes a particular characteristic of a scenario category.
+
+There is a balance between having generic scenario categories – and thus a high variety among the scenarios in the scenario category – and having specific scenario categories without much variety among the scenarios in the scenario category. For some systems, one is interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags are structured in trees. The different layers of the trees can be regarded as different abstraction levels.
+
+Next to presenting the method for describing scenario categories using tags, we will illustrate the method by showing applicable trees of tags using concrete examples in the Singapore traffic system. Trees of tags are shown for the vehicle under test, the dynamic environment (e.g., the other road users), the static environment (e.g., the road layout), and the environmental conditions (weather and lighting conditions). Few examples are presented to illustrate the proposed method for defining the scenario categories using tags.
+
+\keywords{autonomous vehicle, assessment, scenarios}
+\end{abstract}
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the title
+\maketitle
+%\thispagestyle{firstpage}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+\label{sec:introduction}
+
+An essential aspect in the development of autonomous vehicles (AVs) is the assessment of AVs \autocite{bengler2014threedecades, stellet2015taxonomy, Helmer2017safety, putz2017pegasus, roesener2017comprehensive, gietelink2006development, wachenfeld2016release}.
+For legal and public acceptance of AVs, a clear definition of system performance is important, as well as quantitative measures for system quality. 
+Traditional methods, such as \autocite{response2006code, ISO26262}, used for the evaluation of driver assistance systems, are no longer sufficient for the assessment of quality and performance aspects of an AV, because they would require too many resources \autocite{wachenfeld2016release}. 
+Therefore, among other methods, a scenario-based approach has been proposed \autocite{elrofai2018scenario, putz2017pegasus}. 
+
+It is important that the collection of scenarios used for the scenario-based assessment of AVs cover the variety of what an AV can encounter during real operation in traffic. 
+\Cref{fig:scenario schematic} provides a schematic overview of the required components to describe the test cases that an AV should be subjected to \autocite{elrofai2018scenario}. 
+Two different abstraction levels can be considered where the first level qualitatively describes the scenarios and the second level quantitatively describes the scenarios using parameters and models \autocite{degelder2020ontology}. In a similar manner, the AV can be described, such that the relevant test cases can be deduced. 
+
+Because the scenarios need to cover the variety of what an AV can encounter in real traffic, many different scenarios need to be considered. To handle a large number of scenarios, this paper focuses on the qualitative description of the scenarios. Therefore, the scenarios are categorized into so-called scenario categories, where a scenario category can be regarded as an abstraction of a quantitative scenario \autocite{degelder2020ontology}. For example, ``Lead vehicle braking'' is a scenario category referring to the scenarios in which a car in front of the ego vehicle brakes. 
+
+In this paper, we propose a method for defining the scenario categories using a system of tags. Next to proposing the method, we introduce an appropriate system of tags to describe different scenario categories that cover a large portion of the possible varieties that are found in real-world traffic.
+It is the objective to get a fair indication of the safe operation of the AV when deployed in real-world traffic by subjecting the AV to test cases (both in physical tests, e.g., on a test track, and virtual simulations using appropriate AV models) based on the scenario categories that are defined using the system of tags proposed in this paper.
+
+This paper does not provide an overview of required test cases. The test cases, however, might be based on the scenario categories that are defined using the presented tags. Before selecting and generating test cases, a match needs to be made of the AV's Operational Design Domain (ODD) \autocite{sae2018j3016} onto the requirements for deployment of the AV in a certain area. % of Singapore. 
+Based on the ODD, test cases can be selected for the safety assessment of the AV according to, e.g., ISO~34502 \autocite{ISO34502}. Describing a process for selecting test cases is out of the scope of the current paper. 
+
+\begin{figure*}[t]
+	\centering
+	\includegraphics[width=\linewidth]{scenario_schematic}	
+	\caption{A schematic overview of the required components to describe a scenario, and the relation to AV specifications and test cases, based on \cite{elrofai2018scenario}. The red box indicates the focus of the current report.}
+	\label{fig:scenario schematic}
+\end{figure*}
+
+This paper is organized as follows. In \cref{sec:scenario category}, we explain what we mean with a scenario category and how this relates to scenarios and test cases. Next, in \cref{sec:tags}, we propose a selection of tags, structured in trees, to define scenario categories. Few examples of scenario categories defined using the tags that are proposed in \cref{sec:tags} are presented in \cref{sec:examples}. We conclude this paper in \cref{sec:conclusions}.
+
+
+
+\section{Terminology}
+\label{sec:scenario category}
+
+In this section, we first explain what we mean with scenarios and scenario categories. Next, in \cref{sec:tags for scenario catgories}, we describe why tags are used to define scenario categories. We end this section in \cref{sec:test cases} with an explanation of the relation between the scenario categories and test cases for the assessment of AVs.
+
+
+
+\subsection{What is a scenario category?}
+\label{sec:definition scenario category}
+
+We distinguish quantitative scenarios from qualitative scenarios, using the definitions of \emph{scenario} and \emph{scenario category} of \autocite{degelder2020ontology}:
+
+\begin{definition}[Scenario]
+	\label{def:scenario}
+	A scenario is a quantitative description of the relevant characteristics of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment. In addition, a scenario contains all events that are relevant to the ego vehicle.
+\end{definition}
+
+\begin{definition}[Scenario category]
+	\label{def:scenario category}
+	A scenario category is a qualitative description of the ego vehicle, its activities and/or goals, its static environment, and its dynamic environment.
+\end{definition}
+
+Introducing the concept of scenario categories brings the following benefits \autocite{degelder2020ontology}:
+\begin{itemize}
+	\item For a human, it is easier to interpret a qualitative description rather than a quantitative description.
+	\item It enables to refer to a group of scenarios that have something in common. Therefore, it enables characterization of the type of scenarios, thus making discussing scenarios much easier.
+	\item It allows for quantifying the completeness of a set of scenarios by separately quantifying the completeness of scenario categories and the completeness of scenarios in each category.
+	This is easier because scenario categories are discrete by nature whereas scenarios are continuous. See \autocite{degelder2019completeness} for more details.
+\end{itemize}
+
+To describe the relation between a scenario and a scenario category, the verb ``to comprise'' is used \autocite{degelder2020ontology}.
+If a specific scenario category $\scenariocategory$ is an abstraction of a specific scenario $\scenario$, then we say that the specific scenario category $\scenariocategory$ comprises that specific $\scenario$. 
+To describe the relation between two scenario categories, the verb ``to include'' is used \autocite{degelder2020ontology}. 
+To further illustrate this, consider \cref{fig:venn diagram scenario category}, where $\scenarioa$, $\scenariob$, and $\scenarioc$ represent scenarios and $\scenariocategorya$, $\scenariocategoryb$, and $\scenariocategoryc$ represent scenario categories.
+The following principles apply for these relations:
+\begin{itemize}
+	\item A given scenario category can comprise multiple scenarios, e.g., in \cref{fig:venn diagram scenario category}, $\scenariocategoryb$ comprises $\scenarioa$ and $\scenariob$.
+	\item Multiple scenario categories can comprise a specific scenario, e.g., in \cref{fig:venn diagram scenario category}, both $\scenariocategorya$ and $\scenariocategoryb$ comprise $\scenariob$. 
+	\item A scenario category includes another scenario category if it comprises all scenarios that the other scenario category comprises, e.g., in \cref{fig:venn diagram scenario category}, $\scenariocategoryb$ includes $\scenariocategorya$.
+\end{itemize}
+
+\setlength{\venncircle}{6em}
+\begin{figure}[h]
+	\centering
+	
+	\begin{tikzpicture}
+		% Circles
+		\fill[red!50, fill opacity=0.5] (-\venncircle/2, 0) circle (\venncircle);
+		\fill[green!50, fill opacity=0.5] (\venncircle/2, 0) circle (\venncircle);
+		\draw (-\venncircle/2, 0) circle (\venncircle);
+		\draw (\venncircle/2, 0) circle (\venncircle);
+		
+		% Names of scenario categories
+		\node[anchor=east](daylight) at (-5/4*\venncircle, \venncircle) {$\scenariocategoryb$};
+		\draw (daylight) -- ({(-sqrt(2)/2-1/2)*\venncircle}, {sqrt(2)/2*\venncircle});
+		\node[anchor=west](rain) at (5/4*\venncircle, \venncircle) {$\scenariocategoryc$};
+		\draw (rain) -- ({(sqrt(2)/2+1/2)*\venncircle}, {sqrt(2)/2*\venncircle});
+		\node[anchor=south](day and rain) at (-1/4*\venncircle, 8/7*\venncircle) {$\scenariocategorya$};
+		\draw (day and rain) -- ({(1/2-sqrt(2)/2)*\venncircle}, {(sqrt(2)/2)*\venncircle});
+		
+		% Scenarios
+		\node at (-0.1*\venncircle, -0.1*\venncircle) (scenariob){\textbullet};
+		\node at (-\venncircle, 0.3*\venncircle) (scenarioa){\textbullet};
+		\node at (\venncircle, 0.2*\venncircle) (scenarioc){\textbullet};
+		\node[right of=scenarioa, node distance=1em]{$\scenarioa$};
+		\node[right of=scenariob, node distance=1em]{$\scenariob$};
+		\node[right of=scenarioc, node distance=1em]{$\scenarioc$};
+		%\node[text width=\venncircle, align=center] at (-\venncircle, 0) {Scenarios without rain during daytime};
+		%\node[text width=\venncircle, align=center] at (0, 0) {Scenarios with rain during daytime};
+		%\node[text width=.9\venncircle, align=center] at (\venncircle, 0) {Scenarios with rain during nighttime};
+	\end{tikzpicture}
+	
+	
+	\caption{The red and green circles correspond to the scenario categories $\scenariocategoryb$ and $\scenariocategoryc$, respectively. The overlap between the two circles corresponds to scenario category $\scenariocategorya$. The dots represent scenarios $\scenarioa$, $\scenariob$, and $\scenarioc$.}
+	\label{fig:venn diagram scenario category}
+\end{figure}
+
+
+
+\subsection{Why using tags?}
+\label{sec:tags for scenario catgories}
+
+%We propose to provide scenario categories with additional information in the form of tags that describe the scenario in a qualitative manner.
+Tags are often used when providing extra information on a piece of data \autocite{smith2007tagging}. A tag is a keyword or a term that helps describing an item. For example, items in a database can contain some tags that enable users to quickly obtain several items that share a certain characteristic described by a tag \autocite{craft2004tagging}. 
+Applications are very broad, e.g., from classification of audio data \autocite{kong2017joint} capturing musical characteristics from songs \autocite{ellis2011semantic} to tagging of Wikipedia pages \autocite{voss2006collaborative}.
+The use of these tags brings several benefits:
+\begin{itemize}
+	\item The tags of a scenario can be helpful in determining which scenario categories do and do not comprise the scenario \autocite{degelder2020scenariomining}.
+	%\item If a scenario category that only contains known tags is added to the database of scenario categories, it can easily be seen which scenarios the scenario category comprises by only inspecting the tags of the scenarios. Therefore, there is no need to define scenario categories a priori.
+	\item It is easy to select scenarios from a scenario database or a scenario library by using tags or a combination of tags.
+	\item As opposed to the proposed categorization of scenarios in \autocite{opdencamp2014cats, USDoT2007precrashscenarios, lenard2014typical, lara2019harmonized, lara2019harmonized}, scenario categories do not need to be mutually exclusive.
+\end{itemize}
+
+There is a balance between having generic scenario categories --- and thus a wide variety among the scenarios belonging to the scenario category --- and having specific scenario categories without much variety among the scenarios in the scenario category. For some systems, one may be interested in very specific set of scenarios, while for another system one might be interested in a set of scenarios with a high variety. To accommodate this, tags can be structured in hierarchical trees \autocite{molloy2017dynamic}. The different layers of the trees can be regarded as different abstraction levels \autocite{Bonnin2014}. 
+
+
+
+
+\subsection{Test cases}
+\label{sec:test cases}
+
+Scenario categories can be used to define relevant test cases for the assessment of AVs, see, e.g., \cite{ploeg2018cetran,elrofai2016scenario}. It is generally acknowledged that test cases for the safety assessment of AVs should be based on real-world scenarios \cite{putz2017pegasus, roesener2016scenariobased, deGelder2017assessment}. Nevertheless, the terms scenario and test case are often confused; also the combination test scenario is often used in discussions\footnote{We consider a \emph{test scenario} to be similar to \emph{test case}, but we prefer using the term \emph{test case} as to reduce confusion with the term \emph{scenario}.}. %In this section, the concept of a test case is explained and it is shown what the difference is between scenarios and test cases.
+
+We use the term scenario for a description of a situation that can happen or has happened in the real world. In other words, scenarios are used to describe any type of situation that a vehicle in operation can encounter during its lifetime. The set of scenarios described by the scenario categories will not fully cover all possible situations that can occur in reality. In \cref{fig:test cases}, this is represented by the fact that the available set of scenarios (red) does not cover all relevant situations in the real world (blue).
+
+\definecolor{realworld}{RGB}{50, 50, 192}
+\definecolor{scenarios}{RGB}{192, 50, 50}
+\definecolor{ODD}{RGB}{50, 192, 50}
+\definecolor{testcases}{RGB}{255, 255, 153}
+\setlength{\realworldwidth}{15em}
+\setlength{\realworldheight}{9em}
+\tikzstyle{thickness}=[ultra thick]
+\begin{figure}[t]
+	\centering
+	\begin{tikzpicture}	
+		% Test cases?
+		\begin{scope}
+		\clip (.1\realworldwidth, 0) ellipse (.7\realworldwidth/2 and .8\realworldheight/2); 
+		\fill[testcases] (-.1\realworldwidth, 0) ellipse (.7\realworldwidth/2 and .8\realworldheight/2);
+		\end{scope}
+		
+		% The real world
+		\node[ellipse, minimum height=\realworldheight, minimum width=\realworldwidth, realworld, draw, thickness](real world) at (0, 0) {};
+		\node(real world text) at (.45\realworldwidth, .5\realworldheight) {Real world};
+		\draw[thickness, realworld](real world) -- (real world text);
+		
+		% Set of scenarios
+		\node[ellipse, minimum height=0.8\realworldheight, minimum width=.7\realworldwidth, scenarios, draw, thickness](scenarios) at (-.1\realworldwidth, 0) {};
+		\node(scenarios text) at (-.45\realworldwidth, .5\realworldheight) {Scenarios};
+		\draw[thickness, scenarios](scenarios) -- (scenarios text);
+		
+		% ODD
+		\node[ellipse, minimum height=.8\realworldheight, minimum width=.7\realworldwidth, ODD, draw, thickness](odd) at (.1\realworldwidth, 0) {};
+		\node(odd text) at (.45\realworldwidth, -.45\realworldheight) {ODD};
+		\draw[thickness, ODD](odd) -- (odd text);
+		\node at (0, 0) {Test cases};
+	\end{tikzpicture}
+	\caption{The relation between the real world, the ODD, the scenarios, and test cases.
+		%The set of scenarios (red) is a subset of what can happen or can be encountered in the real world (blue). The Operational Design Domain (ODD, green) is also part of the real world (blue), but is not necessarily aligned with the set of scenarios (red). The set of test cases (shaded yellow region) is a subset of the set of scenarios and, ideally, the ODD (green) fully fits within the set of scenarios (red) and there are no test cases that are outside the ODD (green).
+	}
+	\label{fig:test cases}
+\end{figure}
+
+To describe the difference between a scenario and a test case, it is important to know a vehicle's Operational Design Domain (ODD)\footnote{SAE automotive standard J3016 \autocite{sae2018j3016} defines an ODD as ``operating conditions under which a given driving automation system or feature thereof is specifically designed to function, including, but not limited to, environmental, geographical, and time-of-day restrictions, and/or the requisite presence or absence of certain traffic or roadway characteristics.''}, to determine the set of relevant test cases. The ODD depends on the application of an AV and usually is the result of the design of the AV in relation to the requirements of the application. An ODD covers a dedicated and limited area of the real world as indicated in \cref{fig:test cases} by the green set.
+
+%The ODD is very likely to differ for different type of vehicles, or even for a different application of a vehicle. \Cref{fig:test cases} considers the ODD of one vehicle type for a given application. Moreover, the figure shows that part of the ODD is covered by the set of scenarios, but possibly we do not have all scenarios identified to cover all of the ODD. A set of scenarios is considered complete in case it covers all relevant ODDs. 
+
+Once the ODD is known, and we have scenarios that cover (part of) the ODD, test cases can be generated. The set of test cases is considered to be a subset of scenarios, as not all scenarios are relevant for each type of vehicle or each type of application. However, test cases are always generated from scenarios; we therefore assume that no test case is generated in areas not covered by the set of scenarios. It is unnecessary to provide test cases outside the ODD, as the system is not expected to respond outside the ODD. The set of test cases in \cref{fig:test cases}, is denoted by the yellow shaded area. It is represented by the intersection of the set of scenarios and the ODD. In the ideal case, the scenario set is complete and encompasses the ODD. In \cref{fig:test cases}, this would show if the ODD (green) would fully fit within the set of scenarios (red).
+
+
+
+\section{Selection of tags}
+\label{sec:tags}
+
+The definition of tags and trees of tags will be presented subsequently for the dynamic environment, for the static environment, and finally for the conditions.
+
+\begin{figure*}[t!]
+	\centering
+	\includegraphics{actor_type}
+	\caption{Tags for the type of the carriageway user, with a reference to UNECE vehicle categories \autocite{UNECE2011consolidated}. %Category M refers to power-driven vehicles having at least four wheels and used for the carriage of passengers. Category N refers to power-driven vehicles having at least four wheels and used for the carriage of goods. Category N consists of the subcategories light commercial vehicle (LCV) and large goods vehicle (LGV). Category L refers to motor vehicles with less than four wheels. 
+		A vehicle of category M, N, or L is considered as a \emph{vehicle} in the context of this report as indicated by the black box outline. 
+		%Note that the list is not complete. For a full reference, see \cite{vehicle_categories2011}.
+	}
+	\label{fig:tree carriageway user type}
+\end{figure*}
+
+\begin{figure*}[t!]
+	\centering
+	\includegraphics{lon_activity}\\
+	\vspace{0.5em}
+	\includegraphics{lat_activity}
+	\caption{Tags for lateral and longitudinal activities of a vehicle. 
+		%The lateral activity is relative to the lane in which the corresponding vehicle is driving. For example, if the vehicle is driving on a curved road, its lateral activity is ``Going straight''. 
+		%As shown in \cref{fig:tree carriageway user type}, the term vehicle could refer to a car, truck/bus, or powered two wheeler.
+	}
+	\label{fig:activities}
+\end{figure*}
+
+
+\subsection{Tags for the dynamic environment}
+\label{sec:selection of tags dynamic}
+
+To describe the dynamic environment, the activities of the different actors are described. First, we consider different type of actors in \cref{sec:type of actor}. Next, in \cref{sec:activities}, tags are provided to describe the activities of the actors. In \cref{sec:initial state}, tags are presented that describe the initial state of an actor in a scenario. Some special tags are applicable for vehicle driving in front of the ego vehicle, see \cref{sec:lead vehicle}. %We end this section with few tags for animals.
+
+
+
+\subsubsection{Carriageway user type}
+\label{sec:type of actor}
+
+A first distinction within a scenario is usually made for the type of carriageway user, see \cref{fig:tree carriageway user type}. The tree of tags is not considered to be complete, however, the current tags cover the most common type of carriageway users. For the motorized vehicle a reference is made to the UNECE regulation \autocite{UNECE2011consolidated}. In the regulation, a further distinction in vehicle categories is made. The more general tag ``vehicle'' applies if a vehicle could be either of category M, N, or L. For the category of Vulnerable Road Users (VRU), the European convention is used, with the exception that powered two wheelers, such as a motorcycle, are explicitly considered a vehicle and not a VRU. The reason to use the separate category L, i.e., motor vehicles with less than four wheels, is the large difference in behavior they exhibit compared to VRU; their position on the road and their riding dynamics including speed are just two of the striking differences. 
+
+% Figure is moved up so that it appears closer to the text.
+
+
+\subsubsection{Activities}
+\label{sec:activities}
+
+An activity describes the behavior related to an actor. This includes, but is not limited to, the dynamic driving tasks as mentioned in SAE J3016 \cite{sae2018j3016}. In this paper, only the lateral motion control (via steering) and longitudinal motion control (via acceleration and deceleration) are reflected into tags.
+
+The lateral and longitudinal activities of the a vehicle are characterized by the tags of \cref{fig:activities}. The tags may also refer to the objective of the ego vehicle in case no activities are defined. For example, a test case in which the ego vehicle's objective is to make a left turn, the tags ``Turning'' and ``Left'' are applicable. 
+
+% Figure is moved up so that it appears closer to the text.
+
+Four different types of activities are identified regarding the lateral movement. Here, it is assumed that ``Lateral'' refers to the direction perpendicular to the lane the vehicle is driving in. Therefore, if the vehicle is driving on a curved road while staying more or less in its lane (lane following), the tag ``Going straight'' is applicable. When the vehicle changes lane to an adjacent lane, the tag ``Changing lane'' is applicable. The tag ``Turning'' is applicable when the vehicle turns at a junction. The tag ``Swerving'' is applicable when the vehicle significantly changes lateral position without performing a complete lane change. For example, when the vehicle overtakes a cyclist that is riding at one side of the lane, the vehicle might swerve to the other side of the lane. 
+
+Three different types of activities are identified regarding the longitudinal movement. A distinction is made between driving forward, reversing, and standing still. Regarding driving forward, a further distinction is made with respect to the acceleration.
+
+Due to the typical dynamics for pedestrians and cyclists, separate tag trees are envisioned to characterize their behavior. However, for the sake of brevity, the actual trees are omitted here. We refer the interested reader to \autocite{degelder2019scenariocategories} where we also present these tag trees.
+%Due to the pedestrian's specific dynamics, no separate lateral and longitudinal activities are distinguished. A distinction is made between ``Walking'', ``Stopping'' and ``Standing still'', a distinction is made in walking ``Straight'', ``Turning left'', or ``Turning right''. Furthermore, a pedestrian can almost instantaneously come to a full stop (hence the tag ``Stopping'') and can be ``Standing still''. Similar to large deceleration levels for stopping, large acceleration levels can be deployed to start walking. 
+%\begin{figure*}
+%	\centering
+%	\includegraphics{figures/ped_activity}
+%	\caption{Tags for pedestrian activities.}
+%	\label{fig:tree pedestrian act}
+%\end{figure*}
+%
+%\Cref{fig:tree cyclist lat act,fig:tree cyclist long act} show the typical activities for a cyclist. For cyclists, a distinction between lateral and longitudinal activities is made, similar to the distinction for vehicles. In the same way as for pedestrians, a tag for both ``Stopping'' and ``Standing still'' is used. As a cyclist can exhibit high deceleration levels, a differentiation is made between a forceful deceleration until standstill (Stopping) and the activity of being at standstill.
+%
+%\begin{figure*}
+%	\centering
+%	\begin{subfigure}{\linewidth}
+%		\centering
+%		\includegraphics{figures/cyc_lat_activity}
+%		\caption{\vspace{0.5cm}}
+%		\label{fig:tree cyclist lat act}
+%	\end{subfigure}
+%	\begin{subfigure}{\linewidth}
+%		\centering
+%		\includegraphics{figures/cyc_lon_activity}
+%		\caption{}
+%		\label{fig:tree cyclist long act}
+%	\end{subfigure}
+%	\caption{Tags for cyclist lateral and longitudinal activities.}
+%\end{figure*}
+%
+%Note that other types of actors, such as mono-wheels and powered skateboards, can also have their trees of tags that characterize their behaviour. Because these types of actors are not yet explicitly included into the scenario categories in \cref{sec:categories}, no special tags describing their activities are defined in this report.
+
+
+
+\begin{figure*}[t!]
+	\centering
+	\includegraphics{initial_state}
+	\caption{Tags regarding the initial position and movement of road users in a scenario.}
+	\label{fig:tree initial state}
+\end{figure*}
+
+
+
+\subsubsection{State or initial state}
+\label{sec:initial state}
+
+\Cref{fig:tree initial state} shows tags for the state or the initial state of the potential other road users with respect to the ego vehicle. A distinction is made in the direction of orientation of the road user, the dynamics, and the longitudinal and lateral position. Three tags, i.e., ``Same as ego'', ``Oncoming'', and ``Crossing'', refer to the direction of the road user with respect to the direction of the ego vehicle. %Obviously, the tag ``Same as ego'' refers to road users that are oriented in the same direction as the ego vehicle. The tag ``Oncoming'' refers to road users that approach the ego vehicle from the opposite direction. For the other road users, the tag ``Crossing'' is applicable.
+The tag ``Dynamics'' distinguishes between moving and standing still. 
+Finally, two tags are used to describe the position of the actor with respect to the ego vehicle, in longitudinal and lateral direction. 
+
+%Note that the relative direction of a road user might change during the course of a scenario. For example, a vehicle that approaches from the left of the ego vehicle will drive in the same direction as the ego vehicle if it turns left while the ego vehicle continues to drive straight and does not change its direction. To avoid ambiguity, the tags, describing the relative position and activities of road users, refer to the initial position and movement of the corresponding road user with respect to the initial position and movement of the ego vehicle. 
+%A distinction is made between road users approaching from the left side (nearside in Singapore) and from the right side (farside in Singapore). There are several reasons to make the distinction between a nearside or farside approach:
+%
+%\label{page:reasons for distinction far and near}
+%\begin{itemize}
+%	\item Rules for giving way are different for the near- and farside.
+%	\item The setup of an AV is possibly not symmetric with respect to the left and right direction. Even when the AV has been designed to be symmetric, it might not behave symmetrically. When the AV correctly responds to a crossing actor from the nearside, it is not guaranteed that it responds equally correctly to a crossing actor from the farside.
+%	\item The response time for actors approaching from the nearside and the farside is different, as actors from the farside first usually need to cross at least one lane before interfering with the path of the ego-vehicle.  
+%\end{itemize}
+%Multiple tags can be applicable for a scenario. For example, if there is a vehicle driving in front of the ego vehicle and there is a vehicle overtaking the ego vehicle on the right lane, the tags (``Same direction'', ``Same lane'') and (``Same direction'', ``Right of ego'') are applicable. 
+
+%Similar to the tree of tags for vehicles, there are trees for cyclists and pedestrians, see \cref{fig:tree target cyclist,fig:tree target pedestrian}, respectively.
+
+%\begin{figure}
+%	\centering
+%	\tree{Cyclist initial state}{Oncoming,Left of ego,Same lane, Right of ego;Same direction,Left of ego,Same lane,Right of ego;Crossing,Left,Right;Stationary}
+%	\caption{Tags regarding the initial position and movement of cyclists in a scenario.}
+%	\label{fig:tree target cyclist}
+%\end{figure}
+%\begin{figure}
+%	\centering
+%	\tree{Pedestrian initial state}{Oncoming,Left of ego,Same lane, Right of ego;Same direction,Left of ego,Same lane,Right of ego;Crossing,Left,Right;Stationary}
+%	\caption{Tags regarding pedestrians in a scenario.}
+%	\label{fig:tree target pedestrian}
+%\end{figure}
+
+
+
+\subsubsection{Lead vehicle}
+\label{sec:lead vehicle}
+
+\Cref{fig:tree lead vehicle} contains the tags that are used to mark specific actors as either being a leading vehicle or not.
+
+\begin{figure}
+	\centering
+	\includegraphics{lead_vehicle}
+	\caption{Tags for a lead vehicle, i.e., a vehicle driving in front of ego vehicle.}
+	\label{fig:tree lead vehicle}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics{static_object}
+	\caption{Tags that describe a static object.}
+	\label{fig:tree static object}
+\end{figure}
+
+
+
+\begin{figure*}[t!]
+	\centering
+	\includegraphics{road_layout}
+	\caption{Tags that describe the road layout.}
+	\label{fig:tree road layout}
+\end{figure*}
+
+\begin{figure*}[t!]
+	\centering
+	\includegraphics{weather}\\
+	\vspace{0.5em}
+	\includegraphics{lighting}
+	\caption{Tags for weather condition, based on \cite{mahmassani2012use} and lighting conditions, see \cite{golob2003relationships}.}
+	\label{fig:conditions}
+\end{figure*}
+
+%Note that the tags related to lead vehicle are used to emphasize the role of an actor in a scenario. For example, a vehicle that is initially driving in the same direction as the ego vehicle, in the same lane as the ego vehicle, and in front of the ego vehicle (see \cref{fig:tree initial state}) is not necessarily a lead vehicle. In other words, the tags that are earlier presented are not sufficient for expressing the role of lead vehicle.
+
+
+
+%\subsubsection{Animals}
+%\label{sec:animals}
+%
+%The presence of animals in the scenario can be described using the tags shown in \cref{fig:tree animals}. 
+%
+%\begin{figure}
+%	\centering
+%	\includegraphics{figures/animal}
+%	\caption{Tags that describe the presence of animals.}
+%	\label{fig:tree animals}
+%\end{figure}
+
+
+
+\subsection{Tags for the static environment}
+\label{sec:tags selection static}
+
+In this paper, we consider for the static environment the road type (\cref{sec:road type}), the road layout (\cref{sec:road layout}), static objects (\cref{sec:static object}), and a traffic light (\cref{sec:traffic light}).
+
+
+
+\subsubsection{Road type}
+\label{sec:road type}
+
+The tags for the road type on which the ego vehicle is driving are based on the classification that OpenStreetMaps uses \autocite{HighwayKeyOSM}. We omit the tree of tags because of limited space. We refer the interested reader to \autocite{HighwayKeyOSM}
+
+% see \cref{fig:tree road type}. A distinction is made between principal roads and link roads. The link roads refer to roads that are leading to or from the specified road type from or to the specified road type or a lower class road type \cite{HighwayKeyOSM}. Here, a lower class road type refers to all road types listed below the specified road type in \cref{fig:tree road type}. For example, the ``Trunk link'' refers to a road leading to or from a trunk road from or to a road type listed below ``Trunk'' in \cref{fig:tree road type}.
+%
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=\linewidth]{figures/road_type.pdf}
+%	\caption{Tags for the type of road, based on the highway tag used for OpenStreetMaps \cite{HighwayKeyOSM}.}
+%	\label{fig:tree road type}
+%\end{figure}
+
+
+
+\subsubsection{Road layout}
+\label{sec:road layout}
+
+The layout of the road is specified using the tags in \cref{fig:tree road layout}. Here, four categories are defined. Typically, highway roads will mainly be in the category ``Straight''. The second subcategory, i.e., ``Curved'', refers to roads that are highly curved. Typically, the actual speed to safely and comfortably drive these curved roads is lower than the speed limit on the straight section preceding the curved road. For example, a curved road right after a highway exit can often be classified as ``Curved''. The other two categories refer to junctions, whereas ``Pedestrian crossing'' refers to intersections where only a footway is intersecting with the road the ego vehicle is driving on, e.g., a zebra crossing. A large roundabout may be regarded as multiple junctions that are close to each other. For smaller roundabouts, it might be better to treat the roundabout as a whole instead of treating it as multiple junctions. In that case, the ``Roundabout'' tag applies.
+
+
+
+\subsubsection{Static object}
+\label{sec:static object}
+
+The presence of static objects are described using the tags presented in \cref{fig:tree static object}. A distinction is made between objects that are on the intended path of the ego vehicle and objects that are not on the intended path but are still of importance as they might be blocking the view of the ego vehicle. When a static object is on the intended path of the ego vehicle, the object might be passable - when it is possible to drive over it, or impassable - when the ego vehicle can only avoid undesired interaction with the object by steering around it.
+
+Strictly speaking, every object that is in the field of view of the ego vehicle is blocking part of the ego vehicle's view. For practical reasons, however, an object is classified as ``View blocking'' if the object is significantly blocking parts where it is likely that a traffic participant is present. For example, a building that partially blocks the view of a road is classified as ``View blocking''. For examples of view-blocking objects, see \cite{CATS2015}. A further distinction is made between a parked vehicle or another type of object.
+
+%\Cref{fig:tree crossing vehicle} describes whether a crossing road user has priority or not. If there is no crossing actor in the scenario, then the tag is not applicable (N.A.). Note that a crossing actor can refer to any type of traffic participant, e.g., a vehicle or a VRU. Although the tags mention actors, the rules of priority, or traffic rules in general, are related to the road layout and consequently these tags are considered part of the static environment.\\
+%
+%\begin{figure}
+%	\centering
+%	\tree{Crossing actor}{Ego priority; Actor priority; N.A.}
+%	\caption{Tags indicating priority in case of crossing actors.}
+%	\label{fig:tree crossing vehicle}
+%\end{figure}
+
+\subsubsection{Traffic light}
+\label{sec:traffic light}
+
+For a traffic light, we consider the tags ``Red'', ``Amber'', ``Green'', and ``N.A.''. The last tag is applicable in case the traffic light is not operating.
+%\Cref{fig:tree traffic light} presents the tags that refers to the traffic light status that is applicable for the ego vehicle. If physically a traffic light is present, but the traffic light is not operating, the tag ``N.A.'' is applicable. 
+Note that it might be possible that multiple tags are applicable for a scenario. For example, if the traffic light is initially green and turns amber during the timespan of the scenario, both the tags ``Amber'' and ``Green'' are applicable.
+
+%\begin{figure*}[t]
+%	\centering
+%	\includegraphics{figures/traffic_light}
+%	\caption{Tags that describe the traffic light status for the ego vehicle.}
+%	\label{fig:tree traffic light}
+%\end{figure*}
+
+
+\subsection{Tags for the conditions}
+\label{sec:conditions}
+
+Separate tags are specified to describe weather and lighting conditions. Weather and lighting conditions are possibly important in the specification of the operational design domain (ODD) of an AV. It might be indicated by an AV developer that the ODD does not include heavy rain or dark night conditions in the absence of street lights. \Cref{fig:conditions} shows tags describing the weather condition (based on \cite{mahmassani2012use}). Tags need to be as specific and quantifiable as possible. Consequently, definitions according to meteorology are followed. 
+
+Tags for different lighting conditions are based on \cite{golob2003relationships}, see \cref{fig:conditions}. Although it might seem straightforward to use the lux level as a quantitative measure for the lighting condition, in this paper, we choose to use a qualitative description, relating the light level to the time of day and the possible presence of artificial lighting. In a study into the influence of ambient lighting conditions on the detection of pedestrians by Automated Emergency Braking systems \autocite{wouters2013influence}, it appeared that lux levels show large variations on the public road. 
+The light conditions were measured at a typical junction equipped with street lights during night time. Variations with a factor of 100 to 1000 easily occur due to changes in position underneath a street light. 
+Also the presence of other ambient lighting sources has a large influence. As it is not possible to indicate an average lux level, we use a qualitative description of the light level. 
+During daytime, there is a strong relation between the weather condition and the available light in a scenario. These weather conditions have been included in the tag tree for lighting.
+Glare, a bright and strong light that shines directly onto the ego-vehicle's camera, is another important lighting condition influencing an AV's performance. Glare can be caused by the sun shine while driving to the West just before sunset (or to the East just after sunrise), or by cars in on-coming traffic using high beam headlights. A branch on glare has been added to the lighting tree.  
+
+
+
+\section{Examples of scenario categories}
+\label{sec:examples}
+
+In this section, three different ways are presented to use the tags, presented in \cref{sec:tags}, for defining scenario categories. To illustrate this, we present three scenario categories\footnote{For more examples, we refer the reader to \autocite{degelder2019scenariocategories}.}. 
+
+The first way to define a scenario category using tags is to list the tags that are applicable. To avoid ambiguity, first the top-level tag is mentioned and, next, the lower-level tags that apply. To illustrate this, see the scenario category ``driving on a straight road'' that is schematically shown in \cref{fig:scheme straight}.
+
+\setlength{\figurewidth}{15em}
+\begin{figure}
+	\centering
+	\input{straight_slippery_road.tikz}
+	\caption{Schematic overview for the scenario category ``driving on a straight road''.}
+	\label{fig:scheme straight}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics{straight}
+	\caption{Tags for the scenario category ``driving on a straight road''.}
+	\label{fig:tags straight}
+\end{figure}
+
+It might be that the way to list the tags as shown in \cref{fig:tags straight} is too limited. For example, if multiple vehicles are involved, it might be useful to describe the activities of these vehicles separately. To accommodate this, a selection of tags of a scenario category may be grouped in order to indicate that these tags apply to the same actor. This is illustrated with the example shown in \cref{fig:scheme oncoming turning}: the scenario category ``oncoming vehicle turns right signalized junction''.
+The ego vehicle is approaching a junction that is equipped with traffic light signals. The ego vehicle intends to go straight at the crossing. Another vehicle is approaching the junction from the opposite direction. The other vehicle intends to turn right at the junction, such that the trajectories of the other vehicle and the ego vehicle intersect. Note that right-hand traffic is assumed.
+In \cref{fig:tags oncoming turning}, the corresponding tags are shown. The first part refers to the ego vehicle that intends to drive straight in forward direction. The second part refers to the other vehicle that turns right. The third part refers describes that the scenario happens at a signalized junction.
+
+
+\setlength{\figurewidth}{15.0em}
+\begin{figure}
+	\centering
+	\input{oncoming_vehicle_right_signalized.tikz}
+	\caption{Schematic overview for the scenario category ``oncoming vehicle turns right at signalized junction''. The blue vehicle denotes the ego vehicle.}
+	\label{fig:scheme oncoming turning}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics{oncoming_turning}
+	\caption{Tags for the scenario category ``oncoming vehicle turns right at signalized junction''.}
+	\label{fig:tags oncoming turning}
+\end{figure}
+
+A third way to define a scenario category using tags is presented in case the order in which the tags apply matters. To illustrate this, consider the scenario category ``cut in at merging lanes'' that is schematically shown in \cref{fig:scheme cut in}. 
+Another vehicle is driving in the same direction as the ego vehicle in an adjacent lane. The other vehicle makes a lane change because the lanes are merging. In \cref{fig:tags cut in}, the corresponding tags are shown. Most notably, the tag for the ``lead vehicle'' changes from ``no leader'' to ``leader. Note that the direction of the lane change is not described. This could mean that the vehicle could either change lane to the left or to the right. In any case, this actor becomes the lead vehicle, as described my the tag ``lead vehicle''. 
+
+\setlength{\figurewidth}{22.5em}
+\begin{figure}
+	\centering
+	\input{cut-in.tikz}
+	\caption{Schematic overview for the scenario category ``cut in at merging lanes''. The blue vehicle denotes the ego vehicle.}
+	\label{fig:scheme cut in}		
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{cut-in_tags}
+	\caption{Tags for the scenario category ``cut in at merging lanes''.}
+	\label{fig:tags cut in}
+\end{figure}
+
+
+
+
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+% Mention that the scenario categories and tags can be used to define an ODD.
+The performance assessment of AVs is essential for the legal and public acceptance of AVs as well as for technology development of AVs. 
+Scenarios are crucial for the assessment. We proposed a system of tags to group these scenarios into so-called scenario categories. Because the tags are structured in trees, it is possible to define both generic scenario categories and more specific scenario categories.
+
+We have also discussed the relation between scenarios and test cases. For the definition of test cases for the assessment of an AV, it is important to consider the AV's ODD. Currently, there is no unambiguous method known to the authors for the definition of an ODD. A promising method to describe the ODD is using scenario categories. Defining the scenario categories belonging to the AV's ODD according to the proposed method using the system of tags will reduce --- if not remove -- any ambiguity regarding the AV's ODD.
+
+We aimed to provide an extensive list of tags. However, depending on the application, the list of tags might not be extensive enough. Therefore, we will release subsequent versions of the report \autocite{degelder2019scenariocategories} in which more tags might be added. 
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+\bibliographystyle{ieeetran}
+\bibliography{bib}
+
+%----------------------------------------------------------------------------------------
+
+%\section*{Acknowledgement}
+%	
+%Thank you.	
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
