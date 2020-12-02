@@ -1,0 +1,506 @@
+{
+    "name": "Overtaking vehicle with vehicle in front",
+    "id": "224251199624730974511861377985650095860",
+    "tags": [],
+    "start": {
+        "name": "",
+        "id": "266371148903955025159772400871173476716",
+        "tags": [],
+        "conditions": {
+            "time": 0
+        }
+    },
+    "end": {
+        "name": "",
+        "id": "158161041925322445630210473411447228629",
+        "tags": [],
+        "conditions": {
+            "time": 10
+        }
+    },
+    "physical_elements": [
+        {
+            "name": "Highway straight",
+            "id": "127712775600812310898734031755778871887",
+            "tags": [],
+            "properties": {
+                "road": {
+                    "lanes": 2,
+                    "lanewidth": 3,
+                    "xy": [
+                        [
+                            -100,
+                            0
+                        ],
+                        [
+                            500,
+                            0
+                        ]
+                    ]
+                }
+            },
+            "category": {
+                "name": "Highway with 2 lanes",
+                "id": "152110196861473489780693560165006956646",
+                "tags": [
+                    "RoadLayout_Straight"
+                ],
+                "description": "Straight road with two lanes"
+            }
+        }
+    ],
+    "actors": [
+        {
+            "name": "Ego vehicle",
+            "id": "41441759124867908608706726803932040078",
+            "tags": [
+                "EgoVehicle"
+            ],
+            "properties": {},
+            "category": {
+                "name": "Ego qualitative",
+                "id": "80711269839371780292856247311803033103",
+                "tags": [
+                    "RoadUserType_CategoryM_PassengerCar",
+                    "EgoVehicle"
+                ],
+                "description": "",
+                "vehicle_type": {
+                    "name": "Vehicle",
+                    "value": 1
+                }
+            },
+            "initial_states": [
+                {
+                    "state_variable": {
+                        "name": "LONGITUDINAL_POSITION",
+                        "value": "x [m]"
+                    },
+                    "value": [
+                        0.0
+                    ]
+                },
+                {
+                    "state_variable": {
+                        "name": "LATERAL_POSITION",
+                        "value": "y [m]"
+                    },
+                    "value": [
+                        0.0
+                    ]
+                },
+                {
+                    "state_variable": {
+                        "name": "SPEED",
+                        "value": "v [m/s]"
+                    },
+                    "value": [
+                        15.0
+                    ]
+                }
+            ],
+            "desired_states": []
+        },
+        {
+            "name": "Lead vehicle",
+            "id": "203104158299833422114368185433238223097",
+            "tags": [
+                "EgoVehicle"
+            ],
+            "properties": {},
+            "category": {
+                "name": "Lead vehicle",
+                "id": "77274308426895853713456284132730150039",
+                "tags": [
+                    "RoadUserType_Vehicle"
+                ],
+                "description": "",
+                "vehicle_type": {
+                    "name": "Vehicle",
+                    "value": 1
+                }
+            },
+            "initial_states": [
+                {
+                    "state_variable": {
+                        "name": "LONGITUDINAL_POSITION",
+                        "value": "x [m]"
+                    },
+                    "value": [
+                        20.0
+                    ]
+                },
+                {
+                    "state_variable": {
+                        "name": "LATERAL_POSITION",
+                        "value": "y [m]"
+                    },
+                    "value": [
+                        0.0
+                    ]
+                }
+            ],
+            "desired_states": []
+        },
+        {
+            "name": "Overtaking vehicle",
+            "id": "70838861478031610440032258145422964902",
+            "tags": [
+                "EgoVehicle"
+            ],
+            "properties": {},
+            "category": {
+                "name": "Overtaking vehicle",
+                "id": "332393350135653987924334662106494552112",
+                "tags": [
+                    "RoadUserType_Vehicle",
+                    "InitialState_LongitudinalPosition_RearOfEgo"
+                ],
+                "description": "",
+                "vehicle_type": {
+                    "name": "Vehicle",
+                    "value": 1
+                }
+            },
+            "initial_states": [
+                {
+                    "state_variable": {
+                        "name": "LONGITUDINAL_POSITION",
+                        "value": "x [m]"
+                    },
+                    "value": [
+                        -20.0
+                    ]
+                },
+                {
+                    "state_variable": {
+                        "name": "LATERAL_POSITION",
+                        "value": "y [m]"
+                    },
+                    "value": [
+                        3.5
+                    ]
+                }
+            ],
+            "desired_states": []
+        }
+    ],
+    "activities": [
+        {
+            "name": "",
+            "id": "70687129190457056052520825771375776189",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "266371148903955025159772400871173476716",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "158161041925322445630210473411447228629",
+                "tags": [],
+                "conditions": {
+                    "time": 10
+                }
+            },
+            "category": {
+                "name": "driving forward",
+                "id": "219234108553507477224575491819286720443",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "198116474587198577397090364985238553383",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Splines",
+                    "default_options": {
+                        "degree": 3,
+                        "n_knots": 3
+                    }
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "knots": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0.25,
+                    0.5,
+                    0.75,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "coefficients": [
+                    20,
+                    20,
+                    22,
+                    20.5,
+                    19.5,
+                    20,
+                    20
+                ],
+                "degree": 3
+            }
+        },
+        {
+            "name": "",
+            "id": "316701505459331967502935538086454246300",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "266371148903955025159772400871173476716",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "158161041925322445630210473411447228629",
+                "tags": [],
+                "conditions": {
+                    "time": 10
+                }
+            },
+            "category": {
+                "name": "lateral position",
+                "id": "146652463047651057063407234896167028056",
+                "tags": [
+                    "VehicleLateralActivity_GoingStraight"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "198116474587198577397090364985238553383",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Splines",
+                    "default_options": {
+                        "degree": 3,
+                        "n_knots": 3
+                    }
+                },
+                "state": {
+                    "name": "LATERAL_POSITION",
+                    "value": "y [m]"
+                }
+            },
+            "parameters": {
+                "knots": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0.25,
+                    0.5,
+                    0.75,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "coefficients": [
+                    3.5,
+                    3.5,
+                    3.2,
+                    3.4,
+                    3.6,
+                    3.7,
+                    3.7
+                ],
+                "degree": 3
+            }
+        },
+        {
+            "name": "",
+            "id": "301998139175274746637074066547438260322",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "266371148903955025159772400871173476716",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "158161041925322445630210473411447228629",
+                "tags": [],
+                "conditions": {
+                    "time": 10
+                }
+            },
+            "category": {
+                "name": "driving forward",
+                "id": "219234108553507477224575491819286720443",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "198116474587198577397090364985238553383",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Splines",
+                    "default_options": {
+                        "degree": 3,
+                        "n_knots": 3
+                    }
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "knots": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0.25,
+                    0.5,
+                    0.75,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "coefficients": [
+                    15.4,
+                    15.4,
+                    16,
+                    15,
+                    15.5,
+                    15.8,
+                    15.8
+                ],
+                "degree": 3
+            }
+        },
+        {
+            "name": "",
+            "id": "77940234496434469342028534740651742888",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "266371148903955025159772400871173476716",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "158161041925322445630210473411447228629",
+                "tags": [],
+                "conditions": {
+                    "time": 10
+                }
+            },
+            "category": {
+                "name": "lateral position",
+                "id": "146652463047651057063407234896167028056",
+                "tags": [
+                    "VehicleLateralActivity_GoingStraight"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "198116474587198577397090364985238553383",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Splines",
+                    "default_options": {
+                        "degree": 3,
+                        "n_knots": 3
+                    }
+                },
+                "state": {
+                    "name": "LATERAL_POSITION",
+                    "value": "y [m]"
+                }
+            },
+            "parameters": {
+                "knots": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0.25,
+                    0.5,
+                    0.75,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                "coefficients": [
+                    -0.1,
+                    -0.1,
+                    -0.2,
+                    0,
+                    0.1,
+                    0.2,
+                    0.2
+                ],
+                "degree": 3
+            }
+        }
+    ],
+    "acts": [
+        {
+            "actor": 70838861478031610440032258145422964902,
+            "activity": 70687129190457056052520825771375776189
+        },
+        {
+            "actor": 70838861478031610440032258145422964902,
+            "activity": 316701505459331967502935538086454246300
+        },
+        {
+            "actor": 203104158299833422114368185433238223097,
+            "activity": 301998139175274746637074066547438260322
+        },
+        {
+            "actor": 203104158299833422114368185433238223097,
+            "activity": 77940234496434469342028534740651742888
+        }
+    ],
+    "derived_tags": {
+        "Ego vehicle::Actor": [
+            "RoadUserType_CategoryM_PassengerCar",
+            "EgoVehicle"
+        ],
+        "Lead vehicle::Actor": [
+            "VehicleLateralActivity_GoingStraight",
+            "RoadUserType_Vehicle",
+            "EgoVehicle",
+            "VehicleLongitudinalActivity_DrivingForward"
+        ],
+        "Overtaking vehicle::Actor": [
+            "VehicleLongitudinalActivity_DrivingForward",
+            "InitialState_LongitudinalPosition_RearOfEgo",
+            "EgoVehicle",
+            "RoadUserType_Vehicle",
+            "VehicleLateralActivity_GoingStraight"
+        ],
+        "Highway straight::PhysicalElement": [
+            "RoadLayout_Straight"
+        ]
+    }
+}
