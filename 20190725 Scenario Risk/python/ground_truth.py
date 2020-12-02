@@ -163,7 +163,7 @@ EGO_TAGS = [dict(host_lateral_activity=[LateralActivityHost.RIGHT_LANE_CHANGE.va
 compute_performance("host_rlc", None, EGO_TAGS)
 
 
-# Check for cut-ins.
+# Check for overtakings before lane change.
 TARGET_TAGS = [dict(lateral_state=[LateralStateTarget.LEFT.value],
                     longitudinal_state=[LongitudinalStateTarget.REAR.value]),
                dict(lateral_state=[LateralStateTarget.LEFT.value],
