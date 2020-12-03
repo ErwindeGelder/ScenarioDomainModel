@@ -1,2 +1,70 @@
 \section{Methods}
 \label{sec:methods}
+
+The goal of the proposed method is to quantify the risk of a particular situation in which a vehicle - hereafter, the \textit{ego vehicle} - is in.
+Our method for calculating this safety metric for quantifying the risk consists of four steps. 
+First, we parameterize the current situation and the possible future situation.
+Second, based on the current situation, we estimate the probability (density) for the possible future situations. 
+The third step is to determine the probability of a collision based on the current and the future situations.
+The final step is to use local regression to speed up the calculations and to make it possible to use the safety metric in real time. 
+These four steps are described in the following sections.
+
+In the remainder of this article, the following notation is used. 
+To denote a probability, $\probability{\cdot}$ is used. 
+A probability density is denoted by $\density{\cdot}$. 
+The conditional probability $\probabilitycond{\dummyvara}{\dummyvarb}$ is verbalized as \textit{the probability of $\dummyvara$ given $\dummyvarb$}. 
+Similarly, the conditional probability density is denoted by $\densitycond{\cdot}{\cdot}$. 
+To denote the estimation of any of the aforementioned quantities, a circumflex is used. 
+E.g, $\probabilityest{\dummyvara}$ denotes the estimated probability of $\dummyvara$.
+
+
+
+\subsection{Parameterize current and future situations}
+\label{sec:parametrization}
+
+The first step is to parameterize the current situation in which the ego vehicle is in. 
+In other words, the current situation needs to be described using $\situationcurrentdim$ numbers that are stacked into one vector $\situationcurrent \in \situationcurrentspace \subseteq \realnumbers^{\situationcurrentdim}$. 
+As an example, $\situationcurrent$ could contain the speed of the ego vehicle and distance towards its preceding vehicle. 
+In \cref{sec:case study}, we will see more examples.
+
+Next to describing the current situation, the future situation is described using $\situationfuturedim$ numbers stacked into one vector $\situationfuture \in \situationfuturespace \subseteq \realnumbers^{\situationfuturedim}$. 
+Together with $\situationcurrent$, $\situationfuture$ contains enough information to describe how the relevant future around the ego vehicle develops over time. 
+As an example, $\situationfuture$ could contain the acceleration of the lead vehicle (if any) in front of the ego vehicle.
+
+Let $\collision$ denote a collision, such that the probability of a collision is $\probability{\collision}$.
+The goal of our safety metric is to estimate the probability of a collision given a particular situation $\situationcurrent$, i.e., $\probabilitycond{\collision}{\situationcurrent}$.
+We do this by considering all future situations, $\situationfuturespace$, and calculating the probability of a collision given each possible value of $\situationfuture$. 
+Using integrating, we obtain $\probabilitycond{\collision}{\situationcurrent}$:
+\begin{equation}
+	\label{eq:probability collision expectation}
+	\probabilitycond{\collision}{\situationcurrent} 
+	= \int_{\situationfuturespace} 
+	\probabilitycond{\collision}{\situationcurrent, \situationfuture} 
+	\densitycond{\situationfuture}{\situationcurrent} 
+	\ud \situationfuture.
+\end{equation}
+In \cref{sec:estimate future}, we propose a method to estimate $\densitycond{\situationfuture}{\situationcurrent}$ and in \cref{sec:estimate collision}, we propose a method to estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$.
+
+
+
+\subsection{Estimate $\densitycond{\situationfuture}{\situationcurrent}$}
+\label{sec:estimate future}
+
+In this section, we propose a method to estimate $\densitycond{\situationfuture}{\situationcurrent}$, i.e., the probability density of the $\situationfuture$ given $\situationcurrent$.
+Using the product rule for probability, we can write:
+\begin{equation}
+	\densitycond{\situationfuture}{\situationcurrent} 
+	= \frac{\density{\situationcurrent, \situationfuture}}{\density{\situationcurrent}}
+	= \frac{\density{\situationcurrent, \situationfuture}}{
+		\int_{\situationfuturespace} \density{\situationcurrent, \situationfuture} \ud\situationfuture
+	}
+\end{equation}
+Thus, it suffices to estimate $\density{\situationcurrent, \situationfuture}$. 
+
+
+
+\subsection{Estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$}
+\label{sec:estimate collision}
+
+
+

@@ -5,8 +5,10 @@
 \usepackage{amsmath} % assumes amsmath package installed
 \usepackage{amsthm}  % For special theorem style
 \usepackage{amsfonts}
+\usepackage{dsfont}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
+\usepackage{cleveref}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 \usepackage{silence}  							%% For filtering warnings
@@ -22,6 +24,27 @@
 \author{Tux the Penguin}
 \date{November 2020}
 
+% Variables
+\newcommand{\collision}{C}
+\newcommand{\density}[1]{p\left( #1 \right)}
+\newcommand{\densitycond}[2]{\density{ #1 | #2 }}
+\newcommand{\densityest}[1]{\hat{p}\left( #1 \right)}
+\newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
+\newcommand{\dummyvara}{a}
+\newcommand{\dummyvarb}{b}
+\newcommand{\probability}[1]{P\left( #1 \right)}
+\newcommand{\probabilitycond}[2]{\probability{ #1 | #2 }}
+\newcommand{\probabilityest}[1]{\hat{P}\left( #1 \right)}
+\newcommand{\probabilitycondest}[2]{\probability{ #1 | #2 }}
+\newcommand{\realnumbers}{\mathds{R}}
+\newcommand{\situationcurrent}{x}
+\newcommand{\situationcurrentdim}{n_{\situationcurrent}}
+\newcommand{\situationcurrentspace}{\mathcal{X}}
+\newcommand{\situationfuture}{y}
+\newcommand{\situationfuturedim}{n_{\situationfuture}}
+\newcommand{\situationfuturespace}{\mathcal{Y}}
+\newcommand{\ud}{\,\mathrm{d}}
+
 \begin{document}
 
 \maketitle
@@ -33,9 +56,8 @@
 \input{secs/case_study}
 \input{secs/conclusions}
 
-\section*{Acknowledgement}
-
-Tux also likes to thank the Free Software Foundation for their GNU software.
+%\section*{Acknowledgement}
+%Tux also likes to thank the Free Software Foundation for their GNU software.
 
 
 
