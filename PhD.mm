@@ -2731,7 +2731,7 @@
 </node>
 </node>
 <node TEXT="Collision risk" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_333782068" CREATED="1602744988608" MODIFIED="1602744995471">
-<node TEXT="Surrogate safety measure for simulation-based conflict study" FOLDED="true" ID="ID_65543" CREATED="1602745023961" MODIFIED="1602745112103" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/521%20Surrogate%20Safety%20Measure%20for%20Simulation-Based%20Conflict%20Study.pdf">
+<node TEXT="Surrogate safety measure for simulation-based conflict study" ID="ID_65543" CREATED="1602745023961" MODIFIED="1602745112103" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/521%20Surrogate%20Safety%20Measure%20for%20Simulation-Based%20Conflict%20Study.pdf">
 <attribute NAME="key" VALUE="wang2013surrogate"/>
 <attribute NAME="journal" VALUE="Transportation Research Record"/>
 <attribute NAME="year" VALUE="2013"/>
@@ -2759,6 +2759,17 @@
 <attribute NAME="authors" VALUE="Shalev-Shwartz, Shai and Shammah, Shaked and Shashua, Amnon"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5F760B70AA3859ECAFB7AA49608E9129EC6BD34503F5B53987A2AAC835E7E">
     <pdf_title>On a Formal Model of Safe and Scalable Self-driving Cars</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1395912311" CREATED="1607005860636" MODIFIED="1607005870136">
+<node TEXT="Safe driving behavior - ITSC2020 paper from TNO" ID="ID_968026414" CREATED="1607005977555" MODIFIED="1607006190176" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/525%20Towards%20a%20Characterization%20of%20Safe%20Driving%20Behavior.pdf">
+<attribute NAME="key" VALUE="tejada2020towards"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Towards a Characterization of Safe Driving Behavior for Automated Vehicles Based on Models of ``Typical&apos;&apos; Human Driving Behavior"/>
+<attribute NAME="authors" VALUE="Tejada, Arturo and Manders, Jeroen and Snijders, Ron and Paardekooper, Jan-Pieter and de Hair-Buijssen, Stefanie"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A4465C578762ED88A0F170276CA3C39942EE492BCE45DA9961CD91101D7DD">
+    <pdf_title>Towards a Characterization of Safe Driving Behavior for Automated Vehicles Based on Models of &#x201c;Typical&#x201d; Human Driving Behavior</pdf_title>
 </pdf_annotation>
 </node>
 </node>
