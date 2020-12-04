@@ -11,9 +11,9 @@ These four steps are described in the following sections.
 
 In the remainder of this article, the following notation is used. 
 To denote a probability, $\probability{\cdot}$ is used. 
-A probability density is denoted by $\density{\cdot}$. 
+\Iac{pdf} is denoted by $\density{\cdot}$. 
 The conditional probability $\probabilitycond{\dummyvara}{\dummyvarb}$ is verbalized as \textit{the probability of $\dummyvara$ given $\dummyvarb$}. 
-Similarly, the conditional probability density is denoted by $\densitycond{\cdot}{\cdot}$. 
+Similarly, the conditional \ac{pdf} is denoted by $\densitycond{\cdot}{\cdot}$. 
 To denote the estimation of any of the aforementioned quantities, a circumflex is used. 
 E.g, $\probabilityest{\dummyvara}$ denotes the estimated probability of $\dummyvara$.
 
@@ -29,7 +29,7 @@ In \cref{sec:case study}, we will see more examples.
 
 Next to describing the current situation, the future situation is described using $\situationfuturedim$ numbers stacked into one vector $\situationfuture \in \situationfuturespace \subseteq \realnumbers^{\situationfuturedim}$. 
 Together with $\situationcurrent$, $\situationfuture$ contains enough information to describe how the relevant future around the ego vehicle develops over time. 
-As an example, $\situationfuture$ could contain the acceleration of the lead vehicle (if any) in front of the ego vehicle.
+As an example, $\situationfuture$ could contain the acceleration of the lead vehicle (if any) that is in front of the ego vehicle.
 
 Let $\collision$ denote a collision, such that the probability of a collision is $\probability{\collision}$.
 The goal of our safety metric is to estimate the probability of a collision given a particular situation $\situationcurrent$, i.e., $\probabilitycond{\collision}{\situationcurrent}$.
@@ -50,7 +50,7 @@ In \cref{sec:estimate future}, we propose a method to estimate $\densitycond{\si
 \subsection{Estimate $\densitycond{\situationfuture}{\situationcurrent}$}
 \label{sec:estimate future}
 
-In this section, we propose a method to estimate $\densitycond{\situationfuture}{\situationcurrent}$, i.e., the probability density of the $\situationfuture$ given $\situationcurrent$.
+In this section, we propose a method to estimate $\densitycond{\situationfuture}{\situationcurrent}$, i.e., the \ac{pdf} of the $\situationfuture$ given $\situationcurrent$.
 Using the product rule for probability, we can write:
 \begin{equation}
 	\densitycond{\situationfuture}{\situationcurrent} 
@@ -60,6 +60,83 @@ Using the product rule for probability, we can write:
 	}
 \end{equation}
 Thus, it suffices to estimate $\density{\situationcurrent, \situationfuture}$. 
+
+Our proposal is to estimate $\density{\situationcurrent, \situationfuture}$ in a data-driven manner. 
+A data-driven approach brings several benefits.
+First, the estimate automatically adapts to local driving styles and behaviors, which can change from region to region, provided that the data are obtained from the same local traffic.
+Second, strong assumptions such as assuming a constant speed of other vehicles, are not needed.
+For our data-driven approach, let us assume that we have obtained $\situationnumberof$ situations, denoted by $\situationcurrentinstance_{\situationindex}\in\situationcurrentspace, \situationindex\in\{1,\ldots,\situationnumberof\}$, and their corresponding future situations described by $\situationfutureinstance_{\situationindex}\in\situationfuturespace$.
+
+
+
+\subsubsection{Special case: all parameters from one distribution}
+\label{sec:one kde}
+
+We first explain how to estimate $\density{\situationcurrent, \situationfuture}$ if we assume that all parameters depend on each other and that no further simplifications are possible. 
+The shape of the \ac{pdf} $\density{\situationcurrent, \situationfuture}$ is unknown beforehand. 
+Furthermore, the shape of the estimated \ac{pdf} might change as more data are acquired. 
+Assuming a functional form of the \ac{pdf} and fitting the parameters of the \ac{pdf} to the data may therefore lead to inaccurate fits unless a lot of hand-tuning is applied.
+We employ a non-parametric approach using \ac{kde} \autocite{rosenblatt1956remarks, parzen1962estimation} because the shape of the \ac{pdf} is automatically computed and \ac{kde} is highly flexible regarding the shape of the \ac{pdf}. 
+Using the \ac{kde}, the estimated \ac{pdf} becomes:
+\begin{equation}
+	\label{eq:kde estimate}
+	\densityest{\situationcurrent,\situationfuture}
+	= \frac{1}{\situationnumberof} \sum_{\situationindex=1}^{\situationnumberof}
+	\kernelfuncnormalized{\bandwidthmatrix}{
+		\begin{bmatrix}
+			\situationcurrent \\
+			\situationfuture
+		\end{bmatrix} -
+		\begin{bmatrix}
+			\situationcurrentinstance_{\situationindex} \\
+			\situationfutureinstance_{\situationindex}
+		\end{bmatrix}
+	},
+\end{equation}
+where $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is an appropriate kernel function with bandwidth matrix $\bandwidthmatrix$. 
+The choice of the kernel $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is not as important as the choice of the bandwidth matrix $\bandwidthmatrix$ \cite{turlach1993bandwidthselection}.
+We use a Gaussian kernel, but our method also applies with other kernels.
+The Gaussian kernel is given by
+\begin{equation}
+	\kernelfuncnormalized{\bandwidthmatrix}{\dummyvarkernel}
+	= \frac{1}{\left( 2 \pi \right)^{\left( \situationcurrentdim + \situationfuturedim \right) / 2} 
+	\left|\bandwidthmatrix\right|^{1/2} }
+	\e{ -\frac{1}{2} \dummyvarkernel^T \bandwidthmatrix^{-1} \dummyvarkernel }.
+\end{equation}
+
+Drawing samples from the \ac{kde} in \cref{eq:kde estimate} is straightforward: two random numbers are drawn, one to choose a random generator Gaussian out of the $\situationnumberof$ Gaussians that are used to construct the \ac{kde}, and one random number from that Gaussian.
+Sampling from $\densityestcond{\situationfuture}{\situationcurrent}$ works similarly, but instead of using an equal probability for each random generator Gaussian to be selected, different probabilities are used based on $\situationcurrent$.
+For more information on sampling from a conditional \ac{pdf} obtained using \ac{kde}, see \autocite{holmes2012fast}.
+
+
+
+\subsubsection{Not all parameters from one distribution}
+\label{sec:no special case}
+
+Estimating $\density{\situationcurrent, \situationfuture}$ with one \ac{kde} according to \cref{eq:kde estimate} becomes problematic if $\situationcurrentdim + \situationfuturedim$ becomes large, due to the curse of dimensionality \cite{scott2015multivariate}.
+There are a few ways to avoid problems.
+Without going into much detail, we will list a few options.
+
+One option is to assume that one or more parameter are independent of the other parameters. 
+E.g., suppose that $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}^T$, such that $\situationfuturepartb$ is independent of $\situationcurrent$ and $\situationfutureparta$.
+Then we can write
+\begin{equation}
+	\density{\situationcurrent, \situationfuture}
+	= \density{\situationcurrent, \situationfutureparta, \situationfuturepartb}
+	= \density{\situationcurrent, \situationfutureparta} \cdot \density{\situationfuturepartb}.
+\end{equation}
+In this case, we would need to estimation $\density{\situationcurrent, \situationfutureparta}$ and $\density{\situationfuturepartb}$, which can be done in a similar manner as presented in \cref{sec:one kde}.
+Because these two \acp{pdf} have less variables than $\density{\situationcurrent, \situationfuture}$, it will suffer less from the curse of dimensionality \cite{scott2015multivariate}.
+
+Another option is to model $\densitycond{\situationfuture}{\situationcurrent}$ as a cascade of conditional probabilities. E.g., using the partitioning $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}^T$, $\densitycond{\situationcurrent}{\situationfuture}$ can be approximated using two conditional densities:
+\begin{equation}
+	\densitycond{\situationcurrent}{\situationfutureparta}
+	= \densitycond{\situationfutureparta, \situationfuturepartb}{\situationcurrent}
+	= \densitycond{\situationfutureparta}{\situationfuturepartb, \situationcurrent} \cdot \densitycond{\situationfuturepartb}{\situationcurrent}
+	\approx \densitycond{\situationfutureparta}{\situationfuturepartb} \cdot \densitycond{\situationfuturepartb}{\situationcurrent}.
+\end{equation}
+The same partitioning can be applied to $\densitycond{\situationfutureparta}{\situationfuturepartb}$ and $\densitycond{\situationfuturepartb}{\situationcurrent}$ until only two-dimensional \acp{pdf} need to be estimated.
+For more information on this, we refer the reader to \autocite{aas2009paircopula, nagler2016evading}.
 
 
 

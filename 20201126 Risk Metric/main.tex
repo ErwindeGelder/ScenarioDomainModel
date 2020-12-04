@@ -8,7 +8,8 @@
 \usepackage{dsfont}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
-\usepackage{cleveref}
+\usepackage[capitalize]{cleveref}
+\usepackage[nolist,nohyperlinks]{acronym}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 \usepackage{silence}  							%% For filtering warnings
@@ -25,6 +26,8 @@
 \date{November 2020}
 
 % Variables
+\newcommand{\bandwidth}{h}
+\newcommand{\bandwidthmatrix}{H}
 \newcommand{\collision}{C}
 \newcommand{\density}[1]{p\left( #1 \right)}
 \newcommand{\densitycond}[2]{\density{ #1 | #2 }}
@@ -32,6 +35,9 @@
 \newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
 \newcommand{\dummyvara}{a}
 \newcommand{\dummyvarb}{b}
+\newcommand{\dummyvarkernel}{u}
+\newcommand{\e}[1]{\exp \left\{ #1 \right\}}
+\newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
 \newcommand{\probability}[1]{P\left( #1 \right)}
 \newcommand{\probabilitycond}[2]{\probability{ #1 | #2 }}
 \newcommand{\probabilityest}[1]{\hat{P}\left( #1 \right)}
@@ -39,13 +45,27 @@
 \newcommand{\realnumbers}{\mathds{R}}
 \newcommand{\situationcurrent}{x}
 \newcommand{\situationcurrentdim}{n_{\situationcurrent}}
+\newcommand{\situationcurrentinstance}{X}
 \newcommand{\situationcurrentspace}{\mathcal{X}}
 \newcommand{\situationfuture}{y}
 \newcommand{\situationfuturedim}{n_{\situationfuture}}
+\newcommand{\situationfutureinstance}{Y}
+\newcommand{\situationfutureparta}{\situationfuture_1}
+\newcommand{\situationfuturepartb}{\situationfuture_2}
 \newcommand{\situationfuturespace}{\mathcal{Y}}
+\newcommand{\situationindex}{i}
+\newcommand{\situationnumberof}{N}
 \newcommand{\ud}{\,\mathrm{d}}
 
 \begin{document}
+
+% Acronyms
+\begin{acronym}[AAAAAAAA]
+	\acro{odd}[ODD]{Operational Design Domain}
+	\acroindefinite{odd}{an}{an}
+	\acro{pdf}[pdf]{probability density function}
+	\acro{kde}[KDE]{Kernel Density Estimation}
+\end{acronym}
 
 \maketitle
 
