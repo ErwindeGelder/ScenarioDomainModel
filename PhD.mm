@@ -2773,6 +2773,17 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="Other work related to ITS" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_98733965" CREATED="1607285352671" MODIFIED="1607285363935">
+<node TEXT="Safety Assessment and Uncertainty Quantification of ADAS using Stochastic Analysis Methods" ID="ID_876657" CREATED="1607285365135" MODIFIED="1607285511734" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/526%20Safety%20Assessment%20and%20Uncertainty%20Quantification.pdf">
+<attribute NAME="key" VALUE="Rasch2019"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Safety Assessment and Uncertainty Quantification of Automated Driver Assistance Systems using Stochastic Analysis Methods"/>
+<attribute NAME="authors" VALUE="Rasch, Maximilian and Tobe Ubben, Paul and Most, Thomas and Bayer, Veit and Niemeier, Roland"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B6A73D7B7A2E62471A8432E871892B1854F457A565103BCDAD7B7969AFF6B9">
+    <pdf_title>Safety Assessment and Uncertainty Quantification of Automated Driver Assistance Systems using Stochastic Analysis Methods</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
 <edge COLOR="#ff0000"/>
