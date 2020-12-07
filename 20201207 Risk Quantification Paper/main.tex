@@ -1,14 +1,73 @@
-\documentclass{article}
+\documentclass[journal]{IEEEtran}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx} % for pdf, bitmapped graphics files
+\usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amsthm}  % For special theorem style
+\usepackage{amsfonts}
+\usepackage[USenglish]{babel}  % language support
+\usepackage{cleveref}
+\usepackage{siunitx}
+\usepackage[nolist,nohyperlinks]{acronym}
+\usepackage{xcolor}
 
-\title{risk quantification}
-\author{erwindegelder }
-\date{December 2020}
+\usepackage{silence}  							%% For filtering warnings
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
+\WarningFilter{biblatex}{Patching footnotes failed}
+\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\renewcommand*{\bibfont}{\small}
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{references_rq}
+
+
+\Crefname{figure}{Figure}{Figures}
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
+
+
+\newcommand{\todo}[1]{\color{red}TO DO: #1 \color{black}}
+
+% Acronyms
+\begin{acronym}[AAAAAAAA]
+	\acro{av}[AV]{Automated Vehicle}
+	\acroindefinite{av}{an}{an}
+	\acro{odd}[ODD]{Operational Design Domain}
+	\acroindefinite{odd}{an}{an}
+	\acro{oof}[OOF]{Object-Oriented Framework}
+	\acroindefinite{oof}{an}{an}
+\end{acronym}
+
 
 \begin{document}
+\date{}
+
+\title{Scenario Risk Quantification for Automated Driving}
+
+\author{Erwin~de~Gelder$^{1,2,*}$,
+	    Arash~Khabbaz~Saberi$^{3}$,
+	    Hala~Elrofai$^{1}$,
+	    Jan-Pieter~Paardekooper$^{1,4}$,
+	    Olaf~Op~den~Camp$^{1}$,
+	    Bart~De~Schutter$^{2}$%
+\thanks{$^1$ TNO, Dept.\ of Integrated Vehicle Safety, Helmond, The Netherlands}%
+\thanks{$^2$ Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
+\thanks{$^3$ Tomtom, The Netherlands}%
+\thanks{$^4$ Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
+\thanks{$^*$ Corresponding author: \textit{erwin.degelder@tno.nl}}}%
 
 \maketitle
+\input{sections/abstract}
+\acresetall
 
-\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{sections/introduction}
+\input{sections/method}
+\input{sections/casestudy}
+\input{sections/conclusions}
+
+
+
+
+\printbibliography
 
 \end{document}
