@@ -4,14 +4,15 @@ Creation date: 2020 08 12
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 12 08: Update based on updated domain model.
 """
 
 import glob
 import os
 from typing import List, Tuple
 from tqdm import tqdm
+from domain_model import DocumentManagement
 from activity_detector import LeadVehicle, LateralStateTarget, LongitudinalStateTarget, TargetNear
-from databaseemulator import DataBaseEmulator
 from detection_lead_braking import process_file, STAT_CATEGORY, STAT, EGO_CATEGORY, EGO, TARGET, \
     DEC_TARGET, CRU_TARGET, ACC_TARGET, LK_TARGET, LC_TARGET, DEC_EGO, CRU_EGO, ACC_EGO, LK_EGO, \
     LC_EGO
@@ -51,7 +52,7 @@ def extract_approaching(ego_ngram: NGram, target_ngrams: NGram) -> List[Tuple[in
 
 if __name__ == "__main__":
     # Instantiate the "database".
-    DATABASE = DataBaseEmulator()
+    DATABASE = DocumentManagement()
 
     # Add standard stuff.
     for item in [STAT_CATEGORY, STAT, EGO_CATEGORY, EGO, TARGET,
@@ -69,4 +70,4 @@ if __name__ == "__main__":
     FOLDER = os.path.join("data", "5_scenarios")
     if not os.path.exists(FOLDER):
         os.mkdir(FOLDER)
-    DATABASE.to_json(os.path.join(FOLDER, "approaching_vehicle.json"), indent=4)
+    DATABASE.to_json(os.path.join(FOLDER, "approaching_vehicle2.json"), indent=4)
