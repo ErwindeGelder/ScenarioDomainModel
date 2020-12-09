@@ -5,3 +5,4 @@ git subtree push --prefix="20180319 Completeness/stats" stats master
 # git subtree push --prefix="20200729 Domain Model" domainmodel master
 # git subtree push --prefix="20201126 Risk Metric" riskmetric master
 # git subtree push --prefix="20201126 Anomaly Detection" anomalydetection master
+# git subtree push --prefix="20201207 Risk Quantification Paper" riskquantification master
