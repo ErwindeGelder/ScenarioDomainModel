@@ -4,10 +4,11 @@ Creation date: 2020 05 31
 Author(s): Erwin de Gelder
 
 Modifications:
-2020 06 08 Perform the case studies in a separate file.
-2020 06 16 Do the initial simulations on a grid instead of via Monte Carlo.
-2020 08 06 Update the way the case study is performed. Directly MCMC instead of first grid sampling.
-2020 08 11 Also do importance sampling with a meta model based on grid simulations.
+2020 06 08: Perform the case studies in a separate file.
+2020 06 16: Do the initial simulations on a grid instead of via Monte Carlo.
+2020 08 06: Update the way the case study is performed. Add direct MCMC.
+2020 08 11: Also do importance sampling with a meta model based on grid simulations.
+2020 12 08: Add options to skip the importance sampling.
 """
 
 import itertools
@@ -59,6 +60,10 @@ class CaseStudyOptions(Options):
     nis_direct: int = 1000
     ntestrejection: int = 1000
 
+    do_importance_sampling_mcmc: bool = True
+    do_importance_sampling_direct: bool = True
+
+
 
 def index_closest(pars_orig: np.ndarray, par: np.ndarray) -> int:
     """ Return the index of the closest parameters vector.
@@ -79,12 +84,16 @@ class CaseStudy:
             self.kde = self.options.func_kde_update(self.kde, overwrite=self.options.overwrite)
         self.df_mc = self.mc_simulation()
         self.mc_result()
-        self.df_grid = self.grid_simulation()
-        self.kde_is = self.mcmc_kde_computation()
-        self.df_is = self.importance_simulation()
-        self.is_result()
-        self.df_is_direct = self.direct_importance_simulation()
-        self.kde_is_direct = self.direct_is_result()
+        if self.options.do_importance_sampling_mcmc:
+            self.df_grid = self.grid_simulation()
+            self.kde_is = self.mcmc_kde_computation()
+            self.df_is = self.importance_simulation()
+            self.is_result()
+        if self.options.do_importance_sampling_direct:
+            self.df_is_direct = self.direct_importance_simulation()
+            self.kde_is_direct = self.direct_is_result()
+            self.direct_importance_simulation()
+            self.direct_is_result()
 
     def get_kde(self) -> KDE:
         """ Return the KDE for the braking parameters.
