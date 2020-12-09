@@ -58,7 +58,7 @@ if __name__ == "__main__":
     for item in [STAT_CATEGORY, STAT, EGO_CATEGORY, EGO, TARGET,
                  DEC_TARGET, CRU_TARGET, ACC_TARGET, LK_TARGET, LC_TARGET,
                  DEC_EGO, CRU_EGO, ACC_EGO, LK_EGO, LC_EGO]:
-        DATABASE.add_item(item)
+        DATABASE.add_item(item, include_attributes=True)
 
     # Loop through the files.
     FILENAMES = glob.glob(os.path.join("data", "4_ngrams", "*.hdf5"))
