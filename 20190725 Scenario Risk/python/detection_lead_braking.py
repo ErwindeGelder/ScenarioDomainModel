@@ -122,7 +122,7 @@ def process_scenario(scenario: Tuple[int, float, float], data_handler: DataHandl
 
     # Store the longitudinal activities of the target vehicle.
     target_acts = activities_target(scenario, data_handler, target_ngrams)
-    database.add_item(target_acts.actor)
+    database.add_item(target_acts.actor, include_attributes=True)
     scenario_object.set_actors([EGO, target_acts.actor])
 
     # Store the lateral and longitudinal activities of the ego vehicle.
@@ -130,10 +130,10 @@ def process_scenario(scenario: Tuple[int, float, float], data_handler: DataHandl
 
     # Write everything to the database.
     for activity in target_acts.activities+ego_acts.activities:
-        database.add_item(activity)
+        database.add_item(activity, include_attributes=True)
     scenario_object.set_activities(target_acts.activities+ego_acts.activities)
     scenario_object.set_acts(target_acts.acts+ego_acts.acts)
-    database.add_item(scenario_object)
+    database.add_item(scenario_object, include_attributes=True)
 
 
 def activities_target(scenario: Tuple[int, float, float], data_handler: DataHandler,
@@ -245,7 +245,7 @@ if __name__ == "__main__":
     for item in [STAT_CATEGORY, STAT, EGO_CATEGORY, EGO, TARGET,
                  DEC_TARGET, CRU_TARGET, ACC_TARGET, LK_TARGET, LC_TARGET,
                  DEC_EGO, CRU_EGO, ACC_EGO, LK_EGO, LC_EGO]:
-        DATABASE.add_item(item)
+        DATABASE.add_item(item, include_attributes=True)
 
     # Loop through the files.
     FILENAMES = glob.glob(os.path.join("data", "4_ngrams", "*.hdf5"))
