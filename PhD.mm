@@ -1888,6 +1888,15 @@
     <pdf_title>Survey on Scenario-Based Safety Assessment of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="A Taxonomy and Survey on Validation Approaches for Automated Driving Systems" ID="ID_730832323" CREATED="1607507266607" MODIFIED="1607507390443" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/527%20A%20Taxonomy%20and%20Survey%20on%20Validation%20Approaches%20for%20Automated%20Driving%20Systems.pdf">
+<attribute NAME="key" VALUE="king2020taxonomy"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="A Taxonomy and Survey on Validation Approaches for Automated Driving Systems"/>
+<attribute NAME="authors" VALUE="King, Christian and Ries, Lennart and Langner, Jacob and Sax, Eric"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="14994495EC6364392871CCC7E7CED45FF4F01CF287881A1C1A4D3370A9A50B1">
+    <pdf_title>A Taxonomy and Survey on Validation Approaches for Automated Driving Systems</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Tools" LOCALIZED_STYLE_REF="styles.topic" POSITION="right" ID="ID_727977587" CREATED="1511518419959" MODIFIED="1534304355670" HGAP="70" VSHIFT="-2" MOVED="1534304246551">
@@ -2774,11 +2783,11 @@
 </node>
 </node>
 <node TEXT="Other work related to ITS" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_98733965" CREATED="1607285352671" MODIFIED="1607285363935">
-<node TEXT="Safety Assessment and Uncertainty Quantification of ADAS using Stochastic Analysis Methods" ID="ID_876657" CREATED="1607285365135" MODIFIED="1607285511734" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/526%20Safety%20Assessment%20and%20Uncertainty%20Quantification.pdf">
-<attribute NAME="key" VALUE="Rasch2019"/>
+<node TEXT="Safety Assessment and Uncertainty Quantification of ADAS using Stochastic Analysis Methods" ID="ID_876657" CREATED="1607285365135" MODIFIED="1607327737771" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/526%20Safety%20Assessment%20and%20Uncertainty%20Quantification.pdf">
+<attribute NAME="key" VALUE="rasch2019safety"/>
 <attribute NAME="year" VALUE="2019"/>
 <attribute NAME="title" VALUE="Safety Assessment and Uncertainty Quantification of Automated Driver Assistance Systems using Stochastic Analysis Methods"/>
-<attribute NAME="authors" VALUE="Rasch, Maximilian and Tobe Ubben, Paul and Most, Thomas and Bayer, Veit and Niemeier, Roland"/>
+<attribute NAME="authors" VALUE="Rasch, Maximilian and Ubben, Paul Tobe and Most, Thomas and Bayer, Veit and Niemeier, Roland"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="B6A73D7B7A2E62471A8432E871892B1854F457A565103BCDAD7B7969AFF6B9">
     <pdf_title>Safety Assessment and Uncertainty Quantification of Automated Driver Assistance Systems using Stochastic Analysis Methods</pdf_title>
 </pdf_annotation>
@@ -3288,6 +3297,15 @@
 <attribute NAME="authors" VALUE="Schmid, Christina and Tkachenko, Pavlo and Zhou, Jinwei and del Re, Luigi"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="EF11972E43F6284F415C8CEF776FF6E41FBBCD7E4DF333A4F7C99279731F3B">
     <pdf_title>ScienceDirect ScienceDirect</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Leveraging Regular Expressions for Flexible Scenario Detection in Recorded Driving Data" ID="ID_1153628137" CREATED="1607507484071" MODIFIED="1607507587274" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/528%20Leveraging%20Regular%20Expressions%20for%20Flexible%20Scenario%20Detection%20in%20Recorded%20Driving%20Data.pdf">
+<attribute NAME="key" VALUE="elspas2020leveraging"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Leveraging Regular Expressions for Flexible Scenario Detection in Recorded Driving Data"/>
+<attribute NAME="authors" VALUE="Elspas, Philip and Langner, Jacob and Aydinbas, Michael and Bach, Johannes and Sax, Eric"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="EB647610195A1F7A11CB63C8A157947DD38D13FBBEB46729CB19B04D7180ED">
+    <pdf_title>Leveraging Regular Expressions for Flexible Scenario Detection in Recorded Driving Data</pdf_title>
 </pdf_annotation>
 </node>
 </node>
