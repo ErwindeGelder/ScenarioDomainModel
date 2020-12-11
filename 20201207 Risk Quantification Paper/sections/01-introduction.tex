@@ -16,6 +16,23 @@ SOTIF: Absence of unreasonable risk due to hazards resulting from functional ine
 Hazard identification and evaluation is part of the process to ensure safety according to ISO~21448.
 This includes:
 \begin{itemize}
+    \item Context: 
+    Automated driving development requires simulation both at the design phase as well as the assessment phase for covering ``corner'' or ``edge'' cases. 
+    Quantifying risk is pivotal for successfully covering the huge ``design space''
+    \item Background: 
+    Risk is defined by ISO~26262 with three main elements: probability of exposure to the ``\textit{operational situation}'', \textit{severity} of the outcome of scenario, and \textit{controllability} of the situation. 
     \item Determining the probability of exposure of the ``operational situation''.
+    \item Determining the \textit{severity} based on models from the literature that depend on parameters such as impact speed. 
     \item Determining the \emph{controllability}, which is defined as ``ability to avoid a specified harm or damage through the timely reactions of the persons involved, possibly with the support from external measures'' \autocite{ISO26262}.
+    \item Background continued: SOTIF, as an addition to ISO~26262, is concerned by hazards that are the result of \textit{functional insufficiency} as opposed to \textit{malfunctioning behavior}. Functional insufficiency is either performance limitation or specification issues that could be exposed by a \textit{triggering condition}. Triggering condition is defined in ISO/DIS~21448 as ``specific conditions of a scenario that serve as an initiator for a subsequent system reaction leading to hazardous behaviour.'' 
+    
+    
+    \item Gap: There is not risk quantification method that is able to consider are these factors together. 
+    
+    \item contribution 1: method for quantifying risk considering exposure, severity, controllability, and triggering condition. 
+    \item contribution 2: illustrative case studies on several scenarios and triggering conditions: 
+    TODO: make a list of scenarios. 
+    
+    
+
 \end{itemize}
