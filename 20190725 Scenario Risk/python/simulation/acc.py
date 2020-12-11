@@ -47,7 +47,7 @@ class ACC(StandardModel):
         """
         # Set parameters.
         self.parms.k_cruise, self.parms.sensor_range = parms.k_cruise, parms.sensor_range
-        self.parms.k1_acc, parms.k2_acc = parms.k1_acc, parms.k2_acc
+        self.parms.k1_acc, self.parms.k2_acc = parms.k1_acc, parms.k2_acc
 
         StandardModel.init_simulation(self, parms)
 
