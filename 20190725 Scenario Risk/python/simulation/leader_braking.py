@@ -59,6 +59,9 @@ class LeaderBraking:
         self.parms.init_speed = parms.init_speed
         self.parms.tconst = parms.tconst
 
+        self.state.speed = self.parms.init_speed
+        self.state.position = self.parms.init_position
+
     def step_simulation(self, time: float) -> None:
         """ Compute the state (position, speed) at time t.
 
