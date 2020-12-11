@@ -18,11 +18,13 @@ from .fastkde import KDE
 
 class Simulator(ABC):
     """ Generic functions for a simulator. """
-    def __init__(self, tolerance=0.05, min_simulations=5, max_simulations=100, stochastic=True):
-        self.tolerance = tolerance
-        self.min_simulations = min_simulations
-        self.max_simulations = max_simulations
-        self.stochastic = stochastic
+    def __init__(self, **kwargs):
+        self.tolerance = 0.05 if "tolerance" not in kwargs else kwargs["tolerance"]
+        self.min_simulations = 5 if "min_simulations" not in kwargs else kwargs["min_simulations"]
+        self.max_simulations = 100 if "max_simulations" not in kwargs else kwargs["max_simulations"]
+        self.stochastic = True if "stochastic" not in kwargs else kwargs["stochastic"]
+        self.min_simulation_time = (10 if "min_simulation_time" not in kwargs else
+                                    kwargs["min_simulation_time"])
 
     def simulation(self, parameters: dict, plot=False, seed: int = None) -> float:
         """ Run a single simulation.
