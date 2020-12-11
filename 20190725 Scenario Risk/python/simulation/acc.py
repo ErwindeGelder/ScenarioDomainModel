@@ -60,13 +60,13 @@ class ACC(StandardModel):
         :return: The acceleration.
         """
         # If target is out of range, use the cruise control.
-        if gap > self.parms.sensor_range:
+        if gap > self.parms.sensor_range or (gap < 0 and self.parms.cruise_after_collision):
             return self._acceleration_cc(vhost)
         return min(self._acceleration_cc(vhost),
                    self._acceleration_acc(gap, vhost, vdiff))
 
     def _acceleration_cc(self, vhost: float) -> float:
-        return self.parms.k_cruise * (self.parms.speed - vhost)
+        return 0.0  # self.parms.k_cruise * (self.parms.speed - vhost)
 
     def _acceleration_acc(self, gap: float, vhost: float, vdiff: float) -> float:
         safety_distance = self.safety_distance(vhost)
