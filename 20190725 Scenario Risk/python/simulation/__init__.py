@@ -16,5 +16,6 @@ from .simulation_lead_braking import SimulationLeadBraking, hdm_lead_braking_par
     eidm_lead_braking_pars, acc_lead_braking_pars, acc_hdm_lead_braking_pars
 from .simulation_lead_interaction import SimulationLeadInteraction
 from .simulation_longitudinal import SimulationLongitudinal
+from .simulation_string import SimulationString
 from .simulator import Simulator
 from .wang_stamatiadis import WangStamatiadis, WangStamatiadisParameters
