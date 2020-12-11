@@ -4,6 +4,7 @@ Creation date: 2020 12 09
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 12 11: Return negative impact speed in case of a collision.
 """
 
 from typing import Callable, List
@@ -26,7 +27,7 @@ class SimulationString(Simulator):
         Simulator.__init__(self, **kwargs)
 
     def simulation(self, parameters: dict, plot: bool = False, ignore_stop: List[bool] = None,
-                   seed: int = None) -> float:
+                   seed: int = None) -> np.ndarray:
         """ Run a single simulation.
 
         :param parameters: specific parameters for the scenario.
@@ -49,10 +50,13 @@ class SimulationString(Simulator):
         distance_increasing = ignore_stop.copy()
         distances = np.ones(len(self.vehicles)-1)*1000
         mindistances = distances.copy()
+        impact_speeds = np.zeros(len(self.vehicles)-1)
         while time < self.min_simulation_time or not np.all(distance_increasing):
             # Update the distances.
             for i, (leader, follower) in enumerate(zip(self.vehicles[:-1], self.vehicles[1:])):
                 distance = leader.state.position - follower.state.position
+                if distance < 0 <= distances[i]:  # We have an impact!
+                    impact_speeds[i] = follower.state.speed - leader.state.speed
                 if distance < mindistances[i]:
                     mindistances[i] = distance
                 if not ignore_stop[i]:
@@ -97,7 +101,8 @@ class SimulationString(Simulator):
             ax4.legend()
             plt.tight_layout()
 
-        return mindistances
+        return np.array([mindistances[i] if mindistances[i] > 0 else -impact_speeds[i]
+                         for i in range(len(self.vehicles)-1)])
 
     def init_simulation(self, **kwargs) -> None:
         """ Initialize the simulation.
