@@ -21,6 +21,8 @@ class StandardParameters(Options):
     timestep: float = 0.01  # Sample time (needed for delay)
     init_position: float = 0
     init_speed: float = 1
+    only_positive_speed: bool = True
+    cruise_after_collision: bool = False
 
 
 class StandardState(Options):
@@ -65,6 +67,9 @@ class StandardModel(ABC):
         self.state.speed = parms.init_speed
         self.state.acceleration = 0
 
+        self.parms.only_positive_speed = parms.only_positive_speed
+        self.parms.cruise_after_collision = parms.cruise_after_collision
+
     def step_simulation(self, leader) -> None:
         """ Compute the state (position, speed, acceleration).
 
@@ -102,6 +107,11 @@ class StandardModel(ABC):
         # Update speed
         self.state.acceleration = max(self.parms.amin, self.accelerations[0])
         self.state.speed += self.state.acceleration * self.parms.timestep
+
+        # If vehicle is allowed to only have positive speed, check for this.
+        if self.parms.only_positive_speed and self.state.speed < 0:
+            self.state.acceleration = 0
+            self.state.speed = 0
 
         # Update position
         self.state.position += self.state.speed * self.parms.timestep
