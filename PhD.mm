@@ -2628,6 +2628,16 @@
     <pdf_title>Empirical Longitudinal Driving Behavior in Authority Transitions Between Adaptive Cruise Control and Manual Driving</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Realistic Car-Following Models for Microscopic Simulation of (C)ACC Vehicles" ID="ID_551858000" CREATED="1607685432158" MODIFIED="1607685455949" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/487%20Realistic%20Car-Following%20Models%20for%20Microscopic%20Simulation%20of%20(C)ACC.pdf">
+<attribute NAME="key" VALUE="xiao2017realistic"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Realistic Car-Following Models for Microscopic Simulation of Adaptive and Cooperative Adaptive Cruise Control Vehicles"/>
+<attribute NAME="authors" VALUE="Xiao, Lin and Wang, Meng and van Arem, Bart"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8A305649CD2C2C53CF8D8CC7CD215A2389C7BD1B55DF8F041A74576E7915A6">
+    <pdf_title>Realistic Car-Following Models for Microscopic Simulation of Adaptive and Cooperative Adaptive Cruise Control Vehicles</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Vehicle model" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1081732918" CREATED="1597061233166" MODIFIED="1597061238599">
 <node TEXT="Model in CACC paper Jeroen Ploeg" ID="ID_1467860182" CREATED="1597061239998" MODIFIED="1597061310188" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/509%20Design%20and%20Experimental%20Evaluation%20of%20Cooperative%20Adaptive%20Cruise%20Control.pdf">
