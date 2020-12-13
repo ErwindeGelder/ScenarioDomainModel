@@ -4,10 +4,11 @@ Creation date: 2020 05 27
 Author(s): Erwin de Gelder
 
 Modifications:
-2020 06 23 Provide the parameters of the underlying model as part of the HDM parameters. Add
-           position, speed, and acceleration to own state.
-2020 06 24 Do not return speed and position with an update step.
-2020 08 12 Fix important bug when computing the temporal anticipation.
+2020 06 23: Provide the parameters of the underlying model as part of the HDM parameters. Add
+            position, speed, and acceleration to own state.
+2020 06 24: Do not return speed and position with an update step.
+2020 08 12: Fix important bug when computing the temporal anticipation.
+2020 12 13: Add functions set_acceleration and get_acceleration.
 """
 
 from typing import Tuple, Union
@@ -91,6 +92,20 @@ class HDM:
         self.state.position = self.parms.model.state.position
         self.state.speed = self.parms.model.state.speed
         self.state.acceleration = self.parms.model.state.acceleration
+
+    def get_acceleration(self) -> float:
+        """ Obtain the acceleration of the vehicle.
+
+        :return: The current acceleration of the vehicle.
+        """
+        return self.parms.model.get_acceleration()
+
+    def set_acceleration(self, acceleration: float) -> None:
+        """ Set the acceleration of the vehicle.
+
+        :param acceleration: Acceleration to be set.
+        """
+        self.parms.model.accelerations.append(acceleration)
 
     def _update_wiener(self) -> None:
         """ Do an update of the Wiener process. """
