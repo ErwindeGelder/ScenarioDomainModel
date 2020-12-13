@@ -4,9 +4,10 @@ Creation date: 2020 08 05
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 12 13: Add functions set_acceleration and get_acceleration.
 """
 
-from abc import ABC
+from abc import ABC, abstractmethod
 import collections
 from .options import Options
 
@@ -88,8 +89,23 @@ class StandardModel(ABC):
         :param vdiff: Difference in speed (vhost - vlead).
         """
         # Calculate acceleration based on the model.
-        self.accelerations.append(self.acceleration(gap, vhost, vdiff))
+        self.set_acceleration(self.acceleration(gap, vhost, vdiff))
 
+    def get_acceleration(self) -> float:
+        """ Obtain the acceleration of the vehicle.
+
+        :return: The current acceleration of the vehicle.
+        """
+        return self.accelerations[0]
+
+    def set_acceleration(self, acceleration: float) -> None:
+        """ Set the acceleration of the vehicle.
+
+        :param acceleration: Acceleration to be set.
+        """
+        self.accelerations.append(acceleration)
+
+    @abstractmethod
     def acceleration(self, gap: float, vhost: float, vdiff: float) -> float:
         """ Compute the acceleration based on the gap, vhost, vdiff.
 
