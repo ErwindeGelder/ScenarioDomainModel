@@ -4,6 +4,7 @@ Creation date: 2020 08 12
 Author(s): Erwin de Gelder
 
 Modifications:
+2020 12 13: Make ACCHDM suitable for combination ACC and IDM (might not work for HDM anymore!)
 """
 
 import numpy as np
@@ -68,11 +69,13 @@ class ACCHDM(ACC):
         self.state.samples_since_fcw = 0
         self.state.driver_takeover = False
 
+        self.nstep = 0
+
     def step_simulation(self, leader) -> None:
         self.integration_step()
 
         # Update the driver model.
-        self.parms.driver_model.parms.model.accelerations[0] = self.accelerations[0]
+        self.parms.driver_model.set_acceleration(self.accelerations[0])
         self.parms.driver_model.step_simulation(leader)
 
         # If the FCW is active for longer than `fcw_delay`, the driver is active.
@@ -94,7 +97,7 @@ class ACCHDM(ACC):
 
         if self.state.driver_takeover:
             # Update our own states with that from the driver model.
-            self.accelerations[0] = self.parms.driver_model.parms.model.accelerations[0]
+            self.accelerations[0] = self.parms.driver_model.get_acceleration()
             self.state.position = self.parms.driver_model.state.position
             self.state.speed = self.parms.driver_model.state.speed
             self.state.acceleration = self.parms.driver_model.state.acceleration
@@ -106,10 +109,10 @@ class ACCHDM(ACC):
             self.parms.driver_model.state.position = self.state.position
             self.parms.driver_model.state.speed = self.state.speed
             self.parms.driver_model.state.acceleration = self.state.acceleration
-            self.parms.driver_model.parms.model.state.position = self.state.position
-            self.parms.driver_model.parms.model.state.speed = self.state.speed
-            self.parms.driver_model.parms.model.state.acceleration = self.state.acceleration
-            self.parms.driver_model.parms.model.accelerations[0] = self.accelerations[0]
+            # self.parms.driver_model.parms.model.state.position = self.state.position
+            # self.parms.driver_model.parms.model.state.speed = self.state.speed
+            # self.parms.driver_model.parms.model.state.acceleration = self.state.acceleration
+            # self.parms.driver_model.parms.model.accelerations[0] = self.accelerations[0]
 
     def fcw_warning(self, leader) -> bool:
         """ Issue a FCW based on the model of Kiefer et al.
@@ -127,6 +130,7 @@ class ACCHDM(ACC):
             tmp = -9.073 + 24.225*inv_ttc + 0.0534*self.state.speed
 
         probability = 1 / (1 + np.exp(-tmp))
+        self.nstep += 1
         if probability > self.parms.fcw_threshold:
             return True
         return False
