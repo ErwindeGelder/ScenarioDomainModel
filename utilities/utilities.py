@@ -404,6 +404,7 @@ if __name__ == '__main__':
                        dict(usebiber=True)),
                       (join('20191113 Journal Scenario Risk', 'scenario_risk'),
                        dict(usebiber=True))])
+    compile_pr(35, usebiber=True)
 
     # Revisions/versions
     compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',
