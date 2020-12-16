@@ -6,6 +6,7 @@ Author(s): Erwin de Gelder
 Modifications:
 2020 12 09: Adding idm_approaching_pars.
 2020 12 10: Make SimulationApproaching a subclass of SimulationString.
+2020 12 11: Adding acc_idm_approaching_pars.
 """
 
 from typing import List
@@ -68,6 +69,32 @@ def acc_hdm_approaching_pars(**kwargs):
                             init_position=INIT_POSITION_FOLLOWER,
                             n_reaction=0,
                             driver_parms=hdm_approaching_pars(**kwargs))
+
+
+def acc_idm_approaching_pars(**kwargs):
+    """ Define the parameters for the ACCHDM model.
+
+    :return: Parameter object that can be passed via init_simulation.
+    """
+    if "amin" in kwargs:
+        amin = kwargs["amin"]
+    else:
+        amin = -10
+        kwargs["amin"] = amin
+    parms = dict()
+    for parm in ["k1_acc", "k2_acc"]:
+        if parm in kwargs:
+            parms[parm] = kwargs[parm]
+    fcw_delay = kwargs["reactiontime"] if "reactiontime" in kwargs else 1.0
+    return ACCHDMParameters(speed=kwargs["vego"],
+                            init_speed=kwargs["vego"],
+                            init_position=INIT_POSITION_FOLLOWER,
+                            n_reaction=0,
+                            amin=amin,
+                            driver_parms=idm_approaching_pars(**kwargs),
+                            driver_model=IDMPlus(),
+                            fcw_delay=fcw_delay,
+                            **parms)
 
 
 def idm_approaching_pars(i=1, **kwargs):
