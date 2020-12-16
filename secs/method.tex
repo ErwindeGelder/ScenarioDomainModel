@@ -143,5 +143,10 @@ For more information on this, we refer the reader to \autocite{aas2009paircopula
 \subsection{Estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$}
 \label{sec:estimate collision}
 
+To estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$, i.e., the probability of a collision given the current situation $\situationcurrent$ and the future situation $\situationfuture$, we employ simulations. 
+The details of the simulation depends on the actual application. 
+For example, if the goal of our surrogate safety metric is to evaluate the risk a current human driver is in, the simulation should involve human driver models. 
+On the other hand, if the goal is to evaluate the risk of \iac{ads}, the simulation should include the same \iac{ads}.
 
+A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and $\situationfuture$. 
 
