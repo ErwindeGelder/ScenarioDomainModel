@@ -5006,7 +5006,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
-<node TEXT="General/tutorial papers" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_1226869459" CREATED="1533871422798" MODIFIED="1533871436900" MOVED="1533871478284">
+<node TEXT="General/tutorial papers" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1226869459" CREATED="1533871422798" MODIFIED="1533871436900" MOVED="1533871478284">
 <node TEXT="A Tutorial on Kernel Density Estimation and Recent Advances" ID="ID_367486150" CREATED="1531384075707" MODIFIED="1534390299641" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/223%20Kernel%20Density%20Estimation%20and%20Recent%20Advancements.pdf" MOVED="1533871439302">
 <attribute NAME="key" VALUE="chen2017tutorial"/>
 <attribute NAME="journal" VALUE="Biostatistics \&amp; Epidemiology"/>
