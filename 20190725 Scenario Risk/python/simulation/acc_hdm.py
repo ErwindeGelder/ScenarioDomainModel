@@ -40,6 +40,8 @@ class ACCHDM(ACC):
         self.parms = ACCHDMParameters()
         self.state = ACCHDMState()
 
+        self.nstep = 0
+
     def init_simulation(self, parms: ACCHDMParameters) -> None:
         """ Initialize the simulation.
 
@@ -72,6 +74,7 @@ class ACCHDM(ACC):
         self.nstep = 0
 
     def step_simulation(self, leader) -> None:
+        self.nstep += 1
         self.integration_step()
 
         # Update the driver model.
@@ -85,6 +88,7 @@ class ACCHDM(ACC):
             self.state.fcw = self.fcw_warning(leader)
         if not self.state.driver_takeover and self.state.fcw:
             if self.state.samples_since_fcw*self.parms.timestep >= self.parms.fcw_delay:
+                print(self.nstep)
                 self.state.driver_takeover = True
 
         # Following Xiao et al. (2017), the driver takes over if approaching speed > 15 m/s and
@@ -95,9 +99,11 @@ class ACCHDM(ACC):
                     (leader.state.position - self.state.position) < self.parms.driver_takeover_view:
                 self.state.driver_takeover = True
 
+        self.parms.driver_model.update(leader.state.position-self.state.position,
+                                       self.state.speed,
+                                       self.state.speed-leader.state.speed)
         if self.state.driver_takeover:
             # Update our own states with that from the driver model.
-            self.accelerations[0] = self.parms.driver_model.get_acceleration()
             self.state.position = self.parms.driver_model.state.position
             self.state.speed = self.parms.driver_model.state.speed
             self.state.acceleration = self.parms.driver_model.state.acceleration
@@ -106,6 +112,7 @@ class ACCHDM(ACC):
             self.update(leader.state.position-self.state.position,
                         self.state.speed,
                         self.state.speed-leader.state.speed)
+
             self.parms.driver_model.state.position = self.state.position
             self.parms.driver_model.state.speed = self.state.speed
             self.parms.driver_model.state.acceleration = self.state.acceleration
@@ -130,7 +137,7 @@ class ACCHDM(ACC):
             tmp = -9.073 + 24.225*inv_ttc + 0.0534*self.state.speed
 
         probability = 1 / (1 + np.exp(-tmp))
-        self.nstep += 1
         if probability > self.parms.fcw_threshold:
+            print(self.nstep)
             return True
         return False
