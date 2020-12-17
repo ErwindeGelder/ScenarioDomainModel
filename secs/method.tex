@@ -148,5 +148,10 @@ The details of the simulation depends on the actual application.
 For example, if the goal of our surrogate safety metric is to evaluate the risk a current human driver is in, the simulation should involve human driver models. 
 On the other hand, if the goal is to evaluate the risk of \iac{ads}, the simulation should include the same \iac{ads}.
 
-A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and $\situationfuture$. 
+A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and $\situationfuture$ and count the number of simulations that result in a collision.
+If $\numberofsimulations$ denotes the number of simulations and $\numberofcollisions$ is the number of collisions, then $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ could be estimated using
+\begin{equation}
+	\probabilitycondest{\collision}{\situationcurrent, \situationfuture}
+	= \frac{\numberofcollisions}{\numberofsimulations}.
+\end{equation}
 
