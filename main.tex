@@ -9,11 +9,12 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
 \usepackage[capitalize]{cleveref}
+\crefname{figure}{Figure}{Figures}
 \usepackage[nolist,nohyperlinks]{acronym}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 \usepackage{silence}  							%% For filtering warnings
-\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+\usepackage[style=authoryear,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
 % Filter warnings issued by package biblatex starting with "Patching footnotes failed"
 \WarningFilter{biblatex}{Patching footnotes failed}
 \renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
@@ -22,7 +23,7 @@
 \bibliography{references}
 
 \title{A Surrogate Safety Metric for Risk Evaluation}
-\author{Tux the Penguin}
+\author{Erwin de Gelder, Kingsley Adjenughwure, ..., Bart De Schutter}
 \date{November 2020}
 
 % Variables
