@@ -78,7 +78,6 @@ class ACCHDM(ACC):
         self.integration_step()
 
         # Update the driver model.
-        self.parms.driver_model.set_acceleration(self.accelerations[0])
         self.parms.driver_model.step_simulation(leader)
 
         # If the FCW is active for longer than `fcw_delay`, the driver is active.
@@ -88,7 +87,6 @@ class ACCHDM(ACC):
             self.state.fcw = self.fcw_warning(leader)
         if not self.state.driver_takeover and self.state.fcw:
             if self.state.samples_since_fcw*self.parms.timestep >= self.parms.fcw_delay:
-                print(self.nstep)
                 self.state.driver_takeover = True
 
         # Following Xiao et al. (2017), the driver takes over if approaching speed > 15 m/s and
@@ -99,9 +97,6 @@ class ACCHDM(ACC):
                     (leader.state.position - self.state.position) < self.parms.driver_takeover_view:
                 self.state.driver_takeover = True
 
-        self.parms.driver_model.update(leader.state.position-self.state.position,
-                                       self.state.speed,
-                                       self.state.speed-leader.state.speed)
         if self.state.driver_takeover:
             # Update our own states with that from the driver model.
             self.state.position = self.parms.driver_model.state.position
@@ -138,6 +133,6 @@ class ACCHDM(ACC):
 
         probability = 1 / (1 + np.exp(-tmp))
         if probability > self.parms.fcw_threshold:
-            print(self.nstep)
+            print(leader.state.position - self.state.position)
             return True
         return False
