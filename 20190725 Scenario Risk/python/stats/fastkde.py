@@ -142,6 +142,9 @@ class KDE:
         self.weights = False
         self.fit(data, weights=weights)
         self.data_info = data_info
+        self.bandwidth = None
+        if bandwidth is not None:
+            self.set_bandwidth(bandwidth)
 
     def fit(self, data: Union[List, np.ndarray], weights: Union[List, np.ndarray] = None,
             std: Union[float, np.ndarray] = None) -> None:
@@ -509,7 +512,7 @@ class KDE:
         :param bandwidth: float
         """
         self._bandwidth = bandwidth
-        if isinstance(self._bandwidth, float):
+        if isinstance(self._bandwidth, (float, int)):
             self.constants.variable_bandwidth = False
             self.constants.const_score = (-self.constants.dim/2*np.log(2*np.pi) -
                                           self.constants.dim*np.log(self._bandwidth))
