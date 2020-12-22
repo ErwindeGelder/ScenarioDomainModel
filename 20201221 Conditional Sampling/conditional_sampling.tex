@@ -1,0 +1,110 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amsthm}  % For special theorem style
+\usepackage{amsfonts}
+\usepackage{breqn}
+\usepackage{dsfont}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[nolist,nohyperlinks]{acronym}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage[capitalize]{cleveref}
+
+\usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
+\usepackage{silence}  							%% For filtering warnings
+\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
+\WarningFilter{biblatex}{Patching footnotes failed}
+\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+\renewcommand*{\bibfont}{\small}
+\setlength{\biblabelsep}{\labelsep}
+\bibliography{../bib}
+
+\title{Conditional Sampling from a Kernel Density Estimator with a Gaussian Kernel}
+\author{Erwin de Gelder}
+\date{December 2020}
+
+% Variables
+\newcommand{\bandwidth}{h}
+\newcommand{\bandwidthmatrix}{H}
+  \newcommand{\bandwidthmatrixinverse}{\Lambda}
+  \newcommand{\bwiul}{\bandwidthmatrixinverse_{11}}
+  \newcommand{\bwiur}{\bandwidthmatrixinverse_{12}}
+  \newcommand{\bwibl}{\bandwidthmatrixinverse_{21}}
+  \newcommand{\bwibr}{\bandwidthmatrixinverse_{22}}
+  \newcommand{\bandwidthmatrixrotated}{\tilde{\bandwidthmatrix}}
+  \newcommand{\bandwidthmatrrotatedixinverse}{\tilde{\Lambda}}
+  \newcommand{\bwriul}{\bandwidthmatrrotatedixinverse_{11}}
+  \newcommand{\bwriur}{\bandwidthmatrrotatedixinverse_{12}}
+  \newcommand{\bwribl}{\bandwidthmatrrotatedixinverse_{21}}
+  \newcommand{\bwribr}{\bandwidthmatrrotatedixinverse_{22}}
+\newcommand{\constraintmatrix}{A}
+\newcommand{\constraintvector}{b}
+\newcommand{\density}[1]{f\left( #1 \right)}
+\newcommand{\densityest}[1]{\hat{f}\left( #1 \right)}
+\newcommand{\densitycond}[2]{\density{ #1 | #2 }}
+\newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
+\newcommand{\determinant}[1]{\left| #1 \right|}
+\newcommand{\dimension}{d}
+  \newcommand{\dimensionparta}{\dimension_\mathrm{c}}
+  \newcommand{\dimensionpartb}{\dimension_\mathrm{u}}
+\newcommand{\dummyvar}{u}
+\newcommand{\e}[1]{\exp\left\{ #1 \right\}}
+\newcommand{\identitymatrix}[1]{I_{#1}}
+\newcommand{\indexdata}{i}
+\newcommand{\indexsampling}{j}
+\newcommand{\kernelfunc}[1]{K \left( #1 \right)}
+\newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
+\newcommand{\normtwo}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\numberofconstraints}{n_\mathrm{c}}
+\newcommand{\numberofsamples}{N}
+\newcommand{\realnumbers}{\mathds{R}}
+\newcommand{\superquad}{\phantom{=}\quad\quad\quad\quad}
+\newcommand{\svdu}{U}
+  \newcommand{\svds}{\Sigma}
+  \newcommand{\svdv}{V}
+  \newcommand{\svdva}{V_1}
+  \newcommand{\svdvb}{V_2}
+\newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\variable}{x}
+  \newcommand{\variableparta}{\breve{\variable}}
+  \newcommand{\variablepartb}{\hat{\variable}}
+  \newcommand{\variableconstrained}{\bar{\variable}}
+  \newcommand{\variableunconstrained}{\tilde{\variable}}
+  \newcommand{\datapoint}[1]{\variable_{#1}}
+  \newcommand{\datapointparta}[1]{\variableparta_{#1}}
+  \newcommand{\datapointpartb}[1]{\variablepartb_{#1}}
+  \newcommand{\datapointpartbtranslated}[1]{\datapointpartb{#1}'}
+  \newcommand{\datapointconstrained}[1]{\variableconstrained_{#1}}
+  \newcommand{\datapointunconstrained}[1]{\variableunconstrained_{#1}}
+  \newcommand{\datapointunconstrainedtranslated}[1]{\datapointunconstrained{#1}'}
+\newcommand{\weight}[1]{w_{#1}}
+
+\begin{document}
+
+% Acronyms
+\begin{acronym}[AAAAAAAA]
+	\acro{kde}[KDE]{Kernel Density Estimation}
+	\acro{pdf}[pdf]{probability density function}
+	\acro{svd}[SVD]{Singular Value Decomposition}\acroindefinite{svd}{an}{a}
+\end{acronym}
+
+\maketitle
+
+\input{secs/abstract}
+\input{secs/introduction}
+\input{secs/method}
+\input{secs/example}
+\input{secs/conclusions}
+
+%\section*{Acknowledgement}
+%Tux also likes to thank the Free Software Foundation for their GNU software.
+
+
+
+\printbibliography
+
+\end{document}
