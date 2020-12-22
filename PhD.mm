@@ -2802,6 +2802,15 @@
     <pdf_title>Safety Assessment and Uncertainty Quantification of Automated Driver Assistance Systems using Stochastic Analysis Methods</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Using Time-to-React based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving" ID="ID_763506289" CREATED="1608662480408" MODIFIED="1608662565058" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/533%20Scenario-Based%20Risk%20Assessment.pdf">
+<attribute NAME="key" VALUE="wagner2018using"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Using Time-to-React Based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving"/>
+<attribute NAME="authors" VALUE="Wagner, Sebastian and Groh, Korbinian and Kuhbeck, Thomas and Dorfel, Michael and Knoll, Alois"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5EBAD34ED40DE5D817BE2ECC059E96811512435891B912B1CBA401F38A">
+    <pdf_title>Using Time-to-React based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Test case generation" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1117340816" CREATED="1516590647026" MODIFIED="1516590663595" HGAP="31" VSHIFT="19">
@@ -4179,7 +4188,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
+<node TEXT="Use of the notion of scenario w.r.t. development/assessment automated vehicle" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_585420793" CREATED="1512447904075" MODIFIED="1512447926589">
 <node TEXT="Alvarez et al." ID="ID_747880869" CREATED="1512448020922" MODIFIED="1534391438311" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/051%20Prospective%20Effectiveness%20Assessment%20of%20ADAS%20review.pdf">
 <attribute NAME="key" VALUE="alvarez2017prospective"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -5163,10 +5172,10 @@
     <pdf_title>Estimating and Visualizing Conditional Densities</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="Fast Nonparametric Conditional Density Estimation" ID="ID_1399978384" CREATED="1593771003197" MODIFIED="1593771030597" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/484%20Fast%20Nonparametric%20Conditional%20Density%20Estimation.pdf">
-<attribute NAME="key" VALUE="holmes2012fast"/>
+<node TEXT="Fast Nonparametric Conditional Density Estimation" ID="ID_1399978384" CREATED="1593771003197" MODIFIED="1608568572083" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/484%20Fast%20Nonparametric%20Conditional%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="holmes2007fast"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1206.5278"/>
-<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="year" VALUE="2007"/>
 <attribute NAME="title" VALUE="Fast Nonparametric Conditional Density Estimation"/>
 <attribute NAME="authors" VALUE="Holmes, Michael P and Gray, Alexander G and Isbell, Charles Lee"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="35FF52720C26DBCF0156886E9CF706EDB243D5E856CB1582D3B4B422B381CB5">
@@ -5463,6 +5472,13 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="CEC946A4446428B87E92B8BB8CAFBC584996B64381C717181FD1C2C8E14FAB">
     <pdf_title>Nonparametric Statistics with Applications to Science and Engineering</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="Schur complement" ID="ID_507405915" CREATED="1608624506888" MODIFIED="1608624621116" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/532%20Schur%20complement.pdf">
+<attribute NAME="key" VALUE="zhang2006schur"/>
+<attribute NAME="year" VALUE="2006"/>
+<attribute NAME="title" VALUE="The {S}chur Complement and Its Applications"/>
+<attribute NAME="authors" VALUE="Zhang, Fuzhen"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
 <node TEXT="Extreme Value Statistics" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_39821948" CREATED="1542357420081" MODIFIED="1542357425327">
