@@ -1,7 +1,7 @@
 <map version="docear 1.1" project="1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG" project_last_home="file:/C:/Users/geldered/Docear/projects/My%20Thesis%201" dcr_id="1534303915380_1tokdigwl98ivjipxannd73tb">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <attribute_registry SHOW_ATTRIBUTES="hide"/>
-<node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1590912451598"><hook NAME="MapStyle" zoom="0.912">
+<node TEXT="PhD" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1590912451598"><hook NAME="MapStyle">
     <properties show_icon_for_attributes="true" show_note_icons="true"/>
 
 <map_styles>
@@ -5075,6 +5075,28 @@
 </pdf_annotation>
 </node>
 </node>
+<node TEXT="General papers with bandwidth matrix" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1462037374" CREATED="1608567062030" MODIFIED="1608567077155">
+<node TEXT="KDE and Multivariate Data in R" ID="ID_1806895423" CREATED="1608566995302" MODIFIED="1608567113145" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/530%20KDE%20and%20Multivariate%20Data%20in%20R.pdf" MOVED="1608567079199">
+<attribute NAME="key" VALUE="duong2007ks"/>
+<attribute NAME="journal" VALUE="Journal of Statistical Software"/>
+<attribute NAME="year" VALUE="2007"/>
+<attribute NAME="title" VALUE="{ks}: Kernel Density Estimation and Kernel Discriminant Analysis for Multivariate Data in {R}"/>
+<attribute NAME="authors" VALUE="Duong, Tarn"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="EDBA7CEB6565CC7C78788C6E9E599CC62FDECBB14294B3F97C114664AA74C5">
+    <pdf_title>Journal of Statistical Software</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="FFT-based bandwidth selection for multivariate KDE" ID="ID_1584850093" CREATED="1608567886479" MODIFIED="1608568218949" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/231%20FFT-Based%20Fast%20Bandwidth%20Selector%20for%20Multivariate%20KDE.pdf">
+<attribute NAME="key" VALUE="gramacki2017fft"/>
+<attribute NAME="journal" VALUE="Computational Statistics \&amp; Data Analysis"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="{FFT}-Based Fast Bandwidth Selector for Multivariate Kernel Density Estimation"/>
+<attribute NAME="authors" VALUE="Gramacki, Artur and Gramacki, Jaros{\l}aw"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="A7A5FA231AEC94E87158CB745537555CCE6E3D74F37EE14E5CDF7CF2F89489A4">
+    <pdf_title>FFT-Based Fast Bandwidth Selector for Multivariate Kernel Density Estimation</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 <node TEXT="Applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_765833272" CREATED="1539231165017" MODIFIED="1539231170294">
 <node TEXT="A Review of Kernel Density Estimation with Applications to Econometrics" ID="ID_248249806" CREATED="1539231172521" MODIFIED="1590912449675" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/247%20A%20Review%20of%20KDE%20with%20Aapplications%20to%20Econometrics.pdf">
 <attribute NAME="key" VALUE="zambom2013review"/>
@@ -5131,6 +5153,16 @@
 </node>
 </node>
 <node TEXT="Conditional sampling" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_600523662" CREATED="1593770968693" MODIFIED="1593771011896">
+<node TEXT="Estimating and Visualizing Conditional Densities" ID="ID_603739456" CREATED="1608561215180" MODIFIED="1608561343318" MOVED="1608561224961" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/529%20Estimating%20and%20Visualizing%20Conditional%20Densities.pdf">
+<attribute NAME="key" VALUE="hyndman1996estimating"/>
+<attribute NAME="journal" VALUE="Journal of Computational and Graphical Statistics"/>
+<attribute NAME="year" VALUE="1996"/>
+<attribute NAME="title" VALUE="Estimating and Visualizing Conditional Densities"/>
+<attribute NAME="authors" VALUE="Hyndman, Rob J and Bashtannyk, David M and Grunwald, Gary K"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="EA37E1C68ABC15435D928DC524196B835E3AF053EBF73116285B73C53EB3A19">
+    <pdf_title>Estimating and Visualizing Conditional Densities</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="Fast Nonparametric Conditional Density Estimation" ID="ID_1399978384" CREATED="1593771003197" MODIFIED="1593771030597" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/484%20Fast%20Nonparametric%20Conditional%20Density%20Estimation.pdf">
 <attribute NAME="key" VALUE="holmes2012fast"/>
 <attribute NAME="journal" VALUE="arXiv preprint arXiv:1206.5278"/>
