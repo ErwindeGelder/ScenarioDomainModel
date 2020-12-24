@@ -85,7 +85,10 @@ def acc_idm_approaching_pars(**kwargs):
     for parm in ["k1_acc", "k2_acc"]:
         if parm in kwargs:
             parms[parm] = kwargs[parm]
-    fcw_delay = kwargs["reactiontime"] if "reactiontime" in kwargs else 1.0
+    if "reactiontime" not in kwargs:
+        kwargs["reactiontime"] = np.random.lognormal(np.log(.92**2/np.sqrt(.92**2+.28**2)),
+                                                     np.sqrt(np.log(1+.28**2/.92**2)))
+    fcw_delay = kwargs["reactiontime"]
     return ACCHDMParameters(speed=kwargs["vego"],
                             init_speed=kwargs["vego"],
                             init_position=INIT_POSITION_FOLLOWER,
