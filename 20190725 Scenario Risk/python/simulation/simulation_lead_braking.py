@@ -10,6 +10,7 @@ Modifications:
 2020 08 13 Use SimulationLongitudinal as superclass to do the actual simulation.
 """
 
+import numpy as np
 from .acc import ACC, ACCParameters
 from .acc_hdm import ACCHDM, ACCHDMParameters
 from .cacc import CACC, CACCParameters
@@ -68,11 +69,43 @@ def eidm_lead_braking_pars(**kwargs):
     return parameters
 
 
+def idm_lead_braking_pars(**kwargs):
+    """ Define the parameters for the IDM model.
+
+    The reaction time is sampled from the lognormal distribution mentioned in
+    Wang & Stamatiadis (2014) if it not provided through kwargs.
+
+    :param kwargs: Parameter object that can be passed via init_simulation.
+    """
+    if "reactiontime" in kwargs:
+        reactiontime = kwargs["reactiontime"]
+    else:
+        reactiontime = np.random.lognormal(np.log(.92**2/np.sqrt(.92**2+.28**2)),
+                                           np.sqrt(np.log(1+.28**2/.92**2)))
+    steptime = 0.01
+    amin = kwargs["amin"] if "amin" in kwargs else -10
+    thw = kwargs["thw"] if "thw" in kwargs else 1.1
+    init_speed = kwargs["v0"]
+    safety_distance = 2.0
+    init_distance = safety_distance + init_speed * thw
+    return IDMParameters(speed=kwargs["v0"],
+                         init_speed=kwargs["v0"],
+                         init_position=-init_distance,
+                         timestep=steptime,
+                         n_reaction=int(reactiontime/steptime),
+                         thw=thw,
+                         safety_distance=safety_distance,
+                         a_acc=1,
+                         b_acc=1.5,
+                         amin=amin)
+
+
 def acc_lead_braking_pars(**kwargs):
     """ Define the ACC parameters of the follower based on scenario parameters.
 
     :return: Parameter object that can be passed via init_simulation.
     """
+    amin = kwargs["amin"] if "amin" in kwargs else -10
     init_speed = kwargs["v0"]
     safety_distance = ACC.safety_distance(init_speed)
     default_parameters = ACCParameters()
@@ -81,7 +114,8 @@ def acc_lead_braking_pars(**kwargs):
     parameters = ACCParameters(speed=init_speed,
                                init_speed=init_speed,
                                init_position=-init_distance,
-                               n_reaction=0)
+                               n_reaction=0,
+                               amin=amin)
     return parameters
 
 
@@ -90,16 +124,24 @@ def acc_hdm_lead_braking_pars(**kwargs):
 
     :return: Parameter object that can be passed via init_simulation.
     """
+    amin = kwargs["amin"] if "amin" in kwargs else -10
     init_speed = kwargs["v0"]
     safety_distance = ACCHDM.safety_distance(init_speed)
     default_parameters = ACCHDMParameters()
     thw = default_parameters.thw
     init_distance = safety_distance + init_speed * thw
+    if "reactiontime" not in kwargs:
+        kwargs["reactiontime"] = np.random.lognormal(np.log(.92**2/np.sqrt(.92**2+.28**2)),
+                                                     np.sqrt(np.log(1+.28**2/.92**2)))
+    fcw_delay = kwargs["reactiontime"]
     parameters = ACCHDMParameters(speed=init_speed,
                                   init_speed=init_speed,
                                   init_position=-init_distance,
                                   n_reaction=0,
-                                  driver_parms=hdm_lead_braking_pars(**kwargs))
+                                  amin=amin,
+                                  driver_parms=idm_lead_braking_pars(**kwargs),
+                                  fcw_delay=fcw_delay,
+                                  driver_model=IDMPlus())
     return parameters
 
 
