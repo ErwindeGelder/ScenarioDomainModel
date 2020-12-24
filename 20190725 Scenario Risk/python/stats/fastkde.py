@@ -133,7 +133,7 @@ class KDE:
 
     """
     def __init__(self, data: np.ndarray = None, bandwidth: float = None, scaling: bool = True,
-                 weights: np.ndarray = None, data_info: dict = {}):
+                 weights: np.ndarray = None, data_info: dict = None):
         self._bandwidth = bandwidth
         self.data = None
         self.constants = KDEConstants()
@@ -141,7 +141,7 @@ class KDE:
         self.scaling = scaling
         self.weights = False
         self.fit(data, weights=weights)
-        self.data_info = data_info
+        self.data_info = {} if data_info is None else data_info
         self.bandwidth = None
         if bandwidth is not None:
             self.set_bandwidth(bandwidth)
