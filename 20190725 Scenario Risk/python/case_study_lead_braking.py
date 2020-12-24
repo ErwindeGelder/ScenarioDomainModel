@@ -14,43 +14,37 @@ import os
 from typing import List, Union
 import matplotlib.pyplot as plt
 import numpy as np
-from databaseemulator import DataBaseEmulator
 from domain_model import Scenario
 from simulation import SimulationLeadBraking, ACC, acc_lead_braking_pars, ACCHDM, \
     acc_hdm_lead_braking_pars
 from case_study import CaseStudy, CaseStudyOptions, default_process_result
 
 
-PARSER = argparse.ArgumentParser()
-PARSER.add_argument("--overwrite", help="Whether to overwrite old results", action="store_true")
-ARGS = PARSER.parse_args()
-
-
-def parameters_lead_braking() -> np.ndarray:
-    """ Return the parameters for lead vehicle braking.
-
-    The parameters are:
-    1. Initial speed
-    2. Average deceleration
-    3. Speed difference (positive means braking, i.e., vstart-vend)
-
-    :return: The numpy array with the parameters.
-    """
-    data = DataBaseEmulator(os.path.join("data", "5_scenarios", "lead_braking.json"))
-    pars = []
-    for i in range(len(data.collections["scenario"])):
-        scenario = data.get_ordered_item("scenario", i)
-        vstart, vdiff, amean = 0, 0, 0
-        for activity in scenario.activities:
-            if activity.name == "deceleration target":
-                vstart, vend = activity.get_state(time=[activity.tstart, activity.tend])[0]
-                vdiff = vstart-vend
-                amean = vdiff/(activity.tend-activity.tstart)
-                break
-
-        if vstart > 0 and vdiff > 0 and amean > 0:
-            pars.append([vstart, amean, vdiff])
-    return np.array(pars)
+# def parameters_lead_braking() -> np.ndarray:
+#     """ Return the parameters for lead vehicle braking.
+#
+#     The parameters are:
+#     1. Initial speed
+#     2. Average deceleration
+#     3. Speed difference (positive means braking, i.e., vstart-vend)
+#
+#     :return: The numpy array with the parameters.
+#     """
+#     data = DataBaseEmulator(os.path.join("data", "5_scenarios", "lead_braking.json"))
+#     pars = []
+#     for i in range(len(data.collections["scenario"])):
+#         scenario = data.get_ordered_item("scenario", i)
+#         vstart, vdiff, amean = 0, 0, 0
+#         for activity in scenario.activities:
+#             if activity.name == "deceleration target":
+#                 vstart, vend = activity.get_state(time=[activity.tstart, activity.tend])[0]
+#                 vdiff = vstart-vend
+#                 amean = vdiff/(activity.tend-activity.tstart)
+#                 break
+#
+#         if vstart > 0 and vdiff > 0 and amean > 0:
+#             pars.append([vstart, amean, vdiff])
+#     return np.array(pars)
 
 
 def par_lead_braking_alternative() -> np.ndarray:
@@ -156,6 +150,10 @@ def plot_result(case_study: CaseStudy, title: str = ""):
 
 
 if __name__ == "__main__":
+    PARSER = argparse.ArgumentParser()
+    PARSER.add_argument("--overwrite", help="Whether to overwrite old results", action="store_true")
+    ARGS = PARSER.parse_args()
+
     DEFAULT_PARS = dict(overwrite=ARGS.overwrite,
                         func_parameters=par_lead_braking_alternative,
                         func_validity_parameters=check_validity_lead_braking_alt,

@@ -18,11 +18,6 @@ from simulation import SimulationApproaching, IDMPlus, ACC, idm_approaching_pars
 from case_study import CaseStudy, CaseStudyOptions, default_process_result
 
 
-PARSER = argparse.ArgumentParser()
-PARSER.add_argument("--overwrite", help="Whether to overwrite old results", action="store_true")
-ARGS = PARSER.parse_args()
-
-
 def parameters_approaching() -> np.ndarray:
     """ Return the parameters for lead vehicle braking.
 
@@ -96,6 +91,10 @@ def plot_result(case_study: CaseStudy, title: str = "") -> Figure:
 
 
 if __name__ == "__main__":
+    PARSER = argparse.ArgumentParser()
+    PARSER.add_argument("--overwrite", help="Whether to overwrite old results", action="store_true")
+    ARGS = PARSER.parse_args()
+
     DEFAULT_PARS = dict(overwrite=ARGS.overwrite,
                         func_parameters=parameters_approaching,
                         func_validity_parameters=check_validity_approaching,
