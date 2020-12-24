@@ -27,18 +27,19 @@ Modifications:
 2020 07 30: Version 1.2: Make the clustering extremely faster (now in a blink of an eye).
 2020 08 06: Version 1.3: Add possibility to get integrated probability on hypercube.
 2020 11 19: Version 1.4: Add function to compute Silverman's bandwidth.
+2020 11 26: Version 1.5: Scale data by default. Use min(std,IQR/1.349) for scaling. Make bandwidth
+            private: Use get_bandwidth/set_bandwidth to retrieve or update the bandwidth. data_info
+            dict added to store information regarding data used (for kde store)
 """
 
 from itertools import combinations
 import os
 import pickle
-import time
 from typing import Callable, List, Union
 import numpy as np
 import scipy.spatial.distance as dist
 import scipy.special
 import scipy.stats
-import matplotlib.pyplot as plt
 from .options import Options
 
 
@@ -60,20 +61,20 @@ class KDEConstants(Options):
         sumweights(int): The sum of the weights (if weights are used).
         epsilon(float): The distance in one 'bin' in case weighted samples are used.
     """
-    version: str = "1.4"
+    version = str("1.5")
 
-    ndata: int = 0
-    const_looscore: float = 0
-    const_score: float = 0
-    dim: int = 0
-    muk: float = 0
-    invgr: float = (np.sqrt(5) - 1) / 2
-    invgr2: float = (3 - np.sqrt(5)) / 2
-    variable_bandwidth: bool = False
-    percentile: float = 95
-    bandwidth_factor: float = 1
-    sumweights: int = 0
-    epsilon: float = 0
+    ndata = int(0)
+    const_looscore = float(0)
+    const_score = float(0)
+    dim = int(0)
+    muk = float(0)
+    invgr = float((np.sqrt(5) - 1) / 2)
+    invgr2 = float((3 - np.sqrt(5)) / 2)
+    variable_bandwidth = False
+    percentile = float(95)
+    bandwidth_factor = float(1)
+    sumweights = int(0)
+    epsilon = float(0)
 
 
 class KDEData(Options):
@@ -89,13 +90,13 @@ class KDEData(Options):
             must be scaled.
         weights(np.ndarray): Weights of the data points.
     """
-    mindists: np.ndarray = np.array([])
-    data_score_samples: np.ndarray = np.array([])
-    newshape: np.ndarray = np.array([])
-    data_dist: np.ndarray = np.array([])
-    difference: np.ndarray = np.array([])
-    std: np.ndarray = np.array([])
-    weights: np.ndarray = np.array([])
+    mindists = np.array([])
+    data_score_samples = np.array([])
+    newshape = np.array([])
+    data_dist = np.array([])
+    difference = np.array([])
+    std = np.array([])
+    weights = np.array([])
     # self.xhist, self.yhist, self.fft = None, None, None  # Not used at the moment
 
 
@@ -128,16 +129,22 @@ class KDE:
         data_helpers(KDEData): np.ndarrays that are used for various methods.
         scaling(bool): Whether scaling is used.
         weights(bool): Whether weights are used.
+        data_info(dict): Data information
+
     """
-    def __init__(self, data: np.ndarray = None, bandwidth: float = None, scaling: bool = False,
-                 weights: np.ndarray = None):
-        self.bandwidth = bandwidth
+    def __init__(self, data: np.ndarray = None, bandwidth: float = None, scaling: bool = True,
+                 weights: np.ndarray = None, data_info: dict = None):
+        self._bandwidth = bandwidth
         self.data = None
         self.constants = KDEConstants()
         self.data_helpers = KDEData()
         self.scaling = scaling
         self.weights = False
         self.fit(data, weights=weights)
+        self.data_info = {} if data_info is None else data_info
+        self.bandwidth = None
+        if bandwidth is not None:
+            self.set_bandwidth(bandwidth)
 
     def fit(self, data: Union[List, np.ndarray], weights: Union[List, np.ndarray] = None,
             std: Union[float, np.ndarray] = None) -> None:
@@ -170,16 +177,7 @@ class KDE:
             self.data_helpers.weights = weights
 
         if self.scaling:
-            if std is None:
-                if not self.weights:
-                    self.data_helpers.std = np.std(self.data, axis=0)
-                else:
-                    average = np.average(self.data, axis=0, weights=self.data_helpers.weights)
-                    self.data_helpers.std = np.sqrt(np.average((self.data - average)**2, axis=0,
-                                                               weights=self.data_helpers.weights))
-                self.data = self.data / self.data_helpers.std
-            else:
-                self.data_helpers.std = std
+            self._scaling(std)
 
         # Note: creating the distance matrix takes quite some time and is only needed if cross
         # validation is performed.
@@ -189,16 +187,30 @@ class KDE:
         # muk = integral[ kernel(x)^2 ]
         self.constants.muk = 1 / (2 ** self.constants.dim * np.sqrt(np.pi ** self.constants.dim))
 
-        # # Build histogram (for using FFT for computing bandwidth)
-        # sigma = np.std(self.data)
-        # self.yhist, bin_edges = np.histogram(self.data,
-        #                                      int((np.max(self.data) - np.min(self.data) /
-        #                                           (sigma/100))),
-        #                                      range=(np.min(self.data) - 3*sigma,
-        #                                             np.max(self.data) + 3*sigma),
-        #                                      density=True)
-        # self.xhist = (bin_edges[:-1] + bin_edges[1:]) / 2
-        # self.fft = np.fft.fft(self.yhist)
+    def _scaling(self, std: Union[float, np.ndarray] = None) -> None:
+        if std is None:
+            if not self.weights:
+                # Take minimum of "standard deviation" and "interquartile range / 1.349".
+                self.data_helpers.std = np.minimum(np.std(self.data, axis=0),
+                                                   scipy.stats.iqr(self.data, axis=0)/1.349)
+            else:
+                # First compute the standard deviation.
+                average = np.average(self.data, axis=0, weights=self.data_helpers.weights)
+                self.data_helpers.std = np.sqrt(np.average((self.data - average)**2, axis=0,
+                                                           weights=self.data_helpers.weights))
+                # Check if the "interquartile range / 1.349" is smaller (if so, update std).
+                for i in range(self.data.shape[1]):
+                    sorter = np.argsort(self.data[:, i])
+                    values = self.data[sorter, i]
+                    weights = (self.data_helpers.weights[sorter] /
+                               np.sum(self.data_helpers.weights)).cumsum()
+                    iqr = np.interp(.75, weights, values) - np.interp(.25, weights, values)
+                    if iqr/1.349 < self.data_helpers.std[i]:
+                        self.data_helpers.std[i] = iqr/1.349
+
+            self.data = self.data / self.data_helpers.std
+        else:
+            self.data_helpers.std = std
 
     def clustering(self, maxdist: float = None) -> None:
         """ Cluster the data.
@@ -237,11 +249,17 @@ class KDE:
     def silverman(self) -> float:
         """ Compute the Silverman bandwidth.
 
+        NOTE: This function only returns a sensible result if the data is
+        scaled. If the data is not scaled, a warning is issued.
+
         :return: The silverman bandwidth.
         """
+        if not self.scaling:
+            print("WARNING: The data is not scaled. This produces an incorrect value for ",
+                  "Silverman's bandwidth!")
+
         return ((4/(self.constants.dim+2))**(1/(self.constants.dim+4)) *
-                self.constants.ndata**(-1/(self.constants.dim+4)) *
-                np.mean(np.std(self.data, axis=0)))
+                self.constants.ndata**(-1/(self.constants.dim+4)))
 
     def set_n(self, ndatapoints: int) -> None:
         """ Set the number of datapoints to be used when evaluating the one-leave-out score.
@@ -310,7 +328,7 @@ class KDE:
         if "max_bw" not in kwargs:
             kwargs["max_bw"] = max_bw
 
-        return self.compute_bandwidth_gss(**kwargs)
+        return self._compute_bandwidth_gss(**kwargs)
 
     def compute_bandwidth_grid(self, min_bw: float = 0.001, max_bw: float = 1.0,
                                n_bw: int = 200) -> None:
@@ -324,10 +342,10 @@ class KDE:
         score = np.array(np.zeros_like(bandwidths))
         for i, bandwidth in enumerate(bandwidths):
             score[i] = self.score_leave_one_out(bandwidth=bandwidth)
-        self.bandwidth = bandwidths[np.argmax(score)]
+        self._bandwidth = bandwidths[np.argmax(score)]
 
-    def compute_bandwidth_gss(self, min_bw: float = 0.001, max_bw: float = 1., max_iter: int = 100,
-                              tol: float = 1e-5) -> int:
+    def _compute_bandwidth_gss(self, min_bw: float = 0.001, max_bw: float = 1., max_iter: int = 100,
+                               tol: float = 1e-5) -> int:
         """ Golden section search.
 
         Given a function f with a single local minimum in
@@ -439,7 +457,7 @@ class KDE:
             self.data_helpers.mindists *= -1  # Do it this way to prevent invalid warning
 
         # Compute the one-leave-out score
-        bandwidth = self.bandwidth if bandwidth is None else bandwidth
+        bandwidth = self._bandwidth if bandwidth is None else bandwidth
         if not self.constants.variable_bandwidth:
             if not self.weights:
                 if self.constants.ndata > 10000:
@@ -479,6 +497,13 @@ class KDE:
             score += self.constants.const_looscore
         return score
 
+    def get_bandwidth(self) -> float:
+        """ Return the bandwidth
+
+        :return: the bandwidth.
+        """
+        return self._bandwidth
+
     def set_bandwidth(self, bandwidth: Union[float, np.ndarray]) -> None:
         """ Set the bandwidth of the KDE
 
@@ -486,16 +511,16 @@ class KDE:
 
         :param bandwidth: float
         """
-        self.bandwidth = bandwidth
-        if isinstance(self.bandwidth, float):
+        self._bandwidth = bandwidth
+        if isinstance(self._bandwidth, (float, int)):
             self.constants.variable_bandwidth = False
             self.constants.const_score = (-self.constants.dim/2*np.log(2*np.pi) -
-                                          self.constants.dim*np.log(self.bandwidth))
+                                          self.constants.dim*np.log(self._bandwidth))
             if not self.weights:
                 self.constants.const_score -= np.log(self.constants.ndata)
             else:
                 self.constants.const_score -= np.log(self.constants.sumweights)
-        elif isinstance(self.bandwidth, np.ndarray):
+        elif isinstance(self._bandwidth, np.ndarray):
             self.constants.variable_bandwidth = True
             self.constants.const_score = (-self.constants.dim/2*np.log(2*np.pi) -
                                           np.log(self.constants.ndata))
@@ -618,14 +643,14 @@ class KDE:
         sum_kernel = np.zeros(eucl_dist.shape[1])
         if not self.constants.variable_bandwidth and not self.weights:
             for dimension in eucl_dist:
-                sum_kernel += np.exp(-dimension / (2 * self.bandwidth**2))
+                sum_kernel += np.exp(-dimension/(2*self._bandwidth**2))
         elif self.weights:
             for dimension, weight in zip(eucl_dist,
                                          self.data_helpers.weights[:self.constants.ndata]):
-                sum_kernel += np.exp(-dimension/(2*self.bandwidth**2))*weight
+                sum_kernel += np.exp(-dimension/(2*self._bandwidth**2))*weight
         else:
             for dimension, sample_bandwidth in zip(eucl_dist,
-                                                   self.bandwidth[:self.constants.ndata]):
+                                                   self._bandwidth[:self.constants.ndata]):
                 sum_kernel += (np.exp(-dimension / (2 * sample_bandwidth**2)) /
                                sample_bandwidth**self.constants.dim)
 
@@ -654,8 +679,8 @@ class KDE:
         if self.scaling:
             xdata /= self.data_helpers.std
         cdf = np.ones((self.constants.ndata, len(xdata)))
-        data = self.data[:self.constants.ndata] / (np.sqrt(2) * self.bandwidth)
-        xdata /= (np.sqrt(2) * self.bandwidth)
+        data = self.data[:self.constants.ndata] / (np.sqrt(2)*self._bandwidth)
+        xdata /= (np.sqrt(2)*self._bandwidth)
         for i in range(self.constants.dim):
             difference = np.subtract(*np.meshgrid(xdata[:, i], data[:, i]))
             cdf *= (scipy.special.erf(difference) + 1) / 2
@@ -732,10 +757,10 @@ class KDE:
         # The gradient is defined as follows:
         # df(x,n)/dx = (2pi)^(-d/2)/(n h^(d+2)) * sum_{i=1}^n [ exp{-(x-xi)^2/(2h**2)} (x - xi) ]
         summation = np.einsum('nm,nmd->md',
-                              np.exp(-eucl_dist / (2 * self.bandwidth ** 2)),
+                              np.exp(-eucl_dist/(2*self._bandwidth**2)),
                               difference)
-        const = (1 / (self.constants.ndata * self.bandwidth ** (self.constants.dim + 2)) /
-                 (2 * np.pi) ** (self.constants.dim / 2))
+        const = (1/(self.constants.ndata*self._bandwidth**(self.constants.dim+2)) /
+                 (2 * np.pi)**(self.constants.dim / 2))
         return const * summation
 
     def laplacian(self, xdata: np.ndarray = None) -> np.ndarray:
@@ -803,12 +828,12 @@ class KDE:
         # d is the dimension of the data and h is the bandwidth
         laplacian = np.zeros(eucl_dist.shape[1])
         for i, dimension in enumerate(eucl_dist):
-            pdf = np.exp(-dimension / (2 * self.bandwidth ** 2)) / \
-                ((2 * np.pi) ** (self.constants.dim / 2) * self.bandwidth ** self.constants.dim)
+            pdf = np.exp(-dimension/(2*self._bandwidth**2)) / \
+                  ((2 * np.pi)**(self.constants.dim / 2)*self._bandwidth**self.constants.dim)
             if self.weights:
                 pdf *= self.data_helpers.weights[i]
-            laplacian += pdf * (dimension / self.bandwidth ** 4 - self.constants.dim /
-                                self.bandwidth ** 2)
+            laplacian += pdf * (dimension/self._bandwidth**4-self.constants.dim /
+                                self._bandwidth**2)
         if not self.weights:
             return laplacian / self.constants.ndata
         return laplacian / self.constants.sumweights
@@ -826,8 +851,8 @@ class KDE:
             xdata /= self.data_helpers.std
         zvalue = scipy.stats.norm.ppf(confidence/2+0.5)
         density = self.score_samples(xdata)
-        std = np.sqrt(self.constants.muk * density / (self.constants.ndata *
-                                                      self.bandwidth ** self.constants.dim))
+        std = np.sqrt(self.constants.muk*density/(self.constants.ndata *
+                                                  self._bandwidth**self.constants.dim))
         lower_conf = density - zvalue*std
         upper_conf = density + zvalue*std
         return lower_conf, upper_conf
@@ -848,7 +873,7 @@ class KDE:
                                  p=(self.data_helpers.weights[:self.constants.ndata] /
                                     self.constants.sumweights))
         selected_data = self.data[i]
-        samples = np.random.normal(selected_data, self.bandwidth)
+        samples = np.random.normal(selected_data, self._bandwidth)
         if self.scaling:
             samples *= self.data_helpers.std
         return samples
@@ -868,7 +893,7 @@ class KDE:
         norm = (self.data[:self.constants.ndata, i_given] - values)**2
         if len(norm.shape) > 1:
             norm = np.sum(norm, axis=1)
-        marginal_prob = np.exp(-norm / (2 * self.bandwidth**2))
+        marginal_prob = np.exp(-norm/(2*self._bandwidth**2))
         if self.weights:
             marginal_prob *= self.data_helpers.weights[:self.constants.ndata]
         marginal_prob /= np.sum(marginal_prob)
@@ -878,7 +903,7 @@ class KDE:
                                  p=marginal_prob)  # This gives just the indices.
         # Doing this directly with np.random.choice gives error if dimension samples > 1.
         means = self.data[means][:, i]
-        samples = np.random.normal(means, self.bandwidth)
+        samples = np.random.normal(means, self._bandwidth)
         if len(samples.shape) == 1:
             samples = samples[:, np.newaxis]
 
@@ -956,45 +981,3 @@ def process_reshaped_data(xdata: np.ndarray, func: Callable) -> np.ndarray:
     if reshape:
         return output.reshape(newshape)
     return output
-
-
-if __name__ == '__main__':
-    np.random.seed(0)
-
-    XDATA = np.random.rand(200)
-    KERNEL_DENSITY = KDE(data=XDATA)
-    KERNEL_DENSITY.compute_bandwidth()
-
-    print(KERNEL_DENSITY.sample(10))
-    print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.bandwidth))
-    NSTART = 50
-    KERNEL_DENSITY = KDE(data=XDATA[:NSTART])
-    KERNEL_DENSITY.compute_bandwidth()
-    print("Bandwidth n={:d}: {:.5f}".format(NSTART, KERNEL_DENSITY.bandwidth))
-    KERNEL_DENSITY.add_data(XDATA[NSTART:])
-    KERNEL_DENSITY.compute_bandwidth()
-    print("Bandwidth n=200: {:.5f}".format(KERNEL_DENSITY.bandwidth))
-
-    NDATAPOINTS = [100, 500]
-    FIGURE, AXS = plt.subplots(1, len(NDATAPOINTS), figsize=(12, 5))
-
-    for ndatapoint, ax in zip(NDATAPOINTS, AXS):
-        XDATA = np.random.randn(ndatapoint)
-        KERNEL_DENSITY = KDE(data=XDATA)
-        t0 = time.time()
-        KERNEL_DENSITY.compute_bandwidth()
-        t1 = time.time()
-        print("Elapsed time: {:.3f} s".format(t1 - t0))
-        print("Bandwidth: {:.5f}".format(KERNEL_DENSITY.bandwidth))
-
-        xpdf = np.linspace(-3, 3, 301)
-        ypdf = np.exp(-xpdf**2/2) / np.sqrt(2*np.pi)
-        ax.plot(xpdf, ypdf, label='Real')
-        ax.plot(xpdf, KERNEL_DENSITY.score_samples(xpdf), label='Estimated')
-        low, up = KERNEL_DENSITY.confidence_interval(xpdf)
-        ax.fill_between(xpdf, low, up, facecolor=[0.5, 0.5, 1], alpha=0.5, label='95% Confidence')
-
-        ax.legend()
-        ax.set_title('{:d} datapoints'.format(ndatapoint))
-        ax.grid(True)
-    plt.show()
