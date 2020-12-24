@@ -133,6 +133,5 @@ class ACCHDM(ACC):
 
         probability = 1 / (1 + np.exp(-tmp))
         if probability > self.parms.fcw_threshold:
-            print(leader.state.position - self.state.position)
             return True
         return False
