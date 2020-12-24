@@ -4,7 +4,7 @@ Creation date: 2020 02 17
 Author(s): Erwin de Gelder
 
 Modifications:
-2020 02 19 Add class for copula pairs.
+2020 02 19: Add class for copula pairs.
 """
 
 from copy import deepcopy
@@ -174,10 +174,10 @@ class CopulaPairs:
             for copula, pair in zip(self.parms.copulas[:i], self.pairs[:i]):
                 if parta in pair:
                     self.parms.common_vars.append((i, 0))
-                    bandwidths[0] = copula.parms.kdes[pair.index(parta)].bandwidth
+                    bandwidths[0] = copula.parms.kdes[pair.index(parta)].get_bandwidth()
                 if partb in pair:
                     self.parms.common_vars.append((i, 1))
-                    bandwidths[1] = copula.parms.kdes[pair.index(partb)].bandwidth
+                    bandwidths[1] = copula.parms.kdes[pair.index(partb)].get_bandwidth()
 
             # Construct the copula.
             options = deepcopy(self.options)
