@@ -29,13 +29,14 @@ ActivitiesResult = NamedTuple("ActivitiesResult",
                                ("acts", List[Tuple[Actor, Activity]])])
 
 
-DEC_TARGET = ActivityCategory(MultiBSplines(2), StateVariable.LON_TARGET,
+MULTISPLINES = MultiBSplines(2)
+DEC_TARGET = ActivityCategory(MULTISPLINES, StateVariable.LON_TARGET,
                               name="deceleration target",
                               tags=[Tag.VehicleLongitudinalActivity_DrivingForward_Braking])
-ACC_TARGET = ActivityCategory(MultiBSplines(2), StateVariable.LON_TARGET,
+ACC_TARGET = ActivityCategory(MULTISPLINES, StateVariable.LON_TARGET,
                               name="acceleration target",
                               tags=[Tag.VehicleLongitudinalActivity_DrivingForward_Accelerating])
-CRU_TARGET = ActivityCategory(MultiBSplines(2), StateVariable.LON_TARGET, name="cruising target",
+CRU_TARGET = ActivityCategory(MULTISPLINES, StateVariable.LON_TARGET, name="cruising target",
                               tags=[Tag.VehicleLongitudinalActivity_DrivingForward_Cruising])
 SPLINES = Splines()
 DEC_EGO = ActivityCategory(SPLINES, StateVariable.SPEED, name="deceleration ego",
@@ -242,7 +243,7 @@ if __name__ == "__main__":
     DATABASE = DocumentManagement()
 
     # Add standard stuff.
-    for item in [STAT_CATEGORY, STAT, EGO_CATEGORY, EGO, TARGET,
+    for item in [MULTISPLINES, SPLINES, STAT_CATEGORY, STAT, EGO_CATEGORY, EGO, TARGET,
                  DEC_TARGET, CRU_TARGET, ACC_TARGET, LK_TARGET, LC_TARGET,
                  DEC_EGO, CRU_EGO, ACC_EGO, LK_EGO, LC_EGO]:
         DATABASE.add_item(item, include_attributes=True)
