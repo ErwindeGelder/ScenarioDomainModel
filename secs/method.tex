@@ -93,11 +93,12 @@ Using the \ac{kde}, the estimated \ac{pdf} becomes:
 		\end{bmatrix}
 	},
 \end{equation}
-where $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is an appropriate kernel function with bandwidth matrix $\bandwidthmatrix$. 
+where $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is an appropriate kernel function with positive definite bandwidth matrix $\bandwidthmatrix$. 
 The choice of the kernel $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is not as important as the choice of the bandwidth matrix $\bandwidthmatrix$ \cite{turlach1993bandwidthselection}.
 We use a Gaussian kernel, but our method also applies with other kernels.
 The Gaussian kernel is given by
 \begin{equation}
+	\label{eq:kernel current future}
 	\kernelfuncnormalized{\bandwidthmatrix}{\dummyvarkernel}
 	= \frac{1}{\left( 2 \pi \right)^{\left( \situationcurrentdim + \situationfuturedim \right) / 2} 
 	\left|\bandwidthmatrix\right|^{1/2} }
@@ -148,10 +149,64 @@ The details of the simulation depends on the actual application.
 For example, if the goal of our surrogate safety metric is to evaluate the risk a current human driver is in, the simulation should involve human driver models. 
 On the other hand, if the goal is to evaluate the risk of \iac{ads}, the simulation should include the same \iac{ads}.
 
+If the result of a simulation only depends on $\situationcurrent$ and $\situationfuture$, i.e., the simulation is fully deterministic and stochastic influences like sensor noise are not considered, then $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ is either $0$ or $1$.
+In this case, one simulation suffices to determine $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$.
+If, on the other hand, there are other factors then $\situationcurrent$ and $\situationfuture$ that influence the result, more simulations are needed.
 A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and $\situationfuture$ and count the number of simulations that result in a collision.
 If $\numberofsimulations$ denotes the number of simulations and $\numberofcollisions$ is the number of collisions, then $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ could be estimated using
 \begin{equation}
-	\probabilitycondest{\collision}{\situationcurrent, \situationfuture}
+	\label{eq:binomial estimation}
+	\probabilityestcond{\collision}{\situationcurrent, \situationfuture}
 	= \frac{\numberofcollisions}{\numberofsimulations}.
 \end{equation}
+
+An important choice for estimating $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ is the number of simulations, $\numberofsimulations$.
+One approach is to keep increasing $\numberofsimulations$ until there is enough confidence in the estimation of \cref{eq:binomial estimation}.
+E.g., the Clopper-Pearson interval \autocite{clopper1934use} or the Wilson score interval \autocite{wilson1927probable} can be used to determine the confidence of the estimation of \cref{eq:binomial estimation}.
+A disadvantage of this approach is that only the fact that a simulation results in a collision is used while the simulation provides more information. 
+Therefore, we provide an alternative approach to estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$.
+
+Let $\simulationresult \in \realnumbers^{\dimsimulationresult}$ be a vector representing the result of a simulation, such that $\simulationresult \in \spacecollision$ if and only if the simulation results in a collision.
+Here, $\spacecollision \subset \realnumbers^{\dimsimulationresult}$ represents the set of possible simulation results in which a collision occurs. 
+Therefore, we have
+\begin{equation}
+	\probabilitycond{\collision}{\situationcurrent, \situationfuture}
+	= \probabilitycond{\simulationresult \in \spacecollision}{\situationcurrent, \situationfuture}
+	= \int_{\spacecollision} \densitycond{\simulationresult}{\situationcurrent, \situationfuture} \ud \simulationresult.
+\end{equation}
+Similar as with the estimation of $\density{\situationcurrent, \situationfuture}$ in \cref{sec:estimate future}, we employ \ac{kde} to estimate $\densitycond{\simulationresult}{\situationcurrent, \situationfuture}$:
+\begin{equation}
+	\label{eq:kde simulation result}
+	\densityestcond{\simulationresult}{\situationcurrent, \situationfuture}
+	= \frac{1}{\numberofsimulations} 
+	\sum_{\simulationindex=1}^{\numberofsimulations} \kernelfuncnormalized{\simulationbandwidth}{\simulationinstance{\simulationindex} - \simulationresult},
+\end{equation}
+where $\simulationinstance{\simulationindex}$ denotes the result of the $\simulationindex$-th simulation and $\simulationbandwidth$ denotes an appropriate bandwidth matrix.
+The kernel function $\kernelfuncnormalized{\simulationbandwidth}{\cdot}$ is similarly defined as \cref{eq:kernel current future}.
+We can now estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ by substituting $\densityestcond{\simulationresult}{\situationcurrent, \situationfuture}$ of \cref{eq:kde simulation result} for $\densitycond{\simulationresult}{\situationcurrent, \situationfuture}$:
+\begin{equation}
+	\label{eq:estimate probability of collision}
+	\probabilityestcond{\collision}{\situationcurrent, \situationfuture}
+	= \probabilityestcond{\simulationresult \in \spacecollision}{\situationcurrent, \situationfuture}
+	= \int_{\spacecollision} \densityestcond{\simulationresult}{\situationcurrent, \situationfuture} \ud \simulationresult.
+\end{equation}
+
+We are still left with choosing the number of simulations $\numberofsimulations$ in \cref{eq:kde simulation result}.
+Our proposal is keep increasing $\numberofsimulations$ until the variance of $\probabilityestcond{\simulationresult \in \spacecollision}{\situationcurrent, \situationfuture}$ is below a threshold $\simulationthreshold$.
+The variance follows from \textcite{nadaraya1964some}:
+\begin{equation}
+	\variance{\probabilityestcond{\simulationresult \in \spacecollision}{\situationcurrent, \situationfuture}}
+	= \frac{\probabilitycond{\simulationresult \in \spacecollision}{\situationcurrent, \situationfuture}
+		\left( 1-\probabilitycond{\simulationresult \in \spacecollision}{\situationcurrent, \situationfuture} \right)}{\numberofsimulations}.
+\end{equation}
+Because $\probabilitycond{\simulationresult \in \spacecollision}{\situationcurrent, \situationfuture}$ is unknown, we use the estimated counterpart of \cref{eq:estimate probability of collision}.
+Thus, $\numberofsimulations$ is increased until the following condition is met:
+\begin{equation}
+	\label{eq:condition stop simulations}
+	\frac{\probabilityestcond{\simulationresult \in \spacecollision}{\situationcurrent, \situationfuture}
+		\left( 1-\probabilityestcond{\simulationresult \in \spacecollision}{\situationcurrent, \situationfuture} \right)}{\numberofsimulations}
+	< \simulationthreshold.
+\end{equation}
+
+
 
