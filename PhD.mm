@@ -4912,7 +4912,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Kernel Density Estimation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_500468896" CREATED="1513311876271" MODIFIED="1513311886206">
+<node TEXT="Kernel Density Estimation" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_500468896" CREATED="1513311876271" MODIFIED="1513311886206">
 <node TEXT="Invention of KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_754407193" CREATED="1513312193327" MODIFIED="1513312239799">
 <node TEXT="Rosenblatt (1956)" ID="ID_245750230" CREATED="1513312276939" MODIFIED="1534390598239" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/087%20Kernel%20Density%20Estimation%20-%20Rosenblatt.pdf">
 <attribute NAME="key" VALUE="rosenblatt1956remarks"/>
@@ -5258,6 +5258,18 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="AF4DCD8889C632C47C945D49A8264DC4B934AC345FDC9FD9817BBA932DA5E">
     <pdf_title>Reliability Engineering and System Safety</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="ECDF uncertainty" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_320080386" CREATED="1609757364405" MODIFIED="1609757375286">
+<node TEXT="Wilson&apos;s method" ID="ID_798812793" CREATED="1609757583782" MODIFIED="1609757662455" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/534%20Wilson&apos;s%20method.pdf">
+<attribute NAME="key" VALUE="wilson1927probable"/>
+<attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
+<attribute NAME="year" VALUE="1927"/>
+<attribute NAME="title" VALUE="Probable Inference, the Law of Succession, and Statistical Inference"/>
+<attribute NAME="authors" VALUE="Wilson, Edwin B"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="7ED35598BBA97EF06F8AE8253DBD4522A36D6F4629A905BFFEDB1DEFBB047DA">
+    <pdf_title>Probable Inference, the Law of Succession, and Statistical Inference</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Copulas" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_875017157" CREATED="1513683693764" MODIFIED="1513736283329" MOVED="1594717451424">

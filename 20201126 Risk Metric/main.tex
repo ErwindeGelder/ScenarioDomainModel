@@ -28,7 +28,7 @@
 % Variables
 \newcommand{\bandwidth}{h}
 \newcommand{\bandwidthmatrix}{H}
-\newcommand{\collision}{C}
+\newcommand{\collision}{\mathrm{C}}
 \newcommand{\density}[1]{p\left( #1 \right)}
 \newcommand{\densitycond}[2]{\density{ #1 | #2 }}
 \newcommand{\densityest}[1]{\hat{p}\left( #1 \right)}
@@ -36,28 +36,36 @@
 \newcommand{\dummyvara}{a}
 \newcommand{\dummyvarb}{b}
 \newcommand{\dummyvarkernel}{u}
+\newcommand{\dimsimulationresult}{d_{\mathrm{z}}}
 \newcommand{\e}[1]{\exp \left\{ #1 \right\}}
 \newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
-\newcommand{\numberofcollisions}{n_\mathrm{C}}
+\newcommand{\numberofcollisions}{n_{\collision}}
 \newcommand{\numberofsimulations}{n}
 \newcommand{\probability}[1]{P\left( #1 \right)}
 \newcommand{\probabilitycond}[2]{\probability{ #1 | #2 }}
 \newcommand{\probabilityest}[1]{\hat{P}\left( #1 \right)}
-\newcommand{\probabilitycondest}[2]{\probability{ #1 | #2 }}
+\newcommand{\probabilityestcond}[2]{\probabilityest{ #1 | #2 }}
 \newcommand{\realnumbers}{\mathds{R}}
+\newcommand{\spacecollision}{\mathcal{Z}_{\collision}}
+\newcommand{\simulationindex}{j}
+\newcommand{\simulationresult}{z}
+  \newcommand{\simulationinstance}[1]{\simulationresult_{#1}}
+  \newcommand{\simulationbandwidth}{\bandwidthmatrix_{\simulationresult}}
+\newcommand{\simulationthreshold}{\epsilon}
 \newcommand{\situationcurrent}{x}
-\newcommand{\situationcurrentdim}{n_{\situationcurrent}}
-\newcommand{\situationcurrentinstance}{X}
-\newcommand{\situationcurrentspace}{\mathcal{X}}
+  \newcommand{\situationcurrentdim}{n_{\situationcurrent}}
+  \newcommand{\situationcurrentinstance}{X}
+  \newcommand{\situationcurrentspace}{\mathcal{X}}
 \newcommand{\situationfuture}{y}
-\newcommand{\situationfuturedim}{n_{\situationfuture}}
-\newcommand{\situationfutureinstance}{Y}
-\newcommand{\situationfutureparta}{\situationfuture_1}
-\newcommand{\situationfuturepartb}{\situationfuture_2}
-\newcommand{\situationfuturespace}{\mathcal{Y}}
+  \newcommand{\situationfuturedim}{n_{\situationfuture}}
+  \newcommand{\situationfutureinstance}{Y}
+  \newcommand{\situationfutureparta}{\situationfuture_1}
+  \newcommand{\situationfuturepartb}{\situationfuture_2}
+  \newcommand{\situationfuturespace}{\mathcal{Y}}
 \newcommand{\situationindex}{i}
 \newcommand{\situationnumberof}{N}
 \newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\variance}[1]{\mathrm{Var}\left[#1\right]}
 
 \begin{document}
 
