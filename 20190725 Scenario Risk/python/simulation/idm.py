@@ -53,6 +53,7 @@ class IDM(StandardModel):
         self.parms.a_acc, self.parms.b_acc = parms.a_acc, parms.b_acc
         self.parms.delta = parms.delta
         self.parms.safety_distance = parms.safety_distance
+        self.parms.max_view = parms.max_view
 
         StandardModel.init_simulation(self, parms)
 
