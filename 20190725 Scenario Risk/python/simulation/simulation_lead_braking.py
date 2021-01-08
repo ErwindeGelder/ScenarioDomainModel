@@ -19,7 +19,7 @@ from .hdm import HDM, HDMParameters
 from .idm import IDMParameters
 from .idmplus import IDMPlus
 from .leader_braking import LeaderBraking, LeaderBrakingParameters
-from .simulation_longitudinal import SimulationLongitudinal
+from .simulation_string import SimulationString
 
 
 def hdm_lead_braking_pars(**kwargs):
@@ -83,7 +83,10 @@ def idm_lead_braking_pars(**kwargs):
         reactiontime = np.random.lognormal(np.log(.92**2/np.sqrt(.92**2+.28**2)),
                                            np.sqrt(np.log(1+.28**2/.92**2)))
     steptime = 0.01
-    amin = kwargs["amin"] if "amin" in kwargs else -10
+    parms = dict()
+    for parm in ["amin", "max_view"]:
+        if parm in kwargs:
+            parms[parm] = kwargs[parm]
     thw = kwargs["thw"] if "thw" in kwargs else 1.1
     init_speed = kwargs["v0"]
     safety_distance = 2.0
@@ -97,7 +100,7 @@ def idm_lead_braking_pars(**kwargs):
                          safety_distance=safety_distance,
                          a_acc=1,
                          b_acc=1.5,
-                         amin=amin)
+                         **parms)
 
 
 def acc_lead_braking_pars(**kwargs):
@@ -105,7 +108,10 @@ def acc_lead_braking_pars(**kwargs):
 
     :return: Parameter object that can be passed via init_simulation.
     """
-    amin = kwargs["amin"] if "amin" in kwargs else -10
+    parms = dict()
+    for parm in ["amin", "sensor_range"]:
+        if parm in kwargs:
+            parms[parm] = kwargs[parm]
     init_speed = kwargs["v0"]
     safety_distance = ACC.safety_distance(init_speed)
     default_parameters = ACCParameters()
@@ -115,7 +121,7 @@ def acc_lead_braking_pars(**kwargs):
                                init_speed=init_speed,
                                init_position=-init_distance,
                                n_reaction=0,
-                               amin=amin)
+                               **parms)
     return parameters
 
 
@@ -180,7 +186,7 @@ def cacc_lead_braking_pars(**kwargs):
     return parameters
 
 
-class SimulationLeadBraking(SimulationLongitudinal):
+class SimulationLeadBraking(SimulationString):
     """ Class for simulation the scenario "lead vehicle braking".
 
     Attributes:
@@ -194,8 +200,8 @@ class SimulationLeadBraking(SimulationLongitudinal):
             follower = HDM()
         if follower_parameters is None:
             follower_parameters = hdm_lead_braking_pars
-        SimulationLongitudinal.__init__(self, LeaderBraking(), self._leader_parameters, follower,
-                                        follower_parameters, **kwargs)
+        SimulationString.__init__(self, [LeaderBraking(), follower],
+                                  [self._leader_parameters, follower_parameters], **kwargs)
 
     @staticmethod
     def _leader_parameters(**kwargs):
@@ -214,4 +220,4 @@ class SimulationLeadBraking(SimulationLongitudinal):
         if "dv" not in kwargs:
             kwargs["dv"] = kwargs["v0"] * kwargs["ratio_dv_v0"]
 
-        SimulationLongitudinal.init_simulation(self, **kwargs)
+        SimulationString.init_simulation(self, **kwargs)
