@@ -2968,7 +2968,7 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="70F0963867844B56899C7D7CAE3B4E28F4A4D75C7B712D46DCC722F9E5E4FA"/>
 </node>
 </node>
-<node TEXT="Importance sampling" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1913334735" CREATED="1580828834503" MODIFIED="1587030556467" MOVED="1587030544283">
+<node TEXT="Importance sampling" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1913334735" CREATED="1580828834503" MODIFIED="1587030556467" MOVED="1587030544283">
 <node TEXT="Using Kriging" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_155030782" CREATED="1587030561275" MODIFIED="1587030579878">
 <node TEXT="Metamodel-Based Importance Sampling for Structural Reliability Analysis" ID="ID_943613050" CREATED="1580828847951" MODIFIED="1590912450281" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/420%20Metamodel-based%20importance%20sampling.pdf" MOVED="1587030582859">
 <attribute NAME="key" VALUE="dubourg2013metamodel"/>
@@ -3094,6 +3094,16 @@
 <attribute NAME="authors" VALUE="de Gelder, Erwin and Paardekooper, Jan-Pieter"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="9A15784CA5621117E7C0E8473AB6257BD55E7220F64F537AB6749F112A702812">
     <pdf_title>Assessment of Automated Driving Systems Using Real-Life Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="2018 Zhao et al. Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers" ID="ID_468761401" CREATED="1610005789183" MODIFIED="1610005805780" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/168%20Accelerated%20evaluation%20of%20AVs%20for%20car-following.pdf" MOVED="1610005816179">
+<attribute NAME="key" VALUE="zhao2018evaluation"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers"/>
+<attribute NAME="authors" VALUE="Zhao, Ding and Huang, Xianan and Peng, Huei and Lam, Henry and LeBlanc, David J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="834F4AABA922F39FF39B994BA5ACC8E56FEB33A4E555B66EBE33AA6AEDAD">
+    <pdf_title>Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers</pdf_title>
 </pdf_annotation>
 </node>
 <node TEXT="2020 Thal et al. based on data collected in Germany" ID="ID_1875429082" CREATED="1605694219418" MODIFIED="1605694350031"/>
@@ -4855,6 +4865,15 @@
     <pdf_title>Lara 1</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Unfalltypen-Katalog" ID="ID_1517014608" CREATED="1609826433174" MODIFIED="1609826666871" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/536%20Unfalltypen-Katalog.pdf">
+<attribute NAME="key" VALUE="ortlepp2016unfalltypen"/>
+<attribute NAME="year" VALUE="2016"/>
+<attribute NAME="title" VALUE="Unfalltypen-{K}atalog -- {L}eitfaden zur {B}estimmung des {U}nfalltyps"/>
+<attribute NAME="authors" VALUE="Ortlepp, J{\&quot;o}rg and Butterwegge, Petra"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DC26733B266A35AFB7835D466C0AD15E411C92931BE3798B3928C4A72B1DBF">
+    <pdf_title>Unfalltypen-Katalog</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Statistics" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1275892799" CREATED="1513218346839" MODIFIED="1518000997123" HGAP="54">
@@ -4912,7 +4931,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Kernel Density Estimation" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_500468896" CREATED="1513311876271" MODIFIED="1513311886206">
+<node TEXT="Kernel Density Estimation" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_500468896" CREATED="1513311876271" MODIFIED="1513311886206">
 <node TEXT="Invention of KDE" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_754407193" CREATED="1513312193327" MODIFIED="1513312239799">
 <node TEXT="Rosenblatt (1956)" ID="ID_245750230" CREATED="1513312276939" MODIFIED="1534390598239" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/087%20Kernel%20Density%20Estimation%20-%20Rosenblatt.pdf">
 <attribute NAME="key" VALUE="rosenblatt1956remarks"/>
@@ -5260,6 +5279,16 @@
 </pdf_annotation>
 </node>
 <node TEXT="ECDF uncertainty" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_320080386" CREATED="1609757364405" MODIFIED="1609757375286">
+<node TEXT="Clopper-Pearson" ID="ID_816505894" CREATED="1609757862273" MODIFIED="1609757933929" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/535%20Clopper-Pearson.pdf">
+<attribute NAME="key" VALUE="clopper1934use"/>
+<attribute NAME="journal" VALUE="Biometrika"/>
+<attribute NAME="year" VALUE="1934"/>
+<attribute NAME="title" VALUE="The Use of Confidence or Fiducial Limits Illustrated in the Case of the Binomial"/>
+<attribute NAME="authors" VALUE="Clopper, Charles J and Pearson, Egon S"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="D0BC679E858FBE37A1725A0DC7F3BA14488E57B6D92A89A0951DE24B79F3C">
+    <pdf_title>The Use of Confidence or Fiducial Limits Illustrated in the Case of the Binomial Author(s): C. J. Clopper and E. S. Pearson Source: Biometrika , Dec., 1934, Vol. 26, No. 4 (Dec., 1934), pp. 404-413 Published by: Oxford University Press on behalf of Biometrika Trust</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="Wilson&apos;s method" ID="ID_798812793" CREATED="1609757583782" MODIFIED="1609757662455" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/534%20Wilson&apos;s%20method.pdf">
 <attribute NAME="key" VALUE="wilson1927probable"/>
 <attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
