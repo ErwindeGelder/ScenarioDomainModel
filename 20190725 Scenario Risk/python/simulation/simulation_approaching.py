@@ -50,13 +50,16 @@ def acc_approaching_pars(**kwargs):
 
     :return: Parameter object that can be passed via init_simulation.
     """
-    amin = kwargs["amin"] if "amin" in kwargs else -10
+    parms = dict()
+    for parm in ["amin", "sensor_range"]:
+        if parm in kwargs:
+            parms[parm] = kwargs[parm]
     return ACCParameters(speed=kwargs["vego"],
                          init_speed=kwargs["vego"],
                          init_position=INIT_POSITION_FOLLOWER,
                          n_reaction=0,
-                         amin=amin,
-                         cruise_after_collision=True)
+                         cruise_after_collision=True,
+                         **parms)
 
 
 def acc_hdm_approaching_pars(**kwargs):
@@ -115,8 +118,11 @@ def idm_approaching_pars(i=1, **kwargs):
     else:
         reactiontime = np.random.lognormal(np.log(.92**2/np.sqrt(.92**2+.28**2)),
                                            np.sqrt(np.log(1+.28**2/.92**2)))
+    parms = dict()
+    for parm in ["amin", "max_view"]:
+        if parm in kwargs:
+            parms[parm] = kwargs[parm]
     steptime = 0.01
-    amin = kwargs["amin"] if "amin" in kwargs else -10
     thw = kwargs["thw"] if "thw" in kwargs else 1.1
     safety_distance = 2
     init_position = INIT_POSITION_FOLLOWER - (i-1)*(thw*kwargs["vego"]+safety_distance)
@@ -129,7 +135,7 @@ def idm_approaching_pars(i=1, **kwargs):
                          safety_distance=safety_distance,
                          a_acc=1,
                          b_acc=1.5,
-                         amin=amin)
+                         **parms)
 
 
 class SimulationApproaching(SimulationString):
