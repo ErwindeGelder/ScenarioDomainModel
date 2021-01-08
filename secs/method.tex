@@ -105,6 +105,10 @@ The Gaussian kernel is given by
 	\e{ -\frac{1}{2} \dummyvarkernel^T \bandwidthmatrix^{-1} \dummyvarkernel }.
 \end{equation}
 
+The bandwidth matrix controls the width of the Gaussian kernel, or, in other words, the influence of each sampling point on nearby regions. 
+There are many different ways of estimating the bandwidth, ranging from simple reference rules like, e.g., Silverman's rule of thumb \autocite{silverman1986density} to more elaborate methods; see \autocite{turlach1993bandwidthselection, chiu1996comparative, jones1996brief, bashtannyk2001bandwidth, zambom2013review} for reviews of different bandwidth selection methods.
+Here, we use one-leave-out cross-validation to compute the bandwidth becayse this minimizes the Kullback-Leibler divergences between the real \ac{pdf} $\density{\situationcurrent, \situationfuture}$ and the estimated \ac{pdf} $\densityest{\situationcurrent, \situationfuture}$ \autocite{turlach1993bandwidthselection, zambom2013review}.
+
 Drawing samples from the \ac{kde} in \cref{eq:kde estimate} is straightforward: two random numbers are drawn, one to choose a random generator Gaussian out of the $\situationnumberof$ Gaussians that are used to construct the \ac{kde}, and one random number from that Gaussian.
 Sampling from $\densityestcond{\situationfuture}{\situationcurrent}$ works similarly, but instead of using an equal probability for each random generator Gaussian to be selected, different probabilities are used based on $\situationcurrent$.
 For more information on sampling from a conditional \ac{pdf} obtained using \ac{kde}, see \autocite{holmes2012fast}.
@@ -231,5 +235,24 @@ To get an unbiased result, the estimated probability $\densityestcond{\situation
 Importance sampling is out of scope of this article.
 For more information, we refer the interested reader to \autocite{deGelder2017assessment, zhao2018evaluation}, in which the authors successfully applied importance sampling to assess \acp{ads}.
 
-
+Since we want to evaluate the risk metric during real-time operation of the ego vehicle, the expression of \cref{eq:monte carlo collision} is problematic, even if the calculation is accelerated using a technique like importance sampling.
+Therefore, we propose to evaluate \cref{eq:monte carlo collision} only for some fixed $\situationcurrentinstance_{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
+Next, local regression is used to estimate \cref{eq:monte carlo collision}.
+More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric}:
+\begin{equation}
+	\probabilityestcond{\collision}{\situationcurrent}
+	\approx \frac{ \sum_{\situationindex=1}^{\numberofdesignpoints}
+		\kernelfuncnormalized{\bandwidthnw}{\situationcurrent - \situationcurrentinstance_{\situationindexdesign}}
+		\probabilityestcond{\collision}{\situationcurrentinstance_{\situationindexdesign}}
+	}{\sum_{\situationindex=1}^{\numberofdesignpoints}
+		\kernelfuncnormalized{\bandwidthnw}{\situationcurrent - \situationcurrentinstance_{\situationindexdesign}}}.
+\end{equation}
+Here, $\probabilityestcond{\collision}{\situationcurrentinstance_{\situationindex}}$ is based \cref{eq:monte carlo collision} and $\kernelfuncnormalized{\bandwidthnw}{\cdot}$ represents the Gaussian kernel given by \cref{eq:kernel current future}.
+Two important choices have to be made: The choice of the $\situationcurrentinstance_{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ for which to evaluate \cref{eq:monte carlo collision} and the choice of the bandwidth matrix $\bandwidthnw$.
+We suggest to base the design points $\situationcurrentinstance_{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ on the data that is used to estimate $\densitycond{\situationfuture}{\situationcurrent}$ in \cref{sec:estimate future}, i.e., $\situationcurrentinstance_{\situationindex}, \situationindex \in \{1,\ldots,\situationnumberof\}$, such that all $\situationcurrentinstance_{\situationindex}$ have at least one design point $\situationcurrentinstance_{\situationindexdesign}$ within a distance of $\distancedesignpoints$:
+\begin{equation}
+	\min_{\situationindexdesign} \normtwo{ \situationcurrentinstance_{\situationindex} - \situationcurrentinstance_{\situationindexdesign} } \leq \distancedesignpoints,
+	\quad \forall \situationindex \in \{1, \ldots, \situationnumberof\}.
+\end{equation}
+We compute the bandwidth matrix $\bandwidthnw$ using one-leave-out cross-validation.
 

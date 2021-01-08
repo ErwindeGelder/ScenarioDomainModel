@@ -28,18 +28,22 @@
 % Variables
 \newcommand{\bandwidth}{h}
 \newcommand{\bandwidthmatrix}{H}
+  \newcommand{\bandwidthnw}{H_{\mathrm{NW}}}
 \newcommand{\collision}{\mathrm{C}}
 \newcommand{\density}[1]{p\left( #1 \right)}
 \newcommand{\densitycond}[2]{\density{ #1 | #2 }}
 \newcommand{\densityest}[1]{\hat{p}\left( #1 \right)}
 \newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
+\newcommand{\distancedesignpoints}{d_x}
 \newcommand{\dummyvara}{a}
 \newcommand{\dummyvarb}{b}
 \newcommand{\dummyvarkernel}{u}
 \newcommand{\dimsimulationresult}{d_{\mathrm{z}}}
 \newcommand{\e}[1]{\exp \left\{ #1 \right\}}
 \newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
+\newcommand{\normtwo}[1]{\left\Vert #1 \right\Vert}
 \newcommand{\numberofcollisions}{n_{\collision}}
+\newcommand{\numberofdesignpoints}{m}
 \newcommand{\numberofmontecarlo}{n_{\mathrm{MC}}}
 \newcommand{\numberofsimulations}{n}
 \newcommand{\probability}[1]{P\left( #1 \right)}
@@ -64,6 +68,7 @@
   \newcommand{\situationfuturepartb}{\situationfuture_2}
   \newcommand{\situationfuturespace}{\mathcal{Y}}
 \newcommand{\situationindex}{i}
+  \newcommand{\situationindexdesign}{k}
 \newcommand{\situationnumberof}{N}
 \newcommand{\ud}{\,\mathrm{d}}
 \newcommand{\variance}[1]{\mathrm{Var}\left[#1\right]}
@@ -74,10 +79,12 @@
 \begin{acronym}[AAAAAAAA]
 	\acro{ads}[ADS]{Automated Driving System}
 	\acroindefinite{ads}{an}{an}
+	\acro{kde}[KDE]{Kernel Density Estimation}
+	\acro{nw}[NW]{Nadaraya-Watson}
+	\acroindefinite{nw}{an}{a}
 	\acro{odd}[ODD]{Operational Design Domain}
 	\acroindefinite{odd}{an}{an}
 	\acro{pdf}[pdf]{probability density function}
-	\acro{kde}[KDE]{Kernel Density Estimation}
 \end{acronym}
 
 \maketitle
