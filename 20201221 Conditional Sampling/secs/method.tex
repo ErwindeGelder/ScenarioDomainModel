@@ -388,7 +388,7 @@ The procedure for sampling is summarized in \cref{alg:constrained hard}.
 	
 	$\bwriul$, $\bwriur$, $\bwribl$, $\bwribr$ $\gets$ Compute $\svdv^T \bandwidthmatrix^{-1} \svdv$ according to \cref{eq:rotated matrix inverse}
 	
-	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute weights according to \cref{eq:weights constrained simple}
+	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute weights according to \cref{eq:weights constrained hard}
 	
 	$\indexsampling$ $\gets$ Generate a random integer $\indexsampling$ between and including $1$ and $\numberofsamples$ with likelihood proportional to $\weight{\indexsampling}$
 	
