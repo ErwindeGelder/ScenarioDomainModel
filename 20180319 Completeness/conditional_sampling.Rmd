@@ -1,0 +1,240 @@
+# Conditional sampling from a Kernel Density Estimator
+
+Do the necessary imports:
+```{r}
+install.packages("ks", dependencies=TRUE)
+library("ks")
+```
+
+## Load the data
+
+```{r}
+pars <- read.csv("scaling.csv", header = FALSE)
+pars <- as.matrix(pars)  # deltat, vstart, vend
+pars <- pars[pars[, 3] > 0,]  # Remove full stops
+pars[,3] <- pars[,2] - pars[,3]  # deltat, vstart, vdiff
+pars[,2] <- pars[,2] - pars[,3]  # deltat, vend, vdiff
+pars[,1] <- pars[,3] / pars[,1]  # amean, vdiff, vend
+```
+
+Bandwidth is estimated using the plug-in selector of Wang & Jones (1994).
+
+```{r}
+Hdiag <- Hpi.diag(pars)
+scaling <- sqrt(diag(Hdiag))
+spars <- pars
+for (i in 1:3) {
+    spars[,i] <- spars[,i] / scaling[i]
+}
+Hfull <- Hpi(pars)
+```
+
+`spars` contains the scaled data, such that the bandwidth equals 1.
+
+## Conditional sampling with amean=1, vend=10 and simple bandwidth
+
+```{r}
+amean <- 1
+vend <- 10
+n <- 1000000
+npdf <- 100
+xmin <- 0
+xmax <- 15
+
+# 2. Compute the weights
+weights <- exp(-0.5 * ((spars[, 1] - amean/scaling[1])^2 + 
+                       (spars[, 2] - vend/scaling[2])^2))
+
+# 3. Pick a random integer
+integers <- sample(length(weights), size = n, replace = TRUE, prob = weights)
+
+# 4. Generate random sample
+samples <- (spars[integers, 3] + rnorm(n)) * scaling[3]
+
+# Show the result
+xpdf <- seq(xmin, xmax, length.out = npdf)
+ypdf <- numeric(npdf)
+for (i in 1:npdf) {
+    ypdf[i] <- sum(exp(-.5 * ((spars[, 1] - amean/scaling[1])^2 + 
+                              (spars[, 2] - vend/scaling[2])^2 +
+                              (spars[, 3] - xpdf[i]/scaling[3])^2)))
+}
+ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
+hist(samples, breaks = 100, freq = FALSE, xlim = c(xmin, xmax), 
+     xlab = "Speed difference [m/s]")
+lines(xpdf, ypdf, col="red")
+```
+
+## Conditional sampling with amean=1, vend=20 and full bandwidth
+
+```{r}
+# 2. Compute inverse of H
+Hinv <- solve(Hfull)
+Lambda11 <- Hinv[1:2, 1:2]
+Lambda12 <- Hinv[1:2, 3]
+Lambda21 <- Hinv[3, 1:2]
+Lambda22 <- Hinv[3, 3]
+
+# 3. Compute weights
+schur <- Lambda11 - Lambda12 %*% solve(Lambda22) %*% Lambda21
+weights <- numeric(dim(pars)[1])
+for (i in 1:dim(pars)[1]) {
+    xdiff = pars[i,1:2] - c(amean, vend)
+    weights[i] <- exp(-.5 * (xdiff %*% schur %*% xdiff))
+}
+
+# 4. Pick a random integer
+integers <- sample(length(weights), size = n, replace = TRUE, prob = weights)
+
+# 5.Compute the mean of the Gaussian
+new_means <- simplify2array(lapply(1:length(weights), 
+                                   function(i) pars[i, 3] - 
+                                       solve(Lambda22) %*% Lambda21 %*% 
+                                       (c(amean, vend) - pars[i, 1:2])))
+means <- new_means[integers]
+
+# 6. Generate sample with covariance Lambda22^-1
+samples <- means + rnorm(n) * as.vector(sqrt(solve(Lambda22)))
+
+# Show the result
+xpdf <- seq(xmin, xmax, length.out = npdf)
+ypdf <- numeric(npdf)
+for (i in 1:npdf) {
+    xvec <- c(amean, vend, xpdf[i])
+    for (j in 1:length(weights)) {
+        xdiff = xvec - pars[j,]
+        ypdf[i] <- ypdf[i] + exp(-.5 * xdiff %*% Hinv %*% xdiff)
+    }
+}
+ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
+hist(samples, breaks = 100, freq = FALSE, xlim = c(xmin, xmax), 
+     xlab = "Speed difference [m/s]")
+lines(xpdf, ypdf, col="red")
+```
+
+## Conditional sampling with amean=1, vstart=20 and simple bandwidth
+
+```{r}
+vstart <- 15
+A = matrix(c(1, 0, 0, 1, 0, 1), nrow = 2)
+Ascaled = matrix(c(scaling[1], 0, 0, scaling[2], 0, scaling[3]), nrow=2)
+b = c(amean, vstart)
+
+# 1. Perform SVD
+decomposition <- svd(Ascaled, nv = 3)
+U <- decomposition$u
+S <- diag(decomposition$d, length(decomposition$d))
+V1 <- decomposition$v[,1:2]
+V2 <- matrix(decomposition$v[,3])
+
+# 2. Map data points to xbar
+xbar <- spars %*% V1
+
+# 3. Map data points to xtilde
+xtilde <- spars %*% V2
+
+# 4. Compute fixed part of samples
+xfixed <- solve(S) %*% U %*% b
+
+# 5. Compute weights
+weights <- numeric(dim(pars)[1])
+for (i in 1:dim(pars)[1]) {
+    weights[i] <- exp(-.5 * sum((xfixed - xbar[i,])^2))
+}
+
+# 6. Pick a random integer
+integers <- sample(length(weights), size = n, replace = TRUE, prob = weights)
+
+# 7. Generate random sample of variable part of sample
+xvariable <- xtilde[integers] + rnorm(n)
+
+# 8. Compute real sample
+samples <- t(matrix(rep(V1 %*% xfixed, n), 3) + V2 %*% xvariable)
+for (i in 1:3) {
+    samples[,i] <- samples[,i] * scaling[i]
+}
+
+# Show the result
+xpdf <- seq(xmin, xmax, length.out = npdf)
+ypdf <- numeric(npdf)
+for (i in 1:npdf) {
+    ypdf[i] <- sum(exp(-.5 * ((spars[, 1] - amean/scaling[1])^2 + 
+                              (spars[, 2] - (vstart-xpdf[i])/scaling[2])^2 +
+                              (spars[, 3] - xpdf[i]/scaling[3])^2)))
+}
+ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
+hist(samples[,3], breaks = 100, freq = FALSE, xlim = c(xmin, xmax), 
+     xlab = "Speed difference [m/s]")
+lines(xpdf, ypdf, col="red")
+```
+
+## Conditional sampling with amean=1, vstart=20 and full bandwidth
+
+```{r}
+m <- dim(pars)[1]
+
+# 1. Perform SVD
+decomposition <- svd(A, nv = 3)
+U <- decomposition$u
+S <- diag(decomposition$d, length(decomposition$d))
+V1 <- decomposition$v[,1:2]
+V2 <- matrix(decomposition$v[,3])
+
+# 2. Map data points to xbar
+xbar <- pars[1:m,] %*% V1
+
+# 3. Map data points to xtilde
+xtilde <- pars[1:m,] %*% V2
+
+# 4. Compute fixed part of samples
+xfixed <- solve(S) %*% U %*% b
+
+# 5. Compute inverse of V' H V
+Hinvtilde <- t(decomposition$v) %*% solve(Hfull) %*% decomposition$v
+Lambda11tilde <- Hinvtilde[1:2, 1:2]
+Lambda12tilde <- Hinvtilde[1:2, 3]
+Lambda21tilde <- Hinvtilde[3, 1:2]
+Lambda22tilde <- Hinvtilde[3, 3]
+
+# 6. Compute weights
+schur <- Lambda11tilde - Lambda12tilde%*%solve(Lambda22tilde)%*%Lambda21tilde
+weights <- numeric(m)
+for (i in 1:m) {
+    xdiff = xfixed - xbar[i,]
+    weights[i] <- exp(-.5 * (t(xdiff) %*% schur %*% xdiff))
+}
+
+# 7. Pick a random integer
+integers <- sample(length(weights), size = n, replace = TRUE, prob = weights)
+
+# 8.Compute the mean of the Gaussian
+new_means <- simplify2array(lapply(1:length(weights), 
+                                   function(i) xtilde[i,] - 
+                                       solve(Lambda22tilde)%*%Lambda21tilde%*% 
+                                       (xfixed - xbar[i,])))
+means <- new_means[integers]
+
+# 9. Generate random sample of variable part of sample
+xvariable <- means + rnorm(n) * as.vector(sqrt(solve(Lambda22tilde)))
+
+# 10. Compute real sample
+samples <- t(matrix(rep(V1 %*% xfixed, n), 3) + V2 %*% xvariable)
+
+# Show the result
+xpdf <- seq(xmin, xmax, length.out = npdf)
+ypdf <- numeric(npdf)
+for (i in 1:npdf) {
+    xvec <- c(amean, vstart-xpdf[i], xpdf[i])
+    for (j in 1:m) {
+        xdiff <- pars[j,] - xvec
+        ypdf[i] <- ypdf[i] + exp(-.5 * t(xdiff) %*% Hinv %*% xdiff)
+    }
+}
+ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
+hist(samples[,3], breaks = 100, freq = FALSE, xlim = c(xmin, xmax), 
+     xlab = "Speed difference [m/s]")
+lines(xpdf, ypdf, col="red")
+```
+
+
+
