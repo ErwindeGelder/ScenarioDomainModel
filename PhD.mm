@@ -2388,7 +2388,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Driver models" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1772712523" CREATED="1588598901841" MODIFIED="1588598907254">
+<node TEXT="Driver models" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1772712523" CREATED="1588598901841" MODIFIED="1588598907254">
 <node TEXT="Longitudinal" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1269817352" CREATED="1589212055509" MODIFIED="1589212063683">
 <node TEXT="Behavioral car-following model (Gipps)" ID="ID_1488863154" CREATED="1589213303594" MODIFIED="1590912450532" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/447%20Behavioral%20car-following%20model.pdf">
 <attribute NAME="key" VALUE="gipps1981behavioral"/>
@@ -2638,6 +2638,16 @@
     <pdf_title>Realistic Car-Following Models for Microscopic Simulation of Adaptive and Cooperative Adaptive Cruise Control Vehicles</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Up to 10 s needed after Take-Over Request" ID="ID_1055239388" CREATED="1610523453023" MODIFIED="1610523522430" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/538%20Take-Over%20Requests%20for%20automated%20driving.pdf">
+<attribute NAME="key" VALUE="melcher2015take"/>
+<attribute NAME="journal" VALUE="Procedia Manufacturing"/>
+<attribute NAME="year" VALUE="2015"/>
+<attribute NAME="title" VALUE="Take-Over Requests for Automated Driving"/>
+<attribute NAME="authors" VALUE="Melcher, Vivien and Rauh, Stefan and Diederichs, Frederik and Widlroither, Harald and Bauer, Wilhelm"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5FC227FD5AE568C2DA9A26188FFB963F7F7E048C6E8B8656D51CEFFE42F4C9">
+    <pdf_title>Take-Over Requests for automated driving</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Vehicle model" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1081732918" CREATED="1597061233166" MODIFIED="1597061238599">
 <node TEXT="Model in CACC paper Jeroen Ploeg" ID="ID_1467860182" CREATED="1597061239998" MODIFIED="1597061310188" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/509%20Design%20and%20Experimental%20Evaluation%20of%20Cooperative%20Adaptive%20Cruise%20Control.pdf">
@@ -2792,7 +2802,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Other work related to ITS" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_98733965" CREATED="1607285352671" MODIFIED="1607285363935">
+<node TEXT="Other work related to ITS" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_98733965" CREATED="1607285352671" MODIFIED="1607285363935">
 <node TEXT="Safety Assessment and Uncertainty Quantification of ADAS using Stochastic Analysis Methods" ID="ID_876657" CREATED="1607285365135" MODIFIED="1607327737771" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/526%20Safety%20Assessment%20and%20Uncertainty%20Quantification.pdf">
 <attribute NAME="key" VALUE="rasch2019safety"/>
 <attribute NAME="year" VALUE="2019"/>
@@ -2810,6 +2820,30 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5EBAD34ED40DE5D817BE2ECC059E96811512435891B912B1CBA401F38A">
     <pdf_title>Using Time-to-React based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving</pdf_title>
 </pdf_annotation>
+</node>
+</node>
+<node TEXT="Metric" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1394103913" CREATED="1610467590648" MODIFIED="1610467599757">
+<node TEXT="Scenario-based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1113772797" CREATED="1610467606104" MODIFIED="1610467620604">
+<node TEXT="Scenario-based threat metric evaluation based on the highd dataset" ID="ID_1351061813" CREATED="1610467623307" MODIFIED="1610467686339" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/537%20Scenario-based%20threat%20metric%20evaluation%20based%20on%20the%20highd%20dataset.pdf">
+<attribute NAME="key" VALUE="schneider2020scenario"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Scenario-Based Threat Metric Evaluation Based on the Highd Dataset"/>
+<attribute NAME="authors" VALUE="Schneider, Patrick and Butz, Martin and Heinzemann, Christian and Oehlerking, Jens and Woehrle, Matthias"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="236BDA3E4D8CF31FF2E29BCD0B389DA91179C1936B0EF9CADA1F9ADA6D5235">
+    <pdf_title>Scenario-based threat metric evaluation based on the dataset</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Time-based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_939855241" CREATED="1610527173440" MODIFIED="1610527179069">
+<node TEXT="Time to steer, time to brake, time to kickdown" ID="ID_22507840" CREATED="1610527187129" MODIFIED="1610527275164" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/533%20Scenario-Based%20Risk%20Assessment.pdf">
+<attribute NAME="key" VALUE="wagner2018using"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Using Time-to-React Based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving"/>
+<attribute NAME="authors" VALUE="Wagner, Sebastian and Groh, Korbinian and Kuhbeck, Thomas and Dorfel, Michael and Knoll, Alois"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5EBAD34ED40DE5D817BE2ECC059E96811512435891B912B1CBA401F38A">
+    <pdf_title>Using Time-to-React based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 </node>
@@ -2874,6 +2908,17 @@
 <attribute NAME="authors" VALUE="Doersch, Carl"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="CAD3B6980FBAD819F8F922CC8D1B5446DD133426AC3FD3E4714718AC4E614">
     <pdf_title>Tutorial on Variational Autoencoders</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Bayesian Optimization" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_185969113" CREATED="1610526605700" MODIFIED="1610526619687">
+<node TEXT="Identification of Test Cases for ADS Using Bayesian Optimization" ID="ID_1919932450" CREATED="1610526628291" MODIFIED="1610526740801" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/539%20Identification%20of%20Test%20Cases%20for%20ADS%20Using%20Bayesian%20Optimization.pdf">
+<attribute NAME="key" VALUE="gangopadhyay2019identification"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="Identification of Test Cases for Automated Driving Systems Using {B}ayesian Optimization"/>
+<attribute NAME="authors" VALUE="Gangopadhyay, Briti and Khastgir, Siddartha and Dey, Sumanta and Dasgupta, Pallab and Montana, Giovanni and Jennings, Paul"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="E4A0864EA2F58894881E8BB4AE324F3623DD69E01274757F2FCEE2FBB52F7290">
+    <pdf_title>Identification of Test Cases for Automated Driving Systems Using Bayesian Optimization</pdf_title>
 </pdf_annotation>
 </node>
 </node>
@@ -4002,7 +4047,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
+<node TEXT="Other nomenclature related to scenarios" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_809992535" CREATED="1511405212920" MODIFIED="1511405427250">
 <node TEXT="Ego vehicle" LOCALIZED_STYLE_REF="styles.subsubtopic" FOLDED="true" ID="ID_529419369" CREATED="1511407106639" MODIFIED="1511407400161">
 <node TEXT="Here, ego vehicle refers to vehicle for which perception is done" ID="ID_1017618787" CREATED="1511407150673" MODIFIED="1534391438326" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/002%20General%20behavior%20prediction%20scenario%20model%20tree.pdf">
 <attribute NAME="key" VALUE="Bonnin2014"/>
@@ -4329,7 +4374,7 @@
 </node>
 </node>
 </node>
-<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
+<node TEXT="In general about &quot;ontology&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_852653451" CREATED="1515430874325" MODIFIED="1515430967982">
 <node TEXT="Portable Ontology Specifications (ontology=&quot;explicit specification of a conceptualization&quot;)" ID="ID_1984593187" CREATED="1515430907186" MODIFIED="1590912449994" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/107%20Gruber%20-%20Translation%20in%20Portable%20Ontology%20Specifications.pdf">
 <attribute NAME="key" VALUE="gruber1993ontology"/>
 <attribute NAME="journal" VALUE="Knowledge Acquisition"/>
@@ -4540,7 +4585,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="In general about &quot;object-oriented&quot;" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1406053831" CREATED="1596016318125" MODIFIED="1596016328541">
+<node TEXT="In general about &quot;object-oriented&quot;" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1406053831" CREATED="1596016318125" MODIFIED="1596016328541">
 <node TEXT="Concepts and Paradigms of Object-Oriented Programming" ID="ID_1769300570" CREATED="1596016425258" MODIFIED="1596016428444" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/498%20Concepts%20and%20paradigms%20of%20object-oriented%20programming.pdf">
 <attribute NAME="key" VALUE="wegner1990concepts"/>
 <attribute NAME="journal" VALUE="ACM SIGPLAN OOPS Messenger"/>
@@ -4804,7 +4849,7 @@
 <attribute NAME="authors" VALUE="Smith, Gene"/>
 </node>
 </node>
-<node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
+<node TEXT="Scenario classes definition using literature" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_595110429" CREATED="1526269353796" MODIFIED="1526269367979">
 <node TEXT="Deliverable D7.3 AdaptIVe: Impact Analysis for Supervised AD Applications" ID="ID_1205070616" CREATED="1526269804012" MODIFIED="1590912449767" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/182%20AdaptIVe_SP7_D7_3_Impact%20analysis%20for%20supervised%20automated%20driving%20applications.pdf">
 <attribute NAME="key" VALUE="adaptive2017d73"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -4873,6 +4918,20 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="DC26733B266A35AFB7835D466C0AD15E411C92931BE3798B3928C4A72B1DBF">
     <pdf_title>Unfalltypen-Katalog</pdf_title>
 </pdf_annotation>
+</node>
+</node>
+<node TEXT="PEGASUS definitions" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1535570678" CREATED="1610525658177" MODIFIED="1610525664159">
+<node TEXT="Logical scenario" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1097576342" CREATED="1610525665332" MODIFIED="1610525673238">
+<node TEXT="A framework for definition of logical scenarios" ID="ID_969502938" CREATED="1610525674365" MODIFIED="1610525741704" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/512%20A%20framework%20for%20definition%20of%20logical%20scenarios.pdf">
+<attribute NAME="key" VALUE="weber2019framework"/>
+<attribute NAME="journal" VALUE="Traffic Injury Prevention"/>
+<attribute NAME="year" VALUE="2019"/>
+<attribute NAME="title" VALUE="A Framework for Definition of Logical Scenarios for Safety Assurance of Automated Driving"/>
+<attribute NAME="authors" VALUE="Weber, Hendrik and Bock, Julian and Klimke, Jens and Roesener, Christian and Hiller, Johannes and Krajewski, Robert and Zlocki, Adrian and Eckstein, Lutz"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="B293A771571FED74F18930C1D6CB43679D142381A609982D0253FE514BB3">
+    <pdf_title>A framework for definition of logical scenarios for safety assurance of automated driving</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 </node>
