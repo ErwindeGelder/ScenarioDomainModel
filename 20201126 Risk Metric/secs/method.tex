@@ -135,7 +135,7 @@ Because these two \acp{pdf} have less variables than $\density{\situationcurrent
 
 Another option is to model $\densitycond{\situationfuture}{\situationcurrent}$ as a cascade of conditional probabilities. E.g., using the partitioning $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}^T$, $\densitycond{\situationcurrent}{\situationfuture}$ can be approximated using two conditional densities:
 \begin{equation}
-	\densitycond{\situationcurrent}{\situationfutureparta}
+	\densitycond{\situationfuture}{\situationcurrent}
 	= \densitycond{\situationfutureparta, \situationfuturepartb}{\situationcurrent}
 	= \densitycond{\situationfutureparta}{\situationfuturepartb, \situationcurrent} \cdot \densitycond{\situationfuturepartb}{\situationcurrent}
 	\approx \densitycond{\situationfutureparta}{\situationfuturepartb} \cdot \densitycond{\situationfuturepartb}{\situationcurrent}.
@@ -143,7 +143,15 @@ Another option is to model $\densitycond{\situationfuture}{\situationcurrent}$ a
 The same partitioning can be applied to $\densitycond{\situationfutureparta}{\situationfuturepartb}$ and $\densitycond{\situationfuturepartb}{\situationcurrent}$ until only two-dimensional \acp{pdf} need to be estimated.
 For more information on this, we refer the reader to \autocite{aas2009paircopula, nagler2016evading}.
 
+*  *  *  *  *  *  *  *  *  *  *
+***
 
+
+x = 1.1 -> 1 P(C|x=1.1) = P(C|x=1)
+x = 1.3 -> 1 P(C|x=1.3) = 0.7*P(C|x=1) + 0.3*P(C|x=2)
+x = 2.4 -> 2
+
+P(C|x=1), P(C|X=2)
 
 \subsection{Estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$}
 \label{sec:estimate collision}
@@ -153,7 +161,7 @@ The details of the simulation depends on the actual application.
 For example, if the goal of our surrogate safety metric is to evaluate the risk a current human driver is in, the simulation should involve human driver models. 
 On the other hand, if the goal is to evaluate the risk of \iac{ads}, the simulation should include the same \iac{ads}.
 
-If the result of a simulation only depends on $\situationcurrent$ and $\situationfuture$, i.e., the simulation is fully deterministic and stochastic influences like sensor noise are not considered, then $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ is either $0$ or $1$.
+If the result of a simulation only depends on $\situationcurrent$ and $\situationfuture$, i.e., the simulation is fully deterministic and stochastic influences like sensor noise or stochastic behaviors of human drivers like their varying reaction time are not considered, then $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ is either $0$ or $1$.
 In this case, one simulation suffices to determine $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$.
 If, on the other hand, there are other factors then $\situationcurrent$ and $\situationfuture$ that influence the result, more simulations are needed.
 A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and $\situationfuture$ and count the number of simulations that result in a collision.
@@ -170,7 +178,7 @@ E.g., the Clopper-Pearson interval \autocite{clopper1934use} or the Wilson score
 A disadvantage of this approach is that only the fact that a simulation results in a collision is used while the simulation provides more information. 
 Therefore, we provide an alternative approach to estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$.
 
-Let $\simulationresult \in \realnumbers^{\dimsimulationresult}$ be a vector representing the result of a simulation, such that $\simulationresult \in \spacecollision$ if and only if the simulation results in a collision.
+Let $\simulationresult \in \realnumbers^{\dimsimulationresult}$ be a continuous variable representing the result of a simulation, such that $\simulationresult \in \spacecollision$ if and only if the simulation results in a collision.
 Here, $\spacecollision \subset \realnumbers^{\dimsimulationresult}$ represents the set of possible simulation results in which a collision occurs. 
 Therefore, we have
 \begin{equation}
