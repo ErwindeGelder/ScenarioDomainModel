@@ -41,3 +41,19 @@ by clicking multiple times on "OK".
 - On Linux, suppose that the whole repository is stored locally in the folder 
 `~/ScenarioDomainModel/`. Add the line 
 `export PYTHONPATH=~/ScenarioDomainModel`.
+
+# Installing the package
+
+The domain model from this repository can be installed as a Python package and quickly reused in other projects. Go to the package directory and type in a console:
+
+```sh
+pip3 install .
+```
+
+To import the package in another project, use the standard importing mechanisms:
+
+```python
+import domain_model
+# Or
+from domain_model import Actor
+```
