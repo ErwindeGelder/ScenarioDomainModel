@@ -2923,12 +2923,11 @@
 </node>
 </node>
 <node TEXT="using reference data (open-loop)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1767777743" CREATED="1516863517341" MODIFIED="1516863545359">
-<node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1605691943533" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
-<attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
-<attribute NAME="year" VALUE="2012"/>
-<attribute NAME="title" VALUE="Object-Oriented {B}ayesian Networks for Detection of Lane Change Maneuvers"/>
-<attribute NAME="authors" VALUE="D. Kasper and G. Weidl and T. Dang and G. Breuel and A. Tamke and A. Wedel and W. Rosenstiel"/>
-<attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
+<node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1610634342826" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
+<attribute NAME="key" VALUE="lages2013automatic"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Automatic Scenario Generation Based on Laserscanner Reference Data and Advanced Offline Processing"/>
+<attribute NAME="authors" VALUE="Lages, Ulrich and Spencer, Martin and Katz, Roman"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D5BBC4566DCABF87326E6A1995FECABD59E3A2771120F5CBC38A1FC1A2F6">
     <pdf_title>Dietmar Kasper, Galia Weidl, Thao Dang, Gabi Breuel, Andreas Tamke, and Andreas Wedel</pdf_title>
 </pdf_annotation>
@@ -3151,7 +3150,15 @@
     <pdf_title>Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers</pdf_title>
 </pdf_annotation>
 </node>
-<node TEXT="2020 Thal et al. based on data collected in Germany" ID="ID_1875429082" CREATED="1605694219418" MODIFIED="1605694350031"/>
+<node TEXT="2020 Thal et al. based on data collected in Germany" ID="ID_1875429082" CREATED="1605694219418" MODIFIED="1610634275018" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/524%20Incorporating%20safety%20relevance%20and%20realistic%20parameter.pdf">
+<attribute NAME="key" VALUE="thal2020incorporating"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Incorporating Safety Relevance and Realistic Parameter Combinations in Test-Case Generation for Automated Driving Safety Assessment"/>
+<attribute NAME="authors" VALUE="Thal, Silvia and Znamiec, Holger and Henze, Roman and Nakamura, Hiroki and Imanaga, Hisashi and Antona-Makoshi, Jacobo and Uchida, Nobuyuki and Taniguchi, Satoshi"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="DCAC7F8585B02FEF6136CF722951A7A5D84997609D7B6085912FE92FF1B8CFC6">
+    <pdf_title>Incorporating safety relevance and realistic parameter combinations in test-case generation for automated driving safety assessment</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Comparing test cases/scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_339658345" CREATED="1588671276013" MODIFIED="1588671290180">
 <node TEXT="Computational Optimal Transport" ID="ID_1543804349" CREATED="1588671291746" MODIFIED="1590912450224" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/442%20Computational%20Optimal%20Transport.pdf">
