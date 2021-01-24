@@ -3,7 +3,11 @@
 Do the necessary imports:
 ```{r}
 install.packages("ks", dependencies=TRUE)
-library("ks")
+require("ks")
+```
+```{r}
+install.packages("tikzDevice")
+require(tikzDevice)
 ```
 
 ## Load the data
@@ -14,9 +18,8 @@ pars <- as.matrix(pars)  # deltat, vstart, vend
 pars <- pars[pars[, 3] > 0,]  # Remove full stops
 pars[,3] <- pars[,2] - pars[,3]  # deltat, vstart, vdiff
 pars[,2] <- pars[,2] - pars[,3]  # deltat, vend, vdiff
-pars[,1] <- pars[,3] / pars[,1]  # amean, vdiff, vend
+pars[,1] <- pars[,3] / pars[,1]  # amean, vend, vdiff
 ```
-
 Bandwidth is estimated using the plug-in selector of Wang & Jones (1994).
 
 ```{r}
@@ -28,6 +31,12 @@ for (i in 1:3) {
 }
 Hfull <- Hpi(pars)
 ```
+```{r}
+scaling
+```
+```{r}
+Hfull
+```
 
 `spars` contains the scaled data, such that the bandwidth equals 1.
 
@@ -37,9 +46,10 @@ Hfull <- Hpi(pars)
 amean <- 1
 vend <- 10
 n <- 1000000
-npdf <- 100
-xmin <- 0
-xmax <- 15
+npdf <- 250
+xmin <- -10
+xmax <- 25
+xlim <- c(0, 15)
 
 # 2. Compute the weights
 weights <- exp(-0.5 * ((spars[, 1] - amean/scaling[1])^2 + 
@@ -60,10 +70,26 @@ for (i in 1:npdf) {
                               (spars[, 3] - xpdf[i]/scaling[3])^2)))
 }
 ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
-hist(samples, breaks = 100, freq = FALSE, xlim = c(xmin, xmax), 
-     xlab = "Speed difference [m/s]")
+hist(samples, breaks = 100, freq = FALSE, xlim = xlim,
+     ylim=c(0, max(ypdf)*1.01),
+     xlab = "Speed difference [m/s]", xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red")
 ```
+
+```{r}
+width <- 5
+height <- 3
+lw <- 3
+folder <- file.path("..", "20201221 Conditional Sampling", "figs")
+
+tikz(file.path(folder, "conditional_simple.tikz"), width=width, height=height)
+hist(samples, breaks = 100, freq = FALSE, xlim = xlim,
+     ylim=c(0, max(ypdf)*1.01), 
+     xlab = "Speed difference [m/s]", main=NULL, xaxs = "i", yaxs = "i")
+lines(xpdf, ypdf, col="red", lw=lw)
+dev.off()
+```
+
 
 ## Conditional sampling with amean=1, vend=20 and full bandwidth
 
@@ -107,12 +133,22 @@ for (i in 1:npdf) {
     }
 }
 ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
-hist(samples, breaks = 100, freq = FALSE, xlim = c(xmin, xmax), 
-     xlab = "Speed difference [m/s]")
+hist(samples, breaks = 100, freq = FALSE, xlim = xlim,
+     ylim=c(0, max(ypdf)*1.01), 
+     xlab = "Speed difference [m/s]", xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red")
 ```
+```{r}
+tikz(file.path(folder, "conditional_hard.tikz"), width=width, height=height)
+hist(samples, breaks = 100, freq = FALSE, xlim = xlim,
+     ylim=c(0, max(ypdf)*1.01), 
+     xlab = "Speed difference [m/s]", main=NULL, xaxs = "i", yaxs = "i")
+lines(xpdf, ypdf, col="red", lw=lw)
+dev.off()
+```
 
-## Conditional sampling with amean=1, vstart=20 and simple bandwidth
+
+## Conditional sampling with amean=1, vstart=15 and simple bandwidth
 
 ```{r}
 vstart <- 15
@@ -163,9 +199,19 @@ for (i in 1:npdf) {
                               (spars[, 3] - xpdf[i]/scaling[3])^2)))
 }
 ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
-hist(samples[,3], breaks = 100, freq = FALSE, xlim = c(xmin, xmax), 
-     xlab = "Speed difference [m/s]")
+hist(samples[,3], breaks = 100, freq = FALSE, xlim = xlim,
+     ylim=c(0, max(ypdf)*1.01), 
+     xlab = "Speed difference [m/s]", xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red")
+```
+
+```{r}
+tikz(file.path(folder, "constrained_simple.tikz"), width=width, height=height)
+hist(samples[,3], breaks = 100, freq = FALSE, xlim = xlim,
+     ylim=c(0, max(ypdf)*1.01), 
+     xlab = "Speed difference [m/s]", main=NULL, xaxs = "i", yaxs = "i")
+lines(xpdf, ypdf, col="red", lw=lw)
+dev.off()
 ```
 
 ## Conditional sampling with amean=1, vstart=20 and full bandwidth
@@ -231,10 +277,26 @@ for (i in 1:npdf) {
     }
 }
 ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
-hist(samples[,3], breaks = 100, freq = FALSE, xlim = c(xmin, xmax), 
-     xlab = "Speed difference [m/s]")
-lines(xpdf, ypdf, col="red")
+hist(samples[,3], breaks = 100, freq = FALSE, xlim = xlim,
+     ylim=c(0, max(ypdf)*1.01), 
+     xlab = "Speed difference [m/s]", xaxs = "i", yaxs = "i")
+lines(xpdf, ypdf, col="red", ylim=c(0, max(ypdf)))
 ```
 
+```{r}
+print(U)
+print(S)
+print(V1)
+print(V2)
+```
+
+```{r}
+tikz(file.path(folder, "constrained_hard.tikz"), width=width, height=height)
+hist(samples[,3], breaks = 100, freq = FALSE, xlim = xlim, 
+     ylim = c(0, max(ypdf)*1.01),
+     xlab = "Speed difference [m/s]", main=NULL, xaxs = "i", yaxs = "i")
+lines(xpdf, ypdf, col="red", lw=lw)
+dev.off()
+```
 
 
