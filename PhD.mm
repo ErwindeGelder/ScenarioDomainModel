@@ -2923,11 +2923,12 @@
 </node>
 </node>
 <node TEXT="using reference data (open-loop)" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1767777743" CREATED="1516863517341" MODIFIED="1516863545359">
-<node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1610634342826" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
-<attribute NAME="key" VALUE="lages2013automatic"/>
-<attribute NAME="year" VALUE="2013"/>
-<attribute NAME="title" VALUE="Automatic Scenario Generation Based on Laserscanner Reference Data and Advanced Offline Processing"/>
-<attribute NAME="authors" VALUE="Lages, Ulrich and Spencer, Martin and Katz, Roman"/>
+<node TEXT="Scenario Generation Based on Laserscanner Reference Data (not so good)" ID="ID_853678128" CREATED="1516863547152" MODIFIED="1611517448007" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/080%20Object-Oriented%20Bayesian%20Networks%20for%20Detection%20of%20Lane%20Change%20Maneuvers.pdf">
+<attribute NAME="key" VALUE="kasper2012oobayesnetworks"/>
+<attribute NAME="year" VALUE="2012"/>
+<attribute NAME="title" VALUE="Object-Oriented {B}ayesian Networks for Detection of Lane Change Maneuvers"/>
+<attribute NAME="authors" VALUE="D. Kasper and G. Weidl and T. Dang and G. Breuel and A. Tamke and A. Wedel and W. Rosenstiel"/>
+<attribute NAME="journal" VALUE="IEEE Intelligent Transportation Systems Magazine"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="D5BBC4566DCABF87326E6A1995FECABD59E3A2771120F5CBC38A1FC1A2F6">
     <pdf_title>Dietmar Kasper, Galia Weidl, Thao Dang, Gabi Breuel, Andreas Tamke, and Andreas Wedel</pdf_title>
 </pdf_annotation>
@@ -5189,6 +5190,14 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="A7A5FA231AEC94E87158CB745537555CCE6E3D74F37EE14E5CDF7CF2F89489A4">
     <pdf_title>FFT-Based Fast Bandwidth Selector for Multivariate Kernel Density Estimation</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="Multivariate plug-in bandwidth selection (Wand &amp; Jones)" ID="ID_1379252932" CREATED="1611517418549" MODIFIED="1611517535993" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/540%20Multivariate%20plug-in%20bandwidth%20selection.pdf">
+<attribute NAME="key" VALUE="wand1994multivariate"/>
+<attribute NAME="journal" VALUE="Computational Statistics"/>
+<attribute NAME="year" VALUE="1994"/>
+<attribute NAME="title" VALUE="Multivariate Plug-in Bandwidth Selection"/>
+<attribute NAME="authors" VALUE="Wand, Matt P and Jones, M Chris"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="24FB506E6ECB693E219AC9B93A5B58104BC44FE8D9C87F48A3B0D7441BDD2"/>
 </node>
 </node>
 <node TEXT="Applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_765833272" CREATED="1539231165017" MODIFIED="1539231170294">
