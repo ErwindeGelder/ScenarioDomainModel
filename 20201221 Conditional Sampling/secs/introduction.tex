@@ -3,47 +3,28 @@
 
 \ac{kde} \autocite{parzen1962estimation, rosenblatt1956remarks} is a technique for estimating a \ac{pdf}. 
 It is often referred to as a non-parametric way to estimate the \ac{pdf}, because no use is made of a predefined \ac{pdf} for which certain parameters are fitted to the data. 
-In \ac{kde}, the \ac{pdf} $\density{\variable}$ is estimated as follows:
-\begin{equation}
-	\label{eq:kde}
-	\densityest{\variable} = 
-	\frac{1}{\numberofsamples} \sum_{\indexdata=1}^{\numberofsamples} 
-	\kernelfuncnormalized{\bandwidthmatrix}{\variable - \datapoint{\indexdata}}.
-\end{equation}
 
-Here, $\datapoint{\indexdata} \in \realnumbers^{\dimension}$ represents the $i$-th data point.
-In total, there are $\numberofsamples$ data points, so $i \in \{1, \ldots, \numberofsamples\}$.
-In \cref{eq:kde}, $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is the so-called scaled kernel with a positive definite symmetric bandwidth matrix $\bandwidthmatrix \in \realnumbers^{\dimension \times \dimension}$.
-%Typically, the choice of the bandwidth matrix is much more critical than the choice of the kernel function \autocite{turlach1993bandwidthselection, bashtannyk2001bandwidth}. 
-Sampling new data points from $\densityest{\variable}$ of \cref{eq:kde} is straightforward.
-First, an integer $\indexsampling$ between and including $1$ and $\numberofsamples$ is randomly chosen with each integer equal likelihood. 
-Next, a random number is drawn from the kernel $\kernelfuncnormalized{\bandwidthmatrix}{\variable - \datapoint{\indexsampling}}$.
+Sampling from \iac{kde} is straightforward. 
+However, in some cases, one wants to sample from the estimated \ac{pdf} while a part of the random sample is fixed.
+This is known as conditional sampling. 
+For example, suppose we have a two dimensional estimated distribution and we want to draw samples from this distribution while the first of these two variables is equal to a predefined value. 
+One approach would be to evaluate the probability density function on a grid with possible values for the second variable. 
+Out of these evaluations, a cumulative distribution function can be estimated that can be used to draw samples. 
+This method would be highly cumbersome, especially with higher dimensional \acp{pdf}. 
+Luckily, methods exist to perform the conditional sampling on \iac{kde} if one or more variables are fixed \autocite{hyndman1996estimating, holmes2007fast}.
 
-With conditional sampling, the goal is to sample from $\densityest{\variable}$ while having a part of $\variable$ already given. 
-Without loss of generality, consider the variable $\variable$ that can be decomposed into two parts:
-\begin{equation}
-	\label{eq:decomposition}
-	\variable = \begin{bmatrix}
-		\variableparta \\ \variablepartb
-	\end{bmatrix},
-\end{equation}
-such that $\variableparta \in \realnumbers^{\dimensionparta}$ and $\variablepartb \in \realnumbers^{\dimensionpartb}$ with $\dimensionparta + \dimensionpartb = \dimension$.
-With this notation, the goal of conditional sampling is to sample $\variablepartb$ while $\variableparta$ is fixed, i.e., sampling from the conditional density estimation
-\begin{equation}
-	\label{eq:conditional density}
-	\densityestcond{\variablepartb}{\variableparta}
-	= \frac{\densityest{\variablepartb, \variableparta}}{\densityest{\variableparta}}.
-\end{equation}
+Whereas conditional sampling with one or more variables fixed is described in literature, we have not found a description of sampling from \iac{kde} while the variables satisfy a linear constraint. 
+In this paper, we describe a method to sample from \iac{kde}, such that the samples satisfy a linear constraint. 
+To do this, we first provide an algorithm to sample from \iac{kde} while one or more variables are fixed. 
+To sample from \iac{kde} while the variables satisfy a linear constraint, we first perform a rotation of the variables, such that we can use the aforementioned algorithm to sample from the \iac{kde}. 
 
-In the first half of this paper, we show a way to sample from a conditional density like \cref{eq:conditional density} that is estimated using \ac{kde}. 
-We first show this for the simplified case in which the bandwidth matrix equals a $\dimension\times\dimension$ identity matrix, denoted by $\identitymatrix{\dimension}$, multiplied by a squared scalar bandwidth $\bandwidth$, i.e., $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$. 
-In this simplified case, the results from \textcite{hyndman1996estimating, holmes2007fast} can be directly applied.
-Next, we show how we can sample in the more general case of a full bandwidth matrix $\bandwidthmatrix$.
-In the second half of this paper, we show a way to sample from \iac{kde} like \cref{eq:kde}, but instead of having few values of $\variable$ fixed, like in \cref{eq:conditional density}, we deal with the linear constraint on $\variable$:
-\begin{equation}
-	\label{eq:linear constraint}
-	\constraintmatrix \variable = \constraintvector.
-\end{equation}
-Here $\constraintmatrix \in \realnumbers^{\numberofconstraints \times \dimension}$ and $\constraintvector \in \realnumbers^{\numberofconstraints}$ denote the constraint matrix and constraint vector, respectively. 
-In total, there are $\numberofconstraints < \dimension$ constraints.
-As with the first half of this paper, we first show it in the simplified case in which $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$ and later in the more general case of a full bandwidth matrix $\bandwidthmatrix$.
+In \cref{sec:problem}, we first describe the problem in more detail.
+In \cref{sec:method}, we provide for algorithms to solve this problem:
+\begin{enumerate}
+	\item Sampling with one or more variables fixed from \iac{kde} with a scalar bandwidth;
+	\item Sampling with one or more variables fixed from \iac{kde} with a full bandwidth matrix;
+	\item Sampling from \iac{kde} with a scalar bandwidth, such that the variables satisfy linear constraints;
+	\item Sampling from \iac{kde} with a full bandwidth matrix, such that the variables satisfy linear constraints;
+\end{enumerate}
+Through an example, we illustrate the correct performance of these algorithms in \cref{sec:example}.
+We conclude this paper in \cref{sec:conclusions}.

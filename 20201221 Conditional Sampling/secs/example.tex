@@ -1,2 +1,101 @@
 \section{Example}
 \label{sec:example}
+
+
+
+\subsection{Data and \acp{kde}}
+\label{sec:example data}
+
+In this example, we work with a data set obtained by a vehicle equipped with sensors while driving a predefined route in The Netherlands. 
+As already done in \autocite{deGelder2017assessment, degelder2019completeness}, the data set is used to extract braking activities of the vehicle that is equipped with the sensors. 
+Each of the braking activities is described by $\dimension=3$ variables:
+\begin{enumerate}
+	\item the mean deceleration;
+	\item the end speed; and
+	\item the speed difference.
+\end{enumerate}
+
+To illustrate \cref{alg:conditional simple,alg:constrained simple}, we employ \ac{kde} with the bandwidth matrix $\bandwidthmatrix=\bandwidth\identitymatrix{3}$. 
+First, a diagonal bandwidth matrix is estimated using the plug-in selector of \textcite{wand1994multivariate}, as also explained in \autocite{duong2007ks}.
+Then, the data points are scaled by the values at the diagonal, such that the bandwidth matrix $\bandwidthmatrix=\identitymatrix{3}$ can be used. 
+The scaling is such that:
+\begin{itemize}
+	\item the first variable corresponds to the mean deceleration divided by $0.066$;
+	\item the second variable corresponds to the end difference divided by $0.85$; and
+	\item the third variable corresponds to the speed difference divided by $0.55$.
+\end{itemize}
+
+To illustrate \cref{alg:conditional hard,alg:constrained hard}, we use a full bandwidth matrix $\bandwidthmatrix$. 
+In this case, the bandwidth matrix is estimated using the plug-in selector of \textcite{wand1994multivariate}. 
+The resulting bandwidth matrix is:
+\begin{equation}
+	\bandwidthmatrix \approx
+	\begin{bmatrix}
+		0.0058 & -0.032 & 0.021 \\
+		-0.032 & 0.92 & -0.23 \\
+		0.021 & -0.23 & 0.40
+	\end{bmatrix}.
+\end{equation}
+
+
+
+\subsection{Sampling with part of $\variable$ fixed}
+
+In this first example, we want to sample from the \ac{kde} with part of $\variable$ fixed.
+More specifically, we want to sample the speed difference, while the average deceleration equals $\SI{1}{\meter\per\second\squared}$ and the end speed equals $\SI{10}{\meter\per\second}$. 
+Thus, we have two variables fixed ($\dimensionparta=2$) and one variable that is unconstrained ($\dimensionpartb=1$).
+
+In \cref{fig:conditional simple,fig:conditional hard}, the result of \cref{alg:conditional simple,alg:conditional hard} is shown, respectively. 
+In total $10^6$ samples are generated and shown by the histogram. 
+Because the histograms follow the same pattern as the actual density of the speed difference according to the \ac{kde}, it illustrates that the provided algorithms correctly sample from the \ac{kde}. 
+
+\begin{figure}
+	\centering
+	\input{figs/conditional_simple.tikz}
+	\caption{The histogram shows the result of the conditional sampling according to \cref{alg:conditional simple}. The red line represents the true \ac{pdf}.}
+	\label{fig:conditional simple}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\input{figs/conditional_hard.tikz}
+	\caption{The histogram show the result of the conditional sampling according to \cref{alg:conditional hard}. The red line represents the true \ac{pdf}.}
+	\label{fig:conditional hard}
+\end{figure}
+
+
+
+\subsection{Sampling with linear constraints}
+
+In this second example, we want to sample from the \ac{kde} while the generated samples satisfy $\dimensionparta=2$ linear constraints.
+More specifically, we want to sample the speed difference, while the average deceleration equals $\SI{1}{\meter\per\second\squared}$ and the start speed equals $\SI{15}{\meter\per\second}$. 
+This means that we have
+\begin{equation}
+	\constraintmatrix = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 1 \end{bmatrix}, 
+	\constraintvector = \begin{bmatrix} 1 \\ 15 \end{bmatrix}.
+\end{equation}
+The \ac{svd} according to \cref{eq:svd constraint matrix} gives
+\begin{equation}
+	\svdu = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix},
+	\svds = \begin{bmatrix} \sqrt{2} & 0 \\ 0 & 1 \end{bmatrix},
+	\svdva = \begin{bmatrix} 0 & 1 \\ \frac{1}{2}\sqrt{2} & 0 \\ \frac{1}{2}\sqrt{2} & 0 \end{bmatrix},
+	\svdvb = \begin{bmatrix} 0 \\ -\frac{1}{2}\sqrt{2} \\ \frac{1}{2}\sqrt{2} \end{bmatrix}.
+\end{equation}
+
+In \cref{fig:constrained simple,fig:constrained hard}, the result of \cref{alg:constrained simple,alg:constrained hard} is shown, respectively. 
+In total $10^6$ samples are generated and shown by the histogram. 
+Because the histograms follow the same pattern as the actual density of the speed difference according to the \ac{kde}, it illustrates that the provided algorithms correctly sample from the \ac{kde}. 
+
+\begin{figure}
+	\centering
+	\input{figs/constrained_simple.tikz}
+	\caption{The histogram shows the result of the conditional sampling according to \cref{alg:constrained simple}. The red line represents the true \ac{pdf}.}
+	\label{fig:constrained simple}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\input{figs/constrained_hard.tikz}
+	\caption{The histogram shows the result of the conditional sampling according to \cref{alg:constrained hard}. The red line represents the true \ac{pdf}.}
+	\label{fig:constrained hard}
+\end{figure}

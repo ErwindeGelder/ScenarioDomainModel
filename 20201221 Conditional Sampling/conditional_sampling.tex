@@ -12,6 +12,8 @@
 \usepackage[nolist,nohyperlinks]{acronym}
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage[capitalize]{cleveref}
+\Crefname{figure}{Figure}{Figures}
+\usepackage{siunitx}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 \usepackage{silence}  							%% For filtering warnings
@@ -25,7 +27,7 @@
 
 \title{Conditional Sampling from a Kernel Density Estimator with a Gaussian Kernel}
 \author{Erwin de Gelder}
-\date{December 2020}
+\date{}
 
 % Variables
 \newcommand{\bandwidth}{h}
@@ -96,6 +98,7 @@
 
 \input{secs/abstract}
 \input{secs/introduction}
+\input{secs/problem}
 \input{secs/method}
 \input{secs/example}
 \input{secs/conclusions}

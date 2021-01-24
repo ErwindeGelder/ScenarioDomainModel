@@ -1,0 +1,47 @@
+\section{Problem definition}
+\label{sec:problem}
+
+In \ac{kde}, the \ac{pdf} $\density{\variable}$ is estimated as follows:
+\begin{equation}
+	\label{eq:kde}
+	\densityest{\variable} = 
+	\frac{1}{\numberofsamples} \sum_{\indexdata=1}^{\numberofsamples} 
+	\kernelfuncnormalized{\bandwidthmatrix}{\variable - \datapoint{\indexdata}}.
+\end{equation}
+Here, $\datapoint{\indexdata} \in \realnumbers^{\dimension}$ represents the $i$-th data point.
+In total, there are $\numberofsamples$ data points, so $i \in \{1, \ldots, \numberofsamples\}$.
+In \cref{eq:kde}, $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is the so-called scaled kernel with a positive definite symmetric bandwidth matrix $\bandwidthmatrix \in \realnumbers^{\dimension \times \dimension}$.
+%Typically, the choice of the bandwidth matrix is much more critical than the choice of the kernel function \autocite{turlach1993bandwidthselection, bashtannyk2001bandwidth}. 
+Sampling new data points from $\densityest{\variable}$ of \cref{eq:kde} is straightforward.
+First, an integer $\indexsampling$ between and including $1$ and $\numberofsamples$ is randomly chosen with each integer equal likelihood. 
+Next, a random number is drawn from the kernel $\kernelfuncnormalized{\bandwidthmatrix}{\variable - \datapoint{\indexsampling}}$.
+
+With conditional sampling, the goal is to sample from $\densityest{\variable}$ while having a part of $\variable$ already given. 
+Without loss of generality, consider the variable $\variable$ that can be decomposed into two parts:
+\begin{equation}
+	\label{eq:decomposition}
+	\variable = \begin{bmatrix}
+		\variableparta \\ \variablepartb
+	\end{bmatrix},
+\end{equation}
+such that $\variableparta \in \realnumbers^{\dimensionparta}$ and $\variablepartb \in \realnumbers^{\dimensionpartb}$ with $\dimensionparta + \dimensionpartb = \dimension$.
+With this notation, the goal of conditional sampling is to sample $\variablepartb$ while $\variableparta$ is fixed, i.e., sampling from the conditional density estimation
+\begin{equation}
+	\label{eq:conditional density}
+	\densityestcond{\variablepartb}{\variableparta}
+	= \frac{\densityest{\variablepartb, \variableparta}}{\densityest{\variableparta}}.
+\end{equation}
+
+In the first half of this paper, we show a way to sample from a conditional density like \cref{eq:conditional density} that is estimated using \ac{kde}. 
+We first show this for the simplified case in which the bandwidth matrix equals a $\dimension\times\dimension$ identity matrix, denoted by $\identitymatrix{\dimension}$, multiplied by a squared scalar bandwidth $\bandwidth$, i.e., $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$. 
+In this simplified case, the results from \textcite{hyndman1996estimating, holmes2007fast} can be directly applied.
+Next, we show how we can sample in the more general case of a full bandwidth matrix $\bandwidthmatrix$.
+In the second half of this paper, we show a way to sample from \iac{kde} like \cref{eq:kde}, but instead of having few values of $\variable$ fixed, like in \cref{eq:conditional density}, we deal with the linear constraint on $\variable$:
+\begin{equation}
+	\label{eq:linear constraint}
+	\constraintmatrix \variable = \constraintvector.
+\end{equation}
+Here $\constraintmatrix \in \realnumbers^{\numberofconstraints \times \dimension}$ and $\constraintvector \in \realnumbers^{\numberofconstraints}$ denote the constraint matrix and constraint vector, respectively. 
+In total, there are $\numberofconstraints < \dimension$ constraints.
+As with the first half of this paper, we first show it in the simplified case in which $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$ and later in the more general case of a full bandwidth matrix $\bandwidthmatrix$.
+
