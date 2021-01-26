@@ -2759,7 +2759,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Collision risk" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_333782068" CREATED="1602744988608" MODIFIED="1602744995471">
+<node TEXT="Risk measures" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_333782068" CREATED="1602744988608" MODIFIED="1611644953318">
 <node TEXT="Surrogate safety measure for simulation-based conflict study" ID="ID_65543" CREATED="1602745023961" MODIFIED="1602745112103" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/521%20Surrogate%20Safety%20Measure%20for%20Simulation-Based%20Conflict%20Study.pdf">
 <attribute NAME="key" VALUE="wang2013surrogate"/>
 <attribute NAME="journal" VALUE="Transportation Research Record"/>
@@ -2789,6 +2789,15 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5F760B70AA3859ECAFB7AA49608E9129EC6BD34503F5B53987A2AAC835E7E">
     <pdf_title>On a Formal Model of Safe and Scalable Self-driving Cars</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="Time based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1661737269" CREATED="1611644957060" MODIFIED="1611644964860">
+<node TEXT="TTC and Time-To-Intersection" ID="ID_1640769109" CREATED="1611645314932" MODIFIED="1611645454341" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/541%20A%20time-based%20analysis%20of%20road%20user%20behaviour%20at%20intersections.pdf">
+<attribute NAME="key" VALUE="vanderhorst1990time"/>
+<attribute NAME="year" VALUE="1990"/>
+<attribute NAME="title" VALUE="A Time-Based Analysis of Road User Behaviour at Intersections"/>
+<attribute NAME="authors" VALUE="van der Horst, Richard"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="BE5CEAAD6A57A1C9181859C2F1F2923E0D4588FE514A7795F98E4DADB2BCFE0"/>
+</node>
 </node>
 </node>
 <node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1395912311" CREATED="1607005860636" MODIFIED="1607005870136">
