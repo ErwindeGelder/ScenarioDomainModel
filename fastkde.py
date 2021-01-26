@@ -208,6 +208,10 @@ class KDE:
                     if iqr/1.349 < self.data_helpers.std[i]:
                         self.data_helpers.std[i] = iqr/1.349
 
+            for i in range(self.data.shape[1]):
+                if self.data_helpers.std[i] == 0:
+                    self.data_helpers.std[i] = 1
+
             self.data = self.data / self.data_helpers.std
         else:
             self.data_helpers.std = std
