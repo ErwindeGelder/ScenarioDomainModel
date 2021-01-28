@@ -405,6 +405,9 @@ if __name__ == '__main__':
                       (join('20191113 Journal Scenario Risk', 'scenario_risk'),
                        dict(usebiber=True))])
     compile_pr(35, usebiber=True)
+    compile_pr(36, other=[(join('20201221 Conditional Sampling', 'conditional_sampling'),
+                           dict(usebiber=True)),
+                          (join('20201126 Risk Metric', 'main'), dict(usebiber=True))])
 
     # Revisions/versions
     compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',
@@ -494,6 +497,7 @@ if __name__ == '__main__':
     compile_doc(join('20201126 Anomaly Detection', 'main'), usebibtex=True)
     compile_doc(join('20201126 Risk Metric', 'main'), usebiber=True)
     compile_doc(join('20201207 Risk Quantification Paper', 'main'), usebiber=True)
+    compile_doc(join('20201221 Conditional Sampling', 'conditional_sampling'), usebiber=True)
 
     # Delete folder that has wrong name
     if os.path.exists(join('..', '20180639 Journal paper ontology')):
