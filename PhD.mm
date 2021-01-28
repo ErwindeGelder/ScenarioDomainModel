@@ -2779,6 +2779,15 @@
     <pdf_title>Evaluation of a simulation-based surrogate safety metric</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Other values for Maximum Available Braking Rate" ID="ID_25711870" CREATED="1611842474224" MODIFIED="1611842487487" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/544%20Assessing%20Safety%20Performance%20of%20Transportation%20Systems.pdf">
+<attribute NAME="key" VALUE="cunto2008assessing"/>
+<attribute NAME="authors" VALUE="Cunto, Fl{\&apos;a}vio Jos{\&apos;e} Craveiro"/>
+<attribute NAME="title" VALUE="Assessing Safety Performance of Transportation Systems Using Microscopic Simulation"/>
+<attribute NAME="year" VALUE="2008"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="6C44619DD958F0B8297FF27B2B84157AAE67C9B2FFE96FD11221646C684CC2">
+    <pdf_title>Assessing Safety Performance of Transportation Systems using Microscopic Simulation</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="On a Formal Model of Safe and Scalable Self-Driving Cars" ID="ID_827422195" CREATED="1606387657701" MODIFIED="1606387671860" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/229%20On%20a%20Formal%20Model%20of%20Safe%20and%20Scalable%20Self-driving%20Cars.pdf">
 <attribute NAME="key" VALUE="shalev2017formal"/>
@@ -2798,7 +2807,28 @@
 <attribute NAME="authors" VALUE="van der Horst, Richard"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="BE5CEAAD6A57A1C9181859C2F1F2923E0D4588FE514A7795F98E4DADB2BCFE0"/>
 </node>
+<node TEXT="Modified TTC" ID="ID_706774609" CREATED="1611645646819" MODIFIED="1611645935028" MOVED="1611645650952" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/542%20MTTC.pdf">
+<attribute NAME="key" VALUE="ozbay2008derivation"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2008"/>
+<attribute NAME="title" VALUE="Derivation and Validation of New Simulation-Based Surrogate Safety Measure"/>
+<attribute NAME="authors" VALUE="Ozbay, Kaan and Yang, Hong and Bartin, Bekir and Mudigonda, Sandeep"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="3D2BEF5698E6B85ADC4AF85DCBFA4D21EC2A54CF1CC8FC3848A99C8D66227B">
+    <pdf_title>Derivation and Validation of New Simulation-Based Surrogate Safety Measure</pdf_title>
+</pdf_annotation>
 </node>
+<node TEXT="Time exposed TTC and Time Integrated TTC" ID="ID_1309179346" CREATED="1611645622886" MODIFIED="1611646345562" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/543%20Extended%20Time-to-Collision%20Measures%20for%20Road%20Traffic%20Safety%20Assessment.pdf">
+<attribute NAME="key" VALUE="minderhoud2001extended"/>
+<attribute NAME="journal" VALUE="Accident Analysis \&amp; Prevention"/>
+<attribute NAME="year" VALUE="2001"/>
+<attribute NAME="title" VALUE="Extended Time-to-Collision Measures for Road Traffic Safety Assessment"/>
+<attribute NAME="authors" VALUE="Minderhoud, Michiel M and Bovy, Piet HL"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="287D7FAF904A99B5EFC2EBF80ECA716D5C66FD2C3A45A301EAEBE9D48EC2E1C">
+    <pdf_title>Extended time-to-collision measures for road traffic safety assessment</pdf_title>
+</pdf_annotation>
+</node>
+</node>
+<node TEXT="Evasive actions" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_785463491" CREATED="1611648506971" MODIFIED="1611648514214"/>
 </node>
 <node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1395912311" CREATED="1607005860636" MODIFIED="1607005870136">
 <node TEXT="Safe driving behavior - ITSC2020 paper from TNO" ID="ID_968026414" CREATED="1607005977555" MODIFIED="1607006190176" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/525%20Towards%20a%20Characterization%20of%20Safe%20Driving%20Behavior.pdf">
