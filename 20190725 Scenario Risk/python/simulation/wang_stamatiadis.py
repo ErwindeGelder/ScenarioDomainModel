@@ -9,11 +9,13 @@ Modifications:
 from typing import Union
 import numpy as np
 from scipy.special import erf  # pylint: disable=no-name-in-module
-from options import Options
+from .options import Options
+from .standard_model import StandardModel, StandardParameters
 
 
 class WangStamatiadisParameters(Options):
     """ Parameters for the risk metric of Wang & Stamatiadis. """
+    # To be more precise, these parameters are from Cunto 2008 (page 64).
     lower_limit_braking_rate: float = 4.23  # [m/s2]
     upper_limit_braking_rate: float = 12.68  # [m/s2]
     mean_braking_rate: float = 8.45  # [m/s2]
@@ -176,6 +178,40 @@ class WangStamatiadis:
         :return: Probability of avoiding a collision.
         """
         return 1.0 - self.groupa(ttc) - self.groupb1(ttc, speed_diff)
+
+
+class WSDriver(StandardModel):
+    def acceleration(self, gap: float, vhost: float, vdiff: float) -> float:
+        return self.parms.amin
+
+
+def ws_approaching_pars(**kwargs):
+    """ Define the parameters for the WSDriver model if approaching vehicle.
+
+    The reaction time is sampled from the lognormal distribution mentioned in
+    Wang & Stamatiadis (2014) if it not provided through kwargs.
+    Same applies for the maximum available braking rate.
+
+    :param kwargs: Parameter object that can be passed via init_simulation.
+    """
+    if "reactiontime" in kwargs:
+        reactiontime = kwargs["reactiontime"]
+    else:
+        reactiontime = np.random.lognormal(np.log(.92**2/np.sqrt(.92**2+.28**2)),
+                                           np.sqrt(np.log(1+.28**2/.92**2)))
+    if "amin" in kwargs:
+        amin = kwargs["amin"]
+    else:
+        # Take values from Cunto 2008 (page 64)
+        amin = -(np.random.randn() * 1.40 + 8.45)
+        if not -12.69 < amin < -4.23:
+            amin = -(np.random.randn()*1.3+9.7)
+    steptime = 0.01
+    return StandardParameters(init_speed=kwargs["vego"],
+                              init_position=0,
+                              timestep=steptime,
+                              n_reaction=int(reactiontime/steptime),  # +.5 for rounding
+                              amin=amin)
 
 
 if __name__ == "__main__":

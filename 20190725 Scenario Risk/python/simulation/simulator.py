@@ -26,7 +26,7 @@ class Simulator(ABC):
         self.min_simulation_time = (10 if "min_simulation_time" not in kwargs else
                                     kwargs["min_simulation_time"])
 
-    def simulation(self, parameters: dict, plot=False, seed: int = None) -> float:
+    def simulation(self, parameters: dict, plot=False, seed: int = None) -> np.ndarray:
         """ Run a single simulation.
 
         :param parameters: Parameters of the simulation.
@@ -45,7 +45,7 @@ class Simulator(ABC):
         :return: Result of the simulation.
         """
         if not self.stochastic:
-            if self.simulation(parameters) > 0:
+            if self.simulation(parameters)[0] > 0:
                 return 0
             return 1
 
@@ -54,7 +54,7 @@ class Simulator(ABC):
 
         # At least run the simulation few times in order to construct a KDE.
         n_simulations = self.min_simulations
-        data = np.array([self.simulation(parameters) for _ in range(n_simulations)])
+        data = np.array([self.simulation(parameters)[0] for _ in range(n_simulations)])
         kde = KDE(data)
         kde.compute_bandwidth()
 
@@ -62,7 +62,7 @@ class Simulator(ABC):
         cdf_zero = kde.cdf(np.array([0.]))[0]
         while np.sqrt(cdf_zero*(1-cdf_zero)/n_simulations) > self.tolerance and \
                 n_simulations < self.max_simulations:
-            kde.add_data(np.array([self.simulation(parameters)]))
+            kde.add_data(np.array([self.simulation(parameters)[0]]))
             kde.compute_bandwidth()
             cdf_zero = kde.cdf(np.array([0.]))[0]
             n_simulations += 1

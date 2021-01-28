@@ -108,7 +108,8 @@ class SimulationString(Simulator):
             ax4.legend()
             plt.tight_layout()
 
-        return np.array([minttcs[i] if mindistances[i] > 0 else -impact_speeds[i]
+        # Note the "/10"!!!
+        return np.array([minttcs[i] if mindistances[i] > 0 else -impact_speeds[i]/10
                          for i in range(len(self.vehicles)-1)])
 
     def init_simulation(self, **kwargs) -> None:
