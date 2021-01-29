@@ -645,6 +645,16 @@
 </node>
 </node>
 <node TEXT="Principal Component Analysis" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_124130255" CREATED="1580908280141" MODIFIED="1580908294177">
+<node TEXT="Principal Component Analysis" ID="ID_464900988" CREATED="1611952172894" MODIFIED="1611952253232" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/548%20Principal%20Component%20Analysis.pdf">
+<attribute NAME="key" VALUE="abdi2010principal"/>
+<attribute NAME="journal" VALUE="Wiley Interdisciplinary Reviews: Computational Statistics"/>
+<attribute NAME="year" VALUE="2010"/>
+<attribute NAME="title" VALUE="Principal Component Analysis"/>
+<attribute NAME="authors" VALUE="Abdi, Herv{\&apos;e} and Williams, Lynne J"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="986EB8EB2BEA9D34FF17FFA6B8A6E8B04D4F62889ADE1DCC43CE78C640FB">
+    <pdf_title>Principal component analysis</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="Kernel Principal Component Analysis" ID="ID_1878159466" CREATED="1580908674304" MODIFIED="1590912451371" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/421%20Kernel%20Principal%20Component%20Analysis.pdf">
 <attribute NAME="key" VALUE="scholkopf1997kernel"/>
 <attribute NAME="year" VALUE="1997"/>
@@ -3104,6 +3114,37 @@
     <pdf_title>Isosurface Construction In Any Dimension</pdf_title>
 </pdf_annotation>
 </node>
+</node>
+</node>
+<node TEXT="IS used for assessing AVs" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_901403086" CREATED="1611911869794" MODIFIED="1611911880221">
+<node TEXT="Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers" ID="ID_1612772852" CREATED="1611911894828" MODIFIED="1611911898802" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/168%20Accelerated%20evaluation%20of%20AVs%20for%20car-following.pdf">
+<attribute NAME="key" VALUE="zhao2018evaluation"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers"/>
+<attribute NAME="authors" VALUE="Zhao, Ding and Huang, Xianan and Peng, Huei and Lam, Henry and LeBlanc, David J."/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="834F4AABA922F39FF39B994BA5ACC8E56FEB33A4E555B66EBE33AA6AEDAD">
+    <pdf_title>Accelerated Evaluation of Automated Vehicles in Car-Following Maneuvers</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Accelerated testing for automated vehicles safety evaluation in cut-in scenarios based on importance sampling, genetic algorithm and simulation applications" ID="ID_1377264717" CREATED="1611911905431" MODIFIED="1611912007514" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/545%20Accelerated%20testing%20for%20automated%20vehicles%20safety%20evaluation%20in%20cut-in%20scenarios.pdf">
+<attribute NAME="key" VALUE="xu2018accelerated"/>
+<attribute NAME="journal" VALUE="Journal of Intelligent and Connected Vehicles"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Accelerated Testing for Automated Vehicles Safety Evaluation in Cut-in Scenarios Based on Importance Sampling, Genetic Algorithm and Simulation Applications"/>
+<attribute NAME="authors" VALUE="Xu, Yiming and Zou, Yajie and Sun, Jian"/>
+<pdf_annotation type="BOOKMARK_WITHOUT_DESTINATION" object_id="8072544921844533719" object_number="237" document_hash="FEBD6A3E36FE65D719F140A5537CD945416C26D299EE5A42D4BCDFBF329D7">
+    <pdf_title>Accelerated testing for automated vehicles safety evaluation in cut-in scenarios based on importance sampling, genetic algorithm and simulation applications</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Scalable Generation of Statistical Evidence for the Safety of Automated Vehicles by the Use of Importance Sampling" ID="ID_1353647529" CREATED="1611912361598" MODIFIED="1611912445048" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/546%20Scalable%20Generation%20of%20Statistical%20Evidence%20Using%20Importance%20Sampling.pdf">
+<attribute NAME="key" VALUE="jesenski2020scalable"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Scalable Generation of Statistical Evidence for the Safety of Automated Vehicles by the Use of Importance Sampling"/>
+<attribute NAME="authors" VALUE="Jesenski, Stefan and Tiemann, Nils and Stellet, Jan Erik and Z{\&quot;o}llner, J Marius"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="058F7909EBF8E948C545AACF64EFD107880FA779820DAB4C92741E4C2639">
+    <pdf_title>Scalable Generation of Statistical Evidence for the Safety of Automated Vehicles by the Use of Importance Sampling</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 </node>
@@ -5634,6 +5675,16 @@
 <attribute NAME="title" VALUE="The {S}chur Complement and Its Applications"/>
 <attribute NAME="authors" VALUE="Zhang, Fuzhen"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+<node TEXT="A Linear Algorithm For Generating Random Numbers" ID="ID_912978939" CREATED="1611936745731" MODIFIED="1611936822682" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/547%20A%20Linear%20Algorithm%20For%20Generating%20Random%20Numbers.pdf">
+<attribute NAME="key" VALUE="vose1991linear"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Software Engineering"/>
+<attribute NAME="year" VALUE="1991"/>
+<attribute NAME="title" VALUE="A Linear Algorithm for Generating Random Numbers with a Given Distribution"/>
+<attribute NAME="authors" VALUE="Vose, Michael D"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="80B5AFCA83DA7C85455154A22590467DAB48CB9C9EB4B468685F41F2863198">
+    <pdf_title>For</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Extreme Value Statistics" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_39821948" CREATED="1542357420081" MODIFIED="1542357425327">
