@@ -1,7 +1,20 @@
 \documentclass{article}
+%\documentclass[conference, a4paper]{ieeeconf}
+%\usepackage[left=1.91cm,right=1.31cm,top=3.7cm,bottom=1.91cm]{geometry}
+\pdfoutput=1
+
+% make changes take effect
+\pagestyle{plain}
+% adjust as needed
+\addtolength{\footskip}{0\baselineskip}
+\addtolength{\textheight}{-1\baselineskip}
+%\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\let\proof\relax
+\let\endproof\relax
 \usepackage{amsmath} % assumes amsmath package installed
 \usepackage{amsthm}  % For special theorem style
 \usepackage{amsfonts}
@@ -13,6 +26,7 @@
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \usepackage[capitalize]{cleveref}
 \Crefname{figure}{Figure}{Figures}
+\Crefname{equation}{}{}
 \usepackage{siunitx}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
@@ -25,8 +39,13 @@
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
 
-\title{Conditional Sampling from a Kernel Density Estimator with a Gaussian Kernel}
-\author{Erwin de Gelder}
+\title{Apply Conditional Sampling from a Kernel Density Estimator to Generate Scenarios for the Assessment of Automated Vehicles}
+\author{Erwin de Gelder$^{1,2*}$, Eric Cator$^{3}$, Jan-Pieter Paardekooper$^{1,4}$, \\Olaf Op den Camp$^{1}$, Bart De Schutter$^{2}$%
+\thanks{$^{1}$TNO, Integrated Vehicle Safety, Helmond, The Netherlands}%
+\thanks{$^{2}$Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
+\thanks{$^{3}$Radboud University, Applied Stochastics, Nijmegen, The Netherlands}%
+\thanks{$^{4}$Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}%
+\thanks{$^{*}$Corresponding author. \newline E-mail address: {\tt\small erwin.degelder@tno.nl}}}%
 \date{}
 
 % Variables
@@ -37,12 +56,15 @@
   \newcommand{\bwiur}{\bandwidthmatrixinverse_{12}}
   \newcommand{\bwibl}{\bandwidthmatrixinverse_{21}}
   \newcommand{\bwibr}{\bandwidthmatrixinverse_{22}}
+  \newcommand{\bwischur}{\bandwidthmatrixinverse_{\mathrm{S}}}
   \newcommand{\bandwidthmatrixrotated}{\tilde{\bandwidthmatrix}}
   \newcommand{\bandwidthmatrrotatedixinverse}{\tilde{\Lambda}}
   \newcommand{\bwriul}{\bandwidthmatrrotatedixinverse_{11}}
   \newcommand{\bwriur}{\bandwidthmatrrotatedixinverse_{12}}
   \newcommand{\bwribl}{\bandwidthmatrrotatedixinverse_{21}}
   \newcommand{\bwribr}{\bandwidthmatrrotatedixinverse_{22}}
+  \newcommand{\bwrischur}{\bandwidthmatrrotatedixinverse_{\mathrm{S}}}
+\newcommand{\constantterm}{C}
 \newcommand{\constraintmatrix}{A}
 \newcommand{\constraintvector}{b}
 \newcommand{\density}[1]{f\left( #1 \right)}
@@ -72,9 +94,9 @@
   \newcommand{\svdvb}{V_2}
 \newcommand{\ud}{\,\mathrm{d}}
 \newcommand{\variable}{x}
-  \newcommand{\variableparta}{\breve{\variable}}
+  \newcommand{\variableparta}{\bar{\variable}}
   \newcommand{\variablepartb}{\hat{\variable}}
-  \newcommand{\variableconstrained}{\bar{\variable}}
+  \newcommand{\variableconstrained}{\breve{\variable}}
   \newcommand{\variableunconstrained}{\tilde{\variable}}
   \newcommand{\datapoint}[1]{\variable_{#1}}
   \newcommand{\datapointparta}[1]{\variableparta_{#1}}
@@ -85,15 +107,17 @@
   \newcommand{\datapointunconstrainedtranslated}[1]{\datapointunconstrained{#1}'}
 \newcommand{\weight}[1]{w_{#1}}
 
-\usepackage{nopageno}
-%\usepackage{setspace}
-%\doublespacing
+%\usepackage{nopageno}
+\usepackage{setspace}
+\doublespacing
 
 \begin{document}
 
 % Acronyms
 \begin{acronym}[AAAAAAAA]
+	\acro{av}[AV]{Automated Vehicle}\acroindefinite{av}{an}{an}
 	\acro{kde}[KDE]{Kernel Density Estimation}
+	\acro{pca}[PCA]{Principal Componant Analysis}
 	\acro{pdf}[pdf]{probability density function}
 	\acro{svd}[SVD]{Singular Value Decomposition}\acroindefinite{svd}{an}{a}
 \end{acronym}
@@ -101,10 +125,12 @@
 \maketitle
 
 \input{secs/abstract}
+\acresetall
 \input{secs/introduction}
 \input{secs/problem}
 \input{secs/method}
 \input{secs/example}
+\input{secs/discussion}
 \input{secs/conclusions}
 
 %\section*{Acknowledgement}

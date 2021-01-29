@@ -1,30 +1,43 @@
 \section{Introduction}
 \label{sec:introduction}
 
-\ac{kde} \autocite{parzen1962estimation, rosenblatt1956remarks} is a technique for estimating a \ac{pdf}. 
-It is often referred to as a non-parametric way to estimate the \ac{pdf}, because no use is made of a predefined \ac{pdf} for which certain parameters are fitted to the data. 
+% Introduce scenario-based testing
+An essential facet in the development of \acp{av} is the assessment of quality and performance aspects of the \acp{av}, such as safety, comfort, and efficiency \autocite{bengler2014threedecades, stellet2015taxonomy, koopman2016challenges}. 
+Because naturalistic field operational tests are expensive and time consuming \autocite{kalra2016driving, zhao2018evaluation}, a scenario-based approach has been proposed \autocite{riedmaier2020survey}.
+As a source of information for the scenarios for the assessment, real-world driving data has been proposed, such that the scenarios relate to real-world driving conditions \autocite{elrofai2018scenario, putz2017pegasus, krajewski2018highD}.
 
-Sampling from \iac{kde} is straightforward. 
+% List possible methods for generating scenarios
+When using scenarios extracted from real-world driving data as a direct source for the test scenarios, two problems arise.
+First, not all possible variations of the scenarios might be found in the data. 
+Therefore, the failure modes of the \acp{av} might not be reflected in the existing scenarios \autocite{zhao2018evaluation}.
+Second, this might not reduce the actual testing load, because the extracted scenarios is largely composed of non-safety critical scenarios \autocite{zhao2018evaluation}.
+As a solution to this, so-called importance sampling has been introduced in order to put more emphasis on safety-critical scenarios \autocite{deGelder2017assessment, xu2018accelerated, zhao2018evaluation, jesenski2020scalable}.
+These methods \autocite{deGelder2017assessment, xu2018accelerated, zhao2018evaluation, jesenski2020scalable} have in common that they describe scenarios using parameters for which \iac{pdf} is estimated.
+
+% Out solution
+As already proposed in \autocite{deGelder2017assessment}, we propose to estimate the \ac{pdf} using \ac{kde}.
+\ac{kde} \autocite{parzen1962estimation, rosenblatt1956remarks} is often referred to as a non-parametric way to estimate the \ac{pdf}, because no use is made of a predefined \ac{pdf} for which certain parameters are fitted to the data. 
+This makes \ac{kde} flexible regarding the actual underlying distribution of the parameters.
+Sampling from \iac{kde} is straightforward.
 However, in some cases, one wants to sample from the estimated \ac{pdf} while a part of the random sample is fixed.
 This is known as conditional sampling. 
 For example, suppose we have a two dimensional estimated distribution and we want to draw samples from this distribution while the first of these two variables is equal to a predefined value. 
-One approach would be to evaluate the probability density function on a grid with possible values for the second variable. 
-Out of these evaluations, a cumulative distribution function can be estimated that can be used to draw samples. 
-This method would be highly cumbersome, especially with higher dimensional \acp{pdf}. 
-Luckily, methods exist to perform the conditional sampling on \iac{kde} if one or more variables are fixed \autocite{hyndman1996estimating, holmes2007fast}.
+One approach would be to evaluate the conditional \ac{pdf} and to use this for sampling.
+This method, however, would be highly cumbersome, especially with higher dimensional \acp{pdf}. 
 
-Whereas conditional sampling with one or more variables fixed is described in literature, we have not found a description of sampling from \iac{kde} while the variables satisfy a linear constraint. 
-In this paper, we describe a method to sample from \iac{kde}, such that the samples satisfy a linear constraint. 
-To do this, we first provide an algorithm to sample from \iac{kde} while one or more variables are fixed. 
-To sample from \iac{kde} while the variables satisfy a linear constraint, we first perform a rotation of the variables, such that we can use the aforementioned algorithm to sample from the \iac{kde}. 
+% Contribution of this paper (conditional sampling and sampling with linear constraints)
+We will propose algorithms to sample parameters from \iac{kde} while either one or more parameters are fixed or the parameters are subjected to linear constraints.
+Conditional sampling with one or more variables fixed easily follows from estimation techniques for conditional \acp{pdf} \autocite{hyndman1996estimating, holmes2007fast}
+In this paper, we go one step further: We will also describe a method for sampling from \iac{kde} while the variables satisfy linear equality constraints. 
+In our proposed method, the actual (conditional) \ac{pdf} does not need to be evaluated, which would make it inefficient.
+In our case, the computational costs scales approximately quadratically with respect to the dimension and linearly the number of data points. 
+If more samples are to be generated with the same linear constraints, most computations need to be done only once, so this reduces the computational load per generated sample.
+We illustrate the proposed sampling techniques and its practical usefulness using an example.
+Furthermore, we will explain the usefulness of sampling with linear constraints in case parameter reduction techniques are used to avoid the curse of dimensionality that \ac{pdf} estimation techniques, such as \ac{kde}, are subjected to.
 
-In \cref{sec:problem}, we first describe the problem in more detail.
-In \cref{sec:method}, we provide for algorithms to solve this problem:
-\begin{enumerate}
-	\item Sampling with one or more variables fixed from \iac{kde} with a scalar bandwidth;
-	\item Sampling with one or more variables fixed from \iac{kde} with a full bandwidth matrix;
-	\item Sampling from \iac{kde} with a scalar bandwidth, such that the variables satisfy linear constraints;
-	\item Sampling from \iac{kde} with a full bandwidth matrix, such that the variables satisfy linear constraints;
-\end{enumerate}
+% Structure of the paper
+In \cref{sec:problem}, we first describe the problem in more detail, which results in four sub-problems.
+In \cref{sec:method}, we provide four algorithms to solve each of these sub-problems.
 Through an example, we illustrate the correct performance of these algorithms in \cref{sec:example}.
+In \cref{sec:discussion}, we will discuss the scalability of the algorithms and a possible useful application of the algorithms. 
 We conclude this paper in \cref{sec:conclusions}.

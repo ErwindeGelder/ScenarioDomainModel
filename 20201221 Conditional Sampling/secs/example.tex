@@ -1,12 +1,16 @@
 \section{Example}
 \label{sec:example}
 
+We will first explain the data that we use and how we use \ac{kde} to estimate the \ac{pdf}.
+Next, we apply conditional sampling from the \ac{kde} according to \cref{alg:conditional simple,alg:conditional hard}.
+Finally, we apply \cref{alg:constrained simple,alg:constrained hard} to sample from the \ac{kde} while the scenario parameters are subjected to linear constraints.
+
 
 
 \subsection{Data and \acp{kde}}
 \label{sec:example data}
 
-In this example, we work with a data set obtained by a vehicle equipped with sensors while driving a predefined route in The Netherlands. 
+We work with a data set obtained by a vehicle equipped with sensors while driving a predefined route in The Netherlands. 
 As already done in \autocite{deGelder2017assessment, degelder2019completeness}, the data set is used to extract braking activities of the vehicle that is equipped with the sensors. 
 Each of the braking activities is described by $\dimension=3$ variables:
 \begin{enumerate}
@@ -26,23 +30,22 @@ The scaling is such that:
 \end{itemize}
 
 To illustrate \cref{alg:conditional hard,alg:constrained hard}, we use a full bandwidth matrix $\bandwidthmatrix$. 
-In this case, the bandwidth matrix is estimated using the plug-in selector of \textcite{wand1994multivariate}. 
+The bandwidth matrix is estimated using the plug-in selector of \textcite{wand1994multivariate}. 
 The resulting bandwidth matrix is:
-\begin{equation}
+\begin{equation*}
 	\bandwidthmatrix \approx
 	\begin{bmatrix}
 		0.0058 & -0.032 & 0.021 \\
 		-0.032 & 0.92 & -0.23 \\
 		0.021 & -0.23 & 0.40
 	\end{bmatrix}.
-\end{equation}
+\end{equation*}
 
 
 
 \subsection{Sampling with part of $\variable$ fixed}
 
-In this first example, we want to sample from the \ac{kde} with part of $\variable$ fixed.
-More specifically, we want to sample the speed difference, while the average deceleration equals $\SI{1}{\meter\per\second\squared}$ and the end speed equals $\SI{10}{\meter\per\second}$. 
+In this first example, we want to sample the speed difference, while the average deceleration equals $\SI{1}{\meter\per\second\squared}$ and the end speed equals $\SI{10}{\meter\per\second}$. 
 Thus, we have two variables fixed ($\dimensionparta=2$) and one variable that is unconstrained ($\dimensionpartb=1$).
 
 In \cref{fig:conditional simple,fig:conditional hard}, the result of \cref{alg:conditional simple,alg:conditional hard} is shown, respectively. 
@@ -51,14 +54,18 @@ Because the histograms follow the same pattern as the actual density of the spee
 
 \begin{figure}
 	\centering
-	\input{figs/conditional_simple.tikz}
+	\resizebox{\columnwidth}{!}{%
+		\input{figs/conditional_simple.tikz}
+	}
 	\caption{The histogram shows the result of the conditional sampling according to \cref{alg:conditional simple}. The red line represents the true \ac{pdf}.}
 	\label{fig:conditional simple}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\input{figs/conditional_hard.tikz}
+	\resizebox{\columnwidth}{!}{%
+		\input{figs/conditional_hard.tikz}
+	}
 	\caption{The histogram show the result of the conditional sampling according to \cref{alg:conditional hard}. The red line represents the true \ac{pdf}.}
 	\label{fig:conditional hard}
 \end{figure}
@@ -67,20 +74,19 @@ Because the histograms follow the same pattern as the actual density of the spee
 
 \subsection{Sampling with linear constraints}
 
-In this second example, we want to sample from the \ac{kde} while the generated samples satisfy $\dimensionparta=2$ linear constraints.
-More specifically, we want to sample the speed difference, while the average deceleration equals $\SI{1}{\meter\per\second\squared}$ and the start speed equals $\SI{15}{\meter\per\second}$. 
+In this second example, we want to sample the speed difference, while the average deceleration equals $\SI{1}{\meter\per\second\squared}$ and the start speed equals $\SI{15}{\meter\per\second}$. 
 This means that we have
-\begin{equation}
+\begin{equation*}
 	\constraintmatrix = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 1 \end{bmatrix}, 
 	\constraintvector = \begin{bmatrix} 1 \\ 15 \end{bmatrix}.
-\end{equation}
+\end{equation*}
 The \ac{svd} according to \cref{eq:svd constraint matrix} gives
-\begin{equation}
-	\svdu = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix},
-	\svds = \begin{bmatrix} \sqrt{2} & 0 \\ 0 & 1 \end{bmatrix},
-	\svdva = \begin{bmatrix} 0 & 1 \\ \frac{1}{2}\sqrt{2} & 0 \\ \frac{1}{2}\sqrt{2} & 0 \end{bmatrix},
-	\svdvb = \begin{bmatrix} 0 \\ -\frac{1}{2}\sqrt{2} \\ \frac{1}{2}\sqrt{2} \end{bmatrix}.
-\end{equation}
+\begin{align*}
+	&\svdu = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix},
+	\svds = \begin{bmatrix} \sqrt{2} & 0 \\ 0 & 1 \end{bmatrix}, 
+	\svdva^T = \begin{bmatrix} 0 & \frac{1}{2}\sqrt{2} & \frac{1}{2}\sqrt{2} \\ 1 & 0 & 0 \end{bmatrix},\\
+	&\svdvb^T = \begin{bmatrix} 0 & -\frac{1}{2}\sqrt{2} & \frac{1}{2}\sqrt{2} \end{bmatrix}.
+\end{align*}
 
 In \cref{fig:constrained simple,fig:constrained hard}, the result of \cref{alg:constrained simple,alg:constrained hard} is shown, respectively. 
 In total $10^6$ samples are generated and shown by the histogram. 
@@ -88,14 +94,18 @@ Because the histograms follow the same pattern as the actual density of the spee
 
 \begin{figure}
 	\centering
-	\input{figs/constrained_simple.tikz}
+	\resizebox{\columnwidth}{!}{%
+		\input{figs/constrained_simple.tikz}
+	}
 	\caption{The histogram shows the result of the conditional sampling according to \cref{alg:constrained simple}. The red line represents the true \ac{pdf}.}
 	\label{fig:constrained simple}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\input{figs/constrained_hard.tikz}
+	\resizebox{\columnwidth}{!}{%
+		\input{figs/constrained_hard.tikz}
+	}
 	\caption{The histogram shows the result of the conditional sampling according to \cref{alg:constrained hard}. The red line represents the true \ac{pdf}.}
 	\label{fig:constrained hard}
 \end{figure}
