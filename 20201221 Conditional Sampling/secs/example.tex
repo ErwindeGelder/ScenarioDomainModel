@@ -3,30 +3,35 @@
 
 We will first explain the data that we use and how we use \ac{kde} to estimate the \ac{pdf}.
 Next, we apply conditional sampling from the \ac{kde} according to \cref{alg:conditional simple,alg:conditional hard}.
-Finally, we apply \cref{alg:constrained simple,alg:constrained hard} to sample from the \ac{kde} while the scenario parameters are subjected to linear constraints.
+Finally, we apply \cref{alg:constrained simple,alg:constrained hard} to sample from the \ac{kde} while the scenario parameters are subject to linear equality constraints.
 
 
 
 \subsection{Data and \acp{kde}}
 \label{sec:example data}
 
-We work with a data set obtained by a vehicle equipped with sensors while driving a predefined route in The Netherlands. 
-As already done in \autocite{deGelder2017assessment, degelder2019completeness}, the data set is used to extract braking activities of the vehicle that is equipped with the sensors. 
+\cstarta We work with a data set obtained during an experiment in which 20 participants have driven a predefined route in The Netherlands.
+The 50-kilometer route contained a variety of traffic elements, such as urban roads, motorways, junctions (with and without priority), pedestrian crossings, curvy road sections, traffic lights, speed bumps, etc.
+The route took about 1 hour.
+Because each participant drove the route thrice, the data set contains about 60 hours of driving.
+Among other data, the speed of the participants was recorded.
+As already done in \autocite{deGelder2017assessment, degelder2019completeness}, the speed was used to extract 2786 braking activities of the vehicle that is equipped with the sensors. \cenda
 Each of the braking activities is described by $\dimension=3$ variables:
 \begin{enumerate}
 	\item the mean deceleration;
 	\item the end speed; and
-	\item the speed difference.
+	\item the speed reduction.
 \end{enumerate}
 
-To illustrate \cref{alg:conditional simple,alg:constrained simple}, we employ \ac{kde} with the bandwidth matrix $\bandwidthmatrix=\bandwidth\identitymatrix{3}$. 
+\cstarta To illustrate our method, we construct \iac{kde} of these parameters using the $\numberofsamples=2786$ data samples and sample a new set of parameters using the constructed \ac{kde}. \cenda
+To apply \cref{alg:conditional simple,alg:constrained simple}, we employ \ac{kde} with the bandwidth matrix $\bandwidthmatrix=\bandwidth^2\identitymatrix{3}$. 
 First, a diagonal bandwidth matrix is estimated using the plug-in selector of \textcite{wand1994multivariate}, as also explained in \autocite{duong2007ks}.
 Then, the data points are scaled by the values at the diagonal, such that the bandwidth matrix $\bandwidthmatrix=\identitymatrix{3}$ can be used. 
 The scaling is such that:
 \begin{itemize}
 	\item the first variable corresponds to the mean deceleration divided by $0.066$;
 	\item the second variable corresponds to the end difference divided by $0.85$; and
-	\item the third variable corresponds to the speed difference divided by $0.55$.
+	\item the third variable corresponds to the speed reduction divided by $0.55$.
 \end{itemize}
 
 To illustrate \cref{alg:conditional hard,alg:constrained hard}, we use a full bandwidth matrix $\bandwidthmatrix$. 
@@ -49,7 +54,7 @@ In this first example, we want to sample the speed difference, while the average
 Thus, we have two variables fixed ($\dimensionparta=2$) and one variable that is unconstrained ($\dimensionpartb=1$).
 
 In \cref{fig:conditional simple,fig:conditional hard}, the result of \cref{alg:conditional simple,alg:conditional hard} is shown, respectively. 
-In total $10^6$ samples are generated and shown by the histogram. 
+In total $10^6$ samples are generated and shown by the histogram (the bin width is \SI{0.2}{\meter\per\second}). 
 Because the histograms follow the same pattern as the actual density of the speed difference according to the \ac{kde}, it illustrates that the provided algorithms correctly sample from the \ac{kde}. 
 
 \begin{figure}

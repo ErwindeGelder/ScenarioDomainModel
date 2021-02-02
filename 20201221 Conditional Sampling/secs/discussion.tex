@@ -6,18 +6,18 @@ In the introduction, we have mentioned that the computational costs scales quadr
 Because the number of data points is generally much larger than the dimension of the data points, let us assume that $\numberofsamples \gg \dimension$.
 Looking at \cref{alg:constrained hard} and considering $\numberofsamples \gg \dimension$, steps 2, 3, and 6 are most time consuming, because these steps contain a loop over the data points. 
 It is easy to see that the computations of these steps scale linearly with $\numberofsamples$. 
-Since these computations contain a matrix-vector multiplication, the computational cost scales quadratically with $\dimension$. 
+Since these computations contain a multiplication of a $\dimension$-by-$\dimension$ matrix and a vector with $\dimension$ rows, the computational cost scales quadratically with $\dimension$. 
 
 % Explain how it scales if we don't change the constraint
-Note that if we want to sample multiple times using the same linear constraint, it suffices to do the steps 1 till 6 of \cref{alg:constrained hard} only once.
-Step 7 of \cref{alg:constrained hard} does not depend on $\dimension$ and scales only linearly with $\numberofsamples$ \autocite{vose1991linear}.
+Note that if we want to sample multiple times using the same linear constraint, it suffices to perform the steps 1 till 6 of \cref{alg:constrained hard} only once.
+Step 7 of \cref{alg:constrained hard} does not depend on $\dimension$ and scales linearly with $\numberofsamples$ \autocite{vose1991linear}.
 Steps 8 till 10 of \cref{alg:constrained hard} do not depend on $\numberofsamples$ and scale quadratically with $\dimension$.
-Because these steps do not depend on $\numberofsamples$ and $\numberofsamples \gg \dimension$, the computational time of these steps are minor compared to step 7 of \cref{alg:constrained hard}. 
+Because these steps do not depend on $\numberofsamples$ and $\numberofsamples \gg \dimension$, the computational cost of these steps is minor compared to step 7 of \cref{alg:constrained hard}. 
 
 % Explain possible use of our method
-Our proposed methods in \cref{alg:constrained simple,alg:constrained hard} for sampling with linear constraints become especially useful if a parameter reduction technique like \ac{svd} or \ac{pca} \autocite{abdi2010principal} is used.
 To avoid the curse of dimensionality when estimating the \ac{pdf} \autocite{scott1992multivariate}, the number of parameters can be reduced using \iac{svd} or \iac{pca}.
-This will result in a linear mapping of the parameters.
+With \ac{svd} and \ac{pca}, the reduced set of parameters is a linear mapping of the original set of parameters \autocite{golub2013matrix, abdi2010principal}.
 As a result, if parameters are to be sampled with one or more of the original parameters fixed at a predetermined value, this would give a linear constraint on the new parameters after the reduction.
-Thus, whereas \cref{alg:conditional simple,alg:conditional hard} could be used if \iac{kde} is used to estimated the \ac{pdf} of the original parameters, \cref{alg:constrained simple,alg:constrained hard}, respectively, should be used if the \ac{kde} is constructed for the reduced set of parameters.
+Our proposed methods in \cref{alg:constrained simple,alg:constrained hard} for sampling with linear constraints become especially useful in this case.
+Thus, whereas \cref{alg:conditional simple,alg:conditional hard} could be used if \ac{kde} is used to estimated the \ac{pdf} of the original parameters, \cref{alg:constrained simple,alg:constrained hard}, respectively, should be used if the \ac{kde} is constructed for the reduced set of parameters.
 Since scenarios for the assessment of \acp{av} are likely to be more complex than the ones shown in the example in \cref{sec:example}, it is conceivable that more parameters are to be used and, consequently, that a reduction technique using \iac{svd} or \iac{pca} will become useful.

@@ -1,6 +1,6 @@
-\documentclass{article}
-%\documentclass[conference, a4paper]{ieeeconf}
-%\usepackage[left=1.91cm,right=1.31cm,top=3.7cm,bottom=1.91cm]{geometry}
+%\documentclass{article}
+\documentclass[conference, a4paper]{ieeeconf}
+\usepackage[left=1.91cm,right=1.31cm,top=3.7cm,bottom=1.91cm]{geometry}
 \pdfoutput=1
 
 % make changes take effect
@@ -8,7 +8,7 @@
 % adjust as needed
 \addtolength{\footskip}{0\baselineskip}
 \addtolength{\textheight}{-1\baselineskip}
-%\IEEEoverridecommandlockouts                              % This command is only needed if 
+\IEEEoverridecommandlockouts                              % This command is only needed if 
                                                           % you want to use the \thanks command
 
 \usepackage[utf8]{inputenc}
@@ -39,8 +39,8 @@
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
 
-\title{Apply Conditional Sampling from a Kernel Density Estimator to Generate Scenarios for the Assessment of Automated Vehicles}
-\author{Erwin de Gelder$^{1,2*}$, Eric Cator$^{3}$, Jan-Pieter Paardekooper$^{1,4}$, \\Olaf Op den Camp$^{1}$, Bart De Schutter$^{2}$%
+\title{Conditional Sampling from a Kernel Density Estimator to Generate Scenarios for the Assessment of Automated Vehicles}
+\author{Erwin de Gelder$^{1,2*}$, Eric Cator$^{3}$, Jan-Pieter Paardekooper$^{1,4}$, Olaf Op den Camp$^{1}$, Bart De Schutter$^{2}$%
 \thanks{$^{1}$TNO, Integrated Vehicle Safety, Helmond, The Netherlands}%
 \thanks{$^{2}$Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}%
 \thanks{$^{3}$Radboud University, Applied Stochastics, Nijmegen, The Netherlands}%
@@ -69,8 +69,8 @@
 \newcommand{\constraintvector}{b}
 \newcommand{\density}[1]{f\left( #1 \right)}
 \newcommand{\densityest}[1]{\hat{f}\left( #1 \right)}
-\newcommand{\densitycond}[2]{\density{ #1 | #2 }}
-\newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
+\newcommand{\densitycond}[2]{\hat{f}_{\mathrm{c}}\left( #1 | #2 \right)}
+\newcommand{\densityestcond}[2]{\hat{f}_{\mathrm{c}}\left( #1 | #2 \right)}
 \newcommand{\determinant}[1]{\left| #1 \right|}
 \newcommand{\dimension}{d}
   \newcommand{\dimensionparta}{\dimension_\mathrm{c}}
@@ -82,7 +82,7 @@
 \newcommand{\indexsampling}{j}
 \newcommand{\kernelfunc}[1]{K \left( #1 \right)}
 \newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
-\newcommand{\normtwo}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\normtwo}[1]{\left\Vert #1 \right\Vert_2}
 \newcommand{\numberofconstraints}{n_\mathrm{c}}
 \newcommand{\numberofsamples}{N}
 \newcommand{\realnumbers}{\mathds{R}}
@@ -107,9 +107,14 @@
   \newcommand{\datapointunconstrainedtranslated}[1]{\datapointunconstrained{#1}'}
 \newcommand{\weight}[1]{w_{#1}}
 
+
+
+\newcommand{\cstarta}{}  % Changes since 2021 02 01
+\newcommand{\cenda}{}
+
 %\usepackage{nopageno}
-\usepackage{setspace}
-\doublespacing
+%\usepackage{setspace}
+%\doublespacing
 
 \begin{document}
 
@@ -131,6 +136,7 @@
 \input{secs/method}
 \input{secs/example}
 \input{secs/discussion}
+\acresetall
 \input{secs/conclusions}
 
 %\section*{Acknowledgement}

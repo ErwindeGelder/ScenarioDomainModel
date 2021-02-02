@@ -1,15 +1,16 @@
 \begin{abstract}
 
-The assessment of \acp{av} is an important aspect in order to develop \acp{av}.
-A scenario-based approach is accepted by many players in the field.
-One way to generate the scenarios for the scenario-based assessment, is to parameterize the scenarios and to draw these parameters from \iac{pdf}.
-To be flexible with the underlying distribution of these parameters, \ac{kde} is a promising candidate for estimated the underlying \ac{pdf}.
+The assessment of \acp{av} is an important aspect in the development of \acp{av}.
+A scenario-based assessment approach is accepted by many players in the field.
+One way to generate the required scenarios, is to parameterize the scenarios and to draw these parameters from \iac{pdf}.
+\cstarta Because the shape of the \ac{pdf} is unknown beforehand, assuming a functional form of the \ac{pdf} and fitting the parameters to the data may lead to inaccurate fits.
+As an alternative, \ac{kde} is a promising candidate for estimated the underlying \ac{pdf}, because it is flexible with the underlying distribution of the parameters. \cenda
 Drawing random sampling from a pdf estimated with KDE is possible without the need of evaluating the actual pdf, which make it suitable for drawing random samples for, e.g., Monte Carlo methods.
 
 In this paper, we provide a method to sample from a conditional pdf in case the pdf is estimated using KDE. 
-In addition, we propose a method to sample from a pdf estimated using KDE, such that the samples satisfy linear constraints. 
-We present the algorithms of our methods in pseudo code. 
-Furthermore, through an example, we illustrate the performance of the presented methods by generating braking scenarios that have, e.g., a predetermined starting speed.
-Because our methods do not evaluate the actual (conditional) \ac{pdf}, it is efficient in terms of computational costs.
+In addition, we propose a method to sample from a pdf estimated using KDE, such that the samples satisfy linear equality constraints. 
+We also present the algorithms of our method in pseudo code. 
+Furthermore, through an example, we illustrate the performance of the presented method by generating braking scenarios that have, e.g., a predetermined starting speed.
+Because our method does not evaluate the actual (conditional) \ac{pdf}, it is efficient in terms of computational costs.
 
 \end{abstract}
