@@ -37,6 +37,9 @@ scaling
 ```{r}
 Hfull
 ```
+```{r}
+dim(pars)
+```
 
 `spars` contains the scaled data, such that the bandwidth equals 1.
 
@@ -70,20 +73,21 @@ for (i in 1:npdf) {
                               (spars[, 3] - xpdf[i]/scaling[3])^2)))
 }
 ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
-hist(samples, breaks = 100, freq = FALSE, xlim = xlim,
+breaks <- seq(xmin, xmax, 0.2)
+hist(samples, breaks = breaks, freq = FALSE, xlim = xlim,
      ylim=c(0, max(ypdf)*1.01),
      xlab = "Speed difference [m/s]", xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red")
 ```
 
 ```{r}
-width <- 5
+width <- 4.2
 height <- 3
 lw <- 3
 folder <- file.path("..", "20201221 Conditional Sampling", "figs")
 
 tikz(file.path(folder, "conditional_simple.tikz"), width=width, height=height)
-hist(samples, breaks = 100, freq = FALSE, xlim = xlim,
+hist(samples, breaks = breaks, freq = FALSE, xlim = xlim,
      ylim=c(0, max(ypdf)*1.01), 
      xlab = "Speed difference [m/s]", main=NULL, xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red", lw=lw)
@@ -133,14 +137,14 @@ for (i in 1:npdf) {
     }
 }
 ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
-hist(samples, breaks = 100, freq = FALSE, xlim = xlim,
+hist(samples, breaks = breaks, freq = FALSE, xlim = xlim,
      ylim=c(0, max(ypdf)*1.01), 
      xlab = "Speed difference [m/s]", xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red")
 ```
 ```{r}
 tikz(file.path(folder, "conditional_hard.tikz"), width=width, height=height)
-hist(samples, breaks = 100, freq = FALSE, xlim = xlim,
+hist(samples, breaks = breaks, freq = FALSE, xlim = xlim,
      ylim=c(0, max(ypdf)*1.01), 
      xlab = "Speed difference [m/s]", main=NULL, xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red", lw=lw)
@@ -199,7 +203,7 @@ for (i in 1:npdf) {
                               (spars[, 3] - xpdf[i]/scaling[3])^2)))
 }
 ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
-hist(samples[,3], breaks = 100, freq = FALSE, xlim = xlim,
+hist(samples[,3], breaks = breaks, freq = FALSE, xlim = xlim,
      ylim=c(0, max(ypdf)*1.01), 
      xlab = "Speed difference [m/s]", xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red")
@@ -207,7 +211,7 @@ lines(xpdf, ypdf, col="red")
 
 ```{r}
 tikz(file.path(folder, "constrained_simple.tikz"), width=width, height=height)
-hist(samples[,3], breaks = 100, freq = FALSE, xlim = xlim,
+hist(samples[,3], breaks = breaks, freq = FALSE, xlim = xlim,
      ylim=c(0, max(ypdf)*1.01), 
      xlab = "Speed difference [m/s]", main=NULL, xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red", lw=lw)
@@ -220,51 +224,91 @@ dev.off()
 m <- dim(pars)[1]
 
 # 1. Perform SVD
+start <- Sys.time()
 decomposition <- svd(A, nv = 3)
 U <- decomposition$u
 S <- diag(decomposition$d, length(decomposition$d))
 V1 <- decomposition$v[,1:2]
 V2 <- matrix(decomposition$v[,3])
+end <- Sys.time()
+print("Step 1:")
+print(end-start)
 
 # 2. Map data points to xbar
+start <- Sys.time()
 xbar <- pars[1:m,] %*% V1
+end <- Sys.time()
+print("Step 2:")
+print(end-start)
 
 # 3. Map data points to xtilde
+start <- Sys.time()
 xtilde <- pars[1:m,] %*% V2
+end <- Sys.time()
+print("Step 3:")
+print(end-start)
 
 # 4. Compute fixed part of samples
+start <- Sys.time()
 xfixed <- solve(S) %*% U %*% b
+end <- Sys.time()
+print("Step 4:")
+print(end-start)
 
 # 5. Compute inverse of V' H V
+start <- Sys.time()
 Hinvtilde <- t(decomposition$v) %*% solve(Hfull) %*% decomposition$v
 Lambda11tilde <- Hinvtilde[1:2, 1:2]
 Lambda12tilde <- Hinvtilde[1:2, 3]
 Lambda21tilde <- Hinvtilde[3, 1:2]
 Lambda22tilde <- Hinvtilde[3, 3]
+end <- Sys.time()
+print("Step 5:")
+print(end-start)
 
 # 6. Compute weights
+start <- Sys.time()
 schur <- Lambda11tilde - Lambda12tilde%*%solve(Lambda22tilde)%*%Lambda21tilde
 weights <- numeric(m)
 for (i in 1:m) {
     xdiff = xfixed - xbar[i,]
     weights[i] <- exp(-.5 * (t(xdiff) %*% schur %*% xdiff))
 }
+end <- Sys.time()
+print("Step 6:")
+print(end-start)
 
 # 7. Pick a random integer
+start <- Sys.time()
 integers <- sample(length(weights), size = n, replace = TRUE, prob = weights)
+end <- Sys.time()
+print("Step 7:")
+print(end-start)
 
 # 8.Compute the mean of the Gaussian
+start <- Sys.time()
 new_means <- simplify2array(lapply(1:length(weights), 
                                    function(i) xtilde[i,] - 
                                        solve(Lambda22tilde)%*%Lambda21tilde%*% 
                                        (xfixed - xbar[i,])))
 means <- new_means[integers]
+end <- Sys.time()
+print("Step 8:")
+print(end-start)
 
 # 9. Generate random sample of variable part of sample
+start <- Sys.time()
 xvariable <- means + rnorm(n) * as.vector(sqrt(solve(Lambda22tilde)))
+end <- Sys.time()
+print("Step 9:")
+print(end-start)
 
 # 10. Compute real sample
+start <- Sys.time()
 samples <- t(matrix(rep(V1 %*% xfixed, n), 3) + V2 %*% xvariable)
+end <- Sys.time()
+print("Step 10:")
+print(end-start)
 
 # Show the result
 xpdf <- seq(xmin, xmax, length.out = npdf)
@@ -277,7 +321,7 @@ for (i in 1:npdf) {
     }
 }
 ypdf <- ypdf / (sum(ypdf) * mean(diff(xpdf)))
-hist(samples[,3], breaks = 100, freq = FALSE, xlim = xlim,
+hist(samples[,3], breaks = breaks, freq = FALSE, xlim = xlim,
      ylim=c(0, max(ypdf)*1.01), 
      xlab = "Speed difference [m/s]", xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red", ylim=c(0, max(ypdf)))
@@ -292,7 +336,7 @@ print(V2)
 
 ```{r}
 tikz(file.path(folder, "constrained_hard.tikz"), width=width, height=height)
-hist(samples[,3], breaks = 100, freq = FALSE, xlim = xlim, 
+hist(samples[,3], breaks = breaks, freq = FALSE, xlim = xlim, 
      ylim = c(0, max(ypdf)*1.01),
      xlab = "Speed difference [m/s]", main=NULL, xaxs = "i", yaxs = "i")
 lines(xpdf, ypdf, col="red", lw=lw)
