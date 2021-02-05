@@ -2768,6 +2768,15 @@
     <pdf_title>CovEr story</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Exploring Impact of Different Cost Heuristics in the Allocation of ASIL" ID="ID_1706891317" CREATED="1612431130129" MODIFIED="1612431218077" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/551%20Exploring%20Impact%20of%20Different%20Cost%20Heuristics%20in%20the%20Allocation%20of%20ASIL.pdf">
+<attribute NAME="key" VALUE="azevedo2014exploring"/>
+<attribute NAME="year" VALUE="2014"/>
+<attribute NAME="title" VALUE="Exploring the Impact of Different Cost Heuristics in the Allocation of Safety Integrity Levels"/>
+<attribute NAME="authors" VALUE="Azevedo, Lu{\&apos;\i}s Silva and Parker, David and Papadopoulos, Yiannis and Walker, Martin and Sorokos, Ioannis and Ara{\&apos;u}jo, Rui Esteves"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="50281FE92532993AD01382108FA8EBD27C768B9A7DEE2B635C07819516E2FA3">
+    <pdf_title>Exploring the Impact of Different Cost Heuristics in the Allocation of Safety Integrity Levels</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Risk measures" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_333782068" CREATED="1602744988608" MODIFIED="1611644953318">
 <node TEXT="Surrogate safety measure for simulation-based conflict study" ID="ID_65543" CREATED="1602745023961" MODIFIED="1602745112103" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/521%20Surrogate%20Safety%20Measure%20for%20Simulation-Based%20Conflict%20Study.pdf">
@@ -5685,6 +5694,22 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="80B5AFCA83DA7C85455154A22590467DAB48CB9C9EB4B468685F41F2863198">
     <pdf_title>For</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="Numerical Recipes in C" ID="ID_1921915928" CREATED="1612174940841" MODIFIED="1612174951264" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/549%20Numerical%20Recipes%20in%20C.pdf">
+<attribute NAME="key" VALUE="press1992numerical"/>
+<attribute NAME="year" VALUE="1992"/>
+<attribute NAME="title" VALUE="Numerical Recipes in {C}: The Art of Scientific Computing"/>
+<attribute NAME="authors" VALUE="Press, William H and Teukolsky, Saul A and Vetterling, William T and Flannery, Brian P"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1D89CCA3577811683E1C2A2258C59D8A95BAC9B4B7BDCFDC6BB3D80DA3A">
+    <pdf_title>Numerical Recipes in C</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="Matrix Computations" ID="ID_1189145481" CREATED="1612175077314" MODIFIED="1612175177230" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/550%20Matrix%20Computations.pdf">
+<attribute NAME="key" VALUE="golub2013matrix"/>
+<attribute NAME="year" VALUE="2013"/>
+<attribute NAME="title" VALUE="Matrix computations"/>
+<attribute NAME="authors" VALUE="Golub, Gene H and Van Loan, Charles F"/>
+<pdf_annotation type="PDF_FILE" object_id="0"/>
 </node>
 </node>
 <node TEXT="Extreme Value Statistics" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_39821948" CREATED="1542357420081" MODIFIED="1542357425327">
