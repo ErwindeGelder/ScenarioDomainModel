@@ -1,7 +1,7 @@
 \section{Method}
 \label{sec:method}
 
-\cstarta In this section, we will present four algorithms to address the sub-problems mentioned in \cref{sec:problem}.
+\cstarta In this section, we will present four algorithms to address the problem variants mentioned in \cref{sec:problem}.
 First, we show how to sample from \cref{eq:gaussian kde} while a part of $\variable$ is fixed, either with $\bandwidthmatrix=\bandwidth^2\identitymatrix{\dimension}$ (\cref{sec:sampling conditional simple}) or full bandwidth matrix (\cref{sec:sampling conditional hard}).
 Next, we consider the more general case in which we sample from \cref{eq:gaussian kde} while the samples are subject to the linear constraints \cref{eq:linear constraint}, either with $\bandwidthmatrix=\bandwidth^2\identitymatrix{\dimension}$ (\cref{sec:sampling constrained simple}) or full bandwidth matrix (\cref{sec:sampling constrained hard}). \cenda
 
@@ -73,13 +73,13 @@ The procedure for sampling is summarized in \cref{alg:conditional simple}.
 	\Input{$\datapoint{1}, \ldots, \datapoint{\numberofsamples}$, $\variableparta$, $\bandwidth$}
 	\Output{Sample $\variablepartb$ from \cref{eq:conditional density}}
 	
-	$\datapointparta{1},\ldots,\datapointparta{\numberofsamples}$, $\datapointpartb{1},\ldots,\datapointpartb{\numberofsamples}$ $\gets$ Decompose data points according to \cref{eq:decomposition data}
+	$\datapointparta{1},\ldots,\datapointparta{\numberofsamples}$, $\datapointpartb{1},\ldots,\datapointpartb{\numberofsamples}$ $\gets$ Decompose the data points according to \cref{eq:decomposition data}
 	
-	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute weights according to \cref{eq:weights conditional simple}
+	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute the weights according to \cref{eq:weights conditional simple}
 	
-	$\indexsampling$ $\gets$ Generate a random integer $\indexsampling\{1,\ldots,\numberofsamples\}$ with likelihood of $\indexsampling$ proportional to $\weight{\indexsampling}$
+	$\indexsampling$ $\gets$ Generate a random integer $\indexsampling\in\{1,\ldots,\numberofsamples\}$ with the likelihood of $\indexsampling$ proportional to $\weight{\indexsampling}$
 	
-	$\variablepartb$ $\gets$ Generate random sample from a Gaussian with covariance $\bandwidth^2 \identitymatrix{\dimensionpartb}$ and mean $\datapointpartb{\indexsampling}$
+	$\variablepartb$ $\gets$ Generate a random sample from a Gaussian with covariance $\bandwidth^2 \identitymatrix{\dimensionpartb}$ and mean $\datapointpartb{\indexsampling}$
 		
 	\caption{Sampling with part of $\variable$ fixed and $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$.}
 	\label{alg:conditional simple}
@@ -130,7 +130,7 @@ Substituting this in the exponent of \cref{eq:conditional proportional} gives
 	\begin{bmatrix} 
 		\bwischur  & 0 \\ 
 		0 & \bwibr 
-	\end{bmatrix} \times \\
+	\end{bmatrix} \\
 	&\superquad \begin{bmatrix}
 		\variableparta - \datapointparta{\indexsampling} \\
 		\variablepartb - \datapointpartb{\indexsampling} + \bwibr^{-1}\bwibl \left(\variableparta - \datapointparta{\indexsampling} \right)
@@ -139,7 +139,7 @@ Substituting this in the exponent of \cref{eq:conditional proportional} gives
 	\bwischur 
 	\left(\variableparta - \datapointparta{\indexdata}\right) + \nonumber \\
 	&\superquad \left( \variablepartb - \datapointpartb{\indexdata} + \bwibr^{-1} \bwiur^T \left(\variableparta - \datapointparta{\indexdata} \right) \right)^T
-	\bwibr \times \\
+	\bwibr \\
 	&\superquad \left( \variablepartb - \datapointpartb{\indexdata} + \bwibr^{-1} \bwiur^T \left(\variableparta - \datapointparta{\indexdata} \right) \right).
 \end{align*}
 Using this, we can rewrite \cref{eq:conditional proportional} as
@@ -174,17 +174,17 @@ The procedure for sampling is summarized in \cref{alg:conditional hard}.
 	\Input{$\datapoint{1}, \ldots, \datapoint{\numberofsamples}$, $\variableparta$, $\bandwidthmatrix$}
 	\Output{Sample $\variablepartb$ from \cref{eq:conditional density}}
 	
-	$\datapointparta{1},\ldots,\datapointparta{\numberofsamples}$, $\datapointpartb{1},\ldots,\datapointpartb{\numberofsamples}$ $\gets$ Decompose data points according to \cref{eq:decomposition data}
+	$\datapointparta{1},\ldots,\datapointparta{\numberofsamples}$, $\datapointpartb{1},\ldots,\datapointpartb{\numberofsamples}$ $\gets$ Decompose the data points according to \cref{eq:decomposition data}
 	
 	$\bwiul$, $\bwiur$, $\bwibl$, $\bwibr$, $\bwischur$ $\gets$ Compute the inverse of $\bandwidthmatrix$ according to \cref{eq:bandwidth matrix inverse} and $\bwischur$ according to \cref{eq:schur complement}.
 	
-	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute weights according to \cref{eq:weights conditional hard}
+	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute the weights according to \cref{eq:weights conditional hard}
 	
-	$\indexsampling$ $\gets$ Generate a random integer $\indexsampling\in\{1,\ldots,\numberofsamples\}$ with likelihood of $\indexsampling$ proportional to $\weight{\indexsampling}$
+	$\indexsampling$ $\gets$ Generate a random integer $\indexsampling\in\{1,\ldots,\numberofsamples\}$ with the likelihood of $\indexsampling$ proportional to $\weight{\indexsampling}$
 	
 	$\datapointpartbtranslated{\indexsampling}$ $\gets$ Compute the mean of the Gaussian to generate a sample from according to \cref{eq:offset conditional hard}
 	
-	$\variablepartb$ $\gets$ Generate random sample from a Gaussian with covariance $\bwibr^{-1}$ and mean $\datapointpartbtranslated{\indexsampling}$
+	$\variablepartb$ $\gets$ Generate a random sample from a Gaussian with covariance $\bwibr^{-1}$ and mean $\datapointpartbtranslated{\indexsampling}$
 		
 	\caption{Sampling with part of $\variable$ fixed and full bandwidth matrix.}
 	\label{alg:conditional hard}
@@ -213,7 +213,7 @@ The first $\dimensionparta$ columns of $\svdv$ are denoted by $\svdva$ while $\s
 Moreover, $\svds \in \realnumbers^{\dimensionparta \times \dimensionparta}$ is a diagonal matrix with its so-called singular values on its diagonal.
 Because $\constraintmatrix$ has full rank and $\numberofconstraints<\dimension$, all singular values are strictly positive.
 As such, evaluating $\svds^{-1}$ is straightforward.
-Now let $\variableconstrained \in \realnumbers^{\dimensionparta}$ and $\variableunconstrained \in \realnumbers^{\dimensionpartb}$ such that
+Now, let $\variableconstrained \in \realnumbers^{\dimensionparta}$ and $\variableunconstrained \in \realnumbers^{\dimensionpartb}$ such that
 \begin{equation}
 	\label{eq:rotation variable}
 	\variable = \svdva \variableconstrained + \svdvb \variableunconstrained 
@@ -221,8 +221,7 @@ Now let $\variableconstrained \in \realnumbers^{\dimensionparta}$ and $\variable
 	= \svdv \begin{bmatrix} \variableconstrained \\ \variableunconstrained \end{bmatrix}.
 \end{equation}
 Note that because $\svdv^{-1} = \svdv^T$, we have $\variableconstrained = \svdva^T \variable$ and $\variableunconstrained = \svdvb^T \variable$.
-\cstarta Moreover, $\svdva^T \svdvb = 0$. \cenda
-Substituting \cref{eq:svd constraint matrix,eq:rotation variable} into \cref{eq:linear constraint}, gives
+\cstarta Moreover, $\svdva^T\svdva=\identitymatrix{\dimensionparta}$ and $\svdva^T \svdvb = 0$, such that \cenda substituting \cref{eq:svd constraint matrix,eq:rotation variable} into \cref{eq:linear constraint}, gives
 \begin{equation}
 	\label{eq:linear constraint after rotation}
 	\svdu \svds \svdva^T \left( \svdva \variableconstrained + \svdvb \variableunconstrained \right)
@@ -244,17 +243,17 @@ Similar as $\variableconstrained$ and $\variableunconstrained$, let $\datapointc
 			\variableunconstrained - \datapointunconstrained{\indexdata}
 		\end{bmatrix}}^2
 	} \\
-	&= \sum_{\indexdata=1}^{\numberofsamples}
+	&\propto \sum_{\indexdata=1}^{\numberofsamples}
 	\e{ -\frac{1}{2\bandwidth^2}
 		\normtwo{ \begin{bmatrix} 
 			\variableconstrained - \datapointconstrained{\indexdata} \\ 
 			\variableunconstrained - \datapointunconstrained{\indexdata}
 		\end{bmatrix}}^2
 	} \\
-	&=\sum_{\indexdata=1}^{\numberofsamples}
-	\e{ -\frac{1}{2\bandwidth^2} \normtwo{ \variableconstrained - \datapointconstrained{\indexdata} }^2} \times \\
+	&\propto\sum_{\indexdata=1}^{\numberofsamples}
+	\e{ -\frac{1}{2\bandwidth^2} \normtwo{ \variableconstrained - \datapointconstrained{\indexdata} }^2} \\
 	&\superquad \e{ -\frac{1}{2\bandwidth^2} \normtwo{ \variableunconstrained - \datapointunconstrained{\indexdata} }^2} \\
-	&=\sum_{\indexdata=1}^{\numberofsamples}
+	&\propto\sum_{\indexdata=1}^{\numberofsamples}
 	\weight{\indexdata} \e{ -\frac{1}{2\bandwidth^2} \normtwo{ \variableunconstrained - \datapointunconstrained{\indexdata} }^2},
 \end{align*}
 with
@@ -265,7 +264,7 @@ with
 \end{equation}
 
 To generate samples from \cref{eq:gaussian kde} that satisfy \cref{eq:linear constraint}, two random numbers need to be generated. 
-First, an integer$\indexsampling\in\{1,\ldots,\numberofsamples\}$ is randomly chosen with the likelihood of the integer $\indexsampling$ proportional to the weight $\weight{\indexsampling}$ of \cref{eq:weights constrained simple}. 
+First, an integer $\indexsampling\in\{1,\ldots,\numberofsamples\}$ is randomly chosen with the likelihood of the integer $\indexsampling$ proportional to the weight $\weight{\indexsampling}$ of \cref{eq:weights constrained simple}. 
 Next, a random sample is drawn from a Gaussian with covariance $\bandwidth^2 \identitymatrix{\dimensionpartb}$ and mean $\datapointunconstrained{\indexsampling}$.
 Finally, this random sample is mapped according to \cref{eq:rotation variable} to obtain the final random sample.
 The procedure for sampling is summarized in \cref{alg:constrained simple}.
@@ -278,17 +277,17 @@ The procedure for sampling is summarized in \cref{alg:constrained simple}.
 	
 	$\svdu$, $\svds$, $\svdva$, $\svdvb$ $\gets$ Perform \iac{svd} of $\constraintmatrix$; see \cref{eq:svd constraint matrix}
 	
-	$\datapointconstrained{1},\ldots,\datapointconstrained{\numberofsamples}$ $\gets$ Map data points using $\datapointconstrained{\indexdata} = \svdva^T \datapoint{\indexdata}$
+	$\datapointconstrained{1},\ldots,\datapointconstrained{\numberofsamples}$ $\gets$ Map the data points using $\datapointconstrained{\indexdata} = \svdva^T \datapoint{\indexdata}$
 		
-	$\datapointunconstrained{1},\ldots,\datapointunconstrained{\numberofsamples}$ $\gets$ Map data points using $\datapointunconstrained{\indexdata} = \svdvb^T \datapoint{\indexdata}$
+	$\datapointunconstrained{1},\ldots,\datapointunconstrained{\numberofsamples}$ $\gets$ Map the data points using $\datapointunconstrained{\indexdata} = \svdvb^T \datapoint{\indexdata}$
 	
 	$\variableconstrained$ $\gets$ Compute $\variableconstrained$ using \cref{eq:fixed part}
 	
-	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute weights according to \cref{eq:weights constrained simple}
+	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute the weights according to \cref{eq:weights constrained simple}
 	
-	$\indexsampling$ $\gets$ Generate a random integer $\indexsampling\in\{1,\ldots,\numberofsamples\}$ with likelihood of $\indexsampling$ proportional to $\weight{\indexsampling}$
+	$\indexsampling$ $\gets$ Generate a random integer $\indexsampling\in\{1,\ldots,\numberofsamples\}$ with the likelihood of $\indexsampling$ proportional to $\weight{\indexsampling}$
 	
-	$\variableunconstrained$ $\gets$ Generate random sample from a Gaussian with covariance $\bandwidth^2 \identitymatrix{\dimensionpartb}$ and mean $\datapointunconstrained{\indexsampling}$
+	$\variableunconstrained$ $\gets$ Generate a random sample from a Gaussian with covariance $\bandwidth^2 \identitymatrix{\dimensionpartb}$ and mean $\datapointunconstrained{\indexsampling}$
 	
 	$\variable$ $\gets$ Compute $\variable$ according to \cref{eq:rotation variable}
 		
@@ -301,7 +300,7 @@ The procedure for sampling is summarized in \cref{alg:constrained simple}.
 \subsection{Sampling with linear equality constraints and full bandwidth matrix}
 \label{sec:sampling constrained hard}
 
-In this section, we assume that $\bandwidthmatrix$ is a symmetric positive definite matrix. 
+%In this section, we assume that $\bandwidthmatrix$ is a symmetric positive definite matrix. 
 Using \cref{eq:svd constraint matrix,eq:rotation variable,eq:linear constraint after rotation,eq:fixed part}, we can rewrite \cref{eq:gaussian kde}:
 \begin{equation*}
 	\densityest{\variableconstrained, \variableunconstrained} 
@@ -358,21 +357,21 @@ The procedure for sampling is summarized in \cref{alg:constrained hard}.
 	
 	$\svdu$, $\svds$, $\svdva$, $\svdvb$ $\gets$ Perform \iac{svd} of $\constraintmatrix$; see \cref{eq:svd constraint matrix}
 	
-	$\datapointconstrained{1},\ldots,\datapointconstrained{\numberofsamples}$ $\gets$ Map data points using $\datapointconstrained{\indexdata} = \svdva^T \datapoint{\indexdata}$
+	$\datapointconstrained{1},\ldots,\datapointconstrained{\numberofsamples}$ $\gets$ Map the data points using $\datapointconstrained{\indexdata} = \svdva^T \datapoint{\indexdata}$
 		
-	$\datapointunconstrained{1},\ldots,\datapointunconstrained{\numberofsamples}$ $\gets$ Map data points using $\datapointunconstrained{\indexdata} = \svdvb^T \datapoint{\indexdata}$
+	$\datapointunconstrained{1},\ldots,\datapointunconstrained{\numberofsamples}$ $\gets$ Map the data points using $\datapointunconstrained{\indexdata} = \svdvb^T \datapoint{\indexdata}$
 	
 	$\variableconstrained$ $\gets$ Compute $\variableconstrained$ using \cref{eq:fixed part}
 	
 	$\bwriul$, $\bwriur$, $\bwribl$, $\bwribr$, $\bwrischur$ $\gets$ Compute $\svdv^T \bandwidthmatrix^{-1} \svdv$ according to \cref{eq:rotated matrix inverse} and $\bwrischur$ according to \cref{eq:rotated schur complement}
 	
-	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute weights according to \cref{eq:weights constrained hard}
+	$\weight{1},\ldots,\weight{\numberofsamples}$ $\gets$ Compute the weights according to \cref{eq:weights constrained hard}
 	
-	$\indexsampling$ $\gets$ Generate a random integer $\indexsampling\in\{1,\ldots,\numberofsamples\}$ with likelihood of $\indexsampling$ proportional to $\weight{\indexsampling}$
+	$\indexsampling$ $\gets$ Generate a random integer $\indexsampling\in\{1,\ldots,\numberofsamples\}$ with the likelihood of $\indexsampling$ proportional to $\weight{\indexsampling}$
 	
 	$\datapointunconstrainedtranslated{\indexsampling}$ $\gets$ Compute the mean of the Gaussian to generate a sample from according to \cref{eq:offset constrained hard}
 	
-	$\variableunconstrained$ $\gets$ Generate random sample from a Gaussian with covariance $\bwribr^{-1}$ and mean $\datapointunconstrainedtranslated{\indexsampling}$
+	$\variableunconstrained$ $\gets$ Generate a random sample from a Gaussian with covariance $\bwribr^{-1}$ and mean $\datapointunconstrainedtranslated{\indexsampling}$
 	
 	$\variable$ $\gets$ Compute $\variable$ according to \cref{eq:rotation variable}
 		

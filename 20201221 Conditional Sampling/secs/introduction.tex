@@ -7,15 +7,15 @@ Because public road tests are expensive and time consuming \autocite{kalra2016dr
 As a source of information for the scenarios for the assessment, real-world driving data has been proposed, such that the scenarios relate to real-world driving conditions \autocite{elrofai2018scenario, putz2017pegasus, krajewski2018highD}.
 
 % List possible methods for generating scenarios
-When using scenarios extracted from real-world driving data as a direct source for the test scenarios, two problems arise.
+When using scenarios extracted from real-world driving data as a direct source for describing scenario-based tests, two problems arise.
 First, not all possible variations of the scenarios might be found in the data. 
-Therefore, the failure modes of the \acp{av} might not be reflected in the existing scenarios \autocite{zhao2018evaluation}.
+Therefore, the failure modes of the \acp{av} might not be reflected in the tests that are based on the scenarios that are extracted from real-world driving data \autocite{zhao2018evaluation}.
 Second, using scenarios extracted from real-world driving data might not reduce the actual testing load, because the set of extracted scenarios is largely composed of non-safety critical scenarios \autocite{zhao2018evaluation}.
-As a solution to this, so-called importance sampling has been introduced in order to put more emphasis on safety-critical scenarios \autocite{deGelder2017assessment, xu2018accelerated, zhao2018evaluation, jesenski2020scalable}.
+As a solution to this, so-called importance sampling has been introduced in order to put more emphasis on scenarios that are likely to trigger safety-critical situations \autocite{deGelder2017assessment, xu2018accelerated, zhao2018evaluation, jesenski2020scalable}.
 These methods \autocite{deGelder2017assessment, xu2018accelerated, zhao2018evaluation, jesenski2020scalable} have in common that they describe scenarios using parameters for which \iac{pdf} is estimated.
 
 % Out solution
-As already proposed in \autocite{deGelder2017assessment}, we propose to estimate the \ac{pdf} using \ac{kde}.
+As already presented in \autocite{deGelder2017assessment}, we propose to estimate the \ac{pdf} using \ac{kde}.
 \ac{kde} \autocite{parzen1962estimation, rosenblatt1956remarks} is often referred to as a non-parametric way to estimate the \ac{pdf}, because no use is made of a predefined functional form of the \ac{pdf} for which certain parameters are fitted to the data. 
 \cstarta Because \ac{kde} produces \iac{pdf} that adapts itself to the data, it is flexible regarding the shape of the actual underlying distribution of the parameters. \cenda
 Sampling from \iac{kde} is straightforward.
@@ -23,14 +23,14 @@ However, in some cases, one wants to sample from the estimated \ac{pdf} while a 
 This is known as conditional sampling. 
 For example, suppose we have a two-dimensional estimated distribution and we want to draw samples from this distribution while the first of these two variables is equal to a predefined value. 
 One approach would be to evaluate the conditional \ac{pdf} and to use this for sampling.
-This method, however, would be highly cumbersome, especially with a higher-dimensional \ac{pdf}\cstarta, because partial derivatives of the conditional \ac{pdf} must be evaluated\cenda. 
+This method, however, would be highly cumbersome, especially with a higher-dimensional \ac{pdf}\cstarta, because marginal integrals of codimension 1 of the conditional \ac{pdf} must be evaluated\cenda. 
 
 % Contribution of this paper (conditional sampling and sampling with linear constraints)
 We will propose algorithms to sample parameters from \iac{kde} while either one or more parameters are fixed or the parameters are subject to linear equality constraints.
 Conditional sampling with one or more variables fixed easily follows from estimation techniques for conditional \acp{pdf} \autocite{hyndman1996estimating, holmes2007fast}.
 In this paper, we go one step further: We will also present a method for sampling from \iac{kde} while the variables satisfy linear equality constraints. 
 \cstarta Our proposed method is efficient, because the actual (conditional) \ac{pdf} does not need to be evaluated. \cenda
-In our case, the computational costs scales approximately quadratically with respect to the dimension and linearly with respect to the number of data points. 
+In our case, the computational cost scales approximately quadratically with respect to the dimension, i.e., the number of parameters that are used to describe a scenario, and linearly with respect to the number of data points. 
 If more samples are to be generated with the same constraints, most computations need to be done only once; so this reduces the computational load per generated sample.
 We illustrate the proposed sampling technique and its practical usefulness using an example.
 Furthermore, we will explain the usefulness of sampling with linear equality constraints in case parameter reduction techniques are used to avoid the curse of dimensionality that \ac{pdf} estimation techniques, such as \ac{kde}, are suffering from.
@@ -41,4 +41,4 @@ In \cref{sec:problem}, we first describe the problem in more detail, which resul
 In \cref{sec:method}, we provide four algorithms to solve each of these variants.
 Through an example, we illustrate the correct performance of these algorithms in \cref{sec:example}.
 In \cref{sec:discussion}, we will discuss the scalability of the algorithms and a possible useful application of the algorithms. 
-We conclude this paper in \cref{sec:conclusions}.
+Conclusions of the paper are provided in \cref{sec:conclusions}.

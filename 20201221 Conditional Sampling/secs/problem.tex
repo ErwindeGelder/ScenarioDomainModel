@@ -8,7 +8,7 @@ In \ac{kde}, the \ac{pdf} $\density{\cdot}$ is estimated as follows:
 	\frac{1}{\numberofsamples} \sum_{\indexdata=1}^{\numberofsamples} 
 	\kernelfuncnormalized{\bandwidthmatrix}{\variable - \datapoint{\indexdata}}.
 \end{equation}
-Here, $\datapoint{\indexdata} \in \realnumbers^{\dimension}$ represents the $i$-th data point.
+Here, $\datapoint{\indexdata} \in \realnumbers^{\dimension}$ represents the $i$-th data point of dimension $\dimension$.
 In total, there are $\numberofsamples$ data points, so $i \in \{1, \ldots, \numberofsamples\}$.
 In \cref{eq:kde}, $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is the so-called scaled kernel with a positive definite symmetric bandwidth matrix $\bandwidthmatrix \in \realnumbers^{\dimension \times \dimension}$.
 The kernel $\kernelfunc{\cdot}$ and the scaled kernel $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ are related using
@@ -18,7 +18,7 @@ The kernel $\kernelfunc{\cdot}$ and the scaled kernel $\kernelfuncnormalized{\ba
 	= \determinant{\bandwidthmatrix}^{-1/2} \kernelfunc{ \bandwidthmatrix^{-1/2} \dummyvar },
 \end{equation}
 where $\determinant{\cdot}$ denotes the matrix determinant.
-The choice of the kernel function is not as important as the choice of the bandwidth matrix \autocite{turlach1993bandwidthselection}.
+The choice of the kernel function is not as important as the choice of the bandwidth matrix \autocite{turlach1993bandwidthselection, duong2007ks}.
 Often, a Gaussian kernel is opted and this paper is no exception.
 The Gaussian kernel is given by
 \begin{equation}
@@ -34,10 +34,10 @@ Substituting \cref{eq:gaussian kernel,eq:scaled kernel} into \cref{eq:kde}, we o
 	\sum_{\indexdata=1}^{\numberofsamples} 
 	\e{-\frac{1}{2} \left( \variable - \datapoint{\indexdata} \right)^T H^{-1} \left( \variable - \datapoint{\indexdata} \right)},
 \end{equation}
-where $\constantterm=\frac{1}{N \left(2\pi\right)^{d/2} \determinant{\bandwidthmatrix}}$ is a constant.
+where $\constantterm=\frac{1}{N \left(2\pi\right)^{d/2} \determinant{\bandwidthmatrix}^{1/2}}$ is a constant.
 
 The bandwidth matrix is an important parameter of the \ac{kde}. 
-We assume that $\bandwidthmatrix$ is given, either in its simplified diagonal form $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$, where $\identitymatrix{\dimension}$ and $\bandwidth$ denote a $\dimension\times\dimension$ identity matrix and scalar bandwidth, respectively, or in its unconstrained form.
+We assume that $\bandwidthmatrix$ is given, either in its simplified diagonal form $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$, where $\identitymatrix{\dimension}$ and $\bandwidth$ denote a $\dimension\times\dimension$ identity matrix and a scalar bandwidth, respectively, or in its unconstrained form.
 We refer the interested reader to \autocite{turlach1993bandwidthselection, jones1996brief, duong2007ks, gramacki2017fft} for details on the estimation of $\bandwidthmatrix$.
 
 Sampling new data points from $\densityest{\cdot}$ of \cref{eq:gaussian kde} is straightforward.
@@ -64,7 +64,7 @@ Using the general product rule for probability, we have
 As we will see later, to sample from $\densityestcond{\cdot}{\variableparta}$, it is not needed to actually evaluate $\densityestcond{\variablepartb}{\variableparta}$.
 Instead, it is enough to know how $\densityestcond{\variablepartb}{\variableparta}$ scales with respect to terms that contain $\variablepartb$.
 Since the denominator of the right-hand side of \cref{eq:conditional density} does not depend on $\variablepartb$, there is no need to evaluate the integral.
-In our notation, we will use the symbol $\propto$ to indicate this.
+In our notation, we will use the symbol $\propto$ to indicate this proportionality.
 E.g., for \cref{eq:conditional density}, we can write
 \begin{equation}
 	\label{eq:proportionality conditional density}
@@ -83,7 +83,7 @@ In the second half of \cref{sec:method}, we show a way to sample from \iac{kde} 
 	\label{eq:linear constraint}
 	\constraintmatrix \variable = \constraintvector.
 \end{equation}
-Here $\constraintmatrix \in \realnumbers^{\numberofconstraints \times \dimension}$ and $\constraintvector \in \realnumbers^{\numberofconstraints}$ denote the constraint matrix and constraint vector, respectively. 
+Here $\constraintmatrix \in \realnumbers^{\numberofconstraints \times \dimension}$ and $\constraintvector \in \realnumbers^{\numberofconstraints}$ denote the constraint matrix and the constraint vector, respectively. 
 Here, it is assumed that the constraint matrix $\constraintmatrix$ has full rank.
 Note that if $\constraintmatrix$ has not full rank, the constraint of \cref{eq:linear constraint} can easily be reformulated using Gaussian elimination, resulting in a similar constraint with a constraint matrix that has full rank.
 In total, there are $\numberofconstraints < \dimension$ constraints.

@@ -116,6 +116,14 @@
 %\usepackage{setspace}
 %\doublespacing
 
+%% Remove right hand margin in algorithm
+\makeatletter
+\patchcmd{\@algocf@start}% <cmd>
+  {-1.5em}% <search>
+  {0pt}% <replace>
+  {}{}% <success><failure>
+\makeatother
+
 \begin{document}
 
 % Acronyms
