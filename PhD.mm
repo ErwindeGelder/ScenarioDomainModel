@@ -3300,6 +3300,16 @@
     <pdf_title>A Method for an Efficient, Systematic Test Case Generation for Advanced Driver Assistance Systems in Virtual Environments</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Generation of Pedestrian Crossing Scenarios using GANs" ID="ID_1428844121" CREATED="1612774392383" MODIFIED="1612774507285" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/552%20Generation%20of%20Pedestrian%20Crossing%20Scenarios%20using%20GANs.pdf">
+<attribute NAME="key" VALUE="spooner2021generation"/>
+<attribute NAME="journal" VALUE="Applied Sciences"/>
+<attribute NAME="year" VALUE="2021"/>
+<attribute NAME="title" VALUE="Generation of Pedestrian Crossing Scenarios Using Ped-Cross Generative Adversarial Network"/>
+<attribute NAME="authors" VALUE="Spooner, James and Palade, Vasile and Cheah, Madeline and Kanarachos, Stratis and Daneshkhah, Alireza"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C327245AC2614FC05B40A0EF1A9F89BBA2A18BDE3BC61F3B72184A26EB2531">
+    <pdf_title>Generation of Pedestrian Crossing Scenarios Using Ped-Cross Generative Adversarial Network</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Scenario (mining)" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_1938656481" CREATED="1513049323834" MODIFIED="1529492845791" HGAP="62" VSHIFT="8">
