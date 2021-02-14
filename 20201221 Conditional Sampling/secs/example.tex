@@ -25,14 +25,7 @@ Each of the braking activities is described by $\dimension=3$ variables:
 
 \cstarta To illustrate our method, we construct \iac{kde} of these parameters using the $\numberofsamples=2786$ data samples and sample a new set of parameters using the constructed \ac{kde}. \cenda
 To apply \cref{alg:conditional simple,alg:constrained simple}, we employ \ac{kde} with the bandwidth matrix $\bandwidthmatrix=\bandwidth^2\identitymatrix{3}$. 
-First, a diagonal bandwidth matrix is estimated using the plug-in selector of \textcite{wand1994multivariate}, as also explained in \autocite{duong2007ks}.
-Then, the data points are scaled by the values at the diagonal, such that the bandwidth matrix $\bandwidthmatrix=\identitymatrix{3}$ can be used. 
-The scaling is such that:
-\begin{itemize}
-	\item the first variable corresponds to the mean deceleration divided by $0.066$;
-	\item the second variable corresponds to the end difference divided by $0.85$; and
-	\item the third variable corresponds to the speed reduction divided by $0.55$.
-\end{itemize}
+\cstarta The bandwidth $\bandwidth$ is determine using Silverman's rule of thumb \autocite{silverman1986density}, which results in $\bandwidth\approx 0.61$. \cenda
 
 To illustrate \cref{alg:conditional hard,alg:constrained hard}, we use a full bandwidth matrix $\bandwidthmatrix$. 
 The bandwidth matrix is estimated using the plug-in selector of \textcite{wand1994multivariate}. 

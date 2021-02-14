@@ -77,7 +77,8 @@ which means that the left-hand side of \cref{eq:proportionality conditional dens
 In the first half of \cref{sec:method}, we show a way to sample from a conditional density like \cref{eq:conditional density} that is estimated using \ac{kde}. 
 We first show this for the simplified case in which $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$. 
 In this simplified case, the results from \textcite{hyndman1996estimating, holmes2007fast} can be directly applied.
-Next, we show how we can sample in the more general case of a full bandwidth matrix $\bandwidthmatrix$.
+\textcite{wand1993comparison} showed that assuming $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$ is usually too severe.
+Therefore, we also show how we can sample in the more general case of a full bandwidth matrix $\bandwidthmatrix$.
 In the second half of \cref{sec:method}, we show a way to sample from \iac{kde} like \cref{eq:kde}, but instead of having few values of $\variable$ fixed, like in \cref{eq:conditional density}, we deal with linear equality constraints on $\variable$:
 \begin{equation}
 	\label{eq:linear constraint}

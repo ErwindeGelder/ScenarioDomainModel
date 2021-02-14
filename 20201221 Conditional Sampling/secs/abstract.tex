@@ -7,6 +7,7 @@ One way to generate the required scenario-based test descriptions is to paramete
 Because the shape of the \ac{pdf} is unknown beforehand, assuming a functional form of the \ac{pdf} and fitting the parameters to the data may lead to inaccurate fits.
 As an alternative, \ac{kde} is a promising candidate for estimating the underlying \ac{pdf}, because it is flexible with the underlying distribution of the parameters. \cenda
 Drawing random samples from \iac{pdf} estimated with \ac{kde} is possible without the need of evaluating the actual \ac{pdf}, which makes it suitable for drawing random samples for, e.g., Monte Carlo methods.
+\cstarta Sampling from \iac{kde} while the samples satisfy linear equality constraints, however, has not been described in literature, as far as the authors know. \cenda
 
 In this paper, we provide a method to sample from a conditional \ac{pdf} in case the \ac{pdf} is estimated using \ac{kde}. 
 In addition, we propose a method to sample from \iac{pdf} estimated using \ac{kde}, such that the samples satisfy linear equality constraints. 

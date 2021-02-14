@@ -1608,6 +1608,16 @@
     <pdf_title>Antona-Makoshi 1</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Criticality Analysis for the V&amp;V of AVs" ID="ID_359262774" CREATED="1613144173582" MODIFIED="1613144348529" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/553%20Criticality%20Analysis%20for%20the%20V&amp;V%20of%20AVs.pdf">
+<attribute NAME="key" VALUE="neurohr2021criticality"/>
+<attribute NAME="journal" VALUE="IEEE Access"/>
+<attribute NAME="year" VALUE="2021"/>
+<attribute NAME="title" VALUE="Criticality Analysis for the Verification and Validation of Automated Vehicles"/>
+<attribute NAME="authors" VALUE="Neurohr, Christian and Westhofen, Lukas and Butz, Martin and Bollmann, Martin and Eberle, Ulrich and Galbas, Roland"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="38F939E1FF94F68C1F2C99333124F795BEB46E9E61A2617AE9ABE112AC823A">
+    <pdf_title>Criticality Analysis for the Verification and Validation of Automated Vehicles</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="PEGASUS" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1615434539" CREATED="1555470126855" MODIFIED="1590912451053" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/304%20PEGASUS%20Approach.pdf">
 <attribute NAME="key" VALUE="winner2017pegasus"/>
 <attribute NAME="year" VALUE="2017"/>
@@ -5039,6 +5049,16 @@
     <pdf_title>A framework for definition of logical scenarios for safety assurance of automated driving</pdf_title>
 </pdf_annotation>
 </node>
+</node>
+<node TEXT="6-Layer model" ID="ID_1194044908" CREATED="1613145798793" MODIFIED="1613145808546" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/554%206-Layer%20Model.pdf">
+<attribute NAME="key" VALUE="scholtes2020six"/>
+<attribute NAME="journal" VALUE="arXiv preprint arXiv:2012.06319"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="6-Layer Model for a Structured Description and Categorization of Urban Traffic and Environment"/>
+<attribute NAME="authors" VALUE="Scholtes, Maike and Westhofen, Lukas and Turner, Lara Ruth and Lotto, Katrin and Schuldes, Michael and Weber, Hendrik and Wagener, Nicolas and Neurohr, Christian and Bollmann, Martin and K{\&quot;o}rtke, Franziska and others"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="C155BADA94F9BBEF4B5E572ABB63D56CC4055B56F3E51407DD2CF102162885">
+    <pdf_title>6-Layer Model for a Structured Description and Categorization of Urban Traffic and Environment</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 </node>
