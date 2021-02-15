@@ -50,20 +50,26 @@ In \cref{fig:conditional simple,fig:conditional hard}, the result of \cref{alg:c
 In total, $10^6$ samples are generated and shown by the histogram (the bin width is \SI{0.2}{\meter\per\second}). 
 Because the histograms follow the same pattern as the actual density of the speed difference according to the \ac{kde}, it illustrates that the provided algorithms correctly sample from the \ac{kde}. 
 
+\newcommand{\figurevspace}{\vspace{-1.2cm}}
+\newcommand{\captionvspace}{\vspace{-1cm}}
 \begin{figure}
+	\figurevspace
 	\centering
 	\resizebox{\columnwidth}{!}{%
 		\input{figs/conditional_simple.tikz}
 	}
+	\captionvspace
 	\caption{The histogram shows the result of the conditional sampling according to \cref{alg:conditional simple}. The red line represents the true \ac{pdf}.}
 	\label{fig:conditional simple}
 \end{figure}
 
 \begin{figure}
+	\figurevspace
 	\centering
 	\resizebox{\columnwidth}{!}{%
 		\input{figs/conditional_hard.tikz}
 	}
+	\captionvspace
 	\caption{The histogram show the result of the conditional sampling according to \cref{alg:conditional hard}. The red line represents the true \ac{pdf}.}
 	\label{fig:conditional hard}
 \end{figure}
@@ -91,19 +97,23 @@ In total, $10^6$ samples are generated and shown by the histogram.
 Because the histograms follow the same pattern as the actual density of the speed difference according to the \ac{kde}, it illustrates that the provided algorithms correctly sample from the \ac{kde}. 
 
 \begin{figure}
+	\figurevspace
 	\centering
 	\resizebox{\columnwidth}{!}{%
 		\input{figs/constrained_simple.tikz}
 	}
+	\captionvspace
 	\caption{The histogram shows the result of the conditional sampling according to \cref{alg:constrained simple}. The red line represents the true \ac{pdf}.}
 	\label{fig:constrained simple}
 \end{figure}
 
 \begin{figure}
+	\figurevspace
 	\centering
 	\resizebox{\columnwidth}{!}{%
 		\input{figs/constrained_hard.tikz}
 	}
+	\captionvspace
 	\caption{The histogram shows the result of the conditional sampling according to \cref{alg:constrained hard}. The red line represents the true \ac{pdf}.}
 	\label{fig:constrained hard}
 \end{figure}
