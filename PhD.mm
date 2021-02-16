@@ -2227,7 +2227,7 @@
 </node>
 <node TEXT="Risk" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_398321502" CREATED="1567057870946" MODIFIED="1567057884205">
 <edge COLOR="#ff00ff"/>
-<node TEXT="Risk estimation techniques" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_297184787" CREATED="1567057885210" MODIFIED="1567057910111">
+<node TEXT="Risk estimation techniques" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_297184787" CREATED="1567057885210" MODIFIED="1567057910111">
 <node TEXT="FMEA (Failure Mode and Effect Analysis)" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1704503303" CREATED="1567057911201" MODIFIED="1567057948898">
 <node TEXT="Failure Mode and Effect Analysis: FMEA from Theory to Execution" ID="ID_1972444910" CREATED="1567058951026" MODIFIED="1590912450607">
 <attribute NAME="key" VALUE="stamatis2003failure"/>
@@ -2828,6 +2828,16 @@
     <pdf_title>On a Formal Model of Safe and Scalable Self-driving Cars</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Comparative Assessment of Safety Indicators for Vehicle Trajectories on Highways" ID="ID_826071284" CREATED="1613148342178" MODIFIED="1613148386765" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/555%20Comparative%20Assessment%20of%20Safety%20Indicators.pdf">
+<attribute NAME="key" VALUE="mullakkal2017comparative"/>
+<attribute NAME="journal" VALUE="Transportation Research Record"/>
+<attribute NAME="year" VALUE="2017"/>
+<attribute NAME="title" VALUE="Comparative Assessment of Safety Indicators for Vehicle Trajectories on Highways"/>
+<attribute NAME="authors" VALUE="Mullakkal-Babu, Freddy Antony and Wang, Meng and Farah, Haneen and van Arem, Bart and Happee, Riender"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="8AE07F79C2B6D39E1713C2FE568F361C78C34EAE4E2989FBF13AFFA1B34EF7">
+    <pdf_title>Comparative Assessment of Safety Indicators for Vehicle Trajectories on Highways</pdf_title>
+</pdf_annotation>
+</node>
 <node TEXT="Time based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1661737269" CREATED="1611644957060" MODIFIED="1611644964860">
 <node TEXT="TTC and Time-To-Intersection" ID="ID_1640769109" CREATED="1611645314932" MODIFIED="1611645454341" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/541%20A%20time-based%20analysis%20of%20road%20user%20behaviour%20at%20intersections.pdf">
 <attribute NAME="key" VALUE="vanderhorst1990time"/>
@@ -2856,8 +2866,28 @@
     <pdf_title>Extended time-to-collision measures for road traffic safety assessment</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="Time to steer, time to brake, time to kickdown" ID="ID_22507840" CREATED="1610527187129" MODIFIED="1610527275164" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/533%20Scenario-Based%20Risk%20Assessment.pdf" MOVED="1613396238599">
+<attribute NAME="key" VALUE="wagner2018using"/>
+<attribute NAME="year" VALUE="2018"/>
+<attribute NAME="title" VALUE="Using Time-to-React Based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving"/>
+<attribute NAME="authors" VALUE="Wagner, Sebastian and Groh, Korbinian and Kuhbeck, Thomas and Dorfel, Michael and Knoll, Alois"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5EBAD34ED40DE5D817BE2ECC059E96811512435891B912B1CBA401F38A">
+    <pdf_title>Using Time-to-React based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Evasive actions" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_785463491" CREATED="1611648506971" MODIFIED="1611648514214"/>
+<node TEXT="Scenario-based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1113772797" CREATED="1610467606104" MODIFIED="1610467620604" MOVED="1613396243484">
+<node TEXT="Scenario-based threat metric evaluation based on the highd dataset" ID="ID_1351061813" CREATED="1610467623307" MODIFIED="1610467686339" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/537%20Scenario-based%20threat%20metric%20evaluation%20based%20on%20the%20highd%20dataset.pdf">
+<attribute NAME="key" VALUE="schneider2020scenario"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Scenario-Based Threat Metric Evaluation Based on the Highd Dataset"/>
+<attribute NAME="authors" VALUE="Schneider, Patrick and Butz, Martin and Heinzemann, Christian and Oehlerking, Jens and Woehrle, Matthias"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="236BDA3E4D8CF31FF2E29BCD0B389DA91179C1936B0EF9CADA1F9ADA6D5235">
+    <pdf_title>Scenario-based threat metric evaluation based on the dataset</pdf_title>
+</pdf_annotation>
+</node>
+</node>
 </node>
 <node TEXT="Anomaly detection" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1395912311" CREATED="1607005860636" MODIFIED="1607005870136">
 <node TEXT="Safe driving behavior - ITSC2020 paper from TNO" ID="ID_968026414" CREATED="1607005977555" MODIFIED="1607006190176" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/525%20Towards%20a%20Characterization%20of%20Safe%20Driving%20Behavior.pdf">
@@ -2870,7 +2900,7 @@
 </pdf_annotation>
 </node>
 </node>
-<node TEXT="Other work related to ITS" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_98733965" CREATED="1607285352671" MODIFIED="1607285363935">
+<node TEXT="Other work related to ITS" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_98733965" CREATED="1607285352671" MODIFIED="1607285363935">
 <node TEXT="Safety Assessment and Uncertainty Quantification of ADAS using Stochastic Analysis Methods" ID="ID_876657" CREATED="1607285365135" MODIFIED="1607327737771" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/526%20Safety%20Assessment%20and%20Uncertainty%20Quantification.pdf">
 <attribute NAME="key" VALUE="rasch2019safety"/>
 <attribute NAME="year" VALUE="2019"/>
@@ -2888,30 +2918,6 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="5EBAD34ED40DE5D817BE2ECC059E96811512435891B912B1CBA401F38A">
     <pdf_title>Using Time-to-React based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving</pdf_title>
 </pdf_annotation>
-</node>
-</node>
-<node TEXT="Metric" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1394103913" CREATED="1610467590648" MODIFIED="1610467599757">
-<node TEXT="Scenario-based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1113772797" CREATED="1610467606104" MODIFIED="1610467620604">
-<node TEXT="Scenario-based threat metric evaluation based on the highd dataset" ID="ID_1351061813" CREATED="1610467623307" MODIFIED="1610467686339" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/537%20Scenario-based%20threat%20metric%20evaluation%20based%20on%20the%20highd%20dataset.pdf">
-<attribute NAME="key" VALUE="schneider2020scenario"/>
-<attribute NAME="year" VALUE="2020"/>
-<attribute NAME="title" VALUE="Scenario-Based Threat Metric Evaluation Based on the Highd Dataset"/>
-<attribute NAME="authors" VALUE="Schneider, Patrick and Butz, Martin and Heinzemann, Christian and Oehlerking, Jens and Woehrle, Matthias"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="236BDA3E4D8CF31FF2E29BCD0B389DA91179C1936B0EF9CADA1F9ADA6D5235">
-    <pdf_title>Scenario-based threat metric evaluation based on the dataset</pdf_title>
-</pdf_annotation>
-</node>
-</node>
-<node TEXT="Time-based" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_939855241" CREATED="1610527173440" MODIFIED="1610527179069">
-<node TEXT="Time to steer, time to brake, time to kickdown" ID="ID_22507840" CREATED="1610527187129" MODIFIED="1610527275164" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/533%20Scenario-Based%20Risk%20Assessment.pdf">
-<attribute NAME="key" VALUE="wagner2018using"/>
-<attribute NAME="year" VALUE="2018"/>
-<attribute NAME="title" VALUE="Using Time-to-React Based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving"/>
-<attribute NAME="authors" VALUE="Wagner, Sebastian and Groh, Korbinian and Kuhbeck, Thomas and Dorfel, Michael and Knoll, Alois"/>
-<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5EBAD34ED40DE5D817BE2ECC059E96811512435891B912B1CBA401F38A">
-    <pdf_title>Using Time-to-React based on Naturalistic Traffic Object Behavior for Scenario-Based Risk Assessment of Automated Driving</pdf_title>
-</pdf_annotation>
-</node>
 </node>
 </node>
 </node>
@@ -3258,6 +3264,26 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="DCAC7F8585B02FEF6136CF722951A7A5D84997609D7B6085912FE92FF1B8CFC6">
     <pdf_title>Incorporating safety relevance and realistic parameter combinations in test-case generation for automated driving safety assessment</pdf_title>
 </pdf_annotation>
+</node>
+<node TEXT="2020 Testing scenario library generation for CAVs" ID="ID_1680412619" CREATED="1613397270688" MODIFIED="1613397462074" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/557%20TSLG%20for%20CAVs%20methodology.pdf">
+<attribute NAME="key" VALUE="feng2020testing"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Testing Scenario Library Generation for Connected and Automated Vehicles, Part {I}: Methodology"/>
+<attribute NAME="authors" VALUE="Feng, Shuo and Feng, Yiheng and Yu, Chunhui and Zhang, Yi and Liu, Henry X"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1051602E43F49B16922F53D253399B5B6F1E992FD26ECDFDDF58FFE02E8D0">
+    <pdf_title>Testing Scenario Library Generation for Connected and Automated Vehicles, Part I: Methodology</pdf_title>
+</pdf_annotation>
+<node TEXT="Part 2" ID="ID_1760164621" CREATED="1613397291766" MODIFIED="1613397558218" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/558%20TSLG%20for%20CAVs%20case%20studies.pdf">
+<attribute NAME="key" VALUE="feng2020testing2"/>
+<attribute NAME="journal" VALUE="IEEE Transactions on Intelligent Transportation Systems"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Testing Scenario Library Generation for Connected and Automated Vehicles, Part {II}: Case Studies"/>
+<attribute NAME="authors" VALUE="Feng, Shuo and Feng, Yiheng and Sun, Haowei and Bao, Shan and Zhang, Yi and Liu, Henry X"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="5FA1B7DA589A2FA22E51E7CD85FD6972DE61A2B66E832DB55E485BA6C49D357">
+    <pdf_title>Testing Scenario Library Generation for Connected and Automated Vehicles, Part II: Case Studies</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 </node>
 <node TEXT="Comparing test cases/scenarios" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_339658345" CREATED="1588671276013" MODIFIED="1588671290180">
@@ -5317,6 +5343,16 @@
 <attribute NAME="title" VALUE="Multivariate Plug-in Bandwidth Selection"/>
 <attribute NAME="authors" VALUE="Wand, Matt P and Jones, M Chris"/>
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="24FB506E6ECB693E219AC9B93A5B58104BC44FE8D9C87F48A3B0D7441BDD2"/>
+</node>
+<node TEXT="Comparison of Smoothing Parameterizations in Bivariate Kernel Density Estimation" ID="ID_58452046" CREATED="1613331589236" MODIFIED="1613331677100" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/556%20Comparison%20of%20Smoothing%20Parameterizations%20in%20Bivariate%20Kernel%20Density%20Estimation.pdf">
+<attribute NAME="key" VALUE="wand1993comparison"/>
+<attribute NAME="journal" VALUE="Journal of the American Statistical Association"/>
+<attribute NAME="year" VALUE="1993"/>
+<attribute NAME="title" VALUE="Comparison of Smoothing Parameterizations in Bivariate Kernel Density Estimation"/>
+<attribute NAME="authors" VALUE="Wand, Matt P and Jones, M Chris"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="44D6C151A3A664BDF04412C71483FFCF4D554EE3811B5953892F642CA331A353">
+    <pdf_title>Comparison of Smoothing Parameterizations in Bivariate Kernel Density Estimation</pdf_title>
+</pdf_annotation>
 </node>
 </node>
 <node TEXT="Applications" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_765833272" CREATED="1539231165017" MODIFIED="1539231170294">
