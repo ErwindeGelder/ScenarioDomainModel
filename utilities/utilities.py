@@ -408,6 +408,7 @@ if __name__ == '__main__':
     compile_pr(36, other=[(join('20201221 Conditional Sampling', 'conditional_sampling'),
                            dict(usebiber=True)),
                           (join('20201126 Risk Metric', 'main'), dict(usebiber=True))])
+    compile_pr(37, usebiber=True)
 
     # Revisions/versions
     compile_doc(join('20180924 Completeness paper', 'completeness'), git='CompletenessPaperInit',
