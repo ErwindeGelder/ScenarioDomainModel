@@ -205,7 +205,7 @@ class KDE:
                     weights = (self.data_helpers.weights[sorter] /
                                np.sum(self.data_helpers.weights)).cumsum()
                     iqr = np.interp(.75, weights, values) - np.interp(.25, weights, values)
-                    if iqr/1.349 < self.data_helpers.std[i]:
+                    if 0 < iqr/1.349 < self.data_helpers.std[i]:
                         self.data_helpers.std[i] = iqr/1.349
 
             for i in range(self.data.shape[1]):
