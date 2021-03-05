@@ -2408,7 +2408,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Driver models" LOCALIZED_STYLE_REF="styles.subtopic" FOLDED="true" ID="ID_1772712523" CREATED="1588598901841" MODIFIED="1588598907254">
+<node TEXT="Driver models" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_1772712523" CREATED="1588598901841" MODIFIED="1588598907254">
 <node TEXT="Longitudinal" LOCALIZED_STYLE_REF="styles.subsubtopic" ID="ID_1269817352" CREATED="1589212055509" MODIFIED="1589212063683">
 <node TEXT="Behavioral car-following model (Gipps)" ID="ID_1488863154" CREATED="1589213303594" MODIFIED="1590912450532" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/447%20Behavioral%20car-following%20model.pdf">
 <attribute NAME="key" VALUE="gipps1981behavioral"/>

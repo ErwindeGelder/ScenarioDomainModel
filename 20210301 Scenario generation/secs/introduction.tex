@@ -11,9 +11,48 @@ For the scenario-based assessment approach, it is important that the generated s
 In other words ``scenarios should reflect the real world as closely as possible'' \autocite{riedmaier2020survey}.
 Only then, the results of the assessment can be generalized to the performance of the system-under-test when operating in real life \autocite{deGelder2017assessment}.
 Furthermore, it is essential that the generated scenarios cover the same variety that is found in real life. 
-\textcite{riedmaier2020survey} argue that ``since infinite situation occur in the real world, the scenario methods must cover a large number of permutations within the physically possible parameter space.''
+\textcite{riedmaier2020survey} argue that ``since infinite situations occur in the real world, the scenario methods must cover a large number of permutations within the physically possible parameter space.''
 
 % Existing methods.
+In literature, several methods are proposed to generate scenarios for the assessment based on real-world driving data. 
+\textcite{lages2013automatic} proposed a method to create virtual scenarios using data from laser scanners. 
+In \autocite{zofka2015datadrivetrafficscenarios}, the authors presented how recorded sensor data can be exploited ``to create critical traffic scenarios for open-loop testing'' by modifying few parameters of the recorded parameterized scenarios. 
+In \autocite{feng2020testing, deGelder2017assessment, thal2020incorporating}, also parameterized scenarios were generated and, in addition, importance sampling techniques were presented that automatically generate scenarios in which the system-under-test shows (safety-)critical behavior. 
+\textcite{schuldt2018method} provided a method to generate scenario-based test cases using combinatorial algorithms that should ensure that the test cases cover the variety of possible situation the system-under-test can encounter in real life.
+More recently, \autocite{spooner2021generation} presented a generative adversarial network to generate pedestrian crossing scenarios.
+
+% Problems of existing methods.
+In the existing literature, the scenario generation methods for the assessment of \acp{av} have either one or more of the following shortcomings:
+\begin{itemize}
+	\item Observed scenarios are replayed without adding more variations. 
+	In this case, the total variety of scenarios that is found in real life will not be covered unless unrealistic amounts of data are gathered.
+	
+	\item The scenarios are oversimplified.
+	E.g., a vehicle's speed profile follows predetermined functional form.
+	
+	\item Too many assumptions are made regarding the distributions of the parameters.
+	E.g., the parameters are assumed to come from a Gaussian distribution and/or it is assumed that the parameters are uncorrelated.
+	
+	\item No \ac{pdf} of the scenario parameters is known. 
+	As a result, no evaluation can be made of the performance of the system once deployed on the road, because it is unknown how realistic and likely the scenario-based test cases are.
+	
+	\item The generated scenarios are not compared with the observed scenarios. 
+	I.e., it might be argued that the parameters of the generated scenarios come from the estimated \ac{pdf} and, therefore, they follow the same trend, but this ignores the potentially disrupting oversimplifications done by the assumptions on the parameters and their distributions.
+\end{itemize}
+
+% What we propose.
+We propose a method that overcomes the aforementioned shortcomings.
+Our data-driven approach uses observed scenarios to generate new scenarios.
+Instead of relying on a predetermined functional form of the signals, such as a vehicle's speed, and fitting parameters to this functional form, we employ \iac{svd} \autocite{golub2013matrix} to determine in a data-driven manner the parameters that describe the scenarios best.
+Next, we use \ac{kde} \autocite{rosenblatt1956remarks, parzen1962estimation} to estimate the \ac{pdf} of the parameters without assuming a particular shape of the \ac{pdf}. 
+Furthermore, with \ac{kde}, we model the correlations that might exists among the parameters.
+We will also propose a metric that quantifies to what extend the generated scenarios are representative and cover the actual variety of real-life scenarios. 
+This metric uses the Wasserstein metric \autocite{ruschendorf1985wasserstein} to compare a set of generated scenarios with a set of observed scenarios.
 
 % Structure of the paper
-This paper is organized as follows.
+This article is organized as follows.
+In \cref{sec:generation}, we will explain our approach for generating scenarios for the assessment of \acp{av}. 
+Next, in \cref{sec:comparison}, we will propose a metric for quantifying the performance of the scenario-generation method.
+A case study is performed in \cref{sec:case study}.
+In \cref{sec:discussion}, we will discuss few implications of our approach and some other applications.
+Conclusions of the paper are provided in \cref{sec:conclusions}.
