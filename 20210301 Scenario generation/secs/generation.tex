@@ -78,7 +78,58 @@ To further ease the notation, we will combine $\timeseriesvec_{\scenarioindex}$ 
 \subsection{Parameter reduction using a \acl{svd}}
 \label{sec:svd}
 
+As shown in \cref{eq:scenario parameters}, we describe a scenario with $\dimensionscenariopars = \left( \numberoftimesegments + 1 \right) \dimensiontimeseries + \dimensionextraparameters$ parameters.
+Even for small numbers of $\numberoftimesegments$, $\dimensiontimeseries$, and $\dimensionextraparameters$, the total number of parameters become too many to reliably estimate the joint \ac{pdf}.
+One way to avoid the curse of dimensionality is to assume that the parameters are independent, but especially the parameters that describe the time series in \cref{eq:time series vectorized} are obviously correlated, so this is not a good solution.
 
+In the field of machine learning, \ac{pca} is commonly used for dimensionality reduction \autocite{abdi2010principal}.
+As \ac{pca} uses the \ac{svd} \autocite{golub2013matrix}, we will use \iac{svd} to transform the parameters $\scenariopars_{\scenarioindex}$ into a lower-dimensional vector of parameters.
+Before applying the \ac{svd}, we weigh the parameters with $\weights \in \realnumbers^{\dimensionscenariopars}$.
+Let us define a matrix that contains the parameters of the $\scenariosnumberof$ scenarios:
+\begin{equation}
+	\scenarioparsmatrix = \begin{bmatrix}
+		\weights\scenariopars_1-\svdmean & \ldots & \weights\scenariopars_{\scenariosnumberof}-\svdmean
+	\end{bmatrix} \in \realnumbers^{\dimensionscenariopars \times \scenariosnumberof},
+\end{equation}
+where $\svdmean$ denotes the mean of the weighted scenario parameters:
+\begin{equation}
+	\svdmean = \frac{1}{\scenariosnumberof} \sum_{\scenarioindex=1}^{\scenariosnumberof} \weights \scenariopars_{\scenarioindex}.
+\end{equation}
+
+Using the \ac{svd} of $\scenarioparsmatrix$, we obtain:
+\begin{equation}
+	\scenarioparsmatrix = \svdu \svds \svdv^T.
+\end{equation}
+Here, $\svdu \in \realnumbers^{\dimensionscenariopars \times \dimensionscenariopars}$ and $\svdv \in \realnumbers^{\scenariosnumberof \times \scenariosnumberof}$ are orthonormal matrices, i.e., $\svdu^{-1}=\svdu^T$ and $\svdv^{-1}=\svdv^T$.
+Moreover, $\svds \in \realnumbers^{\dimensionscenariopars \times \scenariosnumberof}$ takes the same shape as $\scenarioparsmatrix$ and has only zeros except at the diagonal; the $(\svdindex,\svdindex)$-th element is $\svdsv{\svdindex}$, $\svdindex\in\{1,\ldots,\svdrank\}$, $\svdrank = \min(\dimensionscenariopars,\scenariosnumberof)$, such that 
+\begin{equation}
+	\svdsv{1} \geq \svdsv{2} \geq \ldots \geq \svdsv{\svdrank} \geq 0.
+\end{equation}
+Because these so-called singular values are in decreasing order, we can approximate $\scenariopars_{\scenarioindex}$ by setting $\svdsv{\svdindex}=0$ for $\svdindex > \dimension$:
+\begin{equation}
+	\weights \scenariopars_{\scenarioindex} 
+	= \svdmean + \sum_{\svdindex=1}^{\svdrank} \svdsv{\svdindex} \svdventry{\scenarioindex}{\svdindex} \svduvec{\svdindex}
+	\approx \svdmean + \sum_{\svdindex=1}^{\dimension} \svdsv{\svdindex} \svdventry{\scenarioindex}{\svdindex} \svduvec{\svdindex},
+\end{equation}
+where $\svdventry{\scenarioindex}{\svdindex}$ is the $(\scenarioindex,\svdindex)$-th element of $\svdv$ and $\svduvec{\svdindex}$ is the $\svdindex$-th column of $\svdu$.
+
+The choice of $\dimension < \svdrank$ is not trivial.
+Choosing $\dimension$ too small results in too much loss of detail.
+Choosing $\dimension$ too large will give problems when estimating the \ac{pdf}.
+One method to choose $\dimension$ is to look at the amount of overall variance explained by the first $\dimension$ singular values.
+The overall variance scales with the sum of the squared singular values \autocite[p.~77]{golub2013matrix}, i.e., we have
+\begin{equation}
+	\sum_{\scenarioindex=1}^{\scenariosnumberof} \left( \weights\scenariopars_{\scenarioindex}-\svdmean \right)^T \left( \weights\scenariopars_{\scenarioindex}-\svdmean \right) 
+	= \sum_{\svdindex=1}^{\svdrank} \svdsv{\svdindex}^2.
+\end{equation}
+Thus, if we consider the first $\dimension$ singular values, we `explain' 
+\begin{equation}
+	\label{eq:explained variance}
+	\frac{\sum_{\svdindex=1}^{\dimension} \svdsv{\svdindex}^2}{\sum_{\svdindex=1}^{\svdrank} \svdsv{\svdindex}^2}
+\end{equation}
+of the overall variance.
+One approach would be to set $\dimension$ such that \cref{eq:explained variance} exceeds a certain threshold, such as 0.95.
+In \cref{sec:comparison}, we will propose an alternative way to determine $\dimension$ using a metric that quantifies the goal of our generated scenarios, i.e., that the generated scenarios are representing real-life scenarios and cover the actual variety of real-life scenarios.
 
 
 
