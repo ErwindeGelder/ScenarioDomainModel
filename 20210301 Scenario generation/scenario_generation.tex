@@ -39,6 +39,14 @@
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
 
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}\newtheorem{remarkenv}{Remark}        %% remarks
+\newenvironment{remark}{\begin{remarkenv}}%
+	{\hfill$\lozenge$\end{remarkenv}}            %% end remark with a lozenge
+	
+
 \title{Scenario Generation and Comparison for the Assessment of Automated Vehicles}
 \author{Erwin de Gelder$^{1,2*}$, Jasper Hof$^{3}$, Eric Cator$^{4}$, Jan-Pieter Paardekooper$^{1,5}$, Olaf Op den Camp$^{1}$, \\Bart De Schutter$^{2}$%
 \thanks{$^{1}$TNO, Integrated Vehicle Safety, Helmond, The Netherlands}%
@@ -50,6 +58,20 @@
 \date{}
 
 % Variables
+\newcommand{\extraparameters}{\theta}
+  \newcommand{\dimensionextraparameters}{n_\theta}
+\newcommand{\realnumbers}{\mathds{R}}
+\newcommand{\scenariopars}{x}
+  \newcommand{\dimensionscenariopars}{n_x}
+  \newcommand{\scenariosnumberof}{N}
+  \newcommand{\scenarioindex}{i}
+\renewcommand{\time}{t}
+  \newcommand{\timestart}{\time_0}
+  \newcommand{\timeend}{\time_1}
+\newcommand{\timeseries}[1]{y\left(#1\right)}
+  \newcommand{\dimensiontimeseries}{n_y}
+  \newcommand{\numberoftimesegments}{n_t}
+  \newcommand{\timeseriesvec}{\mathbf{y}}
 
 
 

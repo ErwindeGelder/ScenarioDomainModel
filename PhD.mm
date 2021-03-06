@@ -2224,6 +2224,24 @@
     <pdf_title>Real-World Scenario Mining for the Assessment of Automated Vehicles</pdf_title>
 </pdf_annotation>
 </node>
+<node TEXT="2020 Procedure for the Safety Assessment of an AV Using Real-World Scenarios" ID="ID_1765355542" CREATED="1614941148848" MODIFIED="1614941442502" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/559%20FISITA%20procedure%20paper.pdf">
+<attribute NAME="key" VALUE="degelder2020procedure"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Procedure for the Safety Assessment of an Autonomous Vehicle Using Real-World Scenarios"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Op den Camp"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="F5AE42E1B658146C41A1FF3BBA8B4D5269DD41B5E9F06B9558D75B22BE92DB">
+    <pdf_title>Procedure for the Safety Assessment of an Autonomous Vehicle Using Real- World Scenarios</pdf_title>
+</pdf_annotation>
+</node>
+<node TEXT="2020 Tagging Real-World Scenarios for the Assessment of Autonomous Vehicles" ID="ID_1145735319" CREATED="1614941716853" MODIFIED="1614941753827" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/560%20FISITA%20Tagging.pdf">
+<attribute NAME="key" VALUE="degelder2020tagging"/>
+<attribute NAME="year" VALUE="2020"/>
+<attribute NAME="title" VALUE="Tagging Real-World Scenarios for the Assessment of Autonomous Vehicles"/>
+<attribute NAME="authors" VALUE="de Gelder, Erwin and Op den Camp"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="AD552DFF7BD6A4A24C9E5C1A8E5AD14E42E196B054D2C715409BF1495CABAFE5">
+    <pdf_title>X O D</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Risk" LOCALIZED_STYLE_REF="styles.topic" POSITION="left" ID="ID_398321502" CREATED="1567057870946" MODIFIED="1567057884205">
 <edge COLOR="#ff00ff"/>
