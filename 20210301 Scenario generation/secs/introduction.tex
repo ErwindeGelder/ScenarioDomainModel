@@ -46,7 +46,7 @@ Our data-driven approach uses observed scenarios to generate new scenarios.
 Instead of relying on a predetermined functional form of the signals, such as a vehicle's speed, and fitting parameters to this functional form, we employ \iac{svd} \autocite{golub2013matrix} to determine in a data-driven manner the parameters that describe the scenarios best.
 Next, we use \ac{kde} \autocite{rosenblatt1956remarks, parzen1962estimation} to estimate the \ac{pdf} of the parameters without assuming a particular shape of the \ac{pdf}. 
 Furthermore, with \ac{kde}, we model the correlations that might exists among the parameters.
-We will also propose a metric that quantifies to what extend the generated scenarios are representative and cover the actual variety of real-life scenarios. 
+We will also propose a metric that quantifies to what extend the generated scenarios are representative and cover the actual variety of real-world scenarios. 
 This metric uses the Wasserstein metric \autocite{ruschendorf1985wasserstein} to compare a set of generated scenarios with a set of observed scenarios.
 
 % Structure of the paper

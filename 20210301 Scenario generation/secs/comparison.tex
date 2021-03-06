@@ -1,2 +1,38 @@
 \section{Scenario comparison}
 \label{sec:comparison}
+
+Ideally, we want to sample the generated scenarios from the same distributions that underlies the real-world scenarios. 
+The problem, however, is that the distribution that underlies the real-world scenarios is unknown. 
+Although this distribution is unknown, in this section, we propose a metric that quantifies the similarity of the distribution that we use to generate scenarios and the distribution that underlies the real-world scenarios.
+In \cref{sec:comparion problem}, we will further explain the goal of this metric.
+Our metric will be based on the Wasserstein distance \autocite{ruschendorf1985wasserstein}, which is explained in \cref{sec:wasserstein}.
+In \cref{sec:metric scenario generation method}, we will describe how the Wasserstein distance is used to derive our metric.
+
+
+
+\subsection{Scenario comparison problem}
+\label{sec:comparion problem}
+
+For generating the scenarios, we rely on the set of observed scenarios, described using the parameters $\scenariopars_{\scenarioindex}$, $\scenarioindex \in \{1,\ldots,\scenariosnumberof\}$. 
+To ease the notation, let us denote the set of observed scenarios by $\scenarioset = \{\scenariopars_{1}, \ldots, \scenariopars_{\scenariosnumberof}\}$.
+We assume that these scenarios are independently and identically distributed according to the distribution $\density{\cdot}$.
+Let us denote the set of generated scenarios by $\scenariosetgenerated = \{\scenarioparsgenerated_{1}, \ldots, \scenarioparsgenerated_{\scenariosgeneratednumberof}\}$ where $\scenarioparsgenerated_{\scenarioindex} \in \realnumbers^{\dimensionscenariopars}$, $\scenarioindex \in \{1,\ldots,\scenariosgeneratednumberof\}$ are similarly parameterized as the scenario parameters in \cref{eq:scenario parameters} and $\scenariosgeneratednumberof$ is the number of generated scenarios.
+We denote the \ac{pdf} of the generated scenarios by $\densityest{\cdot}$, which is based on $\densityestkde{\bandwidthmatrix}{\cdot}$ of \cref{eq:density est kde}.
+Ideally, we want $\densityest{\cdot}$ to be equal to $\density{\cdot}$, so our metric aims to quantify the similarity of $\densityest{\cdot}$ and $\density{\cdot}$.
+
+To estimate the similarity between $\densityest{\cdot}$ and $\density{\cdot}$, we cannot simply compare $\scenariosetgenerated$ with $\scenarioset$.
+I.e., in that case, taking $\scenariosetgenerated=\scenarioset$ would give us the best result, but this is not what we want because we want our generated scenarios to cover the whole variety of real-world scenarios and not just the variety that we happened to observe in $\scenarioset$.
+So, therefore, we need another set of scenarios that we can use to test.
+Let us assume that we have such a set of scenarios, denoted by $\scenariosettest = \{\scenarioparstest_{1},\ldots,\scenarioparstest_{\scenariostestnumberof}\}$ where $\scenarioparstest_{\scenarioindex} \in \realnumbers^{\dimensionscenariopars}$, $\scenarioindex \in \{1, \ldots, \scenariostestnumberof\}$ are independently and identically distributed according to $\density{\cdot}$.
+
+In summary, the goal is to find a metric that quantifies the similarity of $\densityest{\cdot}$ and $\density{\cdot}$ using the sets of observed scenarios $\scenarioset$ and $\scenariosettest$ and the set of generated scenarios $\scenariosetgenerated$.
+
+
+
+\subsection{Empirical Wasserstein distance}
+\label{sec:wasserstein}
+
+
+
+\subsection{Metric for testing scenario generation method}
+\label{sec:metric scenario generation method}

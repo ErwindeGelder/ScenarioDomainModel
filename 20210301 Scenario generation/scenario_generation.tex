@@ -59,9 +59,12 @@
 
 % Variables
 \newcommand{\bandwidthmatrix}{H}
+\newcommand{\density}[1]{f\left( #1 \right)}
 \newcommand{\densityest}[1]{\hat{f}\left( #1 \right)}
+\newcommand{\densityestkde}[2]{\hat{f}_{#1}\left( #2 \right)}
 \newcommand{\dimension}{d}
 \newcommand{\dummyvar}{u}
+  \newcommand{\dummyset}{\mathcal{U}}
 \newcommand{\e}[1]{\exp\left\{ #1 \right\}}
 \newcommand{\extraparameters}{\theta}
   \newcommand{\dimensionextraparameters}{n_\theta}
@@ -74,7 +77,14 @@
   \newcommand{\scenariosnumberof}{N}
   \newcommand{\scenarioindex}{i}
   \newcommand{\scenarioparsmatrix}{X}
+  \newcommand{\scenarioset}{\mathcal{X}}
   \newcommand{\scenarioparsreduced}{v}
+  \newcommand{\scenarioparsgenerated}{w}
+  \newcommand{\scenariosgeneratednumberof}{N_w}
+  \newcommand{\scenariosetgenerated}{\mathcal{W}}
+  \newcommand{\scenarioparstest}{z}
+  \newcommand{\scenariostestnumberof}{N_z}
+  \newcommand{\scenariosettest}{\mathcal{Z}}
 \newcommand{\svdu}{U}
   \newcommand{\svduvec}[1]{u_{#1}}
   \newcommand{\svds}{\Sigma}

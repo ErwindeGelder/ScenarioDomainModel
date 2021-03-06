@@ -130,7 +130,7 @@ Thus, if we consider the first $\dimension$ singular values, we `explain'
 \end{equation}
 of the overall variance.
 One approach would be to set $\dimension$ such that \cref{eq:explained variance} exceeds a certain threshold, such as 0.95.
-In \cref{sec:comparison}, we will propose an alternative way to determine $\dimension$ using a metric that quantifies the goal of our generated scenarios, i.e., that the generated scenarios are representing real-life scenarios and cover the actual variety of real-life scenarios.
+In \cref{sec:comparison}, we will propose an alternative way to determine $\dimension$ using a metric that quantifies the goal of our generated scenarios, i.e., that the generated scenarios are representing real-world scenarios and cover the actual variety of real-world scenarios.
 
 
 
@@ -151,7 +151,8 @@ To estimate the \ac{pdf} of $\svdvvecd{\scenarioindex}$, we propose to use \ac{k
 Because \ac{kde} produces \iac{pdf} that adapts itself to the data, it is flexible regarding the shape of the actual underlying distribution of $\svdvvecd{\scenarioindex}$.
 In \ac{kde}, the \ac{pdf} is estimated as follows:
 \begin{equation}
-	\densityest{\scenarioparsreduced} = \frac{1}{\scenariosnumberof} 
+	\label{eq:density est kde}
+	\densityestkde{\bandwidthmatrix}{\scenarioparsreduced} = \frac{1}{\scenariosnumberof} 
 	\sum_{\scenarioindex=1}^{\scenariosnumberof} \kernelfuncnormalized{\bandwidthmatrix}{\scenarioparsreduced - \svdvvecd{\scenarioindex}}.
 \end{equation}
 Here, $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is the so-called scaled kernel with a positive definite symmetric bandwidth matrix $\bandwidthmatrix \in \realnumbers^{\dimension \times \dimension}$.
@@ -167,6 +168,6 @@ The Gaussian kernel is given by
 	\kernelfunc{\dummyvar} = \frac{1}{\left(2\pi\right)^{\dimension/2}} \e{-\frac{1}{2} u^T u}.
 \end{equation}
 
-To sample scenario parameters using $\densityest{\cdot}$, first, an integer $\scenarioindex \in \{1,\ldots,\scenariosnumberof\}$ is randomly chosen with each integer having equal likelihood. 
+To sample scenario parameters using $\densityestkde{\bandwidthmatrix}{\cdot}$, first, an integer $\scenarioindex \in \{1,\ldots,\scenariosnumberof\}$ is randomly chosen with each integer having equal likelihood. 
 Next, a random sample is drawn from a Gaussian with covariance $\bandwidthmatrix$ and mean $\svdvvecd{\scenarioindex}$.
 Then, using the approximation in \cref{eq:svd approximation}, the scenario parameters are calculated.
