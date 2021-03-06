@@ -107,6 +107,7 @@ Moreover, $\svds \in \realnumbers^{\dimensionscenariopars \times \scenariosnumbe
 \end{equation}
 Because these so-called singular values are in decreasing order, we can approximate $\scenariopars_{\scenarioindex}$ by setting $\svdsv{\svdindex}=0$ for $\svdindex > \dimension$:
 \begin{equation}
+	\label{eq:svd approximation}
 	\weights \scenariopars_{\scenarioindex} 
 	= \svdmean + \sum_{\svdindex=1}^{\svdrank} \svdsv{\svdindex} \svdventry{\scenarioindex}{\svdindex} \svduvec{\svdindex}
 	\approx \svdmean + \sum_{\svdindex=1}^{\dimension} \svdsv{\svdindex} \svdventry{\scenarioindex}{\svdindex} \svduvec{\svdindex},
@@ -135,3 +136,37 @@ In \cref{sec:comparison}, we will propose an alternative way to determine $\dime
 
 \subsection{Estimating the \acl{pdf}}
 \label{sec:kde}
+
+Using the approximation of \cref{eq:svd approximation} based on the \ac{svd}, the $\scenarioindex$-th scenario is described by the vector $\svdvvecd{\scenarioindex}$:
+\begin{equation}
+	\svdvvecd{\scenarioindex}^T = \begin{bmatrix}
+		\svdventry{\scenarioindex}{1} & \ldots & \svdventry{\scenarioindex}{\dimension}
+	\end{bmatrix}.
+\end{equation}
+Note that the $\dimension$ entries of $\svdvvecd{\scenarioindex}$ are linearly uncorrelated because of the orthonormality of $\svdv$.
+Higher-order correlations, however, are still present, so we treat these $\dimension$ entries as dependent variables.
+
+To estimate the \ac{pdf} of $\svdvvecd{\scenarioindex}$, we propose to use \ac{kde}.
+\ac{kde} \autocite{rosenblatt1956remarks, parzen1962estimation} is often referred to as a non-parametric way to estimate the \ac{pdf}, because no use is made of a predefined functional form of the \ac{pdf} for which certain parameters are fitted to the data.
+Because \ac{kde} produces \iac{pdf} that adapts itself to the data, it is flexible regarding the shape of the actual underlying distribution of $\svdvvecd{\scenarioindex}$.
+In \ac{kde}, the \ac{pdf} is estimated as follows:
+\begin{equation}
+	\densityest{\scenarioparsreduced} = \frac{1}{\scenariosnumberof} 
+	\sum_{\scenarioindex=1}^{\scenariosnumberof} \kernelfuncnormalized{\bandwidthmatrix}{\scenarioparsreduced - \svdvvecd{\scenarioindex}}.
+\end{equation}
+Here, $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is the so-called scaled kernel with a positive definite symmetric bandwidth matrix $\bandwidthmatrix \in \realnumbers^{\dimension \times \dimension}$.
+The kernel $\kernelfunc{\cdot}$ and the scaled kernel $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ are related using
+\begin{equation}
+	\kernelfuncnormalized{\bandwidthmatrix}{\dummyvar} = \left|\bandwidthmatrix\right|^{-1/2} \kernelfunc{\bandwidthmatrix^{-1/2} \dummyvar},
+\end{equation}
+where $|\cdot|$ denotes the matrix determinant. 
+The choice of the kernel function is not as important as the choice of the bandwidth matrix \autocite{turlach1993bandwidthselection, duong2007ks}.
+In this paper, we use a Gaussian kernel, but our method for generating scenarios also applies for other kernels. 
+The Gaussian kernel is given by
+\begin{equation}
+	\kernelfunc{\dummyvar} = \frac{1}{\left(2\pi\right)^{\dimension/2}} \e{-\frac{1}{2} u^T u}.
+\end{equation}
+
+To sample scenario parameters using $\densityest{\cdot}$, first, an integer $\scenarioindex \in \{1,\ldots,\scenariosnumberof\}$ is randomly chosen with each integer having equal likelihood. 
+Next, a random sample is drawn from a Gaussian with covariance $\bandwidthmatrix$ and mean $\svdvvecd{\scenarioindex}$.
+Then, using the approximation in \cref{eq:svd approximation}, the scenario parameters are calculated.
