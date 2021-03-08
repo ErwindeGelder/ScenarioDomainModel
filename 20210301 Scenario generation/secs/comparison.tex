@@ -29,8 +29,54 @@ In summary, the goal is to find a metric that quantifies the similarity of $\den
 
 
 
-\subsection{Empirical Wasserstein distance}
+\subsection{Empirical Wasserstein metric}
 \label{sec:wasserstein}
+
+The $\wassersteincoefficient$-th Wasserstein metric ($\wassersteincoefficient \geq 1$) is used to compare two probability distribution functions $\dummydensity(\dummyvar)$ and $\dummydensityb(\dummyvarb)$ with $\dummyvar\in\dummyset$ and $\dummyvarb\in\dummysetb$.
+\begin{equation}
+	\label{eq:wasserstein}
+	\wassersteinp{\wassersteincoefficient}{\dummydensity}{\dummydensityb}
+	= \left( 
+		\inf_{\dummydensityc \in \dummydensityset(\dummydensity,\dummydensityb)}
+		\left\{ 
+			\left( \distancefunc{\dummyvar}{\dummyvarb} \right)^{\wassersteincoefficient} 
+			\ud \dummydensityc(\dummyvar,\dummyvarb)
+		\right\}
+	\right)^{1/\wassersteincoefficient}.
+\end{equation}
+Here, $\distancefunc{\dummyvar}{\dummyvarb}$ denotes the ``distance'' from $\dummyvar$ to $\dummyvarb$ and $\dummydensityset(\dummydensity,\dummydensityb)$ denotes the set of joint distributions of $(\dummyvar, \dummyvarb)$ that has that marginal distributions $\dummydensity(\cdot)$ and $\dummydensityb(\cdot)$. 
+Intuitively, this metric calculates the minimum ``cost'' of turning one \ac{pdf} into another \ac{pdf} if these \acp{pdf} are seen as a pile of earth with equal mass. 
+Therefore, the Wasserstein metric is also referred to as the earth mover's distance \autocite{rubner2000emd}.
+
+In our case, we want to have a metric to compare $\density{\cdot}$ and $\densityest{\cdot}$.
+Because we do not know $\density{\cdot}$ and $\densityest{\cdot}$, we consider their approximations, based on $\scenariosettest$ and $\scenariosetgenerated$, respectively:
+\begin{align}
+	\density{\scenarioparstest} &\approx
+	\frac{1}{\scenariostestnumberof} \sum_{\scenarioindex=1}^{\scenariostestnumberof}
+	\dirac{\scenarioparstest - \scenarioparstest_{\scenarioindex}}, \label{eq:empirical density}\\
+	\densityest{\scenarioparsgenerated} &\approx
+	\frac{1}{\scenariosgeneratednumberof} \sum_{\scenarioindex=1}^{\scenariosgeneratednumberof}
+	\dirac{\scenarioparsgenerated - \scenarioparsgenerated_{\scenarioindex}}, \label{eq:empirical density estimation}
+\end{align}
+where $\dirac{\cdot}$ denotes the Dirac delta function.
+Substituting the empirical estimations of \cref{eq:empirical density,eq:empirical density estimation} for $\dummydensity(\cdot)$ and $\dummydensityb(\cdot)$, respectively, into \cref{eq:wasserstein}, leads to the so-called empirical Wasserstein metric \autocite{sommerfeld2018inference}, which we define as:
+\begin{equation}
+	\wasserstein{\scenariosetgenerated}{\scenariosettest}
+	= \inf_{\transportmatrix} 
+	\sum_{\sumindex=1}^{\scenariosgeneratednumberof} \sum_{\sumindexb=1}^{\scenariostestnumberof} 
+	\distancefunc{\scenarioparsgenerated_{\sumindex}}{\scenarioparstest_{\sumindexb}}
+	\transportmatrixelement{\sumindex}{\sumindexb},
+\end{equation}
+subject to the following constraints:
+\begin{alignat}{2}
+	\sum_{\sumindex=1}^{\scenariosgeneratednumberof} \transportmatrixelement{\sumindex}{\sumindexb} &= \frac{1}{\scenariostestnumberof} \quad && \forall \sumindexb \in \{1,\ldots,\scenariostestnumberof\}, \\
+	\sum_{\sumindexb=1}^{\scenariostestnumberof} \transportmatrixelement{\sumindex}{\sumindexb} &= \frac{1}{\scenariosgeneratednumberof} \quad && \forall \sumindex \in \{1,\ldots,\scenariosgeneratednumberof\}, \\
+	\transportmatrixelement{\sumindex}{\sumindexb} &\geq 0 \quad && \forall \sumindex \in \{1,\ldots,\scenariosgeneratednumberof\}, \forall \sumindexb \in \{1,\ldots,\scenariostestnumberof\}
+\end{alignat}
+For the ``distance'' function, we will use the 2-norm of the difference of the scenario parameters after scaling the scenario parameters according to the weights $\weights$ that we also used in \cref{sec:svd}:
+\begin{equation}
+	\distancefunc{\scenarioparsgenerated}{\scenarioparstest} = \normtwo{\weights\scenarioparsgenerated - \weights\scenarioparstest}.
+\end{equation}
 
 
 

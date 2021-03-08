@@ -98,6 +98,7 @@ where $\svdmean$ denotes the mean of the weighted scenario parameters:
 
 Using the \ac{svd} of $\scenarioparsmatrix$, we obtain:
 \begin{equation}
+	\label{eq:svd}
 	\scenarioparsmatrix = \svdu \svds \svdv^T.
 \end{equation}
 Here, $\svdu \in \realnumbers^{\dimensionscenariopars \times \dimensionscenariopars}$ and $\svdv \in \realnumbers^{\scenariosnumberof \times \scenariosnumberof}$ are orthonormal matrices, i.e., $\svdu^{-1}=\svdu^T$ and $\svdv^{-1}=\svdv^T$.
@@ -114,6 +115,12 @@ Because these so-called singular values are in decreasing order, we can approxim
 \end{equation}
 where $\svdventry{\scenarioindex}{\svdindex}$ is the $(\scenarioindex,\svdindex)$-th element of $\svdv$ and $\svduvec{\svdindex}$ is the $\svdindex$-th column of $\svdu$.
 
+\begin{remark}
+	Using the approximation of \cref{eq:svd approximation}, it is not necessary to evaluate the complete \ac{svd} of \cref{eq:svd}.
+	Only the first $\dimension$ columns of $\svdu$ and $\svdv$ need to be computed and only the first $\dimension$ singular values. 
+	In practice, $\dimension \ll \svdrank$, so this saves a significant amount of computation time.
+\end{remark}
+
 The choice of $\dimension < \svdrank$ is not trivial.
 Choosing $\dimension$ too small results in too much loss of detail.
 Choosing $\dimension$ too large will give problems when estimating the \ac{pdf}.
@@ -123,7 +130,7 @@ The overall variance scales with the sum of the squared singular values \autocit
 	\sum_{\scenarioindex=1}^{\scenariosnumberof} \left( \weights\scenariopars_{\scenarioindex}-\svdmean \right)^T \left( \weights\scenariopars_{\scenarioindex}-\svdmean \right) 
 	= \sum_{\svdindex=1}^{\svdrank} \svdsv{\svdindex}^2.
 \end{equation}
-Thus, if we consider the first $\dimension$ singular values, we `explain' 
+Thus, if we consider the first $\dimension$ singular values, we ``explain''
 \begin{equation}
 	\label{eq:explained variance}
 	\frac{\sum_{\svdindex=1}^{\dimension} \svdsv{\svdindex}^2}{\sum_{\svdindex=1}^{\svdrank} \svdsv{\svdindex}^2}
@@ -165,8 +172,9 @@ The choice of the kernel function is not as important as the choice of the bandw
 In this paper, we use a Gaussian kernel, but our method for generating scenarios also applies for other kernels. 
 The Gaussian kernel is given by
 \begin{equation}
-	\kernelfunc{\dummyvar} = \frac{1}{\left(2\pi\right)^{\dimension/2}} \e{-\frac{1}{2} u^T u}.
+	\kernelfunc{\dummyvar} = \frac{1}{\left(2\pi\right)^{\dimension/2}} \e{-\frac{1}{2} \normtwo{\dummyvar}^2},
 \end{equation}
+where $\normtwo{\dummyvar}^2$ denotes the squared 2-norm of $\dummyvar$; i.e., $\dummyvar^T \dummyvar$.
 
 To sample scenario parameters using $\densityestkde{\bandwidthmatrix}{\cdot}$, first, an integer $\scenarioindex \in \{1,\ldots,\scenariosnumberof\}$ is randomly chosen with each integer having equal likelihood. 
 Next, a random sample is drawn from a Gaussian with covariance $\bandwidthmatrix$ and mean $\svdvvecd{\scenarioindex}$.

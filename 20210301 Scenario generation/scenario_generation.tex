@@ -59,12 +59,20 @@
 
 % Variables
 \newcommand{\bandwidthmatrix}{H}
+\newcommand{\dirac}[1]{\delta\left(#1\right)}
 \newcommand{\density}[1]{f\left( #1 \right)}
 \newcommand{\densityest}[1]{\hat{f}\left( #1 \right)}
 \newcommand{\densityestkde}[2]{\hat{f}_{#1}\left( #2 \right)}
 \newcommand{\dimension}{d}
+\newcommand{\distancefunc}[2]{\Delta\left(#1,#2\right)}
 \newcommand{\dummyvar}{u}
   \newcommand{\dummyset}{\mathcal{U}}
+  \newcommand{\dummyvarb}{v}
+  \newcommand{\dummysetb}{\mathcal{V}}
+  \newcommand{\dummydensity}{\xi}
+  \newcommand{\dummydensityb}{\eta}
+  \newcommand{\dummydensityc}{\gamma}
+  \newcommand{\dummydensityset}{\Gamma}
 \newcommand{\e}[1]{\exp\left\{ #1 \right\}}
 \newcommand{\extraparameters}{\theta}
   \newcommand{\dimensionextraparameters}{n_\theta}
@@ -95,6 +103,8 @@
   \newcommand{\svdrank}{\bar{N}}
   \newcommand{\svdindex}{j}
   \newcommand{\svdmean}{\mu}
+\newcommand{\sumindex}{i}
+  \newcommand{\sumindexb}{j}
 \renewcommand{\time}{t}
   \newcommand{\timestart}{\time_0}
   \newcommand{\timeend}{\time_1}
@@ -102,7 +112,12 @@
   \newcommand{\dimensiontimeseries}{n_y}
   \newcommand{\numberoftimesegments}{n_t}
   \newcommand{\timeseriesvec}{\mathbf{y}}
+\newcommand{\transportmatrix}{T}
+  \newcommand{\transportmatrixelement}[2]{T_{#1 #2}}
 \newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\wasserstein}[2]{W\left(#1,#2\right)}
+  \newcommand{\wassersteinp}[3]{W_{#1}\left(#2,#3\right)}
+  \newcommand{\wassersteincoefficient}{p}
 \newcommand{\weights}{\alpha}
 
 

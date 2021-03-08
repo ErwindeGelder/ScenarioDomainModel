@@ -5128,6 +5128,16 @@
 <pdf_annotation type="PDF_FILE" object_id="0" document_hash="401BE47213AA9B29C8B100DEAA9D2BB378ACFA57BD7462779E787F17E66DCB">
     <pdf_title>The Wasserstein Distance and Approximation Theorems</pdf_title>
 </pdf_annotation>
+<node TEXT="Use this to refer to the emperical Wasserstein distance (although this term is not mentioned in this reference)" ID="ID_1477951926" CREATED="1615062563096" MODIFIED="1615062595223" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/443%20Displacement%20Interpolation%20Using%20Lagrangian%20Mass%20Transport.pdf">
+<attribute NAME="key" VALUE="bonneel2011displacement"/>
+<attribute NAME="journal" VALUE="ACM Transactions on Graphics"/>
+<attribute NAME="year" VALUE="2011"/>
+<attribute NAME="title" VALUE="Displacement Interpolation Using {L}agrangian Mass Transport"/>
+<attribute NAME="authors" VALUE="Bonneel, Nicolas and Van De Panne, Michiel and Paris, Sylvain and Heidrich, Wolfgang"/>
+<pdf_annotation type="PDF_FILE" object_id="0" document_hash="1C15AF2EEEA529AC82A7B4454C999DEAA985F0B6E797F4712935B09EE3272117">
+    <pdf_title>Displacement Interpolation Using Lagrangian Mass Transport</pdf_title>
+</pdf_annotation>
+</node>
 </node>
 <node TEXT="Earth Mover&apos;s Distance" ID="ID_1099823323" CREATED="1513307442647" MODIFIED="1590912449705" LINK="project://1653BA3CBA93BGS9NSMOY7GD5HSKZBF1RVFG/../../../OneDrive%20-%20TNO/Documents/literatuur/085%20The%20Earth%20Mover&#x2019;s%20Distance%20as%20a%20Metric%20for%20Image%20Retrieval.pdf">
 <attribute NAME="key" VALUE="rubner2000emd"/>
@@ -5794,6 +5804,12 @@
 <attribute NAME="title" VALUE="Matrix computations"/>
 <attribute NAME="authors" VALUE="Golub, Gene H and Van Loan, Charles F"/>
 <pdf_annotation type="PDF_FILE" object_id="0"/>
+</node>
+<node TEXT="Splines" ID="ID_5888877" CREATED="1614958666108" MODIFIED="1614958670256">
+<attribute NAME="key" VALUE="deboor1978practical"/>
+<attribute NAME="year" VALUE="1978"/>
+<attribute NAME="title" VALUE="A Practical Guide to Splines"/>
+<attribute NAME="authors" VALUE="de Boor, Carl"/>
 </node>
 </node>
 <node TEXT="Extreme Value Statistics" LOCALIZED_STYLE_REF="styles.subtopic" ID="ID_39821948" CREATED="1542357420081" MODIFIED="1542357425327">
