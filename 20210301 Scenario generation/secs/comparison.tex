@@ -61,24 +61,47 @@ Because we do not know $\density{\cdot}$ and $\densityest{\cdot}$, we consider t
 where $\dirac{\cdot}$ denotes the Dirac delta function.
 Substituting the empirical estimations of \cref{eq:empirical density,eq:empirical density estimation} for $\dummydensity(\cdot)$ and $\dummydensityb(\cdot)$, respectively, into \cref{eq:wasserstein}, leads to the so-called empirical Wasserstein metric \autocite{sommerfeld2018inference}, which we define as:
 \begin{equation}
-	\wasserstein{\scenariosetgenerated}{\scenariosettest}
+	\label{eq:empirical wasserstein}
+	\wasserstein{\scenariosettest}{\scenariosetgenerated}
 	= \inf_{\transportmatrix} 
-	\sum_{\sumindex=1}^{\scenariosgeneratednumberof} \sum_{\sumindexb=1}^{\scenariostestnumberof} 
-	\distancefunc{\scenarioparsgenerated_{\sumindex}}{\scenarioparstest_{\sumindexb}}
+	\sum_{\sumindex=1}^{\scenariostestnumberof} \sum_{\sumindexb=1}^{\scenariosgeneratednumberof} 
+	\distancefunc{\scenarioparstest_{\sumindex}}{\scenarioparsgenerated_{\sumindexb}}
 	\transportmatrixelement{\sumindex}{\sumindexb},
 \end{equation}
 subject to the following constraints:
 \begin{alignat}{2}
-	\sum_{\sumindex=1}^{\scenariosgeneratednumberof} \transportmatrixelement{\sumindex}{\sumindexb} &= \frac{1}{\scenariostestnumberof} \quad && \forall \sumindexb \in \{1,\ldots,\scenariostestnumberof\}, \\
-	\sum_{\sumindexb=1}^{\scenariostestnumberof} \transportmatrixelement{\sumindex}{\sumindexb} &= \frac{1}{\scenariosgeneratednumberof} \quad && \forall \sumindex \in \{1,\ldots,\scenariosgeneratednumberof\}, \\
-	\transportmatrixelement{\sumindex}{\sumindexb} &\geq 0 \quad && \forall \sumindex \in \{1,\ldots,\scenariosgeneratednumberof\}, \forall \sumindexb \in \{1,\ldots,\scenariostestnumberof\}
+	\sum_{\sumindex=1}^{\scenariostestnumberof} \transportmatrixelement{\sumindex}{\sumindexb} &= \frac{1}{\scenariosgeneratednumberof} \quad && \forall \sumindexb \in \{1,\ldots,\scenariosgeneratednumberof\}, \\
+	\sum_{\sumindexb=1}^{\scenariosgeneratednumberof} \transportmatrixelement{\sumindex}{\sumindexb} &= \frac{1}{\scenariostestnumberof} \quad && \forall \sumindex \in \{1,\ldots,\scenariostestnumberof\}, \\
+	\transportmatrixelement{\sumindex}{\sumindexb} &\geq 0 \quad && \forall \sumindex \in \{1,\ldots,\scenariostestnumberof\}, \forall \sumindexb \in \{1,\ldots,\scenariosgeneratednumberof\}
 \end{alignat}
 For the ``distance'' function, we will use the 2-norm of the difference of the scenario parameters after scaling the scenario parameters according to the weights $\weights$ that we also used in \cref{sec:svd}:
 \begin{equation}
-	\distancefunc{\scenarioparsgenerated}{\scenarioparstest} = \normtwo{\weights\scenarioparsgenerated - \weights\scenarioparstest}.
+	\distancefunc{\scenarioparstest}{\scenarioparsgenerated} = \normtwo{\weights\scenarioparstest - \weights\scenarioparsgenerated}.
 \end{equation}
 
 
 
 \subsection{Metric for testing scenario generation method}
 \label{sec:metric scenario generation method}
+
+The empirical Wasserstein metric $\wasserstein{\scenariosettest}{\scenariosetgenerated}$ is an approximation of the Wasserstein metric $\wassersteinp{1}{\densitysymbol}{\densityestsymbol}$.
+As one might expect, using infinite number of scenario parameters, i.e., $\scenariostestnumberof\rightarrow\infty$ and $\scenariosgeneratednumberof\rightarrow\infty$, the empirical Wasserstein metric approaches the Wasserstein metric with probability 1. 
+For a proof, see \autocite{sommerfeld2018inference}.
+The problem, however, is that $\scenariostestnumberof$ and $\scenariosgeneratednumberof$ are not infinite. 
+And whereas we can choose a fairly large number for $\scenariosgeneratednumberof$, as it is only limited by the available computing resources, to increase $\scenariostestnumberof$, more data are needed and this is generally expensive. Therefore, we propose a metric that is different from \cref{eq:empirical wasserstein}.
+
+Our proposed metric is based on the following intuition: Suppose that $\densityestsymbol$ is indeed an approximation of $\densitysymbol$. 
+Because $\scenarioset$ and $\scenariosettest$ are based on the same underlying \ac{pdf}, i.e., $\densitysymbol$, we expect $\wasserstein{\scenarioset}{\scenariosetgenerated}$ to be similar to $\wasserstein{\scenariosettest}{\scenariosetgenerated}$.
+If, however, $\wasserstein{\scenarioset}{\scenariosetgenerated}$ is significantly smaller than $\wasserstein{\scenariosettest}{\scenariosetgenerated}$, it suggests that the generated scenarios are too much skewed towards the training data $\scenarioset$ and that, therefore, $\densityestsymbol$ is not an approximation of $\densitysymbol$.
+To penalize any such skew, we introduce a penalty in case $\wasserstein{\scenariosettest}{\scenariosetgenerated}$ is larger than $\wasserstein{\scenarioset}{\scenariosetgenerated}$.
+Thus, our proposed metric becomes:
+\begin{equation}
+	\label{eq:proposed metric}
+	\proposedmetric{\scenariosetgenerated}{\scenariosettest}{\scenarioset}
+	= \wasserstein{\scenariosettest}{\scenariosetgenerated} +
+	\penaltyweight\left( \wasserstein{\scenariosettest}{\scenariosetgenerated} - \wasserstein{\scenarioset}{\scenariosetgenerated} \right).
+\end{equation}
+Here, $\penaltyweight$ is a parameter that controls the weight of the penalty. 
+In \cref{sec:case study}, we will show what an appropriate value of $\penaltyweight$ could be.
+The goal is to minimize the proposed metric of \cref{eq:proposed metric}.
+In \cref{sec:case study}, we will demonstrate empirically that $\proposedmetric{\scenariosetgenerated}{\scenariosettest}{\scenarioset}$ of \cref{eq:proposed metric} better correlates with the Wasserstein metric of \cref{eq:wasserstein} than the empirical Wasserstein metric of \cref{eq:empirical wasserstein}.

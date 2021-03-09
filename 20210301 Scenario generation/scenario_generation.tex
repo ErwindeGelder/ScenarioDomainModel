@@ -60,9 +60,11 @@
 % Variables
 \newcommand{\bandwidthmatrix}{H}
 \newcommand{\dirac}[1]{\delta\left(#1\right)}
-\newcommand{\density}[1]{f\left( #1 \right)}
-\newcommand{\densityest}[1]{\hat{f}\left( #1 \right)}
-\newcommand{\densityestkde}[2]{\hat{f}_{#1}\left( #2 \right)}
+\newcommand{\densitysymbol}{f}
+  \newcommand{\density}[1]{\densitysymbol\left( #1 \right)}
+  \newcommand{\densityestsymbol}{\hat{\densitysymbol}}
+  \newcommand{\densityest}[1]{\densityestsymbol\left( #1 \right)}
+  \newcommand{\densityestkde}[2]{\densityestsymbol_{#1}\left( #2 \right)}
 \newcommand{\dimension}{d}
 \newcommand{\distancefunc}[2]{\Delta\left(#1,#2\right)}
 \newcommand{\dummyvar}{u}
@@ -79,6 +81,8 @@
 \newcommand{\kernelfunc}[1]{K \left( #1 \right)}
   \newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
 \newcommand{\normtwo}[1]{\left\Vert #1 \right\Vert_2}
+\newcommand{\penaltyweight}{\beta}
+\newcommand{\proposedmetric}[3]{M\left(#1,#2,#3\right)}
 \newcommand{\realnumbers}{\mathds{R}}
 \newcommand{\scenariopars}{x}
   \newcommand{\dimensionscenariopars}{n_x}
