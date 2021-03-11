@@ -30,7 +30,7 @@ Modifications:
 2020 11 26: Version 1.5: Scale data by default. Use min(std,IQR/1.349) for scaling. Make bandwidth
             private: Use get_bandwidth/set_bandwidth to retrieve or update the bandwidth. data_info
             dict added to store information regarding data used (for kde store)
-2021 03 11: Version 1.6: Adding possibility to sample such that samples satisfy linear constraint.
+2021 03 11: Version 1.6: Add possibility to sample such that samples satisfy linear constraint.
 """
 
 from itertools import combinations
