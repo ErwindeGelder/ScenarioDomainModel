@@ -145,6 +145,12 @@ For more information on this, we refer the reader to \autocite{aas2009paircopula
 
 
 
+%%%%%%%%%
+%%%%%%%%% Explain third alternative: use a parameter reduction technique
+%%%%%%%%%
+
+
+
 \subsection{Estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$}
 \label{sec:estimate collision}
 
@@ -249,11 +255,18 @@ More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006no
 \end{equation}
 Here, $\probabilityestcond{\collision}{\situationcurrentinstance_{\situationindex}}$ is based \cref{eq:monte carlo collision} and $\kernelfuncnormalized{\bandwidthnw}{\cdot}$ represents the Gaussian kernel given by \cref{eq:kernel current future}.
 Two important choices have to be made: The choice of the $\situationcurrentinstance_{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ for which to evaluate \cref{eq:monte carlo collision} and the choice of the bandwidth matrix $\bandwidthnw$.
-We suggest to base the design points $\situationcurrentinstance_{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ on the data that is used to estimate $\densitycond{\situationfuture}{\situationcurrent}$ in \cref{sec:estimate future}, i.e., $\situationcurrentinstance_{\situationindex}, \situationindex \in \{1,\ldots,\situationnumberof\}$, such that all $\situationcurrentinstance_{\situationindex}$ have at least one design point $\situationcurrentinstance_{\situationindexdesign}$ within a distance of $\distancedesignpoints$:
+We suggest to base the design points $\situationcurrentinstance_{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ on the data that is used to estimate $\densitycond{\situationfuture}{\situationcurrent}$ in \cref{sec:estimate future}, i.e., $\situationcurrentinstance_{\situationindex}, \situationindex \in \{1,\ldots,\situationnumberof\}$, such that all $\situationcurrentinstance_{\situationindex}$ have at least one design point $\situationcurrentinstance_{\situationindexdesign}$ within nearby::
 \begin{equation}
-	\min_{\situationindexdesign} \normtwo{ \situationcurrentinstance_{\situationindex} - \situationcurrentinstance_{\situationindexdesign} } \leq \distancedesignpoints,
-	\quad \forall \situationindex \in \{1, \ldots, \situationnumberof\}.
+	\label{eq:design points distance}
+	\min_{\situationindexdesign} 
+	\left( \situationcurrentinstance_{\situationindex} - \situationcurrentinstance_{\situationindexdesign} \right)^T
+	\weightmatrix 
+	\left( \situationcurrentinstance_{\situationindex} - \situationcurrentinstance_{\situationindexdesign} \right)
+	\leq \distancedesignpoints^2,
+	\quad \forall \situationindex \in \{1, \ldots, \situationnumberof\},
 \end{equation}
+where $\weightmatrix$ denotes a weighting matrix and $\distancedesignpoints$ denotes the maximum ``distance''. 
+Note that if $\weightmatrix$ is the identity matrix, then \cref{eq:design points distance} calculates the minimum squared Euclidean distance.
 To determine the bandwidth matrix $\bandwidthnw$, see \autocite{silverman1986density, turlach1993bandwidthselection, chiu1996comparative, jones1996brief, bashtannyk2001bandwidth, zambom2013review} for possible methods.
 
 
