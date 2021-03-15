@@ -28,6 +28,9 @@
 \Crefname{figure}{Figure}{Figures}
 \Crefname{equation}{}{}
 \usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 \usepackage{silence}  							%% For filtering warnings
@@ -141,6 +144,9 @@
   {0pt}% <replace>
   {}{}% <success><failure>
 \makeatother
+
+\newlength{\figurewidth}
+\newlength{\figureheight}
 
 \begin{document}
 

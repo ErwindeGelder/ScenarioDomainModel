@@ -1,0 +1,42 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\begin{axis}[
+height=\figureheight,
+scaled y ticks=false,
+tick align=outside,
+tick pos=left,
+width=\figurewidth,
+x grid style={white!69.0196078431373!black},
+xmin=-0.3, xmax=6.3,
+xtick style={color=black},
+xtick={0,1,2,3,4,5,6},
+xticklabel style={align=center},
+xticklabels={
+  Training\\set,
+  $\dimension=2$,
+  $\dimension=3$,
+  $\dimension=4$,
+  $\dimension=5$,
+  $\dimension=6$,
+  $\dimension=7$
+},
+y grid style={white!69.0196078431373!black},
+ylabel={$\proposedmetric{\scenariosetgenerated}{\scenariosettest}{\scenarioset}$},
+ymin=0.808099487917019, ymax=0.998798688044162,
+ytick style={color=black},
+yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=3}
+]
+\addplot [semithick, black, mark=*, mark size=3, mark options={solid}, only marks]
+table {%
+0 0.874759048955906
+1 0.990130542583838
+2 0.816767633377344
+3 0.829169755389455
+4 0.839784622142605
+5 0.847407179929393
+6 0.854073070799821
+};
+\end{axis}
+
+\end{tikzpicture}

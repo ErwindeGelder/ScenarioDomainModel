@@ -1,0 +1,54 @@
+% This file was created by tikzplotlib v0.9.8.
+\begin{tikzpicture}
+
+\begin{axis}[
+height=\figureheight,
+scaled y ticks=false,
+tick align=outside,
+tick pos=left,
+width=\figurewidth,
+x grid style={white!69.0196078431373!black},
+xmin=-0.2, xmax=4.2,
+xtick style={color=black},
+xtick={0,1,2,3,4},
+xticklabel style={align=center},
+xticklabels={
+  Training\\set,
+  $\dimension=2$,
+  $\dimension=3$,
+  $\dimension=4$,
+  $\dimension=5$
+},
+y grid style={white!69.0196078431373!black},
+ylabel={Wasserstein metric and penalty},
+ymin=0.0251269349384155, ymax=0.0957142734520387,
+ytick style={color=black},
+yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=3}
+]
+\addplot [semithick, black, mark=square*, mark size=3, mark options={solid}, only marks]
+table {%
+0 0.0523262013201039
+1 0.0426940190701596
+2 0.0524727044016019
+3 0.0576666766516654
+4 0.063427031256775
+};
+\addplot [semithick, black, mark=diamond*, mark size=3, mark options={solid}, only marks]
+table {%
+0 0.0751765119335569
+1 0.0741566613954548
+2 0.0836362343249621
+3 0.087604747735395
+4 0.0925057580650559
+};
+\addplot [semithick, black, mark=x, mark size=3, mark options={solid}, only marks]
+table {%
+0 0.0643689284264246
+1 0.0390680563951531
+2 0.0332828289486487
+3 0.0320068850407172
+4 0.0283354503253984
+};
+\end{axis}
+
+\end{tikzpicture}
