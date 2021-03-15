@@ -45,6 +45,7 @@ class SimulationLongitudinal(Simulator):
 
         data = []
         mindist = 100
+        collision = False
 
         # Run the simulation for at least some time. Stop the simulation if the
         # distance increases.
@@ -56,7 +57,12 @@ class SimulationLongitudinal(Simulator):
                 if time >= self.min_simulation_time:
                     break
 
+            # Also stop if there is a collision
             prev_dist = self.leader.state.position - self.follower.state.position
+            if prev_dist < 0:
+                collision = True
+                break
+
             mindist = min(prev_dist, mindist)
             time += self.follower.parms.timestep
             self.leader.step_simulation(time)
@@ -93,6 +99,9 @@ class SimulationLongitudinal(Simulator):
             ax4.legend()
             plt.tight_layout()
 
+        if collision:
+            # Return negative impact speed
+            return self.leader.state.speed - self.follower.state.speed
         return mindist
 
     def init_simulation(self, **kwargs) -> None:

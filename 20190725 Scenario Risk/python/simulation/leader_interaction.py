@@ -15,9 +15,9 @@ class LeaderInteractionParameters(Options):
     """ Parameters for the lead vehicle. """
     init_position: float = 0
     init_speed: float = 1
-    speed_difference: float = 0
-    init_acceleration: float = 0
-    duration: float = 10
+    velocities: np.ndarray = np.array([])
+    times: np.ndarray = np.array([])
+    time_to_smooth_acceleration: float = 2
 
 
 class LeaderInteractionState(Options):
@@ -35,10 +35,9 @@ class LeaderInteraction:
     def __init__(self):
         self.state = LeaderInteractionState()
         self.parms = LeaderInteractionParameters()
-        self.polycoefficients = (0, 0, 0, 1)
-        self.polycoefficients_der = (0, 0, 1)
-        self.polycoefficients_int = (0, 0, 0, 0, 1)
+        self.velocity_profile = np.array([])
         self.lasttime = 0
+        self.smooth_end_acceleration = 2  # [seconds] used to smooth the acceleration
 
     def init_simulation(self, parms: LeaderInteractionParameters) -> None:
         """ Initialize the simulation.
@@ -46,53 +45,35 @@ class LeaderInteraction:
         The following parameters can be set:
         init_position: float = 0
         init_speed: float = 1
-        speed_difference: float = 0
-        init_acceleration: float = 0
-        duration: float = 10
+        times: np.ndarray
+        velocities: np.ndarray
 
         :param parms: The parameters listed above.
         """
         self.parms.init_position = parms.init_position
         self.parms.init_speed = parms.init_speed
-        self.parms.speed_difference = parms.speed_difference
-        self.parms.init_acceleration = parms.init_acceleration
-        self.parms.duration = parms.duration
-        self.polycoefficients = (((parms.init_acceleration*parms.duration -
-                                   2*parms.speed_difference) /
-                                  parms.duration**3),
-                                 ((3*parms.speed_difference -
-                                   2*parms.init_acceleration*parms.duration) /
-                                  parms.duration**2),
-                                 parms.init_acceleration,
-                                 parms.init_speed)
-        self.polycoefficients_der = (3*self.polycoefficients[0],
-                                     2*self.polycoefficients[1],
-                                     self.polycoefficients[2])
-        self.polycoefficients_int = (self.polycoefficients[0] / 4,
-                                     self.polycoefficients[1] / 3,
-                                     self.polycoefficients[2] / 2,
-                                     self.polycoefficients[3],
-                                     parms.init_position)
-        self.state.position = parms.init_position
         self.lasttime = 0
+        final_acceleration = ((parms.velocities[-1] - parms.velocities[-2]) /
+                              (parms.times[-1] - parms.times[-2]))
+        smooth_times = np.linspace(0, parms.time_to_smooth_acceleration, 50)
+        smooth_velocities = (-final_acceleration/4 * smooth_times**2 +
+                             final_acceleration * smooth_times +
+                             parms.velocities[-1])
+        self.parms.times = np.concatenate((parms.times, smooth_times[1:]+parms.times[-1], [1e9]))
+        self.parms.velocities = np.concatenate((parms.velocities, smooth_velocities[1:],
+                                                [smooth_velocities[-1]]))
+        self.parms.velocities = self.parms.velocities.clip(min=0)
+
+        self.state.position = self.parms.init_position
+        self.state.speed = self.parms.init_speed
 
     def step_simulation(self, time: float) -> None:
         """ Compute the state (position, speed) at time t.
 
         :param time: The time of the simulation.
         """
-        if time < self.parms.duration:
-            self.state.acceleration = np.polyval(self.polycoefficients_der, time)
-            self.state.speed = np.polyval(self.polycoefficients, time)
-            # self.state.position = np.polyval(self.polycoefficients_int, time)
-            if self.state.speed < 0:
-                self.state.speed = 0
-                self.state.acceleration = 0
-        else:
-            self.state.acceleration = 0
-            self.state.speed = max(self.parms.init_speed + self.parms.speed_difference, 0)
-            # self.state.position = (np.polyval(self.polycoefficients_int, self.parms.duration) +
-            #                        (self.parms.init_speed + self.parms.speed_difference) *
-            #                        (time - self.parms.duration))
+        new_speed = np.interp(time, self.parms.times, self.parms.velocities)
+        self.state.acceleration = (new_speed - self.state.speed) / (time - self.lasttime)
+        self.state.speed = new_speed
         self.state.position += self.state.speed * (time - self.lasttime)
         self.lasttime = time
