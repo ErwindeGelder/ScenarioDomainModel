@@ -1,6 +1,9 @@
 % This file was created by tikzplotlib v0.9.8.
 \begin{tikzpicture}
 
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+
 \begin{axis}[
 height=\figureheight,
 scaled y ticks=false,
@@ -20,34 +23,42 @@ xticklabels={
   $\dimension=5$
 },
 y grid style={white!69.0196078431373!black},
-ylabel={Wasserstein metric and penalty},
-ymin=0.0251269349384155, ymax=0.0957142734520387,
+ylabel={Wasserstein metric},
+ymin=0.0318224305315917, ymax=0.110580293241016,
 ytick style={color=black},
 yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=3}
 ]
+\addplot [semithick, black, mark=*, mark size=3, mark options={solid}, only marks]
+table {%
+0 0.0969048169877733
+1 0.0916116581940098
+2 0.0989467999493009
+3 0.103054597911698
+4 0.107000390390587
+};
+\addplot [semithick, color0, mark=square*, mark size=3, mark options={solid,fill=white,draw=black}, only marks]
+table {%
+0 0.0797630187992332
+1 0.0807005529247066
+2 0.089092019800953
+3 0.0933136154566217
+4 0.0988564660597343
+};
 \addplot [semithick, black, mark=square*, mark size=3, mark options={solid}, only marks]
 table {%
-0 0.0523262013201039
-1 0.0426940190701596
-2 0.0524727044016019
-3 0.0576666766516654
-4 0.063427031256775
+0 0.0685427529438103
+1 0.0444340662903759
+2 0.0388628737084231
+3 0.03779375492379
+4 0.0354023333820201
 };
-\addplot [semithick, black, mark=diamond*, mark size=3, mark options={solid}, only marks]
+\addplot [semithick, color1, mark=*, mark size=3, mark options={solid,fill=white,draw=black}, only marks]
 table {%
-0 0.0751765119335569
-1 0.0741566613954548
-2 0.0836362343249621
-3 0.087604747735395
-4 0.0925057580650559
-};
-\addplot [semithick, black, mark=x, mark size=3, mark options={solid}, only marks]
-table {%
-0 0.0643689284264246
-1 0.0390680563951531
-2 0.0332828289486487
-3 0.0320068850407172
-4 0.0283354503253984
+0 0.0540553661074323
+1 0.046175432081863
+2 0.059522840899614
+3 0.0642109817985778
+4 0.068917480270215
 };
 \end{axis}
 

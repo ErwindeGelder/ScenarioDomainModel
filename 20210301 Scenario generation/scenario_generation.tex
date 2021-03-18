@@ -38,7 +38,6 @@
 % Filter warnings issued by package biblatex starting with "Patching footnotes failed"
 \WarningFilter{biblatex}{Patching footnotes failed}
 \renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
-\renewcommand*{\bibfont}{\small}
 \setlength{\biblabelsep}{\labelsep}
 \bibliography{../bib}
 
@@ -49,6 +48,11 @@
 \newenvironment{remark}{\begin{remarkenv}}%
 	{\hfill$\lozenge$\end{remarkenv}}            %% end remark with a lozenge
 	
+% Table stuff
+\usepackage{booktabs}
+\usepackage{tabularx}
+\setlength{\heavyrulewidth}{0.1em}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}	
 
 \title{Scenario Generation and Comparison for the Assessment of Automated Vehicles}
 \author{Erwin de Gelder$^{1,2*}$, Jasper Hof$^{3}$, Eric Cator$^{4}$, Jan-Pieter Paardekooper$^{1,5}$, Olaf Op den Camp$^{1}$, \\Bart De Schutter$^{2}$%
@@ -61,7 +65,8 @@
 \date{}
 
 % Variables
-\newcommand{\bandwidthmatrix}{H}
+\newcommand{\bandwidth}{h}
+  \newcommand{\bandwidthmatrix}{H}
 \newcommand{\dirac}[1]{\delta\left(#1\right)}
 \newcommand{\densitysymbol}{f}
   \newcommand{\density}[1]{\densitysymbol\left( #1 \right)}
@@ -81,6 +86,7 @@
 \newcommand{\e}[1]{\exp\left\{ #1 \right\}}
 \newcommand{\extraparameters}{\theta}
   \newcommand{\dimensionextraparameters}{n_\theta}
+\newcommand{\identitymatrix}[1]{I_{#1}}
 \newcommand{\kernelfunc}[1]{K \left( #1 \right)}
   \newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
 \newcommand{\normtwo}[1]{\left\Vert #1 \right\Vert_2}
@@ -126,6 +132,7 @@
   \newcommand{\wassersteinp}[3]{W_{#1}\left(#2,#3\right)}
   \newcommand{\wassersteincoefficient}{p}
 \newcommand{\weights}{\alpha}
+  \newcommand{\weight}[1]{\weights_{#1}}
 
 
 

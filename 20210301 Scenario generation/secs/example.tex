@@ -1,22 +1,150 @@
 \section{Case study}
 \label{sec:case study}
 
-\setlength{\figurewidth}{.97\linewidth}
-\setlength{\figureheight}{.6\figurewidth}
+To illustrate the proposed methods for generating scenarios (\cref{sec:generation}) and comparing a set of generated scenarios with a set of observed real-world scenarios (\cref{sec:comparison}), we apply the proposed methods in a case study.
+We will first explain the scenario categories that we consider and how we parameterize the scenarios.
+Next, we will demonstrate the scenario generation method in \cref{sec:case study parameter reduction}. 
+Here, we will also show how our metric of \cref{eq:proposed metric} can be used to choose $\dimension$.
+In \cref{sec:case study comparison metric}, we will demonstrate that our proposed metric of \cref{eq:proposed metric} better correlates with the Wasserstein metric of \cref{eq:wasserstein} than the empirical Wasserstein metric of \cref{eq:empirical wasserstein}.
+
+
+
+\subsection{Scenario categories and parameterization}
+\label{sec:case study intro}
+
+In this case study, we looked at two scenario categories.
+The first scenario category considers an ego vehicle that is following another vehicle that decelerates, see \cref{fig:lead vehicle decelerating}.
+As a result, the ego vehicle might need to brake or change direction to avoid contact with the vehicle that decelerates.
+The second scenario category considers a vehicle that performs a cut in, such that is becomes the leader vehicle of the ego vehicle, see \cref{fig:cut in}.
+Depending on the speed and timing of the vehicle that performs a cut in, the ego vehicle might need to brake or change direction to avoid a collision.
+
+\setlength{\figurewidth}{.99\linewidth}
 \begin{figure}
-	\input{figs/scores_1.tikz}
+	\centering
+	\input{figs/lead_braking.tikz}
+	\caption{Schematic representation of the scenario category ``lead vehicle decelerating''. The blue vehicle denotes the ego vehicle.}
+	\label{fig:lead vehicle decelerating}
 \end{figure}
 
 \begin{figure}
-	\input{figs/scores_2.tikz}
+	\centering
+	\input{figs/cut-in.tikz}
+	\caption{Schematic representation of the scenario category ``cut in''. The blue vehicle denotes the ego vehicle.}
+	\label{fig:cut in}
 \end{figure}
+
+To obtain the scenarios, the data set described in \autocite{paardekooper2019dataset6000km} was used. 
+The data were recorded from a single vehicle in which different drivers were asked to drive a prescribed route. 
+The majority of the route was on the highway.
+To measure the surrounding traffic, the vehicle was equipped with three radars and one camera. 
+The surrounding traffic was measured by fusing the data of the radars and the camera \autocite{elfring2016effective}.
+To extract the lead-vehicle-braking and cut-in scenarios from the data set, the data was automatically annotated with tags that described the behavior and status of the ego vehicle and its surrounding traffic \autocite{degelder2020scenariomining}.
+To find the scenarios, we searches for a particular combination of tags \autocite{degelder2020scenariomining}.
+
+In total, 1150 lead-vehicle-decelerating scenarios were found. 
+One quarter of these scenarios were used for testing ($\scenariostestnumberof=287$) and the $\scenariosnumberof=863$ remaining scenarios were used for generating $\scenariosgeneratednumberof=10000$ new scenarios.
+To describe a lead-vehicle-decelerating scenario, we considered the the speed of the lead vehicle ($\dimensiontimeseries=1$) at $\numberoftimesegments=50$ time instants. 
+In \cref{fig:speed lvd observed}, the speed of the lead vehicle of 100 randomly-selected observed lead-vehicle-decelerating scenarios are shown.
+As the only additional parameter ($\dimensionextraparameters=1$), we used the duration of the scenario, i.e., $\timeend-\timestart$.
+Thus, $\dimensionscenariopars=51$.
+For the weighting of the scenario parameters, we used:
+\begin{equation*}
+	\weight{1}=\weight{2}=\ldots=\weight{50}\approx 0.00543, \weight{51}\approx 0.135.
+\end{equation*}
+
+In total, 289 cut-in scenarios were found. 
+One quarter of these scenarios were used for testing ($\scenariostestnumberof=72$) and the $\scenariosnumberof=217$ remaining scenarios were used for generating $\scenariosgeneratednumberof=5000$ new scenarios.
+To describe a cut-in scenario, we considered the speed of the lead vehicle and the lateral position of the lead vehicle with respect to the center of the ego vehicle's lane ($\dimensiontimeseries=2$) at $\numberoftimesegments=50$ time instants.
+We used $\dimensionextraparameters=3$ extra parameters: the duration of the scenario, the initial speed of the ego vehicle, and the initial longitudinal position of the cutting-in vehicle with respect to the ego vehicle.
+Thus, $\dimensionscenariopars=103$.
+For the weighting of the scenario parameters, we used:
+\begin{equation*}
+	\weight{1}=\weight{3}=\ldots=\weight{99}\approx 0.00349,
+\end{equation*}
+\begin{equation*}
+	\weight{2}=\weight{4}=\ldots=\weight{100}\approx 0.0116,
+\end{equation*}
+\begin{equation*}
+	\weight{101}\approx 0.571, \weight{102}\approx 0.231, \weight{103}\approx 0.0672.
+\end{equation*}
+
+
+
+\subsection{Generating scenarios}
+\label{sec:case study parameter reduction}
+
+In our case study, we used a bandwidth matrix of the form $\bandwidthmatrix=\bandwidth^2 \identitymatrix{\dimension}$, where $\identitymatrix{\dimension}$ denotes the $\dimension$-by-$\dimension$ identity matrix.
+The bandwidth $\bandwidth$ was determined with leave-one-out cross-validation \autocite{duin1976parzen}, because this minimizes the Kullback-Leibler divergence between the real \ac{pdf} and the estimated \ac{pdf} \autocite{turlach1993bandwidthselection, zambom2013review}.
+
+An important parameter for the generation of new scenarios is the number of reduced parameters ($\dimension$).
+One approach is to look at the ``explained variance'' of \cref{eq:explained variance} of the first $\dimension$ singular values, see \cref{tab:explained variance}.
+Because the first 2 singular values already explain 99.8 \% of the variance for the lead-vehicle-decelerating scenarios, we selected $\dimension=2$.
+In \cref{fig:speed lvd generated}, the speed of the lead vehicle of 100 generated lead-vehicle-decelerating scenarios are shown.
+
+\setlength{\figurewidth}{.97\linewidth}
+\setlength{\figureheight}{.7\figurewidth}
+\begin{figure}
+	\centering
+	\input{figs/lvd_recorded.tikz}
+	\caption{Speed of the lead vehicle during 100 observed scenarios. For plotting purposes, the starting time of each scenario is set to 0.}
+	\label{fig:speed lvd observed}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\input{figs/lvd_generated.tikz}
+	\caption{Speed of the lead vehicle during 100 generated scenarios scenarios.}
+	\label{fig:speed lvd generated}
+\end{figure}
+
+\begin{table}
+	\centering
+	\caption{Explained variance according to \cref{eq:explained variance}.}
+	\label{tab:explained variance}
+	\begin{tabular}{lcc}
+		\toprule
+		& \multicolumn{2}{c}{Explained variance [\%]} \\
+		$\dimension$ & Lead vehicle decelerating & Cut in \\ \otoprule
+		1 & 77.5 & 40.0 \\
+		2 & 99.8 & 73.6 \\
+		3 & 100.0 & 99.3 \\
+		4 & 100.0 & 99.8 \\
+		5 & 100.0 & 100.0 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Another way to determine $\dimension$ is to use the metric defined in \cref{eq:proposed metric}.
+
 
 \setlength{\figureheight}{.8\figurewidth}
 \begin{figure}
+	\centering
+	\input{figs/scores_1.tikz}
+	\caption{Medians of the metrics for the set of generated lead-vehicle-decelerating scenarios. Circle: proposed metric $\proposedmetric{\scenariosetgenerated}{\scenariosettest}{\scenarioset}$ of \cref{eq:proposed metric}, open square: empirical Wasserstein metric $\wasserstein{\scenariosettest}{\scenariosetgenerated}$ of \cref{eq:empirical wasserstein}, filled square: the ``penalty'' $\wasserstein{\scenariosettest}{\scenariosetgenerated} - \wasserstein{\scenarioset}{\scenariosetgenerated}$.}
+	\label{fig:scores lvd}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\input{figs/scores_2.tikz}
+	\caption{Medians of the metrics for the set of generated cut-in scenarios. For the meaning of the symbols, see \cref{fig:scores lvd}.}
+	\label{fig:scores ci}
+\end{figure}
+
+
+
+\subsection{Evaluating the scenario comparison metric}
+\label{sec:case study comparison metric}
+
+\setlength{\figureheight}{.8\figurewidth}
+\begin{figure}
+	\centering
 	\input{figs/wasserstein_1.tikz}
 \end{figure}
 
 \begin{figure}
+	\centering
 	\input{figs/wasserstein_2.tikz}
 \end{figure}
 

@@ -84,7 +84,7 @@ One way to avoid the curse of dimensionality is to assume that the parameters ar
 
 In the field of machine learning, \ac{pca} is commonly used for dimensionality reduction \autocite{abdi2010principal}.
 As \ac{pca} uses the \ac{svd} \autocite{golub2013matrix}, we will use \iac{svd} to transform the parameters $\scenariopars_{\scenarioindex}$ into a lower-dimensional vector of parameters.
-Before applying the \ac{svd}, we weigh the parameters with $\weights \in \realnumbers^{\dimensionscenariopars}$.
+Before applying the \ac{svd}, we weight the parameters with $\weights \in \realnumbers^{\dimensionscenariopars}$.
 Let us define a matrix that contains the parameters of the $\scenariosnumberof$ scenarios:
 \begin{equation}
 	\scenarioparsmatrix = \begin{bmatrix}

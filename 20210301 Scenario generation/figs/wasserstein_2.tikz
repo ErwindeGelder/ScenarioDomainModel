@@ -1,6 +1,9 @@
 % This file was created by tikzplotlib v0.9.8.
 \begin{tikzpicture}
 
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+\definecolor{color1}{rgb}{1,0.498039215686275,0.0549019607843137}
+
 \begin{axis}[
 height=\figureheight,
 scaled y ticks=false,
@@ -22,40 +25,50 @@ xticklabels={
   $\dimension=7$
 },
 y grid style={white!69.0196078431373!black},
-ylabel={Wasserstein metric and penalty},
-ymin=0.105006846252839, ymax=0.996287170175304,
+ylabel={Wasserstein metric},
+ymin=0.106068687715175, ymax=1.02950719119998,
 ytick style={color=black},
 yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=3}
 ]
+\addplot [semithick, black, mark=*, mark size=3, mark options={solid}, only marks]
+table {%
+0 0.87323240227896
+1 0.987532713768852
+2 0.818566416097392
+3 0.827817494846198
+4 0.841494782180309
+5 0.843440213454086
+6 0.85271777652451
+};
+\addplot [semithick, color0, mark=square*, mark size=3, mark options={solid,fill=white,draw=black}, only marks]
+table {%
+0 0.712164602817268
+1 0.952202176017935
+2 0.739823877279923
+3 0.749642701756787
+4 0.760731569095364
+5 0.769378654041585
+6 0.779017596285257
+};
 \addplot [semithick, black, mark=square*, mark size=3, mark options={solid}, only marks]
 table {%
-0 0.473857831804062
-1 0.837166874552501
-2 0.35371704549914
-3 0.365409466187815
-4 0.380965292821083
-5 0.38777659301658
-6 0.401378680073143
+0 0.639803973012562
+1 0.148043165146303
+2 0.326664663043488
+3 0.318305047994099
+4 0.310279205117856
+5 0.299848439393787
+6 0.300409791494456
 };
-\addplot [semithick, black, mark=diamond*, mark size=3, mark options={solid}, only marks]
+\addplot [semithick, color1, mark=*, mark size=3, mark options={solid,fill=white,draw=black}, only marks]
 table {%
-0 0.713695231043646
-1 0.955774428178828
-2 0.734131233466173
-3 0.751358946371325
-4 0.762894243482017
-5 0.772922836639589
-6 0.777198876885373
-};
-\addplot [semithick, black, mark=x, mark size=3, mark options={solid}, only marks]
-table {%
-0 0.646781107728405
-1 0.145519588249315
-2 0.323354492526922
-3 0.313200607671112
-4 0.313135234591292
-5 0.305503034903593
-6 0.301066785587691
+0 0.471913869008183
+1 0.828382583284874
+2 0.343740569844856
+3 0.363092007640764
+4 0.371276591200597
+5 0.379487117854705
+6 0.401149136524631
 };
 \end{axis}
 

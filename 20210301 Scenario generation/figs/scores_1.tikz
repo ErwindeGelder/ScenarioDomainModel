@@ -1,6 +1,8 @@
 % This file was created by tikzplotlib v0.9.8.
 \begin{tikzpicture}
 
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+
 \begin{axis}[
 height=\figureheight,
 scaled y ticks=false,
@@ -20,18 +22,34 @@ xticklabels={
   $\dimension=5$
 },
 y grid style={white!69.0196078431373!black},
-ylabel={$\proposedmetric{\scenariosetgenerated}{\scenariosettest}{\scenarioset}$},
-ymin=0.0831800784289732, ymax=0.10031038802092,
+ylabel={Metric},
+ymin=0.025144751084137, ymax=0.11225480135924,
 ytick style={color=black},
 yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=3}
 ]
 \addplot [semithick, black, mark=*, mark size=3, mark options={solid}, only marks]
 table {%
-0 0.0913080613535805
-1 0.0839587288649708
-2 0.0922679170793949
-3 0.0954657207860631
-4 0.099531737584922
+0 0.0996920534467681
+1 0.0910142737582867
+2 0.0968997198896531
+3 0.104467780771374
+4 0.108295253619462
+};
+\addplot [semithick, color0, mark=square*, mark size=3, mark options={solid,fill=white,draw=black}, only marks]
+table {%
+0 0.0816408708306334
+1 0.0812073458096283
+2 0.087547416511482
+3 0.0970130610643488
+4 0.100538689760016
+};
+\addplot [semithick, black, mark=square*, mark size=3, mark options={solid}, only marks]
+table {%
+0 0.0720144356477625
+1 0.039957883857726
+2 0.0358945906846928
+3 0.0296270642036683
+4 0.0291042988239144
 };
 \end{axis}
 
