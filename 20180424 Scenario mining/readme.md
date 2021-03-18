@@ -1,1 +1,0 @@
-For the python notebook, use is made of data.mat. This file can be found [here](\\tsn.tno.nl\data\sv\sv-083193\Kluis\Datasets\ERP 2015 dataset\Test 1\Data).

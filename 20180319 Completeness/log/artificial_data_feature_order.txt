@@ -1,7 +1,0 @@
-Feature                   mu(0) sigma(0,0)
-1                                         
-df['x']                       1          4
-df['y']                       8          7
-df['x']**2                    2          5
-df['x']*df['y']               3          6
-df['y']**2                   10          9
