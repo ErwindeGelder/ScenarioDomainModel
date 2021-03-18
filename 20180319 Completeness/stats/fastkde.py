@@ -30,6 +30,7 @@ Modifications:
 2020 11 26: Version 1.5: Scale data by default. Use min(std,IQR/1.349) for scaling. Make bandwidth
             private: Use get_bandwidth/set_bandwidth to retrieve or update the bandwidth. data_info
             dict added to store information regarding data used (for kde store)
+2021 03 11: Version 1.6: Adding possibility to sample such that samples satisfy linear constraint.
 """
 
 from itertools import combinations
@@ -61,7 +62,7 @@ class KDEConstants(Options):
         sumweights(int): The sum of the weights (if weights are used).
         epsilon(float): The distance in one 'bin' in case weighted samples are used.
     """
-    version = str("1.5")
+    version = str("1.6")
 
     ndata = int(0)
     const_looscore = float(0)
@@ -89,6 +90,15 @@ class KDEData(Options):
         std(np.ndarray): Standard deviation of data, only calculated if data
             must be scaled.
         weights(np.ndarray): Weights of the data points.
+        constraint_matrix: If passed, the constraint matrix.
+        constraint_vector: If passed, the constraint vector.
+        transformed_data: If passed, the transformed data based on the
+            constraint matrix.
+        svd_u: U matrix from SVD composition of constraint matrix.
+        svd_s: Sigma matrix from SVD composition of constraint matrix.
+        svd_v1t: V1^T matrix from SVD composition of constraint matrix.
+        svd_v2t: V2^T matrix from SVD composition of constraint matrix.
+        constrained_fixed: Fixed part of constrained sample.
     """
     mindists = np.array([])
     data_score_samples = np.array([])
@@ -97,6 +107,14 @@ class KDEData(Options):
     difference = np.array([])
     std = np.array([])
     weights = np.array([])
+    constraint_matrix = np.array([])
+    constraint_vector = np.array([])
+    transformed_data = np.array([])
+    svd_u = np.array([])
+    svd_s = np.array([])
+    svd_v1t = np.array([])
+    svd_v2t = np.array([])
+    constrained_fixed = np.array([])
     # self.xhist, self.yhist, self.fft = None, None, None  # Not used at the moment
 
 
@@ -205,8 +223,12 @@ class KDE:
                     weights = (self.data_helpers.weights[sorter] /
                                np.sum(self.data_helpers.weights)).cumsum()
                     iqr = np.interp(.75, weights, values) - np.interp(.25, weights, values)
-                    if iqr/1.349 < self.data_helpers.std[i]:
+                    if 0 < iqr/1.349 < self.data_helpers.std[i]:
                         self.data_helpers.std[i] = iqr/1.349
+
+            for i in range(self.data.shape[1]):
+                if self.data_helpers.std[i] == 0:
+                    self.data_helpers.std[i] = 1
 
             self.data = self.data / self.data_helpers.std
         else:
@@ -885,7 +907,7 @@ class KDE:
 
         :param i_given: Index/indices of the parameters that are already given.
         :param values: Value/values of the given parameters.
-        :param n_samples: Number of samples o generate. Defaults to 1.
+        :param n_samples: Number of samples to generate. Defaults to 1.
         :return: Array of parameters.
         """
         if self.scaling:
@@ -909,6 +931,57 @@ class KDE:
 
         if self.scaling:
             samples *= self.data_helpers.std[i]
+        return samples
+
+    def constrained_sample(self, n_samples: int = 1, matrix: np.ndarray = None,
+                           vector: np.ndarray = None) -> np.ndarray:
+        """ Generate samples are are subject to the constraint Ax=b.
+
+        :param n_samples: Number of samples to generate. Defaults to 1.
+        :param matrix: Constraint matrix. Default: previous matrix.
+        :param vector: Constraint vector. Default: previous vector.
+        :return: Array of parameters.
+        """
+        if matrix is None and len(self.data_helpers.constraint_matrix) == 0:
+            raise ValueError("No constraint matrix is defined.")
+        if matrix is not None:
+            self.data_helpers.constraint_matrix = np.atleast_2d(matrix)
+            if self.scaling:
+                for i in range(self.data_helpers.constraint_matrix.shape[0]):
+                    self.data_helpers.constraint_matrix[i] *= self.data_helpers.std
+
+            # Also redefine the transformed data.
+            self.data_helpers.svd_u, self.data_helpers.svd_s, svd_vt = \
+                np.linalg.svd(self.data_helpers.constraint_matrix)
+            self.data_helpers.svd_v1t = svd_vt[:self.data_helpers.constraint_matrix.shape[0], :]
+            self.data_helpers.svd_v2t = svd_vt[self.data_helpers.constraint_matrix.shape[0]:, :]
+            self.data_helpers.transformed_data = np.dot(self.data, self.data_helpers.svd_v1t.T)
+
+        if vector is None and len(self.data_helpers.constraint_vector) == 0:
+            raise ValueError("No constraint vector is defined.")
+        if vector is not None:
+            self.data_helpers.constraint_vector = np.atleast_1d(vector)
+        if vector is not None or matrix is not None:
+            self.data_helpers.constrained_fixed = (np.dot(self.data_helpers.svd_u.T,
+                                                          self.data_helpers.constraint_vector) /
+                                                   self.data_helpers.svd_s)
+
+        norm = (self.data_helpers.transformed_data[:self.constants.ndata] -
+                self.data_helpers.constrained_fixed)**2
+        if len(norm.shape) > 1:
+            norm = np.sum(norm, axis=1)
+        marginal_prob = np.exp(-norm / (2*self._bandwidth**2))
+        if self.weights:
+            marginal_prob *= self.data_helpers.weights[:self.constants.ndata]
+        marginal_prob /= np.sum(marginal_prob)
+        means = np.random.choice(np.arange(self.constants.ndata), size=n_samples, replace=True,
+                                 p=marginal_prob)  # This gives just the indices.
+        means = np.dot(self.data[means], self.data_helpers.svd_v2t.T)
+        samples = np.random.normal(means, self._bandwidth)
+        samples = np.dot(samples, self.data_helpers.svd_v2t)
+        samples += np.dot(self.data_helpers.constrained_fixed, self.data_helpers.svd_v1t)
+        if self.scaling:
+            samples *= self.data_helpers.std
         return samples
 
     def probability(self, lower_bound: Union[List, np.ndarray],
