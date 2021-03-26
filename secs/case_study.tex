@@ -1,2 +1,61 @@
 \section{Case study}
 \label{sec:case study}
+
+
+
+\subsection{Comparison with Wang \& Stamatiadis' metric}
+\label{sec:wang stamatiadis}
+
+In this section, we will show that our method can be used to reproduce the metric of \textcite{wang2014evaluation}.
+\textcite{wang2014evaluation} provide a metric that calculated the probability of a collision under certain assumptions. 
+Because our method can be used to reproduce this metric, we argue that our method is a generalization of the metric of \textcite{wang2014evaluation}.
+We will first explain the metric of \textcite{wang2014evaluation}. 
+Next, in \cref{sec:wang stamatiadis replicate}, we will show how we estimate this metric using our method.
+In \cref{sec:wang stamatiadis comparison}, we will illustrate the results of both.
+
+
+
+\subsubsection{Metric of Wang \& Stamatiadis}
+\label{sec:wang stamatiadis explanation}
+
+The metric of \textcite{wang2014evaluation}, which we denote by $\wangstamatiadis$, calculates the probability of collision of the ``ego vehicle'' and the ``lead vehicle'', where the ego vehicle is following the lead vehicle.
+The metric is based on the following assumptions:
+\begin{itemize}
+	\item The lead vehicle keeps a constant speed;
+	\item The (driver of the) ego vehicle starts to react after its reaction time, denoted by $\timereact$;
+	\item The reaction time $\timereact$ is distributed according to a log-normal distributions, such that the mean is \SI{0.92}{\second} and the standard deviation is \SI{0.28}{\second};
+	\item When the ego vehicle reacts, it brakes with its \ac{madr}, denoted by $\accelerationmax$; and
+	\item The \ac{madr} $\accelerationmax$ is distributed according to a truncated normal distribution with mean $\SI{9.7}{\meter\per\second\squared}$, standard deviation $\SI{1.3}{\meter\per\second\squared}$, lower bound $\lowerbound=\SI{4.2}{\meter\per\second\squared}$, and upper bound $\upperbound=\SI{12.7}{\meter\per\second\squared}$.
+\end{itemize}
+To calculate $\wangstamatiadis(\time)$ at a given time $\time$, the speed difference $\speeddifference{\time}$ and \ac{ttc} $\ttc{\time}$ are used.
+If $\speeddifference{\time} \leq 0$, then the ego vehicle drives slower and there is no risk of collision according to the metric of \textcite{wang2014evaluation}, so $\wangstamatiadis=0$.
+Note that the \ac{ttc} $\ttc{\time}$ is the ratio of the gap $\gap{\time}$ between the ego vehicle and the lead vehicle and the speed difference $\speeddifference{\time}$.
+Given $\accelerationmax$, the driver of the ego vehicle needs to react before
+\begin{equation}
+	\ttc{\time} - \frac{\speeddifference{\time}}{2 \accelerationmax}
+\end{equation}
+in order to avoid a collision. 
+Using the distributions of $\accelerationmax$ and $\timereact$, we can calculate the probability that this is the case, resulting in:
+\begin{equation}
+	\wangstamatiadis(\time) = \begin{cases}
+		0 & \text{if}\quad \speeddifference{\time} \leq 0 \\
+		\int_{\lowerboundadapted}^{\upperbound}
+		\probability{\timereact \leq \ttc{\time} - \frac{\speeddifference{\time}}{2 \accelerationmax} }
+		\density{\accelerationmax} \ud \accelerationmax. 
+		& \text{if}\quad \speeddifference{\time} > 0 \wedge \frac{\speeddifference{\time}}{2\ttc{\time}} < \upperbound \\
+		1 & \text{otherwise}
+	\end{cases},
+\end{equation}
+with $\lowerboundadapted=\max \left( \lowerbound, \frac{\speeddifference{\time}}{2\ttc{\time}}\right)$, $\probability{\timereact \leq \dummyvar}$ is the log-normal probability that the reaction time is lower than $\dummyvar$, and $\density{\accelerationmax}$ is the truncated normal probability density of $\accelerationmax$.
+
+
+
+\subsubsection{Replicate Wang \& Stamatiadis' metric}
+\label{sec:wang stamatiadis replicate}
+
+
+
+\subsubsection{Comparison}
+\label{sec:wang stamatiadis comparison}
+
+

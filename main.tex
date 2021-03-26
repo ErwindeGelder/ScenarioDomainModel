@@ -10,6 +10,7 @@
 \usepackage{tikz}
 \usepackage[capitalize]{cleveref}
 \usepackage[nolist,nohyperlinks]{acronym}
+\usepackage{siunitx}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 %\usepackage{silence}  							%% For filtering warnings
@@ -30,15 +31,23 @@
 \title{A Surrogate Safety Metric for Risk Evaluation}
 \author[1,2]{Erwin de Gelder\corref{cor1}}
 \ead{erwin.degelder@tno.nl}
+\author[3]{Kingsley Adjenughwure}
+\author[1]{Jeroen Manders}
+\author[4]{Ron Snijders}
+\author[1,5]{Jan-Pieter Paardekooper}
+\author[1]{Olaf Op den Camp}
+\author[1]{Arturo Tejada Ruiz}
+\author[1,2]{Bart De Schutter}
 \cortext[cor1]{Corresponding author}
 \address[1]{TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}
 \address[2]{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}
-%\author{Erwin de Gelder, Kingsley Adjenughwure, Jeroen Manders, \\
-%Ron Snijders, Arturo Tejada Ruiz, Jan-Pieter Paardekooper, \\
-%Olaf Op den Camp, Bart De Schutter}
+\address[3]{TNO, TBD}
+\address[4]{TBD}
+\address[5]{Radboud University, Donders Institute for Brain, Cognition and Behaviour, Nijmegen, The Netherlands}
 \date{}
 
 % Variables
+\newcommand{\accelerationmax}{a_\mathrm{MADR}}
 \newcommand{\bandwidth}{h}
 \newcommand{\bandwidthmatrix}{H}
   \newcommand{\bandwidthnw}{H_{\mathrm{NW}}}
@@ -48,12 +57,20 @@
 \newcommand{\densityest}[1]{\hat{p}\left( #1 \right)}
 \newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
 \newcommand{\distancedesignpoints}{d_x}
-\newcommand{\dummyvara}{a}
-\newcommand{\dummyvarb}{b}
-\newcommand{\dummyvarkernel}{u}
+\newcommand{\dummyvar}{u}
+  \newcommand{\dummyvara}{a}
+  \newcommand{\dummyvarb}{b}
+  \newcommand{\dummyvarkernel}{u}
 \newcommand{\dimsimulationresult}{d_{\mathrm{z}}}
 \newcommand{\e}[1]{\exp \left\{ #1 \right\}}
+\newcommand{\erf}[1]{\mathrm{erf}\left\{#1\right\}}
+\newcommand{\gap}[1]{g\left(#1\right)}
 \newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
+\newcommand{\lowerbound}{L}
+  \newcommand{\lowerboundadapted}{\hat{\lowerbound}}
+\renewcommand{\ln}[1]{\log \left( #1 \right)}
+%\newcommand{\meanamax}{\mu_{\accelerationmax}}
+%  \newcommand{\meantr}{\mu_{\timereact}}
 \newcommand{\normtwo}[1]{\left\Vert #1 \right\Vert_2}
 \newcommand{\numberofcollisions}{n_{\collision}}
 \newcommand{\numberofdesignpoints}{m}
@@ -65,6 +82,7 @@
 \newcommand{\probabilityestcond}[2]{\probabilityest{ #1 | #2 }}
 \newcommand{\realnumbers}{\mathds{R}}
 \newcommand{\spacecollision}{\mathcal{Z}_{\collision}}
+\newcommand{\speeddifference}[1]{\Delta v \left( #1 \right)}
 \newcommand{\simulationindex}{j}
 \newcommand{\simulationresult}{z}
   \newcommand{\simulationinstance}[1]{\simulationresult_{#1}}
@@ -83,8 +101,16 @@
 \newcommand{\situationindex}{i}
   \newcommand{\situationindexdesign}{k}
 \newcommand{\situationnumberof}{N}
+%\newcommand{\stdamax}{\sigma_{\accelerationmax}}
+%  \newcommand{\stdtr}{\sigma_{\timereact}}
+\renewcommand{\time}{t}
+  \newcommand{\timereact}{\time_{\mathrm{r}}}
+  \newcommand{\timeevaluation}{T}
+\newcommand{\ttc}[1]{t_\mathrm{TTC}\left( #1 \right)}
 \newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\upperbound}{U}
 \newcommand{\variance}[1]{\mathrm{Var}\left[#1\right]}
+\newcommand{\wangstamatiadis}{\mathrm{WS}}
 \newcommand{\weightmatrix}{W}
 
 
@@ -121,9 +147,9 @@
 	\acro{ttc}[TTC]{Time to Collision}
 \end{acronym}
 
-\maketitle
 
 \input{secs/abstract}
+\maketitle
 \input{secs/introduction}
 \input{secs/literature}
 \input{secs/method}
