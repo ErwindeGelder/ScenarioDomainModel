@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[3p,onecolumn,authoryear]{elsarticle}
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -12,19 +12,30 @@
 \usepackage[nolist,nohyperlinks]{acronym}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
-\usepackage{silence}  							%% For filtering warnings
-\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
-% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
-\WarningFilter{biblatex}{Patching footnotes failed}
-\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
-\renewcommand*{\bibfont}{\small}
-\setlength{\biblabelsep}{\labelsep}
-\bibliography{references}
+%\usepackage{silence}  							%% For filtering warnings
+%\usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
+%% Filter warnings issued by package biblatex starting with "Patching footnotes failed"
+%\WarningFilter{biblatex}{Patching footnotes failed}
+%\renewcommand*{\bibfont}{\footnotesize}		%% Use this for papers
+%\renewcommand*{\bibfont}{\small}
+%\setlength{\biblabelsep}{\labelsep}
+%\bibliography{references}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{letltxmacro}
+\LetLtxMacro{\autocite}{\citep}
+\LetLtxMacro{\textcite}{\citet}
+
 
 \title{A Surrogate Safety Metric for Risk Evaluation}
-\author{Erwin de Gelder, Kingsley Adjenughwure, Jeroen Manders, \\
-Ron Snijders, Arturo Tejada Ruiz, Jan-Pieter Paardekooper, \\
-Olaf Op den Camp, Bart De Schutter}
+\author[1,2]{Erwin de Gelder\corref{cor1}}
+\ead{erwin.degelder@tno.nl}
+\cortext[cor1]{Corresponding author}
+\address[1]{TNO, P.O. Box 756, 5700 AT Helmond, The Netherlands}
+\address[2]{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}
+%\author{Erwin de Gelder, Kingsley Adjenughwure, Jeroen Manders, \\
+%Ron Snijders, Arturo Tejada Ruiz, Jan-Pieter Paardekooper, \\
+%Olaf Op den Camp, Bart De Schutter}
 \date{}
 
 % Variables
@@ -124,6 +135,8 @@ Olaf Op den Camp, Bart De Schutter}
 
 
 
-\printbibliography
+\bibliographystyle{abbrvnat}
+\bibliography{references}
+%\printbibliography
 
 \end{document}
