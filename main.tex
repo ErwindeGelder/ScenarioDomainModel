@@ -12,7 +12,7 @@
 \usepackage[nolist,nohyperlinks]{acronym}
 \usepackage{siunitx}
 \usepackage{tikz}
-\usepackage{pgfplots}\newlength{\figurewidth}\newlength{\figureheight}
+\usepackage{pgfplots}\pgfplotsset{compat=1.16}\newlength{\figurewidth}\newlength{\figureheight}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 %\usepackage{silence}  							%% For filtering warnings
@@ -61,6 +61,7 @@
 \newcommand{\densitycond}[2]{\density{ #1 | #2 }}
 \newcommand{\densityest}[1]{\hat{p}\left( #1 \right)}
 \newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
+\newcommand{\dimension}{d}
 \newcommand{\distancedesignpoints}{d_x}
 \newcommand{\dummyvar}{u}
   \newcommand{\dummyvara}{a}
@@ -96,11 +97,13 @@
 \newcommand{\simulationthreshold}{\epsilon}
 \newcommand{\situationcurrent}{x}
   \newcommand{\situationcurrentdim}{n_{\situationcurrent}}
-  \newcommand{\situationcurrentinstance}{X}
+  \newcommand{\situationcurrentinstance}[1]{X_{#1}}
+  \newcommand{\situationcurrentmean}{\mu_{X}}
   \newcommand{\situationcurrentspace}{\mathcal{X}}
 \newcommand{\situationfuture}{y}
   \newcommand{\situationfuturedim}{n_{\situationfuture}}
-  \newcommand{\situationfutureinstance}{Y}
+  \newcommand{\situationfutureinstance}[1]{Y_{#1}}
+  \newcommand{\situationfuturemean}{\mu_{Y}}
   \newcommand{\situationfutureparta}{\situationfuture_1}
   \newcommand{\situationfuturepartb}{\situationfuture_2}
   \newcommand{\situationfuturespace}{\mathcal{Y}}
@@ -109,6 +112,15 @@
 \newcommand{\situationnumberof}{N}
 %\newcommand{\stdamax}{\sigma_{\accelerationmax}}
 %  \newcommand{\stdtr}{\sigma_{\timereact}}
+\newcommand{\svdu}{U}
+  \newcommand{\svduvec}[1]{u_{#1}}
+  \newcommand{\svds}{\Sigma}
+  \newcommand{\svdsv}[1]{\sigma_{#1}}
+  \newcommand{\svdv}{V}
+  \newcommand{\svdventry}[2]{v_{#1 #2}}
+  \newcommand{\svdvvecd}[1]{\tilde{v}_{#1}}
+  \newcommand{\svdrank}{\bar{N}}
+  \newcommand{\svdindex}{j}
 \renewcommand{\time}{t}
   \newcommand{\timereact}{\time_{\mathrm{r}}}
 \newcommand{\ttcsymbol}{t_\mathrm{TTC}}
@@ -148,6 +160,7 @@
 	\acro{pet}[PET]{Post-Encroachment Time}
 	\acro{picud}[PICUD]{Potential Index for Collision with Urgent Deceleration}
 	\acro{psd}[PSD]{Proportion of Stopping Distance}
+	\acro{svd}[SVD]{Singular Value Decomposition}\acroindefinite{svd}{an}{a}
 	\acro{tet}[TET]{Time Exposed Time to Collision}
 	\acro{tit}[TIT]{Time Integrated Time to Collision}
 	\acro{ttc}[TTC]{Time to Collision}

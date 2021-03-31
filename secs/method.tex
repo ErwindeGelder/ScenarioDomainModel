@@ -65,7 +65,7 @@ Our proposal is to estimate $\density{\situationcurrent, \situationfuture}$ in a
 A data-driven approach brings several benefits.
 First, the estimate automatically adapts to local driving styles and behaviors, which can change from region to region, provided that the data are obtained from the same local traffic.
 Second, strong assumptions such as assuming a constant speed of other vehicles, are not needed.
-For our data-driven approach, let us assume that we have obtained $\situationnumberof$ situations, denoted by $\situationcurrentinstance_{\situationindex}\in\situationcurrentspace, \situationindex\in\{1,\ldots,\situationnumberof\}$, and their corresponding future situations described by $\situationfutureinstance_{\situationindex}\in\situationfuturespace$.
+For our data-driven approach, let us assume that we have obtained $\situationnumberof$ situations, denoted by $\situationcurrentinstance{\situationindex}\in\situationcurrentspace, \situationindex\in\{1,\ldots,\situationnumberof\}$, and their corresponding future situations described by $\situationfutureinstance{\situationindex}\in\situationfuturespace$.
 
 
 
@@ -88,8 +88,8 @@ Using the \ac{kde}, the estimated \ac{pdf} becomes:
 			\situationfuture
 		\end{bmatrix} -
 		\begin{bmatrix}
-			\situationcurrentinstance_{\situationindex} \\
-			\situationfutureinstance_{\situationindex}
+			\situationcurrentinstance{\situationindex} \\
+			\situationfutureinstance{\situationindex}
 		\end{bmatrix}
 	},
 \end{equation}
@@ -141,13 +141,51 @@ Another option is to model $\densitycond{\situationfuture}{\situationcurrent}$ a
 	\approx \densitycond{\situationfutureparta}{\situationfuturepartb} \cdot \densitycond{\situationfuturepartb}{\situationcurrent}.
 \end{equation}
 The same partitioning can be applied to $\densitycond{\situationfutureparta}{\situationfuturepartb}$ and $\densitycond{\situationfuturepartb}{\situationcurrent}$ until only two-dimensional \acp{pdf} need to be estimated.
-For more information on this, we refer the reader to \autocite{aas2009paircopula, nagler2016evading}.
+For more information on this approach, we refer the reader to \autocite{aas2009paircopula, nagler2016evading}.
 
 
 
-%%%%%%%%%
-%%%%%%%%% Explain third alternative: use a parameter reduction technique
-%%%%%%%%%
+\subsubsection{Reduce number of parameters using \acl{svd}}
+\label{sec:parameter reduction}
+
+One way to avoid the curse of dimensionality is to use \iac{svd} \autocite{golub2013matrix} to reduce the number of parameters.
+With \iac{svd}, the parameters $\situationcurrent$ and $\situationfuture$ are transformed into a lower-dimensional vector of parameters in such a way that the reduced vector of parameters describes as much of the variation as possible.
+To do this, \iac{svd} is made of the matrix that contains all $\situationnumberof$ observed situations:
+\begin{equation}
+	\begin{bmatrix}
+		\situationcurrentinstance{1}-\situationcurrentmean & \ldots & \situationcurrentinstance{\situationnumberof}-\situationcurrentmean \\
+		\situationfutureinstance{1}-\situationfuturemean & \ldots & \situationfutureinstance{\situationnumberof}-\situationfuturemean
+	\end{bmatrix} = \svdu \svds \svdv^T.
+\end{equation}
+Here, $\situationcurrentmean=\sum_{\situationindex=1}^{\situationnumberof}\situationcurrentinstance{\situationindex}$ and $\situationfuturemean=\sum_{\situationindex=1}^{\situationnumberof}\situationfutureinstance{\situationindex}$.
+The matrices $\svdu \in \realnumbers^{\left(\situationcurrentdim+\situationfuturedim\right)\times\left(\situationcurrentdim+\situationfuturedim\right)}$ and $\svdv \in \realnumbers^{\situationnumberof \times \situationnumberof}$ are orthonormal, i.e., $\svdu^{-1}=\svdu^T$ and $\svdv^{-1}=\svdv^T$.
+Moreover, $\svds\in\realnumbers^{\left(\situationcurrentdim+\situationfuturedim\right)\times\situationnumberof}$ has only zeros except at the diagonal: the $(\svdindex,\svdindex)$-th element is $\svdsv{\svdindex}$, $\svdindex\in\{1,\ldots,\svdrank\}$, $\svdrank=\min(\situationcurrentdim+\situationfuturedim, \situationnumberof)$, such that
+\begin{equation}
+	\svdsv{1} \geq \svdsv{2} \geq \ldots \geq \svdsv{\svdrank} \geq 0.
+\end{equation}
+Because these so-called singular values are in decreasing order, we can approximate $\situationcurrent$ and $\situationfuture$ by setting $\svdsv{\svdindex}=0$ for $\svdindex > \dimension$:
+\begin{equation}
+	\label{eq:svd approximation}
+	\begin{bmatrix}
+		\situationcurrentinstance{\situationindex} - \situationcurrentmean \\
+		\situationfutureinstance{\situationindex} - \situationfuturemean
+	\end{bmatrix}
+	= \sum_{\svdindex=1}^{\svdrank} \svdsv{\svdindex} \svdventry{\situationindex}{\svdindex} \svduvec{\svdindex}
+	\approx \sum_{\svdindex=1}^{\dimension} \svdsv{\svdindex} \svdventry{\situationindex}{\svdindex} \svduvec{\svdindex},
+\end{equation}
+where $\svdventry{\situationindex}{\svdindex}$ is the $(\situationindex,\svdindex)$-th element of $\svdv$ and $\svduvec{\svdindex}$ is the $\svdindex$-th column of $\svdu$.
+
+Using the approximation of \cref{eq:svd approximation} based on the \ac{svd}, $\situationcurrentinstance{\situationindex}$ and $\situationfutureinstance{\situationindex}$ are described by the vector $\svdvvecd{\situationindex}$:
+\begin{equation}
+	\label{eq:reduced parameter vector}
+	\svdvvecd{\situationindex}^T = \begin{bmatrix}
+		\svdventry{\situationindex}{1} & \ldots & \svdventry{\situationindex}{\dimension}
+	\end{bmatrix}.
+\end{equation}
+We can estimate the probability density of $\svdvvecd{\situationindex}$ in a similar way as described in \cref{sec:one kde}.
+To sample from $\densityestcond{\situationfuture}{\situationcurrent}$, we can sample from the estimated distribution of $\svdvvecd{\situationindex}$.
+Because \cref{eq:svd approximation} is a linear mapping, the sample that is drawn from the estimated distribution of $\svdvvecd{\situationindex}$ is subject to a linear constraint.
+In \autocite{degelder2021conditional}, algorithms are provided for sampling from \iac{kde} with a Gaussian kernel such that the resulting samples are subject to a linear constraint.
 
 
 
@@ -227,41 +265,41 @@ To estimate $\probabilitycond{\collision}{\situationcurrent}$, we use a Monte Ca
 	\label{eq:monte carlo collision}
 	\probabilityestcond{\collision}{\situationcurrent}
 	= \frac{1}{\numberofmontecarlo} \sum_{\simulationindex=1}^{\numberofmontecarlo}
-	\probabilityestcond{\collision}{\situationcurrent, \situationfutureinstance_{\situationindex}}
-	\quad \situationfutureinstance_{\situationindex} \sim \densityestcond{\situationfuture}{\situationcurrent}
+	\probabilityestcond{\collision}{\situationcurrent, \situationfutureinstance{\situationindex}}
+	\quad \situationfutureinstance{\situationindex} \sim \densityestcond{\situationfuture}{\situationcurrent}
 \end{equation}
-The future situations $\situationfutureinstance_{\situationindex}$ that are generated by drawing from the distribution $\densityestcond{\situationfuture}{\situationcurrent}$ follow the probability density of the situations that are captured in the data.
-Therefore, the more often a situation is recorded, the more likely it is that the sample $\situationfutureinstance_{\situationindex}$ resembles it.
+The future situations $\situationfutureinstance{\situationindex}$ that are generated by drawing from the distribution $\densityestcond{\situationfuture}{\situationcurrent}$ follow the probability density of the situations that are captured in the data.
+Therefore, the more often a situation is recorded, the more likely it is that the sample $\situationfutureinstance{\situationindex}$ resembles it.
 This is what we want, because situations that are more likely to occur will contribute more to the estimation of $\probabilitycond{\collision}{\situationcurrent}$.
 This may, however, not be the most efficient way to estimate $\probabilitycond{\collision}{\situationcurrent}$, because collisions are most likely happening for rare situations where $\densityestcond{\situationfuture}{\situationcurrent}$ is low.
 As a result, the relative variance of $\probabilitycond{\collision}{\situationcurrent}$ will be large. 
 To reduce the relative variance, the so-called technique of importance sampling could be applied.
-With importance sampling, the samples $\situationfutureinstance_{\situationindex}$ are drawn from another distribution that puts more weight on the situations that are more likely to result in collision. 
+With importance sampling, the samples $\situationfutureinstance{\situationindex}$ are drawn from another distribution that puts more weight on the situations that are more likely to result in collision. 
 To get an unbiased result, the estimated probability $\densityestcond{\situationfuture}{\situationcurrent}$ in \cref{eq:monte carlo collision} is then weighted. 
 Importance sampling is out of scope of this article.
 For more information, we refer the interested reader to \autocite{deGelder2017assessment, zhao2018evaluation}, in which the authors successfully applied importance sampling to assess \acp{ads}.
 
 Since we want to evaluate the risk metric during real-time operation of the ego vehicle, the expression of \cref{eq:monte carlo collision} is problematic, even if the calculation is accelerated using a technique like importance sampling.
-Therefore, we propose to evaluate \cref{eq:monte carlo collision} only for some fixed $\situationcurrentinstance_{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
+Therefore, we propose to evaluate \cref{eq:monte carlo collision} only for some fixed $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
 Next, local regression is used to estimate \cref{eq:monte carlo collision}.
 More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric}:
 \begin{equation}
 	\probabilityestcond{\collision}{\situationcurrent}
 	\approx \frac{ \sum_{\situationindex=1}^{\numberofdesignpoints}
-		\kernelfuncnormalized{\bandwidthnw}{\situationcurrent - \situationcurrentinstance_{\situationindexdesign}}
-		\probabilityestcond{\collision}{\situationcurrentinstance_{\situationindexdesign}}
+		\kernelfuncnormalized{\bandwidthnw}{\situationcurrent - \situationcurrentinstance{\situationindexdesign}}
+		\probabilityestcond{\collision}{\situationcurrentinstance{\situationindexdesign}}
 	}{\sum_{\situationindex=1}^{\numberofdesignpoints}
-		\kernelfuncnormalized{\bandwidthnw}{\situationcurrent - \situationcurrentinstance_{\situationindexdesign}}}.
+		\kernelfuncnormalized{\bandwidthnw}{\situationcurrent - \situationcurrentinstance{\situationindexdesign}}}.
 \end{equation}
-Here, $\probabilityestcond{\collision}{\situationcurrentinstance_{\situationindex}}$ is based \cref{eq:monte carlo collision} and $\kernelfuncnormalized{\bandwidthnw}{\cdot}$ represents the Gaussian kernel given by \cref{eq:kernel current future}.
-Two important choices have to be made: The choice of the $\situationcurrentinstance_{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ for which to evaluate \cref{eq:monte carlo collision} and the choice of the bandwidth matrix $\bandwidthnw$.
-We suggest to base the design points $\situationcurrentinstance_{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ on the data that is used to estimate $\densitycond{\situationfuture}{\situationcurrent}$ in \cref{sec:estimate future}, i.e., $\situationcurrentinstance_{\situationindex}, \situationindex \in \{1,\ldots,\situationnumberof\}$, such that all $\situationcurrentinstance_{\situationindex}$ have at least one design point $\situationcurrentinstance_{\situationindexdesign}$ within nearby::
+Here, $\probabilityestcond{\collision}{\situationcurrentinstance{\situationindex}}$ is based \cref{eq:monte carlo collision} and $\kernelfuncnormalized{\bandwidthnw}{\cdot}$ represents the Gaussian kernel given by \cref{eq:kernel current future}.
+Two important choices have to be made: The choice of the $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ for which to evaluate \cref{eq:monte carlo collision} and the choice of the bandwidth matrix $\bandwidthnw$.
+We suggest to base the design points $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ on the data that is used to estimate $\densitycond{\situationfuture}{\situationcurrent}$ in \cref{sec:estimate future}, i.e., $\situationcurrentinstance{\situationindex}, \situationindex \in \{1,\ldots,\situationnumberof\}$, such that all $\situationcurrentinstance{\situationindex}$ have at least one design point $\situationcurrentinstance{\situationindexdesign}$ within nearby::
 \begin{equation}
 	\label{eq:design points distance}
 	\min_{\situationindexdesign} 
-	\left( \situationcurrentinstance_{\situationindex} - \situationcurrentinstance_{\situationindexdesign} \right)^T
+	\left( \situationcurrentinstance{\situationindex} - \situationcurrentinstance{\situationindexdesign} \right)^T
 	\weightmatrix 
-	\left( \situationcurrentinstance_{\situationindex} - \situationcurrentinstance_{\situationindexdesign} \right)
+	\left( \situationcurrentinstance{\situationindex} - \situationcurrentinstance{\situationindexdesign} \right)
 	\leq \distancedesignpoints^2,
 	\quad \forall \situationindex \in \{1, \ldots, \situationnumberof\},
 \end{equation}
