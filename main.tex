@@ -11,6 +11,8 @@
 \usepackage[capitalize]{cleveref}
 \usepackage[nolist,nohyperlinks]{acronym}
 \usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{pgfplots}\newlength{\figurewidth}\newlength{\figureheight}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 %\usepackage{silence}  							%% For filtering warnings
@@ -26,6 +28,9 @@
 \usepackage{letltxmacro}
 \LetLtxMacro{\autocite}{\citep}
 \LetLtxMacro{\textcite}{\citet}
+
+
+\Crefname{figure}{Figure}{Figures}
 
 
 \title{A Surrogate Safety Metric for Risk Evaluation}
@@ -82,7 +87,8 @@
 \newcommand{\probabilityestcond}[2]{\probabilityest{ #1 | #2 }}
 \newcommand{\realnumbers}{\mathds{R}}
 \newcommand{\spacecollision}{\mathcal{Z}_{\collision}}
-\newcommand{\speeddifference}[1]{\Delta v \left( #1 \right)}
+\newcommand{\speeddifferencesymbol}{\Delta v}
+\newcommand{\speeddifference}[1]{\speeddifferencesymbol \left( #1 \right)}
 \newcommand{\simulationindex}{j}
 \newcommand{\simulationresult}{z}
   \newcommand{\simulationinstance}[1]{\simulationresult_{#1}}
@@ -105,8 +111,8 @@
 %  \newcommand{\stdtr}{\sigma_{\timereact}}
 \renewcommand{\time}{t}
   \newcommand{\timereact}{\time_{\mathrm{r}}}
-  \newcommand{\timeevaluation}{T}
-\newcommand{\ttc}[1]{t_\mathrm{TTC}\left( #1 \right)}
+\newcommand{\ttcsymbol}{t_\mathrm{TTC}}
+\newcommand{\ttc}[1]{\ttcsymbol\left( #1 \right)}
 \newcommand{\ud}{\,\mathrm{d}}
 \newcommand{\upperbound}{U}
 \newcommand{\variance}[1]{\mathrm{Var}\left[#1\right]}
@@ -114,9 +120,9 @@
 \newcommand{\weightmatrix}{W}
 
 
-\usepackage{nopageno}
-\usepackage{setspace}
-\doublespacing
+%\usepackage{nopageno}
+%\usepackage{setspace}
+%\doublespacing
 
 
 \begin{document}

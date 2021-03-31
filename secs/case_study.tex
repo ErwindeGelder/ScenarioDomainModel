@@ -37,11 +37,12 @@ Given $\accelerationmax$, the driver of the ego vehicle needs to react before
 in order to avoid a collision. 
 Using the distributions of $\accelerationmax$ and $\timereact$, we can calculate the probability that this is the case, resulting in:
 \begin{equation}
+	\label{eq:ws}
 	\wangstamatiadis(\time) = \begin{cases}
 		0 & \text{if}\quad \speeddifference{\time} \leq 0 \\
 		\int_{\lowerboundadapted}^{\upperbound}
 		\probability{\timereact \leq \ttc{\time} - \frac{\speeddifference{\time}}{2 \accelerationmax} }
-		\density{\accelerationmax} \ud \accelerationmax. 
+		\density{\accelerationmax} \ud \accelerationmax
 		& \text{if}\quad \speeddifference{\time} > 0 \wedge \frac{\speeddifference{\time}}{2\ttc{\time}} < \upperbound \\
 		1 & \text{otherwise}
 	\end{cases},
@@ -53,9 +54,48 @@ with $\lowerboundadapted=\max \left( \lowerbound, \frac{\speeddifference{\time}}
 \subsubsection{Replicate Wang \& Stamatiadis' metric}
 \label{sec:wang stamatiadis replicate}
 
+Because the metric of \textcite{wang2014evaluation} uses the speed difference $\speeddifference{\time}$ and \ac{ttc} $\ttc{\time}$, these two variables are also used by our method to describe the current situation:
+\begin{equation}
+	\label{eq:situation current ws}
+	\situationcurrent^T(\time) = \begin{bmatrix}
+		\speeddifference{\time} & \ttc{\time}
+	\end{bmatrix}.
+\end{equation}
+The lead vehicle is assumed to have a constant speed, so we can already describe the future situation of the lead vehicle using $\situationcurrent(\time)$ of \cref{eq:situation current ws}.
+Therefore, $\situationfuturedim=0$ and there is no need to estimate $\densityestcond{\situationfuture}{\situationcurrent}$.
+To estimate $\probabilitycond{\collision}{\situationcurrent}$, we use simulations. 
+At the initial simulation time, the driver of the ego vehicle is not braking. 
+After the reaction time $\timereact$, the driver starts braking with $\accelerationmax$.
+The random parameters $\timereact$ and $\accelerationmax$ are similarly distributed as described in \cref{sec:wang stamatiadis explanation}.
+
 
 
 \subsubsection{Comparison}
 \label{sec:wang stamatiadis comparison}
+
+\Cref{fig:ws comparison} shows the results of the comparison between the metric of \textcite{wang2014evaluation} and the metric derived using our proposed approach in \cref{sec:method}.
+The black lines in \cref{fig:ws comparison} denote $\wangstamatiadis$ of \cref{eq:ws}.
+These lines shows that for lower values of $\ttcsymbol$, $\wangstamatiadis$ increases.
+Also, for increasing values of $\speeddifferencesymbol$ (solid, dashed, and dotted lines), the risk metric $\wangstamatiadis$ increases.
+
+The gray lines in \cref{fig:ws comparison} denote $\probabilityestcond{\collision}{\situationcurrent,\situationfuture}$ of \cref{eq:estimate probability of collision}.
+Because we have $\situationfuturedim=0$, we have $\probabilityestcond{\collision}{\situationcurrent} = \probabilityestcond{\collision}{\situationcurrent,\situationfuture}$.
+\Cref{fig:ws comparison} illustrates that $\probabilityestcond{\collision}{\situationcurrent,\situationfuture}$ follows the same trend as $\wangstamatiadis$.
+\Cref{fig:ws comparison} also illustrates the effect of the choice of the threshold $\simulationthreshold$.
+In general, for a lower value of $\simulationthreshold$, the number of simulations $\numberofsimulations$ used in \cref{eq:kde simulation result} is higher. 
+As a result, it can be expected that the estimation $\probabilityestcond{\collision}{\situationcurrent,\situationfuture}$ is closer to $\probabilitycond{\collision}{\situationcurrent,\situationfuture}$.
+A comparison of the left plot in \cref{fig:ws comparison} ($\simulationthreshold=0.2$) with the right plot ($\simulationthreshold=0.02$) demonstrates this effect.
+
+\setlength{\figurewidth}{.47\linewidth}
+\setlength{\figureheight}{.7\figurewidth}
+\begin{figure}
+	\centering
+	\input{figs/ws_comparison_coarse.tikz}
+	\input{figs/ws_comparison_fine.tikz}
+	\caption{Comparison of $\wangstamatiadis$ of \cref{eq:ws} (black lines) and $\probabilityestcond{\collision}{\situationcurrent}$ (gray lines) for a speed difference of $\speeddifferencesymbol=\SI{10}{\meter\per\second}$ (solid lines), $\speeddifferencesymbol=\SI{20}{\meter\per\second}$ (dashed lines), and $\speeddifferencesymbol=\SI{30}{\meter\per\second}$ (dotted lines).
+		Here, $\probabilityestcond{\collision}{\situationcurrent}$ is based on the same underlying assumptions as $\wangstamatiadis$, see \cref{sec:wang stamatiadis explanation}.
+		The influence of the parameter $\simulationthreshold$, which determines the number of simulations to estimate $\probabilitycond{\collision}{\situationcurrent}$, is illustrated by using $\simulationthreshold=0.2$ (left plot) and $\simulationthreshold=0.02$ (right plot).}
+	\label{fig:ws comparison}
+\end{figure}
 
 
