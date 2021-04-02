@@ -99,3 +99,114 @@ A comparison of the left plot in \cref{fig:ws comparison} ($\simulationthreshold
 \end{figure}
 
 
+
+\subsection{Developing a surrogate safety metric based on the \acs{ngsim} data set}
+\label{sec:ngsim metric}
+
+To illustrate the proposed method, we applied it to derive a surrogate safety metric that is based on the \ac{ngsim} data set.
+The \ac{ngsim} data set contains vehicles' trajectories obtained from video footage of cameras that were located at several motorways in the US \autocite{kovvali2007video}. 
+The surrogate metric that we derived estimates the risk of collision of the ego vehicle with its lead vehicle.
+To describe the current situation at time $\time$, $\situationcurrentdim=4$ parameters were used:
+\begin{itemize}
+	\item The speed of the leading vehicle ($\speedlead{\time}$);
+	\item The acceleration of the leading vehicle ($\accelerationlead{\time}$);
+	\item The speed of the ego vehicle ($\speedego{\time}$); and
+	\item The log of the gap between the leading vehicle and the ego vehicle $\ln{\gap{\time}}$.
+\end{itemize}
+Thus, we had:
+\begin{equation}
+	\situationcurrent^T(\time) = \begin{bmatrix}
+		\speedlead{\time} & \accelerationlead{\time} & \speedego{\time} & \ln{\gap{\time}}
+	\end{bmatrix}.
+\end{equation}
+
+To describe the future situation, we considered the speed of the lead vehicle at $\situationfuturehorizon=50$ time instances, each $\situationfuturetimestep=\SI{0.1}{\second}$ apart:
+\begin{equation}
+	\label{eq:example future situation}
+	\situationfuture^T(\time) = \begin{bmatrix}
+		\speedlead{\time+\situationfuturetimestep} & \ldots & \speedlead{\time+\situationfuturehorizon\situationfuturetimestep}
+	\end{bmatrix}.
+\end{equation}
+It is assumed that $\situationfuture(\time)$ depends on $\speedlead{\time}$ and $\accelerationlead{\time}$. 
+To model this with one \ac{kde} would give us \iac{pdf} with $\situationfuturehorizon+2$ dimensions.
+To reduce the dimensionality, we used \iac{svd} as described in \cref{sec:parameter reduction} with $\dimension=4$.
+In total, 18182 longitudinal interactions between two vehicles were analyzed.
+For each second of an interaction, we extracted a ``current situation'' $\situationcurrentinstance{\situationindex}$ and a corresponding ``future situation'' $\situationfutureinstance{\situationindex}$. 
+This led to $\situationnumberof=469453$ data points.
+Based on Silverman's rule of thumb \autocite{silverman1986density}, we used a bandwidth matrix $\bandwidthmatrix=\bandwidth^2\identitymatrix{4}$ for the \ac{kde} with $\bandwidth\approx 0.186$ and $\identitymatrix{4}$ denoting the 4-by-4 identity matrix.
+
+To demonstrate the conditional sampling from the estimated density $\densityest{\situationcurrent,\situationfuture}$ of \cref{eq:kde estimate}, the plots in \cref{fig:speed profiles} show 50 different future situations in the form of \cref{eq:example future situation}.
+The left plot assumes a current situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$ and the right plot assumes a current situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$.
+In case a simulation takes longer than \SI{5}{\second}, the speed of the lead vehicle is assumed to remain constant after these \SI{5}{\second}.
+
+\setlength{\figurewidth}{.49\linewidth}
+\setlength{\figureheight}{.7\figurewidth}
+\begin{figure}
+	\centering
+	\input{figs/speed_profiles_a.tikz}
+	\input{figs/speed_profiles_b.tikz}
+	\caption{50 potential future situations samples from the \ac{kde} that is constructed using data from the \ac{ngsim} data set. 
+		The left (right) plot assumes a current situation in which the speed of the lead vehicle is $\speedleadsymbol=\SI{15}{\meter\per\second}$ and the acceleration is $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$ ($\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$).}
+	\label{fig:speed profiles}
+\end{figure}
+
+To estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ (\cref{sec:estimate collision}), we used the driver behavior model \ac{idmplus} \autocite{schakel2010effects} for modeling the ego vehicle response.
+In addition to \ac{idmplus}, we assumed that the driver has a reaction time that is similarly distributed as $\timereact$ in \cref{sec:wang stamatiadis explanation} and that the \ac{madr} is similarly distributed as $\accelerationmax$ in \cref{sec:wang stamatiadis explanation}.
+The result of a single simulation was
+\begin{equation}
+	\simulationresult = \begin{cases}
+		\speedlead{\timeend} - \speedego{\timeend} & \text{if collision} \\
+		\gap{\timeend} & \text{otherwise}
+	\end{cases},
+\end{equation}
+where $\timeend$ denotes the final time of the simulation.
+The simulation ended if there was a collision or if the gap between the ego vehicle and lead vehicle was not decreasing.
+Clearly, $\simulationresult<0$ indicates a collision, so $\spacecollision=(-\infty, 0)$.
+The number of simulations was based on the threshold $\simulationthreshold=0.1$.
+
+To calculate $\probabilitycond{\collision}{\situationcurrent}$, we created a grid of points $\situationcurrentinstance{\simulationindex}$, $\simulationindex\in\{1,\ldots,\numberofdesignpoints\}$ using the method explained in \cref{sec:final metric calculation} with $\weightmatrix$ being a diagonal matrix with on its diagonal: 0.25, 4, 0.25, and 16.
+For the bandwidth matrix $\bandwidthnw$, we used a diagonal matrix with 0.0024, 0.068, 0.0025, and 0.019 on its diagonal.
+
+
+
+\subsection{Analyzing the surrogate safety metric based on the \acs{ngsim} data set}
+\label{sec:analyzing ngsim metric}
+
+The heat maps in \cref{fig:heatmaps} show how the developed surrogate safety metric depends on the input variables $\speedleadsymbol$ and $\gapsymbol$. 
+The other two parameters, $\speedegosymbol$ and $\accelerationleadsymbol$ are fixed for each heat map.
+The heat maps shows that the estimated probability of collision is practically 0 if both $\speedleadsymbol$ and $\gapsymbol$ are large.
+This seems reasonable, because in that case, the ego vehicle is at a safe distance of its lead vehicle while the approaching speed is small. 
+If however, the difference in speed increases, i.e., for lower values of $\speedleadsymbol$, the risk increases. 
+The same applies for a decreasing distance between the two vehicles.
+For small values of $\speedegosymbol$ and $\accelerationleadsymbol$, the estimated probability of collision is practically 1.
+The left and center heat maps of \cref{fig:heatmaps} show that for a higher speed of the ego vehicle, the probability of collision is estimated to be higher.
+Similarly, the right and center heat maps of \cref{fig:heatmaps} show that for a lower initial acceleration of the lead vehicle, the probability of collision is estimated to be higher.
+
+\setlength{\figurewidth}{.35\linewidth}
+\setlength{\figureheight}{0.8\figurewidth}
+\begin{figure}
+	\centering
+	\input{figs/heatmaps.tikz}
+	\caption{Heat maps of the surrogate safety metric described in \cref{sec:ngsim metric} as a function of the speed of the lead vehicle ($\speedleadsymbol$) and the gap between the ego vehicle and the lead vehicle ($\gapsymbol$).
+		For each heat map, the other two input parameters are fixed at $\speedegosymbol=\SI{25}{\meter\per\second}$ (left) or $\speedegosymbol=\SI{20}{\meter\per\second}$ (center and right) and $\accelerationleadsymbol=\SI{0}{\meter\per\second\squared}$ (left and center) or $\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$ (right).
+		The estimated probability of collision ranges from 0 (white) to 1 (black).}
+	\label{fig:heatmaps}
+\end{figure}
+
+
+
+\setlength{\figurewidth}{.45\linewidth}
+\setlength{\figureheight}{0.6\figurewidth}
+\begin{figure}
+	\centering
+	\input{figs/case_safe_scenario.tikz}
+	\input{figs/case_safe_metric.tikz}\\
+	\input{figs/case_risky_scenario.tikz}
+	\input{figs/case_risky_metric.tikz}\\
+	\input{figs/case_collision_scenario.tikz}
+	\input{figs/case_collision_metric.tikz}
+	\caption{Estimated probability of collision for 3 hypothetical scenarios. 
+		The left plots show the speeds of the ego vehicle (solid black line) and lead vehicle (dashed black line) and the distance between the ego vehicle and the lead vehicle (dotted gray line, scale on the right of the plot).
+		The right plots show the estimated probability of collision corresponding to the 3 scenarios according to the metric explained in \cref{sec:ngsim metric} that is based on our proposed method (black lines) and, for comparison, the metric of \textcite{wang2014evaluation} explained in \cref{sec:wang stamatiadis explanation} (gray lines).}
+	\label{fig:scenarios}		
+\end{figure}

@@ -13,6 +13,7 @@
 \usepackage{siunitx}
 \usepackage{tikz}
 \usepackage{pgfplots}\pgfplotsset{compat=1.16}\newlength{\figurewidth}\newlength{\figureheight}
+\usepgfplotslibrary{groupplots}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 %\usepackage{silence}  							%% For filtering warnings
@@ -52,15 +53,18 @@
 \date{}
 
 % Variables
-\newcommand{\accelerationmax}{a_\mathrm{MADR}}
+\newcommand{\accelerationsymbol}{a}
+  \newcommand{\accelerationmax}{\accelerationsymbol_{\mathrm{MADR}}}
+  \newcommand{\accelerationleadsymbol}{\accelerationsymbol_{\mathrm{lead}}}
+  \newcommand{\accelerationlead}[1]{\accelerationleadsymbol\left(#1\right)}
 \newcommand{\bandwidth}{h}
 \newcommand{\bandwidthmatrix}{H}
   \newcommand{\bandwidthnw}{H_{\mathrm{NW}}}
 \newcommand{\collision}{\mathrm{C}}
 \newcommand{\density}[1]{p\left( #1 \right)}
-\newcommand{\densitycond}[2]{\density{ #1 | #2 }}
-\newcommand{\densityest}[1]{\hat{p}\left( #1 \right)}
-\newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
+  \newcommand{\densitycond}[2]{\density{ #1 | #2 }}
+  \newcommand{\densityest}[1]{\hat{p}\left( #1 \right)}
+  \newcommand{\densityestcond}[2]{\densityest{ #1 | #2 }}
 \newcommand{\dimension}{d}
 \newcommand{\distancedesignpoints}{d_x}
 \newcommand{\dummyvar}{u}
@@ -70,7 +74,9 @@
 \newcommand{\dimsimulationresult}{d_{\mathrm{z}}}
 \newcommand{\e}[1]{\exp \left\{ #1 \right\}}
 \newcommand{\erf}[1]{\mathrm{erf}\left\{#1\right\}}
-\newcommand{\gap}[1]{g\left(#1\right)}
+\newcommand{\gapsymbol}{g}
+  \newcommand{\gap}[1]{\gapsymbol\left(#1\right)}
+\newcommand{\identitymatrix}[1]{I_{#1}}
 \newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
 \newcommand{\lowerbound}{L}
   \newcommand{\lowerboundadapted}{\hat{\lowerbound}}
@@ -102,6 +108,8 @@
   \newcommand{\situationcurrentspace}{\mathcal{X}}
 \newcommand{\situationfuture}{y}
   \newcommand{\situationfuturedim}{n_{\situationfuture}}
+  \newcommand{\situationfuturehorizon}{n_{\mathrm{h}}}
+  \newcommand{\situationfuturetimestep}{\Delta \time}
   \newcommand{\situationfutureinstance}[1]{Y_{#1}}
   \newcommand{\situationfuturemean}{\mu_{Y}}
   \newcommand{\situationfutureparta}{\situationfuture_1}
@@ -112,6 +120,11 @@
 \newcommand{\situationnumberof}{N}
 %\newcommand{\stdamax}{\sigma_{\accelerationmax}}
 %  \newcommand{\stdtr}{\sigma_{\timereact}}
+\newcommand{\speedsymbol}{v}
+  \newcommand{\speedegosymbol}{\speedsymbol_{\mathrm{ego}}}
+  \newcommand{\speedego}[1]{\speedegosymbol\left(#1\right)}
+  \newcommand{\speedleadsymbol}{\speedsymbol_{\mathrm{lead}}}
+  \newcommand{\speedlead}[1]{\speedleadsymbol\left(#1\right)}
 \newcommand{\svdu}{U}
   \newcommand{\svduvec}[1]{u_{#1}}
   \newcommand{\svds}{\Sigma}
@@ -122,6 +135,7 @@
   \newcommand{\svdrank}{\bar{N}}
   \newcommand{\svdindex}{j}
 \renewcommand{\time}{t}
+  \newcommand{\timeend}{t_{\mathrm{end}}}
   \newcommand{\timereact}{\time_{\mathrm{r}}}
 \newcommand{\ttcsymbol}{t_\mathrm{TTC}}
 \newcommand{\ttc}[1]{\ttcsymbol\left( #1 \right)}
@@ -148,10 +162,13 @@
 	\acro{drac}[DRAC]{Deceleration Rate to Avoid Collision}
 	\acro{dss}[DSS]{Difference of Space distance and Stopping distance}
 	\acro{kde}[KDE]{Kernel Density Estimation}
+	\acro{idm}[IDM]{Intelligent Driver Model}
+	\acro{idmplus}[IDM+]{Intelligent Driver Model Plus}
 	\acro{madr}[MADR]{Maximum Available Deceleration Rate}
 	\acro{mtc}[MTC]{Margin To Collision}
 	\acro{mttc}[MTTC]{Modified Time to Collision}
 	\acroindefinite{mttc}{an}{a}
+	\acro{ngsim}[NGSIM]{Next Generation SIMulation}
 	\acro{nw}[NW]{Nadaraya-Watson}
 	\acroindefinite{nw}{an}{a}
 	\acro{odd}[ODD]{Operational Design Domain}
