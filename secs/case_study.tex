@@ -193,7 +193,12 @@ Similarly, the right and center heat maps of \cref{fig:heatmaps} show that for a
 	\label{fig:heatmaps}
 \end{figure}
 
-
+In \cref{fig:scenarios}, the evaluations of the metric described in \cref{sec:ngsim metric} are shown for three different scenarios. 
+Each of the three scenarios consider an ego vehicle and a lead vehicle driving in front of the ego vehicle.
+Both vehicles are driving in the same direction and in the same lane. 
+The speeds of the ego vehicle (black solid line) and the lead vehicle (black dashed line) are shown in the left plots of \cref{fig:scenarios} alongside the distance between the two vehicles (gray dotted line, scale on the right of the plot).
+The right plots of \cref{fig:scenarios} show the evaluations of the metric explained in \cref{sec:ngsim metric} for each of the three scenarios (black line).
+Furthermore, the right plots include the evaluations of $\wangstamatiadis$ of \cref{eq:ws}.
 
 \setlength{\figurewidth}{.45\linewidth}
 \setlength{\figureheight}{0.6\figurewidth}
@@ -210,3 +215,26 @@ Similarly, the right and center heat maps of \cref{fig:heatmaps} show that for a
 		The right plots show the estimated probability of collision corresponding to the 3 scenarios according to the metric explained in \cref{sec:ngsim metric} that is based on our proposed method (black lines) and, for comparison, the metric of \textcite{wang2014evaluation} explained in \cref{sec:wang stamatiadis explanation} (gray lines).}
 	\label{fig:scenarios}		
 \end{figure}
+
+The first scenario in \cref{fig:scenarios} (top row) shows a scenario in which the lead vehicle initially drives with a speed of \SI{20}{\meter\per\second}.
+The lead vehicle starts to decelerate after \SI{3}{\second} toward a speed of \SI{10}{\meter\per\second} with an average deceleration of \SI{3}{\meter\per\second\squared}.
+The ego vehicle initially drives with a speed of \SI{24}{\meter\per\second} at a distance of \SI{40}{\meter} from the lead vehicle.
+The ego vehicle starts decelerating after \SI{2}{\second} toward a speed of \SI{8}{\meter\per\second} within \SI{4}{\second}.
+It takes \SI{4}{\second} more to reach the speed of the lead vehicle.
+Because the ego vehicle always maintains a relatively large distance toward the lead vehicle, both surrogate safety metrics do not qualify this scenario as risky, considering the estimated probability of collisions that stays below 0.1.
+
+The second scenario in \cref{fig:scenarios} (center row) differs from the first scenario in that the ego vehicle starts to decelerate \SI{2}{\second} later.
+As a result, the ego vehicle approaches the lead vehicle up to a distance of \SI{5.4}{\meter}.
+According to $\probabilityestcond{\collision}{\situationcurrent}$ from \cref{sec:ngsim metric} (black line in the right plot of \cref{fig:scenarios}), the probability of collision reaches almost 1, indicating that around that time, the risk of a collision is high.
+The local minimum of $\probabilityestcond{\collision}{\situationcurrent}$ at around \SI{6}{\second} illustrates the effect of the numerical approximation of $\probabilitycond{\collision}{\situationcurrent}$.
+Because we have used $\simulationthreshold=0.1>0$, the resulting estimation may have an error. 
+When lowering the threshold $\simulationthreshold$, the resulting $\probabilityestcond{\collision}{\situationcurrent}$ in the center right plot in \cref{fig:scenarios} will be smoother. 
+This goes, however, at the cost of having to do more simulations.
+Alternatively, the bandwidth matrix $\bandwidthnw$ may be increased. 
+On the one hand, this will lower the variance of the error, but, on the other hand, it will increase the bias of the result.
+We refer the interested reader to \autocite{chen2017tutorial} for more details on the effect of $\bandwidthnw$.
+
+The third scenario in \cref{fig:scenarios} (bottom row) differs from the second scenario in that the initial distance between ego vehicle and the lead vehicle is \SI{31.5}{\meter} instead of \SI{40}{\meter}. 
+As a result, the ego vehicle collides with the lead vehicle after \SI{6}{\second}.
+As expected, the surrogate safety metrics in \cref{fig:scenarios} indicate a collision probability of 1.
+The difference between $\probabilityestcond{\collision}{\situationcurrent}$ and $\wangstamatiadis$ is that $\probabilityestcond{\collision}{\situationcurrent}$ earlier increases. 
