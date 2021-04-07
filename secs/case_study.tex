@@ -78,12 +78,11 @@ The black lines in \cref{fig:ws comparison} denote $\wangstamatiadis$ of \cref{e
 These lines shows that for lower values of $\ttcsymbol$, $\wangstamatiadis$ increases.
 Also, for increasing values of $\speeddifferencesymbol$ (solid, dashed, and dotted lines), the risk metric $\wangstamatiadis$ increases.
 
-The gray lines in \cref{fig:ws comparison} denote $\probabilityestcond{\collision}{\situationcurrent,\situationfuture}$ of \cref{eq:estimate probability of collision}.
-Because we have $\situationfuturedim=0$, we have $\probabilityestcond{\collision}{\situationcurrent} = \probabilityestcond{\collision}{\situationcurrent,\situationfuture}$.
-\Cref{fig:ws comparison} illustrates that $\probabilityestcond{\collision}{\situationcurrent,\situationfuture}$ follows the same trend as $\wangstamatiadis$.
+The gray lines in \cref{fig:ws comparison} denote $\probabilityestcond{\collision}{\situationcurrent}$ of \cref{eq:estimate probability of collision}.
+\Cref{fig:ws comparison} illustrates that $\probabilityestcond{\collision}{\situationcurrent}$ follows the same trend as $\wangstamatiadis$.
 \Cref{fig:ws comparison} also illustrates the effect of the choice of the threshold $\simulationthreshold$.
 In general, for a lower value of $\simulationthreshold$, the number of simulations $\numberofsimulations$ used in \cref{eq:kde simulation result} is higher. 
-As a result, it can be expected that the estimation $\probabilityestcond{\collision}{\situationcurrent,\situationfuture}$ is closer to $\probabilitycond{\collision}{\situationcurrent,\situationfuture}$.
+As a result, it can be expected that the estimation $\probabilityestcond{\collision}{\situationcurrent}$ is closer to $\probabilitycond{\collision}{\situationcurrent}$.
 A comparison of the left plot in \cref{fig:ws comparison} ($\simulationthreshold=0.2$) with the right plot ($\simulationthreshold=0.02$) demonstrates this effect.
 
 \setlength{\figurewidth}{.47\linewidth}
@@ -92,7 +91,7 @@ A comparison of the left plot in \cref{fig:ws comparison} ($\simulationthreshold
 	\centering
 	\input{figs/ws_comparison_coarse.tikz}
 	\input{figs/ws_comparison_fine.tikz}
-	\caption{Comparison of $\wangstamatiadis$ of \cref{eq:ws} (black lines) and $\probabilityestcond{\collision}{\situationcurrent}$ (gray lines) for a speed difference of $\speeddifferencesymbol=\SI{10}{\meter\per\second}$ (solid lines), $\speeddifferencesymbol=\SI{20}{\meter\per\second}$ (dashed lines), and $\speeddifferencesymbol=\SI{30}{\meter\per\second}$ (dotted lines).
+	\caption{Comparison of $\wangstamatiadis$ of \cref{eq:ws} (black lines) and $\probabilityestcond{\collision}{\situationcurrent}$ of \cref{eq:estimate probability of collision} (gray lines) for a speed difference of $\speeddifferencesymbol=\SI{10}{\meter\per\second}$ (solid lines), $\speeddifferencesymbol=\SI{20}{\meter\per\second}$ (dashed lines), and $\speeddifferencesymbol=\SI{30}{\meter\per\second}$ (dotted lines).
 		Here, $\probabilityestcond{\collision}{\situationcurrent}$ is based on the same underlying assumptions as $\wangstamatiadis$, see \cref{sec:wang stamatiadis explanation}.
 		The influence of the parameter $\simulationthreshold$, which determines the number of simulations to estimate $\probabilitycond{\collision}{\situationcurrent}$, is illustrated by using $\simulationthreshold=0.2$ (left plot) and $\simulationthreshold=0.02$ (right plot).}
 	\label{fig:ws comparison}
@@ -150,7 +149,7 @@ In case a simulation takes longer than \SI{5}{\second}, the speed of the lead ve
 	\label{fig:speed profiles}
 \end{figure}
 
-To estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$ (\cref{sec:estimate collision}), we used the driver behavior model \ac{idmplus} \autocite{schakel2010effects} for modeling the ego vehicle response.
+To estimate $\probabilitycond{\collision}{\situationcurrent}$ (\cref{sec:estimate collision}), we used the driver behavior model \ac{idmplus} \autocite{schakel2010effects} for modeling the ego vehicle response.
 In addition to \ac{idmplus}, we assumed that the driver has a reaction time that is similarly distributed as $\timereact$ in \cref{sec:wang stamatiadis explanation} and that the \ac{madr} is similarly distributed as $\accelerationmax$ in \cref{sec:wang stamatiadis explanation}.
 The result of a single simulation was
 \begin{equation}
@@ -164,7 +163,7 @@ The simulation ended if there was a collision or if the gap between the ego vehi
 Clearly, $\simulationresult<0$ indicates a collision, so $\spacecollision=(-\infty, 0)$.
 The number of simulations was based on the threshold $\simulationthreshold=0.1$.
 
-To calculate $\probabilitycond{\collision}{\situationcurrent}$, we created a grid of points $\situationcurrentinstance{\simulationindex}$, $\simulationindex\in\{1,\ldots,\numberofdesignpoints\}$ using the method explained in \cref{sec:final metric calculation} with $\weightmatrix$ being a diagonal matrix with on its diagonal: 0.25, 4, 0.25, and 16.
+To calculate $\probabilitycond{\collision}{\situationcurrent}$ using \cref{eq:nadaraya watson}, we created a grid of points $\situationcurrentinstance{\simulationindex}$, $\simulationindex\in\{1,\ldots,\numberofdesignpoints\}$ using the method explained in \cref{sec:final metric calculation} with $\weightmatrix$ being a diagonal matrix with on its diagonal: 0.25, 4, 0.25, and 16.
 For the bandwidth matrix $\bandwidthnw$, we used a diagonal matrix with 0.0024, 0.068, 0.0025, and 0.019 on its diagonal.
 
 
@@ -281,6 +280,7 @@ For each input variable listed in \cref{eq:input partial derivatives}, we evalua
 It shows that the surrogate safety metric follows the expected causal tendencies mostly. 
 E.g., in more than \SI{99}{\%} of the cases, the partial derivative of the relative speed ($\speedegosymbol-\speedleadsymbol$) is positive.
 For the remaining \SI{1}{\%}, the partial derivative is negative, albeit only slightly. 
+One explanation is that the inaccuracies that are introduced by the numerical approximation of \cref{eq:estimate probability of collision} cause this.
 
 \begin{table}
 	\centering
