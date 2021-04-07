@@ -105,7 +105,7 @@ A comparison of the left plot in \cref{fig:ws comparison} ($\simulationthreshold
 
 To illustrate the proposed method, we applied it to derive a surrogate safety metric that is based on the \ac{ngsim} data set.
 The \ac{ngsim} data set contains vehicles' trajectories obtained from video footage of cameras that were located at several motorways in the US \autocite{kovvali2007video}. 
-The surrogate metric that we derived estimates the risk of collision of the ego vehicle with its lead vehicle.
+The surrogate safety metric that we derived estimates the risk of collision of the ego vehicle with its lead vehicle.
 To describe the current situation at time $\time$, $\situationcurrentdim=4$ parameters were used:
 \begin{itemize}
 	\item The speed of the leading vehicle ($\speedlead{\time}$);
@@ -238,3 +238,71 @@ The third scenario in \cref{fig:scenarios} (bottom row) differs from the second 
 As a result, the ego vehicle collides with the lead vehicle after \SI{6}{\second}.
 As expected, the surrogate safety metrics in \cref{fig:scenarios} indicate a collision probability of 1.
 The difference between $\probabilityestcond{\collision}{\situationcurrent}$ and $\wangstamatiadis$ is that $\probabilityestcond{\collision}{\situationcurrent}$ earlier increases. 
+
+
+
+\subsection{Benchmarking surrogate safety metric with expected causal tendencies}
+\label{sec:tendencies}
+
+In this section, we demonstrate an approach for benchmarking a surrogate safety metric.
+The approach is based on the so-called \emph{expected causal tendencies} of \textcite{mullakkal2017comparative}.
+\textcite{mullakkal2017comparative} argue that the risk increases if the approaching speed of the ego vehicle toward the leading vehicle increases.
+Also, the risk increases with a higher ego vehicle speed \autocite{aarts2006driving} or a higher driver reaction time \autocite{klauer2006impact}.
+On the other hand, the risk decreases with a higher road friction \autocite{wallman2001friction} or a larger intervehicle spacing \autocite{mullakkal2017comparative}.
+
+To check whether the developed surrogate safety metric follows these 5 expected causal tendencies\footnote{In \autocite{mullakkal2017comparative}, a sixth expected causal tendency is mentioned based on \autocite{evans1994driver}, namely the vehicle mass. 
+Our interpretation of \autocite{evans1994driver}, however, is that the ratio of masses of two colliding vehicles influences the safety risk and that one cannot argue that a higher mass of the ego vehicle necessarily increases the safety risk. 
+Therefore, we exclude the ego vehicle mass from our analysis.}, we evaluate the partial derivatives of the metric of \cref{eq:nadaraya watson}.
+The intuition is as follows: If the expected causal tendency for an input X (e.g., the ego vehicle speed) is that the risk increases as X increases, then we expect that the partial derivative of our surrogate safety metric with respect to X to be positive.
+Furthermore, if we evaluate the partial derivative at many points, we expect that at least the majority of these evaluated partial derivatives are positive.
+Analogously, if we expect that the risk metric decreases with increasing X, then we expect that at least the majority of the evaluated partial derivatives are negative.
+
+To illustrate the approach for benchmarking a surrogate safety metric, we use the surrogate safety metric based on the \ac{ngsim} data set as explained in \cref{sec:ngsim metric} with a few adaptations.
+Because we have not described an expected tendency regarding $\accelerationleadsymbol$, we simply use $\accelerationleadsymbol=0$.
+Also, the relative speed, i.e., $\speedegosymbol-\speedleadsymbol$, is used instead of $\speedleadsymbol$.
+Instead of assuming a random reaction time $\timereact$ and \ac{madr} $\accelerationmax$, these are now considered as input to our metric. 
+Finally, instead of using the log of the gap between the ego vehicle and the lead vehicle, we use the gap as a direct input.
+Thus, we have:
+\begin{equation}
+	\label{eq:input partial derivatives}
+	\situationcurrent^T = \begin{bmatrix}
+		\speedegosymbol-\speedleadsymbol & \speedegosymbol & \timereact & \gapsymbol & \accelerationmax
+	\end{bmatrix}.
+\end{equation}
+
+We computed $\probabilityestcond{\collision}{\situationcurrent}$ using \cref{eq:nadaraya watson} where the points $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ are taken from a grid.
+A threshold $\simulationthreshold=0.02$ was used.
+For each input variable, 10 different values at equal distance were used, resulting in $\numberofdesignpoints=10^5$.
+Here, $\speedegosymbol-\speedleadsymbol$ ranged from \SI{0}{\meter\per\second} to \SI{20}{\meter\per\second}, $\speedegosymbol$ ranged from \SI{10}{\meter\per\second} to \SI{30}{\meter\per\second}, $\timereact$ ranged from \SI{0.5}{\second} to \SI{1.5}{\second}, $\gapsymbol$ ranged from \SI{5}{\meter} to \SI{30}{\meter}, and $\accelerationmax$ ranged from \SI{4}{\meter\per\second\squared} to \SI{10}{\meter\per\second\squared}.
+For the bandwidth matrix $\bandwidthnw$, we used a diagonal matrix with 0.20, 0.13, 0.20, 2.25, and 81 on the diagonal.
+For each input variable listed in \cref{eq:input partial derivatives}, we evaluated the partial derivative of \cref{eq:nadaraya watson} at each $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
+
+\Cref{tab:tendencies} shows the result of the benchmarking. 
+It shows that the surrogate safety metric follows the expected causal tendencies mostly. 
+E.g., in more than \SI{99}{\%} of the cases, the partial derivative of the relative speed ($\speedegosymbol-\speedleadsymbol$) is positive.
+For the remaining \SI{1}{\%}, the partial derivative is negative, albeit only slightly. 
+
+\begin{table}
+	\centering
+	\caption{Percentiles of the partial derivatives of the surrogate safety metric and the corresponding expected causal tendencies.}
+	\label{tab:tendencies}
+	\begin{tabular}{lrrrrr}
+		\toprule
+		& $\speedegosymbol-\speedleadsymbol$ & $\speedegosymbol$ & $\timereact$ & $\gapsymbol$ & $\accelerationmax$ \\
+		\otoprule
+		Expected tendency & Increase & Increase & Increase & Decrease & Decrease \\
+		Maximum         &  0.1629 &  0.1555 &  1.3136 &  0.0010 &  0.0037 \\
+		99th percentile &  0.1585 &  0.1162 &  0.8968 &  0.0002 &  0.0002 \\
+		95th percentile &  0.1495 &  0.0524 &  0.6765 &  0.0000 & -0.0000 \\
+		90th percentile &  0.1346 &  0.0151 &  0.5351 & -0.0000 & -0.0000 \\
+		75th percentile &  0.0746 &  0.0012 &  0.2917 & -0.0002 & -0.0003 \\
+		50th percentile &  0.0114 &  0.0001 &  0.0605 & -0.0070 & -0.0054 \\
+		25th percentile &  0.0004 &  0.0000 &  0.0022 & -0.0320 & -0.0290 \\
+		10th percentile &  0.0000 & -0.0000 &  0.0000 & -0.0545 & -0.0654 \\
+		 5th percentile &  0.0000 & -0.0002 &  0.0000 & -0.0645 & -0.0880 \\
+		 1st percentile &  0.0000 & -0.0007 & -0.0020 & -0.0781 & -0.1337 \\
+		Minimum         & -0.0035 & -0.0030 & -0.0180 & -0.1076 & -0.2030 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+

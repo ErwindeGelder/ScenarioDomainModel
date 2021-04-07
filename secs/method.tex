@@ -285,6 +285,7 @@ Therefore, we propose to evaluate \cref{eq:monte carlo collision} only for some 
 Next, local regression is used to estimate \cref{eq:monte carlo collision}.
 More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric}:
 \begin{equation}
+	\label{eq:nadaraya watson}
 	\probabilityestcond{\collision}{\situationcurrent}
 	\approx \frac{ \sum_{\situationindex=1}^{\numberofdesignpoints}
 		\kernelfuncnormalized{\bandwidthnw}{\situationcurrent - \situationcurrentinstance{\situationindexdesign}}

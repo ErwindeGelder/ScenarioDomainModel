@@ -8,12 +8,14 @@
 \usepackage{dsfont}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
-\usepackage[capitalize]{cleveref}
+\usepackage[capitalize]{cleveref}\Crefname{figure}{Figure}{Figures}
 \usepackage[nolist,nohyperlinks]{acronym}
 \usepackage{siunitx}
 \usepackage{tikz}
 \usepackage{pgfplots}\pgfplotsset{compat=1.16}\newlength{\figurewidth}\newlength{\figureheight}
 \usepgfplotslibrary{groupplots}
+\usepackage{tabularx}
+\usepackage{booktabs}\setlength{\heavyrulewidth}{0.1em}\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 %\usepackage{silence}  							%% For filtering warnings
@@ -30,8 +32,6 @@
 \LetLtxMacro{\autocite}{\citep}
 \LetLtxMacro{\textcite}{\citet}
 
-
-\Crefname{figure}{Figure}{Figures}
 
 
 \title{A Surrogate Safety Metric for Risk Evaluation}
