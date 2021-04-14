@@ -1,7 +1,7 @@
 \section{Method}
 \label{sec:method}
 
-The goal of the proposed method is to quantify the risk of a particular situation in which a vehicle - hereafter, the \textit{ego vehicle} - is in.
+In this section, we propose a method for deriving a metric that quantifies the risk of a collision in a particular situation in which a vehicle - hereafter, the \textit{ego vehicle} - is in and that is applicable for real-time use.
 Our method for calculating this safety metric for quantifying the risk consists of four steps. 
 First, we parameterize the current situation and the possible future situation.
 Second, based on the current situation, we estimate the probability (density) for the possible future situations. 
@@ -28,13 +28,13 @@ As an example, $\situationcurrent$ could contain the speed of the ego vehicle an
 In \cref{sec:case study}, we will see more examples.
 
 Next to describing the current situation, the future situation is described using $\situationfuturedim$ numbers stacked into one vector $\situationfuture \in \situationfuturespace \subseteq \realnumbers^{\situationfuturedim}$. 
-Together with $\situationcurrent$, $\situationfuture$ contains enough information to describe how the relevant future around the ego vehicle develops over time. 
-As an example, $\situationfuture$ could contain the acceleration of the lead vehicle (if any) that is in front of the ego vehicle.
+Together with $\situationcurrent$, $\situationfuture$ contains enough information to describe how the relevant future, e.g., the next 5 seconds, around the ego vehicle develops over time. 
+As an example, $\situationfuture$ could contain the speed for the next 5 seconds of the lead vehicle (if any) which is in front of the ego vehicle.
 
 Let $\collision$ denote a collision, such that the probability of a collision is $\probability{\collision}$.
 The goal of our safety metric is to estimate the probability of a collision given a particular situation $\situationcurrent$, i.e., $\probabilitycond{\collision}{\situationcurrent}$.
 We do this by considering all future situations, $\situationfuturespace$, and calculating the probability of a collision given each possible value of $\situationfuture$. 
-Using integrating, we obtain $\probabilitycond{\collision}{\situationcurrent}$:
+Using integration, we obtain $\probabilitycond{\collision}{\situationcurrent}$:
 \begin{equation}
 	\label{eq:probability collision expectation}
 	\probabilitycond{\collision}{\situationcurrent} 
@@ -107,7 +107,7 @@ The Gaussian kernel is given by
 
 The bandwidth matrix controls the width of the Gaussian kernel, or, in other words, the influence of each sampling point on nearby regions. 
 There are many different ways of estimating the bandwidth, ranging from simple reference rules like, e.g., Silverman's rule of thumb \autocite{silverman1986density} to more elaborate methods; see \autocite{turlach1993bandwidthselection, chiu1996comparative, jones1996brief, bashtannyk2001bandwidth, zambom2013review} for reviews of different bandwidth selection methods.
-Here, we use one-leave-out cross-validation to compute the bandwidth becayse this minimizes the Kullback-Leibler divergences between the real \ac{pdf} $\density{\situationcurrent, \situationfuture}$ and the estimated \ac{pdf} $\densityest{\situationcurrent, \situationfuture}$ \autocite{turlach1993bandwidthselection, zambom2013review}.
+Here, we use one-leave-out cross-validation to compute the bandwidth because this minimizes the Kullback-Leibler divergences between the real \ac{pdf} $\density{\situationcurrent, \situationfuture}$ and the estimated \ac{pdf} $\densityest{\situationcurrent, \situationfuture}$ \autocite{turlach1993bandwidthselection, zambom2013review}.
 
 Drawing samples from the \ac{kde} in \cref{eq:kde estimate} is straightforward: two random numbers are drawn, one to choose a random generator Gaussian out of the $\situationnumberof$ Gaussians that are used to construct the \ac{kde}, and one random number from that Gaussian.
 Sampling from $\densityestcond{\situationfuture}{\situationcurrent}$ works similarly, but instead of using an equal probability for each random generator Gaussian to be selected, different probabilities are used based on $\situationcurrent$.
@@ -119,7 +119,7 @@ For more information on sampling from a conditional \ac{pdf} obtained using \ac{
 \label{sec:no special case}
 
 Estimating $\density{\situationcurrent, \situationfuture}$ with one \ac{kde} according to \cref{eq:kde estimate} becomes problematic if $\situationcurrentdim + \situationfuturedim$ becomes large, due to the curse of dimensionality \cite{scott2015multivariate}.
-There are a few ways to avoid problems.
+There are a few ways to avoid this curse of dimensionality.
 Without going into much detail, we will list a few options.
 
 One option is to assume that one or more parameter are independent of the other parameters. 
@@ -194,8 +194,8 @@ In \autocite{degelder2021conditional}, algorithms are provided for sampling from
 
 To estimate $\probabilitycond{\collision}{\situationcurrent}$, i.e., the probability of a collision given the current situation $\situationcurrent$, we employ simulations. 
 The details of the simulation depends on the actual application. 
-For example, if the goal of our surrogate safety metric is to evaluate the risk a current human driver is in, the simulation should involve human driver models. 
-On the other hand, if the goal is to evaluate the risk of \iac{ads}, the simulation should include the same \iac{ads}.
+For example, if the goal of our surrogate safety metric is to evaluate the risk that a human driven vehicle collides, the simulation should involve human driver behavior models. 
+On the other hand, if the goal is to evaluate the risk of collision when \iac{ads} is controlling the vehicle, the simulation should include the model of this \ac{ads}.
 
 A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and count the number of simulations that result in a collision.
 If $\numberofsimulations$ denotes the number of simulations and $\numberofcollisions$ is the number of collisions, then $\probabilitycond{\collision}{\situationcurrent}$ could be estimated using
@@ -261,7 +261,7 @@ Thus, $\numberofsimulations$ is increased until the following condition is met:
 \subsection{Regression for real-time estimation of $\probabilitycond{\collision}{\situationcurrent}$}
 \label{sec:final metric calculation}
 
-Since we want to evaluate the risk metric during real-time operation of the ego vehicle, the expression of \cref{eq:estimate probability of collision} is problematic, even if the calculation is accelerated using a technique like importance sampling.
+Since it is our objective to evaluate the risk metric during real-time operation of the ego vehicle, the expression of \cref{eq:estimate probability of collision} is problematic, even if the calculation is accelerated using a technique like importance sampling.
 Therefore, we propose to evaluate \cref{eq:estimate probability of collision} only for some fixed $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
 Next, local regression is used to estimate \cref{eq:estimate probability of collision}.
 More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric}:
@@ -288,6 +288,7 @@ We suggest to base the design points $\situationcurrentinstance{\situationindexd
 \end{equation}
 where $\weightmatrix$ denotes a weighting matrix and $\distancedesignpoints$ denotes the maximum ``distance''. 
 Note that if $\weightmatrix$ is the identity matrix, then \cref{eq:design points distance} calculates the minimum squared Euclidean distance.
-To determine the bandwidth matrix $\bandwidthnw$, see \autocite{silverman1986density, turlach1993bandwidthselection, chiu1996comparative, jones1996brief, bashtannyk2001bandwidth, zambom2013review} for possible methods.
+The bandwidth matrix $\bandwidthnw$ might be based on $\weightmatrix$, e.g., $\bandwidthnw=\weightmatrix^{-1}$.
+Alternatively, $\bandwidthnw$ might be based on the measurement uncertainty of $\situationcurrent$, where a larger $\bandwidthnw$ applies in case of a larger measurement uncertainty of $\situationcurrent$.
 
 

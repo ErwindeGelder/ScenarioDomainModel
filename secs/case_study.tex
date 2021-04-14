@@ -1,6 +1,11 @@
 \section{Case study}
 \label{sec:case study}
 
+In the first part of the case study, we illustrate that our proposed method generalizes the surrogate safety metric proposed by \textcite{wang2014evaluation}.
+In \cref{sec:ngsim metric}, we will demonstrate how our proposed method can be used to create a surrogate safety metric.
+The surrogate safety metric derived in \cref{sec:ngsim metric} will be analyzed in \cref{sec:analyzing ngsim metric}.
+The last part of the case study discusses and illustrates a method for benchmarking the surrogate safety metric.
+
 
 
 \subsection{Comparison with Wang \& Stamatiadis' metric}
@@ -164,7 +169,7 @@ Clearly, $\simulationresult<0$ indicates a collision, so $\spacecollision=(-\inf
 The number of simulations was based on the threshold $\simulationthreshold=0.1$.
 
 To calculate $\probabilitycond{\collision}{\situationcurrent}$ using \cref{eq:nadaraya watson}, we created a grid of points $\situationcurrentinstance{\simulationindex}$, $\simulationindex\in\{1,\ldots,\numberofdesignpoints\}$ using the method explained in \cref{sec:final metric calculation} with $\weightmatrix$ being a diagonal matrix with on its diagonal: 0.25, 4, 0.25, and 16.
-For the bandwidth matrix $\bandwidthnw$, we used a diagonal matrix with 0.0024, 0.068, 0.0025, and 0.019 on its diagonal.
+For the regression of \cref{eq:nadaraya watson}, we used $\bandwidthnw=\weightmatrix^{-1}$.
 
 
 
