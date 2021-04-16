@@ -120,7 +120,7 @@ For more information on sampling from a conditional \ac{pdf} obtained using \ac{
 
 Estimating $\density{\situationcurrent, \situationfuture}$ with one \ac{kde} according to \cref{eq:kde estimate} becomes problematic if $\situationcurrentdim + \situationfuturedim$ becomes large, due to the curse of dimensionality \cite{scott2015multivariate}.
 There are a few ways to avoid this curse of dimensionality.
-Without going into much detail, we will list a few options.
+Without going into much detail, we list a few options.
 
 One option is to assume that one or more parameter are independent of the other parameters. 
 E.g., suppose that $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}^T$, such that $\situationfuturepartb$ is independent of $\situationcurrent$ and $\situationfutureparta$.
