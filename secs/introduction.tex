@@ -9,19 +9,53 @@ These accidents in 2018 led to 2.7 million injured people and 37 thousand fatali
 Furthermore, apart from these societal losses, the economic costs of all accidents in the U.S.A.\ in 2018 was 242 billion dollars \autocite{nhtsa2020summary}.
 
 % Quantify safety with surrogate metrics
-Even though road safety can be expressed in terms of injuries or fatalities per kilometer of driving, ``there is no yet consensus on what `driving safely' means'' \autocite{tejada2020safe}.
-In an attempt to quantify the safety at a vehicle level, surrogate safety measures have been developed 
-
+Road safety can be expressed in terms of injuries or fatalities per kilometer of driving, but a more proactive method for expressing road safety is the use of safety indicators that directly measure the safety risk in traffic conflicts.
+%Particularly challenging is that ``there is no yet consensus on what `driving safely' means'' \autocite{tejada2020safe}.
+Traffic conflicts are far more frequent than traffic accidents and the frequency of traffic conflicts can be used to predict the frequency of crashes.
+In an attempt to quantify the safety at a vehicle level, traffic conflicts and/or surrogate safety methodologies are the subject of more than 500 publications \autocite{arun2021systematic}.
+\acp{ssm} are used to characterize the risk of a collision or harm given an initial condition. 
 % Examples
-
+\acp{ssm} vary from measure that estimate the remaining time until a collision, such as the well-known \ac{ttc} \autocite{hayward1972near} to metrics that estimate the probability that a human driver cannot avoid a collision, e.g., see \autocite{wang2014evaluation}.
 
 % Common approach
-
+Typically, \acp{ssm} assume certain models for what the driver or system controlling the vehicle(s) is capable of and how the future --- given an initial condition --- will develop. 
+For example, with the \ac{ttc} \autocite{hayward1972near}, which is the ratio of the distance toward and the speed difference with a vehicle in front, it is assumed that the driver of a vehicle will not accelerate and the surrounding traffic is assumed to continue with the same speed. 
+More complex \acp{ssm} consider, e.g., a human model that can react to a risky situation by braking \autocite{wang2014evaluation} or the uncertainty over the future ambient traffic state \autocite{mullakkal2020probabilistic}.
+Regardless of the complexity of these models, however, these \acp{ssm} consider neither the specific capabilities of the driver or system controlling the vehicle, nor the local context for predicted the future of the vehicle's environment.
 
 % Our proposal
-
-
+In this paper, an approach is presented for deriving \iac{ssm} that does not rely on a predetermined model of de driver or system that controls the vehicle. 
+In addition, the presented approach includes a data-driven approach for modeling the variations of how the environment of the vehicle progresses over time.
+Simulations are employed to predict the possible outcomes for these variations.
+Using regression, it is possible to apply the derived \ac{ssm} in real-time applications.
 % Advantages of our method
+Our approach gives the following benefits:
+\begin{itemize}
+	\item The derived \ac{ssm} gives a probability of, e.g., a collision will happen in the near future. 
+	A probability is easier to interpret than, e.g., a value ranging from 0 to infinity.
+	
+	\item It is possible to obtain already existing metrics that produce a probability. 
+	Therefore, our approach can be seen as a generalization of such existing \acp{ssm}.
+	
+	\item Any driver behavior model can be used.
+	It is also possible to use a model of \iac{ads}, such that the derived \ac{ssm} estimates the safety risk if this \ac{ads} controls the vehicle.
+	
+	\item Because we use a data-driven approach, our \ac{ssm} adapts to the recorded data. 
+	In this way, it is possible to give the \ac{ssm} a local context.
+	
+	\item Our approach can be applied to various scenarios, whereas, e.g., \ac{ttc} is only applicable when approaching an object.
+\end{itemize}
 
+% Explain case study.
+To illustrate our method and the aforementioned benefits, the presented approach is applied in a case study.
+The case study demonstrates that our method is a generalization of the \ac{ssm} presented in \autocite{wang2014evaluation}.
+Furthermore, the \ac{ngsim} data set \autocite{kovvali2007video} is used to apply our data-driven approach to derive \iac{ssm} for longitudinal traffic conflicts.
+The derived \ac{ssm} is applied in 3 different scenarios.
+The case study also presents and applies a method to benchmark the \ac{ssm} using expected causal tendencies.
 
 % Structure
+This article is organized as follows.
+\cref{sec:literature review} provides an overview of \acp{ssm} described in the literature.
+The proposed method is presented in \cref{sec:method}.
+In \cref{sec:case study}, we illustrate the method in a case study.
+The article is concluded in \cref{sec:conclusions}.
