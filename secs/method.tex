@@ -2,11 +2,11 @@
 \label{sec:method}
 
 In this section, we propose a method for deriving a metric that quantifies the risk of a collision in a particular situation in which a vehicle - hereafter, the \textit{ego vehicle} - is in and that is applicable for real-time use.
-Our method for calculating this safety metric for quantifying the risk consists of four steps. 
-First, we parameterize the current situation and the possible future situation.
+Our method for calculating this \ac{ssm} for quantifying the risk consists of four steps. 
+The first step is the parameterization of the current situation and the possible future situation.
 Second, based on the current situation, we estimate the probability (density) for the possible future situations. 
 The third step is to determine the probability of a collision based on the current and the future situations.
-The final step is to use local regression to speed up the calculations and to make it possible to use the safety metric in real time. 
+Finally, local regression is used to speed up the calculations and to make it possible to use the \ac{ssm} in real time. 
 These four steps are described in the following sections.
 
 In the remainder of this article, the following notation is used. 
@@ -32,7 +32,7 @@ Together with $\situationcurrent$, $\situationfuture$ contains enough informatio
 As an example, $\situationfuture$ could contain the speed for the next 5 seconds of the lead vehicle (if any) which is in front of the ego vehicle.
 
 Let $\collision$ denote a collision, such that the probability of a collision is $\probability{\collision}$.
-The goal of our safety metric is to estimate the probability of a collision given a particular situation $\situationcurrent$, i.e., $\probabilitycond{\collision}{\situationcurrent}$.
+The goal of our \ac{ssm} is to estimate the probability of a collision given a particular situation $\situationcurrent$, i.e., $\probabilitycond{\collision}{\situationcurrent}$.
 We do this by considering all future situations, $\situationfuturespace$, and calculating the probability of a collision given each possible value of $\situationfuture$. 
 Using integration, we obtain $\probabilitycond{\collision}{\situationcurrent}$:
 \begin{equation}
@@ -194,7 +194,7 @@ In \autocite{degelder2021conditional}, algorithms are provided for sampling from
 
 To estimate $\probabilitycond{\collision}{\situationcurrent}$, i.e., the probability of a collision given the current situation $\situationcurrent$, we employ simulations. 
 The details of the simulation depends on the actual application. 
-For example, if the goal of our surrogate safety metric is to evaluate the risk that a human driven vehicle collides, the simulation should involve human driver behavior models. 
+For example, if the goal of our \ac{ssm} is to evaluate the risk that a human driven vehicle collides, the simulation should involve human driver behavior models. 
 On the other hand, if the goal is to evaluate the risk of collision when \iac{ads} is controlling the vehicle, the simulation should include the model of this \ac{ads}.
 
 A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and count the number of simulations that result in a collision.
