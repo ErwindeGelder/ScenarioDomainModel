@@ -62,7 +62,7 @@ with $\lowerboundadapted=\max \left( \lowerbound, \frac{\speeddifference{\time}}
 Because the \ac{ssm} of \textcite{wang2014evaluation} uses the speed difference $\speeddifference{\time}$ and \ac{ttc} $\ttc{\time}$, these two variables are also used by our method to describe the current situation:
 \begin{equation}
 	\label{eq:situation current ws}
-	\situationcurrent^T(\time) = \begin{bmatrix}
+	\situationcurrent\transpose(\time) = \begin{bmatrix}
 		\speeddifference{\time} & \ttc{\time}
 	\end{bmatrix}.
 \end{equation}
@@ -119,7 +119,7 @@ To describe the current situation at time $\time$, $\situationcurrentdim=4$ para
 \end{itemize}
 Thus, we had:
 \begin{equation}
-	\situationcurrent^T(\time) = \begin{bmatrix}
+	\situationcurrent\transpose(\time) = \begin{bmatrix}
 		\speedlead{\time} & \accelerationlead{\time} & \speedego{\time} & \ln{\gap{\time}}
 	\end{bmatrix}.
 \end{equation}
@@ -127,7 +127,7 @@ Thus, we had:
 The speed of the leading vehicle at $\situationfuturehorizon=50$, each $\situationfuturetimestep=\SI{0.1}{\second}$ apart, described the future situation:
 \begin{equation}
 	\label{eq:example future situation}
-	\situationfuture^T(\time) = \begin{bmatrix}
+	\situationfuture\transpose(\time) = \begin{bmatrix}
 		\speedlead{\time+\situationfuturetimestep} & \ldots & \speedlead{\time+\situationfuturehorizon\situationfuturetimestep}
 	\end{bmatrix}.
 \end{equation}
@@ -269,7 +269,7 @@ Finally, instead of using the log of the gap between the ego vehicle and the lea
 Thus, we have:
 \begin{equation}
 	\label{eq:input partial derivatives}
-	\situationcurrent^T = \begin{bmatrix}
+	\situationcurrent\transpose = \begin{bmatrix}
 		\speedegosymbol-\speedleadsymbol & \speedegosymbol & \timereact & \gapsymbol & \accelerationmax
 	\end{bmatrix}.
 \end{equation}
