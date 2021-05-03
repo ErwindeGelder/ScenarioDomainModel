@@ -102,12 +102,12 @@ The Gaussian kernel is given by
 	\kernelfuncnormalized{\bandwidthmatrix}{\dummyvarkernel}
 	= \frac{1}{\left( 2 \pi \right)^{\left( \situationcurrentdim + \situationfuturedim \right) / 2} 
 	\left|\bandwidthmatrix\right|^{1/2} }
-	\e{ -\frac{1}{2} \dummyvarkernel^T \bandwidthmatrix^{-1} \dummyvarkernel }.
+	\e{ -\frac{1}{2} \dummyvarkernel\transpose \bandwidthmatrix^{-1} \dummyvarkernel }.
 \end{equation}
 
 The bandwidth matrix controls the width of the Gaussian kernel, or, in other words, the influence of each sampling point on nearby regions. 
 There are many different ways of estimating the bandwidth, ranging from simple reference rules like, e.g., Silverman's rule of thumb \autocite{silverman1986density} to more elaborate methods; see \autocite{turlach1993bandwidthselection, chiu1996comparative, jones1996brief, bashtannyk2001bandwidth, zambom2013review} for reviews of different bandwidth selection methods.
-Here, we use one-leave-out cross-validation to compute the bandwidth because this minimizes the Kullback-Leibler divergences between the real \ac{pdf} $\density{\situationcurrent, \situationfuture}$ and the estimated \ac{pdf} $\densityest{\situationcurrent, \situationfuture}$ \autocite{turlach1993bandwidthselection, zambom2013review}.
+Here, we use one-leave-out cross-validation to compute the bandwidth because this minimizes the Kullback-Leibler divergence between the real \ac{pdf} $\density{\situationcurrent, \situationfuture}$ and the estimated \ac{pdf} $\densityest{\situationcurrent, \situationfuture}$ \autocite{turlach1993bandwidthselection, zambom2013review}.
 
 Drawing samples from the \ac{kde} in \cref{eq:kde estimate} is straightforward: two random numbers are drawn, one to choose a random generator Gaussian out of the $\situationnumberof$ Gaussians that are used to construct the \ac{kde}, and one random number from that Gaussian.
 Sampling from $\densityestcond{\situationfuture}{\situationcurrent}$ works similarly, but instead of using an equal probability for each random generator Gaussian to be selected, different probabilities are used based on $\situationcurrent$.
@@ -123,7 +123,7 @@ There are a few ways to avoid this curse of dimensionality.
 Without going into much detail, we list a few options.
 
 One option is to assume that one or more parameter are independent of the other parameters. 
-E.g., suppose that $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}^T$, such that $\situationfuturepartb$ is independent of $\situationcurrent$ and $\situationfutureparta$.
+E.g., suppose that $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}\transpose$, such that $\situationfuturepartb$ is independent of $\situationcurrent$ and $\situationfutureparta$.
 Then we can write
 \begin{equation}
 	\density{\situationcurrent, \situationfuture}
@@ -133,7 +133,7 @@ Then we can write
 In this case, we would need to estimation $\density{\situationcurrent, \situationfutureparta}$ and $\density{\situationfuturepartb}$, which can be done in a similar manner as presented in \cref{sec:one kde}.
 Because these two \acp{pdf} have less variables than $\density{\situationcurrent, \situationfuture}$, it will suffer less from the curse of dimensionality \cite{scott2015multivariate}.
 
-Another option is to model $\densitycond{\situationfuture}{\situationcurrent}$ as a cascade of conditional probabilities. E.g., using the partitioning $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}^T$, $\densitycond{\situationcurrent}{\situationfuture}$ can be approximated using two conditional densities:
+Another option is to model $\densitycond{\situationfuture}{\situationcurrent}$ as a cascade of conditional probabilities. E.g., using the partitioning $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}\transpose$, $\densitycond{\situationcurrent}{\situationfuture}$ can be approximated using two conditional densities:
 \begin{equation}
 	\densitycond{\situationfuture}{\situationcurrent}
 	= \densitycond{\situationfutureparta, \situationfuturepartb}{\situationcurrent}
@@ -155,10 +155,10 @@ To do this, \iac{svd} is made of the matrix that contains all $\situationnumbero
 	\begin{bmatrix}
 		\situationcurrentinstance{1}-\situationcurrentmean & \ldots & \situationcurrentinstance{\situationnumberof}-\situationcurrentmean \\
 		\situationfutureinstance{1}-\situationfuturemean & \ldots & \situationfutureinstance{\situationnumberof}-\situationfuturemean
-	\end{bmatrix} = \svdu \svds \svdv^T.
+	\end{bmatrix} = \svdu \svds \svdv\transpose.
 \end{equation}
 Here, $\situationcurrentmean=\sum_{\situationindex=1}^{\situationnumberof}\situationcurrentinstance{\situationindex}$ and $\situationfuturemean=\sum_{\situationindex=1}^{\situationnumberof}\situationfutureinstance{\situationindex}$.
-The matrices $\svdu \in \realnumbers^{\left(\situationcurrentdim+\situationfuturedim\right)\times\left(\situationcurrentdim+\situationfuturedim\right)}$ and $\svdv \in \realnumbers^{\situationnumberof \times \situationnumberof}$ are orthonormal, i.e., $\svdu^{-1}=\svdu^T$ and $\svdv^{-1}=\svdv^T$.
+The matrices $\svdu \in \realnumbers^{\left(\situationcurrentdim+\situationfuturedim\right)\times\left(\situationcurrentdim+\situationfuturedim\right)}$ and $\svdv \in \realnumbers^{\situationnumberof \times \situationnumberof}$ are orthonormal, i.e., $\svdu^{-1}=\svdu\transpose$ and $\svdv^{-1}=\svdv\transpose$.
 Moreover, $\svds\in\realnumbers^{\left(\situationcurrentdim+\situationfuturedim\right)\times\situationnumberof}$ has only zeros except at the diagonal: the $(\svdindex,\svdindex)$-th element is $\svdsv{\svdindex}$, $\svdindex\in\{1,\ldots,\svdrank\}$, $\svdrank=\min(\situationcurrentdim+\situationfuturedim, \situationnumberof)$, such that
 \begin{equation}
 	\svdsv{1} \geq \svdsv{2} \geq \ldots \geq \svdsv{\svdrank} \geq 0.
@@ -178,7 +178,7 @@ where $\svdventry{\situationindex}{\svdindex}$ is the $(\situationindex,\svdinde
 Using the approximation of \cref{eq:svd approximation} based on the \ac{svd}, $\situationcurrentinstance{\situationindex}$ and $\situationfutureinstance{\situationindex}$ are described by the vector $\svdvvecd{\situationindex}$:
 \begin{equation}
 	\label{eq:reduced parameter vector}
-	\svdvvecd{\situationindex}^T = \begin{bmatrix}
+	\svdvvecd{\situationindex}\transpose = \begin{bmatrix}
 		\svdventry{\situationindex}{1} & \ldots & \svdventry{\situationindex}{\dimension}
 	\end{bmatrix}.
 \end{equation}
@@ -280,7 +280,7 @@ We suggest to base the design points $\situationcurrentinstance{\situationindexd
 \begin{equation}
 	\label{eq:design points distance}
 	\min_{\situationindexdesign} 
-	\left( \situationcurrentinstance{\situationindex} - \situationcurrentinstance{\situationindexdesign} \right)^T
+	\left( \situationcurrentinstance{\situationindex} - \situationcurrentinstance{\situationindexdesign} \right)\transpose
 	\weightmatrix 
 	\left( \situationcurrentinstance{\situationindex} - \situationcurrentinstance{\situationindexdesign} \right)
 	\leq \distancedesignpoints^2,
