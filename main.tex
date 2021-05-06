@@ -16,6 +16,7 @@
 \usepgfplotslibrary{groupplots}
 \usepackage{tabularx}
 \usepackage{booktabs}\setlength{\heavyrulewidth}{0.1em}\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+\usepackage{subcaption}
 
 \usepackage[utf8]{inputenc}   				 	%% utf8 support (required for biblatex)
 %\usepackage{silence}  							%% For filtering warnings
@@ -127,12 +128,16 @@
   \newcommand{\speedleadsymbol}{\speedsymbol_{\mathrm{lead}}}
   \newcommand{\speedlead}[1]{\speedleadsymbol\left(#1\right)}
 \newcommand{\svdu}{U}
+  \newcommand{\svduupperleft}{\bar{\svdu}_1}
+  \newcommand{\svdulowerleft}{\bar{\svdu}_2}
   \newcommand{\svduvec}[1]{u_{#1}}
   \newcommand{\svds}{\Sigma}
   \newcommand{\svdsv}[1]{\sigma_{#1}}
+  \newcommand{\svdsupperleft}{\bar{\svds}}
   \newcommand{\svdv}{V}
   \newcommand{\svdventry}[2]{v_{#1 #2}}
-  \newcommand{\svdvvecd}[1]{\tilde{v}_{#1}}
+  \newcommand{\svdvvecsymbol}{\bar{v}}
+  \newcommand{\svdvvecd}[1]{\svdvvecsymbol_{#1}}
   \newcommand{\svdrank}{\bar{N}}
   \newcommand{\svdindex}{j}
 \renewcommand{\time}{t}

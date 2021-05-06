@@ -21,7 +21,7 @@ In an attempt to quantify the safety at a vehicle level, traffic conflicts and/o
 Typically, \acp{ssm} assume certain models for what the driver or system controlling the vehicle(s) is capable of and how the future --- given an initial condition --- will develop. 
 For example, with the \ac{ttc} \autocite{hayward1972near}, which is the ratio of the distance toward and the speed difference with a vehicle in front, it is assumed that the driver of a vehicle will not accelerate and the surrounding traffic is assumed to continue with the same speed. 
 More complex \acp{ssm} consider, e.g., a human model that can react to a risky situation by braking \autocite{wang2014evaluation} or the uncertainty over the future ambient traffic state \autocite{mullakkal2020probabilistic}.
-Regardless of the complexity of these models, however, these \acp{ssm} consider neither the specific capabilities of the driver or system controlling the vehicle, nor the local context for predicted the future of the vehicle's environment.
+Regardless of the complexity of these models, however, these \acp{ssm} consider neither the specific capabilities of the driver or system controlling the vehicle, nor the local context for predicted the future of the vehicle's environment.  % Rephrase. How do we consider this...? Focus more on scenario story.
 
 % Our proposal
 In this paper, an approach is presented for deriving \iac{ssm} that does not rely on a predetermined model of de driver or system that controls the vehicle. 
@@ -48,7 +48,7 @@ Our approach gives the following benefits:
 
 % Explain case study.
 To illustrate our method and the aforementioned benefits, the presented approach is applied in a case study.
-The case study demonstrates that our method is a generalization of the \ac{ssm} presented in \autocite{wang2014evaluation}.
+The case study demonstrates that our method can be used to create other already available metrics, such as the \ac{ssm} presented in \autocite{wang2014evaluation}.
 Furthermore, the \ac{ngsim} data set \autocite{kovvali2007video} is used to apply our data-driven approach to derive \iac{ssm} for longitudinal traffic conflicts.
 The derived \ac{ssm} is applied in 3 different scenarios.
 The case study also presents and applies a method to benchmark the \ac{ssm} using expected causal tendencies.

@@ -153,8 +153,8 @@ With \iac{svd}, the parameters $\situationcurrent$ and $\situationfuture$ are tr
 To do this, \iac{svd} is made of the matrix that contains all $\situationnumberof$ observed situations:
 \begin{equation}
 	\begin{bmatrix}
-		\situationcurrentinstance{1}-\situationcurrentmean & \ldots & \situationcurrentinstance{\situationnumberof}-\situationcurrentmean \\
-		\situationfutureinstance{1}-\situationfuturemean & \ldots & \situationfutureinstance{\situationnumberof}-\situationfuturemean
+		\situationcurrentinstance{1}-\situationcurrentmean & \cdots & \situationcurrentinstance{\situationnumberof}-\situationcurrentmean \\
+		\situationfutureinstance{1}-\situationfuturemean & \cdots & \situationfutureinstance{\situationnumberof}-\situationfuturemean
 	\end{bmatrix} = \svdu \svds \svdv\transpose.
 \end{equation}
 Here, $\situationcurrentmean=\sum_{\situationindex=1}^{\situationnumberof}\situationcurrentinstance{\situationindex}$ and $\situationfuturemean=\sum_{\situationindex=1}^{\situationnumberof}\situationfutureinstance{\situationindex}$.
@@ -163,7 +163,7 @@ Moreover, $\svds\in\realnumbers^{\left(\situationcurrentdim+\situationfuturedim\
 \begin{equation}
 	\svdsv{1} \geq \svdsv{2} \geq \ldots \geq \svdsv{\svdrank} \geq 0.
 \end{equation}
-Because these so-called singular values are in decreasing order, we can approximate $\situationcurrent$ and $\situationfuture$ by setting $\svdsv{\svdindex}=0$ for $\svdindex > \dimension$:
+Because these so-called singular values are in decreasing order, we can approximate $\situationcurrent$ and $\situationfuture$ by setting $\svdsv{\svdindex}=0$ for $\svdindex > \dimension$ with $\situationcurrentdim < \dimension < \situationcurrentdim+\situationfuturedim$:
 \begin{equation}
 	\label{eq:svd approximation}
 	\begin{bmatrix}
@@ -172,20 +172,19 @@ Because these so-called singular values are in decreasing order, we can approxim
 	\end{bmatrix}
 	= \sum_{\svdindex=1}^{\svdrank} \svdsv{\svdindex} \svdventry{\situationindex}{\svdindex} \svduvec{\svdindex}
 	\approx \sum_{\svdindex=1}^{\dimension} \svdsv{\svdindex} \svdventry{\situationindex}{\svdindex} \svduvec{\svdindex},
+	= \begin{bmatrix} \svduupperleft \\ \svdulowerleft \end{bmatrix} \svdsupperleft \svdvvecd{\situationindex},
 \end{equation}
 where $\svdventry{\situationindex}{\svdindex}$ is the $(\situationindex,\svdindex)$-th element of $\svdv$ and $\svduvec{\svdindex}$ is the $\svdindex$-th column of $\svdu$.
+Moreover, $\svduupperleft$ is the $\situationcurrentdim$-by-$\dimension$ upper left submatrix of $\svdu$, $\svdulowerleft$ is the $\situationfuturedim$-by-$\dimension$ lower left submatrix $\svdu$, $\svdsupperleft\in\realnumbers^{\dimension\times\dimension}$ is the diagonal matrix with the first $\dimension$ singular values on its diagonal and $\svdvvecd{\situationindex}\transpose = \begin{bmatrix} \svdventry{\situationindex}{1} & \cdots & \svdventry{\situationindex}{\dimension}	\end{bmatrix}$.
 
-Using the approximation of \cref{eq:svd approximation} based on the \ac{svd}, $\situationcurrentinstance{\situationindex}$ and $\situationfutureinstance{\situationindex}$ are described by the vector $\svdvvecd{\situationindex}$:
-\begin{equation}
-	\label{eq:reduced parameter vector}
-	\svdvvecd{\situationindex}\transpose = \begin{bmatrix}
-		\svdventry{\situationindex}{1} & \ldots & \svdventry{\situationindex}{\dimension}
-	\end{bmatrix}.
-\end{equation}
 We can estimate the probability density of $\svdvvecd{\situationindex}$ in a similar way as described in \cref{sec:one kde}.
 To sample from $\densityestcond{\situationfuture}{\situationcurrent}$, we can sample from the estimated distribution of $\svdvvecd{\situationindex}$.
-Because \cref{eq:svd approximation} is a linear mapping, the sample that is drawn from the estimated distribution of $\svdvvecd{\situationindex}$ is subject to a linear constraint.
-In \autocite{degelder2021conditional}, algorithms are provided for sampling from \iac{kde} with a Gaussian kernel such that the resulting samples are subject to a linear constraint.
+Because \cref{eq:svd approximation} is a linear mapping, the sample $\svdvvecsymbol$ that is drawn from the estimated distribution of $\svdvvecd{\situationindex}$ is subject to a linear constraint:
+\begin{equation}
+	\label{eq:linear constraint}
+	\svduupperleft \svdsupperleft \svdvvecsymbol = \situationcurrent - \situationcurrentmean.
+\end{equation}
+In \autocite{degelder2021conditional}, algorithms are provided for sampling from \iac{kde} with a Gaussian kernel such that the resulting samples are subject to a linear constraint such as \cref{eq:linear constraint}.
 
 
 
