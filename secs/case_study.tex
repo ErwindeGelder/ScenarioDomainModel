@@ -133,24 +133,34 @@ The speed of the leading vehicle at $\situationfuturehorizon=50$, each $\situati
 \end{equation}
 It is assumed that $\situationfuture(\time)$ depends on $\speedlead{\time}$ and $\accelerationlead{\time}$. 
 To model this with one \ac{kde} would give us \iac{pdf} with $\situationfuturehorizon+2$ dimensions.
-To reduce the dimensionality, we used \iac{svd} as described in \cref{sec:parameter reduction} with $\dimension=4$.
+To reduce the dimensionality, we used \iac{svd} as described in \cref{sec:parameter reduction} with $\dimension=4$\footnote{Note that because we assume that $\situationfuture(\time)$ only depends on 2 parameters of $\situationcurrent(\time)$, i.e., $\speedlead{\time}$ and $\accelerationlead{\time}$, we need to choose $\dimension$ such that $2 < \dimension < \situationfuturehorizon+2$.}.
 In total, 18182 longitudinal interactions between two vehicles were analyzed.
 For each second of an interaction, we extracted a ``current situation'' $\situationcurrentinstance{\situationindex}$ and a corresponding ``future situation'' $\situationfutureinstance{\situationindex}$. 
 This led to $\situationnumberof=469453$ data points.
 Based on Silverman's rule of thumb \autocite{silverman1986density}, we used a bandwidth matrix $\bandwidthmatrix=\bandwidth^2\identitymatrix{4}$ for the \ac{kde} with $\bandwidth\approx 0.186$ and $\identitymatrix{4}$ denoting the 4-by-4 identity matrix.
 
 To demonstrate the conditional sampling from the estimated density $\densityest{\situationcurrent,\situationfuture}$ of \cref{eq:kde estimate}, the plots in \cref{fig:speed profiles} show 50 different future situations in the form of \cref{eq:example future situation}.
-The left plot assumes a current situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$ and the right plot assumes a current situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$.
+\Cref{fig:speed profiles accelerating} assumes a current situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$ and \cref{fig:speed profiles decelerating} assumes a current situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$.
+Note that the same \ac{pdf} is used to produce the lines in \cref{fig:speed profiles}; the only difference between \cref{fig:speed profiles accelerating} and \cref{fig:speed profiles decelerating} is a different linear constraint on the generated samples.
 In case a simulation takes longer than \SI{5}{\second}, the speed of the leading vehicle is assumed to remain constant after these \SI{5}{\second}.
 
 \setlength{\figurewidth}{.49\linewidth}
 \setlength{\figureheight}{.7\figurewidth}
 \begin{figure}
 	\centering
-	\input{figs/speed_profiles_a.tikz}
-	\input{figs/speed_profiles_b.tikz}
-	\caption{50 potential future situations samples from the \ac{kde} that is constructed using data from the \ac{ngsim} data set. 
-		The left (right) plot assumes a current situation in which the speed of the leading vehicle is $\speedleadsymbol=\SI{15}{\meter\per\second}$ and the acceleration is $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$ ($\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$).}
+	\begin{subfigure}{.49\linewidth}
+		\centering
+		\input{figs/speed_profiles_a.tikz}
+		\caption{Initial situation: $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$}
+		\label{fig:speed profiles accelerating}
+	\end{subfigure}
+	\begin{subfigure}{.49\linewidth}
+		\centering
+		\input{figs/speed_profiles_b.tikz}
+		\caption{Initial situation: $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$}
+		\label{fig:speed profiles decelerating}
+	\end{subfigure}
+	\caption{50 potential future situations samples from the \ac{kde} that is constructed using data from the \ac{ngsim} data set.}
 	\label{fig:speed profiles}
 \end{figure}
 
