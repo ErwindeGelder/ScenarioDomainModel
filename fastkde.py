@@ -869,8 +869,6 @@ class KDE:
         """
         if len(xdata.shape) == 1:
             xdata = xdata[:, np.newaxis]
-        if self.scaling:
-            xdata /= self.data_helpers.std
         zvalue = scipy.stats.norm.ppf(confidence/2+0.5)
         density = self.score_samples(xdata)
         std = np.sqrt(self.constants.muk*density/(self.constants.ndata *
