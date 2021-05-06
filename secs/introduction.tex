@@ -18,13 +18,16 @@ In an attempt to quantify the safety at a vehicle level, traffic conflicts and/o
 \acp{ssm} vary from measure that estimate the remaining time until a collision, such as the well-known \ac{ttc} \autocite{hayward1972near} to metrics that estimate the probability that a human driver cannot avoid a collision, e.g., see \autocite{wang2014evaluation}.
 
 % Common approach
-Typically, \acp{ssm} assume certain models for what the driver or system controlling the vehicle(s) is capable of and how the future --- given an initial condition --- will develop. 
-For example, with the \ac{ttc} \autocite{hayward1972near}, which is the ratio of the distance toward and the speed difference with a vehicle in front, it is assumed that the driver of a vehicle will not accelerate and the surrounding traffic is assumed to continue with the same speed. 
+Typically, \acp{ssm} are only applicable in certain types of scenarios.
+For example, the \ac{ttc} \autocite{hayward1972near}, which is the ratio of the distance toward and the speed difference with a vehicle in front, is only applicable when approaching an object.
+Additionally, \acp{ssm} typically assume certain models for what the driver or system controlling the vehicle(s) is capable of and how the future --- given an initial condition --- will develop. 
+For example, with the \ac{ttc} \autocite{hayward1972near}, it is assumed that the driver of a vehicle will not accelerate and the surrounding traffic is assumed to continue with the same speed. 
 More complex \acp{ssm} consider, e.g., a human model that can react to a risky situation by braking \autocite{wang2014evaluation} or the uncertainty over the future ambient traffic state \autocite{mullakkal2020probabilistic}.
-Regardless of the complexity of these models, however, these \acp{ssm} consider neither the specific capabilities of the driver or system controlling the vehicle, nor the local context for predicted the future of the vehicle's environment.  % Rephrase. How do we consider this...? Focus more on scenario story.
+Regardless of the complexity of these models, however, these \acp{ssm} consider neither the specific capabilities of the driver or system controlling the vehicle, nor the local context for predicted the future of the vehicle's environment.  
 
 % Our proposal
-In this paper, an approach is presented for deriving \iac{ssm} that does not rely on a predetermined model of de driver or system that controls the vehicle. 
+In this paper, an approach is presented for deriving \iac{ssm} that is not limited to certain types of scenarios.
+Furthermore, our approach does not rely on a predetermined model of de driver or system that controls the vehicle. 
 In addition, the presented approach includes a data-driven approach for modeling the variations of how the environment of the vehicle progresses over time.
 Simulations are employed to predict the possible outcomes for these variations.
 Using regression, it is possible to apply the derived \ac{ssm} in real-time applications.
@@ -34,7 +37,7 @@ Our approach gives the following benefits:
 	\item The derived \ac{ssm} gives a probability that, e.g., a collision will happen in the near future. 
 	A probability is easier to interpret than, e.g., a value ranging from 0 to infinity.
 	
-	\item It is possible to obtain already existing metrics that produce a probability. 
+	\item It is possible to reproduce already existing metrics that provide a probability. 
 	Therefore, our approach can be seen as a generalization of such existing \acp{ssm}.
 	
 	\item Any driver behavior model can be used.
@@ -43,7 +46,7 @@ Our approach gives the following benefits:
 	\item Because we use a data-driven approach, our \ac{ssm} adapts to the recorded data. 
 	In this way, it is possible to give the \ac{ssm} a local context.
 	
-	\item Our approach can be applied to various scenarios, whereas, e.g., \ac{ttc} is only applicable when approaching an object.
+	\item Our approach can be applied to various scenarios.
 \end{itemize}
 
 % Explain case study.
