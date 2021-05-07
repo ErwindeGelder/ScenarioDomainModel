@@ -1,11 +1,11 @@
 \section{Method}
 \label{sec:method}
 
-In this section, we propose a method for deriving a metric that quantifies the risk of a collision in a particular situation in which a vehicle - hereafter, the \textit{ego vehicle} - is in and that is applicable for real-time use.
-Our method for calculating this \ac{ssm} for quantifying the risk consists of four steps. 
-The first step is the parameterization of the current situation and the possible future situation.
+In this section, we propose a method for deriving a metric that quantifies the risk of a certain event, such as a collision, in a particular situation in which a vehicle - hereafter, the \textit{ego vehicle} - is in and that is applicable for real-time use.
+Our method for deriving this \ac{ssm} consists of four steps. 
+The first step is the parameterization of the current situation and the possible future situations.
 Second, based on the current situation, we estimate the probability (density) for the possible future situations. 
-The third step is to determine the probability of a collision based on the current and the future situations.
+The third step is to determine the probability of the specified event based on the current and the future situations.
 Finally, local regression is used to speed up the calculations and to make it possible to use the \ac{ssm} in real time. 
 These four steps are described in the following sections.
 
@@ -14,8 +14,7 @@ To denote a probability, $\probability{\cdot}$ is used.
 \Iac{pdf} is denoted by $\density{\cdot}$. 
 The conditional probability $\probabilitycond{\dummyvara}{\dummyvarb}$ is verbalized as \textit{the probability of $\dummyvara$ given $\dummyvarb$}. 
 Similarly, the conditional \ac{pdf} is denoted by $\densitycond{\cdot}{\cdot}$. 
-To denote the estimation of any of the aforementioned quantities, a circumflex is used. 
-E.g, $\probabilityest{\dummyvara}$ denotes the estimated probability of $\dummyvara$.
+To denote the estimation of any of the aforementioned quantities, a circumflex is used, e.g, $\probabilityest{\dummyvara}$ denotes the estimated probability of $\dummyvara$.
 
 
 
@@ -31,8 +30,8 @@ Next to describing the current situation, the future situation is described usin
 Together with $\situationcurrent$, $\situationfuture$ contains enough information to describe how the relevant future, e.g., the next 5 seconds, around the ego vehicle develops over time. 
 As an example, $\situationfuture$ could contain the speed for the next 5 seconds of the lead vehicle (if any) which is in front of the ego vehicle.
 
-Let $\collision$ denote a collision, such that the probability of a collision is $\probability{\collision}$.
-The goal of our \ac{ssm} is to estimate the probability of a collision given a particular situation $\situationcurrent$, i.e., $\probabilitycond{\collision}{\situationcurrent}$.
+Let $\collision$ denote an event, e.g., a collision, such that the probability of this event is $\probability{\collision}$.
+The goal of our \ac{ssm} is to estimate the probability of the event $\collision$ given a particular situation $\situationcurrent$, i.e., $\probabilitycond{\collision}{\situationcurrent}$.
 We do this by considering all future situations, $\situationfuturespace$, and calculating the probability of a collision given each possible value of $\situationfuture$. 
 Using integration, we obtain $\probabilitycond{\collision}{\situationcurrent}$:
 \begin{equation}
@@ -43,28 +42,28 @@ Using integration, we obtain $\probabilitycond{\collision}{\situationcurrent}$:
 	\densitycond{\situationfuture}{\situationcurrent} 
 	\ud \situationfuture.
 \end{equation}
-In \cref{sec:estimate future}, we propose a method to estimate $\densitycond{\situationfuture}{\situationcurrent}$ and in \cref{sec:estimate collision}, we propose a method to estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$.
+%In \cref{sec:estimate future}, we propose a method to estimate $\densitycond{\situationfuture}{\situationcurrent}$ and in \cref{sec:estimate collision}, we propose a method to estimate $\probabilitycond{\collision}{\situationcurrent, \situationfuture}$.
 
 
 
 \subsection{Estimate $\densitycond{\situationfuture}{\situationcurrent}$}
 \label{sec:estimate future}
 
-In this section, we propose a method to estimate $\densitycond{\situationfuture}{\situationcurrent}$, i.e., the \ac{pdf} of the $\situationfuture$ given $\situationcurrent$.
+In this section, we propose a method to estimate $\densitycond{\situationfuture}{\situationcurrent}$, i.e., the \ac{pdf} of $\situationfuture$ given $\situationcurrent$.
 Using the product rule for probability, we can write:
 \begin{equation}
 	\densitycond{\situationfuture}{\situationcurrent} 
 	= \frac{\density{\situationcurrent, \situationfuture}}{\density{\situationcurrent}}
 	= \frac{\density{\situationcurrent, \situationfuture}}{
 		\int_{\situationfuturespace} \density{\situationcurrent, \situationfuture} \ud\situationfuture
-	}
+	}.
 \end{equation}
 Thus, it suffices to estimate $\density{\situationcurrent, \situationfuture}$. 
 
 Our proposal is to estimate $\density{\situationcurrent, \situationfuture}$ in a data-driven manner. 
 A data-driven approach brings several benefits.
 First, the estimate automatically adapts to local driving styles and behaviors, which can change from region to region, provided that the data are obtained from the same local traffic.
-Second, strong assumptions such as assuming a constant speed of other vehicles, are not needed.
+Second, assumptions such as a constant speed of other vehicles, are not needed.
 For our data-driven approach, let us assume that we have obtained $\situationnumberof$ situations, denoted by $\situationcurrentinstance{\situationindex}\in\situationcurrentspace, \situationindex\in\{1,\ldots,\situationnumberof\}$, and their corresponding future situations described by $\situationfutureinstance{\situationindex}\in\situationfuturespace$.
 
 
@@ -95,8 +94,7 @@ Using the \ac{kde}, the estimated \ac{pdf} becomes:
 \end{equation}
 where $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is an appropriate kernel function with positive definite bandwidth matrix $\bandwidthmatrix$. 
 The choice of the kernel $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is not as important as the choice of the bandwidth matrix $\bandwidthmatrix$ \cite{turlach1993bandwidthselection}.
-We use a Gaussian kernel, but our method also applies with other kernels.
-The Gaussian kernel is given by
+For example, the Gaussian kernel is given by
 \begin{equation}
 	\label{eq:kernel current future}
 	\kernelfuncnormalized{\bandwidthmatrix}{\dummyvarkernel}
@@ -105,13 +103,13 @@ The Gaussian kernel is given by
 	\e{ -\frac{1}{2} \dummyvarkernel\transpose \bandwidthmatrix^{-1} \dummyvarkernel }.
 \end{equation}
 
-The bandwidth matrix controls the width of the Gaussian kernel, or, in other words, the influence of each sampling point on nearby regions. 
+The bandwidth matrix $\bandwidthmatrix$ controls the width of the kernel, or, in other words, the influence of each sampling point on nearby regions. 
 There are many different ways of estimating the bandwidth, ranging from simple reference rules like, e.g., Silverman's rule of thumb \autocite{silverman1986density} to more elaborate methods; see \autocite{turlach1993bandwidthselection, chiu1996comparative, jones1996brief, bashtannyk2001bandwidth, zambom2013review} for reviews of different bandwidth selection methods.
 Here, we use one-leave-out cross-validation to compute the bandwidth because this minimizes the Kullback-Leibler divergence between the real \ac{pdf} $\density{\situationcurrent, \situationfuture}$ and the estimated \ac{pdf} $\densityest{\situationcurrent, \situationfuture}$ \autocite{turlach1993bandwidthselection, zambom2013review}.
 
-Drawing samples from the \ac{kde} in \cref{eq:kde estimate} is straightforward: two random numbers are drawn, one to choose a random generator Gaussian out of the $\situationnumberof$ Gaussians that are used to construct the \ac{kde}, and one random number from that Gaussian.
-Sampling from $\densityestcond{\situationfuture}{\situationcurrent}$ works similarly, but instead of using an equal probability for each random generator Gaussian to be selected, different probabilities are used based on $\situationcurrent$.
-For more information on sampling from a conditional \ac{pdf} obtained using \ac{kde}, see \autocite{holmes2012fast}.
+Drawing samples from the \ac{kde} in \cref{eq:kde estimate} is straightforward: two random numbers are drawn, one to choose a random generator kernel out of the $\situationnumberof$ kernels that are used to construct the \ac{kde}, and one random number from that kernel.
+Sampling from $\densityestcond{\situationfuture}{\situationcurrent}$ works similarly, but instead of using an equal probability for each random generator kernel to be selected, different probabilities are used based on $\situationcurrent$.
+For more information on sampling from a conditional \ac{pdf} obtained using \ac{kde}, see \autocite{holmes2012fast, degelder2021conditional}.
 
 
 
@@ -131,9 +129,10 @@ Then we can write
 	= \density{\situationcurrent, \situationfutureparta} \cdot \density{\situationfuturepartb}.
 \end{equation}
 In this case, we would need to estimation $\density{\situationcurrent, \situationfutureparta}$ and $\density{\situationfuturepartb}$, which can be done in a similar manner as presented in \cref{sec:one kde}.
-Because these two \acp{pdf} have less variables than $\density{\situationcurrent, \situationfuture}$, it will suffer less from the curse of dimensionality \cite{scott2015multivariate}.
+Because these two \acp{pdf} have less variables than $\density{\situationcurrent, \situationfuture}$, these will suffer less from the curse of dimensionality \autocite{scott2015multivariate}.
 
-Another option is to model $\densitycond{\situationfuture}{\situationcurrent}$ as a cascade of conditional probabilities. E.g., using the partitioning $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}\transpose$, $\densitycond{\situationcurrent}{\situationfuture}$ can be approximated using two conditional densities:
+Another option is to model $\densitycond{\situationfuture}{\situationcurrent}$ as a cascade of conditional probabilities. 
+For example, using the partitioning $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}\transpose$, $\densitycond{\situationcurrent}{\situationfuture}$ can be approximated using two conditional densities:
 \begin{equation}
 	\densitycond{\situationfuture}{\situationcurrent}
 	= \densitycond{\situationfutureparta, \situationfuturepartb}{\situationcurrent}
@@ -184,20 +183,20 @@ Because \cref{eq:svd approximation} is a linear mapping, the sample $\svdvvecsym
 	\label{eq:linear constraint}
 	\svduupperleft \svdsupperleft \svdvvecsymbol = \situationcurrent - \situationcurrentmean.
 \end{equation}
-In \autocite{degelder2021conditional}, algorithms are provided for sampling from \iac{kde} with a Gaussian kernel such that the resulting samples are subject to a linear constraint such as \cref{eq:linear constraint}.
+In \autocite{degelder2021conditional}, an algorithm is provided for sampling from \iac{kde} with a Gaussian kernel of \cref{eq:kernel current future} such that the resulting samples are subject to a linear constraint such as \cref{eq:linear constraint}.
 
 
 
 \subsection{Estimate $\probabilitycond{\collision}{\situationcurrent}$}
 \label{sec:estimate collision}
 
-To estimate $\probabilitycond{\collision}{\situationcurrent}$, i.e., the probability of a collision given the current situation $\situationcurrent$, we employ simulations. 
+To estimate $\probabilitycond{\collision}{\situationcurrent}$, i.e., the probability of an event $\collision$ given the current situation $\situationcurrent$, we employ simulations. 
 The details of the simulation depends on the actual application. 
-For example, if the goal of our \ac{ssm} is to evaluate the risk that a human driven vehicle collides, the simulation should involve human driver behavior models. 
+For example, if the goal of our \ac{ssm} is to evaluate the risk that a human-driven vehicle collides, the simulation should involve human driver behavior models. 
 On the other hand, if the goal is to evaluate the risk of collision when \iac{ads} is controlling the vehicle, the simulation should include the model of this \ac{ads}.
 
-A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and count the number of simulations that result in a collision.
-If $\numberofsimulations$ denotes the number of simulations and $\numberofcollisions$ is the number of collisions, then $\probabilitycond{\collision}{\situationcurrent}$ could be estimated using
+A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and count the number of simulations that result in the event $\collision$.
+If $\numberofsimulations$ denotes the number of simulations and $\numberofcollisions$ is the number of events $\collision$, then $\probabilitycond{\collision}{\situationcurrent}$ could be estimated using
 \begin{equation}
 	\label{eq:binomial estimation}
 	\probabilityestcond{\collision}{\situationcurrent}
@@ -207,11 +206,11 @@ If $\numberofsimulations$ denotes the number of simulations and $\numberofcollis
 An important choice for estimating $\probabilitycond{\collision}{\situationcurrent}$ is the number of simulations, $\numberofsimulations$.
 One approach is to keep increasing $\numberofsimulations$ until there is enough confidence in the estimation of \cref{eq:binomial estimation}.
 E.g., the Clopper-Pearson interval \autocite{clopper1934use} or the Wilson score interval \autocite{wilson1927probable} can be used to determine the confidence of the estimation of \cref{eq:binomial estimation}.
-A disadvantage of this approach is that only the fact that a simulation results in a collision is used while the simulation provides more information. 
+A disadvantage of this approach is that only the fact whether a simulation ends with the event $\collision$ or not is used while the simulation provides more information. 
 Therefore, we provide an alternative approach to estimate $\probabilitycond{\collision}{\situationcurrent}$.
 
-Let $\simulationresult \in \realnumbers^{\dimsimulationresult}$ be a continuous variable representing the result of a simulation, such that $\simulationresult \in \spacecollision$ if and only if the simulation results in a collision.
-Here, $\spacecollision \subset \realnumbers^{\dimsimulationresult}$ represents the set of possible simulation results in which a collision occurs. 
+Let $\simulationresult \in \realnumbers^{\dimsimulationresult}$ be a continuous variable representing the result of a simulation, such that $\simulationresult \in \spacecollision$ if and only if the simulation results in the event $\collision$.
+Here, $\spacecollision \subset \realnumbers^{\dimsimulationresult}$ represents the set of possible simulation results in which the event $\collision$ occurs. 
 Therefore, we have
 \begin{equation}
 	\probabilitycond{\collision}{\situationcurrent}
@@ -260,8 +259,8 @@ Thus, $\numberofsimulations$ is increased until the following condition is met:
 \subsection{Regression for real-time estimation of $\probabilitycond{\collision}{\situationcurrent}$}
 \label{sec:final metric calculation}
 
-Since it is our objective to evaluate the risk metric during real-time operation of the ego vehicle, the expression of \cref{eq:estimate probability of collision} is problematic, even if the calculation is accelerated using a technique like importance sampling.
-Therefore, we propose to evaluate \cref{eq:estimate probability of collision} only for some fixed $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
+To evaluate the risk metric during real-time operation of the ego vehicle, the expression of \cref{eq:estimate probability of collision} is problematic, even if the calculation is accelerated using a technique like importance sampling.
+Therefore, we propose to evaluate \cref{eq:estimate probability of collision} only for some fixed $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
 Next, local regression is used to estimate \cref{eq:estimate probability of collision}.
 More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric}:
 \begin{equation}
@@ -274,8 +273,9 @@ More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006no
 		\kernelfuncnormalized{\bandwidthnw}{\situationcurrent - \situationcurrentinstance{\situationindexdesign}}}.
 \end{equation}
 Here, $\probabilityestcond{\collision}{\situationcurrentinstance{\situationindexdesign}}$ is based \cref{eq:estimate probability of collision} and $\kernelfuncnormalized{\bandwidthnw}{\cdot}$ represents the Gaussian kernel given by \cref{eq:kernel current future}.
-Two important choices have to be made: The choice of the $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ for which to evaluate \cref{eq:estimate probability of collision} and the choice of the bandwidth matrix $\bandwidthnw$.
-We suggest to base the design points $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ on the data that is used to estimate $\densitycond{\situationfuture}{\situationcurrent}$ in \cref{sec:estimate future}, i.e., $\situationcurrentinstance{\situationindex}, \situationindex \in \{1,\ldots,\situationnumberof\}$, such that all $\situationcurrentinstance{\situationindex}$ have at least one design point $\situationcurrentinstance{\situationindexdesign}$ within nearby::
+Two important choices have to be made: The choice of the $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ for which to evaluate \cref{eq:estimate probability of collision} and the choice of the bandwidth matrix $\bandwidthnw$.
+We suggest to base the design points $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ on the data that is used to estimate $\densitycond{\situationfuture}{\situationcurrent}$ in \cref{sec:estimate future}, i.e., $\situationcurrentinstance{\situationindex}$, $\situationindex \in \{1,\ldots,\situationnumberof\}$, such that all $\situationcurrentinstance{\situationindex}$ have at least one design point $\situationcurrentinstance{\situationindexdesign}$  nearby.
+In other words, $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ is chosen such that
 \begin{equation}
 	\label{eq:design points distance}
 	\min_{\situationindexdesign} 
