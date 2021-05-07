@@ -2,8 +2,8 @@
 \label{sec:case study}
 
 In the first part of the case study, we illustrate that our proposed method generalizes the \ac{ssm} proposed by \textcite{wang2014evaluation}.
-In \cref{sec:ngsim metric}, we demonstrate how our proposed method can be used to create \iac{ssm}.
-The surrogate safety metric derived in \cref{sec:ngsim metric} is analyzed in \cref{sec:analyzing ngsim metric}.
+In \cref{sec:ngsim metric}, we demonstrate how our proposed method can be used to create \iac{ssm} that calculates the risk of a collision in a longitudinal interaction between two vehicles.
+The \ac{ssm} derived in \cref{sec:ngsim metric} is analyzed in \cref{sec:analyzing ngsim metric}.
 The last part of the case study discusses and illustrates a method for benchmarking the \ac{ssm}.
 
 
@@ -11,8 +11,8 @@ The last part of the case study discusses and illustrates a method for benchmark
 \subsection{Comparison with Wang \& Stamatiadis' metric}
 \label{sec:wang stamatiadis}
 
-In this section, we show that our method can be used to reproduce the \ac{ssm} of \textcite{wang2014evaluation}.
-\textcite{wang2014evaluation} provide \iac{ssm} that calculated the probability of a collision under certain assumptions. 
+%In this section, we show that our method can be used to reproduce the \ac{ssm} of \textcite{wang2014evaluation}.
+\textcite{wang2014evaluation} provide \iac{ssm} that calculates the probability of a collision under certain assumptions. 
 Because our method can be used to reproduce this metric, we argue that our method is a generalization of the metric of \textcite{wang2014evaluation}.
 We first explain the \ac{ssm} of \textcite{wang2014evaluation}. 
 Next, \cref{sec:wang stamatiadis replicate} shows how to estimate this \ac{ssm} using our method.
@@ -23,12 +23,12 @@ In \cref{sec:wang stamatiadis comparison}, we illustrate the results of both.
 \subsubsection{Metric of Wang \& Stamatiadis}
 \label{sec:wang stamatiadis explanation}
 
-The \ac{ssm} of \textcite{wang2014evaluation}, which we denote by $\wangstamatiadis$, calculates the probability of collision of the ``ego vehicle'' and the ``leading vehicle'', where the ego vehicle is following the leading vehicle.
+The \ac{ssm} of \textcite{wang2014evaluation}, which we denote by $\wangstamatiadis$, calculates the probability of collision of the ego vehicle and the leading vehicle, where the ego vehicle is following the leading vehicle.
 The \ac{ssm} is based on the following assumptions:
 \begin{itemize}
 	\item The leading vehicle keeps a constant speed;
 	\item The (driver of the) ego vehicle starts to react after its reaction time, denoted by $\timereact$;
-	\item The reaction time $\timereact$ is distributed according to a log-normal distributions, such that the mean is \SI{0.92}{\second} and the standard deviation is \SI{0.28}{\second};
+	\item The reaction time $\timereact$ is distributed according to a log-normal distribution, such that the mean is \SI{0.92}{\second} and the standard deviation is \SI{0.28}{\second};
 	\item When the ego vehicle reacts, it brakes with its \ac{madr}, denoted by $\accelerationmax$; and
 	\item The \ac{madr} $\accelerationmax$ is distributed according to a truncated normal distribution with mean $\SI{9.7}{\meter\per\second\squared}$, standard deviation $\SI{1.3}{\meter\per\second\squared}$, lower bound $\lowerbound=\SI{4.2}{\meter\per\second\squared}$, and upper bound $\upperbound=\SI{12.7}{\meter\per\second\squared}$.
 \end{itemize}
@@ -52,7 +52,8 @@ Using the distributions of $\accelerationmax$ and $\timereact$, we can calculate
 		1 & \text{otherwise}
 	\end{cases},
 \end{equation}
-with $\lowerboundadapted=\max \left( \lowerbound, \frac{\speeddifference{\time}}{2\ttc{\time}}\right)$, $\probability{\timereact \leq \dummyvar}$ is the log-normal probability that the reaction time is lower than $\dummyvar$, and $\density{\accelerationmax}$ is the truncated normal probability density of $\accelerationmax$.
+with $\lowerboundadapted=\max \left( \lowerbound, \frac{\speeddifference{\time}}{2\ttc{\time}}\right)$.
+In \cref{eq:ws}, $\probability{\timereact \leq \dummyvar}$ is the log-normal probability that the reaction time is lower than $\dummyvar$ and $\density{\accelerationmax}$ is the truncated normal probability density of $\accelerationmax$.
 
 
 
@@ -88,26 +89,37 @@ The gray lines in \cref{fig:ws comparison} denote $\probabilityestcond{\collisio
 \Cref{fig:ws comparison} also illustrates the effect of the choice of the threshold $\simulationthreshold$.
 In general, for a lower value of $\simulationthreshold$, the number of simulations $\numberofsimulations$ used in \cref{eq:kde simulation result} is higher. 
 As a result, it can be expected that the estimation $\probabilityestcond{\collision}{\situationcurrent}$ is closer to $\probabilitycond{\collision}{\situationcurrent}$.
-A comparison of the left plot in \cref{fig:ws comparison} ($\simulationthreshold=0.2$) with the right plot ($\simulationthreshold=0.02$) demonstrates this effect.
+A comparison of \cref{fig:ws comparison coarse} ($\simulationthreshold=0.2$) and \cref{fig:ws comparison fine} ($\simulationthreshold=0.02$) demonstrates this effect.
 
 \setlength{\figurewidth}{.47\linewidth}
 \setlength{\figureheight}{.7\figurewidth}
 \begin{figure}
 	\centering
-	\input{figs/ws_comparison_coarse.tikz}
-	\input{figs/ws_comparison_fine.tikz}
+	\begin{subfigure}{.49\linewidth}
+		\centering
+		\input{figs/ws_comparison_coarse.tikz}
+		\caption{$\simulationthreshold=0.2$.}
+		\label{fig:ws comparison coarse}
+	\end{subfigure}
+	\begin{subfigure}{.49\linewidth}
+		\centering
+		\input{figs/ws_comparison_fine.tikz}
+		\caption{$\simulationthreshold=0.02$.}
+		\label{fig:ws comparison fine}
+	\end{subfigure}
 	\caption{Comparison of $\wangstamatiadis$ of \cref{eq:ws} (black lines) and $\probabilityestcond{\collision}{\situationcurrent}$ of \cref{eq:estimate probability of collision} (gray lines) for a speed difference of $\speeddifferencesymbol=\SI{10}{\meter\per\second}$ (solid lines), $\speeddifferencesymbol=\SI{20}{\meter\per\second}$ (dashed lines), and $\speeddifferencesymbol=\SI{30}{\meter\per\second}$ (dotted lines).
 		Here, $\probabilityestcond{\collision}{\situationcurrent}$ is based on the same underlying assumptions as $\wangstamatiadis$, see \cref{sec:wang stamatiadis explanation}.
-		The influence of the parameter $\simulationthreshold$, which determines the number of simulations to estimate $\probabilitycond{\collision}{\situationcurrent}$, is illustrated by using $\simulationthreshold=0.2$ (left plot) and $\simulationthreshold=0.02$ (right plot).}
+		The influence of the parameter $\simulationthreshold$, which determines the number of simulations to estimate $\probabilitycond{\collision}{\situationcurrent}$, is illustrated by using different values.}
 	\label{fig:ws comparison}
 \end{figure}
 
 
 
-\subsection{Developing \iac{ssm} based on the \acs{ngsim} data set}
+\subsection{Developing \iac{ssm} for longitudinal interactions}
 \label{sec:ngsim metric}
 
-To illustrate the proposed method, we applied it to derive \iac{ssm} that is based on the \ac{ngsim} data set.
+To illustrate the proposed method, we applied it to derive \iac{ssm} that calculates the risk of a collision in a longitudinal interaction between two vehicles.
+The \ac{ssm} is based on the \ac{ngsim} data set.
 The \ac{ngsim} data set contains vehicles' trajectories obtained from video footage of cameras that were located at several motorways in the US \autocite{kovvali2007video}. 
 The derived \ac{ssm} estimates the risk of collision of the ego vehicle with its leading vehicle.
 To describe the current situation at time $\time$, $\situationcurrentdim=4$ parameters were used:
@@ -124,7 +136,7 @@ Thus, we had:
 	\end{bmatrix}.
 \end{equation}
 
-The speed of the leading vehicle at $\situationfuturehorizon=50$, each $\situationfuturetimestep=\SI{0.1}{\second}$ apart, described the future situation:
+The speed of the leading vehicle at $\situationfuturehorizon=50$ instances, each $\situationfuturetimestep=\SI{0.1}{\second}$ apart, described the future situation:
 \begin{equation}
 	\label{eq:example future situation}
 	\situationfuture\transpose(\time) = \begin{bmatrix}
@@ -133,7 +145,7 @@ The speed of the leading vehicle at $\situationfuturehorizon=50$, each $\situati
 \end{equation}
 It is assumed that $\situationfuture(\time)$ depends on $\speedlead{\time}$ and $\accelerationlead{\time}$. 
 To model this with one \ac{kde} would give us \iac{pdf} with $\situationfuturehorizon+2$ dimensions.
-To reduce the dimensionality, we used \iac{svd} as described in \cref{sec:parameter reduction} with $\dimension=4$\footnote{Note that because we assume that $\situationfuture(\time)$ only depends on 2 parameters of $\situationcurrent(\time)$, i.e., $\speedlead{\time}$ and $\accelerationlead{\time}$, we need to choose $\dimension$ such that $2 < \dimension < \situationfuturehorizon+2$.}.
+To reduce the dimensionality, we used \iac{svd} as described in \cref{sec:parameter reduction} with $\dimension=4$\footnote{Note that because we assume that $\situationfuture(\time)$ depends on 2 parameters of $\situationcurrent(\time)$, i.e., $\speedlead{\time}$ and $\accelerationlead{\time}$, we need to choose $\dimension$ such that $2 < \dimension < \situationfuturehorizon+2$.}.
 In total, 18182 longitudinal interactions between two vehicles were analyzed.
 For each second of an interaction, we extracted a ``current situation'' $\situationcurrentinstance{\situationindex}$ and a corresponding ``future situation'' $\situationfutureinstance{\situationindex}$. 
 This led to $\situationnumberof=469453$ data points.
@@ -151,13 +163,13 @@ In case a simulation takes longer than \SI{5}{\second}, the speed of the leading
 	\begin{subfigure}{.49\linewidth}
 		\centering
 		\input{figs/speed_profiles_a.tikz}
-		\caption{Initial situation: $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$}
+		\caption{Initial situation: $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$.}
 		\label{fig:speed profiles accelerating}
 	\end{subfigure}
 	\begin{subfigure}{.49\linewidth}
 		\centering
 		\input{figs/speed_profiles_b.tikz}
-		\caption{Initial situation: $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$}
+		\caption{Initial situation: $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$.}
 		\label{fig:speed profiles decelerating}
 	\end{subfigure}
 	\caption{50 potential future situations samples from the \ac{kde} that is constructed using data from the \ac{ngsim} data set.}
@@ -183,7 +195,7 @@ For the regression of \cref{eq:nadaraya watson}, we used $\bandwidthnw=\weightma
 
 
 
-\subsection{Analyzing the surrogate safety metric based on the \acs{ngsim} data set}
+\subsection{Analyzing the \acs{ssm} for longitudinal interactions}
 \label{sec:analyzing ngsim metric}
 
 The heat maps in \cref{fig:heatmaps} show how the developed \ac{ssm} depends on the input variables $\speedleadsymbol$ and $\gapsymbol$. 
@@ -192,7 +204,7 @@ The heat maps shows that the estimated probability of collision is practically 0
 This seems reasonable, because in that case, the ego vehicle is at a safe distance from its leading vehicle while the approaching speed is small. 
 If however, the difference in speed increases, i.e., for lower values of $\speedleadsymbol$, the risk increases. 
 The same applies for a decreasing distance between the two vehicles.
-For small values of $\speedegosymbol$ and $\accelerationleadsymbol$, the estimated probability of collision is practically 1.
+For small values of $\speedleadsymbol$ and $\gapsymbol$, the estimated probability of collision is practically 1.
 The left and center heat maps of \cref{fig:heatmaps} show that for a higher speed of the ego vehicle, the probability of collision is estimated to be higher.
 Similarly, the right and center heat maps of \cref{fig:heatmaps} show that for a lower initial acceleration of the leading vehicle, the probability of collision is estimated to be higher.
 
@@ -207,12 +219,12 @@ Similarly, the right and center heat maps of \cref{fig:heatmaps} show that for a
 	\label{fig:heatmaps}
 \end{figure}
 
-In \cref{fig:scenarios}, the evaluations of the metric described in \cref{sec:ngsim metric} are shown for three different scenarios. 
-Each of the three scenarios consider an ego vehicle and a leading vehicle driving in front of the ego vehicle.
+In \cref{fig:scenarios}, the evaluations of the metric described in \cref{sec:ngsim metric} are shown for 3 different scenarios. 
+Each of the 3 scenarios consider an ego vehicle and a leading vehicle driving in front of the ego vehicle.
 Both vehicles are driving in the same direction and in the same lane. 
 The speeds of the ego vehicle (black solid line) and the leading vehicle (black dashed line) are shown in the left plots of \cref{fig:scenarios} alongside the distance between the two vehicles (gray dotted line, scale on the right of the plot).
 The right plots of \cref{fig:scenarios} show the evaluations of the \ac{ssm} explained in \cref{sec:ngsim metric} for each of the three scenarios (black line).
-Furthermore, the right plots include the evaluations of $\wangstamatiadis$ of \cref{eq:ws}.
+Furthermore, for comparison, the right plots include the evaluations of $\wangstamatiadis$ of \cref{eq:ws}.
 
 \setlength{\figurewidth}{.45\linewidth}
 \setlength{\figureheight}{0.6\figurewidth}
@@ -224,9 +236,9 @@ Furthermore, the right plots include the evaluations of $\wangstamatiadis$ of \c
 	\input{figs/case_risky_metric.tikz}\\
 	\input{figs/case_collision_scenario.tikz}
 	\input{figs/case_collision_metric.tikz}
-	\caption{Estimated probability of collision for 3 hypothetical scenarios. 
+	\caption{Demonstration of \acp{ssm} for 3 hypothetical scenarios. 
 		The left plots show the speeds of the ego vehicle (solid black line) and leading vehicle (dashed black line) and the distance between the ego vehicle and the leading vehicle (dotted gray line, scale on the right of the plot).
-		The right plots show the estimated probability of collision corresponding to the 3 scenarios according to the \ac{ssm} explained in \cref{sec:ngsim metric} that is based on our proposed method (black lines) and, for comparison, the \ac{ssm} of \textcite{wang2014evaluation} explained in \cref{sec:wang stamatiadis explanation} (gray lines).}
+		The right plots show the estimated probability of collision corresponding to the 3 scenarios according to the \ac{ssm} explained in \cref{sec:ngsim metric} (black lines) and the \ac{ssm} of \textcite{wang2014evaluation} explained in \cref{sec:wang stamatiadis explanation} (gray lines).}
 	\label{fig:scenarios}		
 \end{figure}
 
@@ -255,11 +267,10 @@ The difference between $\probabilityestcond{\collision}{\situationcurrent}$ and 
 
 
 
-\subsection{Benchmarking surrogate safety metric with expected causal tendencies}
+\subsection{Benchmarking an \acs{ssm} with expected causal tendencies}
 \label{sec:tendencies}
 
-In this section, we demonstrate an approach for benchmarking \iac{ssm}.
-The approach is based on the so-called \emph{expected causal tendencies} of \textcite{mullakkal2017comparative}.
+In this section, we demonstrate an approach for benchmarking \iac{ssm} that is based on the so-called \emph{expected causal tendencies} of \textcite{mullakkal2017comparative}.
 \textcite{mullakkal2017comparative} argue that the risk increases if the approaching speed of the ego vehicle toward the leading vehicle increases.
 Also, the risk increases with a higher ego vehicle speed \autocite{aarts2006driving} or a higher driver reaction time \autocite{klauer2006impact}.
 On the other hand, the risk decreases with a higher road friction \autocite{wallman2001friction} or a larger intervehicle spacing \autocite{mullakkal2017comparative}.
@@ -271,7 +282,7 @@ The intuition is as follows: If the expected causal tendency for an input X (e.g
 Furthermore, if we evaluate the partial derivative at many points, we expect that at least the majority of these evaluated partial derivatives is positive.
 Analogously, if we expect that the risk metric decreases with increasing X, then we expect that at least the majority of the evaluated partial derivatives is negative.
 
-To illustrate the approach for benchmarking \iac{ssm}, we use the \ac{ssm} based on the \ac{ngsim} data set as explained in \cref{sec:ngsim metric} with a few adaptations.
+To illustrate the approach for benchmarking \iac{ssm}, we use the \ac{ssm} of \cref{sec:ngsim metric} with a few adaptations.
 Because we have not described an expected tendency regarding $\accelerationleadsymbol$, we simply use $\accelerationleadsymbol=0$.
 Also, the relative speed, i.e., $\speedegosymbol-\speedleadsymbol$, is used instead of $\speedleadsymbol$.
 Instead of assuming a random reaction time $\timereact$ and \ac{madr} $\accelerationmax$, these are now considered as input to our metric. 
@@ -284,20 +295,20 @@ Thus, we have:
 	\end{bmatrix}.
 \end{equation}
 
-We computed $\probabilityestcond{\collision}{\situationcurrent}$ using \cref{eq:nadaraya watson} where the points $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ are taken from a grid.
+We computed $\probabilityestcond{\collision}{\situationcurrent}$ using \cref{eq:nadaraya watson} where the points $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ are taken from a grid.
 A threshold $\simulationthreshold=0.02$ was used.
 For each input variable, 10 different values at equal distance were used, resulting in $\numberofdesignpoints=10^5$.
 Here, $\speedegosymbol-\speedleadsymbol$ ranged from \SI{0}{\meter\per\second} to \SI{20}{\meter\per\second}, $\speedegosymbol$ ranged from \SI{10}{\meter\per\second} to \SI{30}{\meter\per\second}, $\timereact$ ranged from \SI{0.5}{\second} to \SI{1.5}{\second}, $\gapsymbol$ ranged from \SI{5}{\meter} to \SI{30}{\meter}, and $\accelerationmax$ ranged from \SI{4}{\meter\per\second\squared} to \SI{10}{\meter\per\second\squared}.
 For the bandwidth matrix $\bandwidthnw$, we used a diagonal matrix with the $(i,i)$-th entry corresponding to the squared reciprocal of the difference between two consecutive values of the $i$-th entry of $\situationcurrent$.
 For example, the first value is $1/(\SI{20}{\meter\per\second}/(10-1))^2 \approx \SI{0.20}{\second\squared\per\meter\squared}$. 
 The other values on the diagonal are: \SI{0.20}{\second\squared\per\meter\squared}, \SI{81}{\per\second\squared}, \SI{0.13}{\per\meter\squared}, and \SI{2.25}{\second\tothe{4}\per\meter\squared}.
-For each input variable listed in \cref{eq:input partial derivatives}, we evaluated the partial derivative of \cref{eq:nadaraya watson} at each $\situationcurrentinstance{\situationindexdesign}, \situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
+For each input variable listed in \cref{eq:input partial derivatives}, we evaluated the partial derivative of \cref{eq:nadaraya watson} at each $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
 
 \Cref{tab:tendencies} shows the result of the benchmarking. 
 It shows that the \ac{ssm} follows the expected causal tendencies mostly. 
 E.g., in more than \SI{99}{\%} of the cases, the partial derivative of the relative speed ($\speedegosymbol-\speedleadsymbol$) is positive.
 For the remaining \SI{1}{\%}, the partial derivative is negative, albeit only slightly. 
-One explanation is that the inaccuracies that are introduced by the numerical approximation of \cref{eq:estimate probability of collision} cause this.
+One explanation is that this remaining \SI{1}{\percent} is caused by the inaccuracies introduced by the numerical approximation of \cref{eq:estimate probability of collision}.
 
 \begin{table}
 	\centering
