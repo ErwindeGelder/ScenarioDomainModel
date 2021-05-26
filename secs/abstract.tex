@@ -2,17 +2,25 @@
 
 % Introduce surrogate safety metrics
 \acp{ssm} are used to express road safety in terms of the safety risk in traffic conflicts.
-As opposed to historical crash data, which takes a long time to obtain, \acp{ssm} can be used to determine real-time the risk of a collision or harm of a certain vehicle.
+As opposed to historical crash data, which takes a long time to obtain, \acp{ssm} can be used to determine in real time the risk of a collision or harm of a certain vehicle.
+% What is lacking?
+\cstarta Typically, \acp{ssm} rely on assumptions on the future evolution of traffic participants to generate a measure of risk. 
+As a result, \acp{ssm} are only applicable in certain types of scenarios. 
+
 % Our approach
-We present a data-driven approach for deriving \iac{ssm} that provides a probability that a certain specified event, such as a collision, happens in the near future.
-Our approach uses data to predict the possible variations of how the environment of the vehicle changes over time.
-Simulations are employed to determine the probability of the specified event.
-To make the \ac{ssm} applicable for real-time use, regression is utilized.
+We present a novel data-driven approach for deriving \acp{ssm} that are not limited to certain types of scenarios.
+Furthermore, because we adopt a data-driven approach to predict the possible future evolutions of traffic participants, less assumptions are needed.
+Using Monte Carlo simulations, our derived \acp{ssm} accurately estimate the probability of collision.
+To limit the number of required simulations, we propose a method that requires fewer simulations to estimate the probability of collision. 
+Additionally, to make the \ac{ssm} applicable for real-time use, a regression model is proposed.
+
 % Results
-Results show that, with our approach, it is possible to replicate existing \acp{ssm} that provide a probability.
+Results show that our approach is a generalization of existing \acp{ssm} that provide a probability.
 To further illustrate the approach, \iac{ssm} is derived for risk evaluation during longitudinal traffic conflicts. 
-A few examples demonstrate that the derived \ac{ssm} provides the risk of a collision.
-We provide a method for benchmarking the \ac{ssm} and the application of the benchmarking illustrates that the derived \ac{ssm} complies with the expected causal tendencies of \iac{ssm}. 
+Since the ground truth for the safety risk is generally lacking, it is very difficult, if not impossible, to argue that one \ac{ssm} it better than another \ac{ssm}.
+As an alternative, we provide a method for benchmarking the derived \ac{ssm} with respect to expected risk tendencies.
+The application of the benchmarking illustrates that the derived \ac{ssm} matches the expected risk tendencies. \cenda
+
 % Conclusions
 Whereas the derived \ac{ssm} shows the potential of the approach, future work involves applying the approach for other types of traffic conflicts, such as lateral traffic conflicts or interactions with vulnerable road users.
 

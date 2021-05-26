@@ -187,10 +187,10 @@ In \autocite{degelder2021conditional}, an algorithm is provided for sampling fro
 
 
 
-\subsection{Estimate $\probabilitycond{\collision}{\situationcurrent}$}
+\subsection{Estimate $\probabilitycond{\collision}{\situationcurrent}$ using a Monte Carlo simulation}
 \label{sec:estimate collision}
 
-To estimate $\probabilitycond{\collision}{\situationcurrent}$, i.e., the probability of an event $\collision$ given the current situation $\situationcurrent$, we employ simulations. 
+To estimate $\probabilitycond{\collision}{\situationcurrent}$, i.e., the probability of an event $\collision$ given the current situation $\situationcurrent$, we employ a Monte Carlo simulation. 
 The details of the simulation depends on the actual application. 
 For example, if the goal of our \ac{ssm} is to evaluate the risk that a human-driven vehicle collides, the simulation should involve human driver behavior models. 
 On the other hand, if the goal is to evaluate the risk of collision when \iac{ads} is controlling the vehicle, the simulation should include the model of this \ac{ads}.
