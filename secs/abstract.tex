@@ -2,26 +2,28 @@
 
 % Introduce surrogate safety metrics
 \acp{ssm} are used to express road safety in terms of the safety risk in traffic conflicts.
-As opposed to historical crash data, which takes a long time to obtain, \acp{ssm} can be used to determine in real time the risk of a collision or harm of a certain vehicle.
+As opposed to historical crash data, which takes a long time to obtain, \acp{ssm} can be used to determine  the risk of a collision or harm of a certain vehicle.
 % What is lacking?
 \cstarta Typically, \acp{ssm} rely on assumptions on the future evolution of traffic participants to generate a measure of risk. 
 As a result, \acp{ssm} are only applicable in certain types of scenarios. 
 
 % Our approach
-We present a novel data-driven approach for deriving \acp{ssm} that are not limited to certain types of scenarios.
+We present a novel data-driven approach called \ac{psmda}. 
+The \ac{psmda} is used to derive \acp{ssm} that provide a probability that a certain specified event, such as a collision, happens in the near future. 
+These derived \acp{ssm} are not limited to certain types of scenarios.
 Furthermore, because we adopt a data-driven approach to predict the possible future evolutions of traffic participants, less assumptions are needed.
-Using Monte Carlo simulations, our derived \acp{ssm} accurately estimate the probability of collision.
-To limit the number of required simulations, we propose a method that requires fewer simulations to estimate the probability of collision. 
-Additionally, to make the \ac{ssm} applicable for real-time use, a regression model is proposed.
+The \ac{psmda} uses Monte Carlo simulations, such that the derived \acp{ssm} can accurately estimate the probability of the specified event.
+We further introduce a statistical method that requires fewer simulations to estimate this probability. 
+Combined with a regression model, this enables our derived \acp{ssm} to make real-time risk estimation.
 
 % Results
-Results show that our approach is a generalization of existing \acp{ssm} that provide a probability.
+Results show that the \ac{psmda} is a generalization of existing probabilistic \acp{ssm}.
 To further illustrate the approach, \iac{ssm} is derived for risk evaluation during longitudinal traffic conflicts. 
 Since the ground truth for the safety risk is generally lacking, it is very difficult, if not impossible, to argue that one \ac{ssm} it better than another \ac{ssm}.
 As an alternative, we provide a method for benchmarking the derived \ac{ssm} with respect to expected risk tendencies.
 The application of the benchmarking illustrates that the derived \ac{ssm} matches the expected risk tendencies. \cenda
 
 % Conclusions
-Whereas the derived \ac{ssm} shows the potential of the approach, future work involves applying the approach for other types of traffic conflicts, such as lateral traffic conflicts or interactions with vulnerable road users.
+Whereas the derived \ac{ssm} shows the potential of the \cstarta\ac{psmda}\cenda, future work involves applying the approach for other types of traffic conflicts, such as lateral traffic conflicts or interactions with vulnerable road users.
 
 \end{abstract}
