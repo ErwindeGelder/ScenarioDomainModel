@@ -6,37 +6,37 @@ Several \acp{ssm} have been developed with the goal of quantifying the risk invo
 In general, the risk is quantified in terms of the proximity between two traffic agents in time and/or space, the ability to perform evasive actions like braking or swerving, or the magnitude of such actions \autocite{shi2018key,zheng2020modeling}. 
 In a potential collision situation, the proximity index is close to zero while the magnitude of evasive action is close to the limits of the driver and the vehicle \autocite{zheng2020modeling}. 
 
-The most common \acp{ssm} are time based. 
-A popular time-based proximity indicator is the \ac{ttc}, which is defined as the time remaining until two vehicles collide if they continue on the same collision course and speed \autocite{hayward1972near}. 
+The most common \acp{ssm} are time-based. 
+A popular time-based proximity indicator is the \ac{ttc}, which is defined as the time remaining until two vehicles collide if they would continue on the same collision course and speed \autocite{hayward1972near}. 
 Several other time-based \acp{ssm} have been derived from or based on the \ac{ttc}. 
 Notable among those are 
 \begin{itemize}
-    \item the \ac{mttc}, which is able to calculate the \ac{ttc} for the cases where vehicles do not keep constant speed and the follower is slower than the leader \autocite{ozbay2008derivation},
-    \item the \ac{tet}, which measures the amount of time the \ac{ttc} is below a certain threshold \autocite{minderhoud2001extended}, and
-    \item the \ac{tit}, which calculates the total area where the \ac{ttc} is below a certain threshold  \autocite{minderhoud2001extended}. 
+    \item the modified \ac{ttc}, which is able to calculate the \ac{ttc} for the cases where vehicles do not keep constant speed and the follower is slower than the leader \autocite{ozbay2008derivation},
+    \item the time exposed \ac{ttc}, which measures the amount of time the \ac{ttc} is below a certain threshold \autocite{minderhoud2001extended}, and
+    \item the \ac{tit}, which calculates the total area in \iac{ttc} versus time diagram where the \ac{ttc} is below a certain threshold  \autocite{minderhoud2001extended}. 
 \end{itemize}
 Other time-based proximity indicators include time headway and the \ac{pet} which measures the ``time between the moment that a vehicle leaves the area of potential collision, i.e., the area in which the paths of the two vehicles intersect, and the other vehicle arrives in the same area'' \autocite{mahmud2017application}. 
 
 For distance-based proximity indicators, the \ac{picud} measures the remaining distance between vehicles during an emergency stop \autocite{iida2001traffic, uno2003objective} and the \ac{psd} measures the remaining distance to the potential point of collision divided by the minimum acceptable stopping distance \autocite{allen1978analysis, guido2011comparing, mahmud2017application}. 
-Other similar distance-based \acp{ssm} are the \ac{mtc} and \ac{dss}, which are calculated similar to the \ac{psd} and the \ac{picud}, respectively \autocite{kitajima2009estimation, okamura2011impact}. 
+%Other similar distance-based \acp{ssm} are the ``margin to collision'' and ``difference of space distance and stopping distance'', which are computed similar to the \ac{psd} and the \ac{picud}, respectively \autocite{kitajima2009estimation, okamura2011impact}. 
 More recent, a distance-based metric that assumes ``correct'' driving behavior was proposed \autocite{shalev2017formal}. 
 This metric calculates the minimum safety distance between a follower and its leader, such that no collision occurs if the leader vehicle brakes with a specified deceleration and the follower brakes after a specified reaction time with another specified deceleration. 
 
 In terms of indicators relating to performing evasive actions, the \ac{drac} is the most widely used. 
-The \ac{drac} is calculated as the ratio of the difference in speed between a following vehicle and a lead vehicle and their closing time \autocite{almqvist1991use, mahmud2017application}. 
+The \ac{drac} is calculated as the ratio of the difference in speed between a following vehicle and a leading vehicle and their closing time \autocite{almqvist1991use, mahmud2017application}. 
 Another indicator is the \ac{cpi}, which calculates the probability that a vehicle's \ac{drac} will exceed its \ac{madr} in a given time interval \autocite{cunto2009simulated} 
 
 %Criticality Index(CI) which is the ratio of the square of the speed and the TTC. 
 %Criticality index measures the risk and the severity of collision. It can also be interpreted as the product of the speed and the required deceleration rate \autocite{chan2006defining}.
 
-Apart from the traditional proximity indicators, efforts have been made to characterize what is considered as ``safe-driving'' using a combination of risk indicators.
-E.g., \textcite{wang2014evaluation} derive \iac{cpm} using a combination of the \ac{ttc}, the vehicle braking capability, and the driver reaction time.
-Some studies have used the fundamental relationship between velocity and acceleration to classify whether a vehicle’s driving style  is ``safe'' or ``unsafe''. 
-This method uses a vehicle's acceleration and velocity to create a safety boundary.
-If and only if the vehicle's velocity and acceleration are within that boundary, then it is considered safe  \autocite{eboli2016combining}.
-Similarly, \textcite{shi2018key} used indicators like \ac{tit}, \ac{cpi}, and \ac{psd} to measure the effectiveness of risk indicators for predicting accident. 
+Apart from the traditional proximity indicators, efforts have been made to characterize what is considered as ``safe driving'' using a combination of risk indicators.
+For example, \textcite{wang2014evaluation} derive a ``crash propensity metric'' using a combination of the \ac{ttc}, the vehicle braking capability, and the driver reaction time.
+Some studies have used the fundamental relationship between velocity and acceleration to classify whether a vehicle's driving style  is ``safe'' or ``unsafe''. 
+\textcite{eboli2016combining} use a vehicle's acceleration and velocity to create a safety boundary.
+If and only if the vehicle's velocity and acceleration are within that boundary, then it is considered safe \autocite{eboli2016combining}.
+Similarly, \textcite{shi2018key} use indicators like \ac{tit}, \ac{cpi}, and \ac{psd} to measure the effectiveness of risk indicators for predicting accidents. 
 The idea is that some indicators are able to distinguish accidents from non-accidents. 
 These indicators are called key risk indicators. 
-In \autocite{mullakkal2020probabilistic}, a probabilistic driving risk field was proposed.
+\textcite{mullakkal2020probabilistic} propose a probabilistic driving risk field.
 The method derives the risk a vehicle is exposed to using a kinematic approach with the inclusion of uncertainty in the vehicle's future state. 
-\textcite{mullakkal2020probabilistic} define this for an encounter between the subject vehicle and a road obstacle, such as other vehicles or objects. 
+\textcite{mullakkal2020probabilistic} define this for an encounter between the ego vehicle and a road obstacle, such as other vehicles or objects. 
