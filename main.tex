@@ -8,8 +8,8 @@
 \usepackage{dsfont}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
-\usepackage[capitalize]{cleveref}\Crefname{figure}{Figure}{Figures}
 \usepackage[nolist,nohyperlinks]{acronym}
+\usepackage[capitalize]{cleveref}\Crefname{figure}{Figure}{Figures}
 \usepackage{siunitx}
 \usepackage{tikz}
 \usepackage{pgfplots}\pgfplotsset{compat=1.16}\newlength{\figurewidth}\newlength{\figureheight}
@@ -32,6 +32,19 @@
 \usepackage{letltxmacro}
 \LetLtxMacro{\autocite}{\citep}
 \LetLtxMacro{\textcite}{\citet}
+
+
+% To get rid of the "acro:xxx@cref multiply defined" warning
+\makeatletter
+\newcommand*{\org@overidelabel}{}
+\let\org@overridelabel\@verridelabel
+\renewcommand*{\@verridelabel}[1]{%
+  \@bsphack
+  \protected@write\@auxout{}{\string\AC@undonewlabel{#1@cref}}%
+  \org@overridelabel{#1}%
+  \@esphack
+}%
+\makeatother
 
 
 
@@ -105,17 +118,17 @@
 \newcommand{\simulationthreshold}{\epsilon}
 \newcommand{\situationcurrent}{x}
   \newcommand{\situationcurrentdim}{n_{\situationcurrent}}
-  \newcommand{\situationcurrentinstance}[1]{X_{#1}}
-  \newcommand{\situationcurrentmean}{\mu_{X}}
+  \newcommand{\situationcurrentinstance}[1]{x_{#1}}
+  \newcommand{\situationcurrentmean}{\mu_{x}}
   \newcommand{\situationcurrentspace}{\mathcal{X}}
 \newcommand{\situationfuture}{y}
   \newcommand{\situationfuturedim}{n_{\situationfuture}}
   \newcommand{\situationfuturehorizon}{n_{\mathrm{h}}}
   \newcommand{\situationfuturetimestep}{\Delta \time}
-  \newcommand{\situationfutureinstance}[1]{Y_{#1}}
-  \newcommand{\situationfuturemean}{\mu_{Y}}
-  \newcommand{\situationfutureparta}{\situationfuture_1}
-  \newcommand{\situationfuturepartb}{\situationfuture_2}
+  \newcommand{\situationfutureinstance}[1]{y_{#1}}
+  \newcommand{\situationfuturemean}{\mu_{y}}
+  \newcommand{\situationfutureparta}{\bar{\situationfuture}}
+  \newcommand{\situationfuturepartb}{\tilde{\situationfuture_2}}
   \newcommand{\situationfuturespace}{\mathcal{Y}}
 \newcommand{\situationindex}{i}
   \newcommand{\situationindexdesign}{k}
