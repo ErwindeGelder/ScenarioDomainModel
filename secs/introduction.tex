@@ -4,7 +4,7 @@
 % Safety is important
 Road safety is an important key performance indicator in transportation. 
 Due to the enormous societal and economy losses incurred in road accidents, road safety research is an important research topic.
-For example, in 2018, there were over 6.7 million accidents in the U.S.A.\ \autocite{nhtsa2020summary}, which is about 1.3 accidents per 1 million vehicle kilometers driven.
+For example, in 2018\cstarta\footnote{\cstarta At the time of writing, more recent results were not yet available.\cenda}\cenda, there were over 6.7 million accidents in the U.S.A.\ \autocite{nhtsa2020summary}, which is about 1.3 accidents per 1 million vehicle kilometers driven.
 These accidents in 2018 led to 2.7 million injured people and 37 thousand fatalities \autocite{nhtsa2020summary}.
 Furthermore, apart from these societal losses, the economic costs of all accidents in the U.S.A.\ in 2018 was 242 billion dollars \autocite{nhtsa2020summary}.
 Similarly, the \textcite{eu2020roadsafety} reported over 22 thousand fatalities in 2019.
@@ -13,39 +13,38 @@ Similarly, the \textcite{eu2020roadsafety} reported over 22 thousand fatalities 
 Road safety can be expressed in terms of injuries or fatalities per kilometer of driving, but a more proactive method for expressing road safety is the use of safety indicators that directly measure the safety risk in traffic conflicts.
 %Particularly challenging is that ``there is no yet consensus on what `driving safely' means'' \autocite{tejada2020safe}.
 Traffic conflicts are far more frequent than traffic accidents and the frequency of traffic conflicts can be used to predict the frequency of crashes.
-In an attempt to quantify the safety at a vehicle level, traffic conflicts and/or surrogate safety methodologies are the subject of more than 500 publications \autocite{arun2021systematic}.
-\acp{ssm} are used to characterize the risk of a collision or harm given an initial condition. 
+\cstarta Therefore, these traffic conflicts are used to define so-called \acp{ssm} that characterize the risk of a collision or harm given an initial condition \autocite{arun2021systematic}. \cenda
 % Examples
-\acp{ssm} vary from measures that estimate the remaining time until a collision, such as the well-known \ac{ttc} \autocite{hayward1972near}, to metrics that estimate the probability that a human driver cannot avoid a collision, e.g., see \autocite{wang2014evaluation}.
+\acp{ssm} vary from measures that estimate the remaining time until a collision, such as the well-known \ac{ttc} \autocite{hayward1972near}, to metrics that estimate the probability that a human driver cannot avoid a collision, see, e.g., \autocite{wang2014evaluation}.
 
 % Common approach
 Typically, \acp{ssm} are only applicable in certain types of scenarios.
-For example, the \ac{ttc} \autocite{hayward1972near}, which is the ratio of the distance toward and the speed difference with a vehicle in front, is only applicable when approaching an object.
+For example, the \ac{ttc} \autocite{hayward1972near}, which is the ratio of the distance toward and the speed difference with an approaching object, is only applicable when approaching an object.
 Additionally, \acp{ssm} typically assume certain models for what the driver or system controlling the vehicle(s) is capable of and how the future --- given an initial condition --- will develop. 
-For example, with the \ac{ttc} \autocite{hayward1972near}, it is assumed that the driver of a vehicle will not accelerate and the surrounding traffic is assumed to continue with the same speed. 
+For example, with the \ac{ttc} \autocite{hayward1972near}, it is assumed that the driver of a vehicle will not accelerate and that the surrounding traffic continues with the same speed. 
 More complex \acp{ssm} consider, e.g., a human model that can react to a risky situation by braking \autocite{wang2014evaluation} or the uncertainty over the future ambient traffic state \autocite{mullakkal2020probabilistic}.
-Regardless of the complexity of these models, however, these \acp{ssm} consider neither the specific capabilities of the driver or system controlling the vehicle, nor the local context for predicted the future of the vehicle's environment.  
+Regardless of the complexity of these models, however, these \acp{ssm} consider neither the specific capabilities of the driver or of the system controlling the vehicle, nor the local context for predicted the future of the vehicle's environment.  
 
 % Our proposal
-In this paper, an approach is presented for deriving \iac{ssm} that is not limited to certain types of scenarios.
-Furthermore, our approach does not rely on a predetermined model of de driver or system that controls the vehicle. 
-In addition, the presented approach includes a data-driven approach for modeling the variations of how the environment of the vehicle progresses over time.
-Simulations are employed to predict the possible outcomes for these variations.
-Using regression, it is possible to apply the derived \ac{ssm} in real-time applications.
+\cstarta In this paper, we present the \ac{ourmetric}: A novel data-driven approach for deriving \acp{ssm} that are not limited to certain types of scenarios.
+Because our method does not rely on a predetermined model of the driver or of the system that controls the vehicle, the derived \acp{ssm} can be adapted to the situations in which the \acp{ssm} are applied. 
+In addition, to not rely on assumptions on how the ambient traffic evolves over time, the \ac{ourmetric}  includes a data-driven approach for modeling the variations of how the ambient traffic progresses over time. 
+Monte Carlo simulations are employed to accurately predict the safety risk given these variations.
+To enable the real-time evaluation of the derived \acp{ssm}, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric} for local regression.
 % Advantages of our method
-Our approach provides the following benefits:
+The \ac{ourmetric} provides the following benefits: \cenda
 \begin{itemize}
-	\item The derived \ac{ssm} gives a probability that, e.g., a collision will happen in the near future. 
+	\item The derived \acp{ssm} gives a probability that, e.g., a collision will happen in the near future. 
 	A probability is easier to interpret than, e.g., a value ranging from 0 to infinity.
 	
-	\item It is possible to reproduce already existing metrics that provide a probability. 
-	Therefore, our approach can be seen as a generalization of such existing \acp{ssm}.
+	\item \cstarta Next to deriving new \acp{ssm}, \cenda it is possible to reproduce already existing metrics that provide a probability. 
+	Therefore, our approach can be seen as a generalization for deriving such existing \acp{ssm}.
 	
 	\item Any driver behavior model can be used.
 	It is also possible to use a model of \iac{ads}, such that the derived \ac{ssm} estimates the safety risk if this \ac{ads} controls the vehicle.
 	
 	\item Because we use a data-driven approach, our \ac{ssm} adapts to the recorded data. 
-	In this way, it is possible to give the \ac{ssm} a local context.
+	In this way, it is possible to \cstarta adapt the \ac{ssm} to, e.g., the local traffic behavior\cenda.
 	
 	\item Our approach can be applied to various scenarios.
 \end{itemize}
@@ -56,11 +55,12 @@ The case study demonstrates that our method can be used to create other already 
 Furthermore, the \ac{ngsim} data set \autocite{kovvali2007video} is used to apply our data-driven approach to derive \iac{ssm} for longitudinal traffic conflicts.
 The derived \ac{ssm} is applied in 3 different scenarios ranging from a safe scenario to a scenario with a collision.
 These 3 scenarios show that the derived \ac{ssm} provides the risk of a collision.
-The case study also presents and applies a method to benchmark the \ac{ssm} using expected causal tendencies.
+The case study also presents a method to benchmark a \ac{ssm} using expected risk tendencies.
+\cstarta We used this method to benchmark \iac{ssm} derived using the \ac{ourmetric} and the result shows that the derived \ac{ssm} complies with the expected risk tendencies. \cenda
 
 % Structure
 This article is organized as follows.
 \cref{sec:literature review} provides an overview of \acp{ssm} described in the literature.
-The proposed method is presented in \cref{sec:method}.
+The proposed \ac{ourmetric} is presented in \cref{sec:method}.
 In \cref{sec:case study}, we illustrate the method in a case study.
 The article is concluded in \cref{sec:conclusions}.
