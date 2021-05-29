@@ -26,13 +26,13 @@ More complex \acp{ssm} consider, e.g., a human model that can react to a risky s
 Regardless of the complexity of these models, however, these \acp{ssm} consider neither the specific capabilities of the driver or of the system controlling the vehicle, nor the local context for predicted the future of the vehicle's environment.  
 
 % Our proposal
-\cstarta In this paper, we present the \ac{ourmetric}: A novel data-driven approach for deriving \acp{ssm} that are not limited to certain types of scenarios.
+\cstarta In this paper, we present the \ac{ourmethod} method: A novel data-driven approach for deriving \acp{ssm} that are not limited to certain types of scenarios.
 Because our method does not rely on a predetermined model of the driver or of the system that controls the vehicle, the derived \acp{ssm} can be adapted to the situations in which the \acp{ssm} are applied. 
-In addition, to not rely on assumptions on how the ambient traffic evolves over time, the \ac{ourmetric}  includes a data-driven approach for modeling the variations of how the ambient traffic progresses over time. 
+In addition, to not rely on assumptions on how the ambient traffic evolves over time, the \ac{ourmethod} method includes a data-driven approach for modeling the variations of how the ambient traffic progresses over time. 
 Monte Carlo simulations are employed to accurately predict the safety risk given these variations.
 To enable the real-time evaluation of the derived \acp{ssm}, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric} for local regression.
 % Advantages of our method
-The \ac{ourmetric} provides the following benefits: \cenda
+The \ac{ourmethod} method provides the following benefits: \cenda
 \begin{itemize}
 	\item The derived \acp{ssm} gives a probability that, e.g., a collision will happen in the near future. 
 	A probability is easier to interpret than, e.g., a value ranging from 0 to infinity.
@@ -56,11 +56,11 @@ Furthermore, the \ac{ngsim} data set \autocite{kovvali2007video} is used to appl
 The derived \ac{ssm} is applied in 3 different scenarios ranging from a safe scenario to a scenario with a collision.
 These 3 scenarios show that the derived \ac{ssm} provides the risk of a collision.
 The case study also presents a method to benchmark a \ac{ssm} using expected risk tendencies.
-\cstarta We used this method to benchmark \iac{ssm} derived using the \ac{ourmetric} and the result shows that the derived \ac{ssm} complies with the expected risk tendencies. \cenda
+\cstarta We use this method to benchmark \iac{ssm} derived using the \ac{ourmethod} method and the result shows that the derived \ac{ssm} complies with the expected risk tendencies. \cenda
 
 % Structure
 This article is organized as follows.
 \cref{sec:literature review} provides an overview of \acp{ssm} described in the literature.
-The proposed \ac{ourmetric} is presented in \cref{sec:method}.
+The proposed \ac{ourmethod} method is presented in \cref{sec:method}.
 In \cref{sec:case study}, we illustrate the method in a case study.
 The article is concluded in \cref{sec:conclusions}.

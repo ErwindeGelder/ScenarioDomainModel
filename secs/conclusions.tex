@@ -6,19 +6,21 @@ Road safety is an important research topic because of the societal and economica
 % Quantify safety with surrogate metrics
 To quantify the safety at a vehicle level, use is made of \acp{ssm} that characterize the risk of a collision. 
 % What we did
-We have proposed a method for deriving \iac{ssm} that calculates the probability that a certain event, e.g., a collision, will happen in the near future.
+\cstarta We have proposed a novel approach called the \ac{ourmethod} method for deriving \acp{ssm} that calculate the probability that a certain event, e.g., a collision, will happen in the near future. 
 % Advantages of our method
-With our data-driven approach, it is possible to adapt the \ac{ssm} to the local traffic context.
-Besides, the presented method could be applied to various types of scenarios.
-We have illustrated that our method is a generalization of already existing \acp{ssm}.
-In an example, we have derived \iac{ssm} based on the \ac{ngsim} data set that calculates the risk of a collision in a longitudinal interaction between two vehicles.
-Through few explanatory scenarios, it has been shown that the derived \ac{ssm} provides a quantification of the collision risk.
-We have also presented how the evaluation of the partial derivatives of the \ac{ssm} can be used to benchmark \iac{ssm} with few expected causal tendencies.
+Whereas traditional \acp{ssm} are generally only applicable in certain types of scenarios, the \ac{ourmethod} method could be applied to various types of scenarios.
+Furthermore, because the \ac{ourmethod} method is data-driven, the derived \acp{ssm} can be adapted to the local traffic behavior. 
+Also, no assumptions on the driver behavior are made.
+Therefore, the \ac{ourmethod} method has the potential for deriving multiple \acp{ssm} for quantifying the safety of a --- possibly automated --- vehicle.
+
+We have illustrated that the \ac{ourmethod} method can be used to reproduce known probabilistic \acp{ssm}.
+In an example, we have derived a new \ac{ssm} based on the \ac{ngsim} data set that calculates the risk of a collision in a longitudinal interaction between two vehicles.
+Through several explanatory scenarios, it has been shown that the derived \ac{ssm} correctly provides a quantification of the collision risk.
+We have also presented how the evaluation of the partial derivatives of the \ac{ssm} can be used to benchmark \iac{ssm} using expected risk tendencies. \cenda
 
 %Concluding remarks about our method
-Our proposed method has the potential for deriving multiple \acp{ssm} for quantifying the safety of a --- possibly automated --- driver.
-These metrics can be used to warn drivers for unsafe situations and ensuring that proper attention is being paid to the road situation.
-Furthermore, the metrics can measure the impact of newly introduced systems on the traffic safety.
+The \acp{ssm} derived using the presented \ac{ourmethod} method can be used to warn drivers for unsafe situations and ensuring that proper attention is being paid to the road situation.
+Furthermore, the derived metrics can measure the impact of newly introduced systems on the traffic safety. 
 % Future work
 A limitation of the current study is that the presented approach is only applied to longitudinal traffic interactions. 
-Future work involves the consideration of lateral traffic interactions and interactions with vulnerable road users. 
+\cstarta Future work involves applying the \ac{ourmethod} method for the derivation of \acp{ssm} that measure the risk of lateral traffic interactions and interactions with vulnerable road users. \cenda
