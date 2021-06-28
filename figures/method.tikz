@@ -1,0 +1,13 @@
+\newlength{\blockwidth}\setlength{\blockwidth}{7em}
+\newlength{\blockheight}\setlength{\blockheight}{6em}
+\newlength{\blocksep}\setlength{\blocksep}{2em}
+\tikzstyle{block}=[draw, text width=\blockwidth-.5em, align=center, minimum height=\blockheight, line width=1pt, minimum width=\blockwidth, node distance=\blockwidth+\blocksep, fill=gray!20]
+\tikzstyle{arrow}=[->, line width=1pt]
+\begin{tikzpicture}
+	% Blocks
+	\node[block](scenarios){Identify scenarios \\ $\scenariocategory$};
+	\node[block, right of=scenarios](exposure){Calculate exposure \\ $\expectation{\numberofencounters|\scenariocategory}$};
+	\node[block, right of=exposure](simulate){Simulate scenario \\ $\simulationoutcome{\parameters}$};
+	\node[block, right of=simulate](harm){Calculate probability of harm \\ $\expectation{\simulationoutcome{\parameters}|\scenariocategory}$};
+	\node[block, right of=harm](severity){Calculate severity \\ $\expectation{\injury|\scenariocategory}$};
+\end{tikzpicture}

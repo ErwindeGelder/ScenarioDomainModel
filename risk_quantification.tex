@@ -4,12 +4,16 @@
 \usepackage{amsmath} % assumes amsmath package installed
 \usepackage{amsthm}  % For special theorem style
 \usepackage{amsfonts}
+\usepackage{dsfont}
 \usepackage[USenglish]{babel}  % language support
-\usepackage{cleveref}
+\usepackage{cleveref}\crefname{equation}{}{}\Crefname{equation}{Equation}{Equations}
 \usepackage{siunitx}
 \usepackage[nolist,nohyperlinks]{acronym}
 \usepackage{xcolor}
 \usepackage{csquotes}
+\usepackage{tikz}\usetikzlibrary{shapes,arrows,backgrounds}
+\usepackage{pgfplots}\pgfplotsset{compat=1.16}
+
 
 \usepackage{silence}  							%% For filtering warnings
 \usepackage[style=ieee,doi=false,isbn=false,url=false,date=year,backend=biber,maxbibnames=15,maxcitenames=2,mincitenames=1,uniquelist=false,uniquename=false,giveninits=true]{biblatex}
@@ -21,9 +25,18 @@
 \bibliography{references_rq}
 
 
-\Crefname{figure}{Figure}{Figures}
-\crefname{equation}{}{}
-\Crefname{equation}{Equation}{Equations}
+
+% Notations
+\newcommand{\expectation}[1]{\mathds{E}\left[ #1 \right]}
+\newcommand{\injury}{\mathrm{injury}}
+\newcommand{\numberofencounters}{k}
+\newcommand{\parameters}{x}
+  \newcommand{\pardim}{d}
+\newcommand{\probability}[1]{\mathds{P}\left( #1 \right)}
+  \newcommand{\probabilitycond}[2]{\probability{ #1 | #2 }}
+\newcommand{\realnumbers}{\mathds{R}}
+\newcommand{\scenariocategory}{\mathcal{C}}
+\newcommand{\simulationoutcome}[1]{R\left(#1\right)}
 
 
 \newcommand{\todo}[1]{\color{red}TO DO: #1 \color{black}}
@@ -43,7 +56,7 @@
 \begin{document}
 \date{}
 
-\title{Scenario Risk Quantification for Automated Driving}
+\title{Risk Quantification for Automated Vehicles in Driving Scenarios}
 
 \author{Erwin~de~Gelder$^{1,2,*}$,
 	    Hala~Elrofai$^{1}$,

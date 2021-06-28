@@ -1,46 +1,32 @@
-\section{Method}
+\section{Method for risk quantification}
 \label{sec:method}
 
-Method steps:
-\begin{itemize}
-    \item Identify scenarios within scope 
-    \item Calculate probability of exposure to scenario based on observation in data
-    \item Analyze relevant triggering conditions 
-    \item Simulate scenarios and triggering conditions including controllablilty with driver model 
-    \item Calculate probability or collision and relevant parameter for severity calculation 
-    \item Calculate probability of injury for severity  
-    \item Visualize risk using heat maps. 
-\end{itemize}
-Q: what about data collection? is that part of our method? 
-We add an assumption that distribution of relevant scenario parameters are known, either though collected data or other reliable sources of information. 
+\begin{figure*}
+	\centering
+	\input{figures/method.tikz}
+\end{figure*}
+
+
 
 \subsection{Identification of scenarios}
-
-What do we need from a scenario?
-\begin{itemize}
-    \item Scene 
-    \item ODD
-    \item Actors 
-    \item Activities and parameters 
-\end{itemize}
-
-Scenario (or operational situation is ISO~26262 terminology) is an important part risk assessment for both SOTIF and functional safety. 
-Ensuring that relevant scenarios at the right level of detail are selected is important to ensure correct risk evaluation. 
-To systematically evaluate scenarios, one method can be breaking it down into smaller parts for analysis.  
-Several norms define what a scenario should include. 
-According to SAE J2980 on considerations for ISO 26262 ASIL hazard classification, \textit{operational scenario}, includes specification of: Location (e.g.; highway or city), road conditions (e.g., road friction, slope), driving maneuvers (e.g., driving forward), vehicle state (e.g., accelerating, braking), and other relevant considerations and characteristics (e.g., weather condition). 
-SOTIF also describes elements of a scenario (taking on the model from Ulbrich) as: Scene including dynamic and static element, actions, events, and goals. 
-Another important term in this domain is ``operational design domain'' by SAE J3016, which specifies the conditions under which the AV is intended to be used.
-
-Furthermore, other protocols such as OpenScneario consider: ....
-\todo{finish this one.} 
-
-
-\subsection{Triggering event analysis}
+\label{sec:scenario identification}
 
 
 
-\subsection{Calculate severity}
+\subsection{Probability of exposure}
+\label{sec:exposure}
+
+
+
+\subsection{Simulation of scenarios}
+\label{sec:simulation}
+
+
+
+\subsection{Probability of harmful event}
+\label{sec:harmful}
+
+
+
+\subsection{Calculation of severity}
 \label{sec:severity}
-
-\todo{Hala: summarize literature review for injury probability.}
