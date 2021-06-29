@@ -1,15 +1,48 @@
 \section{Method for risk quantification}
 \label{sec:method}
 
+Our method for quantifying the risk for \iac{ads} consists of 5 steps:
+\begin{itemize}
+	\item Identify the scenarios that are part of the so-called \ac{odd} of the \ac{ads}.
+	\item Determine the exposure of these scenarios, i.e., the expected number of occurrences.
+	\item Simulate the response of the \ac{ads} in these scenarios.
+	\item Calculate the expected number of harmful events.
+	\item Calculate the severity, i.e., the expected injury rate.
+\end{itemize}
+These steps are schematically shown in \cref{fig:method}. 
+In \cref{tab:definitions}, we present the definitions of the terms that are used in our proposed method.
+In the following subsections, these 5 steps are further described.
+
 \begin{figure*}
 	\centering
 	\input{figures/method.tikz}
+	\caption{Schematic overview of the risk quantification method presented in this article. 
+		Each of the 5 steps is further explained in \cref{sec:scenario identification,sec:exposure,sec:simulation,sec:harmful,sec:severity}, respectively.}
+	\label{fig:method}
 \end{figure*}
+
+\newcolumntype{T}{>{\hsize=0.3\hsize}X}
+\newcolumntype{D}{>{\hsize=1.7\hsize}X}
+\begin{table}
+	\caption{The terms and definitions.}
+	\label{tab:definitions}
+	\begin{tabularx}{\linewidth}{TD}
+		\toprule
+		Term & Definitions \\ \otoprule
+		Risk & Combination of the probability of occurrence of harm and the severity of that harm \autocite{ISO26262} \\
+		ODD & Operating conditions under which a given driving automation system or feature thereof is specifically designed to function, including, but not limited to, environmental, geographical, and time-of-day restrictions, and/or the requisite presence or absence of certain traffic or roadway characteristics. \autocite{sae2021j3016} \\
+		Scenario & Quantitative description of the relevant characteristics and activities and/or goals of the ego vehicle(s), the static environment, the dynamic environment, and all events that are relevant to the ego vehicle(s) within the time interval between the first and the last relevant event. \autocite{degelder2021ontology} \\
+		Scenario category & Qualitative description of the relevant characteristics and activities and/or goals of the ego vehicle(s), the static environment, and the dynamic environment. \autocite{degelder2021ontology} \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
 
 
 
 \subsection{Identification of scenarios}
 \label{sec:scenario identification}
+
+
 
 
 

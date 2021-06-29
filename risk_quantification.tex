@@ -6,13 +6,16 @@
 \usepackage{amsfonts}
 \usepackage{dsfont}
 \usepackage[USenglish]{babel}  % language support
-\usepackage{cleveref}\crefname{equation}{}{}\Crefname{equation}{Equation}{Equations}
+\usepackage[capitalize]{cleveref}\crefname{equation}{}{}\Crefname{equation}{Equation}{Equations}
 \usepackage{siunitx}
 \usepackage[nolist,nohyperlinks]{acronym}
 \usepackage{xcolor}
 \usepackage{csquotes}
 \usepackage{tikz}\usetikzlibrary{shapes,arrows,backgrounds}
 \usepackage{pgfplots}\pgfplotsset{compat=1.16}
+\usepackage{tabularx}
+\usepackage{booktabs}\setlength{\heavyrulewidth}{0.1em}\newcommand{\otoprule}{\midrule[\heavyrulewidth]}	
+
 
 
 \usepackage{silence}  							%% For filtering warnings
@@ -44,6 +47,7 @@
 % Acronyms
 \begin{acronym}[AAAAAAAA]
     \acro{acc}[ACC]{Adaptive Cruise Control}\acroindefinite{acc}{an}{an}
+    \acro{ads}[ADS]{Automated Driving System}\acroindefinite{ads}{an}{an}
 	\acro{av}[AV]{Automated Vehicle}\acroindefinite{av}{an}{an}
 	\acro{fcw}[FCW]{Forward Collision Warning}
 	\acro{hdm}[HDM]{Human Driver Model}
@@ -79,6 +83,7 @@
 \input{sections/02-method}
 \input{sections/03-case}
 \input{sections/04-results}
+\acresetall
 \input{sections/05-conc}
 
 
