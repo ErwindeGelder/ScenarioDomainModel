@@ -30,9 +30,10 @@ In the following subsections, these 5 steps are further described.
 		\toprule
 		Term & Definitions \\ \otoprule
 		Risk & Combination of the probability of occurrence of harm and the severity of that harm \autocite{ISO26262} \\
-		ODD & Operating conditions under which a given driving automation system or feature thereof is specifically designed to function, including, but not limited to, environmental, geographical, and time-of-day restrictions, and/or the requisite presence or absence of certain traffic or roadway characteristics. \autocite{sae2021j3016} \\
-		Scenario & Quantitative description of the relevant characteristics and activities and/or goals of the ego vehicle(s), the static environment, the dynamic environment, and all events that are relevant to the ego vehicle(s) within the time interval between the first and the last relevant event. \autocite{degelder2021ontology} \\
-		Scenario category & Qualitative description of the relevant characteristics and activities and/or goals of the ego vehicle(s), the static environment, and the dynamic environment. \autocite{degelder2021ontology} \\
+		ODD & Operating conditions under which a given driving automation system or feature thereof is specifically designed to function, including, but not limited to, environmental, geographical, and time-of-day restrictions, and/or the requisite presence or absence of certain traffic or roadway characteristics \autocite{sae2021j3016} \\
+		Scenario & Quantitative description of the relevant characteristics and activities and/or goals of the ego vehicle(s), the static environment, the dynamic environment, and all events that are relevant to the ego vehicle(s) within the time interval between the first and the last relevant event \autocite{degelder2021ontology} \\
+		Scenario category & Qualitative description of the relevant characteristics and activities and/or goals of the ego vehicle(s), the static environment, and the dynamic environment \autocite{degelder2021ontology} \\
+		Triggering condition & Specific conditions of a scenario that [may] serve as an initiator for a subsequent system reaction leading to hazardous behavior \autocite{ISO21448} \\
 		\bottomrule
 	\end{tabularx}
 \end{table}
@@ -42,7 +43,34 @@ In the following subsections, these 5 steps are further described.
 \subsection{Identification of scenarios}
 \label{sec:scenario identification}
 
+% ODD needed
+An \ac{ads} is designed to operate within its \ac{odd}.
+Therefore, the \ac{odd} is used to limit the risk analysis \autocite{gyllenhammar2020towards}.
+So to quantify the risk of \iac{ads} in driving scenarios, we need to know the \ac{odd} of the \ac{ads}.
+Once deployed, the \ac{ads} needs to deal with many scenarios and the \ac{odd} in which the \ac{ads} is operating determines the variety of these scenarios.
+It is our goal to provide a method for determining the risk for the \ac{ads} in these scenarios.
 
+% Distinguish between scenarios and scenario categories
+Considering the wide variety of scenarios, we propose to distinguish between quantitative scenarios and qualitative scenarios, where scenario categories refer to the latter.
+It is assumed that all possible scenarios within a given \ac{odd} can be categorized into one or more scenario categories. 
+This assumption does not limit the applicability of this article, though it might require many scenario categories to describe all these scenarios.
+In the remainder of this section, we will propose a method to calculate the risk for \iac{ads} in all scenarios that are categorized by the same scenario category.
+This scenario category is denoted by $\scenariocategory$.
+For example, the scenario category ``cut-in'' comprises all possible cut-in scenarios in the \ac{odd} of the \ac{ads}.
+See \autocite{degelder2019scenariocategories} for more examples of scenario categories.
+
+% How to obtain the scenario categories
+%The selection of the scenario categories can be either knowledge based or data driven \autocite{riedmaier2020survey}.
+
+% Triggering condition
+\begin{remark}
+	As part of the scenarios, some factors may cause hazardous behavior. 
+	These factors are called ``triggering conditions'', because they may trigger some specific behavior \autocite{ISO21448}.
+	Typically, triggering conditions may happen rarely, so we may not know the impact on safety. 
+	In our case, one or more triggering conditions could be part of a scenario category.
+	Examples of triggering conditions are heavy rain, low road friction, poor lighting, or dirty sensor(s). 
+	For more example, see \autocite{ISO21448}.
+\end{remark}
 
 
 

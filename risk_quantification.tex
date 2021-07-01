@@ -29,6 +29,12 @@
 
 
 
+\theoremstyle{remark}\newtheorem{remarkenv}{Remark}        %% remarks
+\newenvironment{remark}{\begin{remarkenv}}%
+	{\hfill$\lozenge$\end{remarkenv}}            %% end remark with a lozenge
+
+
+
 % Notations
 \newcommand{\expectation}[1]{\mathds{E}\left[ #1 \right]}
 \newcommand{\injury}{\mathrm{injury}}
@@ -60,7 +66,7 @@
 \begin{document}
 \date{}
 
-\title{Risk Quantification for Automated Vehicles in Driving Scenarios}
+\title{Risk Quantification for Automated Driving Systems in Driving Scenarios}
 
 \author{Erwin~de~Gelder$^{1,2,*}$,
 	    Hala~Elrofai$^{1}$,
