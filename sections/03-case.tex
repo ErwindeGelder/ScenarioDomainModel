@@ -3,30 +3,15 @@
 
 
 
-\subsection{Driver model}
-\label{sec:driver model}
-
-For the driver model, the \ac{idmplus} from \autocite{schakel2010effects} is used. 
-\ac{idmplus} itself is based on the \ac{idm} from \autocite{treiber2000congested}.
-To mimic the ``measurement noise'' of human drivers, the \ac{hdm} of \autocite{treiber2006delays} is used.
-To model the longitudinal behavior, the \ac{acc} of \autocite{xiao2017realistic} is used. 
-The driver will take over after \iac{fcw} is issued.
-The \ac{fcw} is modelled according to \autocite{kiefer2005developing}.
-As proposed by \autocite{xiao2017realistic}, the driver also takes over control if the approaching speed difference of the subject vehicle towards its leading vehicle is larger than \SI{15}{\meter\per\second} while the leading vehicle is within its perception range of \SI{150}{\meter}.
+\subsection{Automated driving system under test}
+\label{sec:ads under test}
 
 
 
-\subsection{Scenarios}
-\label{sec:scenarios}
+\subsection{Scenario categories}
+\label{sec:scenario categories}
 
-The following scenario categories are considered:
-\begin{itemize}
-    \item lead vehicle decelerating;
-    \item approaching slower vehicle;
-    \item cut-in; and
-    \item cut-out.
-\end{itemize}
 
-\todo{Explain how the scenarios are parameterized.}
 
-To obtain data, the data set described in \autocite{paardekooper2019dataset6000km} is used. We observed 1310 lead-vehicle-decelerating scenarios, 655 approaching-slower-vehicle scenaios, 298 cut-in scenarios, and XXX cut-out scenarios.
+\subsection{Triggering conditions}
+\label{sec:triggering conditions}

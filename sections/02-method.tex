@@ -105,18 +105,38 @@ Second, by searching for a combination of tags that describes the scenario categ
 	\end{equation}
 	Here, $\poissonparameter>0$ is a parameter that determines the rate at which a scenario from $\scenariocategory$ occurs.
 	Assuming \cref{eq:poisson}, \cref{eq:exposure} simplifies to $\expectation{\numberofencounters|\scenariocategory}=\poissonparameter$.
-	The Poisson distribution is only appropriate if we can assume the following:
-	\begin{itemize}
-		\item The occurrence of a scenario from $\scenariocategory$ does not affect the probability that a second scenario from $\scenariocategory$ occurs.
-		\item The rate at which a scenario from $\scenariocategory$ occurs is constant.
-		\item Two scenarios from $\scenariocategory$ cannot occur at exactly the same time.
-	\end{itemize}
+	The Poisson distribution is only appropriate if we can assume that (1) the occurrence of a scenario from $\scenariocategory$ does not affect the probability that a second scenario from $\scenariocategory$ occurs, (2) the rate at which a scenario from $\scenariocategory$ occurs is constant, and (3) two scenarios from $\scenariocategory$ cannot occur at exactly the same time.
 \end{remark}
 
 
 
 \subsection{Simulation of scenarios}
 \label{sec:simulation}
+
+The next step of the risk quantification is to simulate how the \ac{ads} behaves in the scenarios from scenario category $\scenariocategory$. 
+We denote the outcome of a simulation by $\simulationoutcome{\parameters}$, where $\parameters$ denote the parameter vector that fully describes the scenario that is being simulated.
+To enable the simulation of the scenarios, a simulation framework is set up.
+\Cref{fig:simulation scheme} shows the scheme of the simulation framework, which is represented by these five blocks:
+\begin{itemize}
+	\item World: the relevant information about the environment of the system under test.
+	\item Sensors: mapping of the global information to sensor data which can be used by \iac{ads}. 
+	\item \acp{ads}: the logic and control laws employed by the \acp{ads} to perform an automated function.
+	The \acp{ads} use the information of the sensors to determine the input to the vehicle.
+	The \acp{ads} may provide input to the actuators of the vehicles and information to the operators, e.g., a beep in case of a collision warning.
+	\item Operators: assuming that the vehicle is not fully autonomous, an operator can also interact with the vehicle.
+	The operator might be the actual driver that is behind the steering wheel, but it might also be an remote operator.
+	\item Vehicles: the responses of all vehicles based on the input generate by the \acp{ads} and operators.
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\input{figures/simulation_scheme.tikz}
+	\caption{Scheme of the simulation framework.}
+	\label{fig:simulation scheme}
+\end{figure}
+
+Note that the simulation scheme allows for tests with multiple vehicles.
+For example, when testing (cooperative) \ac{acc} systems, one might be interesting in the performance of a platoon of vehicles, rather than the performance of a single vehicle.
 
 
 

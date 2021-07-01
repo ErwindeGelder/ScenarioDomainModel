@@ -16,6 +16,4 @@
 	\draw[arrow](exposure) -- (simulate);
 	\draw[arrow](simulate) -- (harm);
 	\draw[arrow](harm) -- (severity);
-	
-	
 \end{tikzpicture}

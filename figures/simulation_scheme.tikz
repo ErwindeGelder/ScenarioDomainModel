@@ -1,0 +1,59 @@
+\tikzstyle{block}=[draw=black, rectangle, minimum width=4em, minimum height=2.5em, node distance=3.5em, text width=4.5em, align=center, fill=gray!20]
+\tikzstyle{backblock}=[block, fill=gray!10]
+\tikzstyle{horz}=[coordinate, node distance=2.9em]
+\tikzstyle{vert}=[coordinate, node distance=0.75em]
+\tikzstyle{arrow}=[->, line width=1pt]
+\begin{tikzpicture}
+	% Blocks
+	\node[block](scenario){World};
+	\node[block, right of=scenario, node distance=14em](sensor){Sensors};
+	\node[block, below of=sensor, node distance=6em](controller){\acp{ads}};
+	\node[block, below of=scenario, node distance=5.25em](vehicle){Vehicles};
+	\node[below of=scenario, node distance=3em](driverHelper){};
+	\node[block, right of=driverHelper, node distance=7em](driver){Operators};
+	\begin{scope}[on background layer]
+		\node[backblock, right of=sensor, above of=sensor, node distance=0.3em]{};
+		\node[backblock, right of=sensor, above of=sensor, node distance=0.15em]{};
+		\node[backblock, right of=controller, above of=controller, node distance=0.3em]{};
+		\node[backblock, right of=controller, above of=controller, node distance=0.15em]{};
+		\node[backblock, right of=driver, above of=driver, node distance=0.3em]{};
+		\node[backblock, right of=driver, above of=driver, node distance=0.15em]{};
+		\node[backblock, right of=vehicle, above of=vehicle, node distance=0.3em]{};
+		\node[backblock, right of=vehicle, above of=vehicle, node distance=0.15em]{};
+	\end{scope}
+	
+	% Arrows
+	% Scenario -> Sensor models
+	\draw[arrow] (scenario) -- (sensor);
+	\node[coordinate, right of=scenario, node distance=10.5em](arrowHelper1){};
+	
+	% Scenario -> Driver models
+	\node[horz, right of=driver](arrowHelper2){};
+	\node[vert, above of=arrowHelper2](arrowHelper3){};
+	\draw[arrow] (scenario) -- (arrowHelper1) |- (arrowHelper3){};
+	
+	% Sensor models -> Controllers
+	\node[coordinate, right of=sensor, node distance=2.9em](arrowHelper12){};
+	\node[coordinate, right of=sensor, node distance=3.3em](arrowHelper4){};
+	\node[coordinate, right of=controller, node distance=2.9em](arrowHelper13){};
+	\draw[arrow] (arrowHelper12) -- (arrowHelper4) |- (arrowHelper13);
+	
+	% Controllers -> Driver models
+	\node[vert, below of=arrowHelper2](arrowHelper5){};
+	\node[coordinate, left of=controller, node distance=3.5em](arrowHelper6){};
+	\draw[arrow] (controller) -- (arrowHelper6) |- (arrowHelper5);
+	
+	% Driver models -> Vehicle models
+	\node[horz, right of=vehicle](arrowHelper7){};
+	\node[vert, above of=arrowHelper7](arrowHelper8){};
+	\node[coordinate, left of=driver, node distance=3.5em](arrowHelper9){};
+	\draw[arrow] (driver) -- (arrowHelper9) |- (arrowHelper8);
+	
+	% Controllers -> Vehicle models
+	\node[vert, below of=arrowHelper7](arrowHelper10){};
+	\draw[arrow] (controller) -- (arrowHelper10);
+	
+	% Vehicle models -> Scenario
+	\node[coordinate, left of=vehicle, node distance=3.5em](arrowHelper11){};
+	\draw[arrow] (vehicle) -- (arrowHelper11) |- (scenario);
+\end{tikzpicture}
