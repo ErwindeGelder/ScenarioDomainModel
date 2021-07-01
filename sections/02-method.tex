@@ -69,13 +69,49 @@ See \autocite{degelder2019scenariocategories} for more examples of scenario cate
 	Typically, triggering conditions may happen rarely, so we may not know the impact on safety. 
 	In our case, one or more triggering conditions could be part of a scenario category.
 	Examples of triggering conditions are heavy rain, low road friction, poor lighting, or dirty sensor(s). 
-	For more example, see \autocite{ISO21448}.
+	For more examples, see \autocite{ISO21448}.
 \end{remark}
 
 
 
 \subsection{Probability of exposure}
 \label{sec:exposure}
+
+To determine the exposure, we estimate the expected number of encounters of a scenario comprised by given scenario category $\scenariocategory$.
+Let $\numberofencounters$ denote the number of encounters, so we can express the exposure as $\expectation{\numberofencounters|\scenariocategory}$, i.e., the expected number of encounters of a scenario from the given scenario category $\scenariocategory$.
+The exposure could be either expressed in terms of number of encounters per unit of distance or number of encounters per unit of time.
+To calculate the exposure, we use the following equation:
+\begin{equation}
+	\label{eq:exposure}
+	\expectation{\numberofencounters|\scenariocategory}
+	 = \sum_{\numberofencounters=1}^{\infty} \numberofencounters \probability{\numberofencounters|\scenariocategory},
+\end{equation}
+where $\probability{\numberofencounters|\scenariocategory}$ denotes the probability of encountering $\numberofencounters$ scenarios from scenario category $\scenariocategory$.
+
+We propose to determine $\probability{\numberofencounters|\scenariocategory}$, $\numberofencounters=1,2,\ldots$, based on data, because the data provide an objective and quantitative way to estimate $\probability{\numberofencounters|\scenariocategory}$, $\numberofencounters=1,2,\ldots$, assuming that the data are collected with the same conditions as specified by the \ac{odd} of the \ac{ads}.
+The probability can be estimated by counting the number of occurrences of the scenarios in the data.
+The method to find the scenarios comprised by $\scenariocategory$ is explained in \autocite{degelder2020scenariomining}.
+In short, a two-step approach is used.
+First, tags are used to annotate the data.
+Tags describe, e.g., the behavior of the ego vehicle and any other vehicle.
+Second, by searching for a combination of tags that describes the scenario category $\scenariocategory$, the scenarios are extracted from the data.
+
+\begin{remark}
+	It is not uncommon to assume that $\probability{\numberofencounters|\scenariocategory}$ follows the Poisson distribution \autocite{nicholson1993accidents, wachenfeld2017new, gyllenhammar2020towards}, i.e., 
+	\begin{equation}
+		\label{eq:poisson}
+		\probability{\numberofencounters|\scenariocategory} = 
+		\frac{\poissonparameter^{\numberofencounters}}{\numberofencounters!} \e{-\poissonparameter}.
+	\end{equation}
+	Here, $\poissonparameter>0$ is a parameter that determines the rate at which a scenario from $\scenariocategory$ occurs.
+	Assuming \cref{eq:poisson}, \cref{eq:exposure} simplifies to $\expectation{\numberofencounters|\scenariocategory}=\poissonparameter$.
+	The Poisson distribution is only appropriate if we can assume the following:
+	\begin{itemize}
+		\item The occurrence of a scenario from $\scenariocategory$ does not affect the probability that a second scenario from $\scenariocategory$ occurs.
+		\item The rate at which a scenario from $\scenariocategory$ occurs is constant.
+		\item Two scenarios from $\scenariocategory$ cannot occur at exactly the same time.
+	\end{itemize}
+\end{remark}
 
 
 
