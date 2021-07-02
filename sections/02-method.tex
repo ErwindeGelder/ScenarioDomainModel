@@ -54,8 +54,8 @@ It is our goal to provide a method for determining the risk for the \ac{ads} in 
 Considering the wide variety of scenarios, we propose to distinguish between quantitative scenarios and qualitative scenarios, where scenario categories refer to the latter.
 It is assumed that all possible scenarios within a given \ac{odd} can be categorized into one or more scenario categories. 
 This assumption does not limit the applicability of this article, though it might require many scenario categories to describe all these scenarios.
-In the remainder of this section, we will propose a method to calculate the risk for \iac{ads} in all scenarios that are categorized by the same scenario category.
-This scenario category is denoted by $\scenariocategory$.
+In the remainder of this section, we will propose a method to calculate the risk for \iac{ads} in all scenarios that are categorized by the same scenario category, i.e., for all $\scenario \in \scenariocategory$ \autocite{degelder2021ontology}.
+A scenario is denoted by $\scenario$ and $\scenariocategory$ denotes a scenario category.
 For example, the scenario category ``cut-in'' comprises all possible cut-in scenarios in the \ac{odd} of the \ac{ads}.
 See \autocite{degelder2019scenariocategories} for more examples of scenario categories.
 
@@ -77,35 +77,36 @@ See \autocite{degelder2019scenariocategories} for more examples of scenario cate
 \subsection{Probability of exposure}
 \label{sec:exposure}
 
-To determine the exposure, we estimate the expected number of encounters of a scenario comprised by given scenario category $\scenariocategory$.
-Let $\numberofencounters$ denote the number of encounters, so we can express the exposure as $\expectation{\numberofencounters|\scenariocategory}$, i.e., the expected number of encounters of a scenario from the given scenario category $\scenariocategory$.
+To determine the exposure, we estimate the expected number of encounters of a scenario $\scenario\in\scenariocategory$.
+Let $\numberofencounters$ denote the number of encounters.
+We express the exposure as $\expectation{\numberofencounters|\scenario\in\scenariocategory}$, i.e., the expected number of encounters of a scenario $\scenario$ from the scenario category $\scenariocategory$.
 The exposure could be either expressed in terms of number of encounters per unit of distance or number of encounters per unit of time.
 To calculate the exposure, we use the following equation:
 \begin{equation}
 	\label{eq:exposure}
-	\expectation{\numberofencounters|\scenariocategory}
-	 = \sum_{\numberofencounters=1}^{\infty} \numberofencounters \probability{\numberofencounters|\scenariocategory},
+	\expectation{\numberofencounters|\scenario\in\scenariocategory}
+	 = \sum_{\numberofencounters=1}^{\infty} \numberofencounters \probability{\numberofencounters|\scenario\in\scenariocategory},
 \end{equation}
-where $\probability{\numberofencounters|\scenariocategory}$ denotes the probability of encountering $\numberofencounters$ scenarios from scenario category $\scenariocategory$.
+where $\probability{\numberofencounters|\scenario\in\scenariocategory}$ denotes the probability of encountering $\numberofencounters$ scenarios $\scenario\in\scenariocategory$.
 
-We propose to determine $\probability{\numberofencounters|\scenariocategory}$, $\numberofencounters=1,2,\ldots$, based on data, because the data provide an objective and quantitative way to estimate $\probability{\numberofencounters|\scenariocategory}$, $\numberofencounters=1,2,\ldots$, assuming that the data are collected with the same conditions as specified by the \ac{odd} of the \ac{ads}.
+We propose to determine $\probability{\numberofencounters|\scenario\in\scenariocategory}$, $\numberofencounters=1,2,\ldots$, based on data, because the data provide an objective and quantitative way to estimate $\probability{\numberofencounters|\scenario\in\scenariocategory}$, $\numberofencounters=1,2,\ldots$, assuming that the data are collected with the same conditions as specified by the \ac{odd} of the \ac{ads}.
 The probability can be estimated by counting the number of occurrences of the scenarios in the data.
-The method to find the scenarios comprised by $\scenariocategory$ is explained in \autocite{degelder2020scenariomining}.
+The method to find the scenarios $\scenario\in\scenariocategory$ is explained in \autocite{degelder2020scenariomining}.
 In short, a two-step approach is used.
 First, tags are used to annotate the data.
 Tags describe, e.g., the behavior of the ego vehicle and any other vehicle.
-Second, by searching for a combination of tags that describes the scenario category $\scenariocategory$, the scenarios are extracted from the data.
+Second, by searching for the combination of tags that describes the scenario category $\scenariocategory$, the scenarios are extracted from the data.
 
 \begin{remark}
-	It is not uncommon to assume that $\probability{\numberofencounters|\scenariocategory}$ follows the Poisson distribution \autocite{nicholson1993accidents, wachenfeld2017new, gyllenhammar2020towards}, i.e., 
+	It is not uncommon to assume that $\probability{\numberofencounters|\scenario\in\scenariocategory}$ follows the Poisson distribution \autocite{nicholson1993accidents, wachenfeld2017new, gyllenhammar2020towards}, i.e., 
 	\begin{equation}
 		\label{eq:poisson}
-		\probability{\numberofencounters|\scenariocategory} = 
+		\probability{\numberofencounters|\scenario\in\scenariocategory} = 
 		\frac{\poissonparameter^{\numberofencounters}}{\numberofencounters!} \e{-\poissonparameter}.
 	\end{equation}
 	Here, $\poissonparameter>0$ is a parameter that determines the rate at which a scenario from $\scenariocategory$ occurs.
-	Assuming \cref{eq:poisson}, \cref{eq:exposure} simplifies to $\expectation{\numberofencounters|\scenariocategory}=\poissonparameter$.
-	The Poisson distribution is only appropriate if we can assume that (1) the occurrence of a scenario from $\scenariocategory$ does not affect the probability that a second scenario from $\scenariocategory$ occurs, (2) the rate at which a scenario from $\scenariocategory$ occurs is constant, and (3) two scenarios from $\scenariocategory$ cannot occur at exactly the same time.
+	Assuming \cref{eq:poisson}, \cref{eq:exposure} simplifies to $\expectation{\numberofencounters|\scenario\in\scenariocategory}=\poissonparameter$.
+	The Poisson distribution is only appropriate if we can assume that the occurrence of a scenario $\scenarioinstance{1}\in\scenariocategory$ does not affect the probability that a second scenario $\scenarioinstance{2}\in\scenariocategory$ occurs, the rate at which a scenario from $\scenariocategory$ occurs is constant, and two scenarios from $\scenariocategory$ cannot occur at exactly the same time.
 \end{remark}
 
 
@@ -113,8 +114,8 @@ Second, by searching for a combination of tags that describes the scenario categ
 \subsection{Simulation of scenarios}
 \label{sec:simulation}
 
-The next step of the risk quantification is to simulate how the \ac{ads} behaves in the scenarios from scenario category $\scenariocategory$. 
-We denote the outcome of a simulation by $\simulationoutcome{\parameters}$, where $\parameters$ denote the parameter vector that fully describes the scenario that is being simulated.
+The next step of the risk quantification is to simulate how the \ac{ads} behaves in the scenarios $\scenario\in\scenariocategory$. 
+We denote the outcome of a simulation of a scenario $\scenario$ by $\simulationoutcome{\scenario}$.
 To enable the simulation of the scenarios, a simulation framework is set up.
 \Cref{fig:simulation scheme} shows the scheme of the simulation framework, which is represented by these five blocks:
 \begin{itemize}
@@ -142,6 +143,30 @@ For example, when testing (cooperative) \ac{acc} systems, one might be interesti
 
 \subsection{Probability of harmful event}
 \label{sec:harmful}
+
+Whereas the outcome of a single simulation run $\simulationoutcome{\scenario}$ provides insight in the behavior of the \ac{ads} under test in one specific scenario, the actual goal is to calculate the risk for all scenarios from scenario category $\scenariocategory$. 
+The first step toward the calculation of the risk is to compute the expected outcome given all scenarios $\scenario\in\scenariocategory$: $\expectation{\simulationoutcome{\scenario}|\scenario\in\scenariocategory}$.
+
+As a source of information for the scenarios for the simulations, the use of real-world driving data is proposed.
+In this way, the scenarios are guaranteed to represent real-world driving conditions \autocite{elrofai2018scenario, putz2017pegasus, krajewski2018highD}.
+One approach would be to simply simulate the scenarios that are recorded from the data, but this gives two problems.
+First, because not all possible variations of the scenarios might be found in the data, the failure modes of the \ac{ads} might not be reflected in the simulations \autocite{zhao2018evaluation}.
+Second, because the set of extracted scenarios is largely composed of non-safety critical scenarios, many scenarios may be required to obtain the required statistical accuracy of rare events such as collisions \autocite{zhao2018evaluation, jesenski2020scalable}.
+To overcome these problems, so-called \ac{is} has been introduced in order to put more emphasis on scenarios that are likely to trigger safety-critical situations \autocite{zhao2018evaluation, xu2018accelerated, jesenski2020scalable}.
+
+In this section, we propose \iac{is} method without requiring a-priori knowledge of what might be scenarios that are likely to trigger safety-critical situations given the \ac{ads} under test.
+First, \iac{cmc} sampling is used, see \cref{sec:cmc}.
+In \cref{sec:is}, we propose the \ac{is} method based on the simulation results of the \ac{cmc} sampling.
+
+
+
+\subsubsection{Crude Monte Carlo sampling}
+\label{sec:cmc}
+
+
+
+\subsubsection{Importance sampling}
+\label{sec:is}
 
 
 

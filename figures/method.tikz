@@ -6,10 +6,10 @@
 \begin{tikzpicture}
 	% Blocks
 	\node[block](scenarios){Identify scenarios: \\ $\scenariocategory$ \\ \cref{sec:scenario identification}};
-	\node[block, right of=scenarios](exposure){Calculate exposure: \\ $\expectation{\numberofencounters|\scenariocategory}$ \\ \cref{sec:exposure}};
-	\node[block, right of=exposure](simulate){Simulate scenario: \\ $\simulationoutcome{\parameters}$ \\ \cref{sec:simulation}};
-	\node[block, right of=simulate](harm){Calculate number of harmful events: \\ $\expectation{\simulationoutcome{\parameters}|\scenariocategory}$ \\ \cref{sec:harmful}};
-	\node[block, right of=harm](severity){Calculate severity: \\ $\expectation{\injury|\scenariocategory}$ \\ \cref{sec:severity}};
+	\node[block, right of=scenarios](exposure){Calculate exposure: \\ $\expectation{\numberofencounters|\scenario\in\scenariocategory}$ \\ \cref{sec:exposure}};
+	\node[block, right of=exposure](simulate){Simulate scenario: \\ $\simulationoutcome{\scenario}$ \\ \cref{sec:simulation}};
+	\node[block, right of=simulate](harm){Calculate number of harmful events: \\ $\expectation{\simulationoutcome{\scenario}|\scenario\in\scenariocategory}$ \\ \cref{sec:harmful}};
+	\node[block, right of=harm](severity){Calculate severity: \\ $\expectation{\injury|\scenario\in\scenariocategory}$ \\ \cref{sec:severity}};
 	
 	% Arrows
 	\draw[arrow](scenarios) -- (exposure);
