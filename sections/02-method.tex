@@ -54,8 +54,7 @@ It is our goal to provide a method for determining the risk for the \ac{ads} in 
 Considering the wide variety of scenarios, we propose to distinguish between quantitative scenarios and qualitative scenarios, where scenario categories refer to the latter.
 It is assumed that all possible scenarios within a given \ac{odd} can be categorized into one or more scenario categories. 
 This assumption does not limit the applicability of this article, though it might require many scenario categories to describe all these scenarios.
-In the remainder of this section, we will propose a method to calculate the risk for \iac{ads} in all scenarios that are categorized by the same scenario category, i.e., for all $\scenario \in \scenariocategory$ \autocite{degelder2021ontology}.
-A scenario is denoted by $\scenario$ and $\scenariocategory$ denotes a scenario category.
+In the remainder of this section, we will propose a method to calculate the risk for \iac{ads} in all scenarios that are categorized by the same scenario category, i.e., for all $\scenario \in \scenariocategory$ \autocite{degelder2021ontology}, where $\scenario$ and $\scenariocategory$ denote a scenario and a scenario category, respectively.
 For example, the scenario category ``cut-in'' comprises all possible cut-in scenarios in the \ac{odd} of the \ac{ads}.
 See \autocite{degelder2019scenariocategories} for more examples of scenario categories.
 
@@ -115,7 +114,8 @@ Second, by searching for the combination of tags that describes the scenario cat
 \label{sec:simulation}
 
 The next step of the risk quantification is to simulate how the \ac{ads} behaves in the scenarios $\scenario\in\scenariocategory$. 
-We denote the outcome of a simulation of a scenario $\scenario$ by $\simulationoutcome{\scenario}$.
+Let $\parameters\in\realnumbers^{\dimension}$ denote the $\dimension$-dimensional parameter vector that describes scenario $\scenario$. 
+Then we denote the (stochastic) outcome of a simulation of scenario $\scenario$ by $\simulationoutcome{\parameters}$, where $\simulationoutcome{\parameters}=1$ means that the simulation of the scenario with parameters $\parameters$ ended with a collision and otherwise $\simulationoutcome{\parameters}=0$.
 To enable the simulation of the scenarios, a simulation framework is set up.
 \Cref{fig:simulation scheme} shows the scheme of the simulation framework, which is represented by these five blocks:
 \begin{itemize}
@@ -141,11 +141,11 @@ For example, when testing (cooperative) \ac{acc} systems, one might be interesti
 
 
 
-\subsection{Probability of harmful event}
+\subsection{Probability of collision}
 \label{sec:harmful}
 
-Whereas the outcome of a single simulation run $\simulationoutcome{\scenario}$ provides insight in the behavior of the \ac{ads} under test in one specific scenario, the actual goal is to calculate the risk for all scenarios from scenario category $\scenariocategory$. 
-The first step toward the calculation of the risk is to compute the expected outcome given all scenarios $\scenario\in\scenariocategory$: $\expectation{\simulationoutcome{\scenario}|\scenario\in\scenariocategory}$.
+Whereas the outcome of a single simulation run $\simulationoutcome{\parameters}$ provides insight in the behavior of the \ac{ads} under test in one specific scenario, the actual goal is to calculate the risk for all scenarios from scenario category $\scenariocategory$. 
+The first step toward the calculation of the risk is to compute the expected outcome given all scenarios $\scenario\in\scenariocategory$: $\expectation{\simulationoutcome{\parameters}|\scenario\in\scenariocategory}$.
 
 As a source of information for the scenarios for the simulations, the use of real-world driving data is proposed.
 In this way, the scenarios are guaranteed to represent real-world driving conditions \autocite{elrofai2018scenario, putz2017pegasus, krajewski2018highD}.
@@ -162,6 +162,57 @@ In \cref{sec:is}, we propose the \ac{is} method based on the simulation results 
 
 \subsubsection{Crude Monte Carlo sampling}
 \label{sec:cmc}
+
+In \ac{cmc}, parameters are sampled from \iac{pdf}. 
+Let $\density{\parameters|\scenario\in\scenariocategory}$ denote the \ac{pdf} of $\parameters$ given that the scenarios are from scenario category $\scenariocategory$.
+Typically, the \ac{pdf} $\density{\parameters|\scenario\in\scenariocategory}$ is unknown, so we need to estimate it.
+To estimate the \ac{pdf}, we use the observed scenarios that we also used to estimate the exposure (\cref{sec:exposure}).
+Because the shape of the \ac{pdf} is also unknown beforehand, assuming a predefined functional form of the \ac{pdf} for which certain parameters are fitted to the data may lead to inaccurate fits unless a lot of hand-tuning is applied. 
+As an alternative, we propose to estimate $\density{\parameters|\scenario\in\scenariocategory}$ using \ac{kde} \autocite{rosenblatt1956remarks, parzen1962estimation}.
+Let $\parametersinstance{1},\ldots,\parametersinstance{\scenariosnumberof}$ denote the parameters of the observed scenarios $\scenarioinstance{\scenarioindex}\in\scenariocategory$, $\scenarioindex\in\{1,\ldots,\scenariosnumberof\}$, then the density $\density{\parameters|\scenario\in\scenariocategory}$ is estimated by
+\begin{equation}
+	\kde{\bandwidth}{\parameters|\scenario\in\scenariocategory}
+	= \frac{1}{\scenariosnumberof\bandwidth^{\dimension}}\sum_{\scenarioindex=1}^{\scenariosnumberof}
+	\kernelfunc{\frac{1}{\bandwidth}\left(\parameters-\parametersinstance{\scenarioindex}\right)}.
+\end{equation}
+Here, $\kernelfunc{\cdot}$ is the so-called kernel and $\bandwidth$ is the bandwidth.
+The choice of the kernel function is not as important as the choice of the bandwidth \autocite{turlach1993bandwidthselection, duong2007ks}.
+We use the often-used Gaussian kernel, but our method also applies with other kernels.
+The Gaussian kernel is given by
+\begin{equation}
+	\kernelfunc{\dummyvar} = \frac{1}{\left(2\pi\right)^{\dimension/2}} 
+	\e{-\frac{1}{2} \normtwo{\dummyvar}^2},
+\end{equation}
+where $\normtwo{\dummyvar}^2=\dummyvar\transpose\dummyvar$ denotes the squared 2-norm of $\dummyvar$.
+
+The bandwidth $\bandwidth>0$ is a free parameter that controls the width of the kernel.
+A larger bandwidth results in a smoother \ac{pdf}, but choosing $\bandwidth$ too large may result in the loss of details in the \ac{pdf}.
+Methods for estimating the bandwidth range from simple reference rules like Silverman's rule of thumb \autocite{silverman1986density} to more elaborate methods (for reviews, see \autocite{turlach1993bandwidthselection, bashtannyk2001bandwidth, jones1996brief}).
+We use one-leave-out cross validation to determine the optimal bandwidth, so that the bandwidth equals
+\begin{equation}
+	\arg \min_{\bandwidth} \prod_{\scenarioindex=1}^{\scenariosnumberof}
+	\left( 
+		\frac{1}{\scenariosnumberof-1} 
+		\sum_{\indexsampling=1,\indexsampling\ne\scenarioindex}^{\scenariosnumberof}
+		\kernelfunc{\frac{1}{\bandwidth}\left(
+			\parametersinstance{\indexsampling}-\parametersinstance{\scenarioindex}
+		\right)}
+	\right).
+\end{equation}
+Note that with the one-dimensional bandwidth $\bandwidth$, the same amount of smoothing is applied in every direction.
+Our method can easily be extended to a multi-dimensional bandwidth.
+
+Sampling from $\kde{\bandwidth}{\parameters|\scenario\in\scenariocategory}$ is straightforward.
+First, an integer $\indexsampling\in\{1,\ldots,\scenariosnumberof\}$ is randomly chosen.
+Next, a random sample is drawn from a Gaussian with covariance $\bandwidth^2\identitymatrix{\dimension}$ and mean $\parametersinstance{\indexsampling}$, where $\identitymatrix{\dimension}$ denotes the $\dimension$-by-$\dimension$ identity matrix.
+
+With \ac{cmc}, the probability of a collision is calculated by taking the mean of $\simulationoutcome{\parameters}$ with a large number of different realizations of $\parameters$:
+\begin{equation}
+	\expectation{\simulationoutcome{\parameters}|\scenario\in\scenariocategory}
+	\approx \frac{1}{\numberofmc} \sum_{\indexsampling=1}^{\numberofmc}
+	\simulationoutcome{\parametersinstance{\indexsampling}}, 
+	\, \parametersinstance{\indexsampling} \fromdistribution \kde{\bandwidth}{\parameters|\scenario\in\scenariocategory}.
+\end{equation}
 
 
 

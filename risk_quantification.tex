@@ -36,21 +36,38 @@
 
 
 % Notations
+\newcommand{\bandwidth}{h}
+\newcommand{\densitysymbol}{f}
+  \newcommand{\density}[1]{\densitysymbol\left(#1\right)}
 \newcommand{\dimension}{d}
+\newcommand{\dummyvar}{u}
 \newcommand{\e}[1]{\exp\left\{ #1 \right\}}
 \newcommand{\expectation}[1]{\mathds{E}\left[ #1 \right]}
+\newcommand{\fromdistribution}{\sim}
+\newcommand{\identitymatrix}[1]{I_{#1}}
+\newcommand{\indexsampling}{j}
 \newcommand{\injury}{\mathrm{injury}}
+\newcommand{\kde}[2]{\hat{\densitysymbol}_{#1}\left(#2\right)}
+\newcommand{\kernelfunc}[1]{K \left( #1 \right)}
+\newcommand{\normtwo}[1]{\left\Vert #1 \right\Vert_2}
 \newcommand{\numberofencounters}{k}
+  \newcommand{\numberofmc}{N_{\mathrm{MC}}}
+  \newcommand{\numberofis}{N_{\mathrm{IS}}}
 \newcommand{\parameters}{x}
   \newcommand{\pardim}{d}
+  \newcommand{\parametersinstance}[1]{\parameters_{#1}}
 \newcommand{\poissonparameter}{\lambda}
 \newcommand{\probability}[1]{\mathds{P}\left( #1 \right)}
   \newcommand{\probabilitycond}[2]{\probability{ #1 | #2 }}
 \newcommand{\realnumbers}{\mathds{R}}
 \newcommand{\scenario}{S}
+  \newcommand{\scenarioindex}{i}
   \newcommand{\scenarioinstance}[1]{\scenario_{#1}}
+  \newcommand{\scenariosnumberof}{N}
 \newcommand{\scenariocategory}{\mathcal{C}}
 \newcommand{\simulationoutcome}[1]{R\left(#1\right)}
+\newcommand{\transpose}{^{\mkern-1.5mu\mathsf{T}}}
+
 
 
 \newcommand{\todo}[1]{\color{red}TO DO: #1 \color{black}}
@@ -66,6 +83,7 @@
 	\acro{idm}[IDM]{Intelligent Driver Model}
 	\acro{idmplus}[IDM+]{Intelligent Driver Model plus}
 	\acro{is}[IS]{Importance Sampling}\acroindefinite{is}{an}{an}
+	\acro{kde}[KDE]{Kernel Density Estimation}
 	\acro{odd}[ODD]{Operational Design Domain}\acroindefinite{odd}{an}{an}
 	\acro{pdf}[pdf]{probability density function}
 \end{acronym}
