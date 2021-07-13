@@ -1,7 +1,7 @@
 \section{\acl{ourmethod} method}
 \label{sec:method}
 
-In this section, we propose the \cstarta\ac{ourmethod} method: \cenda a method for deriving a metric that quantifies the risk of a certain event, such as a collision, in a particular situation in which a vehicle - hereafter, the \textit{ego vehicle} - is in and that is applicable for real-time use.
+In this section, we propose the \cstarta\ac{ourmethod} method: \cenda a method for deriving a measure that quantifies the risk of a certain event, such as a collision, in a particular situation in which a vehicle - hereafter, the \textit{ego vehicle} - is in and that is applicable for real-time use.
 \cstarta The \ac{ourmethod} method \cenda consists of four steps. 
 The first step is the parameterization of the current situation and the possible future situations.
 Second, based on the current situation, we estimate the probability (density) for the possible future situations. 
@@ -261,7 +261,7 @@ Thus, $\numberofsimulations$ is increased until the following condition is met:
 \subsection{Regression for real-time estimation of $\probabilitycond{\collision}{\situationcurrent}$}
 \label{sec:final metric calculation}
 
-To evaluate the risk metric during real-time operation of the ego vehicle, the expression of \cref{eq:estimate probability of collision} is problematic, because it would require multiple $\numberofsimulations$ simulation.
+To evaluate the risk measure during real-time operation of the ego vehicle, the expression of \cref{eq:estimate probability of collision} is problematic, because it would require multiple $\numberofsimulations$ simulation.
 Even if the calculation is accelerated using a technique like importance sampling, it might take too long.
 Therefore, we propose to evaluate \cref{eq:estimate probability of collision} only for some fixed $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
 Next, local regression is used to estimate \cref{eq:estimate probability of collision}.
