@@ -3,7 +3,7 @@
 
 In this section, we propose the \cstarta\ac{ourmethod} method: \cenda a method for deriving a measure that quantifies the risk of a certain event, such as a collision, in a particular situation in which a vehicle - hereafter, the \textit{ego vehicle} - is in and that is applicable for real-time use.
 \cstarta The \ac{ourmethod} method \cenda consists of four steps. 
-The first step is the parameterization of the current situation and the possible future situations.
+The first step is the parameterization of the ``current situation'' and the possible ``future situations''.
 Second, based on the current situation, we estimate the probability (density) for the possible future situations. 
 The third step includes determining the probability of the specified event based on the current and the future situations.
 Finally, local regression is used to speed up the calculations and to make it possible to use the \ac{ssm} in real time. 
@@ -12,9 +12,9 @@ These four steps are described in the following subsections.
 In the remainder of this article, the following notation is used. 
 To denote a probability, $\probability{\cdot}$ is used. 
 \Iac{pdf} is denoted by $\density{\cdot}$. 
-The conditional probability $\probabilitycond{\dummyvara}{\dummyvarb}$ is verbalized as \textit{the probability of $\dummyvara$ given $\dummyvarb$}. 
-Similarly, the conditional \ac{pdf} is denoted by $\densitycond{\cdot}{\cdot}$. 
-To denote the estimation of any of the aforementioned quantities, a circumflex is used, e.g, $\probabilityest{\dummyvara}$ denotes the estimated probability of $\dummyvara$.
+The probability of $\dummyvara$ given $\dummyvarb$ is denoted by $\probabilitycond{\dummyvara}{\dummyvarb}$.
+Similarly, a conditional \ac{pdf} is denoted by $\densitycond{\cdot}{\cdot}$. 
+To denote the estimation of any of the aforementioned functions, a circumflex is used, e.g, $\probabilityest{\dummyvara}$ denotes the estimated probability of $\dummyvara$.
 
 
 
@@ -23,12 +23,14 @@ To denote the estimation of any of the aforementioned quantities, a circumflex i
 
 The first step is to parameterize the current situation the ego vehicle is in. 
 In other words, the current situation needs to be described using $\situationcurrentdim$ numbers that are stacked into one vector $\situationcurrent \in \situationcurrentspace \subseteq \realnumbers^{\situationcurrentdim}$. 
+\cstartb This vector contains all relevant aspects for determining the risk. \cendb
 As an example, $\situationcurrent$ could contain the speed of the ego vehicle and the distance toward its preceding vehicle. 
 In \cref{sec:case study}, we will consider more examples.
 
 Next to describing the current situation, the future situation is described using $\situationfuturedim$ numbers stacked into one vector $\situationfuture \in \situationfuturespace \subseteq \realnumbers^{\situationfuturedim}$. 
 Together with $\situationcurrent$, $\situationfuture$ contains enough information to describe how the relevant future, e.g., the next 5 seconds, around the ego vehicle develops over time. 
 As an example, $\situationfuture$ could contain the speed for the next 5 seconds of the leading vehicle (if any) that is in front of the ego vehicle.
+\cstartb In \cref{sec:case study}, we will consider more examples. \cendb
 
 Let $\collision$ denote an event, e.g., a collision, such that the probability of this event is $\probability{\collision}$.
 The goal of our \ac{ssm} is to estimate the probability of the event $\collision$ given a particular situation $\situationcurrent$, i.e., $\probabilitycond{\collision}{\situationcurrent}$.
@@ -65,16 +67,17 @@ A data-driven approach brings several benefits.
 First, the estimate automatically adapts to local driving styles and behaviors, which can change from region to region, provided that the data are obtained from the same local traffic.
 Second, assumptions such as a constant speed of other vehicles, are not needed.
 For our data-driven approach, let us assume that we have obtained $\situationnumberof$ situations, denoted by $\situationcurrentinstance{\situationindex}\in\situationcurrentspace, \situationindex\in\{1,\ldots,\situationnumberof\}$, and their corresponding future situations described by $\situationfutureinstance{\situationindex}\in\situationfuturespace$.
+\cstartb In the remainder of this subsection, we will explain several methods for estimating $\density{\situationcurrent, \situationfuture}$ using $(\situationcurrentinstance{\situationindex},\situationfutureinstance{\situationindex}), \situationindex\in\{1,\ldots,\situationnumberof\}$ considering different assumptions. \cendb
 
 
 
-\subsubsection{Special case: all parameters from one distribution}
+\cstartb\subsubsection{Kernel density estimation}\cendb
 \label{sec:one kde}
 
-We first explain how to estimate $\density{\situationcurrent, \situationfuture}$ if we assume that all parameters depend on each other and that no further simplifications are possible. 
+We first explain how to estimate $\density{\situationcurrent, \situationfuture}$ if we assume that all $\situationcurrentdim+\situationfuturedim$ parameters depend on each other. 
 The shape of the \ac{pdf} $\density{\situationcurrent, \situationfuture}$ is unknown beforehand. 
 Furthermore, the shape of the estimated \ac{pdf} might change as more data are acquired. 
-Assuming a functional form of the \ac{pdf} and fitting the parameters of the \ac{pdf} to the data may therefore lead to inaccurate fits unless a lot of hand-tuning is applied.
+Assuming a functional form of the \ac{pdf} and fitting the parameters of the \ac{pdf} to the data may therefore lead to inaccurate fits unless extensive manual tuning is applied.
 We employ a non-parametric approach using \ac{kde} \autocite{rosenblatt1956remarks, parzen1962estimation} because the shape of the \ac{pdf} is then automatically computed and \ac{kde} is highly flexible regarding the shape of the \ac{pdf}. 
 Using the \ac{kde}, the estimated \ac{pdf} becomes:
 \begin{equation}
@@ -92,7 +95,7 @@ Using the \ac{kde}, the estimated \ac{pdf} becomes:
 		\end{bmatrix}
 	},
 \end{equation}
-where $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is an appropriate kernel function with positive definite bandwidth matrix $\bandwidthmatrix$. 
+where $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is an appropriate kernel function with \cstartb a $(\situationcurrentdim+\situationfuturedim)$-by-$(\situationcurrentdim+\situationfuturedim)$ symmetric \cendb positive definite \emph{bandwidth} \cstartb or \emph{smoothing} \cendb matrix $\bandwidthmatrix$. 
 The choice of the kernel $\kernelfuncnormalized{\bandwidthmatrix}{\cdot}$ is not as important as the choice of the bandwidth matrix $\bandwidthmatrix$ \autocite{turlach1993bandwidthselection}.
 For example, the Gaussian kernel is given by \autocite{duong2007ks}
 \begin{equation}
@@ -103,17 +106,16 @@ For example, the Gaussian kernel is given by \autocite{duong2007ks}
 	\e{ -\frac{1}{2} \dummyvarkernel\transpose \bandwidthmatrix^{-1} \dummyvarkernel }.
 \end{equation}
 
-The bandwidth matrix $\bandwidthmatrix$ controls the width of the kernel, or, in other words, the influence of each sampling point on nearby regions. 
-There are many different ways of estimating the bandwidth, ranging from simple reference rules like, e.g., Silverman's rule of thumb \autocite{silverman1986density} to more elaborate methods; see \autocite{turlach1993bandwidthselection, chiu1996comparative, jones1996brief, bashtannyk2001bandwidth, zambom2013review} for reviews of different bandwidth selection methods.
-Here, we use one-leave-out cross-validation to compute the bandwidth because this minimizes the Kullback-Leibler divergence between the real \ac{pdf} $\density{\situationcurrent, \situationfuture}$ and the estimated \ac{pdf} $\densityest{\situationcurrent, \situationfuture}$ \autocite{turlach1993bandwidthselection, zambom2013review}.
+The bandwidth matrix $\bandwidthmatrix$ controls the width of the kernel, or, in other words, the influence of each data point \cstartb (i.e., $\begin{bmatrix}\situationcurrentinstance{\situationindex}\transpose & \situationfutureinstance{\situationindex}\transpose\end{bmatrix}\transpose$) \cendb on nearby regions \cstartb (see \autocite{wand1994multivariate} for a more extensive explanation of the bandwidth matrix)\cendb. 
+There are many different ways of estimating the bandwidth matrix, ranging from simple reference rules like, e.g., Silverman's rule of thumb \autocite{silverman1986density} to more elaborate methods; see \autocite{turlach1993bandwidthselection, chiu1996comparative, jones1996brief, bashtannyk2001bandwidth, zambom2013review} for reviews of different bandwidth selection methods.
 
-Drawing samples from the \ac{kde} in \cref{eq:kde estimate} is straightforward: two random numbers are drawn, one to choose a random generator kernel out of the $\situationnumberof$ kernels that are used to construct the \ac{kde}, and one random number from that kernel.
+Drawing samples from the estimated \ac{pdf} in \cref{eq:kde estimate} is straightforward: two random numbers are drawn, one to choose a random generator kernel out of the $\situationnumberof$ kernels that are used to construct the \ac{kde}, and one random number from that kernel.
 Sampling from $\densityestcond{\situationfuture}{\situationcurrent}$ works similarly, but instead of using an equal probability for each random generator kernel to be selected, different probabilities are used based on $\situationcurrent$.
 For more information on sampling from a conditional \ac{pdf} obtained using \ac{kde}, see \autocite{holmes2012fast, degelder2021conditional}.
 
 
 
-\subsubsection{Not all parameters from one distribution}
+\cstartb\subsubsection{Assuming independence}\cendb
 \label{sec:no special case}
 
 Due to the curse of dimensionality \autocite{scott2015multivariate}, estimating $\density{\situationcurrent, \situationfuture}$ with one \ac{kde} according to \cref{eq:kde estimate} becomes inaccurate if $\situationcurrentdim + \situationfuturedim$ becomes large.
@@ -121,7 +123,7 @@ There are a few ways to avoid this curse of dimensionality.
 Without going into much detail, we list a few options.
 
 One option is to assume that one or more parameters are independent of the other parameters. 
-E.g., suppose that $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}\transpose$, such that $\situationfuturepartb$ is independent of $\situationcurrent$ and $\situationfutureparta$.
+E.g., suppose that $\situationfuture\transpose=\begin{bmatrix}\situationfutureparta\transpose & \situationfuturepartb\transpose\end{bmatrix}$, such that $\situationfuturepartb$ is independent of $\situationcurrent$ and $\situationfutureparta$.
 Then we can write
 \begin{equation}
 	\density{\situationcurrent, \situationfuture}
@@ -129,10 +131,10 @@ Then we can write
 	= \density{\situationcurrent, \situationfutureparta} \cdot \density{\situationfuturepartb}.
 \end{equation}
 In this case, we would need to estimate $\density{\situationcurrent, \situationfutureparta}$ and $\density{\situationfuturepartb}$, which can be done in a similar manner as presented in \cref{sec:one kde}.
-Because these two \acp{pdf} have less variables than $\density{\situationcurrent, \situationfuture}$, the two estimated \acp{pdf} will suffer less from the curse of dimensionality \autocite{scott2015multivariate}.
+Because these two \acp{pdf} have fewer variables than $\density{\situationcurrent, \situationfuture}$, the two estimated \acp{pdf} will suffer less from the curse of dimensionality \autocite{scott2015multivariate}.
 
 Another option is to model $\densitycond{\situationfuture}{\situationcurrent}$ as a cascade of conditional probabilities. 
-For example, using the partitioning $\situationfuture=\begin{bmatrix}\situationfutureparta & \situationfuturepartb\end{bmatrix}\transpose$, $\densitycond{\situationcurrent}{\situationfuture}$ can be approximated using two conditional densities:
+For example, using the partitioning $\situationfuture\transpose=\begin{bmatrix}\situationfutureparta\transpose & \situationfuturepartb\transpose\end{bmatrix}$, $\densitycond{\situationcurrent}{\situationfuture}$ can be approximated using two conditional densities:
 \begin{equation}
 	\densitycond{\situationfuture}{\situationcurrent}
 	= \densitycond{\situationfutureparta, \situationfuturepartb}{\situationcurrent}
@@ -145,10 +147,10 @@ For more information on this approach, we refer the reader to \autocite{aas2009p
 
 
 
-\subsubsection{Reduce number of parameters using \acl{svd}}
+\subsubsection{Reduce number of parameters using singular value decomposition}
 \label{sec:parameter reduction}
 
-One way to avoid the curse of dimensionality is to use \iac{svd} \autocite{golub2013matrix} to reduce the number of parameters.
+Another way to avoid the curse of dimensionality is to use \iac{svd} \autocite{golub2013matrix} to reduce the number of parameters.
 With \iac{svd}, the parameters $\situationcurrent$ and $\situationfuture$ are transformed into a lower-dimensional vector of parameters in such a way that the reduced vector of parameters describes as much of the variation as possible.
 To do this, \iac{svd} is made of the matrix that contains all $\situationnumberof$ observed situations:
 \begin{equation}
@@ -157,13 +159,13 @@ To do this, \iac{svd} is made of the matrix that contains all $\situationnumbero
 		\situationfutureinstance{1}-\situationfuturemean & \cdots & \situationfutureinstance{\situationnumberof}-\situationfuturemean
 	\end{bmatrix} = \svdu \svds \svdv\transpose.
 \end{equation}
-Here, $\situationcurrentmean=\sum_{\situationindex=1}^{\situationnumberof}\situationcurrentinstance{\situationindex}$ and $\situationfuturemean=\sum_{\situationindex=1}^{\situationnumberof}\situationfutureinstance{\situationindex}$.
+Here, $\situationcurrentmean=\frac{1}{\situationnumberof}\sum_{\situationindex=1}^{\situationnumberof}\situationcurrentinstance{\situationindex}$ and $\situationfuturemean=\frac{1}{\situationnumberof}\sum_{\situationindex=1}^{\situationnumberof}\situationfutureinstance{\situationindex}$.
 The matrices $\svdu \in \realnumbers^{\left(\situationcurrentdim+\situationfuturedim\right)\times\left(\situationcurrentdim+\situationfuturedim\right)}$ and $\svdv \in \realnumbers^{\situationnumberof \times \situationnumberof}$ are orthonormal, i.e., $\svdu^{-1}=\svdu\transpose$ and $\svdv^{-1}=\svdv\transpose$.
 Moreover, $\svds\in\realnumbers^{\left(\situationcurrentdim+\situationfuturedim\right)\times\situationnumberof}$ has only zeros except at the diagonal: the $(\svdindex,\svdindex)$-th element is $\svdsv{\svdindex}$, $\svdindex\in\{1,\ldots,\svdrank\}$ with  $\svdrank=\min(\situationcurrentdim+\situationfuturedim, \situationnumberof)$, such that
 \begin{equation}
 	\svdsv{1} \geq \svdsv{2} \geq \ldots \geq \svdsv{\svdrank} \geq 0.
 \end{equation}
-Because these so-called singular values are in decreasing order, we can approximate $\situationcurrent$ and $\situationfuture$ by setting $\svdsv{\svdindex}=0$ for $\svdindex > \dimension$ with $\situationcurrentdim < \dimension < \situationcurrentdim+\situationfuturedim$:
+Because these so-called singular values are in decreasing order, we can approximate $\situationcurrent$ and $\situationfuture$ by setting $\svdsv{\svdindex}=0$ for $\svdindex > \dimension$ with $\situationcurrentdim < \dimension < \situationcurrentdim+\situationfuturedim$\footnote{\cstartb We have $\dimension < \situationcurrentdim+\situationfuturedim$, such that the dimension is reduced and we have $\dimension>\situationcurrentdim$, such that the number of linear constraints in \cref{eq:linear constraint} ($\situationcurrentdim$) is smaller than the number of variables ($\dimension$).\cendb}:
 \begin{equation}
 	\label{eq:svd approximation}
 	\begin{bmatrix}
@@ -175,9 +177,10 @@ Because these so-called singular values are in decreasing order, we can approxim
 	= \begin{bmatrix} \svduupperleft \\ \svdulowerleft \end{bmatrix} \svdsupperleft \svdvvecd{\situationindex},
 \end{equation}
 where $\svdventry{\situationindex}{\svdindex}$ is the $(\situationindex,\svdindex)$-th element of $\svdv$ and $\svduvec{\svdindex}$ is the $\svdindex$-th column of $\svdu$.
-Moreover, $\svduupperleft$ is the $\situationcurrentdim$-by-$\dimension$ upper left submatrix of $\svdu$, $\svdulowerleft$ is the $\situationfuturedim$-by-$\dimension$ lower left submatrix $\svdu$, $\svdsupperleft\in\realnumbers^{\dimension\times\dimension}$ is the diagonal matrix with the first $\dimension$ singular values on its diagonal and $\svdvvecd{\situationindex}\transpose = \begin{bmatrix} \svdventry{\situationindex}{1} & \cdots & \svdventry{\situationindex}{\dimension}	\end{bmatrix}$.
+Moreover, $\svduupperleft$ is the $\situationcurrentdim$-by-$\dimension$ upper left submatrix of $\svdu$, $\svdulowerleft$ is the $\situationfuturedim$-by-$\dimension$ lower left submatrix $\svdu$, $\svdsupperleft\in\realnumbers^{\dimension\times\dimension}$ is the diagonal matrix with the first $\dimension$ singular values on its diagonal and $\svdvvecd{\situationindex}\transpose = \begin{bmatrix} \svdventry{\situationindex}{1} & \cdots & \svdventry{\situationindex}{\dimension} \end{bmatrix}$.
+\cstartb Thus, with $\situationcurrentmean$, $\situationfuturemean$, $\svduupperleft$, $\svdulowerleft$, and $\svdsupperleft$, the $(\situationcurrentdim+\situationfuturedim)$-dimensional vector $\begin{bmatrix}\situationcurrentinstance{\situationindex}\transpose & \situationfutureinstance{\situationindex}\transpose\end{bmatrix}\transpose$ is approximated using the $\dimension$-dimensional vector $\svdvvecd{\situationindex}$. \cendb
 
-We can estimate the probability density of $\svdvvecd{\situationindex}$ in a similar way as described in \cref{sec:one kde}.
+Instead of estimating the \ac{pdf} of $\begin{bmatrix}\situationcurrentinstance{\situationindex}\transpose & \situationfutureinstance{\situationindex}\transpose\end{bmatrix}\transpose$, we now estimate the \ac{pdf} of $\svdvvecd{\situationindex}$ using \ac{kde} as described in \cref{sec:one kde}.
 To sample from $\densityestcond{\situationfuture}{\situationcurrent}$, we can sample from the estimated distribution of $\svdvvecd{\situationindex}$.
 Because \cref{eq:svd approximation} is a linear mapping, the sample $\svdvvecsymbol$ that is drawn from the estimated distribution of $\svdvvecd{\situationindex}$ is subject to a linear constraint:
 \begin{equation}
