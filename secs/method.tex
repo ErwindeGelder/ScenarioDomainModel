@@ -196,7 +196,7 @@ In \autocite{degelder2021conditional}, an algorithm is provided for sampling fro
 
 \cstarta Monte Carlo simulations are used to estimate $\probabilitycond{\collision}{\situationcurrent}$, i.e., the probability of an event $\collision$ given the current situation $\situationcurrent$. \cenda
 The details of the simulation depends on the actual application. 
-For example, if the goal of our \ac{ssm} is to evaluate the risk that a human-driven vehicle collides, the simulation should involve human driver behavior models. 
+For example, if the goal of our \ac{ssm} is to evaluate the risk that a human-driven vehicle collides, the simulation should involve human driving behavior models. 
 On the other hand, if the goal is to evaluate the risk of collision when \iac{ads} is controlling the vehicle, the simulation should include the model of this \ac{ads}.
 
 A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and count the number of simulations that result in the event $\collision$.
@@ -210,11 +210,11 @@ If $\numberofsimulations$ denotes the number of simulations and $\numberofcollis
 An important choice for estimating $\probabilitycond{\collision}{\situationcurrent}$ is the number of simulations, $\numberofsimulations$.
 One approach is to keep increasing $\numberofsimulations$ until there is enough confidence in the estimation of \cref{eq:binomial estimation}.
 E.g., the Clopper-Pearson interval \autocite{clopper1934use} or the Wilson score interval \autocite{wilson1927probable} can be used to determine the confidence of the estimation of \cref{eq:binomial estimation}.
-A disadvantage of this approach is that only the fact whether the event $\collision$ occurred or not is used while the simulation provides more information. 
+A disadvantage of this approach is that only the fact whether the event $\collision$ occurred or not is used, while the simulation provides more information. 
 Therefore, we provide an alternative approach to estimate $\probabilitycond{\collision}{\situationcurrent}$.
 
 \cstarta For the alternative approach, let us assume that one simulation run provides more information that just the fact that the event $\collision$ occurred or not.
-Let $\simulationresult \in \realnumbers^{\dimsimulationresult}$ be a continuous variable representing the result of a simulation run and let $\spacecollision$ denote the set of possible simulation results in which the event $\collision$ occurred. 
+Let $\simulationresult \in \realnumbers^{\dimsimulationresult}$ be a continuous variable representing the result of a simulation run and let $\spacecollision$ denote the \cenda\cstartb known \cendb\cstarta set of possible simulation results in which the event $\collision$ occurred. 
 Thus, \cenda $\simulationresult \in \spacecollision$ if and only if the simulation results in the event $\collision$.
 Therefore, we have
 \begin{equation}
@@ -267,8 +267,9 @@ Thus, $\numberofsimulations$ is increased until the following condition is met:
 To evaluate the risk measure during real-time operation of the ego vehicle, the expression of \cref{eq:estimate probability of collision} is problematic, because it would require multiple $\numberofsimulations$ simulation.
 Even if the calculation is accelerated using a technique like importance sampling, it might take too long.
 Therefore, we propose to evaluate \cref{eq:estimate probability of collision} only for some fixed $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
-Next, local regression is used to estimate \cref{eq:estimate probability of collision}.
-More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric}:
+\cstartb Next, regression is used to estimate \cref{eq:estimate probability of collision}.
+To not rely on a fixed shape for which certain parameters are fitted (e.g., polynomial or logistic regression), non-parametric \cendb regression is used to estimate \cref{eq:estimate probability of collision}.
+More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric}, \cstartb such that the approximation is guaranteed to give a number between 0 and 1\cendb:
 \begin{equation}
 	\label{eq:nadaraya watson}
 	\probabilityestcond{\collision}{\situationcurrent}
