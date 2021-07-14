@@ -2,26 +2,24 @@
 
 % Introduce surrogate safety metrics
 \acp{ssm} are used to express road safety in terms of the safety risk in traffic conflicts.
-As opposed to historical crash data, which takes a long time to obtain, \acp{ssm} can be used to determine  the risk of a collision or harm of a certain vehicle.
 % What is lacking?
-\cstarta Typically, \acp{ssm} rely on assumptions on the future evolution of traffic participants to generate a measure of risk. 
-As a result, \acp{ssm} are only applicable in certain types of scenarios. 
+\cstarta Typically, \acp{ssm} rely on assumptions on the future evolution of traffic participants to generate a measure of risk. \cenda
+\cstartb As a result, they are only applicable in scenarios where those assumptions hold. \cendb
 
 % Our approach
-We present a novel data-driven approach called the \ac{ourmethod} method. 
-The \ac{ourmethod} method is used to derive \acp{ssm} that provide a probability that a certain specified event, such as a collision, happens in the near future. 
-These derived \acp{ssm} are not limited to certain types of scenarios.
-Furthermore, because we adopt a data-driven approach to predict the possible future evolutions of traffic participants, less assumptions are needed.
-The \ac{ourmethod} method uses Monte Carlo simulations, such that the derived \acp{ssm} can accurately estimate the probability of the specified event.
+\cstarta To address this issues, we present a novel data-driven \ac{ourmethod} method. 
+The \ac{ourmethod} method is used to derive \acp{ssm} that provide a probability of a specific event (e.g., collision) in the near future. 
+Because we adopt a data-driven approach to predict the possible future evolutions of traffic participants, less assumptions are needed.
+To do so, the \ac{ourmethod} method uses Monte Carlo simulations to estimate the occurrence probability of the specified event.
 We further introduce a statistical method that requires fewer simulations to estimate this probability. 
 Combined with a regression model, this enables our derived \acp{ssm} to make real-time risk estimations.
 
 % Results
-Results show that the \ac{ourmethod} method is a generalization of existing probabilistic \acp{ssm}.
-To further illustrate the approach, \iac{ssm} is derived for risk evaluation during longitudinal traffic conflicts. 
-Since the ground truth for the safety risk is generally lacking, it is very difficult, if not impossible, to argue that one \ac{ssm} it better than another \ac{ssm}.
-As an alternative, we provide a method for benchmarking the derived \ac{ssm} with respect to expected risk tendencies.
-The application of the benchmarking illustrates that the derived \ac{ssm} matches the expected risk tendencies. \cenda
+%Results show that the \ac{ourmethod} method is a generalization of existing probabilistic \acp{ssm}.
+To illustrate the \ac{ourmethod} method, \iac{ssm} is derived for risk evaluation during longitudinal traffic interactions. \cenda
+\cstartb Since there is no known method to objectively estimate risk from first principles, i.e., there is no known risk ground truth, it is very difficult, if not impossible, to objectively compare the relative merits of two \acp{ssm}. \cendb
+\cstarta Instead, we provide a method for benchmarking our derived \ac{ssm} with respect to expected risk tendencies.
+The application of the benchmarking illustrates that the \ac{ssm} matches the expected risk tendencies. \cenda
 
 % Conclusions
 Whereas the derived \ac{ssm} shows the potential of the \cstarta\ac{ourmethod} method\cenda, future work involves applying the approach for other types of traffic conflicts, such as lateral traffic conflicts or interactions with vulnerable road users.
