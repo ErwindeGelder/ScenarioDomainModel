@@ -128,12 +128,12 @@ To describe the current situation at time $\time$, $\situationcurrentdim=4$ para
 	\item The speed of the leading vehicle ($\speedlead{\time}$);
 	\item The acceleration of the leading vehicle ($\accelerationlead{\time}$);
 	\item The speed of the ego vehicle ($\speedego{\time}$); and
-	\item The gap between the leading vehicle and the ego vehicle $\gap{\time}$.
+	\item The log\footnote{\cstartb Note that the log is used, such that there are, relatively speaking, more simulations performed with a small initial gap, cf.\ \cref{eq:design points distance}.\cendb} of the gap between the leading vehicle and the ego vehicle $\ln{\gap{\time}}$.
 \end{itemize}
 Thus, we have:
 \begin{equation}
 	\situationcurrent\transpose(\time) = \begin{bmatrix}
-		\speedlead{\time} & \accelerationlead{\time} & \speedego{\time} & \gap{\time}
+		\speedlead{\time} & \accelerationlead{\time} & \speedego{\time} & \ln{\gap{\time}}
 	\end{bmatrix}.
 \end{equation}
 
