@@ -79,7 +79,7 @@ The random parameters $\timereact$ and $\accelerationmax$ are similarly distribu
 \subsubsection{Comparison}
 \label{sec:wang stamatiadis comparison}
 
-\Cref{fig:ws comparison} shows the results of the comparison between the measure of \textcite{wang2014evaluation} and the measure derived using our proposed approach in \cref{sec:method}.
+\Cref{fig:ws comparison} shows the results of the comparison between the measure of \textcite{wang2014evaluation} and the measure derived using the \ac{ourmethod} method described in \cref{sec:method}.
 The black lines in \cref{fig:ws comparison} denote $\wangstamatiadis$ of \cref{eq:ws}.
 These lines show that for lower values of $\ttcsymbol$, $\wangstamatiadis$ increases.
 Also, for increasing values of $\speeddifferencesymbol$ (solid, dashed, and dotted lines), the risk measure $\wangstamatiadis$ increases.
@@ -201,7 +201,7 @@ The number of simulations is further increases until the condition in \cref{eq:c
 
 To calculate $\probabilitycond{\collision}{\situationcurrent}$ using \cref{eq:nadaraya watson}, we create a grid of points $\situationcurrentinstance{\simulationindex}$, $\simulationindex\in\{1,\ldots,\numberofdesignpoints\}$ using the method explained in \cref{sec:final metric calculation}.
 For $\weightmatrix$, we use a diagonal matrix with on its diagonal: 0.25, 4, 0.25, and 0.25, \cstartb which is a trade-off between keeping many points such that the estimation in \cref{eq:nadaraya watson} is accurate while also keeping the total number of points for which $\probabilitycond{\collision}{\situationcurrent}$ is estimated manageable.
-With this choice of $\weightmatrix$, we have $\numberofdesignpoints=11103$. \cendb
+With this choice of $\weightmatrix$, we have $\numberofdesignpoints=10036$. \cendb
 For the regression of \cref{eq:nadaraya watson}, we use $\bandwidthnw=\weightmatrix^{-1}$.
 
 
@@ -282,8 +282,7 @@ Hence, in the next section, we will present a qualitative approach to benchmark 
 \subsection{Benchmarking an \acs{ssm} with expected risk tendencies}
 \label{sec:tendencies}
 
-In this section, we demonstrate an approach for benchmarking \iac{ssm} that is based on the so-called \emph{expected risk tendencies} of \textcite{mullakkal2017comparative}.
-\textcite{mullakkal2017comparative} argue that the risk increases if the approaching speed of the ego vehicle toward the leading vehicle increases.
+In this section, we demonstrate an approach for benchmarking \iac{ssm} that is based on the so-called \emph{expected risk tendencies} of \textcite{mullakkal2017comparative}, who argue that the risk increases if the approaching speed of the ego vehicle toward the leading vehicle increases.
 Also, the risk increases with a higher ego vehicle speed \autocite{aarts2006driving} or a higher driver reaction time \autocite{klauer2006impact}.
 On the other hand, the risk decreases with a higher road friction \autocite{wallman2001friction} or a larger intervehicle spacing \autocite{mullakkal2017comparative}.
 

@@ -216,6 +216,7 @@ Therefore, we provide an alternative approach to estimate $\probabilitycond{\col
 \cstarta For the alternative approach, let us assume that one simulation run provides more information that just the fact that the event $\collision$ occurred or not.
 Let $\simulationresult \in \realnumbers^{\dimsimulationresult}$ be a continuous variable representing the result of a simulation run and let $\spacecollision$ denote the \cenda\cstartb known \cendb\cstarta set of possible simulation results in which the event $\collision$ occurred. 
 Thus, \cenda $\simulationresult \in \spacecollision$ if and only if the simulation results in the event $\collision$.
+\cstartb We assume $\spacecollision$ is known. \cendb
 Therefore, we have
 \begin{equation}
 	\probabilitycond{\collision}{\situationcurrent}
@@ -243,7 +244,7 @@ We can now estimate $\probabilitycond{\collision}{\situationcurrent}$ by substit
 \end{equation}
 
 Similar as with \cref{eq:binomial estimation}, we need to choose the number of simulations $\numberofsimulations$.
-Our proposal is to keep increasing $\numberofsimulations$ until the variance of $\probabilityestcond{\simulationresult \in \spacecollision}{\situationcurrent}$ is below a threshold $\simulationthreshold$.
+Our proposal is to keep increasing $\numberofsimulations$ until the variance of $\probabilityestcond{\simulationresult \in \spacecollision}{\situationcurrent}$ is below a threshold $\simulationthreshold>0$.
 The variance follows from \autocite{nadaraya1964some}:
 \begin{equation}
 	\label{eq:variance estimation}
