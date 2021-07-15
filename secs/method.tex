@@ -246,6 +246,7 @@ Similar as with \cref{eq:binomial estimation}, we need to choose the number of s
 Our proposal is to keep increasing $\numberofsimulations$ until the variance of $\probabilityestcond{\simulationresult \in \spacecollision}{\situationcurrent}$ is below a threshold $\simulationthreshold$.
 The variance follows from \autocite{nadaraya1964some}:
 \begin{equation}
+	\label{eq:variance estimation}
 	\variance{\probabilityestcond{\simulationresult \in \spacecollision}{\situationcurrent}}
 	= \frac{\probabilitycond{\simulationresult \in \spacecollision}{\situationcurrent}
 		\left( 1-\probabilitycond{\simulationresult \in \spacecollision}{\situationcurrent} \right)}{\numberofsimulations}.
@@ -282,7 +283,7 @@ More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006no
 Here, $\probabilityestcond{\collision}{\situationcurrentinstance{\situationindexdesign}}$ is based \cref{eq:estimate probability of collision} and $\kernelfuncnormalized{\bandwidthnw}{\cdot}$ represents the Gaussian kernel given by \cref{eq:kernel current future}.
 Two important choices have to be made: The choice of the $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ for which to evaluate \cref{eq:estimate probability of collision} and the choice of the bandwidth matrix $\bandwidthnw$.
 We suggest to base the design points $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ on the data that is used to estimate $\densitycond{\situationfuture}{\situationcurrent}$ in \cref{sec:estimate future}, i.e., $\situationcurrentinstance{\situationindex}$, $\situationindex \in \{1,\ldots,\situationnumberof\}$, such that all $\situationcurrentinstance{\situationindex}$ have at least one design point $\situationcurrentinstance{\situationindexdesign}$  nearby.
-In other words, $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ is chosen such that
+In other words, $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ are chosen such that
 \begin{equation}
 	\label{eq:design points distance}
 	\min_{\situationindexdesign} 
