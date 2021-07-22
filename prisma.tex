@@ -57,7 +57,7 @@
 \author[1,5]{Jan-Pieter Paardekooper}
 \author[1]{Olaf Op den Camp}
 \author[1,6]{Arturo Tejada Ruiz}
-\author[1,2]{Bart De Schutter}
+\author[2]{Bart De Schutter}
 \cortext[cor1]{Corresponding author}
 \address[1]{TNO, Integrated Vehicle Safety, Helmond, The Netherlands}
 \address[2]{Delft University of Technology, Delft Center for Systems and Control, Delft, The Netherlands}
@@ -95,7 +95,8 @@
 \newcommand{\kernelfuncnormalized}[2]{K_{#1} \left( #2 \right)}
 \newcommand{\lowerbound}{L}
   \newcommand{\lowerboundadapted}{\hat{\lowerbound}}
-\renewcommand{\ln}[1]{\log \left( #1 \right)}
+\newcommand{\lnsymbol}{\log}
+  \renewcommand{\ln}[1]{\lnsymbol \left( #1 \right)}
 %\newcommand{\meanamax}{\mu_{\accelerationmax}}
 %  \newcommand{\meantr}{\mu_{\timereact}}
 \newcommand{\normtwo}[1]{\left\Vert #1 \right\Vert_2}
@@ -174,6 +175,8 @@
 \newcommand{\cenda}{}
 \newcommand{\cstartb}{\color{blue}}  % Changes since 2021 07 12 (ATR & JM)
 \newcommand{\cendb}{\color{black}}
+\newcommand{\cstartc}{\color{blue}}  % Changes since 2021 07 22 (OOdC, JPP, RS)
+\newcommand{\cendc}{\color{black}}
 
 \begin{document}
 

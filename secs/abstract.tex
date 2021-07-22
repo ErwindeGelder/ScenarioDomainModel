@@ -3,13 +3,13 @@
 % Introduce surrogate safety metrics
 \acp{ssm} are used to express road safety in terms of the safety risk in traffic conflicts.
 % What is lacking?
-\cstarta Typically, \acp{ssm} rely on assumptions on the future evolution of traffic participants to generate a measure of risk. \cenda
+\cstarta Typically, \acp{ssm} rely on assumptions regarding the future evolution of traffic participant trajectories to generate a measure of risk. \cenda
 \cstartb As a result, they are only applicable in scenarios where those assumptions hold. \cendb
 
 % Our approach
 \cstarta To address this issues, we present a novel data-driven \ac{ourmethod} method. 
-The \ac{ourmethod} method is used to derive \acp{ssm} that provide a probability of a specific event (e.g., collision) in the near future. 
-Because we adopt a data-driven approach to predict the possible future evolutions of traffic participants, less assumptions are needed.
+The \ac{ourmethod} method is used to derive \acp{ssm} that \cenda\cstartc can be used to calculate in real-time the \cendc\cstarta probability of a specific event (e.g., collision). 
+Because we adopt a data-driven approach to predict the possible future evolutions of traffic participant trajectories, less assumptions are needed.
 To do so, the \ac{ourmethod} method uses Monte Carlo simulations to estimate the occurrence probability of the specified event.
 We further introduce a statistical method that requires fewer simulations to estimate this probability. 
 Combined with a regression model, this enables our derived \acp{ssm} to make real-time risk estimations.
@@ -18,8 +18,8 @@ Combined with a regression model, this enables our derived \acp{ssm} to make rea
 %Results show that the \ac{ourmethod} method is a generalization of existing probabilistic \acp{ssm}.
 To illustrate the \ac{ourmethod} method, \iac{ssm} is derived for risk evaluation during longitudinal traffic interactions. \cenda
 \cstartb Since there is no known method to objectively estimate risk from first principles, i.e., there is no known risk ground truth, it is very difficult, if not impossible, to objectively compare the relative merits of two \acp{ssm}. \cendb
-\cstarta Instead, we provide a method for benchmarking our derived \ac{ssm} with respect to expected risk tendencies.
-The application of the benchmarking illustrates that the \ac{ssm} matches the expected risk tendencies. \cenda
+\cstarta Instead, we provide a method for benchmarking our derived \ac{ssm} with respect to expected risk trends.
+The application of the benchmarking illustrates that the \ac{ssm} matches the expected risk trends. \cenda
 
 % Conclusions
 Whereas the derived \ac{ssm} shows the potential of the \cstarta\ac{ourmethod} method\cenda, future work involves applying the approach for other types of traffic conflicts, such as lateral traffic conflicts or interactions with vulnerable road users.

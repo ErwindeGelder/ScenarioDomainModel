@@ -23,7 +23,7 @@ In \cref{sec:wang stamatiadis comparison}, we illustrate the results of both.
 \subsubsection{Measure of Wang and Stamatiadis}
 \label{sec:wang stamatiadis explanation}
 
-The \ac{ssm} $\wangstamatiadis$ calculates the probability of collision of the ego vehicle and the leading vehicle, where the ego vehicle is following the leading vehicle.
+The \ac{ssm} $\wangstamatiadis$ calculates the probability of collision of the ego vehicle and the leading vehicle, where the ego vehicle is following an initially slower driving leading vehicle.
 The \ac{ssm} is based on the following assumptions \autocite{wang2014evaluation}:
 \begin{itemize}
 	\item The leading vehicle keeps a constant speed;
@@ -34,7 +34,7 @@ The \ac{ssm} is based on the following assumptions \autocite{wang2014evaluation}
 \end{itemize}
 To calculate $\wangstamatiadis$ at a given time $\time$, the speed difference between the ego vehicle and the leading vehicle, $\speeddifference{\time}$, and the \ac{ttc}, $\ttc{\time}$, are used.
 Note that $\ttc{\time}$ is the ratio of the gap, $\gap{\time}$, between the ego vehicle and the leading vehicle and $\speeddifference{\time}$.
-If $\speeddifference{\time} \leq 0$, then the ego vehicle drives slower and there is no risk of collision according to \textcite{wang2014evaluation}, so $\wangstamatiadis(\time)=0$.
+If $\speeddifference{\time} \leq 0$, then the ego vehicle drives slower and there is no risk of a future collision according to \textcite{wang2014evaluation}, so $\wangstamatiadis(\time)=0$.
 Given $\accelerationmax$, the driver of the ego vehicle needs to react within
 \begin{equation}
 	\timemaxreact(\time) = \ttc{\time} - \frac{\speeddifference{\time}}{2 \accelerationmax}
@@ -128,12 +128,12 @@ To describe the current situation at time $\time$, $\situationcurrentdim=4$ para
 	\item The speed of the leading vehicle ($\speedlead{\time}$);
 	\item The acceleration of the leading vehicle ($\accelerationlead{\time}$);
 	\item The speed of the ego vehicle ($\speedego{\time}$); and
-	\item The log\footnote{\cstartb Note that the log is used, such that there are, relatively speaking, more simulations performed with a small initial gap, cf.\ \cref{eq:design points distance}.\cendb} of the gap between the leading vehicle and the ego vehicle $\ln{\gap{\time}}$.
+	\item The log of the gap between the leading vehicle and the ego vehicle\footnote{\cstartb Note that the log is used, such that there are, relatively speaking, more simulations performed with a small initial gap, cf.\ \cref{eq:design points distance}.\cendb} $\lnsymbol \gap{\time}$.
 \end{itemize}
 Thus, we have:
 \begin{equation}
 	\situationcurrent\transpose(\time) = \begin{bmatrix}
-		\speedlead{\time} & \accelerationlead{\time} & \speedego{\time} & \ln{\gap{\time}}
+		\speedlead{\time} & \accelerationlead{\time} & \speedego{\time} & \lnsymbol \gap{\time}
 	\end{bmatrix}.
 \end{equation}
 
@@ -145,18 +145,18 @@ The speed of the leading vehicle at $\situationfuturehorizon=50$ instances, each
 	\end{bmatrix}.
 \end{equation}
 It is assumed that $\situationfuture(\time)$ depends on $\speedlead{\time}$ and $\accelerationlead{\time}$. 
-To model this \cstartb dependence \cendb with a single kernel density estimator would give us \iac{pdf} with $\situationfuturehorizon+2$ dimensions.
+To model this \cstartb dependency \cendb with a single kernel density estimator would give us \iac{pdf} with $\situationfuturehorizon+2$ dimensions.
 To reduce the dimensionality, we use \iac{svd} as described in \cref{sec:parameter reduction} with\footnote{Note that because we assume that $\situationfuture(\time)$ depends on 2 parameters of $\situationcurrent(\time)$, i.e., $\speedlead{\time}$ and $\accelerationlead{\time}$, we need to choose $\dimension$ such that $2 < \dimension < \situationfuturehorizon+2$.} $\dimension=4$.
-In total, 18182 longitudinal interactions between two vehicles are analyzed.
+In total, 18182 longitudinal interactions between two vehicles have been analyzed.
 For each second of an interaction, we extract a ``current situation'' $\situationcurrentinstance{\situationindex}$ and a corresponding ``future situation'' $\situationfutureinstance{\situationindex}$. 
 This leads to $\situationnumberof=469453$ data points.
 Based on Silverman's rule of thumb \autocite{silverman1986density}, we use a bandwidth matrix $\bandwidthmatrix=\bandwidth^2\identitymatrix{4}$ for the \ac{kde} with $\bandwidth\approx 0.186$ and $\identitymatrix{4}$ denoting the 4-by-4 identity matrix.
 
-\cstartb To demonstrate the sampling from the estimated density of the reduced parameter vector subject to a linear constraint like \cref{eq:linear constraint}, \cendb the plots in \cref{fig:speed profiles} show 50 different future situations in the form of \cref{eq:example future situation}.
-\Cref{fig:speed profiles accelerating} assumes a current situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$ and \cref{fig:speed profiles decelerating} assumes a current situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$.
+\cstartb To demonstrate the sampling from the estimated density of the reduced parameter vector subject to a linear constraint such as \cref{eq:linear constraint}, \cendb the plots in \cref{fig:speed profiles} show 50 different future situations in the form of \cref{eq:example future situation}.
+\Cref{fig:speed profiles accelerating} assumes an initial situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{1}{\meter\per\second\squared}$ and \cref{fig:speed profiles decelerating} assumes a current situation with $\speedleadsymbol=\SI{15}{\meter\per\second}$ and $\accelerationleadsymbol=\SI{-1}{\meter\per\second\squared}$.
 Note that the same \ac{pdf} is used to produce the lines in \cref{fig:speed profiles}; the only difference between \cref{fig:speed profiles accelerating} and \cref{fig:speed profiles decelerating} is a different linear constraint \cstartb (based on $\speedleadsymbol$ and $\accelerationleadsymbol$) \cendb on the generated samples.
 In case a simulation run is longer than \SI{5}{\second}, the speed of the leading vehicle is assumed to remain constant after these \SI{5}{\second}.
-\cstartb Note that a simulation run is rarely longer than \SI{5}{\second}, so this assumptions does not have a significant effect on the results. \cendb
+\cstartb Note that a simulation run is rarely longer than \SI{5}{\second}, so this assumption does not have a significant effect on the results. \cendb
 
 \setlength{\figurewidth}{.49\linewidth}
 \setlength{\figureheight}{.7\figurewidth}
@@ -178,14 +178,14 @@ In case a simulation run is longer than \SI{5}{\second}, the speed of the leadin
 	\label{fig:speed profiles}
 \end{figure}
 
-To estimate $\probabilitycond{\collision}{\situationcurrent}$ (\cref{sec:estimate collision}), we use the driver behavior model \ac{idmplus} \autocite{schakel2010effects} for modeling the ego vehicle response.
+To estimate $\probabilitycond{\collision}{\situationcurrent}$ (\cref{sec:estimate collision}), we use the \ac{idmplus} \autocite{schakel2010effects} for modeling the ego vehicle driver behavior and response.
 In addition to \ac{idmplus}, we assume that the driver has a reaction time that is similarly distributed as $\timereact$ in \cref{sec:wang stamatiadis explanation} and that the \ac{madr} is similarly distributed as $\accelerationmax$ in \cref{sec:wang stamatiadis explanation}.
 \cstartb A simulation run ends if either the ego vehicle and the leading vehicle are colliding or if the gap between the ego vehicle and the leading vehicle is not decreasing. 
 Depending on the reason for a simulation run to end, we consider the following result:
 \begin{itemize}
 	\item If the ego vehicle and the leading vehicle are colliding, we are interested in the ``severity'' of the collision. 
 	This is expressed using the speed difference: $\speedlead{\timeend} - \speedego{\timeend}$, with $\timeend$ denotes the final time of the simulation.
-	\item If there is no collision, we are interested in close the two vehicles came.
+	\item If there is no collision, we are interested in how close the two vehicles came.
 	Therefore, the minimum gap is used, which is $\gap{\timeend}$.
 \end{itemize}
 Thus, we have: \cendb
@@ -195,12 +195,12 @@ Thus, we have: \cendb
 		\gap{\timeend} & \text{otherwise}
 	\end{cases}.
 \end{equation}
-Clearly, $\simulationresult<0$ indicates a collision, so $\spacecollision=(-\infty, 0)$.
+Clearly, $\simulationresult\leq0$ indicates a collision, so $\spacecollision=(-\infty, 0]$.
 \cstarta The minimum number of simulations to estimate $\probabilitycond{\collision}{\situationcurrent}$ is set to 5. 
-The number of simulations is further increases until the condition in \cref{eq:condition stop simulations} with $\simulationthreshold=0.1$ is met. \cenda
+The number of simulations is further increased until the condition in \cref{eq:condition stop simulations} with $\simulationthreshold=0.1$ is met. \cenda
 
 To calculate $\probabilitycond{\collision}{\situationcurrent}$ using \cref{eq:nadaraya watson}, we create a grid of points $\situationcurrentinstance{\simulationindex}$, $\simulationindex\in\{1,\ldots,\numberofdesignpoints\}$ using the method explained in \cref{sec:final metric calculation}.
-For $\weightmatrix$, we use a diagonal matrix with on its diagonal: 0.25, 4, 0.25, and 0.25, \cstartb which is a trade-off between keeping many points such that the estimation in \cref{eq:nadaraya watson} is accurate while also keeping the total number of points for which $\probabilitycond{\collision}{\situationcurrent}$ is estimated manageable.
+For $\weightmatrix$, we use a diagonal matrix with diagonal elements: 0.25, 4, 0.25, and 0.25, \cstartb which is a trade-off between keeping many points such that the estimation in \cref{eq:nadaraya watson} is accurate while also keeping the total number of points for which $\probabilitycond{\collision}{\situationcurrent}$ is estimated manageable.
 With this choice of $\weightmatrix$, we have $\numberofdesignpoints=10036$. \cendb
 For the regression of \cref{eq:nadaraya watson}, we use $\bandwidthnw=\weightmatrix^{-1}$.
 
@@ -213,7 +213,7 @@ The heat maps in \cref{fig:heatmaps} show how the developed \ac{ssm} depends on 
 The other two parameters, $\speedegosymbol$ and $\accelerationleadsymbol$ are fixed for each heat map.
 The heat maps shows that the estimated probability of collision is practically 0 if both $\speedleadsymbol$ and $\gapsymbol$ are large.
 This seems reasonable, because in that case, the ego vehicle is at a safe distance from its leading vehicle while the approaching speed is small. 
-\cstartb In addition, for a fixed $\speedegosymbol$, we see that the risk of collision increases as the difference in speed decreases, as is expected. \cendb
+\cstartb In addition, for a fixed $\speedegosymbol$, we see that the risk of collision increases as the difference in speed increases, as is expected. \cendb
 The same applies for a decreasing distance between the two vehicles.
 For small values of $\speedleadsymbol$ and $\gapsymbol$, the estimated probability of collision is practically 1.
 The left and center heat maps of \cref{fig:heatmaps} show that for a higher speed of the ego vehicle, the probability of collision is estimated to be higher.
@@ -266,7 +266,7 @@ According to $\probabilityestcond{\collision}{\situationcurrent}$ from \cref{sec
 The local minimum of $\probabilityestcond{\collision}{\situationcurrent}$ at around \SI{6}{\second} illustrates the effect of the numerical approximation of $\probabilitycond{\collision}{\situationcurrent}$.
 Because we have used $\simulationthreshold=0.1>0$, the resulting estimation may have an error. 
 When lowering the threshold $\simulationthreshold$, the resulting $\probabilityestcond{\collision}{\situationcurrent}$ in the center right plot in \cref{fig:scenarios} will be smoother. 
-This goes, however, at the cost of having to do more simulations \footnote{Alternatively, the bandwidth matrix $\bandwidthnw$ may be increased. 
+This goes, however, at the cost of an increased number of simulations \footnote{Alternatively, the bandwidth matrix $\bandwidthnw$ may be increased. 
 	On the one hand, this will lower the variance of the error, but, on the other hand, it will increase the bias of the result.
 	We refer the interested reader to \autocite{chen2017tutorial} for more details on the effect of $\bandwidthnw$.}.
 
@@ -279,23 +279,23 @@ Hence, in the next section, we will present a qualitative approach to benchmark 
 
 
 
-\subsection{Benchmarking an \acs{ssm} with expected risk tendencies}
-\label{sec:tendencies}
+\subsection{Benchmarking an \acs{ssm} with expected risk trends}
+\label{sec:trends}
 
-In this section, we demonstrate an approach for benchmarking \iac{ssm} that is based on the so-called \emph{expected risk tendencies} of \textcite{mullakkal2017comparative}, who argue that the risk increases if the approaching speed of the ego vehicle toward the leading vehicle increases.
+In this section, we demonstrate an approach for benchmarking \iac{ssm} that is based on expected risk trends discussed in \textcite{mullakkal2017comparative}, who argue that the risk increases if the approaching speed of the ego vehicle toward the leading vehicle increases.
 Also, the risk increases with a higher ego vehicle speed \autocite{aarts2006driving} or a higher driver reaction time \autocite{klauer2006impact}.
 On the other hand, the risk decreases with a higher road friction \autocite{wallman2001friction} or a larger intervehicle spacing \autocite{mullakkal2017comparative}.
 
-To check whether the developed \ac{ssm} follows these 5 expected risk tendencies\footnote{In \autocite{mullakkal2017comparative}, a sixth expected risk tendency is mentioned based on \autocite{evans1994driver}, namely the vehicle mass. 
-Our interpretation of \autocite{evans1994driver}, however, is that the ratio of masses of two colliding vehicles influences the safety risk and that one cannot argue that a higher mass of the ego vehicle necessarily increases the safety risk. 
-Therefore, we exclude the ego vehicle mass from our analysis.}, we evaluate the partial derivatives of the measure of \cref{eq:nadaraya watson}.
-The intuition is as follows: If the expected risk tendency for an input X (e.g., the ego vehicle speed) is that the risk increases as X increases, then we expect the partial derivative of our \ac{ssm} with respect to X to be positive.
+To check whether the developed \ac{ssm} follows these 5 expected risk trends\footnote{In \autocite{mullakkal2017comparative}, a sixth expected risk trend is mentioned based on \autocite{evans1994driver}, namely the vehicle mass. 
+	Our interpretation of \autocite{evans1994driver}, however, is that the ratio of masses of two colliding vehicles influences the safety risk and that one cannot argue that a higher mass of the ego vehicle necessarily increases the safety risk. 
+	Therefore, we exclude the ego vehicle mass from our analysis.}, we evaluate the partial derivatives of the measure of \cref{eq:nadaraya watson}.
+The intuition is as follows: If the expected risk trend for an input X (e.g., the ego vehicle speed) is that the risk increases as X increases, then we expect the partial derivative of our \ac{ssm} with respect to X to be positive.
 Furthermore, if we evaluate the partial derivative at many points, we expect that at least the majority of these evaluated partial derivatives is positive.
-Analogously, if we expect that the risk measure decreases with increasing X, then we expect that at least the majority of the evaluated partial derivatives is negative.
+Similarly, if we expect that the risk measure decreases with increasing X, then we expect that at least the majority of the evaluated partial derivatives is negative.
 
 To illustrate the approach for benchmarking \iac{ssm}, we use the \ac{ssm} of \cref{sec:ngsim metric} with a few adaptations.
-Because we have not described an expected tendency regarding $\accelerationleadsymbol$, we simply use $\accelerationleadsymbol=0$.
-\cstarta Also, because the expected risk tendency for the relative speed is defined, we use the relative speed, i.e., $\speeddifferencesymbol=\speedegosymbol-\speedleadsymbol$, instead of $\speedleadsymbol$. 
+Because we have not described an expected trend regarding $\accelerationleadsymbol$, we simply use $\accelerationleadsymbol=0$.
+\cstarta Also, because the expected risk trend for the relative speed is defined, we use the relative speed, i.e., $\speeddifferencesymbol=\speedegosymbol-\speedleadsymbol$, instead of $\speedleadsymbol$. 
 For the same reason, \cenda instead of assuming a random reaction time $\timereact$ and \ac{madr} $\accelerationmax$, these are now considered as input to our measure. 
 % Finally, instead of using the log of the gap between the ego vehicle and the leading vehicle, we use the gap as a direct input.
 Thus, we have:
@@ -312,24 +312,24 @@ For each input variable, 10 different values at equal distance are used, resulti
 Here, $\speedegosymbol-\speedleadsymbol$ ranges from \SI{0}{\meter\per\second} to \SI{20}{\meter\per\second}, $\speedegosymbol$ ranges from \SI{10}{\meter\per\second} to \SI{30}{\meter\per\second}, $\timereact$ ranges from \SI{0.5}{\second} to \SI{1.5}{\second}, $\gapsymbol$ ranges from \SI{5}{\meter} to \SI{30}{\meter}, and $\accelerationmax$ ranges from \SI{4}{\meter\per\second\squared} to \SI{10}{\meter\per\second\squared}.
 For the bandwidth matrix $\bandwidthnw$, we use a diagonal matrix with the $(i,i)$-th entry corresponding to the squared reciprocal of the difference between two consecutive values of the $i$-th entry of $\situationcurrent$.
 For example, the first value is $1/(\SI{20}{\meter\per\second}/(10-1))^2 \approx \SI{0.20}{\second\squared\per\meter\squared}$. 
-The other values on the diagonal are: \SI{0.20}{\second\squared\per\meter\squared}, \SI{81}{\per\second\squared}, \SI{0.13}{\per\meter\squared}, and \SI{2.25}{\second\tothe{4}\per\meter\squared}.
+The other values on the diagonal are: \SI{0.20}{\second\squared\per\meter\squared}, \SI[per-mode=reciprocal]{81}{\per\second\squared}, \SI[per-mode=reciprocal]{0.13}{\per\meter\squared}, and \SI{2.25}{\second\tothe{4}\per\meter\squared}.
 For each input variable listed in \cref{eq:input partial derivatives}, we evaluate the partial derivative of \cref{eq:nadaraya watson} at each $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
 
-\Cref{tab:tendencies} shows the result of the benchmarking. 
-It shows that the \ac{ssm} follows the expected risk tendencies mostly. 
+\Cref{tab:trends} shows the result of the benchmarking. 
+It shows that the \ac{ssm} follows the expected risk trends mostly. 
 E.g., in more than \SI{99}{\%} of the cases, the partial derivative of the relative speed ($\speedegosymbol-\speedleadsymbol$) is positive.
 For the remaining \SI{1}{\%}, the partial derivative is negative, albeit only slightly. 
 One explanation is that this remaining \SI{1}{\percent} is caused by the inaccuracies introduced by the numerical approximation of \cref{eq:estimate probability of collision}.
 
 \begin{table}
 	\centering
-	\caption{Percentiles of the partial derivatives of the \ac{ssm} and the corresponding expected risk tendencies.}
-	\label{tab:tendencies}
+	\caption{Percentiles of the partial derivatives of the \ac{ssm} and the corresponding expected risk trends.}
+	\label{tab:trends}
 	\begin{tabular}{lrrrrr}
 		\toprule
 		& $\speedegosymbol-\speedleadsymbol$ & $\speedegosymbol$ & $\timereact$ & $\gapsymbol$ & $\accelerationmax$ \\
 		\otoprule
-		Expected tendency & Increase & Increase & Increase & Decrease & Decrease \\
+		Expected trend & Increase & Increase & Increase & Decrease & Decrease \\
 		Maximum         &  0.1629 &  0.1555 &  1.3136 &  0.0010 &  0.0037 \\
 		99th percentile &  0.1585 &  0.1162 &  0.8968 &  0.0002 &  0.0002 \\
 		95th percentile &  0.1495 &  0.0524 &  0.6765 &  0.0000 & -0.0000 \\

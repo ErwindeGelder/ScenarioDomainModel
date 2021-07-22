@@ -3,10 +3,11 @@
 
 % Safety is important
 Road safety is an important key performance indicator in transportation. 
-Due to the enormous societal and economy losses incurred in road accidents, road safety research is an important research topic.
-For example, in 2018\cstarta\footnote{\cstarta At the time of writing, more recent results were not yet available.\cenda}\cenda, there were over 6.7 million accidents in the U.S.A.\ \autocite{nhtsa2020summary}, which is about 1.3 accidents per 1 million vehicle kilometers driven.
-These accidents in 2018 led to 2.7 million injured people and 37 thousand fatalities \autocite{nhtsa2020summary}.
-Furthermore, apart from these societal losses, the economic costs of all accidents in the U.S.A.\ in 2018 was 242 billion dollars \autocite{nhtsa2020summary}.
+\cstartc In addition to the suffering of people as a consequence of crashes in traffic, these crashes incur enormous societal and economic losses.
+As a result, \cendc road safety research is an important research topic.
+For example, in 2018\cstarta\footnote{\cstarta At the time of writing, more recent results were not yet available.\cenda}\cenda, there were over 6.7 million crashes in the U.S.A.\ \autocite{nhtsa2020summary}, which is about 1.3 crashes per 1 million vehicle kilometers driven.
+These crashes in 2018 led to 2.7 million injured people and 37 thousand fatalities \autocite{nhtsa2020summary}.
+Furthermore, apart from these societal losses, the economic costs of all crashes in the U.S.A.\ in 2018 was 242 billion dollars \autocite{nhtsa2020summary}.
 Similarly, the \textcite{eu2020roadsafety} reported over 22 thousand fatalities in 2019.
 
 % Quantify safety with surrogate metrics
@@ -14,7 +15,7 @@ Road safety can be expressed in terms of injuries, fatalities, or crashes per ki
 Furthermore, ``crashes are rare events and historical crash data does not capture near crashes that are also critical for improving safety'' \autocite{wang2021review}.
 An alternative for expressing road safety \cendb that does not rely on historical crash data is the use of safety indicators that directly measure the safety risk in traffic conflicts \cstartb \autocite{arun2021systematic, wang2021review, tarko2018surrogate}\cendb.
 %Particularly challenging is that ``there is no yet consensus on what `driving safely' means'' \autocite{tejada2020safe}.
-Traffic conflicts are far more frequent than traffic accidents and the frequency of traffic conflicts can be used to predict the frequency of crashes \cstartb \autocite{tarko2018estimating, davis2011outline}\cendb.
+Traffic conflicts are far more frequent than traffic crashes and the frequency of traffic conflicts can be used to predict the frequency of crashes \cstartb \autocite{tarko2018estimating, davis2011outline}\cendb.
 \cstartb To define traffic conflicts, thresholds on so-called \acp{ssm} are used, where \acp{ssm} characterize the risk of a collision or harm given an initial condition \autocite{arun2021systematic}. \cendb
 % Examples
 \acp{ssm} vary from measures that estimate the remaining time until a collision, such as the well-known \ac{ttc} \autocite{hayward1972near}, to metrics that estimate the probability that a human driver cannot avoid a collision, see, e.g., \autocite{wang2014evaluation}.
@@ -29,14 +30,14 @@ Regardless of the complexity of these models, however, these \acp{ssm} consider 
 
 % Our proposal
 \cstarta In this paper, we present the \ac{ourmethod} method: A novel data-driven approach for deriving \acp{ssm} that are not limited to certain types of scenarios.
-Because our method does not rely on a predetermined \cenda\cstartb assumptions about driver behavior\cendb\cstarta, the derived \acp{ssm} can be adapted to the situations in which they are applied. 
+Because our method does not rely on predetermined \cenda\cstartb assumptions about driver behavior\cendb\cstarta, the derived \acp{ssm} can be adapted to the situations in which they are applied. 
 In addition, to avoid relying on predetermined assumptions on how the ambient traffic evolves over time, the \ac{ourmethod} method includes a data-driven approach for modeling the variations. 
 Monte Carlo simulations are employed to accurately predict the safety risk given these variations.
 To enable the real-time evaluation of the derived \acp{ssm}, we use the \ac{nw} kernel estimator \autocite{wasserman2006nonparametric} for local regression.
 % Advantages of our method
 The \ac{ourmethod} method provides the following benefits: \cenda
 \begin{itemize}
-	\item The derived \acp{ssm} give a probability that, e.g., a collision will happen in the near future. 
+	\item The derived \acp{ssm} give a probability that, e.g., a collision will happen \cstartc given the current state and the foreseen evolutions of traffic participant trajectories. 
 	\cstartb Since a traffic conflict can be defined as the probability of unsuccessful evasion in a traffic interaction (according to \textcite{davis2011outline}), a probability is easier to interpret than, e.g., a value ranging from 0 to infinity. \cendb
 	
 	\item \cstarta Next to deriving new \acp{ssm}, \cenda it is possible to reproduce already existing measures that provide a probability. 
@@ -48,7 +49,7 @@ The \ac{ourmethod} method provides the following benefits: \cenda
 	\item Because we use a data-driven approach, our \ac{ssm} adapts to the recorded data. 
 	In this way, it is possible to \cstarta adapt the \ac{ssm} to, e.g., the local traffic behavior\cenda.
 	
-	\item Our approach can be applied to various scenarios.
+	\item Our approach \cstartc is not limited to one type of scenario. \cendc
 \end{itemize}
 
 % Explain case study.
@@ -56,7 +57,7 @@ The \ac{ourmethod} method provides the following benefits: \cenda
 The case study demonstrates that when using our method with the assumptions of the \ac{ssm} of \textcite{wang2014evaluation}, both the derived \ac{ssm} and the latter yield the same result.
 The case study continues with evaluating the collision risk of three longitudinal (in lane) traffic conflicts which are a priori known to be, respectively, safe (i.e., no collision possible), moderately safe and unsafe (i.e., collision occurs), based on vehicle kinematics. 
 We evaluate the risk of each of the scenarios using the \ac{ssm} by \textcite{wang2014evaluation} and \iac{ssm} derived by the \ac{ourmethod} method, based on data from the \ac{ngsim}. 
-Moreover, since comparison between these measures is not directly possible in general scenarios, we use the case study to also introduce a method to benchmark \acp{ssm} using expected risk tendencies. \cendb
+Moreover, since comparison between these measures is not directly possible in general scenarios, we use the case study to also introduce a method to benchmark \acp{ssm} using expected risk trends. \cendb
 
 % Structure
 This article is organized as follows.

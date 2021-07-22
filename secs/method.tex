@@ -9,7 +9,7 @@ The third step includes determining the probability of the specified event based
 Finally, local regression is used to speed up the calculations and to make it possible to use the \ac{ssm} in real time. 
 These four steps are described in the following subsections.
 
-In the remainder of this article, the following notation is used. 
+In this article, the following notation is used. 
 To denote a probability, $\probability{\cdot}$ is used. 
 \Iac{pdf} is denoted by $\density{\cdot}$. 
 The probability of $\dummyvara$ given $\dummyvarb$ is denoted by $\probabilitycond{\dummyvara}{\dummyvarb}$.
@@ -187,7 +187,7 @@ Because \cref{eq:svd approximation} is a linear mapping, the sample $\svdvvecsym
 	\label{eq:linear constraint}
 	\svduupperleft \svdsupperleft \svdvvecsymbol = \situationcurrent - \situationcurrentmean.
 \end{equation}
-In \autocite{degelder2021conditional}, an algorithm is provided for sampling from \iac{kde} with a Gaussian kernel of \cref{eq:kernel current future} such that the resulting samples are subject to a linear constraint like \cref{eq:linear constraint}.
+In \autocite{degelder2021conditional}, an algorithm is provided for sampling from \iac{kde} with a Gaussian kernel of \cref{eq:kernel current future} such that the resulting samples are subject to a linear constraint such as \cref{eq:linear constraint}.
 
 
 
@@ -196,7 +196,7 @@ In \autocite{degelder2021conditional}, an algorithm is provided for sampling fro
 
 \cstarta Monte Carlo simulations are used to estimate $\probabilitycond{\collision}{\situationcurrent}$, i.e., the probability of an event $\collision$ given the current situation $\situationcurrent$. \cenda
 The details of the simulation depends on the actual application. 
-For example, if the goal of our \ac{ssm} is to evaluate the risk that a human-driven vehicle collides, the simulation should involve human driving behavior models. 
+For example, if the goal of our \ac{ssm} is to evaluate the risk that a human-driven vehicle collides, the simulation should involve a human driving behavior model. 
 On the other hand, if the goal is to evaluate the risk of collision when \iac{ads} is controlling the vehicle, the simulation should include the model of this \ac{ads}.
 
 A straightforward way to compute $\probabilitycond{\collision}{\situationcurrent}$ is to repeat a certain number of simulations with the same $\situationcurrent$ and count the number of simulations that result in the event $\collision$.
@@ -213,7 +213,7 @@ E.g., the Clopper-Pearson interval \autocite{clopper1934use} or the Wilson score
 A disadvantage of this approach is that only the fact whether the event $\collision$ occurred or not is used, while the simulation provides more information. 
 Therefore, we provide an alternative approach to estimate $\probabilitycond{\collision}{\situationcurrent}$.
 
-\cstarta For the alternative approach, let us assume that one simulation run provides more information that just the fact that the event $\collision$ occurred or not.
+\cstarta For the alternative approach, let us assume that one simulation run provides more information than just the fact that the event $\collision$ occurred or not.
 Let $\simulationresult \in \realnumbers^{\dimsimulationresult}$ be a continuous variable representing the result of a simulation run and let $\spacecollision$ denote the set of possible simulation results in which the event $\collision$ occurred. 
 Thus, \cenda $\simulationresult \in \spacecollision$ if and only if the simulation results in the event $\collision$.
 \cstartb We assume $\spacecollision$ is known. \cendb
@@ -266,8 +266,8 @@ Thus, $\numberofsimulations$ is increased until the following condition is met:
 \subsection{Regression for real-time estimation of $\probabilitycond{\collision}{\situationcurrent}$}
 \label{sec:final metric calculation}
 
-To evaluate the risk measure during real-time operation of the ego vehicle, the expression of \cref{eq:estimate probability of collision} is problematic, because it would require multiple $\numberofsimulations$ simulation.
-Even if the calculation is accelerated using a technique like importance sampling, it might take too long.
+To evaluate the risk measure during real-time operation of the ego vehicle, the expression of \cref{eq:estimate probability of collision} is problematic, because it would require multiple $\numberofsimulations$ simulations.
+Even if the calculation is accelerated using a technique such as importance sampling, it might take too long.
 Therefore, we propose to evaluate \cref{eq:estimate probability of collision} only for some fixed $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$.
 \cstartb Next, regression is used to estimate \cref{eq:estimate probability of collision}.
 To not rely on a fixed shape for which certain parameters are fitted (e.g., polynomial or logistic regression), non-parametric \cendb regression is used to estimate \cref{eq:estimate probability of collision}.
@@ -281,7 +281,7 @@ More specifically, we use the \ac{nw} kernel estimator \autocite{wasserman2006no
 	}{\sum_{\situationindex=1}^{\numberofdesignpoints}
 		\kernelfuncnormalized{\bandwidthnw}{\situationcurrent - \situationcurrentinstance{\situationindexdesign}}}.
 \end{equation}
-Here, $\probabilityestcond{\collision}{\situationcurrentinstance{\situationindexdesign}}$ is based \cref{eq:estimate probability of collision} and $\kernelfuncnormalized{\bandwidthnw}{\cdot}$ represents the Gaussian kernel given by \cref{eq:kernel current future}.
+Here, $\probabilityestcond{\collision}{\situationcurrentinstance{\situationindexdesign}}$ is based on \cref{eq:estimate probability of collision} and $\kernelfuncnormalized{\bandwidthnw}{\cdot}$ represents the Gaussian kernel given by \cref{eq:kernel current future}.
 Two important choices have to be made: The choice of the $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ for which to evaluate \cref{eq:estimate probability of collision} and the choice of the bandwidth matrix $\bandwidthnw$.
 We suggest to base the design points $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ on the data that is used to estimate $\densitycond{\situationfuture}{\situationcurrent}$ in \cref{sec:estimate future}, i.e., $\situationcurrentinstance{\situationindex}$, $\situationindex \in \{1,\ldots,\situationnumberof\}$, such that all $\situationcurrentinstance{\situationindex}$ have at least one design point $\situationcurrentinstance{\situationindexdesign}$  nearby.
 In other words, $\situationcurrentinstance{\situationindexdesign}$, $\situationindexdesign\in\{1,\ldots,\numberofdesignpoints\}$ are chosen such that
