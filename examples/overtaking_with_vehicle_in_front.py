@@ -19,12 +19,12 @@ def scenario_category() -> dm.ScenarioCategory:
     :return: The ScenarioCategory "overtaking with vehicle in front".
     """
     # Define the actor categories.
-    ego = dm.ActorCategory(dm.VehicleType.Vehicle, name="Ego qualitative",
+    ego = dm.ActorCategory(dm.ActorType.Vehicle, name="Ego qualitative",
                            tags=[dm.Tag.RoadUserType_CategoryM_PassengerCar,
                                  dm.Tag.EgoVehicle])
-    lead = dm.ActorCategory(dm.VehicleType.Vehicle, name="Lead vehicle",
+    lead = dm.ActorCategory(dm.ActorType.Vehicle, name="Lead vehicle",
                             tags=[dm.Tag.RoadUserType_Vehicle])
-    overtaking = dm.ActorCategory(dm.VehicleType.Vehicle, name="Overtaking vehicle",
+    overtaking = dm.ActorCategory(dm.ActorType.Vehicle, name="Overtaking vehicle",
                                   tags=[dm.Tag.RoadUserType_Vehicle,
                                         dm.Tag.InitialState_LongitudinalPosition_RearOfEgo])
 

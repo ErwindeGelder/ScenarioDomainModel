@@ -1,0 +1,625 @@
+{
+    "name": "I2V scenario",
+    "id": "323927202068258338548569693559437405080",
+    "tags": [],
+    "start": {
+        "name": "",
+        "id": "172937078388082817888086349829661186729",
+        "tags": [],
+        "conditions": {
+            "time": 0
+        }
+    },
+    "end": {
+        "name": "",
+        "id": "40818714550145156715926853839686904945",
+        "tags": [],
+        "conditions": {
+            "time": 15
+        }
+    },
+    "physical_elements": [
+        {
+            "name": "Motorway",
+            "id": "4348314798317024804371836091744282001",
+            "tags": [],
+            "properties": {
+                "Country": "The Netherlands",
+                "Roads": [
+                    {
+                        "ID": 1,
+                        "Length": 400,
+                        "Type": "motorway",
+                        "Geometry": [
+                            {
+                                "s": 0,
+                                "xstart": 0,
+                                "ystart": 0,
+                                "heading": 0,
+                                "length": 400,
+                                "shape": "line",
+                                "parameters": {}
+                            }
+                        ],
+                        "Lanes": [
+                            {
+                                "ID": 0,
+                                "Width": 0,
+                                "Type": "border",
+                                "Marker": "solid"
+                            },
+                            {
+                                "ID": -1,
+                                "Width": 3,
+                                "Type": "driving",
+                                "Marker": "broken"
+                            },
+                            {
+                                "ID": -2,
+                                "Width": 3,
+                                "Type": "driving",
+                                "Marker": "solid"
+                            }
+                        ],
+                        "Objects": {},
+                        "Signals": {}
+                    }
+                ]
+            },
+            "category": {
+                "name": "Motorway",
+                "id": "306586146876390554786090869641223827508",
+                "tags": [
+                    "RoadLayout_Straight",
+                    "RoadType_PrincipleRoad"
+                ],
+                "description": "Motorway with multiple lanes"
+            }
+        }
+    ],
+    "actors": [
+        {
+            "name": "ego vehicle",
+            "id": "113898657205224946358531319806923258357",
+            "tags": [],
+            "properties": {
+                "color": "blue"
+            },
+            "category": {
+                "name": "EgoVehicle",
+                "id": "301701217409629258327047172911041899335",
+                "tags": [
+                    "EgoVehicle",
+                    "RoadUserType_Vehicle",
+                    "Communication_Network_Its"
+                ],
+                "description": "",
+                "actor_type": {
+                    "name": "Vehicle",
+                    "value": 1
+                }
+            },
+            "initial_states": [
+                {
+                    "state_variable": {
+                        "name": "LONGITUDINAL_ROAD_POSITION",
+                        "value": "[ROAD_ID, ROAD_DISTANCE]"
+                    },
+                    "value": [
+                        1,
+                        0
+                    ]
+                }
+            ],
+            "desired_states": [
+                {
+                    "state_variable": {
+                        "name": "LONGITUDINAL_ROAD_POSITION",
+                        "value": "[ROAD_ID, ROAD_DISTANCE]"
+                    },
+                    "value": [
+                        1,
+                        400
+                    ]
+                },
+                {
+                    "state_variable": {
+                        "name": "LATERAL_ROAD_POSITION",
+                        "value": "[LANE_ID, LANE_OFFSET]"
+                    },
+                    "value": [
+                        -1,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "RSU_1",
+            "id": "248376368610223481335686342718805772216",
+            "tags": [],
+            "properties": {
+                "version": "2.0",
+                "securityStatus": "disabled"
+            },
+            "category": {
+                "name": "RSU",
+                "id": "51125139971515289369325109218341415142",
+                "tags": [
+                    "Communication_Network_Its"
+                ],
+                "description": "",
+                "actor_type": {
+                    "name": "NetworkIts",
+                    "value": 194
+                }
+            },
+            "initial_states": [],
+            "desired_states": []
+        },
+        {
+            "name": "RSU_2",
+            "id": "175638021327848279128181993922589117174",
+            "tags": [],
+            "properties": {
+                "version": "2.0",
+                "securityStatus": "disabled"
+            },
+            "category": {
+                "name": "RSU",
+                "id": "51125139971515289369325109218341415142",
+                "tags": [
+                    "Communication_Network_Its"
+                ],
+                "description": "",
+                "actor_type": {
+                    "name": "NetworkIts",
+                    "value": 194
+                }
+            },
+            "initial_states": [],
+            "desired_states": []
+        }
+    ],
+    "activities": [
+        {
+            "name": "Initial cruising ego",
+            "id": "314088774073688669816244394852684636752",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "172937078388082817888086349829661186729",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "141983191770392501883978262160389335872",
+                "tags": [],
+                "conditions": {
+                    "time": 5
+                }
+            },
+            "category": {
+                "name": "driving forward",
+                "id": "39434326210828777224111054639837765001",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "116743560629625679799877734585642668417",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Sinusoidal",
+                    "default_options": {}
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "xstart": 22,
+                "xend": 22
+            }
+        },
+        {
+            "name": "Accelerating ego",
+            "id": "171878910264676828784705663101324990344",
+            "tags": [
+                "VehicleLongitudinalActivity_DrivingForward_Accelerating"
+            ],
+            "start": {
+                "name": "",
+                "id": "141983191770392501883978262160389335872",
+                "tags": [],
+                "conditions": {
+                    "time": 5
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "328631576931931199854614045714894834398",
+                "tags": [],
+                "conditions": {
+                    "time": 10
+                }
+            },
+            "category": {
+                "name": "driving forward",
+                "id": "39434326210828777224111054639837765001",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "116743560629625679799877734585642668417",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Sinusoidal",
+                    "default_options": {}
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "xstart": 22,
+                "xend": 28
+            }
+        },
+        {
+            "name": "Final cruising ego",
+            "id": "77397887517896871544399672121066292241",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "328631576931931199854614045714894834398",
+                "tags": [],
+                "conditions": {
+                    "time": 10
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "40818714550145156715926853839686904945",
+                "tags": [],
+                "conditions": {
+                    "time": 15
+                }
+            },
+            "category": {
+                "name": "driving forward",
+                "id": "39434326210828777224111054639837765001",
+                "tags": [
+                    "VehicleLongitudinalActivity_DrivingForward"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "116743560629625679799877734585642668417",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Sinusoidal",
+                    "default_options": {}
+                },
+                "state": {
+                    "name": "SPEED",
+                    "value": "v [m/s]"
+                }
+            },
+            "parameters": {
+                "xstart": 28,
+                "xend": 28
+            }
+        },
+        {
+            "name": "Following lane ego",
+            "id": "234893064741744573063163775385029834880",
+            "tags": [],
+            "start": {
+                "name": "",
+                "id": "172937078388082817888086349829661186729",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "40818714550145156715926853839686904945",
+                "tags": [],
+                "conditions": {
+                    "time": 15
+                }
+            },
+            "category": {
+                "name": "Following lane",
+                "id": "298338876014776115453644940344428182363",
+                "tags": [
+                    "VehicleLateralActivity_GoingStraight"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "58142505505711589061732820707924620871",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Constant",
+                    "default_options": {}
+                },
+                "state": {
+                    "name": "LATERAL_ROAD_POSITION",
+                    "value": "[LANE_ID, LANE_OFFSET]"
+                }
+            },
+            "parameters": {
+                "xstart": [
+                    -1,
+                    0
+                ]
+            }
+        },
+        {
+            "name": "Initial speed limit message",
+            "id": "291348774313517599741322337101589117487",
+            "tags": [
+                "Communication_I2V"
+            ],
+            "start": {
+                "name": "",
+                "id": "172937078388082817888086349829661186729",
+                "tags": [],
+                "conditions": {
+                    "time": 0
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "141330698981617893156652770115034571658",
+                "tags": [],
+                "conditions": {
+                    "time": 4
+                }
+            },
+            "category": {
+                "name": "RSU_speed_limit",
+                "id": "78409921025648259930106735315115589353",
+                "tags": [
+                    "Communication_I2V"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "114065637820395155730529950867661287836",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Messages",
+                    "default_options": {
+                        "message_name": null,
+                        "message": "",
+                        "frequency": 20,
+                        "receive": true,
+                        "network": null,
+                        "network_quality": {}
+                    }
+                },
+                "state": {
+                    "name": "MESSAGE",
+                    "value": "text [str]"
+                }
+            },
+            "parameters": {
+                "message_name": "I2V_SpeedLimit",
+                "message": "80 kph",
+                "frequency": 20,
+                "receive": true,
+                "network": 248376368610223481335686342718805772216,
+                "network_quality": {
+                    "Speed": {
+                        "connectionSpeed": 5
+                    },
+                    "Latency": {
+                        "averageDelay": 50
+                    },
+                    "Reliability": {
+                        "factor": 0.9
+                    }
+                }
+            }
+        },
+        {
+            "name": "Low quality initial speed limit message",
+            "id": "11098939301676032324571394670596311011",
+            "tags": [
+                "Communication_I2V"
+            ],
+            "start": {
+                "name": "",
+                "id": "141330698981617893156652770115034571658",
+                "tags": [],
+                "conditions": {
+                    "time": 4
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "73510110076835529165364123448260777044",
+                "tags": [],
+                "conditions": {
+                    "time": 5
+                }
+            },
+            "category": {
+                "name": "RSU_speed_limit",
+                "id": "78409921025648259930106735315115589353",
+                "tags": [
+                    "Communication_I2V"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "114065637820395155730529950867661287836",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Messages",
+                    "default_options": {
+                        "message_name": null,
+                        "message": "",
+                        "frequency": 20,
+                        "receive": true,
+                        "network": null,
+                        "network_quality": {}
+                    }
+                },
+                "state": {
+                    "name": "MESSAGE",
+                    "value": "text [str]"
+                }
+            },
+            "parameters": {
+                "message_name": "I2V_SpeedLimit",
+                "message": "80 kph",
+                "frequency": 20,
+                "receive": true,
+                "network": 248376368610223481335686342718805772216,
+                "network_quality": {
+                    "Speed": {
+                        "connectionSpeed": 1
+                    },
+                    "Latency": {
+                        "averageDelay": 100
+                    },
+                    "Reliability": {
+                        "factor": 0.5
+                    }
+                }
+            }
+        },
+        {
+            "name": "Final speed limit message",
+            "id": "311069425653327898013971666305291134522",
+            "tags": [
+                "Communication_I2V"
+            ],
+            "start": {
+                "name": "",
+                "id": "73510110076835529165364123448260777044",
+                "tags": [],
+                "conditions": {
+                    "time": 5
+                }
+            },
+            "end": {
+                "name": "",
+                "id": "40818714550145156715926853839686904945",
+                "tags": [],
+                "conditions": {
+                    "time": 15
+                }
+            },
+            "category": {
+                "name": "RSU_speed_limit",
+                "id": "78409921025648259930106735315115589353",
+                "tags": [
+                    "Communication_I2V"
+                ],
+                "description": "",
+                "model": {
+                    "name": "",
+                    "id": "114065637820395155730529950867661287836",
+                    "tags": [],
+                    "description": "",
+                    "modelname": "Messages",
+                    "default_options": {
+                        "message_name": null,
+                        "message": "",
+                        "frequency": 20,
+                        "receive": true,
+                        "network": null,
+                        "network_quality": {}
+                    }
+                },
+                "state": {
+                    "name": "MESSAGE",
+                    "value": "text [str]"
+                }
+            },
+            "parameters": {
+                "message_name": "I2V_SpeedLimit",
+                "message": "100 kph",
+                "frequency": 20,
+                "receive": true,
+                "network": 175638021327848279128181993922589117174,
+                "network_quality": {
+                    "Speed": {
+                        "connectionSpeed": 8
+                    },
+                    "Latency": {
+                        "averageDelay": 50
+                    },
+                    "Reliability": {
+                        "factor": 0.8
+                    }
+                }
+            }
+        }
+    ],
+    "acts": [
+        {
+            "actor": 113898657205224946358531319806923258357,
+            "activity": 314088774073688669816244394852684636752
+        },
+        {
+            "actor": 113898657205224946358531319806923258357,
+            "activity": 171878910264676828784705663101324990344
+        },
+        {
+            "actor": 113898657205224946358531319806923258357,
+            "activity": 77397887517896871544399672121066292241
+        },
+        {
+            "actor": 113898657205224946358531319806923258357,
+            "activity": 234893064741744573063163775385029834880
+        },
+        {
+            "actor": 113898657205224946358531319806923258357,
+            "activity": 291348774313517599741322337101589117487
+        },
+        {
+            "actor": 113898657205224946358531319806923258357,
+            "activity": 11098939301676032324571394670596311011
+        },
+        {
+            "actor": 113898657205224946358531319806923258357,
+            "activity": 311069425653327898013971666305291134522
+        }
+    ],
+    "derived_tags": {
+        "ego vehicle::Actor": [
+            "Communication_Network_Its",
+            "VehicleLongitudinalActivity_DrivingForward_Accelerating",
+            "Communication_I2V",
+            "VehicleLateralActivity_GoingStraight",
+            "EgoVehicle",
+            "RoadUserType_Vehicle",
+            "VehicleLongitudinalActivity_DrivingForward"
+        ],
+        "RSU_1::Actor": [
+            "Communication_Network_Its"
+        ],
+        "RSU_2::Actor": [
+            "Communication_Network_Its"
+        ],
+        "Motorway::PhysicalElement": [
+            "RoadLayout_Straight",
+            "RoadType_PrincipleRoad"
+        ]
+    }
+}

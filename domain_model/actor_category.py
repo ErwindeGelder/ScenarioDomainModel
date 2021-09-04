@@ -12,6 +12,7 @@ Modifications:
 2020 08 25: Add function to obtain properties from a dictionary.
 2020 10 04: Change way of creating object from JSON code.
 2020 10 12: ActorCategory is subclass of PhysicalElementCategory (was DynamicPhysicalThingCategory).
+2021 09 04: Change VehicleType to ActorType and add Communication tags.
 """
 
 from enum import Enum
@@ -22,7 +23,7 @@ from .tags import Tag
 from .type_checking import check_for_type
 
 
-class VehicleType(Enum):
+class ActorType(Enum):
     """ Allowed vehicle types
 
     The allowed vehicle types are also defines as tags in tags.py.
@@ -35,15 +36,22 @@ class VehicleType(Enum):
     CategoryN_LGV = Tag.RoadUserType_CategoryN_LGV.value
     CategoryL_Motorcycle = Tag.RoadUserType_CategoryL_Motorcycle.value
     CategoryL_Moped = Tag.RoadUserType_CategoryL_Moped.value
+
+    # Vulnerable road users
     VRU_Pedestrian = Tag.RoadUserType_VRU_Pedestrian.value
     VRU_Cyclist = Tag.RoadUserType_VRU_Cyclist.value
     VRU_Other = Tag.RoadUserType_VRU_Other.value
+
+    # Communication
+    NetworkWifi = Tag.Communication_Network_Wifi.value
+    NetworkCellular = Tag.Communication_Network_Cellular.value
+    NetworkIts = Tag.Communication_Network_Its.value
 
     def to_json(self) -> dict:
         """ When tag is exporting to JSON, this function is being called
 
         It returns a dictionary with the "name" and the "value" of the
-        VehicleType.
+        ActorType.
 
         :return: dictionary describing the vehicle type.
         """
@@ -58,7 +66,7 @@ class ActorCategory(PhysicalElementCategory):
     only describes the actor in qualitative terms.
 
     Attributes:
-        vehicle_type (VehicleType): The type of the actor. This should be from
+        vehicle_type (ActorType): The type of the actor. This should be from
             the enumeration VehicleType.
         name (str): A name that serves as a short description of the actor
             category.
@@ -67,12 +75,12 @@ class ActorCategory(PhysicalElementCategory):
             category comprises a scenario.
         description(str): A string that qualitatively describes this actor.
     """
-    def __init__(self, vehicle_type: VehicleType, **kwargs):
+    def __init__(self, vehicle_type: ActorType, **kwargs):
         # Check the types of the inputs
-        check_for_type("vehicle_type", vehicle_type, VehicleType)
+        check_for_type("vehicle_type", vehicle_type, ActorType)
 
         PhysicalElementCategory.__init__(self, **kwargs)
-        self.vehicle_type = vehicle_type  # type: VehicleType
+        self.vehicle_type = vehicle_type  # type: ActorType
 
     def to_json(self) -> dict:
         """ Get JSON code of object.
@@ -84,12 +92,12 @@ class ActorCategory(PhysicalElementCategory):
         :return: dictionary that can be converted to a json file.
         """
         actor_category = PhysicalElementCategory.to_json(self)
-        actor_category["vehicle_type"] = self.vehicle_type.to_json()
+        actor_category["actor_type"] = self.vehicle_type.to_json()
         return actor_category
 
 
 def _actor_category_props_from_json(json: dict) -> dict:
-    props = dict(vehicle_type=vehicle_type_from_json(json["vehicle_type"]))
+    props = dict(vehicle_type=vehicle_type_from_json(json["actor_type"]))
     props.update(_physical_element_category_props_from_json(json))
     return props
 
@@ -114,13 +122,13 @@ def actor_category_from_json(json: dict, attribute_objects: DMObjects = None) ->
     return _object_from_json(json, _actor_category_from_json, "actor_category", attribute_objects)
 
 
-def vehicle_type_from_json(json: dict) -> VehicleType:
-    """ Get VehicleType object from JSON code.
+def vehicle_type_from_json(json: dict) -> ActorType:
+    """ Get ActorType object from JSON code.
 
-    It is assumed that the JSON code of the VehicleType is created using
-    VehicleType.to_json().
+    It is assumed that the JSON code of the ActorType is created using
+    ActorType.to_json().
 
-    :param json: JSON code of VehicleType.
+    :param json: JSON code of ActorType.
     :return: Tag object.
     """
-    return getattr(VehicleType, json["name"])
+    return getattr(ActorType, json["name"])

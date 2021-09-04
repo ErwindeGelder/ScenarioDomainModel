@@ -21,9 +21,9 @@ def scenario_category() -> dm.ScenarioCategory:
     :return: The ScenarioCategory "pedestrian crossing".
     """
     # Define the actor categories.
-    ego = dm.ActorCategory(dm.VehicleType.Vehicle, name="Ego qualitative",
+    ego = dm.ActorCategory(dm.ActorType.Vehicle, name="Ego qualitative",
                            tags=[dm.Tag.RoadUserType_CategoryM_PassengerCar, dm.Tag.EgoVehicle])
-    pedestrian = dm.ActorCategory(dm.VehicleType.VRU_Pedestrian, name="Pedestrian qualitative",
+    pedestrian = dm.ActorCategory(dm.ActorType.VRU_Pedestrian, name="Pedestrian qualitative",
                                   tags=[dm.Tag.RoadUserType_VRU_Pedestrian])
 
     # Define the static environment category.

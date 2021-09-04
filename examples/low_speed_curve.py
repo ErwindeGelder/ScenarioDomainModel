@@ -20,7 +20,7 @@ def scenario_category(left: bool = False, right: bool = False) -> dm.ScenarioCat
     :param right: Whether the bend is to the right.
     """
     # Define the ego vehicle.
-    ego = dm.ActorCategory(dm.VehicleType.Vehicle, name="Ego qualitative",
+    ego = dm.ActorCategory(dm.ActorType.Vehicle, name="Ego qualitative",
                            tags=[dm.Tag.RoadUserType_CategoryM_PassengerCar, dm.Tag.EgoVehicle,
                                  dm.Tag.VehicleLongitudinalActivity_DrivingForward,
                                  dm.Tag.VehicleLateralActivity_GoingStraight])
