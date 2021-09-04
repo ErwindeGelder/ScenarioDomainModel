@@ -168,6 +168,8 @@ class DocumentManagement:
         :param uid: The ID.
         """
         del self.collections[name][uid]
+        if uid in getattr(self.realizations, name):
+            del getattr(self.realizations, name)[uid]
 
     def get_item(self, name: str, uid: int):
         """ Obtain an item of the database.
