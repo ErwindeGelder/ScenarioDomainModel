@@ -8,6 +8,7 @@ Modifications:
 2019 10 11: Update of terminology.
 2019 11 04: Add the heading as a possible state variable.
 2020 10 29: Add units to state variable descriptions.
+2021 09 04: Add MESSAGE.
 """
 
 from enum import Enum
@@ -25,6 +26,7 @@ class StateVariable(Enum):
     LATERAL_ROAD_POSITION = "[LANE_ID, LANE_OFFSET]"
     LON_TARGET = "[vabs [m/s], dx [m]]"
     LAT_TARGET = 'dy [m]'
+    MESSAGE = 'text [str]'
 
     def to_json(self):
         """ When tag is exporting to JSON, this function is being called
