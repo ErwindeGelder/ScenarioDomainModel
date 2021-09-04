@@ -8,7 +8,7 @@ Modifications:
 """
 
 from typing import Union, List
-from .activity_category import StateVariable, state_variable_from_json
+from .state_variable import StateVariable, state_variable_from_json
 from .type_checking import check_for_type, check_for_list
 
 
