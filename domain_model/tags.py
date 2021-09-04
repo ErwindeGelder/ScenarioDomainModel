@@ -207,6 +207,14 @@ class Tag(Enum):
     Lighting_Glare_Sun = 118
     Lighting_Glare_OncomingTraffic = 119
 
+    # Tags for communication
+    Communication_V2V = 189
+    Communication_I2V = 190
+    Communication_V2X = 191
+    Communication_Network_Wifi = 192
+    Communication_Network_Cellular = 193
+    Communication_Network_Its = 194
+
     def to_json(self) -> str:
         """ When tag is exporting to JSON, this function is being called
 
