@@ -18,12 +18,15 @@ Modifications:
 2020 10 04: Change way of creating object from JSON code.
 2020 10 30: For using options for the fit functions, use **kwargs instead of options.
 2020 11 06: Add Model MultiBSplines.
+2021 09 04: Add Messages.
 """
 
 import sys
 from abc import abstractmethod
+from typing import Union
 import numpy as np
 from scipy.interpolate import splrep, splev
+from .actor import Actor
 from .qualitative_element import QualitativeElement, _qualitative_element_props_from_json
 from .scenario_element import DMObjects, _object_from_json
 
@@ -61,7 +64,6 @@ class Model(QualitativeElement):
         self.default_options = dict()
         QualitativeElement.__init__(self, **kwargs)
 
-    @abstractmethod
     def get_state(self, pars: dict, time: np.ndarray) -> np.ndarray:
         """ Return state vector.
 
@@ -74,7 +76,6 @@ class Model(QualitativeElement):
         :return: Numpy array with the state.
         """
 
-    @abstractmethod
     def get_state_dot(self, pars: dict, time: np.ndarray) -> np.ndarray:
         """ Return the derivative of the state vector.
 
@@ -87,7 +88,6 @@ class Model(QualitativeElement):
         :return: Numpy array with the derivative of the state.
         """
 
-    @abstractmethod
     def fit(self, time: np.ndarray, data: np.ndarray, **kwargs) -> dict:
         """ Fit the data to the model and return the parameters
 
@@ -361,6 +361,56 @@ class MultiBSplines(Model):
                                                      time)
                            for i in range(self.dimension)])
         return result
+
+
+class Messages(Model):
+    """ Model to define communication messages that are received or transmitted by an actor.
+
+    The following information can be set by default:
+    message_name(str): name of the message.
+    message(str): information that is send by the message.
+    network(actor_uid): uid of network actor that is sending/receiving the message.
+    network_quality(dict): dictionary with network quality information.
+    frequency(float): frequency of the message [Hz].
+    receiving(bool): True: vehicle actor receives message; False: vehicle actor sends message.
+    """
+    def __init__(self, message_name: str = None, message: str = None,
+                 network: Union[Actor, int] = None, network_quality: dict = None, **kwargs):
+        if "receiving" in kwargs:
+            receiving = kwargs["receiving"]
+            del kwargs["receiving"]
+        else:
+            receiving = True
+        if "frequency" in kwargs:
+            frequency = kwargs["frequency"]
+            del kwargs["frequency"]
+        else:
+            frequency = 10
+
+        Model.__init__(self, "Messages", **kwargs)
+
+        message = "" if message is None else message
+        network_quality = dict() if network_quality is None else network_quality
+        network = network.uid if isinstance(network, Actor) else network
+        self.default_options = dict(message_name=message_name, message=message,
+                                    frequency=frequency, receive=receiving,
+                                    network=network, network_quality=network_quality)
+
+    def get_pars(self, **kwargs) -> dict:
+        """ Return parameters for model Messages.
+
+        :param kwargs: message_name, message, frequency, network (uid), network_quality,
+            receiving.
+        :return: Parameters for model Messages.
+        """
+        parameters = self.default_options.copy()
+        parameters.update(kwargs)
+
+        # Check if actor is defined and, if so, if it is an int.
+        if isinstance(parameters["network"], Actor):
+            parameters["network"] = parameters["network"].uid
+
+        return parameters
 
 
 def _model_props_from_json(json: dict) -> dict:
