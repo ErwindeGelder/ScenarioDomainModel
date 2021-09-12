@@ -5,7 +5,7 @@ Author(s): Erwin de Gelder
 
 Modifications:
 2020 08 22: Add function to obtain properties from a dictionary.
-2020 10 25: Change QuantitativeElement to QuantitativeElement.
+2020 10 25: Change QuantitativeThing to QuantitativeElement.
 """
 
 from abc import abstractmethod
