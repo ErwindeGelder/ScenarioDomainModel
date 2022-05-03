@@ -7,7 +7,8 @@ please refer to the following publication:
 E. de Gelder, J.-P. Paardekooper, A. Khabbaz Saberi, H. Elrofai, O. Op den Camp, 
 S. Kraines, J. Ploeg, and B. De Schutter, "Towards an Ontology for Scenario 
 Definition for the Assessment of Automated Vehicles: An Object-Oriented 
-Framework", 2020. *In preparation.*
+Framework", [*IEEE Transactions on Intelligent Vehicles, Early access*](https://doi.org/10.1109/TIV.2022.3144803), 2022.
+Note: a *public* preprint is available at [arXiv](https://arxiv.org/abs/2001.11507).
 
 More details on the terms and definitions can also be found in the 
 aforementioned publication. 
@@ -18,6 +19,7 @@ The best way to learn more about this code is to have a look at the tutorials:
 2. [Instatiating a *scenario*](./Tutorial%202%20Scenario.ipynb)
 3. [Creating a *scenario* from data](./Tutorial%203%20Scenario%20from%20data.ipynb)
 4. [Scenario database](./Tutorial%204%20Scenario%20database.ipynb)
+5. [Instantiating a *scenario category* including I2V communication](./Tutorial%205%20Scenario%20category%20including%20I2V%20communication.ipynb)
 
 # Running the code
 
