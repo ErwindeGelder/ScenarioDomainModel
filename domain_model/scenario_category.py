@@ -484,7 +484,7 @@ def _check_multiple_tags(own_tags: dict, other_tags: dict, tags_class: str,
 
     # Create a boolean matrix, where the (i,j)-th element is True if the i-th object of the other
     # objects might correspond to the j-th object of our own objects.
-    match = np.zeros((len(other_objects), len(own_objects)), dtype=np.bool)
+    match = np.zeros((len(other_objects), len(own_objects)), dtype=bool)
     for i, other_object in enumerate(other_objects):
         for j, own_object in enumerate(own_objects):
             match[i, j] = all(any(map(tag.is_supertag_of, other_tags[other_object]))
